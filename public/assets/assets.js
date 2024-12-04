@@ -3,6 +3,12 @@ import years from "./years.svg";
 import projects from "./projcts.svg";
 import clients from "./clients.svg";
 import ninety from './90.svg'
+import ninetyOne from './91.svg'
+import seventy from './70.svg'
+import footerLogo from './footer_logo.svg'
+import footer1 from './footer1.png'
+import footer2 from './footer2.png'
+import footer3 from './footer3.png'
 
 export const assets = {
     logo,
@@ -10,6 +16,12 @@ export const assets = {
     projects,
     clients,
     ninety,
+    ninetyOne,
+    seventy,
+    footerLogo,
+    footer1,
+    footer2,
+    footer3
 };
 
 export const logos = [
