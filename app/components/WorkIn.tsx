@@ -6,7 +6,7 @@ const WorkIn = () => {
     <div className='bg-gray-100'>
     <div className='container mx-auto px-4 py-4'>
         <div className='py-20 flex flex-col gap-12'>
-            <h1 className='text-4xl'>We Work In</h1>
+            <h1 className='text-font65 leading-lh1p07'>We Work In</h1>
             <WorkSwiper/>
         </div>
     </div>
