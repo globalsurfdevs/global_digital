@@ -28,3 +28,22 @@ body {
 } */
 
 
+.overflow-inherit{
+  overflow: inherit!important;
+  z-index: 2;
+  isolation: isolate;
+}
+.tour-card:before{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 300ms all linear;
+  z-index: 1;
+}
+
+.tour-card:hover::before{
+  background-color: #0000003d;
+}
