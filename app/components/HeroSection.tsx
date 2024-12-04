@@ -3,10 +3,11 @@ import React from "react";
 const HeroSection = () => {
   return (
     <section className="bg-black text-white h-screen flex items-center">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-          Performance Focused <br /> Digital Marketing
-        </h1>
+    <div className="container mx-auto px-4">
+  
+      <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+        Performance Focused <br /> Digital Marketing 
+      </h1>
 
         <div className="mt-6">
           <a href="#" className="inline-flex items-center text-primary border-b-2 border-primary pb-1 hover:text-white hover:border-white transition">

@@ -2,12 +2,14 @@ import logo from "./gs-digital-logo.svg";
 import years from "./years.svg";
 import projects from "./projcts.svg";
 import clients from "./clients.svg";
+import ninety from './90.svg'
 
 export const assets = {
     logo,
     years,
     projects,
     clients,
+    ninety,
 };
 
 export const logos = [
