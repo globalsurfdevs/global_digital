@@ -4,7 +4,7 @@ const Tours = () => {
   return (
     <div className="container px-4 mx-auto">
       <div className="py-24 flex flex-col gap-10 border-b">
-        <h1 className="text-4xl">Featured Tours</h1>
+        <h1 className="text-font65">Featured Tours</h1>
         <div className="grid grid-cols-2 gap-8">
           {tours.map((tour) => (
             <div className="relative tour-card group">

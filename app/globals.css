@@ -47,3 +47,41 @@ body {
 .tour-card:hover::before{
   background-color: #0000003d;
 }
+
+.testimonial-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.testimonial-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.testimonial-bullet:hover {
+  background-color: #e43d30;
+  transform: scale(1.2);
+}
+
+.testimonial-bullet-active {
+  background-color: #000;
+  transform: scale(1.5);
+}
+
+.swiper-pagination{
+  position: relative!important;
+  width: fit-content!important;
+}
+.swiper-pagination-bullet{
+  height: 2px!important;
+  width: 1em!important;
+  border-radius: 0!important;
+}
+.swiper-pagination-bullet-active{
+  background: #e43d30!important;
+}
