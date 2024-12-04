@@ -8,10 +8,20 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      container: {
+        screens: {
+            xs: '450px',
+            sm: '610px',
+            md: '738px',
+            lg: '994px',
+            xl: '1250px',
+            xxl: '1490px',
+            '3xl': '1590px'
+        }
+    },
+    colors: {
+        primary: '#E43D30'
+    },
     },
   },
   plugins: [],
