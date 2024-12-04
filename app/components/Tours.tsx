@@ -16,15 +16,15 @@ const Tours = () => {
                     <h4 className="text-primary">{service}</h4>
                   ))}
                 </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="w-full flex justify-center">
+                  <button className="border py-3 px-24 rounded-full">VIEW ALL</button>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-        <div className="w-full flex justify-center">
-          <button className="border py-3 px-24 rounded-full">VIEW ALL</button>
-        </div>
-      </div>
-    </div>
   );
 };
 
