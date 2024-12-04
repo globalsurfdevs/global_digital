@@ -15,13 +15,13 @@ const Footer = () => {
                 </div>
             </div>
             <div className='grid grid-cols-12 py-16'>
-                <div className='h-full flex flex-col justify-between col-span-4'>
+                <div className='h-full flex flex-col justify-between col-span-5'>
                     <Image src={assets.footerLogo} alt='logo' className='w-40'/>
                     <p className='text-sm text-gray-500'>P.O.Box 13653, 901 - SIT Tower<br/>
                     Dubai Silion Oasis<br/>
                     Dubai, UAE</p>
                 </div>
-                <div className='col-span-8 flex flex-col gap-8'>
+                <div className='col-span-7 flex flex-col gap-8'>
                     <div className='flex flex-col gap-3'>
                         <h1 className='text-4xl'>hello<span className='text-primary'>@</span>globalsurf.ae</h1>
                         <h1 className='text-4xl'>+971 4 582 1133</h1>
