@@ -9,8 +9,8 @@ import { inherits } from "util";
 const LogoSwiper = () => {
   console.log(logos);
   return (
-    <div className="bg-bglight py-3">
-      <div className="container overflow-visible">
+    <div className="bg-bglight py-3 overflow-hidden">
+      <div className="container ">
         <Swiper className="overflow-inherit" 
           spaceBetween={50}
           slidesPerView={3}
