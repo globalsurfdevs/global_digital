@@ -21,8 +21,8 @@ const SuccessStories = () => {
                   <h3 className="text-font25 w-3/4 leading-lh1p4 ">{item.description1}</h3>
                   <div className="absolute top-0 right-0 hidden group-hover:block ease-in-out duration-500">
                     <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M33.8125 1.7998L1.25977 33.7227" stroke="white" stroke-width="2" stroke-miterlimit="10" />
-                      <path d="M1.25977 1.7998H33.8125V33.0929" stroke="white" stroke-width="2" stroke-miterlimit="10" />
+                      <path d="M33.8125 1.7998L1.25977 33.7227" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+                      <path d="M1.25977 1.7998H33.8125V33.0929" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
                     </svg>
                   </div>
                 </div>
