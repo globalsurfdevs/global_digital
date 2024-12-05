@@ -106,7 +106,7 @@ const Header = () => {
             <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary">  CAREERS </a>
             <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary"> BLOGS </a>
             <a href="#" className="hidden lg:flex items-center space-x-2 px-6 py-2 border border-primary rounded-full text-primary hover:bg-prtext-primary hover:text-primary transition">
-              
+              <span>LET’S TALK</span>
               <div className="bg-primary p-1">
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clipPath="url(#clip0_65_39)">
