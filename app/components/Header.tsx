@@ -1,13 +1,35 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        event.target instanceof Node &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        console.log("Not contains")
+        setIsDropdownOpen(false);
+        setIsMenuOpen(false);
+        
+      }
+    };
+  
+    document.addEventListener("mouseover", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  
   return (
     <header className="border-b py-4">
+      
       <div className="container flex items-center justify-between">
         <div className="logo-s">
           <Image src={assets.logo} className="w-[200px]" alt="" width={100} height={100} />
@@ -24,12 +46,12 @@ const Header = () => {
           </a>
 
           {/* Dropdown for SERVICES */}
-          <div className="relative group" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
+          <div className="relative group" onMouseEnter={() => setIsDropdownOpen(true)} ref={dropdownRef}>
             <button className="block px-4 py-2 lg:px-0 text-black hover:text-primary flex items-center">
               SERVICES <span className="text-primary ml-1">+</span>
             </button>
             {(isDropdownOpen || isMenuOpen) && (
-              <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border rounded-md lg:group-hover:block">
+              <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border rounded-md lg:group-hover:block" onMouseLeave={() => setIsDropdownOpen(false)}>
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                   Service 1
                 </a>
