@@ -42,6 +42,7 @@ const Header = () => {
   
     // Initial check
     handleMobileMenuToggle();
+    console.log(mobileMenu)
   
     // Add event listener
     window.addEventListener("resize", handleMobileMenuToggle);

@@ -2,6 +2,8 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
 import { menuItems } from "@/app/data/menuItems";
+import { assets } from "@/public/assets/assets";
+import Image from "next/image";
 
 const variants = {
   open: {
@@ -13,11 +15,14 @@ const variants = {
 };
 
 export const Navigation = () => (
+  <>
     <motion.ul variants={variants}>
+    <Image src={assets.logo} alt="logo"/>
     {menuItems.map((item, index) => (
       <MenuItem key={index} i={index} item={item}/>
     ))}
   </motion.ul>
+  </>
 );
 
 const itemIds = [0, 1, 2, 3];
