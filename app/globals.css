@@ -85,3 +85,19 @@ body {
 .swiper-pagination-bullet-active{
   background: #e43d30!important;
 }
+
+.logo-swiper {
+  width: 100%;
+}
+
+.logo-swiper .swiper-slide {
+  width: auto; /* Allow natural width of logos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-swiper .swiper-slide img {
+  max-height: 100px; /* Optional: normalize logo height */
+  object-fit: contain; /* Maintain aspect ratio */
+}
