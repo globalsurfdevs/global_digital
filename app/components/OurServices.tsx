@@ -11,12 +11,11 @@ const OurServices = () => {
           <div className="bg-primary size-5"></div>
         </div>
 
-        {services.map((service, index) => (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16" key={index}>
+        {services.map((service) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16" key={service.id}>
             <div className="flex justify-between flex-col border-b pb-2">
               <div className="flex flex-col gap-5">
                 <h3 className="text-font65 max-w-[14ch] leading-lh1p07">{service.title}</h3>
-
                 <div className="flex flex-col gap-5">
                   <p className="mb-2 text-font25 leading-lh1p4">{service.description}</p>
                   {/* <button className="border-b-primary border w-fit p-0 pb-3 mb-5 flex gap-1 items-center border-t-0 border-l-0 border-r-0 flex gap-3 ">
@@ -44,12 +43,14 @@ const OurServices = () => {
               </div>
 
               <div className="flex mb-3">
-                <span>0{index + 1}</span>
+                <span>0{service.id}</span>
               </div>
             </div>
 
             {/* Placeholder for the right-hand side content */}
-            <div className="bg-black h-96 border-b-gray-400"></div>
+            <div className="h-full border-b-gray-400">
+              <img src={service.image} alt={service.title} className="h-full object-cover" />
+            </div>
           </div>
         ))}
       </div>
