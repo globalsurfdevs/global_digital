@@ -34,7 +34,7 @@ const LogoSwiper = () => {
           watchSlidesProgress={true}
           breakpoints={{
             640: {
-              slidesPerView: 3,
+              slidesPerView: 3, 
             },
             768: {
               slidesPerView: 4, 
