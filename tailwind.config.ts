@@ -27,9 +27,11 @@ export default {
       colors: {
         primary: "#E43D30",
         bglight: "#f9f9f9",
+        gray1: "#77787B",
       },
       fontSize: {
-        font16: "clamp(0.6rem, 1.5vw, 1rem)",
+        font14: "clamp(0.7rem,1.2vw,0.875rem)",
+        font16: "clamp(0.7rem, 1.5vw, 1rem)",
         font19: "clamp(0.8rem, 2vw, 1.1875rem)",
         font25: "clamp(0.9rem, 3vw, 1.5625rem)",
         font30: "clamp(1rem, 2.5vw, 1.875rem)",
@@ -42,6 +44,7 @@ export default {
         lh1p07: "1.076923076923077",
         lh1p26: "1.266666666666667",
         lh1p33: "1.33333333",
+        lh1p78: "1.785714285714286",
         lh1p4: "1.4",
         lh2p3: "2.333333333333333",
         lh1p66: "1.66666666666",

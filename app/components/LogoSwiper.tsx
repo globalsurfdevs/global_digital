@@ -16,7 +16,8 @@ const LogoSwiper = () => {
           className="!overflow-visible logo-swiper"
           modules={[Autoplay]}
           spaceBetween={50}
-          slidesPerView='auto'
+          slidesPerView="auto"
+          centeredSlides={false}
           speed={3000} // Smooth transition speed
           autoplay={{
             delay: 0, // No delay between slides
@@ -33,15 +34,18 @@ const LogoSwiper = () => {
           allowTouchMove={false}
           watchSlidesProgress={true}
           breakpoints={{
-            640: {
-              slidesPerView: 3, 
+            320: {
+              spaceBetween: 10,
             },
             768: {
-              slidesPerView: 4, 
+              spaceBetween: 20,
             },
             1024: {
-              slidesPerView: 8,
+              spaceBetween: 30,
             },
+            1366:{
+              spaceBetween:80,
+            }
           }}>
           {logos.map((logo, index) => (
             <SwiperSlide key={index}>
