@@ -5,7 +5,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <div className="bg-black py-6 xs:py-10 xl:pt-[109px] xl:pb-[131px]">
+      <div className="bg-black py-6 xs:py-10 lg:py-14 xl:pt-[109px] xl:pb-[131px]">
         <div className="container px-4 mx-auto text-white">
           <div className="flex flex-col">
             <div className="border-b border-gray-400  flex flex-col justify-center h-1/2 gap-8">
@@ -13,10 +13,10 @@ const Footer = () => {
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
               </h1>
               <div>
-                <button className="border border-primary px-24 rounded-full py-3 mt-[57px] mb-[120px]">LET'S TALK</button>
+                <button className="border border-primary px-24 rounded-full py-3 mb-6 lg:mt-6 lg:mb-16 md:mb-10 xl:mt-[57px] xl:mb-[120px]">LET'S TALK</button>
               </div>
             </div>
-            <div className="grid md:grid-cols-5 pt-[121px]">
+            <div className="grid md:grid-cols-5 pt-12 xl:pt-[121px]">
               <div className="h-full flex flex-col justify-between col-span-2">
                 <Image src={assets.footerLogo} alt="logo" className="w-40" />
              

@@ -5,10 +5,10 @@ import React from "react";
 
 const OurAchievements = () => {
   return (
-    <div className="bg-black text-white xl:px-16 mt-20 py-8 xl:py-0">
-      <div className="grid md:grid-cols-3 gap-8 min-h-[598px]">
-        <div className="border-b border-b-[#77787B] xl:border-none">
-          <div className="flex flex-col items-start h-[100%] justify-between p-4 xl:pt-[50px] xl:pb-[100px]">
+    <div className="bg-black text-white xl:px-16 xl:mt-20 py-0 xl:py-0">
+      <div className="grid md:grid-cols-3 gap-8 md:min-h-[300px] lg:min-h-[450px] xl:min-h-[598px]">
+        <div className="border-b border-b-[#77787B] md:border-none">
+          <div className="flex flex-col items-start h-[100%] justify-between p-4 lg:py-10 xl:pt-[50px] xl:pb-[100px]">
             <div className="mb-8">
               <Image src={assets.years} alt="years" width={50} height={50} />
             </div>
@@ -19,8 +19,8 @@ const OurAchievements = () => {
           </div>
         </div>
 
-        <div className="border-b border-b-[#77787B] xl:border-l p-4 xl:border-l-[#77787B]  xl:pl-10 ">
-          <div className="flex flex-col items-start h-[100%] justify-between xl:pt-[50px] xl:pb-[100px]">
+        <div className="border-b border-b-[#77787B] md:border-b-0 md:border-l p-4 lg:p-0 lg:px-4 md:border-l-[#77787B]  xl:pl-10 ">
+          <div className="flex flex-col items-start h-[100%] justify-between lg:py-10 xl:pt-[50px] xl:pb-[100px]">
             <div className="mb-8">
               <Image src={assets.clients} alt="years" width={84} height={84} />
             </div>
@@ -36,8 +36,8 @@ const OurAchievements = () => {
           </div>
         </div>
 
-        <div className="xl:border-l p-4 xl:border-l-[#77787B]  xl:pl-10">
-          <div className="flex flex-col items-start h-[100%] justify-between xl:pt-[50px] xl:pb-[100px]">
+        <div className="md:border-l p-4 lg:p-0 lg:px-4 md:border-l-[#77787B]  xl:pl-10">
+          <div className="flex flex-col items-start h-[100%] justify-between lg:py-10 xl:pt-[50px] xl:pb-[100px]">
             <div className="mb-8">
               <Image src={assets.projects} alt="years" width={50} height={50} />
             </div>
