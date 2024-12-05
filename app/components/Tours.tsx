@@ -3,9 +3,9 @@ import { tours } from "../data/tours";
 const Tours = () => {
   return (
     <div className="container px-4 mx-auto">
-      <div className="py-24 flex flex-col gap-10 border-b">
+      <div className="py-6 md:py-24 flex flex-col gap-10 border-b">
         <h1 className="text-font65">Featured Tours</h1>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {tours.map((tour) => (
             <div className="relative tour-card group" key={tour.id}>
               <img src={tour.image} alt={tour.name} className="group-hover:blur-[2px] ease-linear duration-300 w-[100] h-[100]" />

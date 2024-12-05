@@ -5,9 +5,10 @@ import React from "react";
 
 const OurAchievements = () => {
   return (
-    <div className="bg-black text-white px-16 mt-20  ">
+    <div className="bg-black text-white xl:px-16 mt-20 py-8 xl:py-0">
       <div className="grid md:grid-cols-3 gap-8 min-h-[598px]">
-        <div className="flex flex-col items-start justify-between pt-[50px] pb-[100px]">
+        <div className="border-b border-b-[#77787B] xl:border-none">
+        <div className="flex flex-col items-start justify-between p-4 xl:pt-[50px] xl:pb-[100px]">
           <div className="mb-8">
             <Image src={assets.years} alt="years" width={50} height={50} />
           </div>
@@ -16,9 +17,10 @@ const OurAchievements = () => {
             <p className="text-font30 opacity-60 leading-lh2p3">and Counting</p>
           </div>
         </div>
+        </div>
 
-        <div className="border-l border-l-[#77787B]  pl-10 ">
-          <div className="flex flex-col items-start h-[100%] justify-between pt-[50px] pb-[100px]">
+        <div className="border-b border-b-[#77787B] xl:border-l p-4 xl:border-l-[#77787B]  xl:pl-10 ">
+          <div className="flex flex-col items-start h-[100%] justify-between xl:pt-[50px] xl:pb-[100px]">
             <div className="mb-8">
               <Image src={assets.clients} alt="years" width={84} height={84} />
             </div>
@@ -34,8 +36,8 @@ const OurAchievements = () => {
           </div>
         </div>
 
-        <div className="border-l border-l-[#77787B]  pl-10">
-          <div className="flex flex-col items-start h-[100%] justify-between pt-[50px] pb-[100px]">
+        <div className="xl:border-l p-4 xl:border-l-[#77787B]  xl:pl-10">
+          <div className="flex flex-col items-start h-[100%] justify-between xl:pt-[50px] xl:pb-[100px]">
             <div className="mb-8">
               <Image src={assets.projects} alt="years" width={50} height={50} />
             </div>
