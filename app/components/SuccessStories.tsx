@@ -7,7 +7,7 @@ const SuccessStories = () => {
   return (
     <div className="container px-4 mx-auto">
       <div className="py-6 lg:py-12 xl:py-24 flex flex-col gap-12">
-        <h1 className="text-font65">Browse our Success Stories</h1>
+        <h1 className="text-font65">Browse our Success Stories .</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {stories.map((item, index) => (
             <div className="bg-black 3xl:h-[600px] group text-white hover:cursor-pointer ease-linear duration-300" key={index}>
