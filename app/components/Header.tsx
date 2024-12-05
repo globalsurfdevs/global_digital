@@ -1,13 +1,35 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        event.target instanceof Node &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        console.log("Not contains")
+        setIsDropdownOpen(false);
+        setIsMenuOpen(false);
+        
+      }
+    };
+  
+    document.addEventListener("mouseover", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  
   return (
     <header className="border-b py-4">
+      
       <div className="container flex items-center justify-between">
         <div className="logo-s">
           <Image src={assets.logo} className="w-[200px]" alt="" width={100} height={100} />

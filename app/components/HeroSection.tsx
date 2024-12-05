@@ -27,7 +27,7 @@ const HeroSection = () => {
               </defs>
             </svg>
           </a>
-        </div>
+        </div> 
       </div>
     </section>
   );

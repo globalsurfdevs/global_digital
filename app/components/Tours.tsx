@@ -12,8 +12,8 @@ const Tours = () => {
               <div className="absolute bottom-5 left-5 z-10">
                 <h3 className="text-white text-font30 leading-lh1p66">{tour.name}</h3>
                 <div className="flex gap-2">
-                  {tour.services.map((service) => (
-                    <h4 className="text-primary">{service}</h4>
+                  {tour.services.map((service,index) => (
+                    <h4 className="text-primary" key={index}>{service}</h4>
                   ))}
                 </div>
               </div>
