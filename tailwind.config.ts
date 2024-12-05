@@ -4,6 +4,15 @@ export default {
   content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      screens: {
+        xs: "450px",
+        sm: "610px",
+        md: "738px",
+        lg: "994px",
+        xl: "1250px",
+        xxl: "1490px",
+        "3xl": "1620px",
+      },
       container: {
         screens: {
           xs: "450px",
@@ -11,7 +20,7 @@ export default {
           md: "738px",
           lg: "994px",
           xl: "1250px",
-          xxl: "1490px",
+          xxl: "1400px",
           "3xl": "1620px",
         },
       },
@@ -20,13 +29,13 @@ export default {
         bglight: "#f9f9f9",
       },
       fontSize: {
-        font16: "1rem",
-        font19: "1.1875rem",
-        font25: "clamp(1rem,5vw,1.5625rem)",
-        font30: "clamp(0.9rem,3vw,1.875rem)",
-        font35: "2.1875rem",
-        font65: "clamp(2rem,5vw,4.0625rem)",
-        font80: "clamp(3rem,10vw,5rem)",
+        font16: "clamp(0.5rem, 1.5vw, 1rem)",
+        font19: "clamp(0.6rem, 2vw, 1.1875rem)",
+        font25: "clamp(0.8rem, 3vw, 1.5625rem)",
+        font30: "clamp(0.7rem, 2.5vw, 1.875rem)",
+        font35: "clamp(1.2rem, 3.5vw, 2.1875rem)",
+        font65: "clamp(1.5rem, 4.5vw, 4.0625rem)",
+        font80: "clamp(2rem, 8vw, 5rem)",
       },
       lineHeight: {
         lh0p76: "0.7692307692307692",
