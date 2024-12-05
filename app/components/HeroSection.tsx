@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <section className="bg-black text-white py-24 lg:h-[60vh] xl:h-screen flex items-center">
       <div className="container mx-auto px-4">
-        <h1 className="text-font80 leading-lh1p18 font-[400] leading-tight"> Performance Focused <br /> Digital Marketing </h1>
+        <h1 className="text-font80 leading-lh1p18 font-[400] leading-tight"> Performance Focused <br /> Digital Marketing test </h1>
         <div className="mt-6 ">
           <a href="#"
             className="relative group flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[0.5em] hover:text-white hover:border-black transition

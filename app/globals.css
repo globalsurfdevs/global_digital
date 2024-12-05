@@ -100,4 +100,4 @@ body {
 .logo-swiper .swiper-slide img {
   max-height: 100px; /* Optional: normalize logo height */
   object-fit: contain; /* Maintain aspect ratio */
-}
+} 
