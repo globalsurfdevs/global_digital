@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { menuItems } from "@/app/data/menuItems";
+
 
 const variants = {
   open: {
@@ -19,10 +19,10 @@ const variants = {
   }
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-export const MenuItem = ({ i ,item}:{i:number,item:{item:string}}) => {
-  const style = { border: `2px solid black` };
+
+export const MenuItem = ({item}:{i:number,item:{item:string}}) => {
+  // const style = { border: `2px solid black` };
   return (
     <motion.li
       variants={variants}

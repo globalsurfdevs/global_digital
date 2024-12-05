@@ -7,7 +7,7 @@ const AboutGlobal = () => {
         <h1 className="text-4xl md:text-6xl leading-tight">
           Hello<span className="text-red-600">!</span>
         </h1>
-        <h3 className="text-xl max-w-[30ch]">We’re Global Surf Digital, a full-service digital marketing agency in Dubai, specializing in data-driven strategies, creative innovation, and business-focused solutions.</h3>
+        <h3 className="text-xl max-w-[80ch]">We’re Global Surf Digital, a full-service digital marketing agency in Dubai, specializing in data-driven strategies, creative innovation, and business-focused solutions.</h3>
         <button
           className="relative border-transparent border w-fit p-0 pb-3 flex gap-1 items-center border-t-0 border-l-0 border-r-0 flex gap-3 hover:border-b-white group
         before:absolute before:bottom-0 before:left-0 before:h-[1px] before:bg-black before:w-full before:transition-all before:duration-300 before:ease-in-out z-2 

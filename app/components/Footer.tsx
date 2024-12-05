@@ -13,7 +13,7 @@ const Footer = () => {
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
               </h1>
               <div>
-                <button className="text-font30 leading-lh1p66 border border-primary px-24 rounded-full py-3 mb-6 lg:mt-6 lg:mb-16 md:mb-10 xl:mt-[57px] xl:mb-[120px]">LET'S TALK</button>
+                <button className="text-font30 leading-lh1p66 border border-primary px-24 rounded-full py-3 mb-6 lg:mt-6 lg:mb-16 md:mb-10 xl:mt-[57px] xl:mb-[120px]">LET&apos;S TALK</button>
               </div>
             </div>
             <div className="grid md:grid-cols-5 pt-12 xl:pt-[121px]">

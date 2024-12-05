@@ -53,7 +53,12 @@ const Header = () => {
  
  
   if(mobileMenu){
-    return <Example/>
+    return (
+      <div className="flex items-center justify-between px-2 py-2 ">
+        <div>  <Image src={assets.logo} className="w-[200px]" alt="" width={100} height={100} /></div>
+        <div><Example/></div>
+      </div>
+    )
   }else{
     return (
       <header className="border-b py-4">

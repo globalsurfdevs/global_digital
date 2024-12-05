@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useRef } from "react";
-import { motion, sync, useCycle } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimentions";
 import { MenuToggle } from "./MenuToggle";
 import { Navigation } from "./Navigation";
-import Image from "next/image";
-import { assets } from "@/public/assets/assets";
+
+
 
 const sidebar = {
   open: (height = 1000) => ({

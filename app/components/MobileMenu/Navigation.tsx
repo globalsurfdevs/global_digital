@@ -2,8 +2,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
 import { menuItems } from "@/app/data/menuItems";
-import { assets } from "@/public/assets/assets";
-import Image from "next/image";
+
 
 const variants = {
   open: {
@@ -24,4 +23,4 @@ export const Navigation = () => (
   </>
 );
 
-const itemIds = [0, 1, 2, 3];
+// const itemIds = [0, 1, 2, 3];

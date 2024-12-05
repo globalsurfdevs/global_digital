@@ -1,6 +1,4 @@
 import React from "react";
-import { assets } from "@/public/assets/assets";
-import Image from "next/image";
 import { stories } from "../data/stories";
 
 const SuccessStories = () => {

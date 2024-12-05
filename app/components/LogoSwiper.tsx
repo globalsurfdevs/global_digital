@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { logos } from "@/public/assets/assets";
-import { inherits } from "util";
+
 
 const LogoSwiper = () => {
   console.log(logos);
