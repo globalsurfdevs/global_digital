@@ -12,7 +12,7 @@ export default {
           lg: "994px",
           xl: "1250px",
           xxl: "1490px",
-          "3xl": "1590px",
+          "3xl": "1620px",
         },
       },
       colors: {
