@@ -11,7 +11,7 @@ const HeroSection = () => {
         <div className="mt-6 ">
           <a
             href="#"
-            className="relative flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[0.5em] hover:text-white hover:border-none transition
+            className="relative flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[0.5em] hover:text-white hover:border-black transition
           before:absolute before:bottom-0 before:left-0 before:h-[2px] before:bg-primary before:w-full before:transition-all before:duration-300 before:ease-in-out z-2 
           after:absolute after:bottom-0 after:right-0 after:h-[2px] after:bg-white after:w-full after:transition-all after:duration-300 after:ease-in-out hover:after:w-0 z-1">
             SUCCESS STORIES

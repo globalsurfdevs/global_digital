@@ -49,7 +49,7 @@ const OurServices = () => {
             </div>
 
             {/* Placeholder for the right-hand side content */}
-            <div className="bg-black h-96 border-b-gray-400"></div>
+            <div className="bg-black h-full border-b-gray-400"></div>
           </div>
         ))}
       </div>
