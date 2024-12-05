@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <section className="bg-black text-white h-screen flex items-center">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-[400] leading-tight">
+        <h1 className="text-font80 leading-lh1p18 font-[400] leading-tight">
           Performance Focused <br /> Digital Marketing
         </h1>
 
