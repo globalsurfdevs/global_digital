@@ -2,15 +2,11 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-black text-white h-screen flex items-center">
+    <section className="bg-black text-white py-24 lg:h-screen flex items-center">
       <div className="container mx-auto px-4">
-        <h1 className="text-font80 leading-lh1p18 font-[400] leading-tight">
-          Performance Focused <br /> Digital Marketing
-        </h1>
-
+        <h1 className="text-font80 leading-lh1p18 font-[400] leading-tight"> Performance Focused <br /> Digital Marketing </h1>
         <div className="mt-6 ">
-          <a
-            href="#"
+          <a href="#"
             className="relative group flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[0.5em] hover:text-white hover:border-black transition
           before:absolute before:bottom-0 before:left-0 before:h-[2px] before:bg-white before:w-full before:transition-all before:duration-300 before:ease-in-out z-2 
           after:absolute after:bottom-0 after:right-0 after:h-[2px] after:bg-primary after:w-full after:transition-all after:duration-300 after:ease-in-out hover:after:w-0 z-1">

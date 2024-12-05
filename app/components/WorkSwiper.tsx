@@ -10,8 +10,11 @@ const WorkSwiper = () => {
   console.log(logos);
   return (
     <div className="">
-      <Swiper className="overflow-inherit" spaceBetween={50} slidesPerView={3} loop={true}
+      <Swiper className="overflow-inherit" spaceBetween={50} slidesPerView={2} loop={true}
       breakpoints={{
+          480:{
+            slidesPerView:2
+          },
           640: {
             slidesPerView: 3,
           },

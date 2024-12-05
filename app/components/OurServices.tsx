@@ -49,7 +49,7 @@ const OurServices = () => {
 
             {/* Placeholder for the right-hand side content */}
             <div className="h-full border-b-gray-400">
-              <img src={service.image} alt={service.title} />
+              <img src={service.image} alt={service.title} className="h-full object-cover" />
             </div>
           </div>
         ))}

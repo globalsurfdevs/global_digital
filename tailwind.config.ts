@@ -22,11 +22,11 @@ export default {
       fontSize: {
         font16: "1rem",
         font19: "1.1875rem",
-        font25: "1.5625rem",
-        font30: "1.875rem",
+        font25: "clamp(1rem,5vw,1.5625rem)",
+        font30: "clamp(0.9rem,3vw,1.875rem)",
         font35: "2.1875rem",
-        font65: "4.0625rem",
-        font80: "5rem",
+        font65: "clamp(2rem,5vw,4.0625rem)",
+        font80: "clamp(3rem,10vw,5rem)",
       },
       lineHeight: {
         lh0p76: "0.7692307692307692",

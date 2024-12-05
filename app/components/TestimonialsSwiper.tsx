@@ -13,7 +13,7 @@ const TestimonialsSwiper = () => {
     <div className="">
       <Swiper
         spaceBetween={90}
-        slidesPerView={3}
+        slidesPerView={1}
         modules={[Pagination]}
         pagination={{
           clickable: true
