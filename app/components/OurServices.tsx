@@ -43,7 +43,7 @@ const OurServices = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </div> 
 
               <div className="flex mb-3">
                 <span>0{service.id}</span>
