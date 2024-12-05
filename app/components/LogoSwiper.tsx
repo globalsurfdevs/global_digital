@@ -13,10 +13,10 @@ const LogoSwiper = () => {
     <div className="bg-bglight py-3 overflow-hidden">
       <div className="container !overflow-visible">
         <Swiper
-          className="!overflow-visible"
+          className="!overflow-visible logo-swiper"
           modules={[Autoplay]}
           spaceBetween={50}
-          slidesPerView={3}
+          slidesPerView='auto'
           speed={3000} // Smooth transition speed
           autoplay={{
             delay: 0, // No delay between slides
