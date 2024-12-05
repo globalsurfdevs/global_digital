@@ -4,12 +4,16 @@ const HeroSection = () => {
   return (
     <section className="bg-black text-white h-screen flex items-center">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-[400] leading-tight">
+        <h1 className="text-font80 leading-lh1p18 font-[400] leading-tight">
           Performance Focused <br /> Digital Marketing
         </h1>
 
         <div className="mt-6 ">
-          <a href="#" className="flex gap-3 w-fit items-center text-white border-b-2 border-primary pb-[0.5em] hover:text-white hover:border-white transition">
+          <a
+            href="#"
+            className="relative flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[0.5em] hover:text-white hover:border-none transition
+          before:absolute before:bottom-0 before:left-0 before:h-[2px] before:bg-primary before:w-full before:transition-all before:duration-300 before:ease-in-out z-2 
+          after:absolute after:bottom-0 after:right-0 after:h-[2px] after:bg-white after:w-full after:transition-all after:duration-300 after:ease-in-out hover:after:w-0 z-1">
             SUCCESS STORIES
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_65_58)">
@@ -23,7 +27,7 @@ const HeroSection = () => {
               </defs>
             </svg>
           </a>
-        </div>
+        </div> 
       </div>
     </section>
   );
