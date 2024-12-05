@@ -24,34 +24,30 @@ const Header = () => {
           </a>
 
           {/* Dropdown for SERVICES */}
+          {/* <div className="relative group" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}> */}
           <div className="relative group" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
             <button className="block px-4 py-2 lg:px-0 text-black hover:text-primary flex items-center">
               SERVICES <span className="text-primary ml-1">+</span>
             </button>
             {(isDropdownOpen || isMenuOpen) && (
-              <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border rounded-md lg:group-hover:block">
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Service 1
-                </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Service 2
-                </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Service 3
-                </a>
+              <div className="absolute left-0 bg-transparent">
+                <div className="pt-2 w-48 bg-white shadow-lg border rounded-md lg:group-hover:block">
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Service 1
+                  </a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Service 2
+                  </a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Service 3
+                  </a>
+                </div>
               </div>
             )}
           </div>
-
-          <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary">
-            PORTFOLIO
-          </a>
-          <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary">
-            CAREERS
-          </a>
-          <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary">
-            BLOGS
-          </a>
+          <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary"> PORTFOLIO </a>
+          <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary">  CAREERS </a>
+          <a href="#" className="block px-4 py-2 lg:px-0 text-black hover:text-primary"> BLOGS </a>
           <a href="#" className="hidden lg:flex items-center space-x-2 px-6 py-2 border border-primary rounded-full text-primary hover:bg-prtext-primary hover:text-primary transition">
             <span>LET’S TALK</span>
             <div className="bg-primary p-1">
