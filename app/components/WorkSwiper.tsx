@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { logos } from "@/public/assets/assets";
 import { workSvgs } from "../data/works";
@@ -10,13 +11,31 @@ const WorkSwiper = () => {
   console.log(logos);
   return (
     <div className="">
-      <Swiper className="overflow-inherit" spaceBetween={50} slidesPerView={1} loop={true}
-      breakpoints={{
-          320:{
-            slidesPerView:2
+      <Swiper
+        className="!overflow-visible"
+        modules={[Autoplay]}
+        speed={2000}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true, // Pause on hover
+        }}
+        spaceBetween={50}
+        slidesPerView={1}
+        loop={true}
+        freeMode={{
+          enabled: true,
+          momentum: false,
+        }}
+        simulateTouch={false}
+        allowTouchMove={false}
+        watchSlidesProgress={true}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
           },
-          400:{
-            slidesPerView:3
+          400: {
+            slidesPerView: 3,
           },
           640: {
             slidesPerView: 4,
@@ -26,6 +45,7 @@ const WorkSwiper = () => {
           },
           1024: {
             slidesPerView: 5,
+            spaceBetween: "130",
           },
         }}>
         {workSvgs.map((item, index) => (

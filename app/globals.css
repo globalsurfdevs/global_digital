@@ -47,6 +47,12 @@ body {
 .tour-card:hover::before{
   background-color: #0000003d;
 }
+.tour-card h4{
+  transition: 300ms all linear;
+}
+.tour-card:hover h4{
+  color: #ffffff;
+}
 
 .testimonial-pagination {
   display: flex;
@@ -100,4 +106,9 @@ body {
 .logo-swiper .swiper-slide img {
   max-height: 100px; /* Optional: normalize logo height */
   object-fit: contain; /* Maintain aspect ratio */
-} 
+}   
+
+
+.srv-im {
+  overflow: hidden;
+}
