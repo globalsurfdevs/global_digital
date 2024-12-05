@@ -20,10 +20,10 @@ const TestimonialsSwiper = () => {
         }}
         breakpoints={{
           640: {
-            slidesPerView: 3,
+            slidesPerView: 2,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 2,
           },
           1024: {
             slidesPerView: 3,
@@ -31,7 +31,7 @@ const TestimonialsSwiper = () => {
         }}>
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col h-[350px]">
+            <div className="flex flex-col md:h-[450px] xl:h-[350px]">
               <div className="flex flex-col gap-4 border-b border-black py-8">
                 <Image src={item.image} alt="image" className="w-20 h-20 bg-white p-1"></Image>
                 <h3 className="text-xl font-semibold">{item.name}</h3>
