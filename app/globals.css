@@ -86,7 +86,7 @@ body {
   background: #e43d30!important;
 }
 
-.background {
+/* .background {
   position: absolute;
   top: 0;
   left: 0;
@@ -169,7 +169,7 @@ li {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-}
+} */
 
 .logo-swiper {
   width: 100%;
