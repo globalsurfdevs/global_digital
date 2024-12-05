@@ -7,8 +7,8 @@ const Tours = () => {
         <h1 className="text-font65">Featured Tours</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {tours.map((tour) => (
-            <div className="relative tour-card group" key={tour.id}>
-              <img src={tour.image} alt={tour.name} className="group-hover:blur-[2px] ease-linear duration-300 w-[100] h-[100]" />
+            <div className="relative tour-card" key={tour.id}>
+              <img src={tour.image} alt={tour.name} className="ease-linear duration-300 w-[100] h-[100]" />
               <div className="absolute bottom-5 left-5 z-10">
                 <h3 className="text-white text-font30 leading-lh1p66">{tour.name}</h3>
                 <div className="flex gap-2">
