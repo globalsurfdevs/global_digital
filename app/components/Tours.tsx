@@ -3,7 +3,7 @@ import { tours } from "../data/tours";
 const Tours = () => {
   return (
     <div className="container px-4 mx-auto">
-      <div className="py-6 md:py-24 flex flex-col gap-10 border-b">
+      <div className="py-6 lg:py-12 xl:py-24 flex flex-col gap-10 border-b">
         <h1 className="text-font65">Featured Tours</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {tours.map((tour) => (
