@@ -35,13 +35,13 @@ const LogoSwiper = () => {
           watchSlidesProgress={true}
           breakpoints={{
             320: {
-              spaceBetween: 10,
+              spaceBetween: 30,
             },
             768: {
-              spaceBetween: 20,
+              spaceBetween: 40,
             },
             1024: {
-              spaceBetween: 30,
+              spaceBetween: 50,
             },
             1366:{
               spaceBetween:80,

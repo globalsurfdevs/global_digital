@@ -192,3 +192,10 @@ li {
 .srv-im {
   overflow: hidden;
 }
+
+
+@media (max-width:600px) {
+  .logo-swiper .swiper-slide img {
+    max-height: 70px; /* Optional: normalize logo height */
+  }  
+}
