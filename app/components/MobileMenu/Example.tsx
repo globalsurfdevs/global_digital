@@ -16,15 +16,15 @@ const sidebar = {
       restDelta: 2
     }
   }),
-//   closed: {
-//     clipPath: "circle(30px at calc(100% - 40px) 40px)",
-//     transition: {
-//       delay: 0.5,
-//       type: "spring",
-//       stiffness: 400,
-//       damping: 40
-//     }
-//   }
+  closed: {
+    clipPath: "circle(30px at calc(100% - 40px) 40px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40
+    }
+  }
 };
 
 

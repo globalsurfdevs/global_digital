@@ -22,14 +22,14 @@ const variants = {
 const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
 export const MenuItem = ({ i ,item}:{i:number,item:{item:string}}) => {
-  const style = { border: `2px solid ${colors[i % colors.length]}` };
+  const style = { border: `2px solid black` };
   return (
     <motion.li
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className="icon-placeholder" style={style}/>
+      {/* <div className="icon-placeholder" style={style}/> */}
       <div className="text-placeholder">{item.item}</div>
     </motion.li>
   );

@@ -17,7 +17,6 @@ const variants = {
 export const Navigation = () => (
   <>
     <motion.ul variants={variants}>
-    <Image src={assets.logo} alt="logo"/>
     {menuItems.map((item, index) => (
       <MenuItem key={index} i={index} item={item}/>
     ))}
