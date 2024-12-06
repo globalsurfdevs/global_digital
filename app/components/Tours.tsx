@@ -1,5 +1,8 @@
 import React from "react";
 import { tours } from "../data/tours";
+import {Lexend} from "next/font/google";
+const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
+
 const Tours = () => {
   return (
     <div className="container px-4 mx-auto">
@@ -13,7 +16,7 @@ const Tours = () => {
                 <h3 className="text-white text-font30 leading-lh1p66">{tour.name}</h3>
                 <div className="flex gap-2">
                   {tour.services.map((service,index) => (
-                    <h4 className="text-primary" key={index}>{service}</h4>
+                    <h4 className={`text-primary ${lexend.className}`} key={index}>{service}</h4>
                   ))}
                 </div>
               </div>

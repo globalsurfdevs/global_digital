@@ -1,5 +1,7 @@
 import React from "react";
 import { stories } from "../data/stories";
+import {Lexend} from "next/font/google";
+const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const SuccessStories = () => {
   return (
@@ -16,7 +18,7 @@ const SuccessStories = () => {
                     <span>&#8595;</span>
                     {item.count}
                   </h3>
-                  <h3 className="text-font25 w-3/4 leading-lh1p4 ">{item.description1}</h3>
+                  <h3 className={`text-font25 w-3/4 leading-lh1p4 ${lexend.className}`}>{item.description1}</h3>
                   <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ease-in-out duration-500">
                     <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M33.8125 1.7998L1.25977 33.7227" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
@@ -27,7 +29,7 @@ const SuccessStories = () => {
               </div>
               <div className="text-white flex flex-col justify-center gap-8 py-12 h-[55%] px-8 md:px-12">
                 <h3 className="text-font30 leading-lh1p26">{item.title2}</h3>
-                <p className="text-font19 leading-lh1p4">{item.description2}</p>
+                <p className={`text-font19 leading-lh1p4 ${lexend.className}`}>{item.description2}</p>
               </div>
             </div>
           ))}

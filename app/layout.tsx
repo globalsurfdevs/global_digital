@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lexend.className} ${spaceGrotesk.className} antialiased`}
+        className={` ${spaceGrotesk.className} antialiased`}
       >
         <Header/>
         {children}

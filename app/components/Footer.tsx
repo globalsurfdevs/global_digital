@@ -1,6 +1,8 @@
 import React from "react";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
+import {Lexend} from "next/font/google";
+const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const Footer = () => {
   return (
@@ -31,7 +33,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="grid md:grid-cols-5 pt-[121px]">
-              <div className="h-full flex flex-col justify-between col-span-2">
+              <div className={`h-full flex flex-col justify-between col-span-2 ${lexend.className}`}>
                 <p className="text-font19 text-gray-500">
                   P.O.Box 13653, 901 - SIT Tower
                   <br />

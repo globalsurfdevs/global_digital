@@ -1,5 +1,7 @@
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
+import {Lexend} from "next/font/google";
+const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 import React from "react";
 
@@ -14,7 +16,7 @@ const OurAchievements = () => {
             </div>
             <div>
               <h4 className="text-font65 font-[400] mt-4 leading-lh1p07">10 Years</h4>
-              <p className="text-font30 opacity-60 leading-lh2p3">and Counting</p>
+              <p className={`text-font30 opacity-60 leading-lh2p3 ${lexend.className}`}>and Counting</p>
             </div>
           </div>
         </div>
@@ -28,7 +30,7 @@ const OurAchievements = () => {
               <h1 className="text-font65 font-[400] mt-4 leading-lh1p07">
                 <span className="text-primary">125</span> Clients
               </h1>
-              <p className="text-font30 leading-lh2p3">
+              <p className={`text-font30 leading-lh2p3 ${lexend.className}`}>
                 {" "}
                 and <span className="text-primary ">Growing</span>{" "}
               </p>
@@ -43,7 +45,7 @@ const OurAchievements = () => {
             </div>
             <div>
               <h1 className="text-font65 font-[400] mt-4 leading-lh1p07">250 Projects</h1>
-              <p className="text-font30 opacity-60 leading-lh2p3">and More to Come</p>
+              <p className={`text-font30 opacity-60 leading-lh2p3 ${lexend.className}`}>and More to Come</p>
             </div>
           </div>
         </div>

@@ -131,7 +131,7 @@ ul {
   top: 100px;
   width: 230px;
   right: 70px;
-  z-index: 10;
+  z-index: 5;
 }
 
 li {
@@ -199,3 +199,31 @@ li {
     max-height: 70px; /* Optional: normalize logo height */
   }  
 }
+
+.header{
+  position: fixed;
+  top: 0;
+ right: 0;
+ left: 0;
+ z-index: 5;
+ box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+ animation: headerSlideDown .8s forwards;
+ background-color: white;
+ z-index: 10;
+ transition: all ease-in-out 0.5s;
+}
+
+@keyframes headerSlideDown {
+  0% {
+  margin-top: -20px;
+  opacity: 0;
+  }
+  30% {
+  margin-top: -10px;
+  opacity: 0;
+  }
+  100% {
+  margin-top: 0;
+  opacity: 1;
+  }
+  }
