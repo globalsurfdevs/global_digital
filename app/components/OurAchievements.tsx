@@ -7,7 +7,7 @@ import React from "react";
 
 const OurAchievements = () => {
   return (
-    <div className="bg-black text-white xl:px-16 xl:mt-20 py-0 xl:py-0">
+    <div className="bg-black text-white xl:px-16 xl:mt-20 py-0 xl:py-0 mt-10">
       <div className="grid md:grid-cols-3 gap-8 md:min-h-[300px] lg:min-h-[450px] xl:min-h-[598px]">
         <div className="border-b border-b-[#77787B] md:border-none">
           <div className="flex flex-col items-start h-[100%] justify-between p-4 lg:py-10 xl:pt-[50px] xl:pb-[100px]">

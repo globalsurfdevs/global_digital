@@ -23,10 +23,11 @@ export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => (
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5" },
           open: { d: "M 3 16.5 L 17 2.5" },
+          
         }}
       />
       <Path
-        d="M 2 9.423 L 20 9.423"
+        d="M 8 9.423 L 20 9.423"
         variants={{
           closed: { opacity: 1 },
           open: { opacity: 0 },

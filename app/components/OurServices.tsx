@@ -3,10 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { services } from "../data/services";
+import {Lexend} from "next/font/google";
+const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const OurServices = () => {
   return (
-    <div className="container mx-auto px-4 py-8 flex flex-col gap-5 xl:gap-16">
+    <div className="container mx-auto px-4 py-8 flex flex-col gap-5 xl:gap-24">
       {/* Section Heading */}
       <div className="xl:mb-8 flex gap-2 items-center">
         <h2 className="text-3xl font-[400]">OUR SERVICES</h2>
@@ -16,7 +18,7 @@ const OurServices = () => {
       {/* Services */}
       {services.map((service) => (
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-16 srv-item"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[88px] srv-item"
           key={service.id}
           initial="hidden"
           whileInView="visible"
@@ -46,7 +48,7 @@ const OurServices = () => {
             <div className="flex flex-col gap-5 cntntblc">
               <h3 className="text-font65 max-w-[14ch] leading-lh1p07">{service.title}</h3>
               <div className="flex flex-col gap-5">
-                <p className="mb-2 text-font25 leading-lh1p4">{service.description}</p>
+                <p className={`mb-2 text-font25 leading-lh1p4 ${lexend.className} font-light`}>{service.description}</p>
                 <div className="flex flex-wrap gap-2 mb-5 xl:mb-[4em] srvbt">
                   {service.buttonTexts.map((item, index) => (
                     <button

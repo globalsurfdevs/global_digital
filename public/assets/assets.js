@@ -9,6 +9,7 @@ import footerLogo from './footer_logo.svg'
 import footer1 from './footer1.png'
 import footer2 from './footer2.png'
 import footer3 from './footer3.png'
+import menu from './menu.svg'
 
 export const assets = {
     logo,
@@ -21,7 +22,8 @@ export const assets = {
     footerLogo,
     footer1,
     footer2,
-    footer3
+    footer3,
+    menu
 };
 
 export const logos = [

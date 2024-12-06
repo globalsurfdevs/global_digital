@@ -4,6 +4,8 @@ import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimentions";
 import { MenuToggle } from "./MenuToggle";
 import { Navigation } from "./Navigation";
+import Image from "next/image";
+import { assets } from "@/public/assets/assets";
 
 
 
@@ -17,7 +19,7 @@ const sidebar = {
     }
   }),
   closed: {
-    clipPath: "circle(30px at calc(100% - 40px) 40px)",
+    clipPath: "circle(20px at calc(100% - 40px) 30px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -62,7 +64,11 @@ export const Example = () => {
       ref={containerRef}
     >
      
-      {<motion.div className={isOpen ? "background" : ""} variants={sidebar} ref={menuRef}></motion.div>}
+      {<motion.div className={"background"} variants={sidebar} ref={menuRef}>
+        <div className="py-4 px-6">
+          <Image src={assets.logo} alt="logo"/>
+        </div>
+        </motion.div>}
       <Navigation />
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
