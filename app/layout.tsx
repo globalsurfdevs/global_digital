@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
-import {Space_Grotesk, Lexend} from "next/font/google";
+import {Space_Grotesk} from "next/font/google";
 import Footer from "./components/Footer";
 
 
-const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 const spaceGrotesk = Space_Grotesk({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 
