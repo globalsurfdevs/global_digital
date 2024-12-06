@@ -56,13 +56,13 @@ const Footer = () => {
       </div>
 
       <div className="container">
-        <div className="flex flex-wrap gap-5 justify-between  items-center py-5">
-          <div className="flex w-1/2 gap-10">
+        <div className="flex flex-wrap xl:flex-nowrap gap-5 justify-between  items-center py-5">
+          <div className="flex w-1/3 gap-10">
             <Image src={assets.footer1} alt="image"></Image>
             <Image src={assets.footer2} alt="image"></Image>
             <Image src={assets.footer3} alt="image"></Image>
           </div>
-          <div className="flex gap-2 md:gap-5 flex-wrap text-sm text-gray1">
+          <div className="flex gap-2 md:gap-5 flex-wrap xl:flex-nowrap text-sm text-gray1">
             <p className="text-font14 leading-lh1p78 fw-[400]">Legal Page</p>
             <p className="text-font14 leading-lh1p78 fw-[400]">Privacy</p>
             <p className="text-font14 leading-lh1p78 fw-[400]">Modern Slavery Statement</p>
