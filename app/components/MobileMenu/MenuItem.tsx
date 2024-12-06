@@ -30,7 +30,7 @@ export const MenuItem = ({item}:{i:number,item:{item:string}}) => {
       whileTap={{ scale: 0.95 }}
     >
       {/* <div className="icon-placeholder" style={style}/> */}
-      <div className="text-placeholder">{item.item}</div>
+      <div className="text-placeholder border-b-2 font-bold py-2 hover:bg-black hover:text-white">{item.item}</div>
     </motion.li>
   );
 };

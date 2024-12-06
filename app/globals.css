@@ -100,6 +100,11 @@ body {
   width: 300px;
   background: #fff;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Prevents overflow during clipPath animation */
+  transition: clip-path 0.5s ease-in-out;
 }
 
 .menuToggle {
@@ -156,9 +161,10 @@ li {
 .text-placeholder {
   border-radius: 5px;
   width: 200px;
-  height: 30px;
+  height: 40px;
   flex: 1;
   justify-content: center;
+  padding-left: 10px;
 }
 
 .refresh {

@@ -6,8 +6,9 @@ import { MenuToggle } from "./MenuToggle";
 import { Navigation } from "./Navigation";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
-
-
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -21,13 +22,32 @@ const sidebar = {
   closed: {
     clipPath: "circle(20px at calc(100% - 40px) 30px)",
     transition: {
-      delay: 0.5,
+      delay: 0.4,
       type: "spring",
       stiffness: 400,
-      damping: 40
-    }
+      damping: 10
+    },
   }
 };
+
+const imageSection = {
+  open: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 },
+      delay:.5
+    }
+  },
+  closed: {
+    x: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 }
+    }
+  }
+}
+
 
 
 export const Example = () => {
@@ -65,9 +85,22 @@ export const Example = () => {
     >
      
       {<motion.div className={"background"} variants={sidebar} ref={menuRef}>
-        <div className="py-4 px-6">
-          <Image src={assets.logo} alt="logo"/>
+        
+        <motion.div className="py-5 px-6" variants={imageSection}>
+          <Image src={assets.logo} alt="logo" className="w-32"/>
+        </motion.div>
+        
+        <div className="pb-5 bg-black pt-5 flex flex-col gap-4 text-white items-center">
+        <motion.div variants={imageSection}><h1 className="text-primary">Follow us on</h1></motion.div>
+        <motion.div variants={imageSection}>
+          <div className="flex w-full text-white text-2xl gap-10">
+            <FaFacebook/>
+            <FaXTwitter/>
+            <FaInstagram />
+            </div>
+        </motion.div>
         </div>
+        
         </motion.div>}
       <Navigation />
       <MenuToggle toggle={() => toggleOpen()} />
