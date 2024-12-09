@@ -77,7 +77,10 @@ const Header = () => {
 
   if(mobileMenu){
     return (
-        <div><Example/></div>
+        <div className="flex items-center p-3">
+        <Image src={assets.logo} alt="logo"/>
+        <Example/>
+        </div>
     )
 
   }else{

@@ -11,8 +11,8 @@ const OurServices = () => {
     <div className="container mx-auto px-4 py-8 flex flex-col gap-5 xl:gap-24">
       {/* Section Heading */}
       <div className="xl:mb-8 flex gap-2 items-center">
-        <h2 className="text-3xl font-[400]">OUR SERVICES</h2>
-        <div className="bg-primary size-5"></div>
+        <h2 className="lg:text-3xl font-[400]">OUR SERVICES</h2>
+        <div className="bg-primary lg:size-5 size-3 md:size-4"></div>
       </div>
 
       {/* Services */}

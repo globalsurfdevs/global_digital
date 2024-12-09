@@ -45,5 +45,6 @@ export const logos = [
     { src: '../assets/logos/007.png', alt: 'Google' },
     { src: '../assets/logos/008.png', alt: 'Google' },
     { src: '../assets/logos/009.png', alt: 'Google' },
+    
   ];
 

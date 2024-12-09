@@ -14,25 +14,22 @@ const LogoSwiper = () => {
       <div className="container !overflow-visible">
         <Swiper
           className="!overflow-visible logo-swiper"
-          modules={[Autoplay]}
-          spaceBetween={50}
-          slidesPerView="auto"
-          centeredSlides={false}
-          speed={3000} // Smooth transition speed
-          autoplay={{
-            delay: 0, // No delay between slides
-            disableOnInteraction: false,
-            reverseDirection: false, // Slide in one direction
-            stopOnLastSlide: false, // Continuous scrolling
-          }}
           loop={true}
-          freeMode={{
-            enabled: true,
-            momentum: false,
+          freeMode={true}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
           }}
+          cssMode={false}
+          slidesPerView="auto"
+          speed={5000}
+          grabCursor={true}
+          loopAdditionalSlides={2}
+          modules={[Autoplay]}
+
           simulateTouch={false}
           allowTouchMove={false}
-          watchSlidesProgress={true}
+          // watchSlidesProgress={true}
           breakpoints={{
             320: {
               spaceBetween: 30,
@@ -43,8 +40,8 @@ const LogoSwiper = () => {
             1024: {
               spaceBetween: 50,
             },
-            1366:{
-              spaceBetween:80,
+            1366: {
+              spaceBetween: 80,
             }
           }}>
           {logos.map((logo, index) => (

@@ -6,7 +6,7 @@ import { MenuToggle } from "./MenuToggle";
 import { Navigation } from "./Navigation";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 
@@ -22,10 +22,10 @@ const sidebar = {
   closed: {
     clipPath: "circle(20px at calc(100% - 40px) 30px)",
     transition: {
-      delay: 0.4,
-      type: "spring",
+      delay: 0.3,
+      type: "tween",
       stiffness: 400,
-      damping: 10
+      damping: 10,
     },
   }
 };
@@ -84,21 +84,23 @@ export const Example = () => {
       ref={containerRef}
     >
      
-      {<motion.div className={"background"} variants={sidebar} ref={menuRef}>
+      {<motion.div className={"background shadow-lg"} variants={sidebar} ref={menuRef}>
         
         <motion.div className="py-5 px-6" variants={imageSection}>
           <Image src={assets.logo} alt="logo" className="w-32"/>
         </motion.div>
         
-        <div className="pb-5 bg-black pt-5 flex flex-col gap-4 text-white items-center">
+        <div className="text-white px-6">
+          <div className="border-t pb-5 pt-5 flex flex-col gap-4">
         <motion.div variants={imageSection}><h1 className="text-primary">Follow us on</h1></motion.div>
         <motion.div variants={imageSection}>
-          <div className="flex w-full text-white text-2xl gap-10">
-            <FaFacebook/>
+          <div className="flex w-full text-black text-2xl gap-10">
+          <FaFacebookF />
             <FaXTwitter/>
             <FaInstagram />
             </div>
         </motion.div>
+        </div>
         </div>
         
         </motion.div>}
