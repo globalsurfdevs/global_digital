@@ -11,7 +11,7 @@ const HeroSection = () => {
         <motion.h1 className="text-font80 leading-lh1p18 font-[400] leading-tight" id="triggerSection" variants={{
               hidden: { opacity: 0, x: 50, skewX: 35 },
               visible: { opacity: 1, x: 0, skewX: 0, transition: { duration: 0.5 } },
-            }}> Performance Focused <br /> Digital Marketing test </motion.h1>
+            }}> Performance Focused <br /> Digital Marketing </motion.h1>
         <motion.div className="mt-6 " variants={{
             hidden: { opacity: 0, x: 50, skewX: 0 },
             visible: { opacity: 1, x: 0, skewX: 0, transition: { duration: 0.5} },

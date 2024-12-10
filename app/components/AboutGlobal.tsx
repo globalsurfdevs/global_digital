@@ -1,14 +1,42 @@
-import React from "react";
+"use client"
+
+import React, { useRef } from "react";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
+import {motion,useInView} from 'framer-motion'
 
 const AboutGlobal = () => {
+  const ref = useRef(null)
+
+  const isInView = useInView(ref,{once:true})
+
   return (
     <div className="container mx-auto px-4 py-4">
       <div className="flex flex-col gap-8 py-6 md:py-24 border-b  mb-5">
-        <h1 className="text-4xl md:text-6xl leading-tight">
-          Hello<span className="text-red-600">!</span>
-        </h1>
+        <motion.div initial="initial" animate={isInView ? "animate" : "initial"} className="relative overflow-hidden" ref={ref}>
+          
+          <motion.h1 className="text-4xl md:text-6xl leading-tight">
+            {"Hello".split("").map((l,i)=>(
+              <motion.span key={i} variants={{
+                initial:{y:0},
+                animate:{y:"-100%"},
+                transition:{
+                  delay:0.2 * i
+                }
+              }} transition={{delay:0.2*i}}  className="inline-block">{l}</motion.span>
+            ))}<motion.span className="text-red-600">!</motion.span>
+          </motion.h1>
+
+          <motion.h1 className="absolute inset-0 text-4xl md:text-6xl leading-tight">
+            {"Hello".split("").map((l,i)=>(
+              <motion.span key={i}  variants={{
+                initial:{y:"100%"},
+                animate:{y:0},
+              }} transition={{delay:0.2*i}} className="inline-block">{l}</motion.span>
+            ))}<motion.span className="text-red-600">!</motion.span>
+          </motion.h1>
+
+        </motion.div>
         <h3 className="text-xl max-w-[80ch]">We’re Global Surf Digital, a full-service digital marketing agency in Dubai, specializing in data-driven strategies, creative innovation, and business-focused solutions.</h3>
         <button
           className="relative border-transparent border w-fit p-0 pb-3 flex gap-1 items-center border-t-0 border-l-0 border-r-0 flex gap-3 hover:border-b-white group

@@ -10,6 +10,15 @@ import footer1 from './footer1.png'
 import footer2 from './footer2.png'
 import footer3 from './footer3.png'
 import menu from './menu.svg'
+import socialMedia from './social-media.svg'
+import websiteD from './website-d.svg'
+import seo from './seo.svg'
+import mobile from './mobile.svg'
+import branding from './branding.svg'
+import reputation from './reputation.svg'
+import video from './video.svg'
+import strategy from './strategy.svg'
+import sem from './sem.svg'
 
 export const assets = {
     logo,
@@ -23,7 +32,16 @@ export const assets = {
     footer1,
     footer2,
     footer3,
-    menu
+    menu,
+    socialMedia,
+    websiteD,
+    seo,
+    mobile,
+    branding,
+    reputation,
+    video,
+    strategy,
+    sem
 };
 
 export const logos = [
