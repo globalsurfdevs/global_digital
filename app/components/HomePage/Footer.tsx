@@ -1,24 +1,43 @@
-import React from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  
+  const [GetInTouch,setGetInTouch] = useState(false)
+  
+  const pathName = usePathname();
+
+  useEffect(()=>{
+    if(pathName.startsWith('/performance-marketing')){
+      setGetInTouch(false)
+    }else{
+      setGetInTouch(true)
+    }
+  },[])
+
+
+
   return (
     <>
       <div className="bg-black py-6 xs:py-10 lg:py-14 xl:pt-[109px] xl:pb-[131px]">
         <div className="container px-4 mx-auto text-white">
           <div className="flex flex-col">
-            <div className="border-b border-gray-400  flex flex-col justify-center h-1/2 gap-8">
+            {GetInTouch && <div className="border-b border-gray-400  flex flex-col justify-center h-1/2 gap-8">
               <h1 className="text-font65 leading-lh1p07">
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
               </h1>
               <div>
                 <button className="text-font30 leading-lh1p66 border border-primary px-24 rounded-full py-3 mb-6 lg:mt-6 lg:mb-16 md:mb-10 xl:mt-[57px] xl:mb-[120px]">LET&apos;S TALK</button>
               </div>
-            </div>
-            <div className="grid md:grid-cols-5 pt-12 xl:pt-[121px]">
+            </div> }
+
+            <div className={`grid md:grid-cols-5 pt-12 ${GetInTouch ? "xl:pt-[121px]" : ""} `}>
               <div className="h-full flex flex-col justify-between col-span-2">
                 <Image src={assets.footerLogo} alt="logo" className="" width={220} height={48.49} />
              

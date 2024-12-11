@@ -1,5 +1,5 @@
 import React from "react";
-import { tours } from "../data/tours";
+import { tours } from "../../data/tours";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react";
-import { stories } from "../data/stories";
+import { stories } from "../../data/stories";
 import {Lexend} from "next/font/google";
 import { animate, useInView } from "motion/react";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });

@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
-import { Example } from "./MobileMenu/Example";
+import { Example } from "../MobileMenu/Example";
 import { motion, AnimatePresence } from 'framer-motion'
-import { menuItems } from "../data/menuItems";
+import { menuItems } from "../../data/menuItems";
 
 
 const Header = () => {

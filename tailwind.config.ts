@@ -25,7 +25,7 @@ export default {
         },
       },
       colors: {
-        primary: "#E43D30",
+        primary: "#E63E31",
         bglight: "#f9f9f9",
         gray1: "#77787B",
       },

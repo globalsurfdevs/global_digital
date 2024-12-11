@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination"
-import { testimonials } from "../data/testimonials";
+import { testimonials } from "../../data/testimonials";
 import Image from "next/image";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });

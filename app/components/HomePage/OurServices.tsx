@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { services } from "../data/services";
+import { services } from "../../data/services";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 

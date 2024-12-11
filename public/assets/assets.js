@@ -19,6 +19,13 @@ import reputation from './reputation.svg'
 import video from './video.svg'
 import strategy from './strategy.svg'
 import sem from './sem.svg'
+import sea from './sea.svg'
+import influencer from './Influencer.svg'
+import programmatic from './programmatic.svg'
+import videoAd from './videoAd.svg'
+import appStore from './appStore.svg'
+import socialMediaNew from './socialMediaNew.svg'
+import visibility from './visibility.svg'
 
 export const assets = {
     logo,
@@ -41,7 +48,14 @@ export const assets = {
     reputation,
     video,
     strategy,
-    sem
+    sem,
+    sea,
+    influencer,
+    programmatic,
+    videoAd,
+    appStore,
+    socialMediaNew,
+    visibility
 };
 
 export const logos = [
