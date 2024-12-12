@@ -28,6 +28,7 @@ export const MenuItem = ({item}:{i:number,item:{item:string}}) => {
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
+      className="mobile-menu-li"
     >
       {/* <div className="icon-placeholder" style={style}/> */}
       <div className="text-placeholder border-b font-bold py-2">{item.item}</div>

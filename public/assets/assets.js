@@ -26,6 +26,13 @@ import videoAd from './videoAd.svg'
 import appStore from './appStore.svg'
 import socialMediaNew from './socialMediaNew.svg'
 import visibility from './visibility.svg'
+import seleoLogo from './seleo-logo.png'
+import seleoCover from './seleo-cover.jpg'
+import seleo1 from './seleo1.jpg'
+import seleo2 from './seleo2.jpg'
+import innovo from './Innovo.png'
+import bafco from './Bafco.png'
+import bec from './BEC.png'
 
 export const assets = {
     logo,
@@ -55,7 +62,14 @@ export const assets = {
     videoAd,
     appStore,
     socialMediaNew,
-    visibility
+    visibility,
+    seleoLogo,
+    seleoCover,
+    seleo1,
+    seleo2,
+    innovo,
+    bafco,
+    bec
 };
 
 export const logos = [
