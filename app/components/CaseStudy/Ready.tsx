@@ -18,9 +18,9 @@ const Ready = () => {
 
         </div>
 
-        <div className='py-24 border-b'>
-            <h1 className='text-[65px]'>We’re Ready - Are You?</h1>
-            <p className='text-[19px]'>If you&apos;re looking forward to growing your digital presence with fresh and effective strategies, 
+        <div className='lg:py-24 border-b flex flex-col gap-3 py-12'>
+            <h1 className='text-font65'>We’re Ready - Are You?</h1>
+            <p className='text-font19'>If you&apos;re looking forward to growing your digital presence with fresh and effective strategies, 
                 you’re in the right place. With our experience and a personal touch, we’ll help your brand connect 
                 with the right audience in a way that truly resonates. </p>
                 <Button text='LET&apos;S COLLABORATE'/>
