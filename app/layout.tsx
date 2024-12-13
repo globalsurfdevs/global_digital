@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "./components/HomePage/Header";
 import {Space_Grotesk} from "next/font/google";
 import Footer from "./components/HomePage/Footer";
+import {Lexend} from "next/font/google";
+const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 
 const spaceGrotesk = Space_Grotesk({subsets: ['latin'] ,weight:["300","400","500","600","700"] });

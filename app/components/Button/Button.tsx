@@ -5,7 +5,7 @@ const Button = ({text,className}:{
     className?:string;
 }) => {
   return (
-    <button className={`${className ? className : "w-fit text-font30 leading-lh1p66 border border-primary px-24 rounded-full py-3  md:mb-10 xl:mt-[57px]"}`}>{text}</button>
+    <button className={`${className ? className : "w-fit text-font30 leading-lh1p66 border border-primary px-12 lg:px-24 rounded-full py-3  md:mb-10 xl:mt-[57px]"}`}>{text}</button>
   )
 }
 

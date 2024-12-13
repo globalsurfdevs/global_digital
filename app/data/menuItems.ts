@@ -6,7 +6,7 @@ export const menuItems = [
         item:"ABOUT"
     },
     {
-        item:"Services",
+        item:"SERVICES",
         children:[
             {
                 item:"Social Media Marketing",

@@ -5,15 +5,15 @@ import React from 'react'
 const SuccessStories = () => {
   return (
     <div className='container mx-auto py-4'>
-        <div className='py-6 lg:py-12 flex flex-col gap-8 lg:pb-24 pb-12'>
+        <div className='py-8 lg:py-12 flex flex-col gap-4 lg:pb-24 pb-12'>
             
             <div>
                 <h1 className='text-font65'>Success Stories We&apos;re Proud of</h1>
             </div>
             
-            <div className='grid lg:grid-cols-3 gap-5'>
+            <div className='grid lg:grid-cols-3 gap-8'>
                 
-                <div className='flex flex-col lg:gap-8 gap-4'>
+                <div className='flex flex-col lg:gap-8 gap-1'>
                     <div className='bg-black h-96'>
 
                     </div>
@@ -26,9 +26,14 @@ const SuccessStories = () => {
                     <div>
                         <h4 className='text-font30'>How Innovo Achieved 10x Revenue Growth</h4>
                     </div>
+
+                    <div className='bg-black h-1 w-full shadow-lg lg:hidden'>
+
+                    </div>
+
                 </div>
 
-                <div className='flex flex-col lg:gap-8 gap-4'>
+                <div className='flex flex-col lg:gap-8 gap-1'>
                     <div className='bg-black h-96'>
 
                     </div>
@@ -41,9 +46,14 @@ const SuccessStories = () => {
                     <div>
                         <h4 className='text-font30'>How Bafco Achieved 10x Revenue Growth</h4>
                     </div>
+
+                    <div className='bg-black h-1 w-full shadow-lg lg:hidden'>
+
+                    </div>
+
                 </div>
 
-                <div className='flex flex-col lg:gap-8 gap-4'>
+                <div className='flex flex-col lg:gap-8 gap-1'>
                     <div className='bg-black h-96'>
 
                     </div>
@@ -55,6 +65,10 @@ const SuccessStories = () => {
                     </div>
                     <div>
                         <h4 className='text-font30'>How BEC Achieved 10x Revenue Growth</h4>
+                    </div>
+
+                    <div className='bg-black h-1 w-full shadow-lg lg:hidden'>
+
                     </div>
                 </div>
 
