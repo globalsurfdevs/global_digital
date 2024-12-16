@@ -133,7 +133,7 @@ const Header = () => {
               item.children ? (
                 <div key={index}>
                 <div className="relative group" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
-                    <button className="px-4 py-2 lg:px-0 text-black hover:text-primary flex items-center">
+                    <button className="px-4 py-2 lg:px-0 text-black hover:text-primary flex items-center large-screen-menu-item">
                       SERVICES <span className="text-primary ml-1">+</span>
                     </button>
 
@@ -166,7 +166,7 @@ const Header = () => {
               ) : (
 
                   <motion.div className="flex flex-col justify-center" whileHover="hover" initial="initial" key={index}>
-                    <a href="#" className="block px-4 lg:px-0 text-black hover:text-primary">
+                    <a href="#" className="block px-4 lg:px-0 text-black hover:text-primary large-screen-menu-item">
                       {item.item}
                     </a>
                     <motion.div className="w-full bg-red-400 h-0.5 origin-left" variants={testVariants}></motion.div>

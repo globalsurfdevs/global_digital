@@ -35,7 +35,7 @@ export default {
       fontSize: {
         font14: "clamp(0.7rem,1.2vw,0.875rem)",
         font16: "clamp(0.7rem, 1.5vw, 1rem)",
-        font19: "clamp(0.8rem, 2vw, 1.1875rem)",
+        font19: "clamp(15px, 2vw, 19px)",
         font25: "clamp(0.9rem, 3vw, 1.5625rem)",
         font30: "clamp(1rem, 2.5vw, 1.875rem)",
         font35: "clamp(1.2rem, 3.5vw, 2.1875rem)",
@@ -52,6 +52,7 @@ export default {
         lh2p3: "2.333333333333333",
         lh1p66: "1.66666666666",
         lh1p18: "1.1875",
+        lh95: "95",
       },
     },
   },
