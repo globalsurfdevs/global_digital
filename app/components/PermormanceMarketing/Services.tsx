@@ -3,56 +3,56 @@ import React from 'react'
 const Services = () => {
   return (
     <div className='container mx-auto py-4'>
-        <div className='py-24 grid grid-cols-5'>
-            
+        <div className=' pt-[140px] pb-[150px] grid grid-cols-7'>
+
             <div className='col-span-2 text-5xl'>
-                <h1>Our Services Included</h1>
+                <h1 className='text-font65 leading-lh1p07'>Our Services Included</h1>
             </div>
 
-            <div className='w-full col-span-3'>
-                
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>01</div>
-                    <div>Media Strategy Consulting</div>
+            <div className='w-full col-span-5 ps-12 text-font30'>
+
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                    <p className='text-gray1'>01</p>
+                    <div><p>Media Strategy Consulting</p></div>
                 </div>
 
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>02</div>
-                    <div>Campaign Planning & Execution</div>
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                <p className='text-gray1'>02</p>
+                    <div><p>Campaign Planning & Execution</p></div>
                 </div>
 
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>03</div>
-                    <div>Audience Targeting & Segmentation</div>
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                <p className='text-gray1'>03</p>
+                    <div><p>Audience Targeting & Segmentation</p></div>
                 </div>
 
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>04</div>
-                    <div>Platform Setup & Optimization</div>
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                <p className='text-gray1'>04</p>
+                    <div><p>Platform Setup & Optimization</p></div>
                 </div>
 
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>05</div>
-                    <div>Campaign Execution & Management</div>
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                <p className='text-gray1'>05</p>
+                    <div><p>Campaign Execution & Management</p></div>
                 </div>
 
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>06</div>
-                    <div>A/B Testing & Performance Improvement</div>
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                <p className='text-gray1'>06</p>
+                    <div><p>A/B Testing & Performance Improvement</p></div>
                 </div>
 
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>07</div>
-                    <div>Data-Driven Reporting & Analysis</div>
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                <p className='text-gray1'>07</p>
+                    <div><p>Data-Driven Reporting & Analysis</p></div>
                 </div>
 
-                <div className='flex gap-10 py-5 border-t border-b'>
-                    <div>08</div>
-                    <div>Creative Content Development & Curation</div>
+                <div className='flex gap-10 py-[30px] border-t border-b'>
+                <p className='text-gray1'>08</p>
+                    <div><p>Creative Content Development & Curation</p></div>
                 </div>
 
             </div>
-        
+
         </div>
     </div>
   )

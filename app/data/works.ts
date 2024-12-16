@@ -2,83 +2,52 @@
 
 export const workSvgs = [
     {
-        icon:"/assets/works/1.svg",
+        icon:"/assets/works/ecommerce.svg",
         alt:"icon",
-        text:"E-commerce"
+        text: "E-commerce",
+        width: "26",
+        height:"26"
     },
     {
-        icon:"/assets/works/2.svg",
+        icon:"/assets/works/realestate.svg",
         alt:"icon",
-        text:"Real Estate"
+        text:"Real Estate",
+        width: "21",
+        height:"28"
     },
     {
-        icon:"/assets/works/3.svg",
+        icon:"/assets/works/education.svg",
         alt:"icon",
-        text:"Education"
+        text:"Education",
+        width: "36",
+        height:"28"
     },
     {
-        icon:"/assets/works/4.svg",
+        icon:"/assets/works/technology.svg",
         alt:"icon",
-        text:"Technology"
+        text:"Technology",
+        width: "28",
+        height:"28"
     },
     {
-        icon:"/assets/works/5.svg",
+        icon:"/assets/works/manufacturing.svg",
         alt:"icon",
-        text:"Manufacturing"
+        text:"Manufacturing",
+        width: "27",
+        height:"28"
     },
     {
-        icon:"/assets/works/5.svg",
+        icon:"/assets/works/manufacturing.svg",
         alt:"icon",
-        text:"Hospitality"
+        text:"Hospitality",
+        width: "28",
+        height:"28"
     },
     {
-        icon:"/assets/works/5.svg",
+        icon:"/assets/works/manufacturing.svg",
         alt:"icon",
-        text:"Healthcare"
-    },
-    {
-        icon:"/assets/works/5.svg",
-        alt:"icon",
-        text:"Business Consulting"
-    },
-    {
-        icon:"/assets/works/1.svg",
-        alt:"icon",
-        text:"E-commerce"
-    },
-    {
-        icon:"/assets/works/2.svg",
-        alt:"icon",
-        text:"Real Estate"
-    },
-    {
-        icon:"/assets/works/3.svg",
-        alt:"icon",
-        text:"Education"
-    },
-    {
-        icon:"/assets/works/4.svg",
-        alt:"icon",
-        text:"Technology"
-    },
-    {
-        icon:"/assets/works/5.svg",
-        alt:"icon",
-        text:"Manufacturing"
-    },
-    {
-        icon:"/assets/works/5.svg",
-        alt:"icon",
-        text:"Hospitality"
-    },
-    {
-        icon:"/assets/works/5.svg",
-        alt:"icon",
-        text:"Healthcare"
-    },
-    {
-        icon:"/assets/works/5.svg",
-        alt:"icon",
-        text:"Business Consulting"
+        text:"Healthcare",
+        width: "28",
+        height:"28"
     }
 ]
