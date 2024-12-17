@@ -14,7 +14,7 @@ const Footer = () => {
   const pathName = usePathname();
 
   useEffect(()=>{
-    if(pathName.startsWith('/performance-marketing') || pathName.startsWith('/case-study')){
+    if(pathName.startsWith('/performance-marketing') || pathName.startsWith('/case-study') || pathName.startsWith('/portfolio')){
       setGetInTouch(false)
     }else{
       setGetInTouch(true)

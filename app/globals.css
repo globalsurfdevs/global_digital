@@ -211,6 +211,10 @@ p,ul {
   font-family: 'Lexend', sans-serif;
 }
 
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
+
 
 @media (max-width:600px) {
   .logo-swiper .swiper-slide img {
