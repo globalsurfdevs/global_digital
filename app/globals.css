@@ -248,3 +248,5 @@ p,ul {
   .mnic  img{
       filter: invert(29%) sepia(74%) saturate(1466%) hue-rotate(336deg) brightness(100%) contrast(101%) !important;
     }
+    .serv-mn .border-t p.text-gray1 {line-height: 1.3;}
+    .consu p{color: #000;line-height: 1.3;}
