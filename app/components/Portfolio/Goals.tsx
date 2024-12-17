@@ -6,7 +6,7 @@ const Goals = () => {
     return (
         <>
             <div className='container mx-auto py-4'>
-                <div className='py-24 grid grid-cols-2 gap-5'>
+                <div className='py-12 lg:py-24 grid grid-cols-2 gap-5'>
                     <div>
                         <Image src={assets.goalspic1} alt='image1' />
                     </div>
@@ -44,14 +44,14 @@ const Goals = () => {
 
             </div>
 
-            <div className=' py-12'>
+            <div className='lg:py-12 py-6'>
                 <Image src={assets.webmock} alt='web-mockup' />
             </div>
 
             <div className='container mx-auto py-4'>
                 <div className='grid lg:grid-cols-2 lg:space-x-5 lg:py-12 space-y-5 md:space-y-0 py-2'>
 
-                    <div className='bg-gray-200 flex flex-col w-full py-14 gap-4 px-14'>
+                    <div className='bg-gray-200 flex flex-col w-full py-6 gap-4 px-14'>
                         <div>
                             <h1 className='text-font65'>Challenge</h1>
                         </div>
@@ -64,7 +64,7 @@ const Goals = () => {
                         </div>
                     </div>
 
-                    <div className='bg-gray-200 flex flex-col w-full py-14 gap-4 px-14'>
+                    <div className='bg-gray-200 flex flex-col w-full py-6 gap-4 px-14'>
                         <div>
                             <h1 className='text-font65'>Solutions</h1>
                         </div>
