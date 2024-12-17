@@ -43,6 +43,7 @@ import success1 from '../assets/success-stories/1.jpg'
 import success2 from '../assets/success-stories/2.jpg'
 import success3 from '../assets/success-stories/3.jpg'
 import gulfcryo from '../assets/success-stories/gulf-cryo-svg.svg'
+import innvosvg from '../assets/portfolio/innovo_logo.svg'
 
 export const assets = {
     logo,
@@ -89,7 +90,8 @@ export const assets = {
     success1,
     success2,
     success3,
-    gulfcryo
+    gulfcryo,
+    innvosvg
 };
 
 export const logos = [
