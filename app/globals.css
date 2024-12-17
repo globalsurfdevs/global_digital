@@ -127,13 +127,13 @@ body {
   align-items: center;
 }
 
-ul,
-li {
+.mobile-menu-ul,
+.mobile-menu-li {
   margin: 0;
   padding: 0;
 }
 
-ul {
+.mobile-menu-ul {
   padding: 25px;
   position: absolute;
   top: 100px;
@@ -142,7 +142,7 @@ ul {
   z-index: 5;
 }
 
-li {
+.mobile-menu-li {
   list-style: none;
   margin-bottom: 20px;
   display: flex;
@@ -209,6 +209,10 @@ p,ul {
 
 .large-screen-menu-item{
   font-family: 'Lexend', sans-serif;
+}
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
 }
 
 

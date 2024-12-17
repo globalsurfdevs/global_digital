@@ -33,6 +33,16 @@ import seleo2 from './seleo2.jpg'
 import innovo from './Innovo.png'
 import bafco from './Bafco.png'
 import bec from './BEC.png'
+import heroInnovo from '../assets/portfolio/heroInnovo.jpg'
+import goalspic1 from '../assets/portfolio/goalspic1.jpg'
+import goalspic2 from '../assets/portfolio/goalspic2.jpg'
+import webmock from '../assets/portfolio/web-mock.jpg'
+import suscom from '../assets/portfolio/Sus-com.jpg'
+import tablemockup from '../assets/portfolio/tablet-mockup.jpg'
+import success1 from '../assets/success-stories/1.jpg'
+import success2 from '../assets/success-stories/2.jpg'
+import success3 from '../assets/success-stories/3.jpg'
+import gulfcryo from '../assets/success-stories/gulf-cryo-svg.svg'
 
 export const assets = {
     logo,
@@ -69,7 +79,17 @@ export const assets = {
     seleo2,
     innovo,
     bafco,
-    bec
+    bec,
+    heroInnovo,
+    goalspic1,
+    goalspic2,
+    webmock,
+    suscom,
+    tablemockup,
+    success1,
+    success2,
+    success3,
+    gulfcryo
 };
 
 export const logos = [
