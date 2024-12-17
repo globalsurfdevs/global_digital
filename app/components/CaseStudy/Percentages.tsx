@@ -4,10 +4,10 @@ const Percentages = () => {
   return (
     <div className='bg-black'>
         <div className='container mx-auto py-4'>
-            
+
             <div className='lg:py-24 py-12 grid lg:grid-cols-2 lg:gap-8 gap-5'>
 
-            
+
             <div className='flex flex-col justify-between lg:gap-14 gap-5'>
                 <div className='flex flex-col gap-3'>
                     <h1 className='text-primary text-font65'>30.43%</h1>
@@ -40,7 +40,7 @@ const Percentages = () => {
 
 
             </div>
-        
+
         </div>
 
     </div>
