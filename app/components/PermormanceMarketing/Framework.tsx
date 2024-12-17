@@ -12,13 +12,13 @@ const Framework = () => {
 
                 <div className='grid grid-cols-4 gap-10'>
 
-                    <div className='border-t-2  flex flex-col pt-10 border-gray-500'>
+                    <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center mb-8'>
                         <p className='text-white text-font30 leading-lh1p26'>01</p>
                         </div>
                         <div className='text-2xl'>
 
-                        <p className='text-font30 leading-lh1p33 pb-6'>Insightful Business Analysis</p>
+                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Insightful Business Analysis</p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,
@@ -26,12 +26,12 @@ const Framework = () => {
                         </div>
                     </div>
 
-                    <div className='border-t-2  flex flex-col pt-10 border-gray-500'>
+                    <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
                         <p className='text-white text-font30 leading-lh1p26'>02</p>
                         </div>
                         <div className='text-2xl'>
-                        <p className='text-font30 leading-lh1p33 pb-6'>Tailored Performance Strategies </p>
+                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Tailored Performance Strategies </p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,
@@ -39,12 +39,12 @@ const Framework = () => {
                         </div>
                     </div>
 
-                    <div className='border-t-2  flex flex-col pt-10 border-gray-500'>
+                    <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
                         <p className='text-white text-font30 leading-lh1p26'>03</p>
                         </div>
                         <div className='text-2xl'>
-                        <p className='text-font30 leading-lh1p33 pb-6'>Seamless Campaign Execution</p>
+                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Seamless Campaign Execution</p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,
@@ -52,12 +52,12 @@ const Framework = () => {
                         </div>
                     </div>
 
-                    <div className='border-t-2  flex flex-col pt-10 border-gray-500'>
+                    <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
                             <p className='text-white text-font30 leading-lh1p26'>04</p>
                         </div>
                         <div className='text-2xl'>
-                        <p className='text-font30 leading-lh1p33 pb-6'>Continuous Growth Tracking</p>
+                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Continuous Growth Tracking</p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,

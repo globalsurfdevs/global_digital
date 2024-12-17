@@ -20,7 +20,7 @@ const Partner = () => {
     }, [])
 
     return (
-        <div className='bg-gray-200 mt-20'>
+        <div className='bg-dgray mt-20'>
             <div className='container py-4 mx-auto'>
                 <div className='py-24 flex flex-col gap-24'>
                     <div className='border-b py-6 text-[65px] border-gray-500'>
