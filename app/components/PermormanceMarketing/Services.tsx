@@ -3,13 +3,13 @@ import React from 'react'
 const Services = () => {
   return (
     <div className='container mx-auto py-4'>
-        <div className=' pt-[140px] pb-[150px] grid grid-cols-7'>
+        <div className=' pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-10 gap-xl-0'>
 
             <div className='col-span-2 text-5xl'>
-                <h1 className='text-font65 leading-lh1p07'>Our Services Included</h1>
+                <h1 className='title-65'>Our Services Included</h1>
             </div>
 
-            <div className='w-full col-span-5 ps-12 text-font30 serv-mn'>
+            <div className='w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn'>
 
                 <div className='flex gap-10 py-[34px] border-t border-b'>
                     <p className='text-gray1'>01</p>

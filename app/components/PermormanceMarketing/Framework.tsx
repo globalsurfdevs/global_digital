@@ -2,23 +2,23 @@ import React from 'react'
 
 const Framework = () => {
   return (
-    <div className='bg-gray-200'>
+    <div className='bg-dgray '>
         <div className='container mx-auto py-4'>
-            <div className='py-[111px] flex flex-col '>
+            <div className='py-[50px] lg:py-[111px] flex flex-col '>
 
                 <div className='text-4xl'>
-                    <h1 className='text-font65 leading-lh1p07 pb-[58px]'>The Framework for Achieving More</h1>
+                    <h1 className='title-65 pb-[40px] lg:pb-[58px]'>The Framework for Achieving More</h1>
                 </div>
 
-                <div className='grid grid-cols-4 gap-10'>
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10'>
 
                     <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center mb-8'>
-                        <p className='text-white text-font30 leading-lh1p26'>01</p>
+                        <p className='text-white text-30'>01</p>
                         </div>
                         <div className='text-2xl'>
 
-                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Insightful Business Analysis</p>
+                        <p className='text-30 pb-6 text-black'>Insightful Business Analysis</p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,
@@ -28,10 +28,10 @@ const Framework = () => {
 
                     <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
-                        <p className='text-white text-font30 leading-lh1p26'>02</p>
+                        <p className='text-white text-30'>02</p>
                         </div>
                         <div className='text-2xl'>
-                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Tailored Performance Strategies </p>
+                        <p className='text-30 pb-6 text-black'>Tailored Performance Strategies </p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,
@@ -41,10 +41,10 @@ const Framework = () => {
 
                     <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
-                        <p className='text-white text-font30 leading-lh1p26'>03</p>
+                        <p className='text-white text-30'>03</p>
                         </div>
                         <div className='text-2xl'>
-                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Seamless Campaign Execution</p>
+                        <p className='text-30 pb-6 text-black'>Seamless Campaign Execution</p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,
@@ -54,10 +54,10 @@ const Framework = () => {
 
                     <div className='border-t  flex flex-col pt-10 border-black'>
                         <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
-                            <p className='text-white text-font30 leading-lh1p26'>04</p>
+                            <p className='text-white text-30'>04</p>
                         </div>
                         <div className='text-2xl'>
-                        <p className='text-font30 leading-lh1p33 pb-6 text-black'>Continuous Growth Tracking</p>
+                        <p className='text-30 pb-6 text-black'>Continuous Growth Tracking</p>
                         </div>
                         <div>
                             <p className='text-gray1'>We dive deep into your business to uncover what drives success,

@@ -9,6 +9,11 @@ import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const HeroSection = () => {
+
+
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+
   // Ref for the next container (HTMLDivElement type)
   const nextContainerRef = useRef<HTMLDivElement | null>(null);
   const [divWidth, setDivWidth] = useState("100%");
@@ -41,26 +46,43 @@ const HeroSection = () => {
     };
   }, []); // Empty dependency array ensures this runs once on mount
 
+  const checkWidth = () => {
+    if (window.innerWidth < 992) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  };
+
+  // Run on mount and on resize
+  useEffect(() => {
+    checkWidth(); // Check width on initial render
+    window.addEventListener("resize", checkWidth); // Add event listener
+
+    // Clean up the event listener on unmount
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
     return (
         <>
             <div className='container mx-auto py-2' ref={nextContainerRef}  >
                 <div className=''>
 
-                    <div className='border-b flex justify-between pt-[130px] pb-10 items-end'>
-                        <div className='  max-w-[1000px] '><h1 className='leading-[95px] text-[80px]'>Data Driven Performance Marketing Solutions</h1></div>
+                    <div className='border-b flex justify-between lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-10 items-end'>
+                        <div className='  max-w-[1000px] '><h1 className='title-80'>Data Driven Performance Marketing Solutions</h1></div>
                         <div className='text-gray1 text-font19'>01</div>
                     </div>
 
-                    <div className='grid grid-cols-2 md:py-[142px] py-24'>
+                    <div className='grid grid-cols-1 lg:grid-cols-2 lg:py-[142px] py-[50px] '>
 
-                        <div className='col-span-1'>
+                        <div className='col-span-1 mb-5 lg:mb-0'>
                             <div className='flex gap-2 items-center'>
-                                <h3 className='text-[30px]'>OUR APPROACH</h3>
+                                <h3 className='text-30 leading-[1.5]'>OUR APPROACH</h3>
                                 <div className='w-5 h-5 bg-primary'></div>
                             </div>
                         </div>
 
-                        <div className='text-[19px] text-gray1 xl:ms-[137px] ms-3'>
+                        <div className='text-[19px] text-gray1 xl:ms-[137px] ms-0 lg:ms-3'>
                             <p className={`${lexend.className}`}>Our team will work with you to understand your goals and identify the
                                 channels that will give you the best ROI. We’ll help you develop a custom
                                 ads strategy to make sure that your marketing budget is spent effectively.
@@ -73,9 +95,9 @@ const HeroSection = () => {
                 </div>
             </div>
 
-            <div  style={{ width: divWidth  }}>
-                <div className='flex gap-5 bg-bglight pl-40 py-5'>
-                    <div className='flex justify-between w-1/2'>
+            <div  style={{ width: divWidth  }}  className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class`} >
+                <div className='flex gap-5 bg-bglight   py-5'>
+                    <div className='flex  gap-[30px] md:gap-[120px]  container flexcl600' style={{marginRight: "-15px" }}>
                         <Image src={logo1 } alt='image' width={160} height={40}></Image>
                         <Image src={logo2} alt='image' width={102} height={40}></Image>
                         <Image src={logo3} alt='image' width={88} height={44}></Image>
