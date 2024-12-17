@@ -28,6 +28,9 @@ export default {
         primary: "#E63E31",
         bglight: "#f9f9f9",
         gray1: "#77787B",
+        dgray:"#F2F2F2",
+        white:"#ffffff",
+        gray2:"#424242"
       },
       fontSize: {
         font14: "clamp(0.7rem,1.2vw,0.875rem)",
