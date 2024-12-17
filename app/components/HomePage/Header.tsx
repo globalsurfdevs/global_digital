@@ -109,7 +109,7 @@ const Header = () => {
 
   if (mobileMenu) {
     return (
-      <div className="flex items-center p-3">
+      <div className="flex items-center p-4">
         <Image src={assets.logo} alt="logo" />
         <Example />
       </div>
@@ -138,7 +138,7 @@ const Header = () => {
                     </button>
 
                   </div>
-                
+
                 <AnimatePresence>
                   {(isDropdownOpen || isMenuOpen) && (
                     <motion.div className="absolute bg-transparent flex flex-col items-center -translate-x-1/3"  onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
@@ -171,7 +171,7 @@ const Header = () => {
                     </a>
                     <motion.div className="w-full bg-red-400 h-0.5 origin-left" variants={testVariants}></motion.div>
                   </motion.div>
-                
+
               )
 
             ))}

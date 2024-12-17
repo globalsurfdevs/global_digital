@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from "react"
 import WorkSwiper from '../HomePage/WorkSwiper'
 
 const Industries = () => {
+
+      const [isSmallScreen, setIsSmallScreen] = useState(false);
    // Ref for the next container (HTMLDivElement type)
     const nextContainerRef = useRef<HTMLDivElement | null>(null);
     const [divWidth, setDivWidth] = useState("100%");
@@ -34,14 +36,31 @@ const Industries = () => {
         window.removeEventListener("resize", updateDivWidth);
       };
     }, []);
+  const checkWidth = () => {
+      if (window.innerWidth < 992) {
+        setIsSmallScreen(true);
+      } else {
+        setIsSmallScreen(false);
+      }
+    };
+
+    // Run on mount and on resize
+    useEffect(() => {
+      checkWidth(); // Check width on initial render
+      window.addEventListener("resize", checkWidth); // Add event listener
+
+      // Clean up the event listener on unmount
+      return () => window.removeEventListener("resize", checkWidth);
+    }, []);
+
   return (
     <div className=' '>
-        <div className='pt-[140px] pb-[134px] flex flex-col  border-b-2'>
+        <div className='pt-[50px] lg:pt-[140px] pb-[50px]  lg:pb-[134px]  flex flex-col  border-b-2'>
 
             <div className=' container mx-auto text-4xl' ref={nextContainerRef}>
-                <h1 className="text-font65 leading-lh1p07 pb-[60px]">Industries We Serve</h1>
+                <h1 className="title-65 pb-[60px]">Industries We Serve</h1>
             </div>
-<div className="overflow-hidden ms-auto" style={{ width: divWidth  }}>
+<div className={`${isSmallScreen ? "container " : ""} overflow-hidden ms-auto`}   style={{ width: divWidth  }} >
           <WorkSwiper />
           </div>
         </div>

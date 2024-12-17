@@ -12,7 +12,7 @@ const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"
 
 const TestimonialsSwiper = () => {
   return (
-    <div className="">
+    <div className=" testimonialswiper">
       <Swiper
         spaceBetween={90}
         slidesPerView={1}
@@ -32,17 +32,19 @@ const TestimonialsSwiper = () => {
           },
         }}>
         {testimonials.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className={`flex flex-col md:h-[450px] xl:h-[350px] ${lexend.className}`}>
-              <div className="flex flex-col gap-4 border-b border-black py-8">
-                <Image src={item.image} alt="image" className="w-20 h-20 bg-white p-1"></Image>
-                <h3 className="text-xl ">{item.name}</h3>
-                <h5 className="text-sm text-gray-500 flex gap-1">
+          <SwiperSlide key={index}
+          className="mb-8" >
+            <div className={`flex flex-col  ${lexend.className}`}>
+              <div className="flex flex-col   border-b border-black pt-[50px] lg:pt-[65px] mb-[41px]">
+                <Image src={item.image} alt="image" className="w-20 h-20 bg-white p-1 mb-[30px]"></Image>
+                <h3 className="mb-[5px]  text-30">{item.name}</h3>
+                <h5 className="text-font16 text-gray1 leading-lh2p3 flex gap-1 mb-2">
                   {item.position} - <p className="font-bold">{item.company}</p>
                 </h5>
+                <Image src={item.logo} alt="image" className="mb-[26px]"  ></Image>
               </div>
-              <div className="h-1/2 flex justify-center items-center">
-                <p className="text-gray-400">{item.message}</p>
+              <div className=" flex justify-center items-center">
+                <p className="text-gray-400 text-19">{item.message}</p>
               </div>
             </div>
           </SwiperSlide>

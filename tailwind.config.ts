@@ -11,24 +11,24 @@ const config = {
     extend: {
       screens: {
         xs: "450px",
-        sm: "610px",
-        md: "738px",
-        lg: "994px",
-        xl: "1250px",
-        xxl: "1490px",
-        "3xl": "1620px",
+        sm: "576px",
+        md: "768px",
+        lg: "992px",
+        xl: "1200px",
+        xxl: "1400px",
+        "3xl": "1650px",
       },
-      container: {
-        screens: {
-          xs: "450px",
-          sm: "610px",
-          md: "738px",
-          lg: "994px",
-          xl: "1120px",
-          xxl: "1300px",
-          "3xl": "1620px",
-        },
-      },
+      // container: {
+      //   screens: {
+      //     xs: "450px",
+      //     sm: "610px",
+      //     md: "738px",
+      //     lg: "994px",
+      //     xl: "1120px",
+      //     xxl: "1300px",
+      //     "3xl": "1650px",
+      //   },
+      // },
       colors: {
         primary: "#E63E31",
         bglight: "#f9f9f9",
@@ -50,6 +50,7 @@ const config = {
       lineHeight: {
         lh0p76: "0.7692307692307692",
         lh1p07: "1.076923076923077",
+        lh1p22: "1.2",
         lh1p26: "1.266666666666667",
         lh1p33: "1.33333333",
         lh1p78: "1.785714285714286",

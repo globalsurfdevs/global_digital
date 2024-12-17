@@ -204,7 +204,7 @@ body {
 
 p,ul {
   font-family: 'Lexend', sans-serif;
-  color:#77787B ;
+
 }
 
 .large-screen-menu-item{
@@ -254,3 +254,20 @@ p,ul {
     }
     .serv-mn .border-t p.text-gray1 {line-height: 1.3;}
     .consu p{color: #000;line-height: 1.3;}
+    .testimonialswiper .swiper-pagination-bullet{    background: #77787B !important;
+      opacity: 1 !important;}
+      .testimonialswiper .swiper-pagination-bullet-active{
+        background: #e43d30!important;
+      }
+      @media (max-width: 600px) {
+.flexcl600{flex-direction: column;}
+      }
+      @media (max-width: 1199px) {
+        .bdrsm .border {    border-width: 1px !important;}
+              }
+    @layer components {
+      .title-80{ @apply  text-font80 leading-lh1p22;}
+      .title-65 {  @apply text-font65 leading-lh1p07;  }
+      .text-30{ @apply  text-font30 leading-lh1p33;}
+      .text-19{ @apply  text-font19 leading-lh1p48;}
+    }
