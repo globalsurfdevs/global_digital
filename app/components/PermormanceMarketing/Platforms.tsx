@@ -1,4 +1,4 @@
-import { assets } from '@/public/assets/assets'
+
 import   twitterx   from '@/public/assets/logos/socialmedia/x.svg'
 import   amazon   from '@/public/assets/logos/socialmedia/amazon.svg'
 import   google   from '@/public/assets/logos/socialmedia/google.svg'

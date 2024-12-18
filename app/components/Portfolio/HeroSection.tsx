@@ -51,7 +51,7 @@ const HeroSection = () => {
                                     specializing in delivering innovative solutions for a wide range of projects.
                                     With a commitment to quality and sustainability, they have built a reputation
                                     for excellence. Recognizing their outdated, slow website no longer reflected their
-                                    brand's quality and innovation, they partnered with Global Surf to revamp their
+                                    brand&apos;s quality and innovation, they partnered with Global Surf to revamp their
                                     digital presence. The goal was to improve efficiency, enhance user experience, and
                                     align the site with their evolving brand identity. </p>
                             </div>

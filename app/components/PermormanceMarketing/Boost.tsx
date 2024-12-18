@@ -1,4 +1,4 @@
-import { assets } from '@/public/assets/assets'
+
 import Image from 'next/image'
 import React from 'react'
 import logo1  from '../../../public/assets/logos/boost.svg'
