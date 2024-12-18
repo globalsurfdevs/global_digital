@@ -1,12 +1,65 @@
 
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion";
 import { services } from "../../data/services";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const OurServices = () => {
+
+
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+
+
+    // Ref for the next container (HTMLDivElement type)
+    const nextContainerRef = useRef<HTMLDivElement | null>(null);
+    const [divheight, setdivheight] = useState("100%");
+
+    useEffect(() => {
+      const updatedivheight = () => {
+        if (nextContainerRef.current) {
+          // Get the bounding rectangle of the next container
+          const containerRect = nextContainerRef.current.getBoundingClientRect();
+
+
+            const totalHeight = containerRect.height
+
+          setdivheight(`${totalHeight}px`);
+        }
+      };
+
+      if (window.innerWidth > 768) {
+        // Initial height calculation
+        updatedivheight();
+
+        // Recalculate on window resize
+        window.addEventListener("resize", updatedivheight);
+      }
+      // Cleanup event listener on unmount
+      return () => {
+        window.removeEventListener("resize", updatedivheight);
+      };
+    }, []); // Empty dependency array ensures this runs once on mount
+
+ const checkWidth = () => {
+    if (window.innerWidth > 768) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  };
+
+  // Run on mount and on resize
+  useEffect(() => {
+    checkWidth(); // Check width on initial render
+    window.addEventListener("resize", checkWidth); // Add event listener
+
+    // Clean up the event listener on unmount
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
   return (
     <>
       {/* Section Heading */}
@@ -32,7 +85,8 @@ const OurServices = () => {
       {/* Services */}
       {services.map((service) => (
         <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[88px] srv-item overflow-hidden"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[88px] srv-item overflow-hidden ref-ht"
+          ref={nextContainerRef}
         key={service.id}
         initial="hidden"
                 whileInView="visible"
@@ -43,7 +97,8 @@ const OurServices = () => {
                 }}
       >
         {/* Service Image */}
-        <div className="h-full border-b-gray-400 md:order-2 srv-im flex justify-end ">
+          <div   style={{ height: divheight }}
+          className={`${isSmallScreen ? "h-full border-b-gray-400 md:order-2 srv-im flex justify-end targ-ht" : ""} custom-class`}>
           <motion.div
             className="h-full overflow-hidden"
             variants={{
@@ -64,9 +119,8 @@ const OurServices = () => {
         </div>
 
           {/* Service Details */}
-          <motion.div
-                className="flex justify-between flex-col border-b pb-5 lg:pb-2"
-
+          <motion.div style={{ height: divheight  }}
+                className={`${isSmallScreen ? "flex justify-between flex-col border-b pb-5 lg:pb-2 targ-ht" : ""} custom-class`}
               >
                 {/* Content Block */}
                 <div className="flex flex-col gap-3 cntntblc">

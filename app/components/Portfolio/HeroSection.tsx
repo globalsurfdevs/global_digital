@@ -78,7 +78,7 @@ const HeroSection = () => {
                                 <span className='text-font65 text-primary'>2X</span>
                                 <h3 className='text-font30 text-white'>Increase in User Engagement</h3>
                             </div>
-                            
+
                         </div>
 
                         <div className='border-b lg:border-r border-white lg:border-b-0'>
@@ -86,7 +86,7 @@ const HeroSection = () => {
                                 <span className='text-font65 text-primary'>2X</span>
                                 <h3 className='text-font30 text-white'>Increase in Session Duration</h3>
                             </div>
-                            
+
                         </div>
                     </div>
 

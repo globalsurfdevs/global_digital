@@ -2,7 +2,6 @@ import { assets } from '@/public/assets/assets'
 import Image from 'next/image'
 import React from 'react'
 
-
 const Ready = () => {
   return (
     <div className='container mx-auto py-4'>
