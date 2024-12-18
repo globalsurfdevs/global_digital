@@ -51,20 +51,20 @@ const Goals = () => {
             <div className='container mx-auto py-4'>
                 <div className='grid lg:grid-cols-2 lg:space-x-5 lg:py-12 space-y-5 md:space-y-0 py-2'>
 
-                    <div className='bg-gray-200 flex flex-col w-full py-6 gap-4 px-14'>
+                    <div className='bg-dgray flex flex-col w-full py-14 gap-4 px-14'>
                         <div>
                             <h1 className='text-font65'>Challenge</h1>
                         </div>
                         <div className=''>
-                            <p>Redesigning the website brought several challenges. Migrating from an outdated CMS without 
-                                disruptions was complex, especially given its limitations. Ensuring cross-browser and mobile 
-                                compatibility, preserving existing organic traffic, and integrating new branding materials 
-                                for a consistent brand experience were all essential. With a product launch looming, we delivered 
+                            <p>Redesigning the website brought several challenges. Migrating from an outdated CMS without
+                                disruptions was complex, especially given its limitations. Ensuring cross-browser and mobile
+                                compatibility, preserving existing organic traffic, and integrating new branding materials
+                                for a consistent brand experience were all essential. With a product launch looming, we delivered
                                 efficiently within tight deadlines</p>
                         </div>
                     </div>
 
-                    <div className='bg-gray-200 flex flex-col w-full py-6 gap-4 px-14'>
+                    <div className='bg-dgray flex flex-col w-full py-14 gap-4 px-14'>
                         <div>
                             <h1 className='text-font65'>Solutions</h1>
                         </div>

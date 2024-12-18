@@ -20,11 +20,17 @@ import video from './video.svg'
 import strategy from './strategy.svg'
 import sem from './sem.svg'
 import sea from './sea.svg'
+import seahov from './sea-hov.svg'
 import influencer from './Influencer.svg'
+import influencerhov from './Influencer-hov.svg'
 import programmatic from './programmatic.svg'
+import programmatichov from './programmatic-hov.svg'
 import videoAd from './videoAd.svg'
+import videoAdhov from './videoAd-hov.svg'
 import appStore from './appStore.svg'
+import appStorehov from './appStor-hove.svg'
 import socialMediaNew from './socialMediaNew.svg'
+import socialMediaNewhov from './socialMediaNewhov.svg'
 import visibility from './visibility.svg'
 import seleoLogo from './seleo-logo.png'
 import seleoCover from './seleo-cover.jpg'
@@ -68,11 +74,17 @@ export const assets = {
     strategy,
     sem,
     sea,
+    seahov,
     influencer,
+    influencerhov,
     programmatic,
+    programmatichov,
     videoAd,
+    videoAdhov,
     appStore,
+    appStorehov,
     socialMediaNew,
+    socialMediaNewhov,
     visibility,
     seleoLogo,
     seleoCover,
@@ -113,6 +125,6 @@ export const logos = [
     { src: '../assets/logos/007.png', alt: 'Google' },
     { src: '../assets/logos/008.png', alt: 'Google' },
     { src: '../assets/logos/009.png', alt: 'Google' },
-    
+
   ];
 

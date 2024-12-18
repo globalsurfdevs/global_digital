@@ -28,7 +28,7 @@ const Partner = () => {
                     </div>
                     <div className='title-65 font-medium leading-[120px]   overflow-hidden relative'>
                         {/* We turn Data into <span className='text-primary'>Insights</span> */}
-                        We Turn <span className='text-gray1'>{partnerData[dataIndex].item.split(" ").slice(0, partnerData[dataIndex].item.split(" ").length - 1).toString().replace(",", " ")+" "}</span>
+                        We turn <span className='text-gray1'>{partnerData[dataIndex].item.split(" ").slice(0, partnerData[dataIndex].item.split(" ").length - 1).toString().replace(",", " ")+" "}</span>
                         <AnimatePresence><motion.span key={partnerData[dataIndex].item} // Add a key to make sure the element is treated as a unique component
                             whileInView={{ y: 0 }}
                             exit={{ y: "100%" }}
