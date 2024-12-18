@@ -48,7 +48,7 @@ const [animatedValues, setAnimatedValues] = useState(
   return (
     <div className="container px-4 mx-auto">
 
-      <div className="py-6 lg:py-12 xl:py-24 flex flex-col gap-12">
+      <div className="pt-6 lg:pt-[70px]  pb-[50px] lg:pb-[150px]  flex flex-col gap-6 lg:gap-[50px]">
       <motion.div
           initial="hidden"
                   whileInView="visible"
@@ -58,7 +58,7 @@ const [animatedValues, setAnimatedValues] = useState(
                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                   }}
         >
-          <h1 className="text-font65">Discover Our Success Stories</h1>
+          <h1 className="title-65">Discover Our Success Stories</h1>
 
         </motion.div>
         <motion.div

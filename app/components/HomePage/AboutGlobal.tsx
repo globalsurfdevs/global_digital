@@ -21,7 +21,7 @@ const AboutGlobal = () => {
                         visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                       }}
             >
-      <div className="flex flex-col gap-8 py-6 md:py-24 border-b  mb-5">
+      <div className="flex flex-col gap-5 py-[50px] lg:pt-[136px] lg:pb-[150px] border-b  mb-8 lg:mb-8">
         <motion.div initial="initial" animate={isInView ? "animate" : "initial"} className="relative overflow-hidden" ref={ref}>
 
           <motion.h1 className="text-4xl md:text-6xl leading-tight">

@@ -75,12 +75,12 @@ const OurAchievements = () => {
             </div>
             <div>
               <h4 className="text-font65 font-[400] mt-4 leading-lh1p07">{yearCount} Years</h4>
-              <p className={`text-font30 opacity-60 leading-lh2p3 ${lexend.className}`}>and Counting</p>
+              <p className={`text-font30 opacity-60 leading-lh2p3 text-gray1`}>and Counting</p>
             </div>
           </div>
         </div>
 
-        <div className="border-b border-b-[#77787B] md:border-b-0 md:border-l p-4 lg:p-0 lg:px-4 md:border-l-[#77787B]  xl:pl-10 "  ref={ref}>
+        <div className="border-b border-b-[#77787B] md:border-b-0 md:border-l p-4 lg:p-0 lg:px-4 md:border-gray1  xl:pl-10 "  ref={ref}>
           <div className="flex flex-col items-start h-[100%] justify-between lg:py-10 xl:pt-[50px] xl:pb-[100px]">
             <div className="mb-8">
               <Image src={assets.clients} alt="years" width={84} height={84} />
@@ -89,7 +89,7 @@ const OurAchievements = () => {
               <h1 className="text-font65 font-[400] mt-4 leading-lh1p07">
                 <span className="text-primary">{clientCount}</span> Clients
               </h1>
-              <p className={`text-font30 leading-lh2p3 ${lexend.className}`}>
+              <p className={`text-font30 leading-lh2p3 text-gray1`}>
                 {" "}
                 and <span className="text-primary ">Growing</span>{" "}
               </p>
@@ -97,14 +97,14 @@ const OurAchievements = () => {
           </div>
         </div>
 
-        <div className="md:border-l p-4 lg:p-0 lg:px-4 md:border-l-[#77787B]  xl:pl-10">
+        <div className="md:border-l p-4 lg:p-0 lg:px-4 md:border-gray1  xl:pl-10">
           <div className="flex flex-col items-start h-[100%] justify-between lg:py-10 xl:pt-[50px] xl:pb-[100px]">
             <div className="mb-8">
               <Image src={assets.projects} alt="years" width={50} height={50} />
             </div>
             <div>
               <h1 className="text-font65 font-[400] mt-4 leading-lh1p07">{projectCount} Projects</h1>
-              <p className={`text-font30 opacity-60 leading-lh2p3 ${lexend.className}`}>and More to Come</p>
+              <p className={`text-font30 opacity-60 leading-lh2p3 text-gray1`}>and More to Come</p>
             </div>
           </div>
         </div>
