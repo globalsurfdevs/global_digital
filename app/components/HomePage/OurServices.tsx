@@ -31,16 +31,16 @@ const OurServices = () => {
 
       {/* Services */}
       {services.map((service) => (
-        <motion.div
+        <div
         className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[88px] srv-item relative"
-        key={service.id}
-        initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0 }} // Trigger animation once when 50% visible
-                variants={{
-                  hidden: { opacity: 0, y: 150 }, // Start below and invisible
-                  visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } }, // Slide up and fade in
-                }}
+         key={service.id}
+        // initial="hidden"
+        //         whileInView="visible"
+        //         viewport={{ once: true, amount: 0 }} // Trigger animation once when 50% visible
+        //         variants={{
+        //           hidden: { opacity: 0, y: 150 }, // Start below and invisible
+        //           visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } }, // Slide up and fade in
+        //         }}
       >
         {/* Service Image */}
         <div className="h-full border-b-gray-400 md:order-2 srv-im flex justify-end bg-black ">
@@ -64,7 +64,7 @@ const OurServices = () => {
         </div>
 
           {/* Service Details */}
-          <motion.div
+          <div
                 className="flex justify-between flex-col border-b pb-5 lg:pb-2"
 
               >
@@ -92,9 +92,9 @@ const OurServices = () => {
                   <div className="flex mb-3">
                     <span>0{service.id}</span>
                   </div>
-              </motion.div>
+              </div>
 
-        </motion.div>
+        </div>
       ))}
       </div>
       </>
