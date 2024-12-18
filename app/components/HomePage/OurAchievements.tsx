@@ -2,8 +2,8 @@
 
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
-import {Lexend} from "next/font/google";
-const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
+
+
 
 import React, { useEffect, useRef, useState } from "react";
 import { useInView, useSpring } from "motion/react";
