@@ -32,7 +32,7 @@ const OurServices = () => {
       {/* Services */}
       {services.map((service) => (
         <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[88px] srv-item"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-[88px] srv-item overflow-hidden"
         key={service.id}
         initial="hidden"
                 whileInView="visible"
@@ -43,7 +43,7 @@ const OurServices = () => {
                 }}
       >
         {/* Service Image */}
-        <div className="h-full border-b-gray-400 md:order-2 srv-im flex justify-end overflow-hidden">
+        <div className="h-full border-b-gray-400 md:order-2 srv-im flex justify-end ">
           <motion.div
             className="h-full overflow-hidden"
             variants={{
