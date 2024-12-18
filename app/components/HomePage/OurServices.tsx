@@ -8,9 +8,10 @@ const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"
 
 const OurServices = () => {
   return (
-    <div className="container mx-auto px-4 py-8 flex flex-col gap-5 xl:gap-24">
+    <>
       {/* Section Heading */}
-      <motion.div
+      <div className="container mx-auto ">
+    <motion.div
         initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -19,12 +20,15 @@ const OurServices = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                 }}
       >
-      <div className="xl:mb-8 flex gap-2 items-center">
-        <h2 className="lg:text-3xl font-[400]">OUR SERVICES</h2>
+      <div className="lg:mb-[89px] mb-5 flex gap-2 items-center">
+        <h2 className="text-30 leading-[1.5] font-[400]">OUR SERVICES</h2>
         <div className="bg-primary lg:size-5 size-3 md:size-4"></div>
       </div>
 
-      </motion.div>
+        </motion.div>
+        </div>
+    <div className="container mx-auto px-4 py-8 flex flex-col gap-5 xl:gap-24">
+
       {/* Services */}
       {services.map((service) => (
         <motion.div
@@ -39,8 +43,8 @@ const OurServices = () => {
                 }}
       >
         {/* Service Image */}
-        <div className="h-full border-b-gray-400 md:order-2 srv-im flex justify-end">
-          <motion.div
+        <div className="h-full border-b-gray-400 md:order-2 srv-im flex justify-end bg-black">
+          {/* <motion.div
             className="h-full overflow-hidden"
             variants={{
               hidden: { y: 50, opacity: 0 }, // Start below and fade in
@@ -56,18 +60,18 @@ const OurServices = () => {
               viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             />
-          </motion.div>
+          </motion.div> */}
         </div>
 
           {/* Service Details */}
           <motion.div
-                className="flex justify-between flex-col border-b pb-2"
+                className="flex justify-between flex-col border-b pb-5 lg:pb-2"
 
               >
                 {/* Content Block */}
-                <div className="flex flex-col gap-5 cntntblc">
-                  <h3 className="text-font65 max-w-[14ch] leading-lh1p07">{service.title}</h3>
-                  <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-3 cntntblc">
+                  <h3 className="title-65 max-w-[14ch] ">{service.title}</h3>
+                  <div className="flex flex-col gap-2 lg:gap-7">
                     <p className={`mb-2 text-font25 leading-lh1p4 ${lexend.className} font-light`}>
                       {service.description}
                     </p>
@@ -92,7 +96,8 @@ const OurServices = () => {
 
         </motion.div>
       ))}
-    </div>
+      </div>
+      </>
   );
 };
 

@@ -8,7 +8,7 @@ const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"
 const Tours = () => {
   return (
     <div className="container px-4 mx-auto">
-      <div className="py-6 lg:py-12 xl:py-24 flex flex-col gap-10 border-b">
+      <div className="pt-[50px] lg:pt-[110px] pb-[50px] lg:pb-[150px] flex flex-col gap-4 lg:gap-10 border-b">
        <motion.div
                  initial="hidden"
                          whileInView="visible"
@@ -33,7 +33,7 @@ const Tours = () => {
           {tours.map((tour) => (
             <div className="relative tour-card" key={tour.id}>
               <img src={tour.image} alt={tour.name} className="ease-linear duration-300 w-[100] h-[100]" />
-              <div className="absolute bottom-5 left-5 z-10">
+              <div className="absolute lg:bottom-[46px] lg:left-[59px] bottom-[15px] left-[15px] z-10">
                 <h3 className="text-white text-font30 leading-lh1p66">{tour.name}</h3>
                 <div className="flex gap-2">
                   {tour.services.map((service,index) => (
@@ -44,8 +44,8 @@ const Tours = () => {
             </div>
           ))}
         </div>
-        <div className="w-full flex justify-center mt-[30px]">
-          <button className="border py-3 px-24 rounded-full">VIEW ALL</button>
+        <div className="w-full flex justify-center mt-[30px] lg:mt-[50px]">
+          <button className="border lg:py-4 lg:px-[195px] py-3 px-8 rounded-full leading-[1.67] text-30 font-medium">VIEW ALL</button>
           </div>
           </motion.div>
       </div>

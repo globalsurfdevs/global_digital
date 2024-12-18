@@ -7,7 +7,7 @@ const Testimonials = () => {
   return (
     <div className='bg-bglight'>
       <div className="container px-4 mx-auto ">
-        <div className="py-[50px] md:py-10 lg:py-12 xl:pt-[138px] xl:pb-[110px]">
+        <div className="pt-[50px] pb-[30px] md:py-10 lg:py-12 xl:pt-[138px] xl:pb-[110px]">
         <motion.div
           initial="hidden"
                   whileInView="visible"
