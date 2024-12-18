@@ -1,12 +1,25 @@
+"use client"
 import React from 'react'
+import { motion } from 'framer-motion';
 
 const Services = () => {
   return (
-    <div className='container mx-auto py-4'>
+      <div className='container mx-auto py-4'>
+          <motion.div  initial="hidden"
+            whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+            variants={{
+           hidden: { opacity: 0, y: 100 }, // Start below and invisible
+            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+            }}
+              >
         <div className=' pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-10 gap-xl-0'>
 
-            <div className='col-span-2 text-5xl'>
-                <h1 className='title-65'>Our Services Included</h1>
+
+
+                  <div className='col-span-2 text-5xl'>
+                      <h1 className='title-65'>Our Services Included</h1>
+
             </div>
 
             <div className='w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn'>
@@ -51,9 +64,10 @@ const Services = () => {
                     <div  className='consu'><p>Creative Content Development & Curation</p></div>
                 </div>
 
-            </div>
+              </div>
 
         </div>
+        </motion.div>
     </div>
   )
 }

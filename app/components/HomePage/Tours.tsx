@@ -1,13 +1,34 @@
+"use client"
 import React from "react";
 import { tours } from "../../data/tours";
 import {Lexend} from "next/font/google";
+import { motion } from 'framer-motion';
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const Tours = () => {
   return (
     <div className="container px-4 mx-auto">
       <div className="py-6 lg:py-12 xl:py-24 flex flex-col gap-10 border-b">
-        <h1 className="text-font65">Featured Tours</h1>
+       <motion.div
+                 initial="hidden"
+                         whileInView="visible"
+                         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                         variants={{
+                           hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                           visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                         }}
+        >
+          <h1 className="text-font65">Featured Tours</h1>
+        </motion.div>
+        <motion.div
+                  initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                          variants={{
+                            hidden: { opacity: 0, y: 150 }, // Start below and invisible
+                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                          }}
+                >
         <div className="grid md:grid-cols-2 gap-8">
           {tours.map((tour) => (
             <div className="relative tour-card" key={tour.id}>
@@ -23,9 +44,10 @@ const Tours = () => {
             </div>
           ))}
         </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mt-[30px]">
           <button className="border py-3 px-24 rounded-full">VIEW ALL</button>
-        </div>
+          </div>
+          </motion.div>
       </div>
     </div>
   );

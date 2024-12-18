@@ -8,6 +8,8 @@ import Testimonials from "./components/HomePage/Testimonials";
 import Tours from "./components/HomePage/Tours";
 import WorkIn from "./components/HomePage/WorkIn";
 
+import { motion } from "framer-motion";
+
 export default function Home() {
   return (
     <>
@@ -21,6 +23,6 @@ export default function Home() {
       <SuccessStories/>
       <Testimonials/>
     </>
-    
+
   );
 }

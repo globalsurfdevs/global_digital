@@ -6,11 +6,12 @@ import Image from "next/image";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 import { usePathname } from "next/navigation";
+import { motion } from 'framer-motion';
 
 const Footer = () => {
-  
+
   const [GetInTouch,setGetInTouch] = useState(false)
-  
+
   const pathName = usePathname();
 
   useEffect(()=>{
@@ -28,6 +29,15 @@ const Footer = () => {
       <div className="bg-black py-6 xs:py-10 lg:py-14 xl:pt-[109px] xl:pb-[131px]">
         <div className="container px-4 mx-auto text-white">
           <div className="flex flex-col">
+        <motion.div
+                  initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                          variants={{
+                            hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                          }}
+                >
             {GetInTouch && <div className="border-b border-gray-400  flex flex-col justify-center h-1/2 gap-8">
               <h1 className="text-font65 leading-lh1p07">
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
@@ -35,12 +45,22 @@ const Footer = () => {
               <div>
                 <button className="text-font30 leading-lh1p66 border border-primary px-24 rounded-full py-3 mb-6 lg:mt-6 lg:mb-16 md:mb-10 xl:mt-[57px] xl:mb-[120px]">LET&apos;S TALK</button>
               </div>
-            </div> }
+              </div>}
 
+            </motion.div>
+            <motion.div
+                      initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                              variants={{
+                                hidden: { opacity: 0, y: 150 }, // Start below and invisible
+                                visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                              }}
+                    >
             <div className={`grid md:grid-cols-5 pt-12 ${GetInTouch ? "xl:pt-[121px]" : ""} `}>
               <div className="h-full flex flex-col justify-between col-span-2">
                 <Image src={assets.footerLogo} alt="logo" className="" width={220} height={48.49} />
-             
+
               </div>
               <div className="md:col-span-3 flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
@@ -72,7 +92,8 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
+            </motion.div>
+            </div>
         </div>
       </div>
 

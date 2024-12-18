@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from "react"
 import WorkSwiper from '../HomePage/WorkSwiper'
+import { motion } from 'framer-motion';
 
 const Industries = () => {
 
@@ -57,12 +58,32 @@ const Industries = () => {
     <div className=' '>
         <div className='pt-[50px] lg:pt-[140px] pb-[50px]  lg:pb-[134px]  flex flex-col  border-b-2'>
 
-            <div className=' container mx-auto text-4xl' ref={nextContainerRef}>
-                <h1 className="title-65 pb-[60px]">Industries We Serve</h1>
-            </div>
+        <div className=' container mx-auto text-4xl' ref={nextContainerRef}>
+          <motion.div
+                    initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                            variants={{
+                              hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                              visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                            }}
+                  >
+            <h1 className="title-65 pb-[60px]">Industries We Serve</h1>
+            </motion.div>
+        </div>
+        <motion.div
+                                initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                                        variants={{
+                                            hidden: { opacity: 0, y: 150 }, // Start below and invisible
+                                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                                        }}
+                                >
 <div className={`${isSmallScreen ? "container " : ""} overflow-hidden ms-auto`}   style={{ width: divWidth  }} >
           <WorkSwiper />
           </div>
+          </motion.div>
         </div>
     </div>
   )

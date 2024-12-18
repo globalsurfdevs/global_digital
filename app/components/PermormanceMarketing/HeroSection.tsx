@@ -1,10 +1,11 @@
 "use client"
+import { motion } from 'framer-motion';
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from "react"
-import logo1 from '../../../public/assets/logos/002.png'
-import logo2 from '../../../public/assets/logos/003.png'
-import logo3  from '../../../public/assets/logos/010.png'
-import logo4  from '../../../public/assets/logos/004.png'
+import logo1 from '../../../public/assets/logos/lg1.svg'
+import logo2 from '../../../public/assets/logos/lg2.svg'
+import logo3  from '../../../public/assets/logos/lg3.svg'
+import logo4  from '../../../public/assets/logos/google.svg'
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
@@ -67,12 +68,32 @@ const HeroSection = () => {
         <>
             <div className='container mx-auto py-2' ref={nextContainerRef}  >
                 <div className=''>
-
+                <motion.div className="title-80"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                    variants={{
+                      hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                      }}
+                            >
                     <div className='border-b flex justify-between lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-10 items-end'>
-                        <div className='  max-w-[1000px] '><h1 className='title-80'>Data Driven Performance Marketing Solutions</h1></div>
-                        <div className='text-gray1 text-font19'>01</div>
+                      <div className='  max-w-[1000px] '>
+                      <h1 className="title-80"
+                        > Data Driven Performance Marketing Solutions</h1>
+                      </div>
+                      <div className='text-gray1 text-font19'>01</div>
                     </div>
-
+                  </motion.div>
+                    <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        variants={{
+          hidden: { opacity: 0, y: 100 }, // Start below and invisible
+          visible: { opacity: 1, y: 0, transition: { duration: 1.3, ease: "easeOut" } }, // Slide up and fade in
+          }}
+              >
                     <div className='grid grid-cols-1 lg:grid-cols-2 lg:py-[142px] py-[50px] '>
 
                         <div className='col-span-1 mb-5 lg:mb-0'>
@@ -88,13 +109,22 @@ const HeroSection = () => {
                                 ads strategy to make sure that your marketing budget is spent effectively.
                                 We then design creative for your ads and provide ongoing optimization and
                                 management in order to achieve sustainable, growth-focused results.</p>
-                        </div>
+                </div>
 
                     </div>
+                    </motion.div>
 
                 </div>
             </div>
-
+            <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        variants={{
+          hidden: { opacity: 0, y: 100 }, // Start below and invisible
+          visible: { opacity: 1, y: 0, transition: { duration: 1.3, ease: "easeOut" } }, // Slide up and fade in
+          }}
+              >
             <div  style={{ width: divWidth  }}  className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class`} >
                 <div className='flex gap-5 bg-bglight   py-5'>
                     <div className='flex  gap-[30px] md:gap-[120px]  container flexcl600' style={{marginRight: "-15px" }}>
@@ -106,11 +136,10 @@ const HeroSection = () => {
 
                 </div>
 
-                <div className='bg-black w-full h-[500px]'>
-
-                </div>
+                <div className='bg-black w-full h-[500px]'> </div>
 
             </div>
+            </motion.div>
 
 
 
