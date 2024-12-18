@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { stories } from "../../data/stories";
 import {Lexend} from "next/font/google";
-import { animate, useInView } from "motion/react";
+
 
 import { motion } from 'framer-motion';
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
@@ -11,12 +11,10 @@ const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"
 const SuccessStories = () => {
 
 const ref = useRef(null)
-const isInView = useInView(ref, { once: true });
 
 
-const [animatedValues, setAnimatedValues] = useState(
-  Array(stories.length).fill(0) // Initialize with zeros
-);
+
+
 
 
 // useEffect(() => {
