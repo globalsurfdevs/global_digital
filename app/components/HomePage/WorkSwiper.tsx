@@ -15,6 +15,7 @@ const WorkSwiper = () => {
         className="!overflow-visible"
         modules={[Autoplay]}
         speed={5000}
+
         autoplay={{
           delay: 0,
           disableOnInteraction: false,

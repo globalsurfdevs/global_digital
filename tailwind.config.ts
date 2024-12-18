@@ -18,17 +18,17 @@ const config = {
         xxl: "1400px",
         "3xl": "1650px",
       },
-      // container: {
-      //   screens: {
-      //     xs: "450px",
-      //     sm: "610px",
-      //     md: "738px",
-      //     lg: "994px",
-      //     xl: "1120px",
-      //     xxl: "1300px",
-      //     "3xl": "1650px",
-      //   },
-      // },
+      container: {
+        screens: {
+          xs: "450px",
+          sm: "568px",
+          md: "768px",
+          lg: "992px",
+          xl: "1200px",
+          xxl: "1400px",
+          "3xl": "1650px",
+        },
+      },
       colors: {
         primary: "#E63E31",
         bglight: "#f9f9f9",

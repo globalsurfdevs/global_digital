@@ -202,7 +202,7 @@ body {
   overflow: hidden;
 }
 
-p,ul {
+.fnt-lexend {
   font-family: 'Lexend', sans-serif;
 
 }

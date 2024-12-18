@@ -7,6 +7,7 @@ const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"
 
 import React, { useEffect, useRef, useState } from "react";
 import { useInView, useSpring } from "motion/react";
+import {motion} from 'framer-motion'
 
 const OurAchievements = () => {
 
@@ -56,6 +57,15 @@ const OurAchievements = () => {
 
 
   return (
+    <motion.div
+    initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+            variants={{
+              hidden: { opacity: 0, y: 150 }, // Start below and invisible
+              visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+            }}
+  >
     <div className="bg-black text-white xl:px-16 xl:mt-20 py-0 xl:py-0 mt-10">
       <div className="grid md:grid-cols-3 gap-8 md:min-h-[300px] lg:min-h-[450px] xl:min-h-[598px]">
         <div className="border-b border-b-[#77787B] md:border-none">
@@ -99,7 +109,9 @@ const OurAchievements = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+
+    </motion.div>
   );
 };
 

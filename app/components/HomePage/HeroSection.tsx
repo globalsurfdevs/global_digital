@@ -8,17 +8,25 @@ const HeroSection = () => {
     whileInView="visible"
     viewport={{ once: true, amount: 0.5 }} >
       <div className="container mx-auto px-4"  >
-        <motion.h1 className="text-font80 leading-lh1p18 font-[400] leading-tight" id="triggerSection" variants={{
-              hidden: { opacity: 0, x: 50, skewX: 35 },
-              visible: { opacity: 1, x: 0, skewX: 0, transition: { duration: 0.5 } },
-            }}> Performance Focused <br /> Digital Marketing </motion.h1>
-        <motion.div className="mt-6 " variants={{ 
-            hidden: { opacity: 0, x: 50, skewX: 0 },
-            visible: { opacity: 1, x: 0, skewX: 0, transition: { duration: 0.5} },
-          }}>
+        <motion.h1 className="text-font80 leading-lh1p18 font-[400] leading-tight" id="triggerSection"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        variants={{
+          hidden: { opacity: 0, y: 50 }, // Start below and invisible
+          visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+          }}
+        > Performance Focused <br /> Digital Marketing </motion.h1>
+        <motion.div className="mt-6 "  initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, y: 70 }, // Start below and invisible
+                  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
+                }}>
           <a href="#"
-            className="relative group flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[0.5em] hover:text-white hover:border-black transition
-          before:absolute before:bottom-0 before:left-0 before:h-[2px] before:bg-white before:w-full before:transition-all before:duration-300 before:ease-in-out z-2 
+            className=" fnt-lexend relative group flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[0.5em] hover:text-white hover:border-black transition
+          before:absolute before:bottom-0 before:left-0 before:h-[2px] before:bg-white before:w-full before:transition-all before:duration-300 before:ease-in-out z-2
           after:absolute after:bottom-0 after:right-0 after:h-[2px] after:bg-primary after:w-full after:transition-all after:duration-300 after:ease-in-out hover:after:w-0 z-1" >
             SUCCESS STORIES
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="scale-75 group-hover:scale-90 group-hover:translate-y-[-2px] group-hover:translate-x-[2px] ease-in-out duration-300">
