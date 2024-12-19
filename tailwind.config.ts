@@ -36,6 +36,7 @@ const config = {
         dgray: "#F2F2F2",
         white: "#ffffff",
         gray2: "#424242",
+        clrE6E6E6: "#E6E6E6",
       },
       fontSize: {
         font14: "clamp(0.7rem,1.2vw,0.875rem)",

@@ -6,7 +6,7 @@ const Goals = () => {
     return (
         <>
             <div className='container mx-auto py-4'>
-                <div className='py-12 lg:py-24 grid grid-cols-2 gap-5'>
+                <div className='grid grid-cols-2 gap-5 pt-150 pb-150'>
                     <div>
                         <Image src={assets.goalspic1} alt='image1' />
                     </div>
@@ -16,12 +16,12 @@ const Goals = () => {
                 </div>
 
                 <div>
-                    <div className='grid lg:grid-cols-2 border-t border-b lg:pt-10 lg:pb-20 py-3'>
+                    <div className='grid lg:grid-cols-2 border-t border-clrE6E6E6 border-b lg:pt-[53px] lg:pb-[95px] py-3'>
                         <div className='col-span-1 flex'>
                             <h1 className='text-font65'>Goals</h1>
                         </div>
                         <div className='text-font19 pt-2 lg:pl-5'>
-                            <p>Innovo Group partnered with Global Surf to achieve several key objectives for their website.
+                            <p className='text-gray1'>Innovo Group partnered with Global Surf to achieve several key objectives for their website.
                                 The primary goal was to create a website that visually and thematically aligned with Innovo’s
                                 innovative brand identity. Additionally, Innovo sought to improve website speed and reduce loading
                                 times, enhance user experience to retain visitors longer, and increase conversions by attracting
@@ -34,7 +34,7 @@ const Goals = () => {
                             <h1 className='text-font65'>Objectives</h1>
                         </div>
                         <div className='text-font19 pt-2 lg:pl-5'>
-                            <p>To address goals, Global Surf conducted an in-depth analysis of the website&apos;s performance and speed.
+                            <p className='text-gray1'>To address goals, Global Surf conducted an in-depth analysis of the website&apos;s performance and speed.
                                 We implemented structural changes, optimized the code, and compressed media files to enhance site efficiency.
                                 Additionally, Global Surf uplifted the brand image by incorporating high-quality branding materials, ensuring
                                 a consistent and professional appearance across all touchpoints.</p>

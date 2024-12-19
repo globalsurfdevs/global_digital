@@ -50,8 +50,20 @@ import success2 from '../assets/success-stories/2.jpg'
 import success3 from '../assets/success-stories/3.jpg'
 import gulfcryo from '../assets/success-stories/gulf-cryo-svg.svg'
 import innvosvg from '../assets/portfolio/innovo_logo.svg'
+import cl from '../assets/icons/cl.svg'
+import cl1 from '../assets/icons/cl-1.svg'
+import pjt from '../assets/icons/pjt.svg'
+import pjt1 from '../assets/icons/pjt-1.svg'
+import yr from '../assets/icons/yr.svg'
+import yr1 from '../assets/icons/yr-1.svg'
 
 export const assets = {
+    cl,
+    cl1,
+    pjt,
+    pjt1,
+    yr,
+    yr1,
     logo,
     years,
     projects,
