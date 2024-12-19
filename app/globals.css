@@ -267,9 +267,12 @@ body {
       @media (max-width: 1199px) {
         .bdrsm .border {    border-width: 1px !important;}
               }
+              .bg-bl-gradient {background: linear-gradient(180deg, rgba(0, 0, 0, 0) 67.58%, rgba(0, 0, 0, 0.75) 100%);}
     @layer components {
       .title-80{ @apply  text-font80 leading-lh1p22;}
       .title-65 {  @apply text-font65 leading-lh1p07;  }
       .text-30{ @apply  text-font30 leading-lh1p33;}
       .text-19{ @apply  text-font19 leading-lh1p48;}
+      .pt-150{@apply lg:pt-[150px] pt-[50px]}
+      .pb-150{@apply lg:pb-[150px] pb-[50px]}
     }
