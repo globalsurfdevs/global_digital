@@ -26,7 +26,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="bg-black py-6 xs:py-10 lg:py-14 xl:pt-[109px] xl:pb-[131px]">
+      <div className="bg-black py-[50px] xs:py-10 lg:py-14 xl:pt-[109px] xl:pb-[131px]">
         <div className="container px-4 mx-auto text-white">
           <div className="flex flex-col">
         <motion.div
@@ -57,7 +57,7 @@ const Footer = () => {
                                 visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                               }}
                     >
-            <div className={`grid md:grid-cols-5 pt-12 ${GetInTouch ? "xl:pt-[121px]" : ""} `}>
+            <div className={`grid md:grid-cols-5 lg:pt-12 ${GetInTouch ? "xl:pt-[121px]" : ""} `}>
               <div className="h-full flex flex-col justify-between col-span-2">
                 <Image src={assets.footerLogo} alt="logo" className="" width={220} height={48.49} />
 
@@ -71,7 +71,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="grid md:grid-cols-5 pt-[121px]">
+            <div className="grid md:grid-cols-5 pt-[50px] lg:pt-[121px]">
               <div className={`h-full flex flex-col justify-between col-span-2 ${lexend.className}`}>
                 <p className="text-font19 text-gray-500">
                   P.O.Box 13653, 901 - SIT Tower

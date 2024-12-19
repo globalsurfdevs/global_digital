@@ -1,13 +1,30 @@
+"use client"
+import { motion } from 'framer-motion';
 import React from 'react'
 
 const Percentages = () => {
   return (
-    <div className='bg-black'>
+          <motion.div className='bg-black'
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                    variants={{
+                      hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                      }}
+                            >
         <div className='container mx-auto py-4'>
 
-            <div className='lg:pt-[110px]  lg:pb-[141px] py-[50px] grid lg:grid-cols-2 lg:gap-[300px] gap-5'>
 
-
+            <motion.div className='lg:pt-[110px]  lg:pb-[141px] py-[50px] grid lg:grid-cols-2 lg:gap-[300px] gap-5'
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                    variants={{
+                      hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                      }}
+                            >
             <div className='flex flex-col justify-between lg:gap-14 lg:gap-[100px] gap-[35px]'>
                 <div className='flex flex-col'>
                     <h1 className='text-primary title-65 pb-[19px]'>30.43%</h1>
@@ -38,12 +55,12 @@ const Percentages = () => {
 
             </div>
 
+            </motion.div>
 
-            </div>
 
         </div>
 
-    </div>
+</motion.div>
   )
 }
 

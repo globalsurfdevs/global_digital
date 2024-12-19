@@ -51,7 +51,7 @@ return (
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
                                 at turpis.
                             </p>
@@ -78,7 +78,7 @@ return (
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
                                 at turpis.
                             </p>
@@ -105,7 +105,7 @@ return (
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
                                 at turpis.
                             </p>
@@ -132,7 +132,7 @@ return (
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
                                 at turpis.
                             </p>
@@ -158,7 +158,7 @@ return (
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
                                 at turpis.
                             </p>
@@ -184,7 +184,7 @@ return (
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
                                 at turpis.
                             </p>

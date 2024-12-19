@@ -14,27 +14,28 @@ const WorkSwiper = () => {
         <Swiper
         className="!overflow-visible"
         modules={[Autoplay]}
-        autoplay={{
-          delay: 0,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
+        // autoplay={{
+        //   delay: 0,
+        //   disableOnInteraction: false,
+        //   pauseOnMouseEnter: true,
+        // }}
         freeMode={true}
         speed={5000} // Slide transition duration (500ms)
         slidesPerView="auto"
         loop={true} // Enable infinite looping
         breakpoints={{
-          320: { slidesPerView: 2 },
-          400: { slidesPerView: 3 },
-          640: { slidesPerView: 4 },
-          768: { slidesPerView: 4 },
-          1024: { slidesPerView: 5, spaceBetween: 130 },
+          320: { slidesPerView: 2, spaceBetween: 10 },
+          400: { slidesPerView: 2, spaceBetween: 10 },
+          640: { slidesPerView: 2, spaceBetween: 10 },
+          768: { slidesPerView: 3, spaceBetween: 15 },
+          1024: { slidesPerView: 4, spaceBetween: 25 },
+          1600: { slidesPerView: 4.6, spaceBetween: 60 },
         }}
       >
         {workSvgs.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="flex justify-center items-center group">
-              <div className="bg-white me-2 w-fit ease-linear duration-200">
+            <div className="flex justify-center items-center group home-st">
+              <div className="bg-white me-2 w-fit ease-linear duration-200 min-w-[50px] min-h-[50px] flex items-center justify-center ">
                 <img
                   src={item.icon}
                   alt={item.alt}
@@ -43,7 +44,7 @@ const WorkSwiper = () => {
                   className="ease-linear duration-200"
                 />
               </div>
-              <h3 className="text-font30 leading-lh1p33">{item.text}</h3>
+              <h3 className="text-30 ">{item.text}</h3>
             </div>
           </SwiperSlide>
         ))}

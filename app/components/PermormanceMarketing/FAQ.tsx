@@ -35,7 +35,7 @@ const FAQ = () => {
                             <div className='flex flex-col  '>
                             <div className={` ${open===index ? 'text-30 text-black' : 'text-30 text-gray1'}`} >{index + 1}. {item.title}</div>
                                 <Collapse isOpened={open===index}>
-                                    <div className="collapse-item pt-[22px]"><p className='text-19 text-gray1'>{item.description}</p></div>
+                                    <div className="collapse-item pt-[22px]"><p className='text-19 text-gray1 fnt-lexend '>{item.description}</p></div>
                                 </Collapse>
                             </div>
                             {open === index ? <div className='text-5xl text-primary'><Image src={arrowactive} alt="image" className="w-[35px] h-35px   "></Image></div> : <div className='text-xl'>
