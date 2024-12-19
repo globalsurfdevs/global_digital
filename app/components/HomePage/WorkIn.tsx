@@ -18,7 +18,7 @@ const WorkIn = () => {
                   }}
         >
       <div className='container mx-auto px-4 py-4 !overflow-visible'>
-        <div className='py-[50px] lg:py-[140px]  flex flex-col gap-12 xl:gap-[73px]'>
+        <div className='py-[50px] lg:py-[140px]  flex flex-col gap-12 xl:gap-[90px] home-slide'>
           <motion.h1  className='text-font65 leading-lh1p07'>We Work In</motion.h1>
           <WorkSwiper />
         </div>

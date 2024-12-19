@@ -1,11 +1,8 @@
 "use client"
 import { motion } from 'framer-motion';
-import Image from 'next/image'
 import React, { useEffect, useRef, useState } from "react"
-import logo1 from '../../../public/assets/logos/lg1.svg'
-import logo2 from '../../../public/assets/logos/lg2.svg'
-import logo3  from '../../../public/assets/logos/lg3.svg'
-import logo4  from '../../../public/assets/logos/google.svg'
+
+import PerformanceSwiper from '../PermormanceMarketing/PerformanceSwiper'
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
@@ -126,12 +123,17 @@ const HeroSection = () => {
           }}
               >
             <div  style={{ width: divWidth  }}  className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class`} >
-                <div className='flex gap-5 bg-bglight   py-5'>
-                    <div className='flex  gap-[30px] md:gap-[120px]  container flexcl600' style={{marginRight: "-15px" }}>
+                <div className='flex gap-5 bg-bglight  py-5'>
+                    <div className='  container flexcl600' style={{marginRight: "-15px" }}>
+                      <div className='w-full lg:w-1/2 overflow-hidden'>
+                      <PerformanceSwiper />
+                        {/* <div className='flex  gap-[30px] md:gap-[120px]'>
                         <Image src={logo1 } alt='image' width={160} height={40}></Image>
                         <Image src={logo2} alt='image' width={102} height={40}></Image>
                         <Image src={logo3} alt='image' width={88} height={44}></Image>
                         <Image src={logo4} alt='image' width={65} height={46}></Image>
+                        </div> */}
+                        </div>
                     </div>
 
                 </div>
