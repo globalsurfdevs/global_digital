@@ -37,7 +37,7 @@ const Results = () => {
                 <div className="bg-gray2 pt-5 pb-6 px-6 lg:pt-[37px] lg:pb-[50px]  md:px-8 md:pt-8 md:pb-8  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
                   <div className="relative  flex flex-col  ">
                     <h3 className="text-30 leading-lh1p66 mb-[14px]">Garden Concept</h3>
-                    <h3 className="text-white title-65 leading-lh0p76 mb-[28px]">
+                    <h3 className="text-white title-65 leading-lh0p76 mb-[15px] lg:mb-[28px] ">
                     42.66<span>%</span></h3>
                     <h3 className={`fnt-lexend text-font25  leading-lh1p26`}>Increase in Organic Traffic</h3>
                     <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ease-in-out duration-500">
@@ -58,7 +58,7 @@ const Results = () => {
                 <div className="bg-gray2 pt-5 pb-6 px-6 lg:pt-[37px] lg:pb-[50px]  md:px-8 md:pt-8 md:pb-8  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
                   <div className="relative  flex flex-col  ">
                     <h3 className="text-30 leading-lh1p66 mb-[14px]">Seleo</h3>
-                    <h3 className="text-white title-65 leading-lh0p76 mb-[28px]">
+                    <h3 className="text-white title-65 leading-lh0p76 mb-[15px] lg:mb-[28px] ">
                     28<span>X</span></h3>
                     <h3 className={`fnt-lexend text-font25  leading-lh1p26`}>Increase Overall Traffic Growth</h3>
                     <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ease-in-out duration-500">
@@ -79,7 +79,7 @@ const Results = () => {
                   <div className="bg-gray2 pt-5 pb-6 px-6 lg:pt-[37px] lg:pb-[50px]  md:px-8 md:pt-8 md:pb-8  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
                     <div className="relative  flex flex-col  ">
                       <h3 className="text-30 leading-lh1p66 mb-[14px]">Assent Steel </h3>
-                      <h3 className="text-white title-65 leading-lh0p76 mb-[28px]">
+                      <h3 className="text-white title-65 leading-lh0p76 mb-[15px] lg:mb-[28px] ">
                       2<span>X</span></h3>
                       <h3 className={`fnt-lexend text-font25  leading-lh1p26`}>Increase in Organic Traffic </h3>
                       <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ease-in-out duration-500">
