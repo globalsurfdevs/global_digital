@@ -45,7 +45,8 @@ const Percentages = () => {
                     <h1 className='text-primary title-65 pb-[19px] duration-500 group-hover:-translate-y-1'>88.20%</h1>
                     <div className='w-full bg-gray1 rounded-xl h-[1px] mb-[33px] duration-300 group-hover:-translate-y-1'></div>
                     <h3 className='text-white text-30 duration-500 group-hover:-translate-y-2'>Increase in Returning Users</h3>
-                </div>
+                    </div>
+
 
                 <div className='flex flex-col group'>
                     <h1 className='text-primary title-65 pb-[19px] duration-500 group-hover:-translate-y-1'>30X</h1>
