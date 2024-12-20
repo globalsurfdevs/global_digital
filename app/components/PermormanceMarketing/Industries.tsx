@@ -56,8 +56,8 @@ const Industries = () => {
 
   return (
     <div className=' '>
-        <div className='pt-[40px] lg:pt-[140px] pb-[30px]  lg:pb-[134px]  flex flex-col  border-b-2'>
-
+        <div className='  flex flex-col  '>
+        <div className="container border-b pt-[40px] lg:pt-[140px] pb-[30px]  lg:pb-[134px]">
         <div className=' container mx-auto text-4xl' ref={nextContainerRef}>
           <motion.div
                     initial="hidden"
@@ -70,7 +70,7 @@ const Industries = () => {
                   >
             <h2 className="title-65 pb-5 lg:pb-[60px]">Industries We Serve</h2>
             </motion.div>
-        </div>
+          </div>
         <motion.div
                                 initial="hidden"
                                         whileInView="visible"
@@ -84,6 +84,8 @@ const Industries = () => {
           <WorkSwiper />
           </div>
           </motion.div>
+        </div>
+
         </div>
     </div>
   )

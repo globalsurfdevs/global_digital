@@ -43,12 +43,12 @@ return (
                     <div className='lg:w-[60%] flex flex-col '>
 
 
-                            <div className='border-b border-black flex flex-col  pb-[40px] mb-[36px]'>
+                            <div className='border-b border-black flex flex-col  pb-[20px] mb-[20px] :lgpb-[40px] lg:mb-[36px]'>
                                 <h5 className='text-19 text-gray-400 pb-[5px] fnt-lexend'>Industry</h5>
                                 <h4 className='text-30'>Construction</h4>
                             </div>
 
-                            <div className='border-b border-black flex flex-col  pb-[40px] mb-[36px]'>
+                            <div className='border-b border-black flex flex-col  pb-[20px] mb-[20px] :lgpb-[40px] lg:mb-[36px]'>
                                 <h5 className='text-19 text-gray-400 pb-[5px] fnt-lexend'>Country</h5>
                                 <h4 className='text-30'>Global</h4>
                             </div>
@@ -76,9 +76,9 @@ return (
                                      hidden: { opacity: 0, y: 30 }, // Start below and invisible
                                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                      }}>
-                <div className='flex items-center gap-2 mb-3 lg:mb-8'>
+                <div className='flex items-center gap-2 mb-2 lg:mb-8'>
                     <h3 className='text-30 leading-lh1p33'>STORY</h3>
-                    <div className='bg-primary w-5 h-5'></div>
+                    <div className='bg-primary w-4 h-4 lg:w-5 lg:h-5 '></div>
                 </div>
                 <div>
                     <p className='text-19 text-gray1 fnt-lexend'>Innovo Group is a global leader in the construction industry,
@@ -106,23 +106,23 @@ return (
                                      hidden: { opacity: 0, y: 60 }, // Start below and invisible
                                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                      }}>
-                            <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-2 lg:gap-5'>
+                            <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>
                                 <div className='border-b lg:border-r lg:border-b-0 border-gray1 py-[20px] lg:py-[44px] group '>
                                     <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>30.43%</p>
-                                    <h3 className='text-30 text-white lg:pt-[30px] pt-[15px] duration-500 group-hover:-translate-y-2'>Increase in Avg. Page Speed</h3>
+                                    <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in Avg. Page Speed</h3>
                                 </div>
 
                                 <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px] group '>
                                     <div className='mx-auto lg:w-[85%]'>
                                         <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
-                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[15px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
+                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
                                     </div>
                                 </div>
 
                                 <div className='py-[20px] lg:py-[44px] group '>
                                     <div className='mx-auto lg:w-[85%]'>
                                         <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
-                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[15px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
+                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
                                     </div>
                                 </div>
                             </div>

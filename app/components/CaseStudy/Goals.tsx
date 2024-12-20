@@ -8,7 +8,7 @@ const Goals = () => {
         <div className='lg:py-[150px] py-[50px]'>
 
 
-              <motion.div className='grid lg:grid-cols-2 border-t  lg:pt-[53px] lg:pb-[95px] py-[50px]'
+              <motion.div className='grid lg:grid-cols-2 border-t  lg:pt-[53px] lg:pb-[95px] pt-[50px] pb-[25px]'
                initial="hidden"
                whileInView="visible"
                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -19,7 +19,7 @@ const Goals = () => {
                       <div className='col-span-1 flex'>
                 <h1 className='title-65'>Goals</h1>
             </div>
-            <div className=' pt-2 lg:pl-5'>
+            <div className=' pt-3 lg:pl-5'>
                 <p className='text-19 text-gray1 fnt-lexend' >Innovo Group partnered with Global Surf to achieve several key objectives for their website.
                 The primary goal was to create a website that visually and thematically aligned with Innovo’s
                 innovative brand identity. Additionally, Innovo sought to improve website speed and reduce loading
@@ -28,7 +28,7 @@ const Goals = () => {
                       </div>
 
         </motion.div>
-              <motion.div className='grid lg:grid-cols-2 border-t   lg:pt-[53px] lg:pb-[95px] py-[50px]'
+              <motion.div className='grid lg:grid-cols-2 border-t   lg:pt-[53px] lg:pb-[95px] py-[25px]'
                initial="hidden"
                whileInView="visible"
                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -39,7 +39,7 @@ const Goals = () => {
             <div className='col-span-1 flex'>
                 <h1 className='title-65'>Objectives</h1>
             </div>
-            <div className='text-font19 pt-2 lg:pl-5'>
+            <div className='text-font19 pt-3 lg:pl-5'>
                 <p className='text-19 text-gray1 fnt-lexend '>To address goals, Global Surf conducted an in-depth analysis of the website&apos;s performance and speed.
                 We implemented structural changes, optimized the code, and compressed media files to enhance site efficiency.
                 Additionally, Global Surf uplifted the brand image by incorporating high-quality branding materials, ensuring
@@ -48,7 +48,7 @@ const Goals = () => {
             </motion.div>
 
 
-              <motion.div className='grid lg:grid-cols-2 border-t lg:pb-[0px] lg:pt-[95px] py-[50px] pb-[0px]'
+              <motion.div className='grid lg:grid-cols-2 border-t lg:pb-[0px] lg:pt-[95px] py-[25px] pb-[0px]'
                initial="hidden"
                whileInView="visible"
                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -59,7 +59,7 @@ const Goals = () => {
             <div className='col-span-1 flex'>
                 <h1 className='title-65'>Challenge</h1>
             </div>
-            <div className=' pt-2 lg:pl-5'>
+            <div className=' pt-3 lg:pl-5'>
                 <p className='text-19 text-gray1 fnt-lexend'>Redesigning the website brought several challenges. Migrating from an outdated CMS without disruptions was complex,
                 especially with its limitations. Ensuring cross-browser and mobile compatibility, preserving existing organic traffic,
                 and integrating new branding materials, for a consistent brand experience were all essential. With a product launch
@@ -67,7 +67,7 @@ const Goals = () => {
             </div>
             </motion.div>
 
-        <motion.div className='grid lg:grid-cols-2 lg:space-x-5  space-y-5 md:space-y-0 pt-[50px] lg:pt-[146px] gap-10 lg:gap-[0px]'
+        <motion.div className='grid lg:grid-cols-2 lg:space-x-5  space-y-5 md:space-y-0 pt-[50px] lg:pt-[146px] gap-2 lg:gap-[0px]'
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -76,7 +76,7 @@ const Goals = () => {
                       visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                       }}
                             >
-            <div className='bg-dgray flex flex-col w-full   gap-[30px] lg:gap-[41px] lg:p-[75px] p-[30px]'>
+            <div className='bg-dgray flex flex-col w-full   gap-4 lg:gap-[41px] lg:p-[75px] p-6'>
             <div>
                 <h1 className='title-65'>Overcoming Challenges</h1>
             </div>
@@ -88,7 +88,7 @@ const Goals = () => {
             </div>
             </div>
 
-            <div className='bg-dgray flex flex-col w-full  gap-[30px] lg:gap-[41px] lg:p-[75px] p-[30px]'>
+            <div className='bg-dgray flex flex-col w-full  gap-4 lg:gap-[41px] lg:p-[75px] p-6'>
             <div>
                 <h1 className='title-65'>Key Achievements</h1>
             </div>

@@ -17,7 +17,7 @@ export const SuccessStories = () => {
                       }}
                             >
                 <div>
-                <h1 className='title-65 pb-[25px] lg:pb-[48px]'>Success Stories We&apos;re Proud of</h1>
+                <h1 className='title-65 pb-5 lg:pb-[48px]'>Success Stories We&apos;re Proud of</h1>
                 </div>
                 </motion.div>
                 <motion.div
@@ -33,7 +33,7 @@ export const SuccessStories = () => {
 
                 {data.map((item,index) => (
                     <div className='flex flex-col ' key={index}>
-                        <div className='bg-black h-96 relative mb-[31px]'>
+                        <div className='bg-black h-96 relative mb-4 lg:mb-[31px]'>
                             <Image src={item.image} alt="image" className="absolute object-cover w-full h-full"/>
                         </div>
                         <div className=' '>
