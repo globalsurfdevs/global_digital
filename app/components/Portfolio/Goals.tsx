@@ -28,7 +28,7 @@ const Goals = () => {
 
                 <div className='pb-[50px] lg:pb-150 '>
 
-                         <motion.div className='grid lg:grid-cols-2 border-t border-clrE6E6E6  lg:pt-[50px] lg:pb-[95px] py-[50px]'
+                         <motion.div className='grid lg:grid-cols-2 border-t border-clrE6E6E6  lg:pt-[50px] lg:pb-[95px] py-[50px] pt-[35px] pb-[25px]'
                                        initial="hidden"
                                        whileInView="visible"
                                        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -48,7 +48,7 @@ const Goals = () => {
                             </div>
                         </motion.div>
 
-                    <motion.div className='grid lg:grid-cols-2 border-t lg:pt-[50px] pt-[50px]'
+                    <motion.div className='grid lg:grid-cols-2 border-t lg:pt-[50px] pt-[25px]'
                                        initial="hidden"
                                        whileInView="visible"
                                        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -98,7 +98,7 @@ const Goals = () => {
 
                     <div className='bg-dgray flex flex-col w-full pt-5 lg:pt-[70px] pb-5 lg:pb-[91px]  lg:px-[80px] px-5'>
                         <div>
-                            <h1 className='title-65 mb-[15px] lg:mb-[30px]'>Challenge</h1>
+                            <h1 className='title-65 mb-3 lg:mb-[30px]'>Challenge</h1>
                         </div>
                         <div >
                             <p className='text-gray1 text-19 fnt-lexend'>Redesigning the website brought several challenges. Migrating from an outdated CMS without
@@ -111,7 +111,7 @@ const Goals = () => {
 
                     <div className='bg-dgray flex flex-col w-full pt-5 lg:pt-[70px] pb-5 lg:pb-[91px]  lg:px-[80px] px-5'>
                         <div>
-                            <h1 className='title-65 mb-[15px] lg:mb-[30px]'>Solutions</h1>
+                            <h1 className='title-65 mb-3 lg:mb-[30px]'>Solutions</h1>
                         </div>
                         <div className='pl-4'>
                             <ul className='list-disc flex flex-col gap-[30px] text-19 text-gray1 fnt-lexend'>

@@ -16,7 +16,7 @@ const HeroSection = () => {
                       hidden: { opacity: 0, y: 50 }, // Start below and invisible
                       visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                       }}
-                            >
+        >
         <div className='lg:grid lg:grid-cols-8 items-center border-b lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-10 flex flex-col gap-2'>
 
           <div className='text-font80 lg:col-span-5 xl:col-span-5 lg:text-left w-full h-full'>
@@ -40,15 +40,15 @@ const HeroSection = () => {
           visible: { opacity: 1, y: 0, transition: { duration: 1.3, ease: "easeOut" } }, // Slide up and fade in
           }}
               >
-        <div className='lg:py-[142px] py-[50px] flex flex-col lg:w-[70%] gap-6'>
+        <div className='lg:py-[142px] py-[50px] flex flex-col lg:w-[70%] gap-2 lg:gap-6'>
 
           <div className='flex items-center gap-2'>
             <h4 className='text-30 leading-[1.5]'>STORY</h4>
-            <div className='size-3 md:size-4 lg:size-6 bg-primary'></div>
+            <div className='w-4 h-4 lg:w-5 lg:h-5 bg-primary'></div>
           </div>
 
           <div  >
-            <p className='text-gray1 fnt-lexend'>Seleo, a prominent Middle Eastern beverage brand, sought to expand its digital footprint across the UAE, Kuwait, and Qatar. To achieve this, they partnered with Global Surf to revitalize their online presence and optimize marketing campaigns. The goal was to create a compelling digital experience that resonated with their target audience and drove customer engagement.</p>
+            <p className='text-gray1 fnt-lexend text-font19'>Seleo, a prominent Middle Eastern beverage brand, sought to expand its digital footprint across the UAE, Kuwait, and Qatar. To achieve this, they partnered with Global Surf to revitalize their online presence and optimize marketing campaigns. The goal was to create a compelling digital experience that resonated with their target audience and drove customer engagement.</p>
           </div>
         </div>
 
@@ -80,12 +80,12 @@ const HeroSection = () => {
           <div className={"flex h-full "}>
             <div className='flex flex-col  py-[50px] lg:py-[150px]  w-full lg:w-1/4'>
 
-              <div className='border-b border-black flex flex-col  pb-[40px] mb-[36px]'>
+              <div className='border-b border-black flex flex-col pb-[20px] mb-[20px] :lgpb-[40px] lg:mb-[36px]'>
                 <h5 className='text-19 text-gray-400 pb-[5px] fnt-lexend'>Industry</h5>
                 <h4 className='text-30'>Food & Beverage</h4>
               </div>
 
-              <div className='border-b border-black flex flex-col  pb-[40px] mb-[36px]'>
+              <div className='border-b border-black flex flex-col pb-[20px] mb-[20px] :lgpb-[40px] lg:mb-[36px]'>
                 <h5 className='text-19 text-gray-400 pb-[5px] fnt-lexend'>Country</h5>
                 <h4 className='text-30'>UAE, Kuwait, Qatar</h4>
               </div>
