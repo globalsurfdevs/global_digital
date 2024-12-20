@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 const Platforms = () => {
   return (
     <div className='container mx-auto py-4'>
-        <div className='bg-dgray flex flex-col gap-6 lg:gap-12 p-[25px] lg:p-[100px]'>
+        <div className='bg-dgray flex flex-col gap-7 lg:gap-12 p-[25px] lg:p-[100px]'>
 
               <div >
                   <motion.div
@@ -35,7 +35,7 @@ const Platforms = () => {
                                             hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                             visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
                                         }} >
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 lg:gap-y-[95px] gap-y-[30px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 lg:gap-y-[95px] gap-y-[45px]">
                 {[ // List of items for mapping
                     { icon: google, title: "Google Marketing", description: "We dig into your business through a comprehensive assessment. You get an in-depth report on what’s working, what’s." },
                     { icon: linkedin, title: "LinkedIn Ads", description: "Unlock the number one B2B social platform to reach and engage your target audience. With LinkedIn Ads management, you can run." },

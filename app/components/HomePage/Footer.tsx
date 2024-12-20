@@ -99,17 +99,17 @@ const Footer = () => {
       </div>
 
       <div className="container">
-        <div className="flex flex-wrap gap-5 justify-between  items-center py-5">
-          <div className="flex w-1/2 gap-10">
+        <div className="flex flex-wrap gap-5 md:justify-between justify-center items-center py-5">
+          <div className="flex w-1/2 gap-10 md:justify-start justify-center">
             <Image src={assets.footer1} alt="image"></Image>
             <Image src={assets.footer2} alt="image"></Image>
             <Image src={assets.footer3} alt="image"></Image>
           </div>
-          <div className="flex gap-2 md:gap-5 flex-wrap text-sm text-gray1">
+          <div className="flex gap-2 md:gap-5 flex-wrap text-sm text-gray1 justify-center">
             <p className="text-font14 leading-lh1p78 fw-[400]">Legal Page</p>
             <p className="text-font14 leading-lh1p78 fw-[400]">Privacy</p>
             <p className="text-font14 leading-lh1p78 fw-[400]">Modern Slavery Statement</p>
-            <p className="text-font14 leading-lh1p78 fw-[400]">|</p>
+            <p className="text-font14 leading-lh1p78 fw-[400] xshd">|</p>
             <p className="text-font14 leading-lh1p78 fw-[400]">©2024 Global Surf Digital. All rights reserved</p>
           </div>
         </div>

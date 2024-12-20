@@ -37,7 +37,7 @@ const Services = () => {
       key={index}
       className=" border-t last:border-b "
     >
-          <div className='flex py-[15px] lg:py-[34px]  gap-10 group items-center hover:translate-x-2 transition-all duration-300 ease-in-out'>
+          <div className='flex py-[15px] lg:py-[34px]  gap-4 md:gap-7  lg:gap-10 group items-center hover:translate-x-2 transition-all duration-300 ease-in-out'>
             <p className="text-gray1 transition-all duration-300 group-hover:text-primary">
             {String(index + 1).padStart(2, "0")}
             </p>

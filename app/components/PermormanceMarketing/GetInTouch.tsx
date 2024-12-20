@@ -32,7 +32,7 @@ const GetInTouch = () => {
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
                 >
-          <div className='mt-10 lg:mt-[57px]'><Button text='LET&apos;S TALK GROWTH' /></div>
+          <div className='mt-6 lg:mt-[57px] innerfnont'><Button text='LET&apos;S TALK GROWTH' /></div>
 
           </motion.div>
             </div>
