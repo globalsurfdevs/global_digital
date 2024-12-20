@@ -13,11 +13,11 @@ const Testimonials = () => {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                   variants={{
-                    hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                    hidden: { opacity: 0, y: 50 }, // Start below and invisible
                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                   }}
         >
-            <h1 className="title-65">What they say about us</h1>
+            <h2 className="title-65">What they say about us</h2>
 
         </motion.div>
           <div>
@@ -26,8 +26,8 @@ const Testimonials = () => {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                   variants={{
-                    hidden: { opacity: 0, y: 150 }, // Start below and invisible
-                    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                    hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
                   }}
         >
               <TestimonialsSwiper />

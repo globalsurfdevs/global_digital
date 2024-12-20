@@ -35,7 +35,7 @@ const Footer = () => {
                           whileInView="visible"
                           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                           variants={{
-                            hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                            hidden: { opacity: 0, y: 50 }, // Start below and invisible
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
                 >
@@ -54,7 +54,7 @@ const Footer = () => {
                               whileInView="visible"
                               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                               variants={{
-                                hidden: { opacity: 0, y: 150 }, // Start below and invisible
+                                hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                 visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                               }}
                     >
@@ -65,14 +65,14 @@ const Footer = () => {
               </div>
               <div className="md:col-span-3 flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
-                  <h1 className="text-font65">
+                  <h2 className="text-font65">
                     hello<span className="text-primary">@</span>globalsurf.ae
-                  </h1>
-                  <h1 className="text-font65">+971 4 582 1133</h1>
+                  </h2>
+                  <h2 className="text-font65">+971 4 582 1133</h2>
                 </div>
               </div>
             </div>
-            <div className="grid md:grid-cols-5 pt-[50px] lg:pt-[121px]">
+            <div className="grid md:grid-cols-5 pt-8 lg:pt-[121px]">
               <div className={`h-full flex flex-col justify-between col-span-2 ${lexend.className}`}>
                 <p className="text-font19 text-gray-500">
                   P.O.Box 13653, 901 - SIT Tower

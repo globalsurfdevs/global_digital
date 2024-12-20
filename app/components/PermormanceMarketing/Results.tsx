@@ -8,17 +8,17 @@ const Results = () => {
     <div className='container mx-auto py-4'>
         <div className='pt-[50px] lg:pt-[69px]  flex flex-col  '>
 
-          <div className='text-4xl mb-[32px]'>
+          <div className='text-4xl mb-6 lg:mb-[32px]'>
           <motion.div
                     initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                             variants={{
-                              hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                              hidden: { opacity: 0, y: 50 }, // Start below and invisible
                               visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                             }}
                   >
-              <h1 className='title-65'>Results</h1>
+              <h2 className='title-65'>Results</h2>
 
             </motion.div>
             </div>
@@ -27,14 +27,14 @@ const Results = () => {
                                         whileInView="visible"
                                         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                         variants={{
-                                            hidden: { opacity: 0, y: 150 }, // Start below and invisible
-                                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                                            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                                            visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
                                         }}
                                 >
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
 
-              <div className="bg-black  group text-white hover:cursor-pointer ease-linear duration-300 pb-5 md:pb-[57px]">
-                <div className="bg-gray2 pt-6 lg:pt-[37px] pb-6 lg:pb-[50px] px-8 md:px-[58px]  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
+              <div className="bg-black  group text-white hover:cursor-pointer ease-linear duration-300 pb-0 xl:pb-[57px]">
+                <div className="bg-gray2 pt-5 pb-6 px-6 lg:pt-[37px] lg:pb-[50px]  md:px-8 md:pt-8 md:pb-8  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
                   <div className="relative  flex flex-col  ">
                     <h3 className="text-30 leading-lh1p66 mb-[14px]">Garden Concept</h3>
                     <h3 className="text-white title-65 leading-lh0p76 mb-[28px]">
@@ -48,14 +48,14 @@ const Results = () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-white flex flex-col pt-12 md:pt-[62px] px-8 md:px-[59px]">
-                  <h3 className="text-30 mb-19 md:mb-[19px]">SEO Overhaul Boosts Visibility and User Engagement  </h3>
+                <div className="text-white flex flex-col pt-6 px-6 md:px-8 md:pt-8 pb-8 ">
+                  <h3 className="text-30 mb-[10px] md:mb-[19px]">SEO Overhaul Boosts Visibility and User Engagement  </h3>
                   <p className={`text-19 text-white fnt-lexend  `}>Explore The Garden Concept’s SEO strategy for boosting organic traffic and enhancing user experience through a redesigned website.</p>
                 </div>
               </div>
 
-              <div className="bg-black  group text-white hover:cursor-pointer ease-linear duration-300 pb-5 md:pb-[57px]">
-                <div className="bg-gray2 pt-6 lg:pt-[37px] pb-6 lg:pb-[50px] px-8 md:px-[58px]  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
+              <div className="bg-black  group text-white hover:cursor-pointer ease-linear duration-300 pb-0 xl:pb-[57px]">
+                <div className="bg-gray2 pt-5 pb-6 px-6 lg:pt-[37px] lg:pb-[50px]  md:px-8 md:pt-8 md:pb-8  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
                   <div className="relative  flex flex-col  ">
                     <h3 className="text-30 leading-lh1p66 mb-[14px]">Seleo</h3>
                     <h3 className="text-white title-65 leading-lh0p76 mb-[28px]">
@@ -69,14 +69,14 @@ const Results = () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-white flex flex-col pt-12 md:pt-[62px] px-8 md:px-[59px]">
-                  <h3 className="text-30 mb-19 md:mb-[19px]">Demand Gen Campaign Drives Unprecedented Growth </h3>
+                <div className="text-white flex flex-col pt-6 px-6 md:px-8 md:pt-8 pb-8">
+                  <h3 className="text-30 mb-[10px] md:mb-[19px]">Demand Gen Campaign Drives Unprecedented Growth </h3>
                   <p className={`text-19 text-white fnt-lexend`}>Discover how Seleo achieved remarkable success with a highly targeted Demand Gen campaign, driving a 6,031.30% surge in returning users and a 2,595% increase in new users, significantly expanding its digital presence. </p>
                 </div>
               </div>
 
-              <div className="bg-black  group text-white hover:cursor-pointer ease-linear duration-300 pb-5 md:pb-[57px]">
-                  <div className="bg-gray2 pt-6 lg:pt-[37px] pb-6 lg:pb-[50px] px-8 md:px-[58px]  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
+              <div className="bg-black  group text-white hover:cursor-pointer ease-linear duration-300 pb-0 xl:pb-[57px]">
+                  <div className="bg-gray2 pt-5 pb-6 px-6 lg:pt-[37px] lg:pb-[50px]  md:px-8 md:pt-8 md:pb-8  flex flex-col   group-hover:bg-primary ease-in-out duration-300">
                     <div className="relative  flex flex-col  ">
                       <h3 className="text-30 leading-lh1p66 mb-[14px]">Assent Steel </h3>
                       <h3 className="text-white title-65 leading-lh0p76 mb-[28px]">
@@ -90,8 +90,8 @@ const Results = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="text-white flex flex-col pt-12 md:pt-[62px] px-8 md:px-[59px]">
-                    <h3 className="text-30 mb-19 md:mb-[19px]">Enhanced Traffic with Strategic SEO and Google Ads Optimization</h3>
+                  <div className="text-white flex flex-col pt-6 px-6 md:px-8 md:pt-8 pb-8">
+                    <h3 className="text-30 mb-[10px] md:mb-[19px]">Enhanced Traffic with Strategic SEO and Google Ads Optimization</h3>
                     <p className={`text-19 text-white fnt-lexend  `}>Explore how Assent Steel regained organic traffic and achieved significant growth by implementing targeted SEO strategies and restructuring Google Ads campaigns for optimal performance. </p>
                   </div>
               </div>
