@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { assets } from '@/public/assets/assets'
 import Image from 'next/image'
+import Button from '../Button/Button'
 import React from 'react'
 
 const Ready = () => {
@@ -43,8 +44,7 @@ const Ready = () => {
                         you’re in the right place. With our experience and a personal touch, we’ll help your brand connect
                         with the right audience in a way that truly resonates. </p>
                     <div >
-                    <button className="w-fit text-font30 leading-lh1p66 border border-primary px-12 lg:px-24 rounded-full py-3 mt-[25px]  lg:mt-[63px]">LET&apos;S COLLABORATE</button>
-                    </div>
+                    <div className='mt-[20px] lg:mt-[64px]'><Button text='LET&apos;S COLLABORATE' /></div> </div>
                 </div>
 
               </motion.div>

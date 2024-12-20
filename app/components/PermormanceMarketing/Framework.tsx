@@ -31,58 +31,54 @@ const Framework = () => {
                                 }}
                         >
                         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10'>
-
-                            <div className='border-t  flex flex-col pt-10 border-black'>
-                                <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center mb-8'>
-                                <p className='text-white text-30'>01</p>
+                            {[
+                                {
+                                number: "01",
+                                title: "Insightful Business Analysis",
+                                description:
+                                    "We dive deep into your business to uncover what drives success, identify gaps, and pinpoint opportunities for exponential growth.",
+                                },
+                                {
+                                number: "02",
+                                title: "Tailored Performance Strategies",
+                                description:
+                                    "Custom-crafted marketing blueprints designed to align with your objectives and deliver measurable results across every channel.",
+                                },
+                                {
+                                number: "03",
+                                title: "Seamless Campaign Execution",
+                                description:
+                                    "From launch to optimization, we ensure your campaigns deliver peak performance with data-driven adjustments.",
+                                },
+                                {
+                                number: "04",
+                                title: "Continuous Growth Tracking",
+                                description:
+                                    "We measure success, refine strategies, and keep you on an upward trajectory toward sustained profitability.",
+                                },
+                            ].map((item, index) => (
+                                <div
+                                key={index}
+                                className='flex flex-col    relative group overflow-hidden'
+                              >
+                                    {/* Animated Red Border */}
+                                    <div className="relative h-[1px] bg-black rounded-xl  overflow-hidden">
+                                    <div className="absolute inset-0 bg-primary scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></div>
+                                    </div>
+                                <div className='bg-primary mt-10 w-[50px] h-[50px] flex   items-center justify-center mb-8 transition-transform duration-500'>
+                                  <p className='text-white  transition-transform duration-500 text-30'>{item.number}</p>
                                 </div>
                                 <div className='text-2xl'>
-
-                                <p className='text-30 pb-6 text-black'>Insightful Business Analysis</p>
+                                  <p className='text-30 pb-6 text-black'>{item.title}</p>
                                 </div>
                                 <div>
-                                    <p className='fnt-lexend text-gray1 text-19 font-medium'>We dive deep into your business to uncover what drives success,
-                                        identify gaps, and pinpoint opportunities for exponential growth. </p>
+                                  <p className='fnt-lexend text-gray1 text-19 font-medium'>{item.description}</p>
                                 </div>
+                              </div>
+
+                            ))}
                             </div>
 
-                            <div className='border-t  flex flex-col pt-10 border-black'>
-                                <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
-                                <p className='text-white text-30'>02</p>
-                                </div>
-                                <div className='text-2xl'>
-                                <p className='text-30 pb-6 text-black'>Tailored Performance Strategies </p>
-                                </div>
-                                <div>
-                                    <p className='fnt-lexend text-gray1 text-19 font-medium'>Custom-crafted marketing blueprints designed to align with your objectives and deliver measurable results across every channel. </p>
-                                </div>
-                            </div>
-
-                            <div className='border-t  flex flex-col pt-10 border-black'>
-                                <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
-                                <p className='text-white text-30'>03</p>
-                                </div>
-                                <div className='text-2xl'>
-                                <p className='text-30 pb-6 text-black'>Seamless Campaign Execution</p>
-                                </div>
-                                <div>
-                                    <p className='fnt-lexend text-gray1 text-19 font-medium'>From launch to optimization, we ensure your campaigns deliver peak performance with data-driven adjustments. </p>
-                                </div>
-                            </div>
-
-                            <div className='border-t  flex flex-col pt-10 border-black'>
-                                <div className='bg-primary w-[50px] h-[50px] flex items-center justify-center  mb-8'>
-                                    <p className='text-white text-30'>04</p>
-                                </div>
-                                <div className='text-2xl'>
-                                <p className='text-30 pb-6 text-black'>Continuous Growth Tracking</p>
-                                </div>
-                                <div>
-                                    <p className='fnt-lexend text-gray1 text-19 font-medium'>We measure success, refine strategies, and keep you on an upward trajectory toward sustained profitability. </p>
-                                </div>
-                            </div>
-
-                        </div>
                 </motion.div>
 
             </div>

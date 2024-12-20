@@ -22,49 +22,35 @@ const Services = () => {
 
             </div>
 
-            <div className='w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn'>
+            <div className="w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn">
+  {[
+    "Media Strategy Consulting",
+    "Campaign Planning & Execution",
+    "Audience Targeting & Segmentation",
+    "Platform Setup & Optimization",
+    "Campaign Execution & Management",
+    "A/B Testing & Performance Improvement",
+    "Data-Driven Reporting & Analysis",
+    "Creative Content Development & Curation",
+  ].map((item, index) => (
+    <div
+      key={index}
+      className=" border-t last:border-b "
+    >
+          <div className='flex py-[34px]  gap-10 group  hover:translate-x-2 transition-all duration-300 ease-in-out'>
+            <p className="text-gray1 transition-all duration-300 group-hover:text-primary">
+            {String(index + 1).padStart(2, "0")}
+            </p>
+            <div className="consu">
+            <p className="transition-all duration-300 group-hover:text-primary">
+            {item}
+            </p>
+            </div>
+          </div>
+    </div>
+  ))}
+</div>
 
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                    <p className='text-gray1'>01</p>
-                    <div className='consu'><p>Media Strategy Consulting</p></div>
-                </div>
-
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                <p className='text-gray1'>02</p>
-                    <div className='consu'><p>Campaign Planning & Execution</p></div>
-                </div>
-
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                <p className='text-gray1'>03</p>
-                    <div  className='consu'><p>Audience Targeting & Segmentation</p></div>
-                </div>
-
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                <p className='text-gray1'>04</p>
-                    <div  className='consu'><p>Platform Setup & Optimization</p></div>
-                </div>
-
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                <p className='text-gray1'>05</p>
-                    <div  className='consu'><p>Campaign Execution & Management</p></div>
-                </div>
-
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                <p className='text-gray1'>06</p>
-                    <div  className='consu'><p>A/B Testing & Performance Improvement</p></div>
-                </div>
-
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                <p className='text-gray1'>07</p>
-                    <div  className='consu'><p>Data-Driven Reporting & Analysis</p></div>
-                </div>
-
-                <div className='flex gap-10 py-[34px] border-t border-b'>
-                <p className='text-gray1'>08</p>
-                    <div  className='consu'><p>Creative Content Development & Curation</p></div>
-                </div>
-
-              </div>
 
         </div>
         </motion.div>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { assets } from "@/public/assets/assets";
+import Button from '../Button/Button';
 import Image from "next/image";
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
@@ -42,9 +43,9 @@ const Footer = () => {
               <h1 className="text-font65 leading-lh1p07">
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
               </h1>
-              <div>
-                <button className="text-font30 leading-lh1p66 border border-primary px-24 rounded-full py-3 mt-10 lg:mt-[57px] mb-10  lg:mb-[120px]">LET&apos;S TALK</button>
-              </div>
+
+          <div className='mt-10 lg:mt-[57px] mb-10  lg:mb-[120px]'><Button text='LET&apos;S TALK' /></div>
+
               </div>}
 
             </motion.div>

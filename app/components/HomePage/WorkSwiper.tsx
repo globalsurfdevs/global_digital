@@ -14,11 +14,11 @@ const WorkSwiper = () => {
         <Swiper
         className="!overflow-visible"
         modules={[Autoplay]}
-        // autoplay={{
-        //   delay: 0,
-        //   disableOnInteraction: false,
-        //   pauseOnMouseEnter: true,
-        // }}
+        autoplay={{
+          delay: 0,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
         freeMode={true}
         speed={5000} // Slide transition duration (500ms)
         slidesPerView="auto"
