@@ -106,28 +106,27 @@ return (
                                      hidden: { opacity: 0, y: 60 }, // Start below and invisible
                                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                      }}>
-            <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-2  lg:gap-5'>
-                <div className='border-b lg:border-r lg:border-b-0 border-gray1 py-[20px] lg:py-[44px]'>
-                    <p className='title-65 text-primary'>30.43%</p>
-                    <h3 className='text-30 text-white lg:pt-[30px] pt-[15px]'>Increase in Avg. Page Speed</h3>
-                </div>
+                            <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-2 lg:gap-5'>
+                                <div className='border-b lg:border-r lg:border-b-0 border-gray1 py-[20px] lg:py-[44px] group '>
+                                    <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>30.43%</p>
+                                    <h3 className='text-30 text-white lg:pt-[30px] pt-[15px] duration-500 group-hover:-translate-y-2'>Increase in Avg. Page Speed</h3>
+                                </div>
 
-                <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px]'>
-                    <div className='mx-auto lg:w-[85%]'>
-                        <p className='title-65 text-primary'>2X</p>
-                        <h3 className='text-30 text-white lg:pt-[30px] pt-[15px]'>Increase in User Engagement</h3>
-                    </div>
+                                <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px] group '>
+                                    <div className='mx-auto lg:w-[85%]'>
+                                        <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
+                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[15px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
+                                    </div>
+                                </div>
 
-                </div>
+                                <div className='py-[20px] lg:py-[44px] group '>
+                                    <div className='mx-auto lg:w-[85%]'>
+                                        <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
+                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[15px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div className='  py-[20px] lg:py-[44px]'>
-                    <div className='mx-auto  lg:w-[85%]'>
-                        <p className='title-65 text-primary'>2X</p>
-                        <h3 className='text-30 text-white lg:pt-[30px] pt-[15px]'>Increase in User Engagement</h3>
-                    </div>
-
-                </div>
-            </div>
                     </motion.div>
         </div>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../Button/Button'
 
 const GetInTouch = () => {
   return (
@@ -8,9 +9,8 @@ const GetInTouch = () => {
               <h1 className="title-65 leading-[1.15]">
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
               </h1>
-              <div>
-                <button className="text-font30 leading-lh1p66 font-medium border border-primary px-8 rounded-full py-3  mt-10 lg:mt-[57px]">LET&apos;S TALK GROWTH</button>
-              </div>
+
+          <div className='mt-10 lg:mt-[57px]'><Button text='LET&apos;S TALK GROWTH' /></div>
             </div>
           </div>
         </div>
