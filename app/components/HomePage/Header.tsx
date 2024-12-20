@@ -117,7 +117,7 @@ const Header = () => {
 
   } else {
     return (
-      <header className={`border-b py-4 ${visibleHeader ? "header" : ""}`}>
+      <header className={` py-4 pb-4 lg:pb-[22px] ${visibleHeader ? "header" : ""}`}>
         <div className="container flex items-center justify-between">
           <div className="logo-s">
             <Image src={assets.logo} className="w-[200px]" alt="" width={100} height={100} />

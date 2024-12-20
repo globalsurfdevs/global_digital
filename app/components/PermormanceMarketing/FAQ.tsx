@@ -49,8 +49,8 @@ const FAQ = () => {
                                     <div className="collapse-item pt-3 lg:pt-[22px]"><p className='text-19 text-gray1 fnt-lexend '>{item.description}</p></div>
                                 </Collapse>
                             </div>
-                            {open === index ? <div className='text-5xl text-primary'><Image src={arrowactive} alt="image" className="w-[35px] h-35px   "></Image></div> : <div className='text-xl'>
-                                <Image src={arrowdown} alt="image" className="w-15 h-15 bg-white "></Image></div>}
+                            {open === index ? <div className='text-5xl text-primary'><Image src={arrowactive} alt="image" className="min-w-[25px] min-h-[25px] lg:min-w-[35px] lg:min-h-[35px] "></Image></div> : <div className='text-xl'>
+                                <Image src={arrowdown} alt="image" className="min-w-[15px] min-h-[15px] bg-white "></Image></div>}
                         </div>
                     ))}
 
