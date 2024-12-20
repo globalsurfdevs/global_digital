@@ -6,6 +6,7 @@ import Image from "next/image";
 import arrowactive from '@/public/assets/logos/arr-active.svg'
 import arrowdown from '@/public/assets/logos/arr-down.svg'
 import {Collapse} from 'react-collapse';
+import { motion } from 'framer-motion';
 
 const FAQ = () => {
 
@@ -22,20 +23,30 @@ const FAQ = () => {
 
     return (
         <div className='container mx-auto py-4'>
-            <div className='py-24 grid grid-cols-1 xl:grid-cols-7'>
+            <motion.div
+                  initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                          variants={{
+                            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                          }}
+                >
+            <div className='lg:py-[150px] py-[50px] grid grid-cols-1 xl:grid-cols-7'>
 
                 <div className='col-span-2  mb-5 xl:mb-0'>
-                    <h1 className='title-65'>FAQ</h1>
-                </div>
+                    <h2 className='title-65'>FAQ</h2>
+                    </div>
+
 
                 <div className='col-span-5 w-full'>
 
                     {accordianItems.map((item,index)=>(
-                        <div className='flex justify-between w-full border-b border-t py-8 lg:pt-[50px] lg:pb-[50px] items-center gap-3' key={index}  onClick={()=>toggle(index)}>
+                        <div className='flex justify-between w-full border-b border-t py-6 lg:pt-[50px] lg:pb-[50px] items-center gap-3' key={index}  onClick={()=>toggle(index)}>
                             <div className='flex flex-col  '>
                             <div className={` ${open===index ? 'text-30 text-black' : 'text-30 text-gray1'}`} >{index + 1}. {item.title}</div>
                                 <Collapse isOpened={open===index}>
-                                    <div className="collapse-item pt-[22px]"><p className='text-19 text-gray1 fnt-lexend '>{item.description}</p></div>
+                                    <div className="collapse-item pt-3 lg:pt-[22px]"><p className='text-19 text-gray1 fnt-lexend '>{item.description}</p></div>
                                 </Collapse>
                             </div>
                             {open === index ? <div className='text-5xl text-primary'><Image src={arrowactive} alt="image" className="w-[35px] h-35px   "></Image></div> : <div className='text-xl'>
@@ -45,7 +56,8 @@ const FAQ = () => {
 
                 </div>
 
-            </div>
+                </div>
+                </motion.div>
         </div>
     )
 }

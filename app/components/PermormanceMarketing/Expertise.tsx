@@ -9,7 +9,7 @@ return (
 <div className='container mx-auto py-4'>
     <div className='pt-[50px] lg:pt-[136px] pb-[50px] lg:pb-[150px] flex flex-col '>
 
-            <div className='mb-[30px] lg:mb-[56px]'>
+            <div className='mb-5 lg:mb-[56px]'>
                 <motion.div
                           initial="hidden"
                                   whileInView="visible"
@@ -19,22 +19,23 @@ return (
                                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                   }}
                         >
-                    <h1 className='title-65 '>Area of Expertise</h1>
+                    <h2 className='title-65 '>Area of Expertise</h2>
                     </motion.div>
         </div>
-            <motion.div
-                    initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                            variants={{
-                                hidden: { opacity: 0, y: 150 }, // Start below and invisible
-                                visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
-                            }}
-                    >
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 xl:gap-0 bdrsm'>
+
+            <div >
+            <motion.div className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 xxl:grid-cols-4 gap-5 xl:gap-0 bdrsm'
+                          initial="hidden"
+                                  whileInView="visible"
+                                  viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                                  variants={{
+                                    hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                                    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                                  }}
+                        >
                     {/* Item 1 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                                 <Image src={assets.sea} alt="image"
@@ -46,7 +47,7 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                                 Search Engine Advertising
                             </p>
 
@@ -61,7 +62,7 @@ return (
 
                     {/* Item 2 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                     <Image src={assets.socialMediaNew} alt="image"
@@ -73,7 +74,7 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Social Media Marketing
                             </p>
 
@@ -88,7 +89,7 @@ return (
                     {/* Item 3 */}
 
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0   group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0  lg:border-r-[1px] xxl:border-r-[0px] lg:border-b-0 xxl:border-b-[1px]   group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                         <Image src={assets.influencer} alt="image"
@@ -100,7 +101,7 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Influencer Marketing
                             </p>
 
@@ -114,7 +115,7 @@ return (
 
                     {/* Item 4 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border     group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border     group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
 
@@ -127,7 +128,7 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Programmatic Advertising
                             </p>
 
@@ -140,7 +141,7 @@ return (
                     </div>
                     {/* Item 5 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0    group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0    group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
 
@@ -153,7 +154,7 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Video ads & Display
                             </p>
 
@@ -167,7 +168,7 @@ return (
 
                     {/* Item 6 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border 0    group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border 0    group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                     <Image src={assets.appStore} alt="image"
@@ -179,7 +180,7 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             App Store advertising
                             </p>
 
@@ -190,8 +191,8 @@ return (
                             </p>
                         </div>
                     </div>
+                    </motion.div>
                 </div>
-            </motion.div>
 
 
     </div>

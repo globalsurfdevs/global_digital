@@ -13,12 +13,12 @@ const Services = () => {
             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
             }}
               >
-        <div className=' pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-10 gap-xl-0'>
+        <div className=' pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-5 lg:gap-10 gap-xl-0'>
 
 
 
                   <div className='col-span-2 text-5xl'>
-                      <h1 className='title-65'>Our Services Included</h1>
+                      <h2 className='title-65 pb-2'>Our Services Included</h2>
 
             </div>
 
@@ -37,12 +37,12 @@ const Services = () => {
       key={index}
       className=" border-t last:border-b "
     >
-          <div className='flex py-[34px]  gap-10 group  hover:translate-x-2 transition-all duration-300 ease-in-out'>
+          <div className='flex py-[15px] lg:py-[34px]  gap-10 group items-center hover:translate-x-2 transition-all duration-300 ease-in-out'>
             <p className="text-gray1 transition-all duration-300 group-hover:text-primary">
             {String(index + 1).padStart(2, "0")}
             </p>
             <div className="consu">
-            <p className="transition-all duration-300 group-hover:text-primary">
+            <p className="text-30 transition-all duration-300 group-hover:text-primary">
             {item}
             </p>
             </div>

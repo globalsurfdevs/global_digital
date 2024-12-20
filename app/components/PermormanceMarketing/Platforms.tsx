@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 const Platforms = () => {
   return (
     <div className='container mx-auto py-4'>
-        <div className='bg-dgray flex flex-col gap-12 p-[35px] md:p-[100px]'>
+        <div className='bg-dgray flex flex-col gap-6 lg:gap-12 p-[25px] lg:p-[100px]'>
 
               <div >
                   <motion.div
@@ -20,11 +20,11 @@ const Platforms = () => {
                                               whileInView="visible"
                                               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                               variants={{
-                                                hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                                                hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                                 visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                               }}
                                     >
-                      <h1 className='title-65'>Our Platforms</h1>
+                      <h2 className='title-65'>Our Platforms</h2>
                       </motion.div>
             </div>
 
@@ -32,10 +32,10 @@ const Platforms = () => {
                                         whileInView="visible"
                                         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                         variants={{
-                                            hidden: { opacity: 0, y: 150 }, // Start below and invisible
-                                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                                            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                                            visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
                                         }} >
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-[95px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 lg:gap-y-[95px] gap-y-[30px]">
                 {[ // List of items for mapping
                     { icon: google, title: "Google Marketing", description: "We dig into your business through a comprehensive assessment. You get an in-depth report on what’s working, what’s." },
                     { icon: linkedin, title: "LinkedIn Ads", description: "Unlock the number one B2B social platform to reach and engage your target audience. With LinkedIn Ads management, you can run." },
@@ -46,16 +46,16 @@ const Platforms = () => {
                 ].map((item, index) => (
                     <div
                     key={index}
-                    className="flex flex-col group transition-all duration-300      p-6 "
+                    className="flex flex-col group transition-all duration-300  "
                     >
                     <div className="flex gap-3 items-center">
-                        <Image src={item.icon} alt="icon" />
+                        <Image src={item.icon} alt="icon" className='w-[25px] lg:w-auto'/>
                         <h3 className="text-30 transition-colors duration-300 group-hover:text-primary">
                         {item.title}
                         </h3>
                     </div>
 
-                    <div className="relative h-[1px] bg-black rounded-xl mt-[30px] mb-[43px] overflow-hidden">
+                    <div className="relative h-[1px] bg-black rounded-xl mt-5 mb-5 lg:mt-[30px] lg:mb-[43px] overflow-hidden">
                     <div className="absolute inset-0 bg-primary scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></div>
                     </div>
 
