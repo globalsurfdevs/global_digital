@@ -38,7 +38,7 @@ const Boost = () => {
 
                     <div className='flex flex-col  '>
 
-                        <div className='pb-[20px] md:pb-[65px] border-gray-500'>
+                        <div className='pb-[20px] md:pb-[65px] border-gray-500 imsr'>
                             <Image src={logo1} alt='image'/>
                         </div>
 
@@ -54,7 +54,7 @@ const Boost = () => {
 
                     <div className='flex flex-col '>
 
-                        <div className='pb-[20px] md:pb-[65px] border-gray-500'>
+                        <div className='pb-[20px] md:pb-[65px] border-gray-500 imsr'>
                             <Image src={logo2} alt='image'/>
                         </div>
 
@@ -70,7 +70,7 @@ const Boost = () => {
 
                     <div className='flex flex-col '>
 
-                        <div className='pb-[20px] md:pb-[65px] border-gray-500'>
+                        <div className='pb-[20px] md:pb-[65px] border-gray-500 imsr'>
                             <Image src={logo3} alt='image'/>
                         </div>
 
@@ -86,7 +86,7 @@ const Boost = () => {
 
                     <div className='flex flex-col '>
 
-                        <div className='pb-[20px] md:pb-[65px] border-gray-500'>
+                        <div className='pb-[20px] md:pb-[65px] border-gray-500 imsr'>
                             <Image src={logo4} alt='image'/>
                         </div>
 
