@@ -1,7 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 
-import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import { useState } from 'react';
 
