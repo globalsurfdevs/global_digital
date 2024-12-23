@@ -44,9 +44,9 @@ const Tours = () => {
             </div>
           ))}
         </div>
-        <div className="w-full flex justify-center mt-[30px] lg:mt-[50px]">
+        <div className="w-full flex justify-center mt-[30px] lg:mt-[50px] innerfnont">
         <motion.button
-      className="border lg:py-4 lg:px-[195px] py-3 px-8 rounded-full leading-[1.67] text-30 font-medium"
+      className="border lg:py-4 lg:px-[195px] py-3 px-8 rounded-full leading-[1.67] text-30 font-medium "
       initial={{ scale: 1 }}
       whileHover={{
         scale: 1.1,
