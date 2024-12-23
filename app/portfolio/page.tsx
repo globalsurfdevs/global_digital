@@ -1,14 +1,10 @@
 import React from 'react'
-import HeroSection from '../components/Portfolio-details/HeroSection'
-import Goals from '../components/Portfolio-details/Goals'
-import Result from '../components/Portfolio-details/Result'
+import HeroSection from '../components/Portfolio/HeroSection'
 
 const page = () => {
   return (
     <>
-        <HeroSection/>
-        <Goals/>
-        <Result/>
+    <HeroSection/>
     </>
   )
 }
