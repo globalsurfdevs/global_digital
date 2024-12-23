@@ -43,19 +43,20 @@ const HeroSection = () => {
                       visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                       }}
         >
-        <div className='lg:grid lg:grid-cols-8 items-center border-b lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-[50px] flex flex-col gap-2'>
+        <div className='lg:grid lg:grid-cols-8 items-center border-b lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-[50px] flex flex-col gap-4'>
 
-          <div className='text-font80 lg:col-span-2 xl:col-span-2 lg:text-left w-full h-full'>
-            <h1 className='title-80'>Work</h1>
+          <div className='text-font80 lg:col-span-2 xl:col-span-3 lg:text-left w-full h-full'>
+            <h1 className='title-80'>Excellence <br></br>in Every Project</h1>
           </div>
 
-          <div className='lg:col-span-6 xl:col-span-6 flex   items-center w-full h-full   lg:py-4 pt-4 pb-0'>
+          <div className='lg:col-span-6 xl:col-span-5 flex   items-center w-full h-full   lg:py-4 pt-4 pb-0'>
 
-            <p className='text-30 text-gray1'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s</p>
+            <p className='text-30 text-gray1'>our projects in digital marketing. From strategic campaigns to professional website designs, each project is focused on delivering clear results. See how we help businesses achieve their goals in the digital space.</p>
           </div>
 
         </div>
         </motion.div>
+
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 gap-8 lg:gap-y-12 items-center border-b lg:pt-[130px]  pt-[50px] pb-10 flex flex-col ">
           {portfolioData.map((item, index) => (
 

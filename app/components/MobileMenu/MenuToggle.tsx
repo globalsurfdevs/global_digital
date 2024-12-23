@@ -3,7 +3,7 @@ import { motion, SVGMotionProps } from "framer-motion";
 
 
 interface MenuToggleProps {
-  toggle: () => void; // Explicitly typing 'toggle' as a function returning void
+  toggle: () => void; // Explicitly typing 'toggle' as a function returning void+
 }
 
 const Path = (props: React.JSX.IntrinsicAttributes & SVGMotionProps<SVGPathElement> & React.RefAttributes<SVGPathElement>) => (
@@ -23,7 +23,7 @@ export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => (
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5" },
           open: { d: "M 3 16.5 L 17 2.5" },
-          
+
         }}
       />
       <Path

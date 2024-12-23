@@ -58,6 +58,14 @@ export const Example = () => {
 
   React.useEffect(()=>{
     console.log(isOpen)
+    if (isOpen == true) {
+      document.body.style.overflow = "hidden";
+      document.body.style.backgroundColor = "#0000006e";
+    }
+    else {
+      document.body.style.overflow = "";
+      document.body.style.backgroundColor = "";
+    }
   },[isOpen])
 
   React.useEffect(() => {
@@ -89,7 +97,7 @@ export const Example = () => {
         <motion.div className="py-5 px-6" variants={imageSection}>
           <Image src={assets.logo} alt="logo" className="w-32"/>
         </motion.div>
-
+        <Navigation />
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
         <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>
@@ -104,7 +112,7 @@ export const Example = () => {
         </div>
 
         </motion.div>}
-      <Navigation />
+
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );

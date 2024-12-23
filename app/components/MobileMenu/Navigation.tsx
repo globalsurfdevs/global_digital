@@ -3,24 +3,29 @@ import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
 import { menuItems } from "@/app/data/menuItems";
 
-
-const variants = {
-  open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-  },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 }
-  }
-};
+import Image from "next/image";
 
 export const Navigation = () => (
-  <>
-    <motion.ul variants={variants} className="mobile-menu-ul">
-    {menuItems.map((item, index) => (
-      <MenuItem key={index} i={index} item={item}/>
+  <motion.ul className="mobile-menu-ul">
+    {menuItems.map((menuItem, index) => (
+      <MenuItem key={index} item={menuItem.item}>
+        {menuItem.children &&
+          menuItem.children.map((child, childIndex) => (
+            <li
+              key={childIndex}
+              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 border-b last:border-none"
+            >
+              <Image
+                src={child.svg}
+                alt={child.item}
+                className="h-6 w-6"
+                width={24}
+                height={24}
+              />
+              {child.item}
+            </li>
+          ))}
+      </MenuItem>
     ))}
   </motion.ul>
-  </>
 );
-
-// const itemIds = [0, 1, 2, 3];

@@ -10,39 +10,39 @@ export const menuItems = [
         children:[
             {
                 item:"Social Media Marketing",
-                svg:assets.socialMedia
+                svg: assets.socialMedia
             },
             {
                 item:"Website Design And Development",
-                svg:assets.websiteD
+                svg: assets.websiteD
             },
             {
                 item:"Search Engine Optimization",
-                svg:assets.seo
+                svg: assets.seo
             },
             {
                 item:"Mobile Applications Development",
-                svg:assets.mobile
+                svg: assets.mobile
             },
             {
                 item:"Branding And Creatives",
-                svg:assets.branding
+                svg: assets.branding
             },
             {
                 item:"Reputation Management",
-                svg:assets.reputation
+                svg: assets.reputation
             },
             {
                 item:"Video Production",
-                svg:assets.video
+                svg: assets.video
             },
             {
                 item:"Strategy Consulting",
-                svg:assets.strategy
+                svg: assets.strategy
             },
             {
                 item:"Search Engine Marketing",
-                svg:assets.sem
+                svg: assets.sem
             }
         ]
     },

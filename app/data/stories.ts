@@ -13,7 +13,7 @@ export const stories = [
     title1: "Seleo",
     svg: assets.seventy,
     count: '28X',
-    description1: "Increase Overall Traffic Growth",
+    description1: "Increase in Overall Traffic Growth",
     title2: "Demand Gen Campaign Drives Unprecedented Growth ",
     description2: "Discover how Seleo achieved remarkable success with a highly targeted Demand Gen campaign, driving a 6,031.30% surge in returning users and a 2,595% increase in new users, significantly expanding its digital presence. ",
   },
