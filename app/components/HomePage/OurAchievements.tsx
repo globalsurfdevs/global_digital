@@ -47,7 +47,7 @@ const OurAchievements = () => {
 
   useEffect(()=>{
     if(isInView){
-      springYearCount.set(10)
+      springYearCount.set(11)
       springClientCount.set(125)
       springProjectCount.set(250)
     }
