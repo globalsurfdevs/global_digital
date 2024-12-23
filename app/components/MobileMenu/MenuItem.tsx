@@ -1,8 +1,12 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 
+import { assets } from "@/public/assets/assets";
+import Image from "next/image";
+import { useState } from 'react';
 
-const variants = {
+
+const navmenuSection = {
   open: {
     y: 0,
     opacity: 1,
@@ -17,21 +21,48 @@ const variants = {
       y: { stiffness: 1000 }
     }
   }
-};
+}
 
 
 
-export const MenuItem = ({item}:{i:number,item:{item:string}}) => {
-  // const style = { border: `2px solid black` };
-  return (
-    <motion.li
-      variants={variants}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-      className="mobile-menu-li"
-    >
-      {/* <div className="icon-placeholder" style={style}/> */}
-      <div className="text-placeholder border-b font-bold py-2">{item.item}</div>
-    </motion.li>
+  export const MenuItem = ({ item, children }: { item: string; children?: { item: string; svg: string }[] }) => {
+    // const style = { border: `2px solid black` };
+    const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+  const toggleSubmenu = () => {
+    setIsSubmenuOpen(!isSubmenuOpen);
+  };
+    return (
+      <motion.li
+        className="mobile-menu-li relative cursor-pointer w-full"
+        variants={navmenuSection}
+    onClick={children ? toggleSubmenu : undefined}
+  >
+    <div className="flex justify-between items-center py-2 border-b font-bold w-full">
+      {item}
+      {children && (
+        <span className="ml-2">{isSubmenuOpen ? '▲' : '▼'}</span>
+      )}
+    </div>
+    {children && isSubmenuOpen && (
+      <motion.ul
+
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: 1, height: 'auto' }}
+        className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md w-64 z-10"
+      >
+            {children.map((child, index) => (
+
+            <li
+              key={index}
+              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 border-b last:border-none"
+              >
+                <Image src={child.svg} alt={child.item} className="h-6 w-6"></Image>
+
+              {child.item}
+            </li>
+          ))}
+      </motion.ul>
+    )}
+        </motion.li>
   );
 };

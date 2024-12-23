@@ -32,7 +32,7 @@ return (
                                    whileInView="visible"
                                    viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                    variants={{
-                                     hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                                     hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                      }}>
                 <div className='flex flex-col justify-center lg:py-[102px] py-[50px] h-full'>
@@ -103,7 +103,7 @@ return (
                                    whileInView="visible"
                                    viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                    variants={{
-                                     hidden: { opacity: 0, y: 60 }, // Start below and invisible
+                                     hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                      visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                      }}>
                             <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>

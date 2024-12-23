@@ -33,7 +33,7 @@ const Goals = () => {
                                        whileInView="visible"
                                        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                        variants={{
-                                         hidden: { opacity: 0, y: 80 }, // Start below and invisible
+                                         hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                          visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                          }}>
                         <div className='col-span-1 flex'>
@@ -53,7 +53,7 @@ const Goals = () => {
                                        whileInView="visible"
                                        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                        variants={{
-                                         hidden: { opacity: 0, y: 80 }, // Start below and invisible
+                                         hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                          visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                          }}>
                         <div className='col-span-1 flex'>

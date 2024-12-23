@@ -17,7 +17,7 @@ const Testimonials = () => {
                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                   }}
         >
-            <h2 className="title-65">What they say about us</h2>
+            <h2 className="title-65">Hear From Our Partners</h2>
 
         </motion.div>
           <div>

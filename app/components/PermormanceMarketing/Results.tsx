@@ -60,7 +60,7 @@ const Results = () => {
                     <h3 className="text-30 leading-lh1p66 mb-[14px]">Seleo</h3>
                     <h3 className="text-white title-65 leading-lh0p76 mb-[15px] lg:mb-[28px] ">
                     28<span>X</span></h3>
-                    <h3 className={`fnt-lexend text-font25  leading-lh1p26`}>Increase Overall Traffic Growth</h3>
+                    <h3 className={`fnt-lexend text-font25  leading-lh1p26`}>Increase in Overall Traffic Growth</h3>
                     <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ease-in-out duration-500">
                       <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M33.8125 1.7998L1.25977 33.7227" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
