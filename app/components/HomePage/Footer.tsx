@@ -44,7 +44,7 @@ const Footer = () => {
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
               </h1>
 
-          <div className='mt-10 lg:mt-[57px] mb-10  lg:mb-[120px]'><Button text='LET&apos;S TALK' /></div>
+          <div className='mt-10 lg:mt-[57px] mb-10  lg:mb-[120px] innerfnont'><Button text='LET&apos;S TALK' /></div>
 
               </div>}
 
@@ -58,7 +58,7 @@ const Footer = () => {
                                 visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                               }}
                     >
-            <div className={`grid md:grid-cols-5 lg:pt-12 ${GetInTouch ? "xl:pt-[121px]" : ""} `}>
+            <div className={`grid md:grid-cols-5 pt-12 lg:pt-12 ${GetInTouch ? "xl:pt-[121px]" : ""} `}>
               <div className="h-full flex flex-col justify-between col-span-2">
                 <Image src={assets.footerLogo} alt="logo" className="" width={220} height={48.49} />
 

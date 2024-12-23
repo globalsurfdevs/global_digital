@@ -1,7 +1,7 @@
 import React from 'react'
-import HeroSection from '../components/Portfolio/HeroSection'
-import Goals from '../components/Portfolio/Goals'
-import Result from '../components/Portfolio/Result'
+import HeroSection from '../components/Portfolio-details/HeroSection'
+import Goals from '../components/Portfolio-details/Goals'
+import Result from '../components/Portfolio-details/Result'
 
 const page = () => {
   return (

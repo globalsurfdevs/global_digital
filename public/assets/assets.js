@@ -39,6 +39,8 @@ import seleo2 from './seleo2.jpg'
 import innovo from './Innovo.png'
 import bafco from './Bafco.png'
 import bec from './BEC.png'
+import imgs1 from './tours/bafco.jpg'
+import imgs2 from './tours/seleo.jpg'
 import heroInnovo from '../assets/portfolio/heroInnovo.jpg'
 import goalspic1 from '../assets/portfolio/goalspic1.jpg'
 import goalspic2 from '../assets/portfolio/goalspic2.jpg'
@@ -104,6 +106,8 @@ export const assets = {
     seleo2,
     innovo,
     bafco,
+    imgs1,
+    imgs2,
     bec,
     heroInnovo,
     goalspic1,
