@@ -53,8 +53,7 @@ return (
 
                             <p
                                 className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                Tap into existing demand for your products and services on Google Ads Search & Shopping and Bing Search & Shopping Ads.
                             </p>
                         </div>
                     </div>
@@ -80,8 +79,7 @@ return (
 
                             <p
                                 className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                We combine social media’s targeting options to engage with your audience at every stage of the funnel to reach your business objectives.
                             </p>
                         </div>
                     </div>
@@ -107,8 +105,7 @@ return (
 
                             <p
                                 className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                Boost engagement and sales with strategic influencer advertising campaigns that create a big buzz across the web.
                             </p>
                         </div>
                     </div>
@@ -134,8 +131,7 @@ return (
 
                             <p
                                 className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                Drive results with programmatic advertising, automating ad buying to reach the right audience across multiple platforms.
                             </p>
                         </div>
                     </div>
@@ -160,8 +156,7 @@ return (
 
                             <p
                                 className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                Video ads and Display allow you to reach key audiences through personalized messaging and local targeting. We maximize this powerful tool for your business
                             </p>
                         </div>
                     </div>
@@ -186,8 +181,7 @@ return (
 
                             <p
                                 className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                We use App Store advertising opportunities to drive downloads and achieve sign-in goals.
                             </p>
                         </div>
                     </div>
