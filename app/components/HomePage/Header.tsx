@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Example } from "../MobileMenu/Example";
 import { motion, AnimatePresence } from 'framer-motion'
 import { menuItems } from "../../data/menuItems";
+import Link from 'next/link';
 
 
 const Header = () => {
@@ -12,7 +13,6 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [mobileMenu, setMobileMenu] = useState(false)
-  const [visibleHeader, setVisibleHeader] = useState(false)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,26 +55,24 @@ const Header = () => {
     };
   }, []);
 
+
+  const [isSticky, setIsSticky] = useState(false);
+
   useEffect(() => {
-
     const handleScroll = () => {
-      const triggerSection = document.getElementById("triggerSection")
-      if (triggerSection) {
-        if (window.scrollY >= triggerSection?.offsetTop) {
-          setVisibleHeader(true)
-        } else {
-          setVisibleHeader(false)
-        }
+      if (window.scrollY > 50) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
       }
+    };
 
-      console.log("Scrolling")
+    window.addEventListener("scroll", handleScroll);
 
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-
-  }, [])
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const testVariants = {
     initial: {
@@ -117,10 +115,11 @@ const Header = () => {
 
   } else {
     return (
-      <header className={` py-4 pb-4 lg:pb-[22px] ${visibleHeader ? "header" : ""}`}>
+      <header className={` py-4 pb-4 lg:pb-[22px] ${isSticky ? "header" : ""}`}>
         <div className="container flex items-center justify-between">
-          <div className="logo-s">
+          <div className="logo-s relative">
             <Image src={assets.logo} className="w-[200px]" alt="" width={100} height={100} />
+            <Link href="/" className=" absolute w-full h-full top-0"></Link>
           </div>
           <button className="lg:hidden text-black" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -150,9 +149,9 @@ const Header = () => {
 
                           {item.children.map((childItem,index) => (
                             <motion.div initial="initial" whileHover="hover" key={index}>
-                              <a href="#" className="px-4 py-2 text-sm text-gray-700 flex gap-2 items-center">
+                              <Link href={childItem.url} className="px-4 py-2 text-sm text-gray-700 flex gap-2 items-center">
                                 <Image src={childItem.svg} alt="image" className="h-6 w-6"></Image><p>{childItem.item}</p>
-                              </a>
+                              </Link>
                               <motion.div className="w-full bg-red-400 h-0.5" variants={testVariants}></motion.div>
                             </motion.div>
                           ))}
@@ -166,9 +165,9 @@ const Header = () => {
               ) : (
 
                   <motion.div className="flex flex-col justify-center" whileHover="hover" initial="initial" key={index}>
-                    <a href="#" className="block px-4 lg:px-0 text-black hover:text-primary large-screen-menu-item">
+                    <Link href={item.url} className="block px-4 lg:px-0 text-black hover:text-primary large-screen-menu-item">
                       {item.item}
-                    </a>
+                    </Link>
                     <motion.div className="w-full bg-red-400 h-0.5 origin-left" variants={testVariants}></motion.div>
                   </motion.div>
 
