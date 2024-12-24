@@ -6,7 +6,20 @@ import PerformanceSwiper from '../PermormanceMarketing/PerformanceSwiper'
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
-const HeroSection = () => {
+interface Employee {
+  id: number;
+  name: string;
+  designation: string;
+  width: string;
+  height: string;
+}
+
+interface HeroSectionProps {
+  jsonData: Employee[];
+}
+
+// const HeroSection = ({ jsonData }) => {
+  const HeroSection: React.FC<HeroSectionProps> = ({ jsonData }) => {
 
 
     const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -62,7 +75,17 @@ const HeroSection = () => {
   }, []);
 
     return (
-        <>
+      <>
+         <ul>
+        {jsonData.map((employee) => (
+          <li key={employee.id}>
+            <h2>{employee.name}</h2>
+            <p>Role: {employee.name}</p>
+            <p>Skills:</p>
+
+          </li>
+        ))}
+      </ul>
             <div className='container mx-auto py-2' ref={nextContainerRef}  >
                 <div className=''>
                 <motion.div className="title-80"
