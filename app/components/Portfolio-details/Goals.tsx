@@ -37,7 +37,7 @@ const Goals = () => {
                                          visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                          }}>
                         <div className='col-span-1 flex'>
-                            <h1 className='text-font65'>Goals</h1>
+                            <h2 className='text-font65'>Goals</h2>
                         </div>
                         <div className='text-font19 pt-2 lg:pl-5'>
                             <p className='text-19 text-gray1 fnt-lexend'>Innovo Group partnered with Global Surf to achieve several key objectives for their website.
@@ -57,7 +57,7 @@ const Goals = () => {
                                          visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                          }}>
                         <div className='col-span-1 flex'>
-                            <h1 className='text-font65'>Objectives</h1>
+                            <h2 className='text-font65'>Objectives</h2>
                         </div>
                         <div className='text-font19 pt-2 lg:pl-5'>
                             <p className='text-19 text-gray1 fnt-lexend'>To address goals, Global Surf conducted an in-depth analysis of the website&apos;s performance and speed.
@@ -98,7 +98,7 @@ const Goals = () => {
 
                     <div className='bg-dgray flex flex-col w-full pt-5 lg:pt-[70px] pb-5 lg:pb-[91px]  lg:px-[80px] px-5'>
                         <div>
-                            <h1 className='title-65 mb-3 lg:mb-[30px]'>Challenge</h1>
+                            <h2 className='title-65 mb-3 lg:mb-[30px]'>Challenge</h2>
                         </div>
                         <div >
                             <p className='text-gray1 text-19 fnt-lexend'>Redesigning the website brought several challenges. Migrating from an outdated CMS without
@@ -111,7 +111,7 @@ const Goals = () => {
 
                     <div className='bg-dgray flex flex-col w-full pt-5 lg:pt-[70px] pb-5 lg:pb-[91px]  lg:px-[80px] px-5'>
                         <div>
-                            <h1 className='title-65 mb-3 lg:mb-[30px]'>Solutions</h1>
+                            <h2 className='title-65 mb-3 lg:mb-[30px]'>Solutions</h2>
                         </div>
                         <div className='pl-4'>
                             <ul className='list-disc flex flex-col gap-[30px] text-19 text-gray1 fnt-lexend'>

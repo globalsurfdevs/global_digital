@@ -56,7 +56,7 @@ const ref = useRef(null)
                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                   }}
         >
-          <h1 className="title-65">Discover Our Success Stories</h1>
+          <h2 className="title-65">Discover Our Success Stories</h2>
 
         </motion.div>
         <motion.div

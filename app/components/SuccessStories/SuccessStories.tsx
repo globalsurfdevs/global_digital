@@ -17,7 +17,7 @@ export const SuccessStories = () => {
                       }}
                             >
                 <div>
-                <h1 className='title-65 pb-5 lg:pb-[48px]'>Success Stories We&apos;re Proud of</h1>
+                <h2 className='title-65 pb-5 lg:pb-[48px]'>Success Stories We&apos;re Proud of</h2>
                 </div>
                 </motion.div>
                 <motion.div

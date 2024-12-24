@@ -40,9 +40,9 @@ const Footer = () => {
                           }}
                 >
             {GetInTouch && <div className="border-b border-gray-400  flex flex-col justify-center h-1/2  ">
-              <h1 className="text-font65 leading-lh1p07">
+              <h2 className="text-font65 leading-lh1p07">
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
-              </h1>
+              </h2>
 
           <div className='mt-10 lg:mt-[57px] mb-10  lg:mb-[120px] innerfnont'><Button text='LET&apos;S TALK' /></div>
 
