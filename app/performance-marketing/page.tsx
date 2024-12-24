@@ -12,10 +12,11 @@ import Testimonials from '../components/HomePage/Testimonials'
 import FAQ from '../components/PermormanceMarketing/FAQ'
 import GetInTouch from '../components/PermormanceMarketing/GetInTouch'
 
+// import { Employees } from "../data/employees";
 const page = () => {
   return (
     <div>
-        <HeroSection/>
+        <HeroSection  />
         <Expertise/>
         <Boost/>
         <Services/>
