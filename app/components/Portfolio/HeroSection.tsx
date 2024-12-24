@@ -1,7 +1,5 @@
 "use client"
 import { motion } from 'framer-motion';
-import { assets } from '@/public/assets/assets'
-import Image from 'next/image'
 
 
 const HeroSection = () => {
