@@ -20,7 +20,7 @@ const Result = () => {
                                 }}
                                       >
             <div>
-                <h1 className='title-65 mb-3 lg:mb-5'>Result</h1>
+                <h2 className='title-65 mb-3 lg:mb-5'>Result</h2>
             </div>
             <div className='pl-4 lg:pl-5'>
                 <ul className='list-disc flex flex-col gap-4 lg:gap-8 text-19 text-gray1 fnt-lexend'>
@@ -60,7 +60,7 @@ const Result = () => {
                                 }}
                                       >
         <div className='lg:pt-[136px] lg:pb-[150px] py-[50px] border-b flex flex-col  '>
-            <h1 className='title-65 lg:pb-[30px] pb-3'>Lets Create Something Iconic Together</h1>
+            <h2 className='title-65 lg:pb-[30px] pb-3'>Lets Create Something Iconic Together</h2>
             <p className='text-19 text-gray1 mb-0 lg-mb-[64px] fnt-lexend'>Every great brand has a story. See how we’ve turned challenges into triumphs for our clients. Your brand could be next. </p>
                 <div className='mt-[20px] lg:mt-[64px] innerfnont'><Button text='LET&apos;S COLLABORATE' /></div>
               </div>

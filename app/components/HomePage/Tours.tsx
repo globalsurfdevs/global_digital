@@ -18,7 +18,7 @@ const Tours = () => {
                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                          }}
         >
-          <h1 className="text-font65">Featured Projects</h1>
+          <h2 className="text-font65">Featured Projects</h2>
         </motion.div>
         <motion.div
                   initial="hidden"

@@ -282,9 +282,7 @@ body {
       @media (max-width: 600px) {
         .flexcl600{flex-direction: column;}
               }
-              @media (max-width: 767px) {
-                .xshd{display: none;}
-                      }
+
 
       @media (min-width: 992px) {
       .perf-slide .swiper-slide {
@@ -292,9 +290,14 @@ body {
       }
     }
 
-    @media (max-width: 767px) {.imsr img{     width: 35px;}
+    @media (max-width: 767px) {
+
+      .xshd{display: none;}
+      .wsd2{width: 25px;}
+      .imsr img{     width: 35px;}
   .innerfnont button{font-size: 14px;
     padding: 7px 20px;}
+    .bdrsm{border: 1px solid #77787B !important;}
 }
       @media (max-width: 1199px) {
         .bdrsm .border {    border-width: 1px !important;}
@@ -313,11 +316,13 @@ body {
                   padding: 0;
                   margin: 0;
                 }
+                .sevsr:hover img{filter: brightness(0) saturate(100%) invert(32%) sepia(100%) saturate(736%) hue-rotate(316deg);}
     @layer components {
       .title-80{ @apply  text-font80 leading-lh1p22;}
       .title-65 {  @apply text-font65 leading-lh1p07;  }
       .text-30{ @apply  text-font30 leading-lh1p33;}
       .text-19{ @apply  text-font19 leading-lh1p48;}
+      .text-small-30{@apply  text-fontsmall30 leading-lh1p33;}
       .pt-150{@apply lg:pt-[150px] pt-[50px]}
       .pb-150{@apply lg:pb-[150px] pb-[50px]}
       .textslide-30{@apply text-[15px] lg:text-font30 leading-lh1p33;}

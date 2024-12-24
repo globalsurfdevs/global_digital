@@ -27,13 +27,13 @@ const Percentages = () => {
                             >
             <div className='flex flex-col justify-between lg:gap-14 lg:gap-[100px] gap-[45px]'>
                 <div className='flex flex-col group'>
-                    <h1 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>30.43%</h1>
+                    <h3 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>30.43%</h3>
                     <div className='w-full bg-gray1 rounded-xl h-[1px] mb-[15px] lg:mb-[33px] duration-300 group-hover:-translate-y-1'></div>
                     <h3 className='text-white text-30 duration-500 group-hover:-translate-y-2'>Increase in Avg. Page Speed</h3>
                 </div>
 
                 <div className='flex flex-col group'>
-                    <h1 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>2X</h1>
+                    <h3 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>2X</h3>
                     <div className='w-full bg-gray1 rounded-xl h-[1px] mb-[15px] lg:mb-[33px] duration-300 group-hover:-translate-y-1'></div>
                     <h3 className='text-white text-30 duration-500 group-hover:-translate-y-2'>Increase in Session Duration</h3>
                 </div>
@@ -42,14 +42,14 @@ const Percentages = () => {
 
             <div className='flex flex-col justify-between lg:gap-24 lg:gap-[100px] gap-[45px]'>
                 <div className='flex flex-col group'>
-                    <h1 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>88.20%</h1>
+                    <h3 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>88.20%</h3>
                     <div className='w-full bg-gray1 rounded-xl h-[1px] mb-[15px] lg:mb-[33px] duration-300 group-hover:-translate-y-1'></div>
                     <h3 className='text-white text-30 duration-500 group-hover:-translate-y-2'>Increase in Returning Users</h3>
                     </div>
 
 
                 <div className='flex flex-col group'>
-                    <h1 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>30X</h1>
+                    <h3 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>30X</h3>
                     <div className='w-full bg-gray1 rounded-xl h-[1px] mb-[15px] lg:mb-[33px] duration-300 group-hover:-translate-y-1'></div>
                     <h3 className='text-white text-30 duration-500 group-hover:-translate-y-2'>Increase in Avg. Page Speed</h3>
                 </div>

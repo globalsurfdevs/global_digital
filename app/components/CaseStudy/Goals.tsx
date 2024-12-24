@@ -17,7 +17,7 @@ const Goals = () => {
                  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                  }}>
                       <div className='col-span-1 flex'>
-                <h1 className='title-65'>Goals</h1>
+                <h2 className='title-65'>Goals</h2>
             </div>
             <div className=' pt-3 lg:pl-5'>
                 <p className='text-19 text-gray1 fnt-lexend' >Innovo Group partnered with Global Surf to achieve several key objectives for their website.
@@ -37,7 +37,7 @@ const Goals = () => {
                  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                  }}>
             <div className='col-span-1 flex'>
-                <h1 className='title-65'>Objectives</h1>
+                <h2 className='title-65'>Objectives</h2>
             </div>
             <div className='text-font19 pt-3 lg:pl-5'>
                 <p className='text-19 text-gray1 fnt-lexend '>To address goals, Global Surf conducted an in-depth analysis of the website&apos;s performance and speed.
@@ -57,7 +57,7 @@ const Goals = () => {
                  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                  }}>
             <div className='col-span-1 flex'>
-                <h1 className='title-65'>Challenge</h1>
+                <h2 className='title-65'>Challenge</h2>
             </div>
             <div className=' pt-3 lg:pl-5'>
                 <p className='text-19 text-gray1 fnt-lexend'>Redesigning the website brought several challenges. Migrating from an outdated CMS without disruptions was complex,
@@ -78,7 +78,7 @@ const Goals = () => {
                             >
             <div className='bg-dgray flex flex-col w-full   gap-4 lg:gap-[41px] lg:p-[75px] p-6'>
             <div>
-                <h1 className='title-65'>Overcoming Challenges</h1>
+                <h2 className='title-65'>Overcoming Challenges</h2>
             </div>
             <div className='pl-4'>
                 <ul className='list-disc flex flex-col gap-4 text-font19'>
@@ -90,7 +90,7 @@ const Goals = () => {
 
             <div className='bg-dgray flex flex-col w-full  gap-4 lg:gap-[41px] lg:p-[75px] p-6'>
             <div>
-                <h1 className='title-65'>Key Achievements</h1>
+                <h2 className='title-65'>Key Achievements</h2>
             </div>
             <div className='pl-4'>
                 <ul className='list-disc flex flex-col gap-4 text-font19 fnt-lexend'>

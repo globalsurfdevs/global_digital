@@ -76,9 +76,9 @@ const OurAchievements = () => {
             <Image src={assets.yr1} alt="years" width={38} height={52}  className="absolute top-0 opacity-0 group-hover:opacity-[1]   transition-transform duration-500 group-hover:scale-110"/>
             </div>
             <div className="transition-all duration-500 group-hover:-translate-y-3">
-              <h4 className="text-font65 font-[400] mt-4 leading-lh1p07" ><span className={`${
+              <h2 className="text-font65 font-[400] mt-4 leading-lh1p07" ><span className={`${
       activeSection === 1 ? "text-primary" : ""
-    } transition-colors duration-300 ease-in-out`}>{yearCount}</span> Years</h4>
+    } transition-colors duration-300 ease-in-out`}>{yearCount}</span> Years</h2>
               <p className={`text-font30  leading-lh2p3 text-gray1`}>and <span className={`${
           activeSection === 1 ? "text-primary" : ""
         }`}>Counting</span></p>
@@ -94,11 +94,11 @@ const OurAchievements = () => {
 
             </div>
             <div className="transition-all duration-500 group-hover:-translate-y-3">
-              <h1 className="text-font65 font-[400] mt-4 leading-lh1p07">
+              <h2 className="text-font65 font-[400] mt-4 leading-lh1p07">
                 <span className={`${
       activeSection === 2 ? "text-primary" : ""
     } transition-colors duration-300 ease-in-out`}>{clientCount}</span> Clients
-              </h1>
+              </h2>
               <p className={`text-font30 leading-lh2p3 text-gray1`}>
                 {" "}
                 and  <span className={`${
@@ -118,9 +118,9 @@ const OurAchievements = () => {
 
             </div>
             <div className="transition-all duration-500 group-hover:-translate-y-3">
-              <h1 className="text-font65 font-[400] mt-4 leading-lh1p07"><span className={`${
+              <h2 className="text-font65 font-[400] mt-4 leading-lh1p07"><span className={`${
       activeSection === 3 ? "text-primary" : ""
-    } transition-colors duration-300 ease-in-out`}>{projectCount}</span> Projects</h1>
+    } transition-colors duration-300 ease-in-out`}>{projectCount}</span> Projects</h2>
               <p className={`text-font30   leading-lh2p3 text-gray1`}>and  <span className={`${
           activeSection === 3 ? "text-primary" : ""
         }`}>More to Come</span></p>
