@@ -46,7 +46,7 @@ const HeroSection = () => {
               <div>
                 <p className="text-small-30 text-gray1 max-w-[48ch]">
                   Subheading: Bridging Creativity and Strategy to Enhance Your
-                  Brand's Digital Potential 
+                  Brand&apos;s Digital Potential 
                 </p>
               </div>
             </motion.div>

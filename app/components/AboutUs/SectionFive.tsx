@@ -1,8 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { assets } from "@/public/assets/assets";
 import EmployeesSwiper from "./EmployeesSwiper";
-import Image from "next/image";
 import Button from "../Button/Button";
 import React from "react";
 
