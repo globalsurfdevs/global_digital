@@ -4,10 +4,10 @@ export const services = [
     image: "/assets/services/dummy-img.jpg",
     title: "Performance Marketing",
     url:'performance-marketing',
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    description: "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
     buttonTexts: [
       {
-        title: "PPC",
+        title: "PPC Advertising",
       },
       {
         title: "Social Media Marketing",
@@ -16,7 +16,7 @@ export const services = [
         title: "Programmatic  Advertising",
       },
       {
-        title: "Influence Marketing",
+        title: "Influencer Marketing ",
       },
     ],
   },
@@ -46,13 +46,13 @@ export const services = [
     description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
     buttonTexts: [
       {
-        title: "B2B SEO",
+        title: "Social Media Strategy",
       },
       {
-        title: "E-commerce SEO",
+        title: "Social Media Management",
       },
       {
-        title: "Local SEO",
+        title: "Social Media Marketing",
       },
     ],
   },
@@ -71,6 +71,12 @@ export const services = [
       },
       {
         title: "E-commerce Web Development",
+      },
+      {
+        title: "CMS Integration",
+      },
+      {
+        title: "Full Stack Development",
       },
     ],
   },
@@ -118,7 +124,7 @@ export const services = [
         title: "Data Analytics",
       },
       {
-        title: "Marketing automation",
+        title: "Marketing Automation",
       },
       {
         title: "Conversion Rate Optimization (CRO)",

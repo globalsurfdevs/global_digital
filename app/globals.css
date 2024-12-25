@@ -1,32 +1,13 @@
+
+@config "../tailwind.config.ts";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 .container {
   margin: 0 auto;
   padding: 0 15px;
 }
-
-
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
 
 .overflow-inherit{
   overflow: inherit!important;
@@ -110,6 +91,8 @@ body {
   background: #e43d30!important;
 }
 
+
+
 .background {
   position: absolute;
   top: 0;
@@ -135,8 +118,8 @@ body {
   position: absolute;
   top: 10px;
   right: 15px;
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 55px;
   border-radius: 50%;
   background: white;
   z-index: 10;
@@ -326,4 +309,10 @@ body {
       .pt-150{@apply lg:pt-[150px] pt-[50px]}
       .pb-150{@apply lg:pb-[150px] pb-[50px]}
       .textslide-30{@apply text-[15px] lg:text-font30 leading-lh1p33;}
+    }
+
+    @layer base {
+      p {
+        @apply text-19 text-gray1 fnt-lexend;
+      }
     }
