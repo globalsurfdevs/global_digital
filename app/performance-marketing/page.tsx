@@ -12,22 +12,32 @@ import Testimonials from '../components/HomePage/Testimonials'
 import FAQ from '../components/PermormanceMarketing/FAQ'
 import GetInTouch from '../components/PermormanceMarketing/GetInTouch'
 
-// import { Employees } from "../data/employees";
+import { BannerSection } from "../data/services/performance-marketing/herosection";
+import { AreaExpertise } from "../data/services/performance-marketing/area-of-expertise";
+import { boostEngage } from "../data/services/performance-marketing/boost-engage";
+import { OurServices } from "../data/services/performance-marketing/our-services";
+import { Frameworkdata } from "../data/services/performance-marketing/framework";
+import { ResultsData } from "../data/services/performance-marketing/results";
+import { Platformsdata } from "../data/services/performance-marketing/platforms";
+import { partnerData } from "../data/partnerData";
+import { Cta } from "../data/services/performance-marketing/cta";
+import { Faq } from "../data/services/performance-marketing/faq";
+
 const page = () => {
   return (
     <div>
-        <HeroSection  />
-        <Expertise/>
-        <Boost/>
-        <Services/>
-        <Framework/>
+        <HeroSection  Bannerdata={BannerSection} />
+        <Expertise title={AreaExpertise.title} data={AreaExpertise.data}  />
+        <Boost title={boostEngage.title} data={boostEngage.data}/>
+        <Services title={OurServices.title} data={OurServices.data}/>
+        <Framework title={Frameworkdata.title} data={Frameworkdata.data}/>
         <Industries/>
-        <Results/>
-        <Platforms/>
-        <Partner/>
+        <Results title={ResultsData.title} data={ResultsData.data}/>
+        <Platforms title={Platformsdata.title} data={Platformsdata.data}/>
+        <Partner data={partnerData} />
         <Testimonials/>
-        <GetInTouch/>
-        <FAQ/>
+        <GetInTouch data={Cta} ctabbutton= {"LET'S TALK GROWTH"}/>
+        <FAQ data={Faq}/>
     </div>
   )
 }

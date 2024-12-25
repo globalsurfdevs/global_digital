@@ -1,10 +1,23 @@
 "use client"
-import { assets } from '@/public/assets/assets'
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion';
 
-const Expertise = () => {
+interface ExpertiseItem {
+    id: number;
+    icon: string;
+    iconhov: string;
+    title: string;
+    desc: string;
+  }
+
+  interface ExpertiseSectionProps {
+    title: string;
+    data: ExpertiseItem[];
+  }
+
+  const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
+
 return (
 <div className='container mx-auto py-4'>
     <div className='pt-[50px] lg:pt-[136px] pb-[50px] lg:pb-[150px] flex flex-col '>
@@ -19,7 +32,7 @@ return (
                                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                   }}
                         >
-                    <h2 className='title-65 '>Area of Expertise</h2>
+                    <h2 className='title-65 '>{title}</h2>
                     </motion.div>
         </div>
 
@@ -34,13 +47,14 @@ return (
                                   }}
                         >
                     {/* Item 1 */}
-                    <div
-                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
+                    {data.map((expertise) => (
+                    <div key={expertise.id}
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border  group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
-                                <Image src={assets.sea} alt="image"
+                                <Image src= {expertise.icon} alt="image"
                             className="group-hover:invert group-hover:hidden  transition duration-500" />
-                            <Image src={assets.seahov} alt="image"
+                            <Image src= {expertise.iconhov} alt="image"
                                 className=" hidden   group-hover:block  transition duration-500" />
                         </div>
 
@@ -48,143 +62,17 @@ return (
                         <div>
                             {/* Title */}
                             <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
-                                Search Engine Advertising
+                            {expertise.title}
                             </p>
 
-                            <p
-                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Tap into existing demand for your products and services on Google Ads Search & Shopping and Bing Search & Shopping Ads.
-                            </p>
-                        </div>
-                    </div>
-
-
-                    {/* Item 2 */}
-                    <div
-                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
-                        {/* Image Wrapper */}
-                        <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
-                    <Image src={assets.socialMediaNew} alt="image"
-                    className="group-hover:invert group-hover:hidden  transition duration-500" />
-                    <Image src={assets.socialMediaNewhov} alt="image"
-                        className=" hidden   group-hover:block  transition duration-500" />
-                        </div>
-
-                        {/* Content */}
-                        <div>
-                            {/* Title */}
-                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
-                            Social Media Marketing
-                            </p>
-
-                            <p
-                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                We combine social media’s targeting options to engage with your audience at every stage of the funnel to reach your business objectives.
+                            <p className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                {expertise.desc}
                             </p>
                         </div>
                     </div>
 
-                    {/* Item 3 */}
+                ))}
 
-                    <div
-                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0  lg:border-r-[1px] xxl:border-r-[0px] lg:border-b-0 xxl:border-b-[1px]   group transition-all duration-500 hover:bg-primary">
-                        {/* Image Wrapper */}
-                        <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
-                        <Image src={assets.influencer} alt="image"
-                            className="group-hover:invert group-hover:hidden  transition duration-500" />
-                            <Image src={assets.influencerhov} alt="image"
-                                className=" hidden   group-hover:block  transition duration-500" />
-                        </div>
-
-                        {/* Content */}
-                        <div>
-                            {/* Title */}
-                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
-                            Influencer Marketing
-                            </p>
-
-                            <p
-                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Boost engagement and sales with strategic influencer advertising campaigns that create a big buzz across the web.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Item 4 */}
-                    <div
-                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border     group transition-all duration-500 hover:bg-primary">
-                        {/* Image Wrapper */}
-                        <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
-
-                    <Image src={assets.programmatic} alt="image"
-                    className="group-hover:invert group-hover:hidden  transition duration-500" />
-                    <Image src={assets.programmatichov} alt="image"
-                        className=" hidden   group-hover:block  transition duration-500" />
-                        </div>
-
-                        {/* Content */}
-                        <div>
-                            {/* Title */}
-                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
-                            Programmatic Advertising
-                            </p>
-
-                            <p
-                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Drive results with programmatic advertising, automating ad buying to reach the right audience across multiple platforms.
-                            </p>
-                        </div>
-                    </div>
-                    {/* Item 5 */}
-                    <div
-                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0    group transition-all duration-500 hover:bg-primary">
-                        {/* Image Wrapper */}
-                        <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
-
-                    <Image src={assets.videoAd} alt="image"
-                    className="group-hover:invert group-hover:hidden  transition duration-500" />
-                    <Image src={assets.videoAdhov} alt="image"
-                        className=" hidden   group-hover:block  transition duration-500" />
-                        </div>
-
-                        {/* Content */}
-                        <div>
-                            {/* Title */}
-                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
-                            Video ads & Display
-                            </p>
-
-                            <p
-                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Video ads and Display allow you to reach key audiences through personalized messaging and local targeting. We maximize this powerful tool for your business
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Item 6 */}
-                    <div
-                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border 0    group transition-all duration-500 hover:bg-primary">
-                        {/* Image Wrapper */}
-                        <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
-                    <Image src={assets.appStore} alt="image"
-                    className="group-hover:invert group-hover:hidden  transition duration-500" />
-                    <Image src={assets.appStorehov} alt="image"
-                        className=" hidden   group-hover:block  transition duration-500" />
-                        </div>
-
-                        {/* Content */}
-                        <div>
-                            {/* Title */}
-                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
-                            App Store advertising
-                            </p>
-
-                            <p
-                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                We use App Store advertising opportunities to drive downloads and achieve sign-in goals.
-                            </p>
-                        </div>
-                    </div>
                     </motion.div>
                 </div>
 
