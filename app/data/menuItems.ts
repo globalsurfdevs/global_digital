@@ -3,56 +3,54 @@ import { assets } from "@/public/assets/assets";
 
 export const menuItems = [
     {
-        item:"ABOUT"
+        item: "ABOUT",
+        url:"about-us"
     },
     {
         item:"SERVICES",
-        children:[
+        children: [
             {
-                item:"Social Media Marketing",
-                svg:assets.socialMedia
-            },
-            {
-                item:"Website Design And Development",
-                svg:assets.websiteD
+                item:"Performance Marketing",
+                svg: assets.sem,
+                url:"performance-marketing"
             },
             {
                 item:"Search Engine Optimization",
-                svg:assets.seo
+                svg: assets.seo,
+                url:"#"
             },
             {
-                item:"Mobile Applications Development",
-                svg:assets.mobile
+                item:"Social Media Marketing",
+                svg: assets.socialMedia,
+                url:"#"
+            },
+            {
+                item:"Website Design And Development",
+                svg: assets.websiteD,
+                url:"#"
             },
             {
                 item:"Branding And Creatives",
-                svg:assets.branding
+                svg: assets.branding,
+                url:"#"
             },
             {
-                item:"Reputation Management",
-                svg:assets.reputation
-            },
-            {
-                item:"Video Production",
-                svg:assets.video
-            },
-            {
-                item:"Strategy Consulting",
-                svg:assets.strategy
-            },
-            {
-                item:"Search Engine Marketing",
-                svg:assets.sem
+                item:"Marketing Intelligence",
+                svg: assets.strategy,
+                url:"#"
             }
         ]
     },
     {
-        item:"PORTFOLIO"
+        item:"PORTFOLIO",
+        url:"portfolio"
     },
     {
-        item:"CAREERS"
+        item:"CAREERS",
+        url:"#"
     },
     {
-        item:"BLOGS"
+        item:"BLOGS",
+        url:"#"
     }
 ]

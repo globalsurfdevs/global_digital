@@ -43,10 +43,12 @@ const config = {
         font16: "clamp(0.7rem, 1.5vw, 1rem)",
         font19: "clamp(15px, 2vw, 19px)",
         font25: "clamp(0.9rem, 3vw, 1.5625rem)",
-        font30: "clamp(1rem, 2.5vw, 1.875rem)",
-        font35: "clamp(1.2rem, 3.5vw, 2.1875rem)",
-        font65: "clamp(1.5rem, 4.5vw, 4.0625rem)",
-        font80: "clamp(2rem, 8vw, 5rem)",
+        font30: "clamp(1.5rem, 2.5vw, 1.875rem)",
+        font35: "clamp(1.6rem, 3.5vw, 2.1875rem)",
+        font65: "clamp(1.9rem, 4.5vw, 4.0625rem)",
+        font80: "clamp(2.5rem, 8vw, 5rem)",
+
+        fontsmall30: "clamp(1rem, 2.5vw, 1.875rem)",
       },
       lineHeight: {
         lh0p76: "0.7692307692307692",

@@ -1,11 +1,8 @@
 "use client"
 import { motion } from 'framer-motion';
-import Image from 'next/image'
 import React, { useEffect, useRef, useState } from "react"
-import logo1 from '../../../public/assets/logos/lg1.svg'
-import logo2 from '../../../public/assets/logos/lg2.svg'
-import logo3  from '../../../public/assets/logos/lg3.svg'
-import logo4  from '../../../public/assets/logos/google.svg'
+
+import PerformanceSwiper from '../PermormanceMarketing/PerformanceSwiper'
 import {Lexend} from "next/font/google";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
@@ -90,13 +87,13 @@ const HeroSection = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
         variants={{
-          hidden: { opacity: 0, y: 100 }, // Start below and invisible
+          hidden: { opacity: 0, y: 50 }, // Start below and invisible
           visible: { opacity: 1, y: 0, transition: { duration: 1.3, ease: "easeOut" } }, // Slide up and fade in
           }}
               >
                     <div className='grid grid-cols-1 lg:grid-cols-2 lg:py-[142px] py-[50px] '>
 
-                        <div className='col-span-1 mb-5 lg:mb-0'>
+                        <div className='col-span-1 mb-2 lg:mb-0'>
                             <div className='flex gap-2 items-center'>
                                 <h3 className='text-30 leading-[1.5]'>OUR APPROACH</h3>
                                 <div className='w-5 h-5 bg-primary'></div>
@@ -104,7 +101,7 @@ const HeroSection = () => {
                         </div>
 
                         <div className='text-[19px] text-gray1 xl:ms-[137px] ms-0 lg:ms-3'>
-                            <p className={`${lexend.className}`}>Our team will work with you to understand your goals and identify the
+                            <p className={`text-font19 ${lexend.className}`}>Our team will work with you to understand your goals and identify the
                                 channels that will give you the best ROI. We’ll help you develop a custom
                                 ads strategy to make sure that your marketing budget is spent effectively.
                                 We then design creative for your ads and provide ongoing optimization and
@@ -121,22 +118,22 @@ const HeroSection = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
         variants={{
-          hidden: { opacity: 0, y: 100 }, // Start below and invisible
+          hidden: { opacity: 0, y: 50 }, // Start below and invisible
           visible: { opacity: 1, y: 0, transition: { duration: 1.3, ease: "easeOut" } }, // Slide up and fade in
           }}
               >
-            <div  style={{ width: divWidth  }}  className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class`} >
-                <div className='flex gap-5 bg-bglight   py-5'>
-                    <div className='flex  gap-[30px] md:gap-[120px]  container flexcl600' style={{marginRight: "-15px" }}>
-                        <Image src={logo1 } alt='image' width={160} height={40}></Image>
-                        <Image src={logo2} alt='image' width={102} height={40}></Image>
-                        <Image src={logo3} alt='image' width={88} height={44}></Image>
-                        <Image src={logo4} alt='image' width={65} height={46}></Image>
+            <div style={{ width: isSmallScreen ? '' : divWidth }}    className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class`} >
+                <div className='flex gap-5 bg-bglight  py-[17px]'>
+                    <div className='  container flexcl600 mr-0 lg:mr-[-15px]' >
+                      <div className='w-full  overflow-hidden'>
+                      <PerformanceSwiper />
+
+                        </div>
                     </div>
 
                 </div>
 
-                <div className='bg-black w-full h-[500px]'> </div>
+                <div className='bg-black w-full h-[350px] lg:h-[700px]'> </div>
 
             </div>
             </motion.div>

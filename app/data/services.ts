@@ -3,10 +3,11 @@ export const services = [
     id: "1",
     image: "/assets/services/dummy-img.jpg",
     title: "Performance Marketing",
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    url:'performance-marketing',
+    description: "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
     buttonTexts: [
       {
-        title: "PPC",
+        title: "PPC Advertising",
       },
       {
         title: "Social Media Marketing",
@@ -15,7 +16,7 @@ export const services = [
         title: "Programmatic  Advertising",
       },
       {
-        title: "Influence Marketing",
+        title: "Influencer Marketing ",
       },
     ],
   },
@@ -23,7 +24,8 @@ export const services = [
     id: "2",
     image: "/assets/services/dummy-img.jpg",
     title: "SEO",
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    url:'#',
+    description: "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
     buttonTexts: [
       {
         title: "B2B SEO",
@@ -40,16 +42,17 @@ export const services = [
     id: "3",
     image: "/assets/services/dummy-img.jpg",
     title: "Social Media",
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    url:'#',
+    description: "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
     buttonTexts: [
       {
-        title: "B2B SEO",
+        title: "Social Media Strategy",
       },
       {
-        title: "E-commerce SEO",
+        title: "Social Media Management",
       },
       {
-        title: "Local SEO",
+        title: "Social Media Marketing",
       },
     ],
   },
@@ -57,7 +60,8 @@ export const services = [
     id: "4",
     image: "/assets/services/dummy-img.jpg",
     title: "Web Design & Development",
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    url:'#',
+    description: "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
     buttonTexts: [
       {
         title: "Website Design",
@@ -68,13 +72,20 @@ export const services = [
       {
         title: "E-commerce Web Development",
       },
+      {
+        title: "CMS Integration",
+      },
+      {
+        title: "Full Stack Development",
+      },
     ],
   },
   {
     id: "5",
     image: "/assets/services/dummy-img.jpg",
     title: "Branding & Creatives",
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    url:'#',
+    description: "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
     buttonTexts: [
       {
         title: "Branding",
@@ -103,7 +114,8 @@ export const services = [
     id: "6",
     image: "/assets/services/dummy-img.jpg",
     title: "Marketing Intelligence",
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    url:'#',
+    description: "We optimize your marketing with data-driven insights for better results. Real-time analytics and market trends help you make informed decisions. ",
     buttonTexts: [
       {
         title: "Strategy Consulting",
@@ -112,7 +124,7 @@ export const services = [
         title: "Data Analytics",
       },
       {
-        title: "Marketing automation",
+        title: "Marketing Automation",
       },
       {
         title: "Conversion Rate Optimization (CRO)",

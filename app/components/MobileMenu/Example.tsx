@@ -36,11 +36,11 @@ const imageSection = {
     opacity: 1,
     transition: {
       y: { stiffness: 1000, velocity: -100 },
-      delay:.5
+      delay: 0
     }
   },
   closed: {
-    x: 50,
+    x: 20,
     opacity: 0,
     transition: {
       y: { stiffness: 1000 }
@@ -58,6 +58,14 @@ export const Example = () => {
 
   React.useEffect(()=>{
     console.log(isOpen)
+    if (isOpen == true) {
+      document.body.style.overflow = "hidden";
+      document.body.style.backgroundColor = "#0000006e";
+    }
+    else {
+      document.body.style.overflow = "";
+      document.body.style.backgroundColor = "";
+    }
   },[isOpen])
 
   React.useEffect(() => {
@@ -71,7 +79,7 @@ export const Example = () => {
         toggleOpen();
       }
     };
-  
+
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isOpen]);
@@ -83,16 +91,18 @@ export const Example = () => {
       custom={height}
       ref={containerRef}
     >
-     
+
       {<motion.div className={"background shadow-lg"} variants={sidebar} ref={menuRef}>
-        
+
         <motion.div className="py-5 px-6" variants={imageSection}>
           <Image src={assets.logo} alt="logo" className="w-32"/>
         </motion.div>
-        
+
+        <Navigation/>
+     
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
-        <motion.div variants={imageSection}><h1 className="text-primary">Follow us on</h1></motion.div>
+        <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>
         <motion.div variants={imageSection}>
           <div className="flex w-full text-black text-2xl gap-10">
           <FaFacebookF />
@@ -102,9 +112,9 @@ export const Example = () => {
         </motion.div>
         </div>
         </div>
-        
+
         </motion.div>}
-      <Navigation />
+
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );

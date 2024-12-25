@@ -14,18 +14,18 @@ const Tours = () => {
                          whileInView="visible"
                          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                          variants={{
-                           hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                           hidden: { opacity: 0, y: 50 }, // Start below and invisible
                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                          }}
         >
-          <h1 className="text-font65">Featured Tours</h1>
+          <h2 className="text-font65">Featured Projects</h2>
         </motion.div>
         <motion.div
                   initial="hidden"
                           whileInView="visible"
                           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                           variants={{
-                            hidden: { opacity: 0, y: 150 }, // Start below and invisible
+                            hidden: { opacity: 0, y: 50 }, // Start below and invisible
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
                 >
@@ -44,8 +44,20 @@ const Tours = () => {
             </div>
           ))}
         </div>
-        <div className="w-full flex justify-center mt-[30px] lg:mt-[50px]">
-          <button className="border lg:py-4 lg:px-[195px] py-3 px-8 rounded-full leading-[1.67] text-30 font-medium">VIEW ALL</button>
+        <div className="w-full flex justify-center mt-[30px] lg:mt-[50px] innerfnont">
+        <motion.button
+      className="border lg:py-4 lg:px-[195px] py-3 px-8 rounded-full leading-[1.67] text-30 font-medium "
+      initial={{ scale: 1 }}
+      whileHover={{
+        scale: 1.1,
+        backgroundColor: "#000000",
+        color: "#ffffff",
+        transition: { duration: 0.3 },
+      }}
+      whileTap={{ scale: 0.95 }}
+    >
+      VIEW ALL
+    </motion.button>
           </div>
           </motion.div>
       </div>

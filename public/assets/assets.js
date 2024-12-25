@@ -39,6 +39,8 @@ import seleo2 from './seleo2.jpg'
 import innovo from './Innovo.png'
 import bafco from './Bafco.png'
 import bec from './BEC.png'
+import imgs1 from './tours/bafco.jpg'
+import imgs2 from './tours/seleo.jpg'
 import heroInnovo from '../assets/portfolio/heroInnovo.jpg'
 import goalspic1 from '../assets/portfolio/goalspic1.jpg'
 import goalspic2 from '../assets/portfolio/goalspic2.jpg'
@@ -56,8 +58,10 @@ import pjt from '../assets/icons/pjt.svg'
 import pjt1 from '../assets/icons/pjt-1.svg'
 import yr from '../assets/icons/yr.svg'
 import yr1 from '../assets/icons/yr-1.svg'
+import emp1 from '../assets/aboutus/emp-1.png'
 
 export const assets = {
+    emp1,
     cl,
     cl1,
     pjt,
@@ -104,6 +108,8 @@ export const assets = {
     seleo2,
     innovo,
     bafco,
+    imgs1,
+    imgs2,
     bec,
     heroInnovo,
     goalspic1,
@@ -115,11 +121,11 @@ export const assets = {
     success2,
     success3,
     gulfcryo,
-    innvosvg
+    innvosvg,
+
 };
 
 export const logos = [
-    { src: '../assets/logos/001.png', alt: 'Google' },
     { src: '../assets/logos/002.png', alt: 'Google' },
     { src: '../assets/logos/003.png', alt: 'Google' },
     { src: '../assets/logos/004.png', alt: 'Google' },
@@ -128,7 +134,6 @@ export const logos = [
     { src: '../assets/logos/007.png', alt: 'Google' },
     { src: '../assets/logos/008.png', alt: 'Google' },
     { src: '../assets/logos/009.png', alt: 'Google' },
-    { src: '../assets/logos/001.png', alt: 'Google' },
     { src: '../assets/logos/002.png', alt: 'Google' },
     { src: '../assets/logos/003.png', alt: 'Google' },
     { src: '../assets/logos/004.png', alt: 'Google' },

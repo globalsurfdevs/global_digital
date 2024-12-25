@@ -56,34 +56,36 @@ const Industries = () => {
 
   return (
     <div className=' '>
-        <div className='pt-[50px] lg:pt-[140px] pb-[50px]  lg:pb-[134px]  flex flex-col  border-b-2'>
-
+        <div className='  flex flex-col  '>
+        <div className="container border-b pt-[40px] lg:pt-[140px] pb-[30px]  lg:pb-[134px]">
         <div className=' container mx-auto text-4xl' ref={nextContainerRef}>
           <motion.div
                     initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                             variants={{
-                              hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                              hidden: { opacity: 0, y: 50 }, // Start below and invisible
                               visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                             }}
                   >
-            <h1 className="title-65 pb-[60px]">Industries We Serve</h1>
+            <h2 className="title-65 pb-5 lg:pb-[60px]">Industries We Serve</h2>
             </motion.div>
-        </div>
+          </div>
         <motion.div
                                 initial="hidden"
                                         whileInView="visible"
                                         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                         variants={{
-                                            hidden: { opacity: 0, y: 150 }, // Start below and invisible
+                                            hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                         }}
                                 >
-<div className={`${isSmallScreen ? "container " : ""} overflow-hidden ms-auto`}   style={{ width: divWidth  }} >
+<div className={`${isSmallScreen ? "container " : ""} overflow-hidden ms-auto`} style={{ width: isSmallScreen ? '' : divWidth }}    >
           <WorkSwiper />
           </div>
           </motion.div>
+        </div>
+
         </div>
     </div>
   )

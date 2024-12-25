@@ -9,32 +9,33 @@ return (
 <div className='container mx-auto py-4'>
     <div className='pt-[50px] lg:pt-[136px] pb-[50px] lg:pb-[150px] flex flex-col '>
 
-            <div className='mb-[30px] lg:mb-[56px]'>
+            <div className='mb-5 lg:mb-[56px]'>
                 <motion.div
                           initial="hidden"
                                   whileInView="visible"
                                   viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                                   variants={{
-                                    hidden: { opacity: 0, y: 100 }, // Start below and invisible
+                                    hidden: { opacity: 0, y: 50 }, // Start below and invisible
                                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                   }}
                         >
-                    <h1 className='title-65 '>Area of Expertise</h1>
+                    <h2 className='title-65 '>Area of Expertise</h2>
                     </motion.div>
         </div>
-            <motion.div
-                    initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                            variants={{
-                                hidden: { opacity: 0, y: 150 }, // Start below and invisible
-                                visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
-                            }}
-                    >
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 xl:gap-0 bdrsm'>
+
+            <div >
+            <motion.div className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 xxl:grid-cols-4 gap-5 xl:gap-0 bdrsm'
+                          initial="hidden"
+                                  whileInView="visible"
+                                  viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                                  variants={{
+                                    hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                                    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                                  }}
+                        >
                     {/* Item 1 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                                 <Image src={assets.sea} alt="image"
@@ -46,14 +47,13 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                                 Search Engine Advertising
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                Tap into existing demand for your products and services on Google Ads Search & Shopping and Bing Search & Shopping Ads.
                             </p>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ return (
 
                     {/* Item 2 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0 border-b-0 group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                     <Image src={assets.socialMediaNew} alt="image"
@@ -73,14 +73,13 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Social Media Marketing
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                We combine social media’s targeting options to engage with your audience at every stage of the funnel to reach your business objectives.
                             </p>
                         </div>
                     </div>
@@ -88,7 +87,7 @@ return (
                     {/* Item 3 */}
 
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0   group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0  lg:border-r-[1px] xxl:border-r-[0px] lg:border-b-0 xxl:border-b-[1px]   group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                         <Image src={assets.influencer} alt="image"
@@ -100,21 +99,20 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Influencer Marketing
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                Boost engagement and sales with strategic influencer advertising campaigns that create a big buzz across the web.
                             </p>
                         </div>
                     </div>
 
                     {/* Item 4 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border     group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border     group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
 
@@ -127,20 +125,19 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Programmatic Advertising
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                Drive results with programmatic advertising, automating ad buying to reach the right audience across multiple platforms.
                             </p>
                         </div>
                     </div>
                     {/* Item 5 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border border-r-0    group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border border-r-0    group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
 
@@ -153,21 +150,20 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             Video ads & Display
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                Video ads and Display allow you to reach key audiences through personalized messaging and local targeting. We maximize this powerful tool for your business
                             </p>
                         </div>
                     </div>
 
                     {/* Item 6 */}
                     <div
-                        className="h-[414px] flex flex-col p-10 justify-between border 0    group transition-all duration-500 hover:bg-primary">
+                        className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border 0    group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                     <Image src={assets.appStore} alt="image"
@@ -179,19 +175,18 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
                             App Store advertising
                             </p>
 
                             <p
-                                className="fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at urna lorem. Ut accumsan eros
-                                at turpis.
+                                className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                We use App Store advertising opportunities to drive downloads and achieve sign-in goals.
                             </p>
                         </div>
                     </div>
+                    </motion.div>
                 </div>
-            </motion.div>
 
 
     </div>

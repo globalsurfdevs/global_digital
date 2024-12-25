@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion";
 import { services } from "../../data/services";
 import {Lexend} from "next/font/google";
+import Link from "next/link";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const OurServices = () => {
@@ -69,7 +70,7 @@ const OurServices = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                 variants={{
-                  hidden: { opacity: 0, y: 150 }, // Start below and invisible
+                  hidden: { opacity: 0, y: 50 }, // Start below and invisible
                   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                 }}
       >
@@ -92,8 +93,8 @@ const OurServices = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0 }} // Trigger animation once when 50% visible
                 variants={{
-                  hidden: { opacity: 0, y: 150 }, // Start below and invisible
-                  visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } }, // Slide up and fade in
+                  hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                 }}
       >
         {/* Service Image */}
@@ -123,8 +124,11 @@ const OurServices = () => {
                 className={`${isSmallScreen ? "flex justify-between flex-col border-b pb-5 lg:pb-2 targ-ht" : ""} custom-class`}
               >
                 {/* Content Block */}
-                <div className="flex flex-col gap-3 cntntblc">
-                  <h3 className="title-65 max-w-[14ch] ">{service.title}</h3>
+            <div className="flex flex-col gap-3 cntntblc">
+              <div className="relative group">
+                <h3 className="title-65 max-w-[14ch] group-hover:text-primary transition-all duration-300 ease-in-out">{service.title}</h3>
+                <Link href={service.url} className="absolute w-full h-full top-0 z-[1]  "></Link>
+              </div>
                   <div className="flex flex-col gap-2 lg:gap-7">
                     <p className={`mb-2 text-font25 leading-lh1p4 ${lexend.className} font-light`}>
                       {service.description}
