@@ -36,11 +36,11 @@ const imageSection = {
     opacity: 1,
     transition: {
       y: { stiffness: 1000, velocity: -100 },
-      delay:.5
+      delay: 0
     }
   },
   closed: {
-    x: 50,
+    x: 20,
     opacity: 0,
     transition: {
       y: { stiffness: 1000 }
@@ -97,7 +97,9 @@ export const Example = () => {
         <motion.div className="py-5 px-6" variants={imageSection}>
           <Image src={assets.logo} alt="logo" className="w-32"/>
         </motion.div>
-        <Navigation />
+
+        <Navigation/>
+     
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
         <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>

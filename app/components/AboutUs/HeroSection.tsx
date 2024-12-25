@@ -45,7 +45,7 @@ const HeroSection = () => {
               </div>
               <div>
                 <p className="text-small-30 text-gray1 max-w-[48ch]">
-                  Subheading: Bridging Creativity and Strategy to Enhance Your
+                  Bridging Creativity and Strategy to Enhance Your
                   Brand&apos;s Digital Potential 
                 </p>
               </div>
