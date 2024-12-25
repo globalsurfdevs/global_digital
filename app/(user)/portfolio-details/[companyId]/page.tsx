@@ -1,10 +1,10 @@
 import React from 'react'
-import Portfolio from '@/app/components/Portfolio'
+import PortfolioDetails from '@/app/components/Portfolio-details'
 
 const page = () => {
   return (
     <>
-      <Portfolio/>
+        <PortfolioDetails/>
     </>
   )
 }

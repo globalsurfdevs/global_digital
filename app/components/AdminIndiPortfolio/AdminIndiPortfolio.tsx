@@ -13,6 +13,7 @@ import { PortfolioHighlight } from '@/app/types/PortfolioHighlights'
 import { FaPlus } from "react-icons/fa";
 import { handleImageChange } from '@/app/helpers/handleImageChange'
 import { v4 as uuidv4 } from 'uuid';
+import { generateAndUploadImage } from '@/app/helpers/generateAndUploadImage'
 
 
 type Inputs = {
@@ -120,15 +121,30 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("highlightIds", JSON.stringify(hightLightIds))
 
         if (imageFile) {
-            formData.append("image", imageFile);
+            if(companyId){
+                const image = await generateAndUploadImage(imageFile,companyId[0])
+                if(image){
+                    formData.append("image",image)
+                }
+            }
         }
 
         if (section2Image1) {
-            formData.append("section2Image1", section2Image1)
+            if(companyId){
+                const image = await generateAndUploadImage(section2Image1,companyId[0])
+                if(image){
+                    formData.append("section2Image1",image)
+                }
+            }
         }
 
         if (section2Image2) {
-            formData.append("section2Image2", section2Image2)
+            if(companyId){
+                const image = await generateAndUploadImage(section2Image2,companyId[0])
+                if(image){
+                    formData.append("section2Image2",image)
+                }
+            }
         }
 
         if (section2BannerImage) {

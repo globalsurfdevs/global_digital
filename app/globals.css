@@ -91,6 +91,8 @@
   background: #e43d30!important;
 }
 
+
+
 .background {
   position: absolute;
   top: 0;
@@ -307,4 +309,10 @@
       .pt-150{@apply lg:pt-[150px] pt-[50px]}
       .pb-150{@apply lg:pb-[150px] pb-[50px]}
       .textslide-30{@apply text-[15px] lg:text-font30 leading-lh1p33;}
+    }
+
+    @layer base {
+      p {
+        @apply text-19 text-gray1 fnt-lexend;
+      }
     }

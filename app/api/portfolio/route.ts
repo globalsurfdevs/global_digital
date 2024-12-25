@@ -64,9 +64,9 @@ export async function POST(req: NextRequest) {
     const companyName = formData.get("companyName") as string
 
     // const metadataDesc = formData.get("metadataDesc") as string
-    const image = formData.get("image") as File | null
-    const section2Image1 = formData.get("section2Image1") as File | null;
-    const section2Image2 = formData.get("section2Image2") as File | null;
+    const image = formData.get("image") as string
+    const section2Image1 = formData.get("section2Image1") as string;
+    const section2Image2 = formData.get("section2Image2") as string;
     const section2BannerImage = formData.get("section2BannerImage") as File | null;
     const resultImage1 = formData.get("resultImage1") as File | null
     const resultImage2 = formData.get("resultImage2") as File | null
@@ -78,47 +78,47 @@ export async function POST(req: NextRequest) {
     let resultImage1PAth;
     let resultImage2Path;
 
-    if (image) {
-        try {
-            const filename = `${Date.now()}-${image.name || "image"}`;
-            const dropboxPath = `/portfolio/${companyName}/${filename}`;
+    // if (image) {
+    //     try {
+    //         const filename = `${Date.now()}-${image.name || "image"}`;
+    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
 
-            imagePath = await uploadToDropbox(image, dropboxPath);
-            console.log("New image uploaded to Dropbox:", imagePath);
+    //         imagePath = await uploadToDropbox(image, dropboxPath);
+    //         console.log("New image uploaded to Dropbox:", imagePath);
 
-        } catch (error) {
-            console.error("Error uploading new image to Dropbox:", error);
-            return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-        }
-    }
+    //     } catch (error) {
+    //         console.error("Error uploading new image to Dropbox:", error);
+    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
+    //     }
+    // }
 
-    if (section2Image1) {
-        try {
-            const filename = `${Date.now()}-${section2Image1.name || "image"}`;
-            const dropboxPath = `/portfolio/${companyName}/${filename}`;
+    // if (section2Image1) {
+    //     try {
+    //         const filename = `${Date.now()}-${section2Image1.name || "image"}`;
+    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
 
-            section2Image1Path = await uploadToDropbox(section2Image1, dropboxPath);
-            console.log("New image uploaded to Dropbox:", section2Image1Path);
+    //         section2Image1Path = await uploadToDropbox(section2Image1, dropboxPath);
+    //         console.log("New image uploaded to Dropbox:", section2Image1Path);
 
-        } catch (error) {
-            console.error("Error uploading new image to Dropbox:", error);
-            return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-        }
-    }
+    //     } catch (error) {
+    //         console.error("Error uploading new image to Dropbox:", error);
+    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
+    //     }
+    // }
 
-    if (section2Image2) {
-        try {
-            const filename = `${Date.now()}-${section2Image2.name || "image"}`;
-            const dropboxPath = `/portfolio/${companyName}/${filename}`;
+    // if (section2Image2) {
+    //     try {
+    //         const filename = `${Date.now()}-${section2Image2.name || "image"}`;
+    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
 
-            section2Image2Path = await uploadToDropbox(section2Image2, dropboxPath);
-            console.log("New image uploaded to Dropbox:", section2Image2Path);
+    //         section2Image2Path = await uploadToDropbox(section2Image2, dropboxPath);
+    //         console.log("New image uploaded to Dropbox:", section2Image2Path);
 
-        } catch (error) {
-            console.error("Error uploading new image to Dropbox:", error);
-            return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-        }
-    }
+    //     } catch (error) {
+    //         console.error("Error uploading new image to Dropbox:", error);
+    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
+    //     }
+    // }
 
     if (section2BannerImage) {
         try {
@@ -186,10 +186,10 @@ export async function POST(req: NextRequest) {
                         industry,
                         country,
                         channelsUsed,
-                        bannerImage: imagePath,
+                        bannerImage: image,
                         story,
-                        section2Image1: section2Image1Path,
-                        section2Image2: section2Image2Path,
+                        section2Image1,
+                        section2Image2,
                         goals,
                         objectives,
                         challenge,
