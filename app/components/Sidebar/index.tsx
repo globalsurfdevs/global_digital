@@ -279,7 +279,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             <Image
               width={160}
               height={20}
-              src={assets.logo}
+              src={assets.lightlogo}
               alt="Logo"
               priority
             />
