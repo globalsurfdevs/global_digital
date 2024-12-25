@@ -4,7 +4,7 @@ import { assets } from "@/public/assets/assets";
 export const menuItems = [
     {
         item: "ABOUT",
-        url:"about-us"
+        url:"/about-us"
     },
     {
         item:"SERVICES",
@@ -12,38 +12,38 @@ export const menuItems = [
             {
                 item:"Performance Marketing",
                 svg: assets.sem,
-                url:"performance-marketing"
+                url:"/performance-marketing"
             },
             {
                 item:"Search Engine Optimization",
                 svg: assets.seo,
-                url:"seo"
+                url:"/seo"
             },
             {
                 item:"Social Media Marketing",
                 svg: assets.socialMedia,
-                url:"social-media"
+                url:"/social-media"
             },
             {
                 item:"Website Design And Development",
                 svg: assets.websiteD,
-                url:"web-design-development"
+                url:"/web-design-development"
             },
             {
                 item:"Branding And Creatives",
                 svg: assets.branding,
-                url:"branding-creative"
+                url:"/branding-creative"
             },
             {
                 item:"Marketing Intelligence",
                 svg: assets.strategy,
-                url:"marketing-intelligence"
+                url:"/marketing-intelligence"
             }
         ]
     },
     {
         item:"PORTFOLIO",
-        url:"portfolio"
+        url:"/portfolio"
     },
     {
         item:"CAREERS",
