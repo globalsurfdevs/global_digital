@@ -12,16 +12,16 @@ import Testimonials from '../../components/HomePage/Testimonials'
 import FAQ from '../../components/PermormanceMarketing/FAQ'
 import GetInTouch from '../../components/PermormanceMarketing/GetInTouch'
 
-import { BannerSection } from "../../data/services/performance-marketing/herosection";
-import { AreaExpertise } from "../../data/services/performance-marketing/area-of-expertise";
-import { boostEngage } from "../../data/services/performance-marketing/boost-engage";
-import { OurServices } from "../../data/services/performance-marketing/our-services";
-import { Frameworkdata } from "../../data/services/performance-marketing/framework";
-import { ResultsData } from "../../data/services/performance-marketing/results";
-import { Platformsdata } from "../../data/services/performance-marketing/platforms";
+import { BannerSection } from "../../data/services/marketing-intelligence/herosection";
+import { AreaExpertise } from "../../data/services/marketing-intelligence/area-of-expertise";
+import { boostEngage } from "../../data/services/marketing-intelligence/boost-engage";
+import { OurServices } from "../../data/services/marketing-intelligence/our-services";
+import { Frameworkdata } from "../../data/services/marketing-intelligence/framework";
+import { ResultsData } from "../../data/services/marketing-intelligence/results";
+import { Platformsdata } from "../../data/services/marketing-intelligence/platforms";
 import { partnerData } from "../../data/partnerData";
-import { Cta } from "../../data/services/performance-marketing/cta";
-import { Faq } from "../../data/services/performance-marketing/faq";
+import { Cta } from "../../data/services/marketing-intelligence/cta";
+import { Faq } from "../../data/services/marketing-intelligence/faq";
 
 const page = () => {
   return (
