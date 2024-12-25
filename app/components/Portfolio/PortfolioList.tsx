@@ -15,6 +15,7 @@ const PortfolioList = () => {
       tag: "SaaS",
       imageSrc: assets.imgs1,
       url: "case-study",
+      category:"all"
     },
     {
       title: "Lorem Ipsum",
@@ -22,6 +23,7 @@ const PortfolioList = () => {
       tag: "Fintech",
       imageSrc: assets.imgs2,
       url: "portfolio-details",
+      category:"cat1"
     },
     {
       title: "Lorem Ipsum",
@@ -29,6 +31,7 @@ const PortfolioList = () => {
       tag: "Fintech",
       imageSrc: assets.imgs2,
       url: "#",
+      category:"cat2"
     },
     {
       title: "Lorem Ipsum",
@@ -36,6 +39,7 @@ const PortfolioList = () => {
       tag: "Fintech",
       imageSrc: assets.imgs2,
       url: "#",
+      category:"all"
     },
   ];
 

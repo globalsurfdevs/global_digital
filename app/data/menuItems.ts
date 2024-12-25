@@ -17,27 +17,27 @@ export const menuItems = [
             {
                 item:"Search Engine Optimization",
                 svg: assets.seo,
-                url:"#"
+                url:"seo"
             },
             {
                 item:"Social Media Marketing",
                 svg: assets.socialMedia,
-                url:"#"
+                url:"social-media"
             },
             {
                 item:"Website Design And Development",
                 svg: assets.websiteD,
-                url:"#"
+                url:"web-design-development"
             },
             {
                 item:"Branding And Creatives",
                 svg: assets.branding,
-                url:"#"
+                url:"branding-creative"
             },
             {
                 item:"Marketing Intelligence",
                 svg: assets.strategy,
-                url:"#"
+                url:"marketing-intelligence"
             }
         ]
     },

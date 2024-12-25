@@ -2,8 +2,17 @@
 import React from 'react'
 import Button from '../Button/Button'
 import { motion } from 'framer-motion';
+type PartnerDataType = {
+    text: string;
+    textred: string;
+  };
 
-const GetInTouch = () => {
+  type PartnerListProps = {
+    ctabbutton: string;
+    data: PartnerDataType[];
+  };
+
+  const GetInTouch: React.FC<PartnerListProps> = ({ data , ctabbutton}) => {
   return (
       <div className="flex flex-col bg-black py-[50px] lg:py-[150px]">
       <div className="container px-4 mx-auto text-white">
@@ -17,10 +26,13 @@ const GetInTouch = () => {
                             hidden: { opacity: 0, y: 50 }, // Start below and invisible
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
-                >
-              <h2 className="title-65 leading-[1.15]">
-                <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
+          >
+
+            {data.map((item, index) => (
+            <h2 className="title-65 leading-[1.15]" key={index} >
+                <span className="text-primary">{ item.textred } </span>{ item.text }
               </h2>
+            ))}
           </motion.div>
 
       <motion.div
@@ -32,7 +44,7 @@ const GetInTouch = () => {
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
                 >
-          <div className='mt-6 lg:mt-[57px] innerfnont'><Button text='LET&apos;S TALK GROWTH' /></div>
+            <div className='mt-6 lg:mt-[57px] innerfnont'><Button text={ctabbutton} /></div>
 
           </motion.div>
             </div>

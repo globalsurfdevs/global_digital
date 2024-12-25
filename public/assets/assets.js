@@ -59,9 +59,42 @@ import pjt1 from '../assets/icons/pjt-1.svg'
 import yr from '../assets/icons/yr.svg'
 import yr1 from '../assets/icons/yr-1.svg'
 import emp1 from '../assets/aboutus/emp-1.png'
+ 
+import boost1 from "../assets/logos/boost.svg";
+import boost2 from "../assets/logos/engage.svg";
+import boost3 from "../assets/logos/convert.svg";
+import boost4 from "../assets/logos/save.svg";
+import twitterx from '../assets/logos/socialmedia/x.svg'
+import amazon from '../assets/logos/socialmedia/amazon.svg'
+import google from '../assets/logos/socialmedia/google.svg'
+import linkedin from '../assets/logos/socialmedia/linkedin.svg'
+import meta from '../assets/logos/socialmedia/meta.svg'
+import ticktok from '../assets/logos/socialmedia/ticktok.svg'
+import seopr1 from '../assets/icons/001.svg'
+import seopr2 from '../assets/icons/002.svg'
+import seopr3 from '../assets/icons/003.svg'
+import seopr4 from '../assets/icons/004.svg'
+
+
+ 
 import lightlogo from '../assets/gsdigital-light.svg'
+ 
 
 export const assets = {
+    seopr1,
+    seopr2,
+    seopr3,
+    seopr4,
+    twitterx,
+    amazon,
+    google,
+    linkedin,
+    meta,
+    ticktok,
+    boost1,
+    boost2,
+    boost3,
+    boost4,
     emp1,
     cl,
     cl1,

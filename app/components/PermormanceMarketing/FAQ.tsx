@@ -1,14 +1,21 @@
 "use client"
 
 import React, { useState } from 'react'
-import { accordianItems } from '@/app/data/accordianItems'
 import Image from "next/image";
 import arrowactive from '@/public/assets/logos/arr-active.svg'
 import arrowdown from '@/public/assets/logos/arr-down.svg'
 import {Collapse} from 'react-collapse';
 import { motion } from 'framer-motion';
+type PartnerDataType = {
+    title: string;
+    description: string;
+  };
 
-const FAQ = () => {
+  type PartnerListProps = {
+    data: PartnerDataType[];
+  };
+
+  const FAQ: React.FC<PartnerListProps> = ({ data }) => {
 
     const [open,setOpen] = useState<number | null>(null)
 
@@ -41,7 +48,7 @@ const FAQ = () => {
 
                 <div className='col-span-5 w-full'>
 
-                    {accordianItems.map((item,index)=>(
+                    {data.map((item,index)=>(
                         <div className='flex justify-between w-full border-b border-t py-6 lg:pt-[50px] lg:pb-[50px] items-center gap-3' key={index}  onClick={()=>toggle(index)}>
                             <div className='flex flex-col  '>
                             <div className={` ${open===index ? 'text-30 text-black' : 'text-30 text-gray1'}`} >{index + 1}. {item.title}</div>

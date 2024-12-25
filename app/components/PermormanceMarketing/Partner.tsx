@@ -1,16 +1,22 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import { partnerData } from '@/app/data/partnerData'
 import { motion, AnimatePresence } from 'framer-motion'
+type PartnerDataType = {
+    item: string;
+  };
 
-const Partner = () => {
+  type PartnerListProps = {
+    data: PartnerDataType[];
+  };
+
+  const Partner: React.FC<PartnerListProps> = ({ data }) => {
     const [dataIndex, setDataIndex] = useState(0)
 
     useEffect(() => {
         const interval = setInterval(() => {
             setDataIndex((prev) => {
-                const nextIndex = prev == partnerData.length - 1 ? 0 : prev + 1
+                const nextIndex = prev == data.length - 1 ? 0 : prev + 1
                 return nextIndex
             })
         }, 2000);
@@ -47,12 +53,12 @@ const Partner = () => {
                                                         >
                     <div className='title-65 font-medium leading-[1.6] lg:leading-[120px]   overflow-hidden relative'>
                         {/* We turn Data into <span className='text-primary'>Insights</span> */}
-                        We turn <br className='  md:hidden '></br><span className='text-gray1'>{partnerData[dataIndex].item.split(" ").slice(0, partnerData[dataIndex].item.split(" ").length - 1).toString().replace(",", " ")+" "}</span>
+                        We turn <br className='  md:hidden '></br><span className='text-gray1'>{data[dataIndex].item.split(" ").slice(0, data[dataIndex].item.split(" ").length - 1).toString().replace(",", " ")+" "}</span>
 
-                        <AnimatePresence><motion.span key={partnerData[dataIndex].item} // Add a key to make sure the element is treated as a unique component
+                        <AnimatePresence><motion.span key={data[dataIndex].item} // Add a key to make sure the element is treated as a unique component
                             whileInView={{ y: 0 }}
                             exit={{ y: "100%" }}
-                            initial={{ y: "-100%" }} className='text-primary absolute ml-3'>{partnerData[dataIndex].item.split(" ").slice(partnerData[dataIndex].item.split(" ").length - 1).toString()}</motion.span></AnimatePresence>
+                            initial={{ y: "-100%" }} className='text-primary absolute ml-3'>{data[dataIndex].item.split(" ").slice(data[dataIndex].item.split(" ").length - 1).toString()}</motion.span></AnimatePresence>
                         </div>
                     </motion.div>
                 </div>
