@@ -3,7 +3,7 @@ export const services = [
     id: "1",
     image: "/assets/services/dummy-img.jpg",
     title: "Performance Marketing",
-    url:'performance-marketing',
+    url:'/performance-marketing',
     description: "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
     buttonTexts: [
       {
@@ -24,7 +24,7 @@ export const services = [
     id: "2",
     image: "/assets/services/dummy-img.jpg",
     title: "SEO",
-    url:'seo',
+    url:'/seo',
     description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
     buttonTexts: [
       {
@@ -42,7 +42,7 @@ export const services = [
     id: "3",
     image: "/assets/services/dummy-img.jpg",
     title: "Social Media",
-    url:'social-media',
+    url:'/social-media',
     description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
     buttonTexts: [
       {
@@ -60,7 +60,7 @@ export const services = [
     id: "4",
     image: "/assets/services/dummy-img.jpg",
     title: "Web Design & Development",
-    url:'web-design-development',
+    url:'/web-design-development',
     description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
     buttonTexts: [
       {
@@ -84,7 +84,7 @@ export const services = [
     id: "5",
     image: "/assets/services/dummy-img.jpg",
     title: "Branding & Creatives",
-    url:'branding-creative',
+    url:'/branding-creative',
     description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
     buttonTexts: [
       {
@@ -114,7 +114,7 @@ export const services = [
     id: "6",
     image: "/assets/services/dummy-img.jpg",
     title: "Marketing Intelligence",
-    url:'marketing-intelligence',
+    url:'/marketing-intelligence',
     description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
     buttonTexts: [
       {
