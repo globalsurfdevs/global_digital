@@ -59,6 +59,7 @@ import pjt1 from '../assets/icons/pjt-1.svg'
 import yr from '../assets/icons/yr.svg'
 import yr1 from '../assets/icons/yr-1.svg'
 import emp1 from '../assets/aboutus/emp-1.png'
+import lightlogo from '../assets/gsdigital-light.svg'
 
 export const assets = {
     emp1,
@@ -122,7 +123,7 @@ export const assets = {
     success3,
     gulfcryo,
     innvosvg,
-
+    lightlogo
 };
 
 export const logos = [

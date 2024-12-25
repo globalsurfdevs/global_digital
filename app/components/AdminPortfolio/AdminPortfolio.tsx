@@ -62,7 +62,7 @@ const AdminPortfolio = () => {
 
                             <Link href={`/admin/portfolio/${item.id}`} className="w-full h-32 flex flex-col items-center justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div className='flex h-full'>
-                                    <img className="object-cover w-full rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-s-lg" src="/images/brand/brand-01.svg" alt="" />
+                                    <img className="object-cover w-full rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-s-lg" src={item.bannerImage} alt="" />
                                     <div className="flex flex-col justify-between p-4 leading-normal items-center">
                                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.companyName}</h5>
                                     </div>
