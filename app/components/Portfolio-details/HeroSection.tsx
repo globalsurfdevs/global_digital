@@ -150,11 +150,15 @@ const HeroSection = ({
               }, // Slide up and fade in
             }}
           >
-            <div className="flex flex-col gap-5 py-[20px] lg:grid lg:grid-cols-3 lg:gap-5 lg:py-[120px]">
+            <div className="flex flex-col gap-5 py-[20px] lg:grid lg:grid-cols-3 lg:gap-[50px] lg:py-[120px]">
               {data.portfolioHighlights.map((item, index) => (
                 <div
                   key={index}
-                  className="group border-b border-gray1 py-[20px] lg:border-b-0 lg:border-r lg:py-[44px] "
+                  className={`group  border-gray1 py-[20px]  lg:py-[44px] ${
+                    index < 2
+                      ? "border-b pr-[1.5rem] lg:border-b-0 lg:border-r"
+                      : ""
+                  }`}
                 >
                   <p className="title-65 text-primary duration-500 group-hover:-translate-y-1">
                     {item.number}
