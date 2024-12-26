@@ -74,14 +74,14 @@ const HeroSection = ({
                 </div>
 
                 <div className="flex flex-col lg:w-[60%] ">
-                  <div className=":lgpb-[40px] mb-[20px] flex flex-col  border-b border-black pb-[20px] lg:mb-[36px]">
+                  <div className="mb-[20px] flex flex-col border-b  border-black pb-[20px] lg:mb-[36px] lg:pb-[40px]">
                     <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
                       Industry
                     </h5>
                     <h4 className="text-30">{data.portfolio[0].industry}</h4>
                   </div>
 
-                  <div className=":lgpb-[40px] mb-[20px] flex flex-col  border-b border-black pb-[20px] lg:mb-[36px]">
+                  <div className="mb-[20px] flex flex-col border-b  border-black pb-[20px] lg:mb-[36px] lg:pb-[40px]">
                     <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
                       Country
                     </h5>
