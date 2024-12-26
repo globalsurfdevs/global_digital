@@ -9,7 +9,7 @@ import { workSvgs } from "../../data/works";
 const WorkSwiper = () => {
   return (
     <div className="mnic">
-        <Swiper
+      <Swiper
         className="!overflow-visible"
         modules={[Autoplay]}
         autoplay={{
@@ -32,14 +32,14 @@ const WorkSwiper = () => {
       >
         {workSvgs.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="flex  items-center group home-st">
-              <div className="bg-white me-1 lg:me-2 w-fit ease-linear duration-200 min-w-[30px] min-h-[30px] lg:min-w-[50px] lg:min-h-[50px] flex items-center justify-center ">
+            <div className="home-st   flex items-center">
+              <div className="group me-1 flex min-h-[30px] w-fit min-w-[30px] items-center justify-center bg-white duration-200 ease-linear hover:bg-[#E63E31] lg:me-2 lg:min-h-[50px] lg:min-w-[50px]">
                 <img
                   src={item.icon}
                   alt={item.alt}
                   width={item.width}
                   height={item.height}
-                  className="ease-linear duration-200 w-[18px] lg:w-auto"
+                  className="w-[18px] duration-200 ease-linear group-hover:invert lg:w-auto"
                 />
               </div>
               <h3 className="textslide-30 ">{item.text}</h3>
