@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import Button from '../Button/Button'
+import Link from "next/link";
 import { motion } from 'framer-motion';
 type PartnerDataType = {
     text: string;
@@ -9,10 +10,11 @@ type PartnerDataType = {
 
   type PartnerListProps = {
     ctabbutton: string;
+    link: string;
     data: PartnerDataType[];
   };
 
-  const GetInTouch: React.FC<PartnerListProps> = ({ data , ctabbutton}) => {
+  const GetInTouch: React.FC<PartnerListProps> = ({ data , ctabbutton, link}) => {
   return (
       <div className="flex flex-col bg-black py-[50px] lg:py-[150px]">
       <div className="container px-4 mx-auto text-white">
@@ -44,7 +46,7 @@ type PartnerDataType = {
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
                 >
-            <div className='mt-6 lg:mt-[57px] innerfnont'><Button text={ctabbutton} /></div>
+            <div className='mt-6 lg:mt-[57px] innerfnont'><Link href={link}><Button text={ctabbutton} /></Link></div>
 
           </motion.div>
             </div>

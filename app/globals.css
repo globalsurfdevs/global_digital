@@ -335,7 +335,7 @@ body {
                 .maintalk{grid-column-gap: 0px;
                   grid-row-gap: 0px;
                   grid-template-rows: auto;
-                  grid-template-columns: 24.6% 1fr;
+                  grid-template-columns: 30% 1fr;
                   grid-auto-columns: 1fr;
                   width: 100%;
                   height: 100%;
@@ -351,6 +351,12 @@ body {
                       grid-template-columns: 100%;
                       display: flex;
                   }
+              }
+              .contctform input::placeholder {
+                color: #000; /* Custom color */
+              }
+              .contctform textarea::placeholder {
+                color: #000; /* Custom color */
               }
     @layer components {
       .title-80{ @apply  text-font80 leading-lh1p22;}
