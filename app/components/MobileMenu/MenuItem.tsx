@@ -28,7 +28,7 @@ export const MenuItem = ({ item, children }: { item: string; children?: React.Re
 
   return (
     <motion.li
-      className="mobile-menu-li relative cursor-pointer w-full"
+      className="mobile-menu-li relative cursor-pointer w-full flex-col"
       variants={navmenuSection}
       onClick={children ? toggleSubmenu : undefined}
     >
@@ -42,7 +42,7 @@ export const MenuItem = ({ item, children }: { item: string; children?: React.Re
         <motion.ul
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md w-64 z-10"
+          className="left-0 top-full mt-2 w-full "
         >
           {children}
         </motion.ul>
