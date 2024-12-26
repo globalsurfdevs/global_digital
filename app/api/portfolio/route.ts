@@ -71,6 +71,19 @@ export async function POST(req: NextRequest) {
     const resultImage1 = formData.get("resultImage1") as File | null
     const resultImage2 = formData.get("resultImage2") as File | null
 
+    const description = formData.get("description") as string;
+    const tag = formData.get("tag") as string;
+    const addedCategories = formData.get("addedCategories") as string
+
+    console.log("description",description)
+    console.log("tag",tag)
+    console.log("added",addedCategories)
+
+    let addedCategoriesRaw;
+    if(addedCategories){
+        addedCategoriesRaw = JSON.parse(addedCategories)
+    }
+
     let imagePath;
     let section2Image1Path;
     let section2Image2Path;
@@ -197,11 +210,15 @@ export async function POST(req: NextRequest) {
                         result,
                         section2BannerImage: section2BannerImagePath,
                         resultImage1: resultImage1PAth,
-                        resultImage2: resultImage2Path
+                        resultImage2: resultImage2Path,
+                        tag,
+                        description,
+                        categories:addedCategoriesRaw
                     })
                     .eq('id', id)
                     .select()
 
+                    console.log("Data",data,"Error",error)
 
                 const highlights: { customId: string, number: string, text: string }[] = [];
 
@@ -282,7 +299,10 @@ export async function POST(req: NextRequest) {
                         result,
                         section2BannerImage: section2BannerImagePath,
                         resultImage1: resultImage1PAth,
-                        resultImage2: resultImage2Path
+                        resultImage2: resultImage2Path,
+                        tag,
+                        description,
+                        categories:addedCategoriesRaw
                     },
                 ])
                 .select('id')

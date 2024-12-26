@@ -97,7 +97,7 @@ const PortfolioList = () => {
                   <h3 className="text-30 mb-1 md:mb-2 group-hover:text-primary ease-in-out duration-200">
                     {item.companyName}
                   </h3>
-                  <p className="text-19 text-gray1 ">{"item.description"}</p>
+                  <p className="text-19 text-gray1 ">item.description</p>
                 </div>
                 <Link href={`/portfolio-details/${item.id}`} className="absolute w-full h-full top-0 z-[1]"></Link>
               </div>
