@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { assets } from "@/public/assets/assets";
+import Link from "next/link";
 import Button from '../Button/Button';
 import Image from "next/image";
 import {Lexend} from "next/font/google";
@@ -44,7 +45,7 @@ const Footer = () => {
                 <span className="text-primary">Get in touch </span>today to discuss how we can help your brand stay ahead
               </h2>
 
-          <div className='mt-10 lg:mt-[57px] mb-10  lg:mb-[120px] innerfnont'><Button text='LET&apos;S TALK' /></div>
+          <div className='mt-10 lg:mt-[57px] mb-10  lg:mb-[120px] innerfnont'><Link href="lets-talk"><Button text='LET&apos;S TALK' /></Link></div>
 
               </div>}
 
