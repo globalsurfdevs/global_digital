@@ -25,7 +25,7 @@ export const services = [
     image: "/assets/services/dummy-img.jpg",
     title: "SEO",
     url:'/seo',
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    description: "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
     buttonTexts: [
       {
         title: "B2B SEO",
@@ -43,7 +43,7 @@ export const services = [
     image: "/assets/services/dummy-img.jpg",
     title: "Social Media",
     url:'/social-media',
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    description: "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
     buttonTexts: [
       {
         title: "Social Media Strategy",
@@ -61,7 +61,7 @@ export const services = [
     image: "/assets/services/dummy-img.jpg",
     title: "Web Design & Development",
     url:'/web-design-development',
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    description: "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
     buttonTexts: [
       {
         title: "Website Design",
@@ -85,7 +85,7 @@ export const services = [
     image: "/assets/services/dummy-img.jpg",
     title: "Branding & Creatives",
     url:'/branding-creative',
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    description: "We help you create a brand identity that resonates with your audience. Our creative assets are designed to enhance recognition and drive engagement. ",
     buttonTexts: [
       {
         title: "Branding",
@@ -115,7 +115,7 @@ export const services = [
     image: "/assets/services/dummy-img.jpg",
     title: "Marketing Intelligence",
     url:'/marketing-intelligence',
-    description: "Engage your audience on their favourite platforms to foster meaningful relationships that build trust.",
+    description: "We optimize your marketing with data-driven insights for better results. Real-time analytics and market trends help you make informed decisions. ",
     buttonTexts: [
       {
         title: "Strategy Consulting",
