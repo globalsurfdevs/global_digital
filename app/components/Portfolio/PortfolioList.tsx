@@ -8,102 +8,204 @@ import { useEffect, useState } from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 
 const PortfolioList = () => {
+  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+
+  useEffect(() => {
+    const fetchPortfolios = async () => {
+      try {
+        const response = await fetch(`/api/portfolio`);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data.portfolio);
+          setPortfolios(data.portfolio);
+        } else {
+          console.error("Failed to fetch portfolio data");
+        }
+      } catch (error) {
+        console.error("Error fetching portfolio data:", error);
+      }
+    };
+
+    fetchPortfolios();
+  }, []);
+
+  const [filter, setFilter] = useState("all");
   const portfolioData = [
     {
-      title: "Lorem Ipsum",
+      title: "Lorem Ipsum1",
       description: "Lorem Ipsum is simply dummy text of the printing",
       tag: "SaaS",
       imageSrc: assets.imgs1,
       url: "case-study",
-      category:"all"
+      categories: ["all"],
     },
     {
-      title: "Lorem Ipsum",
+      title: "Lorem Ipsum2",
       description: "Lorem Ipsum is simply dummy text of the printing",
       tag: "Fintech",
       imageSrc: assets.imgs2,
       url: "portfolio-details",
-      category:"cat1"
+      categories: ["cat1", "cat2"],
     },
     {
-      title: "Lorem Ipsum",
+      title: "Lorem Ipsum3",
+      description: "Lorem Ipsum is simply dummy text of the printing",
+      tag: "Fintech",
+      imageSrc: assets.imgs1,
+      url: "#",
+      categories: ["cat2"],
+    },
+    {
+      title: "Lorem Ipsum4",
       description: "Lorem Ipsum is simply dummy text of the printing",
       tag: "Fintech",
       imageSrc: assets.imgs2,
       url: "#",
-      category:"cat2"
-    },
-    {
-      title: "Lorem Ipsum",
-      description: "Lorem Ipsum is simply dummy text of the printing",
-      tag: "Fintech",
-      imageSrc: assets.imgs2,
-      url: "#",
-      category:"all"
+      categories: ["all"],
     },
   ];
+  const filteredData =
+    filter === "all"
+      ? portfolioData
+      : portfolioData.filter((item) => item.categories.includes(filter));
 
-      const [portfolios, setPortfolios] = useState<Portfolio[]>([])
-      
-      useEffect(() => {
-          const fetchPortfolios = async () => {
-              try {
-                  const response = await fetch(`/api/portfolio`);
-                  if (response.ok) {
-                      const data = await response.json();
-                      console.log(data.portfolio)
-                      setPortfolios(data.portfolio)
-  
-                  } else {
-                      console.error("Failed to fetch portfolio data");
-                  }
-              } catch (error) {
-                  console.error("Error fetching portfolio data:", error);
-              }
-          }
-  
-          fetchPortfolios()
-      }, [])
-      
   return (
     <>
       <div className="container mx-auto py-4">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8 gap-8 lg:gap-y-12 items-center border-b lg:pt-[130px]  pt-[50px] pb-10 flex flex-col ">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 1.3, ease: "easeOut" },
+            },
+          }}
+        >
+          <div className="portfolio pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px] ">
+            {/* Filter Tabs */}
+            <div className="border-b  mb-[30px] md:mb-[50px] filterbtn no-scrollbar">
+
+            <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "all" ? "border-b border-black text-black" : "text-gray1"
+                }`}><span  onClick={() => setFilter("all")}>View All</span></div>
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "cat1" ? "border-b border-black text-black" : "text-gray1"
+                }`}><span onClick={() => setFilter("cat1")}>Performance Marketing</span></div>
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "cat2" ? "border-b border-black text-black" : "text-gray1"
+                }`}><span onClick={() => setFilter("cat2")}>SEO</span></div>
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "cat3" ? "border-b border-black text-black" : "text-gray1"
+                }`}><span onClick={() => setFilter("cat1")}>Social Media </span></div>
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "cat4" ? "border-b border-black text-black" : "text-gray1"
+                }`}><span onClick={() => setFilter("cat2")}>Web Design & Development</span></div>
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "cat5" ? "border-b border-black text-black" : "text-gray1"
+                }`}><span onClick={() => setFilter("cat1")}>Branding & Creatives</span></div>
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "cat6" ? "border-b border-black text-black" : "text-gray1"
+                }`}><span onClick={() => setFilter("cat1")}>Marketing Intelligence </span></div>
+
+            </div>
+            </div>
+
+            {/* Portfolio Items */}
+            <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
+              {filteredData.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.1 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 1.3, ease: "easeOut" },
+                    },
+                  }}
+                >
+                  <div className="portfolio-card group relative col-span-1">
+                    <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px]">
+                      <Image
+                        src={item.imageSrc}
+                        alt="image"
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 duration-300 ease-in-out ease-in-out   group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  md:left-5 md:top-5">
+                        <div className="uppercase text-white">
+                          <p className="text-font14 text-white">{"SAAS"}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-3 md:mt-4">
+                      <h3 className="text-30 mb-1 duration-200 ease-in-out group-hover:text-primary md:mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-19 text-gray1">{"item.description"}</p>
+                    </div>
+                    {/* <Link href={`/portfolio-details/${item.id}`}
+                  className="absolute top-0 z-[1] h-full w-full"
+                ></Link> */}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+        {/* <div className="flex flex-col items-center gap-8 border-b pb-10 pt-[50px] lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 lg:pt-[130px] ">
           {portfolios.map((item, index) => (
             <motion.div
               key={index}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              viewport={{ once: true, amount: 0.3 }}
               variants={{
-                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                hidden: { opacity: 0, y: 50 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   transition: { duration: 1.3, ease: "easeOut" },
-                }, // Slide up and fade in
+                },
               }}
             >
-              <div className="portfolio-card col-span-1 group relative">
-                <div className="relative card-img">
-                  <img src={item.bannerImage} alt="image" className="w-[100%]" />
-                  <div className="bg-gray1 group-hover:z-[1] group-hover:bg-primary ease-in-out duration-200 group-hover:text-white absolute md:top-5 md:left-5 top-3 left-3 px-4 py-2 rounded-3xl cursor-pointer">
-                    <div className="text-white uppercase  ">
-                      <p className="text-font14">{"SAAS"}</p>
+              <div className="portfolio-card group relative col-span-1">
+
+                <div className="card-img relative h-[500px] overflow-hidden rounded-md">
+                  <img
+                    src={item.bannerImage}
+                    alt="image"
+                    className="h-full w-full object-cover"
+                  />
+                  <div
+                    className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 duration-300 ease-in-out ease-in-out   group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  md:left-5 md:top-5"
+                  >
+                    <div className="uppercase text-white">
+                      <p className="text-font14 text-white">{"SAAS"}</p>
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 md:mt-4 ">
-                  <h3 className="text-30 mb-1 md:mb-2 group-hover:text-primary ease-in-out duration-200">
+                <div className="mt-3 md:mt-4">
+                  <h3 className="text-30 mb-1 duration-200 ease-in-out group-hover:text-primary md:mb-2">
                     {item.companyName}
                   </h3>
-                  <p className="text-19 text-gray1 ">item.description</p>
+                  <p className="text-19 text-gray1">{"item.description"}</p>
                 </div>
-                <Link href={`/portfolio-details/${item.id}`} className="absolute w-full h-full top-0 z-[1]"></Link>
+                <Link
+                  href={`/portfolio-details/${item.id}`}
+                  className="absolute top-0 z-[1] h-full w-full"
+                ></Link>
               </div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
       </div>
     </>
   );

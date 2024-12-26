@@ -92,14 +92,16 @@ export const Example = () => {
       ref={containerRef}
     >
 
-      {<motion.div className={"background shadow-lg"} variants={sidebar} ref={menuRef}>
+      {<motion.div className={"menusi background shadow-lg"} variants={sidebar} ref={menuRef}>
 
-        <motion.div className="py-5 px-6" variants={imageSection}>
+        <motion.div className="" variants={imageSection}>
+          <div className="fixed w-full min-h-[60px] bg-white z-10 py-5 px-6">
           <Image src={assets.logo} alt="logo" className="w-32"/>
+          </div>
         </motion.div>
 
         <Navigation/>
-     
+
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
         <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>
