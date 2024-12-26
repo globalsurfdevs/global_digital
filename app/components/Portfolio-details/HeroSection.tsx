@@ -123,7 +123,7 @@ return (
                                      }}>
                             <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>
                                 {data.portfolioHighlights.map((item)=>(
-                                    <div className='border-b lg:border-r lg:border-b-0 border-gray1 py-[20px] lg:py-[44px] group '>
+                                    <div className='border-b lg:border-r lg:border-b-0 border-gray1 py-[20px] lg:py-[44px] group ' key={item.customId}>
                                     <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>{item.number}</p>
                                     <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>{item.text}</h3>
                                     </div>

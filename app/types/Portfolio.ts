@@ -16,4 +16,7 @@ export type Portfolio = {
     section2Image2:string;
     solutions:string;
     challenge:string;
+    categories:string[]
+    tag:string;
+    description:string;
 }

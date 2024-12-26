@@ -14,6 +14,8 @@ import { FaPlus } from "react-icons/fa";
 import { handleImageChange } from '@/app/helpers/handleImageChange'
 import { v4 as uuidv4 } from 'uuid';
 import { generateAndUploadImage } from '@/app/helpers/generateAndUploadImage'
+import { categories as importedCategories } from '@/app/data/categories'
+
 
 
 type Inputs = {
@@ -27,6 +29,8 @@ type Inputs = {
     challenge: string;
     solutions: string;
     result: string;
+    description: string;
+    tag: string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {
@@ -78,6 +82,8 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [resultImage2Error, setResultImage2Error] = useState<null | string>(null)
 
 
+    const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
+
     const {
         register,
         handleSubmit,
@@ -120,29 +126,34 @@ const AdminIndiPortfolio = ({ editMode }: {
 
         formData.append("highlightIds", JSON.stringify(hightLightIds))
 
+        formData.append("addedCategories", JSON.stringify(addedCategories))
+        formData.append("description", data.description)
+        formData.append("tag", data.tag)
+
+
         if (imageFile) {
-            if(companyId){
-                const image = await generateAndUploadImage(imageFile,companyId[0])
-                if(image){
-                    formData.append("image",image)
+            if (companyId) {
+                const image = await generateAndUploadImage(imageFile, companyId[0])
+                if (image) {
+                    formData.append("image", image)
                 }
             }
         }
 
         if (section2Image1) {
-            if(companyId){
-                const image = await generateAndUploadImage(section2Image1,companyId[0])
-                if(image){
-                    formData.append("section2Image1",image)
+            if (companyId) {
+                const image = await generateAndUploadImage(section2Image1, companyId[0])
+                if (image) {
+                    formData.append("section2Image1", image)
                 }
             }
         }
 
         if (section2Image2) {
-            if(companyId){
-                const image = await generateAndUploadImage(section2Image2,companyId[0])
-                if(image){
-                    formData.append("section2Image2",image)
+            if (companyId) {
+                const image = await generateAndUploadImage(section2Image2, companyId[0])
+                if (image) {
+                    formData.append("section2Image2", image)
                 }
             }
         }
@@ -204,6 +215,14 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("challenge", data.portfolio[0].challenge)
                         setValue("solutions", data.portfolio[0].solutions)
                         setValue("result", data.portfolio[0].result)
+                        setValue("description", data.portfolio[0].description)
+                        setValue("tag", data.portfolio[0].tag)
+
+                        if (data.portfolio[0].categories) {
+
+                            setAddedCategories(data.portfolio[0].categories)
+
+                        }
 
                         if (data.portfolio[0].bannerImage) {
                             setPreviewImage(data.portfolio[0].bannerImage as string);
@@ -254,6 +273,10 @@ const AdminIndiPortfolio = ({ editMode }: {
 
     }, [refetch])
 
+    useEffect(() => {
+        setCategories(importedCategories)
+    }, [])
+
 
     const handleInputChange = (customId: string, field: string, value: string) => {
         setHighlights((prev) =>
@@ -302,6 +325,47 @@ const AdminIndiPortfolio = ({ editMode }: {
 
         } catch (error) {
             console.error("Error removing highlight data:", error);
+        }
+    }
+
+    // const getCategoryId = (id: number) => categories.findIndex((item) => item.id == id)
+
+    // const handleDragEnd = (event: { active: any; over: any }) => {
+    //     const { active, over } = event;
+
+    //     // If no valid drop zone, return early
+    //     if (!over) return;
+
+    //     const activeId = active.id;
+    //     const overId = over.id;
+
+    //     console.log("overID", overId)
+
+    //     setCategories((prevCategories) =>
+    //         prevCategories.map((item) =>
+    //             item.id === parseInt(activeId) ? { ...item, zone: "zone1" } : item
+    //         )
+    //     );
+
+    //     console.log(categories)
+
+    // };
+
+    const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
+
+
+    const handleSwapItem = (id: number) => {
+        const itemInCategory = categories.find((item) => item.id === id)
+        const itemInAddedCategory = addedCategories.find((item) => item.id === id)
+
+        if (itemInCategory) {
+            setAddedCategories((prev) => [...prev, itemInCategory])
+            setCategories((categories) => categories.filter((item) => item.id !== itemInCategory.id))
+        }
+
+        if (itemInAddedCategory) {
+            setCategories((prev) => [...prev, itemInAddedCategory])
+            setAddedCategories((addedCategories) => addedCategories.filter((item) => item.id !== itemInAddedCategory.id))
         }
     }
 
@@ -897,6 +961,53 @@ const AdminIndiPortfolio = ({ editMode }: {
                     </div>
 
                 </div>
+
+                <div className='mt-15 grid grid-cols-2 gap-5'>
+
+                    <div className='w-full flex flex-col gap-2'>
+                        <Label content='Description' />
+                        <input type="text" {...register("description", { required: "Description is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                        {errors.description && <p className='mt-1 text-sm text-red'>{errors.description.message}</p>}
+                    </div>
+
+                    <div className='w-full flex flex-col gap-2'>
+                        <Label content='Tag' />
+                        <input type="text" {...register("tag", { required: "Tag is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                        {errors.tag && <p className='mt-1 text-sm text-red'>{errors.tag.message}</p>}
+                    </div>
+
+                </div>
+
+                {/* <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
+                            <Droppable categories={categories}/>
+                </DndContext> */}
+
+                <div className='grid grid-cols-2 mt-14 gap-5'>
+
+                    <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
+                        {addedCategories.map((item) => (
+                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white hover:bg-green-600 cursor-pointer' onClick={() => handleSwapItem(item.id)}>
+                                {item.name}
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
+
+                        {categories.filter(
+                            (item) => !addedCategories.some((addedItem) => addedItem.id === item.id)
+                        ).map((item) => (
+                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white hover:bg-green-600 cursor-pointer' onClick={() => handleSwapItem(item.id)}>
+                                {item.name}
+                            </div>
+                        ))}
+
+
+                    </div>
+
+                </div>
+
+
 
                 <div className='mt-25 pb-5'>
                     <div

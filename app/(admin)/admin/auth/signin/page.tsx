@@ -44,12 +44,12 @@ const SignIn: React.FC = () => {
 
   return (
     <>
-    <div className="flex justify-between w-full items-center p-5">
+    {/* <div className="flex justify-between w-full items-center p-5">
       <Breadcrumb pageName="Sign In"/>
-      </div>
-      <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-        <div className="flex flex-wrap items-center">
-          <div className="hidden w-full xl:block xl:w-1/2">
+      </div> */}
+      <div className="rounded-sm border-stroke dark:border-strokedark dark:bg-boxdark justify-center flex flex-col h-screen">
+        <div className="flex flex-wrap items-center justify-center">
+          {/* <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">
               <Link className="mb-5.5 inline-block" href="/">
                 <Image
@@ -196,13 +196,13 @@ const SignIn: React.FC = () => {
                 </svg>
               </span>
             </div>
-          </div>
+          </div> */}
 
-          <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+          <div className="w-full border-stroke dark:border-strokedark xl:w-[25%] border bg-white">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <span className="mb-1.5 block font-medium">Start for free</span>
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                Sign In to TailAdmin
+              {/* <span className="mb-1.5 block font-medium">Start for free</span> */}
+              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2 text-center">
+                Backend Console
               </h2>
 
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -214,11 +214,11 @@ const SignIn: React.FC = () => {
                     <input
                       type="text"
                       {...register("username")}
-                      placeholder="Enter your email"
+                      
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />
 
-                    <span className="absolute right-4 top-4">
+                    {/* <span className="absolute right-4 top-4">
                       <svg
                         className="fill-current"
                         width="22"
@@ -234,7 +234,7 @@ const SignIn: React.FC = () => {
                           />
                         </g>
                       </svg>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
 
@@ -246,11 +246,11 @@ const SignIn: React.FC = () => {
                     <input
                       type="password"
                       {...register("password")}
-                      placeholder="6+ Characters, 1 Capital letter"
+                      
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />
 
-                    <span className="absolute right-4 top-4">
+                    {/* <span className="absolute right-4 top-4">
                       <svg
                         className="fill-current"
                         width="22"
@@ -270,7 +270,7 @@ const SignIn: React.FC = () => {
                           />
                         </g>
                       </svg>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
 
@@ -282,7 +282,7 @@ const SignIn: React.FC = () => {
                   />
                 </div>
 
-                <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
+                {/* <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
                   <span>
                     <svg
                       width="20"
@@ -317,16 +317,16 @@ const SignIn: React.FC = () => {
                     </svg>
                   </span>
                   Sign in with Google
-                </button>
+                </button> */}
 
-                <div className="mt-6 text-center">
+                {/* <div className="mt-6 text-center">
                   <p>
                     Don’t have any account?{" "}
                     <Link href="/auth/signup" className="text-primary">
                       Sign Up
                     </Link>
                   </p>
-                </div>
+                </div> */}
               </form>
             </div>
           </div>

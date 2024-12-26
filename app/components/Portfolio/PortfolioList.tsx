@@ -30,44 +30,59 @@ const PortfolioList = () => {
   }, []);
 
   const [filter, setFilter] = useState("all");
-  const portfolioData = [
-    {
-      title: "Lorem Ipsum1",
-      description: "Lorem Ipsum is simply dummy text of the printing",
-      tag: "SaaS",
-      imageSrc: assets.imgs1,
-      url: "case-study",
-      categories: ["all"],
-    },
-    {
-      title: "Lorem Ipsum2",
-      description: "Lorem Ipsum is simply dummy text of the printing",
-      tag: "Fintech",
-      imageSrc: assets.imgs2,
-      url: "portfolio-details",
-      categories: ["cat1", "cat2"],
-    },
-    {
-      title: "Lorem Ipsum3",
-      description: "Lorem Ipsum is simply dummy text of the printing",
-      tag: "Fintech",
-      imageSrc: assets.imgs1,
-      url: "#",
-      categories: ["cat2"],
-    },
-    {
-      title: "Lorem Ipsum4",
-      description: "Lorem Ipsum is simply dummy text of the printing",
-      tag: "Fintech",
-      imageSrc: assets.imgs2,
-      url: "#",
-      categories: ["all"],
-    },
-  ];
+  // const portfolioData = [
+  //   {
+  //     title: "Lorem Ipsum1",
+  //     description: "Lorem Ipsum is simply dummy text of the printing",
+  //     tag: "SaaS",
+  //     imageSrc: assets.imgs1,
+  //     url: "case-study",
+  //     categories: ["all"],
+  //   },
+  //   {
+  //     title: "Lorem Ipsum2",
+  //     description: "Lorem Ipsum is simply dummy text of the printing",
+  //     tag: "Fintech",
+  //     imageSrc: assets.imgs2,
+  //     url: "portfolio-details",
+  //     categories: ["cat1", "cat2"],
+  //   },
+  //   {
+  //     title: "Lorem Ipsum3",
+  //     description: "Lorem Ipsum is simply dummy text of the printing",
+  //     tag: "Fintech",
+  //     imageSrc: assets.imgs1,
+  //     url: "#",
+  //     categories: ["cat2"],
+  //   },
+  //   {
+  //     title: "Lorem Ipsum4",
+  //     description: "Lorem Ipsum is simply dummy text of the printing",
+  //     tag: "Fintech",
+  //     imageSrc: assets.imgs2,
+  //     url: "#",
+  //     categories: ["all"],
+  //   },
+  // ];
+
+  // useEffect(() => {
+  //   setPortfolios((prevPortfolios) => {
+  //     if (filter === "all") {
+  //       return prevPortfolios; // Return the entire array if the filter is "all"
+  //     } else {
+  //       return prevPortfolios.filter((portfolio) =>
+  //         portfolio.categories.some((category) =>
+  //           category.toLowerCase().includes(filter.toLowerCase())
+  //         )
+  //       ); // Filter items based on the filter text
+  //     }
+  //   });
+  // }, [filter]);
+
   const filteredData =
     filter === "all"
-      ? portfolioData
-      : portfolioData.filter((item) => item.categories.includes(filter));
+      ? portfolios
+      : portfolios.filter((item) => item.categories.includes(filter));
 
   return (
     <>
@@ -117,7 +132,7 @@ const PortfolioList = () => {
 
             {/* Portfolio Items */}
             <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
-              {filteredData.map((item, index) => (
+              {portfolios.map((item, index) => (
                 <motion.div
                   key={index}
                   initial="hidden"
@@ -135,21 +150,22 @@ const PortfolioList = () => {
                   <div className="portfolio-card group relative col-span-1">
                     <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px]">
                       <Image
-                        src={item.imageSrc}
+                        src={item.bannerImage}
                         alt="image"
                         className="h-full w-full object-cover"
+                        fill
                       />
                       <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 duration-300 ease-in-out ease-in-out   group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  md:left-5 md:top-5">
                         <div className="uppercase text-white">
-                          <p className="text-font14 text-white">{"SAAS"}</p>
+                          <p className="text-font14 text-white">{item.tag}</p>
                         </div>
                       </div>
                     </div>
                     <div className="mt-3 md:mt-4">
                       <h3 className="text-30 mb-1 duration-200 ease-in-out group-hover:text-primary md:mb-2">
-                        {item.title}
+                        {item.companyName}
                       </h3>
-                      <p className="text-19 text-gray1">{"item.description"}</p>
+                      <p className="text-19 text-gray1">{item.description}</p>
                     </div>
                     {/* <Link href={`/portfolio-details/${item.id}`}
                   className="absolute top-0 z-[1] h-full w-full"
