@@ -4,16 +4,16 @@ export const data = [
     {
         image:assets.success1,
         companyLogo:assets.gulfcryo,
-        text:"How Innovo Achieved 10x Revenue Growth"
+        text:"Gulf Cryo"
     },
     {
         image:assets.success2,
         companyLogo:assets.bafco,
-        text:"How Bafco Achieved 10x Revenue Growth"
+        text:"Bafco"
     },
     {
         image:assets.success3,
         companyLogo:assets.bec,
-        text:"How BEC Achieved 10x Revenue Growth"
+        text:"BEC"
     }
 ]
