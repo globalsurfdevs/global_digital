@@ -1,6 +1,8 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
+import { assets } from '@/public/assets/assets'
 
 const navmenuSection = {
   open: {
@@ -35,7 +37,26 @@ export const MenuItem = ({ item, children }: { item: string; children?: React.Re
       <div className="flex justify-between items-center py-2 border-b font-bold w-full">
         {item}
         {children && (
-          <span className="ml-2">{isSubmenuOpen ? "▲" : "▼"}</span>
+          <span className="ml-2">
+          {isSubmenuOpen ? (
+            <Image
+              className=" dark:block"
+              src={assets.up_arrow}
+              alt="Logo"
+              width={32}
+              height={32}
+            />
+          ) : (
+            <Image
+              className=" dark:block"
+              src={assets.down_arrow}
+              alt="Logo"
+              width={32}
+              height={32}
+            />
+          )}
+        </span>
+
         )}
       </div>
       {children && isSubmenuOpen && (
