@@ -19,4 +19,5 @@ export type Portfolio = {
     categories:{name:string}[]
     tag:string;
     description:string;
+    logo:string;
 }

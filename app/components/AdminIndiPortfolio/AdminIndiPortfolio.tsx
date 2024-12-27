@@ -15,6 +15,7 @@ import { handleImageChange } from '@/app/helpers/handleImageChange'
 import { v4 as uuidv4 } from 'uuid';
 import { generateAndUploadImage } from '@/app/helpers/generateAndUploadImage'
 import { categories as importedCategories } from '@/app/data/categories'
+import { MdOutlineSwapHorizontalCircle } from "react-icons/md";
 
 
 
@@ -83,6 +84,9 @@ const AdminIndiPortfolio = ({ editMode }: {
 
 
     const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
+    const [logoFile,setLogoFile] = useState<File|null>(null)
+    const [previewLogo, setPreviewLogo] = useState<null | string>(null)
+    const [logoError,setLogoError] = useState<string|null>(null)
 
     const {
         register,
@@ -130,6 +134,13 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("description", data.description)
         formData.append("tag", data.tag)
 
+
+        if(logoFile){
+            const image = await generateAndUploadImage(logoFile)
+            if(image){
+                formData.append("logo",image)
+            }
+        }
 
         if (imageFile) {
             console.log("Image",imageFile)
@@ -252,6 +263,10 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                         if (data.portfolio[0].resultImage2) {
                             setResultImage2Preview(data.portfolio[0].resultImage2 as string);
+                        }
+
+                        if (data.portfolio[0].logo) {
+                            setPreviewLogo(data.portfolio[0].logo as string);
                         }
 
 
@@ -949,9 +964,12 @@ const AdminIndiPortfolio = ({ editMode }: {
                 <div className='mt-15 grid grid-cols-2 gap-5'>
 
                     <div className='w-full flex flex-col gap-2'>
+                        <div>
                         <Label content='Description' />
                         <input type="text" {...register("description", { required: "Description is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                         {errors.description && <p className='mt-1 text-sm text-red'>{errors.description.message}</p>}
+                        </div>
+                        
                     </div>
 
                     <div className='w-full flex flex-col gap-2'>
@@ -959,6 +977,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <input type="text" {...register("tag", { required: "Tag is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                         {errors.tag && <p className='mt-1 text-sm text-red'>{errors.tag.message}</p>}
                     </div>
+                    
 
                 </div>
 
@@ -968,30 +987,94 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                 <div className='grid grid-cols-2 mt-14 gap-5'>
 
+                    <div>
+                    <Label content='Added Categories' className=''/>
                     <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
                         {addedCategories.map((item) => (
-                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white hover:bg-green-600 cursor-pointer' onClick={() => handleSwapItem(item.id)}>
-                                {item.name}
+                            <>
+                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
+                                <span className='group-hover:opacity-50'>{item.name}</span>
+                                <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
+                                <MdOutlineSwapHorizontalCircle />
                             </div>
+                            </div>
+                            
+                            </>
                         ))}
                     </div>
+                    </div>
 
+                        <div>
+                        <Label content='Available Categories' className=''/>
                     <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
 
                         {categories.filter(
                             (item) => !addedCategories.some((addedItem) => addedItem.id === item.id)
                         ).map((item) => (
-                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white hover:bg-green-600 cursor-pointer' onClick={() => handleSwapItem(item.id)}>
-                                {item.name}
+                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
+                                <span className='group-hover:opacity-50'>{item.name}</span>
+                                <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
+                                <MdOutlineSwapHorizontalCircle />
+                            </div>
                             </div>
                         ))}
 
 
                     </div>
+                    </div>
 
                 </div>
-
-
+                        <div className='h-36 w-1/3 mt-10'>
+                        <Label content='Logo'/>
+                        <div
+                        className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
+                        onDragOver={(e) => e.preventDefault()}
+                        onClick={() => document?.getElementById("logo")?.click()}
+                    >
+                        {previewLogo ? (
+                            <div className="relative w-full h-full">
+                                <img src={previewLogo} alt="Preview" className='object-cover w-full h-full' />
+                                {<button
+                                    type="button"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setPreviewLogo(null); // Clear the preview image
+                                        setLogoFile(null);
+                                    }}
+                                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            fillRule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clipRule="evenodd"
+                                        />
+                                    </svg>
+                                </button>}
+                            </div>
+                        ) : (
+                            <>
+                                <svg
+                                    className="mx-auto h-12 w-12 text-gray-400"
+                                    stroke="currentColor"
+                                    fill="none"
+                                    viewBox="0 0 48 48"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                                <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
+                            </>
+                        )}
+                        <input type="file" id="logo" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError:setLogoError, setImageFile:setLogoFile, setPreviewImage:setPreviewLogo })} />
+                    </div>
+                    {logoError && <p className="mt-1 text-sm text-red-600">{logoError}</p>}
+                        </div>
 
                 <div className='mt-25 pb-5'>
                     <div
