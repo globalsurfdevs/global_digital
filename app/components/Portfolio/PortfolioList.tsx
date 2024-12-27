@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { assets } from "@/public/assets/assets";
-import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Portfolio } from "@/app/types/Portfolio";
+import { filterTags } from "@/app/data/filterTags";
+import Link from "next/link";
 
 const PortfolioList = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
@@ -30,59 +30,30 @@ const PortfolioList = () => {
   }, []);
 
   const [filter, setFilter] = useState("all");
-  // const portfolioData = [
-  //   {
-  //     title: "Lorem Ipsum1",
-  //     description: "Lorem Ipsum is simply dummy text of the printing",
-  //     tag: "SaaS",
-  //     imageSrc: assets.imgs1,
-  //     url: "case-study",
-  //     categories: ["all"],
-  //   },
-  //   {
-  //     title: "Lorem Ipsum2",
-  //     description: "Lorem Ipsum is simply dummy text of the printing",
-  //     tag: "Fintech",
-  //     imageSrc: assets.imgs2,
-  //     url: "portfolio-details",
-  //     categories: ["cat1", "cat2"],
-  //   },
-  //   {
-  //     title: "Lorem Ipsum3",
-  //     description: "Lorem Ipsum is simply dummy text of the printing",
-  //     tag: "Fintech",
-  //     imageSrc: assets.imgs1,
-  //     url: "#",
-  //     categories: ["cat2"],
-  //   },
-  //   {
-  //     title: "Lorem Ipsum4",
-  //     description: "Lorem Ipsum is simply dummy text of the printing",
-  //     tag: "Fintech",
-  //     imageSrc: assets.imgs2,
-  //     url: "#",
-  //     categories: ["all"],
-  //   },
-  // ];
 
-  // useEffect(() => {
-  //   setPortfolios((prevPortfolios) => {
-  //     if (filter === "all") {
-  //       return prevPortfolios; // Return the entire array if the filter is "all"
-  //     } else {
-  //       return prevPortfolios.filter((portfolio) =>
-  //         portfolio.categories.some((category) =>
-  //           category.toLowerCase().includes(filter.toLowerCase())
-  //         )
-  //       ); // Filter items based on the filter text
-  //     }
-  //   });
-  // }, [filter]);
+  const [originalPortfolio,setOriginalPortfolio] = useState<Portfolio[]>([])
 
-  const filteredData =
-    filter === "all"
-      ? portfolios
-      : portfolios.filter((item) => item.categories.includes(filter));
+  useEffect(() => {
+    if (originalPortfolio.length === 0 && portfolios.length > 0) {
+      setOriginalPortfolio(portfolios); // Initialize the original portfolio only once
+    }
+  }, [portfolios]);
+  
+  const handleFiltering = (filter: string) => {
+    setFilter(filter);
+  
+    if (filter === "all") {
+      // If the filter is "all", reset to the original portfolio
+      setPortfolios(originalPortfolio);
+    } else {
+      // Filter the original portfolio
+      setPortfolios(
+        originalPortfolio.filter((portfolio) =>
+          portfolio.categories.some((category) => category.name === filter)
+        )
+      );
+    }
+  };
 
   return (
     <>
@@ -105,28 +76,11 @@ const PortfolioList = () => {
             <div className="border-b  mb-[30px] md:mb-[50px] filterbtn no-scrollbar">
 
             <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "all" ? "border-b border-black text-black" : "text-gray1"
-                }`}><span  onClick={() => setFilter("all")}>View All</span></div>
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "cat1" ? "border-b border-black text-black" : "text-gray1"
-                }`}><span onClick={() => setFilter("cat1")}>Performance Marketing</span></div>
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "cat2" ? "border-b border-black text-black" : "text-gray1"
-                }`}><span onClick={() => setFilter("cat2")}>SEO</span></div>
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "cat3" ? "border-b border-black text-black" : "text-gray1"
-                }`}><span onClick={() => setFilter("cat1")}>Social Media </span></div>
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "cat4" ? "border-b border-black text-black" : "text-gray1"
-                }`}><span onClick={() => setFilter("cat2")}>Web Design & Development</span></div>
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "cat5" ? "border-b border-black text-black" : "text-gray1"
-                }`}><span onClick={() => setFilter("cat1")}>Branding & Creatives</span></div>
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "cat6" ? "border-b border-black text-black" : "text-gray1"
-                }`}><span onClick={() => setFilter("cat1")}>Marketing Intelligence </span></div>
-
+              {filterTags.map((item,index)=>(
+                <div key={index} className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === item.filter ? "border-b border-black text-black" : "text-gray1"
+                }`}><span  onClick={() => handleFiltering(item.filter)}>{item.tag}</span></div>
+              ))}
             </div>
             </div>
 
@@ -167,9 +121,9 @@ const PortfolioList = () => {
                       </h3>
                       <p className="text-19 text-gray1">{item.description}</p>
                     </div>
-                    {/* <Link href={`/portfolio-details/${item.id}`}
+                    <Link href={`/portfolio-details/${item.id}`}
                   className="absolute top-0 z-[1] h-full w-full"
-                ></Link> */}
+                ></Link>
                   </div>
                 </motion.div>
               ))}
