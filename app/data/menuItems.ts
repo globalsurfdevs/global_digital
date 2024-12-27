@@ -47,7 +47,7 @@ export const menuItems = [
     },
     {
         item:"CAREERS",
-        url:"#"
+        url:"/careers"
     },
     {
         item:"BLOGS",

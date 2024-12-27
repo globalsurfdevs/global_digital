@@ -84,9 +84,9 @@ const AdminIndiPortfolio = ({ editMode }: {
 
 
     const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
-    const [logoFile,setLogoFile] = useState<File|null>(null)
+    const [logoFile, setLogoFile] = useState<File | null>(null)
     const [previewLogo, setPreviewLogo] = useState<null | string>(null)
-    const [logoError,setLogoError] = useState<string|null>(null)
+    const [logoError, setLogoError] = useState<string | null>(null)
 
     const {
         register,
@@ -116,6 +116,11 @@ const AdminIndiPortfolio = ({ editMode }: {
         const hightLightIds: string[] = []
         console.log(highlights)
 
+        if(highlights.length<2){
+            toast.error("Minimum of 1 highlight is required")
+            return;
+        }
+        
         highlights.forEach((highlight: PortfolioHighlight) => {
             console.log("id of highlight", highlight.customId)
             formData.append(`highlightId${highlight.customId}`, highlight.customId.toString());
@@ -135,39 +140,39 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("tag", data.tag)
 
 
-        if(logoFile){
+        if (logoFile) {
             const image = await generateAndUploadImage(logoFile)
-            if(image){
-                formData.append("logo",image)
+            if (image) {
+                formData.append("logo", image)
             }
         }
 
         if (imageFile) {
-            console.log("Image",imageFile)
-            
-                const image = await generateAndUploadImage(imageFile)
-                if (image) {
-                    formData.append("image", image)
-                }
-            
+            console.log("Image", imageFile)
+
+            const image = await generateAndUploadImage(imageFile)
+            if (image) {
+                formData.append("image", image)
+            }
+
         }
 
         if (section2Image1) {
-            
-                const image = await generateAndUploadImage(section2Image1)
-                if (image) {
-                    formData.append("section2Image1", image)
-                }
-            
+
+            const image = await generateAndUploadImage(section2Image1)
+            if (image) {
+                formData.append("section2Image1", image)
+            }
+
         }
 
         if (section2Image2) {
-            
-                const image = await generateAndUploadImage(section2Image2)
-                if (image) {
-                    formData.append("section2Image2", image)
-                }
-            
+
+            const image = await generateAndUploadImage(section2Image2)
+            if (image) {
+                formData.append("section2Image2", image)
+            }
+
         }
 
         if (section2BannerImage) {
@@ -184,7 +189,7 @@ const AdminIndiPortfolio = ({ editMode }: {
 
         formData.forEach((value, key) => {
             console.log(`${key}:`, value);
-          });
+        });
 
         try {
             const url = editMode ? `/api/portfolio?id=${companyId}` : `/api/portfolio`;
@@ -242,7 +247,7 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                         if (data.portfolio[0].bannerImage) {
                             setPreviewImage(data.portfolio[0].bannerImage as string);
-                            
+
                         }
 
                         if (data.portfolio[0].section2Image1) {
@@ -310,6 +315,11 @@ const AdminIndiPortfolio = ({ editMode }: {
     const handleAddHighlight = async () => {
         try {
 
+            if (highlights.length > 3) {
+                toast.error("Maximum of 4 highlights only allowed")
+                return;
+            }
+
             setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4() }]))
             setModalOpen(false)
             setHighlightNumber("")
@@ -323,26 +333,34 @@ const AdminIndiPortfolio = ({ editMode }: {
 
     const handleDeleteHighlight = async (id?: number | string) => {
         try {
-            if (editMode) {
-                const response = await fetch(`/api/portfolio/highlight?id=${id}`, {
-                    method: "DELETE",
-                });
 
-
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.message) {
-                        toast.success(data.message)
-                        setRefetch((prev) => !prev)
-                    }
-
-                } else {
-                    console.error("Failed to remove highlight data");
-                }
+            if (highlights.length < 2) {
+                toast.error("Minimum of 1 highlight is required")
+                return;
             } else {
-                setHighlights(highlights.filter((item) => item.customId !== id))
+                if (editMode) {
+                    const response = await fetch(`/api/portfolio/highlight?id=${id}`, {
+                        method: "DELETE",
+                    });
 
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.message) {
+                            toast.success(data.message)
+                            setRefetch((prev) => !prev)
+                        }
+
+                    } else {
+                        console.error("Failed to remove highlight data");
+                    }
+                } else {
+                    setHighlights(highlights.filter((item) => item.customId !== id))
+
+                }
             }
+
+
 
         } catch (error) {
             console.error("Error removing highlight data:", error);
@@ -965,11 +983,11 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                     <div className='w-full flex flex-col gap-2'>
                         <div>
-                        <Label content='Description' />
-                        <input type="text" {...register("description", { required: "Description is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-                        {errors.description && <p className='mt-1 text-sm text-red'>{errors.description.message}</p>}
+                            <Label content='Description' />
+                            <input type="text" {...register("description", { required: "Description is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                            {errors.description && <p className='mt-1 text-sm text-red'>{errors.description.message}</p>}
                         </div>
-                        
+
                     </div>
 
                     <div className='w-full flex flex-col gap-2'>
@@ -977,7 +995,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <input type="text" {...register("tag", { required: "Tag is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                         {errors.tag && <p className='mt-1 text-sm text-red'>{errors.tag.message}</p>}
                     </div>
-                    
+
 
                 </div>
 
@@ -988,45 +1006,45 @@ const AdminIndiPortfolio = ({ editMode }: {
                 <div className='grid grid-cols-2 mt-14 gap-5'>
 
                     <div>
-                    <Label content='Added Categories' className=''/>
-                    <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
-                        {addedCategories.map((item) => (
-                            <>
-                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
-                                <span className='group-hover:opacity-50'>{item.name}</span>
-                                <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
-                                <MdOutlineSwapHorizontalCircle />
-                            </div>
-                            </div>
-                            
-                            </>
-                        ))}
+                        <Label content='Added Categories' className='' />
+                        <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
+                            {addedCategories.map((item) => (
+                                <>
+                                    <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
+                                        <span className='group-hover:opacity-50'>{item.name}</span>
+                                        <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
+                                            <MdOutlineSwapHorizontalCircle />
+                                        </div>
+                                    </div>
+
+                                </>
+                            ))}
+                        </div>
                     </div>
-                    </div>
 
-                        <div>
-                        <Label content='Available Categories' className=''/>
-                    <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
+                    <div>
+                        <Label content='Available Categories' className='' />
+                        <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
 
-                        {categories.filter(
-                            (item) => !addedCategories.some((addedItem) => addedItem.id === item.id)
-                        ).map((item) => (
-                            <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
-                                <span className='group-hover:opacity-50'>{item.name}</span>
-                                <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
-                                <MdOutlineSwapHorizontalCircle />
-                            </div>
-                            </div>
-                        ))}
+                            {categories.filter(
+                                (item) => !addedCategories.some((addedItem) => addedItem.id === item.id)
+                            ).map((item) => (
+                                <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
+                                    <span className='group-hover:opacity-50'>{item.name}</span>
+                                    <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
+                                        <MdOutlineSwapHorizontalCircle />
+                                    </div>
+                                </div>
+                            ))}
 
 
-                    </div>
+                        </div>
                     </div>
 
                 </div>
-                        <div className='h-36 w-1/3 mt-10'>
-                        <Label content='Logo'/>
-                        <div
+                <div className='h-36 w-1/3 mt-10'>
+                    <Label content='Logo' />
+                    <div
                         className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
                         onDragOver={(e) => e.preventDefault()}
                         onClick={() => document?.getElementById("logo")?.click()}
@@ -1071,10 +1089,10 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
                             </>
                         )}
-                        <input type="file" id="logo" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError:setLogoError, setImageFile:setLogoFile, setPreviewImage:setPreviewLogo })} />
+                        <input type="file" id="logo" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError: setLogoError, setImageFile: setLogoFile, setPreviewImage: setPreviewLogo })} />
                     </div>
                     {logoError && <p className="mt-1 text-sm text-red-600">{logoError}</p>}
-                        </div>
+                </div>
 
                 <div className='mt-25 pb-5'>
                     <div
