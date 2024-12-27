@@ -7,9 +7,9 @@ import Link from 'next/link';
 import Image from "next/image";
 
 export const Navigation = () => (
-  <motion.ul className="mobile-menu-ul">
+  <motion.ul className="mobile-menu-ul  ">
   {menuItems.map((menuItem, index) => (
-     <a href={menuItem.url} key={index}>
+     <div key={index}>
     <MenuItem  item={menuItem.item}>
       {menuItem.children &&
         menuItem.children.map((child, childIndex) => (
@@ -30,7 +30,7 @@ export const Navigation = () => (
           </li>
         ))}
       </MenuItem>
-    </a>
+    </div>
   ))}
 </motion.ul>
 

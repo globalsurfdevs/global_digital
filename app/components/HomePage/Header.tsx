@@ -213,8 +213,8 @@ const Header = () => {
               )
             )}
 
-            <a
-              href="#"
+            <Link
+              href="lets-talk"
               className="hidden group lg:flex items-center space-x-2 px-6 py-2 border border-primary rounded-full text-primary hover:bg-prtext-primary hover:text-primary
                hover:text-black hover:shadow-lg ease-in duration-300 transition"
             >
@@ -251,7 +251,7 @@ const Header = () => {
                   </defs>
                 </svg>
               </div>
-            </a>
+            </Link>
           </nav>
         </div>
       </header>

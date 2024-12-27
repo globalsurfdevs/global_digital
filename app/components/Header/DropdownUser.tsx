@@ -14,10 +14,10 @@ const DropdownUser = () => {
 
   const handleSignOut = async() =>{
     try {
-      const response = await signOutAdmin()
-      if(response?.success){
-        router.push('/admin/auth/signin')
-      }
+      await signOutAdmin()
+      // if(response?.success){
+      //   router.push(response.redirectPath)
+      // }
     } catch (error) {
       console.log("Error in signout:",error)
     }

@@ -32,7 +32,7 @@ const page = () => {
         <OurWorks/>
         <Partner data={partnerData}   />
         <Testimonials/>
-        <GetInTouch data={Cta} ctabbutton= {"LET'S TALK GROWTH"}/>
+        <GetInTouch data={Cta} ctabbutton= {"LET'S TALK GROWTH"}  link={'/lets-talk'}/>
         <FAQ data={Faq}/>
     </div>
   )

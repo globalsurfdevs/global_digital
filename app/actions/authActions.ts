@@ -29,12 +29,12 @@ export const signInWithCredentials = async({username,password}:SignInType) =>{
 export const signOutAdmin = async() =>{
     let redirectPath;
     try {
-       await signOut({redirectTo:'/admin/auth/signin'})
+       await signOut()
        redirectPath = '/admin/auth/signin'
        return {success:true,message:"Successfully signed off"}
        
     } catch (err) {
-        redirectPath = '/'
+        redirectPath = '/admin'
         console.log("Error in signout action:",err)
     }finally{
         if(redirectPath){

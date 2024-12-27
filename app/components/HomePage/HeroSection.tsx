@@ -1,6 +1,7 @@
 'use client'
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -24,7 +25,7 @@ const HeroSection = () => {
                   hidden: { opacity: 0, y: 50 }, // Start below and invisible
                   visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
                 }}>
-          <a href="#"
+          <Link href="portfolio"
             className="text-[16px] font-medium leading-[1.3] fnt-lexend relative group flex gap-3 w-fit items-center text-white border-b-2 border-transparent pb-[24px] hover:text-white hover:border-black transition
           before:absolute before:bottom-0 before:left-0 before:h-[2px] before:bg-white before:w-full before:transition-all before:duration-300 before:ease-in-out z-2
           after:absolute after:bottom-0 after:right-0 after:h-[2px] after:bg-primary after:w-full after:transition-all after:duration-300 after:ease-in-out hover:after:w-0 z-1" >
@@ -40,7 +41,7 @@ const HeroSection = () => {
                 </clipPath>
               </defs>
             </svg>
-          </a>
+          </Link>
         </motion.div>
       </div>
     </motion.section>

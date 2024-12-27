@@ -133,41 +133,28 @@ const HeroSection = ({
             </motion.div>
           </div>
         </div>
-      </div>
+ 
+    </div>
 
-      <div className="bg-black">
-        <div className="container mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 50 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
-          >
-            <div className="flex flex-col gap-5 py-[20px] lg:grid lg:grid-cols-3 lg:gap-[50px] lg:py-[120px]">
-              {data.portfolioHighlights.map((item, index) => (
-                <div
-                  key={index}
-                  className={`group  border-gray1 py-[20px]  lg:py-[44px] ${
-                    index < 2
-                      ? "border-b pr-[1.5rem] lg:border-b-0 lg:border-r"
-                      : ""
-                  }`}
-                >
-                  <p className="title-65 text-primary duration-500 group-hover:-translate-y-1">
-                    {item.number}
-                  </p>
-                  <h3 className="text-30 pt-[10px] text-white duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
-                    {item.text}
-                  </h3>
-                </div>
-              ))}
+    <div className='bg-black'>
+            <div className='container mx-auto'>
+            <motion.div
+                                   initial="hidden"
+                                   whileInView="visible"
+                                   viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                                   variants={{
+                                     hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+                                     }}>
+                            <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>
+                                {data.portfolioHighlights.map((item)=>(
+                                    <div className='border-b lg:border-r lg:border-b-0 border-gray1 py-[20px] lg:py-[44px] group ' key={item.customId}>
+                                    <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>{item.number}</p>
+                                    <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>{item.text}</h3>
+                                    </div>
+                                ))}
+                                
+ 
 
               {/* <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px] group '>
                                     <div className='mx-auto lg:w-[85%]'>
