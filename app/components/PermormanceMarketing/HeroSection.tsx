@@ -76,70 +76,66 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata }) => {
   return (
     <>
       <div className="container mx-auto py-2" ref={nextContainerRef}>
-
         {Bannerdata.map((herosection) => (
-
-             <div key={herosection.id}>
-          <motion.div
-            className="title-80"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 50 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
-          >
-            <div className="border-b flex justify-between lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-10 items-end">
-              <div className="  max-w-[1000px] ">
-                <h1 className="title-80">
-                  {" "}
-                  {herosection.title}
-                </h1>
-              </div>
-              <div className="text-gray1 text-font19">01</div>
-            </div>
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 50 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1.3, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
+          <div key={herosection.id}>
+            <motion.div
+              className="title-80"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
             >
-
+              <div className="flex items-end justify-between border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px]">
+                <div className="  max-w-[1000px] ">
+                  <h1 className="title-80"> {herosection.title}</h1>
+                </div>
+                <div className="text-font19 text-gray1">01</div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1.3, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
+            >
               <div>
-              {herosection.sub.map((su, index) => (
-            <div key={index}  className="grid grid-cols-1 lg:grid-cols-2 lg:py-[142px] py-[50px] ">
-              <div className="col-span-1 mb-2 lg:mb-0">
-                <div className="flex gap-2 items-center">
-                      <h3 className="text-30 leading-[1.5]">{su.stitle}</h3>
+                {herosection.sub.map((su, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-1 py-[50px] lg:grid-cols-2 lg:py-[142px] "
+                  >
+                    <div className="col-span-1 mb-2 lg:mb-0">
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-30 leading-[1.5]">{su.stitle}</h3>
 
-                  <div className="w-5 h-5 bg-primary"></div>
-                </div>
+                        <div className="h-5 w-5 bg-primary"></div>
+                      </div>
+                    </div>
+
+                    <div className="ms-0 text-[19px] text-gray1 ">
+                      <p className={`text-font19 ${lexend.className}`}>
+                        {su.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-
-              <div className="text-[19px] text-gray1 xl:ms-[137px] ms-0 lg:ms-3">
-                <p className={`text-font19 ${lexend.className}`}>
-                {su.desc}
-                </p>
-              </div>
-                </div>
-                  ))}
-                </div>
-          </motion.div>
-
-        </div>
+            </motion.div>
+          </div>
         ))}
       </div>
       <motion.div
@@ -162,14 +158,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata }) => {
           } custom-class`}
         >
           <div className="flex gap-5 bg-bglight  py-[17px]">
-            <div className="  container flexcl600 mr-0 lg:mr-[-15px]">
+            <div className="  flexcl600 container mr-0 lg:mr-[-15px]">
               <div className="w-full  overflow-hidden">
                 <PerformanceSwiper />
               </div>
             </div>
           </div>
 
-          <div className="bg-black w-full h-[350px] lg:h-[700px]"> </div>
+          <div className="h-[350px] w-full bg-black lg:h-[700px]"> </div>
         </div>
       </motion.div>
     </>
