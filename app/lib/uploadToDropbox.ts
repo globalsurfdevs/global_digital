@@ -16,7 +16,7 @@ if(!APP_SECRET){
   throw new Error("DROPBOX_APP_SECRET not in env")
 }
 
-console.log("APP_SECRET",APP_SECRET)
+
 
 
 interface TokenInfo {
