@@ -142,22 +142,28 @@ export async function POST(req: NextRequest) {
     console.log("highlightids raw", highlightIdsRaw)
 
 
-    if(!image){
+    if(image==null){
         imagePath = undefined
     }else{
         imagePath = image
     }
 
-    if(!section2Image1){
+    if(section2Image1==null){
         section2Image1Path = undefined
     }else{
         section2Image1Path = section2Image1
     }
 
-    if(!section2Image2){
+    if(section2Image2==null){
         section2Image2Path = undefined
+        
+    }else{
         section2Image2Path = section2Image2
     }
+
+    console.log("imagePAth",imagePath)
+    console.log("section2Image1Path",section2Image1Path)
+    console.log("section2Image2Path",section2Image2Path)
 
     
 
@@ -266,10 +272,10 @@ export async function POST(req: NextRequest) {
                         industry,
                         country,
                         channelsUsed,
-                        bannerImage: image == null ? imagePath : image,
+                        bannerImage:imagePath,
                         story,
-                        section2Image1:section2Image1 == null ? section2Image1Path : section2Image1,
-                        section2Image2:section2Image2 == null ? section2Image1Path : section2Image2,
+                        section2Image1:section2Image1Path,
+                        section2Image2:section2Image2Path,
                         goals,
                         objectives,
                         challenge,

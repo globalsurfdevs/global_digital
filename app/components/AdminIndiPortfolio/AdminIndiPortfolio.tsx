@@ -133,30 +133,30 @@ const AdminIndiPortfolio = ({ editMode }: {
 
         if (imageFile) {
             console.log("Image",imageFile)
-            if (companyId) {
-                const image = await generateAndUploadImage(imageFile, companyId[0])
+            
+                const image = await generateAndUploadImage(imageFile)
                 if (image) {
                     formData.append("image", image)
                 }
-            }
+            
         }
 
         if (section2Image1) {
-            if (companyId) {
-                const image = await generateAndUploadImage(section2Image1, companyId[0])
+            
+                const image = await generateAndUploadImage(section2Image1)
                 if (image) {
                     formData.append("section2Image1", image)
                 }
-            }
+            
         }
 
         if (section2Image2) {
-            if (companyId) {
-                const image = await generateAndUploadImage(section2Image2, companyId[0])
+            
+                const image = await generateAndUploadImage(section2Image2)
                 if (image) {
                     formData.append("section2Image2", image)
                 }
-            }
+            
         }
 
         if (section2BannerImage) {
