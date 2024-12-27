@@ -31,12 +31,10 @@ const page = () => {
     console.log("Form submitted:", formData);
   };
 
-
-
   return (
     <div>
       <div className="maintalk">
-        <div className="bg-dgray px-[25px] pt-[50px] lg:px-[40px] lg:pt-[100px]">
+        <div className="bg-dgray px-[50px] pb-[50px] pt-[50px] md:pb-[0px] lg:px-[40px] lg:pt-[100px]">
           <h1 className="title-65">
             <span className="text-primary">Let’s</span> <br></br>Work together.
           </h1>
@@ -56,7 +54,7 @@ const page = () => {
           <p className="text-font30">
             Get in touch today to discuss how we can help your brand stay ahead.
           </p>
-          <div className="pt-[50px] pt-[80px] contctform">
+          <div className="contctform pt-[15px] lg:pt-[50px]">
             <form onSubmit={handleSubmit}>
               <div className="mb-[30px]">
                 <input
@@ -65,35 +63,35 @@ const page = () => {
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                   placeholder="Enter your name"
                 />
               </div>
 
               <div className="md:grid md:grid-cols-2 md:gap-5">
-              <div className="mb-[30px]">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Enter your email"
-                />
-              </div>
+                <div className="mb-[30px]">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                    placeholder="Enter your email"
+                  />
+                </div>
 
-              <div className="mb-[30px]">
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Enter your company name"
-                />
-              </div>
+                <div className="mb-[30px]">
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                    placeholder="Enter your company name"
+                  />
+                </div>
               </div>
 
               <div className="mb-[30px]">
@@ -102,10 +100,10 @@ const page = () => {
                   id="budget"
                   value={formData.budget}
                   onChange={handleChangeselect}
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                 >
                   <option value="" disabled>
-                  budget
+                    budget
                   </option>
                   <option value="5000">AED 5000</option>
                   <option value="10000">AED 10000</option>
@@ -115,23 +113,29 @@ const page = () => {
                 </select>
               </div>
               <div className="mb-[30px]">
-              <select
-          name="service"
-          id="service"
-          value={formData.service}
-          onChange={handleChangeselect}
-          className="w-full rounded-lg border border-gray-300 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-        >
-          <option value="" disabled>
-            Service looking
-          </option>
-          <option value="performance_marketing">Performance Marketing</option>
-          <option value="seo">SEO</option>
-          <option value="social_media">Social Media</option>
-          <option value="web_design">Web Design & Development</option>
-          <option value="branding_creatives">Branding & Creatives</option>
-          <option value="marketing_intelligence">Marketing Intelligence</option>
-        </select>
+                <select
+                  name="service"
+                  id="service"
+                  value={formData.service}
+                  onChange={handleChangeselect}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                >
+                  <option value="" disabled>
+                    Service looking
+                  </option>
+                  <option value="performance_marketing">
+                    Performance Marketing
+                  </option>
+                  <option value="seo">SEO</option>
+                  <option value="social_media">Social Media</option>
+                  <option value="web_design">Web Design & Development</option>
+                  <option value="branding_creatives">
+                    Branding & Creatives
+                  </option>
+                  <option value="marketing_intelligence">
+                    Marketing Intelligence
+                  </option>
+                </select>
               </div>
 
               <div className="mb-[30px]">
@@ -140,7 +144,7 @@ const page = () => {
                   id="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                   placeholder="Enter your message (Optional)"
                   rows={5}
                 ></textarea>
