@@ -63,7 +63,7 @@ const Goals = ({
             <div className="col-span-1 flex">
               <h2 className="text-font65">Goals</h2>
             </div>
-            <div className="pt-2 text-font19 lg:pl-5">
+            <div className="pt-2 text-font19 lg:pl-5  text-gray1 fnt-lexend">
               {/* <p className='text-19 text-gray1 fnt-lexend'>Innovo Group partnered with Global Surf to achieve several key objectives for their website.
                                 The primary goal was to create a website that visually and thematically aligned with Innovo’s
                                 innovative brand identity. Additionally, Innovo sought to improve website speed and reduce loading
@@ -90,7 +90,7 @@ const Goals = ({
             <div className="col-span-1 flex">
               <h2 className="text-font65">Objectives</h2>
             </div>
-            <div className="pt-2 text-font19 lg:pl-5">
+            <div className="pt-2 text-font19 lg:pl-5 text-gray1 fnt-lexend">
               {/* <p className='text-19 text-gray1 fnt-lexend'>To address goals, Global Surf conducted an in-depth analysis of the website&apos;s performance and speed.
                                 We implemented structural changes, optimized the code, and compressed media files to enhance site efficiency.
                                 Additionally, Global Surf uplifted the brand image by incorporating high-quality branding materials, ensuring
