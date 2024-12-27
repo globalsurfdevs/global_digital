@@ -6,12 +6,12 @@ const page = () => {
     <>
       <div className="container px-4">
         <div className="py-[50px] lg:py-[100px]">
-          <h1 className="mb-5 text-font65">Legal</h1>
-          <p className="mb-2 text-font35">
+          <h1 className="mb-2 text-font65 leading-[1.2]">Legal</h1>
+          <p className="mb-3 text-font35 ">
             <strong>WEB POLICIES – WEBSITE TERMS AND CONDITIONS</strong>
             <br></br>
           </p>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
           <p className=" text-font19">
             <strong>Global Surf Digital Media”</strong> maintains the{" "}
             <strong>www.globalsurf.ae</strong> (Website){" "}
@@ -25,7 +25,7 @@ const page = () => {
             immediately.
           </p>
          </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>1. Definitions </strong>
             </p>
@@ -46,7 +46,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>2. Use of the Website  </strong>
             </p>
@@ -63,7 +63,7 @@ const page = () => {
 
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>3. Intellectual Property  </strong>
             </p>
@@ -81,7 +81,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>4. Services  </strong>
             </p>
@@ -99,7 +99,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong> 5. Limitation of Liability   </strong>
             </p>
@@ -125,7 +125,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>6. Third-Party Links   </strong>
             </p>
@@ -140,7 +140,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>7. Privacy and Cookies </strong>
             </p>
@@ -155,7 +155,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>8. Indemnification  </strong>
             </p>
@@ -174,7 +174,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>9. Changes to These Terms </strong>
             </p>
@@ -189,7 +189,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-3 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>10. Governing Law and Jurisdiction </strong>
             </p>

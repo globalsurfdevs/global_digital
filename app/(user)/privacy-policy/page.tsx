@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 const page = () => {
   return (
@@ -7,8 +6,8 @@ const page = () => {
       <div className="container px-4">
         <div className="py-[50px] lg:py-[100px]">
           <p className=" text-font19">GS.Digital</p>
-          <h1 className="mb-5 text-font65"> Privacy Policy </h1>
-          <p className="mb-2 max-w-[44ch] text-font35">
+          <h1 className="mb-2 text-font65 leading-[1.2]"> Privacy Policy </h1>
+          <p className="mb-5 max-w-[44ch] text-font35 leading-[1.2]">
             <strong>
               At GS.Digital, we are committed to protecting the privacy and
               personal information of our users.{" "}
@@ -52,7 +51,7 @@ const page = () => {
               <p >We employ cookies and similar tracking technologies to enhance your browsing experience and gather valuable insights. These technologies allow us to remember your preferences, analyze site traffic, and personalize content. You can control the use of cookies through your browser settings, but please note that disabling them may limit certain functionalities on our website. </p>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-5 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>How We Use Your Information </strong>
             </p>
@@ -74,7 +73,7 @@ const page = () => {
               </ul>
             </div>
           </div>
-          <div className=" grid grid-cols-1 gap-5 mb-5">
+          <div className=" grid grid-cols-1 gap-2 mb-5">
             <p className="  text-font19">
               <strong>Data Sharing and Disclosure </strong>
             </p>
