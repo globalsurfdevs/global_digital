@@ -69,9 +69,9 @@ const SectionFour = () => {
                         index % 2 === 0 ? "none" : "1px solid #77787B", // Add right border for items on the left column
                     }}
                   >
-                    <div className="flex gap-3 items-center">
-                      <div className="min-w-[29px] h-[29px] bg-primary"></div>
-                      <p className="text-30">{item.title}</p>
+                    <div className="flex gap-3 ">
+                      <div className="min-w-[29px] h-[29px] bg-primary relative top-1"></div>
+                      <p className="text-30 text-black">{item.title}</p>
                     </div>
                     <div>
                       <p className="text-19 pt-5 fnt-lexend text-gray1">

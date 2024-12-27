@@ -370,13 +370,8 @@ body {
     }
 
     .filterbtn span{@apply text-font16 uppercase cursor-pointer}
-    .filterbtn{overflow-x: auto;overflow-y: none;}
+    .filterbtn{overflow-x: auto;overflow-y: hidden;}
     .divro{margin-left: 0px !important}
-    @layer base {
-      p {
-        @apply text-19 text-gray1 fnt-lexend;
-      }
-    }
     .font-35 {
       font-size: clamp(1.2rem, 2.5vw, 2.1875rem);
     }
