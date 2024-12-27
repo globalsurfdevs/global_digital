@@ -132,6 +132,7 @@ const AdminIndiPortfolio = ({ editMode }: {
 
 
         if (imageFile) {
+            console.log("Image",imageFile)
             if (companyId) {
                 const image = await generateAndUploadImage(imageFile, companyId[0])
                 if (image) {
@@ -169,6 +170,10 @@ const AdminIndiPortfolio = ({ editMode }: {
         if (resultImage2) {
             formData.append("resultImage2", resultImage2)
         }
+
+        formData.forEach((value, key) => {
+            console.log(`${key}:`, value);
+          });
 
         try {
             const url = editMode ? `/api/portfolio?id=${companyId}` : `/api/portfolio`;
@@ -226,6 +231,7 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                         if (data.portfolio[0].bannerImage) {
                             setPreviewImage(data.portfolio[0].bannerImage as string);
+                            
                         }
 
                         if (data.portfolio[0].section2Image1) {
@@ -328,28 +334,6 @@ const AdminIndiPortfolio = ({ editMode }: {
         }
     }
 
-    // const getCategoryId = (id: number) => categories.findIndex((item) => item.id == id)
-
-    // const handleDragEnd = (event: { active: any; over: any }) => {
-    //     const { active, over } = event;
-
-    //     // If no valid drop zone, return early
-    //     if (!over) return;
-
-    //     const activeId = active.id;
-    //     const overId = over.id;
-
-    //     console.log("overID", overId)
-
-    //     setCategories((prevCategories) =>
-    //         prevCategories.map((item) =>
-    //             item.id === parseInt(activeId) ? { ...item, zone: "zone1" } : item
-    //         )
-    //     );
-
-    //     console.log(categories)
-
-    // };
 
     const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
 

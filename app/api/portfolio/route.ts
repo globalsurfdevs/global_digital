@@ -91,48 +91,6 @@ export async function POST(req: NextRequest) {
     let resultImage1PAth;
     let resultImage2Path;
 
-    // if (image) {
-    //     try {
-    //         const filename = `${Date.now()}-${image.name || "image"}`;
-    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-    //         imagePath = await uploadToDropbox(image, dropboxPath);
-    //         console.log("New image uploaded to Dropbox:", imagePath);
-
-    //     } catch (error) {
-    //         console.error("Error uploading new image to Dropbox:", error);
-    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-    //     }
-    // }
-
-    // if (section2Image1) {
-    //     try {
-    //         const filename = `${Date.now()}-${section2Image1.name || "image"}`;
-    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-    //         section2Image1Path = await uploadToDropbox(section2Image1, dropboxPath);
-    //         console.log("New image uploaded to Dropbox:", section2Image1Path);
-
-    //     } catch (error) {
-    //         console.error("Error uploading new image to Dropbox:", error);
-    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-    //     }
-    // }
-
-    // if (section2Image2) {
-    //     try {
-    //         const filename = `${Date.now()}-${section2Image2.name || "image"}`;
-    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-    //         section2Image2Path = await uploadToDropbox(section2Image2, dropboxPath);
-    //         console.log("New image uploaded to Dropbox:", section2Image2Path);
-
-    //     } catch (error) {
-    //         console.error("Error uploading new image to Dropbox:", error);
-    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-    //     }
-    // }
-
     if (section2BannerImage) {
         try {
             const filename = `${Date.now()}-${section2BannerImage.name || "image"}`;
@@ -183,6 +141,21 @@ export async function POST(req: NextRequest) {
 
     console.log("highlightids raw", highlightIdsRaw)
 
+
+    if(!image){
+        imagePath = undefined
+    }
+
+    if(!section2Image1){
+        section2Image1Path = undefined
+    }
+
+    if(!section2Image2){
+        section2Image2Path = undefined
+    }
+
+    
+
     try {
 
         if (id) {
@@ -199,10 +172,10 @@ export async function POST(req: NextRequest) {
                         industry,
                         country,
                         channelsUsed,
-                        bannerImage: image,
+                        bannerImage: image == null ? imagePath : image,
                         story,
-                        section2Image1,
-                        section2Image2,
+                        section2Image1: section2Image1 == null ? section2Image1Path : section2Image1,
+                        section2Image2: section2Image2 == null ? section2Image2Path : section2Image2,
                         goals,
                         objectives,
                         challenge,
@@ -268,10 +241,10 @@ export async function POST(req: NextRequest) {
 
                 }
 
-                return NextResponse.json({ message: "News updated successfully" }, { status: 200 })
+                return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
 
             } else if (error) {
-                return NextResponse.json({ error: "Updating news failed" }, { status: 400 })
+                return NextResponse.json({ error: "Updating portfolio failed" }, { status: 400 })
             } else {
                 return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
             }
@@ -288,10 +261,10 @@ export async function POST(req: NextRequest) {
                         industry,
                         country,
                         channelsUsed,
-                        bannerImage: imagePath,
+                        bannerImage: image,
                         story,
-                        section2Image1: section2Image1Path,
-                        section2Image2: section2Image2Path,
+                        section2Image1,
+                        section2Image2,
                         goals,
                         objectives,
                         challenge,
