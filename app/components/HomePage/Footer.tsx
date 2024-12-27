@@ -3,32 +3,15 @@
 import React, { useEffect, useState } from "react";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
-import Button from "../Button/Button";
 import Image from "next/image";
 import { Lexend } from "next/font/google";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
-import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 const Footer = () => {
-  // const [GetInTouch, setGetInTouch] = useState(false);
-
-  // const pathName = usePathname();
-
-  // useEffect(() => {
-  //   if (
-  //     pathName.startsWith("/performance-marketing") ||
-  //     pathName.startsWith("/case-study") ||
-  //     pathName.startsWith("/portfolio")
-  //   ) {
-  //     setGetInTouch(false);
-  //   } else {
-  //     setGetInTouch(true);
-  //   }
-  // }, []);
 
   return (
     <>
@@ -85,12 +68,10 @@ const Footer = () => {
                 </div>
                 <div className="col-span-3 flex flex-col gap-8">
                   <div className="flex flex-col text-font19">
-                    Facebook
-                    <br />
-                    Instagram
-                    <br />
-                    X<br />
-                    LinkedIn
+                   <a href="https://www.facebook.com/myglobalsurf" target="_blank" className="hover:text-primary"> Facebook</a>
+                    <a href="https://www.instagram.com/accounts/login/?next=%2Fmyglobalsurf%2F&source=omni_redirect" target="_blank" className="hover:text-primary"> Instagram</a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fglobalsurfuae" target="_blank" className="hover:text-primary"> X</a>
+                    <a href="https://www.linkedin.com/company/myglobalsurf" target="_blank" className="hover:text-primary"> LinkedIn</a>
                   </div>
                 </div>
               </div>
@@ -101,16 +82,17 @@ const Footer = () => {
 
       <div className="container">
         <div className="flex flex-wrap items-center justify-center gap-5 py-5 md:justify-between">
-          <div className="flex w-1/2 justify-center gap-10 md:justify-start">
+          <div className="flex w-1/3 justify-center gap-10 md:justify-start">
             <Image src={assets.footer1} alt="image"></Image>
             <Image src={assets.footer2} alt="image"></Image>
             <Image src={assets.footer3} alt="image"></Image>
           </div>
           <div className="flex flex-wrap justify-center gap-2 text-sm text-gray1 md:gap-5">
-            <p className="fw-[400] text-font14 leading-lh1p78">Legal Page</p>
-            <p className="fw-[400] text-font14 leading-lh1p78">Privacy</p>
-            <p className="fw-[400] text-font14 leading-lh1p78">
-              Modern Slavery Statement
+            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary"><Link href="legal">Legal Page</Link></p>
+            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary"><Link href="privacy-policy">Privacy</Link></p>
+            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary"><Link href="cookie-policy">Cookie Policy</Link></p>
+            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
+              <Link href="modern-slavery-statement">Modern Slavery Statement</Link>
             </p>
             <p className="fw-[400] xshd text-font14 leading-lh1p78">|</p>
             <p className="fw-[400] text-font14 leading-lh1p78">

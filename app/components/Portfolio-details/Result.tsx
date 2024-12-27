@@ -34,14 +34,9 @@ const Result = ({
           <div>
             <h2 className="title-65 mb-3 lg:mb-5">Result</h2>
           </div>
-          <div className="text-19 fnt-lexend text-gray1 ">
-            {/* <ul className='list-disc flex flex-col gap-4 lg:gap-8 text-19 text-gray1 fnt-lexend'>
-                    <li>Optimized SEO strategy and keywords to drive a 107.3% increase in new user traffic and a 125.5% boost in page views.</li>
-                    <li>Redesigned the website and optimized user flow, resulting in a 102.35% increase in engaged sessions and a 125.5% boost in user engagement.</li>
-                    <li>Revamped marketing materials with updated design and messaging to boost brand visibility and strengthen brand perception.</li>
-                </ul> */}
+          <div className="text-19 fnt-lexend text-gray1 ollist pl-5">
+
             {parse(data?.portfolio[0].result || "")}
-            {}
           </div>
         </motion.div>
       </div>
