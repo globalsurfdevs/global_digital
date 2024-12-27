@@ -31,6 +31,15 @@ const page = () => {
     console.log("Form submitted:", formData);
   };
 
+  const aedopt = [
+    { value: "5000", label: "AED < 5000" },
+    { value: "5000-10000", label: "AED 5000- 10000" },
+    { value: "10000-20000", label: "AED 10000-20000" },
+    { value: "20000-50000", label: "AED 20000-50000" },
+    { value: "50000-1000000", label: "AED 50000-1000000" },
+    { value: ">1000000", label: "AED > 1000000" },
+  ];
+
   return (
     <div>
       <div className="maintalk">
@@ -95,22 +104,22 @@ const page = () => {
               </div>
 
               <div className="mb-[30px]">
-                <select
-                  name="budget"
-                  id="budget"
-                  value={formData.budget}
-                  onChange={handleChangeselect}
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                >
-                  <option value="" disabled>
-                    budget
-                  </option>
-                  <option value="5000">AED 5000</option>
-                  <option value="10000">AED 10000</option>
-                  <option value="10000-20000">AED 10000-20000</option>
-                  <option value="20000-50000">AED 20000-50000</option>
-                  <option value="50000-1000000">AED 50000-1000000</option>
-                </select>
+              <select
+        name="budget"
+        id="budget"
+        value={formData.budget}
+        onChange={handleChangeselect}
+        className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray mt-3"
+      >
+        <option value="" disabled>
+          Select your budget
+        </option>
+        {aedopt.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
               </div>
               <div className="mb-[30px]">
                 <select
