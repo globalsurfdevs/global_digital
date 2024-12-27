@@ -63,7 +63,7 @@ const Goals = ({
             <div className="col-span-1 flex">
               <h2 className="text-font65">Goals</h2>
             </div>
-            <div className="pt-2 text-font19 lg:pl-5">
+            <div className="pt-2 text-font19 lg:pl-5  text-gray1 fnt-lexend">
               {/* <p className='text-19 text-gray1 fnt-lexend'>Innovo Group partnered with Global Surf to achieve several key objectives for their website.
                                 The primary goal was to create a website that visually and thematically aligned with Innovo’s
                                 innovative brand identity. Additionally, Innovo sought to improve website speed and reduce loading
@@ -90,7 +90,7 @@ const Goals = ({
             <div className="col-span-1 flex">
               <h2 className="text-font65">Objectives</h2>
             </div>
-            <div className="pt-2 text-font19 lg:pl-5">
+            <div className="pt-2 text-font19 lg:pl-5 text-gray1 fnt-lexend">
               {/* <p className='text-19 text-gray1 fnt-lexend'>To address goals, Global Surf conducted an in-depth analysis of the website&apos;s performance and speed.
                                 We implemented structural changes, optimized the code, and compressed media files to enhance site efficiency.
                                 Additionally, Global Surf uplifted the brand image by incorporating high-quality branding materials, ensuring
@@ -144,13 +144,8 @@ const Goals = ({
               <div>
                 <h2 className="title-65 mb-3 lg:mb-[30px]">Challenge</h2>
               </div>
-              <div>
-                {/* <p className='text-gray1 text-19 fnt-lexend'>Redesigning the website brought several challenges. Migrating from an outdated CMS without
-                                    disruptions was complex, especially given its limitations. Ensuring cross-browser and mobile
-                                    compatibility, preserving existing organic traffic, and integrating new branding materials
-                                    for a consistent brand experience were all essential. With a product launch looming, we delivered
-                                    efficiently within tight deadlines</p> */}
-                {parse(data?.portfolio[0].challenge || "")}
+              <div className='text-gray1 text-19 fnt-lexend'>
+                 {parse(data?.portfolio[0].challenge || "")}
               </div>
             </div>
 
@@ -158,12 +153,8 @@ const Goals = ({
               <div>
                 <h2 className="title-65 mb-3 lg:mb-[30px]">Solutions</h2>
               </div>
-              <div className="fnt-lexend text-19 pl-4 text-gray1">
-                {/* <ul className='list-disc flex flex-col gap-[30px] text-19 text-gray1 fnt-lexend'>
-                                    <li>Implemented a more robust website platform to enhance scalability and security, resulting in a 50% reduction in downtime and a 30% increase in website performance.</li>
-                                    <li>Addressed security vulnerabilities to improve load times and resolve issues that had previously compromised secure browsing</li>
-                                    <li>Enhanced brand consistency by integrating updated branding materials across all digital platforms, ensuring a cohesive and professional brand presence.</li>
-                                </ul> */}
+              <div className="fnt-lexend text-19 pl-4 text-gray1 ollist">
+
                 {parse(data?.portfolio[0].solutions || "")}
               </div>
             </div>

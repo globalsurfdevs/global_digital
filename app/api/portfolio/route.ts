@@ -74,6 +74,7 @@ export async function POST(req: NextRequest) {
     const description = formData.get("description") as string;
     const tag = formData.get("tag") as string;
     const addedCategories = formData.get("addedCategories") as string
+    const logo = formData.get("logo") as string
 
     console.log("description",description)
     console.log("tag",tag)
@@ -90,48 +91,7 @@ export async function POST(req: NextRequest) {
     let section2BannerImagePath;
     let resultImage1PAth;
     let resultImage2Path;
-
-    // if (image) {
-    //     try {
-    //         const filename = `${Date.now()}-${image.name || "image"}`;
-    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-    //         imagePath = await uploadToDropbox(image, dropboxPath);
-    //         console.log("New image uploaded to Dropbox:", imagePath);
-
-    //     } catch (error) {
-    //         console.error("Error uploading new image to Dropbox:", error);
-    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-    //     }
-    // }
-
-    // if (section2Image1) {
-    //     try {
-    //         const filename = `${Date.now()}-${section2Image1.name || "image"}`;
-    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-    //         section2Image1Path = await uploadToDropbox(section2Image1, dropboxPath);
-    //         console.log("New image uploaded to Dropbox:", section2Image1Path);
-
-    //     } catch (error) {
-    //         console.error("Error uploading new image to Dropbox:", error);
-    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-    //     }
-    // }
-
-    // if (section2Image2) {
-    //     try {
-    //         const filename = `${Date.now()}-${section2Image2.name || "image"}`;
-    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-    //         section2Image2Path = await uploadToDropbox(section2Image2, dropboxPath);
-    //         console.log("New image uploaded to Dropbox:", section2Image2Path);
-
-    //     } catch (error) {
-    //         console.error("Error uploading new image to Dropbox:", error);
-    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-    //     }
-    // }
+    let logoPath;
 
     if (section2BannerImage) {
         try {
@@ -183,6 +143,37 @@ export async function POST(req: NextRequest) {
 
     console.log("highlightids raw", highlightIdsRaw)
 
+
+    if(image==null){
+        imagePath = undefined
+    }else{
+        imagePath = image
+    }
+
+    if(section2Image1==null){
+        section2Image1Path = undefined
+    }else{
+        section2Image1Path = section2Image1
+    }
+
+    if(section2Image2==null){
+        section2Image2Path = undefined 
+    }else{
+        section2Image2Path = section2Image2
+    }
+
+    if(logo==null){
+        logoPath = undefined 
+    }else{
+        logoPath = logo
+    }
+
+    console.log("imagePAth",imagePath)
+    console.log("section2Image1Path",section2Image1Path)
+    console.log("section2Image2Path",section2Image2Path)
+
+    
+
     try {
 
         if (id) {
@@ -199,10 +190,10 @@ export async function POST(req: NextRequest) {
                         industry,
                         country,
                         channelsUsed,
-                        bannerImage: image,
+                        bannerImage: image == null ? imagePath : image,
                         story,
-                        section2Image1,
-                        section2Image2,
+                        section2Image1: section2Image1 == null ? section2Image1Path : section2Image1,
+                        section2Image2: section2Image2 == null ? section2Image2Path : section2Image2,
                         goals,
                         objectives,
                         challenge,
@@ -213,7 +204,8 @@ export async function POST(req: NextRequest) {
                         resultImage2: resultImage2Path,
                         tag,
                         description,
-                        categories:addedCategoriesRaw
+                        categories:addedCategoriesRaw,
+                        logo:logo == null ? logoPath : logo
                     })
                     .eq('id', id)
                     .select()
@@ -268,10 +260,10 @@ export async function POST(req: NextRequest) {
 
                 }
 
-                return NextResponse.json({ message: "News updated successfully" }, { status: 200 })
+                return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
 
             } else if (error) {
-                return NextResponse.json({ error: "Updating news failed" }, { status: 400 })
+                return NextResponse.json({ error: "Updating portfolio failed" }, { status: 400 })
             } else {
                 return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
             }
@@ -288,10 +280,10 @@ export async function POST(req: NextRequest) {
                         industry,
                         country,
                         channelsUsed,
-                        bannerImage: imagePath,
+                        bannerImage:imagePath,
                         story,
-                        section2Image1: section2Image1Path,
-                        section2Image2: section2Image2Path,
+                        section2Image1:section2Image1Path,
+                        section2Image2:section2Image2Path,
                         goals,
                         objectives,
                         challenge,
@@ -302,7 +294,8 @@ export async function POST(req: NextRequest) {
                         resultImage2: resultImage2Path,
                         tag,
                         description,
-                        categories:addedCategoriesRaw
+                        categories:addedCategoriesRaw,
+                        logo:logoPath
                     },
                 ])
                 .select('id')

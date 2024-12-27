@@ -37,7 +37,7 @@ return (
         </div>
 
             <div >
-            <motion.div className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 xxl:grid-cols-4 gap-5 xl:gap-0 bdrsm'
+            <motion.div className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 xxl:grid-cols-4 gap-5 xl:gap-0 '
                           initial="hidden"
                                   whileInView="visible"
                                   viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible

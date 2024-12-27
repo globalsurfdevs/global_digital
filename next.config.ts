@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
         pathname: "/scl/**",
       },
     ],
+    dangerouslyAllowSVG:true
   },
 };
 

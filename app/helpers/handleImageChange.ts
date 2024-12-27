@@ -10,9 +10,9 @@ export const handleImageChange = ({e,setImageError,setImageFile,setPreviewImage}
         console.log("This works")
         if (file) {
             // Validate the image file type
-            const validImageTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+            const validImageTypes = ["image/jpeg", "image/png", "image/gif", "image/webp","image/svg+xml"];
             if (!validImageTypes.includes(file.type)) {
-                setImageError("Please select an image file (JPEG, PNG, or GIF)");
+                setImageError("Please select an image file (JPEG, PNG, GIF or SVG)");
                 return;
             }
 
