@@ -90,7 +90,7 @@ const EmployeesSwiper = () => {
             <div>
               <div className="bg-dgray w-fit group hover:bg-primary ease-in-out duration-300">
                 <div className="mb-3 p-4 md:px-[40px] md:py-[22px]">
-                  <p className="text-30 group-hover:text-white  ease-in-out duration-300">
+                  <p className="text-black text-30 group-hover:text-white  ease-in-out duration-300">
                   {item.name}
                   </p>
                   <p className="text-19 text-gray1 group-hover:text-white  ease-in-out duration-300">
