@@ -22,7 +22,7 @@ export const services = [
   },
   {
     id: "2",
-    image: "/assets/services/dummy-img.jpg",
+    image: "/assets/services/performancemarketing-old.gif",
     title: "SEO",
     url:'/seo',
     description: "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
@@ -40,7 +40,7 @@ export const services = [
   },
   {
     id: "3",
-    image: "/assets/services/dummy-img.jpg",
+    image: "/assets/services/performancemarketing-grey.gif",
     title: "Social Media",
     url:'/social-media',
     description: "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
