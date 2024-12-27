@@ -378,3 +378,5 @@ body {
       max-width: 50ch;
     }
     .ollist ol{list-style: disc;}
+    .ollist li{@apply text-gray1}
+    .invic img{filter: brightness(0) invert(1);}
