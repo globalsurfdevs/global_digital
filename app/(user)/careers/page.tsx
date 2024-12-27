@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import Link from "next/link";
+import SocialMediabg from "@/app/components/Careers/SocialMediabg";
 
 const page = () => {
   return (
@@ -60,6 +61,23 @@ const page = () => {
       </div>
 
       {/* component3 section3*/}
+      <div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+          variants={{
+            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 1, ease: "easeOut" },
+            }, // Slide up and fade in
+          }}
+        >
+          <SocialMediabg />
+        </motion.div>
+      </div>
       <div>
         <div className="container mx-auto py-2">
           <div>
@@ -291,68 +309,6 @@ const page = () => {
       </div>
 
       {/* component section 4 */}
-      <div>
-        <div className="bg-dgray pt-[50px] xs:pt-10 lg:pt-14   xl:pt-[109px]">
-          <div className="container mx-auto px-4 text-white">
-            <div className="flex flex-col">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                variants={{
-                  hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 1, ease: "easeOut" },
-                  }, // Slide up and fade in
-                }}
-              >
-                <div className="flex h-1/2  flex-col justify-center    ">
-                  <h2 className="mb-[10px] text-font65 leading-lh1p07 text-black lg:mb-[10px]">
-                    Get on the GS Talent Radar.
-                  </h2>
-                  <div className="text-19 max-w-[100ch] text-black">
-                    <p>
-                      You think you might be a good fit for LOOP? Send us your
-                      LinkedIn or Xing profile with just one click. If we have a
-                      position that we think you're perfect for, we'll reach out
-                      to you.
-                    </p>
-                  </div>
-                  <div className="innerfnont mb-10 mt-10  lg:mb-[120px] lg:mt-[57px]">
-                    <Link href="lets-talk">
-                      <button className=" flex gap-5 items-center justify-between uppercase text-black text-30 w-fit rounded-full border border-primary
-                      py-3 leading-lh1p66 transition-all duration-300 ease-in      hover:shadow-lg w-[220px] px-[25px]  lg:w-[413px] lg:px-[50px]">
-                        <svg
-                          width="32"
-                          height="30"
-                          viewBox="0 0 32 30"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clip-path="url(#clip0_1154_569)">
-                            <path
-                              d="M31.392 18.39V30H24.66V19.17C24.66 16.452 23.688 14.592 21.252 14.592C19.392 14.592 18.288 15.84 17.802 17.052C17.622 17.484 17.58 18.084 17.58 18.69V29.994H10.848C10.848 29.994 10.938 11.652 10.848 9.75H17.58V12.618C17.58 12.618 17.55 12.66 17.538 12.684H17.58V12.618C18.474 11.244 20.07 9.276 23.646 9.276C28.074 9.276 31.392 12.168 31.392 18.384V18.39ZM3.81 0C1.506 0 0 1.512 0 3.498C0 5.484 1.464 6.996 3.72 6.996H3.762C6.108 6.996 7.566 5.442 7.566 3.498C7.524 1.512 6.108 0 3.804 0H3.81ZM0.402 30H7.128V9.756H0.402V30Z"
-                              fill="#E63E31"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_1154_569">
-                              <rect width="31.392" height="30" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                        Linkedin
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
