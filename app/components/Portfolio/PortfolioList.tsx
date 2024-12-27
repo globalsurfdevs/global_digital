@@ -135,6 +135,7 @@ const PortfolioList = () => {
               {portfolios.map((item, index) => (
                 <motion.div
                   key={index}
+                  className="w-full"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.1 }}

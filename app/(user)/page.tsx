@@ -7,6 +7,7 @@ import SuccessStories from "@/app/components/HomePage/SuccessStories";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import Tours from "@/app/components/HomePage/Tours";
 import WorkIn from "@/app/components/HomePage/WorkIn";
+import Cta from "@/app/components/HomePage/Cta";
 
 
 export default function Home() {
@@ -20,7 +21,9 @@ export default function Home() {
       <WorkIn/>
       <Tours/>
       <SuccessStories/>
-      <Testimonials/>
+      <Testimonials />
+      <Cta />
+
     </>
 
   );
