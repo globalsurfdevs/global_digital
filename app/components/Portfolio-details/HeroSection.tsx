@@ -16,6 +16,7 @@ const HeroSection = ({
   } | null;
 }) => {
   if (!data) return null;
+  
 
   return (
     <div>
@@ -43,9 +44,11 @@ const HeroSection = ({
             }}
           >
             <Image
-              src={assets.innvosvg}
+              src={data.portfolio[0].logo}
               alt="image"
               className="absolute  bottom-[20px] right-[15px] z-20 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
+              width={50}
+              height={50}
             />
           </motion.div>
         </div>

@@ -74,6 +74,7 @@ export async function POST(req: NextRequest) {
     const description = formData.get("description") as string;
     const tag = formData.get("tag") as string;
     const addedCategories = formData.get("addedCategories") as string
+    const logo = formData.get("logo") as string
 
     console.log("description",description)
     console.log("tag",tag)
@@ -90,6 +91,7 @@ export async function POST(req: NextRequest) {
     let section2BannerImagePath;
     let resultImage1PAth;
     let resultImage2Path;
+    let logoPath;
 
     if (section2BannerImage) {
         try {
@@ -155,10 +157,15 @@ export async function POST(req: NextRequest) {
     }
 
     if(section2Image2==null){
-        section2Image2Path = undefined
-        
+        section2Image2Path = undefined 
     }else{
         section2Image2Path = section2Image2
+    }
+
+    if(logo==null){
+        logoPath = undefined 
+    }else{
+        logoPath = logo
     }
 
     console.log("imagePAth",imagePath)
@@ -197,7 +204,8 @@ export async function POST(req: NextRequest) {
                         resultImage2: resultImage2Path,
                         tag,
                         description,
-                        categories:addedCategoriesRaw
+                        categories:addedCategoriesRaw,
+                        logo:logo == null ? logoPath : logo
                     })
                     .eq('id', id)
                     .select()
@@ -286,7 +294,8 @@ export async function POST(req: NextRequest) {
                         resultImage2: resultImage2Path,
                         tag,
                         description,
-                        categories:addedCategoriesRaw
+                        categories:addedCategoriesRaw,
+                        logo:logoPath
                     },
                 ])
                 .select('id')
