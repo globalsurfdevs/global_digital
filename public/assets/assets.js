@@ -59,7 +59,7 @@ import pjt1 from '../assets/icons/pjt-1.svg'
 import yr from '../assets/icons/yr.svg'
 import yr1 from '../assets/icons/yr-1.svg'
 import emp1 from '../assets/aboutus/emp-1.png'
- 
+
 import boost1 from "../assets/logos/boost.svg";
 import boost2 from "../assets/logos/engage.svg";
 import boost3 from "../assets/logos/convert.svg";
@@ -74,13 +74,17 @@ import seopr1 from '../assets/icons/001.svg'
 import seopr2 from '../assets/icons/002.svg'
 import seopr3 from '../assets/icons/003.svg'
 import seopr4 from '../assets/icons/004.svg'
+import down_arrow from '../assets/icons/down_arrow.svg'
+import up_arrow from '../assets/icons/up_arrow.svg'
 
 
- 
+
 import lightlogo from '../assets/gsdigital-light.svg'
- 
+
 
 export const assets = {
+    up_arrow,
+    down_arrow,
     seopr1,
     seopr2,
     seopr3,
