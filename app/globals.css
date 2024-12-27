@@ -377,3 +377,4 @@ body {
     .max-w-\[50ch\] {
       max-width: 50ch;
     }
+    .ollist ol{list-style: disc;}
