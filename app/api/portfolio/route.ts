@@ -144,14 +144,19 @@ export async function POST(req: NextRequest) {
 
     if(!image){
         imagePath = undefined
+    }else{
+        imagePath = image
     }
 
     if(!section2Image1){
         section2Image1Path = undefined
+    }else{
+        section2Image1Path = section2Image1
     }
 
     if(!section2Image2){
         section2Image2Path = undefined
+        section2Image2Path = section2Image2
     }
 
     
