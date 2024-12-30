@@ -93,6 +93,28 @@ import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
 import Anjana from '../assets/employee/Anjana.png'
 import Aravind from '../assets/employee/Aravind.png'
+import Arjun from '../assets/employee/Arjun.png'
+import Avani from '../assets/employee/Avani.png'
+import Dennis from '../assets/employee/Dennis.png'
+import Ganesh from '../assets/employee/Ganesh.png'
+import Jishnu from '../assets/employee/Jishnu.png'
+import Nived from '../assets/employee/Nived.png'
+import Rahees from '../assets/employee/Rahees.png'
+import Sanjay from '../assets/employee/Sanjay.png'
+import Sreemayi from '../assets/employee/Sreemayi.png'
+import Swetha from '../assets/employee/Swetha.png'
+import Vipin from '../assets/employee/Vipin.png'
+import Yasir from '../assets/employee/Yasir.png'
+
+
+import Anandhu from '../assets/employee/Anandhu.png'
+import Ashna from '../assets/employee/Ashna.png'
+import Faizal from '../assets/employee/Faizal.png'
+import Harsha from '../assets/employee/Harsha.png'
+import Levin from '../assets/employee/Levin.png'
+import Mobin from '../assets/employee/Mobin.png'
+import Preethika from '../assets/employee/Preethika.png'
+import Subijith from '../assets/employee/Subijith.png'
 
 
 
@@ -100,6 +122,26 @@ import lightlogo from '../assets/gsdigital-light.svg'
 
 
 export const assets = {
+    Levin,
+    Subijith,
+    Preethika,
+    Mobin,
+    Harsha,
+    Faizal,
+    Ashna,
+    Anandhu,
+    Arjun,
+    Avani,
+    Dennis,
+    Ganesh,
+    Jishnu,
+    Nived,
+    Rahees,
+    Sanjay,
+    Sreemayi,
+    Swetha,
+    Vipin,
+    Yasir,
     Afsal,
     Anagha,
     Aashika,

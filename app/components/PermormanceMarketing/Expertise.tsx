@@ -53,7 +53,7 @@ return (
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                                 <Image src= {expertise.icon} alt="image"
                             className="fltrcls group-hover:invert-0 transition duration-500" />
-                        
+
                         </div>
 
                         {/* Content */}
@@ -63,9 +63,11 @@ return (
                             {expertise.title}
                             </p>
 
-                            <p className="text-19 pt-2 fnt-lexend hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                <div className=' overflow-hidden'>
+                                <p className="text-19 pt-2 w-[102%] fnt-lexend cntsmd hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
                                 {expertise.desc}
                             </p>
+                            </div>
                         </div>
                     </div>
 

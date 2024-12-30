@@ -97,8 +97,8 @@ const EmployeesSwiper = () => {
                   {item.designation}
                   </p>
                 </div>
-                <div className="relative">
-                <div className=" top-0" >
+                <div className="">
+                <div className="relative top-5" >
                   <Image src={item.image} alt="image"/>
                   </div>
                 </div>

@@ -107,7 +107,7 @@ const Header = () => {
     );
   } else {
     return (
-      <header className={` py-4 pb-4 lg:pb-[22px] ${isSticky ? "header" : ""}`}>
+      <header className={` py-4 pb-4 lg:py-[22px] ${isSticky ? "header" : ""}`}>
         <div className="container flex items-center justify-between">
           <div className="logo-s relative">
             <Image
