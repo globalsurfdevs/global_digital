@@ -375,14 +375,19 @@ body {
               }
               .pmac{    padding-top: 5px;
                 padding-bottom: 5px;}
+                .htsmedia{min-height: 300px;}
               }
               @media screen and (min-width: 1400px)  and (max-width: 1500px) {
 
                 /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
                 .macst{font-size: 58px;
                   min-width: 100%;}
-.targ-ht{min-height: 468px;}
+.htsmedia{min-height: 468px;}
               }
+              /* @media screen and (min-width: 1600px)   {
+
+.targ-ht{min-height: 550px;}
+              } */
 
               .contctform input::placeholder {
                 color: #000; /* Custom color */
