@@ -16,6 +16,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { generateAndUploadImage } from '@/app/helpers/generateAndUploadImage'
 import { categories as importedCategories } from '@/app/data/categories'
 import { MdOutlineSwapHorizontalCircle } from "react-icons/md";
+import { checkLogoAndBanner } from '@/app/helpers/checkLogoAndBanner'
 
 
 
@@ -88,6 +89,8 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [previewLogo, setPreviewLogo] = useState<null | string>(null)
     const [logoError, setLogoError] = useState<string | null>(null)
 
+    
+
     const {
         register,
         handleSubmit,
@@ -116,11 +119,6 @@ const AdminIndiPortfolio = ({ editMode }: {
         const hightLightIds: string[] = []
         console.log(highlights)
 
-        if(highlights.length<2){
-            toast.error("Minimum of 1 highlight is required")
-            return;
-        }
-        
         highlights.forEach((highlight: PortfolioHighlight) => {
             console.log("id of highlight", highlight.customId)
             formData.append(`highlightId${highlight.customId}`, highlight.customId.toString());
@@ -138,6 +136,16 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("addedCategories", JSON.stringify(addedCategories))
         formData.append("description", data.description)
         formData.append("tag", data.tag)
+
+        if(!previewImage || !previewLogo){
+            const check = checkLogoAndBanner(imageFile, setImageError, logoFile, setLogoError)
+            if (!check) {
+                setIsSubmitting(false)
+                return;
+            }
+        }
+
+
 
 
         if (logoFile) {
@@ -334,32 +342,35 @@ const AdminIndiPortfolio = ({ editMode }: {
     const handleDeleteHighlight = async (id?: number | string) => {
         try {
 
-            if (highlights.length < 2) {
-                toast.error("Minimum of 1 highlight is required")
-                return;
-            } else {
-                if (editMode) {
-                    const response = await fetch(`/api/portfolio/highlight?id=${id}`, {
-                        method: "DELETE",
-                    });
+            console.log(id)
+            // if (editMode) {
+            //     const response = await fetch(`/api/portfolio/highlight?id=${id}`, {
+            //         method: "DELETE",
+            //     });
 
 
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.message) {
-                            toast.success(data.message)
-                            setRefetch((prev) => !prev)
-                        }
+            //     if (response.ok) {
+            //         const data = await response.json();
+            //         if (data.message) {
+            //             toast.success(data.message)
+            //             setRefetch((prev) => !prev)
+            //         }
 
-                    } else {
-                        console.error("Failed to remove highlight data");
-                    }
-                } else {
-                    setHighlights(highlights.filter((item) => item.customId !== id))
+            //     } else {
+            //         console.error("Failed to remove highlight data");
+            //     }
+            // } else {
+            //     setHighlights(highlights.filter((item) => item.customId !== id))
 
-                }
-            }
+            // }
 
+            // setHighlights(highlights.filter((item) => item.customId !== id))
+
+            setHighlights((highlights) =>
+                highlights.map((item) =>
+                    item.customId === id ? { ...item, customId: item.customId + "DELETE" } : item
+                )
+            );
 
 
         } catch (error) {
@@ -406,6 +417,10 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         e.stopPropagation();
                                         setPreviewImage(null); // Clear the preview image
                                         setImageFile(null);
+                                        const inputElement = document.getElementById("image") as HTMLInputElement;
+                                        if (inputElement) {
+                                            inputElement.value = ""; // Reset the input value
+                                        }
                                     }}
                                     className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
                                 >
@@ -438,14 +453,14 @@ const AdminIndiPortfolio = ({ editMode }: {
                             </>
                         )}
                         <input type="file" id="image" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError, setImageFile, setPreviewImage })} />
+                        {imageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
                     </div>
-                    {imageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
 
                     <div>
                         <div className='flex flex-col'>
                             <div className='w-full flex flex-col gap-2'>
                                 <Label content='Company Name' />
-                                <input type="text" {...register("companyName", { required: "Comany name is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                <input type="text" {...register("companyName", { required: "Company name is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                 {errors.companyName && <p className='mt-1 text-sm text-red'>{errors.companyName.message}</p>}
                             </div>
 
@@ -508,28 +523,34 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 (
 
                                     highlights.map((item: PortfolioHighlight) => (
-                                        <div className='grid grid-cols-2 gap-5 bg-gray-400 p-3 text-white rounded-xl relative' key={item.customId}>
 
-                                            <div className='absolute right-2 top-1 flex gap-2'>
-                                                {/* <div className='w-5 h-5 bg-yellow-200 rounded-full text-black flex items-center justify-center'>
+                                        item.customId.length == 36 ? (
+                                            <div className='grid grid-cols-2 gap-5 bg-gray-400 p-3 text-white rounded-xl relative' key={item.customId}>
+
+                                                <div className='absolute right-2 top-1 flex gap-2'>
+                                                    {/* <div className='w-5 h-5 bg-yellow-200 rounded-full text-black flex items-center justify-center'>
                         <MdEdit />
                     </div> */}
-                                                <div className='w-5 h-5 bg-red-500 rounded-full text-black flex items-center justify-center' onClick={() => handleDeleteHighlight(item.customId)}>
-                                                    <IoIosClose />
+                                                    <div className='w-5 h-5 bg-red-500 rounded-full text-black flex items-center justify-center' onClick={() => handleDeleteHighlight(item.customId)}>
+                                                        <IoIosClose />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div className='w-full'>
-                                                <label>Number</label>
-                                                <input type="text" value={item.number} onChange={(e) => handleInputChange(item.customId, 'number', e.target.value)} className={'w-full rounded-xl text-black pl-2'} />
-                                            </div>
+                                                <div className='w-full'>
+                                                    <label>Number</label>
+                                                    <input type="text" value={item.number} onChange={(e) => handleInputChange(item.customId, 'number', e.target.value)} className={'w-full rounded-xl text-black pl-2'} />
+                                                </div>
 
-                                            <div className='w-full'>
-                                                <label>Text</label>
-                                                <input type='text' value={item.text} onChange={(e) => handleInputChange(item.customId, 'text', e.target.value)} className='w-full rounded-xl text-black pl-2'></input>
-                                            </div>
+                                                <div className='w-full'>
+                                                    <label>Text</label>
+                                                    <input type='text' value={item.text} onChange={(e) => handleInputChange(item.customId, 'text', e.target.value)} className='w-full rounded-xl text-black pl-2'></input>
+                                                </div>
 
-                                        </div>
+                                            </div>
+                                        ) : (
+                                            null
+                                        )
+
                                     ))
 
 
@@ -708,7 +729,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     setPreviewImage: setSection2Image2Preview
                                 })} />
                             </div>
-                            {section2Image2Error && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
+                            {section2Image2Error && <p className="mt-1 text-sm text-red-600">{section2Image2Error}</p>}
                         </div>
 
                     </div>
@@ -720,13 +741,13 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 <Controller
                                     name="goals"
                                     control={control}
-                                    rules={{ required: "Goals is required" }}
+
                                     render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" />
+                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 />
                             </div>
-                            {errors.goals && <p className="mt-1 text-sm text-red-600">{errors.goals.message}</p>}
+
                         </div>
 
 
@@ -736,13 +757,13 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 <Controller
                                     name="objectives"
                                     control={control}
-                                    rules={{ required: "Objectives is required" }}
+
                                     render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" />
+                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 />
                             </div>
-                            {errors.objectives && <p className="mt-1 text-sm text-red-600">{errors.objectives.message}</p>}
+
                         </div>
 
                     </div>
@@ -802,7 +823,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     setPreviewImage: setSection2BannerImagePreview
                                 })} />
                             </div>
-                            {section2BannerImageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
+                            {section2BannerImageError && <p className="mt-1 text-sm text-red-600">{section2BannerImageError}</p>}
                         </div>
                     </div>
 
@@ -816,13 +837,13 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 <Controller
                                     name="challenge"
                                     control={control}
-                                    rules={{ required: "Challenge is required" }}
+
                                     render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" />
+                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 />
                             </div>
-                            {errors.challenge && <p className="mt-1 text-sm text-red-600">{errors.challenge.message}</p>}
+
                         </div>
                     </div>
 
@@ -833,13 +854,13 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 <Controller
                                     name="solutions"
                                     control={control}
-                                    rules={{ required: "Solution is required" }}
+
                                     render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" />
+                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 />
                             </div>
-                            {errors.solutions && <p className="mt-1 text-sm text-red-600">{errors.solutions.message}</p>}
+
                         </div>
                     </div>
 
@@ -853,13 +874,13 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 <Controller
                                     name="result"
                                     control={control}
-                                    rules={{ required: "Result is required" }}
+
                                     render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" />
+                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 />
                             </div>
-                            {errors.result && <p className="mt-1 text-sm text-red-600">{errors.result.message}</p>}
+
                         </div>
                     </div>
 
@@ -1058,6 +1079,10 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         e.stopPropagation();
                                         setPreviewLogo(null); // Clear the preview image
                                         setLogoFile(null);
+                                        const inputElement = document.getElementById("logo") as HTMLInputElement;
+                                        if (inputElement) {
+                                            inputElement.value = ""; // Reset the input value
+                                        }
                                     }}
                                     className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
                                 >
