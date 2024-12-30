@@ -1,7 +1,7 @@
 export const services = [
   {
     id: "1",
-    image: "/assets/services/performancemarketing.gif",
+    image: "/assets/services/performance marketing.svg",
     title: "Performance Marketing",
     url:'/performance-marketing',
     description: "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
@@ -22,7 +22,7 @@ export const services = [
   },
   {
     id: "2",
-    image: "/assets/services/performancemarketing-old.gif",
+    image: "/assets/services/performance marketing.svg",
     title: "SEO",
     url:'/seo',
     description: "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
@@ -40,7 +40,7 @@ export const services = [
   },
   {
     id: "3",
-    image: "/assets/services/performancemarketing-grey.gif",
+    image: "/assets/services/performance marketing.svg",
     title: "Social Media",
     url:'/social-media',
     description: "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
@@ -58,7 +58,7 @@ export const services = [
   },
   {
     id: "4",
-    image: "/assets/services/dummy-img.jpg",
+    image: "/assets/services/performance marketing.svg",
     title: "Web Design & Development",
     url:'/web-design-development',
     description: "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
@@ -82,7 +82,7 @@ export const services = [
   },
   {
     id: "5",
-    image: "/assets/services/dummy-img.jpg",
+    image: "/assets/services/performance marketing.svg",
     title: "Branding & Creatives",
     url:'/branding-creative',
     description: "We help you create a brand identity that resonates with your audience. Our creative assets are designed to enhance recognition and drive engagement. ",
@@ -112,7 +112,7 @@ export const services = [
   },
   {
     id: "6",
-    image: "/assets/services/dummy-img.jpg",
+    image: "/assets/services/performance marketing.svg",
     title: "Marketing Intelligence",
     url:'/marketing-intelligence',
     description: "We optimize your marketing with data-driven insights for better results. Real-time analytics and market trends help you make informed decisions. ",

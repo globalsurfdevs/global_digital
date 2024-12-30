@@ -77,12 +77,23 @@ import seopr4 from '../assets/icons/004.svg'
 import down_arrow from '../assets/icons/down_arrow.svg'
 import up_arrow from '../assets/icons/up_arrow.svg'
 
+import Afsal from '../assets/employee/Afsal.png'
+import Anagha from '../assets/employee/Anagha.png'
+import Aashika from '../assets/employee/Aashika.png'
+import Anjana from '../assets/employee/Anjana.png'
+import Aravind from '../assets/employee/Aravind.png'
+
 
 
 import lightlogo from '../assets/gsdigital-light.svg'
 
 
 export const assets = {
+    Afsal,
+    Anagha,
+    Aashika,
+    Anjana,
+    Aravind,
     up_arrow,
     down_arrow,
     seopr1,

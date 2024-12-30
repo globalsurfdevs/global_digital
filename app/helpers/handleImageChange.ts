@@ -6,9 +6,12 @@ export const handleImageChange = ({e,setImageError,setImageFile,setPreviewImage}
     setImageFile:Dispatch<React.SetStateAction<File|null>>
     setPreviewImage:Dispatch<React.SetStateAction<string|null>>
 }) => {
+
+    console.log("working")
         const file = e.target.files?.[0];
         console.log("This works")
         if (file) {
+            console.log("file is there")
             // Validate the image file type
             const validImageTypes = ["image/jpeg", "image/png", "image/gif", "image/webp","image/svg+xml"];
             if (!validImageTypes.includes(file.type)) {
@@ -33,8 +36,7 @@ export const handleImageChange = ({e,setImageError,setImageFile,setPreviewImage}
                 setPreviewImage(reader.result as string);
             };
             reader.readAsDataURL(file);
-        } else {
-            setPreviewImage(null);
-            setImageFile(null);
+        }else{
+            console.log("No file")
         }
     };

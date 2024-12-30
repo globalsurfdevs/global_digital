@@ -16,12 +16,12 @@ const HeroSection = ({
   } | null;
 }) => {
   if (!data) return null;
-  
+
 
   return (
     <div>
       <div className="relative">
-        <div className="relative z-10 h-[800px] w-full">
+        <div className="relative z-1 h-[800px] w-full">
           <Image
             src={data.portfolio[0].bannerImage}
             alt="heroImage"
@@ -29,29 +29,19 @@ const HeroSection = ({
             fill
           />
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
-          <motion.div
-            className="container relative h-full w-full invic"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 20 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
-          >
-            <Image
-              src={data.portfolio[0].logo}
-              alt="image"
-              className="absolute  bottom-[20px] right-[15px] z-20 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
-              width={50}
-              height={50}
-            />
-          </motion.div>
-        </div>
+            <div
+              className="container relative h-full w-full invic"
+              
+            >
+              <Image
+                src={data.portfolio[0].logo}
+                alt="image"
+                className="absolute  bottom-[20px] right-[15px] z-20 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
+                width={150}
+                height={100}
+              />
+            </div>
+          </div>
         </div>
 
       </div>
@@ -138,45 +128,47 @@ const HeroSection = ({
           </div>
         </div>
 
-    </div>
-
-    <div className='bg-black'>
-            <div className='container mx-auto'>
-            <motion.div
-                                   initial="hidden"
-                                   whileInView="visible"
-                                   viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                                   variants={{
-                                     hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
-                                     }}>
-                            <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>
-                                {data.portfolioHighlights.map((item)=>(
-                                    <div className='border-b last:border-b-0 lg:border-b-0   lg:border-r last:border-r-0 border-gray1 py-[20px] lg:py-[44px] group ' key={item.customId}>
-                                    <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>{item.number}</p>
-                                    <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>{item.text}</h3>
-                                    </div>
-                                ))}
-
-
-
-              {/* <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px] group '>
-                                    <div className='mx-auto lg:w-[85%]'>
-                                        <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
-                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
-                                    </div>
-                                </div>
-
-                                <div className='py-[20px] lg:py-[44px] group '>
-                                    <div className='mx-auto lg:w-[85%]'>
-                                        <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
-                                        <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
-                                    </div>
-                                </div> */}
-            </div>
-          </motion.div>
-        </div>
       </div>
+
+      {data.portfolioHighlights.length !== 0 ? (
+        <div className='bg-black'>
+          <div className='container mx-auto'>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+              }}>
+              <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>
+                {data.portfolioHighlights.map((item) => (
+                  <div className='border-b last:border-b-0 lg:border-b-0   lg:border-r last:border-r-0 border-gray1 py-[20px] lg:py-[44px] group ' key={item.customId}>
+                    <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>{item.number}</p>
+                    <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>{item.text}</h3>
+                  </div>
+                ))}
+
+
+
+                {/* <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px] group '>
+                              <div className='mx-auto lg:w-[85%]'>
+                                  <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
+                                  <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
+                              </div>
+                          </div>
+
+                          <div className='py-[20px] lg:py-[44px] group '>
+                              <div className='mx-auto lg:w-[85%]'>
+                                  <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
+                                  <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
+                              </div>
+                          </div> */}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

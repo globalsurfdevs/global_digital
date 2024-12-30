@@ -22,7 +22,7 @@ const sidebar = {
   closed: {
     clipPath: "circle(20px at calc(100% - 40px) 30px)",
     transition: {
-      delay: 0.3,
+      delay: 0,
       type: "tween",
       stiffness: 400,
       damping: 10,
@@ -60,11 +60,9 @@ export const Example = () => {
     console.log(isOpen)
     if (isOpen == true) {
       document.body.style.overflow = "hidden";
-      document.body.style.backgroundColor = "#0000006e";
     }
     else {
       document.body.style.overflow = "";
-      document.body.style.backgroundColor = "";
     }
   },[isOpen])
 
@@ -91,11 +89,11 @@ export const Example = () => {
       custom={height}
       ref={containerRef}
     >
-
+<div className={isOpen ? "overlay-nav" : ""}></div>
       {<motion.div className={"menusi background shadow-lg"} variants={sidebar} ref={menuRef}>
 
         <motion.div className="" variants={imageSection}>
-          <div className="fixed w-full min-h-[60px] bg-white z-10 py-5 px-6">
+          <div className="fixed w-full min-h-[60px] bg-white z-1 py-5 px-6">
           <Image src={assets.logo} alt="logo" className="w-32"/>
           </div>
         </motion.div>

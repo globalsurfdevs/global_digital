@@ -39,7 +39,8 @@ export const menuItems = [
                 svg: assets.strategy,
                 url:"/marketing-intelligence"
             }
-        ]
+        ],
+        url:"#"
     },
     {
         item:"PORTFOLIO",

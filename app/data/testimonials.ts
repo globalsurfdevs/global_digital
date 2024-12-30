@@ -1,9 +1,13 @@
-import one from '@/public/assets/testimonials/1.png'
+import one from '@/public/assets/testimonials/Alissar.avif'
+import heshamabdeen from '@/public/assets/testimonials/heshamabdeen.jpg'
 import logoone from '@/public/assets/logos/abt-gulfcryo.svg'
 import two from '@/public/assets/testimonials/2.png'
 import logotwo from '@/public/assets/logos/abt-prestige.svg'
 import three from '@/public/assets/testimonials/3.png'
 import logothree from '@/public/assets/logos/abt-asgc.svg'
+import karim from '@/public/assets/testimonials/karim.jpeg'
+import dummy from '@/public/assets/testimonials/dummy-user.png'
+
 
 export const testimonials = [
     {
@@ -15,7 +19,15 @@ export const testimonials = [
         logo:logoone
     },
     {
-        image:two,
+        image:heshamabdeen,
+        name:"Hesham Abdeen",
+        position:"Head of Accreditation and Evaluations",
+        message:"“Because of the way that Global Surf encourages collaboration, working with the team has been a pleasure. Their staff welcomes our input and fosters open communication, which has led to a website that reflects our brand and serves our particular demands. Global Surf offers a plethora of knowledge and creativity.”",
+        company:"Educap",
+        logo:logoone
+    },
+    {
+        image:dummy,
         name:"Omar M. Bin Dhaher Almheiri",
         position:"President",
         message:"“We have vary good relation and experience with your professional company Not to mention the extra care we get from your team We like this relationship to continue for the success of both of us”",
@@ -23,27 +35,11 @@ export const testimonials = [
         logo: logotwo
     },
     {
-        image:three,
+        image:karim,
         name:"Karim El Shennawy",
         position:"Business Development Director",
         message:"“Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.”",
         company:"ASGC",
-        logo:logothree
-    },
-    {
-        image:three,
-        name:"Karim El Shennawy",
-        position:"Business Development Director - ASGC",
-        message: "“Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.”",
-          company:"ASGC",
-        logo:logothree
-    },
-    {
-        image:three,
-        name:"Karim El Shennawy",
-        position:"Business Development Director - ASGC",
-        message: "“Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.”",
-        company: "ASGC",
         logo:logothree
     }
 ]

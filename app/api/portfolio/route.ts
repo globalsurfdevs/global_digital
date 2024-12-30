@@ -76,12 +76,12 @@ export async function POST(req: NextRequest) {
     const addedCategories = formData.get("addedCategories") as string
     const logo = formData.get("logo") as string
 
-    console.log("description",description)
-    console.log("tag",tag)
-    console.log("added",addedCategories)
+    console.log("description", description)
+    console.log("tag", tag)
+    console.log("added", addedCategories)
 
     let addedCategoriesRaw;
-    if(addedCategories){
+    if (addedCategories) {
         addedCategoriesRaw = JSON.parse(addedCategories)
     }
 
@@ -144,35 +144,35 @@ export async function POST(req: NextRequest) {
     console.log("highlightids raw", highlightIdsRaw)
 
 
-    if(image==null){
+    if (image == null) {
         imagePath = undefined
-    }else{
+    } else {
         imagePath = image
     }
 
-    if(section2Image1==null){
+    if (section2Image1 == null) {
         section2Image1Path = undefined
-    }else{
+    } else {
         section2Image1Path = section2Image1
     }
 
-    if(section2Image2==null){
-        section2Image2Path = undefined 
-    }else{
+    if (section2Image2 == null) {
+        section2Image2Path = undefined
+    } else {
         section2Image2Path = section2Image2
     }
 
-    if(logo==null){
-        logoPath = undefined 
-    }else{
+    if (logo == null) {
+        logoPath = undefined
+    } else {
         logoPath = logo
     }
 
-    console.log("imagePAth",imagePath)
-    console.log("section2Image1Path",section2Image1Path)
-    console.log("section2Image2Path",section2Image2Path)
+    console.log("imagePAth", imagePath)
+    console.log("section2Image1Path", section2Image1Path)
+    console.log("section2Image2Path", section2Image2Path)
 
-    
+
 
     try {
 
@@ -204,13 +204,13 @@ export async function POST(req: NextRequest) {
                         resultImage2: resultImage2Path,
                         tag,
                         description,
-                        categories:addedCategoriesRaw,
-                        logo:logo == null ? logoPath : logo
+                        categories: addedCategoriesRaw,
+                        logo: logo == null ? logoPath : logo
                     })
                     .eq('id', id)
                     .select()
 
-                    console.log("Data",data,"Error",error)
+                console.log("Data", data, "Error", error)
 
                 const highlights: { customId: string, number: string, text: string }[] = [];
 
@@ -218,22 +218,25 @@ export async function POST(req: NextRequest) {
                     const customId = formData.get(`highlightId${item}`) as string;
                     const number = formData.get(`highlightNumber${item}`) as string;
                     const text = formData.get(`highlightText${item}`) as string;
+
                     highlights.push({ customId, number, text });
 
                     console.log("Item", item)
                 })
 
+                console.log("highlights", highlights)
+
 
 
                 for (let i = 0; i < highlights.length; i++) {
 
-                    if (highlights[i].customId == "") {
-
-                        const { error } = await supabase
+                    if (highlights[i].customId.length > 36) {
+                        console.log("deleteData",highlights[i].customId)
+                        const deleteId = highlights[i].customId.slice(0, 36)
+                        const { error: deleteError } = await supabase
                             .from('portfolioHighlights')
                             .delete()
-                            .eq('some_column', 'someValue')
-
+                            .eq('customId', deleteId)
                     }
 
                     let { data: portfolioHighlight, error } = await supabase
@@ -260,7 +263,11 @@ export async function POST(req: NextRequest) {
 
                 }
 
+
                 return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
+                
+
+
 
             } else if (error) {
                 return NextResponse.json({ error: "Updating portfolio failed" }, { status: 400 })
@@ -280,10 +287,10 @@ export async function POST(req: NextRequest) {
                         industry,
                         country,
                         channelsUsed,
-                        bannerImage:imagePath,
+                        bannerImage: imagePath,
                         story,
-                        section2Image1:section2Image1Path,
-                        section2Image2:section2Image2Path,
+                        section2Image1: section2Image1Path,
+                        section2Image2: section2Image2Path,
                         goals,
                         objectives,
                         challenge,
@@ -294,8 +301,8 @@ export async function POST(req: NextRequest) {
                         resultImage2: resultImage2Path,
                         tag,
                         description,
-                        categories:addedCategoriesRaw,
-                        logo:logoPath
+                        categories: addedCategoriesRaw,
+                        logo: logoPath
                     },
                 ])
                 .select('id')
