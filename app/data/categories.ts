@@ -28,5 +28,10 @@ export const categories = [
         id:6,
         name:"Marketing Intelligence",
         zone:"zone2"
+    },
+    {
+        id:7,
+        name:"Google Ads",
+        zone:"zone2"
     }
 ]
