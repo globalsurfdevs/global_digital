@@ -135,6 +135,11 @@ import Preethika from '../assets/employee/Preethika.png'
 import Subijith from '../assets/employee/Subijith.png'
 
 import seo_banner from '../assets/banner/SEO.jpg'
+import branding_bnr from '../assets/banner/Branding-&-Creatives-01.jpg'
+import marketing_bnr from '../assets/banner/Marketing.jpg'
+import performance_bnr from '../assets/banner/Performance.jpg'
+import social_bnr from '../assets/banner/Social_media.jpg'
+import web_bnr from '../assets/banner/Web_development.jpg'
 
 
 
@@ -263,6 +268,11 @@ export const assets = {
     technical_seo,
     inter_seo,
     seo_banner,
+    marketing_bnr,
+    performance_bnr,
+    social_bnr,
+    web_bnr,
+    branding_bnr,
     search_engine_advertising,
     social_media_marketing,
     influencer_marketing,
