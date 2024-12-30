@@ -361,6 +361,22 @@ body {
               @media screen and (min-width: 992px)  and (max-width: 1399px) {
               .minh247{min-height: 247px;}
               }
+
+              @media screen and (min-width: 1200px)  and (max-width: 1500px) {
+
+                /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
+                .macst{font-size: 40px;
+                  min-width: 100%;}
+                  .cntntblc .text-font25 {
+                    font-size: 16px;
+                }
+               .cntntblc .text-font19 {
+                  font-size: 14px;
+              }
+              .pmac{    padding-top: 5px;
+                padding-bottom: 5px;}
+              }
+
               .contctform input::placeholder {
                 color: #000; /* Custom color */
               }
