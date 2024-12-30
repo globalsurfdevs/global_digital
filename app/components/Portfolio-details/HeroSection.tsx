@@ -29,28 +29,18 @@ const HeroSection = ({
             fill
           />
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
-            <motion.div
+            <div
               className="container relative h-full w-full invic"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-              variants={{
-                hidden: { opacity: 0, y: 20 }, // Start below and invisible
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1, ease: "easeOut" },
-                }, // Slide up and fade in
-              }}
+              
             >
               <Image
                 src={data.portfolio[0].logo}
                 alt="image"
                 className="absolute  bottom-[20px] right-[15px] z-20 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
-                width={50}
-                height={50}
+                width={150}
+                height={100}
               />
-            </motion.div>
+            </div>
           </div>
         </div>
 
