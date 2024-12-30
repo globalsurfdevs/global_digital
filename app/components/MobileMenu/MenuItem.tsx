@@ -21,7 +21,15 @@ const navmenuSection = {
   },
 };
 
-export const MenuItem = ({ item, children }: { item: string; children?: React.ReactNode }) => {
+export const MenuItem = ({
+  item,
+  Links,
+  children,
+}: {
+  item: string;
+  Links: string;
+  children?: React.ReactNode;
+}) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
   const toggleSubmenu = () => {
@@ -35,7 +43,7 @@ export const MenuItem = ({ item, children }: { item: string; children?: React.Re
       onClick={children ? toggleSubmenu : undefined}
     >
       <div className="flex justify-between items-center py-2 border-b font-bold w-full">
-        {item}
+       <a href={Links}> {item}</a>
         {children && (
           <span className="ml-2">
           {isSubmenuOpen ? (
