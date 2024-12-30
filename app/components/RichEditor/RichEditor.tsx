@@ -18,10 +18,6 @@ type Inputs = {
     result: string;
     description: string;
     tag: string;
-} & {
-    [key: `highlightNumber${string}`]: string;
-} & {
-    [key: `highlightText${string}`]: string;
 }
 
 const modules = {
@@ -39,11 +35,11 @@ const modules = {
 
 const RichEditor = ({control,name}:{
     control:Control<Inputs, any>;
-    name:string
+    name:"story" | "companyName" | "industry" | "country" | "channelsUsed" | "goals" | "objectives" | "challenge" | "solutions" | "result" | "description" | "tag"
 }) => {
     return (
         <Controller
-            name="story"
+            name={name}
             control={control}
             rules={name=="story" ? { required: "Story is required" } : undefined }
             render={({ field }) => (
