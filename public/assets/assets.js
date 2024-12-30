@@ -92,11 +92,19 @@ import sm_management from '../assets/icons/sm_management.svg'
 import sm_strategy from '../assets/icons/sm_strategy.svg'
 import sm_marketing from '../assets/icons/sm_marketing.svg'
 
+import b2b_seo from '../assets/icons/b2b_seo.svg'
+import ecom_seo from '../assets/icons/ecom_seo.svg'
+import local_seo from '../assets/icons/local_seo.svg'
+import technical_seo from '../assets/icons/technical_seo.svg'
+import inter_seo from '../assets/icons/inter_seo.svg'
+
 import Afsal from '../assets/employee/Afsal.png'
 import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
 import Anjana from '../assets/employee/Anjana.png'
 import Aravind from '../assets/employee/Aravind.png'
+
+import seo_banner from '../assets/banner/SEO.jpg'
 
 
 
@@ -198,7 +206,13 @@ export const assets = {
     web_design,
     sm_management,
     sm_strategy,
-    sm_marketing
+    sm_marketing,
+    b2b_seo,
+    ecom_seo,
+    local_seo,
+    technical_seo,
+    inter_seo,
+    seo_banner
 };
 
 export const logos = [
