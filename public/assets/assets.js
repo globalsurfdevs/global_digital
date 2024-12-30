@@ -77,6 +77,11 @@ import seopr4 from '../assets/icons/004.svg'
 import down_arrow from '../assets/icons/down_arrow.svg'
 import up_arrow from '../assets/icons/up_arrow.svg'
 
+import strategy_consulting from '../assets/icons/strategy-consulting.svg'
+import data_analytics from '../assets/icons/data-analytics.svg'
+import cro from '../assets/icons/cro.svg'
+import marketing_automation from '../assets/icons/marketing-automation.svg'
+
 import Afsal from '../assets/employee/Afsal.png'
 import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
@@ -171,7 +176,12 @@ export const assets = {
     success3,
     gulfcryo,
     innvosvg,
-    lightlogo
+    lightlogo,
+    strategy_consulting,
+    data_analytics,
+    cro,
+    marketing_automation,
+
 };
 
 export const logos = [
