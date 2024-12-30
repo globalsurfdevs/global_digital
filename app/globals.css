@@ -399,3 +399,12 @@ body {
       opacity: 0.5;
       z-index: -1;
   }
+  .class-blogdetails-mn p{
+margin-bottom: 20px;
+  }
+  .class-blogdetails-mn a{
+    color: #e43d30;
+      }
+
+      .class-blogdetails-mn h2{ @apply  text-font30 leading-lh1p33 mt-5 mb-4}
+      .class-blogdetails-mn h3{ @apply  text-font19  font-bold leading-lh1p33 mt-5 mb-4}

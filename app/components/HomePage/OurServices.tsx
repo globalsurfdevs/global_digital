@@ -102,7 +102,7 @@ const OurServices = () => {
           >
             {/* Service Image */}
             <div
-              style={{ height: divheight }}
+              style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "srv-im targ-ht flex h-full justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
               <motion.div
@@ -130,7 +130,7 @@ const OurServices = () => {
 
             {/* Service Details */}
             <motion.div
-              style={{ height: divheight }}
+              style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "targ-ht flex flex-col justify-between border-b pb-5 lg:pb-2" : ""} custom-class`}
             >
               {/* Content Block */}
