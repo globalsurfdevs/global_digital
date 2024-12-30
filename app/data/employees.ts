@@ -69,7 +69,7 @@ export const Employees = [
     {
         id: 17,
         image: assets.Yasir,
-        name:"Mohammed",
+        name:"Yasir",
         designation: "Development Team Lead ",
         width: "100%",
         height:"auto"
