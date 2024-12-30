@@ -98,6 +98,14 @@ import local_seo from '../assets/icons/local_seo.svg'
 import technical_seo from '../assets/icons/technical_seo.svg'
 import inter_seo from '../assets/icons/inter_seo.svg'
 
+
+import search_engine_advertising from '../assets/icons/search_engine_advertising.svg'
+import social_media_marketing from '../assets/icons/social_media_marketing.svg'
+import influencer_marketing from '../assets/icons/influencer_marketing.svg'
+import video_ads from '../assets/icons/video_ads.svg'
+import app_store_adv from '../assets/icons/app_store_adv.svg'
+import programmatic_adv from '../assets/icons/programmatic_adv.svg'
+
 import Afsal from '../assets/employee/Afsal.png'
 import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
@@ -254,7 +262,13 @@ export const assets = {
     local_seo,
     technical_seo,
     inter_seo,
-    seo_banner
+    seo_banner,
+    search_engine_advertising,
+    social_media_marketing,
+    influencer_marketing,
+    video_ads,
+    app_store_adv,
+    programmatic_adv
 };
 
 export const logos = [
