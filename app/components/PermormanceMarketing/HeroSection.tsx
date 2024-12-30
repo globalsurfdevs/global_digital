@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
 import { Lexend } from "next/font/google";
 import Image from "next/image";
+import { assets } from "@/public/assets/assets";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -165,12 +166,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata }) => {
               </div>
             </div>
           </div>
-          {Bannerdata.map((herosection) => (
-          <div className=" w-full bg-black " key={herosection.id}>
-           <Image src={herosection.image} className="w-full" alt="" width={1500} height={700}/>
+     
+          <div className=" w-full bg-black ">
+           <Image src={assets.seo_banner} className="w-full" alt="" width={1500} height={700}/>
              </div>
-          ))}
-        </div>w
+        
+        </div>
       </motion.div>
     </>
   );
