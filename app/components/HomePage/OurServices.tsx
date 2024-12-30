@@ -103,7 +103,7 @@ const OurServices = () => {
             {/* Service Image */}
             <div
               // style={{ minHeight: divheight }}
-              className={`${isSmallScreen ? "srv-im targ-ht  h-full justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
+              className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
               <motion.div
                 className=" overflow-hidden"
