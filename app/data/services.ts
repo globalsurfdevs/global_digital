@@ -1,7 +1,7 @@
 export const services = [
   {
     id: "1",
-    image: "/assets/services/performancemarketing.gif",
+    image: "/assets/services/performance marketing.svg",
     title: "Performance Marketing",
     url:'/performance-marketing',
     description: "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
