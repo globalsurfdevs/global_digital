@@ -376,6 +376,13 @@ body {
               .pmac{    padding-top: 5px;
                 padding-bottom: 5px;}
               }
+              @media screen and (min-width: 1400px)  and (max-width: 1500px) {
+
+                /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
+                .macst{font-size: 58px;
+                  min-width: 100%;}
+.targ-ht{min-height: 468px;}
+              }
 
               .contctform input::placeholder {
                 color: #000; /* Custom color */

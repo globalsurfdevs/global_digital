@@ -85,7 +85,7 @@ const OurServices = () => {
         {/* Services */}
         {services.map((service) => (
           <motion.div
-            className="srv-item ref-ht grid grid-cols-1 gap-8 overflow-hidden md:grid-cols-2 xl:gap-[88px]"
+            className="srv-item ref-ht grid grid-cols-1 gap-8 overflow-hidden md:grid-cols-2 xl:gap-[88px] items-center"
             ref={nextContainerRef}
             key={service.id}
             initial="hidden"
