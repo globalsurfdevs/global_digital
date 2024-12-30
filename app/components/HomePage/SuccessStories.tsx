@@ -77,7 +77,7 @@ const SuccessStories = () => {
                 ref={ref}
               >
                 <div className="flex flex-col justify-center  gap-5 bg-gray2 px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]">
-                  <div className="relative flex h-full flex-col justify-between">
+                  <div className="relative flex h-full flex-col justify-between minh247">
                     <h3 className="mb-[14px] text-font30 leading-lh1p66">
                       {item.title1}
                     </h3>

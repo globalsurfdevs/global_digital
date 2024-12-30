@@ -8,7 +8,7 @@ import logothree from '@/public/assets/logos/abt-asgc.svg'
 export const testimonials = [
     {
         image:one,
-        name:"Alissar Nasrallah",
+        name:"Alissar",
         position:"Regional Marcomms Manager",
         message:"“Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you'll find them next to you in critical moments.”",
         company:"Gulf Cryo",
@@ -24,26 +24,10 @@ export const testimonials = [
     },
     {
         image:three,
-        name:"Karim El Shennawy",
+        name:"karim el",
         position:"Business Development Director",
         message:"“Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.”",
         company:"ASGC",
-        logo:logothree
-    },
-    {
-        image:three,
-        name:"Karim El Shennawy",
-        position:"Business Development Director - ASGC",
-        message: "“Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.”",
-          company:"ASGC",
-        logo:logothree
-    },
-    {
-        image:three,
-        name:"Karim El Shennawy",
-        position:"Business Development Director - ASGC",
-        message: "“Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.”",
-        company: "ASGC",
         logo:logothree
     }
 ]
