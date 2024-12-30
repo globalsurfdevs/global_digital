@@ -436,3 +436,6 @@ margin-bottom: 20px;
 
       .class-blogdetails-mn h2{ @apply  text-font30 leading-lh1p33 mt-5 mb-4}
       .class-blogdetails-mn h3{ @apply  text-font19  font-bold leading-lh1p33 mt-5 mb-4}
+      .fltrcls {
+        filter: brightness(0) invert(1);
+      }

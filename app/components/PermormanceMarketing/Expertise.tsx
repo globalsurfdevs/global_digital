@@ -52,7 +52,7 @@ return (
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                                 <Image src= {expertise.icon} alt="image"
-                            className="fltrcls transition duration-500" />
+                            className="fltrcls group-hover:invert-0 transition duration-500" />
                         
                         </div>
 
