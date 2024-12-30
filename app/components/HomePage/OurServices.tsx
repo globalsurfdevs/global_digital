@@ -28,7 +28,7 @@ const OurServices = () => {
       }
     };
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 767) {
       // Initial height calculation
       updatedivheight();
 
@@ -42,7 +42,7 @@ const OurServices = () => {
   }, []); // Empty dependency array ensures this runs once on mount
 
   const checkWidth = () => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 767) {
       setIsSmallScreen(true);
     } else {
       setIsSmallScreen(false);
@@ -102,8 +102,8 @@ const OurServices = () => {
           >
             {/* Service Image */}
             <div
-              style={{ minHeight: divheight }}
-              className={`${isSmallScreen ? "srv-im targ-ht flex h-full justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
+              // style={{ minHeight: divheight }}
+              className={`${isSmallScreen ? "srv-im targ-ht  h-full justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
               <motion.div
                 className="h-full overflow-hidden"
@@ -119,9 +119,7 @@ const OurServices = () => {
                 <motion.img
                   src={service.image}
                   alt={service.title}
-                  className="h-full object-cover"
-                  initial={{ scale: 1 }} // Initial scale
-                  whileInView={{ scale: 1.1 }} // Zoom effect
+                  className="h-full object-cover objectstm"
                   viewport={{ once: false, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                 />
@@ -130,13 +128,13 @@ const OurServices = () => {
 
             {/* Service Details */}
             <motion.div
-              style={{ minHeight: divheight }}
+              // style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "targ-ht flex flex-col justify-between border-b pb-5 lg:pb-2" : ""} custom-class`}
             >
               {/* Content Block */}
               <div className="cntntblc flex flex-col gap-3">
                 <div className="group relative">
-                  <h3 className="title-65 max-w-[14ch] transition-all duration-300 ease-in-out group-hover:text-primary">
+                  <h3 className="title-65 max-w-[14ch] macst transition-all duration-300 ease-in-out group-hover:text-primary">
                     {service.title}
                   </h3>
                   <Link
@@ -153,7 +151,7 @@ const OurServices = () => {
                   <div className="srvbt mb-5 flex flex-wrap gap-2 xl:mb-[4em]">
                     {service.buttonTexts.map((item, index) => (
                       <button
-                        className="rounded-full border px-4 py-3 text-font19 font-[500] text-gray-500 duration-200 ease-in hover:border-primary hover:text-black"
+                        className="rounded-full border px-4 py-3 pmac text-font19 font-[500] text-gray-500 duration-200 ease-in hover:border-primary hover:text-black"
                         key={index}
                       >
                         {item.title}
