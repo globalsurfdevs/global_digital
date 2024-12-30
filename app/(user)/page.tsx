@@ -4,6 +4,7 @@ import LogoSwiper from "@/app/components/HomePage/LogoSwiper";
 import OurAchievements from "@/app/components/HomePage/OurAchievements";
 import OurServices from "@/app/components/HomePage/OurServices";
 import SuccessStories from "@/app/components/HomePage/SuccessStories";
+import Clients from "@/app/components/HomePage/Clients";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import Tours from "@/app/components/HomePage/Tours";
 import WorkIn from "@/app/components/HomePage/WorkIn";
@@ -21,6 +22,7 @@ export default function Home() {
       <WorkIn/>
       <Tours/>
       <SuccessStories/>
+      <Clients/>
       <Testimonials />
       <Cta />
 
