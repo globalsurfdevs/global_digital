@@ -447,3 +447,18 @@ margin-bottom: 20px;
       .fltrcls {
         filter: brightness(0) invert(1);
       }
+.cntsmd{overflow: auto;
+  scrollbar-width: thin;}
+  .cntsmd::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+  }
+
+  /* For Firefox */
+  .cntsmd {
+    scrollbar-width: none; /* Hides the scrollbar in Firefox */
+  }
+
+  /* For Internet Explorer 10+ (Optional) */
+  .cntsmd {
+    -ms-overflow-style: none; /* Hides the scrollbar in IE */
+  }
