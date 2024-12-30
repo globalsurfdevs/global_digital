@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 interface ExpertiseItem {
     id: number;
     icon: string;
-    iconhov: string;
     title: string;
     desc: string;
   }
@@ -53,9 +52,8 @@ return (
                         {/* Image Wrapper */}
                         <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
                                 <Image src= {expertise.icon} alt="image"
-                            className="group-hover:invert group-hover:hidden  transition duration-500" />
-                            <Image src= {expertise.iconhov} alt="image"
-                                className=" hidden   group-hover:block  transition duration-500" />
+                            className="fltrcls group-hover:invert-0 transition duration-500" />
+                        
                         </div>
 
                         {/* Content */}

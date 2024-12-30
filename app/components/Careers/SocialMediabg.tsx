@@ -29,7 +29,7 @@ const SocialMediabg = () => {
             <div className="relative p-8">
               <div className="flex flex-wrap items-stretch justify-end">
                 <div className="w-full lg:w-1/5"></div>
-                <div className="relative w-full overflow-hidden bg-black p-[20px] md:p-[50px] lg:w-1/2 lg:p-[80px]">
+                <div className="relative w-full overflow-hidden bg-black p-[20px] sm:p-[50px] lg:w-1/2 lg:p-[80px]">
                   {/* Main Content */}
                   <div>
                     <h2 className="leading-1 text-font65 text-white lg:leading-[4.5rem]">
@@ -47,6 +47,7 @@ const SocialMediabg = () => {
                       }
                       text="LinkedIn"
                       onClick={handleButtonClick}
+                      className="sm:text-30 text-[15px]"
                     />
                   </div>
 
@@ -91,7 +92,7 @@ const SocialMediabg = () => {
                           Yeah, go screen my skills!
                         </label>
                       </div>
-                      <p className="text-19 mb-4 mt-3 text-white md:my-8">
+                      <p className="text-19 mb-4 mt-3 text-white sm:my-8">
                         We're keeping your personal details secure and don't
                         share it with 3rd parties of course. Find out more in
                         our privacy policy.

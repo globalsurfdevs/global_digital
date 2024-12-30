@@ -16,7 +16,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`text-30 flex  w-fit items-center justify-between gap-10 rounded-full border border-primary px-[25px]
+      className={` flex  w-fit items-center justify-between gap-10 rounded-full border border-primary px-[25px]
                       py-3 uppercase leading-lh1p66 text-black transition-all      duration-300 ease-in hover:shadow-lg   lg:px-[50px] ${className}`}
     >
       <span className="icon">{icon}</span>

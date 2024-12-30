@@ -5,19 +5,23 @@ export const OurServices = {
   data: [
     {
       id: 1,
-      title: "Strategy Consulting ",
+      title: "Customer Analytics & Segmentation",
     },
     {
       id: 2,
-      title: "Data Analytics ",
+      title: "Product Analytics ",
     },
     {
       id: 3,
-      title: "Marketing Automation ",
+      title: "Forecasting & Predictive Analytics ",
     },
     {
       id: 4,
-      title: "Conversion Rate Optimization (CRO)  ",
+      title: "Assessment and decision-making tools ",
+    },
+    {
+      id: 5,
+      title: "Churn Prevention",
     }
   ],
 };

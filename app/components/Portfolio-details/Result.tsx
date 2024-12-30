@@ -15,9 +15,13 @@ const Result = ({
     portfolio: Portfolio[];
   } | null;
 }) => {
+  if(data?.portfolio[0].result!=="undefined" && data?.portfolio[0].result!=="<p>undefined</p>"){
+    console.log("If work")
+  }
+
   return (
     <div className="container mx-auto py-4">
-      <div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
+      {data?.portfolio[0].result=="undefined" || data?.portfolio[0].result=="<p>undefined</p>" || data?.portfolio[0].result=="<p><br></p>"  ? null : <div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -39,9 +43,9 @@ const Result = ({
             {parse(data?.portfolio[0].result || "")}
           </div>
         </motion.div>
-      </div>
+      </div> }
 
-      <motion.div
+      {data?.portfolio[0].resultImage1 || data?.portfolio[0].resultImage2 ? (<motion.div
         className="mx-auto grid  grid-cols-2   gap-5"
         initial="hidden"
         whileInView="visible"
@@ -55,24 +59,25 @@ const Result = ({
           }, // Slide up and fade in
         }}
       >
-        <div>
+        {data.portfolio[0].resultImage1 && <div>
           <Image
-            src={data?.portfolio[0].resultImage1 ?? assets.success1}
+            src={data?.portfolio[0].resultImage1 || ""}
             alt="image"
             width={900}
             height={900}
           />
-        </div>
+        </div>}
 
-        <div>
+        {data.portfolio[0].resultImage2 &&<div>
           <Image
-            src={data?.portfolio[0].resultImage2 ?? assets.success1}
+            src={data?.portfolio[0].resultImage2 || ""}
             alt="image"
             width={900}
             height={900}
           />
-        </div>
-      </motion.div>
+        </div>}
+
+      </motion.div>) : null }
 
       <motion.div
         initial="hidden"

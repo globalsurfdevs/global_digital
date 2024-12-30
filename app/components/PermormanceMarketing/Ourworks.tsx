@@ -72,7 +72,7 @@ const Ourworks = () => {
           }}
         >
           <h2 className="title-65 mb-5 md:mb-[35px]">
-          Our Woddrks
+          Our Works
           </h2>
         </motion.div>
         <motion.div
