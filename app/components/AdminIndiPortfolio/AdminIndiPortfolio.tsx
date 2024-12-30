@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import Label from '../Label/Label'
-import ReactQuill from 'react-quill-new';
+import ReactQuill,{Quill} from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import Image from 'next/image'
 import { IoIosClose } from "react-icons/io";
@@ -17,7 +17,7 @@ import { generateAndUploadImage } from '@/app/helpers/generateAndUploadImage'
 import { categories as importedCategories } from '@/app/data/categories'
 import { MdOutlineSwapHorizontalCircle } from "react-icons/md";
 import { checkLogoAndBanner } from '@/app/helpers/checkLogoAndBanner'
-
+import RichEditor from '../RichEditor/RichEditor'
 
 
 type Inputs = {
@@ -44,6 +44,8 @@ type addingHighlights = {
     highlightNumber: string;
     customId: string;
 }
+
+
 
 const AdminIndiPortfolio = ({ editMode }: {
     editMode?: boolean;
@@ -398,6 +400,20 @@ const AdminIndiPortfolio = ({ editMode }: {
     }
 
 
+    const modules = {
+        htmlEditButton: {
+            msg: "Edit the content in HTML format", //Custom message to display in the editor, default: Edit HTML here, when you click "OK" the quill editor's contents will be replaced
+            okText: "Ok", // Text to display in the OK button, default: Ok,
+            cancelText: "Cancel", // Text to display in the cancel button, default: Cancel
+            buttonHTML: "HTML", // Text to display in the toolbar button, default: <>
+            buttonTitle: "Show HTML source", // Text to display as the tooltip for the toolbar button, default: Show HTML source
+            syntax: false, // Show the HTML with syntax highlighting. Requires highlightjs on window.hljs (similar to Quill itself), default: false
+            prependSelector: "div#myelement", // a string used to select where you want to insert the overlayContainer, default: null (appends to body),
+            editorModules: {} // The default mod
+          }
+    }
+
+
     return (
         <div>
             <h1 className='text-3xl'>Edit Portfolio Content</h1>
@@ -493,14 +509,15 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <div className='w-full flex flex-col gap-2 h-full'>
                             <Label content='Story' />
                             <div className='h-full'>
-                                <Controller
+                                {/* <Controller
                                     name="story"
                                     control={control}
                                     rules={{ required: "Story is required" }}
                                     render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" />
+                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules}/>
                                     )}
-                                />
+                                /> */}
+                                <RichEditor control={control} name="story"/>
                             </div>
                             {errors.story && <p className="mt-1 text-sm text-red-600">{errors.story.message}</p>}
                         </div>
@@ -738,14 +755,15 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <div>
                             <Label content='Goals' />
                             <div className='h-full'>
-                                <Controller
+                                {/* <Controller
                                     name="goals"
                                     control={control}
 
                                     render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} formats={['html']} className="h-full" />
                                     )}
-                                />
+                                /> */}
+                                <RichEditor control={control} name='goals'/>
                             </div>
 
                         </div>
@@ -754,14 +772,15 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <div>
                             <Label content='Objectives' />
                             <div className='h-full'>
-                                <Controller
+                                {/* <Controller
                                     name="objectives"
                                     control={control}
 
                                     render={({ field }) => (
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
-                                />
+                                /> */}
+                                <RichEditor control={control} name='objectives'/>
                             </div>
 
                         </div>
@@ -834,14 +853,15 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <div className='w-full flex flex-col gap-2 h-full'>
                             <Label content='Challenge' />
                             <div className='h-full'>
-                                <Controller
+                                {/* <Controller
                                     name="challenge"
                                     control={control}
 
                                     render={({ field }) => (
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
-                                />
+                                /> */}
+                                <RichEditor control={control} name='challenge'/>
                             </div>
 
                         </div>
@@ -851,14 +871,15 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <div className='w-full flex flex-col gap-2 h-full'>
                             <Label content='Solutions' />
                             <div className='h-full'>
-                                <Controller
+                                {/* <Controller
                                     name="solutions"
                                     control={control}
 
                                     render={({ field }) => (
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
-                                />
+                                /> */}
+                                <RichEditor control={control} name='solutions'/>
                             </div>
 
                         </div>
@@ -871,14 +892,15 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <div className='w-full flex flex-col gap-2 h-full'>
                             <Label content='Result' />
                             <div className='h-full'>
-                                <Controller
+                                {/* <Controller
                                     name="result"
                                     control={control}
 
                                     render={({ field }) => (
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
-                                />
+                                /> */}
+                                <RichEditor control={control} name='result'/>
                             </div>
 
                         </div>
