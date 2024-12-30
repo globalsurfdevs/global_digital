@@ -1,16 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const Button = ({text,className}:{
-    text:string;
-    className?:string;
-}) => {
+const Button = ({ text, className }: { text: string; className?: string }) => {
   return (
     <button
-  className={`${className ? className : "w-fit text-30 leading-lh1p66 border border-primary px-6 lg:px-24 rounded-full py-3 transition-all duration-300 hover:shadow-lg ease-in  hover:bg-primary hover:text-white"}`}
->
-  {text}
-</button>
-  )
-}
+      className={`${className ? className : "text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 transition-all duration-300 ease-in hover:bg-primary hover:text-white  hover:shadow-lg lg:px-24"}`}
+    >
+      {text}
+    </button>
+  );
+};
 
-export default Button
+export default Button;
