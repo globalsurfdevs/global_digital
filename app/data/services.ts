@@ -22,7 +22,7 @@ export const services = [
   },
   {
     id: "2",
-    image: "/assets/services/SEO.svg",
+    image: "/assets/services/Seo-02-02.svg",
     title: "SEO",
     url:'/seo',
     description: "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
