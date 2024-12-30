@@ -362,7 +362,7 @@ body {
               .minh247{min-height: 247px;}
               }
 
-              @media screen and (min-width: 768px)  and (max-width: 1500px) {
+              @media screen and (min-width: 768px)  and (max-width: 1399px) {
 
                 /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
                 .macst{font-size: 40px;
