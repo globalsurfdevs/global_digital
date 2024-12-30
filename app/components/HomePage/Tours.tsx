@@ -1,11 +1,33 @@
 "use client"
 import React from "react";
-import { tours } from "../../data/tours";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import {Lexend} from "next/font/google";
 import { motion } from 'framer-motion';
+import { Portfolio } from "@/app/types/Portfolio";
 const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
 
 const Tours = () => {
+  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+
+    useEffect(() => {
+      const fetchPortfolios = async () => {
+        try {
+          const response = await fetch(`/api/portfolio`);
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data.portfolio);
+            setPortfolios(data.portfolio);
+          } else {
+            console.error("Failed to fetch portfolio data");
+          }
+        } catch (error) {
+          console.error("Error fetching portfolio data:", error);
+        }
+      };
+
+      fetchPortfolios();
+    }, []);
   return (
     <div className="container px-4 mx-auto">
       <div className="pt-[50px] lg:pt-[110px] pb-[50px] lg:pb-[150px] flex flex-col gap-4 lg:gap-10 border-b">
@@ -29,23 +51,28 @@ const Tours = () => {
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
                 >
-        <div className="grid md:grid-cols-2 gap-8">
-          {tours.map((tour) => (
-            <div className="relative tour-card" key={tour.id}>
-              <img src={tour.image} alt={tour.name} className="ease-linear duration-300 w-[100] h-[100]" />
-              <div className="absolute lg:bottom-[46px] lg:left-[59px] bottom-[15px] left-[15px] z-10">
-                <h3 className="text-white text-font30 leading-lh1p66">{tour.name}</h3>
-                <div className="flex gap-2">
-                  {tour.services.map((service,index) => (
-                    <h4 className={`text-primary ${lexend.className}`} key={index}>{service}</h4>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+          <div className="grid md:grid-cols-2 gap-8">
+          {portfolios.slice(0, 2).map((item, index) => (
+
+  <Link href={`/portfolio-details/${item.id}`} key={index}>
+  <div className="relative tour-card h-full" >
+    <img
+      src={item.bannerImage}
+      alt={item.companyName}
+      className="ease-linear duration-300   h-full"
+    />
+    <div className="absolute lg:bottom-[46px] lg:left-[59px] bottom-[15px] left-[15px] z-10">
+      <h3 className="text-white text-font30 leading-lh1p66">{item.companyName}</h3>
+      <div className="flex gap-2">
+        <h4 className={`text-primary ${lexend.className}`}>{item.channelsUsed}</h4>
+      </div>
+    </div>
+  </div></Link>
+))}
+
         </div>
         <div className="w-full flex justify-center mt-[30px] lg:mt-[50px] innerfnont">
-        <motion.button
+        <Link href={`/portfolio`}> <motion.button
       className="border lg:py-4 lg:px-[195px] py-3 px-8 rounded-full leading-[1.67] text-30 font-medium "
       initial={{ scale: 1 }}
       whileHover={{
@@ -57,7 +84,8 @@ const Tours = () => {
       whileTap={{ scale: 0.95 }}
     >
       VIEW ALL
-    </motion.button>
+            </motion.button>
+              </Link>
           </div>
           </motion.div>
       </div>

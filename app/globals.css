@@ -100,7 +100,6 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   width: 300px;
   background: #fff;
   z-index: 5;
@@ -173,7 +172,7 @@ body {
   flex: 40px 0;
   margin-right: 20px;
 }
-.menusi{height: 100vh;overflow-y: auto;}
+.menusi{height: 100dvh;overflow-y: auto;}
 .text-placeholder {
   width: 200px;
   height: 40px;
@@ -358,6 +357,9 @@ body {
                       grid-template-columns: 100%;
                       display: flex;
                   }
+              }
+              @media screen and (min-width: 992px)  and (max-width: 1399px) {
+              .minh247{min-height: 247px;}
               }
               .contctform input::placeholder {
                 color: #000; /* Custom color */
