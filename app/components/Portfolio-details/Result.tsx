@@ -17,7 +17,7 @@ const Result = ({
 }) => {
   return (
     <div className="container mx-auto py-4">
-      {data?.portfolio[0].result!=="undefined" ? (<div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
+      {data?.portfolio[0].result!=="undefined" && data?.portfolio[0].result!=="<p>undefined</p>" ? (<div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
         <motion.div
           initial="hidden"
           whileInView="visible"

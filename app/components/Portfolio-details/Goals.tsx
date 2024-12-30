@@ -46,7 +46,7 @@ const Goals = ({
         </motion.div>) : null }
 
         <div className="lg:pb-150 pb-[50px] ">
-          {data?.portfolio[0].goals!=="undefined" && data?.portfolio[0].goals!=="<p><br></p>" ? (<motion.div
+          {data?.portfolio[0].goals!=="undefined" && data?.portfolio[0].goals!=="<p><br></p>" && data?.portfolio[0].goals!=="<p>undefined</p>"? (<motion.div
             className="grid border-t border-clrE6E6E6 py-[50px]  pb-[25px] pt-[35px] lg:grid-cols-2 lg:pb-[95px] lg:pt-[50px]"
             initial="hidden"
             whileInView="visible"
@@ -73,7 +73,7 @@ const Goals = ({
             </div>
           </motion.div>) : null } 
 
-          {data?.portfolio[0].objectives!=="undefined" && data?.portfolio[0].objectives!=="<p><br></p>" ? (<motion.div
+          {data?.portfolio[0].objectives!=="undefined" && data?.portfolio[0].objectives!=="<p><br></p>" && data?.portfolio[0].objectives!=="<p>undefined</p>" ? (<motion.div
             className="grid border-t pt-[25px] lg:grid-cols-2 lg:pt-[50px]"
             initial="hidden"
             whileInView="visible"
@@ -125,7 +125,7 @@ const Goals = ({
         </motion.div>
       </div>) : null }
 
-      {data?.portfolio[0].challenge!== "undefined" && data?.portfolio[0].challenge!=="<p><br></p>" && data?.portfolio[0].solutions !== "undefined" && data?.portfolio[0].solutions!=="<p><br></p>" ? (<div className="container mx-auto py-4">
+      {data?.portfolio[0].challenge!== "undefined" && data?.portfolio[0].challenge!=="<p><br></p>" && data?.portfolio[0].challenge!=="<p>undefined</p>" && data?.portfolio[0].solutions !== "undefined" && data?.portfolio[0].solutions!=="<p><br></p>" && data?.portfolio[0].solutions!=="<p>undefined</p>" ? (<div className="container mx-auto py-4">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -140,7 +140,7 @@ const Goals = ({
           }}
         >
           <div className="grid space-y-5 py-[50px]  md:space-y-0 lg:grid-cols-2 lg:space-x-5 lg:py-[150px]">
-            {data?.portfolio[0].challenge!=="undefined" ? (<div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
+            {data?.portfolio[0].challenge!=="undefined" && data?.portfolio[0].challenge!=="<p>undefined</p>" ? (<div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
               <div>
                 <h2 className="title-65 mb-3 lg:mb-[30px]">Challenge</h2>
               </div>
@@ -149,7 +149,7 @@ const Goals = ({
               </div>
             </div>) : null } 
 
-            {data?.portfolio[0].solutions!=="undefined" ? (<div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
+            {data?.portfolio[0].solutions!=="undefined" && data?.portfolio[0].solutions!=="<p>undefined</p>" ?  (<div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
               <div>
                 <h2 className="title-65 mb-3 lg:mb-[30px]">Solutions</h2>
               </div>
