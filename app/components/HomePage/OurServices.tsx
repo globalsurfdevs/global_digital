@@ -106,7 +106,7 @@ const OurServices = () => {
               className={`${isSmallScreen ? "srv-im targ-ht  h-full justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
               <motion.div
-                className="h-full overflow-hidden"
+                className=" overflow-hidden"
                 variants={{
                   hidden: { y: 50, opacity: 0 }, // Start below and fade in
                   visible: {
