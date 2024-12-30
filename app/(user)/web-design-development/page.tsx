@@ -6,7 +6,6 @@ import Services from '../../components/PermormanceMarketing/Services'
 import Framework from '../../components/PermormanceMarketing/Framework'
 import Industries from '../../components/PermormanceMarketing/Industries'
 import Ourportfolio from '../../components/PermormanceMarketing/Ourportfolio'
-import Platforms from '../../components/PermormanceMarketing/Platforms'
 import Partner from '../../components/PermormanceMarketing/Partner'
 import Testimonials from '../../components/HomePage/Testimonials'
 import FAQ from '../../components/PermormanceMarketing/FAQ'
@@ -17,7 +16,6 @@ import { AreaExpertise } from "../../data/services/web-design-development/area-o
 import { boostEngage } from "../../data/services/web-design-development/boost-engage";
 import { OurServices } from "../../data/services/web-design-development/our-services";
 import { Frameworkdata } from "../../data/services/web-design-development/framework";
-import { Platformsdata } from "../../data/services/web-design-development/platforms";
 import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/web-design-development/cta";
 import { Faq } from "../../data/services/web-design-development/faq";
@@ -32,7 +30,6 @@ const page = () => {
         <Framework title={Frameworkdata.title} data={Frameworkdata.data}/>
         <Industries/>
         <Ourportfolio/>
-        <Platforms title={Platformsdata.title} data={Platformsdata.data}/>
         <Partner data={partnerData} />
         <Testimonials/>
         <GetInTouch data={Cta} ctabbutton= {"LET'S TALK GROWTH"}  link={'/lets-talk'}/>

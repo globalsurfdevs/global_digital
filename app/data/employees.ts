@@ -4,14 +4,14 @@ export const Employees = [
     {
         id: 1,
         image: assets.Faizal,
-        name:"Faisal Ahmed",
+        name:"Faisal",
         designation: "Digital Account Director",
         width: "100%",
         height:"auto"
     }, {
         id: 2,
         image: assets.Preethika,
-        name:"Preethika Kottian",
+        name:"Preethika",
         designation: "Project Manager",
         width: "100%",
         height:"auto"
@@ -19,7 +19,7 @@ export const Employees = [
     {
         id: 3,
         image: assets.Aravind,
-        name:"Aravind JS",
+        name:"Aravind",
         designation: "Digital Strategist",
         width: "100%",
         height:"auto"
@@ -27,7 +27,7 @@ export const Employees = [
     {
         id: 4,
         image: assets.Ashna,
-        name:"Ashna Ganeeva",
+        name:"Ashna",
         designation: "Social Media Strategist ",
         width: "100%",
         height:"auto"
@@ -36,7 +36,7 @@ export const Employees = [
     {
         id: 16,
         image: assets.Vipin,
-        name:"Vipin Kelambeth",
+        name:"Vipin",
         designation: "Marketing Head",
         width: "100%",
         height:"auto"
@@ -44,15 +44,15 @@ export const Employees = [
     {
         id: 3,
         image: assets.Aashika,
-        name:"Aashika Rajendran",
-        designation: "Content Team lead",
+        name:"Aashika",
+        designation: "Content Team Lead",
         width: "100%",
         height:"auto"
     },
     {
         id: 3,
         image: assets.Mobin,
-        name:"Mobin KM",
+        name:"Mobin",
         designation: "Design Team Lead",
         width: "100%",
         height:"auto"
@@ -60,7 +60,7 @@ export const Employees = [
     {
         id: 3,
         image: assets.Subijith,
-        name:"Subhijith P",
+        name:"Subhijith",
         designation: "Marketing Specialist",
         width: "100%",
         height:"auto"
@@ -69,15 +69,15 @@ export const Employees = [
     {
         id: 17,
         image: assets.Yasir,
-        name:"Mohammed Yasir",
-        designation: "Development team lead ",
+        name:"Mohammed",
+        designation: "Development Team Lead ",
         width: "100%",
         height:"auto"
     },
     {
         id: 1,
         image: assets.Afsal,
-        name:"Afzal Haneefa",
+        name:"Afzal",
         designation: "Digital Marketing Head",
         width: "100%",
         height:"auto"
@@ -85,7 +85,7 @@ export const Employees = [
     {
         id: 1,
         image: assets.Anandhu,
-        name:"Anandu Sudarshan",
+        name:"Anandu",
         designation: "SEO Specialist",
         width: "100%",
         height:"auto"
@@ -93,7 +93,7 @@ export const Employees = [
     {
         id: 15,
         image: assets.Swetha,
-        name:"Sweta S Kumar",
+        name:"Sweta",
         designation: "Content writer",
         width: "100%",
         height:"auto"
@@ -101,7 +101,7 @@ export const Employees = [
     {
         id: 6,
         image: assets.Arjun,
-        name:"Arjun Das",
+        name:"Arjun",
         designation: "Graphic designer",
         width: "100%",
         height:"auto"
@@ -109,7 +109,7 @@ export const Employees = [
     {
         id: 6,
         image: assets.Harsha,
-        name:"Harsha Rayaroth",
+        name:"Harsha",
         designation: "Project Coordinator",
         width: "100%",
         height:"auto"
@@ -125,7 +125,7 @@ export const Employees = [
     // {
     //     id: 8,
     //     image: assets.Dennis,
-    //     name:"Dennis Joy",
+    //     name:"Dennis",
     //     designation: "Graphic Designer",
     //     width: "100%",
     //     height:"auto"
@@ -133,22 +133,22 @@ export const Employees = [
     {
         id: 10,
         image: assets.Jishnu,
-        name:"Jishnu M",
-        designation: "Devloper",
+        name:"Jishnu",
+        designation: "Developer",
         width: "100%",
         height:"auto"
     },{
         id: 14,
         image: assets.Sreemayi,
-        name:"Sreemayi S Praseed",
-        designation: "Devloper",
+        name:"Sreemayi",
+        designation: "Developer",
         width: "100%",
         height:"auto"
     },
     {
         id: 13,
         image: assets.Sanjay,
-        name:"Sanjay Kiran",
+        name:"Sanjay",
         designation: "UI/UX Designer",
         width: "100%",
         height:"auto"
@@ -156,15 +156,15 @@ export const Employees = [
     {
         id: 12,
         image: assets.Rahees,
-        name:"Rahees M",
-        designation: "Devloper",
+        name:"Rahees",
+        designation: "Developer",
         width: "100%",
         height:"auto"
     },
     // {
     //     id: 12,
     //     image: assets.Rahees,
-    //     name:"Dilna Damodar",
+    //     name:"Dilna",
     //     designation: "Inside Sales Specialist",
     //     width: "100%",
     //     height:"auto"
@@ -172,7 +172,7 @@ export const Employees = [
     {
         id: 9,
         image: assets.Ganesh,
-        name:"Ganesh Harikumar",
+        name:"Ganesh",
         designation: "SEO Specialist",
         width: "100%",
         height:"auto"
@@ -181,7 +181,7 @@ export const Employees = [
     {
         id: 2,
         image: assets.Anagha,
-        name:"Anagha Narayanankutty",
+        name:"Anagha",
         designation: "Digital Marketing Executive",
         width: "100%",
         height:"auto"
@@ -198,7 +198,7 @@ export const Employees = [
     {
         id: 7,
         image: assets.Avani,
-        name:"Avane Priya",
+        name:"Avane",
         designation: "Digital Marketing Executive",
         width: "100%",
         height:"auto"
@@ -207,15 +207,15 @@ export const Employees = [
     , {
         id: 11,
         image: assets.Nived,
-        name:"Nived S Nambiar ",
-        designation: "Devloper",
+        name:"Nived ",
+        designation: "Developer",
         width: "100%",
         height:"auto"
     }
     // , {
     //     id: 11,
     //     image: assets.Nived,
-    //     name:"Thanisha Afzal ",
+    //     name:"Thanisha ",
     //     designation: "Business Process Executive",
     //     width: "100%",
     //     height:"auto"
