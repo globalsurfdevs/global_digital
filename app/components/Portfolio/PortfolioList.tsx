@@ -38,10 +38,10 @@ const PortfolioList = () => {
       setOriginalPortfolio(portfolios); // Initialize the original portfolio only once
     }
   }, [portfolios]);
-  
+
   const handleFiltering = (filter: string) => {
     setFilter(filter);
-  
+
     if (filter === "all") {
       // If the filter is "all", reset to the original portfolio
       setPortfolios(originalPortfolio);
@@ -120,7 +120,7 @@ const PortfolioList = () => {
                       <h3 className="text-30 mb-1 duration-200 ease-in-out group-hover:text-primary md:mb-2">
                         {item.companyName}
                       </h3>
-                      <p className="text-19 text-gray1">{item.description}</p>
+                      <p className="text-19 text-gray1">{item.channelsUsed}</p>
                     </div>
                     <Link href={`/portfolio-details/${item.id}`}
                   className="absolute top-0 z-[1] h-full w-full"
