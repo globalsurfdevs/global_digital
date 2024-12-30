@@ -15,9 +15,13 @@ const Result = ({
     portfolio: Portfolio[];
   } | null;
 }) => {
+  if(data?.portfolio[0].result!=="undefined" && data?.portfolio[0].result!=="<p>undefined</p>"){
+    console.log("If work")
+  }
+
   return (
     <div className="container mx-auto py-4">
-      {data?.portfolio[0].result!=="undefined" && data?.portfolio[0].result!=="<p>undefined</p>" ? (<div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
+      {data?.portfolio[0].result=="undefined" || data?.portfolio[0].result=="<p>undefined</p>" || data?.portfolio[0].result=="<p><br></p>"  ? null : <div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -39,7 +43,7 @@ const Result = ({
             {parse(data?.portfolio[0].result || "")}
           </div>
         </motion.div>
-      </div>) : null }
+      </div> }
 
       {data?.portfolio[0].resultImage1 || data?.portfolio[0].resultImage2 ? (<motion.div
         className="mx-auto grid  grid-cols-2   gap-5"
