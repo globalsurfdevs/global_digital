@@ -85,7 +85,7 @@ const OurServices = () => {
         {/* Services */}
         {services.map((service) => (
           <motion.div
-            className="srv-item ref-ht grid grid-cols-1 gap-8 overflow-hidden md:grid-cols-2 xl:gap-[88px]"
+            className="srv-item ref-ht grid grid-cols-1 gap-8 overflow-hidden md:grid-cols-2 xl:gap-[88px] items-center"
             ref={nextContainerRef}
             key={service.id}
             initial="hidden"
@@ -102,7 +102,7 @@ const OurServices = () => {
           >
             {/* Service Image */}
             <div
-              // style={{ minHeight: divheight }}
+              style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
               <motion.div
@@ -128,8 +128,8 @@ const OurServices = () => {
 
             {/* Service Details */}
             <motion.div
-              // style={{ minHeight: divheight }}
-              className={`${isSmallScreen ? "targ-ht flex flex-col justify-between border-b pb-5 lg:pb-2" : ""} custom-class`}
+              style={{ minHeight: divheight }}
+              className={`${isSmallScreen ? "targ-ht htsmedia flex flex-col justify-between border-b pb-5 lg:pb-2" : ""} custom-class`}
             >
               {/* Content Block */}
               <div className="cntntblc flex flex-col gap-3">
