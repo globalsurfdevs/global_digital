@@ -88,6 +88,10 @@ import cwd from '../assets/icons/cwd.svg'
 import ecomm from '../assets/icons/ecomm.svg'
 import mobile_app from '../assets/icons/mobile_app.svg'
 
+import sm_management from '../assets/icons/sm_management.svg'
+import sm_strategy from '../assets/icons/sm_strategy.svg'
+import sm_marketing from '../assets/icons/sm_marketing.svg'
+
 import Afsal from '../assets/employee/Afsal.png'
 import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
@@ -191,7 +195,10 @@ export const assets = {
     ecomm,
     cwd,
     web_app,
-    web_design
+    web_design,
+    sm_management,
+    sm_strategy,
+    sm_marketing
 };
 
 export const logos = [
