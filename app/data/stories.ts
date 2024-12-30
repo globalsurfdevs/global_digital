@@ -4,28 +4,28 @@ export const stories = [
   {
     title1: "Garden Concept ",
     svg: assets.ninety,
-    count: "42.66%",
-    description1: "Increase in Organic Traffic",
-    title2: "SEO Overhaul Boosts Visibility and User Engagement",
+    count: "77.54%",
+    description1: "Increase in Overall Traffic ",
+    title2: "The Story Behind Garden Concept’s 77.54% Traffic Growth",
     description2:
-      "Explore The Garden Concept’s SEO strategy for boosting organic traffic and enhancing user experience through a redesigned website. ",
+      "Explore The Garden Concept’s digital marketing strategy for boosting overall web traffic and store visit. ",
   },
   {
     title1: "Seleo",
     svg: assets.seventy,
     count: "28X",
     description1: "Increase in Overall Traffic Growth",
-    title2: "Demand Gen Campaign Drives Unprecedented Growth ",
+    title2: "The Secrets Behind Seleo’s 10x Revenue Growth ",
     description2:
-      "Discover how Seleo achieved remarkable success with a highly targeted Demand Gen campaign, driving a 6,031.30% surge in returning users and a 2,595% increase in new users, significantly expanding its digital presence. ",
+      "Discover how Seleo achieved remarkable growth through innovative strategies that enhanced online engagement and business success. ",
   },
   {
     title1: "Assent Steel ",
     svg: assets.ninetyOne,
     count: "2X",
-    description1: "Increase in Organic Traffic",
-    title2: "Enhanced Traffic with Strategic SEO and Google Ads Optimization",
+    description1: "Increase in Overall Traffic ",
+    title2: "How Assent Steel Doubled Its Website Traffic ",
     description2:
-      "Explore how Assent Steel regained organic traffic and achieved significant growth by implementing targeted SEO strategies and restructuring Google Ads campaigns for optimal performance. ",
+      "Explore Inside Assent Steel’s 2x Traffic Success and uncover how smart strategies and data-driven tactics doubled their website traffic. ",
   },
 ];

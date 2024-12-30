@@ -395,6 +395,14 @@ body {
               .contctform textarea::placeholder {
                 color: #000; /* Custom color */
               }
+              .clngsb img {
+                filter: grayscale(1);
+                transition: all .5s ease;
+            }
+          .clngsb:hover img {
+              filter: grayscale(0);
+          }
+
     @layer components {
       .title-80{ @apply  text-font80 leading-lh1p22;}
       .title-65 {  @apply text-font65 leading-lh1p07;  }
