@@ -10,7 +10,7 @@ export const Navigation = () => (
   <motion.ul className="mobile-menu-ul  ">
   {menuItems.map((menuItem, index) => (
      <div key={index}>
-    <MenuItem  item={menuItem.item}>
+    <MenuItem  item={menuItem.item} Links={menuItem.url}>
       {menuItem.children &&
         menuItem.children.map((child, childIndex) => (
           <li

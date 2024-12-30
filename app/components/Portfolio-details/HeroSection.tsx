@@ -16,12 +16,12 @@ const HeroSection = ({
   } | null;
 }) => {
   if (!data) return null;
-  
+
 
   return (
     <div>
       <div className="relative">
-        <div className="relative z-10 h-[800px] w-full">
+        <div className="relative z-1 h-[800px] w-full">
           <Image
             src={data.portfolio[0].bannerImage}
             alt="heroImage"
