@@ -1,11 +1,11 @@
 import React from 'react'
-import { Control, Controller } from 'react-hook-form'
+import { Control, Controller, Path } from 'react-hook-form'
 import ReactQuill, { Quill } from 'react-quill-new'
 import htmlEditButton from "quill-html-edit-button";
 
 Quill.register("modules/htmlEditButton", htmlEditButton);
 
-type Inputs = {
+type PortfolioInputs = {
     companyName: string
     industry: string
     country: string
@@ -18,6 +18,20 @@ type Inputs = {
     result: string;
     description: string;
     tag: string;
+}
+
+type CaseStudyInputs = {
+    heading:string;
+    sHeading:string;
+    story:string;
+    industry:string;
+    country:string;
+    channelsUsed:string;
+    goals:string;
+    objectives:string;
+    challenge:string;
+    overcomingChallenges:string;
+    achievements:string;
 }
 
 const modules = {
@@ -33,9 +47,9 @@ const modules = {
       }
 }
 
-const RichEditor = ({control,name}:{
-    control:Control<Inputs, any>;
-    name:"story" | "companyName" | "industry" | "country" | "channelsUsed" | "goals" | "objectives" | "challenge" | "solutions" | "result" | "description" | "tag"
+const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:{
+    control: Control<T, any>;
+    name:Path<T>;
 }) => {
     return (
         <Controller

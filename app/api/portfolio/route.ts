@@ -93,19 +93,6 @@ export async function POST(req: NextRequest) {
     let resultImage2Path;
     let logoPath;
 
-    // if (section2BannerImage) {
-    //     try {
-    //         const filename = `${Date.now()}-${section2BannerImage.name || "image"}`;
-    //         const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-    //         section2BannerImagePath = await uploadToDropbox(section2BannerImage, dropboxPath);
-    //         console.log("New image uploaded to Dropbox:", section2BannerImagePath);
-
-    //     } catch (error) {
-    //         console.error("Error uploading new image to Dropbox:", error);
-    //         return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-    //     }
-    // }
 
     if (resultImage1) {
         try {

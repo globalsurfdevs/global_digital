@@ -2,33 +2,33 @@
 
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Portfolio } from '@/app/types/Portfolio'
 import { IoIosClose } from "react-icons/io";
 import { toast } from 'sonner';
+import { CaseStudy } from '@/app/types/CaseStudy';
 
 const AdminCaseStudy = () => {
 
-    const [portfolios, setPortfolios] = useState([])
+    const [caseStudies, setCaseStudies] = useState([])
     const [refetch,setRefetch] = useState(false)
 
     useEffect(() => {
-        const fetchPortfolios = async () => {
+        const fetchCaseStudyData = async () => {
             try {
-                const response = await fetch(`/api/portfolio`);
+                const response = await fetch(`/api/case-study`);
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data.portfolio)
-                    setPortfolios(data.portfolio)
+                    console.log(data.caseStudy)
+                    setCaseStudies(data.caseStudy)
 
                 } else {
-                    console.error("Failed to fetch portfolio data");
+                    console.error("Failed to fetch case study data");
                 }
             } catch (error) {
-                console.error("Error fetching portfolio data:", error);
+                console.error("Error fetching case study data:", error);
             }
         }
 
-        fetchPortfolios()
+        fetchCaseStudyData()
     }, [refetch])
 
     const handlePortfolioDelete = async(id:number) =>{
@@ -52,19 +52,19 @@ const AdminCaseStudy = () => {
         <div className='flex flex-col gap-5'>
             <div className='flex justify-between items-center'>
                 <h1 className='text-3xl'>List of companies</h1>
-                <Link href={'/admin/portfolio/add'}><button className='bg-blue-950 text-white p-2 rounded-xl'>Add a new portfolio</button></Link>
+                <Link href={'/admin/case-study/add'}><button className='bg-blue-950 text-white p-2 rounded-xl'>Add a new case study</button></Link>
             </div>
             <div className='flex flex-col gap-3'>
-                {portfolios.length > 0 ? (
+                {caseStudies.length > 0 ? (
 
-                    portfolios.map((item: Portfolio) => (
+                    caseStudies.map((item: CaseStudy) => (
                         <div className='w-full relative' key={item.id}>
 
-                            <Link href={`/admin/portfolio/${item.id}`} className="w-full h-32 flex flex-col items-center justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <Link href={`/admin/case-study/${item.id}`} className="w-full h-32 flex flex-col items-center justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div className='flex h-full'>
-                                    <img className="object-cover w-full rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-s-lg" src={item.bannerImage} alt="" />
+                                    <img className="object-cover w-full rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-s-lg" src={item.coverImage} alt="" />
                                     <div className="flex flex-col justify-between p-4 leading-normal items-center">
-                                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.companyName}</h5>
+                                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.heading}</h5>
                                     </div>
                                 </div>
 
@@ -81,7 +81,7 @@ const AdminCaseStudy = () => {
 
                 ) : (
 
-                    <div>No portfolios available</div>
+                    <div>No case studies available</div>
                 )}
 
 

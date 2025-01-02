@@ -144,53 +144,55 @@ const Goals = ({
         </div>
       ) : null}
 
-      {data?.portfolio[0].challenge !== "undefined" &&
-      data?.portfolio[0].challenge !== "<p><br></p>" &&
-      data?.portfolio[0].challenge !== "<p>undefined</p>" &&
-      data?.portfolio[0].solutions !== "undefined" &&
-      data?.portfolio[0].solutions !== "<p><br></p>" &&
-      data?.portfolio[0].solutions !== "<p>undefined</p>" ? (
+      {data?.portfolio[0].challenge == "undefined" ||
+      data?.portfolio[0].challenge == "<p><br></p>" ||
+      data?.portfolio[0].challenge == "<p>undefined</p>" &&
+      data?.portfolio[0].solutions == "undefined" ||
+      data?.portfolio[0].solutions == "<p><br></p>" ||
+      data?.portfolio[0].solutions == "<p>undefined</p>" ? (
         <div className="container mx-auto py-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 50 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
-          >
-            <div className="grid space-y-5 py-[50px]  md:space-y-0 lg:grid-cols-2 lg:space-x-5 lg:py-[150px]">
-              {data?.portfolio[0].challenge !== "undefined" &&
-              data?.portfolio[0].challenge !== "<p>undefined</p>" ? (
-                <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
-                  <div>
-                    <h2 className="title-65 mb-3 lg:mb-[30px]">Challenge</h2>
-                  </div>
-                  <div className="text-19 fnt-lexend text-gray1">
-                    {parse(data?.portfolio[0].challenge || "")}
-                  </div>
-                </div>
-              ) : null}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        variants={{
+          hidden: { opacity: 0, y: 50 }, // Start below and invisible
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 1, ease: "easeOut" },
+          }, // Slide up and fade in
+        }}
+      >
+        <div className="grid space-y-5 py-[50px]  md:space-y-0 lg:grid-cols-2 lg:space-x-5 lg:py-[150px]">
+          {data?.portfolio[0].challenge == "undefined" ||
+          data?.portfolio[0].challenge == "<p>undefined</p>" ||
+          data?.portfolio[0].challenge == "<p><br></p>" ? (
+            null
+          ) : <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
+          <div>
+            <h2 className="title-65 mb-3 lg:mb-[30px]">Challenge</h2>
+          </div>
+          <div className="text-19 fnt-lexend text-gray1">
+            {parse(data?.portfolio[0].challenge || "")}
+          </div>
+        </div>}
 
-              {data?.portfolio[0].solutions !== "undefined" &&
-              data?.portfolio[0].solutions !== "<p>undefined</p>" ? (
-                <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
-                  <div>
-                    <h2 className="title-65 mb-3 lg:mb-[30px]">Solutions</h2>
-                  </div>
-                  <div className="fnt-lexend text-19 ollist pl-4 text-gray1">
-                    {parse(data?.portfolio[0].solutions || "")}
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          </motion.div>
+          {data?.portfolio[0].solutions == "undefined" ||
+          data?.portfolio[0].solutions == "<p>undefined</p>" ||
+          data?.portfolio[0].solutions == "<p><br></p>" ? (
+            null
+          ) : <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
+          <div>
+            <h2 className="title-65 mb-3 lg:mb-[30px]">Solutions</h2>
+          </div>
+          <div className="fnt-lexend text-19 ollist pl-4 text-gray1">
+            {parse(data?.portfolio[0].solutions || "")}
+          </div>
+        </div>}
         </div>
+      </motion.div>
+    </div>
       ) : null}
     </>
   );

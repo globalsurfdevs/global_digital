@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Control, Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import Label from '../Label/Label'
 import ReactQuill,{Quill} from 'react-quill-new';
@@ -18,26 +18,10 @@ import { categories as importedCategories } from '@/app/data/categories'
 import { MdOutlineSwapHorizontalCircle } from "react-icons/md";
 import { checkLogoAndBanner } from '@/app/helpers/checkLogoAndBanner'
 import RichEditor from '../RichEditor/RichEditor'
+import { CaseStudyInputs } from '@/app/types/CaseStudyInputs'
+import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
 
 
-type Inputs = {
-    companyName: string
-    industry: string
-    country: string
-    channelsUsed: string
-    story: string
-    goals: string;
-    objectives: string;
-    challenge: string;
-    solutions: string;
-    result: string;
-    description: string;
-    tag: string;
-} & {
-    [key: `highlightNumber${string}`]: string;
-} & {
-    [key: `highlightText${string}`]: string;
-}
 
 type addingHighlights = {
     highlightText: string;
@@ -53,9 +37,9 @@ const AdminIndiCaseStudy = ({ editMode }: {
     const { companyId } = useParams()
     const router = useRouter()
 
-    const [imageError, setImageError] = useState<null | string>(null)
-    const [imageFile, setImageFile] = useState<null | File>(null)
-    const [previewImage, setPreviewImage] = useState<null | string>(null)
+    const [coverImageError, setCoverImageError] = useState<null | string>(null)
+    const [coverImageFile, setCoverImageFile] = useState<null | File>(null)
+    const [previewCoverImage, setPreviewCoverImage] = useState<null | string>(null)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [metaTitle, setMetaTitle] = useState("")
     const [metaDescription, setMetaDescription] = useState("")
@@ -67,56 +51,44 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
     const [modalOpen, setModalOpen] = useState(false)
     const [refetch, setRefetch] = useState(false)
-    const [section2Image1, setSection2Image1] = useState<null | File>(null)
-    const [section2Image2, setSection2Image2] = useState<null | File>(null)
-    const [section2Image1Preview, setSection2Image1Preview] = useState<null | string>(null)
-    const [section2Image2Preview, setSection2Image2Preview] = useState<null | string>(null)
-    const [section2Image1Error, setSection2Image1Error] = useState<null | string>(null)
-    const [section2Image2Error, setSection2Image2Error] = useState<null | string>(null)
-
-    const [section2BannerImage, setSection2BannerImage] = useState<null | File>(null)
-    const [section2BannerImagePreview, setSection2BannerImagePreview] = useState<null | string>(null)
-    const [section2BannerImageError, setSection2BannerImageError] = useState<null | string>(null)
-
-    const [resultImage1, setResultImage1] = useState<null | File>(null)
-    const [resultImage2, setResultImage2] = useState<null | File>(null)
-    const [resultImage1Preview, setResultImage1Preview] = useState<null | string>(null)
-    const [resultImage2Preview, setResultImage2Preview] = useState<null | string>(null)
-    const [resultImage1Error, setResultImage1Error] = useState<null | string>(null)
-    const [resultImage2Error, setResultImage2Error] = useState<null | string>(null)
+    const [image1, setImage1] = useState<null | File>(null)
+    const [image2, setImage2] = useState<null | File>(null)
+    const [image1Preview, setImage1Preview] = useState<null | string>(null)
+    const [image2Preview, setImage2Preview] = useState<null | string>(null)
+    const [image1Error, setImage1Error] = useState<null | string>(null)
+    const [image2Error, setImage2Error] = useState<null | string>(null)
 
 
-    const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
     const [logoFile, setLogoFile] = useState<File | null>(null)
     const [previewLogo, setPreviewLogo] = useState<null | string>(null)
     const [logoError, setLogoError] = useState<string | null>(null)
 
     
-
     const {
         register,
         handleSubmit,
         setValue,
         control,
         formState: { errors },
-    } = useForm<Inputs>()
+    } = useForm<CaseStudyInputs>()
 
 
-    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const onSubmit: SubmitHandler<CaseStudyInputs> = async (data) => {
         setIsSubmitting(true);
         const formData = new FormData();
-        formData.append("companyName", data.companyName);
-        formData.append("industry", data.industry);
+        formData.append("heading", data.heading);
+        formData.append("sHeading", data.sHeading);
         formData.append("channelsUsed", data.channelsUsed);
         formData.append("country", data.country);
         formData.append("story", data.story);
-        formData.append("metadataTitle", metaTitle);
-        formData.append("metadataDesc", metaDescription);
+        // formData.append("metadataTitle", metaTitle);
+        // formData.append("metadataDesc", metaDescription);
         formData.append("goals", data.goals);
         formData.append("objectives", data.objectives);
         formData.append("challenge", data.challenge);
-        formData.append("solutions", data.solutions);
-        formData.append("result", data.result);
+        formData.append("overcomingChallenges", data.overcomingChallenges);
+        formData.append("achievements", data.achievements);
+        formData.append("industry",data.industry)
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -135,12 +107,12 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
         formData.append("highlightIds", JSON.stringify(hightLightIds))
 
-        formData.append("addedCategories", JSON.stringify(addedCategories))
-        formData.append("description", data.description)
-        formData.append("tag", data.tag)
+        // formData.append("addedCategories", JSON.stringify(addedCategories))
+        // formData.append("description", data.description)
+        // formData.append("tag", data.tag)
 
-        if(!previewImage || !previewLogo){
-            const check = checkLogoAndBanner(imageFile, setImageError, logoFile, setLogoError)
+        if(!previewCoverImage || !previewLogo){
+            const check = checkLogoAndBanner(coverImageFile, setCoverImageError, logoFile, setLogoError)
             if (!check) {
                 setIsSubmitting(false)
                 return;
@@ -157,52 +129,40 @@ const AdminIndiCaseStudy = ({ editMode }: {
             }
         }
 
-        if (imageFile) {
-            console.log("Image", imageFile)
+        if (coverImageFile) {
 
-            const image = await generateAndUploadImage(imageFile)
+            const image = await generateAndUploadImage(coverImageFile)
             if (image) {
-                formData.append("image", image)
+                formData.append("coverImage", image)
             }
 
         }
 
-        if (section2Image1) {
+        if (image1) {
 
-            const image = await generateAndUploadImage(section2Image1)
+            const image = await generateAndUploadImage(image1)
             if (image) {
-                formData.append("section2Image1", image)
+                formData.append("image1", image)
             }
 
         }
 
-        if (section2Image2) {
+        if (image2) {
 
-            const image = await generateAndUploadImage(section2Image2)
+            const image = await generateAndUploadImage(image2)
             if (image) {
-                formData.append("section2Image2", image)
+                formData.append("image2", image)
             }
 
         }
 
-        if (section2BannerImage) {
-            formData.append("section2BannerImage", section2BannerImage)
-        }
-
-        if (resultImage1) {
-            formData.append("resultImage1", resultImage1)
-        }
-
-        if (resultImage2) {
-            formData.append("resultImage2", resultImage2)
-        }
 
         formData.forEach((value, key) => {
             console.log(`${key}:`, value);
         });
 
         try {
-            const url = editMode ? `/api/portfolio?id=${companyId}` : `/api/portfolio`;
+            const url = editMode ? `/api/case-study?id=${companyId}` : `/api/case-study`;
             const method = "POST";
             console.log("Here")
             const response = await fetch(url, {
@@ -214,14 +174,14 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
             if (!data.error) {
                 toast.success(data.message)
-                router.push('/admin/portfolio')
+                router.push('/admin/case-study')
             } else {
                 toast.error(data.error)
             }
             // Redirect to news list page
         } catch (error) {
-            console.error("Error updating about:", error);
-            toast.error("Failed to update about. Please try again.");
+            console.error("Error updating case study:", error);
+            toast.error("Failed to update case study. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
@@ -229,89 +189,88 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
 
     useEffect(() => {
-        const fetchPortfolioData = async () => {
+        const fetchCaseStudyData = async () => {
             try {
-                const response = await fetch(`/api/portfolio?id=${companyId}`);
+                const response = await fetch(`/api/case-study?id=${companyId}`);
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data)
-                    if (data.portfolio[0]) {
-                        setValue("companyName", data.portfolio[0].companyName)
-                        setValue("industry", data.portfolio[0].industry)
-                        setValue("country", data.portfolio[0].country)
-                        setValue("channelsUsed", data.portfolio[0].channelsUsed)
-                        setValue("story", data.portfolio[0].story)
-                        setValue("goals", data.portfolio[0].goals)
-                        setValue("objectives", data.portfolio[0].objectives)
-                        setValue("challenge", data.portfolio[0].challenge)
-                        setValue("solutions", data.portfolio[0].solutions)
-                        setValue("result", data.portfolio[0].result)
-                        setValue("description", data.portfolio[0].description)
-                        setValue("tag", data.portfolio[0].tag)
+                    if (data.caseStudy[0]) {
+                        setValue("heading", data.caseStudy[0].heading)
+                        setValue("sHeading", data.caseStudy[0].sHeading)
+                        setValue("industry", data.caseStudy[0].industry)
+                        setValue("country", data.caseStudy[0].country)
+                        setValue("channelsUsed", data.caseStudy[0].channelsUsed)
+                        setValue("story", data.caseStudy[0].story)
+                        setValue("goals", data.caseStudy[0].goals)
+                        setValue("objectives", data.caseStudy[0].objectives)
+                        setValue("challenge", data.caseStudy[0].challenge)
+                        setValue("overcomingChallenges", data.caseStudy[0].overcomingChallenges)
+                        setValue("achievements", data.caseStudy[0].achievements)
 
-                        if (data.portfolio[0].categories) {
+                        // if (data.portfolio[0].categories) {
 
-                            setAddedCategories(data.portfolio[0].categories)
+                        //     setAddedCategories(data.portfolio[0].categories)
+
+                        // }
+
+                        if (data.caseStudy[0].coverImage) {
+                            setPreviewCoverImage(data.caseStudy[0].coverImage as string);
 
                         }
 
-                        if (data.portfolio[0].bannerImage) {
-                            setPreviewImage(data.portfolio[0].bannerImage as string);
-
+                        if (data.caseStudy[0].image1) {
+                            setImage1Preview(data.caseStudy[0].image1 as string);
                         }
 
-                        if (data.portfolio[0].section2Image1) {
-                            setSection2Image1Preview(data.portfolio[0].section2Image1 as string);
+                        if (data.caseStudy[0].image2) {
+                            setImage2Preview(data.caseStudy[0].image2 as string);
                         }
 
-                        if (data.portfolio[0].section2Image2) {
-                            setSection2Image2Preview(data.portfolio[0].section2Image2 as string);
-                        }
+                        // if (data.portfolio[0].section2BannerImage) {
+                        //     setSection2BannerImagePreview(data.portfolio[0].section2BannerImage as string);
+                        // }
 
-                        if (data.portfolio[0].section2BannerImage) {
-                            setSection2BannerImagePreview(data.portfolio[0].section2BannerImage as string);
-                        }
+                        // if (data.portfolio[0].resultImage1) {
+                        //     setResultImage1Preview(data.portfolio[0].resultImage1 as string);
+                        // }
 
-                        if (data.portfolio[0].resultImage1) {
-                            setResultImage1Preview(data.portfolio[0].resultImage1 as string);
-                        }
+                        // if (data.portfolio[0].resultImage2) {
+                        //     setResultImage2Preview(data.portfolio[0].resultImage2 as string);
+                        // }
 
-                        if (data.portfolio[0].resultImage2) {
-                            setResultImage2Preview(data.portfolio[0].resultImage2 as string);
-                        }
-
-                        if (data.portfolio[0].logo) {
-                            setPreviewLogo(data.portfolio[0].logo as string);
+                        if (data.caseStudy[0].logo) {
+                            setPreviewLogo(data.caseStudy[0].logo as string);
                         }
 
 
                     }
 
-                    if (data.portfolioHighlights) {
-                        setHighlights(data.portfolioHighlights)
-                        data.portfolioHighlights.forEach((item: PortfolioHighlight) => {
+                    if (data.caseStudyHighlights) {
+                        setHighlights(data.caseStudyHighlights)
+                        data.caseStudyHighlights.forEach((item: PortfolioHighlight) => {
                             setValue(`highlightText${item.customId}`, item.text)
                             setValue(`highlightNumber${item.customId}`, item.number)
                         })
                     }
 
                 } else {
-                    console.error("Failed to fetch portfolio data");
+                    console.error("Failed to fetch case study data");
                 }
             } catch (error) {
-                console.error("Error fetching portfolio data:", error);
+                console.error("Error fetching case study data:", error);
             }
         }
 
         if (editMode) {
-            fetchPortfolioData()
+            fetchCaseStudyData()
         }
 
     }, [refetch])
 
-    useEffect(() => {
-        setCategories(importedCategories)
-    }, [])
+    // useEffect(() => {
+    //     setCategories(importedCategories)
+    // }, [])
 
 
     const handleInputChange = (customId: string, field: string, value: string) => {
@@ -381,23 +340,23 @@ const AdminIndiCaseStudy = ({ editMode }: {
     }
 
 
-    const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
+    // const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
 
 
-    const handleSwapItem = (id: number) => {
-        const itemInCategory = categories.find((item) => item.id === id)
-        const itemInAddedCategory = addedCategories.find((item) => item.id === id)
+    // const handleSwapItem = (id: number) => {
+    //     const itemInCategory = categories.find((item) => item.id === id)
+    //     const itemInAddedCategory = addedCategories.find((item) => item.id === id)
 
-        if (itemInCategory) {
-            setAddedCategories((prev) => [...prev, itemInCategory])
-            setCategories((categories) => categories.filter((item) => item.id !== itemInCategory.id))
-        }
+    //     if (itemInCategory) {
+    //         setAddedCategories((prev) => [...prev, itemInCategory])
+    //         setCategories((categories) => categories.filter((item) => item.id !== itemInCategory.id))
+    //     }
 
-        if (itemInAddedCategory) {
-            setCategories((prev) => [...prev, itemInAddedCategory])
-            setAddedCategories((addedCategories) => addedCategories.filter((item) => item.id !== itemInAddedCategory.id))
-        }
-    }
+    //     if (itemInAddedCategory) {
+    //         setCategories((prev) => [...prev, itemInAddedCategory])
+    //         setAddedCategories((addedCategories) => addedCategories.filter((item) => item.id !== itemInAddedCategory.id))
+    //     }
+    // }
 
 
     const modules = {
@@ -416,24 +375,24 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
     return (
         <div>
-            <h1 className='text-3xl'>Edit Portfolio Content</h1>
+            <h1 className='text-3xl'>Edit Case Study Content</h1>
             <form onSubmit={handleSubmit(onSubmit)} className='h-full'>
                 <div className='grid grid-cols-2 gap-10 mt-5'>
                     <div
                         className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
                         onDragOver={(e) => e.preventDefault()}
-                        onClick={() => document?.getElementById("image")?.click()}
+                        onClick={() => document?.getElementById("coverImage")?.click()}
                     >
-                        {previewImage ? (
+                        {previewCoverImage ? (
                             <div className="relative w-full h-full">
-                                <Image src={previewImage} alt="Preview" layout="fill" objectFit="cover" />
+                                <Image src={previewCoverImage} alt="Preview" layout="fill" objectFit="cover" />
                                 {<button
                                     type="button"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        setPreviewImage(null); // Clear the preview image
-                                        setImageFile(null);
-                                        const inputElement = document.getElementById("image") as HTMLInputElement;
+                                        setPreviewCoverImage(null); // Clear the preview image
+                                        setCoverImageFile(null);
+                                        const inputElement = document.getElementById("coverImage") as HTMLInputElement;
                                         if (inputElement) {
                                             inputElement.value = ""; // Reset the input value
                                         }
@@ -468,16 +427,22 @@ const AdminIndiCaseStudy = ({ editMode }: {
                                 <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
                             </>
                         )}
-                        <input type="file" id="image" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError, setImageFile, setPreviewImage })} />
-                        {imageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
+                        <input type="file" id="coverImage" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError:setCoverImageError, setImageFile:setCoverImageFile, setPreviewImage:setPreviewCoverImage })} />
+                        {coverImageError && <p className="mt-1 text-sm text-red-600">{coverImageError}</p>}
                     </div>
 
                     <div>
                         <div className='flex flex-col'>
                             <div className='w-full flex flex-col gap-2'>
-                                <Label content='Company Name' />
-                                <input type="text" {...register("companyName", { required: "Company name is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-                                {errors.companyName && <p className='mt-1 text-sm text-red'>{errors.companyName.message}</p>}
+                                <Label content='Heading' />
+                                <input type="text" {...register("heading", { required: "Heading is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                {errors.heading && <p className='mt-1 text-sm text-red'>{errors.heading.message}</p>}
+                            </div>
+
+                            <div className='w-full flex flex-col gap-2'>
+                                <Label content='Sub heading' />
+                                <input type="text" {...register("sHeading", { required: "Sub heading is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                {errors.sHeading && <p className='mt-1 text-sm text-red'>{errors.sHeading.message}</p>}
                             </div>
 
                             <div className='w-full flex flex-col gap-2'>
@@ -539,7 +504,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
                                 (
 
-                                    highlights.map((item: PortfolioHighlight) => (
+                                    highlights.map((item: CaseStudyHighlights) => (
 
                                         item.customId.length == 36 ? (
                                             <div className='grid grid-cols-2 gap-5 bg-gray-400 p-3 text-white rounded-xl relative' key={item.customId}>
@@ -631,25 +596,25 @@ const AdminIndiCaseStudy = ({ editMode }: {
                 </div>
 
                 <div className='border-t mt-15 pt-5 flex flex-col gap-6'>
-                    <h3 className='text-3xl'>Section 2</h3>
+                    {/* <h3 className='text-3xl'>Section 2</h3> */}
 
                     <div className='grid grid-cols-2 gap-5'>
                         <div>
-                            <div>Section 2 - Image 1</div>
+                            <div>Image 1</div>
                             <div
                                 className="w-full h-96 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
                                 onDragOver={(e) => e.preventDefault()}
                                 onClick={() => document?.getElementById("image1")?.click()}
                             >
-                                {section2Image1Preview ? (
+                                {image1Preview ? (
                                     <div className="relative w-full h-full">
-                                        <Image src={section2Image1Preview} alt="Preview" layout="fill" objectFit="cover" />
+                                        <Image src={image1Preview} alt="Preview" layout="fill" objectFit="cover" />
                                         {<button
                                             type="button"
                                             onClick={(e) => {
                                                 e.stopPropagation();
-                                                setSection2Image1Preview(null); // Clear the preview image
-                                                setSection2Image1(null);
+                                                setImage1Preview(null); // Clear the preview image
+                                                setImage1(null);
                                             }}
                                             className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
                                         >
@@ -683,31 +648,31 @@ const AdminIndiCaseStudy = ({ editMode }: {
                                 )}
                                 <input type="file" id="image1" accept="image/*" className="hidden" onChange={(e) => handleImageChange({
                                     e,
-                                    setImageError: setSection2Image1Error,
-                                    setImageFile: setSection2Image1,
-                                    setPreviewImage: setSection2Image1Preview
+                                    setImageError: setImage1Error,
+                                    setImageFile: setImage1,
+                                    setPreviewImage: setImage1Preview
                                 })} />
                             </div>
-                            {section2Image1Error && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
+                            {image1Error && <p className="mt-1 text-sm text-red-600">{image1Error}</p>}
                         </div>
 
 
                         <div>
-                            <div>Section 2 - Image 2</div>
+                            <div>Image 2</div>
                             <div
                                 className="w-full h-96 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
                                 onDragOver={(e) => e.preventDefault()}
                                 onClick={() => document?.getElementById("image2")?.click()}
                             >
-                                {section2Image2Preview ? (
+                                {image2Preview ? (
                                     <div className="relative w-full h-full">
-                                        <Image src={section2Image2Preview} alt="Preview" layout="fill" objectFit="cover" />
+                                        <Image src={image2Preview} alt="Preview" layout="fill" objectFit="cover" />
                                         {<button
                                             type="button"
                                             onClick={(e) => {
                                                 e.stopPropagation();
-                                                setSection2Image2Preview(null); // Clear the preview image
-                                                setSection2Image2(null);
+                                                setImage2Preview(null); // Clear the preview image
+                                                setImage2(null);
                                             }}
                                             className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
                                         >
@@ -741,12 +706,12 @@ const AdminIndiCaseStudy = ({ editMode }: {
                                 )}
                                 <input type="file" id="image2" accept="image/*" className="hidden" onChange={(e) => handleImageChange({
                                     e,
-                                    setImageError: setSection2Image2Error,
-                                    setImageFile: setSection2Image2,
-                                    setPreviewImage: setSection2Image2Preview
+                                    setImageError: setImage2Error,
+                                    setImageFile: setImage2,
+                                    setPreviewImage: setImage2Preview
                                 })} />
                             </div>
-                            {section2Image2Error && <p className="mt-1 text-sm text-red-600">{section2Image2Error}</p>}
+                            {image2Error && <p className="mt-1 text-sm text-red-600">{image2Error}</p>}
                         </div>
 
                     </div>
@@ -787,71 +752,12 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
                     </div>
 
-                    <div className='mt-15'>
-                        <div>
-                            <div>Section 2 - Banner Image</div>
-                            <div
-                                className="w-full h-96 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
-                                onDragOver={(e) => e.preventDefault()}
-                                onClick={() => document?.getElementById("banner")?.click()}
-                            >
-                                {section2BannerImagePreview ? (
-                                    <div className="relative w-full h-full">
-                                        <Image src={section2BannerImagePreview} alt="Preview" layout="fill" objectFit="cover" />
-                                        {<button
-                                            type="button"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setSection2BannerImagePreview(null); // Clear the preview image
-                                                setSection2BannerImage(null);
-                                            }}
-                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </button>}
-                                    </div>
-                                ) : (
-                                    <>
-                                        <svg
-                                            className="mx-auto h-12 w-12 text-gray-400"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            viewBox="0 0 48 48"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            />
-                                        </svg>
-                                        <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
-                                    </>
-                                )}
-                                <input type="file" id="banner" accept="image/*" className="hidden" onChange={(e) => handleImageChange({
-                                    e,
-                                    setImageError: setSection2BannerImageError,
-                                    setImageFile: setSection2BannerImage,
-                                    setPreviewImage: setSection2BannerImagePreview
-                                })} />
-                            </div>
-                            {section2BannerImageError && <p className="mt-1 text-sm text-red-600">{section2BannerImageError}</p>}
-                        </div>
-                    </div>
-
                 </div>
 
-                <div className='grid grid-cols-2 gap-5 mt-5'>
+                <div className='grid grid-cols-2 gap-5 mt-20'>
                     <div className='h-full'>
                         <div className='w-full flex flex-col gap-2 h-full'>
-                            <Label content='Challenge' />
+                            <Label content='Overcoming Challenges' />
                             <div className='h-full'>
                                 {/* <Controller
                                     name="challenge"
@@ -861,7 +767,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 /> */}
-                                <RichEditor control={control} name='challenge'/>
+                                <RichEditor control={control} name='overcomingChallenges'/>
                             </div>
 
                         </div>
@@ -869,7 +775,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
                     <div className='h-full'>
                         <div className='w-full flex flex-col gap-2 h-full'>
-                            <Label content='Solutions' />
+                            <Label content='Achievements' />
                             <div className='h-full'>
                                 {/* <Controller
                                     name="solutions"
@@ -879,7 +785,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 /> */}
-                                <RichEditor control={control} name='solutions'/>
+                                <RichEditor control={control} name='achievements'/>
                             </div>
 
                         </div>
@@ -887,142 +793,8 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
                 </div>
 
-                <div className='grid grid-cols-3 mt-15 h-96 gap-5'>
-                    <div className=''>
-                        <div className='w-full flex flex-col gap-2 h-full'>
-                            <Label content='Result' />
-                            <div className='h-full'>
-                                {/* <Controller
-                                    name="result"
-                                    control={control}
 
-                                    render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
-                                    )}
-                                /> */}
-                                <RichEditor control={control} name='result'/>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div>
-                        <Label content='Result-Image1' />
-                        <div
-                            className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden mt-2"
-                            onDragOver={(e) => e.preventDefault()}
-                            onClick={() => document?.getElementById("resultimage1")?.click()}
-                        >
-                            {resultImage1Preview ? (
-                                <div className="relative w-full h-full">
-                                    <Image src={resultImage1Preview} alt="Preview" layout="fill" objectFit="cover" />
-                                    {<button
-                                        type="button"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setResultImage1Preview(null); // Clear the preview image
-                                            setResultImage1(null);
-                                        }}
-                                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
-                                    </button>}
-                                </div>
-                            ) : (
-                                <>
-                                    <svg
-                                        className="mx-auto h-12 w-12 text-gray-400"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        viewBox="0 0 48 48"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                    </svg>
-                                    <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
-                                </>
-                            )}
-                            <input type="file" id="resultimage1" accept="image/*" className="hidden" onChange={(e) => handleImageChange({
-                                e,
-                                setImageError: setResultImage1Error,
-                                setImageFile: setResultImage1,
-                                setPreviewImage: setResultImage1Preview
-                            })} />
-                        </div>
-                        {resultImage1Error && <p className="mt-1 text-sm text-red-600">{resultImage1Error}</p>}
-                    </div>
-
-                    <div>
-                        <Label content='Result-Image2' />
-                        <div
-                            className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden mt-2"
-                            onDragOver={(e) => e.preventDefault()}
-                            onClick={() => document?.getElementById("resultimage2")?.click()}
-                        >
-                            {resultImage2Preview ? (
-                                <div className="relative w-full h-full">
-                                    <Image src={resultImage2Preview} alt="Preview" layout="fill" objectFit="cover" />
-                                    {<button
-                                        type="button"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setResultImage2Preview(null); // Clear the preview image
-                                            setResultImage2(null);
-                                        }}
-                                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
-                                    </button>}
-                                </div>
-                            ) : (
-                                <>
-                                    <svg
-                                        className="mx-auto h-12 w-12 text-gray-400"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        viewBox="0 0 48 48"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                    </svg>
-                                    <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
-                                </>
-                            )}
-                            <input type="file" id="resultimage2" accept="image/*" className="hidden" onChange={(e) => handleImageChange({
-                                e,
-                                setImageError: setResultImage2Error,
-                                setImageFile: setResultImage2,
-                                setPreviewImage: setResultImage2Preview
-                            })} />
-                        </div>
-                        {resultImage2Error && <p className="mt-1 text-sm text-red-600">{resultImage2Error}</p>}
-                    </div>
-
-                </div>
-
-                <div className='mt-15 grid grid-cols-2 gap-5'>
+                {/* <div className='mt-15 grid grid-cols-2 gap-5'>
 
                     <div className='w-full flex flex-col gap-2'>
                         <div>
@@ -1040,13 +812,13 @@ const AdminIndiCaseStudy = ({ editMode }: {
                     </div>
 
 
-                </div>
+                </div> */}
 
                 {/* <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
                             <Droppable categories={categories}/>
                 </DndContext> */}
 
-                <div className='grid grid-cols-2 mt-14 gap-5'>
+                {/* <div className='grid grid-cols-2 mt-14 gap-5'>
 
                     <div>
                         <Label content='Added Categories' className='' />
@@ -1084,8 +856,10 @@ const AdminIndiCaseStudy = ({ editMode }: {
                         </div>
                     </div>
 
-                </div>
-                <div className='h-36 w-1/3 mt-10'>
+                </div> */}
+
+
+                <div className='h-36 w-1/3 mt-15'>
                     <Label content='Logo' />
                     <div
                         className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
