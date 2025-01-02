@@ -293,7 +293,6 @@ export async function POST(req: NextRequest) {
                         tag,
                         categories:addedCategoriesRaw,
                         companyName
-
                     },
                 ])
                 .select('id')
