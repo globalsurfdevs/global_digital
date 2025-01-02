@@ -47,7 +47,7 @@ type addingHighlights = {
 
 
 
-const AdminIndiPortfolio = ({ editMode }: {
+const AdminIndiCaseStudy = ({ editMode }: {
     editMode?: boolean;
 }) => {
     const { companyId } = useParams()
@@ -186,10 +186,7 @@ const AdminIndiPortfolio = ({ editMode }: {
         }
 
         if (section2BannerImage) {
-            const image = await generateAndUploadImage(section2BannerImage)
-            if (image) { 
-                formData.append("section2BannerImage", image)
-            }
+            formData.append("section2BannerImage", section2BannerImage)
         }
 
         if (resultImage1) {
@@ -1158,4 +1155,4 @@ const AdminIndiPortfolio = ({ editMode }: {
     )
 }
 
-export default AdminIndiPortfolio
+export default AdminIndiCaseStudy
