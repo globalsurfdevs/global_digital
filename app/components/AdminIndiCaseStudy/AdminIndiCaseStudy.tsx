@@ -94,6 +94,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
         formData.append("overcomingChallenges", data.overcomingChallenges);
         formData.append("achievements", data.achievements);
         formData.append("industry", data.industry)
+        formData.append("companyName",data.companyName)
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -214,6 +215,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
                         setValue("achievements", data.caseStudy[0].achievements)
                         setValue("description", data.caseStudy[0].description)
                         setValue("tag", data.caseStudy[0].tag)
+                        setValue("companyName",data.caseStudy[0].companyName)
 
                         // if (data.portfolio[0].categories) {
 
@@ -914,6 +916,12 @@ const AdminIndiCaseStudy = ({ editMode }: {
                         <Label content='Tag' />
                         <input type="text" {...register("tag", { required: "Tag is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                         {errors.tag && <p className='mt-1 text-sm text-red'>{errors.tag.message}</p>}
+                    </div>
+
+                    <div className='w-full flex flex-col gap-2'>
+                        <Label content='Company Name' />
+                        <input type="text" {...register("companyName", { required: "Company name is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                        {errors.companyName && <p className='mt-1 text-sm text-red'>{errors.companyName.message}</p>}
                     </div>
 
 

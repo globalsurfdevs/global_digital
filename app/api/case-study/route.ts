@@ -65,6 +65,7 @@ export async function POST(req: NextRequest) {
     const challenge = formData.get("challenge") as string
     const goals = formData.get("goals") as string
     const addedCategories = formData.get("addedCategories") as string
+    const companyName = formData.get("companyName") as string
 
     // const metadataDesc = formData.get("metadataDesc") as string
     const description = formData.get("description") as string;
@@ -194,7 +195,8 @@ export async function POST(req: NextRequest) {
                         categories:addedCategoriesRaw,
                         image1: image1 == null ? image1Path : image1,
                         image2: image2 == null ? image2Path : image2,
-                        logo: logo == null ? logoPath : logo
+                        logo: logo == null ? logoPath : logo,
+                        companyName
                     })
                     .eq('id', id)
                     .select()
@@ -289,7 +291,8 @@ export async function POST(req: NextRequest) {
                         logo: logoPath,
                         description,
                         tag,
-                        categories:addedCategoriesRaw
+                        categories:addedCategoriesRaw,
+                        companyName
 
                     },
                 ])

@@ -17,4 +17,5 @@ export type CaseStudy = {
     image2:string;
     description:string;
     tag:string;
+    companyName:string;
 }

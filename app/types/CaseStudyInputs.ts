@@ -12,6 +12,7 @@ export type CaseStudyInputs = {
     achievements: string;
     description:string;
     tag:string;
+    companyName:string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {
