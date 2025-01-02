@@ -10,6 +10,8 @@ export type CaseStudyInputs = {
     challenge: string;
     overcomingChallenges: string;
     achievements: string;
+    description:string;
+    tag:string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {

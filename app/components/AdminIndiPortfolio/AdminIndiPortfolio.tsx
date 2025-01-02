@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import Label from '../Label/Label'
-import ReactQuill,{Quill} from 'react-quill-new';
+import ReactQuill, { Quill } from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import Image from 'next/image'
 import { IoIosClose } from "react-icons/io";
@@ -18,6 +18,7 @@ import { categories as importedCategories } from '@/app/data/categories'
 import { MdOutlineSwapHorizontalCircle } from "react-icons/md";
 import { checkLogoAndBanner } from '@/app/helpers/checkLogoAndBanner'
 import RichEditor from '../RichEditor/RichEditor'
+import { RxCross2 } from "react-icons/rx";
 
 
 type Inputs = {
@@ -66,7 +67,10 @@ const AdminIndiPortfolio = ({ editMode }: {
 
 
     const [modalOpen, setModalOpen] = useState(false)
+    const [categoryModal, setCategoryModal] = useState(false)
+    const [category,setCategory] = useState("")
     const [refetch, setRefetch] = useState(false)
+    const [refetchCategorySection,setRefetchCategorySection] = useState(false)
     const [section2Image1, setSection2Image1] = useState<null | File>(null)
     const [section2Image2, setSection2Image2] = useState<null | File>(null)
     const [section2Image1Preview, setSection2Image1Preview] = useState<null | string>(null)
@@ -91,7 +95,7 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [previewLogo, setPreviewLogo] = useState<null | string>(null)
     const [logoError, setLogoError] = useState<string | null>(null)
 
-    
+
 
     const {
         register,
@@ -139,7 +143,7 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("description", data.description)
         formData.append("tag", data.tag)
 
-        if(!previewImage || !previewLogo){
+        if (!previewImage || !previewLogo) {
             const check = checkLogoAndBanner(imageFile, setImageError, logoFile, setLogoError)
             if (!check) {
                 setIsSubmitting(false)
@@ -187,7 +191,7 @@ const AdminIndiPortfolio = ({ editMode }: {
 
         if (section2BannerImage) {
             const image = await generateAndUploadImage(section2BannerImage)
-            if (image) { 
+            if (image) {
                 formData.append("section2BannerImage", image)
             }
         }
@@ -312,9 +316,33 @@ const AdminIndiPortfolio = ({ editMode }: {
 
     }, [refetch])
 
+    // useEffect(() => {
+    //     setCategories(importedCategories)
+    // }, [])
+
     useEffect(() => {
-        setCategories(importedCategories)
-    }, [])
+        const fetchCategories = async () => {
+            try {
+                const url = `/api/categories`;
+                console.log("Here")
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data);
+                if (!data.error) {
+                    setCategories(data.categories)
+                } else {
+                    toast.error(data.error)
+                }
+                // Redirect to news list page
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+                toast.error("Failed to fetch categories. Please try again.");
+            }
+        }
+
+        fetchCategories()
+
+    }, [refetchCategorySection])
 
 
     const handleInputChange = (customId: string, field: string, value: string) => {
@@ -403,18 +431,47 @@ const AdminIndiPortfolio = ({ editMode }: {
     }
 
 
-    const modules = {
-        htmlEditButton: {
-            msg: "Edit the content in HTML format", //Custom message to display in the editor, default: Edit HTML here, when you click "OK" the quill editor's contents will be replaced
-            okText: "Ok", // Text to display in the OK button, default: Ok,
-            cancelText: "Cancel", // Text to display in the cancel button, default: Cancel
-            buttonHTML: "HTML", // Text to display in the toolbar button, default: <>
-            buttonTitle: "Show HTML source", // Text to display as the tooltip for the toolbar button, default: Show HTML source
-            syntax: false, // Show the HTML with syntax highlighting. Requires highlightjs on window.hljs (similar to Quill itself), default: false
-            prependSelector: "div#myelement", // a string used to select where you want to insert the overlayContainer, default: null (appends to body),
-            editorModules: {} // The default mod
-          }
+   const handleAddCategory = async() =>{
+    try {
+        const formData = new FormData()
+        formData.append("category",category)
+
+        const response = await fetch('/api/categories',{
+            method:"POST",
+            body:formData
+        })
+        if(response.ok){
+            setRefetchCategorySection((prev)=>!prev)
+            setCategory("")
+            setCategoryModal(false)
+        }else{
+            toast.error("Adding category failed")
+        }
+    } catch (error) {
+        console.log("Adding category failed:",error)
     }
+   }
+
+   const handleDeleteCategory = async(id:number) =>{
+    try {
+        const formData = new FormData()
+        formData.append("id",id.toString())
+
+        const response = await fetch('/api/categories',{
+            method:"DELETE",
+            body:formData
+        })
+        if(response.ok){
+            const data = await response.json()
+            toast.success(data.message)
+            setRefetchCategorySection((prev)=>!prev)
+        }else{
+            toast.error("Removing category failed")
+        }
+    } catch (error) {
+        console.log("Removing category failed:",error)
+    }
+   }
 
 
     return (
@@ -520,7 +577,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules}/>
                                     )}
                                 /> */}
-                                <RichEditor control={control} name="story"/>
+                                <RichEditor control={control} name="story" />
                             </div>
                             {errors.story && <p className="mt-1 text-sm text-red-600">{errors.story.message}</p>}
                         </div>
@@ -624,6 +681,33 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                         <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={handleAddHighlight}>Submit</button>
                                         <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setModalOpen(false)}>Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>}
+
+
+                    {categoryModal && <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+                        <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+                                <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                    <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                    
+
+                                        <div className='w-full'>
+                                            <label>Category Name</label>
+                                            <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className={'w-full rounded-xl text-black pl-2'} />
+                                        </div>
+
+                                    </div>
+                                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                        <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={handleAddCategory}>Submit</button>
+                                        <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setCategoryModal(false)}>Cancel</button>
                                     </div>
                                 </div>
                             </div>
@@ -766,7 +850,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} formats={['html']} className="h-full" />
                                     )}
                                 /> */}
-                                <RichEditor control={control} name='goals'/>
+                                <RichEditor control={control} name='goals' />
                             </div>
 
                         </div>
@@ -783,7 +867,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 /> */}
-                                <RichEditor control={control} name='objectives'/>
+                                <RichEditor control={control} name='objectives' />
                             </div>
 
                         </div>
@@ -864,7 +948,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 /> */}
-                                <RichEditor control={control} name='challenge'/>
+                                <RichEditor control={control} name='challenge' />
                             </div>
 
                         </div>
@@ -882,7 +966,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 /> */}
-                                <RichEditor control={control} name='solutions'/>
+                                <RichEditor control={control} name='solutions' />
                             </div>
 
                         </div>
@@ -903,7 +987,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
                                     )}
                                 /> */}
-                                <RichEditor control={control} name='result'/>
+                                <RichEditor control={control} name='result' />
                             </div>
 
                         </div>
@@ -1069,16 +1153,22 @@ const AdminIndiPortfolio = ({ editMode }: {
                     </div>
 
                     <div>
-                        <Label content='Available Categories' className='' />
+                        <div className='flex gap-1 items-center'>
+                            <Label content='Available Categories' className='' />
+                            <div className='bg-green-500 size-5 rounded-full flex items-center justify-center'>
+                                <FaPlus className='text-sm' onClick={() => setCategoryModal(true)} />
+                            </div>
+                        </div>
                         <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
 
                             {categories.filter(
                                 (item) => !addedCategories.some((addedItem) => addedItem.id === item.id)
                             ).map((item) => (
-                                <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
+                                <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group min-w-20 flex justify-center'>
                                     <span className='group-hover:opacity-50'>{item.name}</span>
                                     <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
-                                        <MdOutlineSwapHorizontalCircle />
+                                        <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item.id)}/>
+                                        <RxCross2 onClick={()=>handleDeleteCategory(item.id)}/>
                                     </div>
                                 </div>
                             ))}

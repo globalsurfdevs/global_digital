@@ -1,3 +1,4 @@
+import { categories } from "@/app/data/categories"
 import { supabase } from "@/app/lib/initSupabase"
 import { NextRequest, NextResponse } from "next/server"
 
@@ -63,8 +64,11 @@ export async function POST(req: NextRequest) {
     const objectives = formData.get("objectives") as string
     const challenge = formData.get("challenge") as string
     const goals = formData.get("goals") as string
+    const addedCategories = formData.get("addedCategories") as string
 
     // const metadataDesc = formData.get("metadataDesc") as string
+    const description = formData.get("description") as string;
+    const tag = formData.get("tag") as string;
     const overcomingChallenges = formData.get("overcomingChallenges") as string
     const achievements = formData.get("achievements") as string;
     const image1 = formData.get("image1") as string;
@@ -85,6 +89,11 @@ export async function POST(req: NextRequest) {
     // if (addedCategories) {
     //     addedCategoriesRaw = JSON.parse(addedCategories)
     // }
+
+    let addedCategoriesRaw;
+    if (addedCategories) {
+        addedCategoriesRaw = JSON.parse(addedCategories)
+    }
 
     let coverImagePath;
     let image1Path;
@@ -180,6 +189,9 @@ export async function POST(req: NextRequest) {
                         challenge,
                         overcomingChallenges,
                         achievements,
+                        description,
+                        tag,
+                        categories:addedCategoriesRaw,
                         image1: image1 == null ? image1Path : image1,
                         image2: image2 == null ? image2Path : image2,
                         logo: logo == null ? logoPath : logo
@@ -274,7 +286,11 @@ export async function POST(req: NextRequest) {
                         challenge,
                         overcomingChallenges,
                         achievements,
-                        logo: logoPath
+                        logo: logoPath,
+                        description,
+                        tag,
+                        categories:addedCategoriesRaw
+
                     },
                 ])
                 .select('id')

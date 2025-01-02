@@ -15,4 +15,6 @@ export type CaseStudy = {
     achievements:string;
     image1:string;
     image2:string;
+    description:string;
+    tag:string;
 }
