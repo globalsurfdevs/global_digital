@@ -19,7 +19,16 @@ const SectionTwo = () => {
           }, // Slide up and fade in
         }}
       >
-        <Image src={aboutbnnr} alt="about" className="w-full" />
+        {/* <Image src={aboutbnnr} alt="about" className="w-full" /> */}
+        <video
+        className="  w-full h-[750px] object-cover  "
+        autoPlay
+        loop
+        muted
+      >
+        <source src="/assets/GS_Digital-Header_Video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       </motion.div>
       <div className="bg-dgray">
         <div className="container mx-auto py-4">
