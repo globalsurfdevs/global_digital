@@ -130,7 +130,7 @@ import Ashna from '../assets/employee/Ashna.png'
 import Faizal from '../assets/employee/Faizal.png'
 import Harsha from '../assets/employee/Harsha.png'
 import Levin from '../assets/employee/Levin.png'
-import Mobin from '../assets/employee/Mobin.png'
+import Mobin from '../assets/employee/Mobinqq.png'
 import Preethika from '../assets/employee/Preethika.png'
 import Subijith from '../assets/employee/Subijith.png'
 
@@ -141,12 +141,60 @@ import performance_bnr from '../assets/banner/Performance.jpg'
 import social_bnr from '../assets/banner/Social_media.jpg'
 import web_bnr from '../assets/banner/Web_development.jpg'
 
+import boostseo1 from '../assets/icons/boostseo1.svg'
+import boostseo2 from '../assets/icons/boostseo2.svg'
+import boostseo3 from '../assets/icons/boostseo3.svg'
+import boostseo4 from '../assets/icons/boostseo4.svg'
+import boostsocial1 from '../assets/icons/boostsocial1.svg'
+import boostsocial2 from '../assets/icons/boostsocial2.svg'
+import boostsocial3 from '../assets/icons/boostsocial3.svg'
+import boostsocial4 from '../assets/icons/boostsocial4.svg'
+import boostweb1 from '../assets/icons/boostweb1.svg'
+import boostweb2 from '../assets/icons/boostweb2.svg'
+import boostweb3 from '../assets/icons/boostweb3.svg'
+import boostweb4 from '../assets/icons/boostweb4.svg'
+import boostbranding1 from '../assets/icons/boostbranding1.svg'
+import boostbranding2 from '../assets/icons/boostbranding2.svg'
+import boostbranding3 from '../assets/icons/boostbranding3.svg'
+import boostbranding4 from '../assets/icons/boostbranding4.svg'
+import boostmarketing1 from '../assets/icons/boostmarketing1.svg'
+import boostmarketing2 from '../assets/icons/boostmarketing2.svg'
+import boostmarketing3 from '../assets/icons/boostmarketing3.svg'
+import boostmarketing4 from '../assets/icons/boostmarketing4.svg'
+import exp1 from '../assets/icons/exp1.svg'
+import exp2 from '../assets/icons/exp2.svg'
+import exp3 from '../assets/icons/exp3.svg'
+import exp4 from '../assets/icons/exp4.svg'
 
 
 import lightlogo from '../assets/gsdigital-light.svg'
 
 
 export const assets = {
+    exp1,
+    exp2,
+    exp3,
+    exp4,
+    boostmarketing1,
+    boostmarketing2,
+    boostmarketing3,
+    boostmarketing4,
+    boostbranding1,
+    boostbranding2,
+    boostbranding3,
+    boostbranding4,
+    boostweb1,
+    boostweb2,
+    boostweb3,
+    boostweb4,
+    boostsocial1,
+    boostsocial2,
+    boostsocial3,
+    boostsocial4,
+    boostseo1,
+    boostseo2,
+    boostseo3,
+    boostseo4,
     Levin,
     Subijith,
     Preethika,

@@ -34,7 +34,7 @@ const Footer = () => {
             >
               <div
                 // className={`grid pt-12 md:grid-cols-5 lg:pt-12 ${GetInTouch ? "xl:pt-[121px]" : ""} `}
-                className={`grid pt-12 md:grid-cols-5 lg:pt-12 `}
+                className={`grid   md:grid-cols-5   `}
               >
                 <div className="col-span-2 flex h-full flex-col justify-between">
                   <Image
@@ -54,7 +54,7 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid pt-8 md:grid-cols-5 lg:pt-[121px]">
+              <div className="grid pt-8 md:grid-cols-5 lg:pt-[121px] gap-5 md:gap-0">
                 <div
                   className={`col-span-2 flex h-full flex-col justify-between ${lexend.className}`}
                 >

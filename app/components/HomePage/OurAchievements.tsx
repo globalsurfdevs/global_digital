@@ -72,7 +72,7 @@ const OurAchievements = () => {
             className="group border-b border-b-[#77787B] md:border-none"
             onMouseEnter={() => setActiveSection(1)}
           >
-            <div className="flex h-[100%] flex-col items-start justify-between p-4 lg:py-10 xl:pb-[100px] xl:pt-[50px] ">
+            <div className="cntrsx flex h-[100%] flex-col items-start justify-between p-4 lg:py-10 xl:pb-[100px] xl:pt-[50px] ">
               <div className="relative mb-8">
                 <Image
                   src={assets.yr}
@@ -89,25 +89,32 @@ const OurAchievements = () => {
                   className="absolute top-0 opacity-0 transition-transform   duration-500 group-hover:scale-110 group-hover:opacity-[1]"
                 />
               </div>
-              <div className="transition-all duration-500 group-hover:-translate-y-3">
+              <div className="transition-all duration-500 group-hover:-translate-y-3 ">
                 <h2 className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
-                    className={`${
-                      activeSection === 1 ? "text-primary" : ""
-                    } transition-colors duration-300 ease-in-out`}
+                    className={`
+                      count-number
+                    transition-colors duration-300 ease-in-out`}
                   >
                     {yearCount}
                   </span>{" "}
                   Years
                 </h2>
-                <p className={`text-font30  leading-lh2p3 text-gray1`}>
+                {/* <p className={`text-font30  leading-lh2p3 text-gray1 `}>
                   and{" "}
-                  <span
-                    className={`${activeSection === 1 ? "text-primary" : ""}`}
+                  <span className="count-number"
+                    // className={`${activeSection === 1 ? "text-primary" : ""}`}
                   >
                     Counting
                   </span>
-                </p>
+                </p> */}
+                <div className='ttlbx'>
+                       <div className="letter-wrapper">
+                        <div className="text-font30  leading-lh2p3 text-gray1 letter-default">and Counting</div>
+                        <div className="text-font30  leading-lh2p3 text-gray1 letter-hover">and Counting</div>
+                       </div>
+
+                        </div>
               </div>
             </div>
           </div>
@@ -117,7 +124,7 @@ const OurAchievements = () => {
             onMouseEnter={() => setActiveSection(2)}
             ref={ref}
           >
-            <div className="flex h-[100%] flex-col items-start justify-between lg:py-10 xl:pb-[100px] xl:pt-[50px]">
+            <div className="cntrsx flex h-[100%] flex-col items-start justify-between lg:py-10 xl:pb-[100px] xl:pt-[50px]">
               <div className="relative mb-8">
                 <Image
                   src={assets.cl}
@@ -137,15 +144,14 @@ const OurAchievements = () => {
               <div className="transition-all duration-500 group-hover:-translate-y-3">
                 <h2 className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
-                    className={`${
-                      activeSection === 2 ? "text-primary" : ""
-                    } transition-colors duration-300 ease-in-out`}
+                    className={`count-number
+                    transition-colors duration-300 ease-in-out`}
                   >
                     {clientCount}
                   </span>{" "}
                   Clients
                 </h2>
-                <p className={`text-font30 leading-lh2p3 text-gray1`}>
+                {/* <p className={`text-font30 leading-lh2p3 text-gray1`}>
                   {" "}
                   and{" "}
                   <span
@@ -153,7 +159,14 @@ const OurAchievements = () => {
                   >
                     Growing
                   </span>{" "}
-                </p>
+                </p> */}
+                <div className='ttlbx'>
+                       <div className="letter-wrapper">
+                        <div className="text-font30  leading-lh2p3 text-gray1 letter-default">and Growing</div>
+                        <div className="text-font30  leading-lh2p3 text-gray1 letter-hover">and Growing</div>
+                       </div>
+
+                        </div>
               </div>
             </div>
           </div>
@@ -162,7 +175,7 @@ const OurAchievements = () => {
             className="group p-4 md:border-l md:border-gray1 lg:p-0  lg:px-4 xl:pl-10"
             onMouseEnter={() => setActiveSection(3)}
           >
-            <div className="flex h-[100%] flex-col items-start justify-between lg:py-10 xl:pb-[100px] xl:pt-[50px]">
+            <div className="cntrsx flex h-[100%] flex-col items-start justify-between lg:py-10 xl:pb-[100px] xl:pt-[50px]">
               <div className="relative mb-8">
                 <Image
                   src={assets.pjt}
@@ -182,22 +195,28 @@ const OurAchievements = () => {
               <div className="transition-all duration-500 group-hover:-translate-y-3">
                 <h2 className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
-                    className={`${
-                      activeSection === 3 ? "text-primary" : ""
-                    } transition-colors duration-300 ease-in-out`}
+                    className={`count-number
+                    transition-colors duration-300 ease-in-out`}
                   >
                     {projectCount}
                   </span>{" "}
                   Projects
                 </h2>
-                <p className={`text-font30   leading-lh2p3 text-gray1`}>
+                {/* <p className={`text-font30   leading-lh2p3 text-gray1`}>
                   and{" "}
                   <span
                     className={`${activeSection === 3 ? "text-primary" : ""}`}
                   >
                     More to Come
                   </span>
-                </p>
+                </p> */}
+                <div className='ttlbx'>
+                       <div className="letter-wrapper">
+                        <div className="text-font30  leading-lh2p3 text-gray1 letter-default">More to Come</div>
+                        <div className="text-font30  leading-lh2p3 text-gray1 letter-hover">More to Come</div>
+                       </div>
+
+                        </div>
               </div>
             </div>
           </div>
