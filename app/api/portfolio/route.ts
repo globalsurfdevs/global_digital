@@ -28,15 +28,23 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ portfolio, portfolioHighlights });
         }
 
-        let { data: portfolio, error } = await supabase
+        let { data: portfolio, } = await supabase
             .from('portfolios')
             .select('*')
 
-        if (!portfolio) {
-            return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
-        }
 
-        return NextResponse.json({ portfolio });
+        let { data: caseStudy } = await supabase
+            .from('caseStudy')
+            .select('*')
+
+
+        // if (!portfolio) {
+        //     return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
+        // }
+
+        const combinedData = [...(portfolio||[]),...(caseStudy?.map((item)=>({...item,type:"case-study"}))||[])]
+
+        return NextResponse.json({ combinedData });
 
     } catch (error) {
         console.log("error getting portfolio:", error);
@@ -224,7 +232,7 @@ export async function POST(req: NextRequest) {
                 for (let i = 0; i < highlights.length; i++) {
 
                     if (highlights[i].customId.length > 36) {
-                        console.log("deleteData",highlights[i].customId)
+                        console.log("deleteData", highlights[i].customId)
                         const deleteId = highlights[i].customId.slice(0, 36)
                         const { error: deleteError } = await supabase
                             .from('portfolioHighlights')
@@ -258,7 +266,7 @@ export async function POST(req: NextRequest) {
 
 
                 return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
-                
+
 
 
 

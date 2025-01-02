@@ -16,8 +16,8 @@ const PortfolioList = () => {
         const response = await fetch(`/api/portfolio`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data.portfolio);
-          setPortfolios(data.portfolio);
+          console.log(data.combinedData);
+          setPortfolios(data.combinedData);
         } else {
           console.error("Failed to fetch portfolio data");
         }
@@ -105,7 +105,7 @@ const PortfolioList = () => {
                   <div className="portfolio-card group relative col-span-1">
                     <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px] group">
                       <Image
-                        src={item.bannerImage}
+                        src={item.bannerImage ?? item.coverImage}
                         alt="image"
                         className="h-full w-full object-cover"
                         fill
@@ -123,7 +123,7 @@ const PortfolioList = () => {
                     </div>
                     </div>
 
-                    <Link href={`/portfolio-details/${item.id}`}
+                    <Link href={item.type=="case-study" ? `/case-study/${item.id}` : `/portfolio-details/${item.id}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
                   </div>

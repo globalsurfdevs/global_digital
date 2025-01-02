@@ -20,4 +20,6 @@ export type Portfolio = {
     tag:string;
     description:string;
     logo:string;
+    coverImage:string;
+    type?:string;
 }
