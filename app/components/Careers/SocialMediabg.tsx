@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import aboutbnnr from "@/public/assets/aboutus/banner-aboutus.jpg";
 import Button from "../Button/Button";
+import Link from "next/link";
 import ButtonIcon from "../Button/ButtonIcon";
 import { IoArrowBack } from "react-icons/io5"; // Using a back arrow from react-icons
 
@@ -92,10 +93,10 @@ const SocialMediabg = () => {
                           Yeah, go screen my skills!
                         </label>
                       </div>
-                      <p className="text-19 mb-4 mt-3 text-white sm:my-8">
+                      <p className="text-19 mb-4 mt-3  sm:my-8 text-gray1">
                         We're keeping your personal details secure and don't
                         share it with 3rd parties of course. Find out more in
-                        our privacy policy.
+                        our <Link href="/privacy-policy" className="text-slate-400">privacy policy</Link>.
                       </p>
                       <Button text="Send now" />
                     </form>

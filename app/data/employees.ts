@@ -122,14 +122,14 @@ export const Employees = [
         width: "100%",
         height:"auto"
     } ,
-    // {
-    //     id: 8,
-    //     image: assets.Dennis,
-    //     name:"Dennis",
-    //     designation: "Graphic Designer",
-    //     width: "100%",
-    //     height:"auto"
-    // },
+    {
+        id: 8,
+        image: assets.Dennis,
+        name:"Dennis",
+        designation: "Graphic Designer",
+        width: "100%",
+        height:"auto"
+    },
     {
         id: 10,
         image: assets.Jishnu,
@@ -161,6 +161,15 @@ export const Employees = [
         width: "100%",
         height:"auto"
     },
+    {
+        id: 5,
+        image: assets.Anjana,
+        name:"Anjana",
+        designation: "Human Resources",
+        width: "100%",
+        height:"auto"
+    }
+    ,
     // {
     //     id: 12,
     //     image: assets.Rahees,
@@ -169,15 +178,7 @@ export const Employees = [
     //     width: "100%",
     //     height:"auto"
     // },
-    {
-        id: 9,
-        image: assets.Ganesh,
-        name:"Ganesh",
-        designation: "SEO Specialist",
-        width: "100%",
-        height:"auto"
-    }
-    ,
+
     {
         id: 2,
         image: assets.Anagha,
@@ -185,12 +186,11 @@ export const Employees = [
         designation: "Digital Marketing Executive",
         width: "100%",
         height:"auto"
-    },
-    {
-        id: 5,
-        image: assets.Anjana,
-        name:"Anjana",
-        designation: "Human Resources",
+    }, {
+        id: 9,
+        image: assets.Ganesh,
+        name:"Ganesh",
+        designation: "SEO Specialist",
         width: "100%",
         height:"auto"
     }

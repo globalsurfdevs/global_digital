@@ -51,6 +51,8 @@ const TestimonialsSwiper = () => {
                 <Image
                   src={item.logo}
                   alt="image"
+                  width={70}
+                  height={35}
                   className="mb-5 lg:mb-[26px] "
                 ></Image>
               </div>

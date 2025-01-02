@@ -25,6 +25,7 @@ const SectionTwo = () => {
         autoPlay
         loop
         muted
+        playsInline
       >
         <source src="/assets/GS_Digital-Header_Video.mp4" type="video/mp4" />
         Your browser does not support the video tag.

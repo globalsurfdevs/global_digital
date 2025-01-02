@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 import { SuccessStories } from "../SuccessStories/SuccessStories";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
+import { Link } from "@mui/material";
 
 const Result = ({
   data,
@@ -21,7 +22,7 @@ const Result = ({
 
   return (
     <div className="container mx-auto py-4">
-      {data?.portfolio[0].result=="undefined" || data?.portfolio[0].result=="<p>undefined</p>" || data?.portfolio[0].result=="<p><br></p>"  ? null : <div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
+      {<div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -100,8 +101,9 @@ const Result = ({
             Every great brand has a story. See how we’ve turned challenges into
             triumphs for our clients. Your brand could be next.{" "}
           </p>
-          <div className="innerfnont mt-[20px] lg:mt-[64px]">
+          <div className="innerfnont mt-[20px] lg:mt-[64px] relative w-fit">
             <Button text="LET'S COLLABORATE" />
+            <Link href="/lets-talk" className="absolute left-0 top-0 w-full h-full"></Link>
           </div>
         </div>
       </motion.div>
