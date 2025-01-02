@@ -26,7 +26,7 @@ import { Faq } from "../../data/services/marketing-intelligence/faq";
 const page = () => {
   return (
     <div>
-        <HeroSection  Bannerdata={BannerSection} />
+        <HeroSection  Bannerdata={BannerSection} order={'05'} />
         <Expertise title={AreaExpertise.title} data={AreaExpertise.data}  />
         <Boost title={boostEngage.title} data={boostEngage.data}/>
         <Services title={OurServices.title} data={OurServices.data}/>

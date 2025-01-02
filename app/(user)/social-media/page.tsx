@@ -23,7 +23,7 @@ import { Faq } from "../../data/services/social-media/faq";
 const page = () => {
   return (
     <div>
-        <HeroSection  Bannerdata={BannerSection} />
+        <HeroSection  Bannerdata={BannerSection} order={'03'}/>
         <Expertise title={AreaExpertise.title} data={AreaExpertise.data}  />
         <Boost title={boostEngage.title} data={boostEngage.data}/>
         <Services title={OurServices.title} data={OurServices.data}/>

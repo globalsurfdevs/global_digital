@@ -20,10 +20,11 @@ interface BannerSection {
   sub: su[];
 }
 interface HeroSectionProps {
+  order: string;
   Bannerdata: BannerSection[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata , order }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Ref for the next container (HTMLDivElement type)
@@ -98,7 +99,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata }) => {
                 <div className="  max-w-[1000px] ">
                   <h1 className="title-80"> {herosection.title}</h1>
                 </div>
-                <div className="text-font19 text-gray1">01</div>
+                <div className="text-font19 text-gray1">{order}</div>
               </div>
             </motion.div>
             <motion.div
