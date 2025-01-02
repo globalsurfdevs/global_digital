@@ -9,6 +9,7 @@ import { assets } from "@/public/assets/assets";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
 const sidebar = {
@@ -108,9 +109,10 @@ export const Example = () => {
         <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>
         <motion.div variants={imageSection}>
           <div className="flex w-full text-black text-2xl gap-10">
-          <FaFacebookF />
-            <FaXTwitter/>
-            <FaInstagram />
+          <a href="https://www.facebook.com/myglobalsurf" target="_blank" className="hover:text-primary"><FaFacebookF /></a>
+          <a href="https://x.com/i/flow/login?redirect_after_login=%2Fglobalsurfuae" target="_blank" className="hover:text-primary"> <FaXTwitter/></a>
+          <a href="https://www.instagram.com/accounts/login/?next=%2Fmyglobalsurf%2F&source=omni_redirect" target="_blank" className="hover:text-primary">  <FaInstagram /></a>
+          <a href="https://www.linkedin.com/company/myglobalsurf" target="_blank" className="hover:text-primary"> <FaLinkedin/></a>
             </div>
         </motion.div>
         </div>

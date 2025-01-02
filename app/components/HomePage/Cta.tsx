@@ -35,7 +35,7 @@ const Cta = () => {
                   </h2>
 
                   <div className="innerfnont mb-10 mt-10  lg:mb-[120px] lg:mt-[57px]">
-                    <Link href="lets-talk">
+                    <Link href="/lets-talk">
                       <Button text="LET'S TALK" />
                     </Link>
                   </div>

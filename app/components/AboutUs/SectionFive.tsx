@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import EmployeesSwiper from "./EmployeesSwiper";
 import Button from "../Button/Button";
 import React from "react";
@@ -23,7 +24,7 @@ const SectionFive = () => {
             }}
           >
             <div className="grid  mb-4 lg:mb-[47px]">
-              <h2 className="title-65 ">We Believe In</h2>
+              <h2 className="title-65 ">The Experts Who Drive Results</h2>
             </div>
           </motion.div>
         </div>
@@ -67,7 +68,7 @@ const SectionFive = () => {
             </p>
             <div>
               <div className="mt-[20px] lg:mt-[64px] innerfnont">
-                <Button text="LET'S COLLABORATE" />
+                <Link href="/lets-talk"><Button text="LET'S COLLABORATE" /></Link>
               </div>{" "}
             </div>
           </div>
