@@ -8,17 +8,19 @@ const HeroSection = () => {
     <motion.section className="text-white py-24 lg:h-[60vh] xl:h-screen flex items-center relative bnrnmn"  initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.5 }} >
-      
-        <video
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-        autoPlay
-        loop
-        muted
-      >
-        <source src="/assets/GS_Digital-Header_Video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      
+
+      <video
+  className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+  autoPlay
+  loop
+  muted
+  playsInline
+>
+  <source src="/assets/GS_Digital-Header_Video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
       <div className="container mx-auto px-4"  >
         <motion.h1 className="title-80  font-[400] " id="triggerSection"
         initial="hidden"

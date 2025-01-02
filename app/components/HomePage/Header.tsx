@@ -101,7 +101,9 @@ const Header = () => {
   if (mobileMenu) {
     return (
       <div className="flex items-center align-middle flex p-4">
-        <Image src={assets.logo} alt="logo" />
+        <Link href="/">
+          <Image src={assets.logo} alt="logo" />
+          </Link>
         <Example />
       </div>
     );
