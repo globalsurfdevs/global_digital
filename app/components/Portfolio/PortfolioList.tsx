@@ -103,7 +103,7 @@ const PortfolioList = () => {
                   }}
                 >
                   <div className="portfolio-card group relative col-span-1">
-                    <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px]">
+                    <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px] group">
                       <Image
                         src={item.bannerImage}
                         alt="image"
@@ -115,13 +115,14 @@ const PortfolioList = () => {
                           <p className="text-font14 text-white">{item.tag}</p>
                         </div>
                       </div>
-                    </div>
-                    <div className="mt-3 md:mt-4">
-                      <h3 className="text-30 mb-1 duration-200 ease-in-out group-hover:text-primary md:mb-2">
+                      <div className="absolute bottom-0 mt-3 md:mt-4 z-[1] p-5">
+                      <h3 className="text-30 mb-1 duration-200 ease-in-out  md:mb-2 text-white  duration-200 duration-300 ease-in-out ease-in-out ">
                         {item.companyName}
                       </h3>
-                      <p className="text-19 text-gray1">{item.channelsUsed}</p>
+                      <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>
                     </div>
+                    </div>
+
                     <Link href={`/portfolio-details/${item.id}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
