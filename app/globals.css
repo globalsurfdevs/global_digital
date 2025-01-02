@@ -627,6 +627,8 @@ body {
   }
 }
 @media screen and (max-width: 767px) {
+
+.maincts svg{width: 15px;}
   .mn-dv-blg .flx-vnt {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -638,4 +640,94 @@ body {
   .mn-dv-blg .wfc {
     height: auto;
   }
+}
+.cntrsx {
+  position: relative;
+  padding: 4rem 0;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: #000;
+    transform: rotate(26deg);
+    top: 0;
+  }
+  .count-number {
+
+
+    background: linear-gradient(to right, #e23938, #F37307);
+    background-size: 200% 200%;
+    animation: rainbow 2s ease-in-out infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: #fff;
+
+    transition: color 1s ease-in-out;
+  }
+
+  h6.title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgb(0 0 0 / 30%);
+    margin-bottom: 0;
+    position: relative;
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #000;
+      overflow: hidden;
+      width: 0%;
+      transition: 5s;
+      text-align: left;
+      height: 30px;
+    }
+  }
+  &:hover {
+    .count-number {
+      color: rgba(0, 0, 0, 0);
+    }
+
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+.ttlbx {
+  position: relative;
+}
+
+.ttlbx {
+  display: inline-block;
+}
+.letter-wrapper {
+  position: relative;
+}
+.letter-default, .letter-hover {
+  margin-bottom: 0;
+  position: relative;
+}
+.letter-hover {
+  overflow: hidden;
+  width: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #e63e31;
+  transition: width 2s ease-in-out;
+  white-space: nowrap;
+}
+.cntrsx:hover .letter-hover, .cntrsx:hover .letter-hover {
+  width: 100%;
 }

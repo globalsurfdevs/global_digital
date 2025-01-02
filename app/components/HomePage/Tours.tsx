@@ -55,7 +55,7 @@ const Tours = () => {
           {portfolios.slice(0, 2).map((item, index) => (
 
   <Link href={`/portfolio-details/${item.id}`} key={index}>
-  <div className="relative tour-card h-full" >
+  <div className="relative tour-card h-full lg:min-h-[550px] min-h-[350px] " >
     <img
       src={item.bannerImage}
       alt={item.companyName}
