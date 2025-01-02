@@ -130,13 +130,15 @@ const Goals = ({
                 transition: { duration: 1, ease: "easeOut" },
               }, // Slide up and fade in
             }}
+            className="w-full h-[70vh]"
+            
           >
             <Image
               src={data?.portfolio[0].section2BannerImage || ""}
               alt="web-mockup"
               width={1500}
               height={900}
-              className="h-full w-full"
+              className="h-full w-full object-cover"
             />
           </motion.div>
         </div>
