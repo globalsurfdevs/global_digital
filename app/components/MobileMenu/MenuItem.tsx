@@ -44,7 +44,7 @@ export const MenuItem = ({
       onClick={children ? toggleSubmenu : undefined}
     >
       <div className="flex justify-between items-center py-2 border-b font-bold w-full">
-       <a href={Links}> {item}</a>
+       <Link href={Links}> {item}</Link>
         {children && (
           <span className="ml-2">
           {isSubmenuOpen ? (
