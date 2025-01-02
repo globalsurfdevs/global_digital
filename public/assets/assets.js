@@ -77,11 +77,69 @@ import seopr4 from '../assets/icons/004.svg'
 import down_arrow from '../assets/icons/down_arrow.svg'
 import up_arrow from '../assets/icons/up_arrow.svg'
 
+import strategy_consulting from '../assets/icons/strategy-consulting.svg'
+import data_analytics from '../assets/icons/data-analytics.svg'
+import cro from '../assets/icons/cro.svg'
+import marketing_automation from '../assets/icons/marketing-automation.svg'
+
+import web_design from '../assets/icons/web_design.svg'
+import web_app from '../assets/icons/web_app.svg'
+import cwd from '../assets/icons/cwd.svg'
+import ecomm from '../assets/icons/ecomm.svg'
+import mobile_app from '../assets/icons/mobile_app.svg'
+
+import sm_management from '../assets/icons/sm_management.svg'
+import sm_strategy from '../assets/icons/sm_strategy.svg'
+import sm_marketing from '../assets/icons/sm_marketing.svg'
+
+import b2b_seo from '../assets/icons/b2b_seo.svg'
+import ecom_seo from '../assets/icons/ecom_seo.svg'
+import local_seo from '../assets/icons/local_seo.svg'
+import technical_seo from '../assets/icons/technical_seo.svg'
+import inter_seo from '../assets/icons/inter_seo.svg'
+
+
+import search_engine_advertising from '../assets/icons/search_engine_advertising.svg'
+import social_media_marketing from '../assets/icons/social_media_marketing.svg'
+import influencer_marketing from '../assets/icons/influencer_marketing.svg'
+import video_ads from '../assets/icons/video_ads.svg'
+import app_store_adv from '../assets/icons/app_store_adv.svg'
+import programmatic_adv from '../assets/icons/programmatic_adv.svg'
+
 import Afsal from '../assets/employee/Afsal.png'
 import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
 import Anjana from '../assets/employee/Anjana.png'
 import Aravind from '../assets/employee/Aravind.png'
+import Arjun from '../assets/employee/Arjun.png'
+import Avani from '../assets/employee/Avani.png'
+import Dennis from '../assets/employee/Dennis.png'
+import Ganesh from '../assets/employee/Ganesh.png'
+import Jishnu from '../assets/employee/Jishnu.png'
+import Nived from '../assets/employee/Nived.png'
+import Rahees from '../assets/employee/Rahees.png'
+import Sanjay from '../assets/employee/Sanjay.png'
+import Sreemayi from '../assets/employee/Sreemayi.png'
+import Swetha from '../assets/employee/Swetha.png'
+import Vipin from '../assets/employee/Vipin.png'
+import Yasir from '../assets/employee/Yasir.png'
+
+
+import Anandhu from '../assets/employee/Anandhu.png'
+import Ashna from '../assets/employee/Ashna.png'
+import Faizal from '../assets/employee/Faizal.png'
+import Harsha from '../assets/employee/Harsha.png'
+import Levin from '../assets/employee/Levin.png'
+import Mobin from '../assets/employee/Mobin.png'
+import Preethika from '../assets/employee/Preethika.png'
+import Subijith from '../assets/employee/Subijith.png'
+
+import seo_banner from '../assets/banner/SEO.jpg'
+import branding_bnr from '../assets/banner/Branding-&-Creatives-01.jpg'
+import marketing_bnr from '../assets/banner/Marketing.jpg'
+import performance_bnr from '../assets/banner/Performance.jpg'
+import social_bnr from '../assets/banner/Social_media.jpg'
+import web_bnr from '../assets/banner/Web_development.jpg'
 
 
 
@@ -89,6 +147,26 @@ import lightlogo from '../assets/gsdigital-light.svg'
 
 
 export const assets = {
+    Levin,
+    Subijith,
+    Preethika,
+    Mobin,
+    Harsha,
+    Faizal,
+    Ashna,
+    Anandhu,
+    Arjun,
+    Avani,
+    Dennis,
+    Ganesh,
+    Jishnu,
+    Nived,
+    Rahees,
+    Sanjay,
+    Sreemayi,
+    Swetha,
+    Vipin,
+    Yasir,
     Afsal,
     Anagha,
     Aashika,
@@ -171,7 +249,36 @@ export const assets = {
     success3,
     gulfcryo,
     innvosvg,
-    lightlogo
+    lightlogo,
+    strategy_consulting,
+    data_analytics,
+    cro,
+    marketing_automation,
+    mobile_app,
+    ecomm,
+    cwd,
+    web_app,
+    web_design,
+    sm_management,
+    sm_strategy,
+    sm_marketing,
+    b2b_seo,
+    ecom_seo,
+    local_seo,
+    technical_seo,
+    inter_seo,
+    seo_banner,
+    marketing_bnr,
+    performance_bnr,
+    social_bnr,
+    web_bnr,
+    branding_bnr,
+    search_engine_advertising,
+    social_media_marketing,
+    influencer_marketing,
+    video_ads,
+    app_store_adv,
+    programmatic_adv
 };
 
 export const logos = [

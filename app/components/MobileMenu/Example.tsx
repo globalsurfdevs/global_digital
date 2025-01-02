@@ -9,6 +9,7 @@ import { assets } from "@/public/assets/assets";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
+import Link from "next/link";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -94,7 +95,9 @@ export const Example = () => {
 
         <motion.div className="" variants={imageSection}>
           <div className="fixed w-full min-h-[60px] bg-white z-1 py-5 px-6">
-          <Image src={assets.logo} alt="logo" className="w-32"/>
+            <Link href="/">
+              <Image src={assets.logo} alt="logo" className="w-32" />
+              </Link>
           </div>
         </motion.div>
 

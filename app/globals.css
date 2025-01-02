@@ -375,7 +375,19 @@ body {
               }
               .pmac{    padding-top: 5px;
                 padding-bottom: 5px;}
+                .htsmedia{min-height: 300px;}
               }
+              @media screen and (min-width: 1400px)  and (max-width: 1500px) {
+
+                /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
+                .macst{font-size: 58px;
+                  min-width: 100%;}
+.htsmedia{min-height: 468px;}
+              }
+              /* @media screen and (min-width: 1600px)   {
+
+.targ-ht{min-height: 550px;}
+              } */
 
               .contctform input::placeholder {
                 color: #000; /* Custom color */
@@ -383,6 +395,14 @@ body {
               .contctform textarea::placeholder {
                 color: #000; /* Custom color */
               }
+              .clngsb img {
+                filter: grayscale(1);
+                transition: all .5s ease;
+            }
+          .clngsb:hover img {
+              filter: grayscale(0);
+          }
+
     @layer components {
       .title-80{ @apply  text-font80 leading-lh1p22;}
       .title-65 {  @apply text-font65 leading-lh1p07;  }
@@ -424,3 +444,21 @@ margin-bottom: 20px;
 
       .class-blogdetails-mn h2{ @apply  text-font30 leading-lh1p33 mt-5 mb-4}
       .class-blogdetails-mn h3{ @apply  text-font19  font-bold leading-lh1p33 mt-5 mb-4}
+      .fltrcls {
+        filter: brightness(0) invert(1);
+      }
+.cntsmd{overflow: auto;
+  scrollbar-width: thin;}
+  .cntsmd::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+  }
+
+  /* For Firefox */
+  .cntsmd {
+    scrollbar-width: none; /* Hides the scrollbar in Firefox */
+  }
+
+  /* For Internet Explorer 10+ (Optional) */
+  .cntsmd {
+    -ms-overflow-style: none; /* Hides the scrollbar in IE */
+  }

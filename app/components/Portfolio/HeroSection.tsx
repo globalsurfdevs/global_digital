@@ -23,7 +23,7 @@ const HeroSection = () => {
 
           <div className='lg:col-span-6 xl:col-span-5 flex   items-center w-full h-full   lg:py-4 pt-4 pb-0'>
 
-            <p className='text-30 text-gray1'>our projects in digital marketing. From strategic campaigns to professional website designs, each project is focused on delivering clear results. See how we help businesses achieve their goals in the digital space.</p>
+            <p className='text-30 text-gray1'>Explore our projects in digital marketing. From strategic campaigns to professional website designs, each project is focused on delivering clear results. See how we help businesses achieve their goals in the digital space.</p>
           </div>
 
         </div>
