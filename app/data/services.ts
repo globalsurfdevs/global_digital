@@ -1,10 +1,11 @@
 export const services = [
   {
     id: "1",
-    image: "/assets/services/Performance marketing-01.svg",
+    image: "/assets/services/performance-marketing.jpg",
     title: "Performance Marketing",
-    url:'/performance-marketing',
-    description: "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
+    url: "/performance-marketing",
+    description:
+      "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
     buttonTexts: [
       {
         title: "PPC Advertising",
@@ -22,10 +23,11 @@ export const services = [
   },
   {
     id: "2",
-    image: "/assets/services/Seo-02-02.svg",
+    image: "/assets/services/SEO.jpg",
     title: "SEO",
-    url:'/seo',
-    description: "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
+    url: "/seo",
+    description:
+      "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
     buttonTexts: [
       {
         title: "B2B SEO",
@@ -40,10 +42,11 @@ export const services = [
   },
   {
     id: "3",
-    image: "/assets/services/Social Media-03-03.svg",
+    image: "/assets/services/Social-media.jpg",
     title: "Social Media",
-    url:'/social-media',
-    description: "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
+    url: "/social-media",
+    description:
+      "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
     buttonTexts: [
       {
         title: "Social Media Strategy",
@@ -58,10 +61,11 @@ export const services = [
   },
   {
     id: "4",
-    image: "/assets/services/Web design-04-04.svg",
+    image: "/assets/services/Web-development.jpg",
     title: "Web Design & Development",
-    url:'/web-design-development',
-    description: "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
+    url: "/web-design-development",
+    description:
+      "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
     buttonTexts: [
       {
         title: "Website Design",
@@ -82,10 +86,11 @@ export const services = [
   },
   {
     id: "5",
-    image: "/assets/services/Creative-05.svg",
+    image: "/assets/services/Branding-creatives.jpg",
     title: "Branding & Creatives",
-    url:'/branding-creative',
-    description: "We help you create a brand identity that resonates with your audience. Our creative assets are designed to enhance recognition and drive engagement. ",
+    url: "/branding-creative",
+    description:
+      "We help you create a brand identity that resonates with your audience. Our creative assets are designed to enhance recognition and drive engagement. ",
     buttonTexts: [
       {
         title: "Branding",
@@ -112,10 +117,11 @@ export const services = [
   },
   {
     id: "6",
-    image: "/assets/services/Marketing-06.svg",
+    image: "/assets/services/Marketing.jpg",
     title: "Marketing Intelligence",
-    url:'/marketing-intelligence',
-    description: "We optimize your marketing with data-driven insights for better results. Real-time analytics and market trends help you make informed decisions. ",
+    url: "/marketing-intelligence",
+    description:
+      "We optimize your marketing with data-driven insights for better results. Real-time analytics and market trends help you make informed decisions. ",
     buttonTexts: [
       {
         title: "Strategy Consulting",
