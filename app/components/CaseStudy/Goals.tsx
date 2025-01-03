@@ -16,7 +16,7 @@ const Goals = ({data}:{
   return (
     <div className="container mx-auto py-4">
       <div className="py-[50px] lg:py-[150px]">
-        <motion.div
+        {data.caseStudy[0].goals=="<p><br></p>" || data.caseStudy[0].goals=="<p>undefined</p>" || data.caseStudy[0].goals=="undefined" ? null : <motion.div
           className="grid border-t pb-[25px]  pt-[50px] lg:grid-cols-2 lg:pb-[95px] lg:pt-[53px]"
           initial="hidden"
           whileInView="visible"
@@ -45,8 +45,8 @@ const Goals = ({data}:{
             </p> */}
             {parse(data.caseStudy[0].goals)}
           </div>
-        </motion.div>
-        <motion.div
+        </motion.div>}
+        {data.caseStudy[0].objectives=="<p><br></p>" || data.caseStudy[0].objectives=="<p>undefined</p>" || data.caseStudy[0].objectives=="undefined" ? null : <motion.div
           className="grid border-t py-[25px]   lg:grid-cols-2 lg:pb-[95px] lg:pt-[53px]"
           initial="hidden"
           whileInView="visible"
@@ -75,9 +75,9 @@ const Goals = ({data}:{
             </p> */}
             {parse(data.caseStudy[0].objectives)}
           </div>
-        </motion.div>
+        </motion.div>}
 
-        <motion.div
+        {data.caseStudy[0].challenge=="<p><br></p>" || data.caseStudy[0].challenge=="<p>undefined</p>" || data.caseStudy[0].challenge=="undefined" ? null : <motion.div
           className="grid border-t py-[25px] pb-[0px] lg:grid-cols-2 lg:pb-[0px] lg:pt-[95px]"
           initial="hidden"
           whileInView="visible"
@@ -106,8 +106,10 @@ const Goals = ({data}:{
             </p> */}
             {parse(data.caseStudy[0].challenge)}
           </div>
-        </motion.div>
+        </motion.div>}
 
+        {data.caseStudy[0].overcomingChallenges=="<p><br></p>" || data.caseStudy[0].overcomingChallenges=="<p>undefined</p>" || data.caseStudy[0].overcomingChallenges=="undefined"
+        && data.caseStudy[0].achievements=="<p><br></p>" || data.caseStudy[0].achievements=="<p>undefined</p>" || data.caseStudy[0].achievements=="undefined" ? null :
         <motion.div
           className="grid gap-2 space-y-5  pt-[50px] md:space-y-0 lg:grid-cols-2 lg:gap-[0px] lg:space-x-5 lg:pt-[146px]"
           initial="hidden"
@@ -122,7 +124,7 @@ const Goals = ({data}:{
             }, // Slide up and fade in
           }}
         >
-          <div className="flex w-full flex-col gap-4   bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
+          {data.caseStudy[0].overcomingChallenges && <div className="flex w-full flex-col gap-4   bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
             <div>
               <h2 className="title-65">Overcoming Challenges</h2>
             </div>
@@ -141,9 +143,9 @@ const Goals = ({data}:{
               </ul> */}
               {parse(data.caseStudy[0].overcomingChallenges)}
             </div>
-          </div>
+          </div>}
 
-          <div className="flex w-full flex-col gap-6  bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
+          {data.caseStudy[0].achievements && <div className="flex w-full flex-col gap-6  bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
             <div>
               <h2 className="title-65">Key Achievements</h2>
             </div>
@@ -165,8 +167,8 @@ const Goals = ({data}:{
               </ul> */}
               {parse(data.caseStudy[0].achievements)}
             </div>
-          </div>
-        </motion.div>
+          </div>}
+        </motion.div>}
       </div>
     </div>
   );
