@@ -1,13 +1,43 @@
 'use client'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const HeroSection = () => {
+  const images = [
+    "/assets/aboutus/banner-aboutus.jpg",
+    "/assets/aboutus/emp-1.png",
+    "/assets/aboutus/banner-aboutus.jpg",
+    "/assets/blogs/001.jpg",
+    "/assets/aboutus/banner-aboutus.jpg",
+    "/assets/aboutus/emp-1.png",
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 200);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <motion.section className="text-white py-24 lg:h-[60vh] xl:h-screen flex items-center relative bnrnmn"  initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.5 }} >
+{/* image animation */}
+    {/* <div className="relative w-full h-[400px] overflow-hidden bg-black">
+      <motion.img
+        key={currentImage}
+        src={images[currentImage]}
+        className="w-full h-full object-cover"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.1, ease: "easeInOut" }}
+      />
+      </div> */}
 
       <video
   className="absolute top-0 left-0 w-full h-full object-cover -z-10"
