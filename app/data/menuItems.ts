@@ -52,6 +52,6 @@ export const menuItems = [
     },
     {
         item:"BLOGS",
-        url:"#"
+        url:"/blogs"
     }
 ]

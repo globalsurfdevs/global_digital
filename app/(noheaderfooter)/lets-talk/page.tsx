@@ -2,44 +2,28 @@
 import React, { useState } from "react";
 import Link from "next/link";
 const page = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-    budget: "",
-    service: "",
-  });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
-  const handleChangeselect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value, // Updates the 'service' value in formData
-    }));
-  };
+       const [formData, setFormData] = useState({
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+       });
 
-  const aedopt = [
-    { value: "AED&#x20;&lt;&#x20;5000", label: "AED < 5000" },
-    { value: "AED&#x20;5000&#x20;-&#x20;10000", label: "AED 5000- 10000" },
-    { value: "AED&#x20;10000&#x20;-&#x20;20000", label: "AED 10000-20000" },
-    { value: "AED&#x20;20000&#x20;-&#x20;30000", label: "AED 20000-30000" },
-    { value: "AED&#x20;30000&#x20;-&#x20;40000", label: "AED 30000-40000" },
-    { value: "AED&#x20;50000&#x20;-&#x20;100000", label: "AED 50000-1000000" },
-    { value: "AED&#x20;&gt;&#x20;100000", label: "AED > 1000000" },
-  ];
+       const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+         const { name, value } = e.target;
+         setFormData((prev) => ({ ...prev, [name]: value }));
+       };
+
+       const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+         e.preventDefault();
+
+         // Ensure correct type for the form element
+         const form = document.getElementById("form") as HTMLFormElement;
+         if (form) {
+           form.submit();
+         } else {
+           console.error("Form element not found");
+         }
+       };
 
   return (
     <div>
@@ -65,121 +49,122 @@ const page = () => {
             Get in touch today to discuss how we can help your brand stay ahead.
           </p>
           <div className="contctform pt-[15px] lg:pt-[50px]">
-            {/* <form onSubmit={handleSubmit}> */}
-            <form
-  onSubmit={handleSubmit}
-  action="https://forms.zohopublic.com/Globalsurf/form/GlobalsurfNewForm/formperma/ed-ixp-D06mNuOfW52SHqkLRh7ZZV4AbxY-Ks8LcP_s/htmlRecords/submit"
-  name="form"
-  id="form"
-  method="POST"
-  acceptCharset="UTF-8"
->
-  <div className="mb-[30px]">
-    <input
-      type="text"
-      name="name"
-
-      id="name"
-      value={formData.name}
-      onChange={handleChange}
-      className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-      placeholder="Enter your name"
-    />
-  </div>
-
-  <div className="md:grid md:grid-cols-2 md:gap-5">
-    <div className="mb-[30px]">
-      <input
-        type="email"
-        name="email"
-
-        id="email"
-        value={formData.email}
-        onChange={handleChange}
-        className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-        placeholder="Enter your email"
-      />
-    </div>
-
-    <div className="mb-[30px]">
-      <input
-        type="text"
-        name="company"
-
-        id="company"
-        value={formData.company}
-        onChange={handleChange}
-        className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-        placeholder="Enter your company name"
-      />
-    </div>
-  </div>
-
-  <div className="mb-[30px]">
-    <select
-      name="budget"
-      id="budget"
-      value={formData.budget}
-      onChange={handleChangeselect}
-      className="mt-3 w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+          <form
+      onSubmit={handleSubmit}
+      action="https://forms.zohopublic.com/Globalsurf/form/GlobalsurfNewForm/formperma/ed-ixp-D06mNuOfW52SHqkLRh7ZZV4AbxY-Ks8LcP_s/htmlRecords/submit"
+      name="form"
+      id="form"
+      method="POST"
+      acceptCharset="UTF-8"
+      encType="multipart/form-data"
     >
-      <option value="" disabled>
-        Select your budget
-      </option>
-      {aedopt.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  </div>
+      <input type="hidden" name="zf_referrer_name" value="" />
+      <input type="hidden" name="zf_redirect_url" value="" />
+              <input type="hidden" name="zc_gad" value="" />
 
-  <div className="mb-[30px]">
-    <select
-      name="service"
-      id="service"
-      value={formData.service}
-      onChange={handleChangeselect}
-      className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-    >
-      <option value="" disabled>
-        Service looking
-      </option>
-      <option value="Performance&#x20;Marketing">Performance Marketing</option>
-      <option value="SEO">SEO</option>
-      <option value="Social&#x20;Media">Social Media</option>
-      <option value="Web&#x20;Design&#x20;and&#x20;Development">Web Design & Development</option>
-      <option value="Branding&#x20;and&#x20;Creatives">Branding & Creatives</option>
-      <option value="Marketing&#x20;Intelligence">Marketing Intelligence</option>
-    </select>
-  </div>
+              <div className="mb-[30px]">
+                <input
+                   type="text"
+                  name="SingleLine"
+                  required
 
-  <div className="mb-[30px]">
-    <textarea
-      name="message"
-      id="message"
-      value={formData.message}
-      onChange={handleChange}
-      className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-      placeholder="Enter your message (Optional)"
-      rows={5}
-    ></textarea>
-  </div>
+                   onChange={handleChange}
+                   maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Enter your name"
+                />
+              </div>
 
-  <div>
-    <p className="font-19 mb-5 md:mb-[50px]">
-      In submitting this form, you are agreeing to Privacy Policy.
-    </p>
-  </div>
+              <div className="md:grid md:grid-cols-2 md:gap-5">
+                <div className="mb-[30px]">
+                  <input
+                   type="email"
+                    name="Email"
+                    required
 
-  <button
-    type="submit"
-    className="w-fit rounded-[55px] bg-primary  px-[50px] py-[20px] font-medium text-white transition duration-300  ease-in-out hover:bg-dgray hover:text-primary"
-  >
-    Submit
-  </button>
-</form>
+                   onChange={handleChange}
+                   maxLength={255}
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                    placeholder="Enter your email"
+                  />
+                </div>
 
+                <div className="mb-[30px]">
+                  <input
+                     type="text"
+                     name="SingleLine1"
+
+                    onChange={handleChange}
+
+                     maxLength={255}
+                    className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                    placeholder="Enter your company name"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-[30px]">
+              <select
+                  name="Dropdown"
+
+
+                  onChange={handleChange}
+                  className="mt-3 w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+        >
+          <option value="-Select-">-Select-</option>
+          <option value="AED < 5000">AED &lt; 5000</option>
+          <option value="AED 5000 - 10000">AED 5000 - 10000</option>
+          <option value="AED 10000 - 20000">AED 10000 - 20000</option>
+          <option value="AED 20000 - 30000">AED 20000 - 30000</option>
+          <option value="AED 30000 - 40000">AED 30000 - 40000</option>
+          <option value="AED 50000 - 100000">AED 50000 - 100000</option>
+          <option value="AED > 100000">AED &gt; 100000</option>
+        </select>
+              </div>
+              <div className="mb-[30px]">
+              <select
+                  name="Dropdown1"
+
+
+                  onChange={handleChange}
+                  className="mt-3 w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+        >
+          <option value="-Select-">-Select-</option>
+          <option value="Performance Marketing">Performance Marketing</option>
+          <option value="SEO">SEO</option>
+          <option value="Social Media">Social Media</option>
+          <option value="Web Design and Development">
+            Web Design and Development
+          </option>
+          <option value="Branding and Creatives">Branding and Creatives</option>
+          <option value="Marketing Intelligence">Marketing Intelligence</option>
+        </select>
+              </div>
+
+              <div className="mb-[30px]">
+                <textarea
+          name="MultiLine"
+
+          onChange={handleChange}
+          maxLength={65535}
+                  placeholder="Enter your message"
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+        />
+              </div>
+
+              <div>
+                <p className="font-19 mb-5 md:mb-[50px]">
+                  In submitting this form, you are agreeing to <Link href="/privacy-policy">Privacy Policy</Link>.
+                </p>
+              </div>
+
+              <button
+                type="submit"
+                className="w-fit rounded-[55px] bg-primary  px-[50px] py-[20px] font-medium text-white transition duration-300  ease-in-out hover:bg-dgray hover:text-primary"
+              >
+                Submit
+              </button>
+            </form>
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ const BlogDetails = () => {
         >
           <div className="flex  flex-col items-center gap-4 border-b pb-[50px] pt-[20px] sm:pt-[50px] lg:pt-[130px] xl:grid">
             <div className="h-full   w-full text-font80">
-              <h1 className="title-80">Blogs</h1>
+              <h1 className="title-65">{blog.list_heading}</h1>
             </div>
           </div>
         </motion.div>

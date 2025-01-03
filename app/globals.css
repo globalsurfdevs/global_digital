@@ -626,8 +626,19 @@ body {
     margin: 20px 0;
   }
 }
+.fn2{font-size:2rem !important;margin-bottom: 0px !important;}
+.mn-dv-blg .ln-bn {
+  margin: 50px 0;
+}
 @media screen and (max-width: 767px) {
-
+  .mn-dv-blg .ln-bn {
+    margin: 10px 0 20px 0;
+}
+  .mn-dv-blg  img {
+        border-radius: 10px;
+    }
+    .fn2{font-size:1rem !important; }
+    .mn-dv-blg .flx-vnt{padding: 0px;}
 .maincts svg{width: 15px;}
   .mn-dv-blg .flx-vnt {
     grid-template-columns: repeat(1, 1fr);
