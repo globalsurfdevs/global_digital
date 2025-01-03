@@ -21,6 +21,7 @@ import RichEditor from '../RichEditor/RichEditor'
 import { CaseStudyInputs } from '@/app/types/CaseStudyInputs'
 import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
 import { RxCross2 } from "react-icons/rx";
+import { generateSlugForCaseStudy } from '@/app/helpers/generateSlug'
 
 
 type addingHighlights = {
@@ -75,7 +76,8 @@ const AdminIndiCaseStudy = ({ editMode }: {
         setValue,
         control,
         formState: { errors },
-        setError
+        setError,
+        watch,
     } = useForm<CaseStudyInputs>()
 
 
@@ -95,7 +97,10 @@ const AdminIndiCaseStudy = ({ editMode }: {
         formData.append("overcomingChallenges", data.overcomingChallenges);
         formData.append("achievements", data.achievements);
         formData.append("industry", data.industry)
-        formData.append("companyName",data.companyName)
+        formData.append("companyName", data.companyName)
+        formData.append("slug", data.slug)
+        formData.append("metaTitle", data.metaTitle)
+        formData.append("metaDescription", data.metaDescription)
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -126,10 +131,10 @@ const AdminIndiCaseStudy = ({ editMode }: {
             }
         }
 
-        if(data.story=="<p><br></p>" || data.story=="<p>undefined</p>"){
-            setError('story',{
-                type:"manual",
-                message:"Story is required"
+        if (data.story == "<p><br></p>" || data.story == "<p>undefined</p>") {
+            setError('story', {
+                type: "manual",
+                message: "Story is required"
             })
             setIsSubmitting(false)
             return;
@@ -224,7 +229,10 @@ const AdminIndiCaseStudy = ({ editMode }: {
                         setValue("achievements", data.caseStudy[0].achievements)
                         setValue("description", data.caseStudy[0].description)
                         setValue("tag", data.caseStudy[0].tag)
-                        setValue("companyName",data.caseStudy[0].companyName)
+                        setValue("companyName", data.caseStudy[0].companyName)
+                        setValue("slug", data.caseStudy[0].slug)
+                        setValue("metaTitle", data.caseStudy[0].metaTitle)
+                        setValue("metaDescription", data.caseStudy[0].metaDescription)
 
                         // if (data.portfolio[0].categories) {
 
@@ -295,29 +303,29 @@ const AdminIndiCaseStudy = ({ editMode }: {
     //     setCategories(importedCategories)
     // }, [])
 
-        useEffect(() => {
-            const fetchCategories = async () => {
-                try {
-                    const url = `/api/categories`;
-                    console.log("Here")
-                    const response = await fetch(url);
-                    const data = await response.json();
-                    console.log(data);
-                    if (!data.error) {
-                        setCategories(data.categories)
-                    } else {
-                        toast.error(data.error)
-                    }
-                    // Redirect to news list page
-                } catch (error) {
-                    console.error("Error fetching categories:", error);
-                    toast.error("Failed to fetch categories. Please try again.");
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const url = `/api/categories`;
+                console.log("Here")
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data);
+                if (!data.error) {
+                    setCategories(data.categories)
+                } else {
+                    toast.error(data.error)
                 }
+                // Redirect to news list page
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+                toast.error("Failed to fetch categories. Please try again.");
             }
-    
-            fetchCategories()
-    
-        }, [refetchCategorySection])
+        }
+
+        fetchCategories()
+
+    }, [refetchCategorySection])
 
 
     const handleInputChange = (customId: string, field: string, value: string) => {
@@ -407,6 +415,12 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
     const handleAddCategory = async () => {
         try {
+
+            if (category.trim() == "" || !category || category == undefined) {
+                toast.error("Please provide a category")
+                return;
+            }
+
             const formData = new FormData()
             formData.append("category", category)
 
@@ -446,6 +460,10 @@ const AdminIndiCaseStudy = ({ editMode }: {
             console.log("Removing category failed:", error)
         }
     }
+
+    useEffect(() => {
+            setValue("slug", generateSlugForCaseStudy(watch("heading")))
+        }, [watch("heading")])
 
 
     const modules = {
@@ -976,7 +994,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
                     </div>
 
                     <div>
-                    <div className='flex gap-1 items-center'>
+                        <div className='flex gap-1 items-center'>
                             <Label content='Available Categories' className='' />
                             <div className='bg-green-500 size-5 rounded-full flex items-center justify-center'>
                                 <FaPlus className='text-sm' onClick={() => setCategoryModal(true)} />
@@ -990,8 +1008,8 @@ const AdminIndiCaseStudy = ({ editMode }: {
                                 <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group'>
                                     <span className='group-hover:opacity-50'>{item.name}</span>
                                     <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
-                                        <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item.id)}/>
-                                        <RxCross2 onClick={()=>handleDeleteCategory(item.id)}/>
+                                        <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item.id)} />
+                                        {/* <RxCross2 onClick={()=>handleDeleteCategory(item.id)}/> */}
                                     </div>
                                 </div>
                             ))}
@@ -1057,6 +1075,23 @@ const AdminIndiCaseStudy = ({ editMode }: {
                         <input type="file" id="logo" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError: setLogoError, setImageFile: setLogoFile, setPreviewImage: setPreviewLogo })} />
                     </div>
                     {logoError && <p className="mt-1 text-sm text-red-600">{logoError}</p>}
+                </div>
+
+                <div className='w-full flex flex-col gap-2 mt-15'>
+                    <Label content='Slug' />
+                    <input type="text" {...register("slug")} readOnly className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                </div>
+
+                <div className='grid grid-cols-2 mt-5 gap-5'>
+                    <div className='w-full flex flex-col gap-2'>
+                        <Label content='meta-title' />
+                        <input type="text" {...register("metaTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                    </div>
+
+                    <div className='w-full flex flex-col gap-2'>
+                        <Label content='meta-description' />
+                        <input type="text" {...register("metaDescription")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                    </div>
                 </div>
 
                 <div className='mt-25 pb-5'>

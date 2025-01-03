@@ -8,6 +8,7 @@ export async function GET(req: NextRequest) {
         console.log("This worlds")
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
+        const slug = searchParams.get("slug")
 
         console.log(id)
 
@@ -25,19 +26,34 @@ export async function GET(req: NextRequest) {
                 .eq('companyId', id)
 
             return NextResponse.json({ caseStudy, caseStudyHighlights });
+        } else if (slug) {
+
+            let { data: caseStudy, error } = await supabase
+                .from('caseStudy')
+                .select("*")
+                .eq('slug', slug)
+
+            if (caseStudy && caseStudy.length > 0) {
+                let { data: caseStudyHighlights } = await supabase
+                    .from('caseStudyHighlights')
+                    .select("*")
+                    .eq('companyId', caseStudy[0].id)
+
+                return NextResponse.json({ caseStudy, caseStudyHighlights });
+            }
+        } else {
+            let { data: caseStudy, error } = await supabase
+                .from('caseStudy')
+                .select('*')
+
+
+            if (!caseStudy) {
+                return NextResponse.json({ error: "Case study not found" }, { status: 404 });
+            }
+
+            return NextResponse.json({ caseStudy });
         }
 
-
-        let { data: caseStudy, error } = await supabase
-            .from('caseStudy')
-            .select('*')
-
-
-        if (!caseStudy) {
-            return NextResponse.json({ error: "Case study not found" }, { status: 404 });
-        }
-
-        return NextResponse.json({ caseStudy });
 
     } catch (error) {
         console.log("error getting case study:", error);
@@ -74,13 +90,18 @@ export async function POST(req: NextRequest) {
     const achievements = formData.get("achievements") as string;
     const image1 = formData.get("image1") as string;
     const image2 = formData.get("image2") as string;
+
+    const slug = formData.get("slug") as string;
+    const metaTitle = formData.get("metaTitle") as string;
+    const metaDescription = formData.get("metaDescription") as string;
+
     // const resultImage1 = formData.get("resultImage1") as File | null
     // const resultImage2 = formData.get("resultImage2") as File | null
 
     // const description = formData.get("description") as string;
     // const tag = formData.get("tag") as string;
     // const addedCategories = formData.get("addedCategories") as string
-    
+
 
     // console.log("description", description)
     // console.log("tag", tag)
@@ -100,7 +121,7 @@ export async function POST(req: NextRequest) {
     let image1Path;
     let image2Path;
     let logoPath;
-    
+
 
 
     // if (resultImage1) {
@@ -192,11 +213,14 @@ export async function POST(req: NextRequest) {
                         achievements,
                         description,
                         tag,
-                        categories:addedCategoriesRaw,
+                        categories: addedCategoriesRaw,
                         image1: image1 == null ? image1Path : image1,
                         image2: image2 == null ? image2Path : image2,
                         logo: logo == null ? logoPath : logo,
-                        companyName
+                        companyName,
+                        slug,
+                        metaTitle,
+                        metaDescription
                     })
                     .eq('id', id)
                     .select()
@@ -223,15 +247,15 @@ export async function POST(req: NextRequest) {
 
                     if (highlights[i].customId.length > 36) {
                         console.log("delete pls")
-                        console.log("deleteData",highlights[i].customId)
+                        console.log("deleteData", highlights[i].customId)
                         const deleteId = highlights[i].customId.slice(0, 36)
                         console.log(deleteId)
                         const { error: deleteError } = await supabase
                             .from('caseStudyHighlights')
                             .delete()
                             .eq('customId', deleteId)
-                        
-                            continue;
+
+                        continue;
                     }
 
                     console.log("no delete")
@@ -262,7 +286,7 @@ export async function POST(req: NextRequest) {
 
 
                 return NextResponse.json({ message: "Case study updated successfully" }, { status: 200 })
-                
+
 
 
 
@@ -297,8 +321,11 @@ export async function POST(req: NextRequest) {
                         logo: logoPath,
                         description,
                         tag,
-                        categories:addedCategoriesRaw,
-                        companyName
+                        categories: addedCategoriesRaw,
+                        companyName,
+                        slug,
+                        metaTitle,
+                        metaDescription
                     },
                 ])
                 .select('id')

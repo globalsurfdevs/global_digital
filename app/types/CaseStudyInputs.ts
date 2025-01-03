@@ -13,6 +13,9 @@ export type CaseStudyInputs = {
     description:string;
     tag:string;
     companyName:string;
+    slug:string;
+    metaTitle:string;
+    metaDescription:string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {

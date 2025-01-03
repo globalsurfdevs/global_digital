@@ -444,6 +444,12 @@ const AdminIndiPortfolio = ({ editMode }: {
 
     const handleAddCategory = async () => {
         try {
+            
+            if(category.trim()=="" || !category || category==undefined){
+                toast.error("Please provide a category")
+                return;
+            }
+
             const formData = new FormData()
             formData.append("category", category)
 
@@ -1179,7 +1185,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     <span className='group-hover:opacity-50'>{item.name}</span>
                                     <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
                                         <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item.id)} />
-                                        <RxCross2 onClick={() => handleDeleteCategory(item.id)} />
+                                        {/* <RxCross2 onClick={() => handleDeleteCategory(item.id)} /> */}
                                     </div>
                                 </div>
                             ))}

@@ -1,4 +1,5 @@
 export type Portfolio = {
+    heading: string;
     id:number;
     companyName:string;
     industry:string;

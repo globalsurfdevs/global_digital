@@ -14,12 +14,12 @@ import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
 const page = () => {
   const [data,setData] = useState<{caseStudy:CaseStudy[] , caseStudyHighlights:CaseStudyHighlights[] } | null>(null)
 
-  const {id} = useParams()
+  const {heading} = useParams()
 
   useEffect(()=>{
     const fetchCaseStudyData = async() =>{
       try {
-        const response = await fetch(`/api/case-study?id=${id}`)
+        const response = await fetch(`/api/case-study?slug=${heading}`)
         if(response.ok){
           const data = await response.json()
           console.log(data)

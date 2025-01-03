@@ -7,3 +7,13 @@ export const generateSlugForPortfolio = (name: string) => {
         .replace(/ /g, '-')          // Replace spaces with hyphens
         .toLowerCase();              // Convert to lowercase
 };
+
+
+export const generateSlugForCaseStudy = (heading:string) =>{
+    return heading
+        .replace(/,/g, '') // Replace commas with hyphens
+        .replace(/ /g, '-')
+        .replace(/\./g, '')
+        .replace(/’/g,'')
+        .toLowerCase();
+}

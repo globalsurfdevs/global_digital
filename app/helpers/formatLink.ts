@@ -7,3 +7,13 @@ export const formatLinkForPortfolio = (name: string) => {
         .replace(/ /g, '-')          // Replace spaces with hyphens
         .toLowerCase();              // Convert to lowercase
 };
+
+
+export const formatLinkForCaseStudy = (news:string) =>{
+    return news
+        .replace(/,/g, '') // Replace commas with hyphens
+        .replace(/ /g, '-')
+        .replace(/\./g, '')
+        .replace(/’/g,'')
+        .toLowerCase();
+}

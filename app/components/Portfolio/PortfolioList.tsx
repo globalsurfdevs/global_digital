@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
-import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
+import { formatLinkForPortfolio ,formatLinkForCaseStudy} from "@/app/helpers/formatLink";
+import { CaseStudy } from "@/app/types/CaseStudy";
 
 const PortfolioList = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
@@ -124,7 +125,7 @@ const PortfolioList = () => {
                     </div>
                     </div>
 
-                    <Link href={item.type=="case-study" ? `/case-study/${item.id}` : `/portfolio-details/${formatLinkForPortfolio(item.companyName)}`}
+                    <Link href={item.type=="case-study" ? `/case-study/${formatLinkForCaseStudy(item.heading)}` : `/portfolio-details/${formatLinkForPortfolio(item.companyName)}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
                   </div>
