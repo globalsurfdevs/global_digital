@@ -16,9 +16,7 @@ const Result = ({
     portfolio: Portfolio[];
   } | null;
 }) => {
-  if(data?.portfolio[0].result!=="undefined" && data?.portfolio[0].result!=="<p>undefined</p>"){
-    console.log("If work")
-  }
+  console.log(data)
 
   return (
     <div className="container mx-auto py-4">
