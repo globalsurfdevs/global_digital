@@ -19,6 +19,7 @@ import { MdOutlineSwapHorizontalCircle } from "react-icons/md";
 import { checkLogoAndBanner } from '@/app/helpers/checkLogoAndBanner'
 import RichEditor from '../RichEditor/RichEditor'
 import { RxCross2 } from "react-icons/rx";
+import { generateSlugForPortfolio } from '@/app/helpers/generateSlug'
 
 
 type Inputs = {
@@ -34,6 +35,9 @@ type Inputs = {
     result: string;
     description: string;
     tag: string;
+    slug: string;
+    metaTitle: string;
+    metaDescription: string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {
@@ -68,9 +72,9 @@ const AdminIndiPortfolio = ({ editMode }: {
 
     const [modalOpen, setModalOpen] = useState(false)
     const [categoryModal, setCategoryModal] = useState(false)
-    const [category,setCategory] = useState("")
+    const [category, setCategory] = useState("")
     const [refetch, setRefetch] = useState(false)
-    const [refetchCategorySection,setRefetchCategorySection] = useState(false)
+    const [refetchCategorySection, setRefetchCategorySection] = useState(false)
     const [section2Image1, setSection2Image1] = useState<null | File>(null)
     const [section2Image2, setSection2Image2] = useState<null | File>(null)
     const [section2Image1Preview, setSection2Image1Preview] = useState<null | string>(null)
@@ -102,6 +106,7 @@ const AdminIndiPortfolio = ({ editMode }: {
         handleSubmit,
         setValue,
         control,
+        watch,
         formState: { errors },
     } = useForm<Inputs>()
 
@@ -121,6 +126,7 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("challenge", data.challenge);
         formData.append("solutions", data.solutions);
         formData.append("result", data.result);
+        formData.append("slug", data.slug)
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -142,6 +148,8 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("addedCategories", JSON.stringify(addedCategories))
         formData.append("description", data.description)
         formData.append("tag", data.tag)
+        formData.append("metaTitle", data.metaTitle)
+        formData.append("metaDescription", data.metaDescription)
 
         if (!previewImage || !previewLogo) {
             const check = checkLogoAndBanner(imageFile, setImageError, logoFile, setLogoError)
@@ -255,6 +263,9 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("result", data.portfolio[0].result)
                         setValue("description", data.portfolio[0].description)
                         setValue("tag", data.portfolio[0].tag)
+                        setValue("slug", data.portfolio[0].slug)
+                        setValue("metaTitle", data.portfolio[0].metaTitle)
+                        setValue("metaDescription", data.portfolio[0].metaDescription)
 
                         if (data.portfolio[0].categories) {
 
@@ -316,9 +327,9 @@ const AdminIndiPortfolio = ({ editMode }: {
 
     }, [refetch])
 
-    // useEffect(() => {
-    //     setCategories(importedCategories)
-    // }, [])
+    useEffect(() => {
+        setValue("slug", generateSlugForPortfolio(watch("companyName")))
+    }, [watch("companyName")])
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -431,47 +442,47 @@ const AdminIndiPortfolio = ({ editMode }: {
     }
 
 
-   const handleAddCategory = async() =>{
-    try {
-        const formData = new FormData()
-        formData.append("category",category)
+    const handleAddCategory = async () => {
+        try {
+            const formData = new FormData()
+            formData.append("category", category)
 
-        const response = await fetch('/api/categories',{
-            method:"POST",
-            body:formData
-        })
-        if(response.ok){
-            setRefetchCategorySection((prev)=>!prev)
-            setCategory("")
-            setCategoryModal(false)
-        }else{
-            toast.error("Adding category failed")
+            const response = await fetch('/api/categories', {
+                method: "POST",
+                body: formData
+            })
+            if (response.ok) {
+                setRefetchCategorySection((prev) => !prev)
+                setCategory("")
+                setCategoryModal(false)
+            } else {
+                toast.error("Adding category failed")
+            }
+        } catch (error) {
+            console.log("Adding category failed:", error)
         }
-    } catch (error) {
-        console.log("Adding category failed:",error)
     }
-   }
 
-   const handleDeleteCategory = async(id:number) =>{
-    try {
-        const formData = new FormData()
-        formData.append("id",id.toString())
+    const handleDeleteCategory = async (id: number) => {
+        try {
+            const formData = new FormData()
+            formData.append("id", id.toString())
 
-        const response = await fetch('/api/categories',{
-            method:"DELETE",
-            body:formData
-        })
-        if(response.ok){
-            const data = await response.json()
-            toast.success(data.message)
-            setRefetchCategorySection((prev)=>!prev)
-        }else{
-            toast.error("Removing category failed")
+            const response = await fetch('/api/categories', {
+                method: "DELETE",
+                body: formData
+            })
+            if (response.ok) {
+                const data = await response.json()
+                toast.success(data.message)
+                setRefetchCategorySection((prev) => !prev)
+            } else {
+                toast.error("Removing category failed")
+            }
+        } catch (error) {
+            console.log("Removing category failed:", error)
         }
-    } catch (error) {
-        console.log("Removing category failed:",error)
     }
-   }
 
 
     return (
@@ -697,7 +708,7 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                                 <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                                     <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                                    
+
 
                                         <div className='w-full'>
                                             <label>Category Name</label>
@@ -1167,8 +1178,8 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group min-w-20 flex justify-center'>
                                     <span className='group-hover:opacity-50'>{item.name}</span>
                                     <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
-                                        <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item.id)}/>
-                                        <RxCross2 onClick={()=>handleDeleteCategory(item.id)}/>
+                                        <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item.id)} />
+                                        <RxCross2 onClick={() => handleDeleteCategory(item.id)} />
                                     </div>
                                 </div>
                             ))}
@@ -1232,6 +1243,30 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <input type="file" id="logo" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError: setLogoError, setImageFile: setLogoFile, setPreviewImage: setPreviewLogo })} />
                     </div>
                     {logoError && <p className="mt-1 text-sm text-red-600">{logoError}</p>}
+                </div>
+
+                <div className='w-full flex flex-col gap-2 mt-15'>
+                    <div>
+                        <Label content='slug' />
+                        <input type="text" {...register("slug")} readOnly className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+
+                    </div>
+
+                </div>
+
+                <div className='grid grid-cols-2 gap-5 mt-5'>
+                    <div>
+                        <Label content='meta-title' />
+                        <input type="text" {...register("metaTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+
+                    </div>
+
+                    <div>
+                        <Label content='meta-description' />
+                        <input type="text" {...register("metaDescription")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+
+                    </div>
+
                 </div>
 
                 <div className='mt-25 pb-5'>

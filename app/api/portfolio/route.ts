@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
         console.log("This worlds")
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
-
+        const slug = searchParams.get("slug")
         const userType = req.headers.get('x-auth-type')
 
         console.log(id)
@@ -28,37 +28,58 @@ export async function GET(req: NextRequest) {
                 .eq('companyId', id)
 
             return NextResponse.json({ portfolio, portfolioHighlights });
-        }
+        } else if (slug) {
 
-        if (userType !== "admin") {
-            let { data: portfolio, } = await supabase
+            let { data: portfolio, error } = await supabase
                 .from('portfolios')
-                .select('*')
+                .select("*")
+                .eq('slug', slug)
+
+            if (portfolio && portfolio.length > 0) {
+                let { data: portfolioHighlights } = await supabase
+                    .from('portfolioHighlights')
+                    .select("*")
+                    .eq('companyId', portfolio[0].id)
+                    
+                    console.log(portfolio,"PortfolioH",portfolioHighlights)
 
 
-            let { data: caseStudy } = await supabase
-                .from('caseStudy')
-                .select('*')
+                    return NextResponse.json({ portfolio, portfolioHighlights });
+            }
 
 
-            // if (!portfolio) {
-            //     return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
-            // }
-
-            const combinedData = [...(portfolio || []), ...(caseStudy?.map((item) => ({ ...item, type: "case-study" })) || [])]
-
-            return NextResponse.json({ combinedData });
         } else {
-            let { data: portfolio, } = await supabase
-                .from('portfolios')
-                .select('*')
-            
-                if(portfolio){
+            if (userType !== "admin") {
+                let { data: portfolio, } = await supabase
+                    .from('portfolios')
+                    .select('*')
+
+
+                let { data: caseStudy } = await supabase
+                    .from('caseStudy')
+                    .select('*')
+
+
+                // if (!portfolio) {
+                //     return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
+                // }
+
+                const combinedData = [...(portfolio || []), ...(caseStudy?.map((item) => ({ ...item, type: "case-study" })) || [])]
+
+                return NextResponse.json({ combinedData });
+            } else {
+                let { data: portfolio, } = await supabase
+                    .from('portfolios')
+                    .select('*')
+
+                if (portfolio) {
                     return NextResponse.json({ portfolio });
-                }else{
-                    return NextResponse.json({error:"Fetching portfolio failed"})
+                } else {
+                    return NextResponse.json({ error: "Fetching portfolio failed" })
                 }
+            }
         }
+
 
 
     } catch (error) {
@@ -98,10 +119,15 @@ export async function POST(req: NextRequest) {
     const tag = formData.get("tag") as string;
     const addedCategories = formData.get("addedCategories") as string
     const logo = formData.get("logo") as string
+    const slug = formData.get("slug") as string
+    const metaTitle = formData.get("metaTitle") as string
+    const metaDescription = formData.get("metaDescription") as string
 
     console.log("description", description)
     console.log("tag", tag)
     console.log("added", addedCategories)
+
+
 
     let addedCategoriesRaw;
     if (addedCategories) {
@@ -221,7 +247,10 @@ export async function POST(req: NextRequest) {
                         tag,
                         description,
                         categories: addedCategoriesRaw,
-                        logo: logo == null ? logoPath : logo
+                        logo: logo == null ? logoPath : logo,
+                        slug,
+                        metaTitle,
+                        metaDescription
                     })
                     .eq('id', id)
                     .select()
@@ -254,7 +283,7 @@ export async function POST(req: NextRequest) {
                             .delete()
                             .eq('customId', deleteId)
 
-                            continue;
+                        continue;
                     }
 
                     let { data: portfolioHighlight, error } = await supabase
@@ -320,7 +349,10 @@ export async function POST(req: NextRequest) {
                         tag,
                         description,
                         categories: addedCategoriesRaw,
-                        logo: logoPath
+                        logo: logoPath,
+                        slug,
+                        metaTitle,
+                        metaDescription
                     },
                 ])
                 .select('id')
