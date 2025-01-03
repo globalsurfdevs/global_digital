@@ -7,56 +7,80 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 const images = [
   {
-    src: "../../assets/social-media-marketing/s-9.png",
-    text: "Telal",
+    src: "../../assets/social-media-marketing/clients/s-1.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-1.png",
-    text: "Gulf Cryo",
+    src: "../../assets/social-media-marketing/clients/s-2.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-2.png",
-    text: "City Marine",
+    src: "../../assets/social-media-marketing/clients/s-3.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-3.png",
-    text: "FRESCO",
+    src: "../../assets/social-media-marketing/clients/s-4.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-4.png",
-    text: "City Marine",
+    src: "../../assets/social-media-marketing/clients/s-5.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-5.png",
-    text: "Telal",
+    src: "../../assets/social-media-marketing/clients/s-6.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-6.png",
-    text: "Gulf Cryo",
+    src: "../../assets/social-media-marketing/clients/s-7.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-7.png",
-    text: "Telal",
+    src: "../../assets/social-media-marketing/clients/s-8.jpg",
+
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/s-8.png",
-    text: "Gulf Cryo",
+    src: "../../assets/social-media-marketing/clients/s-9.jpg",
+
+    subTxt: "Social Media Post",
+  },
+  {
+    src: "../../assets/social-media-marketing/clients/s-10.jpg",
+
+    subTxt: "Social Media Post",
+  },
+  {
+    src: "../../assets/social-media-marketing/clients/s-11.jpg",
+
+    subTxt: "Social Media Post",
+  },
+  {
+    src: "../../assets/social-media-marketing/clients/s-12.jpg",
+
+    subTxt: "Social Media Post",
+  },
+  {
+    src: "../../assets/social-media-marketing/clients/s-13.jpg",
+
+    subTxt: "Social Media Post",
+  },
+  {
+    src: "../../assets/social-media-marketing/clients/s-14.jpg",
+
     subTxt: "Social Media Post",
   },
 ];
 
 const Ourworks = () => {
-
   return (
-    <div className="flex flex-col  py-[50px] lg:pt-[110px] lg:pb-[80px]">
+    <div className="flex flex-col  py-[50px] lg:pb-[80px] lg:pt-[110px]">
       <div className="container  mx-auto  ">
         <motion.div
           initial="hidden"
@@ -71,9 +95,7 @@ const Ourworks = () => {
             }, // Slide up and fade in
           }}
         >
-          <h2 className="title-65 mb-5 md:mb-[35px]">
-          Our Works
-          </h2>
+          <h2 className="title-65 mb-5 md:mb-[35px]">Our Works</h2>
         </motion.div>
         <motion.div
           initial="hidden"
@@ -125,17 +147,14 @@ const Ourworks = () => {
               className="custom-swiper"
             >
               {images.map((image, index) => (
-                <SwiperSlide
-                  key={index}
-                  className={`custom-swiper-slide `}
-                >
+                <SwiperSlide key={index} className={`custom-swiper-slide `}>
                   <div className="custom-slide">
                     <img
                       src={image.src}
                       alt={`Slide ${index}`}
                       className="custom-image"
                     />
-                    <h3 className="text-30 mt-5">{image.text}</h3>
+                    {/* <h3 className="text-30 mt-5">{image.text}</h3> */}
                     {/* <p className="custom-para">{image.subTxt}</p> */}
                   </div>
                 </SwiperSlide>
