@@ -11,7 +11,7 @@ export const boostEngage = {
     },
     {
       id: 2,
-      icon: assets.boostseo2,
+      icon: assets.boostseo21,
       title: "Drive Quality Traffic to Your Website  ",
     },
     {
