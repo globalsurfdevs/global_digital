@@ -29,7 +29,7 @@ const AboutGlobal = () => {
           }, // Slide up and fade in
         }}
       >
-        <div className="mb-8 flex flex-col gap-5 border-b py-[50px] lg:mb-8  lg:pb-[150px] lg:pt-[136px]">
+        <div className="mb-[50px] flex flex-col gap-5 border-b py-[50px] lg:mb-8  lg:pb-[150px] lg:pt-[136px]">
           <motion.div
             initial="initial"
             animate={isInView ? "animate" : "initial"}

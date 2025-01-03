@@ -21,7 +21,7 @@ const SectionTwo = () => {
       >
         {/* <Image src={aboutbnnr} alt="about" className="w-full" /> */}
         <video
-        className="  w-full h-[750px] object-cover  "
+        className="  w-full h-[350px] xl:h-[750px] object-cover  "
         autoPlay
         loop
         muted

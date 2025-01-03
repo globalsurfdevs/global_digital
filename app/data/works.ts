@@ -32,7 +32,7 @@ export const workSvgs = [
     {
         icon:"/assets/works/manufacturing.svg",
         alt:"icon",
-        text:"Manufacturing",
+        text:"Engineering",
         width: "27",
         height:"28"
     },

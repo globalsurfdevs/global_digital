@@ -26,8 +26,7 @@ const Ourportfolio = () => {
                                       visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                     }}
                           >
-                      <h2 className='title-65 mb-5 md:mb-[35px]'>Crafting Dreams,<br className="hidden md:block "></br>
-                      Check Out Our Portfolio</h2>
+                      <h2 className='title-65 mb-5 md:mb-[35px]'>Featured works</h2>
          </motion.div>
         <motion.div
           initial="hidden"

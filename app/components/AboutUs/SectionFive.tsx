@@ -58,7 +58,7 @@ const SectionFive = () => {
         }}
       >
         <div className="container mx-auto py-4">
-          <div className="lg:pb-[150px] pb-[50px] lg:pt-[138px] pt-[30px] border-b flex flex-col   ">
+          <div className="lg:pb-[150px] pb-[50px] lg:pt-[138px] pt-[50px]  flex flex-col   ">
             <h2 className="title-65 mb-4 lg:mb-7">
               Ready to Create the Extraordinary? Let’s Go!
             </h2>

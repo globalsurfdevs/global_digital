@@ -11,7 +11,7 @@ const Ready = ({data}:{
     caseStudy:CaseStudy[]
   }|null
 }) => {
-  
+
   if(!data){
     return null
   }
@@ -27,7 +27,7 @@ const Ready = ({data}:{
                                 visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                 }}
                                       >
-        <div className='pt-[50px] lg:pt-[100px] grid grid-cols-2 gap-[20px]'>
+        <div className=' grid grid-cols-2 gap-[20px]'>
 
             {data.caseStudy[0].image1 && <div className=''>
                 <Image src={data.caseStudy[0].image1} alt='image1' width={800} height={500}/>
