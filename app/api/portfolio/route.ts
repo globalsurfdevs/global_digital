@@ -10,6 +10,8 @@ export async function GET(req: NextRequest) {
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
 
+        const userType = req.headers.get('x-auth-type')
+
         console.log(id)
 
         if (id) {
@@ -28,23 +30,36 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ portfolio, portfolioHighlights });
         }
 
-        let { data: portfolio, } = await supabase
-            .from('portfolios')
-            .select('*')
+        if (userType !== "admin") {
+            let { data: portfolio, } = await supabase
+                .from('portfolios')
+                .select('*')
 
 
-        let { data: caseStudy } = await supabase
-            .from('caseStudy')
-            .select('*')
+            let { data: caseStudy } = await supabase
+                .from('caseStudy')
+                .select('*')
 
 
-        // if (!portfolio) {
-        //     return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
-        // }
+            // if (!portfolio) {
+            //     return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
+            // }
 
-        const combinedData = [...(portfolio||[]),...(caseStudy?.map((item)=>({...item,type:"case-study"}))||[])]
+            const combinedData = [...(portfolio || []), ...(caseStudy?.map((item) => ({ ...item, type: "case-study" })) || [])]
 
-        return NextResponse.json({ combinedData });
+            return NextResponse.json({ combinedData });
+        } else {
+            let { data: portfolio, } = await supabase
+                .from('portfolios')
+                .select('*')
+            
+                if(portfolio){
+                    return NextResponse.json({ portfolio });
+                }else{
+                    return NextResponse.json({error:"Fetching portfolio failed"})
+                }
+        }
+
 
     } catch (error) {
         console.log("error getting portfolio:", error);

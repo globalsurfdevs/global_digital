@@ -14,7 +14,11 @@ const AdminPortfolio = () => {
     useEffect(() => {
         const fetchPortfolios = async () => {
             try {
-                const response = await fetch(`/api/portfolio`);
+                const response = await fetch(`/api/portfolio`,{
+                    headers:{
+                        'X-auth-type':'admin'
+                    }
+                });
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data.portfolio)
