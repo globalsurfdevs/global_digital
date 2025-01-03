@@ -17,7 +17,7 @@ const Tours = () => {
           if (response.ok) {
             const data = await response.json();
             console.log(data.portfolio);
-            setPortfolios(data.portfolio);
+            setPortfolios(data.combinedData);
           } else {
             console.error("Failed to fetch portfolio data");
           }
