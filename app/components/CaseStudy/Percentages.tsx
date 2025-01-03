@@ -10,7 +10,7 @@ const Percentages = ({data}:{
     }|null
 }) => {
   return (
-          <motion.div className='bg-black'
+          data && data?.caseStudyHighlights.length > 0 && <motion.div className='bg-black'
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible

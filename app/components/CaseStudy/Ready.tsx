@@ -18,7 +18,7 @@ const Ready = ({data}:{
 
   return (
       <div className='container mx-auto py-4'>
-           <motion.div
+           {data.caseStudy[0].image1 || data.caseStudy[0].image2 ? <motion.div
                               initial="hidden"
                               whileInView="visible"
                               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -29,16 +29,16 @@ const Ready = ({data}:{
                                       >
         <div className='pt-[50px] lg:pt-[100px] grid grid-cols-2 gap-[20px]'>
 
-            <div className=''>
+            {data.caseStudy[0].image1 && <div className=''>
                 <Image src={data.caseStudy[0].image1} alt='image1' width={800} height={500}/>
-            </div>
+            </div>}
 
-            <div className=''>
+            {data.caseStudy[0].image2 && <div className=''>
                 <Image src={data.caseStudy[0].image2} alt='image2' width={800} height={500}/>
-            </div>
+            </div>}
 
               </div>
-              </motion.div>
+              </motion.div> : null }
               <motion.div
                               initial="hidden"
                               whileInView="visible"
