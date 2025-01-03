@@ -124,7 +124,7 @@ const Goals = ({data}:{
         >
           <div className="flex w-full flex-col gap-4   bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
             <div>
-              <h2 className="title-65">Overcoming Challenges</h2>
+              <h2 className="title-65">Solutions</h2>
             </div>
             <div className="pl-4">
               {/* <ul className="flex list-disc flex-col gap-6 text-font19">
@@ -145,7 +145,7 @@ const Goals = ({data}:{
 
           <div className="flex w-full flex-col gap-6  bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
             <div>
-              <h2 className="title-65">Key Achievements</h2>
+              <h2 className="title-65">Results</h2>
             </div>
             <div className="pl-4">
               {/* <ul className="fnt-lexend flex list-disc flex-col gap-4 text-font19">

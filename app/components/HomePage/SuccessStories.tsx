@@ -40,7 +40,7 @@ const SuccessStories = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex flex-col  gap-6 pb-[50px]  pt-6 lg:gap-[50px] lg:pb-[150px] lg:pt-[70px]">
+      <div className="flex flex-col  gap-6 pb-[50px]  pt-[50px] lg:gap-[50px] lg:pb-[150px] lg:pt-[70px]">
         <motion.div
           initial="hidden"
           whileInView="visible"

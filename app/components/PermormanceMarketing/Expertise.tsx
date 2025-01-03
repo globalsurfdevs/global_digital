@@ -59,7 +59,7 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30  titlesp group-hover:text-white transition-colors duration-300">
                             {expertise.title}
                             </p>
 

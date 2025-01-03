@@ -49,7 +49,7 @@ const SectionThree = () => {
           <div className="w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn ">
     {items.map((item, index) => (
       <div key={index} className="border-t last:border-b">
-        <div className="sevsr flex ps-[10px] pe-[10px] lg:ps-[60px] lg:pe-[20px] py-[10px] lg:py-[28px] gap-4 md:gap-7 justify-between items-center lg:gap-10 group items-center hover:translate-x-2 transition-all duration-300 ease-in-out">
+        <div className="sevsr flex ps-[10px] pe-[10px] xl:ps-[60px] lg:pe-[20px] py-[10px] lg:py-[28px] gap-4 md:gap-7 justify-between items-center lg:gap-10 group items-center hover:translate-x-2 transition-all duration-300 ease-in-out">
           <div className="consu">
             <p className="text-small-30 transition-all duration-300 group-hover:text-primary">
               {item.text}
