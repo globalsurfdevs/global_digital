@@ -42,9 +42,11 @@ const HeroSection = ({data}:{
   
               <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
                 <Image
-                  src={assets.seleoLogo}
+                  src={data.caseStudy[0].logo}
                   alt="image"
                   className="w-20 md:w-48"
+                  width={10}
+                  height={10}
                 />
                 <h3 className="text-30 text-gray1">
                   {/* Refreshing, Sparkling, Uplifting */}
