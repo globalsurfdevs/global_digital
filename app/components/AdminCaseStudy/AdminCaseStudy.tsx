@@ -31,9 +31,9 @@ const AdminCaseStudy = () => {
         fetchCaseStudyData()
     }, [refetch])
 
-    const handlePortfolioDelete = async(id:number) =>{
+    const handleCaseStudyDelete = async(id:number) =>{
         try {
-            const response = await fetch(`/api/portfolio?id=${id}`,{
+            const response = await fetch(`/api/case-study?id=${id}`,{
                 method:"DELETE"
             });
                 if (response.ok) {
@@ -72,7 +72,7 @@ const AdminCaseStudy = () => {
                             </Link>
 
                             <div className='justify-start flex h-full p-2 absolute top-5 right-5'>
-                                    <div className='size-5 bg-red-600 rounded-full items-center flex justify-center text-xl text-white' onClick={()=>handlePortfolioDelete(item.id)}><IoIosClose/></div>
+                                    <div className='size-5 bg-red-600 rounded-full items-center flex justify-center text-xl text-white' onClick={()=>handleCaseStudyDelete(item.id)}><IoIosClose/></div>
                                 </div>
 
                         </div>

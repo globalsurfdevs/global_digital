@@ -1,8 +1,18 @@
 "use client";
+import { CaseStudy } from "@/app/types/CaseStudy";
 import { motion } from "framer-motion";
 import React from "react";
+import parse from 'html-react-parser'
 
-const Goals = () => {
+const Goals = ({data}:{
+  data:{
+    caseStudy:CaseStudy[]
+  }|null
+}) => {
+  if(!data){
+    return null
+  }
+
   return (
     <div className="container mx-auto py-4">
       <div className="py-[50px] lg:py-[150px]">
@@ -24,7 +34,7 @@ const Goals = () => {
             <h2 className="title-65">Goals</h2>
           </div>
           <div className=" pt-3 lg:pl-5">
-            <p className="text-19 fnt-lexend text-gray1">
+            {/* <p className="text-19 fnt-lexend text-gray1">
               Innovo Group partnered with Global Surf to achieve several key
               objectives for their website. The primary goal was to create a
               website that visually and thematically aligned with Innovo’s
@@ -32,7 +42,8 @@ const Goals = () => {
               website speed and reduce loading times, enhance user experience to
               retain visitors longer, and increase conversions by attracting
               more new users while maintaining a consistent user base.
-            </p>
+            </p> */}
+            {parse(data.caseStudy[0].goals)}
           </div>
         </motion.div>
         <motion.div
@@ -53,7 +64,7 @@ const Goals = () => {
             <h2 className="title-65">Objectives</h2>
           </div>
           <div className="pt-3 text-font19 lg:pl-5">
-            <p className="text-19 fnt-lexend text-gray1 ">
+            {/* <p className="text-19 fnt-lexend text-gray1 ">
               To address goals, Global Surf conducted an in-depth analysis of
               the website&apos;s performance and speed. We implemented
               structural changes, optimized the code, and compressed media files
@@ -61,7 +72,8 @@ const Goals = () => {
               brand image by incorporating high-quality branding materials,
               ensuring a consistent and professional appearance across all
               touchpoints.
-            </p>
+            </p> */}
+            {parse(data.caseStudy[0].objectives)}
           </div>
         </motion.div>
 
@@ -83,7 +95,7 @@ const Goals = () => {
             <h2 className="title-65">Challenge</h2>
           </div>
           <div className=" pt-3 lg:pl-5">
-            <p className="text-19 fnt-lexend text-gray1">
+            {/* <p className="text-19 fnt-lexend text-gray1">
               Redesigning the website brought several challenges. Migrating from
               an outdated CMS without disruptions was complex, especially with
               its limitations. Ensuring cross-browser and mobile compatibility,
@@ -91,7 +103,8 @@ const Goals = () => {
               materials, for a consistent brand experience were all essential.
               With a product launch looming, we delivered efficiently within
               tight deadlines.
-            </p>
+            </p> */}
+            {parse(data.caseStudy[0].challenge)}
           </div>
         </motion.div>
 
@@ -114,7 +127,7 @@ const Goals = () => {
               <h2 className="title-65">Overcoming Challenges</h2>
             </div>
             <div className="pl-4">
-              <ul className="flex list-disc flex-col gap-6 text-font19">
+              {/* <ul className="flex list-disc flex-col gap-6 text-font19">
                 <li className="fnt-lexend text-gray1">
                   Implemented a more robust website platform to enhance
                   scalability and security, resulting in a 50% reduction in
@@ -125,7 +138,8 @@ const Goals = () => {
                   resolve issues that previously compromised the secure browsing
                   experience.
                 </li>
-              </ul>
+              </ul> */}
+              {parse(data.caseStudy[0].overcomingChallenges)}
             </div>
           </div>
 
@@ -134,7 +148,7 @@ const Goals = () => {
               <h2 className="title-65">Key Achievements</h2>
             </div>
             <div className="pl-4">
-              <ul className="fnt-lexend flex list-disc flex-col gap-4 text-font19">
+              {/* <ul className="fnt-lexend flex list-disc flex-col gap-4 text-font19">
                 <li className="text-gray1">
                   Optimized keywords to drive a 107.3% increase in new user
                   traffic and a 125.5% boost in page views.
@@ -148,7 +162,8 @@ const Goals = () => {
                   Revamped marketing materials with updated design and messaging
                   to boost brand visibility and strengthen brand perception.
                 </li>
-              </ul>
+              </ul> */}
+              {parse(data.caseStudy[0].achievements)}
             </div>
           </div>
         </motion.div>

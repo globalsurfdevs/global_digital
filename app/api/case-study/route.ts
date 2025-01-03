@@ -364,3 +364,36 @@ export async function POST(req: NextRequest) {
     }
 
 }
+
+
+export async function DELETE(req: NextRequest) {
+    const { searchParams } = new URL(req.url)
+    const id = searchParams.get("id")
+
+    try {
+
+
+        const { error } = await supabase
+            .from('caseStudy')
+            .delete()
+            .eq('id', id)
+
+
+
+        if (!error) {
+
+            return NextResponse.json({ message: "Removed case study successfully" }, { status: 200 })
+
+        } else if (error) {
+            return NextResponse.json({ error: "Removing case study failed" }, { status: 400 })
+        } else {
+            return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
+        }
+
+
+    } catch (error) {
+        console.log("Removing case study failed", error)
+        return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
+    }
+
+}

@@ -75,6 +75,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
         setValue,
         control,
         formState: { errors },
+        setError
     } = useForm<CaseStudyInputs>()
 
 
@@ -125,6 +126,15 @@ const AdminIndiCaseStudy = ({ editMode }: {
             }
         }
 
+        if(data.story=="<p><br></p>" || data.story=="<p>undefined</p>"){
+            setError('story',{
+                type:"manual",
+                message:"Story is required"
+            })
+            setIsSubmitting(false)
+            return;
+        }
+
 
 
 
@@ -159,7 +169,6 @@ const AdminIndiCaseStudy = ({ editMode }: {
             if (image) {
                 formData.append("image2", image)
             }
-
         }
 
 

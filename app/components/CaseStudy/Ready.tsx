@@ -4,8 +4,18 @@ import { assets } from '@/public/assets/assets'
 import Image from 'next/image'
 import Button from '../Button/Button'
 import React from 'react'
+import { CaseStudy } from '@/app/types/CaseStudy';
 
-const Ready = () => {
+const Ready = ({data}:{
+  data:{
+    caseStudy:CaseStudy[]
+  }|null
+}) => {
+  
+  if(!data){
+    return null
+  }
+
   return (
       <div className='container mx-auto py-4'>
            <motion.div
@@ -20,11 +30,11 @@ const Ready = () => {
         <div className='pt-[50px] lg:pt-[100px] grid grid-cols-2 gap-[20px]'>
 
             <div className=''>
-                <Image src={assets.seleo1} alt='image1'/>
+                <Image src={data.caseStudy[0].image1} alt='image1' width={800} height={500}/>
             </div>
 
             <div className=''>
-                <Image src={assets.seleo2} alt='image2'/>
+                <Image src={data.caseStudy[0].image2} alt='image2' width={800} height={500}/>
             </div>
 
               </div>

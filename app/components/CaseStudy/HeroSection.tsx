@@ -3,8 +3,18 @@ import { motion } from "framer-motion";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import { CaseStudy } from "@/app/types/CaseStudy";
+import parse from 'html-react-parser'
 
-const HeroSection = () => {
+const HeroSection = ({data}:{
+  data:{
+    caseStudy:CaseStudy[],
+  }|null
+}) => {
+
+  console.log(data)
+  if(!data){
+    return null
+  }
 
     return (
       <>
@@ -25,7 +35,8 @@ const HeroSection = () => {
             <div className="flex flex-col items-center gap-2 border-b pb-10 pt-[20px] sm:pt-[50px] lg:grid lg:grid-cols-8 lg:pt-[130px]">
               <div className="h-full w-full text-font80 lg:col-span-5 lg:text-left xl:col-span-5">
                 <h1 className="title-80">
-                  How Seleo Achieved 10x Revenue Growth
+                  {/* How Seleo Achieved 10x Revenue Growth */}
+                  {data.caseStudy[0].heading}
                 </h1>
               </div>
   
@@ -36,7 +47,8 @@ const HeroSection = () => {
                   className="w-20 md:w-48"
                 />
                 <h3 className="text-30 text-gray1">
-                  Refreshing, Sparkling, Uplifting
+                  {/* Refreshing, Sparkling, Uplifting */}
+                  {data.caseStudy[0].sHeading}
                 </h3>
               </div>
             </div>
@@ -62,14 +74,15 @@ const HeroSection = () => {
               </div>
   
               <div>
-                <p className="fnt-lexend text-font19 text-gray1">
+                {/* <p className="fnt-lexend text-font19 text-gray1">
                   Seleo, a prominent Middle Eastern beverage brand, sought to
                   expand its digital footprint across the UAE, Kuwait, and Qatar.
                   To achieve this, they partnered with Global Surf to revitalize
                   their online presence and optimize marketing campaigns. The goal
                   was to create a compelling digital experience that resonated
                   with their target audience and drove customer engagement.
-                </p>
+                </p> */}
+                {parse(data.caseStudy[0].story)}
               </div>
             </div>
           </motion.div>
@@ -108,21 +121,24 @@ const HeroSection = () => {
                       <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
                         Industry
                       </h5>
-                      <h4 className="text-30">Food & Beverage</h4>
+                      {/* <h4 className="text-30">Food & Beverage</h4> */}
+                      {data.caseStudy[0].industry}
                     </div>
   
                     <div className="mb-[20px] flex flex-col border-b border-black pb-[20px] lg:mb-[36px] lg:pb-[40px]">
                       <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
                         Country
                       </h5>
-                      <h4 className="text-30">UAE, Kuwait, Qatar</h4>
+                      {/* <h4 className="text-30">UAE, Kuwait, Qatar</h4> */}
+                      {data.caseStudy[0].country}
                     </div>
   
                     <div className="flex flex-col border-black  ">
                       <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
                         Channels Used
                       </h5>
-                      <h4 className="text-30">Website - Google Ads - META Ads</h4>
+                      {/* <h4 className="text-30">Website - Google Ads - META Ads</h4> */}
+                      {data.caseStudy[0].channelsUsed}
                     </div>
                   </div>
                 </div>
@@ -131,9 +147,11 @@ const HeroSection = () => {
               {
                 <div className="absolute left-1/3 right-[-145px] top-0 hidden h-full bg-black lg:block">
                   <Image
-                    src={assets.seleoCover}
+                    src={data.caseStudy[0].coverImage}
                     alt="cover-image"
                     className="h-full w-full object-cover"
+                    width={800}
+                    height={500}
                   />
                 </div>
               }
@@ -141,8 +159,8 @@ const HeroSection = () => {
   
             {
               <div className="h-full bg-black lg:hidden">
-                <Image
-                  src={assets.seleoCover}
+                <img
+                  src={data.caseStudy[0].coverImage}
                   alt="cover-image"
                   className="h-full w-full object-cover"
                 />
