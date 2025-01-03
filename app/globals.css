@@ -488,9 +488,7 @@ body {
 .class-blogdetails-mn p {
   margin-bottom: 20px;
 }
-/* .class-blogdetails-mn a {
-  color: #e43d30;
-} */
+
 
 .class-blogdetails-mn h2 {
   @apply mb-4 mt-5 text-font30 leading-lh1p33;
