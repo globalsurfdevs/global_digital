@@ -102,7 +102,7 @@ export const Example = () => {
           </div>
         </motion.div>
 
-        <Navigation/>
+        <Navigation toggle={()=>toggleOpen()}/>
 
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
