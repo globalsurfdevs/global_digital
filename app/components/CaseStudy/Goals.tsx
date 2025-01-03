@@ -33,7 +33,7 @@ const Goals = ({data}:{
           <div className="col-span-1 flex">
             <h2 className="title-65">Goals</h2>
           </div>
-          <div className=" pt-3 lg:pl-5">
+          <div className=" pt-3 lg:pl-5 text-19 fnt-lexend text-gray1">
             {/* <p className="text-19 fnt-lexend text-gray1">
               Innovo Group partnered with Global Surf to achieve several key
               objectives for their website. The primary goal was to create a
@@ -63,7 +63,7 @@ const Goals = ({data}:{
           <div className="col-span-1 flex">
             <h2 className="title-65">Objectives</h2>
           </div>
-          <div className="pt-3 text-font19 lg:pl-5">
+          <div className="pt-3 text-font19 lg:pl-5 text-19 fnt-lexend text-gray1">
             {/* <p className="text-19 fnt-lexend text-gray1 ">
               To address goals, Global Surf conducted an in-depth analysis of
               the website&apos;s performance and speed. We implemented
@@ -94,7 +94,7 @@ const Goals = ({data}:{
           <div className="col-span-1 flex">
             <h2 className="title-65">Challenge</h2>
           </div>
-          <div className=" pt-3 lg:pl-5">
+          <div className=" pt-3 lg:pl-5 text-19 fnt-lexend text-gray1">
             {/* <p className="text-19 fnt-lexend text-gray1">
               Redesigning the website brought several challenges. Migrating from
               an outdated CMS without disruptions was complex, especially with
@@ -126,9 +126,9 @@ const Goals = ({data}:{
         >
           {data.caseStudy[0].overcomingChallenges && <div className="flex w-full flex-col gap-4   bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
             <div>
-              <h2 className="title-65">Overcoming Challenges</h2>
+              <h2 className="title-65">Solutions</h2>
             </div>
-            <div className="pl-4">
+            <div className="pl-4 text-19 fnt-lexend text-gray1">
               {/* <ul className="flex list-disc flex-col gap-6 text-font19">
                 <li className="fnt-lexend text-gray1">
                   Implemented a more robust website platform to enhance
@@ -147,9 +147,9 @@ const Goals = ({data}:{
 
           {data.caseStudy[0].achievements && <div className="flex w-full flex-col gap-6  bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
             <div>
-              <h2 className="title-65">Key Achievements</h2>
+              <h2 className="title-65">Results</h2>
             </div>
-            <div className="pl-4">
+            <div className="pl-4 fnt-lexend text-19 ollist pl-4 text-gray1">
               {/* <ul className="fnt-lexend flex list-disc flex-col gap-4 text-font19">
                 <li className="text-gray1">
                   Optimized keywords to drive a 107.3% increase in new user

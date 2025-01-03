@@ -68,10 +68,11 @@ const Footer = () => {
                 </div>
                 <div className="col-span-3 flex flex-col gap-8">
                   <div className="flex flex-col text-font19">
-                   <a href="https://www.facebook.com/myglobalsurf" target="_blank" className="hover:text-primary"> Facebook</a>
-                    <a href="https://www.instagram.com/accounts/login/?next=%2Fmyglobalsurf%2F&source=omni_redirect" target="_blank" className="hover:text-primary"> Instagram</a>
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fglobalsurfuae" target="_blank" className="hover:text-primary"> X</a>
-                    <a href="https://www.linkedin.com/company/myglobalsurf" target="_blank" className="hover:text-primary"> LinkedIn</a>
+                   <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"> Facebook</a>
+                    <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" className="hover:text-primary"> Instagram</a>
+                    <a href="https://x.com/GlobalSurf_D" target="_blank" className="hover:text-primary"> X</a>
+                    <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" className="hover:text-primary"> LinkedIn</a>
+                    <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" className="hover:text-primary"> Tiktok</a>
                   </div>
                 </div>
               </div>
