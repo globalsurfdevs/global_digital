@@ -5,7 +5,7 @@ const page = () => {
     <>
       <div className="container px-4">
         <div className="py-[50px] lg:py-[100px]">
-          <h1 className="mb-5 text-font65 max-w-[28ch] leading-[1.1]">
+          <h1 className="mb-5 max-w-[28ch] text-font65 leading-[1.1]">
             Modern Slavery and Human Trafficking Statement
           </h1>
 
@@ -74,21 +74,23 @@ const page = () => {
 
           <div className=" mb-5 grid grid-cols-1 gap-2">
             <p className="  text-font19">
-              <strong>Risk Assessment and Due Diligence  </strong>
+              <strong>Risk Assessment and Due Diligence </strong>
             </p>
             <div>
               <p>
-              GS.Digital conducts regular risk assessments to identify and mitigate potential risks of modern slavery in our operations and supply chains. Our due diligence processes include:
+                GS.Digital conducts regular risk assessments to identify and
+                mitigate potential risks of modern slavery in our operations and
+                supply chains. Our due diligence processes include:
               </p>
               <ul className="list-outside list-disc pl-[40px]">
                 <li>
-                Vetting suppliers to ensure compliance with ethical labour standards.
+                  Vetting suppliers to ensure compliance with ethical labour
+                  standards.
                 </li>
+                <li>Regular audits of supply chains where applicable.</li>
                 <li>
-                Regular audits of supply chains where applicable.
-                </li>
-                <li>
-                Requiring contractual commitments from suppliers to uphold anti-slavery laws.
+                  Requiring contractual commitments from suppliers to uphold
+                  anti-slavery laws.
                 </li>
               </ul>
             </div>
@@ -100,38 +102,35 @@ const page = () => {
             </p>
             <div>
               <p>
-              We provide training for our employees to increase awareness of modern slavery and to help them identify and respond to potential risks. This training covers:
+                We provide training for our employees to increase awareness of
+                modern slavery and to help them identify and respond to
+                potential risks. This training covers:
               </p>
               <ul className="list-outside list-disc pl-[40px]">
-                <li>
-                Recognizing signs of modern slavery.
-                </li>
-                <li>
-                Reporting mechanisms within GS.Digital.
-                </li>
-                <li>
-                Understanding the impact of unethical labour practices.
-                </li>
+                <li>Recognizing signs of modern slavery.</li>
+                <li>Reporting mechanisms within GS.Digital.</li>
+                <li>Understanding the impact of unethical labour practices.</li>
               </ul>
             </div>
           </div>
           <div className=" mb-5 grid grid-cols-1 gap-2">
             <p className="  text-font19">
-              <strong>Performance Monitoring  </strong>
+              <strong>Performance Monitoring </strong>
             </p>
             <div>
               <p>
-              GS.Digital is committed to ongoing improvements in addressing modern slavery risks. We monitor our effectiveness through:
+                GS.Digital is committed to ongoing improvements in addressing
+                modern slavery risks. We monitor our effectiveness through:
               </p>
               <ul className="list-outside list-disc pl-[40px]">
+                <li>Reviewing supplier compliance reports.</li>
                 <li>
-                Reviewing supplier compliance reports.
+                  Monitoring internal audit findings related to ethical
+                  practices.
                 </li>
                 <li>
-                Monitoring internal audit findings related to ethical practices.
-                </li>
-                <li>
-                Gathering feedback from employees and stakeholders on the implementation of our policies.
+                  Gathering feedback from employees and stakeholders on the
+                  implementation of our policies.
                 </li>
               </ul>
             </div>
@@ -142,7 +141,11 @@ const page = () => {
             </p>
             <div>
               <p>
-              GS.Digital remains resolute in its commitment to ethical business practices and the eradication of modern slavery and human trafficking. We continuously review and enhance our policies and practices to ensure compliance with evolving laws and regulations.
+                GS.Digital remains resolute in its commitment to ethical
+                business practices and the eradication of modern slavery and
+                human trafficking. We continuously review and enhance our
+                policies and practices to ensure compliance with evolving laws
+                and regulations.
               </p>
             </div>
           </div>
@@ -152,11 +155,12 @@ const page = () => {
             </p>
             <div>
               <p>
-              This statement has been approved by the Board of Directors of Global Surf Digital Media and is reviewed annually.
+                This statement has been approved by the Board of Directors of
+                Global Surf Digital Media and is reviewed annually.
               </p>
             </div>
           </div>
-          <div className=" mb-5 grid grid-cols-1 gap-2">
+          {/* <div className=" mb-5 grid grid-cols-1 gap-2">
             <p className="  text-font19">
               <strong>Signed by:</strong>
             </p>
@@ -171,7 +175,7 @@ const page = () => {
               Global Surf Digital Media
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
