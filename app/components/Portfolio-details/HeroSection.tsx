@@ -21,7 +21,7 @@ const HeroSection = ({
   return (
     <div>
       <div className="relative">
-        <div className="relative z-1 h-[800px] w-full">
+        <div className="relative z-1 h-[350px] lg:h-[500px] xl:h-[800px] w-full">
           <Image
             src={data.portfolio[0].bannerImage}
             alt="heroImage"
@@ -31,7 +31,7 @@ const HeroSection = ({
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
             <div
               className="container relative h-full w-full invic"
-              
+
             >
               <Image
                 src={data.portfolio[0].logo}
@@ -84,7 +84,7 @@ const HeroSection = ({
 
                   <div className="fnt-lexend flex flex-col border-black">
                     <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
-                      Channels Used
+                    Services
                     </h5>
                     <h4 className="text-30">
                       {data.portfolio[0].channelsUsed}

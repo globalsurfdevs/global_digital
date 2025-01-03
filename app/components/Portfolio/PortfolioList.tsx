@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
+import { formatLinkForPortfolio ,formatLinkForCaseStudy} from "@/app/helpers/formatLink";
+import { CaseStudy } from "@/app/types/CaseStudy";
 
 const PortfolioList = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
@@ -16,8 +18,8 @@ const PortfolioList = () => {
         const response = await fetch(`/api/portfolio`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data.portfolio);
-          setPortfolios(data.portfolio);
+          console.log(data.combinedData);
+          setPortfolios(data.combinedData);
         } else {
           console.error("Failed to fetch portfolio data");
         }
@@ -103,26 +105,27 @@ const PortfolioList = () => {
                   }}
                 >
                   <div className="portfolio-card group relative col-span-1">
-                    <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px]">
+                    <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px] group">
                       <Image
-                        src={item.bannerImage}
+                        src={item.bannerImage ?? item.coverImage}
                         alt="image"
                         className="h-full w-full object-cover"
                         fill
                       />
                       <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 duration-300 ease-in-out ease-in-out   group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  md:left-5 md:top-5">
                         <div className="uppercase text-white">
-                          <p className="text-font14 text-white">{item.tag}</p>
+                          <p className="text-font14 text-white">{item.industry}</p>
                         </div>
                       </div>
-                    </div>
-                    <div className="mt-3 md:mt-4">
-                      <h3 className="text-30 mb-1 duration-200 ease-in-out group-hover:text-primary md:mb-2">
+                      <div className="absolute bottom-0 mt-3 md:mt-4 z-[1] p-5">
+                      <h3 className="text-30 mb-1 duration-200 ease-in-out  md:mb-2 text-white  duration-200 duration-300 ease-in-out ease-in-out ">
                         {item.companyName}
                       </h3>
-                      <p className="text-19 text-gray1">{item.channelsUsed}</p>
+                      <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>
                     </div>
-                    <Link href={`/portfolio-details/${item.id}`}
+                    </div>
+
+                    <Link href={item.type=="case-study" ? `/case-study/${formatLinkForCaseStudy(item.heading)}` : `/portfolio-details/${formatLinkForPortfolio(item.companyName)}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
                   </div>

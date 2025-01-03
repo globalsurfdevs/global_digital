@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import EmployeesSwiper from "./EmployeesSwiper";
 import Button from "../Button/Button";
 import React from "react";
@@ -23,7 +24,7 @@ const SectionFive = () => {
             }}
           >
             <div className="grid  mb-4 lg:mb-[47px]">
-              <h2 className="title-65 ">We Believe In</h2>
+              <h2 className="title-65 ">The Experts Who Drive Results</h2>
             </div>
           </motion.div>
         </div>
@@ -57,7 +58,7 @@ const SectionFive = () => {
         }}
       >
         <div className="container mx-auto py-4">
-          <div className="lg:pb-[150px] pb-[50px] lg:pt-[138px] pt-[30px] border-b flex flex-col   ">
+          <div className="lg:pb-[150px] pb-[50px] lg:pt-[138px] pt-[50px]  flex flex-col   ">
             <h2 className="title-65 mb-4 lg:mb-7">
               Ready to Create the Extraordinary? Let’s Go!
             </h2>
@@ -67,7 +68,7 @@ const SectionFive = () => {
             </p>
             <div>
               <div className="mt-[20px] lg:mt-[64px] innerfnont">
-                <Button text="LET'S COLLABORATE" />
+                <Link href="/lets-talk"><Button text="LET'S COLLABORATE" /></Link>
               </div>{" "}
             </div>
           </div>

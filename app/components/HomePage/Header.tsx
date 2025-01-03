@@ -101,7 +101,9 @@ const Header = () => {
   if (mobileMenu) {
     return (
       <div className="flex items-center align-middle flex p-4">
-        <Image src={assets.logo} alt="logo" />
+        <Link href="/">
+          <Image src={assets.logo} alt="logo" />
+          </Link>
         <Example />
       </div>
     );
@@ -214,7 +216,7 @@ const Header = () => {
             )}
 
             <Link
-              href="lets-talk"
+              href="/lets-talk"
               className="hidden group lg:flex items-center space-x-2 px-6 py-2 border border-primary rounded-full text-primary hover:bg-prtext-primary hover:text-primary
                hover:text-black hover:shadow-lg ease-in duration-300 transition"
             >

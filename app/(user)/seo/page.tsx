@@ -17,14 +17,14 @@ import { AreaExpertise } from "../../data/services/seo/area-of-expertise";
 import { boostEngage } from "../../data/services/seo/boost-engage";
 import { OurServices } from "../../data/services/seo/our-services";
 import { Frameworkdata } from "../../data/services/seo/framework";
-import { ResultsData } from "../../data/services/performance-marketing/results";
+import { ResultsData } from "../../data/services/seo/results";
 import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/seo/cta";
 import { Faq } from "../../data/services/seo/faq";
 const page = () => {
   return (
     <div>
-        <HeroSection  Bannerdata={BannerSection} />
+        <HeroSection  Bannerdata={BannerSection} order={'02'} />
         <Expertise title={AreaExpertise.title} data={AreaExpertise.data}  />
         <Boost title={boostEngage.title} data={boostEngage.data}/>
         <Services title={OurServices.title} data={OurServices.data}/>

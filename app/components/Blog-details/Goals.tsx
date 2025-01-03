@@ -45,7 +45,7 @@ const Goals = ({
           />
         </motion.div>
 
-        <div className="lg:pb-150 pb-[50px] ">
+        <div className="lg:pb-150 pb-[50px] hidden">
           <motion.div
             className="grid border-t border-clrE6E6E6 py-[50px]  pb-[25px] pt-[35px] lg:grid-cols-2 lg:pb-[95px] lg:pt-[50px]"
             initial="hidden"

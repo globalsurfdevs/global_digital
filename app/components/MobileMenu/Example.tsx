@@ -9,6 +9,9 @@ import { assets } from "@/public/assets/assets";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
+
 import Link from "next/link";
 
 const sidebar = {
@@ -101,16 +104,18 @@ export const Example = () => {
           </div>
         </motion.div>
 
-        <Navigation/>
+        <Navigation toggle={()=>toggleOpen()}/>
 
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
         <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>
         <motion.div variants={imageSection}>
-          <div className="flex w-full text-black text-2xl gap-10">
-          <FaFacebookF />
-            <FaXTwitter/>
-            <FaInstagram />
+          <div className="flex w-full text-black text-2xl gap-5">
+          <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"><FaFacebookF /></a>
+          <a href="https://x.com/GlobalSurf_D" target="_blank" className="hover:text-primary"> <FaXTwitter/></a>
+          <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" className="hover:text-primary">  <FaInstagram /></a>
+          <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" className="hover:text-primary"> <FaLinkedin/></a>
+          <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" className="hover:text-primary"> <FaTiktok/></a>
             </div>
         </motion.div>
         </div>

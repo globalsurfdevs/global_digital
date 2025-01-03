@@ -4,11 +4,21 @@ import { assets } from '@/public/assets/assets'
 import Image from 'next/image'
 import Button from '../Button/Button'
 import React from 'react'
+import { CaseStudy } from '@/app/types/CaseStudy';
 
-const Ready = () => {
+const Ready = ({data}:{
+  data:{
+    caseStudy:CaseStudy[]
+  }|null
+}) => {
+
+  if(!data){
+    return null
+  }
+
   return (
       <div className='container mx-auto py-4'>
-           <motion.div
+           {data.caseStudy[0].image1 || data.caseStudy[0].image2 ? <motion.div
                               initial="hidden"
                               whileInView="visible"
                               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -17,18 +27,18 @@ const Ready = () => {
                                 visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                 }}
                                       >
-        <div className='pt-[50px] lg:pt-[100px] grid grid-cols-2 gap-[20px]'>
+        <div className=' grid grid-cols-2 gap-[20px]'>
 
-            <div className=''>
-                <Image src={assets.seleo1} alt='image1'/>
-            </div>
+            {data.caseStudy[0].image1 && <div className=''>
+                <Image src={data.caseStudy[0].image1} alt='image1' width={800} height={500}/>
+            </div>}
 
-            <div className=''>
-                <Image src={assets.seleo2} alt='image2'/>
-            </div>
+            {data.caseStudy[0].image2 && <div className=''>
+                <Image src={data.caseStudy[0].image2} alt='image2' width={800} height={500}/>
+            </div>}
 
               </div>
-              </motion.div>
+              </motion.div> : null }
               <motion.div
                               initial="hidden"
                               whileInView="visible"

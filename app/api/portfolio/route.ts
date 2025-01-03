@@ -9,6 +9,8 @@ export async function GET(req: NextRequest) {
         console.log("This worlds")
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
+        const slug = searchParams.get("slug")
+        const userType = req.headers.get('x-auth-type')
 
         console.log(id)
 
@@ -26,17 +28,59 @@ export async function GET(req: NextRequest) {
                 .eq('companyId', id)
 
             return NextResponse.json({ portfolio, portfolioHighlights });
+        } else if (slug) {
+
+            let { data: portfolio, error } = await supabase
+                .from('portfolios')
+                .select("*")
+                .eq('slug', slug)
+
+            if (portfolio && portfolio.length > 0) {
+                let { data: portfolioHighlights } = await supabase
+                    .from('portfolioHighlights')
+                    .select("*")
+                    .eq('companyId', portfolio[0].id)
+                    
+                    console.log(portfolio,"PortfolioH",portfolioHighlights)
+
+
+                    return NextResponse.json({ portfolio, portfolioHighlights });
+            }
+
+
+        } else {
+            if (userType !== "admin") {
+                let { data: portfolio, } = await supabase
+                    .from('portfolios')
+                    .select('*')
+
+
+                let { data: caseStudy } = await supabase
+                    .from('caseStudy')
+                    .select('*')
+
+
+                // if (!portfolio) {
+                //     return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
+                // }
+
+                const combinedData = [...(portfolio || []), ...(caseStudy?.map((item) => ({ ...item, type: "case-study" })) || [])]
+
+                return NextResponse.json({ combinedData });
+            } else {
+                let { data: portfolio, } = await supabase
+                    .from('portfolios')
+                    .select('*')
+
+                if (portfolio) {
+                    return NextResponse.json({ portfolio });
+                } else {
+                    return NextResponse.json({ error: "Fetching portfolio failed" })
+                }
+            }
         }
 
-        let { data: portfolio, error } = await supabase
-            .from('portfolios')
-            .select('*')
 
-        if (!portfolio) {
-            return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
-        }
-
-        return NextResponse.json({ portfolio });
 
     } catch (error) {
         console.log("error getting portfolio:", error);
@@ -67,7 +111,7 @@ export async function POST(req: NextRequest) {
     const image = formData.get("image") as string
     const section2Image1 = formData.get("section2Image1") as string;
     const section2Image2 = formData.get("section2Image2") as string;
-    const section2BannerImage = formData.get("section2BannerImage") as File | null;
+    const section2BannerImage = formData.get("section2BannerImage") as string;
     const resultImage1 = formData.get("resultImage1") as File | null
     const resultImage2 = formData.get("resultImage2") as File | null
 
@@ -75,10 +119,15 @@ export async function POST(req: NextRequest) {
     const tag = formData.get("tag") as string;
     const addedCategories = formData.get("addedCategories") as string
     const logo = formData.get("logo") as string
+    const slug = formData.get("slug") as string
+    const metaTitle = formData.get("metaTitle") as string
+    const metaDescription = formData.get("metaDescription") as string
 
     console.log("description", description)
     console.log("tag", tag)
     console.log("added", addedCategories)
+
+
 
     let addedCategoriesRaw;
     if (addedCategories) {
@@ -93,19 +142,6 @@ export async function POST(req: NextRequest) {
     let resultImage2Path;
     let logoPath;
 
-    if (section2BannerImage) {
-        try {
-            const filename = `${Date.now()}-${section2BannerImage.name || "image"}`;
-            const dropboxPath = `/portfolio/${companyName}/${filename}`;
-
-            section2BannerImagePath = await uploadToDropbox(section2BannerImage, dropboxPath);
-            console.log("New image uploaded to Dropbox:", section2BannerImagePath);
-
-        } catch (error) {
-            console.error("Error uploading new image to Dropbox:", error);
-            return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
-        }
-    }
 
     if (resultImage1) {
         try {
@@ -168,6 +204,12 @@ export async function POST(req: NextRequest) {
         logoPath = logo
     }
 
+    if (section2BannerImage == null) {
+        section2BannerImagePath = undefined
+    } else {
+        section2BannerImagePath = section2BannerImage
+    }
+
     console.log("imagePAth", imagePath)
     console.log("section2Image1Path", section2Image1Path)
     console.log("section2Image2Path", section2Image2Path)
@@ -199,13 +241,16 @@ export async function POST(req: NextRequest) {
                         challenge,
                         solutions,
                         result,
-                        section2BannerImage: section2BannerImagePath,
+                        section2BannerImage: section2BannerImage == null ? section2BannerImagePath : section2BannerImage,
                         resultImage1: resultImage1PAth,
                         resultImage2: resultImage2Path,
                         tag,
                         description,
                         categories: addedCategoriesRaw,
-                        logo: logo == null ? logoPath : logo
+                        logo: logo == null ? logoPath : logo,
+                        slug,
+                        metaTitle,
+                        metaDescription
                     })
                     .eq('id', id)
                     .select()
@@ -231,12 +276,14 @@ export async function POST(req: NextRequest) {
                 for (let i = 0; i < highlights.length; i++) {
 
                     if (highlights[i].customId.length > 36) {
-                        console.log("deleteData",highlights[i].customId)
+                        console.log("deleteData", highlights[i].customId)
                         const deleteId = highlights[i].customId.slice(0, 36)
                         const { error: deleteError } = await supabase
                             .from('portfolioHighlights')
                             .delete()
                             .eq('customId', deleteId)
+
+                        continue;
                     }
 
                     let { data: portfolioHighlight, error } = await supabase
@@ -265,7 +312,7 @@ export async function POST(req: NextRequest) {
 
 
                 return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
-                
+
 
 
 
@@ -302,7 +349,10 @@ export async function POST(req: NextRequest) {
                         tag,
                         description,
                         categories: addedCategoriesRaw,
-                        logo: logoPath
+                        logo: logoPath,
+                        slug,
+                        metaTitle,
+                        metaDescription
                     },
                 ])
                 .select('id')

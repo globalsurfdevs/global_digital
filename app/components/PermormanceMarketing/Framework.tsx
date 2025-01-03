@@ -54,7 +54,7 @@ const Framework: React.FC<FrameworkSectionProps> = ({ title, data }) => {
                                   <p className='text-white  transition-transform duration-500 text-30'>{String(framework.id ).padStart(2, "0")}</p>
                                 </div>
                                 <div className='text-2xl'>
-                                  <p className='text-30 pb-3 lg:pb-6 text-black'>{framework.title}</p>
+                                  <p className='text-30 pb-3 lg:pb-6 text-black' dangerouslySetInnerHTML={{ __html: framework.title }}></p>
                                 </div>
                                 <div>
                                   <p className='fnt-lexend text-gray1 text-19 font-medium'>{framework.dec}</p>

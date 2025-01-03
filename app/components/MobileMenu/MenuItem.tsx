@@ -26,10 +26,12 @@ export const MenuItem = ({
   item,
   Links,
   children,
+  toggle
 }: {
   item: string;
   Links: string;
   children?: React.ReactNode;
+  toggle:()=>void
 }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
@@ -41,10 +43,10 @@ export const MenuItem = ({
     <motion.li
       className="mobile-menu-li relative cursor-pointer w-full flex-col"
       variants={navmenuSection}
-      onClick={children ? toggleSubmenu : undefined}
+      onClick={children ? toggleSubmenu : toggle}
     >
       <div className="flex justify-between items-center py-2 border-b font-bold w-full">
-       <a href={Links}> {item}</a>
+       <Link href={Links}> {item}</Link>
         {children && (
           <span className="ml-2">
           {isSubmenuOpen ? (

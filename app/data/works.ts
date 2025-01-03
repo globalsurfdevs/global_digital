@@ -32,19 +32,19 @@ export const workSvgs = [
     {
         icon:"/assets/works/manufacturing.svg",
         alt:"icon",
-        text:"Manufacturing",
+        text:"Engineering",
         width: "27",
         height:"28"
     },
     {
-        icon:"/assets/works/manufacturing.svg",
+        icon:"/assets/works/hospitality.svg",
         alt:"icon",
         text:"Hospitality",
         width: "28",
         height:"28"
     },
     {
-        icon:"/assets/works/manufacturing.svg",
+        icon:"/assets/works/healthcare.svg",
         alt:"icon",
         text:"Healthcare",
         width: "28",

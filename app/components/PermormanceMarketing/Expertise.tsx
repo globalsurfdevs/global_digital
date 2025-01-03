@@ -50,7 +50,7 @@ return (
                     <div key={expertise.id}
                         className="md:h-[300px] lg:h-[340px] xl:h-[414px] flex flex-col gap-3 lg:gap-0 p-5 lg:p-10 justify-between border  group transition-all duration-500 hover:bg-primary">
                         {/* Image Wrapper */}
-                        <div className="p-2 bg-primary w-fit h-fit group-hover:bg-white transition-colors duration-500">
+                        <div className="p-2 bg-primary w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex align-center justify-center group-hover:bg-white transition-colors duration-500">
                                 <Image src= {expertise.icon} alt="image"
                             className="fltrcls group-hover:invert-0 transition duration-500" />
 
@@ -59,12 +59,13 @@ return (
                         {/* Content */}
                         <div>
                             {/* Title */}
-                            <p className="text-30 lg:max-w-60 titlesp group-hover:text-white transition-colors duration-300">
+                            <p className="text-30  titlesp group-hover:text-white transition-colors duration-300">
                             {expertise.title}
                             </p>
 
                                 <div className=' overflow-hidden'>
-                                <p className="text-19 pt-2 w-[102%] fnt-lexend cntsmd hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                    <p className="text-19 pt-2 w-[102%] fnt-lexend cntsmd hided-content opacity-0 max-h-0 overflow-hidden
+                                group-hover:opacity-100 group-hover:max-h-[15rem] transition-all duration-500 text-white">
                                 {expertise.desc}
                             </p>
                             </div>

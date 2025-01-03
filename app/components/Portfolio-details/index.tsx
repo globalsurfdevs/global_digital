@@ -10,14 +10,14 @@ import { PortfolioHighlight } from '@/app/types/PortfolioHighlights'
 
 const PortfolioDetails = () => {
 
-    const {companyId} = useParams()
+    const {companyName} = useParams()
 
     const [data, setData] = useState<{ portfolio: Portfolio[]; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
 
     useEffect(() => {
         
         const fetchPortfolioDetails = async () => {
-            const response = await fetch(`/api/portfolio?id=${companyId}`);
+            const response = await fetch(`/api/portfolio?slug=${companyName}`);
             if (response.ok) {
                 const data = await response.json();
                 console.log(data)
