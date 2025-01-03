@@ -222,13 +222,19 @@ export async function POST(req: NextRequest) {
                 for (let i = 0; i < highlights.length; i++) {
 
                     if (highlights[i].customId.length > 36) {
+                        console.log("delete pls")
                         console.log("deleteData",highlights[i].customId)
                         const deleteId = highlights[i].customId.slice(0, 36)
+                        console.log(deleteId)
                         const { error: deleteError } = await supabase
                             .from('caseStudyHighlights')
                             .delete()
                             .eq('customId', deleteId)
+                        
+                            continue;
                     }
+
+                    console.log("no delete")
 
                     let { data: caseStudyHighlight, error } = await supabase
                         .from('caseStudyHighlights')

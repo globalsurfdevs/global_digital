@@ -253,6 +253,8 @@ export async function POST(req: NextRequest) {
                             .from('portfolioHighlights')
                             .delete()
                             .eq('customId', deleteId)
+
+                            continue;
                     }
 
                     let { data: portfolioHighlight, error } = await supabase
