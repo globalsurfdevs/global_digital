@@ -43,7 +43,7 @@ const Goals = ({
 
             {data.portfolio[0].section2Image2 && (
               <Image
-                src={data?.portfolio[0].section2Image1 || ""}
+                src={data?.portfolio[0].section2Image2 || ""}
                 alt="image1"
                 width={800}
                 height={900}

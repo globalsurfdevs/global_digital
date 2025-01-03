@@ -866,6 +866,22 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
                         </div>
 
+                        <div className='mt-15'>
+                            <Label content='Challenge' />
+                            <div className='h-full'>
+                                {/* <Controller
+                                    name="objectives"
+                                    control={control}
+
+                                    render={({ field }) => (
+                                        <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                    )}
+                                /> */}
+                                <RichEditor control={control} name='challenge' />
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -873,7 +889,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
                 <div className='grid grid-cols-2 gap-5 mt-20'>
                     <div className='h-full'>
                         <div className='w-full flex flex-col gap-2 h-full'>
-                            <Label content='Overcoming Challenges' />
+                            <Label content='Solutions' />
                             <div className='h-full'>
                                 {/* <Controller
                                     name="challenge"
@@ -891,7 +907,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
                     <div className='h-full'>
                         <div className='w-full flex flex-col gap-2 h-full'>
-                            <Label content='Achievements' />
+                            <Label content='Result' />
                             <div className='h-full'>
                                 {/* <Controller
                                     name="solutions"
