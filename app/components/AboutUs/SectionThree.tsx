@@ -7,23 +7,33 @@ const SectionThree = () => {
   const items = [
     {
       text: "Extensive expertise",
-      image: "/assets/aboutus/bb-1.svg",
+      image: "/assets/aboutus/core1.svg",
+      width: 35,
+      height:50,
     },
     {
       text: "Performance-Focused Strategies",
-      image: "/assets/aboutus/bb-2.svg",
+      image: "/assets/aboutus/core2.svg",
+      width: 48,
+      height:50,
     },
     {
       text: "Customized Solutions",
-      image: "/assets/aboutus/bb-3.svg",
+      image: "/assets/aboutus/core3.svg",
+      width: 49,
+      height:50,
     },
     {
       text: "Collaborative approach",
-      image: "/assets/aboutus/bb-4.svg",
+      image: "/assets/aboutus/core4.svg",
+      width: 50,
+      height:44,
     },
     {
       text: "Transparent communication",
-      image: "/assets/aboutus/bb-1.svg",
+      image: "/assets/aboutus/core5.svg",
+      width: 50,
+      height:39,
     },
   ];
   return (
@@ -55,12 +65,12 @@ const SectionThree = () => {
               {item.text}
             </p>
           </div>
-          <div >
+          <div className="min-w-auto md:min-w-[50px]">
             <Image
               src={item.image}
               alt={item.text}
-              width={50}
-              height={50}
+              width={item.width}
+              height={item.height}
               className=" wsd2 transition-all duration-100 ease-in-out"
             />
           </div>

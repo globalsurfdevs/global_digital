@@ -7,7 +7,7 @@ import Image from "next/image";
 const Standards = () => {
   return (
     <div className="flex flex-col  pb-[0px] lg:pb-[50px]">
-      <div className="container  mx-auto  ">
+      <div className="container  mx-auto  bg-dgray p-[40px] lg:p-[90px]">
          <motion.div
                             initial="hidden"
                                     whileInView="visible"
@@ -17,10 +17,9 @@ const Standards = () => {
                                       visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                                     }}
                           >
-                      <h2 className='title-65'>Elevating the Standards
-                      for Our Customer</h2>
-<p className=" text-font19 mt-5 max-w-[80ch] text-gray1">Our squad of top-notch professionals in the realm of SEO is dedicated to attaining exceptional outcomes for major corporations by presenting practical observations instantaneously.</p>
-                    </motion.div>
+                      <h2 className='title-65 mb-[20px] lg:mb-[65px]'>Elevating the Standards for Our Customer
+                      </h2>
+   </motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -38,25 +37,25 @@ const Standards = () => {
             <div>
               <div className="text-center ">
                 <Image src={assets.seopr1} alt="image" className="m-auto"/>
-                <p className=" text-font19 mt-3">Increase in CTR</p>
+                <p className=" text-font19 mt-3">Increase in <br />CTR</p>
               </div>
             </div>
             <div>
               <div className="text-center ">
                 <Image src={assets.seopr2} alt="image" className="m-auto"/>
-                <p className=" text-font19 mt-3">Increase in Keyword positions</p>
+                <p className=" text-font19 mt-3">Increase in <br />Keyword positions</p>
               </div>
             </div>
             <div>
               <div className="text-center ">
                 <Image src={assets.seopr3} alt="image" className="m-auto"/>
-                <p className=" text-font19 mt-3">Increase in Organic Traffic</p>
+                <p className=" text-font19 mt-3">Increase in <br />Organic Traffic</p>
               </div>
             </div>
             <div>
               <div className="text-center ">
                 <Image src={assets.seopr4} alt="image" className="m-auto"/>
-                <p className=" text-font19 mt-3">Increase in Conversions</p>
+                <p className=" text-font19 mt-3">Increase in <br />Conversions</p>
               </div>
             </div>
           </div>

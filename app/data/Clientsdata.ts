@@ -81,11 +81,11 @@ export const Clientsdata = [
     image: "/assets/clients/Synarti.svg",
     title: "Synarti"
 },
-{
-    id: 17,
-    image: "/assets/clients/Livestat.svg",
-    title: "Livestar"
-},
+// {
+//     id: 17,
+//     image: "/assets/clients/Livestat.svg",
+//     title: "Livestar"
+// },
 {
     id: 18,
     image: "/assets/clients/icatch.svg",
