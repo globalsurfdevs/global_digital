@@ -112,7 +112,7 @@ const PortfolioList = () => {
                       />
                       <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 duration-300 ease-in-out ease-in-out   group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  md:left-5 md:top-5">
                         <div className="uppercase text-white">
-                          <p className="text-font14 text-white">{item.tag}</p>
+                          <p className="text-font14 text-white">{item.industry}</p>
                         </div>
                       </div>
                       <div className="absolute bottom-0 mt-3 md:mt-4 z-[1] p-5">
