@@ -638,7 +638,7 @@ body {
   .mn-dv-blg .ln-bn {
     margin: 10px 0 20px 0;
 }
-  .mn-dv-blg  img {
+  .mn-dv-blg  img, .class-blogdetails-mn img {
         border-radius: 10px;
     }
     .fn2{font-size:1rem !important; }

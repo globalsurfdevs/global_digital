@@ -64,7 +64,8 @@ return (
                             </p>
 
                                 <div className=' overflow-hidden'>
-                                <p className="text-19 pt-2 w-[102%] fnt-lexend cntsmd hided-content opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500 text-white">
+                                    <p className="text-19 pt-2 w-[102%] fnt-lexend cntsmd hided-content opacity-0 max-h-0 overflow-hidden
+                                group-hover:opacity-100 group-hover:max-h-[15rem] transition-all duration-500 text-white">
                                 {expertise.desc}
                             </p>
                             </div>

@@ -143,6 +143,7 @@ import web_bnr from '../assets/banner/Web_development.jpg'
 
 import boostseo1 from '../assets/icons/boostseo1.svg'
 import boostseo2 from '../assets/icons/boostseo2.svg'
+import boostseo21 from '../assets/icons/boostseo2-1.svg'
 import boostseo3 from '../assets/icons/boostseo3.svg'
 import boostseo4 from '../assets/icons/boostseo4.svg'
 import boostsocial1 from '../assets/icons/boostsocial1.svg'
@@ -193,6 +194,7 @@ export const assets = {
     boostsocial4,
     boostseo1,
     boostseo2,
+    boostseo21,
     boostseo3,
     boostseo4,
     Levin,
