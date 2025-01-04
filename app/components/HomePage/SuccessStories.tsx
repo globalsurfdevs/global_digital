@@ -5,6 +5,7 @@ import { stories } from "../../data/stories";
 import { Lexend } from "next/font/google";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -72,7 +73,7 @@ const SuccessStories = () => {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
             {stories.map((item, index) => (
               <div
-                className="group   bg-black text-white duration-300 ease-linear hover:cursor-pointer"
+                className="group   bg-black text-white duration-300 ease-linear hover:cursor-pointer relative"
                 key={index}
                 ref={ref}
               >
@@ -123,6 +124,7 @@ const SuccessStories = () => {
                     {item.description2}
                   </p>
                 </div>
+                <Link href={item.url} className="absolute h-full w-full left-0 right-0 top-0"></Link>
               </div>
             ))}
           </div>

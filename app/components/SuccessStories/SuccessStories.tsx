@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { data } from "./data"
 import React from 'react'
 import Image from "next/image"
+import Link from 'next/link';
 
 export const SuccessStories = () => {
     return (
@@ -32,12 +33,12 @@ export const SuccessStories = () => {
             <div className='grid lg:grid-cols-3 gap-8'>
 
                 {data.map((item,index) => (
-                    <div className='flex flex-col ' key={index}>
+                    <div className='flex flex-col relative ' key={index}>
                         <div className='bg-black h-96 relative mb-4 lg:mb-[31px]'>
                             <Image src={item.image} alt="image" className="absolute object-cover w-full h-full"/>
                         </div>
                         <div className=' '>
-                            <Image src={item.companyLogo} alt='logo' className='' />
+                            <Image src={item.companyLogo} alt='logo' className='h-[50px] w-auto' />
                         </div>
                         <div className='bg-black h-[.5px] w-full mt-[10px] lg:mt-[32px] mb-[10px] lg:mb-[42px]'>
 
@@ -46,7 +47,7 @@ export const SuccessStories = () => {
                             <h4 className='text-font30'>{item.text}</h4>
                         </div>
 
-
+                        <Link href={item.url} className='absolute w-full h-full left-0 top-0'></Link>
 
                     </div>
 

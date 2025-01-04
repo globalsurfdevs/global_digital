@@ -38,6 +38,7 @@ import seleo1 from './seleo1.jpg'
 import seleo2 from './seleo2.jpg'
 import innovo from './Innovo.png'
 import bafco from './Bafco.png'
+import ascs from '../assets/success-stories/logo-ascs.svg'
 import bec from './BEC.png'
 import imgs1 from './tours/bafco.jpg'
 import imgs2 from './tours/seleo.jpg'
@@ -285,6 +286,7 @@ export const assets = {
     seleo2,
     innovo,
     bafco,
+    ascs,
     imgs1,
     imgs2,
     bec,

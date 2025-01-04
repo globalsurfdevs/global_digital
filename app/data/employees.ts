@@ -94,7 +94,7 @@ export const Employees = [
         id: 15,
         image: assets.Swetha,
         name:"Sweta",
-        designation: "Content writer",
+        designation: "Content Writer",
         width: "100%",
         height:"auto"
     },
@@ -102,7 +102,7 @@ export const Employees = [
         id: 6,
         image: assets.Arjun,
         name:"Arjun",
-        designation: "Graphic designer",
+        designation: "Graphic Designer",
         width: "100%",
         height:"auto"
     } ,

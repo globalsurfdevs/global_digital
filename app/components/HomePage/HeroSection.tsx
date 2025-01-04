@@ -63,10 +63,10 @@ const HeroSection = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          Performance Focused <br /><span className="text-primary relative linbsx"> Digital Marketing</span>
+          Performance Focused <br /><span className="text-primary relative linbsx underline"> Digital Marketing</span>
         </motion.h1>
         <motion.div
-          className="mt-[30px] lg:mt-[45px] "
+          className="mt-[30px] lg:mt-[45px] hidden"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
