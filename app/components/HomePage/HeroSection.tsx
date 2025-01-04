@@ -35,7 +35,7 @@ const HeroSection = () => {
 
       <video
         ref={videoRef}
-        className="absolute left-0 top-0 -z-10 h-full w-full object-cover"
+        className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-0"
         autoPlay
         loop
         muted
