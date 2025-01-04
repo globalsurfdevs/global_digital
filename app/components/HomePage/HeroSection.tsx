@@ -41,7 +41,7 @@ const HeroSection = () => {
         muted
         playsInline
       >
-        <source src="/assets/GS_Digital-Header_Video.mp4" type="video/mp4" />
+        <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
