@@ -56,7 +56,7 @@ const Tours = () => {
           {portfolios.slice(0, 2).map((item, index) => (
 
   
-  <div className="relative tour-card h-full lg:min-h-[550px] min-h-[350px] " >
+  <div className="relative tour-card h-full lg:min-h-[500px] min-h-[350px] " >
     <img
       src={item.bannerImage}
       alt={item.companyName}
@@ -68,7 +68,7 @@ const Tours = () => {
         <h4 className={`text-primary ${lexend.className}`}>{item.channelsUsed}</h4>
       </div>
     </div>
-    <Link href={`/portfolio/${formatLinkForPortfolio(item.companyName)}`} key={index} className="absolute w-full h-full left-0 top-0"></Link>
+    <Link href={`/portfolio/${formatLinkForPortfolio(item.companyName)}`} key={index} className="absolute w-full h-full left-0 top-0 z-10"></Link>
   </div>
 ))}
 
