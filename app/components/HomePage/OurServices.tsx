@@ -129,7 +129,7 @@ const OurServices = () => {
             {/* Service Details */}
             <motion.div
               // style={{ minHeight: divheight }}
-              className={`${isSmallScreen ? "targ-ht htsmedia flex flex-col justify-between border-b pb-5 lg:pb-2" : ""} custom-class`}
+              className={`${isSmallScreen ? "targ-ht htsmedia flex flex-col justify-between border-b pb-5 lg:pb-2 h-full" : ""} custom-class`}
             >
               {/* Content Block */}
               <div className="cntntblc flex flex-col gap-3">
