@@ -339,14 +339,14 @@ export const logos = [
     { src: '../assets/logos/004.png', alt: 'Google' },
     { src: '../assets/logos/005.png', alt: 'Google' },
     { src: '../assets/logos/007.png', alt: 'Google' },
-    { src: '../assets/logos/10.webp', alt: 'Google' },
+    { src: '../assets/logos/10.png', alt: 'Google' },
     { src: '../assets/logos/009.png', alt: 'Google' },
     { src: '../assets/logos/002.png', alt: 'Google' },
     { src: '../assets/logos/003.png', alt: 'Google' },
     { src: '../assets/logos/004.png', alt: 'Google' },
     { src: '../assets/logos/005.png', alt: 'Google' },
     { src: '../assets/logos/007.png', alt: 'Google' },
-    { src: '../assets/logos/10.webp', alt: 'Google' },
+    { src: '../assets/logos/10.png', alt: 'Google' },
     { src: '../assets/logos/009.png', alt: 'Google' },
 
   ];
