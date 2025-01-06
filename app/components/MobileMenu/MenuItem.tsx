@@ -42,7 +42,7 @@ export const MenuItem = ({
   return (
     <motion.li
       className="mobile-menu-li relative cursor-pointer w-full flex-col"
-      variants={navmenuSection}
+      
       onClick={children ? toggleSubmenu : toggle}
     >
       <div className="flex justify-between items-center py-2 border-b font-bold w-full">
