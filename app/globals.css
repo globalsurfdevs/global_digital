@@ -467,7 +467,11 @@ body {
     @apply absolute top-0 left-0 h-full w-full;
   }
 }
-
+@media screen and (min-width: 1200px) and (max-width: 1549px) {
+  .title-120 {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+  }
+}
 .filterbtn span {
   @apply cursor-pointer text-font16 uppercase;
 }
