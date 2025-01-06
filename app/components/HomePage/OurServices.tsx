@@ -116,12 +116,10 @@ const OurServices = () => {
                   },
                 }}
               >
-                <motion.img
+                <img
                   src={service.image}
                   alt={service.title}
                   className="h-full object-cover objectstm"
-                  viewport={{ once: false, amount: 0.5 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
                 />
               </motion.div>
             </div>
