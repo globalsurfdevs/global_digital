@@ -11,7 +11,7 @@ export const ResultsData = {
       traffic: "Increase in Overall Traffic ",
       title:"The Story Behind Garden Concept’s 77.54% Traffic Growth",
       dec: "Explore The Garden Concept’s digital marketing strategy for boosting overall web traffic and store visit.",
-      url: "case-study/seleo",
+      url: "/case-study/the-garden-concept",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ export const ResultsData = {
       traffic: "Increase in Overall Traffic Growth",
       title:"The Secrets Behind Seleo’s 10x Revenue Growth",
       dec: "Discover how Seleo achieved remarkable growth through innovative strategies that enhanced online engagement and business success. ",
-      url: "case-study/seleo",
+      url: "/case-study/seleo",
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ export const ResultsData = {
       traffic: "Increase in Overall Traffic ",
       title:"How Assent Steel Doubled Its Website Traffic ",
       dec: "Explore Inside Assent Steel’s 2x Traffic Success and uncover how smart strategies and data-driven tactics doubled their website traffic. ",
-      url: "case-study/seleo",
+      url: "/case-study/assent-steel",
     },
 
   ],

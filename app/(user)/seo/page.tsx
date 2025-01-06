@@ -21,6 +21,29 @@ import { ResultsData } from "../../data/services/seo/results";
 import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/seo/cta";
 import { Faq } from "../../data/services/seo/faq";
+
+
+interface Canonicals {
+  canonical: string;
+}
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  return {
+    title: "Page Title",
+    description: "Page Description",
+    alternates: {
+      canonical: '#',
+    },
+  };
+}
 const page = () => {
   return (
     <div>
