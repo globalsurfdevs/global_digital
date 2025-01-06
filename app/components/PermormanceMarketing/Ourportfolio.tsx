@@ -4,13 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { motion } from "framer-motion";
 import { Navigation, Autoplay } from "swiper/modules";
-import Link from "next/link";
 
 import { allDataWebdesign1 } from "../../data/services/portfolio1";
 
 import { allDataWebdesig2 } from "../../data/services/portfolio2";
 
 import Image from "next/image";
+import Link from "next/link";
 const Ourportfolio = () => {
   const allData1 = allDataWebdesign1;
   const allData2 = allDataWebdesig2;
@@ -91,7 +91,7 @@ const Ourportfolio = () => {
                           width={900}
                           height={600}
                         />
-                      <Link href={itm.link} className="linkabs"></Link>
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
 
                       <div className="p-5 relative w-fit">
@@ -101,7 +101,7 @@ const Ourportfolio = () => {
                           width={itm.iconswidth}
                           height={itm.iconsheight}
                         />
-                      <Link href={itm.link} className="linkabs"></Link>
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -155,11 +155,10 @@ const Ourportfolio = () => {
                           width={900}
                           height={600}
                         />
-
-                      <Link href={itm.link} className="linkabs"></Link>
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
 
-                      <div className="p-5 relative">
+                      <div className="p-5 relative w-fit">
                         {/* <h3>{itm.title} </h3> */}
                         {/* <p className="mb-0">{itm.title}</p> */}
                         <Image
@@ -168,8 +167,7 @@ const Ourportfolio = () => {
                           width={itm.iconswidth}
                           height={itm.iconsheight}
                         />
-
-                      <Link href={itm.link} className="linkabs"></Link>
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
                     </div>
                   </SwiperSlide>
