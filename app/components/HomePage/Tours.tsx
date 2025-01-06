@@ -55,12 +55,12 @@ const Tours = () => {
           <div className="grid md:grid-cols-2 gap-8">
           {portfolios.slice(0, 2).map((item, index) => (
 
-  <Link href={`/portfolio/${formatLinkForPortfolio(item.companyName)}`} key={index}>
-  <div className="relative tour-card h-full lg:min-h-[550px] min-h-[350px] " >
+  
+  <div className="relative tour-card h-full lg:min-h-[500px] min-h-[350px] " >
     <img
       src={item.bannerImage}
-      alt={item.companyName}
-      className="ease-linear duration-300   h-full"
+      alt={item.companyName} width={500} height={350}
+      className="ease-linear duration-300   h-full absolute object-cover w-full"
     />
     <div className="absolute lg:bottom-[46px] lg:left-[59px] bottom-[15px] left-[15px] z-10">
       <h3 className="text-white text-font30 leading-lh1p66">{item.companyName}</h3>
@@ -68,7 +68,8 @@ const Tours = () => {
         <h4 className={`text-primary ${lexend.className}`}>{item.channelsUsed}</h4>
       </div>
     </div>
-  </div></Link>
+    <Link href={`/portfolio/${formatLinkForPortfolio(item.companyName)}`} key={index} className="absolute w-full h-full left-0 top-0 z-10"></Link>
+  </div>
 ))}
 
         </div>

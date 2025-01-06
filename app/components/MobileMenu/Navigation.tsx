@@ -17,10 +17,10 @@ export const Navigation = ({toggle}:{
         menuItem.children.map((child, childIndex) => (
           <li
             key={childIndex}
-            className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 border-b last:border-none"
+            className="flex items-center gap-2 hover:bg-gray-100 border-b last:border-none"
             
           >
-            <Link href={child.url}>
+            <Link href={child.url} className=" py-2 px-4 w-full">
             <Image
               src={child.svg}
               alt={child.item}

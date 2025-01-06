@@ -173,7 +173,7 @@ const PortfolioList = () => {
                   <p className="text-19 text-gray1">{"item.description"}</p>
                 </div>
                 <Link
-                  href={`/portfolio-details/${item.id}`}
+                  href={`/portfolio/${item.id}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
               </div>
