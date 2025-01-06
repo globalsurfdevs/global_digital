@@ -131,7 +131,10 @@ export const Example = () => {
 
         </motion.div>}
 
-      <MenuToggle toggle={() => toggleOpen()} />
+<div className="bg-white h-16 w-20">
+<MenuToggle toggle={() => toggleOpen()}/>
+
+</div>
     </motion.nav>
   );
 };
