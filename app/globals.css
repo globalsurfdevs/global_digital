@@ -458,6 +458,8 @@ body {
   }
   .textslide-30 {
     @apply text-[15px] leading-lh1p33 lg:text-font30;
+  }.linkabs {
+    @apply absolute top-0 left-0 h-full w-full;
   }
 }
 

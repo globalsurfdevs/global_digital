@@ -11,7 +11,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 37,
       "scope": "Website",
       "industry": "Products",
-      "link": "https://synarti.com/"
+      "link": "/portfolio/synarti"
   },
   {
       "id": 3,
@@ -22,7 +22,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 26,
       "scope": "Brand Identity | Website",
       "industry": "Construction",
-      "link": "http://telal.co/"
+      "link": "/portfolio/telal"
   },
   {
       "id": 3,
@@ -33,7 +33,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 34,
       "scope": "Website",
       "industry": "Engineering",
-      "link": "https://chss.ae/"
+      "link": "/portfolio/consultanthss-chss"
 
   },
   {
@@ -45,31 +45,31 @@ export const allDataWebdesig2 = [
       "iconsheight": 21,
       "scope": "Website",
       "industry": "Engineering",
-      "link": "https://www.icatch.ae/"
+      "link": "/portfolio/icatch"
 
   },
-  {
-      "id": 3,
-      "image": "/assets/Project/Perleen.jpg",
-      "title": "Perleen",
-      "iconsimage": "/assets/clientlogo/perleen.svg",
-      "iconswidth": 35,
-      "iconsheight": 51,
-      "scope": "Brand Identity | Website",
-      "industry": "Trading",
-      "link": "https://www.perleengroup.com/"
-  },
-  {
-      "id": 3,
-      "image": "/assets/Project/Beam.jpg",
-      "title": "BEAM",
-      "iconsimage": "/assets/clientlogo/beam.svg",
-      "iconswidth": 63,
-      "iconsheight": 37,
-      "scope": "Website",
-      "industry": "Education",
-      "link": "https://beam.co.ae/"
-  },
+//   {
+//       "id": 3,
+//       "image": "/assets/Project/Perleen.jpg",
+//       "title": "Perleen",
+//       "iconsimage": "/assets/clientlogo/perleen.svg",
+//       "iconswidth": 35,
+//       "iconsheight": 51,
+//       "scope": "Brand Identity | Website",
+//       "industry": "Trading",
+//       "link": "/portfolio/"
+//   },
+//   {
+//       "id": 3,
+//       "image": "/assets/Project/Beam.jpg",
+//       "title": "BEAM",
+//       "iconsimage": "/assets/clientlogo/beam.svg",
+//       "iconswidth": 63,
+//       "iconsheight": 37,
+//       "scope": "Website",
+//       "industry": "Education",
+//       "link": "/portfolio/"
+//   },
   {
       "id": 3,
       "image": "/assets/Project/Qieco.jpg",
@@ -79,7 +79,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 98,
       "scope": "Brand Identity | Website",
       "industry": "Technology",
-      "link": "https://www.qiecosmart.com/"
+      "link": "/portfolio/qieco"
   },
   {
       "id": 3,
@@ -90,7 +90,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 34,
       "scope": "Website",
       "industry": "Food packaging company",
-      "link": "https://pulsarfoodstuff.com/"
+      "link": "/portfolio/pulsar-foodstuff"
   },
   {
       "id": 3,
@@ -101,18 +101,19 @@ export const allDataWebdesig2 = [
       "iconsheight": 42,
       "scope": "Website",
       "industry": "",
-      "link": "https://www.gccuae.com/"
-  },
-  {
-      "id": 3,
-      "image": "/assets/Project/conmix.jpg",
-      "title": "Conmix",
-      "iconsimage": "/assets/clientlogo/conmix.svg",
-      "iconswidth": 91,
-      "iconsheight": 37,
-      "scope": "Website",
-      "industry": "",
-      "link": "https://conmix.com/"
-  }
+      "link": "/portfolio/general-construction-co-llc"
+    }
+//     ,
+//   {
+//       "id": 3,
+//       "image": "/assets/Project/conmix.jpg",
+//       "title": "Conmix",
+//       "iconsimage": "/assets/clientlogo/conmix.svg",
+//       "iconswidth": 91,
+//       "iconsheight": 37,
+//       "scope": "Website",
+//       "industry": "",
+//       "link": "https://conmix.com/"
+//   }
 ]
 
