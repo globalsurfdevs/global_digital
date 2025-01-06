@@ -105,13 +105,25 @@ const OurServices = () => {
               // style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
-              <div className=" overflow-hidden">
-                <img
+              <motion.div
+                className=" overflow-hidden"
+                variants={{
+                  hidden: { y: 50, opacity: 0 }, // Start below and fade in
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 1, delay: 0.2 },
+                  },
+                }}
+              >
+                <motion.img
                   src={service.image}
                   alt={service.title}
                   // className="h-full object-cover objectstm"
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
                 />
-              </div>
+              </motion.div>
             </div>
 
             {/* Service Details */}
