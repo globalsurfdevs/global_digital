@@ -20,6 +20,27 @@ import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/social-media/cta";
 import { Faq } from "../../data/services/social-media/faq";
 
+interface Canonicals {
+  canonical: string;
+}
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  return {
+    title: "Social Media Services That Delivers Results |GS.Digital",
+    description: "Captivate Audiences. Our human-first approach combines strategy & creativity for meaningful social media results.Contact us today for a free consultation.",
+    alternates: {
+      canonical: 'https://www.globalsurf.ae/social-media',
+    },
+  };
+}
 const page = () => {
   return (
     <div>
