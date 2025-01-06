@@ -23,6 +23,28 @@ import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/performance-marketing/cta";
 import { Faq } from "../../data/services/performance-marketing/faq";
 
+
+interface Canonicals {
+  canonical: string;
+}
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  return {
+    title: "Data-Driven Performance Marketing Solutions in Dubai |GS.Digital",
+    description: "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
+    alternates: {
+      canonical: 'https://globalsurf.ae/performance-marketing',
+    },
+  };
+}
 const page = () => {
   return (
     <div>
