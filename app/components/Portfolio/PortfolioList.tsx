@@ -125,7 +125,7 @@ const PortfolioList = () => {
                     </div>
                     </div>
 
-                    <Link href={item.type=="case-study" ? `/case-study/${formatLinkForCaseStudy(item.heading)}` : `/portfolio-details/${formatLinkForPortfolio(item.companyName)}`}
+                    <Link href={item.type=="case-study" ? `/case-study/${formatLinkForCaseStudy(item.companyName)}` : `/portfolio/${formatLinkForPortfolio(item.companyName)}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
                   </div>

@@ -462,8 +462,8 @@ const AdminIndiCaseStudy = ({ editMode }: {
     }
 
     useEffect(() => {
-            setValue("slug", generateSlugForCaseStudy(watch("heading")))
-        }, [watch("heading")])
+            setValue("slug", generateSlugForCaseStudy(watch("companyName")))
+        }, [watch("companyName")])
 
 
     const modules = {

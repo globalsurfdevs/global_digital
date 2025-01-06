@@ -9,8 +9,8 @@ export const formatLinkForPortfolio = (name: string) => {
 };
 
 
-export const formatLinkForCaseStudy = (news:string) =>{
-    return news
+export const formatLinkForCaseStudy = (companyName:string) =>{
+    return companyName
         .replace(/,/g, '') // Replace commas with hyphens
         .replace(/ /g, '-')
         .replace(/\./g, '')
