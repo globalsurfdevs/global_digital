@@ -78,13 +78,22 @@ export const Example = () => {
         event.target instanceof Node &&
         !menuRef.current.contains(event.target)
       ) {
+        event.stopPropagation();
         toggleOpen();
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside,{passive:false});
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isOpen]);
+
+  const debouncedToggle = React.useCallback(() => {
+    let timeoutId: string | number | NodeJS.Timeout | undefined;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => toggleOpen(), 500);
+    };
+  }, [toggleOpen]);
 
   return (
     <motion.nav
