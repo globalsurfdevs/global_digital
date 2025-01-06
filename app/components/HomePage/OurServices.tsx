@@ -85,11 +85,11 @@ const OurServices = () => {
         {/* Services */}
         {services.map((service) => (
 
-          <Link href={service.url} >
+          <div
+          key={service.id}>
           <motion.div
-            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] "
+            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] relative"
             ref={nextContainerRef}
-            key={service.id}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0 }} // Trigger animation once when 50% visible
@@ -167,8 +167,9 @@ const OurServices = () => {
                 <span className="text-gray-500">0{service.id}</span>
               </div>
             </motion.div>
+            <Link href={service.url} className="linkabs"> </Link>
           </motion.div>
-          </Link>
+            </div>
         ))}
       </div>
     </>
