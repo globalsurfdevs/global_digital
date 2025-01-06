@@ -60,7 +60,7 @@ const Tours = () => {
     <img
       src={item.bannerImage}
       alt={item.companyName}
-      className="ease-linear duration-300   h-full"
+      className="ease-linear duration-300   h-full absolute object-cover"
     />
     <div className="absolute lg:bottom-[46px] lg:left-[59px] bottom-[15px] left-[15px] z-10">
       <h3 className="text-white text-font30 leading-lh1p66">{item.companyName}</h3>
