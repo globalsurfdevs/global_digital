@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Button from '../Button/Button'
 import React from 'react'
 import { CaseStudy } from '@/app/types/CaseStudy';
+import Link from 'next/link';
 
 const Ready = ({data}:{
   data:{
@@ -55,7 +56,10 @@ const Ready = ({data}:{
                         with the right audience in a way that truly resonates. </p>
           <div >
 
-                    <div className='mt-[20px] lg:mt-[64px] innerfnont'><Button text='LET&apos;S COLLABORATE' /></div> </div>
+            <div className='mt-[20px] lg:mt-[64px] innerfnont relative'><Button text='LET&apos;S COLLABORATE' />
+
+            <Link href="/lets-talk" className="absolute left-0 top-0 w-full h-full"></Link>
+            </div> </div>
                 </div>
 
               </motion.div>
