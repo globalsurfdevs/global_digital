@@ -84,8 +84,10 @@ const OurServices = () => {
       <div className="container mx-auto flex flex-col gap-5 px-4 py-8 xl:gap-24">
         {/* Services */}
         {services.map((service) => (
+
+          <Link href={service.url} >
           <motion.div
-            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] items-center"
+            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] "
             ref={nextContainerRef}
             key={service.id}
             initial="hidden"
@@ -101,6 +103,7 @@ const OurServices = () => {
             }}
           >
             {/* Service Image */}
+
             <div
               // style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
@@ -115,14 +118,15 @@ const OurServices = () => {
                     transition: { duration: 1, delay: 0.2 },
                   },
                 }}
-              >
+              ><Link href={service.url} >
                 <motion.img
                   src={service.image}
                   alt={service.title}
                   // className="h-full object-cover objectstm"
                   viewport={{ once: false, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
+                  />
+                  </Link>
               </motion.div>
             </div>
 
@@ -134,13 +138,10 @@ const OurServices = () => {
               {/* Content Block */}
               <div className="cntntblc flex flex-col gap-3">
                 <div className="group relative">
-                  <h3 className="title-65 max-w-[14ch] macst transition-all duration-300 ease-in-out group-hover:text-primary">
+                <Link href={service.url} > <h3 className="title-65 max-w-[14ch] macst transition-all duration-300 ease-in-out group-hover:text-primary">
                     {service.title}
                   </h3>
-                  <Link
-                    href={service.url}
-                    className="absolute top-0 z-[1] h-full w-full  "
-                  ></Link>
+                 </Link>
                 </div>
                 <div className="flex flex-col gap-2 lg:gap-7">
                   <p
@@ -167,6 +168,7 @@ const OurServices = () => {
               </div>
             </motion.div>
           </motion.div>
+          </Link>
         ))}
       </div>
     </>
