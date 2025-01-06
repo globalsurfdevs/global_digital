@@ -85,7 +85,7 @@ const OurServices = () => {
         {/* Services */}
         {services.map((service) => (
           <motion.div
-            className="srv-item ref-ht grid grid-cols-1 gap-8 overflow-hidden md:grid-cols-2 xl:gap-[88px] items-center"
+            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] items-center"
             ref={nextContainerRef}
             key={service.id}
             initial="hidden"
@@ -106,7 +106,7 @@ const OurServices = () => {
               className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
               <motion.div
-                className=" overflow-hidden"
+                className=""
                 variants={{
                   hidden: { y: 50, opacity: 0 }, // Start below and fade in
                   visible: {
