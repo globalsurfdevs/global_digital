@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Data-Driven Performance Marketing Solutions in Dubai |GS.Digital",
     description: "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
     alternates: {
-      canonical: 'https://globalsurf.ae/performance-marketing',
+      canonical: 'https://www.globalsurf.ae/performance-marketing',
     },
   };
 }
