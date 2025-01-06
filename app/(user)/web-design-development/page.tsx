@@ -20,6 +20,27 @@ import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/web-design-development/cta";
 import { Faq } from "../../data/services/web-design-development/faq";
 
+interface Canonicals {
+  canonical: string;
+}
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  return {
+    title: "Website Creator for Business: Build User-Centric Sites That Drive Results |GS.Digital",
+    description: "Build stunning, user-centric websites that attract customers and drive sales.Contact us today for a free consultation.",
+    alternates: {
+      canonical: 'https://www.globalsurf.ae/web-design-development',
+    },
+  };
+}
 const page = () => {
   return (
     <div>

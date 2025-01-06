@@ -37,10 +37,10 @@ type Metadata = {
 export async function generateMetadata(): Promise<Metadata> {
 
   return {
-    title: "Page Title",
-    description: "Page Description",
+    title: "Unrivaled SEO Services in Dubai for Maximum Visibility |GS.Digital",
+    description: "Our team of SEO experts crafts bespoke campaigns that deliver unparalleled visibility and drive tangible results. Contact us now",
     alternates: {
-      canonical: '#',
+      canonical: 'https://www.globalsurf.ae/seo',
     },
   };
 }
