@@ -1,49 +1,36 @@
-"use client"
+import React from 'react'
+import CaseStudyPage from './CaseStudy'
+import { Metadata } from 'next';
+import apiService from '@/app/lib/apiService';
+import { formatLinkForCaseStudy } from '@/app/helpers/formatLink';
 
-import React, { useEffect, useState } from 'react'
-import HeroSection from '@/app/components/CaseStudy/HeroSection'
-import Goals from '@/app/components/CaseStudy/Goals'
-import Percentages from '@/app/components/CaseStudy/Percentages'
-import Ready from '@/app/components/CaseStudy/Ready'
-import SuccessStories from '@/app/components/CaseStudy/SuccessStories'
-import { useParams } from 'next/navigation'
-import { CaseStudy } from '@/app/types/CaseStudy'
-import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
-
+type Data = {
+  caseStudy:{
+    metaTitle:string;
+    metaDescription:string;
+  }[]
+}
+export async function generateMetadata({params}:{
+  params:Promise<{
+    companyName:string
+  }>
+}
+): Promise<Metadata>{
+    const {companyName} = await params
+  const data:Data = await apiService.get(`/api/case-study?slug=${formatLinkForCaseStudy(companyName)}`)
+  
+  const metadataTitle = data.caseStudy[0].metaTitle=="null" || !data.caseStudy[0].metaTitle ? "Global Surf Digital" : data.caseStudy[0].metaTitle;
+  const metadataDescription = data.caseStudy[0].metaDescription=="null" || !data.caseStudy[0].metaTitle ? "Global Surf Digital" : data.caseStudy[0].metaDescription;
+    
+  return {
+    title: metadataTitle,
+    description: metadataDescription,
+  };
+}
 
 const page = () => {
-  const [data,setData] = useState<{caseStudy:CaseStudy[] , caseStudyHighlights:CaseStudyHighlights[] } | null>(null)
-
-  const {companyName} = useParams()
-
-  useEffect(()=>{
-    const fetchCaseStudyData = async() =>{
-      try {
-        const response = await fetch(`/api/case-study?slug=${companyName}`)
-        if(response.ok){
-          const data = await response.json()
-          console.log(data)
-          if(!data.error){
-            setData(data)
-          }
-        }
-      } catch (error) {
-        console.log("Error fetching case study data",error)
-      }
-    }
-
-    fetchCaseStudyData()
-    
-  },[])
-
   return (
-    <>
-    <HeroSection data={data}/>
-    <Goals data={data}/>
-    <Percentages data={data}/>
-    <Ready data={data}/>
-    <SuccessStories/>
-    </>
+    <CaseStudyPage/>
   )
 }
 

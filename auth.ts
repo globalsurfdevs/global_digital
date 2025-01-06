@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
 
 import { supabase } from '@/app/lib/initSupabase'
+import ratelimit from "./app/lib/rateLimit";
 
 
 export const {
@@ -57,11 +58,25 @@ export const {
     })
   ],
   callbacks: {
-    authorized: async ({ request: { nextUrl }, auth }) => {
+    authorized: async ({ request, auth }) => {
+      
       const isLoggedIn = auth?.user
-      if (isLoggedIn && nextUrl.pathname.startsWith('/admin/auth/signin')) {
-        return Response.redirect((new URL('/admin', nextUrl)))
+      if (isLoggedIn) {
+        const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "127.0.0.1";
+        const result = await ratelimit.limit(ip);
+        
+        if (!result.success) {
+          return Response.json(
+            { message: "Too many requests. Please try again later." },
+            { status: 429 }
+          );
+        }else{
+          if(request.nextUrl.pathname.startsWith('/admin/auth/signin')){
+            return Response.redirect((new URL('/admin', request.nextUrl)))
+          }
+        }
       }
+      console.log("REEEEEEEEEEE")
       return !!auth
     }
   },
