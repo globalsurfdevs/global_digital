@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Space Grotesk", serif;
+  overflow-x: hidden;
 }
 .container {
   margin: 0 auto;
