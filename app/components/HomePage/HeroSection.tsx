@@ -54,7 +54,7 @@ const HeroSection = () => {
 
   return (
     <motion.section
-      className="bnrnmn relative flex items-center py-24 text-black lg:h-[60vh] xl:h-screen"
+      className="bnrnmn relative flex items-center py-24 text-black h-[70vh] xl:h-screen"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.5 }}
