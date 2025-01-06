@@ -33,12 +33,12 @@ const page = () => {
             <span className="text-primary">Let’s</span> <br></br>Work together.
           </h1>
         </div>
-        <div className="p-[50px] p-[50px]  lg:p-[100px] lg:p-[100px]  ">
+        <div className="p-[50px] p-[50px]  lg:p-[100px] lg:p-[100px] psty  ">
           <div className="group">
             <Link href="/">
-              <div className="  absolute right-5 top-[30px] w-fit cursor-pointer rounded-3xl bg-dgray px-6 py-2 duration-200 duration-300 ease-in-out ease-in-out    group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  ">
+              <div className="  absolute right-5 top-[30px] w-fit cursor-pointer rounded-3xl bg-primary md:bg-dgray px-6 py-2 duration-200 duration-300 ease-in-out ease-in-out    group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  ">
                 <div className="uppercase text-white">
-                  <p className="bolder text-font16 text-black  duration-300 ease-in-out ease-in-out group-hover:text-white">
+                  <p className="bolder text-font16 text-white md:text-black  duration-300 ease-in-out ease-in-out group-hover:text-white">
                     CLOSE
                   </p>
                 </div>
@@ -160,7 +160,7 @@ const page = () => {
 
               <button
                 type="submit"
-                className="w-fit rounded-[55px] bg-primary  px-[50px] py-[20px] font-medium text-white transition duration-300  ease-in-out hover:bg-dgray hover:text-primary"
+                className="w-fit rounded-[55px] bg-primary  px-[40px] py-[10px] md:px-[50px] md:py-[20px] font-medium text-white transition duration-300  ease-in-out hover:bg-dgray hover:text-primary"
               >
                 Submit
               </button>
