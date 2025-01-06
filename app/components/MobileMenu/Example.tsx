@@ -96,7 +96,7 @@ export const Example = () => {
 <div className={isOpen ? "overlay-nav" : ""}></div>
       {<motion.div className={"menusi background shadow-lg"} variants={sidebar} ref={menuRef}>
 
-        <motion.div className="" variants={imageSection}>
+        <motion.div className="">
           <div className="fixed w-full min-h-[60px] bg-white z-1 py-5 px-6">
             <Link href="/">
               <Image src={assets.logo} alt="logo" className="w-32" />
@@ -108,8 +108,8 @@ export const Example = () => {
 
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
-        <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>
-        <motion.div variants={imageSection}>
+        <motion.div><h2 className="text-primary">Follow us on</h2></motion.div>
+        <motion.div>
           <div className="flex w-full text-black text-2xl gap-5">
           <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"><FaFacebookF /></a>
           <a href="https://x.com/GlobalSurf_D" target="_blank" className="hover:text-primary"> <FaXTwitter/></a>
