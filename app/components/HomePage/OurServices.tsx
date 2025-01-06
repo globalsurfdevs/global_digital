@@ -102,7 +102,7 @@ const OurServices = () => {
           >
             {/* Service Image */}
             <div
-              style={{ minHeight: divheight }}
+              // style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
             >
               <motion.div
@@ -116,17 +116,19 @@ const OurServices = () => {
                   },
                 }}
               >
-                <img
+                <motion.img
                   src={service.image}
                   alt={service.title}
-                  className="h-full object-cover objectstm"
+                  // className="h-full object-cover objectstm"
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
                 />
               </motion.div>
             </div>
 
             {/* Service Details */}
             <motion.div
-              style={{ minHeight: divheight }}
+              // style={{ minHeight: divheight }}
               className={`${isSmallScreen ? "targ-ht htsmedia flex flex-col justify-between border-b pb-5 lg:pb-2" : ""} custom-class`}
             >
               {/* Content Block */}
