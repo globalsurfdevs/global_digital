@@ -55,8 +55,9 @@ const Tours = () => {
           <div className="grid md:grid-cols-2 gap-8">
           {portfolios.slice(0, 2).map((item, index) => (
 
-  
-  <div className="relative tour-card h-full lg:min-h-[500px] min-h-[350px] " >
+
+  <div className="relative tour-card h-full lg:min-h-[500px] min-h-[350px] "
+  key={item.id} >
     <img
       src={item.bannerImage}
       alt={item.companyName} width={500} height={350}

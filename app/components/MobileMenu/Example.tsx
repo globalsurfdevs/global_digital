@@ -61,9 +61,11 @@ export const Example = () => {
     console.log(isOpen)
     if (isOpen == true) {
       document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
     }
     else {
       document.body.style.overflow = "";
+      document.body.style.height = "100vh";
     }
   },[isOpen])
 
@@ -113,10 +115,48 @@ export const Example = () => {
         <Navigation toggle={()=>toggleOpen()}/>
 
         <div className="text-white px-6">
-          <div className="border-t pb-5 pt-5 flex flex-col gap-4">
+          <div className="border-t pb-5 pt-5 flex flex-col gap-4 items-center">
 
-        <motion.div><h2 className="text-primary">Follow us on</h2></motion.div>
-        
+
+        <Link
+              href="/lets-talk"
+              className="  group  flex items-center space-x-2 px-6 py-2 border border-primary rounded-full text-primary hover:bg-prtext-primary hover:text-primary
+               hover:text-black hover:shadow-lg ease-in duration-300 transition"
+            >
+              <span className="group-hover:text-black ease-in duration-300">
+                LET’S TALK
+              </span>
+              <div className="bg-primary p-1">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="group-hover:scale-105"
+                >
+                  <g clipPath="url(#clip0_65_39)">
+                    <path
+                      d="M8.88346 1.26172L1.13281 8.8624"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeMiterlimit="10"
+                    />
+                    <path
+                      d="M1.13281 1.26172H8.88346V8.71245"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeMiterlimit="10"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_65_39">
+                      <rect width="10" height="10" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </Link>
         <motion.div>
           <div className="flex w-full text-black text-2xl gap-5">
           <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"><FaFacebookF /></a>
