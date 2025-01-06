@@ -27,7 +27,7 @@ const SectionTwo = () => {
         muted
         playsInline
       >
-        <source src="/assets/GS_Digital-Header_Video.mp4" type="video/mp4" />
+        <source src="/assets/GlobalSurf_Banner.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       </motion.div>
