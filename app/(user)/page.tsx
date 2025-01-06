@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Full Service Digital Marketing Agency in Dubai |GS.Digital",
     description: "Fading into the digital noise? Global Surf crafts compelling campaigns that captivate audiences, drive sales, and elevate your brand to new heights. Click here to learn more",
     alternates: {
-      canonical: 'https://globalsurf.ae/',
+      canonical: 'https://www.globalsurf.ae',
     },
   };
 }
