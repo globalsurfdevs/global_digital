@@ -504,6 +504,10 @@ body {
 } */
 .class-blogdetails-mn p {
   margin-bottom: 20px;
+  @apply text-19 pt-5 fnt-lexend text-gray1;
+}
+.class-blogdetails-mn li {
+  @apply text-19 pt-5 fnt-lexend text-gray1;
 }
 
 
@@ -511,7 +515,8 @@ body {
   @apply mb-4 mt-5 text-font30 leading-lh1p33;
 }
 .class-blogdetails-mn h3 {
-  @apply mb-4  mt-5 text-font19 font-bold leading-lh1p33;
+  font-size: clamp(17px, 2vw, 21px);
+  @apply   mt-5  font-bold leading-lh1p33;
 }
 .fltrcls {
   filter: brightness(0) invert(1);
