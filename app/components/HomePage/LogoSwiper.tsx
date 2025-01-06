@@ -10,7 +10,7 @@ import { logos } from "@/public/assets/assets";
 const LogoSwiper = () => {
   console.log(logos);
   return (
-    <div className="bg-bglight py-5 overflow-hidden">
+    <div className="bg-white py-5 overflow-hidden">
       <div className="container !overflow-visible">
         <Swiper
           className="!overflow-visible logo-swiper"

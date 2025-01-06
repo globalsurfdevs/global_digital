@@ -436,6 +436,9 @@ body {
 }
 
 @layer components {
+  .title-120 {
+    @apply text-font120 leading-lh1p22;
+  }
   .title-80 {
     @apply text-font80 leading-lh1p22;
   }
@@ -489,7 +492,7 @@ body {
 .invic img {
   filter: brightness(0) invert(1);
 }
-.bnrnmn::before {
+/* .bnrnmn::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -497,7 +500,7 @@ body {
   background: #000;
   opacity: 0.5;
   z-index: -1;
-}
+} */
 .class-blogdetails-mn p {
   margin-bottom: 20px;
 }
