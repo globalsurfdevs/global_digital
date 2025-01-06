@@ -10,7 +10,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 24,
       "scope": " Website",
       "industry": "Construction",
-      "link": "https://www.innovogroup.com/"
+      "link": "portfolio-details/"
   },
 
   {
@@ -122,6 +122,6 @@ export const allDataWebdesign1 = [
       "iconsheight": 37,
       "scope": "Website",
       "industry": "Education",
-      "link": "https://www.educap.ae/"
+      "link": "portfolio-details/educap"
   }
 ]
