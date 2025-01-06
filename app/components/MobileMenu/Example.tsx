@@ -15,23 +15,20 @@ import { FaTiktok } from "react-icons/fa";
 import Link from "next/link";
 
 const sidebar = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+  open: {
+    x: 0, // Slide in from the right
     transition: {
       type: "tween",
-      stiffness: 20,
-      restDelta: 2
-    }
-  }),
-  closed: {
-    clipPath: "circle(20px at calc(100% - 40px) 30px)",
-    transition: {
-      delay: 0,
-      type: "tween",
-      stiffness: 20,
-      damping: 10,
+      duration: 0.3, // Adjust the speed of the animation
     },
-  }
+  },
+  closed: {
+    x: "100%", // Move out to the right
+    transition: {
+      type: "tween",
+      duration: 0.3, // Adjust the speed of the animation
+    },
+  },
 };
 
 const imageSection = {
@@ -117,7 +114,9 @@ export const Example = () => {
 
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4">
+
         <motion.div><h2 className="text-primary">Follow us on</h2></motion.div>
+        
         <motion.div>
           <div className="flex w-full text-black text-2xl gap-5">
           <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"><FaFacebookF /></a>
