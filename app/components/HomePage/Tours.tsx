@@ -59,8 +59,8 @@ const Tours = () => {
   <div className="relative tour-card h-full lg:min-h-[500px] min-h-[350px] " >
     <img
       src={item.bannerImage}
-      alt={item.companyName}
-      className="ease-linear duration-300   h-full absolute object-cover"
+      alt={item.companyName} width={500} height={350}
+      className="ease-linear duration-300   h-full absolute object-cover w-full"
     />
     <div className="absolute lg:bottom-[46px] lg:left-[59px] bottom-[15px] left-[15px] z-10">
       <h3 className="text-white text-font30 leading-lh1p66">{item.companyName}</h3>
