@@ -5,7 +5,8 @@ import Link from "next/link";
 import {Lexend} from "next/font/google";
 import { motion } from 'framer-motion';
 import { Portfolio } from "@/app/types/Portfolio";
-const lexend = Lexend({subsets: ['latin'] ,weight:["300","400","500","600","700"] });
+const lexend = Lexend({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700"] });
+import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
 
 const Tours = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
@@ -54,7 +55,7 @@ const Tours = () => {
           <div className="grid md:grid-cols-2 gap-8">
           {portfolios.slice(0, 2).map((item, index) => (
 
-  <Link href={`/portfolio-details/${item.id}`} key={index}>
+  <Link href={`/portfolio/${formatLinkForPortfolio(item.companyName)}`} key={index}>
   <div className="relative tour-card h-full lg:min-h-[550px] min-h-[350px] " >
     <img
       src={item.bannerImage}

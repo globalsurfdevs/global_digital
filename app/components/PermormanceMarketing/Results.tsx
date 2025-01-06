@@ -2,6 +2,7 @@
 import React from "react";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 interface ResultsItem {
   id: number;
   brand: string;
@@ -9,6 +10,7 @@ interface ResultsItem {
   traffic: string;
   title: string;
   dec: string;
+  url: string;
 }
 
 interface ResultsSectionProps {
@@ -55,7 +57,7 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data }) => {
               {data.map((result) => (
                 <div
                   key={result.id}
-                  className="group  bg-black pb-0 text-white duration-300 ease-linear hover:cursor-pointer xl:pb-[57px]"
+                  className="group relative bg-black pb-0 text-white duration-300 ease-linear hover:cursor-pointer xl:pb-[57px]"
                 >
                   <div className="flex flex-col bg-gray2 px-6 pb-6 pt-5  duration-300 ease-in-out group-hover:bg-primary  md:px-[50px] md:pb-8   md:pt-8 lg:pb-[50px] lg:pt-[37px]">
                     <div className="relative  flex flex-col  ">
@@ -92,7 +94,7 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col px-6 pb-8 pt-6 text-white md:px-[50px] md:pt-8 ">
+                  <div className="flex flex-col px-6 pb-8 pt-6 text-white md:px-[50px] md:pt-8  ">
                     <h3 className="text-30 mb-[10px] md:mb-[19px]">
                       {result.title}
                     </h3>
@@ -100,6 +102,8 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data }) => {
                       {result.dec}
                     </p>
                   </div>
+
+                  <Link href={result.url} className="absolute h-full w-full left-0 right-0 top-0"></Link>
                 </div>
               ))}
             </div>
