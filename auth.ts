@@ -6,6 +6,12 @@ import { supabase } from '@/app/lib/initSupabase'
 import ratelimit from "./app/lib/rateLimit";
 
 
+type User = {
+  id: string;
+  username: string;
+  email: string;
+};
+
 export const {
   handlers,
   auth,
@@ -79,7 +85,23 @@ export const {
       }
       console.log("REEEEEEEEEEE")
       return !!auth
-    }
+    },
+    jwt({ token, user }) {
+      console.log("JWT",user)
+      if(user){
+        token.id = user?.id
+      }
+      console.log("JWT Token:", token); 
+      return token
+    },
+    session({ session, token }) {
+      if (token?.id) {
+        session.user.id = token.id;
+      }
+      console.log("Session Object:", session);
+      return session;
+    },
+    
   },
   pages: {
     signIn: '/admin/auth/signin'
