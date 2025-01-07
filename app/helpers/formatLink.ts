@@ -17,3 +17,18 @@ export const formatLinkForCaseStudy = (companyName:string) =>{
         .replace(/’/g,'')
         .toLowerCase();
 }
+
+
+export const formatLinkForBlog = (heading:string) =>{
+    return heading
+        .replace(/,/g, '') // Replace commas with hyphens
+        .replace(/ /g, '-')
+        .replace(/ /g, '-')
+        .replace(/\./g, '')
+        .replace(/\? /g, '-')
+        .replace(/\!/g, '')
+        .replace(/\?/g, '')
+        .replace(/’/g,'')
+        .replace(/'/g,'')
+        .toLowerCase();
+}

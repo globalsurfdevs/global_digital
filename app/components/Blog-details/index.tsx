@@ -10,10 +10,10 @@ import Image from "next/image";
 
 const BlogDetails = () => {
   // const router = useRouter();
-  const { companyId } = useParams();
+  const { heading } = useParams();
 
   // Find the blog by ID
-  const blog = BlogData.find((b) => b.id === parseInt(companyId as string, 10));
+  const blog = BlogData.find((b) => b.slug === (heading as string));
 
   if (!blog) {
     return <p>Loading...</p>; // Or show a "Not Found" message

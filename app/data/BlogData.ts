@@ -1,6 +1,7 @@
 export const BlogData = [
   {
     id: 1,
+    slug:"poor-sales-try-our-website-redesign-services-for-results",
     titles: "poor-sales-try-our-website-redesign-services-for-results",
     title: "<b>Poor Sales?</b> Try our website redesign services for results!",
     list_heading: "Poor Sales? Try our website redesign services for results!",
@@ -39,6 +40,7 @@ export const BlogData = [
   },
   {
     id: 2,
+    slug:"social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
     titles:
       "social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
     title:
@@ -81,6 +83,7 @@ export const BlogData = [
   },
   {
     id: 3,
+    slug:"the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
     titles: "b2b-marketing-trends-to-follow-in-2024",
     title:
       "<b>The B2B marketing trends </b> to follow in 2024 to overcome your B2B challenges",

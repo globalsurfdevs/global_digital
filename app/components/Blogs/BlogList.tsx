@@ -1,5 +1,6 @@
 "use client";
 
+import { formatLinkForBlog } from "@/app/helpers/formatLink";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -61,7 +62,7 @@ import Link from "next/link";
                       </h3>
                       {/* <p className="text-19 text-gray1">{Blog.list_heading}</p> */}
                     </div>
-                    <Link href={`/blog-details/${Blog.id}`}
+                    <Link href={`/blog-details/${formatLinkForBlog(Blog.list_heading)}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
                   </div>
