@@ -36,7 +36,7 @@ const AboutGlobal = () => {
             className="relative overflow-hidden"
             ref={ref}
           >
-            <motion.h1 className="title-65 leading-tight">
+            <motion.h2 className="title-65 leading-tight">
               {"Hello".split("").map((l, i) => (
                 <motion.span
                   key={i}
@@ -54,9 +54,9 @@ const AboutGlobal = () => {
                 </motion.span>
               ))}
               <motion.span className="text-red-600">!</motion.span>
-            </motion.h1>
+            </motion.h2>
 
-            <motion.h1 className="title-65 absolute inset-0 leading-tight">
+            <motion.h2 className="title-65 absolute inset-0 leading-tight">
               {"Hello".split("").map((l, i) => (
                 <motion.span
                   key={i}
@@ -71,7 +71,7 @@ const AboutGlobal = () => {
                 </motion.span>
               ))}
               <motion.span className="text-red-600">!</motion.span>
-            </motion.h1>
+            </motion.h2>
           </motion.div>
           <h3 className="font-35 max-w-[50ch]">
             We’re Global Surf Digital, a full-service digital marketing agency

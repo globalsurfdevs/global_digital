@@ -8,11 +8,12 @@ export const Employees = [
         designation: "Digital Account Director",
         width: "100%",
         height:"auto"
-    }, {
-        id: 2,
-        image: assets.Preethika,
-        name:"Preethika",
-        designation: "Project Manager",
+    },
+    {
+        id: 16,
+        image: assets.Vipin,
+        name:"Vipin",
+        designation: "Marketing Head",
         width: "100%",
         height:"auto"
     },
@@ -32,12 +33,11 @@ export const Employees = [
         width: "100%",
         height:"auto"
     },
-
-    {
-        id: 16,
-        image: assets.Vipin,
-        name:"Vipin",
-        designation: "Marketing Head",
+ {
+        id: 2,
+        image: assets.Preethika,
+        name:"Preethika",
+        designation: "Project Manager",
         width: "100%",
         height:"auto"
     },

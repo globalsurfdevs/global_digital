@@ -122,11 +122,11 @@ export const Example = () => {
             <motion.div><h2 className="text-primary">Follow us on</h2></motion.div>
         <motion.div>
           <div className="flex w-full text-black text-2xl gap-5">
-          <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"><FaFacebookF /></a>
-          <a href="https://x.com/GlobalSurf_D" target="_blank" className="hover:text-primary"> <FaXTwitter/></a>
-          <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" className="hover:text-primary">  <FaInstagram /></a>
-          <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" className="hover:text-primary"> <FaLinkedin/></a>
-          <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" className="hover:text-primary"> <FaTiktok/></a>
+          <a href="https://www.facebook.com/globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"><FaFacebookF /></a>
+          <a href="https://x.com/GlobalSurf_D" target="_blank" rel="nofollow" className="hover:text-primary"> <FaXTwitter/></a>
+          <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" rel="nofollow" className="hover:text-primary">  <FaInstagram /></a>
+          <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" rel="nofollow" className="hover:text-primary"> <FaLinkedin/></a>
+          <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"> <FaTiktok/></a>
             </div>
         </motion.div>
         </div>
