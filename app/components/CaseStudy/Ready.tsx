@@ -50,10 +50,8 @@ const Ready = ({data}:{
                                 }}
                                       >
                 <div className='lg:pb-[150px] pb-[50px] lg:pt-[138px] pt-[30px] border-b flex flex-col   '>
-                    <h2 className='title-65 mb-4 lg:mb-7'>We’re Ready - Are You?</h2>
-                    <p className='text-19 text-gray1 max-w-[113ch] fnt-lexend'>If you&apos;re looking forward to growing your digital presence with fresh and effective strategies,
-                        you’re in the right place. With our experience and a personal touch, we’ll help your brand connect
-                        with the right audience in a way that truly resonates. </p>
+                    <h2 className='title-65 mb-4 lg:mb-7'>Lets Create Something Iconic Together</h2>
+                    <p className='text-19 text-gray1 max-w-[113ch] fnt-lexend'>Every great brand has a story. See how we’ve turned challenges into triumphs for our clients. Your brand could be next.</p>
           <div >
 
             <div className='mt-[20px] lg:mt-[64px] innerfnont relative'><Button text='LET&apos;S COLLABORATE' />
