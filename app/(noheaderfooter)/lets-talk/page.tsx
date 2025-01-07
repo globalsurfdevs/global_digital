@@ -28,12 +28,20 @@ const page = () => {
   return (
     <div>
       <div className="maintalk">
-        <div className="bg-dgray px-[50px] pb-[50px] pt-[50px] md:pb-[0px] lg:px-[40px] lg:pt-[100px]">
+        <div className="bg-dgray px-[20px] pb-[20px] pt-[20px] md:pb-[0px] lg:px-[40px] lg:pt-[100px]">
           <h1 className="title-65">
             <span className="text-primary">Let’s</span> <br></br>Work together.
           </h1>
+                <div className="flex flex-col gap-8 md:col-span-3 mt-[30px] lg:mt-[150px]">
+                  <div className="flex flex-col gap-3">
+                    <h2 className="text-font35">
+                    <a href="mailto:hello@globalsurf.ae" className="break-words" > hello<span className="text-primary">@</span>globalsurf.ae</a>
+                    </h2>
+                    <h2 className="text-font35"><a href="tel:+97145821133" >+971 4 582 1133</a></h2>
+                  </div>
+                </div>
         </div>
-        <div className="p-[50px] p-[50px]  lg:p-[100px] lg:p-[100px] psty  ">
+        <div className="p-[20px] p-[20px]  md:p-[100px] md:p-[100px] psty  ">
           <div className="group">
             <Link href="/">
               <div className="  absolute right-5 top-[30px] w-fit cursor-pointer rounded-3xl bg-primary md:bg-dgray px-6 py-2 duration-200 duration-300 ease-in-out ease-in-out    group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  ">
