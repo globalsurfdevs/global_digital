@@ -1,7 +1,7 @@
 
 
 export const OurServices = {
-  title: "Our Services Included",
+  title: "Our Services Include",
   data: [
     {
       id: 1,
