@@ -1,12 +1,14 @@
 'use client'
 import { useParams } from "next/navigation";
 import { career } from "../../../data/career";
+import Link from "next/link";
+import Button from "@/app/components/Button/Button";
 
 export default function DetailsPage() {
-  const { id } = useParams();
+  const { url } = useParams();
 
 
-  const item = career.find((job) => job.id === id);
+  const item = career.find((job) => job.url === url);
 
   if (!item) {
     return <p>Item not found!</p>;
@@ -14,9 +16,9 @@ export default function DetailsPage() {
 
   return (
     <div className="container mx-auto py-4">
-      <div className="pt-[50px] lg:pt-[100px] ">
+      <div className="pt-[30px] lg:pt-[100px] ">
         <h1 className="title-65 mb-5 md:mb-[75px] pb-5 md:pb-[50px] border-b ">Looking Experienced <br></br>{item.post}</h1>
-        <div className="md:grid md:grid-cols-2 gap-2 mb-5 md:mb-[50px]">
+        <div className="md:grid md:grid-cols-2 gap-2 mb-5 md:mb-[50px] pb-5 md:pb-[50px] border-b">
           <div>
             <div className="mb-[15px] md:mb-[30px]">
               <h2 className="text-font25 ">Job Type</h2>
@@ -35,9 +37,9 @@ export default function DetailsPage() {
           </div>
         </div>
         <div>
-            <div className="mb-[15px] md:mb-[30px]">
+            <div className="mb-[15px] md:mb-[30px] pb-[15px] md:pb-[40px] border-b">
               <h2 className="text-font25 mb-5 md:mb-[30px]">The Role & Responsibility</h2>
-              <ul >
+              <ul className="listst">
                                 <li>Identify and target potential clients, including corporations, educational
                                     institutions, and event organizers.</li>
                                 <li>Develop and maintain relationships with new and existing clients to drive sales
@@ -78,6 +80,11 @@ export default function DetailsPage() {
                             </ul>
             </div>
         </div>
+        <div>
+          <p className="text-font19 text-gray1 mb-5"><b>NB: Proceed to apply if the above job description matches with your profile.</b></p>
+        </div>
+
+        <div className='mt-3 lg:mt-[20px] mb-[40px] lg:mb-[100px] innerfnont'><Link href={`/apply-now/${item.id}`}><Button text="Apply Now" /></Link></div>
       </div>
       </div>
   );

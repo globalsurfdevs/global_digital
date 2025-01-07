@@ -3,7 +3,7 @@
 export const career = [
   {
     id:"1",
-    post: "Sales Specialist- Web and Digital Services",
+    post: "Sales Specialist - Web and Digital Services",
     team: "Marketing Team",
     url: "sales-specialist-web-digital",
     slug: "sales-specialist-web-digital",
