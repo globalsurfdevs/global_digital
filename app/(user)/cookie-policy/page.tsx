@@ -114,7 +114,7 @@ const page = () => {
             <div  >
               <p >You have the option to manage or disable cookies through your browser settings. Please note that disabling certain cookies may affect the functionality of our website.
 
-              For more information on managing cookies, visit <a href="https://www.aboutcookies.org/" target="_blank" className="text-primary">aboutcookies.org</a>. </p>
+              For more information on managing cookies, visit <a href="https://www.aboutcookies.org/" target="_blank" rel="nofollow" className="text-primary">aboutcookies.org</a>. </p>
             </div>
           </div>
         </div>

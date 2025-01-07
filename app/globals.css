@@ -575,6 +575,8 @@ body {
 .mb-ig {
   margin-top: 35px;
 }
+.listst li{list-style: disc; line-height: 1.6;}
+.listst {padding-left: 20px;}
 .mt-spc {
   margin-bottom: 20px;
 }
