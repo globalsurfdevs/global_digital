@@ -63,6 +63,7 @@ export const {
       const isLoggedIn = auth?.user
       if (isLoggedIn) {
         const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "127.0.0.1";
+        console.log("IP",ip)
         const result = await ratelimit.limit(ip);
         
         if (!result.success) {
