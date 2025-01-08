@@ -7,7 +7,8 @@ import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
 import { formatLinkForPortfolio ,formatLinkForCaseStudy} from "@/app/helpers/formatLink";
-import { CaseStudy } from "@/app/types/CaseStudy";
+
+
 
 const PortfolioList = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
@@ -30,6 +31,7 @@ const PortfolioList = () => {
 
     fetchPortfolios();
   }, []);
+
 
   const [filter, setFilter] = useState("all");
 
@@ -56,6 +58,7 @@ const PortfolioList = () => {
       );
     }
   };
+
 
   return (
     <>

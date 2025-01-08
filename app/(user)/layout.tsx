@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import Header from "@/app/components/HomePage/Header";
@@ -5,10 +6,13 @@ import { Space_Grotesk } from "next/font/google";
 import Footer from "@/app/components/HomePage/Footer";
 import Script from "next/script";
 
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
+
+
 
 export const dynamic = "force-dynamic";
 
