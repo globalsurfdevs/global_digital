@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import Head from "next/head";
-import Header from "@/app/components/HomePage/Header";
 import { Space_Grotesk } from "next/font/google";
-import Footer from "@/app/components/HomePage/Footer";
+import Script from "next/script";
 
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ["300", "400", "500", "600", "700"] });
@@ -25,6 +24,20 @@ export default function RootLayout({
       <body>
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"height="0"width="0"style={{ display: "none", visibility: "hidden" }}           /></noscript>
         {children}
+        <Script
+        id="zoho-salesiq"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.$zoho=window.$zoho || {};
+            $zoho.salesiq = $zoho.salesiq || {
+              ready: function() {}
+            };
+          `,
+        }}
+      />
+        <script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqeae118c3938846c2218ef67ca061aed63c888ec50c2d01744b04b184d9b52834" defer></script>
+
       </body>
     </html>
   );
