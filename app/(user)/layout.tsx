@@ -46,6 +46,20 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+
+        <Script
+        id="zoho-salesiq"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.$zoho=window.$zoho || {};
+            $zoho.salesiq = $zoho.salesiq || {
+              ready: function() {}
+            };
+          `,
+        }}
+      />
+        <script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqeae118c3938846c2218ef67ca061aed63c888ec50c2d01744b04b184d9b52834" defer></script>
       </body>
     </html>
   );
