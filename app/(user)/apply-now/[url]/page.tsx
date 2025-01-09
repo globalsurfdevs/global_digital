@@ -33,7 +33,7 @@ export default function CareerDetailsPage() {
         <h1 className="title-65 mb-5 border-b pb-5 md:mb-[50px] md:pb-[25px] ">
         Looking for <br></br>{item.post}
         </h1>
-        <p className="text-19 text-gray1">  GSIT will get in touch with you.</p>
+        <p className="text-19 text-gray1">We are seeking a motivated and results-driven professional to join our team.</p>
         <div className="  pt-[15px] lg:pt-[50px] pb-[40px] lg:pb-[50px]">
            <form action='https://forms.zohopublic.com/Globalsurf/form/GlobalsurfCareerForm1/formperma/9ItYPvjmFDbF9ve90H81K2Yp-Ht-6Xpx7-2f49b7ook/htmlRecords/submit' name='form' id='form' method='POST' acceptCharset='UTF-8' encType='multipart/form-data'>
             <input type="hidden" name="zf_referrer_name" value="" />

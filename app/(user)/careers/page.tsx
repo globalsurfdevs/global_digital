@@ -107,7 +107,7 @@ const page = () => {
                 {career.map((item) => (
   <div key={item.id}>
     {/* <Link href={`/careers/${item.url}`}> */}
-    <Link href={`/apply-now/${item.url}`}>
+    <Link href={`/careers/${item.url}`}>
       <div className="group flex items-center justify-between border border-l-0 border-r-0 transition-all duration-300 hover:bg-black">
         <div className="pb-[38px] pt-[41px] transition-transform duration-300 group-hover:translate-x-[5px] md:group-hover:translate-x-[30px]">
           <div className="text-30 leading-[1.5] transition-colors duration-300 group-hover:text-primary">

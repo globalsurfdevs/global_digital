@@ -1,92 +1,111 @@
-'use client'
+"use client";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import { career } from "../../../data/career";
 import Link from "next/link";
 import Button from "@/app/components/Button/Button";
 
-export default function DetailsPage() {
-  const { url } = useParams();
+export default function CareerDetailsPage() {
+  const params = useParams(); // Use the custom useParams hook
+  const { url } = params; // Extract the 'url' parameter
 
-
-  const item = career.find((job) => job.url === url);
+  // Find the item based on the 'url' parameter
+  const item = career.find((b) => b.url === url);
 
   if (!item) {
     return <p>Item not found!</p>;
   }
+  const [file, setFile] = useState<File | null>(null);
+  const [error, setError] = useState('');
+  const [fileName, setFileName] = useState('');  // This will hold the file name if you're using a file input.
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files ? e.target.files[0] : null; // Safely access files
+
+    if (selectedFile) {
+      setFile(selectedFile);
+      setError("");
+    }
+  };
   return (
     <div className="container mx-auto py-4">
       <div className="pt-[30px] lg:pt-[100px] ">
-        <h1 className="title-65 mb-5 md:mb-[75px] pb-5 md:pb-[50px] border-b ">Looking Experienced <br></br>{item.post}</h1>
-        <div className="md:grid md:grid-cols-2 gap-2 mb-5 md:mb-[50px] pb-5 md:pb-[50px] border-b">
-          <div>
-            <div className="mb-[15px] md:mb-[30px]">
-              <h2 className="text-font25 ">Job Type</h2>
-              <p className="text-font19 text-gray1">Full-time, Permanent</p>
+        <h1 className="title-65 mb-5 border-b pb-5 md:mb-[50px] md:pb-[25px] ">
+        Looking for <br></br>{item.post}
+        </h1>
+        <p className="text-19 text-gray1">  Our Team will get in touch with you.</p>
+        <div className="  pt-[15px] lg:pt-[50px] pb-[40px] lg:pb-[50px]">
+           <form action='https://forms.zohopublic.com/Globalsurf/form/GlobalsurfCareerForm1/formperma/9ItYPvjmFDbF9ve90H81K2Yp-Ht-6Xpx7-2f49b7ook/htmlRecords/submit' name='form' id='form' method='POST' acceptCharset='UTF-8' encType='multipart/form-data'>
+            <input type="hidden" name="zf_referrer_name" value="" />
+            <input type="hidden" name="zf_redirect_url" value="" />
+            <input type="hidden" name="zc_gad" value="" />
+            <div className="mb-[30px]">
+                <input
+                  type="text"
+                  name="SingleLine1"
+                  required
+                  maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder=""
+                defaultValue={item.post}
+                readOnly
+                />
+              </div>
+            <div className="md:grid md:grid-cols-2 md:gap-5">
+              <div className="mb-[30px]">
+                <input
+                  type="text"
+                  name="SingleLine"
+                  maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Name"
+                  required
+                />
+              </div>
+              <div className="mb-[30px]">
+                <input
+                  type="email"
+                  name="Email"
+                  required
+                  maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Enter your email"
+                />
+              </div>
             </div>
-            <div>
-              <h2 className="text-font25 ">Location</h2>
-              <p className="text-font19 text-gray1">Exchange Tower, Business Bay, Dubai, UAE</p>
-            </div>
-          </div>
-          <div>
-            <div className="mb-[15px] md:mb-[30px]">
-              <h2 className="text-font25 ">Job Description</h2>
-              <p className="text-font19 text-gray1">We are looking for an experienced AV Sales Specialist in Dubai</p>
-            </div>
-          </div>
-        </div>
-        <div>
-            <div className="mb-[15px] md:mb-[30px] pb-[15px] md:pb-[40px] border-b">
-              <h2 className="text-font25 mb-5 md:mb-[30px]">The Role & Responsibility</h2>
-              <ul className="listst">
-                                <li>Identify and target potential clients, including corporations, educational
-                                    institutions, and event organizers.</li>
-                                <li>Develop and maintain relationships with new and existing clients to drive sales
-                                    growth.</li>
-                                <li>Conduct market research to stay informed about industry trends and competitor
-                                    activities.</li>
-                                <li>Achieve sales targets.</li>
-                                <li>Maintain a comprehensive understanding of AV products and solutions offered by the
-                                    company.
-                                </li>
-                                <li>Provide product demonstrations to potential clients, highlighting key features and
-                                    benefits.</li>
-                                <li>Meet with clients to understand their specific AV needs and requirements.</li>
-                                <li>Propose tailored AV solutions that align with client needs and budget constraints.
-                                </li>
-                                <li>Prepare detailed proposals and quotations for AV projects.</li>
-                                <li>Oversee the implementation of AV projects, ensuring timely and accurate delivery of
-                                    products and services.
-                                </li>
-                                <li>Coordinate with internal teams, such as installation and technical support, to
-                                    ensure seamless execution of projects.
-                                </li>
-                                <li>Monitor project progress and address any issues that arise during installation and
-                                    setup.</li>
-                                <li>Provide ongoing support to clients after the sale, including troubleshooting and
-                                    technical assistance.
-                                </li>
-                                <li>Conduct training sessions for clients on the proper use and maintenance of AV
-                                    equipment.
-                                </li>
-                                <li>Handle warranty claims and service requests in a timely and efficient manner.</li>
-                                <li>Maintain accurate records of sales activities, client interactions, and transactions
-                                    in CRM systems.
-                                </li>
-                                <li>Prepare regular sales reports and forecasts for management review.</li>
-                                <li>Attend sales meetings and provide updates on sales performance and market feedback.</li>
-                                <li>Negotiate pricing and contract terms with clients to ensure profitability</li>
-                            </ul>
-            </div>
-        </div>
-        <div>
-          <p className="text-font19 text-gray1 mb-5"><b>NB: Proceed to apply if the above job description matches with your profile.</b></p>
-        </div>
+            <div className="md:grid md:grid-cols-2 md:gap-5">
 
-        <div className='mt-3 lg:mt-[20px] mb-[40px] lg:mb-[100px] innerfnont'><Link href={`/apply-now/${item.id}`}><Button text="Apply Now" /></Link></div>
+              <div className="mb-[30px]">
+                <input
+                  type="number"
+                  name="PhoneNumber_countrycode"
+                  required
+                  maxLength={20}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Contact Number"
+                />
+              </div>
+              <div className="mb-[30px] flex items-center">
+              <input
+                  type="file"
+                  name="FileUpload"
+                  onChange={handleFileChange}
+                  required
+                accept="image/*,application/pdf" // Accept specific file types
+              />
+            </div>
+            </div>
+
+
+            <button
+              type="submit"
+              className="w-fit rounded-[55px] bg-primary md:px-[40px] md:py-[10px]  px-[40px] py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray  hover:text-primary "
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
-      </div>
+    </div>
   );
 }
-
