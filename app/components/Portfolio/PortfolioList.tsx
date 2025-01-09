@@ -10,10 +10,19 @@ import { formatLinkForPortfolio ,formatLinkForCaseStudy} from "@/app/helpers/for
 
 
 
+
+
 const PortfolioList = () => {
+
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
 
+  const CACHE_DURATION = 10 * 60 * 1000;
+
   useEffect(() => {
+    
+    const cachedData = localStorage.getItem('portfolios')
+
+
     const fetchPortfolios = async () => {
       try {
         const response = await fetch(`/api/portfolio`);
@@ -21,6 +30,13 @@ const PortfolioList = () => {
           const data = await response.json();
           console.log(data.combinedData);
           setPortfolios(data.combinedData);
+          localStorage.setItem(
+            'portfolios',
+            JSON.stringify({
+              timestamp: Date.now(),
+              data: data.combinedData,
+            })
+          )
         } else {
           console.error("Failed to fetch portfolio data");
         }
@@ -29,7 +45,17 @@ const PortfolioList = () => {
       }
     };
 
-    fetchPortfolios();
+    if(cachedData){
+      const { timestamp, data } = JSON.parse(cachedData);
+      if (Date.now() - timestamp < CACHE_DURATION) {
+        setPortfolios(data)
+      }else{ 
+        fetchPortfolios();
+      }
+    }else{
+      fetchPortfolios(); 
+    }
+
   }, []);
 
 
@@ -91,7 +117,7 @@ const PortfolioList = () => {
 
             {/* Portfolio Items */}
             <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
-              {portfolios.map((item, index) => (
+              {portfolios.length >0 && portfolios.map((item, index) => (
                 <motion.div
                   key={index}
                   className="w-full"

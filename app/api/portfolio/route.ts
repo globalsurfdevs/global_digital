@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server"
 export async function GET(req: NextRequest) {
 
     try {
-        console.log("This worlds")
+        console.log("This worlds hehehehhe")
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
         const slug = searchParams.get("slug")
@@ -80,11 +80,16 @@ export async function GET(req: NextRequest) {
 
                 return NextResponse.json({ combinedData });
             } else {
+
+                console.log("Here")
                 let { data: portfolio, } = await supabase
                     .from('portfolios')
                     .select('*')
+                
 
-                if (portfolio) {
+                    console.log(portfolio)
+
+                if (portfolio && portfolio.length>0) {
                     return NextResponse.json({ portfolio });
                 } else {
                     return NextResponse.json({ error: "Fetching portfolio failed" })
