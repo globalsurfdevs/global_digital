@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { Control, Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -32,8 +32,10 @@ type addingHighlights = {
 
 
 
-const AdminIndiCaseStudy = ({ editMode }: {
+const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
     editMode?: boolean;
+    selectedSection?:string;
+    setSelectedSection?:Dispatch<React.SetStateAction<string>>
 }) => {
     const { companyId } = useParams()
     const router = useRouter()
@@ -101,6 +103,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
         formData.append("slug", data.slug)
         formData.append("metaTitle", data.metaTitle)
         formData.append("metaDescription", data.metaDescription)
+        formData.append("section","case study")
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -182,7 +185,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
         });
 
         try {
-            const url = editMode ? `/api/case-study?id=${companyId}` : `/api/case-study`;
+            const url = editMode ? `/api/portfolio?id=${companyId}` : `/api/portfolio`;
             const method = "POST";
             console.log("Here")
             const response = await fetch(url, {
@@ -194,7 +197,7 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
             if (!data.error) {
                 toast.success(data.message)
-                router.push('/admin/case-study')
+                router.push('/admin/portfolio')
             } else {
                 toast.error(data.error)
             }
@@ -211,51 +214,56 @@ const AdminIndiCaseStudy = ({ editMode }: {
     useEffect(() => {
         const fetchCaseStudyData = async () => {
             try {
-                const response = await fetch(`/api/case-study?id=${companyId}`);
+                const response = await fetch(`/api/portfolio?id=${companyId}`);
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data)
-                    if (data.caseStudy[0]) {
-                        setValue("heading", data.caseStudy[0].heading)
-                        setValue("sHeading", data.caseStudy[0].sHeading)
-                        setValue("industry", data.caseStudy[0].industry)
-                        setValue("country", data.caseStudy[0].country)
-                        setValue("channelsUsed", data.caseStudy[0].channelsUsed)
-                        setValue("story", data.caseStudy[0].story)
-                        setValue("goals", data.caseStudy[0].goals)
-                        setValue("objectives", data.caseStudy[0].objectives)
-                        setValue("challenge", data.caseStudy[0].challenge)
-                        setValue("overcomingChallenges", data.caseStudy[0].overcomingChallenges)
-                        setValue("achievements", data.caseStudy[0].achievements)
-                        setValue("description", data.caseStudy[0].description)
-                        setValue("tag", data.caseStudy[0].tag)
-                        setValue("companyName", data.caseStudy[0].companyName)
-                        setValue("slug", data.caseStudy[0].slug)
-                        setValue("metaTitle", data.caseStudy[0].metaTitle)
-                        setValue("metaDescription", data.caseStudy[0].metaDescription)
+                    console.log(data.portfolio[0])
+                    if (data.portfolio[0]) {
+                        setValue("heading", data.portfolio[0].heading)
+                        setValue("sHeading", data.portfolio[0].sHeading)
+                        setValue("industry", data.portfolio[0].industry)
+                        setValue("country", data.portfolio[0].country)
+                        setValue("channelsUsed", data.portfolio[0].channelsUsed)
+                        setValue("story", data.portfolio[0].story)
+                        setValue("goals", data.portfolio[0].goals)
+                        setValue("objectives", data.portfolio[0].objectives)
+                        setValue("challenge", data.portfolio[0].challenge)
+                        setValue("overcomingChallenges", data.portfolio[0].overcomingChallenges)
+                        setValue("achievements", data.portfolio[0].achievements)
+                        setValue("description", data.portfolio[0].description)
+                        setValue("tag", data.portfolio[0].tag)
+                        setValue("companyName", data.portfolio[0].companyName)
+                        setValue("slug", data.portfolio[0].slug)
+                        setValue("metaTitle", data.portfolio[0].metaTitle)
+                        setValue("metaDescription", data.portfolio[0].metaDescription)
 
-                        // if (data.portfolio[0].categories) {
+                        if (data.portfolio[0].categories) {
 
-                        //     setAddedCategories(data.portfolio[0].categories)
+                            setAddedCategories(data.portfolio[0].categories)
 
+                        }
+
+                        
+
+                        // if (data.caseStudy[0].categories) {
+
+                        //     setAddedCategories(data.caseStudy[0].categories)
                         // }
 
-                        if (data.caseStudy[0].categories) {
+                        console.log(data.portfolio[0].coverImage)
 
-                            setAddedCategories(data.caseStudy[0].categories)
-                        }
-
-                        if (data.caseStudy[0].coverImage) {
-                            setPreviewCoverImage(data.caseStudy[0].coverImage as string);
+                        if (data.portfolio[0].coverImage) {
+                           
+                            setPreviewCoverImage(data.portfolio[0].coverImage as string);
 
                         }
 
-                        if (data.caseStudy[0].image1) {
-                            setImage1Preview(data.caseStudy[0].image1 as string);
+                        if (data.portfolio[0].image1) {
+                            setImage1Preview(data.portfolio[0].image1 as string);
                         }
 
-                        if (data.caseStudy[0].image2) {
-                            setImage2Preview(data.caseStudy[0].image2 as string);
+                        if (data.portfolio[0].image2) {
+                            setImage2Preview(data.portfolio[0].image2 as string);
                         }
 
                         // if (data.portfolio[0].section2BannerImage) {
@@ -270,16 +278,16 @@ const AdminIndiCaseStudy = ({ editMode }: {
                         //     setResultImage2Preview(data.portfolio[0].resultImage2 as string);
                         // }
 
-                        if (data.caseStudy[0].logo) {
-                            setPreviewLogo(data.caseStudy[0].logo as string);
+                        if (data.portfolio[0].logo) {
+                            setPreviewLogo(data.portfolio[0].logo as string);
                         }
 
 
                     }
 
-                    if (data.caseStudyHighlights) {
-                        setHighlights(data.caseStudyHighlights)
-                        data.caseStudyHighlights.forEach((item: PortfolioHighlight) => {
+                    if (data.portfolioHighlights) {
+                        setHighlights(data.portfolioHighlights)
+                        data.portfolioHighlights.forEach((item: PortfolioHighlight) => {
                             setValue(`highlightText${item.customId}`, item.text)
                             setValue(`highlightNumber${item.customId}`, item.number)
                         })
@@ -482,8 +490,24 @@ const AdminIndiCaseStudy = ({ editMode }: {
 
     return (
         <div>
-            <h1 className='text-3xl'>Edit Case Study Content</h1>
+            <h1 className='text-3xl'>{`${editMode ? "Edit" : "Add"} Case Study Content`}</h1>
             <form onSubmit={handleSubmit(onSubmit)} className='h-full'>
+            
+            {!editMode && setSelectedSection && <div className='mt-5'>
+                        <div className="w-full max-w-sm min-w-[200px]">
+                            <div className="relative">
+                                <select value={selectedSection} onChange={(e)=>setSelectedSection(e.target.value)}
+                                    className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
+                                    <option value="portfolio">Portfolio</option>
+                                    <option value="case study">Case Study</option>
+                                </select>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" className="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-700">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>}
+
                 <div className='grid grid-cols-2 gap-10 mt-5'>
                     <div
                         className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"

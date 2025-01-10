@@ -28,13 +28,13 @@ const PortfolioList = () => {
         const response = await fetch(`/api/portfolio`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data.combinedData);
-          setPortfolios(data.combinedData);
+          console.log(data.portfolio);
+          setPortfolios(data.portfolio);
           localStorage.setItem(
             'portfolios',
             JSON.stringify({
               timestamp: Date.now(),
-              data: data.combinedData,
+              data: data.portfolio,
             })
           )
         } else {
@@ -89,18 +89,8 @@ const PortfolioList = () => {
   return (
     <>
       <div className="container mx-auto py-4">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1.3, ease: "easeOut" },
-            },
-          }}
+        <div
+          
         >
           <div className="portfolio pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px] ">
             {/* Filter Tabs */}
@@ -154,7 +144,7 @@ const PortfolioList = () => {
                     </div>
                     </div>
 
-                    <Link href={item.type=="case-study" ? `/case-study/${formatLinkForCaseStudy(item.companyName)}` : `/portfolio/${formatLinkForPortfolio(item.companyName)}`}
+                    <Link href={item.section=="case study" ? `/case-study/${formatLinkForCaseStudy(item.companyName)}` : `/portfolio/${formatLinkForPortfolio(item.companyName)}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
                   </div>
@@ -162,7 +152,7 @@ const PortfolioList = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
         {/* <div className="flex flex-col items-center gap-8 border-b pb-10 pt-[50px] lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 lg:pt-[130px] ">
           {portfolios.map((item, index) => (
             <motion.div

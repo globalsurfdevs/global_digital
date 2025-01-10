@@ -100,16 +100,16 @@ const menuGroups = [
         icon: (
           <BsPersonVcard />
         ),
-        label: "Portfolio",
+        label: "Portfolio / Case Study",
         route: "/admin/portfolio",
       },
-      {
-        icon: (
-          <ImBooks />
-        ),
-        label: "Case Study",
-        route: "/admin/case-study",
-      },
+      // {
+      //   icon: (
+      //     <ImBooks />
+      //   ),
+      //   label: "Case Study",
+      //   route: "/admin/case-study",
+      // },
       // {
       //   icon: (
       //     <svg
