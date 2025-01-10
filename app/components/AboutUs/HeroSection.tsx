@@ -40,13 +40,12 @@ const HeroSection = () => {
             >
               <div>
                 <h2 className="title-65 mb-3 lg:mb-5">
-                  Dominate the Digital Landscape
+                Master Every Pixel of Your Digital Presence
                 </h2>
               </div>
               <div>
                 <p className="text-small-30 text-gray1 max-w-[48ch]">
-                  Bridging Creativity and Strategy to Enhance Your
-                  Brand&apos;s Digital Potential 
+                Creative that’s sharp, strategy that’s smarter, we craft digital experiences where every pixel drives purpose and every design amplifies your brand’s impact.
                 </p>
               </div>
             </motion.div>
