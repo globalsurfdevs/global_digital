@@ -1,4 +1,5 @@
 import { supabase } from "@/app/lib/initSupabase"
+import redisClient from "@/app/lib/redisClient"
 import { uploadToDropbox } from "@/app/lib/uploadToDropbox"
 import { NextRequest, NextResponse } from "next/server"
 
@@ -6,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server"
 export async function GET(req: NextRequest) {
 
     try {
-        console.log("This worlds")
+        console.log("This worlds hehehehhe")
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
         const slug = searchParams.get("slug")
@@ -50,6 +51,15 @@ export async function GET(req: NextRequest) {
 
         } else {
             if (userType !== "admin") {
+
+                const cashedData:[] = await redisClient.get('portfolios') || []
+                
+                if(cashedData.length > 0){
+                    const combinedData = [...cashedData]
+                    console.log("From cache")
+                    return NextResponse.json({combinedData})
+                }
+                
                 let { data: portfolio, } = await supabase
                     .from('portfolios')
                     .select('*')
@@ -60,19 +70,26 @@ export async function GET(req: NextRequest) {
                     .select('*')
 
 
-                // if (!portfolio) {
-                //     return NextResponse.json({ error: "Portfolio not found" }, { status: 404 });
-                // }
-
                 const combinedData = [...(portfolio || []), ...(caseStudy?.map((item) => ({ ...item, type: "case-study" })) || [])]
+
+                await redisClient.set('portfolios',combinedData,{
+                    ex:300
+                })
+
+                console.log("From fresh")
 
                 return NextResponse.json({ combinedData });
             } else {
+
+                console.log("Here")
                 let { data: portfolio, } = await supabase
                     .from('portfolios')
                     .select('*')
+                
 
-                if (portfolio) {
+                    console.log(portfolio)
+
+                if (portfolio && portfolio.length>0) {
                     return NextResponse.json({ portfolio });
                 } else {
                     return NextResponse.json({ error: "Fetching portfolio failed" })

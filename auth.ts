@@ -6,6 +6,12 @@ import { supabase } from '@/app/lib/initSupabase'
 import ratelimit from "./app/lib/rateLimit";
 
 
+type User = {
+  id: string;
+  username: string;
+  email: string;
+};
+
 export const {
   handlers,
   auth,
@@ -63,7 +69,7 @@ export const {
       const isLoggedIn = auth?.user
       if (isLoggedIn) {
         const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "127.0.0.1";
-        console.log("IP",ip)
+        
         const result = await ratelimit.limit(ip);
         
         if (!result.success) {
@@ -77,9 +83,25 @@ export const {
           }
         }
       }
-      console.log("REEEEEEEEEEE")
+      
       return !!auth
-    }
+    },
+    jwt({ token, user }) {
+      
+      if(user){
+        token.id = user?.id
+      }
+      
+      return token
+    },
+    session({ session, token }) {
+      if (token?.id) {
+        session.user.id = token.id;
+      }
+      
+      return session;
+    },
+    
   },
   pages: {
     signIn: '/admin/auth/signin'
