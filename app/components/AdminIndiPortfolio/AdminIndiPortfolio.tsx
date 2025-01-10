@@ -1317,7 +1317,7 @@ const AdminIndiPortfolio = ({ editMode }: {
      
     }else if(selectedSection=='case study'){
         return (
-            <AdminIndiCaseStudy selectedSection={selectedSection} setSelectedSection={setSelectedSection} editMode/>
+            <AdminIndiCaseStudy selectedSection={selectedSection} setSelectedSection={setSelectedSection}/>
         )
     }
 

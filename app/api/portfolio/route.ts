@@ -262,9 +262,9 @@ export async function POST(req: NextRequest) {
         image2Path = image2
     }
 
-    console.log("imagePAth", imagePath)
-    console.log("section2Image1Path", section2Image1Path)
-    console.log("section2Image2Path", section2Image2Path)
+    // console.log("imagePAth", imagePath)
+    // console.log("section2Image1Path", section2Image1Path)
+    // console.log("section2Image2Path", section2Image2Path)
 
 
 
@@ -584,7 +584,7 @@ export async function POST(req: NextRequest) {
     
             else {
     
-    
+                console.log("here in add")
                 const { data, error } = await supabase
                     .from('portfolios')
                     .insert([
