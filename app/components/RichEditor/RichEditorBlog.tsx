@@ -2,13 +2,10 @@ import React from 'react'
 import { Control, Controller, Path } from 'react-hook-form'
 import ReactQuill, { Quill } from 'react-quill-new'
 import htmlEditButton from "quill-html-edit-button";
-// import ImageResize from 'quill-image-resize-module-react';
-import BlotFormatter from 'quill-blot-formatter';
 
 
 Quill.register("modules/htmlEditButton", htmlEditButton);
-// Quill.register('modules/imageResize', ImageResize);
-Quill.register('modules/blotFormatter', BlotFormatter);
+
 
 
 type PortfolioInputs = {
@@ -51,37 +48,9 @@ const modules = {
         prependSelector: "div#myelement", // a string used to select where you want to insert the overlayContainer, default: null (appends to body),
         editorModules: {} // The default mod
       },
-      
-      toolbar: {
-        container: [
-          [{ header: "1" }, { header: "2" }, { font: [] },],
-          [{ size: [] }],
-          ["bold", "italic", "underline", "strike", "blockquote"],
-          [
-            { list: "ordered" },
-            { list: "bullet" },
-            { indent: "-1" },
-            { indent: "+1" },
-          ],
-          ["link", "image", "video"],
-          ["code-block"],
-          ["clean"],
-          
-        ],
-      },
-      clipboard: {
-        // toggle to add extra line breaks when pasting HTML:
-        matchVisual: false
-      },
-      imageResize: {
-        parchment: Quill.import('parchment'),
-        modules: ['Resize', 'DisplaySize']
-     },
-      blotFormatter: {} 
-     
 }
 
-const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:{
+const RichEditorBlog = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:{
     control: Control<T, any>;
     name:Path<T>;
 }) => {
@@ -99,7 +68,7 @@ const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:
                     "italic",
                     "underline",
                     "strike",
-                    
+                    "align",
                     "blockquote",
                     "list",
                     "bullet",
@@ -114,4 +83,4 @@ const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:
     )
 }
 
-export default RichEditor
+export default RichEditorBlog
