@@ -3,7 +3,11 @@ import { Control, Controller, Path } from 'react-hook-form'
 import ReactQuill, { Quill } from 'react-quill-new'
 import htmlEditButton from "quill-html-edit-button";
 
+
+
 Quill.register("modules/htmlEditButton", htmlEditButton);
+
+
 
 type PortfolioInputs = {
     companyName: string
@@ -44,7 +48,29 @@ const modules = {
         syntax: false, // Show the HTML with syntax highlighting. Requires highlightjs on window.hljs (similar to Quill itself), default: false
         prependSelector: "div#myelement", // a string used to select where you want to insert the overlayContainer, default: null (appends to body),
         editorModules: {} // The default mod
-      }
+      },
+      toolbar: {
+        container: [
+          [{ header: "1" }, { header: "2" }, { font: [] }],
+          [{ size: [] }],
+          ["bold", "italic", "underline", "strike", "blockquote"],
+          [
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" },
+          ],
+          ["link", "image", "video"],
+          ["code-block"],
+          ["clean"],
+        ],
+      },
+      imageResize: {
+        parchment: Quill.import('parchment'),
+        modules: ['Resize', 'DisplaySize']
+     }
+      
+      
 }
 
 const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:{
@@ -57,7 +83,23 @@ const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:
             control={control}
             rules={name=="story" ? { required: "Story is required" } : undefined }
             render={({ field }) => (
-                <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules} />
+                <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules} formats={[
+                    "header",
+                    "font",
+                    "size",
+                    "bold",
+                    "italic",
+                    "underline",
+                    "strike",
+                    "blockquote",
+                    "list",
+                    "bullet",
+                    "indent",
+                    "link",
+                    "image",
+                    "video",
+                    "code-block",
+                  ]}/>
             )}
         />
     )

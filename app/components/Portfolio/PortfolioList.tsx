@@ -50,9 +50,11 @@ const PortfolioList = () => {
       if (Date.now() - timestamp < CACHE_DURATION) {
         setPortfolios(data)
       }else{ 
+        localStorage.removeItem('portfolios')
         fetchPortfolios();
       }
     }else{
+      localStorage.removeItem('portfolios')
       fetchPortfolios(); 
     }
 
