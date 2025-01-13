@@ -4,6 +4,7 @@ import { useState } from "react";
 import { career } from "../../../data/career";
 import Link from "next/link";
 import Button from "@/app/components/Button/Button";
+import { notFound } from 'next/navigation';
 
 export default function CareerDetailsPage() {
   const params = useParams(); // Use the custom useParams hook
@@ -13,8 +14,10 @@ export default function CareerDetailsPage() {
   const item = career.find((b) => b.url === url);
 
   if (!item) {
-    return <p>Item not found!</p>;
+    // return <p>Item not found!</p>;
+    notFound()
   }
+  
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState('');
   const [fileName, setFileName] = useState('');  // This will hold the file name if you're using a file input.

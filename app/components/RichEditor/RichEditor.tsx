@@ -4,6 +4,7 @@ import ReactQuill, { Quill } from 'react-quill-new'
 import htmlEditButton from "quill-html-edit-button";
 // import ImageResize from 'quill-image-resize-module-react';
 import BlotFormatter from 'quill-blot-formatter';
+import { BlogInputTypes } from '@/app/types/BlogInputs';
 
 
 Quill.register("modules/htmlEditButton", htmlEditButton);
@@ -81,9 +82,10 @@ const modules = {
      
 }
 
-const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:{
+const RichEditor = <T extends PortfolioInputs | CaseStudyInputs | BlogInputTypes>({control,name,imageHandler}:{
     control: Control<T, any>;
     name:Path<T>;
+    imageHandler?:()=>void
 }) => {
     return (
         <Controller

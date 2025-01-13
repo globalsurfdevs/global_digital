@@ -9,7 +9,7 @@ import ClickOutside from "@/app/components/ClickOutside";
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { BsPersonVcard } from "react-icons/bs";
 import { assets } from "@/public/assets/assets";
-import { ImBooks } from "react-icons/im";
+import { GiNotebook } from "react-icons/gi";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -102,6 +102,13 @@ const menuGroups = [
         ),
         label: "Portfolio / Case Study",
         route: "/admin/portfolio",
+      },
+      {
+        icon: (
+          <GiNotebook />
+        ),
+        label: "Blogs",
+        route: "/admin/blogs",
       },
       // {
       //   icon: (
