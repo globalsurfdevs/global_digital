@@ -5,10 +5,10 @@
 <style type="text/css">
 	.st0{fill:#5E6165;}
 	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#00ADEE;}
-	.st2{fill:none;stroke:#00ADEE;stroke-width:0.216;stroke-miterlimit:2.613;}
+	.st2{fill:none;stroke:#00ADEE;strokeWidth:0.216;stroke-miterlimit:2.613;}
 	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#8DD7F7;}
 	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#E1DDDD;}
-	.st5{fill:none;stroke:#E9E7E7;stroke-width:0.216;stroke-miterlimit:2.613;}
+	.st5{fill:none;stroke:#E9E7E7;strokeWidth:0.216;stroke-miterlimit:2.613;}
 	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#C6E9FA;}
 	.st7{fill-rule:evenodd;clip-rule:evenodd;fill:#534342;}
 	.st8{fill-rule:evenodd;clip-rule:evenodd;fill:#76797C;}

@@ -93,8 +93,8 @@ const AdminPortfolio = () => {
                 </div>
                 
                 <div className='flex gap-2'>
-                <button className='bg-blue-950 text-white p-2 rounded-xl' onClick={confirmPosition}>{!reorderMode ? "Reorder" : "Confirm"}</button>
-                <Link href={'/admin/portfolio/add'}><button className='bg-blue-950 text-white p-2 rounded-xl'>Add new content</button></Link>
+                <button className='bg-primary text-white p-2 rounded-full px-6' onClick={confirmPosition}>{!reorderMode ? "Reorder" : "Confirm"}</button>
+                <Link href={'/admin/portfolio/add'}><button className='bg-black text-white p-2 rounded-full px-6'>Add new content</button></Link>
                 </div>
                 
             </div>

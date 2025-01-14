@@ -9,7 +9,7 @@ import ClickOutside from "@/app/components/ClickOutside";
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { BsPersonVcard } from "react-icons/bs";
 import { assets } from "@/public/assets/assets";
-import { ImBooks } from "react-icons/im";
+import { GiNotebook } from "react-icons/gi";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -102,6 +102,13 @@ const menuGroups = [
         ),
         label: "Portfolio / Case Study",
         route: "/admin/portfolio",
+      },
+      {
+        icon: (
+          <GiNotebook />
+        ),
+        label: "Blogs",
+        route: "/admin/blogs",
       },
       // {
       //   icon: (
@@ -278,7 +285,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
       <aside
-        className={`fixed left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-[#000] duration-300 ease-linear dark:bg-boxdark lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
       >
         {/* <!-- SIDEBAR HEADER --> */}
