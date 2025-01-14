@@ -67,11 +67,11 @@ export default function CareerDetailsPage() {
               </div>
               <div className="mb-[30px]">
                 <input
-                  type="text"
+                  type="number"
                   name="SingleLine2"
                   maxLength={255}
                   className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                  placeholder="Experience"
+                  placeholder="Experience in Years"
                   required
                 />
               </div>
@@ -105,7 +105,7 @@ export default function CareerDetailsPage() {
                   name="SingleLine5"
                   maxLength={255}
                   className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                  placeholder="Notice period"
+                  placeholder="Notice Period"
                   required
                 />
               </div>
@@ -129,7 +129,7 @@ export default function CareerDetailsPage() {
                   required
                   maxLength={255}
                   className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                  placeholder="Enter your email"
+                  placeholder="Email"
                 />
               </div>
               <div className="mb-[30px] flex items-center">
