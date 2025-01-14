@@ -26,7 +26,6 @@ export const career = [
     post: "Sales Specialist - Web and Digital Services",
     team: "Marketing Team",
     url: "sales-specialist-web-digital",
-    slug: "sales-specialist-web-digital",
 
 
   },
@@ -36,6 +35,5 @@ export const career = [
     post: "Performance Marketing Specialist",
     team: "Digital Marketing Team",
     url: "performance-marketing-specialist",
-    slug: "performance-marketing-specialist",
   },
 ];
