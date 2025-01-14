@@ -69,7 +69,7 @@ const page = () => {
       <input type="hidden" name="zf_referrer_name" value="" />
       <input type="hidden" name="zf_redirect_url" value="" />
               <input type="hidden" name="zc_gad" value="" />
-
+              <div className="md:grid md:grid-cols-2 md:gap-5">
               <div className="mb-[30px]">
                 <input
                    type="text"
@@ -81,6 +81,19 @@ const page = () => {
                   className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                   placeholder="Enter your name"
                 />
+              </div>
+              <div className="mb-[30px]">
+                <input
+                  type="number"
+                  name="PhoneNumber_countrycode"
+                  id="international_PhoneNumber_countrycode"
+                  maxLength={20}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Contact Number"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
               </div>
 
               <div className="md:grid md:grid-cols-2 md:gap-5">
@@ -119,7 +132,7 @@ const page = () => {
                   onChange={handleChange}
                   className="mt-3 w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
         >
-          <option value="-Select-">-Select-</option>
+          <option value="-Select-">Select Your Budget</option>
           <option value="AED < 5000">AED &lt; 5000</option>
           <option value="AED 5000 - 10000">AED 5000 - 10000</option>
           <option value="AED 10000 - 20000">AED 10000 - 20000</option>
@@ -137,7 +150,7 @@ const page = () => {
                   onChange={handleChange}
                   className="mt-3 w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
         >
-          <option value="-Select-">-Select-</option>
+          <option value="-Select-">Service Looking for</option>
           <option value="Performance Marketing">Performance Marketing</option>
           <option value="SEO">SEO</option>
           <option value="Social Media">Social Media</option>
