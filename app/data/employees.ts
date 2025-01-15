@@ -170,14 +170,14 @@ export const Employees = [
         height:"auto"
     }
     ,
-    // {
-    //     id: 12,
-    //     image: assets.Rahees,
-    //     name:"Dilna",
-    //     designation: "Inside Sales Specialist",
-    //     width: "100%",
-    //     height:"auto"
-    // },
+    {
+        id: 12,
+        image: assets.Dilna,
+        name:"Dilna",
+        designation: "Inside Sales Specialist",
+        width: "100%",
+        height:"auto"
+    },
 
     {
         id: 2,
@@ -212,12 +212,12 @@ export const Employees = [
         width: "100%",
         height:"auto"
     }
-    // , {
-    //     id: 11,
-    //     image: assets.Nived,
-    //     name:"Thanisha ",
-    //     designation: "Business Process Executive",
-    //     width: "100%",
-    //     height:"auto"
-    // }
+    , {
+        id: 11,
+        image: assets.Thanisha,
+        name:"Thanisha ",
+        designation: "Business Process Executive",
+        width: "100%",
+        height:"auto"
+    }
 ]
