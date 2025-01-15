@@ -92,7 +92,7 @@ async function getDropboxInstance(): Promise<Dropbox> {
   return dropboxInstance;
 }
 
-export async function uploadToDropbox(file: File, filePath: string): Promise<string> {
+export async function uploadToDropboxForBlog(file: File, filePath: string): Promise<{ path: string; url: string; }> {
   try {
     const dropbox = await getDropboxInstance();
     const fileContent = await file.arrayBuffer();
@@ -120,14 +120,15 @@ export async function uploadToDropbox(file: File, filePath: string): Promise<str
     const directLink = sharedLinkResponse.result.url.replace("www.dropbox.com", "dl.dropboxusercontent.com");
 
     console.log("Direct download link:", directLink);
-    return directLink;
+    return { path: response.result.path_display, url: directLink }
+
   } catch (error) {
     console.error("Error uploading file to Dropbox:", error);
     throw error;
   }
 }
 
-export async function removeFromDropbox(filePath: string): Promise<boolean> {
+export async function removeFromDropboxForBlog(filePath: string): Promise<boolean> {
   try {
     console.log("path",filePath)
     const dropbox = await getDropboxInstance();

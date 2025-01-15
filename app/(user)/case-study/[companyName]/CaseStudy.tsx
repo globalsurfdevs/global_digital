@@ -5,7 +5,7 @@ import HeroSection from '@/app/components/CaseStudy/HeroSection'
 import Goals from '@/app/components/CaseStudy/Goals'
 import Percentages from '@/app/components/CaseStudy/Percentages'
 import Ready from '@/app/components/CaseStudy/Ready'
-import SuccessStories from '@/app/components/CaseStudy/SuccessStories'
+import {SuccessStories} from '@/app/components/SuccessStories/SuccessStories'
 import { useParams } from 'next/navigation'
 import { CaseStudy } from '@/app/types/CaseStudy'
 import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
@@ -42,7 +42,7 @@ const CaseStudyPage = () => {
     <Goals data={data}/>
     <Percentages data={data}/>
     <Ready data={data}/>
-    <SuccessStories/>
+    <SuccessStories companyId={data?.caseStudy[0].id}/>
     </>
   )
 }

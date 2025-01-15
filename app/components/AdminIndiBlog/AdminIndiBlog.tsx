@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useCallback, useState } from 'react'
+import React, { SetStateAction, useCallback, useEffect, useState } from 'react'
 import Label from '../Label/Label'
 import { BlogInputTypes } from '@/app/types/BlogInputs'
-import { Controller, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { handleImageChange } from '@/app/helpers/handleImageChange'
 import Image from 'next/image'
 import RichEditor from '../RichEditor/RichEditor'
@@ -14,72 +14,34 @@ import htmlEditButton from "quill-html-edit-button";
 import BlotFormatter from 'quill-blot-formatter';
 import { generateAndUploadImage } from '@/app/helpers/generateAndUploadImage'
 import { useRef } from 'react'
+import { removeFromDropbox } from '@/app/lib/uploadToDropbox'
+import { removeFromDropboxForBlog, uploadToDropboxForBlog } from '@/app/lib/uploadToDropboxForBlog'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
+import { generateSlugForBlog } from '@/app/helpers/generateSlug'
 
-const BlockEmbed = Quill.import("blots/block/embed");
 
-// class CustomImageBlot extends BlockEmbed {
-//     static blotName = "customImage";
-//     static tagName = "div";
-//     static className = "custom-image-wrapper";
-
-//     static create(value: string) {
-//         const wrapper = document.createElement("div");
-//         wrapper.setAttribute("class", CustomImageBlot.className);
-//         wrapper.style.position = "relative";
-
-//         // Create the image element
-//         const img = document.createElement("img");
-//         img.setAttribute("src", value);
-//         img.style.width = "100%";
-//         img.style.display = "block";
-
-//         // Create the delete button
-//         const deleteButton = document.createElement("button");
-//         deleteButton.textContent = "X";
-//         deleteButton.style.position = "absolute";
-//         deleteButton.style.top = "5px";
-//         deleteButton.style.right = "5px";
-//         deleteButton.style.backgroundColor = "red";
-//         deleteButton.style.color = "white";
-//         deleteButton.style.border = "none";
-//         deleteButton.style.borderRadius = "50%";
-//         deleteButton.style.cursor = "pointer";
-//         deleteButton.style.padding = "0.2rem";
-
-//         // Delete button event
-//         deleteButton.addEventListener("click", (e) => {
-//             e.preventDefault();
-//             const parent = wrapper.parentNode;
-//             if (parent) {
-//                 parent.removeChild(wrapper);
-//             }
-//         });
-
-//         // Append elements to the wrapper
-//         wrapper.appendChild(img);
-//         wrapper.appendChild(deleteButton);
-
-//         return wrapper;
-//     }
-
-//     static value(node: HTMLElement) {
-//         const img = node.querySelector("img");
-//         return img ? img.getAttribute("src") : null;
-//     }
-// }
 
 Quill.register("modules/htmlEditButton", htmlEditButton);
 // Quill.register('modules/imageResize', ImageResize);
 Quill.register('modules/blotFormatter', BlotFormatter);
-// Quill.register("formats/customImage", CustomImageBlot);
 
-const AdminIndiBlog = () => {
+
+
+
+const AdminIndiBlog = ({editMode}:{
+    editMode?:boolean
+}) => {
 
     const [thumbnail, setThumbnail] = useState<File | null>(null)
     const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null)
     const [thumbnailError, setThumbnailError] = useState<string | null>(null)
+    const [addedImages,setAddedImages] = useState<{url:string,path:string}[]>([])
+    const [isSubmitting,setIsSubmitting] = useState(false)
 
     const reactQuillRef  = useRef<ReactQuill | null>(null)
+
+    const router = useRouter()
 
     const {
         register,
@@ -101,17 +63,54 @@ const AdminIndiBlog = () => {
             if (input !== null && input.files !== null) {
                 const file = input.files[0];
                 console.log("file", file)
-                const url = await generateAndUploadImage(file)
+                
+                const filename = `${Date.now()}-${file.name || "image"}`;
+                const dropboxPath = `/blogs/${filename}`;
+
+                const uploadedData = await uploadToDropboxForBlog(file,dropboxPath)
+
                 const quill = reactQuillRef.current?.getEditor();
                 if (quill) {
                     const range = quill.getSelection();
                     if (range) {
-                        quill.insertEmbed(range.index, "customImage", url); // Insert image at cursor
+                        quill.insertEmbed(range.index, "image", uploadedData.url); // Insert image at cursor
                       }
+                }
+                if(uploadedData){
+                    setAddedImages((prev:{url:string,path:string}[]) => [...prev,uploadedData])
                 }
             }
         };
     }, []);
+
+    const removeImage = async(imageUrl:string,index: number) => {
+        const deleteImage = await removeFromDropboxForBlog(imageUrl)
+        if(deleteImage){
+            const quill = reactQuillRef.current?.getEditor();
+        if (quill) {
+          const imageToRemove = addedImages[index].url;
+    
+          // Find the image Blot in the Quill editor content
+          const images = quill.getContents().ops;
+          console.log(images) // Get the contents of the editor
+        //   const imageOp = images.find(
+        //     (op) => op.insert?.image === imageToRemove
+        //   );
+
+        //   console.log(imageOp)
+    
+        //   if (imageOp) {
+        //     const imageIndex = images.indexOf(imageOp);
+        //     quill.deleteText(imageIndex, 1);
+        //     console.log("removed image") // Remove the image from the editor
+        //   }
+    
+          // Remove image URL from the state
+          setAddedImages((prev) => prev.filter((url, i) => i !== index));
+        }
+        }
+        
+      };
 
     const modules = {
         htmlEditButton: {
@@ -126,6 +125,7 @@ const AdminIndiBlog = () => {
         },
 
         toolbar: {
+            
             container: [
                 [{ header: "1" }, { header: "2" }, { font: [] },],
                 [{ size: [] }],
@@ -136,10 +136,10 @@ const AdminIndiBlog = () => {
                     { indent: "-1" },
                     { indent: "+1" },
                 ],
-                ["link", "image", "video","customImage"],
+                ["link", "image", "video"],
                 ["code-block"],
                 ["clean"],
-
+                [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
             ],
             handlers: {
                 image: imageHandler,   // <- 
@@ -157,13 +157,66 @@ const AdminIndiBlog = () => {
 
     }
 
+    const onSubmit: SubmitHandler<BlogInputTypes> = async (data) => {
+        setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append("heading", data.heading);
+        formData.append("description", data.description);
+        // formData.append("thumbnail", data.thumbImage);
+        formData.append("slug", data.slug)
+        formData.append("content",data.content)
+
+
+        if (thumbnail) {
+            const image = await generateAndUploadImage(thumbnail)
+            if (image) {
+                formData.append("thumbnail", image)
+            }
+        }
+
+
+        try {
+            const url =  `/api/blogs`;
+            const method = "POST";
+            console.log("Here")
+            const response = await fetch(url, {
+                method: method,
+                body: formData,
+            });
+            const data = await response.json();
+            console.log(data);
+
+            if (!data.error) {
+                toast.success(data.message)
+                router.push('/admin/blogs')
+            } else {
+                toast.error(data.error)
+            }
+            // Redirect to news list page
+        } catch (error) {
+            console.error("Error updating case study:", error);
+            toast.error("Failed to update case study. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
+    useEffect(()=>{
+        setValue("slug",generateSlugForBlog(watch("heading")))
+    },[watch("heading")])
+
 
     return (
-        <div className='flex gap-2 flex-col'>
+        <form className='flex gap-2 flex-col' onSubmit={handleSubmit(onSubmit)}>
             <div className='w-full flex flex-col gap-2'>
                 <Label content='Heading' />
                 <input type="text" {...register("heading", { required: "Heading is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                 {errors.heading && <p className='mt-1 text-sm text-red'>{errors.heading.message}</p>}
+            </div>
+
+            <div className='w-full flex flex-col gap-2'>
+                <Label content='Slug' />
+                <input type="text" {...register("slug")} readOnly className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
             </div>
 
             <div>
@@ -224,10 +277,10 @@ const AdminIndiBlog = () => {
             </div>
 
 
-            <div className='w-full flex flex-col gap-2'>
+            {/* <div className='w-full flex flex-col gap-2'>
                 <Label content='Description' />
                 <RichEditor control={control} name='description' />
-            </div>
+            </div> */}
 
             <div>
                 <Label content='Content' />
@@ -244,7 +297,7 @@ const AdminIndiBlog = () => {
                             "italic",
                             "underline",
                             "strike",
-
+                            "align",
                             "blockquote",
                             "list",
                             "bullet",
@@ -258,8 +311,25 @@ const AdminIndiBlog = () => {
                 />
             </div>
 
+            <div className='bg-red-600 relative'>
+                {addedImages.map((item,index)=>(
+                    <div className='w-24 h-24 absolute'>
+                        <button className='w-5 h-5 rounded-full bg-red-600 absolute top-2 right-2 z-10 flex items-center justify-center' onClick={()=>removeImage(item.path,index)}>X</button>
+                        <Image src={item.url} key={index} alt='image' layout='fill'/>
+                    </div>
+                ))}
+            </div>
 
-        </div>
+            <div className='mt-25 pb-5'>
+                    <div
+
+                        className="inline-flex items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 w-[15%]"
+                    >
+                        <button type='submit' disabled={isSubmitting}>{isSubmitting ? "Saving" : "Save"}</button>
+                    </div>
+                </div>
+
+        </form>
     )
 }
 

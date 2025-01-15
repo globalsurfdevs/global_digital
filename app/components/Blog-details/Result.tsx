@@ -102,7 +102,7 @@ const Result = ({
       </motion.div>
 
       <div>
-        <SuccessStories />
+        <SuccessStories companyId={data?.portfolio[0].id}/>
       </div>
     </div>
   );

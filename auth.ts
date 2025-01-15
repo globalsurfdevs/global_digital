@@ -63,6 +63,13 @@ export const {
       }
     })
   ],
+  session:{
+    strategy:"jwt",
+    maxAge: 24 * 60 * 60
+  },
+  jwt:{
+    maxAge: 24 * 60 * 60
+  },
   callbacks: {
     authorized: async ({ request, auth }) => {
       
