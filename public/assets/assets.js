@@ -107,7 +107,6 @@ import video_ads from '../assets/icons/video_ads.svg'
 import app_store_adv from '../assets/icons/app_store_adv.svg'
 import programmatic_adv from '../assets/icons/programmatic_adv.svg'
 
-import Afsal from '../assets/employee/Afsal.png'
 import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
 import Anjana from '../assets/employee/Anjana.png'
@@ -134,6 +133,9 @@ import Levin from '../assets/employee/Levin.png'
 import Mobin from '../assets/employee/Mobinqq.png'
 import Preethika from '../assets/employee/Preethika.png'
 import Subijith from '../assets/employee/Subijith.png'
+import Afsal from '../assets/employee/Afsal.png'
+import Dilna from '../assets/employee/Dilna.png'
+import Thanisha from '../assets/employee/Thanisha.png'
 
 import seo_banner from '../assets/banner/SEO.jpg'
 import branding_bnr from '../assets/banner/Branding-&-Creatives-01.jpg'
@@ -173,6 +175,8 @@ import lightlogo from '../assets/gsdigital-light.svg'
 
 
 export const assets = {
+    Dilna,
+    Thanisha,
     exp1,
     exp2,
     exp3,
