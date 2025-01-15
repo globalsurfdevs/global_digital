@@ -42,7 +42,9 @@ const CaseStudyPage = () => {
     <Goals data={data}/>
     <Percentages data={data}/>
     <Ready data={data}/>
-    <SuccessStories companyId={data?.caseStudy[0].id}/>
+    <div className='container mx-auto py-4'>
+      <SuccessStories companyId={data?.caseStudy[0].id}/>
+    </div>
     </>
   )
 }
