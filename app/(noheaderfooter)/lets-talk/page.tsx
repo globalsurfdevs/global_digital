@@ -30,7 +30,8 @@ const page = () => {
       <div className="maintalk">
         <div className="bg-dgray px-[20px] pb-[20px] pt-[20px] md:pb-[0px] lg:px-[40px] lg:pt-[100px]">
           <h1 className="title-65">
-            <span className="text-primary">Let’s</span> <br></br>Work together.
+          {/*   <span className="text-primary">Let’s</span> */} Collaborate. Create. Conquer<span className="text-primary">.</span>
+ 
           </h1>
                 <div className="flex flex-col gap-8 md:col-span-3 mt-[30px] lg:mt-[150px]">
                   <div className="flex flex-col gap-3">

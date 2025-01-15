@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Employees } from "../../data/employees";
 import Image from "next/image";
+import { Autoplay } from "swiper/modules";
 
 
 const EmployeesSwiper = () => {
@@ -65,6 +66,11 @@ const EmployeesSwiper = () => {
         slidesPerView={1}
         pagination={{
           clickable: true,
+        }}
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
         }}
         breakpoints={{
           320: {

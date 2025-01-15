@@ -17,3 +17,14 @@ export const generateSlugForCaseStudy = (heading:string) =>{
         .replace(/’/g,'')
         .toLowerCase();
 }
+
+export const generateSlugForBlog = (heading:string) =>{
+    return heading
+        .replace(/,/g, '') // Replace commas with hyphens
+        .replace(/ /g, '-')
+        .replace(/\./g, '')
+        .replace(/’/g,'')
+        .replace(/\?/g, '')
+        .replace(/\!/g, '')
+        .toLowerCase();
+}
