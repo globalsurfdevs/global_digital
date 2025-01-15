@@ -17,7 +17,7 @@ export default function CareerDetailsPage() {
     // return <p>Item not found!</p>;
     notFound()
   }
-  
+
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState('');
   const [fileName, setFileName] = useState('');  // This will hold the file name if you're using a file input.
@@ -67,25 +67,69 @@ export default function CareerDetailsPage() {
               </div>
               <div className="mb-[30px]">
                 <input
+                  type="number"
+                  name="SingleLine2"
+                  maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Experience in Years"
+                  required
+                />
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-5">
+              <div className="mb-[30px]">
+                <input
+                  type="text"
+                  name="SingleLine3"
+                  maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Current Salary"
+                  required
+                />
+              </div>
+              <div className="mb-[30px]">
+                <input
+                  type="text"
+                  name="SingleLine4"
+                  maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Expected Salary"
+                  required
+                />
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-5">
+              <div className="mb-[30px]">
+                <input
+                  type="text"
+                  name="SingleLine5"
+                  maxLength={255}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Notice Period"
+                  required
+                />
+              </div>
+              <div className="mb-[30px]">
+                <input
+                  type="number"
+                  name="PhoneNumber_countrycode"
+                  id="international_PhoneNumber_countrycode"
+                  maxLength={20}
+                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                  placeholder="Contact Number"
+                  required
+                />
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-5">
+              <div className="mb-[30px]">
+                <input
                   type="email"
                   name="Email"
                   required
                   maxLength={255}
                   className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                  placeholder="Enter your email"
-                />
-              </div>
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-5">
-
-              <div className="mb-[30px]">
-                <input
-                  type="number"
-                  name="PhoneNumber_countrycode"
-                  required
-                  maxLength={20}
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                  placeholder="Contact Number"
+                  placeholder="Email"
                 />
               </div>
               <div className="mb-[30px] flex items-center">
@@ -96,8 +140,9 @@ export default function CareerDetailsPage() {
                   required
                 accept="image/*,application/pdf" // Accept specific file types
               />
+              </div>
             </div>
-            </div>
+
 
 
             <button
