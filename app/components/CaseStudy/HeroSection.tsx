@@ -137,7 +137,7 @@ const HeroSection = ({data}:{
 
                     <div className="flex flex-col border-black  ">
                       <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
-                        Channels Used
+                      Services
                       </h5>
                       {/* <h4 className="text-30">Website - Google Ads - META Ads</h4> */}
                       <h4 className="text-30">{data.caseStudy[0].channelsUsed}</h4>

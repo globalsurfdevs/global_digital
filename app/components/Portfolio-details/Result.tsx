@@ -16,7 +16,7 @@ const Result = ({
     portfolio: Portfolio[];
   } | null;
 }) => {
-  console.log(data)
+  console.log("ResultData",data)
 
   return (
     <div className="container mx-auto py-4">
@@ -107,7 +107,7 @@ const Result = ({
       </motion.div>
 
       <div>
-        <SuccessStories />
+        <SuccessStories companyId={data?.portfolio[0].id}/>
       </div>
     </div>
   );

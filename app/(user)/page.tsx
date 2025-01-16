@@ -11,6 +11,29 @@ import WorkIn from "@/app/components/HomePage/WorkIn";
 import Cta from "@/app/components/HomePage/Cta";
 
 
+
+interface Canonicals {
+  canonical: string;
+}
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  return {
+    title: "Full Service Digital Marketing Agency in Dubai |GS.Digital",
+    description: "Fading into the digital noise? Global Surf crafts compelling campaigns that captivate audiences, drive sales, and elevate your brand to new heights. Click here to learn more",
+    alternates: {
+      canonical: 'https://www.globalsurf.ae',
+    },
+  };
+}
+
 export default function Home() {
   return (
     <>

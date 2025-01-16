@@ -1,6 +1,7 @@
 import { categories } from "@/app/data/categories"
 import { supabase } from "@/app/lib/initSupabase"
 import { NextRequest, NextResponse } from "next/server"
+import { v4 as uuidv4 } from 'uuid';
 
 export async function GET(req: NextRequest) {
 
@@ -220,7 +221,8 @@ export async function POST(req: NextRequest) {
                         companyName,
                         slug,
                         metaTitle,
-                        metaDescription
+                        metaDescription,
+                        customId:uuidv4()
                     })
                     .eq('id', id)
                     .select()

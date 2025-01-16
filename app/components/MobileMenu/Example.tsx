@@ -15,23 +15,20 @@ import { FaTiktok } from "react-icons/fa";
 import Link from "next/link";
 
 const sidebar = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+  open: {
+    x: 0, // Slide in from the right
     transition: {
-      type: "spring",
-      stiffness: 20,
-      restDelta: 2
-    }
-  }),
-  closed: {
-    clipPath: "circle(20px at calc(100% - 40px) 30px)",
-    transition: {
-      delay: 0,
       type: "tween",
-      stiffness: 400,
-      damping: 10,
+      duration: 0.3, // Adjust the speed of the animation
     },
-  }
+  },
+  closed: {
+    x: "100%", // Move out to the right
+    transition: {
+      type: "tween",
+      duration: 0.3, // Adjust the speed of the animation
+    },
+  },
 };
 
 const imageSection = {
@@ -64,9 +61,11 @@ export const Example = () => {
     console.log(isOpen)
     if (isOpen == true) {
       document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
     }
     else {
       document.body.style.overflow = "";
+      document.body.style.height = "100vh";
     }
   },[isOpen])
 
@@ -78,13 +77,22 @@ export const Example = () => {
         event.target instanceof Node &&
         !menuRef.current.contains(event.target)
       ) {
+        event.stopPropagation();
         toggleOpen();
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside,{passive:false});
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isOpen]);
+
+  const debouncedToggle = React.useCallback(() => {
+    let timeoutId: string | number | NodeJS.Timeout | undefined;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => toggleOpen(), 500);
+    };
+  }, [toggleOpen]);
 
   return (
     <motion.nav
@@ -96,7 +104,7 @@ export const Example = () => {
 <div className={isOpen ? "overlay-nav" : ""}></div>
       {<motion.div className={"menusi background shadow-lg"} variants={sidebar} ref={menuRef}>
 
-        <motion.div className="" variants={imageSection}>
+        <motion.div className="">
           <div className="fixed w-full min-h-[60px] bg-white z-1 py-5 px-6">
             <Link href="/">
               <Image src={assets.logo} alt="logo" className="w-32" />
@@ -107,15 +115,18 @@ export const Example = () => {
         <Navigation toggle={()=>toggleOpen()}/>
 
         <div className="text-white px-6">
-          <div className="border-t pb-5 pt-5 flex flex-col gap-4">
-        <motion.div variants={imageSection}><h2 className="text-primary">Follow us on</h2></motion.div>
-        <motion.div variants={imageSection}>
+          <div className="border-t pb-5 pt-5 flex flex-col gap-4  ">
+
+
+
+            <motion.div><h2 className="text-primary">Follow us on</h2></motion.div>
+        <motion.div>
           <div className="flex w-full text-black text-2xl gap-5">
-          <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"><FaFacebookF /></a>
-          <a href="https://x.com/GlobalSurf_D" target="_blank" className="hover:text-primary"> <FaXTwitter/></a>
-          <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" className="hover:text-primary">  <FaInstagram /></a>
-          <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" className="hover:text-primary"> <FaLinkedin/></a>
-          <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" className="hover:text-primary"> <FaTiktok/></a>
+          <a href="https://www.facebook.com/globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"><FaFacebookF /></a>
+          <a href="https://x.com/GlobalSurf_D" target="_blank" rel="nofollow" className="hover:text-primary"> <FaXTwitter/></a>
+          <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" rel="nofollow" className="hover:text-primary">  <FaInstagram /></a>
+          <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" rel="nofollow" className="hover:text-primary"> <FaLinkedin/></a>
+          <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"> <FaTiktok/></a>
             </div>
         </motion.div>
         </div>
@@ -123,7 +134,10 @@ export const Example = () => {
 
         </motion.div>}
 
-      <MenuToggle toggle={() => toggleOpen()} />
+<div className="bg-white w-20">
+<MenuToggle toggle={() => toggleOpen()}/>
+
+</div>
     </motion.nav>
   );
 };

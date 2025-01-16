@@ -6,7 +6,7 @@ import Image from "next/image";
 const SectionThree = () => {
   const items = [
     {
-      text: "Extensive expertise",
+      text: "Extensive Expertise",
       image: "/assets/aboutus/core1.svg",
       width: 35,
       height:50,
@@ -24,13 +24,13 @@ const SectionThree = () => {
       height:50,
     },
     {
-      text: "Collaborative approach",
+      text: "Collaborative Approach",
       image: "/assets/aboutus/core4.svg",
       width: 50,
       height:44,
     },
     {
-      text: "Transparent communication",
+      text: "Transparent Communication",
       image: "/assets/aboutus/core5.svg",
       width: 50,
       height:39,

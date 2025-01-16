@@ -63,7 +63,7 @@ async function getAccessToken(): Promise<string> {
       expiresAt: Date.now() + (data.expires_in || 3600) * 1000,
     };
 
-    console.log("New token info:", tokenInfo);
+    // console.log("New token info:", tokenInfo);
     return tokenInfo.accessToken;
   } catch (error) {
     console.error("Error getting access token:", error);
@@ -76,7 +76,7 @@ let currentAccessToken: string | null = null;
 
 async function getDropboxInstance(): Promise<Dropbox> {
   const accessToken = await getAccessToken();
-  console.log("Access Token:", accessToken);
+  // console.log("Access Token:", accessToken);
 
   if (!dropboxInstance || currentAccessToken !== accessToken) {
     dropboxInstance = new Dropbox({
@@ -124,5 +124,19 @@ export async function uploadToDropbox(file: File, filePath: string): Promise<str
   } catch (error) {
     console.error("Error uploading file to Dropbox:", error);
     throw error;
+  }
+}
+
+export async function removeFromDropbox(filePath: string): Promise<boolean> {
+  try {
+    console.log("path",filePath)
+    const dropbox = await getDropboxInstance();
+    const response = await dropbox.filesDeleteV2({ path: filePath });
+    console.log(response)
+    console.log("File deleted successfully:", response);
+    return true;
+  } catch (error) {
+    console.error("Error deleting file from Dropbox:", error);
+    return false;
   }
 }

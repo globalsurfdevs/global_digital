@@ -47,6 +47,7 @@ const config = {
         font35: "clamp(1.6rem, 3.5vw, 2.1875rem)",
         font65: "clamp(1.9rem, 4.5vw, 4.0625rem)",
         font80: "clamp(2.5rem, 8vw, 5rem)",
+        font120: "clamp(3rem, 8vw, 7.5rem)",
 
         fontsmall30: "clamp(1rem, 2.5vw, 1.875rem)",
       },

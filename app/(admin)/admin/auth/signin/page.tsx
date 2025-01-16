@@ -47,7 +47,7 @@ const SignIn: React.FC = () => {
     {/* <div className="flex justify-between w-full items-center p-5">
       <Breadcrumb pageName="Sign In"/>
       </div> */}
-      <div className="rounded-sm border-stroke dark:border-strokedark dark:bg-boxdark justify-center flex flex-col h-screen">
+      <div className="rounded-sm border-stroke dark:border-strokedark dark:bg-boxdark justify-center flex flex-col h-screen bg-[#000]">
         <div className="flex flex-wrap items-center justify-center">
           {/* <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">
@@ -198,7 +198,7 @@ const SignIn: React.FC = () => {
             </div>
           </div> */}
 
-          <div className="w-full border-stroke dark:border-strokedark xl:w-[25%] border bg-white">
+          <div className="border-stroke dark:border-strokedark min-w-[350px] border bg-white">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               {/* <span className="mb-1.5 block font-medium">Start for free</span> */}
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2 text-center">
@@ -278,7 +278,7 @@ const SignIn: React.FC = () => {
                   <input
                     type="submit"
                     value="Sign In"
-                    className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
+                    className="w-full cursor-pointer rounded-full border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                   />
                 </div>
 

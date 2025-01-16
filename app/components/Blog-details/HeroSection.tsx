@@ -46,7 +46,7 @@ const HeroSection = ({
             <Image
               src={data.portfolio[0].logo}
               alt="image"
-              className="absolute  bottom-[20px] right-[15px] z-20 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
+              className="absolute  bottom-[20px] right-[15px] z-1 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
               width={50}
               height={50}
             />
@@ -92,11 +92,11 @@ const HeroSection = ({
                     <h4 className="text-30">{data.portfolio[0].country}</h4>
                   </div>
 
-                  <div className="fnt-lexend flex flex-col border-black">
+                  <div className=" flex flex-col border-black">
                     <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
                       Services
                     </h5>
-                    <h4 className="text-30">
+                    <h4 className="text-30 ">
                       {data.portfolio[0].channelsUsed}
                     </h4>
                   </div>

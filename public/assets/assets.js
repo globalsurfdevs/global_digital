@@ -38,6 +38,7 @@ import seleo1 from './seleo1.jpg'
 import seleo2 from './seleo2.jpg'
 import innovo from './Innovo.png'
 import bafco from './Bafco.png'
+import ascs from '../assets/success-stories/logo-ascs.svg'
 import bec from './BEC.png'
 import imgs1 from './tours/bafco.jpg'
 import imgs2 from './tours/seleo.jpg'
@@ -106,7 +107,6 @@ import video_ads from '../assets/icons/video_ads.svg'
 import app_store_adv from '../assets/icons/app_store_adv.svg'
 import programmatic_adv from '../assets/icons/programmatic_adv.svg'
 
-import Afsal from '../assets/employee/Afsal.png'
 import Anagha from '../assets/employee/Anagha.png'
 import Aashika from '../assets/employee/Aashika.png'
 import Anjana from '../assets/employee/Anjana.png'
@@ -133,6 +133,9 @@ import Levin from '../assets/employee/Levin.png'
 import Mobin from '../assets/employee/Mobinqq.png'
 import Preethika from '../assets/employee/Preethika.png'
 import Subijith from '../assets/employee/Subijith.png'
+import Afsal from '../assets/employee/Afsal.png'
+import Dilna from '../assets/employee/Dilna.png'
+import Thanisha from '../assets/employee/Thanisha.png'
 
 import seo_banner from '../assets/banner/SEO.jpg'
 import branding_bnr from '../assets/banner/Branding-&-Creatives-01.jpg'
@@ -172,6 +175,8 @@ import lightlogo from '../assets/gsdigital-light.svg'
 
 
 export const assets = {
+    Dilna,
+    Thanisha,
     exp1,
     exp2,
     exp3,
@@ -285,6 +290,7 @@ export const assets = {
     seleo2,
     innovo,
     bafco,
+    ascs,
     imgs1,
     imgs2,
     bec,
@@ -336,17 +342,15 @@ export const logos = [
     { src: '../assets/logos/003.png', alt: 'Google' },
     { src: '../assets/logos/004.png', alt: 'Google' },
     { src: '../assets/logos/005.png', alt: 'Google' },
-    { src: '../assets/logos/006.png', alt: 'Google' },
     { src: '../assets/logos/007.png', alt: 'Google' },
-    { src: '../assets/logos/008.png', alt: 'Google' },
+    { src: '../assets/logos/10.png', alt: 'Google' },
     { src: '../assets/logos/009.png', alt: 'Google' },
     { src: '../assets/logos/002.png', alt: 'Google' },
     { src: '../assets/logos/003.png', alt: 'Google' },
     { src: '../assets/logos/004.png', alt: 'Google' },
     { src: '../assets/logos/005.png', alt: 'Google' },
-    { src: '../assets/logos/006.png', alt: 'Google' },
     { src: '../assets/logos/007.png', alt: 'Google' },
-    { src: '../assets/logos/008.png', alt: 'Google' },
+    { src: '../assets/logos/10.png', alt: 'Google' },
     { src: '../assets/logos/009.png', alt: 'Google' },
 
   ];

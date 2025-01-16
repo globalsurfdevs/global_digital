@@ -10,7 +10,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 24,
       "scope": " Website",
       "industry": "Construction",
-      "link": "https://www.innovogroup.com/"
+      "link": "/portfolio/innovo-group"
   },
 
   {
@@ -22,7 +22,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 21,
       "scope": " Website | Digital Marketing",
       "industry": "Construction",
-      "link": "https://www.becarabia.com/"
+      "link": "/portfolio/bec-arabia"
   },
   {
       "id": 3,
@@ -33,7 +33,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 28,
       "scope": " Website",
       "industry": "Products",
-      "link": "https://bukhatirgroup.com/"
+      "link": "/portfolio/bukhatir-group"
   },
   {
       "id": 2,
@@ -44,7 +44,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 37,
       "scope": " Website",
       "industry": "Construction",
-      "link": "https://sobhaconstructions.com/"
+      "link": "/portfolio/sobha-constructions"
   },
   {
       "id": 1,
@@ -55,7 +55,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 23,
       "scope": " Brand Identity | Website | Digital Marketing",
       "industry": "Construction",
-      "link": "https://www.asgcgroup.com/"
+      "link": "/portfolio/asgc"
   },
   {
       "id": 3,
@@ -66,7 +66,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 20,
       "scope": "Website",
       "industry": "Service",
-      "link": "https://latinemfm.com/"
+      "link": "/portfolio/latinem-facility-management-lfm"
   },
   {
       "id": 3,
@@ -77,7 +77,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 40,
       "scope": "Website",
       "industry": "Education",
-      "link": "https://ascs.sch.ae/"
+      "link": "/portfolio/american-school-of-creative-science"
   },
   {
       "id": 3,
@@ -88,7 +88,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 22,
       "scope": "Website",
       "industry": "Manufacturer, service",
-      "link": "https://simple-uae.com/"
+      "link": "/portfolio/simple-solutions"
   },
 
   {
@@ -100,7 +100,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 30,
       "scope": "Website",
       "industry": "Investment",
-      "link": "https://www.gainsborough.ae/"
+      "link": "/portfolio/gainsborough-group"
   },
   {
       "id": 3,
@@ -111,7 +111,7 @@ export const allDataWebdesign1 = [
       "iconsheight": 37,
       "scope": "Website",
       "industry": "Hospitality, Real Estate",
-      "link": "https://thestay.ae/"
+      "link": "/portfolio/the-stay"
   },
   {
       "id": 3,
@@ -122,6 +122,6 @@ export const allDataWebdesign1 = [
       "iconsheight": 37,
       "scope": "Website",
       "industry": "Education",
-      "link": "https://www.educap.ae/"
+      "link": "/portfolio/educap"
   }
 ]

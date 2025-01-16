@@ -10,6 +10,7 @@ import { allDataWebdesign1 } from "../../data/services/portfolio1";
 import { allDataWebdesig2 } from "../../data/services/portfolio2";
 
 import Image from "next/image";
+import Link from "next/link";
 const Ourportfolio = () => {
   const allData1 = allDataWebdesign1;
   const allData2 = allDataWebdesig2;
@@ -82,7 +83,7 @@ const Ourportfolio = () => {
                 return (
                   <SwiperSlide key={index}>
                     <div className="">
-                      <div className="ovefls">
+                      <div className="ovefls relative">
                         <Image
                           className="ftr rounded-[20px] "
                           src={itm.image}
@@ -90,15 +91,17 @@ const Ourportfolio = () => {
                           width={900}
                           height={600}
                         />
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
 
-                      <div className="p-5">
+                      <div className="p-5 relative w-fit">
                         <Image
                           src={itm.iconsimage}
                           alt={itm.title}
                           width={itm.iconswidth}
                           height={itm.iconsheight}
                         />
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -144,7 +147,7 @@ const Ourportfolio = () => {
                 return (
                   <SwiperSlide key={index}>
                     <div className="">
-                      <div className="ovefls">
+                      <div className="ovefls relative">
                         <Image
                           className="ftr rounded-[20px]"
                           src={itm.image}
@@ -152,9 +155,10 @@ const Ourportfolio = () => {
                           width={900}
                           height={600}
                         />
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
 
-                      <div className="p-5">
+                      <div className="p-5 relative w-fit">
                         {/* <h3>{itm.title} </h3> */}
                         {/* <p className="mb-0">{itm.title}</p> */}
                         <Image
@@ -163,6 +167,7 @@ const Ourportfolio = () => {
                           width={itm.iconswidth}
                           height={itm.iconsheight}
                         />
+                        <Link href={itm.link} className="linkabs"></Link>
                       </div>
                     </div>
                   </SwiperSlide>

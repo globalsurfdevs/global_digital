@@ -17,6 +17,7 @@ const Path = (props: React.JSX.IntrinsicAttributes & SVGMotionProps<SVGPathEleme
 );
 
 export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => (
+  
   <button onClick={toggle} className="menuToggle">
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
@@ -42,4 +43,5 @@ export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => (
       />
     </svg>
   </button>
+  
 );

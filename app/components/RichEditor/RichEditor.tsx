@@ -2,8 +2,16 @@ import React from 'react'
 import { Control, Controller, Path } from 'react-hook-form'
 import ReactQuill, { Quill } from 'react-quill-new'
 import htmlEditButton from "quill-html-edit-button";
+// import ImageResize from 'quill-image-resize-module-react';
+import BlotFormatter from 'quill-blot-formatter';
+import  BlockBlot from 'quill';
+
+
 
 Quill.register("modules/htmlEditButton", htmlEditButton);
+// Quill.register('modules/imageResize', ImageResize);
+Quill.register('modules/blotFormatter', BlotFormatter);
+
 
 type PortfolioInputs = {
     companyName: string
@@ -44,7 +52,36 @@ const modules = {
         syntax: false, // Show the HTML with syntax highlighting. Requires highlightjs on window.hljs (similar to Quill itself), default: false
         prependSelector: "div#myelement", // a string used to select where you want to insert the overlayContainer, default: null (appends to body),
         editorModules: {} // The default mod
-      }
+      },
+      
+      toolbar: {
+        container: [
+          [{ header: "1" }, { header: "2" }, { font: [] },],
+          [{ size: [] }],
+          ["bold", "italic", "underline", "strike", "blockquote"],
+          [
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" },
+          ],
+          ["link", "image", "video"],
+          ["code-block"],
+          ["clean"],
+          [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+          
+        ],
+      },
+      clipboard: {
+        // toggle to add extra line breaks when pasting HTML:
+        matchVisual: false
+      },
+      imageResize: {
+        parchment: Quill.import('parchment'),
+        modules: ['Resize', 'DisplaySize']
+     },
+      blotFormatter: {} 
+     
 }
 
 const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:{
@@ -57,7 +94,24 @@ const RichEditor = <T extends PortfolioInputs | CaseStudyInputs>({control,name}:
             control={control}
             rules={name=="story" ? { required: "Story is required" } : undefined }
             render={({ field }) => (
-                <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules} />
+                <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules} formats={[
+                    "header",
+                    "font",
+                    "size",
+                    "bold",
+                    "italic",
+                    "underline",
+                    "strike",
+                    "align",
+                    "blockquote",
+                    "list",
+                    "bullet",
+                    "indent",
+                    "link",
+                    "image",
+                    "video",
+                    "code-block",
+                  ]}/>
             )}
         />
     )

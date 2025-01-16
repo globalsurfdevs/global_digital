@@ -21,6 +21,29 @@ import { ResultsData } from "../../data/services/seo/results";
 import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/seo/cta";
 import { Faq } from "../../data/services/seo/faq";
+
+
+interface Canonicals {
+  canonical: string;
+}
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+
+
+export async function generateMetadata(): Promise<Metadata> {
+
+  return {
+    title: "Unrivaled SEO Services in Dubai for Maximum Visibility |GS.Digital",
+    description: "Our team of SEO experts crafts bespoke campaigns that deliver unparalleled visibility and drive tangible results. Contact us now",
+    alternates: {
+      canonical: 'https://www.globalsurf.ae/seo',
+    },
+  };
+}
 const page = () => {
   return (
     <div>

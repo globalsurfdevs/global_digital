@@ -4,16 +4,19 @@ export const data = [
     {
         image:assets.success1,
         companyLogo:assets.gulfcryo,
-        text:"Gulf Cryo"
+        text:"Gulf Cryo",
+        url: "/portfolio/gulf-cryo"
     },
     {
         image:assets.success2,
-        companyLogo:assets.bafco,
-        text:"Bafco"
+        companyLogo:assets.ascs,
+        text:"ASCS",
+        url: "/portfolio/american-school-of-creative-science"
     },
     {
         image:assets.success3,
         companyLogo:assets.bec,
-        text:"BEC"
+        text:"BEC",
+        url: "/portfolio/bec-arabia"
     }
 ]

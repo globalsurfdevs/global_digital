@@ -1,4 +1,6 @@
 export type Portfolio = {
+    customId: string;
+    section: string;
     heading: string;
     id:number;
     companyName:string;
@@ -23,4 +25,5 @@ export type Portfolio = {
     logo:string;
     coverImage:string;
     type?:string;
+    index?:number
 }

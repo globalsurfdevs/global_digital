@@ -8,11 +8,12 @@ export const Employees = [
         designation: "Digital Account Director",
         width: "100%",
         height:"auto"
-    }, {
-        id: 2,
-        image: assets.Preethika,
-        name:"Preethika",
-        designation: "Project Manager",
+    },
+    {
+        id: 16,
+        image: assets.Vipin,
+        name:"Vipin",
+        designation: "Marketing Head",
         width: "100%",
         height:"auto"
     },
@@ -32,12 +33,11 @@ export const Employees = [
         width: "100%",
         height:"auto"
     },
-
-    {
-        id: 16,
-        image: assets.Vipin,
-        name:"Vipin",
-        designation: "Marketing Head",
+ {
+        id: 2,
+        image: assets.Preethika,
+        name:"Preethika",
+        designation: "Project Manager",
         width: "100%",
         height:"auto"
     },
@@ -94,7 +94,7 @@ export const Employees = [
         id: 15,
         image: assets.Swetha,
         name:"Sweta",
-        designation: "Content writer",
+        designation: "Content Writer",
         width: "100%",
         height:"auto"
     },
@@ -102,7 +102,7 @@ export const Employees = [
         id: 6,
         image: assets.Arjun,
         name:"Arjun",
-        designation: "Graphic designer",
+        designation: "Graphic Designer",
         width: "100%",
         height:"auto"
     } ,
@@ -170,14 +170,14 @@ export const Employees = [
         height:"auto"
     }
     ,
-    // {
-    //     id: 12,
-    //     image: assets.Rahees,
-    //     name:"Dilna",
-    //     designation: "Inside Sales Specialist",
-    //     width: "100%",
-    //     height:"auto"
-    // },
+    {
+        id: 12,
+        image: assets.Dilna,
+        name:"Dilna",
+        designation: "Inside Sales Specialist",
+        width: "100%",
+        height:"auto"
+    },
 
     {
         id: 2,
@@ -212,12 +212,12 @@ export const Employees = [
         width: "100%",
         height:"auto"
     }
-    // , {
-    //     id: 11,
-    //     image: assets.Nived,
-    //     name:"Thanisha ",
-    //     designation: "Business Process Executive",
-    //     width: "100%",
-    //     height:"auto"
-    // }
+    , {
+        id: 11,
+        image: assets.Thanisha,
+        name:"Thanisha ",
+        designation: "Business Process Executive",
+        width: "100%",
+        height:"auto"
+    }
 ]

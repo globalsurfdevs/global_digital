@@ -48,9 +48,9 @@ const Footer = () => {
                 <div className="flex flex-col gap-8 md:col-span-3">
                   <div className="flex flex-col gap-3">
                     <h2 className="text-font65">
-                      hello<span className="text-primary">@</span>globalsurf.ae
+                    <a href="mailto:hello@globalsurf.ae" > hello<span className="text-primary">@</span>globalsurf.ae</a>
                     </h2>
-                    <h2 className="text-font65">+971 4 582 1133</h2>
+                    <h2 className="text-font65"><a href="tel:+97145821133" >+971 4 582 1133</a></h2>
                   </div>
                 </div>
               </div>
@@ -68,11 +68,11 @@ const Footer = () => {
                 </div>
                 <div className="col-span-3 flex flex-col gap-8">
                   <div className="flex flex-col text-font19">
-                   <a href="https://www.facebook.com/globalsurf.digital" target="_blank" className="hover:text-primary"> Facebook</a>
-                    <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" className="hover:text-primary"> Instagram</a>
-                    <a href="https://x.com/GlobalSurf_D" target="_blank" className="hover:text-primary"> X</a>
-                    <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" className="hover:text-primary"> LinkedIn</a>
-                    <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" className="hover:text-primary"> Tiktok</a>
+                   <a href="https://www.facebook.com/globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"> Facebook</a>
+                    <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" rel="nofollow" className="hover:text-primary"> Instagram</a>
+                    <a href="https://x.com/GlobalSurf_D" target="_blank" rel="nofollow" className="hover:text-primary"> X</a>
+                    <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank"  rel="nofollow"className="hover:text-primary"> LinkedIn</a>
+                    <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"> Tiktok</a>
                   </div>
                 </div>
               </div>

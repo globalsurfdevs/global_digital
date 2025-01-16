@@ -42,11 +42,11 @@ export const MenuItem = ({
   return (
     <motion.li
       className="mobile-menu-li relative cursor-pointer w-full flex-col"
-      variants={navmenuSection}
+      
       onClick={children ? toggleSubmenu : toggle}
     >
-      <div className="flex justify-between items-center py-2 border-b font-bold w-full">
-       <Link href={Links}> {item}</Link>
+      <div className="flex justify-between items-center  border-b font-bold w-full">
+       <Link href={Links} className="py-2 w-full"> {item}</Link>
         {children && (
           <span className="ml-2">
           {isSubmenuOpen ? (
@@ -72,8 +72,6 @@ export const MenuItem = ({
       </div>
       {children && isSubmenuOpen && (
         <motion.ul
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
           className="left-0 top-full mt-2 w-full "
         >
           {children}

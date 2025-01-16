@@ -9,11 +9,26 @@ export const formatLinkForPortfolio = (name: string) => {
 };
 
 
-export const formatLinkForCaseStudy = (news:string) =>{
-    return news
+export const formatLinkForCaseStudy = (companyName:string) =>{
+    return companyName
         .replace(/,/g, '') // Replace commas with hyphens
         .replace(/ /g, '-')
         .replace(/\./g, '')
         .replace(/’/g,'')
+        .toLowerCase();
+}
+
+
+export const formatLinkForBlog = (heading:string) =>{
+    return heading
+        .replace(/,/g, '') // Replace commas with hyphens
+        .replace(/ /g, '-')
+        .replace(/ /g, '-')
+        .replace(/\./g, '')
+        .replace(/\? /g, '-')
+        .replace(/\!/g, '')
+        .replace(/\?/g, '')
+        .replace(/’/g,'')
+        .replace(/'/g,'')
         .toLowerCase();
 }
