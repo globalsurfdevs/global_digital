@@ -3,7 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 body {
@@ -380,12 +381,18 @@ body {
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .psty{padding-top: 70px;}
-.cntrsx .count-number{display: block;}
+  .psty {
+    padding-top: 70px;
+  }
+  .cntrsx .count-number {
+    display: block;
+  }
 }
 @media screen and (min-width: 1200px) and (max-width: 1549px) {
-  .cntrsx .count-number{display: block;}
+  .cntrsx .count-number {
+    display: block;
   }
+}
 @media screen and (min-width: 768px) and (max-width: 1399px) {
   /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
   .macst {
@@ -462,8 +469,9 @@ body {
   }
   .textslide-30 {
     @apply text-[15px] leading-lh1p33 lg:text-font30;
-  }.linkabs {
-    @apply absolute top-0 left-0 h-full w-full;
+  }
+  .linkabs {
+    @apply absolute left-0 top-0 h-full w-full;
   }
 }
 @media screen and (min-width: 1200px) and (max-width: 1549px) {
@@ -507,19 +515,18 @@ body {
 } */
 .class-blogdetails-mn p {
   margin-bottom: 20px;
-  @apply text-19 pt-5 fnt-lexend text-gray1;
+  @apply text-19 fnt-lexend pt-5 text-gray1;
 }
 .class-blogdetails-mn li {
-  @apply text-19 pt-5 fnt-lexend text-gray1;
+  @apply text-19 fnt-lexend pt-5 text-gray1;
 }
-
 
 .class-blogdetails-mn h2 {
   @apply mb-4 mt-5 text-font30 leading-lh1p33;
 }
 .class-blogdetails-mn h3 {
   font-size: clamp(17px, 2vw, 21px);
-  @apply   mt-5  font-bold leading-lh1p33;
+  @apply mt-5  font-bold leading-lh1p33;
 }
 .fltrcls {
   filter: brightness(0) invert(1);
@@ -574,8 +581,13 @@ body {
 .mb-ig {
   margin-top: 35px;
 }
-.listst li{list-style: disc; line-height: 1.6;}
-.listst {padding-left: 20px;}
+.listst li {
+  list-style: disc;
+  line-height: 1.6;
+}
+.listst {
+  padding-left: 20px;
+}
 .mt-spc {
   margin-bottom: 20px;
 }
@@ -651,20 +663,30 @@ body {
     margin: 20px 0;
   }
 }
-.fn2{font-size:2rem !important;margin-bottom: 0px !important;}
+.fn2 {
+  font-size: 2rem !important;
+  margin-bottom: 0px !important;
+}
 .mn-dv-blg .ln-bn {
   margin: 50px 0;
 }
 @media screen and (max-width: 767px) {
   .mn-dv-blg .ln-bn {
     margin: 10px 0 20px 0;
-}
-  .mn-dv-blg  img, .class-blogdetails-mn img {
-        border-radius: 10px;
-    }
-    .fn2{font-size:1rem !important; }
-    .mn-dv-blg .flx-vnt{padding: 0px;}
-.maincts svg{width: 15px;}
+  }
+  .mn-dv-blg img,
+  .class-blogdetails-mn img {
+    border-radius: 10px;
+  }
+  .fn2 {
+    font-size: 1rem !important;
+  }
+  .mn-dv-blg .flx-vnt {
+    padding: 0px;
+  }
+  .maincts svg {
+    width: 15px;
+  }
   .mn-dv-blg .flx-vnt {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -681,9 +703,7 @@ body {
   position: relative;
 
   .count-number {
-
-
-    background: linear-gradient(to right, #e23938, #F37307);
+    background: linear-gradient(to right, #e23938, #f37307);
     background-size: 200% 200%;
     animation: rainbow 2s ease-in-out infinite;
     background-clip: text;
@@ -693,12 +713,10 @@ body {
     transition: color 1s ease-in-out;
   }
 
-
   &:hover {
     .count-number {
       color: rgba(0, 0, 0, 0);
     }
-
   }
 }
 
@@ -723,7 +741,8 @@ body {
 .letter-wrapper {
   position: relative;
 }
-.letter-default, .letter-hover {
+.letter-default,
+.letter-hover {
   margin-bottom: 0;
   position: relative;
 }
@@ -737,19 +756,25 @@ body {
   transition: width 2s ease-in-out;
   white-space: nowrap;
 }
-.cntrsx:hover .letter-hover, .cntrsx:hover .letter-hover {
+.cntrsx:hover .letter-hover,
+.cntrsx:hover .letter-hover {
   width: 100%;
 }
 
-.logo-invert{
+.logo-invert {
   filter: invert(1);
 }
-input[type="number"]::-webkit-inner-spin-button, 
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-    input[type="number"] {
-      -moz-appearance: textfield;
-    }
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.er-pg {
+  h2 {
+    font-family: "Space Grotesk", serif;
+  }
+}
