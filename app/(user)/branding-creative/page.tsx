@@ -19,7 +19,27 @@ import { Frameworkdata } from "../../data/services/branding-creative/framework";
 import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/branding-creative/cta";
 import { Faq } from "../../data/services/branding-creative/faq";
+interface Canonicals {
+  canonical: string;
+}
 
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title:
+      "Creative Design Agency in Dubai | Creative Design Solutions | GS.Digital",
+    description:
+      "We are a leading creative design agency in Dubai, delivering innovative branding, graphic design, and visual content that captivates and drives business growth.",
+    alternates: {
+      canonical: "https://www.globalsurf.ae/branding-creative",
+    },
+  };
+}
 const page = () => {
   return (
     <div>
