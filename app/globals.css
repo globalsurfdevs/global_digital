@@ -718,6 +718,93 @@ body {
   .p404{padding: 6px 20px;}
   .p404 span {    font-size: 12px;}
 }
+.alnbase p{font-size: 350px;
+  line-height: .7;}
+  /* .zerost{
+    height: inherit;
+    display: flex;
+    align-items: end;
+    color: #fff;
+    background: #e23938;} */
+    .alnbase{  margin-bottom: 9.5dvh;  align-items: end;}
+    .xemn {
+      height: inherit;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: #fff;
+      background: #e23938;
+      width: inherit;
+
+      /* Apply multiple animations */
+      animation:
+        scaleChange 3s infinite alternate;   /* Second animation */
+    }
+
+
+
+    /* Keyframes for scaling animation */
+    @keyframes scaleChange {
+      0% {
+        transform: scale(1); /* Initial size */
+      }
+      50% {
+        transform: scale(1.02); /* Slightly larger */
+      }
+      100% {
+        transform: scale(1); /* Back to original size */
+      }
+    }
+
+    .xemn p  {
+      display: inline-block;
+        animation: flip 2s ease-in-out forwards;
+    }
+
+
+
+    @keyframes flip {
+      0% {
+        transform: rotateY(0deg);
+      }
+      50% {
+        transform: rotateY(180deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+      .zerost span {
+        letter-spacing: -45px;
+        position: relative;
+        left: -22px;
+    }
+
+@media screen and (max-width: 991px) {
+  .xemn {
+    letter-spacing: normal;
+}
+.alnbase p {
+  font-size: 200px;}
+.zerost span {
+  letter-spacing: -26px;
+  position: relative;
+  left: -13px;
+}
+}
+
+@media screen and (max-width:400px) {
+  .xemn {
+    letter-spacing: normal;
+}
+.alnbase p {
+  font-size: 165px;}
+.zerost span {
+  letter-spacing: -26px;
+  position: relative;
+  left: -13px;
+}
+}
 .cntrsx {
   position: relative;
 

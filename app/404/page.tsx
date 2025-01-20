@@ -13,14 +13,17 @@ const page = () => {
   return (
     <div className="er-pg">
       <div className="text-center cdedd">
-        <div className="flex justify-center h-[62dvh] alnbase">
-          <Image
+        <div className="flex justify-center h-[53dvh] alnbase ">
+          {/* <Image
             src="/assets/404/404-im.svg"
             alt=""
             width="700"
             height="100"
             className="transition-transform duration-500 group-hover:scale-110 group-hover:opacity-50 "
-          />
+          /> */}
+          <p>4</p>
+            <div className="xemn "><p className="zerost"><span>0</span></p></div>
+          <p>4</p>
         </div>
         <div className="h-[38dvh] h38dd">
           <div>
