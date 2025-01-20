@@ -701,6 +701,7 @@ body {
 }
 @media screen and (max-width: 548px) {
   .alnbase{align-items: baseline;}
+  .alnbase img{    height: 100%; }
 }
 @media screen and (max-width: 360px) {
   .fnt404{font-size: 12px;}

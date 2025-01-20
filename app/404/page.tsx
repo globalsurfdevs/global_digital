@@ -13,16 +13,17 @@ const page = () => {
   return (
     <div className="er-pg">
       <div className="text-center ">
-        <div className="flex justify-center h-[62vh] alnbase">
+        <div className="flex justify-center h-[62dvh] alnbase">
           <Image
             src="/assets/404/404-im.svg"
             alt=""
             width="700"
-            height="600"
+            height="100"
             className="transition-transform duration-500 group-hover:scale-110 group-hover:opacity-50 "
           />
         </div>
-        <div className="h-[38vh]">
+        <div className="h-[38dvh]">
+          <div>
           <h2 className="mb-3 flex items-center justify-center uppercase md:text-[35px]  lg:mb-[17px] lg:text-[47px] ">
             <span className="font-bold">Pixel Perfect </span>
             <span className="mr-3 text-[#E63E31]">?</span> Not This Time{" "}
@@ -51,6 +52,7 @@ const page = () => {
                 <MdOutlineArrowBack className="bg-[#E63E31] text-white" />
               </span>
             </Link>
+          </div>
           </div>
         </div>
       </div>
