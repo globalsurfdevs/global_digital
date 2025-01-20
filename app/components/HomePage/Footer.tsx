@@ -61,7 +61,7 @@ const Footer = () => {
                   <p className="text-font19 text-gray-500">
                     P.O.Box 13653, 901 - SIT Tower
                     <br />
-                    Dubai Silion Oasis
+                    Dubai Silicon Oasis
                     <br />
                     Dubai, UAE
                   </p>
