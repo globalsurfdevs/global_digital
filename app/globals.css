@@ -699,6 +699,14 @@ body {
     height: auto;
   }
 }
+@media screen and (max-width: 548px) {
+  .alnbase{align-items: baseline;}
+}
+@media screen and (max-width: 360px) {
+  .fnt404{font-size: 12px;}
+  .p404{padding: 6px 20px;}
+  .p404 span {    font-size: 12px;}
+}
 .cntrsx {
   position: relative;
 
