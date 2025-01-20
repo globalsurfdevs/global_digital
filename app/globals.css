@@ -756,7 +756,7 @@ body {
       }
     }
 
-    .xemn p  {
+   /* .rtts  {
       display: inline-block;
         animation: flip 2s ease-in-out forwards;
     }
@@ -773,7 +773,34 @@ body {
       100% {
         transform: rotateY(360deg);
       }
+    } */
+    .xemn p {
+      display: inline-block;
+      position: relative; /* Enables the use of 'top' for animation */
+      animation: bounce-down 2s cubic-bezier(0.25, 1, 0.5, 1) forwards; /* Smooth and bouncy */
     }
+
+    @keyframes bounce-down {
+      0% {
+        top: -50%;
+      }
+      30% {
+        top: 0%;
+      }
+      50% {
+        top: -10%;
+      }
+      70% {
+        top: 0%;
+      }
+      80% {
+        top: -5%;
+      }
+      100% {
+        top: 0%;
+      }
+    }
+
       .zerost span {
         letter-spacing: -45px;
         position: relative;
