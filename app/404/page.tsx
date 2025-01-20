@@ -21,9 +21,9 @@ const page = () => {
             height="100"
             className="transition-transform duration-500 group-hover:scale-110 group-hover:opacity-50 "
           /> */}
-          <p>4</p>
+          <p className="rtts">4</p>
             <div className="xemn "><p className="zerost"><span>0</span></p></div>
-          <p>4</p>
+          <p className="rtts">4</p>
         </div>
         <div className="h-[38dvh] h38dd">
           <div>
