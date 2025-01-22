@@ -610,8 +610,8 @@ body {
 }
 .mn-dv-blg .flx-vnt {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Creates three equal columns */
-  gap: 20px; /* Adds space between grid items */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
   padding: 20px;
 }
 .mn-dv-blg .flx-vnt .eql-hgt {

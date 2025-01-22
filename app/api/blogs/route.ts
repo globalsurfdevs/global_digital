@@ -1,3 +1,4 @@
+
 import { supabase } from "@/app/lib/initSupabase"
 import { NextRequest, NextResponse } from "next/server"
 
@@ -7,17 +8,35 @@ export async function GET(req: NextRequest) {
 
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
+        const slug = searchParams.get('slug')
 
-        if (!id) {
+        console.log("slug",slug)
+
+        if (id) {
 
 
             let { data: blogs, error } = await supabase
                 .from('blogs')
                 .select('*')
+                .eq('id', id)
 
 
             if (!blogs) {
-                return NextResponse.json({ error: "Blogs not found" }, { status: 404 });
+                return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+            }
+
+            return NextResponse.json({ blogs });
+
+        }else if(slug){
+            let { data: blogs, error } = await supabase
+                .from('blogs')
+                .select('*')
+                .eq('slug', slug)
+
+                console.log(blogs)
+
+            if (!blogs) {
+                return NextResponse.json({ error: "Blog not found" }, { status: 404 });
             }
 
             return NextResponse.json({ blogs });
@@ -27,7 +46,6 @@ export async function GET(req: NextRequest) {
             let { data: blog, error } = await supabase
                 .from('blogs')
                 .select("*")
-                .eq('id', id)
 
             if (!blog) {
                 return NextResponse.json({ error: "Blog not found" }, { status: 404 });
@@ -56,6 +74,7 @@ export async function POST(req: NextRequest) {
     // const metadataDesc = formData.get("metadataDesc") as string
     const content = formData.get("content") as string
     const slug = formData.get("slug") as string
+    const category = formData.get("category") as string
 
     try {
 
@@ -64,7 +83,7 @@ export async function POST(req: NextRequest) {
             const { data, error } = await supabase
                 .from('blogs')
                 .insert([
-                    { heading, description, thumbnail, content, slug },
+                    { heading, description, thumbnail, content, slug, category },
                 ])
                 .select()
 
@@ -78,13 +97,14 @@ export async function POST(req: NextRequest) {
                 return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
             }
         } else {
-
+            
             const { data, error } = await supabase
                 .from('blogs')
-                .update({ heading, description, thumbnail, content, slug })
+                .update({ heading, description, thumbnail:!thumbnail ? undefined : thumbnail, content, slug, category })
                 .eq('id', id)
                 .select()
 
+                console.log(error)
             if (data) {
                 return NextResponse.json({ message: "Blog updated successfully" }, { status: 200 })
             } else if (error) {
@@ -93,7 +113,6 @@ export async function POST(req: NextRequest) {
                 return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
             }
         }
-
 
     } catch (error) {
         console.log("Adding/Updating blog failed", error)

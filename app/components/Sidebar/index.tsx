@@ -103,13 +103,13 @@ const menuGroups = [
         label: "Portfolio / Case Study",
         route: "/admin/portfolio",
       },
-      // {
-      //   icon: (
-      //     <GiNotebook />
-      //   ),
-      //   label: "Blogs",
-      //   route: "/admin/blogs",
-      // },
+      {
+        icon: (
+          <GiNotebook />
+        ),
+        label: "Blogs",
+        route: "/admin/blogs",
+      },
       // {
       //   icon: (
       //     <ImBooks />

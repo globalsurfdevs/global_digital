@@ -16,7 +16,8 @@ const AdminBlog = () => {
                 const response = await fetch(`/api/blogs`);
                 if (response.ok) {
                     const data = await response.json();
-                    setBlogs(data.blogs)
+                    console.log(data)
+                    setBlogs(data.blog)
 
                 } else {
                     console.error("Failed to fetch blog data");
@@ -58,7 +59,7 @@ const AdminBlog = () => {
                     blogs.map((item:{id:number,thumbnail:string,heading:string}) => (
                         <div className='w-full relative'>
 
-                            <Link href={`/admin/blog/#`} className="w-full h-32 flex flex-col items-center justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <Link href={`/admin/blogs/${item.id}`} className="w-full h-32 flex flex-col items-center justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div className='flex h-full'>
                                     <img className="object-cover w-full rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-s-lg" src={item.thumbnail} alt="" />
                                     <div className="flex flex-col justify-between p-4 leading-normal items-center">

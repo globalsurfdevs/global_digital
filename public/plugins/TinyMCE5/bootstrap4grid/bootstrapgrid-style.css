@@ -1,0 +1,64 @@
+.mce-content-body div.grid{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+ div.grid{
+    padding: 5px;
+    border: 1px dotted #999;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* disable resize handler in IE11 */
+   [contenteditable=true] div.grid{
+        pointer-events: none; 
+    }
+ }
+ .grid > div[class^="col-span-"], [contenteditable=true] .grid > div[class*=" col-span-"] {
+    padding-top: 20px;
+    border: 1px dashed #666;
+    min-height: 60px;
+}
+ .grid > div[class^="col-span-"] >p:first-child, [contenteditable=true] .grid > div[class*=" col-span-"]> p:first-child{
+    min-height: 30px;
+}
+
+ .grid > div[class^="col-span-"]:before, [contenteditable=true] .grid > div[class*=" col-span-"]:before {
+    font-size: 0.75em;
+    position: absolute;
+    color: #fff;
+    background: #666;
+    height: 15px;
+    left: 0;
+    top: 0;
+    padding: 0 5px;
+}
+
+ .grid > div[class^="col-span-"]:after, [contenteditable=true] .grid > div[class*="col-span-"]:after {
+    content: '';
+    display: inline-block;
+    border-top: 8px solid #666;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}
+
+[contenteditable=true] .grid > div[class^="col-span-"][class$="12"]:before{
+    content:"100% width"
+}
+[contenteditable=true] .grid > div[class^="col-span-"][class$="9"]:before{
+    content:"75% width"
+}
+[contenteditable=true] .grid > div[class^="col-span-"][class$="8"]:before{
+    content:"67% width"
+}
+[contenteditable=true] .grid > div[class^="col-span-"][class$="6"]:before {
+    content:"50% width";
+}
+[contenteditable=true] .grid > div[class^="col-span-"][class$="4"]:before {
+    content:"33% width"
+}
+[contenteditable=true] .grid > div[class^="col-span-"][class$="3"]:before{
+    content:"25% width"
+}
