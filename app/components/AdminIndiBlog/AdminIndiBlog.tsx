@@ -277,7 +277,7 @@ const AdminIndiBlog = ({ editMode }: {
 
                     className="inline-flex items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 w-[15%]"
                 >
-                    <button type='submit'>{isSubmitting ? "Save" : "Save"}</button>
+                    <button type='submit' disabled={isSubmitting}>{isSubmitting ? "Saving" : "Save"}</button>
                 </div>
             </div>
 

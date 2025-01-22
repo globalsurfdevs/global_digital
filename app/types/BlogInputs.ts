@@ -5,4 +5,5 @@ export type BlogInputTypes = {
     slug:string;
     content:string;
     category:string;
+    title:string;
 }

@@ -13,8 +13,8 @@
     editor.contentCSS.push(url + '/bootstrapgrid-style.css');
 
     editor.ui.registry.addToggleButton('bootstrap4grid', {
-      text: 'BS4 Grid',
-      tooltip: 'Bootstrap4 Grid System',
+      text: 'Tailwind Grid',
+      tooltip: 'Tailwind Grid System',
       onAction: Tinymce_bs4_grid,
       onSetup: function (api) {
         editor.selection.selectorChanged('div.grid', function (state) {
@@ -24,7 +24,7 @@
     });
 
     function Tinymce_bs4_grid() {
-      var dialogueTitle = 'Insert Bootstrap4 Grids';
+      var dialogueTitle = 'Insert Tailwind Grids';
       var columnValue = ['12'];
       var screenSize = '-md';
       var node = editor.selection.getNode();
@@ -64,35 +64,36 @@
             }
           }
         }
-        dialogueTitle = 'Update/Remove Bootstrap4 Grids';
+        dialogueTitle = 'Update/Remove Tailwind Grids';
       }
 
-      var mainPanelItems = [{
-          type: 'selectbox',
-          name: 'size',
-          label: 'Target Screen',
-          items: [{
-              text: 'X Large >= 1200px',
-              value: 'xl'
-            },
-            {
-              text: 'Large >= 992px',
-              value: 'lg'
-            },
-            {
-              text: 'Medium >= 768px',
-              value: 'md'
-            },
-            {
-              text: 'Small >= 576px',
-              value: 'sm'
-            },
-            {
-              text: 'X Small < 576px',
-              value: ''
-            },
-          ],
-        },
+      var mainPanelItems = [
+        // {
+        //   type: 'selectbox',
+        //   name: 'size',
+        //   label: 'Target Screen',
+        //   items: [{
+        //       text: 'X Large >= 1200px',
+        //       value: 'xl'
+        //     },
+        //     {
+        //       text: 'Large >= 992px',
+        //       value: 'lg'
+        //     },
+        //     {
+        //       text: 'Medium >= 768px',
+        //       value: 'md'
+        //     },
+        //     {
+        //       text: 'Small >= 576px',
+        //       value: 'sm'
+        //     },
+        //     {
+        //       text: 'X Small < 576px',
+        //       value: ''
+        //     },
+        //   ],
+        // },
         {
           type: 'selectbox',
           name: 'grid',
@@ -159,15 +160,15 @@
         panelBody = {
           type: 'tabpanel',
           tabs: [{
-              title: 'Update Bootstrap Grids',
+              title: 'Update Tailwind Grids',
               items: mainPanelItems
             },
             {
-              title: 'Remove Bootstrap Grids',
+              title: 'Remove Tailwind Grids',
               items: [{
                 type: 'checkbox',
                 name: 'removeGrids',
-                label: 'Remove Bootstrap Grids',
+                label: 'Remove Tailwind Grids',
               }]
             }
           ]
@@ -212,23 +213,23 @@
             if (!editMode) {
               // create new grids 
               for (var n = 0; n < newGridNumber; n++) {
-                htmlContents += '<div class=' + '"' + 'col-span' + '-' + gridWidthValues[n] + '"><p>&nbsp;</p></div>';
+                htmlContents += '<div class=' + '"' + 'lg:col-span' + '-' + gridWidthValues[n] + '"><p>&nbsp;</p></div>';
               }
             } else {
               // update existing grids
               if (oldGridNumber > 0 && oldGridNumber < newGridNumber) {
                 // if the number of new grids is more than the number of old grids
                 for (var k = 0; k < oldGridNumber; k++) {
-                  htmlContents += '<div class=' + '"' + 'col-span' + '-' + gridWidthValues[k] + '">' + oldGridContents.shift() + '</div>';
+                  htmlContents += '<div class=' + '"' + 'lg:col-span' + '-' + gridWidthValues[k] + '">' + oldGridContents.shift() + '</div>';
                 }
                 // create empity girds
                 for (var m = oldGridNumber; m < newGridNumber; m++) {
-                  htmlContents += '<div class=' + '"' + 'col-span' + '-' + gridWidthValues[m] + '">' + '<p>&nbsp;</p></div>';
+                  htmlContents += '<div class=' + '"' + 'lg:col-span' + '-' + gridWidthValues[m] + '">' + '<p>&nbsp;</p></div>';
                 }
               } else if (oldGridNumber >= newGridNumber) {
                 // if the number of new grids is less than the number of old grids
                 for (var k = 0; k < newGridNumber; k++) {
-                  htmlContents += '<div class=' + '"' + 'col-span' + '-' + gridWidthValues[k] + '">' + oldGridContents.shift() + '</div>';
+                  htmlContents += '<div class=' + '"' + 'lg:col-span' + '-' + gridWidthValues[k] + '">' + oldGridContents.shift() + '</div>';
                 }
                 // create a new container for all remaining contents below the row
                 if (oldGridNumber > newGridNumber) {

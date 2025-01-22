@@ -13,16 +13,16 @@
         pointer-events: none; 
     }
  }
- .grid > div[class^="col-span-"], [contenteditable=true] .grid > div[class*=" col-span-"] {
+ .grid > div[class^="lg:col-span-"], [contenteditable=true] .grid > div[class*=" lg:col-span-"] {
     padding-top: 20px;
     border: 1px dashed #666;
     min-height: 60px;
 }
- .grid > div[class^="col-span-"] >p:first-child, [contenteditable=true] .grid > div[class*=" col-span-"]> p:first-child{
+ .grid > div[class^="lg:col-span-"] >p:first-child, [contenteditable=true] .grid > div[class*=" lg:col-span-"]> p:first-child{
     min-height: 30px;
 }
 
- .grid > div[class^="col-span-"]:before, [contenteditable=true] .grid > div[class*=" col-span-"]:before {
+ .grid > div[class^="lg:col-span-"]:before, [contenteditable=true] .grid > div[class*=" lg:col-span-"]:before {
     font-size: 0.75em;
     position: absolute;
     color: #fff;
@@ -33,7 +33,7 @@
     padding: 0 5px;
 }
 
- .grid > div[class^="col-span-"]:after, [contenteditable=true] .grid > div[class*="col-span-"]:after {
+ .grid > div[class^="lg:col-span-"]:after, [contenteditable=true] .grid > div[class*="lg:col-span-"]:after {
     content: '';
     display: inline-block;
     border-top: 8px solid #666;
@@ -44,21 +44,21 @@
     top: 15px;
 }
 
-[contenteditable=true] .grid > div[class^="col-span-"][class$="12"]:before{
+[contenteditable=true] .grid > div[class^="lg:col-span-"][class$="12"]:before{
     content:"100% width"
 }
-[contenteditable=true] .grid > div[class^="col-span-"][class$="9"]:before{
+[contenteditable=true] .grid > div[class^="lg:col-span-"][class$="9"]:before{
     content:"75% width"
 }
-[contenteditable=true] .grid > div[class^="col-span-"][class$="8"]:before{
+[contenteditable=true] .grid > div[class^="lg:col-span-"][class$="8"]:before{
     content:"67% width"
 }
-[contenteditable=true] .grid > div[class^="col-span-"][class$="6"]:before {
+[contenteditable=true] .grid > div[class^="lg:col-span-"][class$="6"]:before {
     content:"50% width";
 }
-[contenteditable=true] .grid > div[class^="col-span-"][class$="4"]:before {
+[contenteditable=true] .grid > div[class^="lg:col-span-"][class$="4"]:before {
     content:"33% width"
 }
-[contenteditable=true] .grid > div[class^="col-span-"][class$="3"]:before{
+[contenteditable=true] .grid > div[class^="lg:col-span-"][class$="3"]:before{
     content:"25% width"
 }
