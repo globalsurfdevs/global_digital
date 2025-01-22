@@ -63,7 +63,9 @@ export default function RootLayout({
           `,
         }}
       />
-        <script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqeae118c3938846c2218ef67ca061aed63c888ec50c2d01744b04b184d9b52834" defer></script>
+
+     <script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqfbc0d98490746e45b5054af7cb63167d80bb738150df87ecb255b37f30af3c7c" defer></script>
+
       </body>
     </html>
   );
