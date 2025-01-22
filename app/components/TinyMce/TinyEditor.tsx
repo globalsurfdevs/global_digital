@@ -50,7 +50,7 @@ export default function TinyEditor({ setBlogContent,blogContent }: {blogContent?
                         'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
                         'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
                         'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount',
-                        'advcode', 'bootstrap4grid', 'image',
+                        'code', 'bootstrap4grid', 'image',
                     ],
                     file_picker_callback: (cb, value, meta) => {
                         const input = document.createElement('input');
