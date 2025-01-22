@@ -59,6 +59,7 @@ const Footer = () => {
                   className={`col-span-2 flex h-full flex-col justify-between ${lexend.className}`}
                 >
                   <p className="text-font19 text-gray-500">
+
                     Global Surf Digital Media L.L.C
                     <br />
                     P.O.Box 13653, 901 - SIT Tower
