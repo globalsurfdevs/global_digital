@@ -12,13 +12,11 @@ const lexend = Lexend({
 import { motion } from "framer-motion";
 
 const Footer = () => {
-
   return (
     <>
       <div className="bg-black py-[50px] xs:py-10 lg:py-14 xl:pb-[131px] xl:pt-[109px]">
         <div className="container mx-auto px-4 text-white">
           <div className="flex flex-col">
-
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -48,18 +46,23 @@ const Footer = () => {
                 <div className="flex flex-col gap-8 md:col-span-3">
                   <div className="flex flex-col gap-3">
                     <h2 className="text-font65">
-                    <a href="mailto:hello@globalsurf.ae" > hello<span className="text-primary">@</span>globalsurf.ae</a>
+                      <a href="mailto:hello@globalsurf.ae">
+                        {" "}
+                        hello<span className="text-primary">@</span>
+                        globalsurf.ae
+                      </a>
                     </h2>
-                    <h2 className="text-font65"><a href="tel:+97145821133" >+971 4 582 1133</a></h2>
+                    <h2 className="text-font65">
+                      <a href="tel:+97145821133">+971 4 582 1133</a>
+                    </h2>
                   </div>
                 </div>
               </div>
-              <div className="grid pt-8 md:grid-cols-5 lg:pt-[121px] gap-5 md:gap-0">
+              <div className="grid gap-5 pt-8 md:grid-cols-5 md:gap-0 lg:pt-[121px]">
                 <div
                   className={`col-span-2 flex h-full flex-col justify-between ${lexend.className}`}
                 >
                   <p className="text-font19 text-gray-500">
-
                     Global Surf Digital Media L.L.C
                     <br />
                     P.O.Box 13653, 901 - SIT Tower
@@ -71,11 +74,51 @@ const Footer = () => {
                 </div>
                 <div className="col-span-3 flex flex-col gap-8">
                   <div className="flex flex-col text-font19">
-                   <a href="https://www.facebook.com/globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"> Facebook</a>
-                    <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" rel="nofollow" className="hover:text-primary"> Instagram</a>
-                    <a href="https://x.com/GlobalSurf_D" target="_blank" rel="nofollow" className="hover:text-primary"> X</a>
-                    <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank"  rel="nofollow"className="hover:text-primary"> LinkedIn</a>
-                    <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"> Tiktok</a>
+                    <a
+                      href="https://www.facebook.com/globalsurf.digital"
+                      target="_blank"
+                      rel="nofollow"
+                      className="hover:text-primary"
+                    >
+                      {" "}
+                      Facebook
+                    </a>
+                    <a
+                      href="https://www.instagram.com/globalsurf.digital/"
+                      target="_blank"
+                      rel="nofollow"
+                      className="hover:text-primary"
+                    >
+                      {" "}
+                      Instagram
+                    </a>
+                    <a
+                      href="https://x.com/GlobalSurf_D"
+                      target="_blank"
+                      rel="nofollow"
+                      className="hover:text-primary"
+                    >
+                      {" "}
+                      X
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/globalsurfdigital"
+                      target="_blank"
+                      rel="nofollow"
+                      className="hover:text-primary"
+                    >
+                      {" "}
+                      LinkedIn
+                    </a>
+                    <a
+                      href="https://www.tiktok.com/@globalsurf.digital"
+                      target="_blank"
+                      rel="nofollow"
+                      className="hover:text-primary"
+                    >
+                      {" "}
+                      Tiktok
+                    </a>
                   </div>
                 </div>
               </div>
@@ -92,15 +135,23 @@ const Footer = () => {
             <Image src={assets.footer3} alt="image"></Image>
           </div>
           <div className="flex flex-wrap justify-center gap-2 text-sm text-gray1 md:gap-5">
-            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary"><Link href="legal">Legal Page</Link></p>
-            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary"><Link href="privacy-policy">Privacy</Link></p>
-            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary"><Link href="cookie-policy">Cookie Policy</Link></p>
             <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
-              <Link href="modern-slavery-statement">Modern Slavery Statement</Link>
+              <Link href="legal">Legal Page</Link>
+            </p>
+            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
+              <Link href="privacy-policy">Privacy</Link>
+            </p>
+            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
+              <Link href="cookie-policy">Cookie Policy</Link>
+            </p>
+            <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
+              <Link href="modern-slavery-statement">
+                Modern Slavery Statement
+              </Link>
             </p>
             <p className="fw-[400] xshd text-font14 leading-lh1p78">|</p>
             <p className="fw-[400] text-font14 leading-lh1p78">
-              ©2024 Global Surf Digital. All rights reserved
+              ©2025 Global Surf Digital. All rights reserved
             </p>
           </div>
         </div>
