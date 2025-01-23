@@ -19,6 +19,9 @@ import { removeFromDropboxForBlog, uploadToDropboxForBlog } from '@/app/lib/uplo
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import { generateSlugForBlog } from '@/app/helpers/generateSlug'
+import TinyEditor from '../TinyMce/TinyEditor'
+import { uploadImagesFromEditor } from '@/app/helpers/uploadImagesFromEditor'
+import { useParams } from 'next/navigation'
 
 
 
@@ -29,19 +32,21 @@ Quill.register('modules/blotFormatter', BlotFormatter);
 
 
 
-const AdminIndiBlog = ({editMode}:{
-    editMode?:boolean
+const AdminIndiBlog = ({ editMode }: {
+    editMode?: boolean
 }) => {
 
     const [thumbnail, setThumbnail] = useState<File | null>(null)
     const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null)
     const [thumbnailError, setThumbnailError] = useState<string | null>(null)
-    const [addedImages,setAddedImages] = useState<{url:string,path:string}[]>([])
-    const [isSubmitting,setIsSubmitting] = useState(false)
+    const [addedImages, setAddedImages] = useState<{ url: string, path: string }[]>([])
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [blogContent, setBlogContent] = useState("")
 
-    const reactQuillRef  = useRef<ReactQuill | null>(null)
+    const reactQuillRef = useRef<ReactQuill | null>(null)
 
     const router = useRouter()
+    const {blogId} = useParams()
 
     const {
         register,
@@ -54,156 +59,103 @@ const AdminIndiBlog = ({editMode}:{
     } = useForm<BlogInputTypes>()
 
 
-    const imageHandler = useCallback(() => {
-        const input = document.createElement("input");
-        input.setAttribute("type", "file");
-        input.setAttribute("accept", "image/*");
-        input.click();
-        input.onchange = async () => {
-            if (input !== null && input.files !== null) {
-                const file = input.files[0];
-                console.log("file", file)
-                
-                const filename = `${Date.now()}-${file.name || "image"}`;
-                const dropboxPath = `/blogs/${filename}`;
-
-                const uploadedData = await uploadToDropboxForBlog(file,dropboxPath)
-
-                const quill = reactQuillRef.current?.getEditor();
-                if (quill) {
-                    const range = quill.getSelection();
-                    if (range) {
-                        quill.insertEmbed(range.index, "image", uploadedData.url); // Insert image at cursor
-                      }
-                }
-                if(uploadedData){
-                    setAddedImages((prev:{url:string,path:string}[]) => [...prev,uploadedData])
-                }
-            }
-        };
-    }, []);
-
-    const removeImage = async(imageUrl:string,index: number) => {
-        const deleteImage = await removeFromDropboxForBlog(imageUrl)
-        if(deleteImage){
-            const quill = reactQuillRef.current?.getEditor();
-        if (quill) {
-          const imageToRemove = addedImages[index].url;
-    
-          // Find the image Blot in the Quill editor content
-          const images = quill.getContents().ops;
-          console.log(images) // Get the contents of the editor
-        //   const imageOp = images.find(
-        //     (op) => op.insert?.image === imageToRemove
-        //   );
-
-        //   console.log(imageOp)
-    
-        //   if (imageOp) {
-        //     const imageIndex = images.indexOf(imageOp);
-        //     quill.deleteText(imageIndex, 1);
-        //     console.log("removed image") // Remove the image from the editor
-        //   }
-    
-          // Remove image URL from the state
-          setAddedImages((prev) => prev.filter((url, i) => i !== index));
-        }
-        }
-        
-      };
-
-    const modules = {
-        htmlEditButton: {
-            msg: "Edit the content in HTML format", //Custom message to display in the editor, default: Edit HTML here, when you click "OK" the quill editor's contents will be replaced
-            okText: "Ok", // Text to display in the OK button, default: Ok,
-            cancelText: "Cancel", // Text to display in the cancel button, default: Cancel
-            buttonHTML: "HTML", // Text to display in the toolbar button, default: <>
-            buttonTitle: "Show HTML source", // Text to display as the tooltip for the toolbar button, default: Show HTML source
-            syntax: false, // Show the HTML with syntax highlighting. Requires highlightjs on window.hljs (similar to Quill itself), default: false
-            prependSelector: "div#myelement", // a string used to select where you want to insert the overlayContainer, default: null (appends to body),
-            editorModules: {} // The default mod
-        },
-
-        toolbar: {
-            
-            container: [
-                [{ header: "1" }, { header: "2" }, { font: [] },],
-                [{ size: [] }],
-                ["bold", "italic", "underline", "strike", "blockquote"],
-                [
-                    { list: "ordered" },
-                    { list: "bullet" },
-                    { indent: "-1" },
-                    { indent: "+1" },
-                ],
-                ["link", "image", "video"],
-                ["code-block"],
-                ["clean"],
-                [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
-            ],
-            handlers: {
-                image: imageHandler,   // <- 
-            },
-        },
-        clipboard: {
-            // toggle to add extra line breaks when pasting HTML:
-            matchVisual: false
-        },
-        imageResize: {
-            parchment: Quill.import('parchment'),
-            modules: ['Resize', 'DisplaySize']
-        },
-        blotFormatter: {}
-
-    }
-
     const onSubmit: SubmitHandler<BlogInputTypes> = async (data) => {
         setIsSubmitting(true);
-        const formData = new FormData();
-        formData.append("heading", data.heading);
-        formData.append("description", data.description);
-        // formData.append("thumbnail", data.thumbImage);
-        formData.append("slug", data.slug)
-        formData.append("content",data.content)
+
+        const uploadedImages = await uploadImagesFromEditor(blogContent)
+        const actualContent = uploadedImages
+        if (actualContent) {
+            const formData = new FormData();
+            formData.append("heading", data.heading);
+            formData.append("description", data.description);
+            // formData.append("thumbnail", data.thumbImage);
+            formData.append("slug", data.slug)
+            formData.append("content", actualContent)
+            formData.append("category",data.category)
 
 
-        if (thumbnail) {
-            const image = await generateAndUploadImage(thumbnail)
-            if (image) {
-                formData.append("thumbnail", image)
+            if (thumbnail) {
+                const image = await generateAndUploadImage(thumbnail)
+                if (image) {
+                    formData.append("thumbnail", image)
+                }
             }
-        }
 
-
-        try {
-            const url =  `/api/blogs`;
-            const method = "POST";
-            console.log("Here")
-            const response = await fetch(url, {
-                method: method,
-                body: formData,
-            });
-            const data = await response.json();
-            console.log(data);
-
-            if (!data.error) {
-                toast.success(data.message)
-                router.push('/admin/blogs')
-            } else {
-                toast.error(data.error)
+            try {
+                const url = editMode ? `/api/blogs?id=${blogId}` : `/api/blogs`;
+                const method = "POST";
+                console.log("Here")
+                const response = await fetch(url, {
+                    method: method,
+                    body: formData,
+                });
+                const data = await response.json();
+                console.log(data);
+    
+                if (!data.error) {
+                    toast.success(data.message)
+                    router.push('/admin/blogs')
+                } else {
+                    toast.error(data.error)
+                }
+                
+            } catch (error) {
+                console.error("Error updating blog:", error);
+                toast.error("Failed to update blog data. Please try again.");
+            } finally {
+                setIsSubmitting(false);
             }
-            // Redirect to news list page
-        } catch (error) {
-            console.error("Error updating case study:", error);
-            toast.error("Failed to update case study. Please try again.");
-        } finally {
-            setIsSubmitting(false);
+
+        }else{
+            setIsSubmitting(false)
         }
+       
     }
 
-    useEffect(()=>{
-        setValue("slug",generateSlugForBlog(watch("heading")))
-    },[watch("heading")])
+    useEffect(() => {
+        setValue("slug", generateSlugForBlog(watch("heading")))
+    }, [watch("heading")])
+
+    
+    useEffect(() => {
+            const fetchBlogData = async () => {
+                try {
+                    const response = await fetch(`/api/blogs?id=${blogId}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        
+                        if (data.blogs[0]) {
+                            setValue("heading", data.blogs[0].heading)
+                            setValue("slug", data.blogs[0].slug)
+                           setValue("category",data.blogs[0].category)
+                            
+    
+                            if (data.blogs[0].thumbnail) {
+                               
+                                setThumbnailPreview(data.blogs[0].thumbnail as string);
+    
+                            }
+                            
+                            if(data.blogs[0].content){
+                                setBlogContent(data.blogs[0].content)
+                            }
+    
+                        }
+
+    
+                    } else {
+                        console.error("Failed to fetch blog data");
+                    }
+                } catch (error) {
+                    console.error("Error fetching blog data:", error);
+                }
+            }
+    
+            if (editMode) {
+                fetchBlogData()
+            }
+    
+        }, [])
 
 
     return (
@@ -217,6 +169,12 @@ const AdminIndiBlog = ({editMode}:{
             <div className='w-full flex flex-col gap-2'>
                 <Label content='Slug' />
                 <input type="text" {...register("slug")} readOnly className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+            </div>
+
+            <div className='w-full flex flex-col gap-2'>
+                <Label content='Category' />
+                <input type="text" {...register("category",{ required: "Category is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                {errors.category && <p className='mt-1 text-sm text-red'>{errors.category.message}</p>}
             </div>
 
             <div>
@@ -284,7 +242,8 @@ const AdminIndiBlog = ({editMode}:{
 
             <div>
                 <Label content='Content' />
-                <Controller
+                <TinyEditor setBlogContent={setBlogContent} blogContent={editMode && blogContent}/>
+                {/* <Controller
                     name={"content"}
                     control={control}
                     rules={{ required: "Content is required" }}
@@ -308,26 +267,19 @@ const AdminIndiBlog = ({editMode}:{
                             "code-block",
                         ]} />
                     )}
-                />
+
+                /> */}
             </div>
 
-            <div className='bg-red-600 relative'>
-                {addedImages.map((item,index)=>(
-                    <div className='w-24 h-24 absolute'>
-                        <button className='w-5 h-5 rounded-full bg-red-600 absolute top-2 right-2 z-10 flex items-center justify-center' onClick={()=>removeImage(item.path,index)}>X</button>
-                        <Image src={item.url} key={index} alt='image' layout='fill'/>
-                    </div>
-                ))}
-            </div>
 
             <div className='mt-25 pb-5'>
-                    <div
+                <div
 
-                        className="inline-flex items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 w-[15%]"
-                    >
-                        <button type='submit' disabled={isSubmitting}>{isSubmitting ? "Saving" : "Save"}</button>
-                    </div>
+                    className="inline-flex items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 w-[15%]"
+                >
+                    <button type='submit' disabled={isSubmitting}>{isSubmitting ? "Saving" : "Save"}</button>
                 </div>
+            </div>
 
         </form>
     )

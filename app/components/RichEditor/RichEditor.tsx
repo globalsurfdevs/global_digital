@@ -4,7 +4,7 @@ import ReactQuill, { Quill } from 'react-quill-new'
 import htmlEditButton from "quill-html-edit-button";
 // import ImageResize from 'quill-image-resize-module-react';
 import BlotFormatter from 'quill-blot-formatter';
-import  BlockBlot from 'quill';
+
 
 
 

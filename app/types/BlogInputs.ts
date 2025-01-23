@@ -1,7 +1,9 @@
 export type BlogInputTypes = {
     heading:string;
     description:string;
-    thumbImage:string;
+    thumbnail:string;
     slug:string;
     content:string;
+    category:string;
+    title:string;
 }

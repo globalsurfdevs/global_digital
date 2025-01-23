@@ -7,6 +7,46 @@ const config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     flowbite.content(),
   ],
+  safelist: [
+    // Safelist all grid-related classes
+    'grid',
+    'grid-cols-1',
+    'grid-cols-2',
+    'grid-cols-3',
+    'grid-cols-4',
+    'grid-cols-5',
+    'grid-cols-6',
+    'grid-cols-7',
+    'grid-cols-8',
+    'grid-cols-9',
+    'grid-cols-10',
+    'grid-cols-11',
+    'grid-cols-12',
+
+    // Safelist all col-span classes
+    'col-span-1',
+    'col-span-2',
+    'col-span-3',
+    'col-span-4',
+    'col-span-5',
+    'col-span-6',
+    'col-span-7',
+    'col-span-8',
+    'col-span-9',
+    'col-span-10',
+    'col-span-11',
+    'col-span-12',
+
+    // Include responsive variants (e.g., lg:col-span-9, xl:grid-cols-12)
+    {
+      pattern: /col-span-\d{1,2}/, // Matches all col-span-1, col-span-2, ..., col-span-12
+      variants: ['lg', 'xl', 'md', 'sm'], // Includes responsive variants
+    },
+    {
+      pattern: /grid-cols-\d{1,2}/, // Matches all grid-cols-1, grid-cols-2, ..., grid-cols-12
+      variants: ['lg', 'xl', 'md', 'sm'], // Includes responsive variants
+    },
+  ],
   theme: {
     extend: {
       screens: {
