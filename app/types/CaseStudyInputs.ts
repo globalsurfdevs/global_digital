@@ -14,6 +14,8 @@ export type CaseStudyInputs = {
     tag:string;
     companyName:string;
     slug:string;
+    homeTitle:string;
+    homeSubTitle:string;
     metaTitle:string;
     metaDescription:string;
 } & {

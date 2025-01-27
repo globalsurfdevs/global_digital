@@ -32,3 +32,19 @@ export const formatLinkForBlog = (heading:string) =>{
         .replace(/'/g,'')
         .toLowerCase();
 }
+
+export const formatLinkForCareer = (jobTitle:string) =>{
+    return jobTitle
+        .replace(/,/g, '') // Replace commas with hyphens
+        .replace(/ /g, '-')
+        .replace(/ /g, '-')
+        .replace(/\./g, '')
+        .replace(/--+/g, '-')
+        .replace(/\? /g, '-')
+        .replace(/[^a-zA-Z0-9]+/g, '-')
+        .replace(/\!/g, '')
+        .replace(/\?/g, '')
+        .replace(/’/g,'')
+        .replace(/'/g,'')
+        .toLowerCase();
+}

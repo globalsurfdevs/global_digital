@@ -25,7 +25,7 @@ export const career = [
     id:"4",
     post: "Sales Specialist - Web and Digital Services",
     team: "Marketing Team",
-    url: "sales-specialist-web-digital",
+    url: "sales-specialist-web-and-digital-services",
 
 
   },

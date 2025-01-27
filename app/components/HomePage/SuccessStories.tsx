@@ -1,43 +1,50 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { stories } from "../../data/stories";
 import { Lexend } from "next/font/google";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Portfolio } from "@/app/types/Portfolio";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
+type Data = {
+  caseStudyHighlights:{
+    companyId:number;
+    number:string;
+    text:string;
+    portfolios:Portfolio
+  }[]
+}
+
 const SuccessStories = () => {
   const ref = useRef(null);
 
-  // useEffect(() => {
-  //   if (isInView) {
-  //     const startAnimations = () => {
-  //       stories.forEach((story, index) => {
-  //         animate(
-  //           0,
-  //           story.count,
-  //           {
-  //             duration: 2, // Duration in seconds
-  //             onUpdate: (value) => {
-  //               setAnimatedValues((prev) => {
-  //                 const updated = [...prev];
-  //                 updated[index] = Math.round(value); // Update with rounded value
-  //                 return updated;
-  //               });
-  //             },
-  //           }
-  //         );
-  //       });
-  //     };
+  const [data,setData] = useState<Data | null>(null)
 
-  //     startAnimations();
-  //   }
-  // }, [isInView]);
+  useEffect(() => {
+   
+      const fetchCaseStudyData = async() => {
+        try {
+          const response = await fetch('/api/case-study/home')
+          if(response.ok){
+            const data = await response.json()
+            console.log(data)
+            setData(data)
+          }
+        } catch (error) {
+          console.log("Failed fetching case study data:",error)
+        }
+        
+      };
+
+      fetchCaseStudyData();
+    
+  }, []);
 
   return (
     <div className="container mx-auto px-4">
@@ -71,7 +78,7 @@ const SuccessStories = () => {
           }}
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
-            {stories.map((item, index) => (
+            {data && data.caseStudyHighlights.length > 0 && data.caseStudyHighlights.map((item, index) => (
               <div
                 className="group   bg-black text-white duration-300 ease-linear hover:cursor-pointer relative"
                 key={index}
@@ -80,17 +87,17 @@ const SuccessStories = () => {
                 <div className="flex flex-col justify-center  gap-5 bg-gray2 px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]">
                   <div className="relative flex h-full flex-col justify-between minh247">
                     <h3 className="mb-[14px] text-font30 leading-lh1p66">
-                      {item.title1}
+                      {item.portfolios.companyName}
                     </h3>
                     <h3 className="mb-[28px] text-font65 leading-lh0p76 text-white">
                       {/* {index == 0 ? <span>&#8595;</span> : <span>&#8593;</span>}
                     {animatedValues[index] + "%"} */}
-                      {item.count}
+                      {item.number}
                     </h3>
                     <h3
                       className={`w-3/4 text-font25 leading-lh1p4 ${lexend.className}`}
                     >
-                      {item.description1}
+                      {item.text}
                     </h3>
                     <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
                       <svg
@@ -117,14 +124,14 @@ const SuccessStories = () => {
                   </div>
                 </div>
                 <div className="flex flex-col justify-center gap-8 px-8 py-12  text-white xl:px-[3.5rem]">
-                  <h3 className="text-font30 leading-lh1p26">{item.title2}</h3>
+                  <h3 className="text-font30 leading-lh1p26">{item.portfolios.homeTitle}</h3>
                   <p
                     className={`text-font19 leading-lh1p4 ${lexend.className}`}
                   >
-                    {item.description2}
+                    {item.portfolios.homeSubTitle}
                   </p>
                 </div>
-                <Link href={item.url} className="absolute h-full w-full left-0 right-0 top-0"></Link>
+                <Link href={""} className="absolute h-full w-full left-0 right-0 top-0"></Link>
               </div>
             ))}
           </div>

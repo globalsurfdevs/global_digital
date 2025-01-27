@@ -10,6 +10,7 @@ import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { BsPersonVcard } from "react-icons/bs";
 import { assets } from "@/public/assets/assets";
 import { GiNotebook } from "react-icons/gi";
+import { MdOutlineWork } from "react-icons/md";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -109,6 +110,13 @@ const menuGroups = [
         ),
         label: "Blogs",
         route: "/admin/blogs",
+      },
+      {
+        icon: (
+          <MdOutlineWork />
+        ),
+        label: "Jobs",
+        route: "/admin/jobs",
       },
       // {
       //   icon: (

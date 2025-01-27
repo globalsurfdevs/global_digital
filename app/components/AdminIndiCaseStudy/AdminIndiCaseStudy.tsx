@@ -71,6 +71,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
 
     const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
     const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
+    const [selectedHighlightForHome,setSelectedHighlightForHome] = useState<string | null>(null)
 
     const {
         register,
@@ -104,6 +105,9 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
         formData.append("metaTitle", data.metaTitle)
         formData.append("metaDescription", data.metaDescription)
         formData.append("section","case study")
+        formData.append("selectedHighlightForHome",selectedHighlightForHome || "")
+        formData.append("homeTitle",data.homeTitle)
+        formData.append("homeSubTitle",data.homeSubTitle)
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -236,6 +240,8 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                         setValue("slug", data.portfolio[0].slug)
                         setValue("metaTitle", data.portfolio[0].metaTitle)
                         setValue("metaDescription", data.portfolio[0].metaDescription)
+                        setValue("homeTitle",data.portfolio[0].homeTitle)
+                        setValue("homeSubTitle",data.portfolio[0].homeSubTitle)
 
                         if (data.portfolio[0].categories) {
 
@@ -290,6 +296,9 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                         data.portfolioHighlights.forEach((item: PortfolioHighlight) => {
                             setValue(`highlightText${item.customId}`, item.text)
                             setValue(`highlightNumber${item.customId}`, item.number)
+                            if(item.showInHome){
+                                setSelectedHighlightForHome(item.customId)
+                            }
                         })
                     }
 
@@ -352,7 +361,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                 return;
             }
 
-            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4() }]))
+            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4(),showInHome:false }]))
             setModalOpen(false)
             setHighlightNumber("")
             setHighlightText("")
@@ -643,7 +652,10 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                                                 <div className='absolute right-2 top-1 flex gap-2'>
                                                     {/* <div className='w-5 h-5 bg-yellow-200 rounded-full text-black flex items-center justify-center'>
                         <MdEdit />
-                    </div> */}
+                    </div> */}                      <div className='w-5 h-5 rounded-full text-black flex items-center justify-center'>
+                                                        <input type="checkbox" checked={item.customId==selectedHighlightForHome} name="" id="" className='rounded-full text-red-600' onChange={()=>setSelectedHighlightForHome(prev => prev === item.customId ? null : item.customId)}/>
+                                                    </div>
+
                                                     <div className='w-5 h-5 bg-red-500 rounded-full text-black flex items-center justify-center' onClick={() => handleDeleteHighlight(item.customId)}>
                                                         <IoIosClose />
                                                     </div>
@@ -676,6 +688,19 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
 
 
 
+                        </div>
+
+                        <div className='flex gap-5'>
+                        <div className='w-full flex flex-col gap-2'>
+                                <Label content='Title for home' />
+                                <input type="text" {...register("homeTitle", { required: "Home title is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                {errors.homeTitle && <p className='mt-1 text-sm text-red'>{errors.homeTitle.message}</p>}
+                            </div>
+                            <div className='w-full flex flex-col gap-2'>
+                                <Label content='Sub title for home' />
+                                <input type="text" {...register("homeSubTitle", { required: "Home sub title is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                {errors.homeTitle && <p className='mt-1 text-sm text-red'>{errors.homeTitle.message}</p>}
+                            </div>
                         </div>
                     </div>
 
