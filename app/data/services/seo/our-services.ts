@@ -1,7 +1,5 @@
-
-
 export const OurServices = {
-  title: "Our Services Include",
+  title: "Our SEO Services Include ",
   data: [
     {
       id: 1,
@@ -34,6 +32,6 @@ export const OurServices = {
     {
       id: 8,
       title: "Ongoing SEO Monitoring and Reporting ",
-    }
+    },
   ],
 };

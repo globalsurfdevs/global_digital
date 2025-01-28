@@ -1,7 +1,5 @@
-
-
 export const OurServices = {
-  title: "Our Services Include",
+  title: "Our Social Media Services Include",
   data: [
     {
       id: 1,
@@ -34,6 +32,6 @@ export const OurServices = {
     {
       id: 8,
       title: "Community Engagement",
-    }
+    },
   ],
 };
