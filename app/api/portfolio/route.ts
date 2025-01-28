@@ -151,6 +151,9 @@ export async function POST(req: NextRequest) {
     const image1 = formData.get("image1") as string;
     const image2 = formData.get("image2") as string;
     const coverImage = formData.get("coverImage") as string
+    const selectedHighlightForHome = formData.get("selectedHighlightForHome") as string;
+    const homeTitle = formData.get("homeTitle") as string;
+    const homeSubTitle = formData.get("homeSubTitle") as string;
 
    
     console.log("description", description)
@@ -505,21 +508,23 @@ export async function POST(req: NextRequest) {
                             metaTitle,
                             metaDescription,
                             customId:uuidv4(),
-                            section
+                            section,
+                            homeTitle,
+                            homeSubTitle
                         })
                         .eq('id', id)
                         .select()
     
                     console.log("Data", data, "Error", error)
     
-                    const highlights: { customId: string, number: string, text: string }[] = [];
+                    const highlights: { customId: string, number: string, text: string , showInHome:boolean }[] = [];
     
                     hightLightIds.forEach((item: number) => {
                         const customId = formData.get(`highlightId${item}`) as string;
                         const number = formData.get(`highlightNumber${item}`) as string;
                         const text = formData.get(`highlightText${item}`) as string;
     
-                        highlights.push({ customId, number, text });
+                        highlights.push({ customId, number, text, showInHome:selectedHighlightForHome==customId });
     
                         console.log("Item", item)
                     })
@@ -553,7 +558,7 @@ export async function POST(req: NextRequest) {
                         if (portfolioHighlights && portfolioHighlights.length > 0) {
                             const { data, error } = await supabase
                                 .from('portfolioHighlights')
-                                .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
+                                .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId,showInHome:highlights[i].showInHome })
                                 .eq('customId', highlights[i].customId)
                                 .select()
     
@@ -562,7 +567,7 @@ export async function POST(req: NextRequest) {
                             const { data, error } = await supabase
                                 .from('portfolioHighlights')
                                 .insert([
-                                    { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id },
+                                    { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id, showInHome:highlights[i].showInHome },
                                 ])
                                 .select()
                         }
@@ -611,7 +616,9 @@ export async function POST(req: NextRequest) {
                             slug,
                             metaTitle,
                             metaDescription,
-                            section
+                            section,
+                            homeTitle,
+                            homeSubTitle
                         },
                     ])
                     .select('id')
@@ -621,14 +628,14 @@ export async function POST(req: NextRequest) {
                     newId = data[0].id
                 }
     
-                const highlights: { customId: string, number: string, text: string, companyId: number }[] = [];
+                const highlights: { customId: string, number: string, text: string, companyId: number,showInHome:boolean }[] = [];
     
                 hightLightIds.forEach((item: number) => {
                     const customId = formData.get(`highlightId${item}`) as string;
                     const number = formData.get(`highlightNumber${item}`) as string;
                     const text = formData.get(`highlightText${item}`) as string;
                     const companyId = newId
-                    highlights.push({ customId, number, text, companyId });
+                    highlights.push({ customId, number, text, companyId,showInHome:selectedHighlightForHome==customId });
     
                     console.log("Item", item)
                 })
@@ -645,7 +652,7 @@ export async function POST(req: NextRequest) {
                         console.log("data", portfolioHighlights)
                         const { data, error } = await supabase
                             .from('portfolioHighlights')
-                            .update({ number: highlights[i].number, text: highlights[i].text })
+                            .update({ number: highlights[i].number, text: highlights[i].text,showInHome:highlights[i].showInHome })
                             .eq('customId', highlights[i].customId)
                             .select()
                         console.log("in if")
@@ -656,7 +663,7 @@ export async function POST(req: NextRequest) {
                         const { data, error } = await supabase
                             .from('portfolioHighlights')
                             .insert([
-                                { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId },
+                                { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId,showInHome:highlights[i].showInHome },
                             ])
                             .select()
     

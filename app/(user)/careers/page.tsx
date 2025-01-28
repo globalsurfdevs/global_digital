@@ -1,12 +1,35 @@
 "use client";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SocialMediabg from "@/app/components/Careers/SocialMediabg";
 import Cta from "@/app/components/Careers/Cta";
 import { career } from "../../data/career";
+import { JobType } from "@/app/types/JobType";
 
 const page = () => {
+
+          const [jobs, setJobs] = useState<JobType[] | []>([])
+  
+          useEffect(() => {
+              const fetchJobsData = async () => {
+                  try {
+                      const response = await fetch(`/api/jobs`);
+                      if (response.ok) {
+                          const data = await response.json();
+                          setJobs(data.jobs)
+      
+                      } else {
+                          console.error("Failed to fetch job data");
+                      }
+                  } catch (error) {
+                      console.error("Error fetching job data:", error);
+                  }
+              }
+      
+              fetchJobsData()
+          }, [])
+          
   return (
     <div>
       {/* component1 section1*/}
@@ -104,14 +127,14 @@ const page = () => {
                   </h2>
                 </div>
                 <div className="maincts">
-                {career.map((item) => (
+                {jobs && jobs.map((item) => (
   <div key={item.id}>
     {/* <Link href={`/careers/${item.url}`}> */}
-    <Link href={`/careers/${item.url}`}>
+    <Link href={`/careers/${item.slug}`}>
       <div className="group flex items-center justify-between border border-l-0 border-r-0 transition-all duration-300 hover:bg-black">
         <div className="pb-[38px] pt-[41px] transition-transform duration-300 group-hover:translate-x-[5px] md:group-hover:translate-x-[30px]">
           <div className="text-30 leading-[1.5] transition-colors duration-300 group-hover:text-primary">
-            <p>{item.post}</p>
+            <p>{item.jobTitle}</p>
           </div>
           <div className="text-19 leading-[1.5] text-gray1 transition-colors duration-300 group-hover:text-white">
             <p>{item.team}</p>

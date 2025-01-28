@@ -25,5 +25,7 @@ export type Portfolio = {
     logo:string;
     coverImage:string;
     type?:string;
-    index?:number
+    index?:number;
+    homeTitle:string;
+    homeSubTitle:string;
 }
