@@ -16,13 +16,13 @@ export async function GET(req: NextRequest) {
         if (id) {
 
             let { data: caseStudy, error } = await supabase
-                .from('caseStudy')
+                .from('portfolios')
                 .select("*")
                 .eq('id', id)
 
 
             let { data: caseStudyHighlights } = await supabase
-                .from('caseStudyHighlights')
+                .from('portfolioHighlights')
                 .select("*")
                 .eq('companyId', id)
 
@@ -30,13 +30,15 @@ export async function GET(req: NextRequest) {
         } else if (slug) {
 
             let { data: caseStudy, error } = await supabase
-                .from('caseStudy')
+                .from('portfolios')
                 .select("*")
                 .eq('slug', slug)
 
+                console.log("case study",caseStudy)
+
             if (caseStudy && caseStudy.length > 0) {
                 let { data: caseStudyHighlights } = await supabase
-                    .from('caseStudyHighlights')
+                    .from('portfolioHighlights')
                     .select("*")
                     .eq('companyId', caseStudy[0].id)
 
@@ -44,7 +46,7 @@ export async function GET(req: NextRequest) {
             }
         } else {
             let { data: caseStudy, error } = await supabase
-                .from('caseStudy')
+                .from('portfolios')
                 .select('*')
 
 
