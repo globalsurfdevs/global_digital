@@ -131,7 +131,7 @@ const SuccessStories = () => {
                     {item.portfolios.homeSubTitle}
                   </p>
                 </div>
-                <Link href={""} className="absolute h-full w-full left-0 right-0 top-0"></Link>
+                <Link href={`/case-study/${item.portfolios.slug}`} className="absolute h-full w-full left-0 right-0 top-0"></Link>
               </div>
             ))}
           </div>
