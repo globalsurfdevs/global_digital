@@ -9,19 +9,19 @@ export const filterTags = [
     },
     {
         tag:"SEO",
-        filter:"Search Engine Optimization"
+        filter:"SEO"
     },
     {
         tag:"Social Media",
-        filter:"Social Media Marketing"
+        filter:"Social Media"
     },
     {
         tag:"Web Design & Development",
-        filter:"Website Design And Development"
+        filter:"Web Design & Development"
     },
     {
         tag:"Branding & Creatives",
-        filter:"Branding And Creatives"
+        filter:"Branding & Creatives"
     },
     {
         tag:"Marketing Intelligence",

@@ -72,6 +72,9 @@ const PortfolioList = () => {
   }, [portfolios]);
 
   const handleFiltering = (filter: string) => {
+
+    console.log(filter)
+
     setFilter(filter);
 
     if (filter === "all") {
@@ -87,6 +90,25 @@ const PortfolioList = () => {
     }
   };
 
+  const [newFilterTags,setNewFilterTags] = useState<string[]>([])
+
+  useEffect(()=>{
+    const allExistingCategories = portfolios.map((portfolio)=>(
+      portfolio.categories.map((category)=>(
+        category.name
+      ))
+    )) 
+
+    console.log(allExistingCategories)
+
+    setNewFilterTags([...new Set(allExistingCategories.flat())])
+
+  },[originalPortfolio])
+
+  useEffect(()=>{
+    console.log(newFilterTags)
+  },[newFilterTags])
+
 
   return (
     <>
@@ -99,10 +121,15 @@ const PortfolioList = () => {
             <div className="border-b  mb-[30px] md:mb-[50px] filterbtn no-scrollbar">
 
             <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
-              {filterTags.map((item,index)=>(
+              <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+                  filter === "all" ? "border-b border-black text-black" : "text-gray1"
+                }`}>
+                <span  onClick={() => handleFiltering("all")}>View All</span>
+                </div>
+              {newFilterTags.map((item,index)=>(
                 <div key={index} className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === item.filter ? "border-b border-black text-black" : "text-gray1"
-                }`}><span  onClick={() => handleFiltering(item.filter)}>{item.tag}</span></div>
+                  filter === item ? "border-b border-black text-black" : "text-gray1"
+                }`}><span  onClick={() => handleFiltering(item)}>{item}</span></div>
               ))}
             </div>
             </div>
