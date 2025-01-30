@@ -21,15 +21,15 @@ const SectionTwo = () => {
       >
         {/* <Image src={aboutbnnr} alt="about" className="w-full" /> */}
         <video
-        className="  w-full h-[350px] xl:h-[750px] object-cover  "
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src="/assets/Globalsurf_About_Banner.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+          className="  h-[350px] w-full object-cover xl:h-[750px]  "
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/assets/Globalsurf_About_Banner.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </motion.div>
       <div className="bg-dgray">
         <div className="container mx-auto py-4">
@@ -46,19 +46,19 @@ const SectionTwo = () => {
               }, // Slide up and fade in
             }}
           >
-            <div className="pb-[50px] lg:pb-[150px]  lg:pt-[139px] pt-[50px]">
+            <div className="pb-[50px] pt-[50px]  lg:pb-[150px] lg:pt-[139px]">
               <div>
                 <h2 className="title-65 mb-3 lg:mb-5 ">Behind the Brand</h2>
               </div>
               <div>
-                <p className="fnt-lexend text-19 text-gray1 max-w-[87ch]">
+                <p className="fnt-lexend text-19 max-w-[87ch] text-gray1">
                   We are a dedicated team of creative thinkers, strategists, and
-                  problem solvers, committed to being your Digital
-                  Transformation Partner. We believe every purpose-driven brand
-                  has a unique story and impactful ideas to share. Our mission
-                  is to empower ambitious brands with strategies and expertise
-                  to share their vision, connect deeply with their audiences,
-                  and drive meaningful change. 
+                  problem solvers, committed to being your digital growth
+                  partner. We believe every purpose-driven brand has a unique
+                  story and impactful ideas to share. Our mission is to empower
+                  ambitious brands with strategies and expertise to share their
+                  vision, connect deeply with their audiences, and drive
+                  meaningful change. 
                 </p>
               </div>
             </div>
