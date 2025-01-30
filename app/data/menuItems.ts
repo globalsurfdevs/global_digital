@@ -46,10 +46,6 @@ export const menuItems = [
     url: "/portfolio",
   },
   {
-    item: "CAREERS",
-    url: "/careers",
-  },
-  {
     item: "INSIGHT",
     children:[
         {
@@ -64,5 +60,9 @@ export const menuItems = [
         },
     ],
     url: "#",
+  },
+  {
+    item: "CAREERS",
+    url: "/careers",
   },
 ];
