@@ -19,10 +19,12 @@ const CaseStudyPage = () => {
   useEffect(()=>{
     const fetchCaseStudyData = async() =>{
       try {
-        const response = await fetch(`/api/case-study?slug=${companyName}`)
+        const response = await fetch(`/api/case-study?slug=${companyName}`,{
+          cache:"no-cache"
+        })
         if(response.ok){
           const data = await response.json()
-          console.log(data)
+          // console.log(data)
           if(!data.error){
             setData(data)
           }

@@ -28,4 +28,5 @@ export type Portfolio = {
     index?:number;
     homeTitle:string;
     homeSubTitle:string;
+    slug:string;
 }

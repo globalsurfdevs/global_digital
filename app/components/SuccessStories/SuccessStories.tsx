@@ -75,7 +75,7 @@ export const SuccessStories = ({companyId}:{
                     </div>
 
                 ))):(
-                    <div>No success stories</div>
+                    null
                 )}
             </div>
             </motion.div>

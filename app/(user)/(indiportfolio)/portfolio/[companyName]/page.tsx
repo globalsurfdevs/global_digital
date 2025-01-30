@@ -11,6 +11,7 @@ type Data = {
     metaDescription:string;
   }[]
 }
+
 export async function generateMetadata(
   props:{
     params: Promise<{
