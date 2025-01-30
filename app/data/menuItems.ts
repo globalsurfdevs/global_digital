@@ -50,7 +50,19 @@ export const menuItems = [
     url: "/careers",
   },
   {
-    item: "BLOGS",
-    url: "/blogs",
+    item: "INSIGHT",
+    children:[
+        {
+          item: "Blogs",
+          svg: assets.blog,
+          url: "/blogs",
+        },
+        {
+          item: "Case Studies",
+          svg: assets.casestudy,
+          url: "/case-study",
+        },
+    ],
+    url: "#",
   },
 ];

@@ -98,6 +98,8 @@ const Header = () => {
     },
   };
 
+  const [openDropdownIndex,setOpenDropdownIndex] = useState<null | number>(null)
+
   if (mobileMenu) {
     return (
       <div className="flex items-center align-middle flex p-4">
@@ -151,23 +153,23 @@ const Header = () => {
                 <div key={index}>
                   <div
                     className="relative group"
-                    onMouseEnter={() => setIsDropdownOpen(true)}
-                    onMouseLeave={() => setIsDropdownOpen(false)}
+                    onMouseEnter={() => setOpenDropdownIndex(index)}
+                    onMouseLeave={() => setOpenDropdownIndex(null)}
                   >
                     <button className="px-4 py-2 lg:px-0 text-black hover:text-primary flex items-center large-screen-menu-item">
-                      SERVICES <span className="text-primary ml-1">+</span>
+                      {item.item} <span className="text-primary ml-1">+</span>
                     </button>
                   </div>
 
                   <AnimatePresence>
-                    {(isDropdownOpen || isMenuOpen) && (
+                    {(openDropdownIndex == index) && (
                       <motion.div
                         className="absolute bg-white flex flex-col items-star rounded-lg shadow-lg p-4 transition-all duration-100 ease-in-out z-50"
                         initial={{ opacity: 0, y: -5 }}
                         animate={{ opacity: 1, y: 5 }}
                         exit={{ opacity: 0, y: -5 }}
-                        onMouseEnter={() => setIsDropdownOpen(true)}
-                        onMouseLeave={() => setIsDropdownOpen(false)}
+                        onMouseEnter={() => setOpenDropdownIndex(index)}
+                        onMouseLeave={() => setOpenDropdownIndex(null)}
                       >
                         {item.children.map((childItem, index) => (
                           <motion.div

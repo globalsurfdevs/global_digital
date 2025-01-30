@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 const BASE_URL = process.env.NODE_ENV === "production"
     ? "https://global-digital-af68.vercel.app/" // Replace with your production URL
-    : "http://localhost:3001/";
+    : "http://localhost:3000/";
 
 // const BASE_URL = "http://localhost:3001"
 
