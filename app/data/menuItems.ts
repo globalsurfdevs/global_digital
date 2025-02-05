@@ -46,11 +46,23 @@ export const menuItems = [
     url: "/portfolio",
   },
   {
-    item: "CAREERS",
-    url: "/careers",
+    item: "INSIGHT",
+    children:[
+        {
+          item: "Blogs",
+          svg: assets.blog,
+          url: "/blogs",
+        },
+        {
+          item: "Case Studies",
+          svg: assets.casestudy,
+          url: "/case-study",
+        },
+    ],
+    url: "#",
   },
   {
-    item: "BLOGS",
-    url: "/blogs",
+    item: "CAREERS",
+    url: "/careers",
   },
 ];

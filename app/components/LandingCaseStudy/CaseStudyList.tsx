@@ -7,55 +7,56 @@ import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
 import { formatLinkForPortfolio ,formatLinkForCaseStudy} from "@/app/helpers/formatLink";
+import { CaseStudy } from "@/app/types/CaseStudy";
 
 
 
 
 
-const PortfolioList = () => {
+const CaseStudyList = () => {
 
-  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+  const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
 
   const CACHE_DURATION = 10 * 60 * 1000;
 
   useEffect(() => {
     
-    const cachedData = localStorage.getItem('portfolios')
+    const cachedData = localStorage.getItem('case-study')
 
 
-    const fetchPortfolios = async () => {
+    const fetchCaseStudies = async () => {
       try {
-        const response = await fetch(`/api/portfolio`);
+        const response = await fetch(`/api/case-study`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data.portfolio);
-          setPortfolios(data.portfolio);
+          console.log(data.caseStudy);
+          setCaseStudies(data.caseStudy);
           localStorage.setItem(
-            'portfolios',
+            'case-study',
             JSON.stringify({
               timestamp: Date.now(),
-              data: data.portfolio,
+              data: data.caseStudy,
             })
           )
         } else {
-          console.error("Failed to fetch portfolio data");
+          console.error("Failed to fetch case study data");
         }
       } catch (error) {
-        console.error("Error fetching portfolio data:", error);
+        console.error("Error fetching case study data:", error);
       }
     };
 
     if(cachedData){
       const { timestamp, data } = JSON.parse(cachedData);
       if (Date.now() - timestamp < CACHE_DURATION) {
-        setPortfolios(data)
+        setCaseStudies(data)
       }else{ 
-        localStorage.removeItem('portfolios')
-        fetchPortfolios();
+        localStorage.removeItem('case-study')
+        fetchCaseStudies();
       }
     }else{
-      localStorage.removeItem('portfolios')
-      fetchPortfolios(); 
+      localStorage.removeItem('case-study')
+      fetchCaseStudies(); 
     }
 
   }, []);
@@ -63,28 +64,25 @@ const PortfolioList = () => {
 
   const [filter, setFilter] = useState("all");
 
-  const [originalPortfolio,setOriginalPortfolio] = useState<Portfolio[]>([])
+  const [originalCaseStudy,setOriginalCaseStudy] = useState<CaseStudy[]>([])
 
   useEffect(() => {
-    if (originalPortfolio.length === 0 && portfolios.length > 0) {
-      setOriginalPortfolio(portfolios); // Initialize the original portfolio only once
+    if (originalCaseStudy.length === 0 && caseStudies.length > 0) {
+      setOriginalCaseStudy(caseStudies); // Initialize the original portfolio only once
     }
-  }, [portfolios]);
+  }, [caseStudies]);
 
   const handleFiltering = (filter: string) => {
-
-    console.log(filter)
-
     setFilter(filter);
 
     if (filter === "all") {
       // If the filter is "all", reset to the original portfolio
-      setPortfolios(originalPortfolio);
+      setCaseStudies(originalCaseStudy);
     } else {
       // Filter the original portfolio
-      setPortfolios(
-        originalPortfolio.filter((portfolio) =>
-          portfolio.categories.some((category) => category.name === filter)
+      setCaseStudies(
+        originalCaseStudy.filter((casestudy) =>
+          casestudy.categories.some((category) => category.name === filter)
         )
       );
     }
@@ -93,22 +91,21 @@ const PortfolioList = () => {
   const [newFilterTags,setNewFilterTags] = useState<string[]>([])
 
   useEffect(()=>{
-    const allExistingCategories = portfolios.map((portfolio)=>(
-      portfolio.categories.map((category)=>(
+    const allExistingCategories = caseStudies.map((item)=>(
+      item.categories.map((category)=>(
         category.name
       ))
-    )) 
+    ))
 
     console.log(allExistingCategories)
 
-    setNewFilterTags([...new Set(allExistingCategories.flat())])
+    if(allExistingCategories){
+      setNewFilterTags([...new Set(allExistingCategories.flat())])
+    }
+    
+  },[caseStudies])
 
-  },[originalPortfolio])
-
-  useEffect(()=>{
-    console.log(newFilterTags)
-  },[newFilterTags])
-
+  
 
   return (
     <>
@@ -121,11 +118,12 @@ const PortfolioList = () => {
             <div className="border-b  mb-[30px] md:mb-[50px] filterbtn no-scrollbar">
 
             <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
-              <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
+            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
                   filter === "all" ? "border-b border-black text-black" : "text-gray1"
                 }`}>
                 <span  onClick={() => handleFiltering("all")}>View All</span>
                 </div>
+                
               {newFilterTags.map((item,index)=>(
                 <div key={index} className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
                   filter === item ? "border-b border-black text-black" : "text-gray1"
@@ -136,7 +134,7 @@ const PortfolioList = () => {
 
             {/* Portfolio Items */}
             <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
-              {portfolios.length >0 && portfolios.map((item, index) => (
+              {caseStudies.length >0 && caseStudies.map((item, index) => (
                 <motion.div
                   key={index}
                   className="w-full"
@@ -155,7 +153,7 @@ const PortfolioList = () => {
                   <div className="portfolio-card group relative col-span-1">
                     <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px] group">
                       <Image
-                        src={item.bannerImage ?? item.coverImage}
+                        src={item.coverImage}
                         alt="image"
                         className="h-full w-full object-cover"
                         fill
@@ -173,7 +171,7 @@ const PortfolioList = () => {
                     </div>
                     </div>
 
-                    <Link href={item.section=="case study" ? `/case-study/${formatLinkForCaseStudy(item.companyName)}` : `/portfolio/${formatLinkForPortfolio(item.companyName)}`}
+                    <Link href={`/case-study/${formatLinkForCaseStudy(item.companyName)}`}
                   className="absolute top-0 z-[1] h-full w-full"
                 ></Link>
                   </div>
@@ -233,4 +231,4 @@ const PortfolioList = () => {
   );
 };
 
-export default PortfolioList;
+export default CaseStudyList;

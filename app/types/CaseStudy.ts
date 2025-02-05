@@ -18,4 +18,5 @@ export type CaseStudy = {
     description:string;
     tag:string;
     companyName:string;
+    categories:{name:string}[]
 }

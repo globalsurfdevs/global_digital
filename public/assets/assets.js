@@ -169,6 +169,8 @@ import exp1 from '../assets/icons/exp1.svg'
 import exp2 from '../assets/icons/exp2.svg'
 import exp3 from '../assets/icons/exp3.svg'
 import exp4 from '../assets/icons/exp4.svg'
+import blog from '../assets/blog.svg'
+import casestudy from '../assets/casestudy.svg'
 
 
 import lightlogo from '../assets/gsdigital-light.svg'
@@ -334,7 +336,9 @@ export const assets = {
     influencer_marketing,
     video_ads,
     app_store_adv,
-    programmatic_adv
+    programmatic_adv,
+    blog,
+    casestudy
 };
 
 export const logos = [

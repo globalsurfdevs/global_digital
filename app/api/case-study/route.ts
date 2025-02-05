@@ -48,6 +48,7 @@ export async function GET(req: NextRequest) {
             let { data: caseStudy, error } = await supabase
                 .from('portfolios')
                 .select('*')
+                .eq('section','case study')
 
 
             if (!caseStudy) {
