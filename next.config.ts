@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-console.log(process.env.NODE_ENV)
+console.log(process.env.NODE_ENV);
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -19,10 +19,19 @@ const nextConfig: NextConfig = {
         pathname: "/scl/**",
       },
     ],
-    dangerouslyAllowSVG:true
+    dangerouslyAllowSVG: true,
   },
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  async redirects() {
+    return [
+      {
+        source: "/performance-marketing", // The old URL path
+        destination: "/performance-marketing-agency-dubai", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+    ];
   },
 };
 
