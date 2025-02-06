@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/performance-marketing",
+      canonical: "https://www.globalsurf.ae/performance-marketing-agency-dubai",
     },
   };
 }
