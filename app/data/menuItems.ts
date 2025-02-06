@@ -11,7 +11,7 @@ export const menuItems = [
       {
         item: "Performance Marketing",
         svg: assets.sem,
-        url: "/performance-marketing",
+        url: "/performance-marketing-agency-dubai",
       },
       {
         item: "Search Engine Optimization",
@@ -47,17 +47,17 @@ export const menuItems = [
   },
   {
     item: "INSIGHT",
-    children:[
-        {
-          item: "Blogs",
-          svg: assets.blog,
-          url: "/blogs",
-        },
-        {
-          item: "Case Studies",
-          svg: assets.casestudy,
-          url: "/case-study",
-        },
+    children: [
+      {
+        item: "Blogs",
+        svg: assets.blog,
+        url: "/blogs",
+      },
+      {
+        item: "Case Studies",
+        svg: assets.casestudy,
+        url: "/case-study",
+      },
     ],
     url: "#",
   },
