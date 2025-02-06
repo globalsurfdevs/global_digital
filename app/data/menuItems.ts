@@ -16,12 +16,12 @@ export const menuItems = [
       {
         item: "Search Engine Optimization",
         svg: assets.seo,
-        url: "/seo",
+        url: "/seo-agency-dubai",
       },
       {
         item: "Social Media Service",
         svg: assets.socialMedia,
-        url: "/social-media",
+        url: "/social-media-marketing-agency-dubai",
       },
       {
         item: "Website Design And Development",
@@ -31,12 +31,12 @@ export const menuItems = [
       {
         item: "Branding And Creatives",
         svg: assets.branding,
-        url: "/branding-creative",
+        url: "/creative-agency-dubai",
       },
       {
         item: "Marketing Intelligence",
         svg: assets.strategy,
-        url: "/marketing-intelligence",
+        url: "/marketing-intelligence-agency-dubai",
       },
     ],
     url: "#",

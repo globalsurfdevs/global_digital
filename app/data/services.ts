@@ -25,7 +25,7 @@ export const services = [
     id: "2",
     image: "/assets/services/SEO.jpg",
     title: "SEO",
-    url: "/seo",
+    url: "/seo-agency-dubai",
     description:
       "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
     buttonTexts: [
@@ -44,7 +44,7 @@ export const services = [
     id: "3",
     image: "/assets/services/Social-media.jpg",
     title: "Social Media",
-    url: "/social-media",
+    url: "/social-media-marketing-agency-dubai",
     description:
       "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
     buttonTexts: [
@@ -88,7 +88,7 @@ export const services = [
     id: "5",
     image: "/assets/services/Branding-creatives.jpg",
     title: "Branding & Creatives",
-    url: "/branding-creative",
+    url: "/creative-agency-dubai",
     description:
       "We help you create a brand identity that resonates with your audience. Our creative assets are designed to enhance recognition and drive engagement. ",
     buttonTexts: [
@@ -119,7 +119,7 @@ export const services = [
     id: "6",
     image: "/assets/services/Marketing.jpg",
     title: "Marketing Intelligence",
-    url: "/marketing-intelligence",
+    url: "/marketing-intelligence-agency-dubai",
     description:
       "We optimize your marketing with data-driven insights for better results. Real-time analytics and market trends help you make informed decisions. ",
     buttonTexts: [

@@ -31,6 +31,26 @@ const nextConfig: NextConfig = {
         destination: "/performance-marketing-agency-dubai", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+      {
+        source: "/seo", // The old URL path
+        destination: "/seo-agency-dubai", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/social-media", // The old URL path
+        destination: "/social-media-marketing-agency-dubai", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/branding-creative", // The old URL path
+        destination: "/creative-agency-dubai", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/marketing-intelligence", // The old URL path
+        destination: "/marketing-intelligence-agency-dubai", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
     ];
   },
 };
