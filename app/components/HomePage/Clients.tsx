@@ -28,7 +28,7 @@ const Clients = () => {
         >
           <h2 className="title-65">Discover Our Success Stories</h2>
         </motion.div> */}
-        <div >
+        <div>
           <Swiper
             loop
             speed={3000}
@@ -44,7 +44,8 @@ const Clients = () => {
               0: {
                 slidesPerView: 2,
                 spaceBetween: 20,
-              },640: {
+              },
+              640: {
                 slidesPerView: 3,
                 spaceBetween: 20,
               },
@@ -66,7 +67,7 @@ const Clients = () => {
                   <div className="clngsb">
                     <Image
                       src={itm.image}
-                      alt="global"
+                      alt={itm.alt || "global"}
                       width={250}
                       height={80}
                     />

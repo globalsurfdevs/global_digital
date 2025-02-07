@@ -36,7 +36,7 @@ const AboutGlobal = () => {
             className="relative overflow-hidden"
             ref={ref}
           >
-            <motion.h2 className="title-65 leading-tight">
+            <motion.p className="title-65 leading-tight">
               {"Hello".split("").map((l, i) => (
                 <motion.span
                   key={i}
@@ -54,9 +54,9 @@ const AboutGlobal = () => {
                 </motion.span>
               ))}
               <motion.span className="text-red-600">!</motion.span>
-            </motion.h2>
+            </motion.p>
 
-            <motion.h2 className="title-65 absolute inset-0 leading-tight">
+            <motion.p className="title-65 absolute inset-0 leading-tight">
               {"Hello".split("").map((l, i) => (
                 <motion.span
                   key={i}
@@ -71,13 +71,13 @@ const AboutGlobal = () => {
                 </motion.span>
               ))}
               <motion.span className="text-red-600">!</motion.span>
-            </motion.h2>
+            </motion.p>
           </motion.div>
-          <h3 className="font-35 max-w-[50ch]">
+          <p className="font-35 max-w-[50ch]">
             We’re Global Surf Digital, a full-service digital marketing agency
             in Dubai, specializing in data-driven strategies, creative
             innovation, and business-focused solutions.
-          </h3>
+          </p>
           <button
             className="z-2 z-1 group relative flex flex w-fit items-center gap-1 gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
         pb-3 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out
@@ -85,11 +85,11 @@ const AboutGlobal = () => {
         "
           >
             <div className="relative">
-              <h5
+              <p
                 className={`duration-200" text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
               >
                 ABOUT US
-              </h5>
+              </p>
               <Link
                 href="about-us"
                 className="absolute top-0 z-[1] h-full w-full"

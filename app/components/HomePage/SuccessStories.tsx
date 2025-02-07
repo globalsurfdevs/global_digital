@@ -13,37 +13,34 @@ const lexend = Lexend({
 });
 
 type Data = {
-  caseStudyHighlights:{
-    companyId:number;
-    number:string;
-    text:string;
-    portfolios:Portfolio
-  }[]
-}
+  caseStudyHighlights: {
+    companyId: number;
+    number: string;
+    text: string;
+    portfolios: Portfolio;
+  }[];
+};
 
 const SuccessStories = () => {
   const ref = useRef(null);
 
-  const [data,setData] = useState<Data | null>(null)
+  const [data, setData] = useState<Data | null>(null);
 
   useEffect(() => {
-   
-      const fetchCaseStudyData = async() => {
-        try {
-          const response = await fetch('/api/case-study/home')
-          if(response.ok){
-            const data = await response.json()
-            console.log(data)
-            setData(data)
-          }
-        } catch (error) {
-          console.log("Failed fetching case study data:",error)
+    const fetchCaseStudyData = async () => {
+      try {
+        const response = await fetch("/api/case-study/home");
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setData(data);
         }
-        
-      };
+      } catch (error) {
+        console.log("Failed fetching case study data:", error);
+      }
+    };
 
-      fetchCaseStudyData();
-    
+    fetchCaseStudyData();
   }, []);
 
   return (
@@ -78,62 +75,69 @@ const SuccessStories = () => {
           }}
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
-            {data && data.caseStudyHighlights.length > 0 && data.caseStudyHighlights.map((item, index) => (
-              <div
-                className="group   bg-black text-white duration-300 ease-linear hover:cursor-pointer relative"
-                key={index}
-                ref={ref}
-              >
-                <div className="flex flex-col justify-center  gap-5 bg-gray2 px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]">
-                  <div className="relative flex h-full flex-col justify-between minh247">
-                    <h3 className="mb-[14px] text-font30 leading-lh1p66">
-                      {item.portfolios.companyName}
-                    </h3>
-                    <h3 className="mb-[28px] text-font65 leading-lh0p76 text-white">
-                      {/* {index == 0 ? <span>&#8595;</span> : <span>&#8593;</span>}
+            {data &&
+              data.caseStudyHighlights.length > 0 &&
+              data.caseStudyHighlights.map((item, index) => (
+                <div
+                  className="group   relative bg-black text-white duration-300 ease-linear hover:cursor-pointer"
+                  key={index}
+                  ref={ref}
+                >
+                  <div className="flex flex-col justify-center  gap-5 bg-gray2 px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]">
+                    <div className="minh247 relative flex h-full flex-col justify-between">
+                      <h3 className="mb-[14px] text-font30 leading-lh1p66">
+                        {item.portfolios.companyName}
+                      </h3>
+                      <p className="mb-[28px] text-font65 leading-lh0p76 text-white">
+                        {/* {index == 0 ? <span>&#8595;</span> : <span>&#8593;</span>}
                     {animatedValues[index] + "%"} */}
-                      {item.number}
-                    </h3>
-                    <h3
-                      className={`w-3/4 text-font25 leading-lh1p4 ${lexend.className}`}
-                    >
-                      {item.text}
-                    </h3>
-                    <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
-                      <svg
-                        width="36"
-                        height="35"
-                        viewBox="0 0 36 35"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                        {item.number}
+                      </p>
+                      <p
+                        className={`w-3/4 text-font25 leading-lh1p4 ${lexend.className}`}
                       >
-                        <path
-                          d="M33.8125 1.7998L1.25977 33.7227"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M1.25977 1.7998H33.8125V33.0929"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
+                        {item.text}
+                      </p>
+                      <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
+                        <svg
+                          width="36"
+                          height="35"
+                          viewBox="0 0 36 35"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M33.8125 1.7998L1.25977 33.7227"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeMiterlimit="10"
+                          />
+                          <path
+                            d="M1.25977 1.7998H33.8125V33.0929"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeMiterlimit="10"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
+                  <div className="flex flex-col justify-center gap-8 px-8 py-12  text-white xl:px-[3.5rem]">
+                    <p className="text-font30 leading-lh1p26">
+                      {item.portfolios.homeTitle}
+                    </p>
+                    <p
+                      className={`text-font19 leading-lh1p4 ${lexend.className}`}
+                    >
+                      {item.portfolios.homeSubTitle}
+                    </p>
+                  </div>
+                  <Link
+                    href={`/case-study/${item.portfolios.slug}`}
+                    className="absolute left-0 right-0 top-0 h-full w-full"
+                  ></Link>
                 </div>
-                <div className="flex flex-col justify-center gap-8 px-8 py-12  text-white xl:px-[3.5rem]">
-                  <h3 className="text-font30 leading-lh1p26">{item.portfolios.homeTitle}</h3>
-                  <p
-                    className={`text-font19 leading-lh1p4 ${lexend.className}`}
-                  >
-                    {item.portfolios.homeSubTitle}
-                  </p>
-                </div>
-                <Link href={`/case-study/${item.portfolios.slug}`} className="absolute h-full w-full left-0 right-0 top-0"></Link>
-              </div>
-            ))}
+              ))}
           </div>
         </motion.div>
       </div>

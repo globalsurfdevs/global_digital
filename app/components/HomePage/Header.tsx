@@ -98,14 +98,16 @@ const Header = () => {
     },
   };
 
-  const [openDropdownIndex,setOpenDropdownIndex] = useState<null | number>(null)
+  const [openDropdownIndex, setOpenDropdownIndex] = useState<null | number>(
+    null,
+  );
 
   if (mobileMenu) {
     return (
-      <div className="flex items-center align-middle flex p-4">
+      <div className="flex flex items-center p-4 align-middle">
         <Link href="/">
           <Image src={assets.logo} alt="logo" />
-          </Link>
+        </Link>
         <Example />
       </div>
     );
@@ -117,14 +119,14 @@ const Header = () => {
             <Image
               src={assets.logo}
               className="w-[200px]"
-              alt=""
+              alt="Global Surf Digital Logo"
               width={100}
               height={100}
             />
-            <Link href="/" className=" absolute w-full h-full top-0"></Link>
+            <Link href="/" className=" absolute top-0 h-full w-full"></Link>
           </div>
           <button
-            className="lg:hidden text-black"
+            className="text-black lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
@@ -146,25 +148,25 @@ const Header = () => {
           <nav
             className={`${
               isMenuOpen ? "block" : "hidden"
-            } absolute z-10 top-16 left-0 w-full bg-white lg:static lg:flex lg:w-auto lg:space-x-8 lg:bg-transparent text-sm font-medium`}
+            } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium lg:static lg:flex lg:w-auto lg:space-x-8 lg:bg-transparent`}
           >
             {menuItems.map((item, index) =>
               item.children ? (
                 <div key={index}>
                   <div
-                    className="relative group"
+                    className="group relative"
                     onMouseEnter={() => setOpenDropdownIndex(index)}
                     onMouseLeave={() => setOpenDropdownIndex(null)}
                   >
-                    <button className="px-4 py-2 lg:px-0 text-black hover:text-primary flex items-center large-screen-menu-item">
-                      {item.item} <span className="text-primary ml-1">+</span>
+                    <button className="large-screen-menu-item flex items-center px-4 py-2 text-black hover:text-primary lg:px-0">
+                      {item.item} <span className="ml-1 text-primary">+</span>
                     </button>
                   </div>
 
                   <AnimatePresence>
-                    {(openDropdownIndex == index) && (
+                    {openDropdownIndex == index && (
                       <motion.div
-                        className="absolute bg-white flex flex-col items-star rounded-lg shadow-lg p-4 transition-all duration-100 ease-in-out z-50"
+                        className="items-star absolute z-50 flex flex-col rounded-lg bg-white p-4 shadow-lg transition-all duration-100 ease-in-out"
                         initial={{ opacity: 0, y: -5 }}
                         animate={{ opacity: 1, y: 5 }}
                         exit={{ opacity: 0, y: -5 }}
@@ -181,7 +183,7 @@ const Header = () => {
                           >
                             <Link
                               href={childItem.url}
-                              className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+                              className="flex items-center gap-3 rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100"
                             >
                               <Image
                                 src={childItem.svg}
@@ -205,24 +207,24 @@ const Header = () => {
                 >
                   <Link
                     href={item.url}
-                    className="block px-4 lg:px-0 text-black hover:text-primary large-screen-menu-item"
+                    className="large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0"
                   >
                     {item.item}
                   </Link>
                   <motion.div
-                    className="w-full bg-primary h-0.5 origin-left transition-transform duration-200"
+                    className="h-0.5 w-full origin-left bg-primary transition-transform duration-200"
                     variants={testVariants}
                   ></motion.div>
                 </motion.div>
-              )
+              ),
             )}
 
             <Link
               href="/lets-talk"
-              className="hidden group lg:flex items-center space-x-2 px-6 py-2 border border-primary rounded-full text-primary hover:bg-prtext-primary hover:text-primary
-               hover:text-black hover:shadow-lg ease-in duration-300 transition"
+              className="hover:bg-prtext-primary group hidden items-center space-x-2 rounded-full border border-primary px-6 py-2 text-primary transition duration-300
+               ease-in hover:text-black hover:text-primary hover:shadow-lg lg:flex"
             >
-              <span className="group-hover:text-black ease-in duration-300">
+              <span className="duration-300 ease-in group-hover:text-black">
                 LET’S TALK
               </span>
               <div className="bg-primary p-1">

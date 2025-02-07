@@ -37,7 +37,7 @@ const Footer = () => {
                 <div className="col-span-2 flex h-full flex-col justify-between">
                   <Image
                     src={assets.footerLogo}
-                    alt="logo"
+                    alt="GS Digital Logo"
                     className=""
                     width={220}
                     height={48.49}
