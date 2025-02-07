@@ -41,16 +41,16 @@ const TestimonialsSwiper = () => {
               <div className="mb-6 flex   flex-col border-b border-black pt-[20px] lg:mb-[41px] lg:pt-[65px]">
                 <Image
                   src={item.image}
-                  alt="image"
+                  alt={item.name}
                   className="mb-4 h-20 w-20 bg-white p-1 lg:mb-[30px]"
                 ></Image>
                 <h3 className="text-30  mb-[5px]">{item.name}</h3>
-                <h5 className="mb-2 flex gap-1 text-font16 leading-lh2p3 text-gray1">
+                <h4 className="mb-2 flex gap-1 text-font16 leading-lh2p3 text-gray1">
                   {item.position} - <p className="font-bold">{item.company}</p>
-                </h5>
+                </h4>
                 <Image
                   src={item.logo}
-                  alt="image"
+                  alt={item.alt || item.company}
                   width={70}
                   height={35}
                   className="mb-5 lg:mb-[26px] "

@@ -4,201 +4,240 @@ export const Clientsdata = [
   {
     id: 1,
     image: "/assets/clients/ASGC.svg",
-    title: "ASGC"
-},
-{
+    title: "ASGC",
+    alt: "ASGC Logo",
+  },
+  {
     id: 2,
     image: "/assets/clients/Garden-concept.svg",
-    title: "Garden Concept"
-},
-{
+    title: "Garden Concept",
+    alt: "The Garden Concept Logo",
+  },
+  {
     id: 3,
     image: "/assets/clients/Bukhatir.svg",
-    title: "Bukhatir"
-},
-{
+    title: "Bukhatir",
+    alt: "Bukhatir Group Logo",
+  },
+  {
     id: 4,
     image: "/assets/clients/Fresco.svg",
-    title: "Fresco"
-},
-{
+    title: "Fresco",
+    alt: "FRESCO Logo",
+  },
+  {
     id: 5,
     image: "/assets/clients/Prestige.svg",
-    title: "Prestige"
-},
-{
+    title: "Prestige",
+    alt: "Prestige Logo",
+  },
+  {
     id: 6,
     image: "/assets/clients/Latinem.svg",
-    title: "Latinem"
-},
-{
+    title: "Latinem",
+    alt: "Latinem Logo",
+  },
+  {
     id: 7,
     image: "/assets/clients/ASCS.svg",
-    title: "ASCS"
-},
-{
+    title: "ASCS",
+    alt: "American School of Creative Science Logo",
+  },
+  {
     id: 8,
     image: "/assets/clients/ASSENT.svg",
-    title: "ASSENT"
-},
-{
+    title: "ASSENT",
+    alt: "Assent Steel Industries Logo",
+  },
+  {
     id: 9,
     image: "/assets/clients/bec.svg",
-    title: "BEC"
-},
-{
+    title: "BEC",
+    alt: "BEC Arabia Logo",
+  },
+  {
     id: 10,
     image: "/assets/clients/Simple-solutions.svg",
-    title: "Simple Solutions"
-},
-{
+    title: "Simple Solutions",
+    alt: "Simple Solutions Logo",
+  },
+  {
     id: 11,
     image: "/assets/clients/gulf-cryo.svg",
-    title: "Gulf Cryo"
-},
-{
+    title: "Gulf Cryo",
+    alt: "Gulf Cryo Logo",
+  },
+  {
     id: 12,
     image: "/assets/clients/Stay.svg",
-    title: "The Stay"
-},
-{
+    title: "The Stay",
+    alt: "STAY Logo",
+  },
+  {
     id: 13,
     image: "/assets/clients/Truenude.svg",
-    title: "Truenude"
-},
-{
+    title: "Truenude",
+    alt: "THE TRUENUDE Logo",
+  },
+  {
     id: 14,
     image: "/assets/clients/Educap.svg",
-    title: "Educap"
-},
-{
+    title: "Educap",
+    alt: "Educap Logo",
+  },
+  {
     id: 15,
     image: "/assets/clients/Telal.svg",
-    title: "Telal"
-},
-{
+    title: "Telal",
+    alt: "Telal Logo",
+  },
+  {
     id: 16,
     image: "/assets/clients/Synarti.svg",
-    title: "Synarti"
-},
-// {
-//     id: 17,
-//     image: "/assets/clients/Livestat.svg",
-//     title: "Livestar"
-// },
-{
+    title: "Synarti",
+    alt: "Synarti Logo",
+  },
+  // {
+  //     id: 17,
+  //     image: "/assets/clients/Livestat.svg",
+  //     title: "Livestar"
+  // },
+  {
     id: 18,
     image: "/assets/clients/icatch.svg",
-    title: "icatch"
-},
-{
+    title: "icatch",
+    alt: "iCatch Logo",
+  },
+  {
     id: 19,
     image: "/assets/clients/CHSS.svg",
-    title: "CHSS"
-},
-{
+    title: "CHSS",
+    alt: "CHSS - ConsultantHSS Logo",
+  },
+  {
     id: 20,
     image: "/assets/clients/Perleen.svg",
-    title: "Perleen"
-},
-{
+    title: "Perleen",
+    alt: "Perleen International Trading Logo",
+  },
+  {
     id: 21,
     image: "/assets/clients/Beam.svg",
-    title: "BEAM"
-},
-{
+    title: "BEAM",
+    alt: "BEAM Logo",
+  },
+  {
     id: 22,
     image: "/assets/clients/BMT.svg",
-    title: "BMT"
-},
-{
+    title: "BMT",
+    alt: "BMT Logo",
+  },
+  {
     id: 23,
     image: "/assets/clients/Qieco.svg",
-    title: "Qieco"
-},
-{
+    title: "Qieco",
+    alt: "QIECO Smart Logo",
+  },
+  {
     id: 24,
     image: "/assets/clients/VIF.svg",
-    title: "VIF"
-},
-{
+    title: "VIF",
+    alt: "VIFM Logo",
+  },
+  {
     id: 25,
     image: "/assets/clients/ISCS.svg",
-    title: "ISCS"
-},
-{
+    title: "ISCS",
+    alt: "ISCS Logo",
+  },
+  {
     id: 26,
     image: "/assets/clients/Conmix.svg",
-    title: "Conmix"
-},
-{
+    title: "Conmix",
+    alt: "CONMIX Logo",
+  },
+  {
     id: 27,
     image: "/assets/clients/Brighton.svg",
-    title: "Brighton"
-},
-{
+    title: "Brighton",
+    alt: "BRIGHTON Logo",
+  },
+  {
     id: 28,
     image: "/assets/clients/Pinwheel.svg",
-    title: "Pinwheel Trading & Investments"
-},
-{
+    title: "Pinwheel Trading & Investments",
+    alt: "Pinwheel Logo",
+  },
+  {
     id: 29,
     image: "/assets/clients/ACL.svg",
-    title: "Alpha Capital Limited"
-},
-{
+    title: "Alpha Capital Limited",
+    alt: "ACL Logo",
+  },
+  {
     id: 30,
     image: "/assets/clients/Bucomac.svg",
-    title: "Bucomac"
-},
-{
+    title: "Bucomac",
+    alt: "Bucomac Logo",
+  },
+  {
     id: 31,
     image: "/assets/clients/Saleh construction.svg",
-    title: "Saleh Constructions"
-},
-{
+    title: "Saleh Constructions",
+    alt: "Saleh Construction Logo",
+  },
+  {
     id: 32,
     image: "/assets/clients/Cloud-dynamics.svg",
-    title: "Cloud dynamics"
-},
-{
+    title: "Cloud dynamics",
+    alt: "Cloud Dynamics Logo",
+  },
+  {
     id: 33,
     image: "/assets/clients/Al-Bateel.svg",
-    title: "Al Bateel"
-},
-{
+    title: "Al Bateel",
+    alt: "Al Bateel Logo",
+  },
+  {
     id: 34,
     image: "/assets/clients/WattsArty.svg",
-    title: "WattsArty"
-},
-{
+    title: "WattsArty",
+    alt: "Watts Arty Logo",
+  },
+  {
     id: 35,
     image: "/assets/clients/Elev8.svg",
-    title: "Elev8"
-},
-{
+    title: "Elev8",
+    alt: "Elev8 Logo",
+  },
+  {
     id: 36,
     image: "/assets/clients/Adal.svg",
-    title: "Adal"
-},
-{
+    title: "Adal",
+    alt: "ADAL Logo",
+  },
+  {
     id: 37,
     image: "/assets/clients/Farhya.svg",
-    title: "Farhya"
-},
-{
+    title: "Farhya",
+    alt: "Farhya Logo",
+  },
+  {
     id: 38,
     image: "/assets/clients/Solinq.svg",
-    title: "Solinq"
-},
-{
+    title: "Solinq",
+    alt: "SOLINQ Logo",
+  },
+  {
     id: 39,
     image: "/assets/clients/innovo.svg",
-    title: "Innovo"
-},
-{
+    title: "Innovo",
+    alt: "innovo Logo",
+  },
+  {
     id: 40,
     image: "/assets/clients/sobha.svg",
-    title: "Sobha"
-}
+    title: "Sobha",
+    alt: "Sobha Constructions Logo",
+  },
 ];

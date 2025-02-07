@@ -90,7 +90,7 @@ const OurAchievements = () => {
                 />
               </div>
               <div className="transition-all duration-500 group-hover:-translate-y-3 ">
-                <h2 className="mt-4 text-font65 font-[400] leading-lh1p07">
+                <p className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
                     className={`
                       count-number
@@ -99,7 +99,7 @@ const OurAchievements = () => {
                     {yearCount}
                   </span>{" "}
                   Years
-                </h2>
+                </p>
                 {/* <p className={`text-font30  leading-lh2p3 text-gray1 `}>
                   and{" "}
                   <span className="count-number"
@@ -108,13 +108,16 @@ const OurAchievements = () => {
                     Counting
                   </span>
                 </p> */}
-                <div className='ttlbx'>
-                       <div className="letter-wrapper">
-                        <div className="text-font30  leading-lh2p3 text-gray1 letter-default">and Counting</div>
-                        <div className="text-font30  leading-lh2p3 text-gray1 letter-hover">and Counting</div>
-                       </div>
-
-                        </div>
+                <div className="ttlbx">
+                  <div className="letter-wrapper">
+                    <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
+                      and Counting
+                    </div>
+                    <div className="letter-hover  text-font30 leading-lh2p3 text-gray1">
+                      and Counting
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -142,7 +145,7 @@ const OurAchievements = () => {
                 />
               </div>
               <div className="transition-all duration-500 group-hover:-translate-y-3">
-                <h2 className="mt-4 text-font65 font-[400] leading-lh1p07">
+                <p className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
                     className={`count-number
                     transition-colors duration-300 ease-in-out`}
@@ -150,7 +153,7 @@ const OurAchievements = () => {
                     {clientCount}
                   </span>{" "}
                   Clients
-                </h2>
+                </p>
                 {/* <p className={`text-font30 leading-lh2p3 text-gray1`}>
                   {" "}
                   and{" "}
@@ -160,13 +163,16 @@ const OurAchievements = () => {
                     Growing
                   </span>{" "}
                 </p> */}
-                <div className='ttlbx'>
-                       <div className="letter-wrapper">
-                        <div className="text-font30  leading-lh2p3 text-gray1 letter-default">and Growing</div>
-                        <div className="text-font30  leading-lh2p3 text-gray1 letter-hover">and Growing</div>
-                       </div>
-
-                        </div>
+                <div className="ttlbx">
+                  <div className="letter-wrapper">
+                    <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
+                      and Growing
+                    </div>
+                    <div className="letter-hover  text-font30 leading-lh2p3 text-gray1">
+                      and Growing
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -193,7 +199,7 @@ const OurAchievements = () => {
                 />
               </div>
               <div className="transition-all duration-500 group-hover:-translate-y-3">
-                <h2 className="mt-4 text-font65 font-[400] leading-lh1p07">
+                <p className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
                     className={`count-number
                     transition-colors duration-300 ease-in-out`}
@@ -201,7 +207,7 @@ const OurAchievements = () => {
                     {projectCount}
                   </span>{" "}
                   Projects
-                </h2>
+                </p>
                 {/* <p className={`text-font30   leading-lh2p3 text-gray1`}>
                   and{" "}
                   <span
@@ -210,13 +216,16 @@ const OurAchievements = () => {
                     More to Come
                   </span>
                 </p> */}
-                <div className='ttlbx'>
-                       <div className="letter-wrapper">
-                        <div className="text-font30  leading-lh2p3 text-gray1 letter-default">More to Come</div>
-                        <div className="text-font30  leading-lh2p3 text-gray1 letter-hover">More to Come</div>
-                       </div>
-
-                        </div>
+                <div className="ttlbx">
+                  <div className="letter-wrapper">
+                    <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
+                      More to Come
+                    </div>
+                    <div className="letter-hover  text-font30 leading-lh2p3 text-gray1">
+                      More to Come
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
