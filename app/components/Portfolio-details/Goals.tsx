@@ -8,17 +8,22 @@ import parse from "html-react-parser";
 
 const Goals = ({
   data,
+  companyName
 }: {
   data: {
     portfolio: Portfolio[];
   } | null;
+  companyName:string | null;
 }) => {
+
+  console.log("CompanyName",companyName!=="bec-arabia")
+
   return (
     <>
       <div className="container mx-auto py-4">
-        {data?.portfolio[0].section2Image1 ||
+        {companyName && companyName!=="bec-arabia" && data?.portfolio[0].section2Image1 ||
           data?.portfolio[0].section2Image2 ? (
-          <motion.div
+          companyName && companyName!=="bec-arabia" && <motion.div
             className="pt-150 pb-150 grid grid-cols-2 gap-5"
             initial="hidden"
             whileInView="visible"
@@ -32,7 +37,7 @@ const Goals = ({
               }, // Slide up and fade in
             }}
           >
-            {data.portfolio[0].section2Image1 && (
+            {companyName && companyName!=="bec-arabia" && data.portfolio[0].section2Image1 && (
               <Image
                 src={data?.portfolio[0].section2Image1 || ""}
                 alt="image1"
@@ -41,7 +46,7 @@ const Goals = ({
               />
             )}
 
-            {data.portfolio[0].section2Image2 && (
+            {companyName && companyName!=="bec-arabia" && data.portfolio[0].section2Image2 && (
               <Image
                 src={data?.portfolio[0].section2Image2 || ""}
                 alt="image1"

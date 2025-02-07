@@ -33,7 +33,7 @@ const PortfolioDetails = () => {
     return (
         <>
             <HeroSection data={data}/>
-            <Goals data={data} />
+            <Goals data={data} companyName={companyName?.toString() ?? null}/>
             <Result data={data}/>
         </>
     )
