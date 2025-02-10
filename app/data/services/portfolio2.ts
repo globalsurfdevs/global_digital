@@ -22,7 +22,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 26,
       "scope": "Brand Identity | Website",
       "industry": "Construction",
-      "link": "/portfolio/telal"
+      "link": "/portfolio/telal-engineering-&-contracting"
   },
   {
       "id": 3,
@@ -45,7 +45,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 21,
       "scope": "Website",
       "industry": "Engineering",
-      "link": "/portfolio/icatch"
+      "link": "/portfolio/icatch-graphics"
 
   },
 //   {
@@ -79,7 +79,7 @@ export const allDataWebdesig2 = [
       "iconsheight": 98,
       "scope": "Brand Identity | Website",
       "industry": "Technology",
-      "link": "/portfolio/qieco"
+      "link": "/portfolio/qiecosmart"
   },
   {
       "id": 3,

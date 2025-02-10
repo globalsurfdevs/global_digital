@@ -51,6 +51,21 @@ const nextConfig: NextConfig = {
         destination: "/marketing-intelligence-agency-dubai", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+      {
+        source: "/portfolio/telal", // The old URL path
+        destination: "/portfolio/telal-engineering-&-contracting", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/portfolio/icatch", // The old URL path
+        destination: "/portfolio/icatch-graphics", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/portfolio/qieco", // The old URL path
+        destination: "/portfolio/qiecosmart", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
     ];
   },
 };
