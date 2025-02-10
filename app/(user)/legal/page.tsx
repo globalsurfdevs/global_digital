@@ -147,7 +147,7 @@ const page = () => {
             <div  >
               <ul className="list-disc pl-[40px] list-outside">
                 <li>
-                Your use of the Website is also governed by our <Link href="privacy-policy" className="text-primary">Privacy Policy</Link> and <Link href="cookies-policy" className="text-primary">Cookies Policy</Link>. These policies explain how we collect, use, and protect your personal data.
+                Your use of the Website is also governed by our <Link href="privacy-policy" className="text-primary">Privacy Policy</Link> and <Link href="cookie-policy" className="text-primary">Cookies Policy</Link>. These policies explain how we collect, use, and protect your personal data.
                 </li>
                 <li>
                 GS.Digital does not endorse, monitor, or assume responsibility for the content or privacy practices of third-party websites.
