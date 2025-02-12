@@ -1,22 +1,50 @@
 "use client";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { career } from "../../../data/career";
 import Link from "next/link";
 import Button from "@/app/components/Button/Button";
 import { notFound } from 'next/navigation';
+import { ClientPageRoot } from "next/dist/client/components/client-page";
 
 export default function CareerDetailsPage() {
   const params = useParams(); // Use the custom useParams hook
   const { url } = params; // Extract the 'url' parameter
 
   // Find the item based on the 'url' parameter
-  const item = career.find((b) => b.url === url);
+  // const item = career.find((b) => b.url === url);
+  const [jobs, setJobs] = useState<{jobTitle:string}[]|null>(null);
 
-  if (!item) {
-    // return <p>Item not found!</p>;
-    notFound()
-  }
+  useEffect(() => {
+  const fetchJobsData = async () => {
+    try {
+      const response = await fetch(`/api/jobs?slug=${url}`);
+      console.log(response)
+      if (response.ok) {
+
+          const data = await response.json();
+          // console.log("data",data)
+            setJobs(data.job)
+
+        } else {
+            console.error("Failed to fetch job data");
+        }
+    } catch (error) {
+        console.error("Error fetching job data:", error);
+    }
+}
+
+    fetchJobsData()
+
+          }, []); // Runs when 'item' changes
+
+  // useEffect(() => {
+
+  //   if (!jobs) {
+  //     // return <p>Item not found!</p>;
+  //     notFound()
+  //   }
+  // }, []);
 
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState('');
@@ -34,7 +62,7 @@ export default function CareerDetailsPage() {
     <div className="container mx-auto py-4">
       <div className="pt-[30px] lg:pt-[100px] ">
         <h1 className="title-65 mb-5 border-b pb-5 md:mb-[50px] md:pb-[25px] ">
-        Looking for <br></br>{item.post}
+        Looking for <br></br>{jobs && jobs[0]?.jobTitle}
         </h1>
         <p className="text-19 text-gray1">  Our Team will get in touch with you.</p>
         <div className="  pt-[15px] lg:pt-[50px] pb-[40px] lg:pb-[50px]">
@@ -50,7 +78,7 @@ export default function CareerDetailsPage() {
                   maxLength={255}
                   className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                   placeholder=""
-                defaultValue={item.post}
+                defaultValue={jobs && jobs[0]?.jobTitle || ""}
                 readOnly
                 />
               </div>

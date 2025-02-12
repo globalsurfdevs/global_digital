@@ -4,13 +4,13 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SocialMediabg from "@/app/components/Careers/SocialMediabg";
 import Cta from "@/app/components/Careers/Cta";
-import { career } from "../../data/career";
+// import { career } from "../../data/career";
 import { JobType } from "@/app/types/JobType";
 
 const page = () => {
 
           const [jobs, setJobs] = useState<JobType[] | []>([])
-  
+
           useEffect(() => {
               const fetchJobsData = async () => {
                   try {
@@ -18,7 +18,7 @@ const page = () => {
                       if (response.ok) {
                           const data = await response.json();
                           setJobs(data.jobs)
-      
+
                       } else {
                           console.error("Failed to fetch job data");
                       }
@@ -26,10 +26,13 @@ const page = () => {
                       console.error("Error fetching job data:", error);
                   }
               }
-      
+
               fetchJobsData()
           }, [])
-          
+          useEffect(() => {
+            console.log(jobs && jobs);
+            console.log('sssss');
+          }, [jobs]); // Runs when 'item' changes
   return (
     <div>
       {/* component1 section1*/}
@@ -128,6 +131,7 @@ const page = () => {
                 </div>
                 <div className="maincts">
                 {jobs && jobs.map((item) => (
+
   <div key={item.id}>
     {/* <Link href={`/careers/${item.url}`}> */}
     <Link href={`/careers/${item.slug}`}>

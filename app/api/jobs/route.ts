@@ -6,8 +6,9 @@ export async function GET(req: NextRequest) {
 
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
+        const slug = searchParams.get("slug")
 
-        if (!id) {
+        if (id) {
 
             let { data: jobs, error } = await supabase
                 .from('jobs')
@@ -19,13 +20,27 @@ export async function GET(req: NextRequest) {
             }
 
             return NextResponse.json({ jobs });
+        }
+
+        else if (slug) {
+            let { data: job, error } = await supabase
+                .from('jobs')
+                .select('*')
+                .eq('slug', slug)
+
+            if (!job) {
+                    return NextResponse.json({ error: "Job not found" }, { status: 404 });
+            } else {
+                return NextResponse.json({ job });
+            }
+
 
         } else {
+
 
             let { data: jobs, error } = await supabase
                 .from('jobs')
                 .select("*")
-                .eq('id', id)
 
             if (!jobs) {
                 return NextResponse.json({ error: "Job not found" }, { status: 404 });
