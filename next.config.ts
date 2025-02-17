@@ -66,8 +66,11 @@ const nextConfig: NextConfig = {
         destination: "/portfolio/qiecosmart", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
-
-
+      {
+        source: "/social-media-marketing-agency-dubai", // The old URL path
+        destination: "/social-media-agency-dubai", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
     ];
   },
 };
