@@ -87,7 +87,7 @@ const nextConfig: NextConfig = {
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
-        source: "portfolio/telal-engineering-&-contracting", // The old URL path
+        source: "/portfolio/telal-engineering-&-contracting", // The old URL path
         destination: "/portfolio/telal-engineering-and-contracting", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
