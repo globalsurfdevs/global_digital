@@ -81,6 +81,16 @@ const nextConfig: NextConfig = {
         destination: "/web-design-and-development", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+      {
+        source: "/portfolio/ayka-property-&-facility-management", // The old URL path
+        destination: "/portfolio/ayka-property-and-facility-management", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "portfolio/telal-engineering-&-contracting", // The old URL path
+        destination: "/portfolio/telal-engineering-and-contracting", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
     ];
   },
 };
