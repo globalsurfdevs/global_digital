@@ -11,6 +11,8 @@ const Page = () => {
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  console.log("Entered email:", formData.Email);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -28,13 +30,11 @@ const Page = () => {
       }
     }
 
-    if (name === "Email") {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value)) {
-        setEmailError("Please enter a valid email address.");
-      } else {
-        setEmailError("");
-      }
+    if (!formData.Email || !emailRegex.test(formData.Email.trim())) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    } else {
+      setEmailError("");
     }
 
     if (name === "SingleLine") {
@@ -56,10 +56,14 @@ const Page = () => {
       setPhoneError("Phone number must be at least 5 digits.");
       return;
     }
-    if (!formData.Email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.Email)) {
+    if (
+      !formData.Email ||
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.Email)
+    ) {
       setEmailError("Please enter a valid email address.");
       return;
     }
+
     if (!formData.SingleLine || formData.SingleLine.trim().length < 3) {
       setNameError("Name must be at least 3 characters.");
       return;
