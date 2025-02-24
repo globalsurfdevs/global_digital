@@ -98,6 +98,17 @@ const Page = () => {
           </div>
         </div>
         <div className="psty p-[20px] md:p-[100px]">
+          <div className="group">
+            <Link href="/">
+              <div className="  absolute right-5 top-[30px] w-fit cursor-pointer rounded-3xl bg-primary px-6 py-2 duration-200 duration-300 ease-in-out ease-in-out group-hover:-translate-x-[-3px]    group-hover:bg-primary group-hover:shadow-lg  md:bg-dgray  ">
+                <div className="uppercase text-white">
+                  <p className="bolder text-font16 text-white duration-300  ease-in-out ease-in-out group-hover:text-white md:text-black">
+                    CLOSE
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </div>
           <p className="text-font30">
             Get in touch today to discuss how we can help your brand stay ahead.
           </p>
