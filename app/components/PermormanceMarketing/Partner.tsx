@@ -42,7 +42,7 @@ const Partner: React.FC<PartnerListProps> = ({ data }) => {
             }}
           >
             <div className="border-b border-gray-500 pb-6   lg:pb-8">
-              <p className="title-65">Why Partner With Us</p>
+              <h2 className="title-65">Why Partner With Us</h2>
             </div>
           </motion.div>
           <motion.div
