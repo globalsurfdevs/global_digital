@@ -24,7 +24,7 @@ interface HeroSectionProps {
   Bannerdata: BannerSection[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata , order }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Ref for the next container (HTMLDivElement type)
@@ -123,7 +123,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata , order }) => {
                   >
                     <div className="col-span-1 mb-2 lg:mb-0">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-30 leading-[1.5]">{su.stitle}</h3>
+                        <h2 className="text-30 leading-[1.5]">{su.stitle}</h2>
 
                         <div className="h-5 w-5 bg-primary"></div>
                       </div>
@@ -168,9 +168,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata , order }) => {
             </div>
           </div>
           {Bannerdata.map((herosection) => (
-          <div className=" w-full bg-black " >
-           <Image src={herosection.image} className="w-full" alt="" width={1500} height={700}/>
-             </div>
+            <div className=" w-full bg-black ">
+              <Image
+                src={herosection.image}
+                className="w-full"
+                alt=""
+                width={1500}
+                height={700}
+              />
+            </div>
           ))}
         </div>
       </motion.div>
