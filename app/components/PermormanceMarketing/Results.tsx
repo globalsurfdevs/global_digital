@@ -64,12 +64,12 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data }) => {
                       <h3 className="text-30 mb-[14px] leading-lh1p66">
                         {result.brand}
                       </h3>
-                      <h3 className="title-65 mb-[15px] leading-lh0p76 text-white lg:mb-[28px] ">
+                      <p className="title-65 mb-[15px] leading-lh0p76 text-white lg:mb-[28px] ">
                         {result.growth}
-                      </h3>
-                      <h3 className={`fnt-lexend text-font25  leading-lh1p26`}>
+                      </p>
+                      <p className={`fnt-lexend text-font25  leading-lh1p26`}>
                         {result.traffic}
-                      </h3>
+                      </p>
                       <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
                         <svg
                           width="36"
@@ -95,15 +95,18 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data }) => {
                     </div>
                   </div>
                   <div className="flex flex-col px-6 pb-8 pt-6 text-white md:px-[50px] md:pt-8  ">
-                    <h3 className="text-30 mb-[10px] md:mb-[19px]">
+                    <p className="text-30 mb-[10px] md:mb-[19px]">
                       {result.title}
-                    </h3>
+                    </p>
                     <p className={`text-19 fnt-lexend text-white  `}>
                       {result.dec}
                     </p>
                   </div>
 
-                  <Link href={result.url} className="absolute h-full w-full left-0 right-0 top-0"></Link>
+                  <Link
+                    href={result.url}
+                    className="absolute left-0 right-0 top-0 h-full w-full"
+                  ></Link>
                 </div>
               ))}
             </div>

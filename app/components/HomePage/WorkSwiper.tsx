@@ -36,7 +36,7 @@ const WorkSwiper = () => {
               <div className=" me-1 flex min-h-[30px] w-fit min-w-[30px] items-center justify-center bg-white duration-200 ease-linear   lg:me-2 lg:min-h-[50px] lg:min-w-[50px]">
                 <img
                   src={item.icon}
-                  alt={item.alt}
+                  alt={item.text}
                   width={item.width}
                   height={item.height}
                   className="w-[18px] duration-200 ease-linear   lg:w-auto"
