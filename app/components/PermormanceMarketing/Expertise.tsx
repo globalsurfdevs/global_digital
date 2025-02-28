@@ -62,7 +62,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
                 <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
                   <Image
                     src={expertise.icon}
-                    alt="image"
+                    alt={expertise.title}
                     className="fltrcls transition duration-500 group-hover:invert-0"
                   />
                 </div>
