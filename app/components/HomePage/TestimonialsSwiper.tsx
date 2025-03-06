@@ -45,9 +45,9 @@ const TestimonialsSwiper = () => {
                   className="mb-4 h-20 w-20 bg-white p-1 lg:mb-[30px]"
                 ></Image>
                 <h3 className="text-30  mb-[5px]">{item.name}</h3>
-                <h4 className="mb-2 flex gap-1 text-font16 leading-lh2p3 text-gray1">
+                <p className="mb-2 flex gap-1 text-font16 leading-lh2p3 text-gray1">
                   {item.position} - <p className="font-bold">{item.company}</p>
-                </h4>
+                </p>
                 <Image
                   src={item.logo}
                   alt={item.alt || item.company}

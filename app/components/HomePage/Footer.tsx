@@ -45,16 +45,16 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-col gap-8 md:col-span-3">
                   <div className="flex flex-col gap-3">
-                    <h2 className="text-font65">
+                    <p className="text-font65">
                       <a href="mailto:hello@globalsurf.ae">
                         {" "}
                         hello<span className="text-primary">@</span>
                         globalsurf.ae
                       </a>
-                    </h2>
-                    <h2 className="text-font65">
+                    </p>
+                    <p className="text-font65">
                       <a href="tel:+97145821133">+971 4 582 1133</a>
-                    </h2>
+                    </p>
                   </div>
                 </div>
               </div>
