@@ -610,8 +610,8 @@ body {
 }
 .mn-dv-blg .flx-vnt {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 20px; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   padding: 20px;
 }
 .mn-dv-blg .flx-vnt .eql-hgt {
@@ -897,4 +897,24 @@ input[type="number"] {
   h2 {
     font-family: "Space Grotesk", serif;
   }
+}
+
+@media (min-width: 992px) {
+  .left0w{padding-left: 0px !important;}
+.left0w::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -434px;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    z-index: -1;
+}
+.bg-dgray.left0w::after{
+  background: #f2f2f2;}
+}
+
+@media (max-width: 991px) {
+.left0w{margin: 15px 0px;}
 }

@@ -20,11 +20,12 @@ interface BannerSection {
   sub: su[];
 }
 interface HeroSectionProps {
-  order: string;
+  order?: string;
+  hideslider?: boolean;
   Bannerdata: BannerSection[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Ref for the next container (HTMLDivElement type)
@@ -160,13 +161,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order }) => {
             isSmallScreen ? "container mx-auto py-2" : ""
           } custom-class`}
         >
-          <div className="flex gap-5 bg-bglight  py-[17px]">
+        {!hideslider &&  <div className="flex gap-5 bg-bglight  py-[17px]">
             <div className="  flexcl600 container mr-0 lg:mr-[-15px]">
               <div className="w-full  overflow-hidden">
-                <PerformanceSwiper />
+              <PerformanceSwiper />
               </div>
             </div>
-          </div>
+          </div>}
           {Bannerdata.map((herosection) => (
             <div className=" w-full bg-black ">
               <Image
