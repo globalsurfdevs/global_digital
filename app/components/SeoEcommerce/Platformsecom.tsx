@@ -14,13 +14,14 @@ interface PlatformsSectionProps {
   bgblack?: boolean;
   icontitle?: boolean;
   leftzero?: boolean;
+  desc?: string;
   title: string;
   data: PlatformsItem[];
 }
 
-const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero}) => {
+const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero,desc}) => {
   return (
-    <div className={`container mx-auto py-4 ${leftzero ? 'relative' : ''}`}>
+    <div className={`container mx-auto py-4 mb-[50px] lg:mb-[147px] ${leftzero ? 'relative' : ''}`}>
       <div className={`flex flex-col gap-7 ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
         <div>
           <motion.div
@@ -36,7 +37,8 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
               }, // Slide up and fade in
             }}
           >
-            <h2 className={`title-65 ${bgblack ? 'text-white' : ''}`}>{title} </h2>
+            <h2 className={`title-65 max-w-[31ch] mb-6 md:mb-10 ${bgblack ? 'text-white' : ''}`}>{title} </h2>
+            <p className="text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 max-w-[76ch] ">{desc} </p>
           </motion.div>
         </div>
 
@@ -53,18 +55,14 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
             }, // Slide up and fade in
           }}
         >
-          <div className="grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px] xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px] xl:grid-cols-4">
             {data.map((platform) => (
               <div
                 key={platform.id}
-                className="group flex flex-col transition-all duration-300  "
+                className="group flex flex-col transition-all duration-300   "
               >
                 <div className= {`flex items-center gap-7 ${icontitle ? 'flex-col items-baseline ' : ''}`}>
-                  <Image
-                    src={platform.icon}
-                    alt="icon"
-                    className="w-[25px] lg:w-auto"
-                  />
+
                   <h3 className= {`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''}`}>
                     {platform.title}
                   </h3>
@@ -88,4 +86,4 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
   );
 };
 
-export default Platforms;
+export default Platformsecom;

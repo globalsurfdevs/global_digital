@@ -20,11 +20,12 @@ interface BannerSection {
   sub: su[];
 }
 interface HeroSectionProps {
-  order: string;
+  order?: string;
+  hideslider?: boolean;
   Bannerdata: BannerSection[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata , order }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Ref for the next container (HTMLDivElement type)
@@ -123,7 +124,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata , order }) => {
                   >
                     <div className="col-span-1 mb-2 lg:mb-0">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-30 leading-[1.5]">{su.stitle}</h3>
+                        <h2 className="text-30 leading-[1.5]">{su.stitle}</h2>
 
                         <div className="h-5 w-5 bg-primary"></div>
                       </div>
@@ -160,17 +161,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata , order }) => {
             isSmallScreen ? "container mx-auto py-2" : ""
           } custom-class`}
         >
-          <div className="flex gap-5 bg-bglight  py-[17px]">
+        {!hideslider &&  <div className="flex gap-5 bg-bglight  py-[17px]">
             <div className="  flexcl600 container mr-0 lg:mr-[-15px]">
               <div className="w-full  overflow-hidden">
-                <PerformanceSwiper />
+              <PerformanceSwiper />
               </div>
             </div>
-          </div>
+          </div>}
           {Bannerdata.map((herosection) => (
-          <div className=" w-full bg-black " >
-           <Image src={herosection.image} className="w-full" alt="" width={1500} height={700}/>
-             </div>
+            <div className=" w-full bg-black ">
+              <Image
+                src={herosection.image}
+                className="w-full"
+                alt=""
+                width={1500}
+                height={700}
+              />
+            </div>
           ))}
         </div>
       </motion.div>

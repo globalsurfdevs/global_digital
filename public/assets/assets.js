@@ -171,8 +171,30 @@ import blog from "../assets/blog.svg";
 import casestudy from "../assets/casestudy.svg";
 
 import lightlogo from "../assets/gsdigital-light.svg";
+import bannerec from "../assets/services/ecom/banner-ec.jpg";
+import healp1 from "../assets/services/ecom/healp1.svg"
+import healp2 from "../assets/services/ecom/healp2.svg"
+import healp3 from "../assets/services/ecom/healp3.svg"
+import healp4 from "../assets/services/ecom/healp4.svg"
+import healp5 from "../assets/services/ecom/healp5.svg"
+import platform1 from "../assets/services/ecom/platform1.svg"
+import platform2 from "../assets/services/ecom/platform2.svg"
+import platform3 from "../assets/services/ecom/platform3.svg"
+import platform4 from "../assets/services/ecom/platform4.svg"
+import platform5 from "../assets/services/ecom/platform5.svg"
 
 export const assets = {
+  bannerec,
+  healp1,
+  healp2,
+  healp3,
+  healp4,
+  healp5,
+  platform1,
+  platform2,
+  platform3,
+  platform4,
+  platform5,
   Dilna,
   Thanisha,
   exp1,
