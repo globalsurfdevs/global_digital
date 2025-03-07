@@ -21,12 +21,12 @@ export const menuItems = [
       {
         item: "Social Media Service",
         svg: assets.socialMedia,
-        url: "/social-media-marketing-agency-dubai",
+        url: "/social-media-agency-dubai",
       },
       {
         item: "Website Design And Development",
         svg: assets.websiteD,
-        url: "/web-design-development",
+        url: "/web-design-and-development",
       },
       {
         item: "Branding And Creatives",

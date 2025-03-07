@@ -66,21 +66,21 @@ const nextConfig: NextConfig = {
         destination: "/portfolio/qiecosmart", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
-      {
-        source: "/social-media-marketing-agency-dubai", // The old URL path
-        destination: "/social-media-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
+      // {
+      //   source: "/social-media-marketing-agency-dubai", // The old URL path
+      //   destination: "/social-media-agency-dubai", // The new URL path
+      //   permanent: true, // Set to true for 301 (permanent) redirect
+      // },
       {
         source: "/contact-us", // The old URL path
         destination: "/lets-talk", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
-      {
-        source: "/web-design-development", // The old URL path
-        destination: "/web-design-and-development", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
+      // {
+      //   source: "/web-design-development", // The old URL path
+      //   destination: "/web-design-and-development", // The new URL path
+      //   permanent: true, // Set to true for 301 (permanent) redirect
+      // },
       {
         source: "/portfolio/ayka-property-&-facility-management", // The old URL path
         destination: "/portfolio/ayka-property-and-facility-management", // The new URL path

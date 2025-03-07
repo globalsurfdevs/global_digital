@@ -44,7 +44,7 @@ export const services = [
     id: "3",
     image: "/assets/services/Social-media.jpg",
     title: "Social Media",
-    url: "/social-media-marketing-agency-dubai",
+    url: "/social-media-agency-dubai",
     description:
       "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
     buttonTexts: [
@@ -63,7 +63,7 @@ export const services = [
     id: "4",
     image: "/assets/services/Web-development.jpg",
     title: "Web Design & Development",
-    url: "/web-design-development",
+    url: "/web-design-and-development",
     description:
       "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
     buttonTexts: [

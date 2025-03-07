@@ -36,8 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Captivate Audiences. Our human-first approach combines strategy & creativity for meaningful social media results.Contact us today for a free consultation.",
     alternates: {
-      canonical:
-        "https://www.globalsurf.ae/social-media-marketing-agency-dubai",
+      canonical: "https://www.globalsurf.ae/social-media-agency-dubai",
     },
   };
 }
