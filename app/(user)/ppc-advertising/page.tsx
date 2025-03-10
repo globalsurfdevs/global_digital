@@ -22,6 +22,7 @@ import { Cta } from "../../data/services/ppc-advertising/cta";
 import { Faq } from "../../data/services/ppc-advertising/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/SeoEcommerce/RelatedServices";
+import Slider from "@/app/components/PpcAdvertising/Slider";
 
 interface Canonicals {
   canonical: string;
@@ -51,7 +52,7 @@ const page = () => {
       <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
       <Services title={OurServices.title} data={OurServices.data} colcount={6} />
       <Framework title={Frameworkdata.title} data={Frameworkdata.data} colcount={3} />
-
+      <Slider />
       <Results title={ResultsData.title} description={ResultsData.description} data={ResultsData.data} />
 
       <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />

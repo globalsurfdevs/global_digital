@@ -203,12 +203,29 @@ import rs9 from "../assets/services/ppc/rs9.svg";
 import rs10 from "../assets/services/ppc/rs10.svg";
 import rs11 from "../assets/services/ppc/rs11.svg";
 import rs12 from "../assets/services/ppc/rs12.svg";
+import gtm from "../assets/services/ppc/gtm.svg";
+import amazonads from "../assets/services/ppc/amazonads.svg";
+import spyfu from "../assets/services/ppc/spyfu.svg";
+import googleanalatics from "../assets/services/ppc/googleanalatics.svg";
+import kissmetrics from "../assets/services/ppc/kissmetrics.svg";
+import semrush from "../assets/services/ppc/semrush.svg";
+import msadv from "../assets/services/ppc/msadv.svg";
+import googleads from "../assets/services/ppc/googleads.svg";
+
 
 
 
 
 
 export const assets = {
+  gtm,
+  amazonads,
+  spyfu,
+  googleanalatics,
+  kissmetrics,
+  semrush,
+  msadv,
+  googleads,
   rs7,
   rs8,
   rs9,
