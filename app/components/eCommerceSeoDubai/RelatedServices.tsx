@@ -11,14 +11,14 @@ interface FrameworkItem {
 
 interface FrameworkSectionProps {
   title: string;
-  description?: string;
+
   colcount?: number;
   data: FrameworkItem[];
 }
 
 const RelatedServices: React.FC<FrameworkSectionProps> = ({
   title,
-  description,
+
   data,
 
 }) => {
@@ -39,9 +39,8 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
             }, // Slide up and fade in
           }}
         >
-            <div className="pb-6 lg:pb-[58px]">
+            <div className="pb-6 lg:pb-[40px]">
             <h2 className="title-65 pb-6">{title}</h2>
-            <p className="text-19 fnt-lexend text-gray1     max-w-[35ch]">{description}</p>
             </div>
         </motion.div>
         <div className="serv-mn col-span-5  w-full text-font30 ">
@@ -71,12 +70,12 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
                     className=" wsd2 transition-all duration-100 ease-in-out"
                   />
                   <div className="consu">
-                    <p className="text-small-30 transition-all duration-300 max-w-[19ch]"  dangerouslySetInnerHTML={{ __html: framework.title }}>
+                    <p className="text-small-30 transition-all duration-300 max-w-[20ch]"  dangerouslySetInnerHTML={{ __html: framework.title }}>
 
                     </p>
                   </div>
                 </div>
-                <div className="flex w-full items-center justify-end gap-[15px]  md:w-1/2 md:gap-[40px]  xxl:gap-[130px]">
+                <div className="flex w-full items-center justify-between gap-[15px]  md:w-1/2 md:gap-[40px]  xxl:gap-[130px]">
                   <p className="text-19 text-gray1 transition-all duration-300 " >
                   {framework.dec}
                   </p>

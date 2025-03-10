@@ -39,7 +39,7 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
             }}
           >
             {title &&
-              <h2 className={`title-65 ${bgblack ? 'text-white' : ''}`}>{title} </h2>
+              <h2 className={`title-65 uppercase ${bgblack ? 'text-white' : ''}`}>{title} </h2>
             }
           </motion.div>
         </div>

@@ -6,6 +6,7 @@ import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
+import Link from "next/link";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -22,12 +23,13 @@ interface BannerSection {
 }
 interface HeroSectionProps {
   order?: string;
+  maxchwidth?: string;
   hideslider?: boolean;
   bannerlogp?: boolean;
   Bannerdata: BannerSection[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider,bannerlogp }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider,bannerlogp ,maxchwidth}) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Ref for the next container (HTMLDivElement type)
@@ -99,18 +101,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider
               }}
             >
               <div className={`flex  justify-between border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] ${bannerlogp ? 'items-start' : 'items-end'}`}>
-                <div className="  max-w-[1000px] ">
+                <div className={` ${maxchwidth ? `max-w-[${maxchwidth}]` : 'max-w-[1000px]'}`}>
                   <h1 className="title-80"> {herosection.title}</h1>
                 </div>
                 {bannerlogp &&
                 <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
-                                <Image
-                      src={assets.googlepartner}
+                               <Link href="https://www.google.com/partners/agency?id=5412848486" rel="nofollow" target="_blank"> <Image
+                              src={assets.googlepartner}
                                   alt="image"
                                   className="w-20 md:w-48"
                                   width={10}
                                   height={10}
-                                />
+                                  />
+                              </Link>
               </div>
               }
                 <div className="text-font19 text-gray1">{order}</div>
