@@ -3,10 +3,15 @@ import React from 'react'
 import TestimonialsSwiper from './TestimonialsSwiper';
 import { motion } from 'framer-motion';
 
-const Testimonials = () => {
+  interface TestimonialsSectionProps {
+    bgcolor?: string;
+    bordertop?: boolean;
+  }
+
+const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }) => {
   return (
-    <div className='bg-bglight'>
-      <div className="container px-4 mx-auto ">
+    <div className={` ${bgcolor === 'white' ? 'bg-white' : 'bg-bglight'}`} >
+      <div className= {`container px-4 mx-auto  ${bordertop ? ' border-t' : ''}`}>
         <div className="pt-[50px] pb-[30px] md:py-10 lg:py-12 xl:pt-[138px] xl:pb-[110px]">
         <motion.div
           initial="hidden"

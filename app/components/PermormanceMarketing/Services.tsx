@@ -8,10 +8,11 @@ interface ServicesItem {
 
 interface ServicesSectionProps {
   title: string;
+  colcount?: number;
   data: ServicesItem[];
 }
 
-const Services: React.FC<ServicesSectionProps> = ({ title, data }) => {
+const Services: React.FC<ServicesSectionProps> = ({ title, data, colcount }) => {
   return (
     <div className="container mx-auto py-4">
       <motion.div
@@ -27,12 +28,12 @@ const Services: React.FC<ServicesSectionProps> = ({ title, data }) => {
           }, // Slide up and fade in
         }}
       >
-        <div className=" pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-5 lg:gap-10 gap-xl-0">
+        <div className={`pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1  gap-5 lg:gap-10 gap-xl-0  ${colcount ? `xl:grid-cols-${colcount}` : 'xl:grid-cols-7'}`}>
           <div className="col-span-2 text-5xl">
             <h2 className="title-65 pb-2">{title}</h2>
           </div>
 
-          <div className="w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn">
+          <div className={`w-full  ps-0 xl:ps-12 text-font30 serv-mn ${colcount ? `col-span-4` : 'col-span-5'}`}>
 
               {data.map((service) => (
               <div key={service.id} className=" border-t last:border-b ">
