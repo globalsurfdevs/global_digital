@@ -918,3 +918,14 @@ input[type="number"] {
 @media (max-width: 991px) {
 .left0w{margin: 15px 0px;}
 }
+.tesmnialswiper .swiper-wrapper{align-items: center;}
+.tesmnialswiper .swiper-slide {
+  width: auto;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+}
+.tesmnialswiper .swiper-slide img {
+  max-height: 100px;
+  object-fit: contain;
+}
