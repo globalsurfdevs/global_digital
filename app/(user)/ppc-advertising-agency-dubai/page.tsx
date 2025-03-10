@@ -4,10 +4,10 @@ import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
 import Results from "../../components/PermormanceMarketing/Results";
 import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/PpcAdvertising/Platformsecom";
+import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import Paidsearch from "../../components/PpcAdvertising/Paidsearch";
+import Paidsearch from "../../components/PpcAdvertisingAgencyDubai/Paidsearch";
 
 
 import { ResultsData } from "../../data/services/ppc-advertising/results";
@@ -21,8 +21,8 @@ import { Platformsecomdata } from "../../data/services/ppc-advertising/platforms
 import { Cta } from "../../data/services/ppc-advertising/cta";
 import { Faq } from "../../data/services/ppc-advertising/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
-import RelatedServices from "@/app/components/SeoEcommerce/RelatedServices";
-import Slider from "@/app/components/PpcAdvertising/Slider";
+import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
 
 interface Canonicals {
   canonical: string;
@@ -67,7 +67,7 @@ const page = () => {
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title} description={ relatedservices.description} data={relatedservices.data} colcount={3} />
+      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
     </div>
   );
 };

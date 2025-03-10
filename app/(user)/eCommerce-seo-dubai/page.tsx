@@ -2,9 +2,9 @@ import React from "react";
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
-import Results from "../../components/SeoEcommerce/Result";
+import Results from "../../components/eCommerceSeoDubai/Result";
 import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/SeoEcommerce/Platformsecom";
+import Platformsecom from "../../components/eCommerceSeoDubai/Platformsecom";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
@@ -19,7 +19,7 @@ import { Wecanhelp } from "../../data/services/seo-ecommerce/wecanhelp";
 import { Cta } from "../../data/services/seo-ecommerce/cta";
 import { Faq } from "../../data/services/seo-ecommerce/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
-import RelatedServices from "@/app/components/SeoEcommerce/RelatedServices";
+import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
 interface Canonicals {
   canonical: string;

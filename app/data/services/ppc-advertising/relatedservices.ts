@@ -4,7 +4,6 @@ import { assets } from "@/public/assets/assets";
 
 export const relatedservices = {
   title: "Related Services",
-  description: "Customized plans that resonate with your audience and drive brand growth.",
   data: [
     {
       id: 1,

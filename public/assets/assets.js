@@ -211,13 +211,31 @@ import kissmetrics from "../assets/services/ppc/kissmetrics.svg";
 import semrush from "../assets/services/ppc/semrush.svg";
 import msadv from "../assets/services/ppc/msadv.svg";
 import googleads from "../assets/services/ppc/googleads.svg";
-
-
+import pinterest from "../assets/services/socialmediamarketing/pinterest.svg";
+import snapchat from "../assets/services/socialmediamarketing/snapchat.svg";
+import youtube from "../assets/services/socialmediamarketing/youtube.svg";
+import bannersocial from "../assets/services/socialmediamarketing/bannersocial.jpg";
+import help1 from "../assets/services/socialmediamarketing/help1.svg";
+import help2 from "../assets/services/socialmediamarketing/help2.svg";
+import help3 from "../assets/services/socialmediamarketing/help3.svg";
+import help4 from "../assets/services/socialmediamarketing/help4.svg";
+import rs13 from "../assets/services/socialmediamarketing/rs13.svg";
+import rs14 from "../assets/services/socialmediamarketing/rs14.svg";
 
 
 
 
 export const assets = {
+  rs13,
+  rs14,
+  help1,
+  help2,
+  help3,
+  help4,
+  bannersocial,
+  pinterest,
+  youtube,
+  snapchat,
   gtm,
   amazonads,
   spyfu,
