@@ -182,8 +182,54 @@ import platform2 from "../assets/services/ecom/platform2.svg"
 import platform3 from "../assets/services/ecom/platform3.svg"
 import platform4 from "../assets/services/ecom/platform4.svg"
 import platform5 from "../assets/services/ecom/platform5.svg"
+import rs1 from "../assets/services/ecom/rs1.svg"
+import rs2 from "../assets/services/ecom/rs2.svg"
+import rs3 from "../assets/services/ecom/rs3.svg"
+import rs4 from "../assets/services/ecom/rs4.svg"
+import rs5 from "../assets/services/ecom/rs5.svg"
+import rs6 from "../assets/services/ecom/rs6.svg"
+import googlepartner from "../assets/services/ppc/googlepartner.svg";
+import ppcbanner from "../assets/services/ppc/ppcbanner.jpg";
+import serchic1 from "../assets/services/ppc/serchic1.svg";
+import serchic2 from "../assets/services/ppc/serchic2.svg";
+import serchic3 from "../assets/services/ppc/serchic3.svg";
+import wecan1 from "../assets/services/ppc/wecan1.svg";
+import wecan2 from "../assets/services/ppc/wecan2.svg";
+import wecan3 from "../assets/services/ppc/wecan3.svg";
+import wecan4 from "../assets/services/ppc/wecan4.svg";
+import rs7 from "../assets/services/ppc/rs7.svg";
+import rs8 from "../assets/services/ppc/rs8.svg";
+import rs9 from "../assets/services/ppc/rs9.svg";
+import rs10 from "../assets/services/ppc/rs10.svg";
+import rs11 from "../assets/services/ppc/rs11.svg";
+import rs12 from "../assets/services/ppc/rs12.svg";
+
+
+
+
 
 export const assets = {
+  rs7,
+  rs8,
+  rs9,
+  rs10,
+  rs11,
+  rs12,
+  wecan1,
+  wecan2,
+  wecan3,
+  wecan4,
+  serchic1,
+  serchic2,
+  serchic3,
+  ppcbanner,
+  googlepartner,
+  rs1,
+  rs2,
+  rs3,
+  rs4,
+  rs5,
+  rs6,
   bannerec,
   healp1,
   healp2,

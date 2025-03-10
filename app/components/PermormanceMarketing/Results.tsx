@@ -14,11 +14,12 @@ interface ResultsItem {
 }
 
 interface ResultsSectionProps {
+  description?: string;
   title: string;
   data: ResultsItem[];
 }
 
-const Results: React.FC<ResultsSectionProps> = ({ title, data }) => {
+const Results: React.FC<ResultsSectionProps> = ({ title, data,description }) => {
   return (
     <div className="pb-[50px] lg:pb-[147px]">
       <div className="container mx-auto py-4">
@@ -38,6 +39,7 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data }) => {
               }}
             >
               <h2 className="title-65">{title}</h2>
+              {description && <p className="text-19 fnt-lexend text-gray1 pt-6 pb-2 md:pb-6 max-w-[67ch]">{description}</p>}
             </motion.div>
           </div>
           <motion.div

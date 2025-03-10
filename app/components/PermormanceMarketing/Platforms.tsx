@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 interface PlatformsItem {
   id: number;
   icon: string;
-  title: string;
+  title?: string;
   dec: string;
 }
 
@@ -14,11 +14,13 @@ interface PlatformsSectionProps {
   bgblack?: boolean;
   icontitle?: boolean;
   leftzero?: boolean;
-  title: string;
+  title?: string;
+  colcount?: number;
+  hiddentitle?: boolean;
   data: PlatformsItem[];
 }
 
-const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero}) => {
+const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero ,hiddentitle, colcount}) => {
   return (
     <div className={`container mx-auto py-4 ${leftzero ? 'relative' : ''}`}>
       <div className={`flex flex-col gap-7 ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
@@ -36,7 +38,9 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
               }, // Slide up and fade in
             }}
           >
-            <h2 className={`title-65 ${bgblack ? 'text-white' : ''}`}>{title} </h2>
+            {title &&
+              <h2 className={`title-65 ${bgblack ? 'text-white' : ''}`}>{title} </h2>
+            }
           </motion.div>
         </div>
 
@@ -53,7 +57,7 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
             }, // Slide up and fade in
           }}
         >
-          <div className="grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px] xl:grid-cols-3">
+          <div className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colcount ? `xl:grid-cols-${colcount}` : 'xl:grid-cols-3'}`}>
             {data.map((platform) => (
               <div
                 key={platform.id}
@@ -65,7 +69,8 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
                     alt="icon"
                     className="w-[25px] lg:w-auto"
                   />
-                  <h3 className= {`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''}`}>
+
+                  <h3 className= {`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : '' }  ${hiddentitle ? 'hidden' : ''}`}>
                     {platform.title}
                   </h3>
                 </div>
@@ -75,7 +80,7 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
                 </div>
 
                 <div>
-                  <p className={`text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 ${bgblack ? 'group-hover:text-gray-300' : ''}`}>
+                  <p className={` ${bgblack ? 'group-hover:text-gray-300' : ''}  ${hiddentitle ? 'text-30 transition-colors ' : 'text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700'}`}>
                     {platform.dec}
                   </p>
                 </div>
