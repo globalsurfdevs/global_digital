@@ -29,6 +29,7 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
+  robots: string;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -37,8 +38,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/performance-marketing-agency-dubai",
+      canonical: "https://www.globalsurf.ae",
     },
+    robots: "noindex, nofollow",
   };
 }
 const page = () => {
