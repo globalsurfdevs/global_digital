@@ -9,11 +9,10 @@ interface FrameworkItem {
 
 interface FrameworkSectionProps {
   title: string;
-  colcount?: number;
   data: FrameworkItem[];
 }
 
-const Framework: React.FC<FrameworkSectionProps> = ({ title, data ,colcount}) => {
+const Framework: React.FC<FrameworkSectionProps> = ({ title, data }) => {
   return (
     <div className='bg-dgray '>
         <div className='container mx-auto py-4'>

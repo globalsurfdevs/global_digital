@@ -221,11 +221,48 @@ import help3 from "../assets/services/socialmediamarketing/help3.svg";
 import help4 from "../assets/services/socialmediamarketing/help4.svg";
 import rs13 from "../assets/services/socialmediamarketing/rs13.svg";
 import rs14 from "../assets/services/socialmediamarketing/rs14.svg";
+import googlesearch from "../assets/services/ppc/googlesearch.svg";
+import migfrog from "../assets/services/ppc/migfrog.svg";
+import seranking from "../assets/services/ppc/seranking.svg";
+import ubersuggest from "../assets/services/ppc/ubersuggest.svg";
+import ahrefs from "../assets/services/ppc/ahrefs.svg";
+import b2banner from "../assets/services/btb/b2bbanner.jpg";
+import frb1 from "../assets/services/btb/fr1.svg";
+import frb2 from "../assets/services/btb/fr2.svg";
+import frb3 from "../assets/services/btb/fr3.svg";
+import frb4 from "../assets/services/btb/fr4.svg";
+import frb5 from "../assets/services/btb/fr5.svg";
+import ssb1 from "../assets/services/btb/ss1.svg";
+import ssb2 from "../assets/services/btb/ss2.svg";
+import ssb3 from "../assets/services/btb/ss3.svg";
+import ssb4 from "../assets/services/btb/ss4.svg";
+import ssb5 from "../assets/services/btb/ss5.svg";
+import ssb6 from "../assets/services/btb/ss6.svg";
+
+
+
 
 
 
 
 export const assets = {
+  b2banner,
+  frb1,
+  frb2,
+  frb3,
+  frb4,
+  frb5,
+  ssb1,
+  ssb2,
+  ssb3,
+  ssb4,
+  ssb5,
+  ssb6,
+  ahrefs,
+  googlesearch,
+  migfrog,
+  seranking,
+  ubersuggest,
   rs13,
   rs14,
   help1,

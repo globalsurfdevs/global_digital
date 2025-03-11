@@ -23,6 +23,7 @@ import { Faq } from "../../data/services/ppc-advertising/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
+import { Platformsdata } from "../../data/services/ppc-advertising/platforms";
 
 interface Canonicals {
   canonical: string;
@@ -53,11 +54,13 @@ const page = () => {
       <Paidsearch title={Paidsearchdata.title} data={Paidsearchdata.data} />
       <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
       <Services title={OurServices.title} data={OurServices.data} colcount={6} />
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data} colcount={3} />
-      <Slider />
+      <Framework title={Frameworkdata.title} data={Frameworkdata.data} />
+      <section className="pb-[50px] lg:pb-[140px] border-b lg:mb-[70px]">
+        <Slider Platformsdata={Platformsdata} />
+        </section>
       <Results title={ResultsData.title} description={ResultsData.description} data={ResultsData.data} />
 
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data}  />
       <Testimonials bgcolor={'white'} />
 
       <GetInTouch

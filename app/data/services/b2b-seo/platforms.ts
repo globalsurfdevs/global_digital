@@ -3,46 +3,47 @@ import { assets } from "@/public/assets/assets";
 export const Platformsdata = [
     {
         id: 1,
-        image: assets.gtm,
+        image: assets.googlesearch,
 
     },
     {
         id: 2,
-        image: assets.amazonads,
+        image: assets.semrush,
 
     },
     {
         id:3,
-        image: assets.spyfu,
+        image: assets.ahrefs,
 
     },
 
     {
         id:4,
-        image: assets.googleanalatics,
+        image: assets.seranking,
 
     },
 
     {
         id:5,
-        image: assets.kissmetrics,
+        image: assets.googleanalatics,
 
     },
 
     {
         id:6,
-        image: assets.semrush,
+        image: assets.migfrog,
 
     },
 
     {
         id:7,
-        image: assets.msadv,
+        image: assets.ubersuggest,
 
     },
+
     {
-        id:7,
-        image: assets.googleads,
+        id:8,
+        image: assets.gtm,
 
     },
 

@@ -50,7 +50,7 @@ const page = () => {
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={'26ch'} />
       <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
       <Services title={OurServices.title} data={OurServices.data}  colcount={5} />
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data} colcount={3} />
+      <Framework title={Frameworkdata.title} data={Frameworkdata.data}  />
       <section className="pt-[50px]   lg:pt-[140px] lg:pb-[70px]">
       <Platforms title={Platformsdata.title} data={Platformsdata.data}   />
       </section>
