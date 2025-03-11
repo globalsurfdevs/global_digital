@@ -2,10 +2,18 @@
 import { motion } from "framer-motion";
 import PlatformSwiper from "./PlatformSwiper";
 import React from "react";
+interface PlatformsItem {
+  id: number;
+  image: string;
+}
 
-const Slider = () => {
+interface PlatformsSectionProps {
+  Platformsdata: PlatformsItem[];
+}
+
+const Slider: React.FC<PlatformsSectionProps> = ({ Platformsdata}) => {
   return (
-    <div className="pb-[50px] lg:pb-[140px] border-b lg:mb-[70px]">
+    <div >
       <div className="container mx-auto py-4">
         <div className="pt-[50px] lg:pt-[140px]  ">
           <motion.div
@@ -40,7 +48,7 @@ const Slider = () => {
           }, // Slide up and fade in
         }}
       >
-        <PlatformSwiper />
+        <PlatformSwiper Platformsdata={Platformsdata} />
       </motion.div>
 
     </div>

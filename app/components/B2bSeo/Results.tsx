@@ -5,26 +5,23 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 interface ResultsItem {
   id: number;
-  brand: string;
   growth: string;
   traffic: string;
   title: string;
-  dec: string;
   url: string;
 }
 
 interface ResultsSectionProps {
   description?: string;
-  nopt?: boolean;
   title: string;
   data: ResultsItem[];
 }
 
-const Results: React.FC<ResultsSectionProps> = ({ title, data,description,nopt }) => {
+const Results: React.FC<ResultsSectionProps> = ({ title, data,description ,}) => {
   return (
-    <div className="pb-[50px] lg:pb-[147px]">
+    <div className="">
       <div className="container mx-auto py-4">
-        <div className={`flex flex-col  ${nopt ? '' : 'pt-[50px] lg:pt-[69px]'}`}>
+        <div className="flex flex-col  pt-[50px] lg:pt-[69px]  ">
           <div className="mb-6 text-4xl lg:mb-[32px]">
             <motion.div
               initial="hidden"
@@ -40,7 +37,7 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data,description,nopt }
               }}
             >
               <h2 className="title-65">{title}</h2>
-              {description && <p className="text-19 fnt-lexend text-gray1 pt-6 pb-2 md:pb-6 max-w-[67ch]">{description}</p>}
+              {description && <p className="text-19 fnt-lexend text-gray1 pt-6 pb-2 md:pb-6 max-w-[70ch]">{description}</p>}
             </motion.div>
           </div>
           <motion.div
@@ -60,13 +57,11 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data,description,nopt }
               {data.map((result) => (
                 <div
                   key={result.id}
-                  className="group relative bg-black pb-0 text-white duration-300 ease-linear hover:cursor-pointer xl:pb-[57px]"
+                  className="group relative bg-black pb-0 text-white duration-300 ease-linear hover:cursor-pointer"
                 >
-                  <div className="flex flex-col bg-gray2 px-6 pb-6 pt-5  duration-300 ease-in-out group-hover:bg-primary  md:px-[50px] md:pb-8   md:pt-8 lg:pb-[50px] lg:pt-[37px]">
+                  <div className="flex flex-col bg-gray2 px-6 pb-6 pt-5  duration-300 ease-in-out group-hover:bg-primary  md:px-[50px] md:pb-8   md:pt-8 lg:pb-[50px] lg:pt-[60px]">
                     <div className="relative  flex flex-col  ">
-                      <h3 className="text-30 mb-[14px] leading-lh1p66">
-                        {result.brand}
-                      </h3>
+
                       <p className="title-65 mb-[15px] leading-lh0p76 text-white lg:mb-[28px] ">
                         {result.growth}
                       </p>
@@ -98,12 +93,10 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data,description,nopt }
                     </div>
                   </div>
                   <div className="flex flex-col px-6 pb-8 pt-6 text-white md:px-[50px] md:pt-8  ">
-                    <p className="text-30 mb-[10px] md:mb-[19px]">
+                    <p className="text-30">
                       {result.title}
                     </p>
-                    <p className={`text-19 fnt-lexend text-white  `}>
-                      {result.dec}
-                    </p>
+
                   </div>
 
                   <Link

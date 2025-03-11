@@ -13,12 +13,14 @@ interface PlatformsSectionProps {
   bgblack?: boolean;
   icontitle?: boolean;
   leftzero?: boolean;
+  btmpara?: string;
+  colm?: number;
   desc?: string;
   title: string;
   data: PlatformsItem[];
 }
 
-const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero,desc}) => {
+const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero,desc,btmpara, colm}) => {
   return (
     <div className={`container mx-auto py-4  ${leftzero ? 'relative' : ''}`}>
       <div className={`mb-[50px] lg:mb-[140px] flex flex-col gap-7 ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
@@ -54,7 +56,7 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
             }, // Slide up and fade in
           }}
         >
-          <div className="grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px] xl:grid-cols-4">
+          <div className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colm ? `xl:grid-cols-${colm}` : 'xl:grid-cols-4'}`}>
             {data.map((platform) => (
               <div
                 key={platform.id}
@@ -79,6 +81,9 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
               </div>
             ))}
           </div>
+          {btmpara &&
+            <p className="text-19 mb-0 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 max-w-[76ch] pt-4 md:pt:6 xl:pt-[60px]">{btmpara} </p>
+          }
         </motion.div>
       </div>
     </div>

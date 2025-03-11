@@ -3,12 +3,20 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Platforms } from "../../data/services/ppc-advertising/platforms";
+// import { Platformsdata } from "../../data/services/ppc-advertising/platforms";
 import Image from "next/image";
 import { Autoplay } from "swiper/modules";
+interface PlatformsItem {
+  id: number;
+  image: string;
+}
 
+interface PlatformsSectionProps {
+  Platformsdata: PlatformsItem[];
+}
 
-const PlatformSwiper = () => {
+const PlatformSwiper: React.FC<PlatformsSectionProps> = ({ Platformsdata}) => {
+
     const [isSmallScreen, setIsSmallScreen] = useState(false);
      // Ref for the next container (HTMLDivElement type)
       const nextContainerRef = useRef<HTMLDivElement | null>(null);
@@ -92,7 +100,7 @@ const PlatformSwiper = () => {
           }
         }}
       >
-        {Platforms.map((item, index) => (
+        {Platformsdata.map((item, index) => (
          <SwiperSlide key={index} className="">
          <div className="">
            <Image src={item.image} alt="image" className="" />

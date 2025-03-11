@@ -49,13 +49,13 @@ const page = () => {
       <HeroSection Bannerdata={BannerSection} hideslider={true} />
       <Platforms title={Platformsdata.title} data={Platformsdata.data} bgblack={true} leftzero={true} />
       <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} leftzero={true} />
-      <Services title={OurServices.title} data={OurServices.data} colcount={6}/>
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data} colcount={3} />
+      <Services title={OurServices.title} data={OurServices.data} colcount={6} hrcontent={true}/>
+      <Framework title={Frameworkdata.title} data={Frameworkdata.data} />
 
       <Results title={ResultsData.title} desc={ResultsData.desc} data={ResultsData.data} />
 
       <Testimonials bgcolor={'white'} bordertop={true} />
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} colm={4} />
 
       <GetInTouch
         data={Cta}
