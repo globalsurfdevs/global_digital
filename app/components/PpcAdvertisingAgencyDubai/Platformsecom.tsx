@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 interface PlatformsItem {
@@ -65,9 +64,9 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
               >
                 <div className= {`flex items-end gap-7 justify-between ${icontitle ? 'flex-col items-baseline ' : ''}`}>
 
-                  <h3 className= {`text-30 lg:text-[65px] transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''}`}>
+                  <p className= {`text-30 lg:text-[65px] transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''}`}>
                     {platform.title}
-                  </h3>
+                  </p>
                   <p className="text-font25 leading-[1.3] text-[#77787B] max-w-[13ch] text-right">{platform.rttitel}</p>
                 </div>
 
