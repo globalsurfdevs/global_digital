@@ -9,13 +9,15 @@ interface FrameworkItem {
 
 interface FrameworkSectionProps {
   title: string;
+  bgcolor?: string;
   description?: string;
+  colcount?: number;
   data: FrameworkItem[];
 }
 
-const Framework: React.FC<FrameworkSectionProps> = ({ title, data ,description}) => {
+const Framework: React.FC<FrameworkSectionProps> = ({ title, data ,description, bgcolor,colcount}) => {
   return (
-    <div className='bg-dgray '>
+    <div className={` ${bgcolor ? `${bgcolor}` : 'bg-dgray'}`}>
         <div className='container mx-auto py-4'>
             <div className='py-[50px] lg:py-[111px] flex flex-col '>
 
@@ -49,7 +51,7 @@ const Framework: React.FC<FrameworkSectionProps> = ({ title, data ,description})
                                     visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
                                 }}
                         >
-                        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-10'>
+                        <div className={`grid grid-cols-1 md:grid-cols-2  gap-6 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : '4'}` } >
                         {data.map((framework) => (
                                 <div
                                 key={framework.id}

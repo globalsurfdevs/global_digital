@@ -29,7 +29,13 @@ interface HeroSectionProps {
   Bannerdata: BannerSection[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider,bannerlogp ,maxchwidth}) => {
+const HeroSection: React.FC<HeroSectionProps> = ({
+  Bannerdata,
+  order,
+  hideslider,
+  bannerlogp,
+  maxchwidth,
+}) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Ref for the next container (HTMLDivElement type)
@@ -100,23 +106,32 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider
                 }, // Slide up and fade in
               }}
             >
-              <div className={`flex  justify-between border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] ${bannerlogp ? 'items-start' : 'items-end'}`}>
-                <div className={` max-w-[1000px]`} style={{ maxWidth: `${maxchwidth}ch` }}>
-                  <h1 className="title-80"> {herosection.title}</h1>
+              <div className={`  border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}  >
+                <div className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`} >
+                  <div className={` max-w-[1000px]`}
+                    style={{ maxWidth: `${maxchwidth}ch` }} >
+                    <h1 className="title-80"> {herosection.title}</h1>
+                  </div>
+                  {bannerlogp && (
+                    <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
+                      <Link
+                        href="https://www.google.com/partners/agency?id=5412848486"
+                        rel="nofollow"
+                        target="_blank"
+                      >
+                        {" "}
+                        <Image
+                          src={assets.googlepartner}
+                          alt="image"
+                          className="w-20 md:w-48"
+                          width={10}
+                          height={10}
+                        />
+                      </Link>
+                    </div>
+                  )}
                 </div>
-                {bannerlogp &&
-                <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
-                               <Link href="https://www.google.com/partners/agency?id=5412848486" rel="nofollow" target="_blank"> <Image
-                              src={assets.googlepartner}
-                                  alt="image"
-                                  className="w-20 md:w-48"
-                                  width={10}
-                                  height={10}
-                                  />
-                              </Link>
-              </div>
-              }
-                <div className="text-font19 text-gray1">{order}</div>
+                <div className="text-font19 text-gray1 text-right">{order}</div>
               </div>
             </motion.div>
             <motion.div
@@ -177,13 +192,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider
             isSmallScreen ? "container mx-auto py-2" : ""
           } custom-class`}
         >
-        {!hideslider &&  <div className="flex gap-5 bg-bglight  py-[17px]">
-            <div className="  flexcl600 container mr-0 lg:mr-[-15px]">
-              <div className="w-full  overflow-hidden">
-              <PerformanceSwiper />
+          {!hideslider && (
+            <div className="flex gap-5 bg-bglight  py-[17px]">
+              <div className="  flexcl600 container mr-0 lg:mr-[-15px]">
+                <div className="w-full  overflow-hidden">
+                  <PerformanceSwiper />
+                </div>
               </div>
             </div>
-          </div>}
+          )}
           {Bannerdata.map((herosection) => (
             <div className=" w-full bg-black ">
               <Image

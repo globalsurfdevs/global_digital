@@ -933,3 +933,6 @@ input[type="number"] {
   color: #77787B !important;
 }
 .innpding .secps{padding-inline: 0px !important;}
+.black-serv h2{color: #fff;}
+.black-serv .consu p{ color: #fff;}
+.hidegslider .perf-slide .swiper-slide:nth-last-child(1){display: none;}
