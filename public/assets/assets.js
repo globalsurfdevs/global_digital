@@ -238,6 +238,13 @@ import ssb3 from "../assets/services/btb/ss3.svg";
 import ssb4 from "../assets/services/btb/ss4.svg";
 import ssb5 from "../assets/services/btb/ss5.svg";
 import ssb6 from "../assets/services/btb/ss6.svg";
+import smmbanner from "../assets/services/social-media-management/smmbanner.jpg";
+import facebook from "../assets/services/social-media-management/facebook.svg";
+import instagram from "../assets/services/social-media-management/instagram.svg";
+import lin from "../assets/services/social-media-management/lin.svg";
+import snapchatic from "../assets/services/social-media-management/snapchat.svg";
+import x from "../assets/services/social-media-management/x.svg";
+
 
 
 
@@ -246,6 +253,12 @@ import ssb6 from "../assets/services/btb/ss6.svg";
 
 
 export const assets = {
+  x,
+  snapchatic,
+  lin,
+  instagram,
+  facebook,
+  smmbanner,
   b2banner,
   frb1,
   frb2,

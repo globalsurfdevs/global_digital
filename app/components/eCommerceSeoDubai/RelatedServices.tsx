@@ -11,14 +11,14 @@ interface FrameworkItem {
 
 interface FrameworkSectionProps {
   title: string;
-
+  description?: string;
   colcount?: number;
   data: FrameworkItem[];
 }
 
 const RelatedServices: React.FC<FrameworkSectionProps> = ({
   title,
-
+  description,
   data,
 
 }) => {
@@ -40,7 +40,16 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
           }}
         >
             <div className="pb-6 lg:pb-[40px]">
-            <h2 className="title-65 pb-6">{title}</h2>
+
+              {description &&
+                <div>
+              <h2 className="title-65 pb-6">{title}</h2>
+                <p className="text-gray1 text-font19 leading-[1.2] font-[500] fnt-lexend">{description}</p>
+                </div>
+              }
+              {!description &&
+              <h2 className="title-65 pb-6">{title}</h2>
+              }
             </div>
         </motion.div>
         <div className="serv-mn col-span-5  w-full text-font30 ">
@@ -59,7 +68,7 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
           }}
         >
           {data.map((framework) => (
-            <div  key={framework.id} className="sevsr border-t border-b border-[#dadada]  group gap-4 px-4 py-[10px] transition-all  duration-300 ease-in-out   hover:bg-[#dadada]  md:gap-7 lg:gap-10 lg:py-[28px]">
+            <div  key={framework.id} className="sevsr border-t border-b border-[#dadada]  group gap-4 px-0 py-6 md:px-4 md:py-[10px] transition-all  duration-300 ease-in-out   hover:bg-[#dadada]  md:gap-7 lg:gap-10 lg:py-[28px]">
               <div className="block md:flex">
                 <div className="justify-left mb-4 flex w-full items-center gap-[15px] md:mb-0 md:w-1/2 md:gap-[40px]  xxl:gap-[180px]">
                   <Image
@@ -76,7 +85,7 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between gap-[15px]  md:w-1/2 md:gap-[40px]  xxl:gap-[130px]">
-                  <p className="text-19 text-gray1 transition-all duration-300 " >
+                  <p className="text-19 text-gray1 transition-all duration-300 fnt-lexend" >
                   {framework.dec}
                   </p>
                   <div className="transition-transform duration-300 group-hover:translate-x-[-5px] md:group-hover:translate-x-[-30px]">

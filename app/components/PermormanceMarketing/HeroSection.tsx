@@ -23,7 +23,7 @@ interface BannerSection {
 }
 interface HeroSectionProps {
   order?: string;
-  maxchwidth?: string;
+  maxchwidth?: number;
   hideslider?: boolean;
   bannerlogp?: boolean;
   Bannerdata: BannerSection[];
@@ -101,7 +101,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ Bannerdata, order, hideslider
               }}
             >
               <div className={`flex  justify-between border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] ${bannerlogp ? 'items-start' : 'items-end'}`}>
-                <div className={` ${maxchwidth ? `max-w-[${maxchwidth}]` : 'max-w-[1000px]'}`}>
+                <div className={` max-w-[1000px]`} style={{ maxWidth: `${maxchwidth}ch` }}>
                   <h1 className="title-80"> {herosection.title}</h1>
                 </div>
                 {bannerlogp &&

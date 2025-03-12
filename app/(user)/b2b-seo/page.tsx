@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={'26ch'} />
+      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={23} />
       <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true}  leftzero={true} colcount={3} />
       <Services title={OurServices.title} data={OurServices.data}  colcount={5} hrcontent={true} />
       <Framework title={Frameworkdata.title} data={Frameworkdata.data} />

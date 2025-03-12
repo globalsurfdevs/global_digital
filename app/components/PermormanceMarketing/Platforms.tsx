@@ -23,7 +23,7 @@ interface PlatformsSectionProps {
 const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero ,hiddentitle, colcount}) => {
   return (
     <div className={`container mx-auto py-4 ${leftzero ? 'relative' : ''}`}>
-      <div className={`flex flex-col gap-7 ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
+      <div className={`flex flex-col gap-7 secps ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
         <div>
           <motion.div
             initial="hidden"
@@ -39,7 +39,7 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
             }}
           >
             {title &&
-              <h2 className={`title-65 uppercase ${bgblack ? 'text-white' : ''}`}>{title} </h2>
+              <h2 className={`title-65  ${bgblack ? 'text-white' : ''}`}>{title} </h2>
             }
           </motion.div>
         </div>
