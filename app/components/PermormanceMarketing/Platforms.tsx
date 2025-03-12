@@ -66,13 +66,13 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
                 <div className= {`flex items-center gap-7 ${icontitle ? 'flex-col items-baseline ' : ''}`}>
                   <Image
                     src={platform.icon}
-                    alt="icon"
+                    alt={platform.title || platform.dec}
                     className="w-[25px] lg:w-auto"
                   />
-
-                  <h3 className= {`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : '' }  ${hiddentitle ? 'hidden' : ''}`}>
-                    {platform.title}
-                  </h3>
+                  {!hiddentitle &&
+                    <h3 className={`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''} `}>
+                      {platform.title}
+                    </h3>}
                 </div>
 
                 <div className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? 'bg-white' : '' }`}>
