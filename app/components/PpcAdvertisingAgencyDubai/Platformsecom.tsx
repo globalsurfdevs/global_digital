@@ -67,7 +67,7 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
                   <p className= {`text-30 lg:text-[65px] transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''}`}>
                     {platform.title}
                   </p>
-                  <p className="text-font25 leading-[1.3] text-[#77787B] max-w-[13ch] text-right">{platform.rttitel}</p>
+                  <p className="text-font25 leading-[1.3] text-[#77787B] max-w-[15ch] text-right">{platform.rttitel}</p>
                 </div>
 
                 <div className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? 'bg-white' : '' }`}>

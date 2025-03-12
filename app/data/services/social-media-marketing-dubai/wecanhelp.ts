@@ -7,22 +7,27 @@ export const Wecanhelp = {
     {
       id: 1,
       icon: assets.help1,
-      dec: "Improve brand exposure and brand awareness",
+      dec: "Build Brand Recognition",
     },
     {
       id: 2,
       icon: assets.help2,
-      dec: "Boost traffic and engagement ",
+      dec: "Create Memorable Brand Experiences ",
     },
     {
       id: 3,
       icon: assets.help3,
-      dec: "Acquire new customers ",
+      dec: "Enhance Brand Consistency Across Channels ",
     },
     {
       id: 4,
       icon: assets.help4,
-      dec: "Lower ad costs",
+      dec: "Drive Customer Loyalty and Trust",
+    },
+    {
+      id: 5,
+      icon: assets.help4,
+      dec: "Position Your Brand for Long-term Success",
     },
   ],
 };
