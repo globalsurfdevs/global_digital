@@ -10,11 +10,12 @@ interface ServicesItem {
 interface ServicesSectionProps {
   title: string;
   colcount?: number;
+  description?: string;
   hrcontent?: boolean;
   data: ServicesItem[];
 }
 
-const Services: React.FC<ServicesSectionProps> = ({ title, data, colcount,hrcontent }) => {
+const Services: React.FC<ServicesSectionProps> = ({ title, data, colcount,hrcontent,description }) => {
   return (
     <div className="container mx-auto py-4">
       <motion.div
@@ -33,6 +34,7 @@ const Services: React.FC<ServicesSectionProps> = ({ title, data, colcount,hrcont
         <div className={`pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1  gap-5 lg:gap-10 gap-xl-0  ${colcount ? `xl:grid-cols-${colcount}` : 'xl:grid-cols-6'}`}>
           <div className="col-span-2 text-5xl">
             <h2 className="title-65 pb-2">{title}</h2>
+            <p className="text-19 text-[#77787B] pt-4 md:pt-6 xl:pt-14 max-w-[38ch] fnt-lexend">{description}</p>
           </div>
 
           <div className={`w-full  ps-0 xl:ps-12 text-font30 serv-mn ${colcount ? `col-span-${colcount-2}` : 'col-span-4'}`}>

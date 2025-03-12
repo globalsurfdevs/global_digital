@@ -16,14 +16,15 @@ interface PlatformsSectionProps {
   icontitle?: boolean;
   leftzero?: boolean;
   desc?: string;
+  fdesc?: string;
   title: string;
   data: PlatformsItem[];
 }
 
-const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero,desc}) => {
+const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero,desc,fdesc}) => {
   return (
     <div className={`container mx-auto py-4  ${leftzero ? 'relative' : ''}`}>
-      <div className={`  flex flex-col gap-7 ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
+      <div className={`  flex flex-col gap-7  ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
         <div>
           <motion.div
             initial="hidden"
@@ -82,6 +83,7 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
               </div>
             ))}
           </div>
+          <p className="text-gray1 text-font19 font-[500] leading-[1.2] max-w-[65ch] mt-4 md:mt-8 xl:mt-14 fnt-lexend">{fdesc}</p>
         </motion.div>
       </div>
     </div>

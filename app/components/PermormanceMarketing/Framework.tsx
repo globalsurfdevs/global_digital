@@ -9,10 +9,11 @@ interface FrameworkItem {
 
 interface FrameworkSectionProps {
   title: string;
+  description?: string;
   data: FrameworkItem[];
 }
 
-const Framework: React.FC<FrameworkSectionProps> = ({ title, data }) => {
+const Framework: React.FC<FrameworkSectionProps> = ({ title, data ,description}) => {
   return (
     <div className='bg-dgray '>
         <div className='container mx-auto py-4'>
@@ -27,8 +28,16 @@ const Framework: React.FC<FrameworkSectionProps> = ({ title, data }) => {
                     hidden: { opacity: 0, y: 50 }, // Start below and invisible
                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                   }}
-        >
-              <h2 className='title-65 pb-6 lg:pb-[58px]'>{title}</h2>
+            >
+              {description &&
+                <div>
+                <h2 className='title-65 pb-6 lg:pb-[25px]'>{title}</h2>
+                <p className="text-gray1 text-font19 leading-[1.2] font-[500] pb-6 lg:pb-[58px] fnt-lexend">{description}</p>
+                </div>
+              }
+              {!description &&
+                <h2 className='title-65 pb-6 lg:pb-[58px]'>{title}</h2>
+              }
                     </motion.div>
                 </div>
                 <motion.div
