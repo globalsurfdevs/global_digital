@@ -17,7 +17,7 @@ import {
 interface ServicesSectionProps {
   title?: string;
 }
-const Works: React.FC<ServicesSectionProps> = ({ title,  }) => {
+const Works: React.FC<ServicesSectionProps> = ({ title }) => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
 
   useEffect(() => {
@@ -71,52 +71,90 @@ const Works: React.FC<ServicesSectionProps> = ({ title,  }) => {
             }, // Slide up and fade in
           }}
         >
-          <div className="grid gap-5 lg:gap-[60px] md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3 lg:gap-[60px]">
             {portfolios.length > 0 ? (
               portfolios.map((item) => (
                 <div className="group">
-                <div
-                  className="tour-card relative min-h-[400px] lg:min-h-[580px] "
-                  key={item.id}
-                >
-                  <img
-                    src={item.bannerImage ?? item.coverImage}
-                    alt={item.companyName}
-                    width={500}
-                    height={350}
-                    className="absolute h-full   w-full object-cover duration-300 ease-linear"
-                  />
-                  <div className="relative h-full   w-full">
-                        <img
+                  <div
+                    className="tour-card relative min-h-[400px] lg:min-h-[580px] "
+                    key={item.id}
+                  >
+                    <img
+                      src={item.bannerImage ?? item.coverImage}
+                      alt={item.companyName}
+                      width={500}
+                      height={350}
+                      className="absolute h-full   w-full object-cover duration-300 ease-linear"
+                    />
+                    <div className="relative h-full   w-full">
+                      <img
                         src={item.logo}
                         alt={item.companyName}
                         width={147}
                         height={30}
-                        className=" absolute  bottom-8 right-8 z-[1] brightness-0 invert-[1]  object-cover duration-300 ease-linear"
+                        className=" absolute  bottom-8 right-8 z-[1] object-cover brightness-0  invert-[1] duration-300 ease-linear"
                       />
+                    </div>
+
+                    <Link
+                      href={
+                        item.section == "portfolio"
+                          ? `/portfolio/${formatLinkForPortfolio(item.companyName)}`
+                          : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
+                      }
+                      className="absolute left-0 top-0 z-10 h-full w-full"
+                    ></Link>
                   </div>
-
-
-                  <Link
-                    href={
-                      item.section == "portfolio"
-                        ? `/portfolio/${formatLinkForPortfolio(item.companyName)}`
-                        : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
-                    }
-                    className="absolute left-0 top-0 z-10 h-full w-full"
-                  ></Link>
+                  <div className="relative ">
+                    <div className="mt-4 border-b pb-6 transition-all duration-300   ease-in group-hover:border-primary lg:mt-7">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h3 className="text-font30 leading-[1.3] text-black">
+                            {item.companyName}
+                          </h3>
+                          <div className="flex gap-2">
+                            <p
+                              className={`text-gray1 transition-all   duration-300 ease-in group-hover:text-primary ${lexend.className}`}
+                            >
+                              {item.industry}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="transition-transform duration-300 group-hover:translate-x-[-5px] md:group-hover:translate-x-[-30px]">
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 36 35"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="transition-transform duration-300 group-hover:scale-110 brightness-0 group-hover:brightness-[1]"
+                          >
+                            <path
+                              d="M33.8105 1.7998L1.25781 33.7227"
+                              stroke="#E63E31"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            />
+                            <path
+                              d="M1.25781 1.7998H33.8105V33.0929"
+                              stroke="#E63E31"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <Link
+                      href={
+                        item.section == "portfolio"
+                          ? `/portfolio/${formatLinkForPortfolio(item.companyName)}`
+                          : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
+                      }
+                      className="absolute left-0 top-0 z-10 h-full w-full"
+                    ></Link>
+                  </div>
                 </div>
-                <div className="mt-7">
-                    <h3 className="text-font30 leading-[1.3] text-black">
-                      {item.companyName}
-                    </h3>
-                    <div className="flex gap-2">
-                      <p className={`text-gray1 group-hover:text-primary ${lexend.className}`}>
-                        {item.industry}
-                      </p>
-                    </div>
-                    </div>
-                    </div>
               ))
             ) : (
               <div>No projects available</div>
