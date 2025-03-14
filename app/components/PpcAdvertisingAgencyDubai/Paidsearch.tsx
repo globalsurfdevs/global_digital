@@ -61,16 +61,15 @@ const Paidsearch: React.FC<PaidsearchSectionProps> = ({ title, data }) => {
                 >
                   <div className="flex flex-col  px-6 pb-6 pt-5  duration-300 ease-in-out group-hover:bg-primary  md:px-[50px] md:pb-8   md:pt-8 lg:pb-[50px] lg:pt-[37px]">
                     <div className="relative  flex flex-col  ">
-                    <Image src= {result.icon} alt="image"  className="mb-8" />
-                     <p className="text-30 mb-[10px] md:mb-[33px]">
-                      {result.title}
-                    </p>
-                    <p className={`text-19 fnt-lexend text-white  `}>
-                      {result.dec}
-                    </p>
+                      <Image src={result.icon} alt="image" className="mb-8" />
+                      <h3 className="text-30 mb-[10px] md:mb-[33px]">
+                        {result.title}
+                      </h3>
+                      <p className={`text-19 fnt-lexend text-white  `}>
+                        {result.dec}
+                      </p>
                     </div>
                   </div>
-
                 </div>
               ))}
             </div>

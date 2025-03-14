@@ -20,6 +20,7 @@ interface BannerSection {
   title: string;
   image: string | StaticImageData;
   sub: su[];
+  heroAlt?: string;
 }
 interface HeroSectionProps {
   order?: string;
@@ -106,10 +107,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-              <div className={`  border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}  >
-                <div className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`} >
-                  <div className={` max-w-[1000px]`}
-                    style={{ maxWidth: `${maxchwidth}ch` }} >
+              <div
+                className={`  border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
+              >
+                <div
+                  className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
+                >
+                  <div
+                    className={` max-w-[1000px]`}
+                    style={{ maxWidth: `${maxchwidth}ch` }}
+                  >
                     <h1 className="title-80"> {herosection.title}</h1>
                   </div>
                   {bannerlogp && (
@@ -131,7 +138,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     </div>
                   )}
                 </div>
-                <div className="text-font19 text-gray1 text-right">{order}</div>
+                <div className="text-right text-font19 text-gray1">{order}</div>
               </div>
             </motion.div>
             <motion.div
@@ -206,7 +213,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <Image
                 src={herosection.image}
                 className="w-full"
-                alt=""
+                alt={herosection.heroAlt || "Banner image"}
                 width={1500}
                 height={700}
               />
