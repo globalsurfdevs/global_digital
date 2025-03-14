@@ -2,21 +2,24 @@ import React from "react";
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
-import Results from "../../components/SeoEcommerce/Result";
+import Results from "../../components/eCommerceSeoDubai/Result";
 import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/SeoEcommerce/Platformsecom";
+import Platformsecom from "../../components/eCommerceSeoDubai/Platformsecom";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
 import { BannerSection } from "../../data/services/seo-ecommerce/herosection";
 import { OurServices } from "../../data/services/seo-ecommerce/our-services";
 import { Frameworkdata } from "../../data/services/seo-ecommerce/framework";
+import { relatedservices } from "../../data/services/seo-ecommerce/relatedservices";
 import { ResultsData } from "../../data/services/seo-ecommerce/results";
 import { Platformsdata } from "../../data/services/seo-ecommerce/platforms";
 import { Platformsecomdata } from "../../data/services/seo-ecommerce/platformsecom";
 import { Wecanhelp } from "../../data/services/seo-ecommerce/wecanhelp";
 import { Cta } from "../../data/services/seo-ecommerce/cta";
-import { Faq } from "../../data/services/performance-marketing/faq";
+import { Faq } from "../../data/services/seo-ecommerce/faq";
+import Testimonials from "@/app/components/HomePage/Testimonials";
+import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
 interface Canonicals {
   canonical: string;
@@ -26,6 +29,7 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
+  robots: string;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -34,8 +38,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/performance-marketing-agency-dubai",
+      canonical: "https://www.globalsurf.ae",
     },
+    robots: "noindex, nofollow",
   };
 }
 const page = () => {
@@ -44,11 +49,13 @@ const page = () => {
       <HeroSection Bannerdata={BannerSection} hideslider={true} />
       <Platforms title={Platformsdata.title} data={Platformsdata.data} bgblack={true} leftzero={true} />
       <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} leftzero={true} />
-      <Services title={OurServices.title} data={OurServices.data} />
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data} colcount={3} />
+      <Services title={OurServices.title} data={OurServices.data} colcount={6} hrcontent={true}/>
+      <Framework title={Frameworkdata.title} data={Frameworkdata.data} />
 
       <Results title={ResultsData.title} desc={ResultsData.desc} data={ResultsData.data} />
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+
+      <Testimonials bgcolor={'white'} bordertop={true} />
+      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} colm={4} />
 
       <GetInTouch
         data={Cta}
@@ -57,6 +64,7 @@ const page = () => {
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
+      <RelatedServices title={relatedservices.title} data={relatedservices.data} colcount={3} />
     </div>
   );
 };

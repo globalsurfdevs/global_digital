@@ -918,3 +918,21 @@ input[type="number"] {
 @media (max-width: 991px) {
 .left0w{margin: 15px 0px;}
 }
+.tesmnialswiper .swiper-wrapper{align-items: center;}
+.tesmnialswiper .swiper-slide {
+  width: auto;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+}
+.tesmnialswiper .swiper-slide img {
+  max-height: 100px;
+  object-fit: contain;
+}
+.text-77787B {
+  color: #77787B !important;
+}
+.innpding .secps{padding-inline: 0px !important;}
+.black-serv h2{color: #fff;}
+.black-serv .consu p{ color: #fff;}
+.hidegslider .perf-slide .swiper-slide:nth-last-child(1){display: none;}

@@ -1,4 +1,6 @@
 import one from "@/public/assets/testimonials/Alissar.avif";
+import jadFarah from "@/public/assets/testimonials/jadfarah.jpeg";
+import ecc_logo from "@/public/assets/testimonials/ecc_logo.svg";
 import heshamabdeen from "@/public/assets/testimonials/heshamabdeen.png";
 import logoone from "@/public/assets/logos/abt-gulfcryo.svg";
 import logotwo from "@/public/assets/logos/abt-prestige.svg";
@@ -27,6 +29,16 @@ export const testimonials = [
     company: "Gulf Cryo",
     logo: logoone,
     alt: "Gulf Cryo Logo",
+  },
+  {
+    image: jadFarah,
+    name: "Jad Farah",
+    position: "Group Marketing Manager",
+    message:
+      "“Working with Global Surf was an exceptional experience. Their customer support was outstanding, making the entire process smooth and efficient. I highly recommend Global Surf for their expertise, dedication, and ability to bring a brand’s digital presence to life.”",
+    company: "ECC LLC",
+    logo: ecc_logo,
+    alt: "Engineering Contracting Company Logo",
   },
   {
     image: heshamabdeen,

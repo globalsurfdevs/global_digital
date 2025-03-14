@@ -182,8 +182,139 @@ import platform2 from "../assets/services/ecom/platform2.svg"
 import platform3 from "../assets/services/ecom/platform3.svg"
 import platform4 from "../assets/services/ecom/platform4.svg"
 import platform5 from "../assets/services/ecom/platform5.svg"
+import rs1 from "../assets/services/ecom/rs1.svg"
+import rs2 from "../assets/services/ecom/rs2.svg"
+import rs3 from "../assets/services/ecom/rs3.svg"
+import rs4 from "../assets/services/ecom/rs4.svg"
+import rs5 from "../assets/services/ecom/rs5.svg"
+import rs6 from "../assets/services/ecom/rs6.svg"
+import googlepartner from "../assets/services/ppc/googlepartner.svg";
+import ppcbanner from "../assets/services/ppc/ppcbanner.jpg";
+import serchic1 from "../assets/services/ppc/serchic1.svg";
+import serchic2 from "../assets/services/ppc/serchic2.svg";
+import serchic3 from "../assets/services/ppc/serchic3.svg";
+import wecan1 from "../assets/services/ppc/wecan1.svg";
+import wecan2 from "../assets/services/ppc/wecan2.svg";
+import wecan3 from "../assets/services/ppc/wecan3.svg";
+import wecan4 from "../assets/services/ppc/wecan4.svg";
+import rs7 from "../assets/services/ppc/rs7.svg";
+import rs8 from "../assets/services/ppc/rs8.svg";
+import rs9 from "../assets/services/ppc/rs9.svg";
+import rs10 from "../assets/services/ppc/rs10.svg";
+import rs11 from "../assets/services/ppc/rs11.svg";
+import rs12 from "../assets/services/ppc/rs12.svg";
+import gtm from "../assets/services/ppc/gtm.svg";
+import amazonads from "../assets/services/ppc/amazonads.svg";
+import spyfu from "../assets/services/ppc/spyfu.svg";
+import googleanalatics from "../assets/services/ppc/googleanalatics.svg";
+import kissmetrics from "../assets/services/ppc/kissmetrics.svg";
+import semrush from "../assets/services/ppc/semrush.svg";
+import msadv from "../assets/services/ppc/msadv.svg";
+import googleads from "../assets/services/ppc/googleads.svg";
+import pinterest from "../assets/services/socialmediamarketing/pinterest.svg";
+import snapchat from "../assets/services/socialmediamarketing/snapchat.svg";
+import youtube from "../assets/services/socialmediamarketing/youtube.svg";
+import bannersocial from "../assets/services/socialmediamarketing/bannersocial.jpg";
+import help1 from "../assets/services/socialmediamarketing/help1.svg";
+import help2 from "../assets/services/socialmediamarketing/help2.svg";
+import help3 from "../assets/services/socialmediamarketing/help3.svg";
+import help4 from "../assets/services/socialmediamarketing/help4.svg";
+import rs13 from "../assets/services/socialmediamarketing/rs13.svg";
+import rs14 from "../assets/services/socialmediamarketing/rs14.svg";
+import googlesearch from "../assets/services/ppc/googlesearch.svg";
+import migfrog from "../assets/services/ppc/migfrog.svg";
+import seranking from "../assets/services/ppc/seranking.svg";
+import ubersuggest from "../assets/services/ppc/ubersuggest.svg";
+import ahrefs from "../assets/services/ppc/ahrefs.svg";
+import b2banner from "../assets/services/btb/b2bbanner.jpg";
+import frb1 from "../assets/services/btb/fr1.svg";
+import frb2 from "../assets/services/btb/fr2.svg";
+import frb3 from "../assets/services/btb/fr3.svg";
+import frb4 from "../assets/services/btb/fr4.svg";
+import frb5 from "../assets/services/btb/fr5.svg";
+import ssb1 from "../assets/services/btb/ss1.svg";
+import ssb2 from "../assets/services/btb/ss2.svg";
+import ssb3 from "../assets/services/btb/ss3.svg";
+import ssb4 from "../assets/services/btb/ss4.svg";
+import ssb5 from "../assets/services/btb/ss5.svg";
+import ssb6 from "../assets/services/btb/ss6.svg";
+import smmbanner from "../assets/services/social-media-management/smmbanner.jpg";
+import facebook from "../assets/services/social-media-management/facebook.svg";
+import instagram from "../assets/services/social-media-management/instagram.svg";
+import lin from "../assets/services/social-media-management/lin.svg";
+import snapchatic from "../assets/services/social-media-management/snapchat.svg";
+import x from "../assets/services/social-media-management/x.svg";
+
+
+
+
+
+
+
 
 export const assets = {
+  x,
+  snapchatic,
+  lin,
+  instagram,
+  facebook,
+  smmbanner,
+  b2banner,
+  frb1,
+  frb2,
+  frb3,
+  frb4,
+  frb5,
+  ssb1,
+  ssb2,
+  ssb3,
+  ssb4,
+  ssb5,
+  ssb6,
+  ahrefs,
+  googlesearch,
+  migfrog,
+  seranking,
+  ubersuggest,
+  rs13,
+  rs14,
+  help1,
+  help2,
+  help3,
+  help4,
+  bannersocial,
+  pinterest,
+  youtube,
+  snapchat,
+  gtm,
+  amazonads,
+  spyfu,
+  googleanalatics,
+  kissmetrics,
+  semrush,
+  msadv,
+  googleads,
+  rs7,
+  rs8,
+  rs9,
+  rs10,
+  rs11,
+  rs12,
+  wecan1,
+  wecan2,
+  wecan3,
+  wecan4,
+  serchic1,
+  serchic2,
+  serchic3,
+  ppcbanner,
+  googlepartner,
+  rs1,
+  rs2,
+  rs3,
+  rs4,
+  rs5,
+  rs6,
   bannerec,
   healp1,
   healp2,
