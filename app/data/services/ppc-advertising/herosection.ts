@@ -4,6 +4,7 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.ppcbanner,
+    heroAlt: "PPC Advertising Services in Dubai ",
     title:
       "Impactful, Customized Campaigns by Expert PPC Advertising Agency in Dubai",
     sub: [
