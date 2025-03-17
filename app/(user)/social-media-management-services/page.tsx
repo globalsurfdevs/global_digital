@@ -2,23 +2,22 @@ import React from "react";
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
-import Results from "../../components/SocialMediaMarketingDubai/Results";
 import Platforms from "../../components/PermormanceMarketing/Platforms";
 import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import CtaBox from "../../components/PermormanceMarketing/CtaBox";
 
 
-import { ResultsData } from "../../data/services/social-media-marketing-dubai/results";
-import { BannerSection } from "../../data/services/social-media-marketing-dubai/herosection";
-import { OurServices } from "../../data/services/social-media-marketing-dubai/our-services";
-import { Frameworkdata } from "../../data/services/social-media-marketing-dubai/framework";
-import { relatedservices } from "../../data/services/social-media-marketing-dubai/relatedservices";
-import { Wecanhelp } from "../../data/services/social-media-marketing-dubai/wecanhelp";
-import { Platformsecomdata } from "../../data/services/social-media-marketing-dubai/platformsecom";
-import { Platformsdata } from "../../data/services/social-media-marketing-dubai/platforms";
-import { Cta } from "../../data/services/social-media-marketing-dubai/cta";
-import { Faq } from "../../data/services/social-media-marketing-dubai/faq";
+
+import { BannerSection } from "../../data/services/social-media-management/herosection";
+import { OurServices } from "../../data/services/social-media-management/our-services";
+import { Frameworkdata } from "../../data/services/social-media-management/framework";
+import { relatedservices } from "../../data/services/social-media-management/relatedservices";
+import { Wecanhelp } from "../../data/services/social-media-management/wecanhelp";
+import { Platformsdata } from "../../data/services/social-media-management/platforms";
+import { Platformsecomdata } from "../../data/services/social-media-management/platformsecom";
+import { Cta } from "../../data/services/social-media-management/cta";
+import { Faq } from "../../data/services/social-media-management/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
@@ -30,7 +29,7 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
-   robots: string;
+  robots: string;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,35 +40,31 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/social-media-management-services",
     },
-     robots: "index, follow",
+    robots: "index, follow",
   };
 }
-
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={26} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
-      <Services title={OurServices.title} data={OurServices.data}  colcount={5} />
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data}  />
-      <section className="pt-[50px]   lg:pt-[140px] lg:pb-[70px]">
-      <Platforms title={Platformsdata.title} data={Platformsdata.data}   />
+      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={21} />
+      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} leftzero={true} colcount={4} hiddentitle={true} />
+      <Services title={OurServices.title} description={OurServices.desc} data={OurServices.data}  colcount={5}  />
+      <Framework title={Frameworkdata.title} description={Frameworkdata.description} data={Frameworkdata.data} />
+      <section className="bg-black innpding">
+        <Platforms title={Platformsdata.title} data={Platformsdata.data} bgblack={true} />
       </section>
-      <Results title={ResultsData.title} description={ResultsData.description} data={ResultsData.data}   />
 
       <Testimonials bgcolor={'white'} />
-      <section className="pb-[50px]   lg:pb-[140px] ">
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+      <section className="mb-[50px] md:mb-[111px]">
+      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} fdesc={Platformsecomdata.fdesc} data={Platformsecomdata.data} />
       </section>
-
-      <GetInTouch
+      <CtaBox
         data={Cta}
-        redlast={true}
-        ctabbutton={"CONTACT US TO GET STARTED!"}
+        ctabbutton={"CONTACT US TODAY "}
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
+      <RelatedServices title={relatedservices.title} description={relatedservices.description}  data={relatedservices.data} colcount={3} />
     </div>
   );
 };
