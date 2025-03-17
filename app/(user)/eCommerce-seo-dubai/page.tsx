@@ -34,9 +34,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Data-Driven Performance Marketing Agency in Dubai | GS.Digital",
+    title: "eCommerce SEO Services Agency in Dubai | G.S Digital",
     description:
-      "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
+      "Global Surf Digital, a trusted eCommerce SEO agency, offers expert services to boost your store’s visibility and sales. Contact our consultants today! ",
     alternates: {
       canonical: "https://www.globalsurf.ae",
     },
@@ -47,15 +47,39 @@ const page = () => {
   return (
     <div>
       <HeroSection Bannerdata={BannerSection} hideslider={true} />
-      <Platforms title={Platformsdata.title} data={Platformsdata.data} bgblack={true} leftzero={true} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} leftzero={true} />
-      <Services title={OurServices.title} data={OurServices.data} colcount={6} hrcontent={true}/>
+      <Platforms
+        title={Platformsdata.title}
+        data={Platformsdata.data}
+        bgblack={true}
+        leftzero={true}
+      />
+      <Platforms
+        title={Wecanhelp.title}
+        data={Wecanhelp.data}
+        icontitle={true}
+        leftzero={true}
+      />
+      <Services
+        title={OurServices.title}
+        data={OurServices.data}
+        colcount={6}
+        hrcontent={true}
+      />
       <Framework title={Frameworkdata.title} data={Frameworkdata.data} />
 
-      <Results title={ResultsData.title} desc={ResultsData.desc} data={ResultsData.data} />
+      <Results
+        title={ResultsData.title}
+        desc={ResultsData.desc}
+        data={ResultsData.data}
+      />
 
-      <Testimonials bgcolor={'white'} bordertop={true} />
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} colm={4} />
+      <Testimonials bgcolor={"white"} bordertop={true} />
+      <Platformsecom
+        title={Platformsecomdata.title}
+        desc={Platformsecomdata.desc}
+        data={Platformsecomdata.data}
+        colm={4}
+      />
 
       <GetInTouch
         data={Cta}
@@ -64,7 +88,11 @@ const page = () => {
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title} data={relatedservices.data} colcount={3} />
+      <RelatedServices
+        title={relatedservices.title}
+        data={relatedservices.data}
+        colcount={3}
+      />
     </div>
   );
 };
