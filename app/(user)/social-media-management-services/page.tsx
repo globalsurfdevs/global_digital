@@ -34,13 +34,13 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Data-Driven Performance Marketing Agency in Dubai | GS.Digital",
+    title: "Social Media Management Agency in Dubai | G.S Digital  ",
     description:
-      "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
+      "Global Surf Digital is your trusted social media management agency in Dubai. We create engaging content and manage your platforms for maximum growth.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/social-media-management-services",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {

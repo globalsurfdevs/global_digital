@@ -2,12 +2,14 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface ExpertiseItem {
   id: number;
   icon: string;
   title: string;
   desc: string;
+  url?: string;
 }
 
 interface ExpertiseSectionProps {
@@ -54,6 +56,12 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
           >
             {/* Item 1 */}
             {data.map((expertise) => (
+               <div
+               key={expertise.id}>
+                {expertise.url ? (
+               <div
+               key={expertise.id}>
+              <Link href={`${expertise.url}`}>
               <div
                 key={expertise.id}
                 className="group flex flex-col justify-between gap-3 border p-5 transition-all duration-500 hover:bg-primary md:h-[300px]  lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
@@ -83,7 +91,45 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
                     </p>
                   </div>
                 </div>
-              </div>
+                </div>
+                </Link>
+                </div>
+                ) : (
+                  <div
+                  key={expertise.id}>
+                 <div
+                   key={expertise.id}
+                   className="group flex flex-col justify-between gap-3 border p-5 transition-all duration-500 hover:bg-primary md:h-[300px]  lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                 >
+                   {/* Image Wrapper */}
+                   <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
+                     <Image
+                       src={expertise.icon}
+                       alt={expertise.title}
+                       className="fltrcls transition duration-500 group-hover:invert-0"
+                     />
+                   </div>
+
+                   {/* Content */}
+                   <div>
+                     {/* Title */}
+                     <h3 className="text-30  titlesp transition-colors duration-300 group-hover:text-white">
+                       {expertise.title}
+                     </h3>
+
+                     <div className=" overflow-hidden">
+                       <p
+                         className="text-19 fnt-lexend cntsmd hided-content max-h-0 w-[102%] overflow-hidden pt-2 text-white
+                                   opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100"
+                       >
+                         {expertise.desc}
+                       </p>
+                     </div>
+                   </div>
+                   </div>
+                   </div>
+                )}
+                </div>
             ))}
           </motion.div>
         </div>
