@@ -42,9 +42,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Looking for a pay per click advertising agency in Dubai? Our expert PPC services deliver targeted campaigns to maximize ROI. Contact us today! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae",
+      canonical: "https://www.globalsurf.ae/ppc-advertising-agency-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {
