@@ -32,7 +32,7 @@ export const Wecanhelp = {
       id:5,
       icon: assets.frb5,
       title:"Maximize ROI",
-      dec: "Achieve long-term growth with cost-effective SEO strategies.",
+      dec: "Achieve long-term growth with <a href='https://www.globalsurf.ae/seo-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>cost-effective SEO strategies.</a>",
     },
   ],
 };

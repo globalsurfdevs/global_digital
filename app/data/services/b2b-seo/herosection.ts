@@ -4,6 +4,7 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.b2banner,
+    heroAlt:"B2B SEO Services in Dubai",
     title:
       "Drive Growth & Dominate Your Industry with Expert B2B SEO Solutions in Dubai ",
     sub: [

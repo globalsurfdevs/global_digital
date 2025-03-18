@@ -39,7 +39,8 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
             }}
           >
             <h2 className={`title-65 max-w-[31ch] mb-6 md:mb-10 ${bgblack ? 'text-white' : ''}`}>{title} </h2>
-            <p className="text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 max-w-[76ch] ">{desc} </p>
+            <p className="text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 max-w-[76ch] "
+            dangerouslySetInnerHTML={{ __html: desc || '' }}></p>
           </motion.div>
         </div>
 
