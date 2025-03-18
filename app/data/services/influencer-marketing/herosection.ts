@@ -3,7 +3,7 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    image: assets.bannersocial,
+    image: assets.infbanner,
     title:
       "Effective Influencer Campaigns by Expert Influencer Marketing Agency in Dubai ",
     sub: [

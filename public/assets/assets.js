@@ -251,6 +251,18 @@ import str2 from "../assets/services/branding/str2.svg";
 import str3 from "../assets/services/branding/str3.svg";
 import str4 from "../assets/services/branding/str4.svg";
 import str5 from "../assets/services/branding/str5.svg";
+import infbanner from "../assets/services/influencer-marketing/infbanner.jpg";
+import we1 from "../assets/services/influencer-marketing/we1.svg";
+import we2 from "../assets/services/influencer-marketing/we2.svg";
+import we3 from "../assets/services/influencer-marketing/we3.svg";
+import we4 from "../assets/services/influencer-marketing/we4.svg";
+import sm1 from "../assets/services/influencer-marketing/sm1.svg";
+import sm2 from "../assets/services/influencer-marketing/sm2.svg";
+import sm3 from "../assets/services/influencer-marketing/sm3.svg";
+import sm4 from "../assets/services/influencer-marketing/sm4.svg";
+import sm5 from "../assets/services/influencer-marketing/sm5.svg";
+import sm6 from "../assets/services/influencer-marketing/sm6.svg";
+import sm7 from "../assets/services/influencer-marketing/sm7.svg";
 
 
 
@@ -262,6 +274,18 @@ import str5 from "../assets/services/branding/str5.svg";
 
 
 export const assets = {
+  sm1,
+  sm2,
+  sm3,
+  sm4,
+  sm5,
+  sm6,
+  sm7,
+  infbanner,
+  we1,
+  we2,
+  we3,
+  we4,
   bannerbrandig,
   str1,
   str2,
