@@ -1,25 +1,25 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Framework from "../../components/PermormanceMarketing/Framework";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/eCommerceSeoDubai/Platformsecom";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import Results from "../../components/PermormanceMarketing/Results";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Framework from "../../../components/PermormanceMarketing/Framework";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import Platformsecom from "../../../components/eCommerceSeoDubai/Platformsecom";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import Results from "../../../components/PermormanceMarketing/Results";
 
 
 
-import { ResultsData } from "../../data/services/b2b-seo/results";
-import { BannerSection } from "../../data/services/b2b-seo/herosection";
-import { OurServices } from "../../data/services/b2b-seo/our-services";
-import { Frameworkdata } from "../../data/services/b2b-seo/framework";
-import { relatedservices } from "../../data/services/b2b-seo/relatedservices";
-import { Wecanhelp } from "../../data/services/b2b-seo/wecanhelp";
-import { Platformsecomdata } from "../../data/services/b2b-seo/platformsecom";
-import { Cta } from "../../data/services/b2b-seo/cta";
-import { Faq } from "../../data/services/b2b-seo/faq";
-import { Platformsdata } from "../../data/services/b2b-seo/platforms";
+import { ResultsData } from "../../../data/services/b2b-seo/results";
+import { BannerSection } from "../../../data/services/b2b-seo/herosection";
+import { OurServices } from "../../../data/services/b2b-seo/our-services";
+import { Frameworkdata } from "../../../data/services/b2b-seo/framework";
+import { relatedservices } from "../../../data/services/b2b-seo/relatedservices";
+import { Wecanhelp } from "../../../data/services/b2b-seo/wecanhelp";
+import { Platformsecomdata } from "../../../data/services/b2b-seo/platformsecom";
+import { Cta } from "../../../data/services/b2b-seo/cta";
+import { Faq } from "../../../data/services/b2b-seo/faq";
+import { Platformsdata } from "../../../data/services/b2b-seo/platforms";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
