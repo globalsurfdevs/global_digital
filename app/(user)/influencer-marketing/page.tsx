@@ -4,23 +4,20 @@ import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
 import Results from "../../components/SocialMediaMarketingDubai/Results";
 import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
 
 import { ResultsData } from "../../data/services/influencer-marketing/results";
 import { BannerSection } from "../../data/services/influencer-marketing/herosection";
 import { OurServices } from "../../data/services/influencer-marketing/our-services";
 import { Frameworkdata } from "../../data/services/influencer-marketing/framework";
-import { relatedservices } from "../../data/services/social-media-marketing-dubai/relatedservices";
+import { relatedservices } from "../../data/services/influencer-marketing/relatedservices";
 import { Wecanhelp } from "../../data/services/influencer-marketing/wecanhelp";
-import { Platformsecomdata } from "../../data/services/social-media-marketing-dubai/platformsecom";
 import { Platformsdata } from "../../data/services/influencer-marketing/platforms";
-import { Cta } from "../../data/services/social-media-marketing-dubai/cta";
-import { Faq } from "../../data/services/social-media-marketing-dubai/faq";
-import Testimonials from "@/app/components/HomePage/Testimonials";
+import { Cta } from "../../data/services/influencer-marketing/cta";
+import { Faq } from "../../data/services/influencer-marketing/faq";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import CtaBox from "@/app/components/PermormanceMarketing/CtaBox";
 
 interface Canonicals {
   canonical: string;
@@ -60,19 +57,23 @@ const page = () => {
       </div>
       <Results title={ResultsData.title} description={ResultsData.description} data={ResultsData.data}   />
 
-      <Testimonials bgcolor={'white'} />
-      <section className="pb-[50px]   lg:pb-[140px] ">
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
-      </section>
+      <div className=" pt-[50px] lg:pt-[140px]">
+      <RelatedServices
+        title={relatedservices.title}
+        data={relatedservices.data}
+        bgcolor="black"
+        text="white"
+        colcount={3}
+        />
+        </div>
 
-      <GetInTouch
+        <CtaBox
         data={Cta}
         redlast={true}
-        ctabbutton={"CONTACT US TO GET STARTED!"}
+        ctabbutton={"LET’S TALK GROWTH "}
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
     </div>
   );
 };
