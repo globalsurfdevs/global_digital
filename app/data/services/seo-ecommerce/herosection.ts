@@ -5,7 +5,7 @@ export const BannerSection = [
     id: 1,
     image: assets.bannerec,
     title:
-      "Boost Your Online Store’s Visibility with Expert eCommerce SEO in Dubai",
+      "Boost Your Online Store's Visibility with Expert eCommerce SEO Services in Dubai",
     sub: [
       {
         stitle: "OUR APPROACH",
