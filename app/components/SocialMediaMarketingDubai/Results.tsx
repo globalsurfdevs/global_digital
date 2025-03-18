@@ -62,8 +62,9 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data,description ,}) =>
                   <div className="flex flex-col bg-gray2 px-6 pb-6 pt-5  duration-300 ease-in-out group-hover:bg-primary  md:px-[50px] md:pb-8   md:pt-8 lg:pb-[50px] lg:pt-[60px]">
                     <div className="relative  flex flex-col  ">
 
-                      <p className="title-65 mb-[15px] leading-lh0p76 text-white lg:mb-[28px] ">
-                        {result.growth}
+
+                      <p className={`title-65 leading-lh0p76 text-white ${result.traffic ? 'mb-[15px] lg:mb-[28px]' : ''}`}>
+                      {result.growth}
                       </p>
                       <p className={`fnt-lexend text-font25  leading-lh1p26`}>
                         {result.traffic}

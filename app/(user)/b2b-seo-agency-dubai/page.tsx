@@ -1,25 +1,25 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import Framework from "../../../components/PermormanceMarketing/Framework";
-import Platforms from "../../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../../components/eCommerceSeoDubai/Platformsecom";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
-import Results from "../../../components/PermormanceMarketing/Results";
+import HeroSection from "../../components/PermormanceMarketing/HeroSection";
+import Services from "../../components/PermormanceMarketing/Services";
+import Framework from "../../components/PermormanceMarketing/Framework";
+import Platforms from "../../components/PermormanceMarketing/Platforms";
+import Platformsecom from "../../components/eCommerceSeoDubai/Platformsecom";
+import FAQ from "../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import Results from "../../components/PermormanceMarketing/Results";
 
 
 
-import { ResultsData } from "../../../data/services/b2b-seo/results";
-import { BannerSection } from "../../../data/services/b2b-seo/herosection";
-import { OurServices } from "../../../data/services/b2b-seo/our-services";
-import { Frameworkdata } from "../../../data/services/b2b-seo/framework";
-import { relatedservices } from "../../../data/services/b2b-seo/relatedservices";
-import { Wecanhelp } from "../../../data/services/b2b-seo/wecanhelp";
-import { Platformsecomdata } from "../../../data/services/b2b-seo/platformsecom";
-import { Cta } from "../../../data/services/b2b-seo/cta";
-import { Faq } from "../../../data/services/b2b-seo/faq";
-import { Platformsdata } from "../../../data/services/b2b-seo/platforms";
+import { ResultsData } from "../../data/services/b2b-seo/results";
+import { BannerSection } from "../../data/services/b2b-seo/herosection";
+import { OurServices } from "../../data/services/b2b-seo/our-services";
+import { Frameworkdata } from "../../data/services/b2b-seo/framework";
+import { relatedservices } from "../../data/services/b2b-seo/relatedservices";
+import { Wecanhelp } from "../../data/services/b2b-seo/wecanhelp";
+import { Platformsecomdata } from "../../data/services/b2b-seo/platformsecom";
+import { Cta } from "../../data/services/b2b-seo/cta";
+import { Faq } from "../../data/services/b2b-seo/faq";
+import { Platformsdata } from "../../data/services/b2b-seo/platforms";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
@@ -47,13 +47,13 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Partner with Dubai’s top B2B SEO agency for tailored SEO services that drive results. Increase traffic, generate leads, & grow your business with us.  Call us!",
     alternates: {
-      canonical: "https://www.globalsurf.ae/seo-agency-dubai/b2b-seo-services",
+      canonical: "https://www.globalsurf.ae/b2b-seo-agency-dubai",
     },
     robots: "index, follow",
     openGraph: {
       title: "B2B  SEO Agency in Dubai | B2B SEO Services | GS Digital",
       site_name: "Global Surf Digital Media",
-      url: "https://www.globalsurf.ae/seo-agency-dubai/b2b-seo-services",
+      url: "https://www.globalsurf.ae/b2b-seo-agency-dubai",
       description:
         "Boost your B2B business with expert SEO services in Dubai. Global Surf Digital helps companies increase visibility, generate high-quality leads, and dominate search rankings with data-driven SEO strategies. Get a free consultation today!",
 
