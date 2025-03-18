@@ -80,8 +80,8 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
                 </div>
 
                 <div>
-                  <p className={` ${bgblack ? 'group-hover:text-gray-300' : ''}  ${hiddentitle ? 'text-30 transition-colors ' : 'text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700'}`}>
-                    {platform.dec}
+                  <p className={` ${bgblack ? 'group-hover:text-gray-300' : ''}  ${hiddentitle ? 'text-30 transition-colors ' : 'text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700'}`}
+                  dangerouslySetInnerHTML={{ __html: platform.dec }}>
                   </p>
                 </div>
               </div>

@@ -38,9 +38,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Global Surf Digital, a trusted eCommerce SEO agency, offers expert services to boost your store’s visibility and sales. Contact our consultants today! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae",
+      canonical: "https://www.globalsurf.ae/ecommerce-seo-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {

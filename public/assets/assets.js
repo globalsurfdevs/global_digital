@@ -244,6 +244,14 @@ import instagram from "../assets/services/social-media-management/instagram.svg"
 import lin from "../assets/services/social-media-management/lin.svg";
 import snapchatic from "../assets/services/social-media-management/snapchat.svg";
 import x from "../assets/services/social-media-management/x.svg";
+import bannerbrandig from "../assets/services/branding/bannerbrandig.jpg";
+import str1 from "../assets/services/branding/str1.svg";
+import str2 from "../assets/services/branding/str2.svg";
+import str3 from "../assets/services/branding/str3.svg";
+import str4 from "../assets/services/branding/str4.svg";
+import str5 from "../assets/services/branding/str5.svg";
+
+
 
 
 
@@ -253,6 +261,12 @@ import x from "../assets/services/social-media-management/x.svg";
 
 
 export const assets = {
+  bannerbrandig,
+  str1,
+  str2,
+  str3,
+  str4,
+  str5,
   x,
   snapchatic,
   lin,
