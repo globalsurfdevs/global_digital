@@ -16,7 +16,7 @@ export const AreaExpertise = {
       icon: assets.social_media_marketing,
       title: "Social Media Marketing",
       desc: "We combine social media’s targeting options to engage with your audience at every stage of the funnel to reach your business objectives.",
-      url:""
+      url:"/social-media-marketing-dubai"
     },
     {
       id: 3,
