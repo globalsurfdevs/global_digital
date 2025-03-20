@@ -33,19 +33,35 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
+  openGraph: {
+    title: string;
+    site_name: string;
+    url: string;
+    description: string;
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Data-Driven Performance Marketing Agency in Dubai | GS.Digital",
+    title: "B2B SEO Agency in Dubai | B2B SEO Services | GS Digital",
     description:
-      "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
+      "Partner with Dubai’s top B2B SEO agency for tailored SEO services that drive results. Increase traffic, generate leads, & grow your business with us.  Call us!",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/b2b-seo-agency-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
+    openGraph: {
+      title: "B2B  SEO Agency in Dubai | B2B SEO Services | GS Digital",
+      site_name: "Global Surf Digital Media",
+      url: "https://www.globalsurf.ae/b2b-seo-agency-dubai",
+      description:
+        "Boost your B2B business with expert SEO services in Dubai. Global Surf Digital helps companies increase visibility, generate high-quality leads, and dominate search rankings with data-driven SEO strategies. Get a free consultation today!",
+
+    },
   };
 }
+
+
 const page = () => {
   return (
     <div>

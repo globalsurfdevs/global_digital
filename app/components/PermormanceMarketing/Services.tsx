@@ -46,9 +46,9 @@ const Services: React.FC<ServicesSectionProps> = ({ title, data, colcount,hrcont
                     {String(service.id).padStart(2, "0")}
                   </p>
                   <div className="consu relative">
-                    <p className="text-30 transition-all duration-300 group-hover:text-primary">
+                    <h3 className="text-30 transition-all duration-300 group-hover:text-primary">
                       {service.title}
-                    </p>
+                    </h3>
                   {/* Hover Description */}
                   {hrcontent &&
                   <div className="     h-0 group-hover:h-[30px] ">

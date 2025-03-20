@@ -11,6 +11,8 @@ interface FrameworkItem {
 
 interface FrameworkSectionProps {
   title: string;
+  bgcolor?: string;
+  text?: string;
   description?: string;
   colcount?: number;
   data: FrameworkItem[];
@@ -18,12 +20,14 @@ interface FrameworkSectionProps {
 
 const RelatedServices: React.FC<FrameworkSectionProps> = ({
   title,
+  bgcolor,
+  text,
   description,
   data,
 
 }) => {
   return (
-    <div className="bg-dgray ">
+    <div className={` ${bgcolor ? `bg-${bgcolor}` : "bg-dgray"}`}>
       <div className="container mx-auto ">
         <div className="py-[50px] lg:py-[111px]">
         <motion.div
@@ -43,12 +47,12 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
 
               {description &&
                 <div>
-              <h2 className="title-65 pb-6">{title}</h2>
+              <h2 className={`title-65 pb-6 ${text ? 'text-white' : ''}`}>{title}</h2>
                 <p className="text-gray1 text-font19 leading-[1.2] font-[500] fnt-lexend">{description}</p>
                 </div>
               }
               {!description &&
-              <h2 className="title-65 pb-6">{title}</h2>
+              <h2 className={`title-65 pb-6 ${text ? 'text-white':''}`}>{title}</h2>
               }
             </div>
         </motion.div>
@@ -78,8 +82,8 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
                     alt="Boost Image"
                     className=" wsd2 transition-all duration-100 ease-in-out"
                   />
-                  <div className="consu">
-                    <p className="text-small-30 transition-all duration-300 max-w-[20ch]"  dangerouslySetInnerHTML={{ __html: framework.title }}>
+                  <div className={` ${text ? '' :'consu'}`}>
+                    <p className={`text-small-30 transition-all duration-300 max-w-[20ch] ${text ? `text-${text} ` :''}`}  dangerouslySetInnerHTML={{ __html: framework.title }}>
 
                     </p>
                   </div>
