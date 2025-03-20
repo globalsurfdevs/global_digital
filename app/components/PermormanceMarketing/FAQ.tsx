@@ -62,9 +62,9 @@ const FAQ: React.FC<PartnerListProps> = ({ data }) => {
                   </h3>
                   <Collapse isOpened={open === index}>
                     <div className="collapse-item pt-3 lg:pt-[22px]">
-                      <h4 className="text-19 fnt-lexend text-gray1 ">
+                      <p className="text-19 fnt-lexend text-gray1 ">
                         {item.description}
-                      </h4>
+                      </p>
                     </div>
                   </Collapse>
                 </div>
