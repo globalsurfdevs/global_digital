@@ -8,7 +8,7 @@ export const AreaExpertise = {
       icon: assets.sm_strategy,
       title: "Branding   ",
       desc: "Building a cohesive brand that tells your story, captures attention, and creates a lasting impression. ",
-      url: "branding-agency-in-dubai",
+      url: "branding-agency-dubai",
     },
     {
       id: 2,
