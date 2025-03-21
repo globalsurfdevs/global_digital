@@ -8,7 +8,6 @@ import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformse
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
-
 import { BannerSection } from "../../data/services/branding-agency-dubai/herosection";
 import { OurServices } from "../../data/services/branding-agency-dubai/our-services";
 import { Frameworkdata } from "../../data/services/branding-agency-dubai/framework";
@@ -44,16 +43,15 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Dubai’s best creative branding agency, Global Surf Digital, offers customized branding services to drive engagement & growth. Click here to learn more",
     alternates: {
-      canonical: "htthttps://www.globalsurf.ae/branding-agency-in-dubai",
+      canonical: "htthttps://www.globalsurf.ae/branding-agency-dubai",
     },
     robots: "index, follow",
     openGraph: {
       title: "Branding Agency Dubai | Creative Branding Company | GS Digital",
       site_name: "Global Surf Digital Media",
-      url: "htthttps://www.globalsurf.ae/branding-agency-in-dubai",
+      url: "htthttps://www.globalsurf.ae/branding-agency-dubai",
       description:
         "Elevate your brand with GS Digital, the Branding Agency Dubai trusts. As a Creative Branding Company, we deliver unique and impactful branding solutions!",
-
     },
   };
 }
@@ -61,18 +59,43 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={3} />
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data} bgcolor="bg-[#fff]" colcount={3} />
-      <section className="bg-black black-serv">
-      <Services title={OurServices.title} data={OurServices.data} hrcontent={true} colcount={5} />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={27}
+      />
+      <Platforms
+        title={Wecanhelp.title}
+        data={Wecanhelp.data}
+        icontitle={true}
+        hiddentitle={true}
+        leftzero={true}
+        colcount={3}
+      />
+      <Framework
+        title={Frameworkdata.title}
+        data={Frameworkdata.data}
+        bgcolor="bg-[#fff]"
+        colcount={3}
+      />
+      <section className="black-serv bg-black">
+        <Services
+          title={OurServices.title}
+          data={OurServices.data}
+          hrcontent={true}
+          colcount={5}
+        />
       </section>
       <section className="pt-[50px]   lg:pt-[140px] ">
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+        <Platformsecom
+          title={Platformsecomdata.title}
+          desc={Platformsecomdata.desc}
+          data={Platformsecomdata.data}
+        />
       </section>
-    <Works title="Our Works"/>
+      <Works title="Our Works" />
 
-      <Testimonials  />
+      <Testimonials />
 
       <GetInTouch
         data={Cta}
@@ -81,7 +104,11 @@ const page = () => {
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
+      <RelatedServices
+        title={relatedservices.title}
+        data={relatedservices.data}
+        colcount={3}
+      />
     </div>
   );
 };
