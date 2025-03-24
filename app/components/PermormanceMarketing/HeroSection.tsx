@@ -12,12 +12,16 @@ const lexend = Lexend({
   weight: ["300", "400", "500", "600", "700"],
 });
 interface su {
-  stitle: string;
-  desc: string;
+  stitle?: string;
+
+  desc?: string;
 }
 interface BannerSection {
   id: number;
   title: string;
+  subtitle?: string;
+  buttontitle?: string;
+  buttonurl?: string;
   image: string | StaticImageData;
   sub: su[];
   heroAlt?: string;
@@ -118,6 +122,64 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
                     <h1 className="title-80"> {herosection.title}</h1>
+                    <h3 className="text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
+                      {herosection.subtitle}
+                    </h3>
+                    {herosection.buttontitle && (
+                      <button
+                        className="z-2 z-1 group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
+                before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
+                after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mb-[45px]
+                "
+                      >
+                        <div className="relative">
+                          <p
+                            className={`duration-200" text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                          >
+                            {herosection.buttontitle}
+                          </p>
+                          <Link
+                            href={herosection.buttonurl || "#"}
+                            className="absolute top-0 z-[1] h-full w-full"
+                          ></Link>
+                        </div>
+                        <svg
+                          width="10"
+                          height="10"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="duration-200 ease-in-out group-hover:scale-125 "
+                        >
+                          <g clipPath="url(#clip0_65_58)">
+                            <path
+                              d="M18.7892 1.2749L0.699219 19.0149"
+                              stroke="#E53F30"
+                              strokeWidth="3"
+                              strokeMiterlimit="10"
+                              className="group-hover:stroke-black"
+                            />
+                            <path
+                              d="M0.699219 1.2749H18.7892V18.6649"
+                              stroke="#E53F30"
+                              strokeWidth="3"
+                              strokeMiterlimit="10"
+                              className="group-hover:stroke-black"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_65_58">
+                              <rect
+                                width="19.79"
+                                height="19.45"
+                                fill="white"
+                                transform="translate(0 0.274902)"
+                              />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </button>
+                    )}
                   </div>
                   {bannerlogp && (
                     <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
@@ -155,26 +217,30 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               }}
             >
               <div>
-                {herosection.sub.map((su, index) => (
-                  <div
-                    key={index}
-                    className="grid grid-cols-1 py-[50px] lg:grid-cols-2 lg:py-[142px] "
-                  >
-                    <div className="col-span-1 mb-2 lg:mb-0">
-                      <div className="flex items-center gap-2">
-                        <h2 className="text-30 leading-[1.5]">{su.stitle}</h2>
-
-                        <div className="h-5 w-5 bg-primary"></div>
+                {herosection.sub.map(
+                  (su, index) =>
+                    su.stitle &&
+                    su.desc && (
+                      <div
+                        key={index}
+                        className="grid grid-cols-1 py-[50px] lg:grid-cols-2 lg:py-[142px] "
+                      >
+                        <div className="col-span-1 mb-2 lg:mb-0">
+                          <div className="flex items-center gap-2">
+                            <h2 className="text-30 leading-[1.5]">
+                              {su.stitle}
+                            </h2>
+                            <div className="h-5 w-5 bg-primary"></div>
+                          </div>
+                        </div>
+                        <div className="ms-0 text-[19px] text-gray1 ">
+                          <p className={`text-font19 ${lexend.className}`}>
+                            {su.desc}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-
-                    <div className="ms-0 text-[19px] text-gray1 ">
-                      <p className={`text-font19 ${lexend.className}`}>
-                        {su.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                    ),
+                )}
               </div>
             </motion.div>
           </div>

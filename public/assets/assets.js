@@ -141,6 +141,7 @@ import marketing_bnr from "../assets/banner/Marketing.jpg";
 import performance_bnr from "../assets/banner/Performance.jpg";
 import social_bnr from "../assets/banner/Social_media.jpg";
 import web_bnr from "../assets/banner/Web_development.jpg";
+import ind_construction from "../images/Ind-construction/image1.png";
 
 import boostseo1 from "../assets/icons/boostseo1.svg";
 import boostseo2 from "../assets/icons/boostseo2.svg";
@@ -172,22 +173,22 @@ import casestudy from "../assets/casestudy.svg";
 
 import lightlogo from "../assets/gsdigital-light.svg";
 import bannerec from "../assets/services/ecom/banner-ec.jpg";
-import healp1 from "../assets/services/ecom/healp1.svg"
-import healp2 from "../assets/services/ecom/healp2.svg"
-import healp3 from "../assets/services/ecom/healp3.svg"
-import healp4 from "../assets/services/ecom/healp4.svg"
-import healp5 from "../assets/services/ecom/healp5.svg"
-import platform1 from "../assets/services/ecom/platform1.svg"
-import platform2 from "../assets/services/ecom/platform2.svg"
-import platform3 from "../assets/services/ecom/platform3.svg"
-import platform4 from "../assets/services/ecom/platform4.svg"
-import platform5 from "../assets/services/ecom/platform5.svg"
-import rs1 from "../assets/services/ecom/rs1.svg"
-import rs2 from "../assets/services/ecom/rs2.svg"
-import rs3 from "../assets/services/ecom/rs3.svg"
-import rs4 from "../assets/services/ecom/rs4.svg"
-import rs5 from "../assets/services/ecom/rs5.svg"
-import rs6 from "../assets/services/ecom/rs6.svg"
+import healp1 from "../assets/services/ecom/healp1.svg";
+import healp2 from "../assets/services/ecom/healp2.svg";
+import healp3 from "../assets/services/ecom/healp3.svg";
+import healp4 from "../assets/services/ecom/healp4.svg";
+import healp5 from "../assets/services/ecom/healp5.svg";
+import platform1 from "../assets/services/ecom/platform1.svg";
+import platform2 from "../assets/services/ecom/platform2.svg";
+import platform3 from "../assets/services/ecom/platform3.svg";
+import platform4 from "../assets/services/ecom/platform4.svg";
+import platform5 from "../assets/services/ecom/platform5.svg";
+import rs1 from "../assets/services/ecom/rs1.svg";
+import rs2 from "../assets/services/ecom/rs2.svg";
+import rs3 from "../assets/services/ecom/rs3.svg";
+import rs4 from "../assets/services/ecom/rs4.svg";
+import rs5 from "../assets/services/ecom/rs5.svg";
+import rs6 from "../assets/services/ecom/rs6.svg";
 import googlepartner from "../assets/services/ppc/googlepartner.svg";
 import ppcbanner from "../assets/services/ppc/ppcbanner.jpg";
 import serchic1 from "../assets/services/ppc/serchic1.svg";
@@ -264,14 +265,33 @@ import sm5 from "../assets/services/influencer-marketing/sm5.svg";
 import sm6 from "../assets/services/influencer-marketing/sm6.svg";
 import sm7 from "../assets/services/influencer-marketing/sm7.svg";
 
+import slider1 from "../images/Ind-construction/slider1.png";
+import slider2 from "../images/Ind-construction/slider2.png";
+import slider3 from "../images/Ind-construction/slider3.png";
+import slider4 from "../images/Ind-construction/slider4.png";
+import slider5 from "../images/Ind-construction/slider5.png";
+import icon1 from "../images/Ind-construction/icon1.svg";
+import icon2 from "../images/Ind-construction/icon2.svg";
+import icon3 from "../images/Ind-construction/icon3.svg";
+import icon4 from "../images/Ind-construction/icon4.svg";
+import icon5 from "../images/Ind-construction/icon5.svg";
+import icon6 from "../images/Ind-construction/icon6.svg";
+import icon7 from "../images/Ind-construction/icon7.svg";
+import icon8 from "../images/Ind-construction/icon8.svg";
 
+import engineering from "../images/Ind-construction/engineering.svg";
+import e_commerce from "../images/Ind-construction/e_commerce.svg";
+import healthcare from "../images/Ind-construction/healthcare.svg";
+import education from "../images/Ind-construction/education.svg";
 
-
-
-
-
-
-
+import clientlogo1 from "../images/Ind-construction/c1.svg";
+import clientlogo2 from "../images/Ind-construction/c2.svg";
+import clientlogo3 from "../images/Ind-construction/c3.svg";
+import clientlogo4 from "../images/Ind-construction/c4.svg";
+import clientlogo5 from "../images/Ind-construction/c5.svg";
+import clientlogo6 from "../images/Ind-construction/c6.svg";
+import clientlogo7 from "../images/Ind-construction/c7.svg";
+import clientlogo8 from "../images/Ind-construction/c8.svg";
 
 export const assets = {
   sm1,
@@ -517,6 +537,7 @@ export const assets = {
   seo_banner,
   marketing_bnr,
   performance_bnr,
+  ind_construction,
   social_bnr,
   web_bnr,
   branding_bnr,
@@ -528,6 +549,31 @@ export const assets = {
   programmatic_adv,
   blog,
   casestudy,
+  slider1,
+  slider2,
+  slider3,
+  slider4,
+  slider5,
+  icon1,
+  icon2,
+  icon3,
+  icon4,
+  icon5,
+  icon6,
+  icon7,
+  icon8,
+  engineering,
+  e_commerce,
+  healthcare,
+  education,
+  clientlogo1,
+  clientlogo2,
+  clientlogo3,
+  clientlogo4,
+  clientlogo5,
+  clientlogo6,
+  clientlogo7,
+  clientlogo8,
 };
 
 export const logos = [
