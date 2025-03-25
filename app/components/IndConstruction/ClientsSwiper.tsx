@@ -12,6 +12,7 @@ interface PlatformsItem {
   id: number;
   image: string | StaticImageData;
   title: string;
+  btntext: string;
 }
 
 interface PlatformsSectionProps {
@@ -67,17 +68,17 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
             grabCursor={true}
             modules={[Autoplay]}
             breakpoints={{
-              320: { spaceBetween: 30 },
-              768: { spaceBetween: 70 },
+              320: { spaceBetween: 30, slidesPerView: 1 },
+              768: { spaceBetween: 70, slidesPerView: 1 },
               1024: { spaceBetween: 80 },
-              1366: { spaceBetween: 20, slidesPerView: 2.2 },
+              1366: { spaceBetween: 30, slidesPerView: 2.2 },
             }}
           >
             {Clientsformsdata.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="flex">
-                  <div className="flex  flex-col justify-between bg-[#F2F2F2] p-[40px]">
-                    <h2 className="mb-2 text-3xl  lg:max-w-[330px]">
+                  <div className="flex  flex-col justify-between bg-[#F2F2F2] p-[20px] lg:py-[40px] lg:pl-[40px] lg:pr-[40px]">
+                    <h2 className="tex-[25px] mb-2 lg:max-w-[330px] lg:text-[30px] lg:leading-[38px]">
                       {item.title}
                     </h2>
                     <button
@@ -88,7 +89,7 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                     >
                       <div className="relative">
                         <p className="text-sm font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
-                          Check portfolio page
+                          {item.btntext}
                         </p>
                         <Link
                           href="#"
@@ -136,7 +137,7 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                     <Image
                       src={item.image}
                       alt={item.title}
-                      className="h-full w-auto"
+                      className="lg:w[450px] w-[400px]"
                     />
                   </div>
                 </div>
