@@ -20,10 +20,20 @@ interface PlatformsSectionProps {
   data: PlatformsItem[];
 }
 
-const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero,desc,fdesc}) => {
+const Platformsecom: React.FC<PlatformsSectionProps> = ({
+  title,
+  data,
+  bgblack,
+  icontitle,
+  leftzero,
+  desc,
+  fdesc,
+}) => {
   return (
-    <div className={`container mx-auto py-4  ${leftzero ? 'relative' : ''}`}>
-      <div className={`  flex flex-col gap-7  ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
+    <div className={`container mx-auto py-4  ${leftzero ? "relative" : ""}`}>
+      <div
+        className={`  flex flex-col gap-7  ${bgblack ? "bg-black" : "bg-dgray"} ${leftzero ? "left0w" : ""} p-[25px] lg:gap-12 lg:p-[100px]`}
+      >
         <div>
           <motion.div
             initial="hidden"
@@ -38,9 +48,15 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
               }, // Slide up and fade in
             }}
           >
-            <h2 className={`title-65 max-w-[31ch] mb-6 md:mb-10 ${bgblack ? 'text-white' : ''}`}>{title} </h2>
-            <p className="text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 max-w-[76ch] "
-            dangerouslySetInnerHTML={{ __html: desc || '' }}></p>
+            <h2
+              className={`title-65 mb-6 max-w-[31ch] md:mb-10 ${bgblack ? "text-white" : ""}`}
+            >
+              {title}{" "}
+            </h2>
+            <p
+              className="text-19 fnt-lexend max-w-[76ch] text-gray1 transition-colors duration-300 group-hover:text-gray-700 "
+              dangerouslySetInnerHTML={{ __html: desc || "" }}
+            ></p>
           </motion.div>
         </div>
 
@@ -63,27 +79,39 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,i
                 key={platform.id}
                 className="group flex flex-col transition-all duration-300   "
               >
-                <div className= {`flex items-end gap-7 justify-between ${icontitle ? 'flex-col items-baseline ' : ''}`}>
-
-                  <p className= {`text-30 lg:text-[65px] transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''}`}>
+                <div
+                  className={`flex items-end justify-between gap-7 ${icontitle ? "flex-col items-baseline " : ""}`}
+                >
+                  <p
+                    className={`text-30 transition-colors duration-300 group-hover:text-primary lg:text-[65px] ${bgblack ? "text-white" : ""}`}
+                  >
                     {platform.title}
                   </p>
-                  <p className="text-font25 leading-[1.3] text-[#77787B] max-w-[15ch] text-right">{platform.rttitel}</p>
+                  <p
+                    className="max-w-[15ch] text-right text-font25 leading-[1.3] text-[#77787B]"
+                    dangerouslySetInnerHTML={{ __html: platform.rttitel || "" }}
+                  ></p>
                 </div>
 
-                <div className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? 'bg-white' : '' }`}>
+                <div
+                  className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? "bg-white" : ""}`}
+                >
                   <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                 </div>
 
                 <div>
-                  <p className={`text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 ${bgblack ? 'group-hover:text-gray-300' : ''}`}>
+                  <p
+                    className={`text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 ${bgblack ? "group-hover:text-gray-300" : ""}`}
+                  >
                     {platform.dec}
                   </p>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-gray1 text-font19 font-[500] leading-[1.2] max-w-[65ch] mt-4 md:mt-8 xl:mt-14 fnt-lexend">{fdesc}</p>
+          <p className="fnt-lexend mt-4 max-w-[65ch] text-font19 font-[500] leading-[1.2] text-gray1 md:mt-8 xl:mt-14">
+            {fdesc}
+          </p>
         </motion.div>
       </div>
     </div>

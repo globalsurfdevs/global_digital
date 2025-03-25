@@ -9,30 +9,16 @@ export const Clientsformsdata = [
   },
   {
     id: 2,
-    image: assets.slider2,
+    image: assets.slider5,
     title:
-      "Enhanced Performance & User Experience Through Strategic Website Revamp  ",
+      "BEC Arabia’s Journey to 90% More Organic Traffic: A Smart SEO Success Story ",
     btntext: "Check portfolio page",
   },
   {
     id: 3,
-    image: assets.slider3,
-    title:
-      "Building a Digital Foundation: Crafting a Brand-New Website for Shoba Construction ",
-    btntext: "Check portfolio page",
-  },
-  {
-    id: 4,
     image: assets.slider4,
     title:
       "ASGC Group’s Digital Evolution: Leveraging Full-Service Digital Marketing for Growth ",
-    btntext: "Check portfolio page",
-  },
-  {
-    id: 5,
-    image: assets.slider5,
-    title:
-      "BEC Arabia’s Journey to 90% More Organic Traffic: A Smart SEO Success Story ",
     btntext: "Check portfolio page",
   },
 

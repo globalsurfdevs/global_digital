@@ -7,6 +7,7 @@ interface ClientsformsItem {
   id: number;
   image: string | StaticImageData;
   title: string;
+  btntext: string;
 }
 
 interface ClientsformsSectionProps {

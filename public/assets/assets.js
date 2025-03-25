@@ -293,6 +293,8 @@ import clientlogo6 from "../images/Ind-construction/c6.svg";
 import clientlogo7 from "../images/Ind-construction/c7.svg";
 import clientlogo8 from "../images/Ind-construction/c8.svg";
 
+import faisalimage from "../images/profilecard/faisal_profilecard.png";
+
 export const assets = {
   sm1,
   sm2,
@@ -574,6 +576,7 @@ export const assets = {
   clientlogo6,
   clientlogo7,
   clientlogo8,
+  faisalimage,
 };
 
 export const logos = [
