@@ -13,6 +13,7 @@ interface PlatformsItem {
   image: string | StaticImageData;
   title: string;
   btntext: string;
+  btnurl?: string;
 }
 
 interface PlatformsSectionProps {
@@ -92,7 +93,7 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                           {item.btntext}
                         </p>
                         <Link
-                          href="#"
+                          href={item.btnurl || ""}
                           className="absolute top-0 z-[1] h-full w-full"
                         ></Link>
                       </div>

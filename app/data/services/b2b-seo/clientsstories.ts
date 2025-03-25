@@ -6,20 +6,23 @@ export const Clientsformsdata = [
     image: assets.slider1,
     title: "How Assent steel achieved 2X traffic growth ",
     btntext: "Read the Full Case Study",
+    btnurl: "case-study/assent-steel",
   },
   {
     id: 2,
     image: assets.slider5,
     title:
       "BEC Arabia’s Journey to 90% More Organic Traffic: A Smart SEO Success Story ",
-    btntext: "Check portfolio page",
+    btntext: "Read the Full Case Study",
+    btnurl: "portfolio/bec-arabia",
   },
   {
     id: 3,
     image: assets.slider4,
     title:
       "ASGC Group’s Digital Evolution: Leveraging Full-Service Digital Marketing for Growth ",
-    btntext: "Check portfolio page",
+    btntext: "Read the Full Case Study",
+    btnurl: "portfolio/asgc",
   },
 
   //   {
