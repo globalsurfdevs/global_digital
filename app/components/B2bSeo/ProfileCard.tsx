@@ -39,7 +39,7 @@ export default function ProfileCard() {
             <div className="mb-4 h-[1px] w-full bg-[#E6E6E6]"></div>
           </div>
           <p className="text-[25px] text-[#77787B] lg:py-[40px]">
-            As a trusted B2B SEO company in UAE, we don’t just focus on
+            As a trusted B2B SEO agency in UAE, we don’t just focus on
             rankings—we prioritize your success. Whether you need a reliable B2B
             SEO consultant or end-to-end B2B SEO services in Dubai, we provide
             customized solutions that adapt to your unique business needs.
