@@ -7,6 +7,7 @@ interface PlatformsItem {
   id: number;
   icon: string;
   title?: string;
+  subtitle?: string;
   dec: string;
 }
 
@@ -15,15 +16,27 @@ interface PlatformsSectionProps {
   icontitle?: boolean;
   leftzero?: boolean;
   title?: string;
+  subtitle?: string;
   colcount?: number;
   hiddentitle?: boolean;
   data: PlatformsItem[];
 }
 
-const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icontitle ,leftzero ,hiddentitle, colcount}) => {
+const Platforms: React.FC<PlatformsSectionProps> = ({
+  title,
+  subtitle,
+  data,
+  bgblack,
+  icontitle,
+  leftzero,
+  hiddentitle,
+  colcount,
+}) => {
   return (
-    <div className={`container mx-auto py-4 ${leftzero ? 'relative' : ''}`}>
-      <div className={`flex flex-col gap-7 secps ${bgblack ? 'bg-black' : 'bg-dgray'} ${leftzero ? 'left0w' : ''} p-[25px] lg:gap-12 lg:p-[100px]`}>
+    <div className={`container mx-auto py-4 ${leftzero ? "relative" : ""}`}>
+      <div
+        className={`secps flex flex-col gap-7 ${bgblack ? "bg-black" : "bg-dgray"} ${leftzero ? "left0w" : ""} p-[25px] lg:gap-12 lg:p-[100px]`}
+      >
         <div>
           <motion.div
             initial="hidden"
@@ -38,9 +51,16 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
               }, // Slide up and fade in
             }}
           >
-            {title &&
-              <h2 className={`title-65  ${bgblack ? 'text-white' : ''}`}>{title} </h2>
-            }
+            {title && (
+              <h2 className={`title-65  ${bgblack ? "text-white" : ""}`}>
+                {title}
+              </h2>
+            )}
+            {title && (
+              <p className="text-19 fnt-lexend text-[#77787B] lg:my-[30px]">
+                {subtitle}
+              </p>
+            )}
           </motion.div>
         </div>
 
@@ -57,32 +77,42 @@ const Platforms: React.FC<PlatformsSectionProps> = ({ title, data, bgblack,icont
             }, // Slide up and fade in
           }}
         >
-          <div className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colcount ? `xl:grid-cols-${colcount}` : 'xl:grid-cols-3'}`}>
+          <div
+            className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-3"}`}
+          >
             {data.map((platform) => (
               <div
                 key={platform.id}
                 className="group flex flex-col transition-all duration-300  "
               >
-                <div className= {`flex items-center gap-7 ${icontitle ? 'flex-col items-baseline ' : ''}`}>
+                <div
+                  className={`flex items-center gap-7 ${icontitle ? "flex-col items-baseline " : ""}`}
+                >
                   <Image
                     src={platform.icon}
                     alt={platform.title || platform.dec}
                     className="w-[25px] lg:w-auto"
                   />
-                  {!hiddentitle &&
-                    <h3 className={`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? 'text-white' : ''} `}>
+                  {!hiddentitle && (
+                    <h3
+                      className={`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? "text-white" : ""} `}
+                    >
                       {platform.title}
-                    </h3>}
+                    </h3>
+                  )}
                 </div>
 
-                <div className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? 'bg-white' : '' }`}>
+                <div
+                  className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? "bg-white" : ""}`}
+                >
                   <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                 </div>
 
                 <div>
-                  <p className={` ${bgblack ? 'group-hover:text-gray-300' : ''}  ${hiddentitle ? 'text-30 transition-colors ' : 'text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700'}`}
-                  dangerouslySetInnerHTML={{ __html: platform.dec }}>
-                  </p>
+                  <p
+                    className={` ${bgblack ? "group-hover:text-gray-300" : ""}  ${hiddentitle ? "text-30 transition-colors " : "text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700"}`}
+                    dangerouslySetInnerHTML={{ __html: platform.dec }}
+                  ></p>
                 </div>
               </div>
             ))}
