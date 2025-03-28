@@ -295,6 +295,39 @@ import clientlogo8 from "../images/Ind-construction/c8.svg";
 
 import faisalimage from "../images/profilecard/faisal_profilecard.png";
 
+import bc_image from "../images/bc-logo-design/bc_image1.png";
+import bc1 from "../images/bc-logo-design/bc1.svg";
+import bc2 from "../images/bc-logo-design/bc2.svg";
+import bc3 from "../images/bc-logo-design/bc3.svg";
+import bc4 from "../images/bc-logo-design/bc4.svg";
+import bc5 from "../images/bc-logo-design/bc5.svg";
+import bc6 from "../images/bc-logo-design/bc6.svg";
+import bctype1 from "../images/bc-logo-design/bctype1.svg";
+import bctype2 from "../images/bc-logo-design/bctype2.svg";
+import bctype3 from "../images/bc-logo-design/bctype3.svg";
+import bctype4 from "../images/bc-logo-design/bctype4.svg";
+import bctype5 from "../images/bc-logo-design/bctype5.svg";
+import bcw1 from "../images/bc-logo-design/bcw1.svg";
+import bcw2 from "../images/bc-logo-design/bcw2.svg";
+import bcw3 from "../images/bc-logo-design/bcw3.svg";
+import bcw4 from "../images/bc-logo-design/bcw4.svg";
+import bcw5 from "../images/bc-logo-design/bcw5.svg";
+import bcw6 from "../images/bc-logo-design/bcw6.svg";
+import cloud_dynamics_bc from "../images/bc-logo-design/cloud_dynamics_bc.png";
+import first_glass_bc from "../images/bc-logo-design/first_glass_bc.png";
+import gamayun_bc from "../images/bc-logo-design/gamayun_bc.png";
+import ocean_wealth from "../images/bc-logo-design/ocean_wealth.png";
+import perleen_bc from "../images/bc-logo-design/perleen_bc.png";
+import pin_wheel from "../images/bc-logo-design/pin_wheel.png";
+import ad_astra from "../images/bc-logo-design/ad_astra.png";
+import ayka_bc from "../images/bc-logo-design/ayka_bc.png";
+import rightgryarrow from "../images/bc-logo-design/rightgryarrow.svg";
+import bcr1 from "../images/bc-logo-design/bcr1.svg";
+import bcr2 from "../images/bc-logo-design/bcr2.svg";
+import bcr3 from "../images/bc-logo-design/bcr3.svg";
+import bcr4 from "../images/bc-logo-design/bcr4.svg";
+import bcr5 from "../images/bc-logo-design/bcr5.svg";
+
 export const assets = {
   sm1,
   sm2,
@@ -577,6 +610,38 @@ export const assets = {
   clientlogo7,
   clientlogo8,
   faisalimage,
+  bc_image,
+  bc1,
+  bc2,
+  bc3,
+  bc4,
+  bc5,
+  bc6,
+  bctype1,
+  bctype2,
+  bctype3,
+  bctype4,
+  bctype5,
+  bcw1,
+  bcw2,
+  bcw3,
+  bcw4,
+  bcw5,
+  bcw6,
+  cloud_dynamics_bc,
+  first_glass_bc,
+  gamayun_bc,
+  ocean_wealth,
+  perleen_bc,
+  pin_wheel,
+  ad_astra,
+  ayka_bc,
+  rightgryarrow,
+  bcr1,
+  bcr2,
+  bcr3,
+  bcr4,
+  bcr5,
 };
 
 export const logos = [
