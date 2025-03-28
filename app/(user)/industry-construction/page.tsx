@@ -13,9 +13,9 @@ import { AreaExpertise } from "../../data/services/ind-constructions/digitaconst
 import { IndustriesWeServe } from "../../data/services/ind-constructions/industries-we-serve";
 import { Clientsformsdata } from "../../data/services/ind-constructions/clientsdetails";
 import { Cta } from "../../data/services/ind-constructions/cta";
-import { Faq } from "../../data/services/ppc-advertising/faq";
+import { Faq } from "../../data/services/ind-constructions/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
-import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
+import SliderInd from "@/app/components/IndConstruction/SliderInd";
 import { Platformsdata } from "../../data/services/ind-constructions/clientslogo";
 
 interface Canonicals {
@@ -56,7 +56,7 @@ const page = () => {
       <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} />
       <SuccessStories Clientsformsdata={Clientsformsdata} />
       <section className="pb-[50px]  lg:pb-[140px]">
-        <Slider Platformsdata={Platformsdata} />
+        <SliderInd Platformsdata={Platformsdata} />
       </section>
 
       <Testimonials bgcolor={"#F2F2F2"} />
