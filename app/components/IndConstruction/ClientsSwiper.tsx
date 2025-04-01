@@ -89,13 +89,11 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                       after:ease-in-out hover:border-b-white hover:after:w-0"
                     >
                       <div className="relative">
-                        <p className="text-sm font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
-                          {item.btntext}
-                        </p>
-                        <Link
-                          href={item.btnurl || ""}
-                          className="absolute top-0 z-[1] h-full w-full"
-                        ></Link>
+                        <a href={item.btnurl || ""}>
+                          <p className="text-sm font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
+                            {item.btntext}
+                          </p>
+                        </a>
                       </div>
                       <svg
                         width="10"
