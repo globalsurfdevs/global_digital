@@ -10,7 +10,7 @@ export const BannerSection = [
     subtitle:
       "From increasing visibility to securing high-value projects, we help construction firms thrive online. ",
     buttontitle: "Get a Free Strategy Session",
-    buttonurl: "#",
+    buttonurl: "lets-talk",
     sub: [
       {
         stitle: "",

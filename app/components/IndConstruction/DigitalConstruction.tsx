@@ -41,7 +41,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
                 <p className="text-[19px] text-[#77787B]">
                   How We Help Construction Companies Grow
                 </p>
-                <button
+                {/* <button
                   className="z-2  hover:border-b-red group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent
                       p-0 pb-3 text-white before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black 
                       before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 
@@ -91,7 +91,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
                       </clipPath>
                     </defs>
                   </svg>
-                </button>
+                </button> */}
               </div>
             </motion.div>
           </div>
