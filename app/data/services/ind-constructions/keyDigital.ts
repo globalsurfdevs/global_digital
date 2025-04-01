@@ -1,6 +1,6 @@
 // Frameworkdata.ts
 export const KeyDigitalData = {
-  title: "The Framework for Achieving More",
+  title: "Key Digital Challenges for Construction Industry",
   data: [
     {
       id: 1,
@@ -9,8 +9,8 @@ export const KeyDigitalData = {
     },
     {
       id: 2,
-      title: "Attracting Qualified Leads Through Strategic Outreach",
-      desc: "Investors and developers conduct thorough research before making decisions. A tailored digital strategy is necessary to engage the right audience and establish credibility..",
+      title: "Building Trust and Visibility for High-Value Projects ",
+      desc: "Investors and developers rely on reputation, proven expertise, and competitive bidding when selecting partners. A strong digital presence enhances credibility, showcases past successes, and positions your firm as a trusted leader in the industry. ",
     },
     {
       id: 3,
