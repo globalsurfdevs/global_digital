@@ -6,6 +6,7 @@ export const Clientsformsdata = [
     image: assets.slider1,
     title: "How Assent steel achieved 2X traffic growth ",
     btntext: "Read the Full Case Study",
+    btnurl: "case-study/assent-steel",
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ export const Clientsformsdata = [
     title:
       "Enhanced Performance & User Experience Through Strategic Website Revamp  ",
     btntext: "Check portfolio page",
+    btnurl: "portfolio/innovo-group",
   },
   {
     id: 3,
@@ -20,6 +22,7 @@ export const Clientsformsdata = [
     title:
       "Building a Digital Foundation: Crafting a Brand-New Website for Shoba Construction ",
     btntext: "Check portfolio page",
+    btnurl: "portfolio/sobha-constructions",
   },
   {
     id: 4,
@@ -27,6 +30,7 @@ export const Clientsformsdata = [
     title:
       "ASGC Group’s Digital Evolution: Leveraging Full-Service Digital Marketing for Growth ",
     btntext: "Check portfolio page",
+    btnurl: "portfolio/asgc",
   },
   {
     id: 5,
@@ -34,6 +38,7 @@ export const Clientsformsdata = [
     title:
       "BEC Arabia’s Journey to 90% More Organic Traffic: A Smart SEO Success Story ",
     btntext: "Check portfolio page",
+    btnurl: "portfolio/bec-arabia",
   },
 
   //   {
