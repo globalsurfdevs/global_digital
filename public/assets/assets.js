@@ -328,6 +328,25 @@ import bcr3 from "../images/bc-logo-design/bcr3.svg";
 import bcr4 from "../images/bc-logo-design/bcr4.svg";
 import bcr5 from "../images/bc-logo-design/bcr5.svg";
 
+import gdicon1 from "../images/GraphicDesign/gdicon1.svg";
+import gdicon2 from "../images/GraphicDesign/gdicon2.svg";
+import gdicon3 from "../images/GraphicDesign/gdicon3.svg";
+import gdicon4 from "../images/GraphicDesign/gdicon4.svg";
+import gdicon5 from "../images/GraphicDesign/gdicon5.svg";
+import gdicon6 from "../images/GraphicDesign/gdicon6.svg";
+import gdicon7 from "../images/GraphicDesign/gdicon7.svg";
+import gdicon8 from "../images/GraphicDesign/gdicon8.svg";
+import gdbtm1 from "../images/GraphicDesign/gdbtm1.svg";
+import gdbtm2 from "../images/GraphicDesign/gdbtm2.svg";
+import gdbtm3 from "../images/GraphicDesign/gdbtm3.svg";
+import gdbtm4 from "../images/GraphicDesign/gdbtm4.svg";
+import gdbtm5 from "../images/GraphicDesign/gdbtm5.svg";
+import gdhlp1 from "../images/GraphicDesign/gdhlp1.svg";
+import gdhlp2 from "../images/GraphicDesign/gdhlp2.svg";
+import gdhlp3 from "../images/GraphicDesign/gdhlp3.svg";
+import gdhlp4 from "../images/GraphicDesign/gdhlp4.svg";
+import gdtick from "../images/GraphicDesign/gdtick.svg";
+
 export const assets = {
   sm1,
   sm2,
@@ -642,6 +661,24 @@ export const assets = {
   bcr3,
   bcr4,
   bcr5,
+  gdicon1,
+  gdicon2,
+  gdicon3,
+  gdicon4,
+  gdicon5,
+  gdicon6,
+  gdicon7,
+  gdicon8,
+  gdbtm1,
+  gdbtm2,
+  gdbtm3,
+  gdbtm4,
+  gdbtm5,
+  gdhlp1,
+  gdhlp2,
+  gdhlp3,
+  gdhlp4,
+  gdtick,
 };
 
 export const logos = [
