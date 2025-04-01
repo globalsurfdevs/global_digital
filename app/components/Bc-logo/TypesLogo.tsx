@@ -3,10 +3,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 interface FrameworkItem {
+  id?: string;
   title: string;
   description?: string;
   dec: string;
-  icon: string;
+  icon?: string;
   alt?: string;
 }
 
@@ -63,22 +64,34 @@ const LogoDesign: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 gap-6  md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "3"}`}
+              className={`grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "3"}`}
             >
               {data.map((framework) => (
                 <div
                   key={framework.title}
-                  className="group relative    flex flex-col overflow-hidden"
+                  className="group relative flex flex-col overflow-hidden"
                 >
                   {/* Animated Red Border */}
-                  <div className="relative h-[1px] overflow-hidden rounded-xl  bg-white">
+                  <div className="relative h-[1px] overflow-hidden rounded-xl bg-white">
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
-                  <Image
-                    src={framework.icon}
-                    alt={framework.title}
-                    className="my-8 lg:my-[40px]"
-                  />
+
+                  {/* Conditionally Render Image */}
+                  {framework.icon && (
+                    <Image
+                      src={framework.icon}
+                      alt={framework.title}
+                      className="my-8 lg:my-[40px]"
+                    />
+                  )}
+
+                  {framework.id && (
+                    <div className="mb-4 mt-6 flex h-[50px] w-[50px] items-center justify-center bg-primary transition-transform duration-500 lg:mb-8 lg:mt-10">
+                      <p className="text-30 text-white transition-transform duration-500">
+                        {String(framework.id).padStart(2, "0")}
+                      </p>
+                    </div>
+                  )}
                   <div className="text-2xl">
                     <h3 className="text-30 pb-3 text-white lg:pb-6">
                       {framework.title}

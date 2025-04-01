@@ -79,7 +79,10 @@ const page = () => {
 
       <Testimonials bgcolor={"white"} />
       <section className="pb-[50px] lg:pb-[140px] ">
-        <OurWorks Clientsformsdata={Clientsformsdata} />
+        <OurWorks
+          Clientsformsdata={Clientsformsdata}
+          maintitle="Success Stories<br> That Speak for Themselves"
+        />
       </section>
 
       <GetInTouch
