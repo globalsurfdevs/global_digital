@@ -22,7 +22,7 @@ const Services: React.FC<ServicesSectionProps> = ({
   description,
 }) => {
   return (
-    <div className="container mx-auto py-[50px] lg:py-[150px]">
+    <div className="container mx-auto py-[30px] md:py-10 lg:py-12 xl:py-[140px] ">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -36,7 +36,7 @@ const Services: React.FC<ServicesSectionProps> = ({
           }, // Slide up and fade in
         }}
       >
-        <div className="grid grid-cols-1 pb-[50px] lg:pb-[150px] xl:grid-cols-7">
+        <div className="grid grid-cols-1  items-start pb-8 lg:pb-[75px] xl:grid-cols-7">
           <div className="col-span-3  mb-5 xl:mb-0">
             <h2
               className="title-65 pb-2"
@@ -44,7 +44,7 @@ const Services: React.FC<ServicesSectionProps> = ({
             ></h2>
           </div>
           <div className="col-span-4 w-full">
-            <p className="text-19 fnt-lexend  pt-4 text-[#77787B] md:pt-6 xl:pt-14">
+            <p className="text-19 fnt-lexend   text-[#77787B] ">
               {description}
             </p>
           </div>
