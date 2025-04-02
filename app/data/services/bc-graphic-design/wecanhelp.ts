@@ -6,7 +6,7 @@ export const Wecanhelp = {
     {
       id: 1,
       icon: assets.bc1,
-      title: "Establish a Strong Visual<br> Identity ",
+      title: "Establish a Strong Visual <br> Identity ",
       dec: "Consistent, high-quality design builds trust and brand recognition, setting you apart in a crowded market. ",
     },
     {
