@@ -43,13 +43,13 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Dubai’s best creative branding agency, Global Surf Digital, offers customized branding services to drive engagement & growth. Click here to learn more",
     alternates: {
-      canonical: "htthttps://www.globalsurf.ae/branding-agency-dubai",
+      canonical: "https://www.globalsurf.ae/branding-agency-dubai",
     },
     robots: "index, follow",
     openGraph: {
       title: "Branding Agency Dubai | Creative Branding Company | GS Digital",
       site_name: "Global Surf Digital Media",
-      url: "htthttps://www.globalsurf.ae/branding-agency-dubai",
+      url: "https://www.globalsurf.ae/branding-agency-dubai",
       description:
         "Elevate your brand with GS Digital, the Branding Agency Dubai trusts. As a Creative Branding Company, we deliver unique and impactful branding solutions!",
     },
