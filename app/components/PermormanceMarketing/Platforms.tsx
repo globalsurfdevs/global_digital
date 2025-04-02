@@ -95,10 +95,11 @@ const Platforms: React.FC<PlatformsSectionProps> = ({
                   />
                   {!hiddentitle && (
                     <h3
-                      className={`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? "text-white" : ""} `}
-                    >
-                      {platform.title}
-                    </h3>
+                      className={`text-30 transition-colors duration-300 group-hover:text-primary ${
+                        bgblack ? "text-white" : ""
+                      }`}
+                      dangerouslySetInnerHTML={{ __html: platform.title ?? "" }}
+                    />
                   )}
                 </div>
 
