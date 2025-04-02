@@ -153,12 +153,26 @@ const TabComponent = () => {
 
   // Desktop view with hover effect
   return (
-    <div className="container mx-auto">
-      <div className=" w-full   md:flex  ">
+    <div className="container mx-auto overflow-hidden">
+      {/* Added custom scrollbar styles */}
+      <style jsx global>{`
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+      `}</style>
+
+      <div className="w-full md:flex md:flex-wrap">
         {tabContent.map((tab, index) => (
           <div
             key={index}
-            className={`relative flex cursor-pointer flex-col items-center border transition-all duration-500 ease-in-out ${
+            className={`relative flex cursor-pointer flex-col border transition-all duration-500 ease-in-out ${
               activeTab === index ? "z-10 bg-red-600" : "bg-white"
             }`}
             style={{
@@ -166,62 +180,73 @@ const TabComponent = () => {
               height: activeTab === index ? "auto" : "540px",
               width:
                 activeTab === index
-                  ? "300px"
-                  : `calc(100% / ${tabContent.length} - 10px)`,
+                  ? "clamp(300px, 40%, 560px)"
+                  : activeTab === null
+                    ? `calc(100% / ${tabContent.length})`
+                    : `calc((100% - 40%) / ${tabContent.length - 1})`,
               flex:
                 activeTab === index
-                  ? "0 0 560px"
-                  : `0 0 calc(100% / ${tabContent.length} - 10px)`,
+                  ? "1 0 auto"
+                  : `1 1 ${
+                      activeTab === null
+                        ? `calc(100% / ${tabContent.length})`
+                        : `calc((100% - 560px) / ${tabContent.length - 1})`
+                    }`,
               overflow: activeTab === index ? "visible" : "hidden",
+              position: "relative",
             }}
             onMouseEnter={() => setActiveTab(index)}
             onMouseLeave={() => setActiveTab(null)}
           >
-            {/* Icon at the top - centered */}
-            <div className="flex w-full justify-center pt-[40px]">
+            {/* Container for all content with left alignment */}
+            <div className="flex h-full w-full flex-col items-start">
+              {/* Icon at the top - now left aligned with padding */}
+              <div className="w-full pl-[40px] pt-[40px]">
+                <div
+                  className={`p-2 transition-all duration-500 ${
+                    activeTab === index ? "bg-white" : "bg-primary"
+                  }`}
+                  style={{ display: "inline-block" }}
+                >
+                  <Image
+                    src={tab.icon || ""}
+                    alt={tab.title}
+                    className={`transition-all duration-500`}
+                    style={{
+                      filter:
+                        activeTab === index
+                          ? "brightness(1) invert(0)"
+                          : "brightness(0) invert(1)",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Title text - different styling based on active state */}
+              {activeTab === index ? (
+                <div className="w-full pl-[40px] lg:pt-[150px]">
+                  <h3 className="text-left font-medium text-white lg:text-[30px]">
+                    {tab.title}
+                  </h3>
+                </div>
+              ) : (
+                <div className="flex h-1/2 w-full items-end justify-center">
+                  <h3 className="origin-center -rotate-90 transform whitespace-nowrap text-[18px] text-black md:text-[22px]">
+                    {tab.title}
+                  </h3>
+                </div>
+              )}
+
+              {/* Description paragraph appears on hover - with hidden scrollbar and left alignment */}
               <div
-                className={`p-2 transition-all duration-500 ${
-                  activeTab === index ? "bg-white" : "bg-primary"
+                className={`no-scrollbar p-[40px] pt-4 text-left transition-all duration-500 ease-in-out ${
+                  activeTab === index
+                    ? "max-h-96 overflow-y-auto opacity-100"
+                    : "max-h-0 opacity-0"
                 }`}
               >
-                <Image
-                  src={tab.icon || ""}
-                  alt={tab.title}
-                  className={`transition-all duration-500`}
-                  style={{
-                    filter:
-                      activeTab === index
-                        ? "brightness(1) invert(0)"
-                        : "brightness(0) invert(1)",
-                  }}
-                />
+                <p className="text-19 pb-0 text-white">{tab.description}</p>
               </div>
-            </div>
-
-            {/* Title text - different styling based on active state */}
-            {activeTab === index ? (
-              <div className=" flex h-1/2 items-end justify-end">
-                <h3 className="mx-auto mb-4 text-left font-medium text-white  lg:text-[30px]">
-                  {tab.title}
-                </h3>
-              </div>
-            ) : (
-              <div className=" flex h-1/2 items-end justify-end">
-                <h3 className="origin-center -rotate-90 transform whitespace-nowrap text-[18px] text-black md:text-[22px]">
-                  {tab.title}
-                </h3>
-              </div>
-            )}
-
-            {/* Description paragraph appears on hover */}
-            <div
-              className={`px-[40px] pb-[40px] text-center transition-all duration-500 ease-in-out ${
-                activeTab === index
-                  ? "max-h-96 opacity-100"
-                  : "max-h-0 opacity-0"
-              }`}
-            >
-              <p className="text-19 text-white">{tab.description}</p>
             </div>
           </div>
         ))}
