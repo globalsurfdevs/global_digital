@@ -113,13 +113,13 @@ const Platforms: React.FC<PlatformsSectionProps> = ({
                 </div>
 
                 <div>
-                  {!hiddentitle && (
+                  {!hiddentitle && platform.title2 && (
                     <h3
                       className={`text-30 transition-colors duration-300 group-hover:text-primary lg:mt-[20px] ${
                         bgblack ? "text-white" : ""
                       }`}
                       dangerouslySetInnerHTML={{
-                        __html: platform.title2 ?? "",
+                        __html: platform.title2,
                       }}
                     />
                   )}
