@@ -347,7 +347,10 @@ import gdhlp3 from "../images/GraphicDesign/gdhlp3.svg";
 import gdhlp4 from "../images/GraphicDesign/gdhlp4.svg";
 import gdtick from "../images/GraphicDesign/gdtick.svg";
 
+import wddbanner from "../assets/services/wdd-custom-web-development/banner.jpg";
+
 export const assets = {
+  wddbanner,
   sm1,
   sm2,
   sm3,
