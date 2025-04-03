@@ -370,6 +370,7 @@ import wh2 from "../images/localSeo/wh2.svg";
 import wh3 from "../images/localSeo/wh3.svg";
 import wh4 from "../images/localSeo/wh4.svg";
 import wh5 from "../images/localSeo/wh5.svg";
+import wddbanner from "../assets/services/wdd-custom-web-development/banner.jpg";
 
 export const assets = {
   wddbanner,

@@ -9,6 +9,7 @@ import Testimonials from "@/app/components/HomePage/Testimonials";
 import Tours from "@/app/components/HomePage/Tours";
 import WorkIn from "@/app/components/HomePage/WorkIn";
 import Cta from "@/app/components/HomePage/Cta";
+import Head from "next/head";
 
 interface Canonicals {
   canonical: string;
@@ -34,6 +35,19 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <>
+ <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Global Surf Digital",
+              "url": "https://www.globalsurf.ae"
+            })
+          }}
+        />
+      </Head>
       <HeroSection />
       <LogoSwiper />
       <AboutGlobal />
