@@ -7,6 +7,7 @@ interface PlatformsItem {
   id: number;
   icon: string;
   title?: string;
+  title2?: string;
   subtitle?: string;
   dec: string;
 }
@@ -16,6 +17,7 @@ interface PlatformsSectionProps {
   icontitle?: boolean;
   leftzero?: boolean;
   title?: string;
+  title2?: string;
   subtitle?: string;
   colcount?: number;
   hiddentitle?: boolean;
@@ -25,6 +27,7 @@ interface PlatformsSectionProps {
 const Platforms: React.FC<PlatformsSectionProps> = ({
   title,
   subtitle,
+  title2,
   data,
   bgblack,
   icontitle,
@@ -110,6 +113,16 @@ const Platforms: React.FC<PlatformsSectionProps> = ({
                 </div>
 
                 <div>
+                  {!hiddentitle && platform.title2 && (
+                    <h3
+                      className={`text-30 transition-colors duration-300 group-hover:text-primary lg:mt-[20px] ${
+                        bgblack ? "text-white" : ""
+                      }`}
+                      dangerouslySetInnerHTML={{
+                        __html: platform.title2,
+                      }}
+                    />
+                  )}
                   <p
                     className={` ${bgblack ? "group-hover:text-gray-300" : ""}  ${hiddentitle ? "text-30 transition-colors " : "text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700"}`}
                     dangerouslySetInnerHTML={{ __html: platform.dec }}

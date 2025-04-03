@@ -145,9 +145,6 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
           </Swiper>
         </div>
       </div>
-      <div className="container">
-        <div className="border-t border-[#B6B2B2] lg:mt-[141px]"></div>
-      </div>
     </>
   );
 };

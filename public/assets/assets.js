@@ -347,7 +347,29 @@ import gdhlp3 from "../images/GraphicDesign/gdhlp3.svg";
 import gdhlp4 from "../images/GraphicDesign/gdhlp4.svg";
 import gdtick from "../images/GraphicDesign/gdtick.svg";
 
-import wddbanner from "../assets/services/wdd-custom-web-development/banner.jpg";
+import localimage1 from "../images/localSeo/local-image1.png";
+import lsl1 from "../images/localSeo/ls1.svg";
+import lsl2 from "../images/localSeo/ls2.svg";
+import lsl3 from "../images/localSeo/ls3.svg";
+import lsl4 from "../images/localSeo/ls4.svg";
+import lsl5 from "../images/localSeo/ls5.svg";
+import lsl6 from "../images/localSeo/ls6.svg";
+import lsl7 from "../images/localSeo/ls7.svg";
+import rls1 from "../images/localSeo/rs1.svg";
+import rls2 from "../images/localSeo/rs2.svg";
+import rls3 from "../images/localSeo/rs3.svg";
+import rls4 from "../images/localSeo/rs4.svg";
+import rls5 from "../images/localSeo/rs5.svg";
+import rls6 from "../images/localSeo/rs6.svg";
+import wcs1 from "../images/localSeo/wcs1.svg";
+import wcs2 from "../images/localSeo/wcs2.svg";
+import wcs3 from "../images/localSeo/wcs3.svg";
+import wcs4 from "../images/localSeo/wcs4.svg";
+import wh1 from "../images/localSeo/wh1.svg";
+import wh2 from "../images/localSeo/wh2.svg";
+import wh3 from "../images/localSeo/wh3.svg";
+import wh4 from "../images/localSeo/wh4.svg";
+import wh5 from "../images/localSeo/wh5.svg";
 
 export const assets = {
   wddbanner,
@@ -682,6 +704,29 @@ export const assets = {
   gdhlp3,
   gdhlp4,
   gdtick,
+  localimage1,
+  lsl1,
+  lsl2,
+  lsl3,
+  lsl4,
+  lsl5,
+  lsl6,
+  lsl7,
+  rls1,
+  rls2,
+  rls3,
+  rls4,
+  rls5,
+  rls6,
+  wcs1,
+  wcs2,
+  wcs3,
+  wcs4,
+  wh1,
+  wh2,
+  wh3,
+  wh4,
+  wh5,
 };
 
 export const logos = [

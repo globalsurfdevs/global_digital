@@ -4,6 +4,7 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.infbanner,
+    subtitle: "",
     title:
       "Effective Influencer Campaigns by Expert Influencer Marketing Agency in Dubai ",
     sub: [
