@@ -7,12 +7,11 @@ import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
 
-import { ResultsData,BannerSection,Wecanhelp,OurServices,AreaExpertise } from "../../data/services/wdd-custom-web-development/data";
+import { BannerSection,Wecanhelp,OurServices,AreaExpertise } from "../../data/services/wdd-custom-web-development/data";
 import { relatedservices } from "../../data/services/social-media-marketing-dubai/relatedservices";
 import { Platformsecomdata } from "../../data/services/social-media-marketing-dubai/platformsecom";
 import { Cta } from "../../data/services/social-media-marketing-dubai/cta";
 import { Faq } from "../../data/services/social-media-marketing-dubai/faq";
-import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
 
