@@ -22,6 +22,9 @@ interface PlatformsSectionProps {
   title: string;
   data: PlatformsItem[];
   hiddentitle?: boolean;
+  padding?: string; // New padding prop
+  pt?: string; // New padding-top prop
+  pb?: string; // New padding-bottom prop
 }
 
 const Platformsecom: React.FC<PlatformsSectionProps> = ({
@@ -33,10 +36,13 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({
   colcount = 3, // Default column count
   icontitle,
   hiddentitle,
+  padding = "p-4", // Default padding
+  pt = "pt-[50px] md:pt-10 lg:pt-12 xl:pt-[138px]", // Default pt
+  pb = "pb-4", // Default pb
 }) => {
   return (
     <div
-      className={`container mx-auto py-4 ${leftzero ? "relative" : ""}  pt-[50px] md:pt-10 lg:pt-12  xl:pt-[138px]`}
+      className={`container mx-auto ${padding} ${pt} ${pb} ${leftzero ? "relative" : ""}`}
     >
       <div
         className={`flex flex-col gap-7 ${bgblack ? "bg-black" : "bg-dgray"} ${leftzero ? "left0w" : ""} p-[25px] lg:gap-12 lg:p-[100px]`}

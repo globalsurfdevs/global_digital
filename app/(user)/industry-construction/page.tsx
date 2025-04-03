@@ -55,6 +55,10 @@ const page = () => {
       />
       <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} />
       <SuccessStories Clientsformsdata={Clientsformsdata} />
+
+      <div className="container">
+        <div className="border-t border-[#B6B2B2] lg:mt-[141px]"></div>
+      </div>
       <section className="pb-[50px]  lg:pb-[140px]">
         <SliderInd Platformsdata={Platformsdata} />
       </section>
