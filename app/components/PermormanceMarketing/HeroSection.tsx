@@ -127,9 +127,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     </p>
 
                     <h1 className="title-80"> {herosection.title}</h1>
-                    <h3 className="text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
-                      {herosection.subtitle}
-                    </h3>
+                    {herosection.subtitle && (
+                      <h3 className="text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
+                        {" "}
+                        {herosection.subtitle}
+                      </h3>
+                    )}
                     {herosection.buttontitle && (
                       <button
                         className="z-2 z-1 group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
