@@ -1,22 +1,22 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import KeyDigital from "../../components/IndConstruction/KeyDigital";
-import DigitalMarketing from "../../components/IndConstruction/DigitalConstruction";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/IndConstruction/GetInTouch";
-import Expertise from "../../components/PermormanceMarketing/Expertise";
-import SuccessStories from "../../components/IndConstruction/SucessStories";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import KeyDigital from "../../../components/IndConstruction/KeyDigital";
+import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/IndConstruction/GetInTouch";
+import Expertise from "../../../components/PermormanceMarketing/Expertise";
+import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
-import { KeyDigitalData } from "../../data/services/ind-constructions/keyDigital";
-import { BannerSection } from "../../data/services/ind-constructions/herosection";
-import { AreaExpertise } from "../../data/services/ind-constructions/digitaconstructions";
-import { IndustriesWeServe } from "../../data/services/ind-constructions/industries-we-serve";
-import { Clientsformsdata } from "../../data/services/ind-constructions/clientsdetails";
-import { Cta } from "../../data/services/ind-constructions/cta";
-import { Faq } from "../../data/services/ind-constructions/faq";
+import { KeyDigitalData } from "../../../data/services/ind-constructions/keyDigital";
+import { BannerSection } from "../../../data/services/ind-constructions/herosection";
+import { AreaExpertise } from "../../../data/services/ind-constructions/digitaconstructions";
+import { IndustriesWeServe } from "../../../data/services/ind-constructions/industries-we-serve";
+import { Clientsformsdata } from "../../../data/services/ind-constructions/clientsdetails";
+import { Cta } from "../../../data/services/ind-constructions/cta";
+import { Faq } from "../../../data/services/ind-constructions/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import SliderInd from "@/app/components/IndConstruction/SliderInd";
-import { Platformsdata } from "../../data/services/ind-constructions/clientslogo";
+import { Platformsdata } from "../../../data/services/ind-constructions/clientslogo";
 
 interface Canonicals {
   canonical: string;
