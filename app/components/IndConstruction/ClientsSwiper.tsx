@@ -78,23 +78,21 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
             {Clientsformsdata.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="flex">
-                  <div className="flex  flex-col justify-between bg-[#F2F2F2] p-[20px] lg:py-[40px] lg:pl-[40px] lg:pr-[40px]">
-                    <h2 className="tex-[25px] mb-2 lg:max-w-[330px] lg:text-[30px] lg:leading-[38px]">
+                  {/* Text + Button Section */}
+                  <div className="flex w-1/2 flex-col justify-between bg-[#F2F2F2] p-[20px] lg:py-[40px] lg:pl-[40px] lg:pr-[40px]">
+                    <h2 className="mb-2 text-[25px] leading-[28px] lg:max-w-[330px] lg:leading-[38px] xxl:text-[30px]">
                       {item.title}
                     </h2>
-                    <button
-                      className="z-2 ] group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
-                      pb-3 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 
-                      before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 
-                      after:ease-in-out hover:border-b-white hover:after:w-0"
+                    <a
+                      href={item.btnurl || ""}
+                      className="group relative z-10 flex w-fit items-center gap-3 border-b-0 border-transparent pb-3 
+      before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 
+      before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 
+      after:ease-in-out hover:border-b-white hover:after:w-0"
                     >
-                      <div className="relative">
-                        <a href={item.btnurl || ""}>
-                          <p className="text-sm font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
-                            {item.btntext}
-                          </p>
-                        </a>
-                      </div>
+                      <p className="text-sm font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
+                        {item.btntext}
+                      </p>
                       <svg
                         width="10"
                         height="10"
@@ -130,14 +128,18 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                           </clipPath>
                         </defs>
                       </svg>
-                    </button>
+                    </a>
                   </div>
-                  <div>
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      className="lg:w[450px] w-[400px]"
-                    />
+
+                  {/* Image Section */}
+                  <div className="w-1/2">
+                    <div className="h-full">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-[400px] object-cover lg:w-[450px]"
+                      />
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>

@@ -1,6 +1,6 @@
 // Frameworkdata.ts
 export const KeyDigitalData = {
-  title: "Key Digital Challenges for Construction Industry",
+  title: "Key Digital Challenges",
   data: [
     {
       id: 1,

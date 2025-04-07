@@ -23,7 +23,7 @@ interface ClientsformsSectionProps {
 const Slider: React.FC<ClientsformsSectionProps> = ({
   Clientsformsdata,
   subdesc,
-  padding = "p-4",
+  padding = "",
   pt = "pt-[50px] lg:pt-[140px] ",
   pb = "pb-4",
 }) => {
@@ -44,7 +44,7 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
               }, // Slide up and fade in
             }}
           >
-            <div className="mb-4  grid lg:mb-[75px]">
+            <div className="mb-4 mt-6 grid lg:mb-[75px] lg:mt-0">
               <h2 className="title-65 ">
                 Success Stories <br></br> That Speak for Themselves
               </h2>
