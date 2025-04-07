@@ -69,7 +69,7 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"Lets talk growth"}
-        link={"/lets-talk"}
+        link={"https://www.globalsurf.ae/lets-talk"}
       />
       <Expertise
         title={IndustriesWeServe.title}

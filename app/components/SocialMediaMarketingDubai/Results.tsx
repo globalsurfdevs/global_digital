@@ -77,28 +77,30 @@ const Results: React.FC<ResultsSectionProps> = ({
                       <p className={`fnt-lexend text-font25  leading-lh1p26`}>
                         {result.traffic}
                       </p>
-                      <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
-                        <svg
-                          width="36"
-                          height="35"
-                          viewBox="0 0 36 35"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M33.8125 1.7998L1.25977 33.7227"
-                            stroke="white"
-                            strokeWidth="2"
-                            strokeMiterlimit="10"
-                          />
-                          <path
-                            d="M1.25977 1.7998H33.8125V33.0929"
-                            stroke="white"
-                            strokeWidth="2"
-                            strokeMiterlimit="10"
-                          />
-                        </svg>
-                      </div>
+                      {result.url && (
+                        <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
+                          <svg
+                            width="36"
+                            height="35"
+                            viewBox="0 0 36 35"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M33.8125 1.7998L1.25977 33.7227"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            />
+                            <path
+                              d="M1.25977 1.7998H33.8125V33.0929"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="flex flex-col px-6 pb-8 pt-6 text-white md:px-[50px] md:pt-8  ">
