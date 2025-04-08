@@ -53,11 +53,11 @@ const page = () => {
                 }, // Slide up and fade in
               }}
             >
-              <div className="flex items-end justify-between border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px]">
+              {/* <div className="flex items-end justify-between border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px]">
                 <div className="  max-w-[1000px] ">
                   <h1 className="title-80">Careers</h1>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
             <motion.div
               initial="hidden"
