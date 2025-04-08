@@ -31,9 +31,9 @@ const Cta = () => {
                   <h2 className="text-font65 leading-lh1p07">
                     <span className="text-primary">Grow With Us </span>Your Next Big Opportunity Awaits Here.    </h2>
 
-                  <div className="innerfnont mb-10 mt-10  lg:mb-[120px] lg:mt-[57px]">
-                    <Link href="/lets-talk"> <p className="text-primary text-30">Let’s create something extraordinary together. </p>
-                    </Link>
+                  <div className="innerfnont mb-10 mt-10  lg:mb-[80px] lg:mt-[50px]">
+                    {/* <Link href="/lets-talk"> <p className="text-primary text-30">Let’s create something extraordinary together. </p>
+                    </Link> */}
                   </div>
                 </div>
 
