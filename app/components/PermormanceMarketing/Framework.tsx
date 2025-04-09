@@ -75,7 +75,7 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                   className="group relative    flex flex-col overflow-hidden"
                 >
                   {/* Animated Red Border */}
-                  <div className="relative h-[1px] overflow-hidden rounded-xl  bg-black">
+                    <div className={`relative h-[1px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}>
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
                   <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary   transition-transform duration-500  lg:mb-8 lg:mt-10">
