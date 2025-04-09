@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
+import { assets } from "@/public/assets/assets";
 interface FrameworkItem {
   id: number;
   title: string;
@@ -42,25 +43,23 @@ const Specialize: React.FC<FrameworkSectionProps> = ({
               }}
             >
               <div>
-                <h2 className="title-65 pb-6 text-white lg:pb-[25px]">
+                <h2 className="title-65 pb-6 text-white lg:pb-[60px] ">
                   {title}
                 </h2>
                 <div
                   className={`grid grid-cols-1 gap-6 text-white  md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "3"}`}
                 >
-                  <div className="bg-[#191919] p-8">
-                    <div className="flex items-center gap-4">
+
+                  {data.map((item) => (
+                    <div key={item.id} className="flex items-center gap-4 bg-[#191919] p-5 lg:p-10 group cursor-pointer">
                       <Image
-                        src="/images/solutions/seo.png"
+                        src={item.icon || assets.seo}
                         alt="SEO"
-                        width={50}
-                        height={50}
+                        className="brightness-0 invert-[1] group-hover:brightness-[1] group-hover:invert-[0] transition-all duration-300"
                       />
-                      <h3 className="text-[20px] font-bold">SEO</h3>
+                      <p className="text-30 group-hover:text-primary transition-all duration-300">{item.title}</p>
                     </div>
-                  </div>
-                  <div>sdsds</div>
-                  <div>sdsds</div>
+                  ))}
                 </div>
               </div>
             </motion.div>

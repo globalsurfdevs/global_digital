@@ -365,7 +365,7 @@ export const relatedservices = {
     {
       id: 1,
       title: "Website Design ",
-      dec: "Crafting beautiful, user-friendly websites that make a great first impression.  . ",
+      dec: "Crafting beautiful, user-friendly websites that make a great first impression.  ",
       icon:assets.rel1
     } ,
     {

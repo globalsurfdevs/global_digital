@@ -3,7 +3,7 @@ import { url } from "inspector";
 export const BannerSection = [
   {
     id: 1,
-    image: assets.wewbanner,
+    image: assets.spbanner,
     title:
       "Connect, Engage & Grow with a Personalized Social Media Strategy in Dubai",
     sub: [
@@ -19,27 +19,27 @@ export const Wecanhelp = {
   data: [
     {
       id: 1,
-      icon: assets.wes1,
+      icon: assets.hp1,
       dec: "Increase Brand Awareness",
     },
     {
       id: 2,
-      icon: assets.wes2,
+      icon: assets.hp2,
       dec: "Generate Leads and Sales",
     },
     {
       id: 3,
-      icon: assets.wes3,
+      icon: assets.hp3,
       dec: "Grow Your Brand’s Audience",
     },
     {
       id: 4,
-      icon: assets.wes4,
+      icon: assets.hp4,
       dec: "Boost Community Engagement",
     },
     {
       id: 5,
-      icon: assets.wes4,
+      icon: assets.hp5,
       dec: "Drive Traffic to Your Site",
     }
   ],
@@ -80,32 +80,32 @@ export const Specializedin = {
     {
       id: 1,
       title: "Facebook",
-      icon: assets.facebook,
+      icon: assets.soc1,
     },
     {
       id: 2,
       title: "Instagram",
-      icon: assets.facebook,
+      icon: assets.soc2,
     },
     {
       id: 3,
       title: "LinkedIn",
-      icon: assets.facebook,
+      icon: assets.soc3,
     },
     {
       id: 4,
       title: "Twitter",
-      icon: assets.facebook,
+      icon: assets.soc4,
     },
     {
       id: 5,
       title: "TikTok",
-      icon: assets.facebook,
+      icon: assets.soc5,
     },
     {
       id: 6,
       title: "Snapchat",
-      icon: assets.facebook,
+      icon: assets.soc6,
     },
   ],
 };
@@ -264,35 +264,42 @@ export const relatedservices = {
       title: "Social Media Management",
       dec: "From content creation to community engagement, we handle all aspects of social media management. ",
 
-      icon:assets.rel1
+      icon:assets.rsts1
     } ,
     {
       id: 2,
       title: "Social Media Marketing",
       dec: "We craft strategic campaigns that connect with your audience and drive results, whether through organic reach or paid ads.",
 
-      icon:assets.rel2
+      icon:assets.rsts2
     } ,
     {
       id: 3,
       title: "PPC Advertising",
       dec: "Drive targeted traffic and maximize ROI with strategic ad campaigns.",
 
-      icon:assets.rel3
+      icon:assets.rsts3
     } ,
     {
       id: 4,
       title: "Influencer Marketing",
       dec: "Collaborate with influential voices to enhance your brand’s credibility and reach.",
 
-      icon:assets.rel4
+      icon:assets.rsts4
     } ,
     {
       id: 5,
       title: "Programmatic Advertising",
       dec: "Leverage automation for more precise targeting and effective ad placement. ",
 
-      icon:assets.rel5
+      icon:assets.rsts5
+    },
+    {
+      id: 6,
+      title: "SEO",
+      dec: "Boost your website's visibility and rankings with expert SEO strategies that drive long-term organic growth. ",
+
+      icon:assets.rsts5
     }
   ],
 };
