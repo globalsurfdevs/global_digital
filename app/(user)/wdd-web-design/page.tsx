@@ -2,17 +2,17 @@ import React from "react";
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import Platforms from "../../components/PermormanceMarketing/Platforms";
+import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
 
-import { BannerSection,Wecanhelp,OurServices,AreaExpertise,Platformsecomdata,Cta,Faq,relatedservices} from "../../data/services/wdd-custom-web-development/data";
+import { BannerSection,Wecanhelp,OurServices,ExpertServicesdata,Platformsecomdata,Cta,AreaExpertise,Faq,relatedservices } from "../../components/wdd-web-design/data";
 
-import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
-import WorkIn from "@/app/components/common/WorkIn";
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-
+import Testimonials from "@/app/components/HomePage/Testimonials";
+import ExpertServices from "@/app/components/wdd-web-design/ExpertServices";
+import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
 interface Canonicals {
   canonical: string;
@@ -40,32 +40,35 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={34} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={3} />
-       <Services
+      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={26} />
+      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
+      <ExpertServices title={ExpertServicesdata.title} bgcolor={'bg-white'}  data={ExpertServicesdata.data} colcount={3} />
+
+      <div className="bg-black text-white bordergrey">
+        <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
+      </div>
+      <Services
         title={OurServices.title}
         data={OurServices.data}
         colcount={5}
         hrcontent={true}
       />
-      <div className="hdpd">
-        <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
-      </div>
-      <section className="pb-[50px]   lg:pb-[200px]  pt-[50px]   lg:pt-[140px] bg-black text-white mb-[50px] lg:mb-[140px]">
-      <WorkIn />
-      </section>
-      <section className="pb-[50px]   lg:pb-[140px] ">
-      <Platformserver title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
-      </section>
 
+
+      <section className="pb-[50px]   lg:pb-[140px] ">
+      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+      </section>
+      <section className="innerbgpd">
+        <Testimonials />
+        </section>
       <GetInTouch
         data={Cta}
         redlast={true}
-        ctabbutton={"LET'S CONNECT AND GET STARTED TODAY!"}
+        ctabbutton={"LET'S GET STARTED TODAY!"}
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
+      <RelatedServices title={relatedservices.title} description={relatedservices.description}   data={relatedservices.data} colcount={3} />
     </div>
   );
 };

@@ -371,8 +371,111 @@ import wh3 from "../images/localSeo/wh3.svg";
 import wh4 from "../images/localSeo/wh4.svg";
 import wh5 from "../images/localSeo/wh5.svg";
 import wddbanner from "../assets/services/wdd-custom-web-development/banner.jpg";
+import designbanner from "../assets/services/wdd-web-design/wddbanner.jpg";
+import hwc1 from "../assets/services/wdd-web-design/hwc1.svg";
+import hwc2 from "../assets/services/wdd-web-design/hwc2.svg";
+import hwc3 from "../assets/services/wdd-web-design/hwc3.svg";
+import hwc4 from "../assets/services/wdd-web-design/hwc4.svg";
+import ke1 from "../assets/services/wdd-web-design/ke1.svg";
+import ke2 from "../assets/services/wdd-web-design/ke2.svg";
+import ke3 from "../assets/services/wdd-web-design/ke3.svg";
+import ke4 from "../assets/services/wdd-web-design/ke4.svg";
+import ke5 from "../assets/services/wdd-web-design/ke5.svg";
+import ke6 from "../assets/services/wdd-web-design/ke6.svg";
+import ke7 from "../assets/services/wdd-web-design/ke7.svg";
+import ke8 from "../assets/services/wdd-web-design/ke8.svg";
+import rst1 from "../assets/services/wdd-web-design/rs1.svg";
+import rst2 from "../assets/services/wdd-web-design/rs2.svg";
+import rst3 from "../assets/services/wdd-web-design/rs3.svg";
+import rst4 from "../assets/services/wdd-web-design/rs4.svg";
+import oex1 from "../assets/services/wdd-web-design/oex1.svg";
+import oex2 from "../assets/services/wdd-web-design/oex2.svg";
+import oex3 from "../assets/services/wdd-web-design/oex3.svg";
+import oex4 from "../assets/services/wdd-web-design/oex4.svg";
+import oex5 from "../assets/services/wdd-web-design/oex5.svg";
+import wch1 from "../assets/services/e-commerce-wdd/wch1.svg";
+import wch2 from "../assets/services/e-commerce-wdd/wch2.svg";
+import wch3 from "../assets/services/e-commerce-wdd/wch3.svg";
+import wch4 from "../assets/services/e-commerce-wdd/wch4.svg";
+import wch5 from "../assets/services/e-commerce-wdd/wch5.svg";
+import bannersr from "../assets/services/e-commerce-wdd/bannersr.jpg";
+import rse1 from "../assets/services/e-commerce-wdd/rse1.svg";
+import rse2 from "../assets/services/e-commerce-wdd/rse2.svg";
+import rse3 from "../assets/services/e-commerce-wdd/rse3.svg";
+import rse4 from "../assets/services/e-commerce-wdd/rse4.svg";
+import rse6 from "../assets/services/e-commerce-wdd/rse6.svg";
+import wce1 from "../assets/services/wdd-custom-web-development/wce1.svg";
+import wce2 from "../assets/services/wdd-custom-web-development/wce2.svg";
+import wce3 from "../assets/services/wdd-custom-web-development/wce3.svg";
+import wce4 from "../assets/services/wdd-custom-web-development/wce4.svg";
+import wce5 from "../assets/services/wdd-custom-web-development/wce5.svg";
+import ocw1 from "../assets/services/wdd-custom-web-development/ocw1.svg";
+import ocw2 from "../assets/services/wdd-custom-web-development/ocw2.svg";
+import ocw3 from "../assets/services/wdd-custom-web-development/ocw3.svg";
+import ocw4 from "../assets/services/wdd-custom-web-development/ocw4.svg";
+import ocw5 from "../assets/services/wdd-custom-web-development/ocw5.svg";
+import ocw6 from "../assets/services/wdd-custom-web-development/ocw6.svg";
+import rsa1 from "../assets/services/wdd-custom-web-development/rsa1.svg";
+import rsa2 from "../assets/services/wdd-custom-web-development/rsa2.svg";
+import rsa3 from "../assets/services/wdd-custom-web-development/rsa3.svg";
+import rsa4 from "../assets/services/wdd-custom-web-development/rsa4.svg";
+import rsa5 from "../assets/services/wdd-custom-web-development/rsa5.svg";
+import rsa6 from "../assets/services/wdd-custom-web-development/rsa6.svg";
+import slides1 from "../assets/services/wdd-custom-web-development/slide.jpg";
+
 
 export const assets = {
+  wce1,
+  wce2,
+  wce3,
+  wce4,
+  wce5,
+  ocw1,
+  ocw2,
+  ocw3,
+  ocw4,
+  ocw5,
+  ocw6,
+  rsa1,
+  rsa2,
+  rsa3,
+  rsa4,
+  rsa5,
+  rsa6,
+  slides1,
+  rse1,
+  rse2,
+  rse3,
+  rse4,
+  rse6,
+  bannersr,
+  wch1,
+  wch2,
+  wch3,
+  wch4,
+  wch5,
+  oex1,
+  oex2,
+  oex3,
+  oex4,
+  oex5,
+  hwc1,
+  hwc2,
+  hwc3,
+  hwc4,
+  ke1,
+  ke2,
+  ke3,
+  ke4,
+  ke5,
+  ke6,
+  ke7,
+  ke8,
+  rst1,
+  rst2,
+  rst3,
+  rst4,
+  designbanner,
   wddbanner,
   sm1,
   sm2,

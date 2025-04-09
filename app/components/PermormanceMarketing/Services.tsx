@@ -72,7 +72,7 @@ const Services: React.FC<ServicesSectionProps> = ({
                   key={service.id}
                   className={`${hrcontent1 ? "border-t last:border-b" : ""}`}
                 >
-                  <div className="group relative flex gap-4 py-[15px] transition-all duration-300  ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[34px]">
+                  <div className="group border-b relative flex gap-4 py-[15px] transition-all duration-300  ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[34px]">
                     <p
                       className={` transition-all duration-300 group-hover:text-primary ${bgtt2 ? `${bgtt2}` : "text-gray1"}`}
                     >
