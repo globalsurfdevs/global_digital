@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 interface PlatformsItem {
   id: number;
   icon: string;
-  title: string;
+  title?: string;
   rttitel?: string;
   dec: string;
 }
@@ -17,6 +17,7 @@ interface PlatformsSectionProps {
   desc?: string;
   fdesc?: string;
   title: string;
+  colm?: number,
   data: PlatformsItem[];
 }
 
@@ -28,6 +29,7 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
   leftzero,
   desc,
   fdesc,
+  colm,
 }) => {
   return (
     <div className={`container mx-auto py-4  ${leftzero ? "relative" : ""}`}>
@@ -73,7 +75,7 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
             }, // Slide up and fade in
           }}
         >
-          <div className="grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px] xl:grid-cols-3">
+          <div className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colm ? `xl:grid-cols-${colm}`  : `xl:grid-cols-3`} `}>
             {data.map((platform) => (
               <div
                 key={platform.id}
@@ -81,12 +83,13 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
               >
                 <div
                   className={` `}
-                >
+                > {platform.title && (
                   <p
                     className={`text-30 transition-colors duration-300 group-hover:text-primary lg:text-[65px] ${bgblack ? "text-white" : ""}`}
                   >
                     {platform.title} <span className="text-primary relative right-2 group-hover:text-[#00000080] ">+</span>
                   </p>
+                )}
                   <p
                     className="  text-font25 leading-[1.3] text-black"
                     dangerouslySetInnerHTML={{ __html: platform.rttitel || "" }}

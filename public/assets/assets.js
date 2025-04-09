@@ -421,10 +421,99 @@ import rsa3 from "../assets/services/wdd-custom-web-development/rsa3.svg";
 import rsa4 from "../assets/services/wdd-custom-web-development/rsa4.svg";
 import rsa5 from "../assets/services/wdd-custom-web-development/rsa5.svg";
 import rsa6 from "../assets/services/wdd-custom-web-development/rsa6.svg";
-import slides1 from "../assets/services/wdd-custom-web-development/slide.jpg";
+import slidecm1 from "../assets/services/wdd-custom-web-development/slidecm1.jpg";
+import slidecm2 from "../assets/services/wdd-custom-web-development/slidecm2.jpg";
+import slidecm3 from "../assets/services/wdd-custom-web-development/slidecm3.jpg";
+import slidecm4 from "../assets/services/wdd-custom-web-development/slidecm4.jpg";
+import slidecm5 from "../assets/services/wdd-custom-web-development/slidecm5.jpg";
+import slidecm6 from "../assets/services/wdd-custom-web-development/slidecm6.jpg";
+import slidecm7 from "../assets/services/wdd-custom-web-development/slidecm7.jpg";
+import slidecm8 from "../assets/services/wdd-custom-web-development/slidecm8.jpg";
+import slidecm9 from "../assets/services/wdd-custom-web-development/slidecm9.jpg";
+import slidecm10 from "../assets/services/wdd-custom-web-development/slidecm10.jpg";
+import slidecm11 from "../assets/services/wdd-custom-web-development/slidecm11.jpg";
+import slidecm12 from "../assets/services/wdd-custom-web-development/slidecm12.jpg";
+import slidecm13 from "../assets/services/wdd-custom-web-development/slidecm13.jpg";
+import slidecm14 from "../assets/services/wdd-custom-web-development/slidecm14.jpg";
+import slidecm15 from "../assets/services/wdd-custom-web-development/slidecm15.jpg";
+import slidecm16 from "../assets/services/wdd-custom-web-development/slidecm16.jpg";
+import slidecm17 from "../assets/services/wdd-custom-web-development/slidecm17.jpg";
+import slidecm18 from "../assets/services/wdd-custom-web-development/slidecm18.jpg";
+import slidecm19 from "../assets/services/wdd-custom-web-development/slidecm19.jpg";
+import slidecm20 from "../assets/services/wdd-custom-web-development/slidecm20.jpg";
+import fn1 from "../assets/services/wdd-custom-web-development/fn1.jpg";
+import fn2 from "../assets/services/wdd-custom-web-development/fn2.jpg";
+import fn3 from "../assets/services/wdd-custom-web-development/fn3.jpg";
+import fn4 from "../assets/services/wdd-custom-web-development/fn4.jpg";
+import wes1 from "../assets/services/wdd-web-apps/wes1.svg";
+import wes2 from "../assets/services/wdd-web-apps/wes2.svg";
+import wes3 from "../assets/services/wdd-web-apps/wes3.svg";
+import wes4 from "../assets/services/wdd-web-apps/wes4.svg";
+import wewbanner from "../assets/services/wdd-web-apps/wewbanner.jpg";
+import fel1 from "../assets/services/wdd-web-apps/fel1.svg";
+import fel2 from "../assets/services/wdd-web-apps/fel2.svg";
+import fel3 from "../assets/services/wdd-web-apps/fel3.svg";
+import fel4 from "../assets/services/wdd-web-apps/fel4.svg";
+import rel1 from "../assets/services/wdd-web-apps/rel1.svg";
+import rel2 from "../assets/services/wdd-web-apps/rel2.svg";
+import rel3 from "../assets/services/wdd-web-apps/rel3.svg";
+import rel4 from "../assets/services/wdd-web-apps/rel4.svg";
+import rel5 from "../assets/services/wdd-web-apps/rel5.svg";
+import ow1 from "../assets/services/wdd-web-apps/ow1.svg";
+import ow2 from "../assets/services/wdd-web-apps/ow2.svg";
+import ow3 from "../assets/services/wdd-web-apps/ow3.svg";
+import ow4 from "../assets/services/wdd-web-apps/ow4.svg";
+import ow5 from "../assets/services/wdd-web-apps/ow5.svg";
+import ow6 from "../assets/services/wdd-web-apps/ow6.svg";
+
+
 
 
 export const assets = {
+  ow1,
+  ow2,
+  ow3,
+  ow4,
+  ow5,
+  ow6,
+  fel1,
+  fel2,
+  fel3,
+  fel4,
+  rel1,
+  rel2,
+  rel3,
+  rel4,
+  rel5,
+  wes1,
+  wes2,
+  wes3,
+  wes4,
+  wewbanner,
+  fn1,
+  fn2,
+  fn3,
+  fn4,
+  slidecm1,
+  slidecm2,
+  slidecm3,
+  slidecm4,
+  slidecm5,
+  slidecm6,
+  slidecm7,
+  slidecm8,
+  slidecm9,
+  slidecm10,
+  slidecm11,
+  slidecm12,
+  slidecm13,
+  slidecm14,
+  slidecm15,
+  slidecm16,
+  slidecm17,
+  slidecm18,
+  slidecm19,
+  slidecm20,
   wce1,
   wce2,
   wce3,
@@ -442,7 +531,6 @@ export const assets = {
   rsa4,
   rsa5,
   rsa6,
-  slides1,
   rse1,
   rse2,
   rse3,
