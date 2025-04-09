@@ -465,11 +465,79 @@ import ow3 from "../assets/services/wdd-web-apps/ow3.svg";
 import ow4 from "../assets/services/wdd-web-apps/ow4.svg";
 import ow5 from "../assets/services/wdd-web-apps/ow5.svg";
 import ow6 from "../assets/services/wdd-web-apps/ow6.svg";
+import soc1 from "../assets/icons/soc1.svg";
+import soc2 from "../assets/icons/soc2.svg";
+import soc3 from "../assets/icons/soc3.svg";
+import soc4 from "../assets/icons/soc4.svg";
+import soc5 from "../assets/icons/soc5.svg";
+import soc6 from "../assets/icons/soc6.svg";
+import spbanner from "../assets/services/social-media-strategy/spbanner.jpg";
+import hp1 from "../assets/services/social-media-strategy/hp1.svg";
+import hp2 from "../assets/services/social-media-strategy/hp2.svg";
+import hp3 from "../assets/services/social-media-strategy/hp3.svg";
+import hp4 from "../assets/services/social-media-strategy/hp4.svg";
+import hp5 from "../assets/services/social-media-strategy/hp5.svg";
+import rsts1 from "../assets/services/social-media-strategy/rst1.svg";
+import rsts2 from "../assets/services/social-media-strategy/rst2.svg";
+import rsts3 from "../assets/services/social-media-strategy/rst3.svg";
+import rsts4 from "../assets/services/social-media-strategy/rst4.svg";
+import rsts5 from "../assets/services/social-media-strategy/rst5.svg";
+import rsts6 from "../assets/services/social-media-strategy/rst6.svg";
+import mabanner from "../assets/services/wdd-mobile-apps/mabanner.jpg";
+import mah1 from "../assets/services/wdd-mobile-apps/mah1.svg";
+import mah2 from "../assets/services/wdd-mobile-apps/mah2.svg";
+import mah3 from "../assets/services/wdd-mobile-apps/mah3.svg";
+import mah4 from "../assets/services/wdd-mobile-apps/mah4.svg";
+import mah5 from "../assets/services/wdd-mobile-apps/mah5.svg";
+import oma1 from "../assets/services/wdd-mobile-apps/oma1.svg";
+import oma2 from "../assets/services/wdd-mobile-apps/oma2.svg";
+import oma3 from "../assets/services/wdd-mobile-apps/oma3.svg";
+import oma4 from "../assets/services/wdd-mobile-apps/oma4.svg";
+import oma5 from "../assets/services/wdd-mobile-apps/oma5.svg";
+import oma6 from "../assets/services/wdd-mobile-apps/oma6.svg";
+import marr1 from "../assets/services/wdd-mobile-apps/marr1.svg";
+import marr2 from "../assets/services/wdd-mobile-apps/marr2.svg";
+import marr3 from "../assets/services/wdd-mobile-apps/marr3.svg";
+import marr4 from "../assets/services/wdd-mobile-apps/marr4.svg";
+import marr5 from "../assets/services/wdd-mobile-apps/marr5.svg";
+import marr6 from "../assets/services/wdd-mobile-apps/marr6.svg";
 
 
 
 
 export const assets = {
+  mabanner,
+  mah1,
+  mah2,
+  mah3,
+  mah4,
+  mah5,
+  oma1,
+  oma2,
+  oma3,
+  oma4,
+  oma5,
+  oma6,
+  marr1,
+  marr2,
+  marr3,
+  marr4,
+  marr5,
+  marr6,
+  spbanner,
+  hp1,
+  hp2,
+  hp3,
+  hp4,
+  hp5,
+  rsts1,
+  rsts2,
+  rsts3,
+  rsts4,
+  rsts5,
+  rsts6,
+  soc1,
+  soc2, soc3, soc4, soc5, soc6,
   ow1,
   ow2,
   ow3,
