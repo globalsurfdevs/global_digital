@@ -82,15 +82,14 @@ const ExpertServices: React.FC<FrameworkSectionProps> = ({
                     width={40}
                     height={30}
                     alt="Boost Image"
-                    className="wsd2 transition-all duration-100 ease-in-out"
+                    className="wsd2 "
                   />
                 </div>
 
                 <div className="md:w-1/2">
                   <p
-                    className={`text-small-30  transition-all duration-300`}
-                    dangerouslySetInnerHTML={{ __html: framework.title }}
-                  ></p>
+                    className={`text-small-30  `}
+                  >{framework.title}</p>
 
                   <div
                     className={`flex w-full items-center justify-between gap-[15px] pt-3 md:gap-[40px] xxl:gap-[130px] overflow-hidden transition-all duration-500 ease-in-out ${

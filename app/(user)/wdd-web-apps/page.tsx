@@ -6,13 +6,13 @@ import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
 
-import { BannerSection,Wecanhelp,OurServices,AreaExpertise,Platformsecomdata,Cta,Faq,relatedservices,Clientsformsdata} from "../../data/services/wdd-custom-web-development/data";
+import { BannerSection,Wecanhelp,OurServices,Frameworkdata,AreaExpertise,Platformsecomdata,Cta,Faq,relatedservices,Clientsformsdata} from "../../data/services/wdd-web-apps/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
-import WorkIn from "@/app/components/common/WorkIn";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import SucessStories from "@/app/components/wdd-custom-web-development/SucessStories";
+import SucessStories from "@/app/components/wdd-web-apps/SucessStories";
+import Framework from "@/app/components/PermormanceMarketing/Framework";
 
 
 interface Canonicals {
@@ -49,12 +49,16 @@ const page = () => {
         colcount={5}
         hrcontent={true}
       />
-      <div className="hdpd">
-        <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
+      <div className="bg-black text-white mnstsaq">
+      <Framework
+        title={Frameworkdata.title}
+        data={Frameworkdata.data}
+        bgcolor="bg-black"
+        colcount={3}
+      />
       </div>
-      <section className="pb-[50px]   lg:pb-[200px]  pt-[50px]   lg:pt-[140px] bg-black text-white mb-[50px] lg:mb-[140px]">
-      <WorkIn />
-      </section>
+        <Expertise title={AreaExpertise.title} data={AreaExpertise.data} subttle={AreaExpertise.subttle} />
+
       <section className="pb-[50px]   lg:pb-[140px] ">
       <Platformserver title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
       </section>
@@ -62,13 +66,13 @@ const page = () => {
         Clientsformsdata={Clientsformsdata.filter((item) => item !== undefined)}
 
         subdesc={
-          "Our Works"
+          "Showcasing Our Finest Creations"
         }
       />
       <GetInTouch
         data={Cta}
         redlast={true}
-        ctabbutton={"LET'S CONNECT AND GET STARTED TODAY!"}
+        ctabbutton={"CONTACT US TODAY!"}
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />

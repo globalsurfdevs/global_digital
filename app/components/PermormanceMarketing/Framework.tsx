@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image,{ StaticImageData } from "next/image";
 interface FrameworkItem {
   id: number;
   title: string;
+  icn?: string | StaticImageData;
   dec: string;
 }
 
@@ -78,11 +80,21 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                     <div className={`relative h-[1px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}>
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
+                  {!framework.icn && (
                   <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary   transition-transform duration-500  lg:mb-8 lg:mt-10">
                     <p className="text-30  text-white transition-transform duration-500">
                       {String(framework.id).padStart(2, "0")}
                     </p>
-                  </div>
+                    </div>
+                     )}
+                  {framework.icn && (
+                  <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary  group-hover:bg-white transition-transform duration-500  lg:mb-8 lg:mt-10">
+
+                       <Image src={framework.icn} alt="icon"   className=" group-hover:invert-[0] group-hover:brightness-[1] object-cover brightness-0 invert-[1]" />
+
+
+                  </div>    )}
+
                   <div className="text-2xl">
                     <h3
                       className="text-30 pb-3 text-black lg:pb-6"

@@ -6,13 +6,14 @@ import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
 
-import { BannerSection,Wecanhelp,OurServices,AreaExpertise,Platformsecomdata,Cta,Faq,relatedservices,Clientsformsdata} from "../../data/services/wdd-custom-web-development/data";
+import { BannerSection,Wecanhelp,OurServices,Frameworkdata,Platformsecomdata,Cta,Faq,relatedservices,ResultsData,Specializedin} from "../../data/services/social-media-strategy/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import Expertise from "@/app/components/PermormanceMarketing/Expertise";
-import WorkIn from "@/app/components/common/WorkIn";
+import Results from "../../components/SocialMediaMarketingDubai/Results";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import SucessStories from "@/app/components/wdd-custom-web-development/SucessStories";
+import Framework from "@/app/components/PermormanceMarketing/Framework";
+import Testimonials from "@/app/components/HomePage/Testimonials";
+import Specialize from "@/app/components/common/Specialize";
 
 
 interface Canonicals {
@@ -41,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={34} />
+      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={25} />
       <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={3} />
        <Services
         title={OurServices.title}
@@ -49,30 +50,33 @@ const page = () => {
         colcount={5}
         hrcontent={true}
       />
-      <div className="hdpd">
-        <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
-      </div>
-      <section className="pb-[50px]   lg:pb-[200px]  pt-[50px]   lg:pt-[140px] bg-black text-white mb-[50px] lg:mb-[140px]">
-      <WorkIn />
-      </section>
-      <section className="pb-[50px]   lg:pb-[140px] ">
-      <Platformserver title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
-      </section>
-      <SucessStories
-        Clientsformsdata={Clientsformsdata.filter((item) => item !== undefined)}
-
-        subdesc={
-          "Our Works"
-        }
+      <Framework
+        title={Frameworkdata.title}
+        data={Frameworkdata.data}
+        bgcolor="bg-[#F2F2F2]"
+        colcount={3}
       />
+      <Specialize
+        title={Specializedin.title}
+        data={Specializedin.data}
+        bgcolor="bg-black"
+        colcount={3} />
+
+      <Results title={ResultsData.title} description={ResultsData.description} data={ResultsData.data} />
+
+      <Testimonials bgcolor={'white'} />
+      <section className="pb-[50px]   lg:pb-[140px] ">
+      <Platformserver title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} colm={4} />
+      </section>
+
       <GetInTouch
         data={Cta}
         redlast={true}
-        ctabbutton={"LET'S CONNECT AND GET STARTED TODAY!"}
+        ctabbutton={"CONTACT US TODAY!"}
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
+      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} description={relatedservices.description} />
     </div>
   );
 };
