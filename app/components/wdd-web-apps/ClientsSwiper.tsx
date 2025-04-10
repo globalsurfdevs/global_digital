@@ -107,8 +107,7 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                         alt={item.title}
                         className="h-full w-full object-cover lg:w-[450px]"
                       />
-  <a
-                      href={item.btnurl || ""}
+  {/* <a href={item.btnurl || ""}
                       className="absolute opacity-0 group-hover:opacity-[1] bottom-8 right-8 w-[50px] h-[50px] bg-[#5a5656]  rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300 ease-in-out">
                     <div
                       className="group relative z-10 flex w-fit items-center   border-b-0 border-transparent    decoration-0 before:h-[1px]    ">
@@ -147,7 +146,8 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                           </clipPath>
                         </defs>
                       </svg>
-                      </div></a>
+                        </div>
+                      </a> */}
                     </div>
                   </div>
                 </div>
