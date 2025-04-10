@@ -501,11 +501,25 @@ import marr3 from "../assets/services/wdd-mobile-apps/marr3.svg";
 import marr4 from "../assets/services/wdd-mobile-apps/marr4.svg";
 import marr5 from "../assets/services/wdd-mobile-apps/marr5.svg";
 import marr6 from "../assets/services/wdd-mobile-apps/marr6.svg";
+import sese1 from "../assets/services/wdd-web-apps/sese1.svg";
+import sese2 from "../assets/services/wdd-web-apps/sese2.svg";
 
 
+import gd1 from "../images/GraphicDesign/gdicon1.svg";
+import gd2 from "../images/GraphicDesign/gdicon2.svg";
+import gd3 from "../images/GraphicDesign/gdicon3.svg";
+import gd4 from "../images/GraphicDesign/gdicon4.svg";
+import gd5 from "../images/GraphicDesign/gdicon5.svg";
+import gd6 from "../images/GraphicDesign/gdicon6.svg";
+import gd7 from "../images/GraphicDesign/gdicon7.svg";
+import gd8 from "../images/GraphicDesign/gdicon8.svg";
 
 
 export const assets = {
+  gd1,
+  gd2, gd3, gd4, gd5, gd6, gd7, gd8,
+  sese1,
+  sese2,
   mabanner,
   mah1,
   mah2,

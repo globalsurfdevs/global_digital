@@ -16,6 +16,7 @@ interface ExpertiseItem {
 interface ExpertiseSectionProps {
   title: string;
   colnum?: number;
+  maxchwidth?: number;
   data: ExpertiseItem[];
   subttle?: string;
 }
@@ -25,6 +26,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
   data,
   colnum,
   subttle,
+  maxchwidth,
 }) => {
   return (
     <div className="container mx-auto py-4">
@@ -43,7 +45,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
               }, // Slide up and fade in
             }}
           >
-            <h2 className="title-65 ">{title}</h2>
+            <h2 className="title-65" style={{ maxWidth: maxchwidth }}>{title}</h2>
             <p className="text-19 fnt-lexend font-400 mt-6 text-[#77787B] lg:mt-[30px] lg:max-w-[96ch]">
               {subttle}
             </p>

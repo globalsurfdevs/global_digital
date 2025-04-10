@@ -8,7 +8,7 @@ import Typeslogo from "../../components/Bc-logo/TypesLogo";
 import WhyChoose from "../../components/BcGraphicDesign/WhyChoose";
 import OurServices from "../../components/BcGraphicDesign/OurServices";
 
-import { BannerSection } from "../../data/services/bc-graphic-design/herosection";
+import { BannerSection ,AreaExpertise} from "../../data/services/bc-graphic-design/herosection";
 import { Clientsformsdata } from "../../data/services/bc-logo-design/ourworks";
 import { Whychoosedata } from "../../data/services/bc-graphic-design/whychoose";
 import { Typelogodata } from "../../data/services/bc-graphic-design/typesdesign";
@@ -18,6 +18,7 @@ import { Cta } from "../../data/services/bc-graphic-design/cta";
 import { Faq } from "../../data/services/bc-graphic-design/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import Expertise from "@/app/components/PermormanceMarketing/Expertise";
 
 type Metadata = {
   title: string;
@@ -44,10 +45,8 @@ const page = () => {
         hideslider={true}
         maxchwidth={23}
       />
-      <OurServices
-        title="Our Graphic<br> Design Services"
-        description="Great design isn’t just about looking good—it’s about making an impact. At Global Surf Digital Media, we create visuals that don’t just sit on a page; they move people. Every line, every color, every element is crafted to tell a story—your story. "
-      />
+
+      <Expertise title={AreaExpertise.title} data={AreaExpertise.data}   maxchwidth={23}/>
       <Platforms
         title={Wecanhelp.title}
         data={Wecanhelp.data}

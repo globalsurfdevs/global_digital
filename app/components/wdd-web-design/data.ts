@@ -46,31 +46,31 @@ export const ExpertServicesdata = {
       id: 1,
       title: "E-commerce Website Design",
       dec: "We build e-commerce websites that do more than just look good—they’re optimized for seamless shopping experiences and higher conversions. ",
-      icon:assets.oex1
+      icon:assets.oex4
     } ,
     {
       id: 2,
       title: "Corporate Website Design",
       dec: "Your website should reflect your brand’s vision and values. As a trusted web design agency, we craft corporate websites that align with your business goals and enhance your online presence. ",
-      icon:assets.oex2
+      icon:assets.oex3
     } ,
     {
       id: 3,
       title: "Web Applications & Dashboards",
       dec: "Our web app design services focus on creating intuitive, functional, and user-friendly solutions that help businesses streamline operations and solve real-world challenges. ",
-      icon:assets.oex3
+      icon:assets.sese1
     } ,
     {
       id: 4,
       title: "Custom Website Design",
       dec: "A website should be more than just a digital presence—it should tell your brand’s story. We create tailored, high-performance websites that stand out and deliver results. ",
-      icon:assets.oex4
+      icon:assets.oex2
     } ,
     {
       id: 5,
       title: "Website Redesign & Revamp ",
       dec: "A redesign isn’t just about aesthetics—it’s about performance. We transform outdated websites into modern, responsive platforms that drive more traffic, engagement, and revenue. ",
-      icon:assets.oex5
+      icon:assets.oex1
     } ,
 
   ],
@@ -218,7 +218,7 @@ export const relatedservices = {
       id: 1,
       title: "Digital Marketing ",
       dec: "Promote your website through various online channels to reach a broader audience.",
-      icon:assets.rst1
+      icon:assets.sese2
     } ,
     {
       id: 2,
