@@ -46,7 +46,7 @@ const page = () => {
         maxchwidth={23}
       />
 
-      <Expertise title={AreaExpertise.title} data={AreaExpertise.data}   maxchwidth={23}/>
+      <Expertise title={AreaExpertise.title} data={AreaExpertise.data}   maxchwidth={12}/>
       <Platforms
         title={Wecanhelp.title}
         data={Wecanhelp.data}

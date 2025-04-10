@@ -513,9 +513,83 @@ import gd5 from "../images/GraphicDesign/gdicon5.svg";
 import gd6 from "../images/GraphicDesign/gdicon6.svg";
 import gd7 from "../images/GraphicDesign/gdicon7.svg";
 import gd8 from "../images/GraphicDesign/gdicon8.svg";
+import prfbanner from "../assets/services/programmatic-advertising/prfbanner.jpg";
+import apre1 from "../assets/services/programmatic-advertising/apre1.svg";
+import apre2 from "../assets/services/programmatic-advertising/apre2.svg";
+import apre3 from "../assets/services/programmatic-advertising/apre3.svg";
+import apre4 from "../assets/services/programmatic-advertising/apre4.svg";
+import apre5 from "../assets/services/programmatic-advertising/apre5.svg";
+import apre6 from "../assets/services/programmatic-advertising/apre6.svg";
+import apwe1 from "../assets/services/programmatic-advertising/apwe1.svg";
+import apwe2 from "../assets/services/programmatic-advertising/apwe2.svg";
+import apwe3 from "../assets/services/programmatic-advertising/apwe3.svg";
+import apwhy1 from "../assets/services/programmatic-advertising/apwhy1.svg";
+import apwhy2 from "../assets/services/programmatic-advertising/apwhy2.svg";
+import apwhy3 from "../assets/services/programmatic-advertising/apwhy3.svg";
+import apwhy4 from "../assets/services/programmatic-advertising/apwhy4.svg";
+import crmbanner from "../assets/services/conversion-rate-optimization/crm-banner.jpg";
+import crmwe1 from "../assets/services/conversion-rate-optimization/crmwe1.svg";
+import crmwe2 from "../assets/services/conversion-rate-optimization/crmwe2.svg";
+import crmwe3 from "../assets/services/conversion-rate-optimization/crmwe3.svg";
+import crmwe4 from "../assets/services/conversion-rate-optimization/crmwe4.svg";
+import crmwe5 from "../assets/services/conversion-rate-optimization/crmwe5.svg";
+import crmwhy1 from "../assets/services/conversion-rate-optimization/crmwhy1.svg";
+import crmwhy2 from "../assets/services/conversion-rate-optimization/crmwhy2.svg";
+import crmwhy3 from "../assets/services/conversion-rate-optimization/crmwhy3.svg";
+import crmre1 from "../assets/services/conversion-rate-optimization/crmre1.svg";
+import crmre2 from "../assets/services/conversion-rate-optimization/crmre2.svg";
+import crmre3 from "../assets/services/conversion-rate-optimization/crmre3.svg";
+import crmre4 from "../assets/services/conversion-rate-optimization/crmre4.svg";
+import crmre5 from "../assets/services/conversion-rate-optimization/crmre5.svg";
+import crmre6 from "../assets/services/conversion-rate-optimization/crmre6.svg";
+
+import crmrec1 from "../assets/services/conversion-rate-optimization/crmrec1.svg";
+import crmrec2 from "../assets/services/conversion-rate-optimization/crmrec2.svg";
+import crmrec3 from "../assets/services/conversion-rate-optimization/crmrec3.svg";
+import crmrec4 from "../assets/services/conversion-rate-optimization/crmrec4.svg";
+import crmrec5 from "../assets/services/conversion-rate-optimization/crmrec5.svg";
+import crmrec6 from "../assets/services/conversion-rate-optimization/crmrec6.svg";
+
+
+
 
 
 export const assets = {
+  crmbanner,
+  crmwe1,
+  crmwe2,
+  crmwe3,
+  crmwe4,
+  crmwe5,
+  crmwhy1,
+  crmwhy2,
+  crmwhy3,
+  crmre1,
+  crmre2,
+  crmre3,
+  crmre4,
+  crmre5,
+  crmre6,
+  crmrec1,
+  crmrec2,
+  crmrec3,
+  crmrec4,
+  crmrec5,
+  crmrec6,
+  prfbanner,
+  apre1,
+  apre2,
+  apre3,
+  apre4,
+  apre5,
+  apre6,
+  apwe1,
+  apwe2,
+  apwe3,
+  apwhy1,
+  apwhy2,
+  apwhy3,
+  apwhy4,
   gd1,
   gd2, gd3, gd4, gd5, gd6, gd7, gd8,
   sese1,

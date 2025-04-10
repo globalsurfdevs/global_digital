@@ -117,13 +117,13 @@ export const OurServices = {
 };
 export const Platformsecomdata = {
   title: "Why Choose GS Digital?",
-  desc:"At GS Digital, we don’t just build websites—we craft experiences that make an impact. Here’s why brands trust us",
+  desc:"Every innovation here stems from a drive to do better. We create ideas that make an impact, experiences that inspire, and digital solutions that push businesses forward.",
   data: [
     {
       id: 1,
       icon: assets.google,
       title: "100+",
-      rttitel:"Projects ",
+      rttitel:"Projects Launched",
       dec: "We’ve designed and developed high-performing websites across industries, delivering results that matter. ",
     },
     {

@@ -65,7 +65,7 @@ const Results: React.FC<ResultsSectionProps> = ({
               {data.map((result) => (
                 <div
                   key={result.id}
-                  className="group relative bg-black pb-0 text-white duration-300 ease-linear hover:cursor-pointer"
+                  className="group relative bg-black pb-0 text-white duration-300 ease-linear "
                 >
                   <div className="flex flex-col bg-gray2 px-6 pb-6 pt-5  duration-300 ease-in-out group-hover:bg-primary  md:px-[50px] md:pb-8   md:pt-8 lg:pb-[50px] lg:pt-[60px]">
                     <div className="relative  flex flex-col  ">

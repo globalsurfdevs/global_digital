@@ -22,18 +22,32 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
-   robots: string;
+  robots: string;
+  openGraph: {
+    title: string;
+    siteName: string;
+    url: string;
+    description: string;
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "WDD Custom Web Development | G.S Digital",
+    title: "Web Design Company Dubai | Web Designing Agency | GS Digital",
     description:
-      "Dubai's trusted SMM agency, Global Surf Digital, provides expert social media marketing services to help you dominate the digital landscape. Contact us now!",
+      "Leverage our 25+ design experts to build a website that converts. From wireframing to launch, our Dubai web design agency ensures pixel-perfect execution. ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/web-design-agency-dubai",
     },
-     robots: "noindex, nofollow",
+    robots: "index, follow",
+    openGraph: {
+      title: "Dubai’s Best Web Design Agency | 25+ Experts, 11+ Years",
+      siteName: "Global Surf Digital Media",
+      url: "https://www.globalsurf.ae/web-design-agency-dubai ",
+      description:
+        "From wireframes to launch, trust our web design experts to build a site that reflects your brand. Mobile-first, fast, and pixel-perfect—every time. Get a quote today!",
+
+    },
   };
 }
 
@@ -41,8 +55,8 @@ const page = () => {
   return (
     <div>
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={26} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
       <ExpertServices title={ExpertServicesdata.title} bgcolor={'bg-white'}  data={ExpertServicesdata.data} colcount={3} />
+      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
 
       <div className="bg-black text-white bordergrey">
         <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />

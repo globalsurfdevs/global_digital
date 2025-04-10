@@ -78,21 +78,19 @@ const page = () => {
         bgcolor="bg-[#fff]"
         colcount={3}
       />
-      <section className="black-serv bg-black">
+      <section className="ptstsa ">
         <Services
           title={OurServices.title}
           data={OurServices.data}
           hrcontent={true}
-          colcount={5}
+        colcount={5}
         />
-      </section>
-      <section className="pt-[50px]   lg:pt-[140px] ">
+        </section>
         <Platformsecom
           title={Platformsecomdata.title}
           desc={Platformsecomdata.desc}
           data={Platformsecomdata.data}
         />
-      </section>
       <Works title="Our Works" />
 
       <Testimonials />
