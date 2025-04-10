@@ -51,11 +51,11 @@ const Services: React.FC<ServicesSectionProps> = ({
           }}
         >
           <div
-            className={`gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px]  lg:gap-10 lg:pb-[150px] lg:pt-[140px]  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}
+            className={`gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px]  lg:gap-10 lg:pb-[150px] lg:pt-[140px] pas  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}
           >
             <div className="col-span-2 text-5xl">
               <h2
-                className={`title-65 pb-2 ${bgtt1 ? `${bgtt1}` : "text-black"}`}
+                className={`title-65 pb-2 ${bgtt1 ? bgtt1 : "text-black"}`}
               >
                 {title}
               </h2>
@@ -74,19 +74,19 @@ const Services: React.FC<ServicesSectionProps> = ({
                 >
                   <div className="group border-b relative flex gap-4 py-[15px] transition-all duration-300  ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[34px]">
                     <p
-                      className={` transition-all duration-300 group-hover:text-primary ${bgtt2 ? `${bgtt2}` : "text-gray1"}`}
+                      className={` transition-all duration-300 group-hover:text-primary ${bgtt2 ? bgtt2 : "text-gray1"}`}
                     >
                       {String(service.id).padStart(2, "0")}
                     </p>
                     <div className="consu relative">
                       <h3
-                        className={`text-30 transition-all duration-300 group-hover:text-primary ${bgtt3 ? `${bgtt3}` : "text-black"}`}
+                        className={`text-30 transition-all duration-300 group-hover:text-primary ${bgtt3 ? bgtt3 : "text-black"}`}
                       >
                         {service.title}
                       </h3>
                       {/* Hover Description */}
                       {hrcontent && (
-                        <div className="     h-0 group-hover:h-[30px] ">
+                        <div className="     h-0 group-hover:h-auto  ">
                           <p
                             className={` mt-2 text-font19 leading-[1.2] opacity-0  transition-opacity duration-300 group-hover:opacity-100  ${bgtt4 ? `${bgtt4}` : "text-77787B"}`}
                           >
