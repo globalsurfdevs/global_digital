@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/industry/construction",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {
