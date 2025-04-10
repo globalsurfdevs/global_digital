@@ -295,7 +295,7 @@ import clientlogo8 from "../images/Ind-construction/c8.svg";
 
 import faisalimage from "../images/profilecard/faisal_profilecard.png";
 
-import bc_image from "../images/bc-logo-design/bc_image1.png";
+import bc_image from "../images/bc-logo-design/bc_image1.jpg";
 import bc1 from "../images/bc-logo-design/bc1.svg";
 import bc2 from "../images/bc-logo-design/bc2.svg";
 import bc3 from "../images/bc-logo-design/bc3.svg";
@@ -328,6 +328,7 @@ import bcr3 from "../images/bc-logo-design/bcr3.svg";
 import bcr4 from "../images/bc-logo-design/bcr4.svg";
 import bcr5 from "../images/bc-logo-design/bcr5.svg";
 
+import bggra from "../images/GraphicDesign/bggra.jpg";
 import gdicon1 from "../images/GraphicDesign/gdicon1.svg";
 import gdicon2 from "../images/GraphicDesign/gdicon2.svg";
 import gdicon3 from "../images/GraphicDesign/gdicon3.svg";
@@ -555,6 +556,7 @@ import crmrec6 from "../assets/services/conversion-rate-optimization/crmrec6.svg
 
 
 export const assets = {
+  bggra,
   crmbanner,
   crmwe1,
   crmwe2,
