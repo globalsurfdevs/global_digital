@@ -6,11 +6,14 @@ import { motion } from "framer-motion";
 type PartnerDataType = {
   text: string;
   textred: string;
+  subhead?: string;
 };
 
 type PartnerListProps = {
   ctabbutton: string;
   link: string;
+  bgcolor?: string;
+  color?: string;
   redlast?: boolean;
   data: PartnerDataType[];
 };
@@ -18,11 +21,14 @@ type PartnerListProps = {
 const GetInTouch: React.FC<PartnerListProps> = ({
   data,
   ctabbutton,
+  bgcolor,
+  color,
   link,
   redlast,
 }) => {
   return (
-    <div className="flex flex-col bg-black py-[50px] lg:py-[150px]">
+
+    <div className= {`flex flex-col   py-[50px] lg:py-[150px] ${bgcolor ? `bg-${bgcolor}` : "bg-black"}`}>
       <div className="container mx-auto px-4 text-white">
         <div className="flex h-1/3 flex-col justify-center ">
           <motion.div
@@ -44,7 +50,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                   className="title-65 leading-[1.15]"
                   key={index}
                   dangerouslySetInnerHTML={{
-                    __html: `${item.text}<span class="text-primary">${item.textred}</span>`,
+                    __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span><span class="text-primary">${item.textred}</span>`,
                   }}
                 />
               ) : (
@@ -52,11 +58,19 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                   className="title-65 leading-[1.15]"
                   key={index}
                   dangerouslySetInnerHTML={{
-                    __html: `<span class="text-primary">${item.textred}</span>${item.text}`,
+                    __html: `<span class="text-primary">${item.textred}</span><span class='${bgcolor ? `text-black` : ""}'>${item.text}</span>`,
                   }}
                 />
               ),
             )}
+
+            {data.map((item, index) =>
+              {item.subhead && item.subhead.length > 0 ? (
+              <div key={index} >
+                <p className="text-font30 leading-[1.3] text-gray1 lg:mt-10 pt-5">{item.subhead }</p>
+            </div>
+            ) : null}
+          )}
           </motion.div>
 
           <motion.div
@@ -74,7 +88,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
           >
             <div className="innerfnont mt-6 lg:mt-[57px]">
               <Link href={link}>
-                <Button text={ctabbutton} />
+                <Button text={ctabbutton} color={color} />
               </Link>
             </div>
           </motion.div>

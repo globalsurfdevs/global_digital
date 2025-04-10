@@ -938,3 +938,10 @@ input[type="number"] {
 .black-serv .consu h3{ color: #fff;}
 .hidegslider .perf-slide .swiper-slide:nth-last-child(1){display: none;}
 .hdpd .padding0{padding-top: 0px !important;}
+.bordergrey .border{border-color: #333333;}
+.innerbgpd .bg-bglight{background: #fff;}
+.innerbgpd .ptwhite{padding-top: 0px !important;}
+.hovered-item img{     filter: brightness(0) invert(1) !important;}
+.hovered-item p{ color: #fff;}
+.mnstsaq h3{color: #fff;}
+.ptstsa .pas{padding-top: 0px !important;}

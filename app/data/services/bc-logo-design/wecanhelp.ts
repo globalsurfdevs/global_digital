@@ -1,7 +1,7 @@
 import { assets } from "@/public/assets/assets";
 
 export const Wecanhelp = {
-  title: "We Can Help You ",
+  title: "Why a Professional Logo Matters",
   data: [
     {
       id: 1,
@@ -26,6 +26,18 @@ export const Wecanhelp = {
       icon: assets.bc4,
       title: "Drive Customer Recognition",
       dec: "Make your business easily identifiable.",
+    },
+    {
+      id: 5,
+      icon: assets.bc5,
+      title: "Stand Out from Competitors ",
+      dec: "Differentiate yourself in a crowded market.",
+    },
+    {
+      id: 6,
+      icon: assets.bc6,
+      title: "Boost Market Presence ",
+      dec: "Enhance visibility and position your brand for success",
     },
   ],
 };

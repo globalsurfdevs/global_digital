@@ -88,9 +88,9 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                     <div className="w-full">
                       {" "}
                       {/* Ensure full width */}
-                      <h2 className="mb-2 text-[25px] lg:text-[30px]">
+                      <h3 className="mb-2 text-[25px] lg:text-[30px]">
                         {item.title}
-                      </h2>
+                      </h3>
                       <p className="text-gray-600 transition-colors duration-300 group-hover:text-primary">
                         {item.desc}
                       </p>

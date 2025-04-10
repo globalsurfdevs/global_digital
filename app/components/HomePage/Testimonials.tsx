@@ -12,7 +12,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }
   return (
     <div className={` ${bgcolor === 'white' ? 'bg-white' : 'bg-bglight'}`} >
       <div className= {`container px-4 mx-auto  ${bordertop ? ' border-t' : ''}`}>
-        <div className="pt-[50px] pb-[30px] md:py-10 lg:py-12 xl:pt-[138px] xl:pb-[110px]">
+        <div className="pt-[50px] pb-[30px] md:py-10 lg:py-12 xl:pt-[138px] xl:pb-[110px] ptwhite">
         <motion.div
           initial="hidden"
                   whileInView="visible"

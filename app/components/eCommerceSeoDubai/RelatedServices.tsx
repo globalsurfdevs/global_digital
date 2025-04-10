@@ -80,11 +80,11 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
                     width={40}
                     height={30}
                     alt="Boost Image"
-                    className=" wsd2 transition-all duration-100 ease-in-out"
+                    className=" wsd2 "
                   />
                   <div className={` ${text ? '' :'consu'}`}>
-                    <p className={`text-small-30 transition-all duration-300 max-w-[20ch] ${text ? `text-${text} ` :''}`}  dangerouslySetInnerHTML={{ __html: framework.title }}>
-
+                    <p className={`text-small-30  max-w-[20ch] ${text ? `text-${text} ` :''}`}  >
+{framework.title}
                     </p>
                   </div>
                 </div>
