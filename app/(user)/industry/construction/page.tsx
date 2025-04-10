@@ -31,11 +31,11 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Industry Construction",
+    title: "Digital Marketing for Construction Companies |  GS Digital ",
     description:
-      "Looking for a pay per click advertising agency in Dubai? Our expert PPC services deliver targeted campaigns to maximize ROI. Contact us today! ",
+      "Boost your construction brand's visibility with tailored digital marketing strategies. From SEO to branding, we help firms attract high-value leads. Contact now!",
     alternates: {
-      canonical: "https://www.globalsurf.ae",
+      canonical: "https://www.globalsurf.ae/industry/construction",
     },
     robots: "noindex, nofollow",
   };
