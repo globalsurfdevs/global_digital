@@ -4,7 +4,7 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.ind_construction,
-    heroAlt: "B2B SEO Services in Dubai",
+    heroAlt: "Digital Marketing for the Construction Companies",
     title1: "Outrank, Outperform & Outgrow",
     title: "Put Your Construction Brand  on the Digital Map.",
     subtitle:

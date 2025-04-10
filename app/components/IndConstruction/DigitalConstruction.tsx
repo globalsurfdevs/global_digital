@@ -38,9 +38,9 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
             >
               <h2 className="title-65 text-white lg:max-w-[1008px]">{title}</h2>
               <div className="flex justify-between lg:mt-[40px] ">
-                <p className="text-[19px] text-[#77787B]">
+                <h3 className="text-[19px] text-[#77787B]">
                   How We Help Construction Companies Grow
-                </p>
+                </h3>
                 {/* <button
                   className="z-2  hover:border-b-red group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent
                       p-0 pb-3 text-white before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black 
