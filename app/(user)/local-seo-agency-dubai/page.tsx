@@ -33,19 +33,25 @@ import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices"
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
 import { log } from "console";
 
+interface Canonicals {
+  canonical: string;
+}
 type Metadata = {
   title: string;
   description: string;
+  alternates: Canonicals;
   robots: string;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title:
-      "Create a Powerful Brand Identity with Professional Logo Design Services in Dubai ",
+      "Local SEO Agency | Google Business Profile Service | GS Digital",
     description:
-      "Partner with Dubai’s top B2B SEO agency for tailored SEO services that drive results. Increase traffic, generate leads, & grow your business with us.  Call us!",
-
+      "Drive more local traffic with expert Local SEO services. We optimize your Google Business Profile and help you rank higher on Google Maps and Search. ",
+      alternates: {
+        canonical: "https://www.globalsurf.ae/local-seo-agency-dubai",
+      },
     robots: "noindex, nofollow",
   };
 }
