@@ -16,28 +16,43 @@ import Framework from "@/app/components/PermormanceMarketing/Framework";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 
+
+
 interface Canonicals {
   canonical: string;
 }
-
-type Metadata = {
-  title: string;
-  description: string;
-  alternates: Canonicals;
+ type Metadata = {
+   title: string;
+   description: string;
+   alternates: Canonicals;
    robots: string;
-};
+  //  openGraph: {
+  //    title: string;
+  //    siteName: string;
+  //    url: string;
+  //    description: string;
+  //  };
+ };
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "WDD Custom Web Development | G.S Digital",
-    description:
-      "Dubai's trusted SMM agency, Global Surf Digital, provides expert social media marketing services to help you dominate the digital landscape. Contact us now!",
-    alternates: {
-      canonical: "https://www.globalsurf.ae/",
-    },
-     robots: "noindex, nofollow",
-  };
-}
+ export async function generateMetadata(): Promise<Metadata> {
+   return {
+     title: "Ecommerce Web Development Company in Dubai | G.S Digital",
+     description:
+       "Looking to build your online store? Our Dubai-based e-commerce development company specializes in Shopify & WooCommerce solutions tailored for growth. ",
+     alternates: {
+       canonical: "https://www.globalsurf.ae/e-commerce-web-development-company",
+     },
+     robots: "index, follow",
+    //  openGraph: {
+    //    title: "Transform Your Brand with Dubai’s Top Graphic Design Agency",
+    //    siteName: "Global Surf Digital Media",
+    //    url: "https://www.globalsurf.ae/e-commerce-web-development-company",
+    //    description:
+    //      "Elevate your business with custom branding, packaging, and social media designs that captivate. Partner with a leading graphic design agency in Dubai for visuals that sell. Get a quote today!",
+
+    //  },
+   };
+ }
 
 const page = () => {
   return (

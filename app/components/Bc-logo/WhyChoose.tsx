@@ -113,9 +113,12 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({
                 </div>
 
                 <div>
-                  <h3 className="text-30 my-5 lg:my-[30px]">
+
+                  {platform.title && (
+                  <h3 className="text-30 ">
                     {platform.title}
                   </h3>
+                )}
                   <p
                     className={`${bgblack ? "group-hover:text-gray-300" : ""} ${
                       hiddentitle

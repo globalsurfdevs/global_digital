@@ -10,7 +10,7 @@ import OurServices from "../../components/BcGraphicDesign/OurServices";
 
 import { BannerSection ,AreaExpertise} from "../../data/services/bc-graphic-design/herosection";
 import { Clientsformsdata } from "../../data/services/bc-logo-design/ourworks";
-import { Whychoosedata } from "../../data/services/bc-graphic-design/whychoose";
+import { Whychoosedata,Platformimgmdata } from "../../data/services/bc-graphic-design/whychoose";
 import { Typelogodata } from "../../data/services/bc-graphic-design/typesdesign";
 import { relatedservices } from "../../data/services/bc-graphic-design/relatedservices";
 import { Wecanhelp } from "../../data/services/bc-graphic-design/wecanhelp";
@@ -19,24 +19,44 @@ import { Faq } from "../../data/services/bc-graphic-design/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
+import Platformimg from "@/app/components/common/Platformimg";
 
-type Metadata = {
-  title: string;
-  description: string;
-  robots: string;
-};
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title:
-      "Create a Powerful Brand Identity with Professional Logo Design Services in Dubai ",
-    description:
-      "Partner with Dubai’s top B2B SEO agency for tailored SEO services that drive results. Increase traffic, generate leads, & grow your business with us.  Call us!",
-
-    robots: "noindex, nofollow",
-  };
+interface Canonicals {
+  canonical: string;
 }
+ type Metadata = {
+   title: string;
+   description: string;
+   alternates: Canonicals;
+   robots: string;
+   openGraph: {
+     title: string;
+     siteName: string;
+     url: string;
+     description: string;
+   };
+ };
 
+ export async function generateMetadata(): Promise<Metadata> {
+   return {
+     title: "Dubai Graphic Design Agency |  Graphic Design Services | GS Digital ",
+     description:
+       "Elevate your brand with Dubai’s leading graphic design agency. From logo design to packaging, we deliver graphic design services that drive ROI.  Call us!",
+     alternates: {
+       canonical: "https://www.globalsurf.ae/graphic-design-agency-dubai",
+     },
+     robots: "index, follow",
+     openGraph: {
+       title: "Transform Your Brand with Dubai’s Top Graphic Design Agency",
+       siteName: "Global Surf Digital Media",
+       url: "https://www.globalsurf.ae/graphic-design-agency-dubai",
+       description:
+         "Elevate your business with custom branding, packaging, and social media designs that captivate. Partner with a leading graphic design agency in Dubai for visuals that sell. Get a quote today!",
+
+     },
+   };
+ }
 const page = () => {
   return (
     <div>
@@ -64,12 +84,10 @@ const page = () => {
         }))}
       />
       <Testimonials bgcolor={"white"} />
-      <WhyChoose
-        colcount={4}
-        title={Whychoosedata.title}
-        data={Whychoosedata.data}
-        desc="With a team of passionate graphic design experts, we bring years of experience in creating visuals that elevate brands. Our approach is creative and strategy-driven, ensuring every design delivers impact."
-      />
+
+        <section className="pb-[50px]   lg:pb-[140px] ">
+        <Platformimg title={Platformimgmdata.title} desc={Platformimgmdata.desc} data={Platformimgmdata.data} colcount={4}/>
+        </section>
 
       <section className="pb-[50px] lg:pb-[140px]">
         <OurWorks Clientsformsdata={Clientsformsdata} maintitle="Our Works" />

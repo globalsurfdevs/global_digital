@@ -3,7 +3,7 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    image: assets.bc_image,
+    image: assets.bggra,
     heroAlt: "Leading Graphic Design Agency in Dubai",
     title:
       "Leading Graphic Design Agency in Dubai – Crafting Designs That Speak for You ",

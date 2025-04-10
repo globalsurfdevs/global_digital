@@ -60,25 +60,25 @@ const TabComponent = () => {
       title: "Advertising & Marketing Collateral",
       icon: gd5,
       description:
-        "Your product's packaging is key to making it stand out. We create packaging that's visually appealing and reinforces the values of your brand, while keeping sustainability in mind.",
+        "Billboards, posters, banners, digital ads—whatever the medium, we design marketing assets that don’t just blend in. They grab, they persuade, they convert. ",
     },
     {
       title: "Presentation & Pitch Decks",
       icon: gd6,
       description:
-        "From brochures to business cards, we design printed materials that make your brand shine and communicate your message clearly and effectively.",
+        "Whether it’s a high-stakes investor pitch or an internal company deck, we design presentations that captivate, clarify, and convince. No more boring slides—just persuasive storytelling.",
     },
     {
       title: "Graphics & Signage",
       icon: gd7,
       description:
-        "Our custom illustrations bring your ideas to life with a unique visual style that enhances your brand and engages your audience in creative ways.",
+        "From in-store displays to outdoor billboards, we design graphics that command attention. Whether it’s shopfront signage, event branding, or vehicle wraps, our designs ensure your message is seen, remembered, and acted upon. ",
     },
     {
       title: "Stationery Design",
       icon: gd8,
       description:
-        "We craft marketing materials that grab attention, communicate your message, and convert leads. Whether digital or print, we create designs that drive results.",
+        "Business cards, letterheads, envelopes—small details that make a big difference. We design elegant, cohesive stationery that reinforces your brand at every touchpoint. Because first impressions don’t just happen in meetings—they happen on paper, too. ",
     },
   ];
 

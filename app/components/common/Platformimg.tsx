@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 interface PlatformsItem {
   id: number;
   icon: string;
-  title: string;
+  title?: string;
   rttitel?: string;
   dec: string;
 }
@@ -85,7 +85,7 @@ const Platformimg: React.FC<PlatformsSectionProps> = ({
                 <div
                   className={`flex items-end justify-between gap-7 ${icontitle ? "flex-col items-baseline " : ""}`}
                 >
-                 <Image src={platform.icon} alt={platform.title} className={`${bgblack ? "text-white" : ""}`} />
+                 <Image src={platform.icon}  alt="" className={`${bgblack ? "text-white" : ""}`} />
 
                 </div>
 
@@ -94,11 +94,13 @@ const Platformimg: React.FC<PlatformsSectionProps> = ({
                 >
                   <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                 </div>
-                <p
+                {platform.title && (
+                  <p
                     className={`text-30 font-[400] mb-5 lg:mb-8 transition-colors duration-300 group-hover:text-primary  ${bgblack ? "text-white" : ""}`}
                   >
                     {platform.title}
                   </p>
+                )}
                 <div>
                   <p
                     className={`text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 ${bgblack ? "group-hover:text-gray-300" : ""}`}

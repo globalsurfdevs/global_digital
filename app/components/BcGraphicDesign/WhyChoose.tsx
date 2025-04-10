@@ -101,10 +101,12 @@ const Platformsecom: React.FC<PlatformsSectionProps> = ({
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-30 my-5 lg:my-[30px]">
+                <div className="my-5 lg:my-[30px]">
+                {platform.title && (
+                  <h3 className="text-30 ">
                     {platform.title}
                   </h3>
+                )}
                   <p className="text-19 fnt-lexend text-[#77787B]">
                     {platform.dec}
                   </p>
