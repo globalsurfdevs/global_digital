@@ -26,12 +26,19 @@ interface Canonicals {
    description: string;
    alternates: Canonicals;
    robots: string;
-  //  openGraph: {
-  //    title: string;
-  //    siteName: string;
-  //    url: string;
-  //    description: string;
-  //  };
+   openGraph: {
+     title: string;
+     siteName: string;
+     url: string;
+     description: string;
+     type: string;
+     images?: {
+       url: string;
+       width: number;
+       height: number;
+       alt: string;
+     }[];
+   };
  };
 
  export async function generateMetadata(): Promise<Metadata> {
@@ -43,14 +50,22 @@ interface Canonicals {
        canonical: "https://www.globalsurf.ae/e-commerce-web-development-company",
      },
      robots: "index, follow",
-    //  openGraph: {
-    //    title: "Transform Your Brand with Dubai’s Top Graphic Design Agency",
-    //    siteName: "Global Surf Digital Media",
-    //    url: "https://www.globalsurf.ae/e-commerce-web-development-company",
-    //    description:
-    //      "Elevate your business with custom branding, packaging, and social media designs that captivate. Partner with a leading graphic design agency in Dubai for visuals that sell. Get a quote today!",
-
-    //  },
+     openGraph: {
+       title: "Top E-commerce Development Experts in Dubai | GS Digital",
+       siteName: "Global Surf Digital",
+       url: "https://www.globalsurf.ae/e-commerce-web-development-company",
+       description:
+         "Launch and grow your online store with Dubai’s leading e-commerce developers specializing in Shopify and WooCommerce solutions.",
+       type: "website",
+       images: [
+        {
+          url: "https://www.globalsurf.ae/_next/static/media/bannersr.1e1a92f2.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Ecommerce Development Company Dubai",
+        },
+      ],
+     },
    };
  }
 
