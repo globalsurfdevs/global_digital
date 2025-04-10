@@ -15,7 +15,7 @@ export const AreaExpertise = {
       icon: assets.sm_management,
       title: "Logo Design",
       desc: "Distinctive logos that encapsulate your brand’s essence and make your mark unforgettable. ",
-      url: "",
+      url: "/logo-design-agency-dubai",
     },
     {
       id: 3,
