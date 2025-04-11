@@ -17,28 +17,28 @@ export const AreaExpertise = {
       icon: assets.cwd,
       title: "Custom Web Development ",
       desc: "Tailored development solutions built from the ground up to meet your unique business needs and deliver a flawless user experience.",
-      url: "",
+      url: "/web-development-agency-dubai",
     },
     {
       id: 3,
       icon: assets.ecomm,
       title: "E-commerce",
       desc: "Powerful, user-friendly online stores designed to make browsing, buying, and returning customers effortless.",
-      url: "e-commerce-web-development-company",
+      url: "/e-commerce-web-development-company",
     },
     {
       id: 4,
       icon: assets.mobile_app,
       title: "Mobile Apps",
       desc: "Intuitive mobile apps that put your business in the palm of your customers’ hands—anytime, anywhere.",
-      url: "",
+      url: "/mobile-app-development-company-dubai",
     },
     {
       id: 5,
       icon: assets.web_app,
       title: "Web Apps",
       desc: "Dynamic web applications that are as engaging as they are efficient—built to scale with your business.",
-      url: "",
+      url: "/web-app-dev-agency",
     }
   ],
 };
