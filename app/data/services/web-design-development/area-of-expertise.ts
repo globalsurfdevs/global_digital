@@ -10,7 +10,7 @@ export const AreaExpertise = {
       icon: assets.web_design,
       title: "Web Design",
       desc: "Thoughtfully crafted designs that blend creativity with functionality—ensuring your website looks stunning and works seamlessly.",
-      url: "/web-desig-agency-dubai",
+      url: "/web-design-agency-dubai",
     },
     {
       id: 2,
