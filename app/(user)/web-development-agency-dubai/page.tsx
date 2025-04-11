@@ -18,25 +18,53 @@ import SucessStories from "@/app/components/wdd-custom-web-development/SucessSto
 interface Canonicals {
   canonical: string;
 }
-
-type Metadata = {
-  title: string;
-  description: string;
-  alternates: Canonicals;
+ type Metadata = {
+   title: string;
+   description: string;
+   alternates: Canonicals;
    robots: string;
-};
+   openGraph: {
+     title: string;
+     siteName: string;
+     url: string;
+     description: string;
+     type: string;
+     images?: {
+       url: string;
+       width: number;
+       height: number;
+       alt: string;
+     }[];
+   };
+ };
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "WDD Custom Web Development | G.S Digital",
-    description:
-      "Dubai's trusted SMM agency, Global Surf Digital, provides expert social media marketing services to help you dominate the digital landscape. Contact us now!",
-    alternates: {
-      canonical: "https://www.globalsurf.ae/",
-    },
-     robots: "noindex, nofollow",
-  };
-}
+ export async function generateMetadata(): Promise<Metadata> {
+   return {
+     title: "Custom Web Development Company in Dubai | G.S Digital",
+     description:
+       "Elevate your digital presence with expert web development in Dubai. We craft tailored websites that are fast, secure, and built to scale with your business.",
+     alternates: {
+       canonical: "https://www.globalsurf.ae/web-development-agency-dubai",
+     },
+     robots: "index, follow",
+     openGraph: {
+       title: "Dubai’s Trusted Partner for Web Development Solutions",
+       siteName: "Global Surf Digital",
+       url: "https://www.globalsurf.ae/web-development-agency-dubai",
+       description:
+         "Discover top-tier custom web development services in Dubai. We build high-performance, secure websites tailored to your business goals.",
+       type: "website",
+       images: [
+        {
+          url: "https://www.globalsurf.ae/_next/static/media/banner.759dbe9a.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Web Development Services Dubai",
+        },
+      ],
+     },
+   };
+ }
 
 const page = () => {
   return (

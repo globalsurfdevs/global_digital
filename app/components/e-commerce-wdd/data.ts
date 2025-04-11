@@ -210,7 +210,7 @@ export const relatedservices = {
     {
       id: 6,
       title: "Web Apps ",
-      dec: "Dynamic web applications that are as engaging as they are efficient built to scale with your business. ",
+      dec: "Dynamic web applications that are as engaging as they are efficiently built to scale with your business. ",
       icon:assets.rse6
     }
 
