@@ -68,7 +68,7 @@ const SectionFive = () => {
             </p>
             <div>
               <div className="mt-[20px] lg:mt-[64px] innerfnont">
-                <Link href="/lets-talk"><Button text="LET'S COLLABORATE" /></Link>
+                <Link href="/lets-talk"><Button text="LET'S COLLABORATE" color={'text-black'}/></Link>
               </div>{" "}
             </div>
           </div>
