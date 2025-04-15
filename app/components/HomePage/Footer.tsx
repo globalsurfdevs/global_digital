@@ -136,16 +136,16 @@ const Footer = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-2 text-sm text-gray1 md:gap-5">
             <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
-              <Link href="legal">Legal Page</Link>
+              <Link href="/legal">Legal Page</Link>
             </p>
             <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
-              <Link href="privacy-policy">Privacy</Link>
+              <Link href="/privacy-policy">Privacy</Link>
             </p>
             <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
-              <Link href="cookie-policy">Cookie Policy</Link>
+              <Link href="/cookie-policy">Cookie Policy</Link>
             </p>
             <p className="fw-[400] text-font14 leading-lh1p78 hover:text-primary">
-              <Link href="modern-slavery-statement">
+              <Link href="/modern-slavery-statement">
                 Modern Slavery Statement
               </Link>
             </p>
