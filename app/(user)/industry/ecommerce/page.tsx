@@ -1,24 +1,24 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import KeyDigital from "../../components/IndConstruction/KeyDigital";
-import DigitalMarketing from "../../components/IndConstruction/DigitalConstruction";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/EcomIndustry/GetInTouch";
-import Expertise from "../../components/EcomIndustry/Expertise";
-import Framework from "../../components/PermormanceMarketing/Framework";
-import SuccessStories from "../../components/IndConstruction/SucessStories";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import KeyDigital from "../../../components/IndConstruction/KeyDigital";
+import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/EcomIndustry/GetInTouch";
+import Expertise from "../../../components/EcomIndustry/Expertise";
+import Framework from "../../../components/PermormanceMarketing/Framework";
+import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
-import { KeyDigitalData } from "../../data/services/e-com-industry/keyDigital";
-import { BannerSection } from "../../data/services/e-com-industry/herosection";
-import { AreaExpertise } from "../../data/services/e-com-industry/digitaconstructions";
-import { IndustriesWeServe } from "../../data/services/e-com-industry/industries-we-serve";
-import { Clientsformsdata } from "../../data/services/e-com-industry/clientsdetails";
-import { Frameworkdata } from "../../data/services/e-com-industry/framework";
-import { Cta } from "../../data/services/e-com-industry/cta";
-import { Faq } from "../../data/services/e-com-industry/faq";
+import { KeyDigitalData } from "../../../data/services/e-com-industry/keyDigital";
+import { BannerSection } from "../../../data/services/e-com-industry/herosection";
+import { AreaExpertise } from "../../../data/services/e-com-industry/digitaconstructions";
+import { IndustriesWeServe } from "../../../data/services/e-com-industry/industries-we-serve";
+import { Clientsformsdata } from "../../../data/services/e-com-industry/clientsdetails";
+import { Frameworkdata } from "../../../data/services/e-com-industry/framework";
+import { Cta } from "../../../data/services/e-com-industry/cta";
+import { Faq } from "../../../data/services/e-com-industry/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import SliderInd from "@/app/components/IndConstruction/SliderInd";
-import { Platformsdata } from "../../data/services/e-com-industry/clientslogo";
+import { Platformsdata } from "../../../data/services/e-com-industry/clientslogo";
 
 interface Canonicals {
   canonical: string;
