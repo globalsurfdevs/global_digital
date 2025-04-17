@@ -3,18 +3,17 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    image: assets.ecombanner,
+    image: assets.b2bbanner,
     navigation: [
       { label: "Home", url: "/" },
       { label: "Industry", url: "" },
-      { label: "Ecommerce" },
+      { label: "B2B" },
     ],
     heroAlt: "Digital Marketing for the Construction Companies",
-    title1: "Outrank, Outperform & Outgrow ",
-    title:
-      "Reach More Customers & Multiply Sales with E-Commerce Digital Marketing ",
+
+    title: "Digital Marketing for B2B Industry: Drive Growth & Maximize ROI ",
     subtitle:
-      "From driving traffic to increasing conversions, we help e-commerce brands scale with data-driven digital marketing strategies. ",
+      "We specialize in data-driven digital marketing for b2b services that can generate high-quality leads, optimize conversions, and boost long-term growth.",
     buttontitle: "Get a Free Strategy Session",
     buttonurl: "https://www.globalsurf.ae/lets-talk",
     sub: [

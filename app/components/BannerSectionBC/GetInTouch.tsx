@@ -55,8 +55,8 @@ const GetInTouch: React.FC<PartnerListProps> = ({
 
   useEffect(() => {
     if (isInView) {
-      springClientCount.set(150);
-      springRetentionCount.set(98);
+      springClientCount.set(100);
+      springRetentionCount.set(95);
     }
   }, [isInView, springClientCount, springRetentionCount, springYearsCount]);
 
@@ -129,9 +129,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                 <h3 className="text-font65 hover:text-[#E63E31]">
                   {clientCount}+
                 </h3>
-                <p className="text-[30px] text-[#77787B]">
-                  E-Commerce Brands Scaled
-                </p>
+                <p className="text-[30px] text-[#77787B]">B2B Brands Scaled</p>
               </div>
               <div className="retention border-l-[1px] border-[#333333] pl-6 lg:pl-10">
                 <h3 className="text-font65 hover:text-[#E63E31]">
