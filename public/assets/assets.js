@@ -563,7 +563,13 @@ import ecomconstr from "../images/ecom-industry/ecom-constr.png";
 import ecomengg from "../images/ecom-industry/ecom-engg.png";
 import ecomedu from "../images/ecom-industry/ecom-edu.png";
 
+import b2bbanner from "../images/b2b/b2bbanner.png";
+import datab2b from "../images/b2b/datab2b.svg";
+import ecomind from "../images/b2b/ecomind.png";
+
 export const assets = {
+  b2bbanner,
+  datab2b,
   bggra,
   crmbanner,
   crmwe1,
@@ -1107,6 +1113,7 @@ export const assets = {
   ecomengg,
   ecomconstr,
   ecomhc,
+  ecomind,
 };
 
 export const logos = [
