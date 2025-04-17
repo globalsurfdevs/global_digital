@@ -14,6 +14,7 @@ interface PlatformsItem {
   title: string;
   btntext: string;
   btnurl?: string;
+  subtext?: string;
 }
 
 interface PlatformsSectionProps {
@@ -80,9 +81,14 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                 <div className="flex">
                   {/* Text + Button Section */}
                   <div className="flex w-1/2 flex-col justify-between bg-[#F2F2F2] p-[20px] lg:py-[40px] lg:pl-[40px] lg:pr-[40px]">
-                    <h3 className="mb-2 text-[25px] leading-[28px] lg:max-w-[330px] lg:leading-[38px] xxl:text-[30px]">
-                      {item.title}
-                    </h3>
+                    <div>
+                      <h3 className="mb-2 text-[25px] leading-[28px] lg:max-w-[330px] lg:leading-[38px] xxl:text-[30px]">
+                        {item.title}
+                      </h3>
+                      <p className="fnt-lexend text-19  text-gray1 ">
+                        {item.subtext}
+                      </p>
+                    </div>
                     <a
                       href={item.btnurl || ""}
                       className="group relative z-10 flex w-fit items-center gap-3 border-b-0 border-transparent pb-3 

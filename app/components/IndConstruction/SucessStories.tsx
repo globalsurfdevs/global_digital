@@ -7,6 +7,7 @@ interface ClientsformsItem {
   id: number;
   image: string | StaticImageData;
   title: string;
+
   btntext: string;
   btnurl?: string;
   subdesc?: string;
@@ -15,6 +16,7 @@ interface ClientsformsItem {
 interface ClientsformsSectionProps {
   Clientsformsdata: ClientsformsItem[];
   padding?: string; // New padding prop
+  title1: string;
   pt?: string; // New padding-top prop
   pb?: string; // New padding-bottom prop
   subdesc?: string;
@@ -26,6 +28,7 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
   padding = "",
   pt = "pt-[50px] lg:pt-[140px] ",
   pb = "pb-4",
+  title1, // Added title1 to destructured props
 }) => {
   return (
     <div>
@@ -45,9 +48,12 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
             }}
           >
             <div className="mb-4 mt-6 grid lg:mb-[75px] lg:mt-0">
-              <h2 className="title-65 ">
-                Success Stories <br></br> That Speak for Themselves
-              </h2>
+              {title1 && (
+                <h2
+                  className="title-65"
+                  dangerouslySetInnerHTML={{ __html: title1 }}
+                ></h2>
+              )}
               <p className="text-19 fnt-lexend mt-6 max-w-[74ch] text-gray1 transition-colors duration-300 group-hover:text-gray-700 lg:mt-[25px]">
                 {" "}
                 {subdesc}

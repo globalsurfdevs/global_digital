@@ -53,8 +53,15 @@ const page = () => {
         data={KeyDigitalData.data}
         colcount={6}
       />
-      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} />
-      <SuccessStories Clientsformsdata={Clientsformsdata} />
+      <DigitalMarketing
+        title={AreaExpertise.title}
+        data={AreaExpertise.data}
+        subtitle="How We Help Construction Companies Grow"
+      />
+      <SuccessStories
+        Clientsformsdata={Clientsformsdata}
+        title1="Success Stories <br>That Speak for Themselves"
+      />
 
       <div className="container">
         <div className="border-t border-[#B6B2B2] lg:mt-[141px]"></div>

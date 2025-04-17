@@ -1,15 +1,17 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Image,{ StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 interface FrameworkItem {
   id: number;
   title: string;
+  title1?: string;
   icn?: string | StaticImageData;
   dec: string;
 }
 
 interface FrameworkSectionProps {
+  title1?: string;
   title: string;
   bgcolor?: string;
   description?: string;
@@ -19,6 +21,7 @@ interface FrameworkSectionProps {
 
 const Framework: React.FC<FrameworkSectionProps> = ({
   title,
+  title1,
   data,
   description,
   bgcolor,
@@ -42,6 +45,11 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
+              {title1 && (
+                <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                  {title1}
+                </p>
+              )}
               {description && (
                 <div>
                   <h2 className="title-65 pb-6 lg:pb-[25px]">{title}</h2>
@@ -51,7 +59,9 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                 </div>
               )}
               {!description && (
-                <h2 className="title-65 pb-6 lg:pb-[58px]">{title}</h2>
+                <>
+                  <h2 className="title-65 pb-6 lg:pb-[58px]">{title}</h2>
+                </>
               )}
             </motion.div>
           </div>
@@ -77,23 +87,27 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                   className="group relative    flex flex-col overflow-hidden"
                 >
                   {/* Animated Red Border */}
-                    <div className={`relative h-[1px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}>
+                  <div
+                    className={`relative h-[1px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
+                  >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
                   {!framework.icn && (
-                  <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary   transition-transform duration-500  lg:mb-8 lg:mt-10">
-                    <p className="text-30  text-white transition-transform duration-500">
-                      {String(framework.id).padStart(2, "0")}
-                    </p>
+                    <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary   transition-transform duration-500  lg:mb-8 lg:mt-10">
+                      <p className="text-30  text-white transition-transform duration-500">
+                        {String(framework.id).padStart(2, "0")}
+                      </p>
                     </div>
-                     )}
+                  )}
                   {framework.icn && (
-                  <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary  group-hover:bg-white transition-transform duration-500  lg:mb-8 lg:mt-10">
-
-                       <Image src={framework.icn} alt="icon"   className=" group-hover:invert-[0] group-hover:brightness-[1] object-cover brightness-0 invert-[1]" />
-
-
-                  </div>    )}
+                    <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary  transition-transform duration-500 group-hover:bg-white  lg:mb-8 lg:mt-10">
+                      <Image
+                        src={framework.icn}
+                        alt="icon"
+                        className=" object-cover brightness-0 invert-[1] group-hover:brightness-[1] group-hover:invert-[0]"
+                      />
+                    </div>
+                  )}
 
                   <div className="text-2xl">
                     <h3

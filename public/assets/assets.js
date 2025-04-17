@@ -505,7 +505,6 @@ import marr6 from "../assets/services/wdd-mobile-apps/marr6.svg";
 import sese1 from "../assets/services/wdd-web-apps/sese1.svg";
 import sese2 from "../assets/services/wdd-web-apps/sese2.svg";
 
-
 import gd1 from "../images/GraphicDesign/gdicon1.svg";
 import gd2 from "../images/GraphicDesign/gdicon2.svg";
 import gd3 from "../images/GraphicDesign/gdicon3.svg";
@@ -551,9 +550,18 @@ import crmrec4 from "../assets/services/conversion-rate-optimization/crmrec4.svg
 import crmrec5 from "../assets/services/conversion-rate-optimization/crmrec5.svg";
 import crmrec6 from "../assets/services/conversion-rate-optimization/crmrec6.svg";
 
-
-
-
+import constructionicn from "../images/ecom-industry/construction-icn.svg";
+import ecombanner from "../images/ecom-industry/ecom-banner.png";
+import emailicon from "../images/ecom-industry/email@.svg";
+import shoppingtrolly from "../images/ecom-industry/shopping-trolly.svg";
+import ssbafco from "../images/ecom-industry/ss-bafco.png";
+import ssgardencon from "../images/ecom-industry/ss-gardencon.png";
+import ssseleo from "../images/ecom-industry/ss-seleo.png";
+import sstruenude from "../images/ecom-industry/ss-truenude.png";
+import ecomhc from "../images/ecom-industry/ecom-hc.png";
+import ecomconstr from "../images/ecom-industry/ecom-constr.png";
+import ecomengg from "../images/ecom-industry/ecom-engg.png";
+import ecomedu from "../images/ecom-industry/ecom-edu.png";
 
 export const assets = {
   bggra,
@@ -593,7 +601,13 @@ export const assets = {
   apwhy3,
   apwhy4,
   gd1,
-  gd2, gd3, gd4, gd5, gd6, gd7, gd8,
+  gd2,
+  gd3,
+  gd4,
+  gd5,
+  gd6,
+  gd7,
+  gd8,
   sese1,
   sese2,
   mabanner,
@@ -627,7 +641,11 @@ export const assets = {
   rsts5,
   rsts6,
   soc1,
-  soc2, soc3, soc4, soc5, soc6,
+  soc2,
+  soc3,
+  soc4,
+  soc5,
+  soc6,
   ow1,
   ow2,
   ow3,
@@ -1077,6 +1095,18 @@ export const assets = {
   wh3,
   wh4,
   wh5,
+  constructionicn,
+  emailicon,
+  shoppingtrolly,
+  ssbafco,
+  ssgardencon,
+  ssseleo,
+  sstruenude,
+  ecombanner,
+  ecomedu,
+  ecomengg,
+  ecomconstr,
+  ecomhc,
 };
 
 export const logos = [

@@ -13,9 +13,10 @@ type PartnerDataType = {
 
 type PartnerListProps = {
   data: PartnerDataType[];
+  subp?: string;
 };
 
-const FAQ: React.FC<PartnerListProps> = ({ data }) => {
+const FAQ: React.FC<PartnerListProps> = ({ data, subp }) => {
   const [open, setOpen] = useState<number | null>(null);
 
   const toggle = (itemIndex: number) => {
@@ -45,6 +46,9 @@ const FAQ: React.FC<PartnerListProps> = ({ data }) => {
         <div className="grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7">
           <div className="col-span-2  mb-5 xl:mb-0">
             <h2 className="title-65">FAQ</h2>
+            <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
+              {subp}
+            </p>
           </div>
 
           <div className="col-span-5 w-full">
