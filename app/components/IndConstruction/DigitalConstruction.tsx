@@ -8,16 +8,22 @@ interface ExpertiseItem {
   id: number;
   icon: string;
   title: string;
+  subtitle?: string;
   desc: string;
   url?: string;
 }
 
 interface ExpertiseSectionProps {
   title: string;
+  subtitle?: string;
   data: ExpertiseItem[];
 }
 
-const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
+const Expertise: React.FC<ExpertiseSectionProps> = ({
+  title,
+  data,
+  subtitle,
+}) => {
   return (
     <div className="bg-black">
       <div className="container mx-auto py-4">
@@ -38,9 +44,9 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({ title, data }) => {
             >
               <h2 className="title-65 text-white lg:max-w-[1008px]">{title}</h2>
               <div className="flex justify-between lg:mt-[40px] ">
-                <h3 className="text-[19px] text-[#77787B]">
-                  How We Help Construction Companies Grow
-                </h3>
+                {subtitle && (
+                  <h3 className="text-[19px] text-[#77787B]">{subtitle}</h3>
+                )}
                 {/* <button
                   className="z-2  hover:border-b-red group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent
                       p-0 pb-3 text-white before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black 
