@@ -122,13 +122,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     className={` max-w-[1000px]`}
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
-                    <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                    <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px] ">
                       {herosection.title1}
                     </p>
 
                     <h1 className="title-80"> {herosection.title}</h1>
                     {herosection.subtitle && (
-                      <h3 className="text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
+                      <h3 className="my-3 text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
                         {" "}
                         {herosection.subtitle}
                       </h3>
@@ -142,7 +142,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       >
                         <div className="relative">
                           <p
-                            className={`duration-200" text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                            className={`duration-200"  text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                           >
                             {herosection.buttontitle}
                           </p>

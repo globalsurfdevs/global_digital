@@ -49,6 +49,7 @@ const page = () => {
         Bannerdata={BannerSection}
         hideslider={true}
         bannerlogp={false}
+        maxchwidth={100}
       />
 
       <Framework

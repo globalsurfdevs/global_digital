@@ -16,7 +16,7 @@ interface ClientsformsItem {
 interface ClientsformsSectionProps {
   Clientsformsdata: ClientsformsItem[];
   padding?: string; // New padding prop
-  title1: string;
+  title1?: string;
   pt?: string; // New padding-top prop
   pb?: string; // New padding-bottom prop
   subdesc?: string;
