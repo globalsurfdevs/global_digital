@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/influencer-marketing-agency",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 
