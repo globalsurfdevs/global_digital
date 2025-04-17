@@ -96,7 +96,7 @@ const Result = ({
             triumphs for our clients. Your brand could be next.{" "}
           </p>
           <div className="innerfnont mt-[20px] lg:mt-[64px]">
-            <Button text="LET'S COLLABORATE" />
+            <Button text="LET'S COLLABORATE" color={'text-black'}/>
           </div>
         </div>
       </motion.div>

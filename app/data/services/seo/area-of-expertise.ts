@@ -23,7 +23,7 @@ export const AreaExpertise = {
       icon: assets.local_seo,
       title: "Local SEO",
       desc: "Local SEO ensures your business stands out in nearby searches, making it easy for local customers to find you. ",
-      url: "",
+      url: "/local-seo-agency-dubai",
     },
     {
       id: 4,

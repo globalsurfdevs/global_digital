@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { workSvgs } from "../../data/works";
+import Link from "next/link";
 
 const WorkSwiper = () => {
   return (
@@ -32,6 +33,7 @@ const WorkSwiper = () => {
       >
         {workSvgs.map((item, index) => (
           <SwiperSlide key={index}>
+            <Link href={item.urlpath} >
             <div className="home-st   flex items-center">
               <div className=" me-1 flex min-h-[30px] w-fit min-w-[30px] items-center justify-center bg-white duration-200 ease-linear   lg:me-2 lg:min-h-[50px] lg:min-w-[50px]">
                 <img
@@ -43,7 +45,8 @@ const WorkSwiper = () => {
                 />
               </div>
               <h3 className="textslide-30 ">{item.text}</h3>
-            </div>
+              </div>
+              </Link>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -100,7 +100,7 @@ const Result = ({
             triumphs for our clients. Your brand could be next.{" "}
           </p>
           <div className="innerfnont mt-[20px] lg:mt-[64px] relative w-fit">
-            <Button text="LET'S COLLABORATE" />
+            <Button text="LET'S COLLABORATE" color={'text-black'}/>
             <Link href="/lets-talk" className="absolute left-0 top-0 w-full h-full"></Link>
           </div>
         </div>

@@ -110,19 +110,19 @@ export const Frameworkdata = {
       id: 4,
       title: "Hybrid App Development ",
       dec: "We create apps that run seamlessly across platforms, helping businesses reach a wider audience while reducing development time and costs. ",
-      icn:assets.oma3,
+      icn:assets.oma4,
     },
     {
       id: 5,
       title: "PWA Development ",
       dec: "Progressive Web Apps (PWAs) offer the best of both web and mobile experiences, providing users with a smooth, app-like experience without the need for downloads. ",
-      icn:assets.oma4,
+      icn:assets.oma5,
     },
     {
       id: 6,
       title: "Flutter App Development ",
       dec: "Our Flutter development service delivers visually appealing, fast, and responsive apps from a single codebase, ensuring a consistent experience across iOS, Android, and beyond. ",
-      icn:assets.oma5,
+      icn:assets.oma6,
     }
   ],
 };
@@ -325,7 +325,7 @@ export const relatedservices = {
     {
       id: 5,
       title: "Web Apps ",
-      dec: "Dynamic web applications that are as engaging as they are efficient built to scale with your business. ",
+      dec: "Dynamic web applications that are as engaging as they are efficiently built to scale with your business. ",
       icon:assets.marr5
     },
     {
