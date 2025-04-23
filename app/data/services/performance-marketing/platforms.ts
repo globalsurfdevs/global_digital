@@ -2,7 +2,7 @@
 import { assets } from "@/public/assets/assets";
 
 export const Platformsdata = {
-  title: "Our Platforms",
+  title: "Precision Advertising. Everywhere.",
   data: [
     {
       id: 1,

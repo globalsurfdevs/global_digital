@@ -23,7 +23,7 @@ export const AreaExpertise = {
       icon: assets.influencer_marketing,
       title: "Influencer Marketing",
       desc: "Boost engagement and sales with strategic influencer advertising campaigns that create a big buzz across the web.",
-      url:""
+      url:"/influencer-marketing-agency"
     },
     {
       id: 4,
