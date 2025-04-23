@@ -74,7 +74,7 @@ type PartnerDataType = {
                             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                           }}
                 >
-            <div className='mt-6 lg:mt-[57px] innerfnont'><Link href={link}><Button text={ctabbutton} /></Link></div>
+            <div className='mt-6 lg:mt-[57px] innerfnont'><Link href={link}><Button text={ctabbutton} textcolor={'black'}/></Link></div>
 
           </motion.div>
             </div>
