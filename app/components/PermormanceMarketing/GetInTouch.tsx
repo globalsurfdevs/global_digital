@@ -13,7 +13,6 @@ type PartnerListProps = {
   ctabbutton: string;
   link: string;
   bgcolor?: string;
-  color?: string;
   redlast?: boolean;
   data: PartnerDataType[];
 };
@@ -22,13 +21,12 @@ const GetInTouch: React.FC<PartnerListProps> = ({
   data,
   ctabbutton,
   bgcolor,
-  color,
   link,
   redlast,
 }) => {
   return (
 
-    <div className= {`flex flex-col   py-[50px] lg:py-[150px] ${bgcolor ? `bg-${bgcolor}` : "bg-black"}`}>
+    <div className= {`flex flex-col   py-[50px] lg:py-[150px] ${bgcolor ? `bg-[${bgcolor}]` : "bg-black"}`}>
       <div className="container mx-auto px-4 text-white">
         <div className="flex h-1/3 flex-col justify-center ">
           <motion.div
@@ -88,7 +86,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
           >
             <div className="innerfnont mt-6 lg:mt-[57px]">
               <Link href={link}>
-                <Button text={ctabbutton} color={color} />
+                <Button text={ctabbutton} textcolor={bgcolor ? `black` : "white"} />
               </Link>
             </div>
           </motion.div>
