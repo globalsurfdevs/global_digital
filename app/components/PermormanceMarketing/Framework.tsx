@@ -30,7 +30,7 @@ const Framework: React.FC<FrameworkSectionProps> = ({
   return (
     <div className={` ${bgcolor ? `${bgcolor}` : "bg-dgray"}`}>
       <div className="container mx-auto py-4">
-        <div className="flex flex-col py-[50px] lg:py-[111px] ">
+        <div className="pd-cus flex flex-col py-[50px] lg:py-[111px]">
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -100,11 +100,11 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                     </div>
                   )}
                   {framework.icn && (
-                    <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary  transition-transform duration-500 group-hover:bg-white  lg:mb-8 lg:mt-10">
+                    <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary    lg:mb-8 lg:mt-10">
                       <Image
                         src={framework.icn}
                         alt="icon"
-                        className=" object-cover brightness-0 invert-[1] group-hover:brightness-[1] group-hover:invert-[0]"
+                        className=" object-cover brightness-0 invert-[1] "
                       />
                     </div>
                   )}

@@ -670,7 +670,7 @@ body {
 .mn-dv-blg .ln-bn {
   margin: 50px 0;
 }
-.cdedd{
+.cdedd {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -709,85 +709,100 @@ body {
   .alnbase{align-items: baseline;}
 } */
 @media screen and (max-width: 1200px) and (max-height: 700px) {
-  .fnt404 {margin-bottom: 0px !important; font: 14px;}
-  .alnbase{height: 45dvh;}
-  .h38dd{height: 55dvh;}
+  .fnt404 {
+    margin-bottom: 0px !important;
+    font: 14px;
+  }
+  .alnbase {
+    height: 45dvh;
+  }
+  .h38dd {
+    height: 55dvh;
+  }
 }
 @media screen and (max-width: 360px) {
-  .fnt404{font-size: 12px;}
-  .p404{padding: 6px 20px;}
-  .p404 span {    font-size: 12px;}
+  .fnt404 {
+    font-size: 12px;
+  }
+  .p404 {
+    padding: 6px 20px;
+  }
+  .p404 span {
+    font-size: 12px;
+  }
 }
-.alnbase p{font-size: 350px;
-  line-height: .7;}
-  /* .zerost{
+.alnbase p {
+  font-size: 350px;
+  line-height: 0.7;
+}
+/* .zerost{
     height: inherit;
     display: flex;
     align-items: end;
     color: #fff;
     background: #e23938;} */
-    .alnbase{  margin-bottom: 9.5dvh;  align-items: end;}
-    .xemn {
-      height: inherit;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      color: #fff;
-      background: #e23938;
-      width: inherit;
+.alnbase {
+  margin-bottom: 9.5dvh;
+  align-items: end;
+}
+.xemn {
+  height: inherit;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: #fff;
+  background: #e23938;
+  width: inherit;
 
-      /* Apply multiple animations */
-      animation:
-        scaleChange 3s infinite alternate;   /* Second animation */
-    }
+  /* Apply multiple animations */
+  animation: scaleChange 3s infinite alternate; /* Second animation */
+}
 
+/* Keyframes for scaling animation */
+@keyframes scaleChange {
+  0% {
+    transform: scale(1); /* Initial size */
+  }
+  50% {
+    transform: scale(1.02); /* Slightly larger */
+  }
+  100% {
+    transform: scale(1); /* Back to original size */
+  }
+}
 
+.xemn p {
+  display: inline-block;
+  position: relative; /* Enables the use of 'top' for animation */
+  animation: bounce-down 2s cubic-bezier(0.25, 1, 0.5, 1) forwards; /* Smooth and bouncy */
+}
 
-    /* Keyframes for scaling animation */
-    @keyframes scaleChange {
-      0% {
-        transform: scale(1); /* Initial size */
-      }
-      50% {
-        transform: scale(1.02); /* Slightly larger */
-      }
-      100% {
-        transform: scale(1); /* Back to original size */
-      }
-    }
+@keyframes bounce-down {
+  0% {
+    top: -50%;
+  }
+  30% {
+    top: 0%;
+  }
+  50% {
+    top: -10%;
+  }
+  70% {
+    top: 0%;
+  }
+  80% {
+    top: -5%;
+  }
+  100% {
+    top: 0%;
+  }
+}
 
-    .xemn p {
-      display: inline-block;
-      position: relative; /* Enables the use of 'top' for animation */
-      animation: bounce-down 2s cubic-bezier(0.25, 1, 0.5, 1) forwards; /* Smooth and bouncy */
-    }
-
-    @keyframes bounce-down {
-      0% {
-        top: -50%;
-      }
-      30% {
-        top: 0%;
-      }
-      50% {
-        top: -10%;
-      }
-      70% {
-        top: 0%;
-      }
-      80% {
-        top: -5%;
-      }
-      100% {
-        top: 0%;
-      }
-    }
-
-      .zerost span {
-        letter-spacing: -45px;
-        position: relative;
-        left: -22px;
-    }
+.zerost span {
+  letter-spacing: -45px;
+  position: relative;
+  left: -22px;
+}
 .link_color {
   color: #e43d30 !important;
 }
@@ -797,27 +812,29 @@ body {
 @media screen and (max-width: 991px) {
   .xemn {
     letter-spacing: normal;
-}
-.alnbase p {
-  font-size: 200px;}
-.zerost span {
-  letter-spacing: -26px;
-  position: relative;
-  left: -13px;
-}
+  }
+  .alnbase p {
+    font-size: 200px;
+  }
+  .zerost span {
+    letter-spacing: -26px;
+    position: relative;
+    left: -13px;
+  }
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width: 400px) {
   .xemn {
     letter-spacing: normal;
-}
-.alnbase p {
-  font-size: 165px;}
-.zerost span {
-  letter-spacing: -26px;
-  position: relative;
-  left: -13px;
-}
+  }
+  .alnbase p {
+    font-size: 165px;
+  }
+  .zerost span {
+    letter-spacing: -26px;
+    position: relative;
+    left: -13px;
+  }
 }
 .cntrsx {
   position: relative;
@@ -900,9 +917,11 @@ input[type="number"] {
 }
 
 @media (min-width: 992px) {
-  .left0w{padding-left: 0px !important;}
-.left0w::after{
-    content: '';
+  .left0w {
+    padding-left: 0px !important;
+  }
+  .left0w::after {
+    content: "";
     position: absolute;
     top: 0;
     left: -434px;
@@ -910,18 +929,23 @@ input[type="number"] {
     width: 100%;
     background: #000;
     z-index: -1;
-}
-.bg-dgray.left0w::after{
-  background: #f2f2f2;}
+  }
+  .bg-dgray.left0w::after {
+    background: #f2f2f2;
+  }
 }
 
 @media (max-width: 991px) {
-.left0w{margin: 15px 0px;}
+  .left0w {
+    margin: 15px 0px;
+  }
 }
-.tesmnialswiper .swiper-wrapper{align-items: center;}
+.tesmnialswiper .swiper-wrapper {
+  align-items: center;
+}
 .tesmnialswiper .swiper-slide {
   width: auto;
-  display: flex ;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -930,18 +954,47 @@ input[type="number"] {
   object-fit: contain;
 }
 .text-77787B {
-  color: #77787B !important;
+  color: #77787b !important;
 }
-.innpding .secps{padding-inline: 0px !important;}
-.black-serv h2{color: #fff;}
-.black-serv .consu p{ color: #fff;}
-.black-serv .consu h3{ color: #fff;}
-.hidegslider .perf-slide .swiper-slide:nth-last-child(1){display: none;}
-.hdpd .padding0{padding-top: 0px !important;}
-.bordergrey .border{border-color: #333333;}
-.innerbgpd .bg-bglight{background: #fff;}
-.innerbgpd .ptwhite{padding-top: 0px !important;}
-.hovered-item img{     filter: brightness(0) invert(1) !important;}
-.hovered-item p{ color: #fff;}
-.mnstsaq h3{color: #fff;}
-.ptstsa .pas{padding-top: 0px !important;}
+.innpding .secps {
+  padding-inline: 0px !important;
+}
+.black-serv h2 {
+  color: #fff;
+}
+.black-serv .consu p {
+  color: #fff;
+}
+.black-serv .consu h3 {
+  color: #fff;
+}
+.hidegslider .perf-slide .swiper-slide:nth-last-child(1) {
+  display: none;
+}
+.hdpd .padding0 {
+  padding-top: 0px !important;
+}
+.bordergrey .border {
+  border-color: #333333;
+}
+.innerbgpd .bg-bglight {
+  background: #fff;
+}
+.innerbgpd .ptwhite {
+  padding-top: 0px !important;
+}
+.hovered-item img {
+  filter: brightness(0) invert(1) !important;
+}
+.hovered-item p {
+  color: #fff;
+}
+.mnstsaq h3 {
+  color: #fff;
+}
+.ptstsa .pas {
+  padding-top: 0px !important;
+}
+.gtdr .pd-cus {
+  padding-bottom: 0px !important;
+}
