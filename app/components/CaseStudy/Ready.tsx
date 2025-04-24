@@ -54,7 +54,7 @@ const Ready = ({data}:{
                     <p className='text-19 text-gray1 max-w-[113ch] fnt-lexend'>Every great brand has a story. See how we’ve turned challenges into triumphs for our clients. Your brand could be next.</p>
           <div >
 
-            <div className='mt-[20px] lg:mt-[64px] innerfnont relative'><Button text='LET&apos;S COLLABORATE' color={'text-black'}/>
+            <div className='mt-[20px] lg:mt-[64px] innerfnont relative'><Button text='LET&apos;S COLLABORATE' textcolor={'black'}/>
 
             <Link href="/lets-talk" className="absolute left-0 top-0 w-full h-full"></Link>
             </div> </div>

@@ -70,7 +70,6 @@ const page = () => {
 
       <GetInTouch
         bgcolor={'#F2F2F2'}
-        color={"black"}
         data={Cta}
         redlast={true}
         ctabbutton={"CONTACT US TODAY! "}
