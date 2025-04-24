@@ -144,7 +144,7 @@ export const OurServices = {
       desc: " We deliver clear, actionable reports that highlight what’s working, what’s improving, and where to go next.",
     },
     {
-      id: 6,
+      id: 7,
       title: "Scale & Expand ",
       desc: "Once core goals are met, we scale your campaigns and unlock new growth opportunities to keep your momentum strong. ",
     },
