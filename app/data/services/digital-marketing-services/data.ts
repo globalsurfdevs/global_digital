@@ -125,27 +125,27 @@ export const OurServices = {
     },
     {
       id: 3,
-      title: "Strategic Roadmap ",
+      title: "Strategic Roadmap",
       desc: "We develop a tailored strategy that aligns with your brand vision and is designed to deliver measurable results. ",
     },
     {
       id: 4,
-      title: "Campaign Launch ",
+      title: "Campaign Launch",
       desc: "We activate campaigns across Google, Meta, and other top platforms—ensuring every detail is optimized for performance from the start. ",
     },
     {
       id: 5,
-      title: "Continuous Optimization ",
+      title: "Continuous Optimization",
       desc: "Using real-time data, we test and refine everything from targeting to creatives to maximize return on ad spend.",
     },
     {
       id: 6,
-      title: "Insightful Reporting ",
+      title: "Insightful Reporting",
       desc: " We deliver clear, actionable reports that highlight what’s working, what’s improving, and where to go next.",
     },
     {
       id: 6,
-      title: "Scale & Expand  ",
+      title: "Scale & Expand ",
       desc: "Once core goals are met, we scale your campaigns and unlock new growth opportunities to keep your momentum strong. ",
     },
   ],
