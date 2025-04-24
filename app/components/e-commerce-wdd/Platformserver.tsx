@@ -7,6 +7,7 @@ interface PlatformsItem {
   icon: string;
   title?: string;
   rttitel?: string;
+  rsubtitle?: string;
   dec: string;
 }
 
@@ -17,7 +18,7 @@ interface PlatformsSectionProps {
   desc?: string;
   fdesc?: string;
   title: string;
-  colm?: number,
+  colm?: number;
   data: PlatformsItem[];
 }
 
@@ -52,9 +53,8 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
           >
             <h2
               className={`title-65 mb-6 max-w-[31ch] md:mb-10 ${bgblack ? "text-white" : ""}`}
-            >
-              {title}{" "}
-            </h2>
+              dangerouslySetInnerHTML={{ __html: title }}
+            ></h2>
             <p
               className="text-19 fnt-lexend max-w-[76ch] text-gray1 transition-colors duration-300 group-hover:text-gray-700 "
               dangerouslySetInnerHTML={{ __html: desc || "" }}
@@ -75,21 +75,39 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
             }, // Slide up and fade in
           }}
         >
-          <div className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colm ? `xl:grid-cols-${colm}`  : `xl:grid-cols-3`} `}>
+          <div
+            className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colm ? `xl:grid-cols-${colm}` : `xl:grid-cols-3`} `}
+          >
             {data.map((platform) => (
               <div
                 key={platform.id}
                 className="group flex flex-col transition-all duration-300   "
               >
-                <div
-                  className={` `}
-                > {platform.title && (
-                  <p
-                    className={`text-30 transition-colors duration-300 group-hover:text-primary lg:text-[65px] ${bgblack ? "text-white" : ""}`}
-                  >
-                    {platform.title} <span className="text-primary relative right-2 group-hover:text-[#00000080] ">+</span>
-                  </p>
-                )}
+                <div className={` `}>
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      {platform.title && (
+                        <p
+                          className={`text-30 transition-colors duration-300 group-hover:text-primary lg:text-[65px] ${bgblack ? "text-white" : ""}`}
+                        >
+                          {platform.title}{" "}
+                          <span className="relative right-2 text-primary group-hover:text-[#00000080] ">
+                            +
+                          </span>
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      {platform.rsubtitle && (
+                        <p
+                          className="text-right text-font25 text-[#77787B] "
+                          dangerouslySetInnerHTML={{
+                            __html: platform.rsubtitle || "",
+                          }}
+                        ></p>
+                      )}
+                    </div>
+                  </div>
                   <p
                     className="  text-font25 leading-[1.3] text-black"
                     dangerouslySetInnerHTML={{ __html: platform.rttitel || "" }}
@@ -112,7 +130,6 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
               </div>
             ))}
           </div>
-
         </motion.div>
       </div>
     </div>

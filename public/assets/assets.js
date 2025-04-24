@@ -567,8 +567,93 @@ import b2bbanner from "../images/b2b/b2bbanner.png";
 import datab2b from "../images/b2b/datab2b.svg";
 import ecomind from "../images/b2b/ecomind.png";
 
+import gardenconcp from "../images/digital-serv/graden-con-digi.png";
+import sseleo from "../images/digital-serv/sseleo.png";
+import sassent from "../images/digital-serv/sassent.png";
+import slogo1 from "../images/digital-serv/slogo1.png";
+import slogo2 from "../images/digital-serv/slogo2.png";
+import slogo3 from "../images/digital-serv/slogo3.png";
+import slogo4 from "../images/digital-serv/slogo4.png";
+import slogo5 from "../images/digital-serv/slogo5.png";
+import slogo6 from "../images/digital-serv/slogo6.png";
+import slogo7 from "../images/digital-serv/slogo7.png";
+import slogo8 from "../images/digital-serv/slogo8.png";
+import slogo9 from "../images/digital-serv/slogo9.png";
+import slogo10 from "../images/digital-serv/slogo10.png";
+import slogo11 from "../images/digital-serv/slogo11.png";
+import slogo12 from "../images/digital-serv/slogo12.png";
+import slogo13 from "../images/digital-serv/slogo13.png";
+import slogo14 from "../images/digital-serv/slogo14.png";
+import slogo15 from "../images/digital-serv/slogo15.png";
+import slogo16 from "../images/digital-serv/slogo16.png";
+import slogo17 from "../images/digital-serv/slogo17.png";
+import slogo18 from "../images/digital-serv/slogo18.png";
+import slogo19 from "../images/digital-serv/slogo19.png";
+import slogo20 from "../images/digital-serv/slogo20.png";
+import slogo21 from "../images/digital-serv/slogo21.png";
+import slogo22 from "../images/digital-serv/slogo22.png";
+import dsbanner from "../images/digital-serv/dsbanner.png";
+import whelp1 from "../images/digital-serv/whelp1.svg";
+import whelp2 from "../images/digital-serv/whelp2.svg";
+import whelp3 from "../images/digital-serv/whelp3.svg";
+import whelp4 from "../images/digital-serv/whelp4.svg";
+import dms1 from "../images/digital-serv/dms1.svg";
+import dms2 from "../images/digital-serv/dms2.svg";
+import dms3 from "../images/digital-serv/dms3.svg";
+import dms4 from "../images/digital-serv/dms4.svg";
+import dms5 from "../images/digital-serv/dms5.svg";
+import dms6 from "../images/digital-serv/dms6.svg";
+import hvr1 from "../images/digital-serv/hvr1.png";
+import hvr2 from "../images/digital-serv/hvr2.png";
+import hvr3 from "../images/digital-serv/hvr3.png";
+import hvric1 from "../images/digital-serv/hvric1.svg";
+import hvric2 from "../images/digital-serv/hvric2.svg";
+import hvric3 from "../images/digital-serv/hvric3.svg";
+
 export const assets = {
   b2bbanner,
+  slogo1,
+  slogo2,
+  slogo3,
+  slogo4,
+  slogo5,
+  slogo6,
+  slogo7,
+  slogo8,
+  slogo9,
+  slogo10,
+  slogo11,
+  slogo12,
+  slogo13,
+  slogo14,
+  slogo15,
+  slogo16,
+  slogo17,
+  slogo18,
+  slogo19,
+  slogo20,
+  slogo21,
+  slogo22,
+  dsbanner,
+  hvr1,
+  hvr2,
+  hvr3,
+  hvric1,
+  hvric2,
+  hvric3,
+  dms1,
+  dms2,
+  dms3,
+  dms4,
+  dms5,
+  dms6,
+  whelp1,
+  whelp2,
+  whelp3,
+  whelp4,
+  sseleo,
+  sassent,
+  gardenconcp,
   datab2b,
   bggra,
   crmbanner,
