@@ -75,11 +75,13 @@ const page = () => {
         />
       </div>
 
+      <section className="pb-[50px] lg:pb-[150px]">
         <Platformserver
         title={Platformsecomdata.title}
         desc={Platformsecomdata.desc}
           data={Platformsecomdata.data}
         />
+        </section>
 
       <GetInTouch
         data={Cta}
