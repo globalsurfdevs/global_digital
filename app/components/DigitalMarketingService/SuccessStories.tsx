@@ -98,12 +98,12 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
                   </div>
                   <a
                     href={item.linkUrl}
-                    className="group relative z-10 flex w-fit items-center gap-3 border-b-0 border-transparent pb-3 
-      before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 
-      before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 
+                    className="group relative z-10 flex w-fit items-center gap-3 border-b-0 border-transparent pb-3
+      before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300
+      before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300
       after:ease-in-out hover:border-b-white hover:after:w-0"
                   >
-                    <p className="text-sm font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
+                    <p className="text-sm  uppercase   font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
                       {item.linkText}
                     </p>
                     <svg

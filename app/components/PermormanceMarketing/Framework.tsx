@@ -2,12 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 interface FrameworkItem {
   id: number;
   title: string;
   title1?: string;
   icn?: string | StaticImageData;
   dec: string;
+  urllink?: string;
 }
 
 interface FrameworkSectionProps {
@@ -16,6 +18,7 @@ interface FrameworkSectionProps {
   bgcolor?: string;
   description?: string;
   colcount?: number;
+  maxchwidth?: number;
   data: FrameworkItem[];
 }
 
@@ -26,6 +29,8 @@ const Framework: React.FC<FrameworkSectionProps> = ({
   description,
   bgcolor,
   colcount,
+  maxchwidth,
+
 }) => {
   return (
     <div className={` ${bgcolor ? `${bgcolor}` : "bg-dgray"}`}>
@@ -45,22 +50,28 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
+
               {title1 && (
+                <Link href="">
                 <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
                   {title1}
-                </p>
+                  </p>
+                </Link>
               )}
               {description && (
                 <div>
-                  <h2 className="title-65 pb-6 lg:pb-[25px]">{title}</h2>
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
-                </div>
+                  </div>
               )}
               {!description && (
                 <>
-                  <h2 className="title-65 pb-6 lg:pb-[58px]">{title}</h2>
+                   <div
+                    style={{ maxWidth: `${maxchwidth}ch` }}
+                  >
+                    <h2 className="title-65 pb-6 lg:pb-[58px]">{title}</h2>
+                    </div>
                 </>
               )}
             </motion.div>
@@ -109,11 +120,14 @@ const Framework: React.FC<FrameworkSectionProps> = ({
                     </div>
                   )}
 
-                  <div className="text-2xl">
+                  <div className="text-2xl relative w-fit">
+
                     <h3
-                      className="text-30 pb-3 text-black lg:pb-6"
+                      className="text-30 pb-3 text-black lg:pb-6 "
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
+                        { framework.urllink && (   <Link href={framework.urllink} className="absolute top-0 w-full h-full"> </Link>
+                        )}
                   </div>
                   <div>
                     <p className="fnt-lexend text-19 font-medium text-gray1">

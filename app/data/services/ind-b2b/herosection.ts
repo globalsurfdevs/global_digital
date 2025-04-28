@@ -11,7 +11,7 @@ export const BannerSection = [
     ],
     heroAlt: "Digital Marketing for the Construction Companies",
 
-    title: "Digital Marketing for B2B Industry: Drive Growth & Maximize ROI ",
+    title: "Digital Marketing for B2B Industry- Drive Growth & Maximize ROI ",
     subtitle:
       "We specialize in data-driven digital marketing for b2b services that can generate high-quality leads, optimize conversions, and boost long-term growth.",
     buttontitle: "Get a Free Strategy Session",

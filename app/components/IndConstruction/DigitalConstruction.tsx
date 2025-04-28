@@ -42,15 +42,15 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-              <h2 className="title-65 text-white lg:max-w-[1008px]">{title}</h2>
+              <h2 className="title-65 text-white ">{title}</h2>
               <div className="flex justify-between lg:mt-[40px] ">
                 {subtitle && (
                   <h3 className="text-[19px] text-[#77787B]">{subtitle}</h3>
                 )}
                 {/* <button
                   className="z-2  hover:border-b-red group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent
-                      p-0 pb-3 text-white before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black 
-                      before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 
+                      p-0 pb-3 text-white before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black
+                      before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500
                       after:transition-all after:duration-300 after:ease-in-out hover:after:w-0"
                 >
                   <div className="relative">
