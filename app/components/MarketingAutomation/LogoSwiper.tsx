@@ -60,7 +60,7 @@ const LogoSwiper = () => {
     <>
       <div className='container ' ref={nextContainerRef}>
       <div className="mb-4 mt-6 grid lg:mb-[75px] lg:mt-0"><h2 className="title-65">Marketing Automation Technology Stack</h2></div></div>
-   <div style={{ width: isSmallScreen ? '' : divWidth }}    className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto`} >
+   <div style={{ width: isSmallScreen ? '' : divWidth }}    className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto overflow-hidden`} >
        <div className="swpcs testimonialswiper">
           <Swiper
              className="!overflow-visible logo-swiper"
