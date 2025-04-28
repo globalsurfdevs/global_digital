@@ -609,8 +609,86 @@ import hvr3 from "../images/digital-serv/hvr3.png";
 import hvric1 from "../images/digital-serv/hvric1.svg";
 import hvric2 from "../images/digital-serv/hvric2.svg";
 import hvric3 from "../images/digital-serv/hvric3.svg";
+import mats1 from "../assets/services/marketing-automation/matslog1.svg";
+import mats2 from "../assets/services/marketing-automation/matslog2.svg";
+import mats3 from "../assets/services/marketing-automation/matslog3.svg";
+import mats4 from "../assets/services/marketing-automation/matslog4.svg";
+import mats5 from "../assets/services/marketing-automation/matslog5.svg";
+import mats6 from "../assets/services/marketing-automation/matslog6.svg";
+import mats7 from "../assets/services/marketing-automation/matslog7.svg";
+import mats8 from "../assets/services/marketing-automation/matslog8.svg";
+import mats9 from "../assets/services/marketing-automation/matslog9.svg";
+import mats10 from "../assets/services/marketing-automation/matslog10.svg";
+import mats11 from "../assets/services/marketing-automation/matslog11.svg";
+import mats12 from "../assets/services/marketing-automation/matslog12.svg";
+import mats13 from "../assets/services/marketing-automation/matslog13.svg";
+import mats14 from "../assets/services/marketing-automation/matslog14.svg";
+import mats15 from "../assets/services/marketing-automation/matslog15.svg";
+import mats16 from "../assets/services/marketing-automation/matslog16.svg";
+import mats17 from "../assets/services/marketing-automation/matslog17.svg";
+import mats18 from "../assets/services/marketing-automation/matslog18.svg";
+import mats19 from "../assets/services/marketing-automation/matslog19.svg";
+import mats20 from "../assets/services/marketing-automation/matslog20.svg";
+import mats21 from "../assets/services/marketing-automation/matslog21.svg";
+import mats22 from "../assets/services/marketing-automation/matslog22.svg";
+import mats23 from "../assets/services/marketing-automation/matslog23.svg";
+import mats24 from "../assets/services/marketing-automation/matslog24.svg";
+import mats25 from "../assets/services/marketing-automation/matslog25.svg";
+import massbanner from "../assets/services/marketing-automation/mabanner.jpg";
+import rsd1 from "../assets/services/marketing-automation/rs1.svg";
+import rsd2 from "../assets/services/marketing-automation/rs2.svg";
+import rsd3 from "../assets/services/marketing-automation/rs3.svg";
+import rsd4 from "../assets/services/marketing-automation/rs4.svg";
+import rsd5 from "../assets/services/marketing-automation/rs5.svg";
+import rsd6 from "../assets/services/marketing-automation/rs6.svg";
+import hels1 from "../assets/services/marketing-automation/hel1.svg";
+import hels2 from "../assets/services/marketing-automation/hel2.svg";
+import hels3 from "../assets/services/marketing-automation/hel3.svg";
+import hels4 from "../assets/services/marketing-automation/hel4.svg";
+import hels5 from "../assets/services/marketing-automation/hel5.svg";
+
+
+
 
 export const assets = {
+  massbanner,
+  hels1,
+  hels2,
+  hels3,
+  hels4,
+  hels5,
+  rsd1,
+  rsd2,
+  rsd3,
+  rsd4,
+  rsd5,
+  rsd6,
+  mats1,
+  mats2,
+  mats3,
+  mats4,
+  mats5,
+  mats6,
+  mats6,
+  mats7,
+  mats8,
+  mats9,
+  mats10,
+  mats11,
+  mats12,
+  mats13,
+  mats14,
+  mats15,
+  mats16,
+  mats17,
+  mats18,
+  mats19,
+  mats20,
+  mats21,
+  mats22,
+  mats23,
+  mats24,
+  mats25,
   b2bbanner,
   slogo1,
   slogo2,
