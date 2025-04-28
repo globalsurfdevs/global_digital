@@ -77,36 +77,42 @@ export const Frameworkdata = {
       title: "Social Media Services ",
       dec: "Stay connected with your audience through a well-planned content calendar that keeps the conversation going.",
       icn: assets.dms1,
+      urllink: '/social-media-agency-dubai',
     },
     {
       id: 2,
       title: "Performance Marketing ",
       dec: "Reach the right people at the right time with data-driven campaigns that boost awareness and sales.   ",
       icn: assets.dms2,
+      urllink: '/performance-marketing-agency-dubai',
     },
     {
       id: 3,
       title: "Search Engine Optimization ",
       dec: "Make sure your brand shows up when your customers are searching for what you offer.  ",
       icn: assets.dms3,
+      urllink: '/seo-agency-dubai',
     },
     {
       id: 4,
       title: "Content Marketing  ",
       dec: "Tell your brand’s story in a way that captivates, engages, and builds lasting connections.  ",
       icn: assets.dms4,
+      urllink: '',
     },
     {
       id: 5,
       title: "Marketing Automation   ",
       dec: "Save time and stay efficient by automating repetitive marketing tasks without losing the personal touch.  ",
       icn: assets.dms5,
+      urllink: '',
     },
     {
       id: 6,
       title: "Analytics  ",
       dec: "Get a clear picture of what’s working with real-time insights that guide smarter decisions.  ",
       icn: assets.dms6,
+      urllink: '',
     },
   ],
 };
@@ -115,7 +121,7 @@ export const OurServices = {
   data: [
     {
       id: 1,
-      title: "Discovery & Alignmen",
+      title: "Discovery & Alignment ",
       desc: "We start by understanding your app, business goals, and audience through focused workshops and audits. ",
     },
     {
@@ -128,23 +134,29 @@ export const OurServices = {
       title: "Strategic Roadmap",
       desc: "We develop a tailored strategy that aligns with your brand vision and is designed to deliver measurable results. ",
     },
+
     {
       id: 4,
+      title: "Creative Execution  ",
+      desc: "Our team produces compelling ad creatives, messaging, and content tailored to resonate with your audience across platforms.  ",
+    },
+    {
+      id: 5,
       title: "Campaign Launch",
       desc: "We activate campaigns across Google, Meta, and other top platforms—ensuring every detail is optimized for performance from the start. ",
     },
     {
-      id: 5,
+      id: 6,
       title: "Continuous Optimization",
       desc: "Using real-time data, we test and refine everything from targeting to creatives to maximize return on ad spend.",
     },
     {
-      id: 6,
+      id: 7,
       title: "Insightful Reporting",
       desc: " We deliver clear, actionable reports that highlight what’s working, what’s improving, and where to go next.",
     },
     {
-      id: 7,
+      id: 8,
       title: "Scale & Expand ",
       desc: "Once core goals are met, we scale your campaigns and unlock new growth opportunities to keep your momentum strong. ",
     },
@@ -186,7 +198,7 @@ export const IndustriesWeServe = {
       title: "Web Design & Development ",
       hoverImg: assets.hvr1,
       desc: "Build fast, mobile-friendly websites that convert visitors into leads. ",
-      url: "",
+      url: "/web-design-and-development",
     },
     {
       id: 2,
@@ -194,7 +206,7 @@ export const IndustriesWeServe = {
       title: "Branding & Creative ",
       hoverImg: assets.hvr2,
       desc: "Craft a visual identity that sets your construction brand apart. ",
-      url: "",
+      url: "/creative-agency-dubai",
     },
     {
       id: 3,
@@ -241,7 +253,7 @@ export const Faq = [
   {
     title: "What makes your digital agency services different from others? ",
     description:
-      "We focus on personalized, data-driven strategies with transparent reporting. Our digital marketing packages are tailored to maximize ROI, ensuring that every campaign delivers measurable success. +",
+      "We focus on personalized, data-driven strategies with transparent reporting. Our digital marketing packages are tailored to maximize ROI, ensuring that every campaign delivers measurable success. ",
   },
 ];
 

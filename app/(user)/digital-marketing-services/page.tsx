@@ -8,6 +8,7 @@ import Boost from "../../components/PermormanceMarketing/Boost";
 import SuccessStories from "../../components/DigitalMarketingService/SuccessStories";
 import Expertises from "../../components/EcomIndustry/Expertise";
 import LogoSwiper from "../../components/DigitalMarketingService/LogoSwiper";
+import Head from "next/head";
 
 import {
   BannerSection,
@@ -39,19 +40,34 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Services",
+    title: "Digital Marketing Services in Dubai | Global Surf Digital",
     description:
-      "Partner with a top web app development company in Dubai specializing in custom web applications. We build secure web apps tailored to your business. ",
+      "Achieve your business goals with our top-tier digital marketing services in Dubai.  We create customized strategies to drive long-term success. Get a quote now!",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/digital-marketing-services",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 
 const page = () => {
   return (
     <div>
+      <Head>
+        <meta
+          property="og:title"
+          content="Comprehensive Digital Marketing Services in Dubai | Maximize Impact"
+        />
+        <meta property="og:site_name" content="Global Surf Digital Media" />
+        <meta
+          property="og:url"
+          content="https://www.globalsurf.ae/digital-marketing-services"
+        />
+        <meta
+          property="og:description"
+          content="From SEO to analytics, our digital marketing services in Dubai are designed to enhance your brand’s impact, engagement, and conversions. Partner with Global Surf today."
+        />
+      </Head>
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
@@ -74,7 +90,7 @@ const page = () => {
         />
       </div>
       <SuccessStories
-        title1="Featured projects "
+        title1="Featured Projects "
         Clientsformsdata={Clientsformsdata}
       />
       <Services
@@ -109,7 +125,7 @@ const page = () => {
       <GetInTouch
         data={Cta}
         redlast={true}
-        ctabbutton={"Let’s Connect!"}
+        ctabbutton={"LET’S CONNECT!"}
         link={"/lets-talk"}
       />
       <FAQ data={Faq} />

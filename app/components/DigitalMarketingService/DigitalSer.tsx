@@ -78,7 +78,7 @@ const DigitalServ: React.FC<DigitalServSectionProps> = ({
             >
               <div className="relative">
                 <p
-                  className={`duration-200"  text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                  className={`duration-200" uppercase  text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                 >
                   {btntitle}
                 </p>
