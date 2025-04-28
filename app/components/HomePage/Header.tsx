@@ -6,12 +6,14 @@ import { Example } from "../MobileMenu/Example";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuItems } from "../../data/menuItems";
 import Link from "next/link";
+import LetsTalk from "@/app/components/common/LetsTalk";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -102,9 +104,24 @@ const Header = () => {
     null,
   );
 
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+ // disables scroll
+    } else {
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto'; // resets to default
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [modalOpen]);
+
   if (mobileMenu) {
     return (
-      <div className="flex flex items-center p-4 align-middle">
+      <div className="flex items-center p-4 align-middle">
         <Link href="/">
           <Image src={assets.logo} alt="logo" />
         </Link>
@@ -113,7 +130,11 @@ const Header = () => {
     );
   } else {
     return (
-      <header className={` py-4 pb-4 lg:py-[22px] ${isSticky ? "header" : ""}`}>
+      <>
+            {modalOpen && <div className="fixed top-0 left-0 overflow-y-auto z-[1000] bg-white w-screen">
+        <LetsTalk onClose={() => setModalOpen(false)}/>
+          </div>}
+      <header className={`py-4 pb-4 lg:py-[22px] ${isSticky ? "header" : ""}`}>
         <div className="container flex items-center justify-between">
           <div className="logo-s relative">
             <Image
@@ -123,7 +144,7 @@ const Header = () => {
               width={100}
               height={100}
             />
-            <Link href="/" className=" absolute top-0 h-full w-full"></Link>
+            <Link href="/" className="absolute top-0 h-full w-full"></Link>
           </div>
           <button
             className="text-black lg:hidden"
@@ -159,7 +180,7 @@ const Header = () => {
                     onMouseLeave={() => setOpenDropdownIndex(null)}
                   >
                     <button className="large-screen-menu-item flex items-center px-4 py-2 text-black hover:text-primary lg:px-0">
-                      {item.item} <span className="ml-1 text-primary">+</span>
+                      {item.item} <span className="ml-1 text-primary"></span>
                     </button>
                   </div>
 
@@ -219,8 +240,8 @@ const Header = () => {
               ),
             )}
 
-            <Link
-              href="/lets-talk"
+            <button
+              onClick={() => {setModalOpen(true);document.body.style.overflow = 'hidden'}}
               className="hover:bg-prtext-primary group hidden items-center space-x-2 rounded-full border border-primary px-6 py-2 text-primary transition duration-300
                ease-in hover:text-black hover:text-primary hover:shadow-lg lg:flex"
             >
@@ -257,10 +278,13 @@ const Header = () => {
                   </defs>
                 </svg>
               </div>
-            </Link>
+            </button>
+
           </nav>
         </div>
       </header>
+
+          </>
     );
   }
 };
