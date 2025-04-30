@@ -98,17 +98,17 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
 
   return (
     <div className="mainconnect">
-      <div className=" px-[20px] pb-[20px] pt-[20px] md:pb-[0px] lg:px-[140px] lg:pt-[140px]">
+      <div className=" px-[20px] pb-[20px] pt-[50px] md:pb-[140px] lg:px-[140px] lg:pt-[140px]">
         <h1 className="title-65">
           Let’s<br></br> Connect <span className="text-primary">!</span>
         </h1>
-        <p className="text-gray1">
+        <p className="mt-2 text-gray1">
           Feel free to send us a mail, or fill up the form.
         </p>
         <div className="mt-[30px] flex flex-col gap-8 md:col-span-3 lg:mt-[80px]">
           <div className="flex flex-col gap-3">
-            <div className="mb-3 flex items-center gap-2 border-b border-gray-300 pb-3 lg:mb-[50px] lg:gap-[50px] lg:pb-[25px]">
-              <p className="text-font35">
+            <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:gap-[50px] lg:pb-[25px]">
+              <p className="text-[20px] sm:text-font35">
                 <a href="mailto:hello@globalsurf.ae" className="break-words">
                   hello<span className="text-primary">@</span>globalsurf.ae
                 </a>
@@ -135,8 +135,8 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                 ></path>
               </svg>
             </div>
-            <div className="mb-3 flex items-center gap-2 border-b border-gray-300 pb-3 lg:mb-[50px] lg:gap-[120px] lg:pb-[25px] ">
-              <p className="text-font35">
+            <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:pb-[25px]  xxl:gap-[120px] ">
+              <p className="text-[20px] sm:text-font35 ">
                 <a href="tel:+97145821133">+971 4 582 1133</a>
               </p>
               <svg
@@ -163,9 +163,9 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
             </div>
           </div>
         </div>
-        <div className="lg:mt-[70px]">
+        <div className="mb-3 mt-[30px] lg:mb-0 lg:mt-[70px]">
           <img src="/images/location.svg" alt="location" className="" />
-          <p className="text-19 mt-[30px]">
+          <p className="text-19 mt-2 md:mt-[30px]">
             P.O.Box 13653, 901 - SIT Tower, Dubai Silion Oasis, Dubai, UAE
           </p>
         </div>
