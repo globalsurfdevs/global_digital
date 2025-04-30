@@ -315,7 +315,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                   {isBudgetOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedBudget("AED < 5000");
                           setIsBudgetOpen(false);
@@ -324,7 +324,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED &lt; 5000
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedBudget(" AED 5000 - 10000");
                           setIsBudgetOpen(false);
@@ -333,7 +333,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED 5000 - 10000
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedBudget("AED 10000 - 20000");
                           setIsBudgetOpen(false);
@@ -342,7 +342,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED 10000 - 20000
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedBudget(" AED 20000 - 30000");
                           setIsBudgetOpen(false);
@@ -351,7 +351,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED 20000 - 30000
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedBudget("AED 30000 - 40000");
                           setIsBudgetOpen(false);
@@ -360,7 +360,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED 30000 - 40000
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedBudget("AED 50000 - 100000");
                           setIsBudgetOpen(false);
@@ -369,7 +369,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED 50000 - 100000
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedBudget("AED > 100000");
                           setIsBudgetOpen(false);
@@ -403,7 +403,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                   {isServiceOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedService("Performance Marketing");
                           setIsServiceOpen(false);
@@ -412,7 +412,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         Performance Marketing
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedService("SEO");
                           setIsServiceOpen(false);
@@ -421,7 +421,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         SEO
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedService("Social Media");
                           setIsServiceOpen(false);
@@ -430,7 +430,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         Social Media
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedService("Web Design and Development");
                           setIsServiceOpen(false);
@@ -439,7 +439,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         Web Design and Development
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedService("Branding and Creatives");
                           setIsServiceOpen(false);
@@ -448,7 +448,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         Branding and Creatives
                       </li>
                       <li
-                        className="cursor-pointer px-2 py-1 hover:bg-gray-200"
+                        className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
                         onClick={() => {
                           setSelectedService("Marketing Intelligence");
                           setIsServiceOpen(false);
