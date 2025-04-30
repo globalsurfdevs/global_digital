@@ -142,7 +142,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       >
                         <div className="relative">
                           <p
-                            className={`duration-200"  text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                            className={`duration-200  text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                           >
                             {herosection.buttontitle}
                           </p>

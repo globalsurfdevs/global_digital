@@ -2,7 +2,11 @@
 import React, {useEffect, useState } from "react";
 import Link from "next/link";
 
-const Page = () => {
+interface LetsTalkProps {
+  onClose: () => void;
+}
+
+const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
   const [formData, setFormData] = useState<{
     PhoneNumber_countrycode?: string;
     Email?: string;
@@ -78,6 +82,14 @@ const Page = () => {
     }
   };
 
+  useEffect(()=>{
+    console.log(window.location.href)
+    setFormData((prev)=>({...prev,SingleLine2:window.location.href}))
+  },[window.location.href])
+
+  useEffect(()=>{
+    console.log(formData)
+  },[formData])
 
   return (
     <div>
@@ -101,7 +113,7 @@ const Page = () => {
         </div>
         <div className="psty p-[20px] md:p-[100px]">
           <div className="group">
-            <button>
+            <button onClick={onClose}>
               <div className="  absolute right-5 top-[30px] w-fit cursor-pointer rounded-3xl bg-primary px-6 py-2 duration-200 duration-300 ease-in-out ease-in-out group-hover:-translate-x-[-3px]    group-hover:bg-primary group-hover:shadow-lg  md:bg-dgray  ">
                 <div className="uppercase text-white">
                   <p className="bolder text-font16 text-white duration-300  ease-in-out ease-in-out group-hover:text-white md:text-black">
@@ -258,4 +270,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default LetsTalk;

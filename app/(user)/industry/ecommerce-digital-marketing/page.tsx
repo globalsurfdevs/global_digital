@@ -1,6 +1,5 @@
 import React from "react";
 import HeroSection from "../../../components/BannerSectionBC/HeroWithBc";
-import KeyDigital from "../../../components/IndConstruction/KeyDigital";
 import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
 import FAQ from "../../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../../components/EcomIndustry/GetInTouch";
@@ -8,7 +7,7 @@ import Expertise from "../../../components/EcomIndustry/Expertise";
 import Framework from "../../../components/PermormanceMarketing/Framework";
 import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
-import { KeyDigitalData } from "../../../data/services/e-com-industry/keyDigital";
+import Head from "next/head";
 import { BannerSection } from "../../../data/services/e-com-industry/herosection";
 import { AreaExpertise } from "../../../data/services/e-com-industry/digitaconstructions";
 import { IndustriesWeServe } from "../../../data/services/e-com-industry/industries-we-serve";
@@ -16,9 +15,6 @@ import { Clientsformsdata } from "../../../data/services/e-com-industry/clientsd
 import { Frameworkdata } from "../../../data/services/e-com-industry/framework";
 import { Cta } from "../../../data/services/e-com-industry/cta";
 import { Faq } from "../../../data/services/e-com-industry/faq";
-import Testimonials from "@/app/components/HomePage/Testimonials";
-import SliderInd from "@/app/components/IndConstruction/SliderInd";
-import { Platformsdata } from "../../../data/services/e-com-industry/clientslogo";
 
 interface Canonicals {
   canonical: string;
@@ -33,18 +29,33 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing for Construction Companies |  GS Digital ",
+    title: "E-Commerce Digital Marketing Agency Dubai | Global Surf Digital",
     description:
-      "Boost your construction brand's visibility with tailored digital marketing strategies. From SEO to branding, we help firms attract high-value leads. Contact now!",
+      "Scale your e-commerce brand with data-driven digital marketing strategies. From SEO to performance marketing, we help you attract buyers and grow. Call us! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/industry/ecommerce-digital-marketing",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {
   return (
     <div>
+      <Head>
+        <meta
+          property="og:title"
+          content="Boost E-Commerce Sales with Expert Digital Marketing | Global Surf"
+        />
+        <meta property="og:site_name" content="Global Surf Digital Media" />
+        <meta
+          property="og:url"
+          content="https://www.globalsurf.ae/industry/ecommerce-digital-marketing"
+        />
+        <meta
+          property="og:description"
+          content="Drive traffic, increase conversions, and scale your e-commerce business with data-driven digital marketing strategies from Global Surf. Let’s grow together!"
+        />
+      </Head>
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
@@ -58,6 +69,7 @@ const page = () => {
         data={Frameworkdata.data}
         bgcolor={"white"}
         colcount={3}
+        maxchwidth={52}
       />
       <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} />
       <SuccessStories
@@ -69,7 +81,7 @@ const page = () => {
       <GetInTouch
         data={Cta}
         redlast={true}
-        ctabbutton={"Get a Free Consultation"}
+        ctabbutton={"GET A FREE CONSULTATION"}
         link={"https://www.globalsurf.ae/lets-talk"}
       />
       <Expertise

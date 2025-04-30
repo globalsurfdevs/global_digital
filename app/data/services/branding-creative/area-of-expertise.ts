@@ -43,7 +43,7 @@ export const AreaExpertise = {
       icon: assets.sm_marketing,
       title: "Graphic Design   ",
       desc: "Striking visuals that enhance your brand’s appeal and leave a lasting impression. ",
-      url: "",
+      url: "/graphic-design-agency-dubai",
     },
   ],
 };
