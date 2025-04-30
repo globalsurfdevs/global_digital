@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import LetsTalk from "@/app/components/common/LetsTalk";
+import LetsTalk from "@/app/components/common/LetsConnect";
 
 const Cta = () => {
   const [modalOpen, setModalOpen] = useState(false);
