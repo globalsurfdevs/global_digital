@@ -113,7 +113,6 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"REACH OUT TO OUR TEAM!"}
-        link={"/lets-talk"}
       />
       <FAQ data={Faq} />
       <RelatedServices

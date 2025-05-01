@@ -7,8 +7,6 @@ import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformse
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import CtaBox from "../../components/PermormanceMarketing/CtaBox";
 
-
-
 import { BannerSection } from "../../data/services/social-media-management/herosection";
 import { OurServices } from "../../data/services/social-media-management/our-services";
 import { Frameworkdata } from "../../data/services/social-media-management/framework";
@@ -46,25 +44,55 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={21} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} leftzero={true} colcount={4} hiddentitle={true} />
-      <Services title={OurServices.title} description={OurServices.desc} data={OurServices.data}  colcount={5}  />
-      <Framework title={Frameworkdata.title} description={Frameworkdata.description} data={Frameworkdata.data} />
-      <section className="bg-black innpding">
-        <Platforms title={Platformsdata.title} data={Platformsdata.data} bgblack={true} />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={21}
+      />
+      <Platforms
+        title={Wecanhelp.title}
+        data={Wecanhelp.data}
+        icontitle={true}
+        leftzero={true}
+        colcount={4}
+        hiddentitle={true}
+      />
+      <Services
+        title={OurServices.title}
+        description={OurServices.desc}
+        data={OurServices.data}
+        colcount={5}
+      />
+      <Framework
+        title={Frameworkdata.title}
+        description={Frameworkdata.description}
+        data={Frameworkdata.data}
+      />
+      <section className="innpding bg-black">
+        <Platforms
+          title={Platformsdata.title}
+          data={Platformsdata.data}
+          bgblack={true}
+        />
       </section>
 
-      <Testimonials bgcolor={'white'} />
+      <Testimonials bgcolor={"white"} />
       <section className="mb-[50px] md:mb-[111px]">
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} fdesc={Platformsecomdata.fdesc} data={Platformsecomdata.data} />
+        <Platformsecom
+          title={Platformsecomdata.title}
+          desc={Platformsecomdata.desc}
+          fdesc={Platformsecomdata.fdesc}
+          data={Platformsecomdata.data}
+        />
       </section>
-      <CtaBox
-        data={Cta}
-        ctabbutton={"CONTACT US TODAY "}
-        link={"/lets-talk"}
-      />
+      <CtaBox data={Cta} ctabbutton={"CONTACT US TODAY "} link={"/lets-talk"} />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title} description={relatedservices.description}  data={relatedservices.data} colcount={3} />
+      <RelatedServices
+        title={relatedservices.title}
+        description={relatedservices.description}
+        data={relatedservices.data}
+        colcount={3}
+      />
     </div>
   );
 };

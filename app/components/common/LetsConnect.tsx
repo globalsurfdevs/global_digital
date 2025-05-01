@@ -98,7 +98,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
 
   return (
     <div className="mainconnect">
-      <div className=" px-[20px] pb-[20px] pt-[50px] md:pb-[140px] lg:px-[140px] lg:pt-[140px]">
+      <div className=" px-[20px] pb-[20px] pt-[50px] md:pb-0 lg:px-[140px] lg:pt-[140px]">
         <h1 className="title-65">
           Let’s<br></br> Connect <span className="text-primary">!</span>
         </h1>

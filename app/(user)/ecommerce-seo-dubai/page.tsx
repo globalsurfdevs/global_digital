@@ -85,7 +85,6 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"CONTACT US TODAY FOR A FREE CONSULTATION"}
-        link={"/lets-talk"}
       />
       <FAQ data={Faq} />
       <RelatedServices

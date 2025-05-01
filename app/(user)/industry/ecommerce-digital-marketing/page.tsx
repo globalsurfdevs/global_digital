@@ -33,7 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Scale your e-commerce brand with data-driven digital marketing strategies. From SEO to performance marketing, we help you attract buyers and grow. Call us! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/industry/ecommerce-digital-marketing",
+      canonical:
+        "https://www.globalsurf.ae/industry/ecommerce-digital-marketing",
     },
     robots: "index, follow",
   };

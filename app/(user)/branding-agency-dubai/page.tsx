@@ -83,14 +83,14 @@ const page = () => {
           title={OurServices.title}
           data={OurServices.data}
           hrcontent={true}
-        colcount={5}
+          colcount={5}
         />
-        </section>
-        <Platformsecom
-          title={Platformsecomdata.title}
-          desc={Platformsecomdata.desc}
-          data={Platformsecomdata.data}
-        />
+      </section>
+      <Platformsecom
+        title={Platformsecomdata.title}
+        desc={Platformsecomdata.desc}
+        data={Platformsecomdata.data}
+      />
       <Works title="Our Works" />
 
       <Testimonials />
@@ -99,7 +99,6 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"READY TO GET STARTED?"}
-        link={"/lets-talk"}
       />
       <FAQ data={Faq} />
       <RelatedServices

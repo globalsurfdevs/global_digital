@@ -13,7 +13,7 @@ import {
   Platformsecomdata,
   Cta,
   Faq,
-  relatedservices
+  relatedservices,
 } from "../../components/MarketingAutomation/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
@@ -52,14 +52,21 @@ const page = () => {
         maxchwidth={34}
       />
 
-<Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={3} />
+      <Platforms
+        title={Wecanhelp.title}
+        data={Wecanhelp.data}
+        icontitle={true}
+        hiddentitle={true}
+        leftzero={true}
+        colcount={3}
+      />
 
-        <Framework
-          title={Frameworkdata.title}
-          data={Frameworkdata.data}
-          bgcolor="white"
-          colcount={4}
-        />
+      <Framework
+        title={Frameworkdata.title}
+        data={Frameworkdata.data}
+        bgcolor="white"
+        colcount={4}
+      />
 
       <Services
         title={OurServices.title}
@@ -71,26 +78,24 @@ const page = () => {
         hrcontent={true}
       />
       <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-        <LogoSwiper
-        />
+        <LogoSwiper />
       </div>
 
       <section className="pb-[50px] lg:pb-[150px]">
         <Platformserver
-        title={Platformsecomdata.title}
-        desc={Platformsecomdata.desc}
+          title={Platformsecomdata.title}
+          desc={Platformsecomdata.desc}
           data={Platformsecomdata.data}
         />
-        </section>
+      </section>
 
-      <GetInTouch
-        data={Cta}
-        redlast={true}
-        ctabbutton={"Let’s Connect!"}
-        link={"/lets-talk"}
-      />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"Let’s Connect!"} />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
+      <RelatedServices
+        title={relatedservices.title}
+        data={relatedservices.data}
+        colcount={3}
+      />
     </div>
   );
 };

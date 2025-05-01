@@ -8,7 +8,6 @@ import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformse
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
-
 import { ResultsData } from "../../data/services/social-media-marketing-dubai/results";
 import { BannerSection } from "../../data/services/social-media-marketing-dubai/herosection";
 import { OurServices } from "../../data/services/social-media-marketing-dubai/our-services";
@@ -30,7 +29,7 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
-   robots: string;
+  robots: string;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,35 +40,61 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/social-media-marketing-dubai",
     },
-     robots: "index, follow",
+    robots: "index, follow",
   };
 }
 
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={26} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
-      <Services title={OurServices.title} data={OurServices.data}  colcount={5} />
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data}  />
-      <section className="pt-[50px]   lg:pt-[140px] lg:pb-[70px]">
-      <Platforms title={Platformsdata.title} data={Platformsdata.data}   />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={26}
+      />
+      <Platforms
+        title={Wecanhelp.title}
+        data={Wecanhelp.data}
+        icontitle={true}
+        hiddentitle={true}
+        leftzero={true}
+        colcount={4}
+      />
+      <Services
+        title={OurServices.title}
+        data={OurServices.data}
+        colcount={5}
+      />
+      <Framework title={Frameworkdata.title} data={Frameworkdata.data} />
+      <section className="pt-[50px]   lg:pb-[70px] lg:pt-[140px]">
+        <Platforms title={Platformsdata.title} data={Platformsdata.data} />
       </section>
-      <Results title={ResultsData.title} description={ResultsData.description} data={ResultsData.data}   />
+      <Results
+        title={ResultsData.title}
+        description={ResultsData.description}
+        data={ResultsData.data}
+      />
 
-      <Testimonials bgcolor={'white'} />
+      <Testimonials bgcolor={"white"} />
       <section className="pb-[50px]   lg:pb-[140px] ">
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+        <Platformsecom
+          title={Platformsecomdata.title}
+          desc={Platformsecomdata.desc}
+          data={Platformsecomdata.data}
+        />
       </section>
 
       <GetInTouch
         data={Cta}
         redlast={true}
         ctabbutton={"CONTACT US TO GET STARTED!"}
-        link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title}   data={relatedservices.data} colcount={3} />
+      <RelatedServices
+        title={relatedservices.title}
+        data={relatedservices.data}
+        colcount={3}
+      />
     </div>
   );
 };
