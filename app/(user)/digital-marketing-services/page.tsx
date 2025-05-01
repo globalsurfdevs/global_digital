@@ -122,12 +122,7 @@ const page = () => {
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}
       />
-      <GetInTouch
-        data={Cta}
-        redlast={true}
-        ctabbutton={"LET’S CONNECT!"}
-        link={"/lets-talk"}
-      />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET’S CONNECT!"} />
       <FAQ data={Faq} />
     </div>
   );

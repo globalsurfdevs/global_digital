@@ -3,11 +3,33 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import EmployeesSwiper from "./EmployeesSwiper";
 import Button from "../Button/Button";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import LetsTalk from "@/app/components/common/LetsConnect";
 
 const SectionFive = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen]);
   return (
     <div>
+      {/* Modal section */}
+      {modalOpen && (
+        <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
+          <LetsTalk onClose={() => setModalOpen(false)} />
+        </div>
+      )}
       <div className="container mx-auto py-4">
         <div className="pt-[50px] lg:pt-[100px] ">
           <motion.div
@@ -23,7 +45,7 @@ const SectionFive = () => {
               }, // Slide up and fade in
             }}
           >
-            <div className="grid  mb-4 lg:mb-[47px]">
+            <div className="mb-4  grid lg:mb-[47px]">
               <h2 className="title-65 ">The Experts Who Drive Results</h2>
             </div>
           </motion.div>
@@ -58,17 +80,27 @@ const SectionFive = () => {
         }}
       >
         <div className="container mx-auto py-4">
-          <div className="lg:pb-[150px] pb-[50px] lg:pt-[138px] pt-[50px]  flex flex-col   ">
+          <div className="flex flex-col pb-[50px] pt-[50px]  lg:pb-[150px] lg:pt-[138px]   ">
             <h2 className="title-65 mb-4 lg:mb-7">
               Ready to Create the Extraordinary? Let’s Go!
             </h2>
-            <p className="text-19 text-gray1 max-w-[113ch] fnt-lexend">
+            <p className="text-19 fnt-lexend max-w-[113ch] text-gray1">
               Every great brand has a story. See how we’ve turned challenges
               into triumphs for our clients. Your brand could be next.
             </p>
             <div>
-              <div className="mt-[20px] lg:mt-[64px] innerfnont">
-                <Link href="/lets-talk"><Button text="LET'S COLLABORATE" textcolor={'black'}/></Link>
+              <div className="innerfnont mt-[20px] lg:mt-[64px]">
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 text-black transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
+                >
+                  <span className="duration-300 ease-in group-hover:text-black">
+                    LET'S COLLABORATE
+                  </span>
+                </button>
+                {/* <Link href="/lets-talk">
+                  <Button text="LET'S COLLABORATE" textcolor={"black"} />
+                </Link> */}
               </div>{" "}
             </div>
           </div>
