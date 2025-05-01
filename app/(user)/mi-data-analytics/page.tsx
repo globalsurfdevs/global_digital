@@ -3,9 +3,9 @@ import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import LogoSwiper from "../../components/MiDataAnalytics/LogoSwiper";
+// import LogoSwiper from "../../components/MiDataAnalytics/LogoSwiper";
 
-import {Matslogo,
+import { logosdatas,
   BannerSection,
   Wecanhelp,
   OurServices,
@@ -14,12 +14,13 @@ import {Matslogo,
   Cta,
   Faq,
   relatedservices,
-} from "../../components/MarketingAutomation/data";
+} from "../../components/MiDataAnalytics/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PermormanceMarketing/Framework";
 import Platforms from "@/app/components/PermormanceMarketing/Platforms";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import LogoSwiper from "@/app/components/DigitalMarketingService/LogoSwiper";
 
 interface Canonicals {
   canonical: string;
@@ -65,7 +66,7 @@ const page = () => {
         title={Frameworkdata.title}
         data={Frameworkdata.data}
         bgcolor="white"
-        colcount={4}
+        colcount={3}
       />
 
       <Services
@@ -78,7 +79,9 @@ const page = () => {
         hrcontent={true}
       />
       <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-      <LogoSwiper mtslogo={Matslogo[0]}   />
+        {/* <LogoSwiper mtslogo={Matslogo[0]} /> */}
+        <LogoSwiper logosdata={logosdatas} slidesPerView={7}
+          title1="Our Data Analytics Technology Stack"/>
       </div>
 
       <section className="pb-[50px] lg:pb-[150px]">
@@ -89,7 +92,7 @@ const page = () => {
         />
       </section>
 
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"Let’s Connect!"} />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET’S CHAT!"} />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

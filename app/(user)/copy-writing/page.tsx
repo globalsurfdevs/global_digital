@@ -7,19 +7,17 @@ import LogoSwiper from "../../components/MiDataAnalytics/LogoSwiper";
 
 import {Matslogo,
   BannerSection,
-  Wecanhelp,
   OurServices,
-  Frameworkdata,
   Platformsecomdata,
   Cta,
   Faq,
   relatedservices,
-} from "../../components/MarketingAutomation/data";
+  Frameworkdata
+} from "../../components/CopyWriting/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import Framework from "@/app/components/PermormanceMarketing/Framework";
-import Platforms from "@/app/components/PermormanceMarketing/Platforms";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import Framework from "@/app/components/PermormanceMarketing/Framework";
 
 interface Canonicals {
   canonical: string;
@@ -52,44 +50,37 @@ const page = () => {
         maxchwidth={34}
       />
 
-      <Platforms
-        title={Wecanhelp.title}
-        data={Wecanhelp.data}
-        icontitle={true}
-        hiddentitle={true}
-        leftzero={true}
-        colcount={3}
-      />
 
-      <Framework
-        title={Frameworkdata.title}
-        data={Frameworkdata.data}
-        bgcolor="white"
-        colcount={4}
-      />
 
       <Services
         title={OurServices.title}
         data={OurServices.data}
         colcount={5}
-        bgcolor="bg-black"
-        bgtt1="text-white"
-        bgtt3="text-white"
         hrcontent={true}
       />
-      <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-      <LogoSwiper mtslogo={Matslogo[0]}   />
-      </div>
 
-      <section className="pb-[50px] lg:pb-[150px]">
+      <section className="textmnsa">
+      <Framework
+            title={Frameworkdata.title}
+            data={Frameworkdata.data}
+            bgcolor="bg-black"
+            colcount={3}
+          />
+      </section>
+      <section className="py-[50px] lg:py-[130px]">
         <Platformserver
           title={Platformsecomdata.title}
           desc={Platformsecomdata.desc}
           data={Platformsecomdata.data}
         />
       </section>
+      <div className="pb-[50px]   lg:pb-[130px]">
+      <LogoSwiper mtslogo={Matslogo[0]}   />
+      </div>
 
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"Let’s Connect!"} />
+
+
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US TODAY!"} />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

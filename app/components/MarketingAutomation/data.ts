@@ -118,130 +118,135 @@ export const OurServices = {
 
 export const Matslogo = [
   {
-    id: 1,
-    src: assets.mats1,
-    alt: "Logo",
-  },
-  {
-    id: 2,
-    src: assets.mats2,
-    alt: "Logo",
-  },
-  {
-    id: 3,
-    src: assets.mats3,
-    alt: "Logo",
-  },
-  {
-    id: 4,
-    src: assets.mats4,
-    alt: "Logo",
-  },
-  {
-    id: 5,
-    src: assets.mats5,
-    alt: "Logo",
-  },
-  {
-    id: 6,
-    src: assets.mats6,
-    alt: "Logo",
-  },
-  {
-    id: 7,
-    src: assets.mats7,
-    alt: "Logo",
-  },
-  {
-    id: 8,
-    src: assets.mats8,
-    alt: "Logo",
-  },
-  {
-    id: 9,
-    src: assets.mats9,
-    alt: "Logo",
-  },
-  {
-    id: 10,
-    src: assets.mats10,
-    alt: "Logo",
-  },
-  {
-    id: 11,
-    src: assets.mats11,
-    alt: "Logo",
-  },
-  {
-    id: 12,
-    src: assets.mats12,
-    alt: "Logo",
-  },
-  {
-    id: 13,
-    src: assets.mats13,
-    alt: "Logo",
-  },
-  {
-    id: 14,
-    src: assets.mats14,
-    alt: "Logo",
-  },
-  {
-    id: 15,
-    src: assets.mats15,
-    alt: "Logo",
-  },
-  {
-    id: 16,
-    src: assets.mats16,
-    alt: "Logo",
-  },
-  {
-    id: 17,
-    src: assets.mats17,
-    alt: "Logo",
-  },
-  {
-    id: 18,
-    src: assets.mats18,
-    alt: "Logo",
-  },
-  {
-    id: 19,
-    src: assets.mats19,
-    alt: "Logo",
-  },
-  {
-    id: 20,
-    src: assets.mats20,
-    alt: "Logo",
-  },
-  {
-    id: 21,
-    src: assets.mats21,
-    alt: "Logo",
-  },
-  {
-    id: 22,
-    src: assets.mats22,
-    alt: "Logo",
-  },
-  {
-    id: 23,
-    src: assets.mats23,
-    alt: "Logo",
-  },
-  {
-    id: 24,
-    src: assets.mats24,
-    alt: "Logo",
-  },
-  {
-    id: 25,
-    src: assets.mats25,
-    alt: "Logo",
-  },
+    title: "Marketing Automation Technology Stack",
+    data: [
+      {
+        id: 1,
+        src: assets.mats1,
+        alt: "Logo",
+      },
+      {
+        id: 2,
+        src: assets.mats2,
+        alt: "Logo",
+      },
+      {
+        id: 3,
+        src: assets.mats3,
+        alt: "Logo",
+      },
+      {
+        id: 4,
+        src: assets.mats4,
+        alt: "Logo",
+      },
+      {
+        id: 5,
+        src: assets.mats5,
+        alt: "Logo",
+      },
+      {
+        id: 6,
+        src: assets.mats6,
+        alt: "Logo",
+      },
+      {
+        id: 7,
+        src: assets.mats7,
+        alt: "Logo",
+      },
+      {
+        id: 8,
+        src: assets.mats8,
+        alt: "Logo",
+      },
+      {
+        id: 9,
+        src: assets.mats9,
+        alt: "Logo",
+      },
+      {
+        id: 10,
+        src: assets.mats10,
+        alt: "Logo",
+      },
+      {
+        id: 11,
+        src: assets.mats11,
+        alt: "Logo",
+      },
+      {
+        id: 12,
+        src: assets.mats12,
+        alt: "Logo",
+      },
+      {
+        id: 13,
+        src: assets.mats13,
+        alt: "Logo",
+      },
+      {
+        id: 14,
+        src: assets.mats14,
+        alt: "Logo",
+      },
+      {
+        id: 15,
+        src: assets.mats15,
+        alt: "Logo",
+      },
+      {
+        id: 16,
+        src: assets.mats16,
+        alt: "Logo",
+      },
+      {
+        id: 17,
+        src: assets.mats17,
+        alt: "Logo",
+      },
+      {
+        id: 18,
+        src: assets.mats18,
+        alt: "Logo",
+      },
+      {
+        id: 19,
+        src: assets.mats19,
+        alt: "Logo",
+      },
+      {
+        id: 20,
+        src: assets.mats20,
+        alt: "Logo",
+      },
+      {
+        id: 21,
+        src: assets.mats21,
+        alt: "Logo",
+      },
+      {
+        id: 22,
+        src: assets.mats22,
+        alt: "Logo",
+      },
+      {
+        id: 23,
+        src: assets.mats23,
+        alt: "Logo",
+      },
+      {
+        id: 24,
+        src: assets.mats24,
+        alt: "Logo",
+      },
+      {
+        id: 25,
+        src: assets.mats25,
+        alt: "Logo",
+      },
+    ]
+  }
 ];
 export const Platformsecomdata = {
   title: "Why Choose GS Digital as Your Marketing Automation Partner? ",
