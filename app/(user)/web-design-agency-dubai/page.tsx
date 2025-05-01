@@ -6,8 +6,17 @@ import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformse
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 
-
-import { BannerSection,Wecanhelp,OurServices,ExpertServicesdata,Platformsecomdata,Cta,AreaExpertise,Faq,relatedservices } from "../../components/wdd-web-design/data";
+import {
+  BannerSection,
+  Wecanhelp,
+  OurServices,
+  ExpertServicesdata,
+  Platformsecomdata,
+  Cta,
+  AreaExpertise,
+  Faq,
+  relatedservices,
+} from "../../components/wdd-web-design/data";
 
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
 import Testimonials from "@/app/components/HomePage/Testimonials";
@@ -46,7 +55,6 @@ export async function generateMetadata(): Promise<Metadata> {
       url: "https://www.globalsurf.ae/web-design-agency-dubai ",
       description:
         "From wireframes to launch, trust our web design experts to build a site that reflects your brand. Mobile-first, fast, and pixel-perfect—every time. Get a quote today!",
-
     },
   };
 }
@@ -54,11 +62,27 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={26} />
-      <ExpertServices title={ExpertServicesdata.title} bgcolor={'bg-white'}  data={ExpertServicesdata.data} colcount={3} />
-      <Platforms title={Wecanhelp.title} data={Wecanhelp.data} icontitle={true} hiddentitle={true} leftzero={true} colcount={4} />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={26}
+      />
+      <ExpertServices
+        title={ExpertServicesdata.title}
+        bgcolor={"bg-white"}
+        data={ExpertServicesdata.data}
+        colcount={3}
+      />
+      <Platforms
+        title={Wecanhelp.title}
+        data={Wecanhelp.data}
+        icontitle={true}
+        hiddentitle={true}
+        leftzero={true}
+        colcount={4}
+      />
 
-      <div className="bg-black text-white bordergrey">
+      <div className="bordergrey bg-black text-white">
         <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
       </div>
       <Services
@@ -68,21 +92,28 @@ const page = () => {
         hrcontent={true}
       />
 
-
       <section className="pb-[50px]   lg:pb-[140px] ">
-      <Platformsecom title={Platformsecomdata.title} desc={Platformsecomdata.desc} data={Platformsecomdata.data} />
+        <Platformsecom
+          title={Platformsecomdata.title}
+          desc={Platformsecomdata.desc}
+          data={Platformsecomdata.data}
+        />
       </section>
       <section className="innerbgpd">
         <Testimonials />
-        </section>
+      </section>
       <GetInTouch
         data={Cta}
         redlast={true}
         ctabbutton={"LET'S GET STARTED TODAY!"}
-        link={"/lets-talk"}
       />
       <FAQ data={Faq} />
-      <RelatedServices title={relatedservices.title} description={relatedservices.description}   data={relatedservices.data} colcount={3} />
+      <RelatedServices
+        title={relatedservices.title}
+        description={relatedservices.description}
+        data={relatedservices.data}
+        colcount={3}
+      />
     </div>
   );
 };

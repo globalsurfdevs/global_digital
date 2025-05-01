@@ -99,12 +99,7 @@ const page = () => {
         />
       </section>
 
-      <GetInTouch
-        data={Cta}
-        redlast={true}
-        ctabbutton={"CONTACT US TODAY!"}
-        link={"/lets-talk"}
-      />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US TODAY!"} />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

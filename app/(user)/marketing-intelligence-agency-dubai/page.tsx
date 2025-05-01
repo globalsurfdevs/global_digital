@@ -55,11 +55,7 @@ const page = () => {
       <Results title={ResultsData.title} data={ResultsData.data} />
       <Partner data={partnerData} />
       <Testimonials />
-      <GetInTouch
-        data={Cta}
-        ctabbutton={"LET'S TALK GROWTH"}
-        link={"/lets-talk"}
-      />
+      <GetInTouch data={Cta} ctabbutton={"LET'S TALK GROWTH"} />
       <FAQ data={Faq} />
     </div>
   );

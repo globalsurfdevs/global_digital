@@ -22,7 +22,6 @@ import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices"
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
 import { log } from "console";
 
-
 interface Canonicals {
   canonical: string;
 }
@@ -55,7 +54,6 @@ export async function generateMetadata(): Promise<Metadata> {
       url: "https://www.globalsurf.ae/logo-design-agency-dubai",
       description:
         "Your brand deserves a logo that lasts. Partner with Dubai’s top-rated logo design company for custom, modern logos that captivate audiences and build instant trust. Let’s create magic!",
-
     },
   };
 }
@@ -99,12 +97,7 @@ const page = () => {
         />
       </section>
 
-      <GetInTouch
-        data={Cta}
-        redlast={false}
-        ctabbutton={"CONTACT US TODAY "}
-        link={"/lets-talk"}
-      />
+      <GetInTouch data={Cta} redlast={false} ctabbutton={"CONTACT US TODAY "} />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

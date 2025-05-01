@@ -104,7 +104,6 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"CONTACT US TODAY! "}
-        link={"/lets-talk"}
       />
       <FAQ data={Faq} />
     </div>

@@ -101,12 +101,7 @@ const page = () => {
       />
       <Testimonials bgcolor={"white"} />
 
-      <GetInTouch
-        data={Cta}
-        redlast={true}
-        ctabbutton={"Lets talk growth"}
-        link={"/lets-talk"}
-      />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"Lets talk growth"} />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

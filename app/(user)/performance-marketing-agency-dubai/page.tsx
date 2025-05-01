@@ -47,7 +47,11 @@ const page = () => {
   return (
     <div>
       <section className="hidegslider">
-      <HeroSection Bannerdata={BannerSection} order={"01"} bannerlogp={true} />
+        <HeroSection
+          Bannerdata={BannerSection}
+          order={"01"}
+          bannerlogp={true}
+        />
       </section>
       <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
       <Boost title={boostEngage.title} data={boostEngage.data} />
@@ -58,11 +62,7 @@ const page = () => {
       <Platforms title={Platformsdata.title} data={Platformsdata.data} />
       <Partner data={partnerData} />
       <Testimonials />
-      <GetInTouch
-        data={Cta}
-        ctabbutton={"LET'S TALK GROWTH"}
-        link={"/lets-talk"}
-      />
+      <GetInTouch data={Cta} ctabbutton={"LET'S TALK GROWTH"} />
       <FAQ data={Faq} />
     </div>
   );
