@@ -3,9 +3,9 @@ import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import LogoSwiper from "../../components/MiDataAnalytics/LogoSwiper";
 
-import {Matslogo,
+import {
+  Becomebrand,
   BannerSection,
   Wecanhelp,
   OurServices,
@@ -13,13 +13,12 @@ import {Matslogo,
   Platformsecomdata,
   Cta,
   Faq,
-  relatedservices,
-} from "../../components/MarketingAutomation/data";
+} from "../../components/ContentMarketing/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PermormanceMarketing/Framework";
 import Platforms from "@/app/components/PermormanceMarketing/Platforms";
-import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import BecomePartner from "@/app/components/ContentMarketing/BecomePartner";
 
 interface Canonicals {
   canonical: string;
@@ -49,7 +48,7 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        maxchwidth={34}
+        maxchwidth={30}
       />
 
       <Platforms
@@ -58,7 +57,7 @@ const page = () => {
         icontitle={true}
         hiddentitle={true}
         leftzero={true}
-        colcount={3}
+        colcount={4}
       />
 
       <Framework
@@ -77,9 +76,7 @@ const page = () => {
         bgtt3="text-white"
         hrcontent={true}
       />
-      <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-      <LogoSwiper mtslogo={Matslogo[0]}   />
-      </div>
+<BecomePartner Becomebrand={Becomebrand} />
 
       <section className="pb-[50px] lg:pb-[150px]">
         <Platformserver
@@ -89,13 +86,8 @@ const page = () => {
         />
       </section>
 
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"Let’s Connect!"} />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET’S CHAT!"} />
       <FAQ data={Faq} />
-      <RelatedServices
-        title={relatedservices.title}
-        data={relatedservices.data}
-        colcount={3}
-      />
     </div>
   );
 };

@@ -3,12 +3,25 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Matslogo } from "./data";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Autoplay } from "swiper/modules";
+interface BannerSection {
+  id: number;
+  src: StaticImageData;
+  alt: string;
+}
 
+interface LogoSection {
+  title: string;
+  data: BannerSection[];
+}
 
-const LogoSwiper = () => {
+interface HeroSectionProps {
+  mtslogo: LogoSection;
+}
+const LogoSwiper: React.FC<HeroSectionProps> = ({
+  mtslogo
+}) => {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
      // Ref for the next container (HTMLDivElement type)
       const nextContainerRef = useRef<HTMLDivElement | null>(null);
@@ -59,7 +72,7 @@ const LogoSwiper = () => {
   return (
     <>
       <div className='container ' ref={nextContainerRef}>
-      <div className="mb-4 mt-6 grid lg:mb-[75px] lg:mt-0"><h2 className="title-65">Marketing Automation Technology Stack</h2></div></div>
+      <div className="mb-4 mt-6 grid lg:mb-[75px] lg:mt-0"><h2 className="title-65">{mtslogo.title}</h2></div></div>
    <div style={{ width: isSmallScreen ? '' : divWidth }}    className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto overflow-hidden`} >
        <div className="swpcs testimonialswiper">
           <Swiper
@@ -103,7 +116,7 @@ const LogoSwiper = () => {
           },
         }}
       >
-        {Matslogo.map((item, index) => (
+        {mtslogo.data.map((item, index) => (
           <SwiperSlide key={index} className=" ">
           <div>
                   <Image src={item.src} alt="image" height={50} />

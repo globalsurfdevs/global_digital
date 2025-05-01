@@ -646,11 +646,144 @@ import hels2 from "../assets/services/marketing-automation/hel2.svg";
 import hels3 from "../assets/services/marketing-automation/hel3.svg";
 import hels4 from "../assets/services/marketing-automation/hel4.svg";
 import hels5 from "../assets/services/marketing-automation/hel5.svg";
+import inbanner from "../assets/industry/inbanner.jpg";
+import dabanner from "../assets/data-analytics/dabanner.jpg";
+import dahel1 from "../assets/data-analytics/dahep1.svg";
+import dahel2 from "../assets/data-analytics/dahep2.svg";
+import dahel3 from "../assets/data-analytics/dahep3.svg";
+import dahel4 from "../assets/data-analytics/dahep4.svg";
+import dahel5 from "../assets/data-analytics/dahep5.svg";
+import dalogo1 from "../assets/data-analytics/dalogo1.png";
+import dalogo2 from "../assets/data-analytics/dalogo2.png";
+import dalogo3 from "../assets/data-analytics/dalogo3.png";
+import dalogo4 from "../assets/data-analytics/dalogo4.png";
+import dalogo5 from "../assets/data-analytics/dalogo5.png";
+import dalogo6 from "../assets/data-analytics/dalogo6.png";
+import dalogo7 from "../assets/data-analytics/dalogo7.png";
+import dalogo8 from "../assets/data-analytics/dalogo8.png";
+import dalogo9 from "../assets/data-analytics/dalogo9.png";
+import dalogo10 from "../assets/data-analytics/dalogo10.png";
+import dalogo11 from "../assets/data-analytics/dalogo11.png";
+import dalogo12 from "../assets/data-analytics/dalogo12.png";
+import dalogo13 from "../assets/data-analytics/dalogo13.png";
+import dalogo14 from "../assets/data-analytics/dalogo14.png";
+import dalogo15 from "../assets/data-analytics/dalogo15.png";
+import dalogo16 from "../assets/data-analytics/dalogo16.png";
+import dalogo17 from "../assets/data-analytics/dalogo17.png";
+import dalogo18 from "../assets/data-analytics/dalogo18.png";
+import dalogo19 from "../assets/data-analytics/dalogo19.png";
+import dare1 from "../assets/data-analytics/dars1.svg";
+import dare2 from "../assets/data-analytics/dars2.svg";
+import dare3 from "../assets/data-analytics/dars3.svg";
+import dare4 from "../assets/data-analytics/dars4.svg";
+import dare5 from "../assets/data-analytics/dars5.svg";
+import dare6 from "../assets/data-analytics/dars6.svg";
+import cmbanner from "../assets/content-marketing/cmbanner.jpg";
+import become from "../assets/content-marketing/become.jpg";
+import cmic1 from "../assets/content-marketing/cmic1.svg";
+import cmic2 from "../assets/content-marketing/cmic2.svg";
+import cmic3 from "../assets/content-marketing/cmic3.svg";
+import cmic4 from "../assets/content-marketing/cmic4.svg";
+import cybanner from "../assets/copy-writing/cwbanner.jpg";
+import cytp1 from "../assets/copy-writing/cytp1.svg";
+import cytp2 from "../assets/copy-writing/cytp2.svg";
+import cytp3 from "../assets/copy-writing/cytp3.svg";
+import cytp4 from "../assets/copy-writing/cytp4.svg";
+import cytp5 from "../assets/copy-writing/cytp5.svg";
+import cytp6 from "../assets/copy-writing/cytp6.svg";
+import cytp7 from "../assets/copy-writing/cytp7.svg";
+import cytp8 from "../assets/copy-writing/cytp8.svg";
+import cylogo1 from "../assets/copy-writing/cylogo1.png";
+import cylogo2 from "../assets/copy-writing/cylogo2.png";
+import cylogo3 from "../assets/copy-writing/cylogo3.png";
+import cylogo4 from "../assets/copy-writing/cylogo4.png";
+import cylogo5 from "../assets/copy-writing/cylogo5.png";
+import cylogo6 from "../assets/copy-writing/cylogo6.png";
+import cylogo7 from "../assets/copy-writing/cylogo7.png";
+import cylogo8 from "../assets/copy-writing/cylogo8.png";
+import cylogo9 from "../assets/copy-writing/cylogo9.png";
+import cylogo10 from "../assets/copy-writing/cylogo10.png";
+import cylogo11 from "../assets/copy-writing/cylogo11.png";
+import cylogo12 from "../assets/copy-writing/cylogo12.png";
+import cylogo13 from "../assets/copy-writing/cylogo13.png";
+import cyrs1 from "../assets/copy-writing/cyrs1.svg";
+import cyrs2 from "../assets/copy-writing/cyrs2.svg";
+import cyrs3 from "../assets/copy-writing/cyrs3.svg";
+import cyrs4 from "../assets/copy-writing/cyrs4.svg";
+import cyrs5 from "../assets/copy-writing/cyrs5.svg";
+import cyrs6 from "../assets/copy-writing/cyrs6.svg";
+
 
 
 
 
 export const assets = {
+  cyrs1,
+  cyrs2,
+  cyrs3,
+  cyrs4,
+  cyrs5,
+  cyrs6,
+  cylogo1,
+  cylogo2,
+  cylogo3,
+  cylogo4,
+  cylogo5,
+  cylogo6,
+  cylogo7,
+  cylogo8,
+  cylogo9,
+  cylogo10,
+  cylogo11,
+  cylogo12,
+  cylogo13,
+  cytp1,
+  cytp2,
+  cytp3,
+  cytp4,
+  cytp5,
+  cytp6,
+  cytp7,
+  cytp8,
+  cybanner,
+  cmbanner,
+  become,
+  cmic1,
+  cmic2,
+  cmic3,
+  cmic4,
+  dare1,
+  dare2,
+  dare3,
+  dare4,
+  dare5,
+  dare6,
+  dalogo1,
+  dalogo2,
+  dalogo3,
+  dalogo4,
+  dalogo5,
+  dalogo6,
+  dalogo7,
+  dalogo8,
+  dalogo9,
+  dalogo10,
+  dalogo11,
+  dalogo12,
+  dalogo13,
+  dalogo14,
+  dalogo15,
+  dalogo16,
+  dalogo17,
+  dalogo18,
+  dalogo19,
+  dahel1,
+  dahel2,
+  dahel3,
+  dahel4,
+  dahel5,
+  dabanner,
+  inbanner,
   massbanner,
   hels1,
   hels2,
