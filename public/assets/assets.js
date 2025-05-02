@@ -741,12 +741,52 @@ import brnd5 from "../assets/content-production/brnd5.jpg";
 import brnd6 from "../assets/content-production/brnd6.jpg";
 import brnd7 from "../assets/content-production/brnd7.jpg";
 import brnd8 from "../assets/content-production/brnd8.jpg";
+import inds1 from "../assets/industry/inds1.jpg";
+import inds2 from "../assets/industry/inds2.jpg";
+import inds3 from "../assets/industry/inds3.jpg";
+import inds4 from "../assets/industry/inds4.jpg";
+import inds5 from "../assets/industry/inds5.jpg";
+import inds6 from "../assets/industry/inds6.jpg";
+import inds7 from "../assets/industry/inds7.jpg";
+import inds8 from "../assets/industry/inds8.jpg";
+import inds9 from "../assets/industry/inds9.jpg";
+import inds10 from "../assets/industry/inds10.jpg";
+import ini1 from "../assets/industry/ini1.svg";
+import ini2 from "../assets/industry/ini2.svg";
+import ini3 from "../assets/industry/ini3.svg";
+import ini4 from "../assets/industry/ini4.svg";
+import ini5 from "../assets/industry/ini5.svg";
+import ini6 from "../assets/industry/ini6.svg";
+import ini7 from "../assets/industry/ini7.svg";
+import ini8 from "../assets/industry/ini8.svg";
+import ini9 from "../assets/industry/ini9.svg";
+import ini10 from "../assets/industry/ini10.svg";
 
 
 
 
 
 export const assets = {
+  ini1,
+  ini2,
+  ini3,
+  ini4,
+  ini5,
+  ini6,
+  ini7,
+  ini8,
+  ini9,
+  ini10,
+  inds1,
+  inds2,
+  inds3,
+  inds4,
+  inds5,
+  inds6,
+  inds7,
+  inds8,
+  inds9,
+  inds10,
   brnd1,
   brnd2,
   brnd3,
