@@ -3,21 +3,22 @@ import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import LogoSwiper from "../../components/CopyWriting/LogoSwiper";
 
-import {Matslogo,
+import {
+  Clientsformsdata,
+  IndustriesWeServe,
   BannerSection,
   OurServices,
   Platformsecomdata,
   Cta,
   Faq,
   relatedservices,
-  Frameworkdata
-} from "../../components/CopyWriting/data";
+} from "../../components/ContentProduction/data";
 
+import Expertise from "../../components/EcomIndustry/Expertise";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import Framework from "@/app/components/PermormanceMarketing/Framework";
+import OurWorks from "@/app/components/Bc-logo/OurWorks";
 
 interface Canonicals {
   canonical: string;
@@ -47,7 +48,7 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        maxchwidth={34}
+        maxchwidth={28}
       />
 
 
@@ -55,38 +56,35 @@ const page = () => {
       <Services
         title={OurServices.title}
         data={OurServices.data}
+        bgcolor="bg-[transparent]"
+        leftzero={true}
         colcount={5}
         hrcontent={true}
       />
+      <Expertise
+        title={IndustriesWeServe.title}
+        data={IndustriesWeServe.data}
+      />
 
-      <section className="textmnsa">
-      <Framework
-            title={Frameworkdata.title}
-            data={Frameworkdata.data}
-            bgcolor="bg-black"
-            colcount={3}
-          />
-      </section>
-      <section className="py-[50px] lg:py-[130px]">
+
+      <section className="pb-[50px] lg:pb-[150px]">
         <Platformserver
           title={Platformsecomdata.title}
           desc={Platformsecomdata.desc}
           data={Platformsecomdata.data}
         />
       </section>
-      <div className="pb-[50px]   lg:pb-[130px]">
-      <LogoSwiper mtslogo={Matslogo[0]}   />
-      </div>
-
-
-
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US TODAY!"} />
-      <FAQ data={Faq} />
+      <section className="pb-[50px] lg:pb-[140px]">
+        <OurWorks Clientsformsdata={Clientsformsdata} maintitle="Our Works" desc="Want to see what we’ve created for brands like yours? <br>Explore our content production highlights and visual storytelling projects." />
+      </section>
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US"} />
       <RelatedServices
         title={relatedservices.title}
         data={relatedservices.data}
         colcount={3}
       />
+      <FAQ data={Faq} />
+
     </div>
   );
 };

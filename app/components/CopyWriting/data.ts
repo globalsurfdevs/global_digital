@@ -20,28 +20,28 @@ export const OurServices = {
   data: [
     {
       id: 1,
-      title: "Lorem Ipsum is simply dummy text ",
-      desc: "A step-by-step approach to integrating automation for smoother customer interactions. ",
+      title: "Brand Discovery ",
+      desc: "We begin by understanding your brand, audience, and objectives to craft a content strategy that aligns with your goals. ",
     },
     {
       id: 2,
-      title: "Lorem Ipsum is simply dummy text",
-      desc: "Building a solid framework to ensure your marketing automation runs seamlessly. ",
+      title: "Content Strategy & Ideation ",
+      desc: " Our copywriters develop creative content ideas and messaging tailored to your brand’s tone and vision. ",
     },
     {
       id: 3,
-      title: "Lorem Ipsum is simply dummy text",
-      desc: "Setting up the right tools and workflows to make your marketing more efficient. ",
+      title: "Writing & Optimization ",
+      desc: "We craft high-quality, engaging, and SEO-optimized copy designed to connect with your audience.  ",
     },
     {
       id: 4,
-      title: "Lorem Ipsum is simply dummy text",
-      desc: "Planning, executing, and optimizing campaigns to drive better engagement. ",
+      title: "Feedback & Refinement ",
+      desc: "Your input is valuable, we refine and revise the content until it perfectly reflects your vision.  ",
     },
     {
       id: 5,
-      title: "Lorem Ipsum is simply dummy text ",
-      desc: "Turning data into clear insights to help you make smarter marketing decisions. ",
+      title: " Final Delivery ",
+      desc: "We provide polished, ready-to-use content in various formats for digital and print applications. ",
     },
   ],
 };
@@ -206,39 +206,44 @@ export const Cta = [
 ];
 export const Faq = [
   {
-    title: "Lorem Ipsum is simply dummy text of the printing ",
+    title: "What makes great copywriting? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+      " Great copywriting is clear, persuasive, and action-driven, tailored to engage the target audience effectively. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing ",
+    title: " Why do I need professional copywriting services? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+      "Professional copy ensures consistency, enhances brand credibility, and improves engagement and conversions. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing ",
+    title: " What’s included in your copywriting packages? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+      "Our copywriting packages include research, content creation, revisions, and SEO optimization where applicable. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing ",
+    title: "How long does it take to complete a copywriting project? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+      "Timelines vary based on project complexity, but most content is delivered within 5-10 business days. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing ",
+    title: "Can I get customized copywriting services? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+      "Yes! Our creative copywriting agency provides tailored content to match your brand’s tone and objectives. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing ",
+    title: "Do you offer revisions? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+      "Yes, we offer multiple revisions to ensure the final content aligns with your vision. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing ",
+    title: "Do you provide social media copywriting? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+      "Absolutely! Our social media copywriters create engaging content tailored for different platforms.  ",
+  },
+  {
+    title: "Will my content be SEO-optimized? ",
+    description:
+      "Yes, we incorporate SEO best practices to improve your content’s search visibility. ",
   },
 ];
 export const relatedservices = {

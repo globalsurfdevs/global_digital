@@ -712,12 +712,70 @@ import cyrs3 from "../assets/copy-writing/cyrs3.svg";
 import cyrs4 from "../assets/copy-writing/cyrs4.svg";
 import cyrs5 from "../assets/copy-writing/cyrs5.svg";
 import cyrs6 from "../assets/copy-writing/cyrs6.svg";
+import cprbanner from "../assets/content-production/cprbanner.jpg";
+import cprhr1 from "../assets/content-production/cprhr1.jpg";
+import cprhr2 from "../assets/content-production/cprhr2.jpg";
+import cprhr3 from "../assets/content-production/cprhr3.jpg";
+import cprhr4 from "../assets/content-production/cprhr4.jpg";
+import cprhr5 from "../assets/content-production/cprhr5.jpg";
+import cprhr6 from "../assets/content-production/cprhr6.jpg";
+import cprhr7 from "../assets/content-production/cprhr7.jpg";
+import cpric1 from "../assets/content-production/cpric1.svg";
+import cpric2 from "../assets/content-production/cpric2.svg";
+import cpric3 from "../assets/content-production/cpric3.svg";
+import cpric4 from "../assets/content-production/cpric4.svg";
+import cpric5 from "../assets/content-production/cpric5.svg";
+import cpric6 from "../assets/content-production/cpric6.svg";
+import tofic1 from "../assets/content-production/tofic1.svg";
+import tofic2 from "../assets/content-production/tofic2.svg";
+import tofic3 from "../assets/content-production/tofic3.svg";
+import tofic4 from "../assets/content-production/tofic4.svg";
+import tofic5 from "../assets/content-production/tofic5.svg";
+import tofic6 from "../assets/content-production/tofic6.svg";
+import tofic7 from "../assets/content-production/tofic7.svg";
+import brnd1 from "../assets/content-production/brnd1.jpg";
+import brnd2 from "../assets/content-production/brnd2.jpg";
+import brnd3 from "../assets/content-production/brnd3.jpg";
+import brnd4 from "../assets/content-production/brnd4.jpg";
+import brnd5 from "../assets/content-production/brnd5.jpg";
+import brnd6 from "../assets/content-production/brnd6.jpg";
+import brnd7 from "../assets/content-production/brnd7.jpg";
+import brnd8 from "../assets/content-production/brnd8.jpg";
 
 
 
 
 
 export const assets = {
+  brnd1,
+  brnd2,
+  brnd3,
+  brnd4,
+  brnd5,
+  brnd6,
+  brnd7,
+  brnd8,
+  tofic1,
+  tofic2,
+  tofic3,
+  tofic4,
+  tofic5,
+  tofic6,
+  tofic7,
+  cprbanner,
+  cprhr1,
+  cprhr2,
+  cprhr3,
+  cprhr4,
+  cprhr5,
+  cprhr6,
+  cprhr7,
+  cpric1,
+  cpric2,
+  cpric3,
+  cpric4,
+  cpric5,
+  cpric6,
   cyrs1,
   cyrs2,
   cyrs3,
