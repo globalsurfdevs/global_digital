@@ -16,11 +16,13 @@ interface ClientsformsItem {
 interface ClientsformsSectionProps {
   Clientsformsdata: ClientsformsItem[];
   maintitle?: string;
+  desc?: string;
 }
 
 const Slider: React.FC<ClientsformsSectionProps> = ({
   Clientsformsdata,
   maintitle,
+  desc,
 }) => {
   return (
     <div>
@@ -38,7 +40,7 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
             },
           }}
         >
-          {maintitle && (
+          {maintitle && !desc &&(
             <div className="mb-4 lg:mb-[75px]">
               <h2
                 className="title-65"
@@ -46,6 +48,14 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
               ></h2>
             </div>
           )}
+          {desc &&
+            <div className="mb-4 lg:mb-[60px]">
+              <h2
+                className="title-65 mb-3 md:mb-5"
+              >{maintitle}</h2>
+                        <p className="text-19 fnt-lexend text-gray1 max-w[30ch]" dangerouslySetInnerHTML={{ __html: desc }}></p>
+          </div>
+          }
         </motion.div>
       </div>
       <motion.div

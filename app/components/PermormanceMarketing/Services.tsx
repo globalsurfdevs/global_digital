@@ -15,6 +15,7 @@ interface ServicesSectionProps {
   bgtt2?: string;
   bgtt3?: string;
   bgtt4?: string;
+  leftzero?: boolean;
   bgcolor?: string;
   hrcontent1?: boolean;
   hrcontent?: boolean;
@@ -33,10 +34,12 @@ const Services: React.FC<ServicesSectionProps> = ({
   colcount,
   hrcontent,
   description,
+  leftzero
 }) => {
   return (
-    <div className={` ${bgcolor ? `${bgcolor}` : "bg-white"}`}>
-      <div className="container mx-auto py-4">
+    <div className={` ${bgcolor ? `${bgcolor}` : "bg-white"} ` }>
+      <div className=  {`container mx-auto py-4  `}>
+        <div className={`  ${leftzero ? "bgafter relative" : ""}`}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -101,6 +104,7 @@ const Services: React.FC<ServicesSectionProps> = ({
             </div>
           </div>
         </motion.div>
+        </div>
       </div>
     </div>
   );

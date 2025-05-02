@@ -1025,3 +1025,11 @@ input[type="number"] {
   color: #0000004d;
 }
 .textmnsa h2 ,.textmnsa h3{ color :#fff !important;}
+.bgafter::after{content: '';
+  position: absolute;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  right: 0;
+  z-index: -1;
+  background: #F2F2F2; }

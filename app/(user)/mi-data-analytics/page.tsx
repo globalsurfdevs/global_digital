@@ -3,7 +3,6 @@ import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-// import LogoSwiper from "../../components/MiDataAnalytics/LogoSwiper";
 
 import { logosdatas,
   BannerSection,

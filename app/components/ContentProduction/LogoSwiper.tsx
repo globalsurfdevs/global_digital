@@ -112,15 +112,15 @@ const LogoSwiper: React.FC<HeroSectionProps> = ({
           },
           1400: {
             slidesPerView: 6.5,
-            spaceBetween: 130
+            spaceBetween: 20
           },
         }}
       >
         {mtslogo.data.map((item, index) => (
           <SwiperSlide key={index} className=" ">
-          <div>
-                  <Image src={item.src} alt="image" height={50} />
-                  </div>
+              <div>
+                  <Image src={item.src} alt="image"  className="object-contain" />
+              </div>
 
           </SwiperSlide>
         ))}

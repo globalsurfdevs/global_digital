@@ -84,28 +84,28 @@ export const OurServices = {
   data: [
     {
       id: 1,
-      title: "Lorem Ipsum is simply dummy text of the printing ",
-      desc: "A step-by-step approach to integrating automation for smoother customer interactions. ",
+      title: "Data Strategy & Roadmap  ",
+      desc: "A structured plan to align your business goals with data-driven insights. ",
     },
     {
       id: 2,
-      title: "Lorem Ipsum is simply dummy text of the printing",
-      desc: "Building a solid framework to ensure your marketing automation runs seamlessly. ",
+      title: "Data Collection & Integration ",
+      desc: "Aggregating data from multiple sources for a comprehensive view of business performance.  ",
     },
     {
       id: 3,
-      title: "Lorem Ipsum is simply dummy text of the printing",
-      desc: "Setting up the right tools and workflows to make your marketing more efficient. ",
+      title: "Data Processing & Cleansing ",
+      desc: "Ensuring data accuracy, consistency, and quality for reliable decision-making.  ",
     },
     {
       id: 4,
-      title: "Lorem Ipsum is simply dummy text of the printing",
-      desc: "Planning, executing, and optimizing campaigns to drive better engagement. ",
+      title: "Advanced Analytics & Reporting",
+      desc: " Utilizing AI, ML, and predictive models to extract actionable insights. ",
     },
     {
       id: 5,
-      title: "Lorem Ipsum is simply dummy text of the printing ",
-      desc: "Turning data into clear insights to help you make smarter marketing decisions. ",
+      title: "Implementation & Optimization" ,
+      desc: "Deploying data analytics solutions that continuously evolve with business needs.  ",
     },
   ],
 };
@@ -167,29 +167,39 @@ export const Cta = [
 ];
 export const Faq = [
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "What are data analytics services, and how do they benefit my business? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      " Data analytics services help businesses collect, process, and analyze data to extract actionable insights, optimize operations, and improve decision-making. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: " What industries benefit from data analytics solutions? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Industries such as finance, healthcare, retail, manufacturing, real estate, and e-commerce leverage data analytics for strategic growth.",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "What tools do you use for data analytics?",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      " We work with Power BI, Tableau, Google Analytics, Snowflake, and other leading analytics platforms. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "How long does it take to implement a data analytics solution? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Implementation varies based on complexity but typically ranges from 6-12 weeks." ,
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "Can data analytics improve customer engagement? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Yes! By analyzing customer behavior and preferences, businesses can personalize interactions and enhance customer experiences. ",
+  },
+  {
+    title: "How do you ensure data security and compliance? ",
+    description:
+      "We follow industry best practices, including encryption, access control, and compliance with GDPR and other regulations. ",
+  },
+  {
+    title: "Do you offer data analytics consulting services? ",
+    description:
+      "Yes! We provide end-to-end consulting to help businesses develop a tailored data strategy. ",
   },
 
 ];

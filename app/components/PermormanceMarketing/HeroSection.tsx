@@ -26,6 +26,7 @@ interface BannerSection {
   image: string | StaticImageData;
   sub: su[];
   heroAlt?: string;
+  navigation?: { label: string; url?: string }[]; // Added navigation property
 }
 interface HeroSectionProps {
   order?: string;
@@ -113,7 +114,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               }}
             >
               <div
-                className={`  border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
+                className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
               >
                 <div
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
@@ -122,9 +123,51 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     className={` max-w-[1000px]`}
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
-                    <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px] ">
-                      {herosection.title1}
-                    </p>
+
+                      <div>
+                        {herosection.navigation && (
+                          <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[40px] xl:mb-[60px]">
+                            <ul className="flex items-center space-x-2">
+                              {herosection.navigation.map((navItem, index) => (
+                                <React.Fragment key={index}>
+                                  <li>
+                                    {navItem.url ? (
+                                      <Link
+                                        href={navItem.url}
+                                        className="hover:underline"
+                                      >
+                                        {navItem.label}
+                                      </Link>
+                                    ) : (
+                                      <span className="text-[#77787B]">
+                                        {navItem.label}
+                                      </span>
+                                    )}
+                                  </li>
+                                  {index <
+                                    (herosection.navigation?.length || 0) -
+                                      1 && (
+                                    <li>
+                                      <Image
+                                        src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
+                                        alt="Arrow"
+                                        width={7} // Adjust width as needed
+                                        height={12} // Adjust height as needed
+                                        className=""
+                                      />
+                                    </li>
+                                  )}
+                                </React.Fragment>
+                              ))}
+                            </ul>
+                          </nav>
+                        )}
+                      </div>
+                    {herosection.title1 && (
+                      <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px] ">
+                        {herosection.title1}
+                      </p>
+                    )}
 
                     <h1 className="title-80"> {herosection.title}</h1>
                     {herosection.subtitle && (
@@ -142,7 +185,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       >
                         <div className="relative">
                           <p
-                            className={`duration-200  text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                            className={`text-sm  font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                           >
                             {herosection.buttontitle}
                           </p>

@@ -84,28 +84,53 @@ export const OurServices = {
   data: [
     {
       id: 1,
-      title: "Lorem Ipsum is simply dummy text of the printing ",
-      desc: "A step-by-step approach to integrating automation for smoother customer interactions. ",
+      title: "Set Goals and Objectives   ",
+      desc: " Define clear content marketing goals aligned with industry trends to maximize outreach. ",
     },
     {
       id: 2,
-      title: "Lorem Ipsum is simply dummy text of the printing",
-      desc: "Building a solid framework to ensure your marketing automation runs seamlessly. ",
+      title: "Audience Research  ",
+      desc: " Identify target demographics and analyze their preferences for tailored content.  ",
     },
     {
       id: 3,
-      title: "Lorem Ipsum is simply dummy text of the printing",
-      desc: "Setting up the right tools and workflows to make your marketing more efficient. ",
+      title: "Research and Topic Selection ",
+      desc: "  Select relevant, high-impact topics based on industry insights and audience interests. . ",
     },
     {
       id: 4,
-      title: "Lorem Ipsum is simply dummy text of the printing",
-      desc: "Planning, executing, and optimizing campaigns to drive better engagement. ",
+      title: "Content Strategy Development  ",
+      desc: " Create a structured plan to ensure content aligns with brand objectives and market needs. ",
     },
     {
       id: 5,
-      title: "Lorem Ipsum is simply dummy text of the printing ",
-      desc: "Turning data into clear insights to help you make smarter marketing decisions. ",
+      title: "Content Creation  ",
+      desc: " Develop engaging, high-quality content tailored to resonate with your audience.  ",
+    },
+    {
+      id: 6,
+      title: "Content Publishing  ",
+      desc: "Distribute content across the right platforms to maximize visibility and engagement.",
+    },
+    {
+      id: 7,
+      title: "Content Promotion  ",
+      desc: " Leverage multiple channels to amplify reach and drive audience interaction. ",
+    },
+    {
+      id: 8,
+      title: "Feedback and Iteration ",
+      desc: " Analyze performance metrics and refine content strategies for continuous improvement. ",
+    },
+    {
+      id: 9,
+      title: "Compliance and Ethics",
+      desc: "  Ensure all content adheres to industry regulations, ethical standards, and best practices.",
+    },
+    {
+      id: 10,
+      title: "Review and Adapt  ",
+      desc: " Regularly evaluate content strategies to stay relevant and effective in a dynamic market. ",
     },
   ],
 };
@@ -146,29 +171,54 @@ export const Cta = [
 ];
 export const Faq = [
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "How long does it take to see results from content marketing? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Content marketing is a long-term strategy, and results typically take 3 to 6 months to become noticeable. However, factors like the consistency of your efforts, the quality of your content, and how well it resonates with your audience can speed up the process.",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "How do I measure the success of my content marketing efforts? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Key performance indicators (KPIs) such as website traffic, engagement rates (likes, shares, comments), lead generation, conversion rates, and SEO rankings are crucial metrics to evaluate the success of your content strategy. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "What types of content work best for B2B businesses? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "B2B businesses often benefit from content like white papers, case studies, webinars, and in-depth blog posts. These types of content help build authority, provide value, and address pain points while showcasing your expertise. ",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "How can I improve the SEO performance of my content? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Ensure your content is well-optimized by using relevant keywords, maintaining proper structure (H1, H2 headings), adding internal and external links, using meta descriptions, and optimizing images for faster page load times. High-quality, relevant content that answers user queries will also improve SEO.",
   },
   {
-    title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    title: "What role does user intent play in content marketing? ",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Understanding user intent is critical for creating content that answers specific questions, addresses pain points, or fulfills search queries. By aligning content with the user’s intent, you can increase engagement and conversion rates. ",
+  },
+  {
+    title: "Can content marketing help improve brand reputation? ",
+    description:
+      "Absolutely! Consistently providing valuable and relevant content builds trust with your audience, strengthens your brand’s authority, and positions you as an expert in your field. This can lead to a positive brand reputation and customer loyalty. ",
+  },
+  {
+    title: "How do I know what type of content will resonate with my audience? ",
+    description:
+      " Audience research is key. Analyze your target audience’s interests, challenges, and preferences through surveys, social media interactions, and website analytics. This helps you tailor your content to their specific needs and increase its impact. ",
+  },
+  {
+    title: "What’s the difference between evergreen and timely content? ",
+    description:
+      "Evergreen content is relevant over the long term and continues to attract traffic, such as how-to guides or industry tips. Timely content is more focused on current events or trends and can generate immediate attention but may lose relevance over time.",
+  },
+  {
+    title: "Is it important to repurpose content for different platforms? ",
+    description:
+      "Yes! Repurposing content for various platforms (social media, blogs, emails, etc.) helps you reach a broader audience. By tailoring content to fit different formats, you maximize the value of your original content while keeping it fresh and engaging. ",
+  },
+  {
+    title: "How often should I publish content? ",
+    description:
+      "Consistency is key. Depending on your resources, publishing 1-4 times a week is ideal. Regular posting keeps your audience engaged and improves your SEO ranking. Quality should always take precedence over quantity. ",
   },
 
 ];
