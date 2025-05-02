@@ -98,7 +98,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
 
   return (
     <div className="mainconnect">
-      <div className=" px-[20px] pb-[20px] pt-[50px] md:pb-0 lg:px-[140px] lg:pt-[140px]">
+      <div className=" px-[20px] pb-[20px] pt-[50px] md:pb-0 xl:px-[80px] xxl:px-[130px] lg:pt-[140px]">
         <h1 className="title-65">
           Let’s<br></br> Connect <span className="text-primary">!</span>
         </h1>
@@ -136,7 +136,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
               </svg>
             </div>
             <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:pb-[25px]  xxl:gap-[120px] ">
-              <p className="text-[20px] sm:text-font35 ">
+              <p className="text-[20px] sm:text-font35 min-w-fit">
                 <a href="tel:+97145821133">+971 4 582 1133</a>
               </p>
               <svg
@@ -170,7 +170,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
           </p>
         </div>
       </div>
-      <div className="psty bg-dgray  p-[20px] md:pt-[140px] lg:px-[150px]">
+      <div className="psty bg-dgray  p-[20px] md:pt-[140px] xl:px-[80px]  xxl:px-[150px]">
         <div className="group">
           <button onClick={onClose}>
             <div className="  absolute right-5 top-[30px] w-fit cursor-pointer rounded-3xl bg-primary px-6 py-2 duration-200 duration-300 ease-in-out ease-in-out group-hover:-translate-x-[-3px]    group-hover:bg-primary group-hover:shadow-lg  md:bg-white  ">
