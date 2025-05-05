@@ -3,7 +3,6 @@ import HeroSection from "../../components/BannerSectionBC/HeroWithBc";
 import Head from "next/head";
 
 import { BannerSection,Cta,IndustriesWeServe } from "../../components/industry/data";
-import IndustryList from "@/app/components/industry/IndustryList";
 import GetInTouch from "@/app/components/PermormanceMarketing/GetInTouch";
 import Industydetail from "@/app/components/industry/Industydetail";
 
@@ -58,7 +57,6 @@ const page = () => {
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}
       />
-      <IndustryList />
       <GetInTouch data={Cta} redlast={false} bgcolor ="#F2F2F2" ctabbutton={"LET'S GET STARTED TODAY!"}  />
     </div>
   );

@@ -761,12 +761,46 @@ import ini7 from "../assets/industry/ini7.svg";
 import ini8 from "../assets/industry/ini8.svg";
 import ini9 from "../assets/industry/ini9.svg";
 import ini10 from "../assets/industry/ini10.svg";
+import edbanner from "../assets/education/edubanner.jpg";
+import edic1 from "../assets/education/eduser1.svg";
+import edic2 from "../assets/education/eduser2.svg";
+import edic3 from "../assets/education/eduser3.svg";
+import edic4 from "../assets/education/eduser4.svg";
+import edic5 from "../assets/education/eduser5.svg";
+import edic6 from "../assets/education/eduser6.svg";
+import edic7 from "../assets/education/eduser7.svg";
+import edic8 from "../assets/education/eduser8.svg";
+import edind1 from "../assets/education/edind1.svg";
+import edind2 from "../assets/education/edind2.svg";
+import edind3 from "../assets/education/edind3.svg";
+import edind4 from "../assets/education/edind4.svg";
+import edcover1 from "../assets/education/edcover1.jpg";
+import edcover2 from "../assets/education/edcover2.jpg";
+import edcover3 from "../assets/education/edcover3.jpg";
+import edcover4 from "../assets/education/edcover4.jpg";
 
 
 
 
 
 export const assets = {
+  edcover1,
+  edcover2,
+  edcover3,
+  edcover4,
+  edind1,
+  edind2,
+  edind3,
+  edind4,
+  edic1,
+  edic2,
+  edic3,
+  edic4,
+  edic5,
+  edic6,
+  edic7,
+  edic8,
+  edbanner,
   ini1,
   ini2,
   ini3,
