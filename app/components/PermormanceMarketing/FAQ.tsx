@@ -14,9 +14,11 @@ type PartnerDataType = {
 type PartnerListProps = {
   data: PartnerDataType[];
   subp?: string;
+  bgcolor?: string;
+  title?: string;
 };
 
-const FAQ: React.FC<PartnerListProps> = ({ data, subp }) => {
+const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor ,title}) => {
   const [open, setOpen] = useState<number | null>(null);
 
   const toggle = (itemIndex: number) => {
@@ -29,6 +31,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp }) => {
   };
 
   return (
+    <div className={` ${bgcolor  ? `bg-[${bgcolor }]` : 'bg-white'}` }>
     <div className="container mx-auto py-4">
       <motion.div
         initial="hidden"
@@ -43,9 +46,11 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp }) => {
           }, // Slide up and fade in
         }}
       >
-        <div className="grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7">
+        <div className={`grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7  ` } >
           <div className="col-span-2  mb-5 xl:mb-0">
-            <h2 className="title-65">FAQ</h2>
+              <h2 className="title-65">
+                {!title && "FAQ"}
+                {title}</h2>
             <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
               {subp}
             </p>
@@ -85,7 +90,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp }) => {
                     <Image
                       src={arrowdown}
                       alt="image"
-                      className="min-h-[15px] min-w-[15px] bg-white "
+                      className="min-h-[15px] min-w-[15px]  "
                     ></Image>
                   </div>
                 )}
@@ -94,7 +99,8 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp }) => {
           </div>
         </div>
       </motion.div>
-    </div>
+      </div>
+      </div>
   );
 };
 

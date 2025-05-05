@@ -47,57 +47,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                 {subtitle && (
                   <h3 className="text-[19px] text-[#77787B]">{subtitle}</h3>
                 )}
-                {/* <button
-                  className="z-2  hover:border-b-red group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent
-                      p-0 pb-3 text-white before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black
-                      before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500
-                      after:transition-all after:duration-300 after:ease-in-out hover:after:w-0"
-                >
-                  <div className="relative">
-                    <p className="text-sm font-medium duration-200 ease-in-out  md:text-[16px]">
-                      Get a Free Strategy Session
-                    </p>
-                    <Link
-                      href="#"
-                      className="absolute top-0 z-[1] h-full w-full"
-                    ></Link>
-                  </div>
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="duration-200 ease-in-out group-hover:scale-125"
-                  >
-                    <g clipPath="url(#clip0_65_58)">
-                      <path
-                        d="M18.7892 1.2749L0.699219 19.0149"
-                        stroke="#E53F30"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                        className="group-hover:stroke-black"
-                      />
-                      <path
-                        d="M0.699219 1.2749H18.7892V18.6649"
-                        stroke="#E53F30"
-                        strokeWidth="3"
-                        strokeMiterlimit="10"
-                        className="group-hover:stroke-black"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_65_58">
-                        <rect
-                          width="19.79"
-                          height="19.45"
-                          fill="white"
-                          transform="translate(0 0.274902)"
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </button> */}
+
               </div>
             </motion.div>
           </div>
@@ -125,7 +75,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                       <Link href={`${expertise.url}`}>
                         <div
                           key={expertise.id}
-                          className="group flex flex-col justify-between gap-3 border-[1px] border-[#e5e7eb4d] p-5 transition-all duration-500 hover:bg-primary md:h-[300px]  lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                          className="group flex flex-col justify-between gap-3 border-[1px] border-[#e5e7eb4d] p-5 transition-all duration-500 hover:bg-primary md:h-[350px]  lg:h-[400px] lg:gap-0 lg:p-10 xl:h-[502px]"
                         >
                           {/* Image Wrapper */}
                           <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
@@ -159,7 +109,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                     <div key={expertise.id}>
                       <div
                         key={expertise.id}
-                        className="group flex flex-col justify-between gap-3 border-[1px] border-[#e5e7eb4d] p-5 transition-all duration-500 hover:bg-primary md:h-[300px]  lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                        className="group flex flex-col justify-between gap-3 border-[1px] border-[#e5e7eb4d] p-5 transition-all duration-500 hover:bg-primary md:h-[350px]  lg:h-[400px] lg:gap-0 lg:p-10 xl:h-[502px]"
                       >
                         {/* Image Wrapper */}
                         <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
