@@ -82,16 +82,11 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                     <Link href={`${expertise.url}`}>
                       <div
                         key={expertise.id}
-                        className="group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 md:h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                        className="group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
                       >
                         {" "}
                         {expertise.hoverImg && (
-                          <Image
-                            src={expertise.hoverImg}
-                            alt="Hover Background"
-                            fill
-                            className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                          />
+                          <Image src={expertise.hoverImg} alt="Hover Background" fill className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                         )}
                         {/* Default background color */}
                         <div className="absolute left-0 top-0 -z-20 h-full w-full bg-white transition-colors duration-500 group-hover:bg-transparent"></div>
@@ -126,7 +121,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                   <div key={expertise.id}>
                     <div
                       key={expertise.id}
-                      className="group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 md:h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                      className="group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 h-[200px] md:h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
                     >
                       {" "}
                       {expertise.hoverImg && (
@@ -134,7 +129,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                           src={expertise.hoverImg}
                           alt="Hover Background"
                           fill
-                          className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                          className="absolute left-0 top-0 -z-10 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                         />
                       )}
                       {/* Default background color */}
