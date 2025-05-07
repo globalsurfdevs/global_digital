@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimentions";
 import { MenuToggle } from "./MenuToggle";
@@ -86,6 +86,10 @@ export const Example = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isOpen]);
 
+  const hideButton = () => {
+    setHideIcon((prev)=>!prev)
+  }
+
   const debouncedToggle = React.useCallback(() => {
     let timeoutId: string | number | NodeJS.Timeout | undefined;
     return () => {
@@ -93,7 +97,7 @@ export const Example = () => {
       timeoutId = setTimeout(() => toggleOpen(), 500);
     };
   }, [toggleOpen]);
-
+  const [hideIcon, setHideIcon] = useState(false);
   return (
     <motion.nav
       initial={false}
@@ -112,7 +116,7 @@ export const Example = () => {
           </div>
         </motion.div>
 
-        <Navigation toggle={()=>toggleOpen()}/>
+        <Navigation toggle={()=>toggleOpen()} onHide={hideButton}/>
 
         <div className="text-white px-6">
           <div className="border-t pb-5 pt-5 flex flex-col gap-4  ">
@@ -135,7 +139,7 @@ export const Example = () => {
         </motion.div>}
 
 <div className="bg-white w-20">
-<MenuToggle toggle={() => toggleOpen()}/>
+<MenuToggle toggle={() => toggleOpen()} hidden={hideIcon}/>
 
 </div>
     </motion.nav>
