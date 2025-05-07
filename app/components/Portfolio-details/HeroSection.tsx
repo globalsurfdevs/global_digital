@@ -1,10 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
+import Link from "next/link";
 
 const HeroSection = ({
   data,
@@ -16,6 +17,22 @@ const HeroSection = ({
 }) => {
   if (!data) return null;
 
+  const getServiceLink = (service: string) => {
+    switch (service.trim().toLowerCase()) {
+      case "website":
+        return "/web-design-and-development";
+      case "branding":
+        return "/creative-agency-dubai";
+        case "performance marketing":
+          return "/performance-marketing-agency-dubai";
+          case "social media":
+          return "/social-media-agency-dubai";
+          case "seo":
+          return "/seo-agency-dubai";
+      default:
+        return "#"; // Or a default/fallback route
+    }
+  };
 
   return (
     <div>
@@ -24,7 +41,7 @@ const HeroSection = ({
           <Image src={data.portfolio[0].bannerImage} alt="heroImage" className="absolute h-full w-full object-cover object-center" fill />
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
             <div className="container relative h-full w-full invic flex flex-col justify-end" >
-              <h1 className="text-font80 text-white max-w-[70%] leading-lh1p18 pb-10 lg:pb-20 xl:pb-[90px] font-normal">{data.portfolio[0].bannerTitle === null || "undefined" ? "" : data.portfolio[0].bannerTitle}</h1>
+              <h1 className="text-font80 text-white max-w-[70%] leading-lh1p18 pb-10 lg:pb-20 xl:pb-[90px] font-normal">{data.portfolio[0].bannerTitle == "null" || data.portfolio[0].bannerTitle == "undefined" ? "" : data.portfolio[0].bannerTitle}</h1>
               <Image src={data.portfolio[0].logo} alt="image" className="absolute  bottom-[20px] right-[15px] z-1 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]" width={150} height={100} />
             </div>
           </div>
@@ -97,7 +114,7 @@ const HeroSection = ({
                 <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737] mb-3">Services Provided</h5>
                 <div className="flex flex-wrap gap-2 lg:gap-4">
                   {data.portfolio[0].channelsUsed.split(",").map((item, index) => (
-                    <button className="btn-outline-primary-text-black" key={index}>{item}</button>
+                    <Link href={getServiceLink(item)} key={index}><button className="btn-outline-primary-text-black">{item}</button></Link>
                   ))}
                   
                 </div>

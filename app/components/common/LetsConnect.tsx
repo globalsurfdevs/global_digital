@@ -311,6 +311,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                   <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
                     {selectedBudget}
                     <img src="images/dp-arrow.svg" alt="dropdown arrow" />
+                    <input type="hidden" name="Dropdown2" value={selectedBudget} />
                   </div>
                   {isBudgetOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
@@ -399,6 +400,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                   <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
                     {selectedService}
                     <img src="images/dp-arrow.svg" alt="dropdown arrow" />
+                    <input type="hidden" name="Dropdown1" value={selectedService} />
                   </div>
                   {isServiceOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
