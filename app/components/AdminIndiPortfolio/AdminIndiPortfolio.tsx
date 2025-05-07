@@ -589,16 +589,16 @@ const AdminIndiPortfolio = ({ editMode }: {
                         <div>
                                 <div className='w-full flex flex-col gap-2'>
                                     <Label content='Banner Title' />
-                                    <input type="text" {...register("bannerTitle", { required: "Banner title is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-                                    {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>}
+                                    <input type="text" {...register("bannerTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                    {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
                                 </div>
                             </div>
 
                             <div>
                                 <div className='w-full flex flex-col gap-2'>
                                     <Label content='Webiste Link' />
-                                    <input type="text" {...register("websiteLink", { required: "Website link is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-                                    {errors.websiteLink && <p className='mt-1 text-sm text-red'>{errors.websiteLink.message}</p>}
+                                    <input type="text" {...register("websiteLink")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                    {/* {errors.websiteLink && <p className='mt-1 text-sm text-red'>{errors.websiteLink.message}</p>} */}
                                 </div>
                             </div>
 
