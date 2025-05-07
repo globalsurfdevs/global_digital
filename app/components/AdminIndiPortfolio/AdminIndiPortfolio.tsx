@@ -39,6 +39,8 @@ type Inputs = {
     slug: string;
     metaTitle: string;
     metaDescription: string;
+    websiteLink: string;
+    bannerTitle: string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {
@@ -130,6 +132,8 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("solutions", data.solutions);
         formData.append("result", data.result);
         formData.append("slug", data.slug)
+        formData.append("websiteLink", data.websiteLink)
+        formData.append("bannerTitle", data.bannerTitle)
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -270,6 +274,9 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("slug", data.portfolio[0].slug)
                         setValue("metaTitle", data.portfolio[0].metaTitle)
                         setValue("metaDescription", data.portfolio[0].metaDescription)
+                        setValue("bannerTitle", data.portfolio[0].bannerTitle)
+                        setValue("websiteLink", data.portfolio[0].websiteLink)
+                        
                         
                         if(data.portfolio[0].section=='portfolio'){
                             setSelectedSection('portfolio')
@@ -523,6 +530,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                     </div>}
     
                     <div className='grid grid-cols-2 gap-10 mt-5'>
+                    <div className='flex flex-col'>
                         <div
                             className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
                             onDragOver={(e) => e.preventDefault()}
@@ -574,7 +582,28 @@ const AdminIndiPortfolio = ({ editMode }: {
                             )}
                             <input type="file" id="image" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError, setImageFile, setPreviewImage })} />
                             {imageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
+
+
                         </div>
+
+                        <div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <Label content='Banner Title' />
+                                    <input type="text" {...register("bannerTitle", { required: "Banner title is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                    {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>}
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <Label content='Webiste Link' />
+                                    <input type="text" {...register("websiteLink", { required: "Website link is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                    {errors.websiteLink && <p className='mt-1 text-sm text-red'>{errors.websiteLink.message}</p>}
+                                </div>
+                            </div>
+
+                            </div>
+
     
                         <div>
                             <div className='flex flex-col'>

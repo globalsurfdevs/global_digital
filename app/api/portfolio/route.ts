@@ -154,6 +154,8 @@ export async function POST(req: NextRequest) {
     const selectedHighlightForHome = formData.get("selectedHighlightForHome") as string;
     const homeTitle = formData.get("homeTitle") as string;
     const homeSubTitle = formData.get("homeSubTitle") as string;
+    const websiteLink = formData.get("websiteLink") as string;
+    const bannerTitle = formData.get("bannerTitle") as string;
 
    
     console.log("description", description)
@@ -307,6 +309,8 @@ export async function POST(req: NextRequest) {
                             slug,
                             metaTitle,
                             metaDescription,
+                            websiteLink,
+                            bannerTitle,
                             
                         })
                         .eq('id', id)
@@ -410,7 +414,9 @@ export async function POST(req: NextRequest) {
                             slug,
                             metaTitle,
                             metaDescription,
-                            customId:uuidv4()
+                            customId:uuidv4(),
+                            websiteLink,
+                            bannerTitle,
                         },
                     ])
                     .select('id')
