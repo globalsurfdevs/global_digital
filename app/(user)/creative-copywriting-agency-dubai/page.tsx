@@ -31,9 +31,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Services",
+    title: "Creative Copywriting Services  Agency in Dubai | GS Digital ",
     description:
-      "Partner with a top web app development company in Dubai specializing in custom web applications. We build secure web apps tailored to your business. ",
+      "Boost your brand voice with GS Digital, a top copywriting agency in Dubai. Our creative services deliver results-driven content from social media to ads.",
     alternates: {
       canonical: "https://www.globalsurf.ae/",
     },
@@ -77,8 +77,6 @@ const page = () => {
       <div className="pb-[50px]   lg:pb-[130px]">
       <LogoSwiper mtslogo={Matslogo[0]}   />
       </div>
-
-
 
       <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US TODAY!"} />
       <FAQ data={Faq} />
