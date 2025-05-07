@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -51,6 +51,9 @@ const HeroSection = () => {
 
     // Keep the current content and do not reset
   };
+
+
+
 
   return (
     <motion.section
