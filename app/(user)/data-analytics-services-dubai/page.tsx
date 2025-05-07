@@ -33,9 +33,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Services",
+    title: "Data Analytics Consulting Services Company | GS Digital ",
     description:
-      "Partner with a top web app development company in Dubai specializing in custom web applications. We build secure web apps tailored to your business. ",
+      "Unlock smarter decisions with expert data analytics consulting in Dubai. GS Digital delivers tailored data solutions to fuel business growth. Check now! ",
     alternates: {
       canonical: "https://www.globalsurf.ae/",
     },
