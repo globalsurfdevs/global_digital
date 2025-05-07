@@ -7,7 +7,7 @@ export const workSvgs = [
         text: "E-commerce",
         width: "26",
         height: "26",
-        urlpath:''
+        urlpath:'/industry/ecommerce-digital-marketing'
     },
     {
         icon:"/assets/works/realestate.svg",
