@@ -535,9 +535,10 @@ body {
 }
 .ollist ol {
   list-style: disc;
+
 }
 .ollist li {
-  @apply text-gray1;
+  @apply text-gray1 lg:mb-5;
 }
 .invic img {
   filter: brightness(0) invert(1);

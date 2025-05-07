@@ -29,4 +29,6 @@ export type Portfolio = {
     homeTitle:string;
     homeSubTitle:string;
     slug:string;
+    bannerTitle:string;
+    websiteLink:string;
 }

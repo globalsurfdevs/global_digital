@@ -24,7 +24,7 @@ const HeroSection = ({
           <Image src={data.portfolio[0].bannerImage} alt="heroImage" className="absolute h-full w-full object-cover object-center" fill />
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
             <div className="container relative h-full w-full invic flex flex-col justify-end" >
-              <h1 className="text-font80 text-white max-w-[70%] leading-lh1p18 pb-10 lg:pb-20 xl:pb-[90px] font-normal">Revitalizing Innovo Group's Digital Presence</h1>
+              <h1 className="text-font80 text-white max-w-[70%] leading-lh1p18 pb-10 lg:pb-20 xl:pb-[90px] font-normal">{data.portfolio[0].bannerTitle}</h1>
               <Image src={data.portfolio[0].logo} alt="image" className="absolute  bottom-[20px] right-[15px] z-1 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]" width={150} height={100} />
             </div>
           </div>
@@ -62,8 +62,8 @@ const HeroSection = ({
                     <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Services</h5>
                     <h4 className="text-30">{data.portfolio[0].channelsUsed}</h4>
                   </div> */}
-                  {/* <button className="btn-outline-black" onClick={() => window.open(data.portfolio[0].website, "_blank")}> */}
-                  <button className="btn-outline-black" >
+                  <button className="btn-outline-black" onClick={() => window.open(data.portfolio[0].websiteLink, "_blank")}>
+                  {/* <button className="btn-outline-black" > */}
                     View Live Website
                   </button>
                 </div>

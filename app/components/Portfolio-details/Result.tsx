@@ -81,9 +81,7 @@ const Result = ({
         }}
       >
         <div className="flex flex-col border-b py-[50px] lg:pb-[150px] lg:pt-[136px]  ">
-          <h2 className="title-65 pb-3 lg:pb-[30px]">
-            Lets Create Something Iconic Together
-          </h2>
+          <h2 className="title-65 pb-3 lg:pb-[30px]">Lets Create Something Iconic Together</h2>
           <p className="text-19 lg-mb-[64px] fnt-lexend mb-0 text-gray1">
             Every great brand has a story. See how we’ve turned challenges into
             triumphs for our clients. Your brand could be next.{" "}
