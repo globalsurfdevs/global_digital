@@ -19,10 +19,12 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
   const [nameError, setNameError] = useState("");
   const [selectedBudget, setSelectedBudget] = useState("Select Your Budget");
   const [selectedService, setSelectedService] = useState("Service Looking for");
-  const [isBudgetOpen, setIsBudgetOpen] = useState(false);
-  const [isServiceOpen, setIsServiceOpen] = useState(false);
+  // const [isBudgetOpen, setIsBudgetOpen] = useState(false);
+  // const [isServiceOpen, setIsServiceOpen] = useState(false);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   console.log("Entered email:", formData.Email);
+
+
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -299,7 +301,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                 </label>
                 <div
                   className="relative"
-                  onClick={() => setIsBudgetOpen(!isBudgetOpen)}
+                  onClick={() => setSelectedBudget("first")}
                   style={{
                     cursor: "pointer",
                     color:
@@ -308,11 +310,12 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         : "black",
                   }}
                 >
-                  <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
+                  {/* <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
                     {selectedBudget}
                     <img src="images/dp-arrow.svg" alt="dropdown arrow" />
-                  </div>
-                  {isBudgetOpen && (
+                    <input type="hidden" name="Dropdown2" value={selectedBudget} />
+                  </div> */}
+                  {/* {isBudgetOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
                       <li
                         className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
@@ -378,7 +381,22 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED &gt; 100000
                       </li>
                     </ul>
-                  )}
+                    
+                  )} */}
+                  <select
+                  name="Dropdown"
+                  onChange={handleChange}
+                  className="bg-transparent  w-full border-t-0 border-x-0 border-b border-gray-300 outline-none pr-3 pl-0 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                >
+                  <option value="-Select-">Select Your Budget</option>
+                  <option value="AED < 5000">AED &lt; 5000</option>
+                  <option value="AED 5000 - 10000">AED 5000 - 10000</option>
+                  <option value="AED 10000 - 20000">AED 10000 - 20000</option>
+                  <option value="AED 20000 - 30000">AED 20000 - 30000</option>
+                  <option value="AED 30000 - 40000">AED 30000 - 40000</option>
+                  <option value="AED 50000 - 100000">AED 50000 - 100000</option>
+                  <option value="AED > 100000">AED &gt; 100000</option>
+                </select>
                 </div>
               </div>
               <div className="mb-[30px]">
@@ -387,7 +405,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                 </label>
                 <div
                   className="relative"
-                  onClick={() => setIsServiceOpen(!isServiceOpen)}
+                  onClick={() => setSelectedService("first")}
                   style={{
                     cursor: "pointer",
                     color:
@@ -396,11 +414,12 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         : "#000",
                   }}
                 >
-                  <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
+                  {/* <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
                     {selectedService}
                     <img src="images/dp-arrow.svg" alt="dropdown arrow" />
-                  </div>
-                  {isServiceOpen && (
+                    <input type="hidden" name="Dropdown1" value={selectedService} />
+                  </div> */}
+                  {/* {isServiceOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
                       <li
                         className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
@@ -457,7 +476,28 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         Marketing Intelligence
                       </li>
                     </ul>
-                  )}
+                  )} */}
+                  <select
+                  name="Dropdown1"
+                  onChange={handleChange}
+                  className="bg-transparent w-full  border-t-0 border-x-0 border-b border-gray-300  pl-0 pr-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                >
+                  <option value="-Select-">Service Looking for</option>
+                  <option value="Performance Marketing">
+                    Performance Marketing
+                  </option>
+                  <option value="SEO">SEO</option>
+                  <option value="Social Media">Social Media</option>
+                  <option value="Web Design and Development">
+                    Web Design and Development
+                  </option>
+                  <option value="Branding and Creatives">
+                    Branding and Creatives
+                  </option>
+                  <option value="Marketing Intelligence">
+                    Marketing Intelligence
+                  </option>
+                </select>
                 </div>
               </div>
             </div>

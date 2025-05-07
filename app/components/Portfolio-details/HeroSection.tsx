@@ -5,6 +5,7 @@ import React from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
+import Link from "next/link";
 
 const HeroSection = ({
   data,
@@ -16,6 +17,22 @@ const HeroSection = ({
 }) => {
   if (!data) return null;
 
+  const getServiceLink = (service: string) => {
+    switch (service.trim().toLowerCase()) {
+      case "website":
+        return "/web-design-and-development";
+      case "branding":
+        return "/creative-agency-dubai";
+        case "performance marketing":
+          return "/performance-marketing-agency-dubai";
+          case "social media":
+          return "/social-media-agency-dubai";
+          case "seo":
+          return "/seo-agency-dubai";
+      default:
+        return "#"; // Or a default/fallback route
+    }
+  };
 
   return (
     <div>
@@ -99,7 +116,7 @@ const HeroSection = ({
                 <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737] mb-3">Services Provided</h5>
                 <div className="flex flex-wrap gap-2 lg:gap-4">
                   {data.portfolio[0].channelsUsed.split(",").map((item, index) => (
-                    <button className="btn-outline-primary-text-black" key={index}>{item}</button>
+                    <Link href={getServiceLink(item)} key={index}><button className="btn-outline-primary-text-black">{item}</button></Link>
                   ))}
 
                 </div>

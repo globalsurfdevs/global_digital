@@ -10,7 +10,7 @@ import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { BsPersonVcard } from "react-icons/bs";
 import { assets } from "@/public/assets/assets";
 import { GiNotebook } from "react-icons/gi";
-import { MdOutlineWork } from "react-icons/md";
+import { MdOutlinePanTool, MdOutlineWork } from "react-icons/md";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -117,6 +117,13 @@ const menuGroups = [
         ),
         label: "Jobs",
         route: "/admin/jobs",
+      },
+      {
+        icon: (
+          <MdOutlinePanTool />
+        ),
+        label: "Channels Used (Portfolio)",
+        route: "/admin/portfolio/channels",
       },
       // {
       //   icon: (
