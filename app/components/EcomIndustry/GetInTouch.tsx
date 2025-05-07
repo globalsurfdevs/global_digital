@@ -115,16 +115,13 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               }, // Slide up and fade in
             }}
           >
-            <div className="innerfnont mt-6 lg:mt-[57px]">
+            <div className="innerfnont mt-6 lg:mt-[57px] pb-4">
               <Link href={link}>
                 <Button text={ctabbutton} />
               </Link>
             </div>
             <div className="border-t border-[#77787B] lg:my-[75px]"> </div>
-            <div
-              ref={ref}
-              className="align-center group mt-6 grid grid-cols-1 gap-6 md:grid-cols-2  "
-            >
+            <div ref={ref} className="align-center group mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="clients">
                 <h3 className="text-font65 hover:text-[#E63E31]">
                   {clientCount}+
@@ -133,7 +130,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                   E-Commerce Brands Scaled
                 </p>
               </div>
-              <div className="retention border-l-[1px] border-[#333333] pl-6 lg:pl-10">
+              <div className="retention lg:border-l-[1px] border-[#333333] lg:pl-10">
                 <h3 className="text-font65 hover:text-[#E63E31]">
                   {retentionCount}%
                 </h3>

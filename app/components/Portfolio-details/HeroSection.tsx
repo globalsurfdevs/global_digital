@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
@@ -41,7 +41,8 @@ const HeroSection = ({
           <Image src={data.portfolio[0].bannerImage} alt="heroImage" className="absolute h-full w-full object-cover object-center" fill />
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
             <div className="container relative h-full w-full invic flex flex-col justify-end" >
-              <h1 className="text-font80 text-white max-w-[70%] leading-lh1p18 pb-10 lg:pb-20 xl:pb-[90px] font-normal">{data.portfolio[0].bannerTitle == "null" || data.portfolio[0].bannerTitle == "undefined" ? "" : data.portfolio[0].bannerTitle}</h1>
+              <h1 className="text-font80 text-white max-w-[70%] leading-lh1p18 pb-10 lg:pb-20 xl:pb-[90px] font-normal">{data.portfolio[0].bannerTitle == "null" || data.portfolio[0].bannerTitle == "undefined" ? "" : data.portfolio[0].bannerTitle}
+              </h1>
               <Image src={data.portfolio[0].logo} alt="image" className="absolute  bottom-[20px] right-[15px] z-1 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]" width={150} height={100} />
             </div>
           </div>
@@ -54,7 +55,8 @@ const HeroSection = ({
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
               variants={{
                 hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" },
+                visible: {
+                  opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" },
                 }, // Slide up and fade in
               }}
             >
@@ -80,7 +82,7 @@ const HeroSection = ({
                     <h4 className="text-30">{data.portfolio[0].channelsUsed}</h4>
                   </div> */}
                   <button className="btn-outline-black" onClick={() => window.open(data.portfolio[0].websiteLink, "_blank")}>
-                  {/* <button className="btn-outline-black" > */}
+                    {/* <button className="btn-outline-black" > */}
                     View Live Website
                   </button>
                 </div>
@@ -116,7 +118,7 @@ const HeroSection = ({
                   {data.portfolio[0].channelsUsed.split(",").map((item, index) => (
                     <Link href={getServiceLink(item)} key={index}><button className="btn-outline-primary-text-black">{item}</button></Link>
                   ))}
-                  
+
                 </div>
               </div>
             </motion.div>
