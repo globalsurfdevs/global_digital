@@ -173,7 +173,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
       <div className="psty bg-dgray  p-[20px] md:pt-[140px] xl:px-[80px]  xxl:px-[150px]">
         <div className="group">
           <button onClick={onClose}>
-            <div className="  absolute right-5 top-[30px] w-fit cursor-pointer rounded-3xl bg-primary px-6 py-2 duration-200 duration-300 ease-in-out ease-in-out group-hover:-translate-x-[-3px]    group-hover:bg-primary group-hover:shadow-lg  md:bg-white  ">
+            <div className="  absolute right-5 top-[30px] z-[55px] w-fit cursor-pointer rounded-3xl bg-primary px-6 py-2 duration-200  ease-in-out group-hover:-translate-x-[-3px]    group-hover:bg-primary group-hover:shadow-lg  md:bg-white  ">
               <div className="uppercase text-white">
                 <p className="bolder text-font16 text-white duration-300  ease-in-out ease-in-out group-hover:text-white md:text-black">
                   CLOSE
