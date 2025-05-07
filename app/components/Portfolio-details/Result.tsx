@@ -38,7 +38,6 @@ const Result = ({
             <h2 className="title-65 mb-3 lg:mb-5">Result</h2>
           </div>
           <div className="text-19 fnt-lexend text-gray1 ollist pl-5">
-
             {parse(data?.portfolio[0].result || "")}
           </div>
         </motion.div>
@@ -59,21 +58,11 @@ const Result = ({
         }}
       >
         {data.portfolio[0].resultImage1 && <div>
-          <Image
-            src={data?.portfolio[0].resultImage1 || ""}
-            alt="image"
-            width={900}
-            height={900}
-          />
+          <Image src={data?.portfolio[0].resultImage1 || ""} alt="image" width={900} height={900} />
         </div>}
 
         {data.portfolio[0].resultImage2 &&<div>
-          <Image
-            src={data?.portfolio[0].resultImage2 || ""}
-            alt="image"
-            width={900}
-            height={900}
-          />
+          <Image src={data?.portfolio[0].resultImage2 || ""} alt="image" width={900} height={900} />
         </div>}
 
       </motion.div>) : null }

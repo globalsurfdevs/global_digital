@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import React from "react";
 import { Portfolio } from "@/app/types/Portfolio";
@@ -22,74 +21,51 @@ const HeroSection = ({
     <div>
       <div className="relative">
         <div className="relative z-1 h-[350px] lg:h-[500px] xl:h-[800px] w-full">
-          <Image
-            src={data.portfolio[0].bannerImage}
-            alt="heroImage"
-            className="absolute h-full w-full object-cover object-center"
-            fill
-          />
+          <Image src={data.portfolio[0].bannerImage} alt="heroImage" className="absolute h-full w-full object-cover object-center" fill />
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
-            <div
-              className="container relative h-full w-full invic"
-
-            >
-              <Image
-                src={data.portfolio[0].logo}
-                alt="image"
-                className="absolute  bottom-[20px] right-[15px] z-1 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
-                width={150}
-                height={100}
-              />
+            <div className="container relative h-full w-full invic flex flex-col justify-end" >
+              <h1 className="text-font80 text-white max-w-[70%] leading-lh1p18 pb-10 lg:pb-20 xl:pb-[90px] font-normal">Revitalizing Innovo Group's Digital Presence</h1>
+              <Image src={data.portfolio[0].logo} alt="image" className="absolute  bottom-[20px] right-[15px] z-1 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]" width={150} height={100} />
             </div>
           </div>
         </div>
-
       </div>
 
       <div className="relative">
         <div className="container mx-auto py-4">
           <div className="grid gap-5  lg:grid-cols-2 lg:gap-0 ">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
               variants={{
                 hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1, ease: "easeOut" },
+                visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" },
                 }, // Slide up and fade in
               }}
             >
               <div className="flex h-full flex-col justify-center py-[50px] lg:py-[102px]">
-                <div className="mb-[20px] lg:mb-[81px]">
-                  <h1 className="title-80">{data.portfolio[0].companyName}</h1>
+
+                <div className="mb-[20px] lg:mb-[48px]">
+                  <h1 className="title-80 leading-lh1p18">{data.portfolio[0].companyName}</h1>
                 </div>
 
                 <div className="flex flex-col lg:w-[60%] ">
                   <div className="mb-[20px] flex flex-col border-b  border-black pb-[20px] lg:mb-[36px] lg:pb-[40px]">
-                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
-                      Industry
-                    </h5>
-                    <h4 className="text-30">{data.portfolio[0].industry}</h4>
+                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Industry</h5>
+                    <h4 className="text-30 leading-lh1p33 font-normal">{data.portfolio[0].industry}</h4>
                   </div>
 
-                  <div className="mb-[20px] flex flex-col border-b  border-black pb-[20px] lg:mb-[36px] lg:pb-[40px]">
-                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
-                      Country
-                    </h5>
-                    <h4 className="text-30">{data.portfolio[0].country}</h4>
+                  <div className="mb-[20px] flex flex-col border-b border-black pb-[20px] lg:mb-[74px] lg:pb-[40px]">
+                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Country</h5>
+                    <h4 className="text-30 leading-lh1p33 font-normal">{data.portfolio[0].country}</h4>
                   </div>
 
-                  <div className=" flex flex-col border-black">
-                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray-400">
-                    Services
-                    </h5>
-                    <h4 className="text-30">
-                      {data.portfolio[0].channelsUsed}
-                    </h4>
-                  </div>
+                  {/* <div className=" flex flex-col border-black">
+                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Services</h5>
+                    <h4 className="text-30">{data.portfolio[0].channelsUsed}</h4>
+                  </div> */}
+                  {/* <button className="btn-outline-black" onClick={() => window.open(data.portfolio[0].website, "_blank")}> */}
+                  <button className="btn-outline-black" >
+                    View Live Website
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -115,14 +91,16 @@ const HeroSection = ({
                 <div className="h-4 w-4 bg-primary lg:h-5 lg:w-5 "></div>
               </div>
               <div className='text-19 text-gray1 fnt-lexend'>
-                {/* <p className='text-19 text-gray1 fnt-lexend'>Innovo Group is a global leader in the construction industry,
-                        specializing in delivering innovative solutions for a wide range of projects.
-                        With a commitment to quality and sustainability, they have built a reputation
-                        for excellence. Recognizing their outdated, slow website no longer reflected their
-                        brand&apos;s quality and innovation, they partnered with Global Surf to revamp their
-                        digital presence. The goal was to improve efficiency, enhance user experience, and
-                        align the site with their evolving brand identity. </p> */}
                 {parse(data.portfolio[0].story)}
+              </div>
+              <div className="pt-10 lg:pt-[65px]">
+                <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737] mb-3">Services Provided</h5>
+                <div className="flex flex-wrap gap-2 lg:gap-4">
+                  {data.portfolio[0].channelsUsed.split(",").map((item, index) => (
+                    <button className="btn-outline-primary-text-black" key={index}>{item}</button>
+                  ))}
+                  
+                </div>
               </div>
             </motion.div>
           </div>
@@ -141,29 +119,13 @@ const HeroSection = ({
                 hidden: { opacity: 0, y: 50 }, // Start below and invisible
                 visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
               }}>
-              <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>
+              <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5 lg:gap-x-[50px]'>
                 {data.portfolioHighlights.map((item) => (
-                  <div className='border-b last:border-b-0 lg:border-b-0   lg:border-r last:border-r-0 border-gray1 py-[20px] lg:py-[44px] group ' key={item.customId}>
+                  <div className='border-b last:border-b-0 lg:border-b-0 lg:border-r last:border-r-0 border-gray1 py-[20px] lg:py-[44px] group' key={item.customId}>
                     <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>{item.number}</p>
                     <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>{item.text}</h3>
                   </div>
                 ))}
-
-
-
-                {/* <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px] group '>
-                              <div className='mx-auto lg:w-[85%]'>
-                                  <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
-                                  <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
-                              </div>
-                          </div>
-
-                          <div className='py-[20px] lg:py-[44px] group '>
-                              <div className='mx-auto lg:w-[85%]'>
-                                  <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>2X</p>
-                                  <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>Increase in User Engagement</h3>
-                              </div>
-                          </div> */}
               </div>
             </motion.div>
           </div>

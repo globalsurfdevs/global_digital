@@ -493,6 +493,24 @@ body {
   .linkabs {
     @apply absolute left-0 top-0 h-full w-full;
   }
+  .btn-outline-black {
+    @apply border border-black text-black w-fit rounded-3xl px-4 py-2 lg:px-[25px] lg:py-[15px] text-font16 font-semibold leading-lh1 transition-all duration-200 uppercase;
+  }
+  .btn-outline-black:hover {
+    @apply bg-black text-white shadow-lg;
+  }
+  .btn-outline-primary {
+    @apply border border-primary text-primary w-fit rounded-3xl px-4 py-2 lg:px-[25px] lg:py-[15px] text-font16 font-semibold leading-lh1 transition-all duration-200 uppercase;
+  }
+  .btn-outline-primary:hover {
+    @apply bg-primary text-white shadow-lg;
+  }
+  .btn-outline-primary-text-black {
+    @apply border border-primary text-black w-fit rounded-3xl px-4 py-2 lg:px-[25px] lg:py-[15px] text-font16 font-semibold leading-lh1 transition-all duration-200 uppercase;
+  }
+  .btn-outline-primary-text-black:hover {
+    @apply bg-black text-white shadow-lg;
+  }
 }
 @media screen and (min-width: 1200px) and (max-width: 1549px) {
   .title-120 {
