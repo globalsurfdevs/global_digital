@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Label from "../Label/Label";
 import { useForm, useFieldArray } from "react-hook-form";
 import { IoMdCloseCircle } from "react-icons/io";
@@ -20,6 +20,7 @@ const AdminPortfolioChannel = () => {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<Channels>({
     defaultValues: {
       channels: [],
@@ -48,6 +49,19 @@ const AdminPortfolioChannel = () => {
             console.error("Error adding channel:",error)
         }
   };
+
+  useEffect(() => {
+    const fetchChannels = async () => {
+      try {
+        const response = await fetch(`/api/portfolio/channels`);
+        const data = await response.json();
+        reset({ channels: data.data[0].channels });
+      } catch (error) {
+        console.error("Error fetching channels:", error);
+      }
+    };
+    fetchChannels();
+  }, []);
 
   return (
     <div>
@@ -111,7 +125,7 @@ const AdminPortfolioChannel = () => {
       <div className="flex justify-center mt-5">
         <button
           type="button"
-          className="bg-blue-950 text-white p-2 rounded-xl"
+          className="bg-blue-950 text-white px-5 py-2 rounded-xl"
           onClick={handleSubmit(onSubmit)}
         >
           Save

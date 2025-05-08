@@ -2,7 +2,7 @@ export type CaseStudyInputs = {
     heading: string
     sHeading: string
     country: string
-    channelsUsed: string
+    channelsUsed: {channelName?:string}[]
     industry:string;
     story: string
     goals: string;

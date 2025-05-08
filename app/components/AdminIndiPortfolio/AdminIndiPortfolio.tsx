@@ -27,7 +27,7 @@ type Inputs = {
     companyName: string
     industry: string
     country: string
-    channelsUsed: string
+    channelsUsed: {channelName?:string}[]
     story: string
     goals: string;
     objectives: string;
@@ -71,6 +71,7 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [addedHighlights, setAddedHighlights] = useState<addingHighlights[]>([])
     const [highlightNumber, setHighlightNumber] = useState('')
     const [highlightText, setHighlightText] = useState('')
+    const [channelsAvailable, setChannelsAvailable] = useState<{channelName:string}[]>([])
 
 
     const [modalOpen, setModalOpen] = useState(false)
@@ -113,7 +114,11 @@ const AdminIndiPortfolio = ({ editMode }: {
         control,
         watch,
         formState: { errors },
-    } = useForm<Inputs>()
+    } = useForm<Inputs>({
+        defaultValues:{
+            channelsUsed:[{channelName:''}]
+        }
+    })
 
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -121,7 +126,7 @@ const AdminIndiPortfolio = ({ editMode }: {
         const formData = new FormData();
         formData.append("companyName", data.companyName);
         formData.append("industry", data.industry);
-        formData.append("channelsUsed", data.channelsUsed);
+        formData.append("channelsUsed", JSON.stringify(data.channelsUsed));
         formData.append("country", data.country);
         formData.append("story", data.story);
         formData.append("metadataTitle", metaTitle);
@@ -249,6 +254,19 @@ const AdminIndiPortfolio = ({ editMode }: {
             setIsSubmitting(false);
         }
     }
+
+      useEffect(() => {
+        const fetchChannels = async () => {
+          try {
+            const response = await fetch(`/api/portfolio/channels`);
+            const data = await response.json();
+            setChannelsAvailable(data.data[0].channels)
+          } catch (error) {
+            console.error("Error fetching channels:", error);
+          }
+        };
+        fetchChannels();
+      }, []);
 
 
     useEffect(() => {
@@ -507,6 +525,18 @@ const AdminIndiPortfolio = ({ editMode }: {
         }
     }
 
+    const [channelsUsed, setChannelsUsed] = useState<{channelName:string}[]>([])
+    const handleChangeInChannel = (index: number) => {
+        const channel = channelsAvailable[index]
+        if(channelsUsed.find((item:{channelName:string}) => item.channelName === channel.channelName)){
+            setChannelsUsed((prev) => prev.filter((item:{channelName:string}) => item.channelName !== channel.channelName))
+            setValue("channelsUsed", channelsUsed)
+        }else{
+            setChannelsUsed((prev) => [...prev, channel])
+            setValue("channelsUsed", channelsUsed)
+        }
+    }
+
 
     if(selectedSection=='portfolio'){
         return (
@@ -629,6 +659,18 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     <Label content='Channels Used' />
                                     <input type="text" {...register("channelsUsed", { required: "Channels used is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                     {errors.channelsUsed && <p className='mt-1 text-sm text-red'>{errors.channelsUsed.message}</p>}
+                                </div>
+
+                                <div className='w-full flex flex-col gap-2'>
+                                    <Label content='Channels Available' />
+                                    <div className='flex gap-2 border p-5'>
+                                        {channelsAvailable.map((channel, index) => (
+                                            <div key={index} className='relative'>
+                                            <div className={`h-4 w-4 rounded-full absolute -top-2 right-1 border-2 cursor-pointer ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`} onClick={() => handleChangeInChannel(index)}></div>
+                                                <span className="px-6 py-3 border border-gray-300 rounded-md" key={index}>{channel.channelName}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
     
                             </div>

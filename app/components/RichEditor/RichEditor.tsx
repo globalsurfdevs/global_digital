@@ -18,7 +18,7 @@ type PortfolioInputs = {
     companyName: string
     industry: string
     country: string
-    channelsUsed: string
+    channelsUsed: {channelName?:string}[]
     story: string
     goals: string;
     objectives: string;
@@ -35,7 +35,7 @@ type CaseStudyInputs = {
     story:string;
     industry:string;
     country:string;
-    channelsUsed:string;
+    channelsUsed:{channelName?:string}[];
     goals:string;
     objectives:string;
     challenge:string;
@@ -95,7 +95,13 @@ const RichEditor = <T extends PortfolioInputs | CaseStudyInputs | JobInputType>(
             control={control}
             rules={name=="story" ? { required: "Story is required" } : undefined }
             render={({ field }) => (
-                <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules} formats={[
+                <ReactQuill 
+                    theme="snow" 
+                    value={typeof field.value === 'string' ? field.value : ''} 
+                    onChange={field.onChange} 
+                    className="h-full" 
+                    modules={modules} 
+                    formats={[
                     "header",
                     "font",
                     "size",
