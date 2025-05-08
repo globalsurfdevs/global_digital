@@ -90,7 +90,7 @@ export async function GET(req: NextRequest) {
                     .order('index',{ascending:true})
                 
 
-                    console.log(portfolio)
+                   
 
                 if (portfolio && portfolio.length>0) {
                     return NextResponse.json({ portfolio });
@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
     // const title = formData.get("title") as string
     const industry = formData.get("industry") as string
     const country = formData.get("country") as string
-    const channelsUsed = formData.get("channelsUsed") as string
+    const channels = JSON.parse(formData.get("channels") as string);
     const story = formData.get("story") as string
     const goals = formData.get("goals") as string
     const objectives = formData.get("objectives") as string
@@ -274,6 +274,7 @@ export async function POST(req: NextRequest) {
 
 
     try {
+        console.log("channelsUsed",channels)
 
         if(section=='portfolio'){
             if (id) {
@@ -283,13 +284,14 @@ export async function POST(req: NextRequest) {
                     .eq('id', id)
     
                 if (portfolio) {
+                    console.log("FIRSTTTTTTTTTTTTTTTT")
                     const { data, error } = await supabase
                         .from('portfolios')
                         .update({
                             companyName,
                             industry,
                             country,
-                            channelsUsed,
+                            channels,
                             bannerImage: image == null ? imagePath : image,
                             story,
                             section2Image1: section2Image1 == null ? section2Image1Path : section2Image1,
@@ -316,7 +318,7 @@ export async function POST(req: NextRequest) {
                         .eq('id', id)
                         .select()
     
-                    console.log("Data", data, "Error", error)
+                    
     
                     const highlights: { customId: string, number: string, text: string }[] = [];
     
@@ -394,7 +396,7 @@ export async function POST(req: NextRequest) {
                             companyName,
                             industry,
                             country,
-                            channels:channelsUsed,
+                            channels,
                             bannerImage: imagePath,
                             story,
                             section2Image1: section2Image1Path,
@@ -495,7 +497,7 @@ export async function POST(req: NextRequest) {
                             sHeading,
                             industry,
                             country,
-                            channels:channelsUsed,
+                            channels,
                             coverImage: coverImage == null ? coverImagePath : coverImage,
                             story,
                             goals,
@@ -521,7 +523,7 @@ export async function POST(req: NextRequest) {
                         .eq('id', id)
                         .select()
     
-                    console.log("Data", data, "Error", error)
+                    
     
                     const highlights: { customId: string, number: string, text: string , showInHome:boolean }[] = [];
     
@@ -604,7 +606,7 @@ export async function POST(req: NextRequest) {
                             sHeading,
                             industry,
                             country,
-                            channelsUsed,
+                            channels,
                             coverImage: coverImagePath,
                             story,
                             image1: image1Path,
