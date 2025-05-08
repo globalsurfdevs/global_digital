@@ -36,9 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Grow with our expert content marketing services in the UAE. GS Digital is a Dubai-based agency delivering tailored content solutions for modern businesses.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/content-marketing-agency-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 
