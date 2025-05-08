@@ -154,7 +154,12 @@ const PortfolioList = () => {
                         <h3 className="text-30 mb-1 duration-200 ease-in-out  md:mb-2 text-white  duration-200 duration-300 ease-in-out ease-in-out ">
                           {item.companyName}
                         </h3>
-                        <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>
+                        <div className="flex gap-1">
+                        {item?.channels?.map((channel,index)=>(
+                            <p key={index} className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{index==item.channels.length-1 ? channel.channelName : channel.channelName + ", "}</p>
+                        ))}
+                        </div>
+                        {item?.channels?.length==0 && <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>}
                       </div>
                     </div>
 

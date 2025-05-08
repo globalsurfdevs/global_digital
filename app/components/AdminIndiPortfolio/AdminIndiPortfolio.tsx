@@ -126,7 +126,7 @@ const AdminIndiPortfolio = ({ editMode }: {
         const formData = new FormData();
         formData.append("companyName", data.companyName);
         formData.append("industry", data.industry);
-        formData.append("channelsUsed", JSON.stringify(data.channelsUsed));
+        formData.append("channels", JSON.stringify(data.channelsUsed));
         formData.append("country", data.country);
         formData.append("story", data.story);
         formData.append("metadataTitle", metaTitle);
@@ -260,7 +260,8 @@ const AdminIndiPortfolio = ({ editMode }: {
           try {
             const response = await fetch(`/api/portfolio/channels`);
             const data = await response.json();
-            setChannelsAvailable(data.data[0].channels)
+            console.log(data)
+            setChannelsAvailable(data.data)
           } catch (error) {
             console.error("Error fetching channels:", error);
           }
@@ -280,7 +281,11 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("companyName", data.portfolio[0].companyName)
                         setValue("industry", data.portfolio[0].industry)
                         setValue("country", data.portfolio[0].country)
-                        setValue("channelsUsed", data.portfolio[0].channelsUsed)
+                        if(data.portfolio[0].channels){
+                            setValue("channelsUsed", data.portfolio[0].channels)
+                            setChannelsUsed(data.portfolio[0].channels)
+                        }
+                        
                         setValue("story", data.portfolio[0].story)
                         setValue("goals", data.portfolio[0].goals)
                         setValue("objectives", data.portfolio[0].objectives)
@@ -527,15 +532,24 @@ const AdminIndiPortfolio = ({ editMode }: {
 
     const [channelsUsed, setChannelsUsed] = useState<{channelName:string}[]>([])
     const handleChangeInChannel = (index: number) => {
-        const channel = channelsAvailable[index]
-        if(channelsUsed.find((item:{channelName:string}) => item.channelName === channel.channelName)){
-            setChannelsUsed((prev) => prev.filter((item:{channelName:string}) => item.channelName !== channel.channelName))
-            setValue("channelsUsed", channelsUsed)
-        }else{
-            setChannelsUsed((prev) => [...prev, channel])
-            setValue("channelsUsed", channelsUsed)
+        const channel = channelsAvailable[index];
+      
+        const alreadyExists = channelsUsed.find(
+          (item: { channelName: string }) => item.channelName === channel.channelName
+        );
+      
+        if (alreadyExists) {
+          const updated = channelsUsed.filter(
+            (item: { channelName: string }) => item.channelName !== channel.channelName
+          );
+          setChannelsUsed(updated);
+          setValue("channelsUsed", updated); // ✅ use updated
+        } else {
+          const updated = [...channelsUsed, channel];
+          setChannelsUsed(updated);
+          setValue("channelsUsed", updated); // ✅ use updated
         }
-    }
+      };
 
 
     if(selectedSection=='portfolio'){
@@ -655,15 +669,15 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     {errors.country && <p className='mt-1 text-sm text-red'>{errors.country.message}</p>}
                                 </div>
     
-                                <div className='w-full flex flex-col gap-2'>
+                                {/* <div className='w-full flex flex-col gap-2'>
                                     <Label content='Channels Used' />
                                     <input type="text" {...register("channelsUsed", { required: "Channels used is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                     {errors.channelsUsed && <p className='mt-1 text-sm text-red'>{errors.channelsUsed.message}</p>}
-                                </div>
+                                </div> */}
 
-                                <div className='w-full flex flex-col gap-2'>
-                                    <Label content='Channels Available' />
-                                    <div className='flex gap-2 border p-5'>
+                                <div className='w-full flex flex-col gap-1 mt-1'>
+                                    <Label content='Channels Used' />
+                                    <div className='flex gap-2 border p-5 flex-wrap h-[200px]'>
                                         {channelsAvailable.map((channel, index) => (
                                             <div key={index} className='relative'>
                                             <div className={`h-4 w-4 rounded-full absolute -top-2 right-1 border-2 cursor-pointer ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`} onClick={() => handleChangeInChannel(index)}></div>

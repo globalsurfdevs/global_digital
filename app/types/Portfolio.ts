@@ -6,7 +6,8 @@ export type Portfolio = {
     companyName:string;
     industry:string;
     country:string;
-    channelsUsed:string;
+    channelsUsed:string[];
+    channels:{channelName:string,channelLink:string}[]
     bannerImage:string;
     story:string;
     goals:string;
