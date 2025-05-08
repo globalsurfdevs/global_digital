@@ -89,7 +89,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
         const formData = new FormData();
         formData.append("heading", data.heading);
         formData.append("sHeading", data.sHeading);
-        formData.append("channelsUsed", data.channelsUsed);
+        formData.append("channelsUsed", JSON.stringify(data.channelsUsed));
         formData.append("country", data.country);
         formData.append("story", data.story);
         // formData.append("metadataTitle", metaTitle);

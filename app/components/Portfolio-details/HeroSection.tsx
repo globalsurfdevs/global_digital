@@ -5,7 +5,7 @@ import React from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
-import Link from "next/link";
+// import Link from "next/link";
 
 const HeroSection = ({
   data,
@@ -113,13 +113,13 @@ const HeroSection = ({
                 {parse(data.portfolio[0].story)}
               </div>
               <div className="pt-10 lg:pt-[65px]">
-                <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737] mb-3">Services Provided</h5>
-                <div className="flex flex-wrap gap-2 lg:gap-4">
+                {/* <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737] mb-3">Services Provided</h5> */}
+                {/* <div className="flex flex-wrap gap-2 lg:gap-4">
                   {data.portfolio[0].channelsUsed.split(",").map((item, index) => (
                     <Link href={getServiceLink(item)} key={index}><button className="btn-outline-primary-text-black">{item}</button></Link>
                   ))}
 
-                </div>
+                </div> */}
               </div>
             </motion.div>
           </div>
