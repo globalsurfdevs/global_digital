@@ -1,6 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import ReCAPTCHA from 'react-google-recaptcha';
 
 interface LetsTalkProps {
   onClose: () => void;
@@ -22,6 +23,8 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
   // const [isBudgetOpen, setIsBudgetOpen] = useState(false);
   // const [isServiceOpen, setIsServiceOpen] = useState(false);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const recaptcha = useRef<ReCAPTCHA>(null)
+  const [error, setError] = useState("")
   console.log("Entered email:", formData.Email);
 
 
@@ -83,7 +86,16 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
 
     const form = document.getElementById("form") as HTMLFormElement;
     if (form) {
-      form.submit();
+      if(recaptcha){
+        const captchaValue = recaptcha?.current?.getValue()
+                if (!captchaValue) {
+                    setError("Please verify yourself to continue")
+                    return;
+                }else{
+                  form.submit();
+                }
+      }
+      // form.submit();
     } else {
       console.error("Form element not found");
     }
@@ -520,20 +532,27 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
               />
             </div>
 
-            <div>
+                <div className="flex items-center justify-between">
+                  <div>
+            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
+
+            {/* <div>
               <p className="font-19 fnt-lexend mb-5 font-[500] text-gray1 md:mb-[30px]">
                 In submitting this form, you are agreeing to{" "}
                 <Link href="/privacy-policy">Privacy Policy</Link>.
               </p>
-            </div>
+            </div> */}
             {/* <button
                 type="submit"
                 className="w-fit rounded-[55px] bg-primary px-[40px] py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray hover:text-primary md:px-[50px] md:py-[20px]"
               >
                 Submit
               </button> */}
+              {error !== "" && <div className='text-red-500'>{error}</div>}
+              </div>
+
             <button
-              className=" hover:bg-prtext-primary group   flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
+              className="h-fit hover:bg-prtext-primary group   flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
               type="submit"
             >
               <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
@@ -570,6 +589,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                 </svg>
               </div>
             </button>
+            </div>
           </form>
         </div>
       </div>
