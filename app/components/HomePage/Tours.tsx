@@ -85,10 +85,16 @@ const Tours = () => {
                     <h3 className="text-font30 leading-lh1p66 text-white">
                       {item.companyName}
                     </h3>
-                    <div className="flex gap-2">
-                      <h4 className={`text-primary ${lexend.className}`}>
+                    <div className="flex gap-1">
+                      
+                      {item.channels.length == 0 && <h4 className={`text-primary ${lexend.className}`}>
                         {item.channelsUsed}
-                      </h4>
+                      </h4>}
+                      {item.channels.length > 0 && item.channels.map((channel,index) => (
+                        <h4 className={`text-primary ${lexend.className}`} key={channel.channelName}>
+                          {index == item.channels.length - 1 ? channel.channelName : channel.channelName + ", "}
+                        </h4>
+                      ))}
                     </div>
                   </div>
                   <Link
