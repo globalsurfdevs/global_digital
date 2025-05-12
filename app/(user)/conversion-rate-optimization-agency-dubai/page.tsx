@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
+import Services from "../../components/conversion-rate-optimization/ServicesWithHoverbg";
 import Platforms from "../../components/PermormanceMarketing/Platforms";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
@@ -18,7 +18,7 @@ import {
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Framework from "@/app/components/PermormanceMarketing/Framework";
-import Platformimg from "@/app/components/common/Platformimg";
+import Platformimg from "@/app/components/conversion-rate-optimization/WhychooseWithoutSpace";
 
 interface Canonicals {
   canonical: string;
@@ -29,17 +29,32 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
+  openGraph: {
+    title: string;
+    siteName: string;
+    url: string;
+    description: string;
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "WDD Custom Web Development | G.S Digital",
+    title: "Top Conversion Rate Optimization Agency in Dubai | GS Digital ",
     description:
-      "Dubai's trusted SMM agency, Global Surf Digital, provides expert social media marketing services to help you dominate the digital landscape. Contact us now!",
+      "GS Digital is Dubai’s trusted CRO agency. Our CRO experts analyze, test & refine your website for better engagement & more sales. Get a free audit today! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical:
+        "https://www.globalsurf.ae/conversion-rate-optimization-agency-dubai",
     },
     robots: "noindex, nofollow",
+    openGraph: {
+      title:
+        "Boost Conversions with Dubai’s Top CRO Agency | GS Digital | 25+ Experts, 11+ Years",
+      siteName: "Global Surf Digital",
+      url: "https://www.globalsurf.ae/conversion-rate-optimization-agency-dubai",
+      description:
+        "Dubai’s #1 CRO agency for eCommerce & corporate websites. We specialize in A/B testing, landing page optimization & UX improvements. Book a free consultation today!",
+    },
   };
 }
 
