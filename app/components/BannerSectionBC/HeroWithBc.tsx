@@ -162,10 +162,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
                     <h1 className="title-80"> {herosection.title}</h1>
                     {herosection.subtitle && (
-                      <h3 className="my-3 text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
+                      <h2 className="my-3 text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
                         {" "}
                         {herosection.subtitle}
-                      </h3>
+                      </h2>
                     )}
                     {herosection.buttontitle && (
                       <button
@@ -176,7 +176,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       >
                         <div className="relative">
                           <p
-                            className={`duration-200 uppercase text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                            className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                           >
                             {herosection.buttontitle}
                           </p>
