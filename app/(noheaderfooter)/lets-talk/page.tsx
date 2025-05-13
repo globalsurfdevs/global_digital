@@ -1,24 +1,8 @@
 "use client";
 import React, {useEffect, useState } from "react";
 import Link from "next/link";
-interface Canonicals {
-  canonical: string;
-}
-type Metadata = {
- 
-  alternates: Canonicals;
-  robots: string;
-};
+import Head from "next/head";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    
-    alternates: {
-      canonical: "https://www.globalsurf.ae",
-    },
-    robots: "noindex, nofollow",
-  };
-}
 
 const Page = () => {
   const [formData, setFormData] = useState<{
@@ -98,6 +82,11 @@ const Page = () => {
 
 
   return (
+    <>
+     <Head>
+        <link rel="canonical" href="https://www.globalsurf.ae" />
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
     <div>
       <div className="maintalk">
         <div className="bg-dgray px-[20px] pb-[20px] pt-[20px] md:pb-[0px] lg:px-[40px] lg:pt-[100px]">
@@ -274,6 +263,7 @@ const Page = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
