@@ -1,6 +1,24 @@
 "use client";
 import React, {useEffect, useState } from "react";
 import Link from "next/link";
+interface Canonicals {
+  canonical: string;
+}
+type Metadata = {
+ 
+  alternates: Canonicals;
+  robots: string;
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    
+    alternates: {
+      canonical: "https://www.globalsurf.ae",
+    },
+    robots: "noindex, nofollow",
+  };
+}
 
 const Page = () => {
   const [formData, setFormData] = useState<{
