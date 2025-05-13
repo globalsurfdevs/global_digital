@@ -648,6 +648,8 @@ import hels2 from "../assets/services/marketing-automation/hel2.svg";
 import hels3 from "../assets/services/marketing-automation/hel3.svg";
 import hels4 from "../assets/services/marketing-automation/hel4.svg";
 import hels5 from "../assets/services/marketing-automation/hel5.svg";
+import hospbanner from "../assets/services/hosp-banner.png"
+import hospSeoicon from "../assets/services/hospitality-seo.svg"
 import inbanner from "../assets/industry/inbanner.jpg";
 import dabanner from "../assets/data-analytics/dabanner.jpg";
 import dahel1 from "../assets/data-analytics/dahep1.svg";
@@ -780,6 +782,7 @@ import edcover1 from "../assets/education/edcover1.jpg";
 import edcover2 from "../assets/education/edcover2.jpg";
 import edcover3 from "../assets/education/edcover3.jpg";
 import edcover4 from "../assets/education/edcover4.jpg";
+import mailhos from "../assets/services/mail-hos.svg"
 
 
 
@@ -802,6 +805,9 @@ export const assets = {
   edic6,
   edic7,
   edic8,
+  mailhos,
+  hospSeoicon,
+  hospbanner,
   edbanner,
   ini1,
   ini2,
