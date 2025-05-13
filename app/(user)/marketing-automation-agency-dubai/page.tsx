@@ -106,7 +106,7 @@ const page = () => {
         />
       </section>
 
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"Let’s Connect!"} />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET'S CONNECT!" } />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}
