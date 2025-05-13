@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Dubai’s #1 Marketing Automation Agency | Streamline & Succeed",
-      siteName: "Global Surf Digital",
+      siteName: "Global Surf Digital ",
       url: "https://www.globalsurf.ae/marketing-automation-agency-dubai",
       description:
         "Nurture leads, segment audiences, and refine touchpoints effortlessly. GS Digital offers top-tier marketing automation services in Dubai. Get a quote today!",
