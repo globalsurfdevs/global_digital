@@ -92,6 +92,11 @@ const nextConfig: NextConfig = {
         destination: "/portfolio/telal-engineering-and-contracting", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+      {
+        source: "/lets-talk", // The old URL path
+        destination: "https://www.globalsurf.ae", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
     ];
   },
 };
