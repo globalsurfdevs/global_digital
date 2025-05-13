@@ -2,6 +2,8 @@
 import React, {useEffect, useState } from "react";
 import Link from "next/link";
 
+
+
 const Page = () => {
   const [formData, setFormData] = useState<{
     PhoneNumber_countrycode?: string;
@@ -80,6 +82,8 @@ const Page = () => {
 
 
   return (
+   
+    
     <div>
       <div className="maintalk">
         <div className="bg-dgray px-[20px] pb-[20px] pt-[20px] md:pb-[0px] lg:px-[40px] lg:pt-[100px]">
@@ -256,6 +260,7 @@ const Page = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
