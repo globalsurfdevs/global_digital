@@ -161,7 +161,7 @@ const Industydetail: React.FC<ExpertiseSectionProps> = ({
                           >
                             {expertise.desc}
                             </p>
-                            <div className="border-b border-primary w-fit cntsmd hided-content max-h-0   overflow-hidden    text-white
+                            {/* <div className="border-b border-primary w-fit cntsmd hided-content max-h-0   overflow-hidden    text-white
                                    opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100">
                               <div className="flex items-center gap-[18px] pt-5 leading-[3]">
                               <p
@@ -179,7 +179,7 @@ const Industydetail: React.FC<ExpertiseSectionProps> = ({
                             </defs>
                               </svg>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                       </div>
                     </div>

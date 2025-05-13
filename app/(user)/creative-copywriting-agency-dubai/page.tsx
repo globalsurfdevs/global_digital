@@ -35,9 +35,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Boost your brand voice with GS Digital, a top copywriting agency in Dubai. Our creative services deliver results-driven content from social media to ads.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/creative-copywriting-agency-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 

@@ -29,17 +29,34 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
+    openGraph: {
+    title: string;
+    siteName: string;
+    url: string;
+    description: string;
+    type: string;
+   
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Services",
+    title: "Marketing Automation Agency in Dubai | GS Digital ",
     description:
-      "Partner with a top web app development company in Dubai specializing in custom web applications. We build secure web apps tailored to your business. ",
+      "Partner with Dubai’s trusted marketing automation agency. With 10+ years of experience, we deliver customized solutions that drive real results. Contact now!",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/marketing-automation-agency-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
+    openGraph: {
+      title: "Dubai’s #1 Marketing Automation Agency | Streamline & Succeed",
+      siteName: "Global Surf Digital ",
+      url: "https://www.globalsurf.ae/marketing-automation-agency-dubai",
+      description:
+        "Nurture leads, segment audiences, and refine touchpoints effortlessly. GS Digital offers top-tier marketing automation services in Dubai. Get a quote today!",
+      type: "website",
+      
+    },
   };
 }
 
