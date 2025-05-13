@@ -135,113 +135,123 @@ export const Matslogo = [
         src: assets.mats3,
         alt: "Logo",
       },
-      {
+  {
         id: 4,
-        src: assets.mats4,
+        src: assets.brevo,
         alt: "Logo",
       },
       {
         id: 5,
-        src: assets.mats5,
+        src: assets.mats4,
         alt: "Logo",
       },
       {
         id: 6,
-        src: assets.mats6,
+        src: assets.mats5,
         alt: "Logo",
       },
       {
         id: 7,
-        src: assets.mats7,
+        src: assets.mats6,
         alt: "Logo",
       },
       {
         id: 8,
-        src: assets.mats8,
+        src: assets.postmark,
         alt: "Logo",
       },
       {
         id: 9,
-        src: assets.mats9,
+        src: assets.mats7,
         alt: "Logo",
       },
       {
         id: 10,
-        src: assets.mats10,
+        src: assets.mats8,
         alt: "Logo",
       },
       {
         id: 11,
-        src: assets.mats11,
+        src: assets.mats9,
         alt: "Logo",
       },
       {
         id: 12,
-        src: assets.mats12,
+        src: assets.mats10,
         alt: "Logo",
       },
       {
         id: 13,
-        src: assets.mats13,
+        src: assets.mats11,
         alt: "Logo",
       },
       {
         id: 14,
-        src: assets.mats14,
+        src: assets.mats12,
         alt: "Logo",
       },
       {
         id: 15,
-        src: assets.mats15,
+        src: assets.mats13,
         alt: "Logo",
       },
       {
         id: 16,
-        src: assets.mats16,
+        src: assets.mats14,
         alt: "Logo",
       },
       {
         id: 17,
-        src: assets.mats17,
+        src: assets.mats15,
         alt: "Logo",
       },
       {
         id: 18,
-        src: assets.mats18,
+        src: assets.mats16,
         alt: "Logo",
       },
       {
         id: 19,
-        src: assets.mats19,
+        src: assets.mats17,
         alt: "Logo",
       },
       {
         id: 20,
-        src: assets.mats20,
+        src: assets.mats18,
         alt: "Logo",
       },
       {
         id: 21,
-        src: assets.mats21,
+        src: assets.mats19,
         alt: "Logo",
       },
       {
         id: 22,
-        src: assets.mats22,
+        src: assets.mats20,
         alt: "Logo",
       },
       {
         id: 23,
-        src: assets.mats23,
+        src: assets.mats21,
         alt: "Logo",
       },
       {
         id: 24,
-        src: assets.mats24,
+        src: assets.mats22,
         alt: "Logo",
       },
       {
         id: 25,
+        src: assets.mats23,
+        alt: "Logo",
+      },
+      {
+        id: 26,
+        src: assets.mats24,
+        alt: "Logo",
+      },
+      {
+        id: 27,
         src: assets.mats25,
         alt: "Logo",
       },
@@ -321,7 +331,7 @@ export const Faq = [
   {
     title: "Can you integrate automation with my existing CRM? ",
     description:
-      "Yes! We ensure seamless integration with leading CRM platforms to enhance marketing efficiency",
+      "Yes! We ensure seamless integration with leading CRM platforms to enhance marketing efficiency.",
   },
   {
     title: "What industries benefit from marketing automation? ",
@@ -334,9 +344,10 @@ export const relatedservices = {
   data: [
     {
       id: 1,
-      title: "SEO & Performance Marketing ",
+      title: "SEO",
       dec: "We use data-driven strategies to boost your online presence and attract the right audience. ",
-      icon:assets.rsd1
+      icon:assets.rsd1,
+      url: "/seo-agency-dubai",
     } ,
     {
       id: 2,
@@ -346,7 +357,7 @@ export const relatedservices = {
     } ,
     {
       id: 3,
-      title: "Social Media Automation ",
+      title: "Social Media Marketing",
       dec: "Save time while effortlessly managing and optimizing your social media presence. ",
       icon:assets.rsd3
     } ,

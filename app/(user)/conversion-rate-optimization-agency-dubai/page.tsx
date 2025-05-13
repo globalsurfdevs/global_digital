@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical:
         "https://www.globalsurf.ae/conversion-rate-optimization-agency-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
     openGraph: {
       title:
         "Boost Conversions with Dubai’s Top CRO Agency | GS Digital | 25+ Experts, 11+ Years",

@@ -634,6 +634,8 @@ import mats22 from "../assets/services/marketing-automation/matslog22.svg";
 import mats23 from "../assets/services/marketing-automation/matslog23.svg";
 import mats24 from "../assets/services/marketing-automation/matslog24.svg";
 import mats25 from "../assets/services/marketing-automation/matslog25.svg";
+import brevo from "../assets/services/marketing-automation/brevo.svg";
+import postmark from "../assets/services/marketing-automation/postmark.svg";
 import massbanner from "../assets/services/marketing-automation/mabanner.jpg";
 import rsd1 from "../assets/services/marketing-automation/rs1.svg";
 import rsd2 from "../assets/services/marketing-automation/rs2.svg";
@@ -948,6 +950,8 @@ export const assets = {
   mats17,
   mats18,
   mats19,
+  postmark,
+  brevo,
   mats20,
   mats21,
   mats22,
