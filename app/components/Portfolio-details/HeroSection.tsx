@@ -81,10 +81,18 @@ const HeroSection = ({
                     <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Services</h5>
                     <h4 className="text-30">{data.portfolio[0].channelsUsed}</h4>
                   </div> */}
-                  <button className="btn-outline-black" onClick={() => window.open(data.portfolio[0].websiteLink, "_blank")}>
-                    {/* <button className="btn-outline-black" > */}
+                  {/* <button className="btn-outline-black" onClick={() => window.open(data.portfolio[0].websiteLink, "_blank")}>
+                   
                     View Live Website
-                  </button>
+                  </button> */}
+                    <Link
+                    href={data.portfolio[0].websiteLink} 
+                    target="_blank" 
+                    rel="nofollow" 
+                    className="btn-outline-black"
+                    >
+                    View Live Website
+                    </Link>
                 </div>
               </div>
             </motion.div>
