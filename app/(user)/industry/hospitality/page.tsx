@@ -31,9 +31,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "E-Commerce Digital Marketing Agency Dubai | Global Surf Digital",
+    title: "Hospitality | Global Surf Digital",
     description:
-      "Scale your e-commerce brand with data-driven digital marketing strategies. From SEO to performance marketing, we help you attract buyers and grow. Call us! ",
+      "Hospitality digital marketing is essential for maximizing bookings and enhancing guest experiences. Our strategies drive sustainable growth.",
     alternates: {
       canonical:
         "https://www.globalsurf.ae",
@@ -54,13 +54,13 @@ const page = () => {
 
       <Framework
         title={Frameworkdata.title}
-      
+      subtitle={Frameworkdata.subtitle}
         data={Frameworkdata.data}
         bgcolor={"white"}
         colcount={2}
         maxchwidth={52}
       />
-      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} />
+      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} subtitle={AreaExpertise.subtitle} />
       {/* <SuccessStories
         Clientsformsdata={Clientsformsdata}
         title1="Success Stories <br>That Speak for Themselves"

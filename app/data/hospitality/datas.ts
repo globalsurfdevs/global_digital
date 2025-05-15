@@ -15,7 +15,7 @@ export const BannerSection = [
     subtitle:
       "From driving direct bookings to building lasting guest relationships, we help hotels and tourism brands grow with result-driven digital strategies curiated for the hospitality industry. ",
     buttontitle: "Get a Free Strategy Session",
-    buttonurl: "",
+    // buttonurl: "",
     sub: [
       {
         stitle: "",
@@ -26,7 +26,7 @@ export const BannerSection = [
 ];
 export const Frameworkdata = {
   title: "Navigating the New Age of Guest Engagement  ",
-  description:"Why Hotels & Tourism Brands Need a Leading Marketing Agency for Hospitality ",
+ subtitle:"Why Hotels & Tourism Brands Need a Leading Marketing Agency for Hospitality ",
   data: [
     {
       id: 1,
@@ -63,6 +63,7 @@ export const Frameworkdata = {
 export const AreaExpertise = {
   title:
     "Digital Marketing Services from a Top Hotel Marketing Agency ",
+    subtitle:"How We Help Construction Companies Grow",
     
   data: [
     {
