@@ -6,6 +6,7 @@ import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
+import LetsTalk from "@/app/components/common/LetsConnect";
 import Link from "next/link";
 const lexend = Lexend({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ interface BannerSection {
   title1?: string;
   subtitle?: string;
   buttontitle?: string;
-  buttonurl?: string;
+  // buttonurl?: string;
   image: string | StaticImageData;
   sub: su[];
   heroAlt?: string;
@@ -93,9 +94,29 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     // Clean up the event listener on unmount
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
+const [modalOpen, setModalOpen] = useState(false);
 
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen]);
   return (
     <>
+     {/* Modal section */}
+      {modalOpen && (
+        <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
+          <LetsTalk onClose={() => setModalOpen(false)} />
+        </div>
+      )}
       <div className="container mx-auto py-2" ref={nextContainerRef}>
         {Bannerdata.map((herosection) => (
           <div key={herosection.id}>
@@ -169,6 +190,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     )}
                     {herosection.buttontitle && (
                       <button
+                      onClick={() => setModalOpen(true)}
                         className="z-2 z-1 group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
                 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
                 after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mb-[45px]
@@ -180,10 +202,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                           >
                             {herosection.buttontitle}
                           </p>
-                          <Link
+                          {/* <Link
                             href={herosection.buttonurl || "#"}
                             className="absolute top-0 z-[1] h-full w-full"
-                          ></Link>
+                          ></Link> */}
                         </div>
                         <svg
                           width="10"
