@@ -532,8 +532,8 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
               />
             </div>
 
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex  items-center justify-between ">
+                  <div className="md:col-span-6 col-12">
             <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
 
             {/* <div>
@@ -550,9 +550,9 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
               </button> */}
               {error !== "" && <div className='text-red-500'>{error}</div>}
               </div>
-
+<div className="md:col-span-6 col-12">
             <button
-              className="h-fit hover:bg-prtext-primary group   flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
+              className="h-fit md:mt-0 mt-4 hover:bg-prtext-primary group   flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
               type="submit"
             >
               <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
@@ -589,6 +589,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                 </svg>
               </div>
             </button>
+            </div>
             </div>
           </form>
         </div>
