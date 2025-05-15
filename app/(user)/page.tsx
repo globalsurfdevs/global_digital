@@ -19,6 +19,14 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
+  openGraph: {
+    title: string;
+    site_name: string;
+    url: string;
+    description: string;
+    type: string;
+    images: { url: string; alt: string; type: string }[];
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,6 +37,22 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae",
     },
+    openGraph: {
+      title: "Strategic Digital Marketing Solutions in Dubai | GS.Digital",
+      site_name: "Global Surf Digital",
+      url: "https://www.globalsurf.ae/",
+      description:
+        "GS.Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
+
+      images: [
+        {
+          url: "https://www.globalsurf.ae/_next/static/media/gs-digital-logo.2e30d388.svg",
+          alt: "Global Surf Digital Logo",
+          type: "image/svg+xml", // Use appropriate MIME type if SVG
+        },
+      ],
+      type:"website"
+    },
   };
 }
 
@@ -36,31 +60,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta
-          property="og:title"
-          content="Strategic Digital Marketing Solutions in Dubai | GS.Digital"
-        />
-        <meta property="og:site_name" content="Global Surf Digital" />
-           <meta
-          property="og:type"
-          content="website"
-        />
-        <meta
-          property="og:url"
-          content="https://www.globalsurf.ae/"
-        />
-        <meta
-          property="og:description"
-          content="GS.Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today."
-        />
-        <meta
-          property="og:image"
-          content="https://www.globalsurf.ae/_next/static/media/gs-digital-logo.2e30d388.svg"
-        />
-        <meta
-          property="og:image:alt"
-          content="Global Surf Digital Logo"
-        />
+
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
