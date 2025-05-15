@@ -14,6 +14,7 @@ interface FrameworkItem {
 
 interface FrameworkSectionProps {
   title1?: string;
+  subtitle?: string;
   title: string;
   bgcolor?: string;
   description?: string;
@@ -25,6 +26,7 @@ interface FrameworkSectionProps {
 const RightAlignedSec: React.FC<FrameworkSectionProps> = ({
   title,
   title1,
+  subtitle,
   data,
   description,
   bgcolor,
@@ -70,7 +72,10 @@ const RightAlignedSec: React.FC<FrameworkSectionProps> = ({
                    <div
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
-                    <h2 className="title-65 pb-6 lg:pb-[58px]">{title}</h2>
+                    <h2 className="title-65 lg:pb-[40px] pb-3">{title}</h2>
+                     {subtitle && (
+                    <p className="text-[20px] lg:text-[24px] text-[#77787B] leading-[32px]">{subtitle}</p>
+                )}
                     </div>
                 </>
               )}
