@@ -27,18 +27,32 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
+   openGraph: {
+    title: string;
+    siteName: string;
+    url: string;
+    description: string;
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Hospitality | Global Surf Digital",
+    title: "Hospitality Digital Marketing Agency in Dubai | GS Digital",
     description:
-      "Hospitality digital marketing is essential for maximizing bookings and enhancing guest experiences. Our strategies drive sustainable growth.",
+      "Drive direct bookings and engage high-intent travellers with result-driven digital marketing strategies tailored for the hospitality industry. Get a free consultation! ",
     alternates: {
       canonical:
-        "https://www.globalsurf.ae",
+        "https://www.globalsurf.ae/industry/digital-marketing-agency-for-hospitality",
     },
     robots: "noindex, nofollow",
+     openGraph: {
+      title:
+        "Hospitality Digital Marketing Agency | Global Surf Digital | 25+ Experts, 11+ Years",
+      siteName: "Global Surf Digital",
+      url: "https://www.globalsurf.ae/industry/digital-marketing-agency-for-hospitality",
+      description:
+        "Get more bookings and reach high-intent travelers with expert hospitality SEO, PPC, and digital branding services. From resorts to boutique stays, we help hospitality brands grow with tailored digital marketing. Get a quote today!",
+    },
   };
 }
 const page = () => {
@@ -60,7 +74,7 @@ const page = () => {
         colcount={2}
         maxchwidth={52}
       />
-      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} subtitle={AreaExpertise.subtitle} />
+      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data}  />
       {/* <SuccessStories
         Clientsformsdata={Clientsformsdata}
         title1="Success Stories <br>That Speak for Themselves"
