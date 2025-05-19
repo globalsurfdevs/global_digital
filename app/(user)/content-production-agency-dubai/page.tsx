@@ -28,17 +28,31 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
+    openGraph: {
+    title: string;
+    siteName: string;
+    url: string;
+    description: string;
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Services",
+    title: "Creative Content Production Agency in Dubai | GS Digital ",
     description:
-      "Partner with a top web app development company in Dubai specializing in custom web applications. We build secure web apps tailored to your business. ",
+      "We are a Dubai-based content production agency delivering high-impact content production for social media, video, and digital platforms.  Get in touch with us! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/content-production-agency-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
+     openGraph: {
+      title:
+        "Dubai's Trusted Content Production Agency | GS Digital",
+      siteName: "Global Surf Digital",
+      url: "https://www.globalsurf.ae/content-production-agency-dubai",
+      description:
+        "Looking for a creative content production agency in Dubai? From brand videos to social media visuals, GS Digital offers complete content production services tailored for your brand. Get in touch with us!",
+    },
   };
 }
 
