@@ -1,4 +1,5 @@
 import { assets } from "@/public/assets/assets";
+import { url } from "inspector";
 
 export const BannerSection = [
   {
@@ -63,7 +64,7 @@ export const Clientsformsdata = [
     id: 1,
     image: assets.brnd1,
     title: "Cloud Dynamics",
-    desc: "Construction ",
+    desc: "Information Technology",
     btntext: "",
     btnurl: "case-study/assent-steel",
   },
@@ -71,7 +72,7 @@ export const Clientsformsdata = [
     id: 2,
     image: assets.brnd2,
     title: "AYKA",
-    desc: "Construction ",
+    desc: "Facility Maintenance Services",
     btntext: "",
     btnurl: "",
   },
@@ -206,18 +207,21 @@ export const relatedservices = {
       title: " Content Marketing",
       dec: "With a mix of strategy, storytelling, and SEO, we help your brand stay relevant, valuable, and always one step ahead.",
       icon:assets.cpric1
+    
     } ,
     {
       id: 2,
       title: "Branding ",
       dec: "Build a cohesive brand identity that carries across every visual touchpoint.",
-      icon:assets.cpric2
+      icon:assets.cpric2,
+      url:"/branding-agency-dubai "
     } ,
     {
       id: 3,
       title: "Logo Design",
       dec: "Create a visual mark that communicates your values and stands out effortlessly.",
-      icon:assets.cpric3
+      icon:assets.cpric3,
+      url:"/logo-design-agency-dubai"
     } ,
     {
       id: 4,
@@ -229,13 +233,15 @@ export const relatedservices = {
       id: 5,
       title: "Website Development",
       dec: "Beautifully designed, content-rich websites built for engagement and results.",
-      icon:assets.cpric5
+      icon:assets.cpric5,
+      url:"/web-development-agency-dubai"
     } ,
     {
       id: 6,
       title: "Graphic Design",
       dec: " Stunning layouts and creative designs that amplify your content.",
-      icon:assets.cpric6
+      icon:assets.cpric6,
+      url:"/graphic-design-agency-dubai"
     }
   ],
 };
