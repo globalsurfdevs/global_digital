@@ -63,13 +63,13 @@ export const Frameworkdata = {
 export const AreaExpertise = {
   title:
     "Digital Marketing Services from a Top Hotel Marketing Agency ",
-    subtitle:"How We Help Construction Companies Grow",
+   
     
   data: [
     {
       id: 1,
       icon: assets.hospSeoicon,
-      title: "Hospitality SEO ",
+      title: "Search Engine Optimization",
       desc: "Improve your property’s visibility with localized and international SEO strategies. Optimize for “hotels near me,” destination keywords, and relevant travel searches to drive organic traffic. ",
       url: "",
     },
@@ -83,7 +83,7 @@ export const AreaExpertise = {
     {
       id: 3,
       icon: assets.icon3,
-      title: "Branding & Content Creation",
+      title: "Branding & Creatives",
       desc: "Tell your story through stunning visuals, immersive travel content, and compelling guest experiences. Build a brand guests remember and return to. ",
       url: "",
     },
@@ -104,21 +104,21 @@ export const AreaExpertise = {
     {
       id: 6,
       icon: assets.icon6,
-      title: "Website Development & CRO",
+      title: "Website Design & Development",
       desc: "Build a mobile-first, lightning-fast hotel website optimized for bookings. Streamline the user journey, add trust elements, and reduce friction with modern CRO techniques. ",
       url: "",
     },
     {
       id: 7,
       icon: assets.icon7,
-      title: "Video Marketing ",
+      title: "Content Production",
       desc: "Bring your hospitality brand to life with video walkthroughs, guest stories, and destination highlights. Capture attention with short-form content and cinematic promos. ",
       url: "",
     },
     {
       id: 8,
-      icon: assets.mailhos,
-      title: "Email & SMS Marketing",
+      icon: assets.e_commerce,
+      title: "Social Media Management",
       desc: "Stay top-of-mind with automated guest journeys welcome series, booking confirmations, upsell offers, and post-stay thank you that increase retention and referrals. ",
       url: "",
     },
@@ -177,11 +177,7 @@ export const Faq = [
     description:
       " Visual storytelling wins. Professional photos, guest testimonials, room tours, destination guides, and behind-the-scenes content all engage potential guests. ",
   },
-  {
-    title: "How important is email marketing for online stores?",
-    description:
-      "Extremely! Automated email sequences drive repeat purchases, recover abandoned carts, and nurture customer relationships. It’s a cost-effective way to boost long-term revenue.",
-  },
+  
   {
     title: "Is email marketing still effective for hospitality?  ",
     description:
