@@ -189,7 +189,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
           <button onClick={onClose}>
             <div className="  absolute right-5 top-[30px] z-[55px] w-fit cursor-pointer rounded-3xl bg-primary px-6 py-2 duration-200  ease-in-out group-hover:-translate-x-[-3px]    group-hover:bg-primary group-hover:shadow-lg  md:bg-white  ">
               <div className="uppercase text-white">
-                <p className="bolder text-font16 text-white duration-300   ease-in-out group-hover:text-white md:text-black">
+                <p className="bolder text-font16 text-white duration-300  ease-in-out ease-in-out group-hover:text-white md:text-black">
                   CLOSE
                 </p>
               </div>
@@ -206,7 +206,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
             onSubmit={handleSubmit}
             action="https://forms.zohopublic.com/Globalsurf/form/GlobalsurfNewForm/formperma/ed-ixp-D06mNuOfW52SHqkLRh7ZZV4AbxY-Ks8LcP_s/htmlRecords/submit"
             name="form"
-            id="frmlt1"
+            id="form"
             method="POST"
             acceptCharset="UTF-8"
             encType="multipart/form-data"
