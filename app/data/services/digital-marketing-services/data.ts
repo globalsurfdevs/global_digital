@@ -264,7 +264,7 @@ export const Clientsformsdata = [
     title: "The Story Behind Garden Concept’s 77.54% Traffic Growth",
     description:
       "Explore The Garden Concept’s digital marketing strategy for boosting overall web traffic and store visits.",
-    linkUrl: "",
+    linkUrl: "https://www.globalsurf.ae/case-study/the-garden-concept",
     linkText: "Read Full Case Study",
   },
   {
@@ -273,7 +273,7 @@ export const Clientsformsdata = [
     title: "The Secrets Behind Seleo’s 10x Revenue Growth ",
     description:
       "Discover how Seleo achieved remarkable growth through innovative strategies that enhanced online engagement and business success. ",
-    linkUrl: "",
+    linkUrl: "https://www.globalsurf.ae/case-study/seleo",
     linkText: "Read Full Case Study",
   },
   {
@@ -282,7 +282,7 @@ export const Clientsformsdata = [
     title: "How Assent Steel Doubled Its Website Traffic ",
     description:
       "Explore Inside Assent Steel’s 2x Traffic Success and uncover how smart strategies and data-driven tactics doubled their website traffic. ",
-    linkUrl: "",
+    linkUrl: "https://www.globalsurf.ae/case-study/assent-steel",
     linkText: "Read Full Case Study",
   },
 ];
