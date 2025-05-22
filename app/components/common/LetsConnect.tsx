@@ -393,7 +393,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                         AED &gt; 100000
                       </li>
                     </ul>
-                    
+
                   )} */}
                   <select
                   name="Dropdown"
