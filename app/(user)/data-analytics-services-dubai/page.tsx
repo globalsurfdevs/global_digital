@@ -37,9 +37,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Unlock smarter decisions with expert data analytics consulting in Dubai. GS Digital delivers tailored data solutions to fuel business growth. Check now! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/",
+      canonical: "https://www.globalsurf.ae/data-analytics-services-dubai",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
   };
 }
 
