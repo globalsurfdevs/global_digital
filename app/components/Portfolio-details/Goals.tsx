@@ -106,6 +106,7 @@ const Goals = ({
           </div> : null}
       </div>
 
+
       {data?.portfolio[0].section2BannerImage ? (
         <div className="">
           <motion.div
