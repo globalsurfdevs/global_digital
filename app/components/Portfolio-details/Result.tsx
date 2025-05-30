@@ -43,7 +43,7 @@ const Result = ({
             )}
 
     <div className="container mx-auto py-4">
-      {data?.portfolio[0].result=="<p><br></p>" || data?.portfolio[0].result=="<p>undefined</p>" || data?.portfolio[0].result=="undefined" ? null :  <div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] ">
+      {data?.portfolio[0].result=="<p><br></p>" || data?.portfolio[0].result=="<p>undefined</p>" || data?.portfolio[0].result=="undefined" ? null :  <div className="flex flex-col gap-4 lg:gap-[30px] ">
         <motion.div
           initial="hidden"
           whileInView="visible"
