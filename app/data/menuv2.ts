@@ -15,15 +15,15 @@ export const menuItems = [
       children: [
         {
           item: "Branding",
-          url: "",
+          url: "/creative-agency-dubai",
         },
         {
           item: "Logo Design",
-          url: "",
+          url: "/logo-design-agency-dubai",
         },
         {
           item: "Graphic Design",
-          url: "",
+          url: "/graphic-design-agency-dubai",
         },
         {
           item: "Copywriting",
@@ -42,23 +42,23 @@ export const menuItems = [
         children: [
           {
             item: "Web Development",
-            url: "",
+            url: "/web-development-agency-dubai",
           },
           {
             item: "Website Design",
-            url: "",
+            url: "/web-design-agency-dubai",
           },
           {
             item: "Mobile App",
-            url: "",
+            url: "/mobile-app-development-company-dubai",
           },
           {
             item: "Web Apps",
-            url: "",
+            url: "/web-app-dev-agency",
           },
           {
             item: "Ecommerce Development",
-            url: "",
+            url: "/e-commerce-web-development-company",
           },
         ],
       },
@@ -69,15 +69,15 @@ export const menuItems = [
         children: [
           {
             item: "Performance Marketing",
-            url: "",
+            url: "/performance-marketing-agency-dubai",
           },
           {
             item: "Search Engine Optimisation",
-            url: "",
+            url: "/seo-agency-dubai",
           },
           {
             item: "Social Media Services",
-            url: "",
+            url: "/social-media-agency-dubai",
           },
           {
             item: "Content Marketing",
@@ -85,7 +85,7 @@ export const menuItems = [
           },
           {
             item: "Marketing Automation",
-            url: "",
+            url: "/marketing-automation-agency-dubai",
           },
         ],
       },
