@@ -41,12 +41,12 @@ export const MenuItem = ({
 
   return (
     <motion.li
-      className="mobile-menu-li relative cursor-pointer w-full flex-col"
+      className="items-center  relative cursor-pointer w-full flex-col"
       
       onClick={children ? toggleSubmenu : toggle}
     >
       <div className="flex justify-between items-center  border-b font-bold w-full">
-       <Link href={Links} className="py-2 w-full"> {item}</Link>
+       <Link href={Links} className="py-3 w-full"> {item}</Link>
         {children && (
           <span className="ml-2">
           {isSubmenuOpen ? (

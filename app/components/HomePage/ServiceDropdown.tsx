@@ -1,5 +1,8 @@
 "use client";
 import React, { useState } from "react";
+import { assets } from "@/public/assets/assets";
+import menuright from "@/public/assets/menurightarrow.svg"
+import Image from "next/image";
 
 type ServiceItem = { text: string ,url?: string; };
 type ServiceCategory = {
@@ -115,10 +118,10 @@ const ServicesMegaMenu = () => {
   return (
     <div className="relative group inline-block">
       {/* Mega Menu Dropdown */}
-      <div className="absolute left-0 right-0 top-full z-50 h-[690px] w-screen bg-black text-white mt-2">
-        <div className="w-full mx-auto px-8 py-[80px] flex justify-between items-center xxl:pl-[150px] lg:pl-[50px]">
+      <div className="absolute left-0 right-0  z-50  w-screen bg-black text-white ">
+        <div className="w-full mx-auto px-8 xxl:py-[80px] py-[30px] flex justify-between items-center xxl:pl-[150px] lg:pl-[50px]">
           {/* Header Section */}
-          <div className="mb-12 w-1/3">
+          <div className=" w-1/3">
             <h2
               className="xxl:text-[48px] lg:text-[35px] xxl:leading-[60px] lg:leading-[50px] mb-4 transition-all duration-300"
               dangerouslySetInnerHTML={{
@@ -128,16 +131,29 @@ const ServicesMegaMenu = () => {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-3 gap-10 w-full pl-[130px]">
+          <div className="grid grid-cols-3 xxl:gap-10 gap-6 w-full pl-[130px]">
             {Object.entries(serviceData).map(([category, items]) => (
               <div key={category} className="group w-full">
-                <h4
-                  className={`font-[400] uppercase text-font19 mb-4 transition-colors duration-200 ${
-                    activeItem[0] === category ? "text-[#E43D30]" : "text-white"
-                  }`}
-                >
-                  {category}
-                </h4>
+                <div className="flex items-center xxl:mb-[30px] mb-[20px]">
+                  <h4
+                    className={`font-[400] uppercase xxl:text-font19 text-[15px] pr-[16px] ${
+                      activeItem[0] === category ? "text-[#E43D30]" : "text-white"
+                    }`}
+                  >
+                    {category}
+                  </h4>
+                  <Image
+                    src={menuright}
+                    alt="arrow"
+                    className="m-0 p-0"
+                    style={{
+                      filter:
+                        activeItem[0] === category
+                          ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
+                          : "",
+                    }}
+                  />
+                </div>
                 <ul className="space-y-2">
                   {Object.entries(items).map(([title, { text, url }]) => {
                     const isActive =
@@ -146,14 +162,18 @@ const ServicesMegaMenu = () => {
                       <li
                         key={title}
                         onMouseEnter={() => handleHover(category, title)}
-                        className={`cursor-pointer text-font19 transition-opacity duration-200 ${
+                        className={`cursor-pointer xxl:text-font19 text-[14px] transition-opacity duration-200 ${
                           isActive
                             ? "text-white opacity-100"
                             : "text-white opacity-60 hover:opacity-100"
                         }`}
                       >
                         <a href={url}>
-                        {title}
+                          
+
+                          {title}
+                          
+                         
                         </a>
                       </li>
                     );

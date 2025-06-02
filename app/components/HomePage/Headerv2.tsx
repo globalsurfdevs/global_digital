@@ -142,7 +142,7 @@ const Header = () => {
 
 
             {/* SERVICES */}
-            <div
+            <motion.div
               className="relative flex flex-col justify-center"
               onMouseEnter={() => setIsServicesHovered(true)}
               onMouseLeave={() => setIsServicesHovered(false)}
@@ -153,7 +153,7 @@ const Header = () => {
               >
                 SERVICES +
               </button>
-            </div>
+            </motion.div>
 
             {/* PORTFOLIO */}
           <motion.div className="flex flex-col justify-center" whileHover="hover" initial="initial">
@@ -242,13 +242,13 @@ const Header = () => {
         {/* ServicesMegaMenu rendered OUTSIDE container, but inside header */}
         <AnimatePresence>
           {isServicesHovered && (
-            <motion.div
+            <motion.div 
+            className="shadow-lg transition-all duration-100 ease-in-out"
               onMouseEnter={() => setIsServicesHovered(true)}
               onMouseLeave={() => setIsServicesHovered(false)}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              
+               initial={{ opacity: 0, y: -5 }}
+                          animate={{ opacity: 1, y: 5 }}
+                          exit={{ opacity: 0, y: -5 }}
               
             >
               <ServicesMegaMenu />

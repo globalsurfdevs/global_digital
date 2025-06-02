@@ -782,10 +782,8 @@ import edcover1 from "../assets/education/edcover1.jpg";
 import edcover2 from "../assets/education/edcover2.jpg";
 import edcover3 from "../assets/education/edcover3.jpg";
 import edcover4 from "../assets/education/edcover4.jpg";
-import mailhos from "../assets/services/mail-hos.svg"
-
-
-
+import mailhos from "../assets/services/mail-hos.svg";
+import menurightarrow from "../assets/menurightarrow.svg";
 
 
 export const assets = {
@@ -809,6 +807,7 @@ export const assets = {
   hospSeoicon,
   hospbanner,
   edbanner,
+  menurightarrow,
   ini1,
   ini2,
   ini3,
