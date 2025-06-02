@@ -7,11 +7,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { menuItems as rawMenuItems } from "@/app/data/menuv2";
+
 const menuItems: MenuItemType[] = rawMenuItems;
+
 interface MenuToggleProps {
   onHide: () => void;
-  toggle: () => void; // Explicitly typing 'toggle' as a function returning void+
+  toggle: () => void;
 }
+
 interface MenuChild {
   item: string;
   svg?: any;
@@ -26,25 +29,25 @@ interface MenuItemType {
   children?: MenuChild[];
 }
 
-  export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
-
-
+export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>({});
-   const [openSubSubmenus, setOpenSubSubmenus] = useState<{ [key: string]: boolean }>({}); 
+  const [openSubSubmenus, setOpenSubSubmenus] = useState<{ [key: string]: boolean }>({});
 
   const handleSubmenuToggle = (submenuKey: string) => {
-    setOpenSubmenus(prev => ({
+    setOpenSubmenus((prev) => ({
       ...prev,
       [submenuKey]: !prev[submenuKey],
     }));
   };
- const handleSubSubmenuToggle = (submenuKey: string) => {
-    setOpenSubSubmenus(prev => ({
+
+  const handleSubSubmenuToggle = (submenuKey: string) => {
+    setOpenSubSubmenus((prev) => ({
       ...prev,
       [submenuKey]: !prev[submenuKey],
     }));
   };
+
   useEffect(() => {
     if (modalOpen) {
       document.body.style.overflow = "hidden";
@@ -64,10 +67,11 @@ interface MenuItemType {
     <div className="">
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
-          <LetsTalk onClose={() => { setModalOpen(false);onHide() }} />
+          <LetsTalk onClose={() => { setModalOpen(false); onHide(); }} />
         </div>
       )}
-<motion.ul className="mobile-menu-ul">
+
+      <motion.ul className="mobile-menu-ul mb-3">
         {menuItems.map((menuItem, index) => (
           <li key={index} className="w-full">
             <MenuItem item={menuItem.item} Links={menuItem.url} toggle={toggle}>
@@ -75,32 +79,30 @@ interface MenuItemType {
                 menuItem.children.map((child, childIndex) => {
                   const submenuKey = `${index}-${childIndex}`;
                   const hasSubmenu = child.children && child.children.length > 0;
+
                   return (
                     <li
                       key={childIndex}
-                      className="flex flex-col items-start gap-2 hover:bg-gray-100 border-b last:border-none w-full"
+                      className="flex flex-col items-start gap-2 border-b last:border-none w-full"
                     >
                       <div
-                        className="flex items-center w-full cursor-pointer py-2 px-4"
-                        onClick={() => hasSubmenu && handleSubmenuToggle(submenuKey)}
+                        className="flex items-center w-full cursor-pointer py-2"
+                        onClick={(e) => {
+                          if (hasSubmenu) {
+                            e.stopPropagation();
+                            handleSubmenuToggle(submenuKey);
+                          }
+                        }}
                       >
                         <Link
                           href={child.url}
-                          className="flex items-center gap-2 flex-1"
-                          onClick={e => hasSubmenu && e.preventDefault()} // Prevent navigation if submenu exists
+                          className="flex items-center gap-2 flex-1 uppercase text-sm"
+                          onClick={(e) => hasSubmenu && e.preventDefault()}
                         >
-                          {/* <Image
-                            src={child.svg}
-                            alt={child.item}
-                            className="h-6 w-6"
-                            width={24}
-                            height={24}
-                          /> */}
                           {child.item}
                         </Link>
                         {hasSubmenu && (
                           <span className="ml-2">
-                            {/* Dropdown arrow SVG */}
                             <svg
                               width="16"
                               height="16"
@@ -114,17 +116,29 @@ interface MenuItemType {
                           </span>
                         )}
                       </div>
-                      {/* Submenu for child if exists */}
-                      {hasSubmenu && openSubmenus[submenuKey] && (
-                        <ul className="ml-8 mt-1 space-y-1">
+
+                      {hasSubmenu && (
+                        <ul
+                          className={`
+                            ml-2 space-y-1 overflow-hidden 
+                            transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+                            transform origin-top
+                            ${openSubmenus[submenuKey]
+                              ? "max-h-[1000px] opacity-100 scale-100 translate-y-0"
+                              : "max-h-0 opacity-0 scale-95 -translate-y-2"
+                            }
+                          `}
+                          style={{ transitionProperty: "max-height, opacity, transform" }}
+                        >
                           {child.children?.map((subChild, subChildIndex) => {
                             const subSubmenuKey = `${submenuKey}-${subChildIndex}`;
                             const hasSubSubmenu = subChild.children && subChild.children.length > 0;
+
                             return (
                               <li key={subChildIndex} className="flex flex-col">
                                 <div
                                   className="flex items-center w-full cursor-pointer py-1 px-2"
-                                  onClick={e => {
+                                  onClick={(e) => {
                                     if (hasSubSubmenu) {
                                       e.stopPropagation();
                                       handleSubSubmenuToggle(subSubmenuKey);
@@ -133,9 +147,10 @@ interface MenuItemType {
                                 >
                                   <Link
                                     href={subChild.url}
-                                    className="flex items-center gap-2 flex-1 text-sm hover:underline"
-                                    onClick={e => hasSubSubmenu && e.preventDefault()}
+                                    className={`flex items-center gap-2 flex-1 text-sm no-underline ${subChildIndex === (child.children?.length ?? 0) - 1 ? "pb-4" : ""}`}
+                                    onClick={(e) => hasSubSubmenu && e.preventDefault()}
                                   >
+                                    <div className="bg-primary size-[6px]"></div>
                                     {subChild.svg && (
                                       <Image
                                         src={subChild.svg}
@@ -162,9 +177,20 @@ interface MenuItemType {
                                     </span>
                                   )}
                                 </div>
-                                {/* Sub-submenu */}
-                                {hasSubSubmenu && openSubSubmenus[subSubmenuKey] && (
-                                  <ul className="ml-6 mt-1 space-y-1">
+
+                                {hasSubSubmenu && (
+                                  <ul
+                                    className={`
+                                      ml-6 mt-1 space-y-1 overflow-hidden 
+                                      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+                                      transform origin-top
+                                      ${openSubSubmenus[subSubmenuKey]
+                                        ? "max-h-[1000px] opacity-100 scale-100 translate-y-0"
+                                        : "max-h-0 opacity-0 scale-95 -translate-y-2"
+                                      }
+                                    `}
+                                    style={{ transitionProperty: "max-height, opacity, transform" }}
+                                  >
                                     {subChild.children?.map((subSubChild, subSubChildIndex) => (
                                       <li key={subSubChildIndex}>
                                         <Link href={subSubChild.url} className="py-1 px-2 flex items-center gap-2 text-xs hover:underline">
@@ -200,9 +226,9 @@ interface MenuItemType {
         <button
           onClick={() => {
             setModalOpen(true);
-            onHide()
+            onHide();
           }}
-          className="hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-primary transition duration-300 ease-in hover:text-black hover:shadow-lg lg:flex"
+          className="hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-primary transition duration-300 ease-in hover:text-black hover:shadow-lg"
         >
           <span className="duration-300 ease-in group-hover:text-black">LET’S TALK</span>
           <div className="bg-primary p-1">

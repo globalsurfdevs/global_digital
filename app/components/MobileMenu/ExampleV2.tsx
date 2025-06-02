@@ -109,7 +109,7 @@ export const Example = () => {
       {<motion.div className={"menusi background shadow-lg"} variants={sidebar} ref={menuRef}>
 
         <motion.div className="">
-          <div className="fixed w-full min-h-[60px] bg-white z-1 py-5 px-6">
+          <div className="fixed w-full min-h-[60px] bg-white z-[99999] py-5 px-6">
             <Link href="/">
               <Image src={assets.logo} alt="logo" className="w-32" />
               </Link>
