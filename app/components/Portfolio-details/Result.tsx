@@ -1,13 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import { assets } from "@/public/assets/assets";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import { SuccessStories } from "../SuccessStories/SuccessStories";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
-import { Link } from "@mui/material";
+import LetsTalk from "@/app/components/common/LetsConnect";
 
 const Result = ({
   data,
@@ -18,9 +17,33 @@ const Result = ({
 }) => {
   console.log("ResultData",data)
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+    useEffect(() => {
+      if (modalOpen) {
+        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
+        // disables scroll
+      } else {
+        document.body.style.overflow = "auto";
+        document.documentElement.style.overflow = "auto"; // resets to default
+      }
+  
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }, [modalOpen]);
+
   return (
+    <>
+    {modalOpen && (
+              <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
+                <LetsTalk onClose={() => setModalOpen(false)} />
+              </div>
+            )}
+
     <div className="container mx-auto py-4">
-      {data?.portfolio[0].result=="<p><br></p>" || data?.portfolio[0].result=="<p>undefined</p>" || data?.portfolio[0].result=="undefined" ? null :  <div className="flex flex-col gap-4 pb-[50px] lg:gap-[30px] lg:pb-[143px]">
+      {data?.portfolio[0].result=="<p><br></p>" || data?.portfolio[0].result=="<p>undefined</p>" || data?.portfolio[0].result=="undefined" ? null :  <div className="flex flex-col gap-4 lg:gap-[30px] ">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -87,8 +110,11 @@ const Result = ({
             triumphs for our clients. Your brand could be next.{" "}
           </p>
           <div className="innerfnont mt-[20px] lg:mt-[64px] relative w-fit">
-            <Button text="LET'S COLLABORATE" textcolor={'black'}/>
-            <Link href="/lets-talk" className="absolute left-0 top-0 w-full h-full"></Link>
+            <Button text="LET'S COLLABORATE" textcolor={'black'} onClick={() => {
+                  setModalOpen(true);
+                  document.body.style.overflow = "hidden";
+                }}/>
+            {/* <Link href="/lets-talk" className="absolute left-0 top-0 w-full h-full"></Link> */}
           </div>
         </div>
       </motion.div>
@@ -97,6 +123,7 @@ const Result = ({
         <SuccessStories companyId={data?.portfolio[0].id}/>
       </div>
     </div>
+    </>
   );
 };
 
