@@ -78,12 +78,17 @@ interface MenuItemType {
                   return (
                     <li
                       key={childIndex}
-                      className="flex flex-col items-start gap-2 hover:bg-gray-100 border-b last:border-none w-full"
+                      className="flex flex-col items-start gap-2   border-b last:border-none w-full"
                     >
                       <div
-                        className="flex items-center w-full cursor-pointer py-2 px-4"
-                        onClick={() => hasSubmenu && handleSubmenuToggle(submenuKey)}
-                      >
+  className="flex items-center w-full cursor-pointer py-2 "
+  onClick={e => {
+    if (hasSubmenu) {
+      e.stopPropagation(); // <-- Add this line
+      handleSubmenuToggle(submenuKey);
+    }
+  }}
+>
                         <Link
                           href={child.url}
                           className="flex items-center gap-2 flex-1"

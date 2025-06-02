@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-type ServiceItem = { text: string };
+type ServiceItem = { text: string ,url?: string; };
 type ServiceCategory = {
   [serviceName: string]: ServiceItem;
 };
@@ -13,12 +13,17 @@ const serviceData: ServiceData = {
   "Creative Services": {
     Branding: {
       text: 'Shape perceptions<span class="text-[#E43D30]">.</span><br> Build premium trust',
+      url: "/creative-agency-dubai",
+      
+
     },
     "Logo Design": {
       text: "Iconic marks for market leaders",
+      url: "/logo-design-agency-dubai",
     },
     "Graphic Design": {
       text: "Visuals that sell your story",
+      url: "/graphic-design-agency-dubai",
     },
     Copywriting: {
       text: "Words that compel, convince, convert",
@@ -30,35 +35,44 @@ const serviceData: ServiceData = {
   "Web Design & Development": {
     "Web Development": {
       text: "Engineered to perform and impress",
+      url: "/web-development-agency-dubai",
     },
     "Website Design": {
       text: "Sleek, intuitive, brand-rich experiences",
+      url: "/web-design-agency-dubai",
     },
     "Mobile App": {
       text: 'Powerful apps<span class="text-[#E43D30]">.</span> Premium user journeys',
+      url: "/mobile-app-development-company-dubai",
     },
     "Web Apps": {
       text: "Custom tools built for growth",
+      url: "/web-app-dev-agency",
     },
     "Ecommerce Development": {
       text: 'Sell smarter<span class="text-[#E43D30]">.</span><br> Scale elegantly online',
+      url: "/e-commerce-web-development-company",
     },
   },
   "Digital Marketing": {
     "Performance Marketing": {
       text: 'Precision-driven campaigns<span class="text-[#E43D30]">.</span> Measurable returns',
+      url: "/performance-marketing-agency-dubai",
     },
     "Search Engine Optimisation": {
       text: 'Rank higher<span class="text-[#E43D30]">.</span> Attract better leads',
+      url:"/seo-agency-dubai"
     },
     "Social Media Services": {
       text: 'Engage audiences<span class="text-[#E43D30]">.</span> Grow influence daily',
+      url:"/social-media-agency-dubai"
     },
     "Content Marketing": {
       text: "Authority content that builds demand",
     },
     "Marketing Automation": {
       text: 'Nurture leads<span class="text-[#E43D30]">.</span><br> Win effortlessly',
+      url:"/marketing-automation-agency-dubai"
     },
     "Data & Analytics": {
       text: "Metrics that uncover real opportunities",
@@ -89,7 +103,7 @@ const ServicesMegaMenu = () => {
     defaultTitle,
   ]);
 
-  const handleHover = (category: string, title: string) => {
+  const handleHover = (category: string, title: string ) => {
     setActiveItem([category, title]);
   };
 
@@ -125,7 +139,7 @@ const ServicesMegaMenu = () => {
                   {category}
                 </h4>
                 <ul className="space-y-2">
-                  {Object.entries(items).map(([title, { text }]) => {
+                  {Object.entries(items).map(([title, { text, url }]) => {
                     const isActive =
                       activeItem[0] === category && activeItem[1] === title;
                     return (
@@ -138,7 +152,9 @@ const ServicesMegaMenu = () => {
                             : "text-white opacity-60 hover:opacity-100"
                         }`}
                       >
+                        <a href={url}>
                         {title}
+                        </a>
                       </li>
                     );
                   })}
