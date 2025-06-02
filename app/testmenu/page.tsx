@@ -12,8 +12,7 @@ export default function TestMenuPage() {
       <p className="mb-4">
         This page is for testing purposes only and will not be indexed by search engines.
       </p>
-      <p className="mb-4">
-        You can add your test menu </p>
+    
 
     </div>
       {/* Add your test menu content here */}
