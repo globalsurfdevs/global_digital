@@ -78,15 +78,8 @@ export const menuItems = [
           {
             item: "Social Media Services",
             url: "/social-media-agency-dubai",
-          },
-          {
-            item: "Content Marketing",
-            url: "",
-          },
-          {
-            item: "Marketing Automation",
-            url: "/marketing-automation-agency-dubai",
-          },
+          }
+          
         ],
       },
       {
