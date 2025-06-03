@@ -72,14 +72,7 @@ const serviceData: ServiceData = {
     },
     "Content Marketing": {
       text: "Authority content that builds demand",
-    },
-    "Marketing Automation": {
-      text: 'Nurture leads<span class="text-[#E43D30]">.</span><br> Win effortlessly',
-      url:"/marketing-automation-agency-dubai"
-    },
-    "Data & Analytics": {
-      text: "Metrics that uncover real opportunities",
-    },
+    }
   },
   "Marketing Intelligence": {
     "Data & Analytics": {
