@@ -11,11 +11,11 @@ export const menuItems = [
        {
       item: "CREATIVE SERVICES",
    
-      url: "/performance-marketing-agency-dubai",
+      url: "/creative-agency-dubai",
       children: [
         {
           item: "Branding",
-          url: "/creative-agency-dubai",
+          url: "/branding-agency-dubai",
         },
         {
           item: "Logo Design",
@@ -37,8 +37,8 @@ export const menuItems = [
     },
       {
         item: "Web Design & Development",
-        svg: assets.seo,
-        url: "",
+    
+        url: "/web-design-and-development",
         children: [
           {
             item: "Web Development",
@@ -65,7 +65,7 @@ export const menuItems = [
       {
         item: "DIGITAL MARKETING",
         
-        url: "/social-media-agency-dubai",
+        url: "",
         children: [
           {
             item: "Performance Marketing",
@@ -85,7 +85,7 @@ export const menuItems = [
       {
         item: "Marketing intelligence",
        
-        url: "",
+        url: "/marketing-intelligence-agency-dubai ",
         children: [
           {
             item: "Data & Analytics",
