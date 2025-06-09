@@ -7,6 +7,7 @@ import Image from "next/image";
 type ServiceItem = { text: string; url?: string };
 type ServiceCategory = {
   titleurl?: string;
+  categoryText?: string;
   [serviceName: string]: ServiceItem | string | undefined;
 };
 type ServiceData = {
@@ -16,99 +17,111 @@ type ServiceData = {
 const serviceData: ServiceData = {
   "Creative Services": {
     titleurl: "/creative-agency-dubai",
+    categoryText: 'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',
     Branding: {
-      text: 'Shape perceptions<span class="text-[#E43D30]">.</span><br> Build premium trust',
+      text: 'Know Your Voice<span class="text-[#E43D30]">.</span><br> Own Your Space<span class="text-[#E43D30]">.</span> ',
       url: "/branding-agency-dubai",
     },
     "Logo Design": {
-      text: "Iconic marks for market leaders",
+      text: 'Recognize Instantly<span class="text-[#E43D30]">.</span><br>Remember Forever<span class="text-[#E43D30]">.</span>',
       url: "/logo-design-agency-dubai",
     },
     "Graphic Design": {
-      text: "Visuals that sell your story",
+      text: 'Shape the Look<span class="text-[#E43D30]">.</span><br>Set the Tone<span class="text-[#E43D30]">.</span>',
       url: "/graphic-design-agency-dubai",
     },
     Copywriting: {
-      text: "Words that compel, convince, convert",
+      text: 'Words that Win<span class="text-[#E43D30]">.</span><br>Stories that Stick<span class="text-[#E43D30]">.</span>',
     },
     "Content Production": {
-      text: "Strategic content with luxury appeal",
+      text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
     },
   },
   "Web Design & Development": {
     titleurl: "/web-design-and-development",
+    categoryText: 'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
     "Web Development": {
-      text: "Engineered to perform and impress",
+      text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
       url: "/web-development-agency-dubai",
     },
     "Website Design": {
-      text: "Sleek, intuitive, brand-rich experiences",
+      text: 'Crafted for users<span class="text-[#E43D30]">.</span><br> Styled for brands<span class="text-[#E43D30]">.</span>',
       url: "/web-design-agency-dubai",
     },
     "Mobile App": {
-      text: 'Powerful apps<span class="text-[#E43D30]">.</span> Premium user journeys',
+      text: 'Tap-worthy<span class="text-[#E43D30]">.</span><br> Tech-ready<span class="text-[#E43D30]">.</span>',
       url: "/mobile-app-development-company-dubai",
     },
     "Web Apps": {
-      text: "Custom tools built for growth",
+      text: 'Complex needs<span class="text-[#E43D30]">.</span><br> Clean solutions<span class="text-[#E43D30]">.</span>',
       url: "/web-app-dev-agency",
     },
     "Ecommerce Development": {
-      text: 'Sell smarter<span class="text-[#E43D30]">.</span><br> Scale elegantly online',
+      text: 'Seamless Carts<span class="text-[#E43D30]">.</span><br>Serious Results<span class="text-[#E43D30]">.</span>',
       url: "/e-commerce-web-development-company",
     },
   },
   "Digital Marketing": {
-   
+    categoryText: 'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
     "Performance Marketing": {
-      text: 'Precision-driven campaigns<span class="text-[#E43D30]">.</span> Measurable returns',
+      text: 'Built to Scale<span class="text-[#E43D30]">.</span><br> Measured to Win<span class="text-[#E43D30]">.</span>',
       url: "/performance-marketing-agency-dubai",
     },
-    "Search Engine Optimisation": {
-      text: 'Rank higher<span class="text-[#E43D30]">.</span> Attract better leads',
+    "Search Engine Optimisation (SEO)": {
+      text: 'Rank with Purpose<span class="text-[#E43D30]">.</span><br> Stay with Relevance<span class="text-[#E43D30]">.</span>',
       url: "/seo-agency-dubai",
     },
     "Social Media Services": {
-      text: 'Engage audiences<span class="text-[#E43D30]">.</span> Grow influence daily',
+      text: 'Real Voices<span class="text-[#E43D30]">.</span><br> Real Impact<span class="text-[#E43D30]">.</span>',
       url: "/social-media-agency-dubai",
     },
     "Content Marketing": {
-      text: "Authority content that builds demand",
+      text: 'Words that Move<span class="text-[#E43D30]">.</span><br> Stories that Stay<span class="text-[#E43D30]">.</span>',
     },
   },
   "Marketing Intelligence": {
-    titleurl: "/marketing-intelligence-agency-dubai ",
+    titleurl: "/marketing-intelligence-agency-dubai",
+    categoryText: 'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
     "Data & Analytics": {
-      text: "Insights that sharpen every decision",
+      text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
     },
     "Strategy Consulting": {
-      text: 'Big-picture clarity<span class="text-[#E43D30]">.</span> Scalable solutions',
+      text: 'Built on Data<span class="text-[#E43D30]">.</span><br> Driven by Strategy<span class="text-[#E43D30]">.</span>',
     },
     "Conversion Rate Optimization (CRO)": {
-      text: "Turn traffic into loyal clients",
+      text: 'Optimized Paths<span class="text-[#E43D30]">.</span><br> Maximized Results<span class="text-[#E43D30]">.</span>',
     },
     "Marketing Automation": {
-      text: "Smart systems that drive growth",
+      text: 'Automated to Convert<span class="text-[#E43D30]">.</span><br> Designed to Engage<span class="text-[#E43D30]">.</span>',
     },
   },
 };
 
 const ServicesMegaMenu = () => {
   const defaultCategory = "Creative Services";
-  const defaultTitle = "Logo Design";
 
   const [activeItem, setActiveItem] = useState<[string, string]>([
     defaultCategory,
-    defaultTitle,
+    "",
   ]);
 
-  const handleHover = (category: string, title: string) => {
-    setActiveItem([category, title]);
+  const handleHover = (category: string, title?: string) => {
+    if (title) {
+      setActiveItem([category, title]);
+    } else {
+      setActiveItem([category, ""]);
+    }
   };
 
   const getActiveText = () => {
     const [category, title] = activeItem;
-    const item = serviceData[category]?.[title] as ServiceItem | undefined;
+    const categoryData = serviceData[category];
+    const item = categoryData?.[title] as ServiceItem | undefined;
+
+    if (!item?.text && typeof categoryData?.categoryText === "string") {
+      return categoryData.categoryText;
+    }
+
     return item?.text ?? "";
   };
 
@@ -122,7 +135,7 @@ const ServicesMegaMenu = () => {
             <h2
               className="xxl:text-[48px] lg:text-[35px] xxl:leading-[60px] lg:leading-[50px] mb-4 transition-all duration-300"
               dangerouslySetInnerHTML={{
-                __html: getActiveText() + '<span class="text-[#E43D30]">.</span>',
+                __html: getActiveText(),
               }}
             />
           </div>
@@ -130,33 +143,35 @@ const ServicesMegaMenu = () => {
           {/* Services Grid */}
           <div className="grid grid-cols-3 xxl:gap-10 gap-6 w-full pl-[130px]">
             {Object.entries(serviceData).map(([category, items]) => {
-              const { titleurl, ...services } = items;
+              const { titleurl, categoryText, ...services } = items;
               return (
                 <div key={category} className="group w-full">
-                  <div className="flex items-center xxl:mb-[30px] mb-[20px]">
+                    <div className="flex items-center xxl:mb-[30px] mb-[20px]">
                     <h4
+                      onMouseEnter={() => handleHover(category)}
                       className={`font-[400] uppercase xxl:text-font19 text-[15px] pr-[16px] ${
-                        activeItem[0] === category ? "text-[#E43D30]" : "text-white"
+                      activeItem[0] === category
+                        ? "text-[#E43D30]"
+                        : "text-white"
                       }`}
-                    >
-                      {titleurl ? (
-                        <a href={titleurl}>{category}</a>
-                      ) : (
-                        category
-                      )}
-                    </h4>
+                      dangerouslySetInnerHTML={{
+                      __html: titleurl
+                        ? `<a href="${titleurl}">${category}</a>`
+                        : category,
+                      }}
+                    />
                     <Image
                       src={menuright}
                       alt="arrow"
                       className="m-0 p-0"
                       style={{
-                        filter:
-                          activeItem[0] === category
-                            ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
-                            : "",
+                      filter:
+                        activeItem[0] === category
+                        ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
+                        : "",
                       }}
                     />
-                  </div>
+                    </div>
                   <ul className="space-y-2">
                     {Object.entries(services).map(([title, data]) => {
                       const item = data as ServiceItem;
