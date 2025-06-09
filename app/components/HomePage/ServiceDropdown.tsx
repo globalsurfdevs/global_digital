@@ -32,9 +32,12 @@ const serviceData: ServiceData = {
     },
     Copywriting: {
       text: 'Words that Win<span class="text-[#E43D30]">.</span><br>Stories that Stick<span class="text-[#E43D30]">.</span>',
+      url: "/creative-copywriting-agency-dubai",
     },
     "Content Production": {
       text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
+      url: "/content-production-agency-dubai",
+      
     },
   },
   "Web Design & Development": {
@@ -77,6 +80,7 @@ const serviceData: ServiceData = {
     },
     "Content Marketing": {
       text: 'Words that Move<span class="text-[#E43D30]">.</span><br> Stories that Stay<span class="text-[#E43D30]">.</span>',
+      url: "/content-marketing-agency-dubai",
     },
   },
   "Marketing Intelligence": {
@@ -84,15 +88,18 @@ const serviceData: ServiceData = {
     categoryText: 'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
     "Data & Analytics": {
       text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
+      url: "/data-analytics-services-dubai",
     },
     "Strategy Consulting": {
       text: 'Built on Data<span class="text-[#E43D30]">.</span><br> Driven by Strategy<span class="text-[#E43D30]">.</span>',
     },
     "Conversion Rate Optimization (CRO)": {
       text: 'Optimized Paths<span class="text-[#E43D30]">.</span><br> Maximized Results<span class="text-[#E43D30]">.</span>',
+      url: "/conversion-rate-optimization-agency-dubai",
     },
     "Marketing Automation": {
       text: 'Automated to Convert<span class="text-[#E43D30]">.</span><br> Designed to Engage<span class="text-[#E43D30]">.</span>',
+      url:"/marketing-automation-agency-dubai",
     },
   },
 };
