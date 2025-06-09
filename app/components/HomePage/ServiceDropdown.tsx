@@ -90,9 +90,6 @@ const serviceData: ServiceData = {
       text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
       url: "/data-analytics-services-dubai",
     },
-    "Strategy Consulting": {
-      text: 'Built on Data<span class="text-[#E43D30]">.</span><br> Driven by Strategy<span class="text-[#E43D30]">.</span>',
-    },
     "Conversion Rate Optimization (CRO)": {
       text: 'Optimized Paths<span class="text-[#E43D30]">.</span><br> Maximized Results<span class="text-[#E43D30]">.</span>',
       url: "/conversion-rate-optimization-agency-dubai",
