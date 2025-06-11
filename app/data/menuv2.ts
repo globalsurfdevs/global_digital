@@ -92,10 +92,6 @@ export const menuItems = [
             url: "",
           },
           {
-            item: "Strategy Consulting",
-            url: "",
-          },
-          {
             item: "Conversion Rate Optimization (CRO)",
             url: "",
           },
