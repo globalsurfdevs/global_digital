@@ -1,7 +1,7 @@
 
 import type { Metadata } from "next";
 import "../../app/globals.css";
-import Header from "@/app/components/HomePage/Header";
+import Header from "@/app/components/HomePage/Headerv2";
 import { Space_Grotesk } from "next/font/google";
 import Footer from "@/app/components/HomePage/Footer";
 import Script from "next/script";

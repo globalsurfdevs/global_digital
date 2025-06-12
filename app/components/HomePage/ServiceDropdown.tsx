@@ -135,11 +135,10 @@ const ServicesMegaMenu = () => {
   return (
     <div className="relative group inline-block">
       {/* Mega Menu Dropdown */}
-      <div className="absolute left-0 right-0 z-50 w-screen bg-black text-white">
+      <div className="absolute left-0 right-0 z-50 w-screen bg-black text-white xxl:h-[690px] h-full">
         <div className="w-full mx-auto px-8 xxl:py-[80px] py-[30px] flex justify-between items-center xxl:pl-[150px] lg:pl-[50px]">
           {/* Header Section */}
           <div className="w-1/3">
-          
            <motion.h2
            initial="hidden"
           whileInView="visible"
@@ -156,10 +155,8 @@ const ServicesMegaMenu = () => {
               dangerouslySetInnerHTML={{
                 __html: getActiveText(),
               }}
-              
             />
           </div>
-
           {/* Services Grid */}
           <div className="grid grid-cols-3 xxl:gap-10 gap-6 w-full pl-[130px]">
             {Object.entries(serviceData).map(([category, items]) => {
