@@ -551,7 +551,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
               {error !== "" && <div className='text-red-500'>{error}</div>}
               </div>
             <button
-              className="h-fit md:my-0 mt-4 mb-[30px] hover:bg-prtext-primary group   flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
+              className="h-fit md:my-0 mt-4 mb-[100px] hover:bg-prtext-primary group   flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
               type="submit"
             >
               <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
