@@ -178,7 +178,7 @@ const dropdownVariants = {
                                 >
                                   <Link
                                     href={subChild.url}
-                                    className={`flex items-center gap-2 flex-1 text-sm no-underline ${subChildIndex === (child.children?.length ?? 0) - 1 ? "pb-4" : ""}`}
+                                    className={`flex items-center gap-2 flex-1 text-sm no-underline uppercase ${subChildIndex === (child.children?.length ?? 0) - 1 ? "pb-4" : ""}`}
                                    onClick={(e) => {
     if (hasSubSubmenu) {
       e.preventDefault();

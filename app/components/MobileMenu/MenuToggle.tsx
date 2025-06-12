@@ -1,7 +1,7 @@
 import * as React from "react";
 import { motion, SVGMotionProps } from "framer-motion";
-
-
+import { assets } from "@/public/assets/assets";
+import Image from "next/image";
 interface MenuToggleProps {
   hidden: boolean
   toggle: () => void; // Explicitly typing 'toggle' as a function returning void+
@@ -23,7 +23,12 @@ export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle, hidden }) =>{
   }, [hidden])
 
 return (
+
+
+ <> 
+
   <button onClick={toggle}  className={`menuToggle ${hidden ? "invisible" : "sdsd"} `}>
+    
   <svg width="23" height="23" viewBox="0 0 23 23">
     <Path
       variants={{
@@ -48,6 +53,8 @@ return (
     />
   </svg>
 </button>
+  
+</>
   )
 
 
