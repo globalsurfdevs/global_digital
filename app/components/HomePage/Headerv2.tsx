@@ -105,7 +105,7 @@ const Header = () => {
   return (
     <>
       {modalOpen && (
-        <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
+          <div className="fixed inset-0 z-[1000] bg-white overflow-y-auto">
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
