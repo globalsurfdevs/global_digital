@@ -125,7 +125,14 @@ const dropdownVariants = {
                         <Link
                           href={child.url}
                           className="flex items-center gap-2 flex-1 uppercase text-sm"
-                          onClick={(e) => hasSubmenu && e.preventDefault()}
+                          onClick={(e) => {
+    if (hasSubmenu) {
+      e.preventDefault();
+    } else {
+      toggle(); // ✅ Close menu
+    }
+  }}
+                          
                         >
                           {child.item}
                         </Link>
@@ -172,7 +179,13 @@ const dropdownVariants = {
                                   <Link
                                     href={subChild.url}
                                     className={`flex items-center gap-2 flex-1 text-sm no-underline ${subChildIndex === (child.children?.length ?? 0) - 1 ? "pb-4" : ""}`}
-                                    onClick={(e) => hasSubSubmenu && e.preventDefault()}
+                                   onClick={(e) => {
+    if (hasSubSubmenu) {
+      e.preventDefault();
+    } else {
+      toggle(); // ✅ Close menu
+    }
+  }}
                                   >
                                     <div className="bg-primary size-[6px]"></div>
                                     {subChild.svg && (
