@@ -66,27 +66,30 @@ const dropdownVariants = {
   hidden: {
     opacity: 0,
     height: 0,
+    overflow: "hidden",
     transition: {
       duration: 0.5,
-      ease: "easeOut"
-    }
+      ease: "easeOut",
+    },
   },
   visible: {
     opacity: 1,
-    height: "auto",
+    height: "fit-content",
+    overflow: "hidden",
     transition: {
       duration: 0.5,
-      ease: "easeInOut"
-    }
+      ease: "easeInOut",
+    },
   },
   exit: {
     opacity: 0,
     height: 0,
+    overflow: "hidden",
     transition: {
-      duration: 0.5,
-      ease: "easeIn"
-    }
-  }
+      duration: 0.3,
+      ease: "easeIn",
+    },
+  },
 };
   return (
     <div className="">
