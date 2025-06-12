@@ -106,7 +106,7 @@ export const Example = () => {
       ref={containerRef}
     >
 <div className={isOpen ? "overlay-nav" : ""}></div>
-      {<motion.div className={"menusi background shadow-lg"} variants={sidebar} ref={menuRef}>
+      {<motion.div className={"menusi backgroundv2 shadow-lg w-full h-screen flex flex-col"} variants={sidebar} ref={menuRef}>
 
         <motion.div className="">
           <div className="fixed w-full min-h-[60px] bg-white z-[99999] py-5 px-6">
@@ -116,9 +116,12 @@ export const Example = () => {
           </div>
         </motion.div>
 
-        <Navigation toggle={()=>toggleOpen()} onHide={hideButton}/>
+       <div className="flex-1 overflow-y-auto">
+  <Navigation toggle={() => toggleOpen()} onHide={hideButton} />
+</div>
 
-        <div className="text-white px-6">
+       <div className="text-white px-6 w-full pb-6">
+
           <div className="border-t pb-5 pt-5 flex flex-col gap-4  ">
 
 
