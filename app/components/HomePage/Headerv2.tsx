@@ -78,12 +78,26 @@ const Header = () => {
   }, [isServicesHovered]);
 
   if (mobileMenu) {
+    // Hide mobile header when Let's Talk modal is open
+    if (modalOpen) return null;
+
     return (
-      <div className="flex items-center p-4 align-middle">
+      <div className="fixed top-0 left-0 right-0 z-20 flex items-center p-4 align-middle bg-white shadow-[0_2px_10px_0_rgba(0,0,0,0.1)] animate-[headerSlideDown_0.8s_forwards] transition-all duration-500 ease-in-out" >
         <Link href="/">
           <Image src={assets.logo} alt="logo" />
         </Link>
-        <Example />
+        <div className="flex justify-end items-center w-full gap-3">
+          <a href="tel:+97145821133" className="flex items-center text-black hover:text-primary">
+            <Image
+              className="mt-2"
+              src={assets.menuphoneicon}
+              alt="Menu Icon"
+              width={23}
+              height={23}
+            />
+          </a>
+          <Example />
+        </div>
       </div>
     );
   }

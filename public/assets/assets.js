@@ -784,10 +784,12 @@ import edcover3 from "../assets/education/edcover3.jpg";
 import edcover4 from "../assets/education/edcover4.jpg";
 import mailhos from "../assets/services/mail-hos.svg";
 import menurightarrow from "../assets/menurightarrow.svg";
+import menuphoneicon from "../images/menu-phone-icon.png";
 
 
 export const assets = {
   edcover1,
+  menuphoneicon,
   edcover2,
   edcover3,
   edcover4,
