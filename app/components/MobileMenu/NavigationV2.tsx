@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from "./MenuItemv2";
 
 import LetsTalk from "@/app/components/common/LetsConnect";
 import Link from "next/link";
@@ -62,7 +62,32 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
       document.documentElement.style.overflow = "";
     };
   }, [modalOpen]);
-
+const dropdownVariants = {
+  hidden: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut"
+    }
+  },
+  visible: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      duration: 0.7,
+      ease: "easeInOut"
+    }
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeIn"
+    }
+  }
+};
   return (
     <div className="">
       {modalOpen && (
@@ -71,7 +96,7 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
         </div>
       )}
 
-      <motion.ul className="mobile-menu-ul mb-3">
+      <motion.ul className="mobile-menu-ul mb-5">
         {menuItems.map((menuItem, index) => (
           <li key={index} className="w-full">
             <MenuItem item={menuItem.item} Links={menuItem.url} toggle={toggle}>
@@ -83,10 +108,10 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
                   return (
                     <li
                       key={childIndex}
-                      className="flex flex-col items-start gap-2 border-b last:border-none w-full"
+                      className="flex flex-col items-start border-b last:border-none w-full"
                     >
                       <div
-                        className="flex items-center w-full cursor-pointer py-2"
+                        className="flex items-center w-full cursor-pointer py-4"
                         onClick={(e) => {
                           if (hasSubmenu) {
                             e.stopPropagation();
@@ -102,7 +127,7 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
                           {child.item}
                         </Link>
                         {hasSubmenu && (
-                          <span className="ml-2">
+                          <span className="mr-2">
                             <svg
                               width="16"
                               height="16"
@@ -118,18 +143,14 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
                       </div>
 
                       {hasSubmenu && (
-                        <ul
-                          className={`
-                            ml-2 space-y-1 overflow-hidden 
-                            transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
-                            transform origin-top
-                            ${openSubmenus[submenuKey]
-                              ? "max-h-[1000px] opacity-100 scale-100 translate-y-0"
-                              : "max-h-0 opacity-0 scale-95 -translate-y-2"
-                            }
-                          `}
-                          style={{ transitionProperty: "max-height, opacity, transform" }}
-                        >
+                        <motion.ul
+  className="ml-2 space-y-1"
+  variants={dropdownVariants}
+  initial="hidden"
+  animate={openSubmenus[submenuKey] ? "visible" : "hidden"}
+  exit="exit"
+>
+
                           {child.children?.map((subChild, subChildIndex) => {
                             const subSubmenuKey = `${submenuKey}-${subChildIndex}`;
                             const hasSubSubmenu = subChild.children && subChild.children.length > 0;
@@ -179,18 +200,15 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
                                 </div>
 
                                 {hasSubSubmenu && (
-                                  <ul
-                                    className={`
-                                      ml-6 mt-1 space-y-1 overflow-hidden 
-                                      transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
-                                      transform origin-top
-                                      ${openSubSubmenus[subSubmenuKey]
-                                        ? "max-h-[1000px] opacity-100 scale-100 translate-y-0"
-                                        : "max-h-0 opacity-0 scale-95 -translate-y-2"
-                                      }
-                                    `}
-                                    style={{ transitionProperty: "max-height, opacity, transform" }}
-                                  >
+                                  <motion.ul
+  className="ml-2 space-y-1"
+  variants={dropdownVariants}
+  initial="hidden"
+  animate={openSubSubmenus[subSubmenuKey] ? "visible" : "hidden"}
+  exit="exit"
+>
+
+
                                     {subChild.children?.map((subSubChild, subSubChildIndex) => (
                                       <li key={subSubChildIndex}>
                                         <Link href={subSubChild.url} className="py-1 px-2 flex items-center gap-2 text-xs hover:underline">
@@ -207,12 +225,12 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
                                         </Link>
                                       </li>
                                     ))}
-                                  </ul>
+                                  </motion.ul>
                                 )}
                               </li>
                             );
                           })}
-                        </ul>
+                        </motion.ul>
                       )}
                     </li>
                   );
@@ -222,7 +240,7 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
         ))}
       </motion.ul>
 
-      <div className="w-fit px-6 mb-5">
+      <div className="w-fit px-6 mb-6 ">
         <button
           onClick={() => {
             setModalOpen(true);

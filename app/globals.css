@@ -114,7 +114,15 @@ body {
   overflow: hidden; /* Prevents overflow during clipPath animation */
   transition: clip-path 0.5s ease-in-out;
 }
-
+.backgroundv2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  z-index: 5;
+  overflow: hidden; /* Prevents overflow during clipPath animation */
+  transition: clip-path 0.5s ease-in-out;
+}
 .menuToggle {
   outline: none;
   border: none;
