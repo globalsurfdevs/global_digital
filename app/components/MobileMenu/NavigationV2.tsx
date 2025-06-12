@@ -67,7 +67,7 @@ const dropdownVariants = {
     opacity: 0,
     height: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.5,
       ease: "easeOut"
     }
   },
@@ -75,7 +75,7 @@ const dropdownVariants = {
     opacity: 1,
     height: "auto",
     transition: {
-      duration: 0.7,
+      duration: 0.5,
       ease: "easeInOut"
     }
   },
@@ -83,7 +83,7 @@ const dropdownVariants = {
     opacity: 0,
     height: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.5,
       ease: "easeIn"
     }
   }
