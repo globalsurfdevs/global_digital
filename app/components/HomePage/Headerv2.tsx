@@ -96,7 +96,7 @@ const Header = () => {
         </div>
       )}
 
-      <header className={`py-4 pb-4 lg:py-[22px] ${isSticky ? "header" : ""} relative`}>
+      <header className={`py-4 pb-4 lg:py-[22px] z-[1000] ${isSticky ? "header" : ""} relative`}>
         <div className="container flex items-center justify-between relative z-20">
           <div className="logo-s relative">
             <Image
