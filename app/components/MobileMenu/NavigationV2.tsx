@@ -94,7 +94,7 @@ const dropdownVariants = {
   return (
     <div className="">
       {modalOpen && (
-        <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
+        <div className="fixed left-0 top-20 lg:top-0  z-[1000] w-screen overflow-y-auto bg-white ">
           <LetsTalk onClose={() => { setModalOpen(false); onHide(); }} />
         </div>
       )}
