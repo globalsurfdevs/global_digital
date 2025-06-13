@@ -164,6 +164,10 @@ const Header = () => {
               <button
                 ref={servicesButtonRef}
                 className="large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0"
+                onClick={() => setIsServicesHovered((prev) => !prev)}
+                aria-expanded={isServicesHovered}
+                aria-haspopup="true"
+                type="button"
               >
                 SERVICES +
               </button>
@@ -180,9 +184,9 @@ const Header = () => {
             {/* INSIGHT */}
             <motion.div className="flex flex-col justify-center" whileHover="hover" initial="initial">
                 <div className="group relative">
-                <Link href="/insight" className="large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0">
+                <div  className="large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0 cursor-pointer" >
                   INSIGHT
-                </Link>
+                </div>
                 <div className="mt-4 invisible absolute left-0 top-full z-20 min-w-[200px] rounded-md bg-white p-4 shadow-lg opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
                   <Link
                   href="/blogs"

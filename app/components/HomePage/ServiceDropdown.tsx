@@ -4,6 +4,7 @@ import { assets } from "@/public/assets/assets";
 import menuright from "@/public/assets/menurightarrow.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 
 type ServiceItem = { text: string; url?: string };
@@ -136,7 +137,7 @@ const ServicesMegaMenu = () => {
   return (
     <div className="relative group inline-block">
       {/* Mega Menu Dropdown */}
-      <div className="absolute left-0 right-0 z-50 w-screen bg-black text-white xxl:h-[690px] h-full">
+      <div className="absolute left-0 right-0 z-50 w-screen bg-black text-white xxl:h-[690px] h-full ">
         <div className="w-full mx-auto px-8 xxl:py-[80px] py-[30px] flex justify-between items-center xxl:pl-[150px] lg:pl-[50px]">
           {/* Header Section */}
           <div className="w-1/3">
@@ -233,13 +234,13 @@ const ServicesMegaMenu = () => {
                        
                           key={title}
                           onMouseEnter={() => handleHover(category, title)}
-                          className={`cursor-pointer xxl:text-font19 text-[14px] transition-opacity duration-200 ${
+                          className={` xxl:text-font19 text-[14px] transition-opacity duration-200 ${
                             isActive
                               ? "text-white opacity-100"
                               : "text-white opacity-60 hover:opacity-100"
                           }`}
                         >
-                          <a href={item.url}>{title}</a>
+                          <Link className="cursor-pointer" href={item.url ?? "#"}>{title}</Link>
                         </li>
                       );
                     })}
