@@ -68,6 +68,7 @@ const serviceData: ServiceData = {
     },
   },
   "Digital Marketing": {
+    titleurl: "/digital-marketing-services",
     categoryText: 'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
     "Performance Marketing": {
       text: 'Built to Scale<span class="text-[#E43D30]">.</span><br> Measured to Win<span class="text-[#E43D30]">.</span>',
@@ -151,7 +152,7 @@ const ServicesMegaMenu = () => {
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
           }}
-              className="xxl:text-[48px] lg:text-[35px] xxl:leading-[60px] lg:leading-[50px] mb-4 "
+              className="xxl:text-[48px] lg:text-[35px] xxl:leading-[60px] lg:leading-[50px] mb-4 capitalize "
               dangerouslySetInnerHTML={{
                 __html: getActiveText(),
               }}
