@@ -65,7 +65,7 @@ export const menuItems = [
       {
         item: "DIGITAL MARKETING",
         
-        url: "",
+        url: "/digital-marketing-services",
         children: [
           {
             item: "Performance Marketing",
