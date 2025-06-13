@@ -25,12 +25,14 @@ export const DigitalServdata = {
       id: 1,
       icon: assets.google,
       title: "30",
+      btnicon:"+",
       rttitel: "Ongoing Campaigns ",
       dec: "Across industries, delivering custom web solutions tailored to unique business needs. ",
     },
     {
       id: 2,
       icon: assets.linkedin,
+       btnicon:"+",
       title: "40",
       rttitel: "Specialists Across Channels",
       dec: "In leading technologies, ensuring secure, scalable, and future-ready web applications. ",
@@ -38,6 +40,7 @@ export const DigitalServdata = {
     {
       id: 3,
       icon: assets.twitterx,
+       btnicon:"x",
       title: "10",
       rttitel: "ROAS Achieved on 80% of Projects ",
       dec: "Committed to building, optimizing, and supporting web applications that empower your business. ",

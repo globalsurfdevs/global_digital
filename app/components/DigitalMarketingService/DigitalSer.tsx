@@ -14,6 +14,7 @@ interface PlatformsItem {
   title?: string;
   rttitel?: string;
   btntitle?: string;
+  btnicon?:string;
   btnurl?: string;
   dec: string;
 }
@@ -25,6 +26,7 @@ interface DigitalServSectionProps {
   desc?: string;
   fdesc?: string;
   btntitle?: string;
+  btnicon?: string;
   btnurl?: string;
   title: string;
   colm?: number;
@@ -34,6 +36,7 @@ interface DigitalServSectionProps {
 const DigitalServ: React.FC<DigitalServSectionProps> = ({
   title,
   btntitle,
+  btnicon,
   btnurl,
   data,
   bgblack,
@@ -181,7 +184,9 @@ const DigitalServ: React.FC<DigitalServSectionProps> = ({
                         className={`text-30 transition-colors duration-300  lg:text-[65px] ${bgblack ? "text-white" : ""}`}
                       >
                         {platform.title}{" "}
-                        <span className="relative right-2  ">+</span>
+                        {platform.btnicon && (
+                          <span className="relative right-2">{platform.btnicon}</span>
+                        )}
                       </p>
                     )}
                     <p
