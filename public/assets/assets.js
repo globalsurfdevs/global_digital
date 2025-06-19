@@ -32,7 +32,7 @@ import appStorehov from "./appStor-hove.svg";
 import socialMediaNew from "./socialMediaNew.svg";
 import socialMediaNewhov from "./socialMediaNewhov.svg";
 import visibility from "./visibility.svg";
-import seleoLogo from "./seleo-logo.png";
+// import seleoLogo from "./seleo-logo.png";
 import seleoCover from "./seleo-cover.jpg";
 import seleo1 from "./seleo1.jpg";
 import seleo2 from "./seleo2.jpg";
@@ -785,6 +785,48 @@ import edcover4 from "../assets/education/edcover4.jpg";
 import mailhos from "../assets/services/mail-hos.svg";
 import menurightarrow from "../assets/menurightarrow.svg";
 import menuphoneicon from "../images/menu-phone-icon.png";
+import digitalmarketingbanner from "../assets/services/digital-marketing-service-kuwait/banner.jpg";
+import webdesigndev from "../assets/services/digital-marketing-service-kuwait/webdesign-dev.jpg";
+import helpi1 from "../assets/services/digital-marketing-service-kuwait/icons/helpi1.svg";
+import helpi2 from "../assets/services/digital-marketing-service-kuwait/icons/helpi2.svg";
+import healpi3 from "../assets/services/digital-marketing-service-kuwait/icons/healpi3.svg";
+import healpi4 from "../assets/services/digital-marketing-service-kuwait/icons/healpi4.svg";
+
+import seleoLogo from "../assets/services/digital-marketing-service-kuwait/featured-projects/logos/seleo-logo.svg";
+import everythingkuwaitLogo from "../assets/services/digital-marketing-service-kuwait/featured-projects/logos/everything-kuwait-logo.svg";
+import arcadiaLogo from "../assets/services/digital-marketing-service-kuwait/featured-projects/logos/arcadia-logo.svg";
+import breezeLogo from "../assets/services/digital-marketing-service-kuwait/featured-projects/logos/breeze-logo.svg";
+import gulfcryoLogo from "../assets/services/digital-marketing-service-kuwait/featured-projects/logos/gulfcryo-logo.svg";
+import bunkaLogo from "../assets/services/digital-marketing-service-kuwait/featured-projects/logos/bunka-logo.svg";
+
+import seleoFeatured from "../assets/services/digital-marketing-service-kuwait/featured-projects/seleo-featured.jpg";
+import everythingkuwaitFeatured from "../assets/services/digital-marketing-service-kuwait/featured-projects/everything-kuwait-featured.jpg";
+import arcadiaFeatured from "../assets/services/digital-marketing-service-kuwait/featured-projects/arcadia-featured.jpg";
+import breezeFeatured from "../assets/services/digital-marketing-service-kuwait/featured-projects/breez-featured.jpg";
+import gulfcryoFeatured from "../assets/services/digital-marketing-service-kuwait/featured-projects/gulfcryo-featured.jpg";
+import bunkaFeatured from "../assets/services/digital-marketing-service-kuwait/featured-projects/bunka-featured.jpg";
+
+import googleAds from "../assets/services/digital-marketing-service-kuwait/partners/google-ads.svg";
+import metaColour from "../assets/services/digital-marketing-service-kuwait/partners/meta.svg";
+import linkedinColour from "../assets/services/digital-marketing-service-kuwait/partners/linkedin.svg";
+import tiktok from "../assets/services/digital-marketing-service-kuwait/partners/tiktok.svg";
+import youtubeColour from "../assets/services/digital-marketing-service-kuwait/partners/youtube.svg";
+import snapchatColour from "../assets/services/digital-marketing-service-kuwait/partners/snapchat.svg";
+import microsoftAdvertising from "../assets/services/digital-marketing-service-kuwait/partners/microsoft-advertising.svg";
+import adobCreativeCloud from "../assets/services/digital-marketing-service-kuwait/partners/adob-creative-cloud.svg";
+import intuitMailchimp from "../assets/services/digital-marketing-service-kuwait/partners/intuit-mailchimp.svg";
+import activeCampaign from "../assets/services/digital-marketing-service-kuwait/partners/active-campaign.svg";
+import zoho from "../assets/services/digital-marketing-service-kuwait/partners/zoho.svg";
+import hotjar from "../assets/services/digital-marketing-service-kuwait/partners/hotjar.svg";
+import sproutSocial from "../assets/services/digital-marketing-service-kuwait/partners/sprout-social.svg";
+import googleAnalytics from "../assets/services/digital-marketing-service-kuwait/partners/google-analytics.svg";
+import amazonAds from "../assets/services/digital-marketing-service-kuwait/partners/amazon-ads.svg";
+import xAds from "../assets/services/digital-marketing-service-kuwait/partners/x-ads.svg";
+import pinterestColour from "../assets/services/digital-marketing-service-kuwait/partners/pinterest.svg";
+import ahrefsColour from "../assets/services/digital-marketing-service-kuwait/partners/ahrefs.svg";
+import semrushColour from "../assets/services/digital-marketing-service-kuwait/partners/semrush.svg";
+import seRanking from "../assets/services/digital-marketing-service-kuwait/partners/se-ranking.svg";
+import screMingfrog from "../assets/services/digital-marketing-service-kuwait/partners/scre-mingfrog.svg";
 
 
 export const assets = {
@@ -1186,6 +1228,7 @@ export const assets = {
   rst4,
   designbanner,
   wddbanner,
+  digitalmarketingbanner,
   sm1,
   sm2,
   sm3,
@@ -1553,6 +1596,44 @@ export const assets = {
   ecomconstr,
   ecomhc,
   ecomind,
+  webdesigndev,
+  helpi1,
+  helpi2,
+  healpi3,
+  healpi4,
+  seleoFeatured,
+  everythingkuwaitFeatured,
+  arcadiaFeatured,
+  breezeFeatured,
+  gulfcryoFeatured,
+  bunkaFeatured,
+  everythingkuwaitLogo,
+  arcadiaLogo,
+  breezeLogo,
+  gulfcryoLogo,
+  bunkaLogo,
+
+  googleAds,
+  metaColour,
+  linkedinColour,
+  tiktok,
+  youtubeColour,
+  snapchatColour,
+  intuitMailchimp,
+  activeCampaign,
+  zoho,
+  hotjar,
+  sproutSocial,
+  googleAnalytics,
+  amazonAds,
+  xAds,
+  pinterestColour,
+  ahrefsColour,
+  semrushColour,
+  seRanking,
+  screMingfrog,
+  microsoftAdvertising,
+  adobCreativeCloud,
 };
 
 export const logos = [

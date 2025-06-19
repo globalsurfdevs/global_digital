@@ -124,29 +124,29 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
 
-                      <div>
-                        {herosection.navigation && (
-                          <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[40px] xl:mb-[60px]">
-                            <ul className="flex items-center space-x-2">
-                              {herosection.navigation.map((navItem, index) => (
-                                <React.Fragment key={index}>
-                                  <li>
-                                    {navItem.url ? (
-                                      <Link
-                                        href={navItem.url}
-                                        className="hover:underline"
-                                      >
-                                        {navItem.label}
-                                      </Link>
-                                    ) : (
-                                      <span className="text-[#77787B]">
-                                        {navItem.label}
-                                      </span>
-                                    )}
-                                  </li>
-                                  {index <
-                                    (herosection.navigation?.length || 0) -
-                                      1 && (
+                    <div>
+                      {herosection.navigation && (
+                        <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[40px] xl:mb-[60px]">
+                          <ul className="flex items-center space-x-2">
+                            {herosection.navigation.map((navItem, index) => (
+                              <React.Fragment key={index}>
+                                <li>
+                                  {navItem.url ? (
+                                    <Link
+                                      href={navItem.url}
+                                      className="hover:underline"
+                                    >
+                                      {navItem.label}
+                                    </Link>
+                                  ) : (
+                                    <span className="text-[#77787B]">
+                                      {navItem.label}
+                                    </span>
+                                  )}
+                                </li>
+                                {index <
+                                  (herosection.navigation?.length || 0) -
+                                  1 && (
                                     <li>
                                       <Image
                                         src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
@@ -157,12 +157,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                                       />
                                     </li>
                                   )}
-                                </React.Fragment>
-                              ))}
-                            </ul>
-                          </nav>
-                        )}
-                      </div>
+                              </React.Fragment>
+                            ))}
+                          </ul>
+                        </nav>
+                      )}
+                    </div>
                     {herosection.title1 && (
                       <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px] ">
                         {herosection.title1}
@@ -312,9 +312,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <div
           style={{ width: isSmallScreen ? "" : divWidth }}
-          className={`${
-            isSmallScreen ? "container mx-auto py-2" : ""
-          } custom-class`}
+          className={`${isSmallScreen ? "container mx-auto py-2" : ""
+            } custom-class`}
         >
           {!hideslider && (
             <div className="flex gap-5 bg-bglight  py-[17px]">
