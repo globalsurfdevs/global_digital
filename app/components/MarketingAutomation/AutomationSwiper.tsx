@@ -74,7 +74,7 @@ const AutomationSwiper: React.FC<HeroSectionProps> = ({
   return (
     <>
       <div className='container ' ref={nextContainerRef}>
-        <div className="mb-4 mt-6 grid lg:mb-[75px] lg:mt-0"><h2 className="title-65">{mtslogo.title}</h2></div></div>
+        <div className="mb-6 mt-6 grid lg:mb-[75px] lg:mt-0"><h2 className="title-65">{mtslogo.title}</h2></div></div>
       <div style={{ width: isSmallScreen ? '' : divWidth }} className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto overflow-hidden`} >
         <div className="swpcs testimonialswiper">
           <Swiper
@@ -96,12 +96,12 @@ const AutomationSwiper: React.FC<HeroSectionProps> = ({
 
             breakpoints={{
               320: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 10
               },
               640: {
-                slidesPerView: 2.4,
-                spaceBetween: 30
+                slidesPerView: 4,
+                spaceBetween: 20
               },
               992: {
                 slidesPerView: 2.6,
@@ -119,7 +119,7 @@ const AutomationSwiper: React.FC<HeroSectionProps> = ({
           >
             {mtslogo.data.map((item, index) => (
               <SwiperSlide key={index} >
-                <div className={slideBg ? " bg-dgray rounded-md w-full" : ""}>
+                <div className={slideBg ? " bg-dgray rounded-md w-fit lg:w-full" : ""}>
                   <Image src={item.src} alt="image" className="object-contain" width={200} height={80}  />
                 </div>
 
