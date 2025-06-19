@@ -40,7 +40,7 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
           }}
         >
           {" "}
-          <div className="mb-4 mt-6 grid lg:mb-[75px] lg:mt-0">
+          <div className="mb-2 mt-6 grid lg:mb-75 lg:mt-0">
             {title1 && (
               <h2
                 className="title-65"
@@ -62,13 +62,14 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
           slidesPerView={slidesPerView}
           speed={5000}
           grabCursor={true}
-          loopAdditionalSlides={2}
+          // loopAdditionalSlides={2}
           modules={[Autoplay]}
           simulateTouch={false}
           allowTouchMove={false}
           breakpoints={{
             320: {
               spaceBetween: 30,
+              slidesPerView: 4,
             },
             768: {
               spaceBetween: 40,
@@ -83,16 +84,8 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
         >
           {logosdata.map((logo, index) => (
             <SwiperSlide key={index}>
-              <div className="rounded-[5px] bg-[#F2F2F2]">
-                <img
-                  src={
-                    typeof logo.src === "string"
-                      ? logo.src
-                      : (logo.src?.src ?? "")
-                  }
-                  alt={logo.alt}
-                  className="object-contain"
-                />
+              <div className="rounded-[5px] bg-[#F2F2F2] w-fit mx-2">
+                <img src={typeof logo.src === "string" ? logo.src : (logo.src?.src ?? "")} alt={logo.alt} className="object-contain" />
               </div>
             </SwiperSlide>
           ))}

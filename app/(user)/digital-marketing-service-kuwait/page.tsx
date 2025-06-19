@@ -144,7 +144,7 @@ const page = () => {
       </section>
       <Services title={OurServices.title} data={OurServices.data} colcount={5} hrcontent={true} bgcolor="bg-black" />
       <PartnersSec />
-      <section className="pt-140 ">
+      <section className="lg:pt-140 pt-12">
         <Platformserver
           title={Platformsecomdata.title}
           desc={Platformsecomdata.desc}

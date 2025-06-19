@@ -79,9 +79,23 @@ const FeaturedProjectsSlider: React.FC<FeaturedProjectsSectionProps> = ({
           >
             {FeaturedProjectsdata.map((item) => (
               <SwiperSlide key={item.id}>
-                <div className="flex group" >
+                <div className="flex flex-col lg:flex-row group" >
+                  {/* Image Section */}
+                  <div className="w-full lg:w-1/2 lg:order2 ">
+                    <div className="h-full relative">
+                      <Link href={item.slug || ""}>
+                        <Image src={item.image} alt={item.projectName} className="h-full w-full max-h-[200px] lg:max-h-[460px] object-cover lg:w-[450px]" />
+                      </Link>
+                      <a href={item.slug || ""} className="absolute bottom-6 lg:bottom-10 right-6 lg:right-10">
+                        <div className="group relative z-10 flex w-fit items-center   border-b-0 border-transparent decoration-0 before:h-[1px]    ">
+                          <Image src={item.logo} alt={item.projectName} className="h-full w-full object-contain bg-black/50 p-2 lg:p-0 lg:bg-transparent" width={450} height={450} />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+
                   {/* Text + Button Section */}
-                  <div className="flex w-1/2 flex-col justify-between bg-[#F2F2F2] p-[20px] lg:py-[40px] lg:pl-[40px] lg:pr-[40px]">
+                  <div className="flex w-full lg:w-1/2 flex-col justify-between bg-[#F2F2F2] p-[20px] lg:py-[40px] lg:pl-[40px] lg:pr-[40px] lg:order1">
                     <Link href={item.slug || ""}>
                     <h2 className="mb-2 text-[25px] leading-[28px] lg:max-w-[330px] lg:leading-[38px] xxl:text-[30px] uppercase">
                       {item.projectName}
@@ -97,19 +111,7 @@ const FeaturedProjectsSlider: React.FC<FeaturedProjectsSectionProps> = ({
                     </div>
                   </div>
 
-                  {/* Image Section */}
-                  <div className="w-1/2">
-                    <div className="h-full ">
-                      <Link href={item.slug || ""}>
-                      <Image src={item.image} alt={item.projectName} className="h-full w-full max-h-[460px] object-cover lg:w-[450px]" />
-                      </Link>
-                      <a href={item.slug || ""} className="absolute bottom-6 lg:bottom-10 right-6 lg:right-10">
-                        <div className="group relative z-10 flex w-fit items-center   border-b-0 border-transparent    decoration-0 before:h-[1px]    ">
-                          <Image src={item.logo} alt={item.projectName} className="h-full w-full object-contain" width={450} height={450} />
-                        </div>
-                        </a>
-                    </div>
-                  </div>
+                 
                 </div>
               </SwiperSlide>
             ))}
