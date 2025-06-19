@@ -56,26 +56,26 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Custom Web Development Company in Dubai | G.S Digital",
+    title: "Digital Marketing Services in Kuwait | G.S Digital",
     description:
-      "Elevate your digital presence with expert web development in Dubai. We craft tailored websites that are fast, secure, and built to scale with your business.",
+      "Digital Marketing Services in Kuwait Trusted Digital Marketing Partner for Data-Driven Growth",
     alternates: {
-      canonical: "https://www.globalsurf.ae/web-development-agency-dubai",
+      canonical: "https://www.globalsurf.ae/digital-marketing-service-kuwait",
     },
-    robots: "index, follow",
+    robots: "noindex, nofollow",
     openGraph: {
-      title: "Dubai’s Trusted Partner for Web Development Solutions",
+      title: "Digital Marketing Services in Kuwait | G.S Digital",
       siteName: "Global Surf Digital",
-      url: "https://www.globalsurf.ae/web-development-agency-dubai",
+      url: "https://www.globalsurf.ae/digital-marketing-service-kuwait",
       description:
-        "Discover top-tier custom web development services in Dubai. We build high-performance, secure websites tailored to your business goals.",
+        "Digital Marketing Services in Kuwait Trusted Digital Marketing Partner for Data-Driven Growth",
       type: "website",
       images: [
         {
           url: "https://www.globalsurf.ae/_next/static/media/banner.759dbe9a.jpg",
           width: 1200,
           height: 630,
-          alt: "Web Development Services Dubai",
+          alt: "Digital Marketing Services in Kuwait",
         },
       ],
     },
