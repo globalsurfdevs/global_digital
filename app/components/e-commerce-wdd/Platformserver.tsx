@@ -91,7 +91,7 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
                           className={`text-30 transition-colors duration-300 group-hover:text-primary xxl:text-[65px]  ${bgblack ? "text-white" : ""}`}
                         >
                           {platform.title}{" "}
-                          <span className="relative right-2 text-primary group-hover:text-[#00000080] ">
+                          <span className="relative right-2  group-first:text-primary group-hover:text-[#00000080] ">
                             +
                           </span>
                         </p>
@@ -108,22 +108,15 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
                       )}
                     </div>
                   </div>
-                  <p
-                    className="  text-font25 leading-[1.3] text-black"
-                    dangerouslySetInnerHTML={{ __html: platform.rttitel || "" }}
-                  ></p>
+                  <p className="  text-font25 leading-[1.3] text-black" dangerouslySetInnerHTML={{ __html: platform.rttitel || "" }} ></p>
                 </div>
 
-                <div
-                  className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? "bg-white" : ""}`}
-                >
+                <div className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? "bg-white" : ""}`} >
                   <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                 </div>
 
                 <div>
-                  <p
-                    className={`text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 ${bgblack ? "group-hover:text-gray-300" : ""}`}
-                  >
+                  <p className={`text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 ${bgblack ? "group-hover:text-gray-300" : ""}`} >
                     {platform.dec}
                   </p>
                 </div>

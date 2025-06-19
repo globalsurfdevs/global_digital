@@ -37,7 +37,7 @@ const Services: React.FC<ServicesSectionProps> = ({
   leftzero
 }) => {
   return (
-    <div className={` ${bgcolor ? `${bgcolor}` : "bg-white"} ` }>
+    <section className={` ${bgcolor ? `${bgcolor}` : "bg-white"} ` }>
       <div className=  {`container mx-auto py-4  `}>
         <div className={`  ${leftzero ? "bgafter relative" : ""}`}>
         <motion.div
@@ -53,46 +53,31 @@ const Services: React.FC<ServicesSectionProps> = ({
             }, // Slide up and fade in
           }}
         >
-          <div
-            className={`gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px]  lg:gap-10 lg:pb-[150px] lg:pt-[140px] pas  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}
-          >
+          <div className={`gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px]  lg:gap-10 lg:pb-[150px] lg:pt-[140px] pas  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}>
             <div className="col-span-2 text-5xl">
-              <h2
-                className={`title-65 pb-2 ${bgtt1 ? bgtt1 : "text-black"}`}
-              >
+              <h2 className={`title-65 pb-2 ${bgcolor =="bg-black"? "text-white" : "text-black"}`} >
                 {title}
               </h2>
-              <p className="text-19 fnt-lexend max-w-[38ch] pt-4 text-[#77787B] md:pt-6 xl:pt-14">
+              <p className={`text-19 fnt-lexend max-w-[38ch] pt-4 md:pt-6 xl:pt-14 ${bgcolor =="bg-black"? "text-white" : "text-gray1"}`}>
                 {description}
               </p>
             </div>
 
-            <div
-              className={`serv-mn  w-full ps-0 text-font30 xl:ps-12 ${colcount ? `col-span-${colcount - 2}` : "col-span-4"}`}
-            >
+            <div className={`serv-mn  w-full ps-0 text-font30 xl:ps-12 ${colcount ? `col-span-${colcount - 2}` : "col-span-4"}`} >
               {data.map((service) => (
-                <div
-                  key={service.id}
-                  className={`${hrcontent1 ? "border-t last:border-b" : ""}`}
-                >
+                <div key={service.id} className={`${hrcontent1 ? "border-t last:border-b" : ""}`} >
                   <div className="group border-b relative flex gap-4 py-[15px] transition-all duration-300  ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[34px]">
-                    <p
-                      className={` transition-all duration-300 group-hover:text-primary ${bgtt2 ? bgtt2 : "text-gray1"}`}
-                    >
+                    <p className={` transition-all duration-300 group-hover:text-primary ${bgtt2 ? bgtt2 : "text-gray1"}`} >
                       {String(service.id).padStart(2, "0")}
                     </p>
                     <div className="consu relative">
-                      <h3
-                        className={`text-30 transition-all duration-300 group-hover:text-primary ${bgtt3 ? bgtt3 : "text-black"}`}
-                      >
+                      <h3 className={`text-30 transition-all duration-300 group-hover:text-primary ${bgcolor=="bg-black" ? "text-white" : "text-black"}`} >
                         {service.title}
                       </h3>
                       {/* Hover Description */}
                       {hrcontent && (
-                        <div className="     h-0 group-hover:h-auto  ">
-                          <p
-                            className={` mt-2 text-font19 leading-[1.2] opacity-0  transition-opacity duration-300 group-hover:opacity-100  ${bgtt4 ? `${bgtt4}` : "text-77787B"}`}
-                          >
+                        <div className="h-0 group-hover:h-auto">
+                          <p className={` mt-2 text-font19 leading-[1.2] opacity-0  transition-opacity duration-300 group-hover:opacity-100  ${bgtt4 ? `${bgtt4}` : "text-77787B"}`} >
                             {service.desc}
                           </p>
                         </div>
@@ -106,7 +91,7 @@ const Services: React.FC<ServicesSectionProps> = ({
         </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -79,8 +79,7 @@ const page = () => {
       />
       <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
         {/* <LogoSwiper mtslogo={Matslogo[0]} /> */}
-        <LogoSwiper logosdata={logosdatas} slidesPerView={7}
-          title1="Our Data Analytics Technology Stack"/>
+        <LogoSwiper logosdata={logosdatas} slidesPerView={7} title1="Our Data Analytics Technology Stack"/>
       </div>
 
       <section className="pb-[50px] lg:pb-[150px]">

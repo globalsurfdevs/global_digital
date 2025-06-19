@@ -49,7 +49,7 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
             )}
           </div>
         </motion.div>
-
+        <div >
         <Swiper
           className="logo-swiper !overflow-visible"
           loop={true}
@@ -74,10 +74,10 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
               spaceBetween: 40,
             },
             1024: {
-              spaceBetween: 50,
+              spaceBetween: 80,
             },
             1366: {
-              spaceBetween: 80,
+              spaceBetween: 100,
             },
           }}
         >
@@ -97,6 +97,7 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
             </SwiperSlide>
           ))}
         </Swiper>
+        </div>
       </div>
     </div>
   );
