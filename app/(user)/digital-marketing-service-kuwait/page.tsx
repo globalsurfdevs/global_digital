@@ -1,10 +1,12 @@
-import React from "react";
+
+
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import Typeslogo from "../../components/Bc-logo/TypesLogo";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 import Link from "next/link";
+// import LetsTalk from "../../components/common/LetsConnect";
 import { Lexend } from "next/font/google";
 const lexend = Lexend({
   subsets: ["latin"],
@@ -30,6 +32,7 @@ import { Typelogodata } from "@/app/data/services/digital-marketing-service-kuwa
 import PartnersSec from "@/app/components/DigitalMarketingService/PartnersSec";
 import Industydetail from "@/app/components/industry/Industydetail";
 import FeaturedProjectsSlider from "@/app/components/DigitalMarketingService/FeaturedProjectsSlider";
+import LetsTalkBtn from "@/app/components/DigitalMarketingService/LetsTalkBtn";
 
 interface Canonicals {
   canonical: string;
@@ -55,6 +58,7 @@ type Metadata = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
+   
   return {
     title: "Digital Marketing Services in Kuwait | G.S Digital",
     description:
@@ -99,14 +103,11 @@ const page = () => {
               <h3 className="text-font19 font-semibold fnt-lexend leading-[1.473684210526316]">Strategically driven. Data-backed.</h3>
               <p className="text-gray1 text-font19 font-medium fnt-lexend mb-0 leading-[1.473684210526316]">No guesswork—just powerful execution that delivers ROI.</p>
             </div>
-
-            <button className="z-2 z-1 group relative flex w-fit items-center gap-1 lg:gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3 before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 " >
+            {/* <button className="z-2 z-1 group relative flex w-fit items-center gap-1 lg:gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3 before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 " >
               <div className="relative">
-                <Link href="about-us" className="">
                   <p className={`duration-200" text-font16 font-medium ease-in-out group-hover:text-primary uppercase ${lexend.className}`}>
                     Let’s turn your brand’s online presence into its biggest growth engine.
                   </p>
-                </Link>
               </div>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="duration-200 ease-in-out group-hover:scale-125 group-hover:stroke-black">
                 <g clipPath="url(#clip0_46_1045)" className="group-hover:stroke-black">
@@ -119,7 +120,8 @@ const page = () => {
                   </clipPath>
                 </defs>
               </svg>
-            </button>
+            </button> */}
+               <LetsTalkBtn />
           </div>
         </div>
       </section>
