@@ -79,18 +79,14 @@ const AboutGlobal = () => {
             innovation, and business-focused solutions.
           </p>
           <button
-            className="z-2 z-1 group relative flex flex w-fit items-center gap-1 gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
+            className="z-2 z-1 group relative flex w-fit items-center gap-1 lg:gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
         pb-3 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out
           after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0
         "
           >
             <div className="relative">
-             <Link
-                href="about-us"
-                className=""
-              > <p
-                className={`duration-200" text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
-              >
+             <Link href="about-us" className="" >
+              <p className={`duration-200" text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}>
                 ABOUT US
               </p>
               </Link>

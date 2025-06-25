@@ -37,9 +37,7 @@ const Platforms: React.FC<PlatformsSectionProps> = ({
 }) => {
   return (
     <div className={`container mx-auto py-4 ${leftzero ? "relative" : ""}`}>
-      <div
-        className={`secps flex flex-col gap-7 ${bgblack ? "bg-black" : "bg-dgray"} ${leftzero ? "left0w" : ""} p-[25px] lg:gap-12 lg:p-[100px]`}
-      >
+      <div className={`secps flex flex-col gap-7 ${bgblack ? "bg-black" : "bg-dgray"} ${leftzero ? "left0w" : ""} p-[25px] lg:gap-12 lg:p-[100px]`} >
         <div>
           <motion.div
             initial="hidden"
@@ -123,10 +121,9 @@ const Platforms: React.FC<PlatformsSectionProps> = ({
                       }}
                     />
                   )}
-                  <p
-                    className={` ${bgblack ? "group-hover:text-gray-300" : ""}  ${hiddentitle ? "text-30 transition-colors " : "text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700"}`}
-                    dangerouslySetInnerHTML={{ __html: platform.dec }}
-                  ></p>
+                  <p className={` ${bgblack ? "group-hover:text-gray-300" : ""}  
+                    ${hiddentitle ? "text-30 transition-colors " : "text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700"}`}
+                    dangerouslySetInnerHTML={{ __html: platform.dec }} ></p>
                 </div>
               </div>
             ))}

@@ -94,7 +94,7 @@ const page = () => {
       />
       <Testimonials bgcolor={"white"} />
 
-      <section className="pb-[50px]   lg:pb-[140px] ">
+      <section className="pb-[50px] lg:pb-[140px] ">
         <Platformimg
           title={Platformimgmdata.title}
           desc={Platformimgmdata.desc}

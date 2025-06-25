@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+:root{
+  --spacing-140: clamp(2em, 5vw + 1rem, 140px);
+  --spacing-75: clamp(1em, 5vw + 0.5rem, 75px);
+}
+
 html,
 body {
   overflow-x: hidden;
@@ -17,6 +23,11 @@ body {
 .container {
   margin: 0 auto;
   padding: 0 15px;
+}
+
+.py-140{
+  padding-top: var(--spacing-140);
+  padding-bottom: var(--spacing-140);
 }
 
 .overflow-inherit {

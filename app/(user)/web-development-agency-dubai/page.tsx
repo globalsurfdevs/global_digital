@@ -109,10 +109,12 @@ const page = () => {
           data={Platformsecomdata.data}
         />
       </section>
+      <section className="pb-[50px] lg:pb-[140px] ">
       <SucessStories
         Clientsformsdata={Clientsformsdata.filter((item) => item !== undefined)}
         subdesc={"Our Works"}
       />
+      </section>
       <GetInTouch
         data={Cta}
         redlast={true}

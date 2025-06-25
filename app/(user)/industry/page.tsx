@@ -85,16 +85,8 @@ const page = () => {
         bannerlogp={false}
         maxchwidth={28}
       />
-      <Industydetail
-        title={IndustriesWeServe.title}
-        data={IndustriesWeServe.data}
-      />
-      <GetInTouch
-        data={Cta}
-        redlast={false}
-        bgcolor="#F2F2F2"
-        ctabbutton={"LET'S GET STARTED TODAY!"}
-      />
+      <Industydetail title={IndustriesWeServe.title} data={IndustriesWeServe.data} />
+      <GetInTouch data={Cta} redlast={false} bgcolor="#F2F2F2" ctabbutton={"LET'S GET STARTED TODAY!"} />
     </div>
   );
 };

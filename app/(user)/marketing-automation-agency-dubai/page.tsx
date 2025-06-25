@@ -95,7 +95,7 @@ const page = () => {
         hrcontent={true}
       />
       <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-      <LogoSwiper mtslogo={Matslogo[0]}   />
+      <LogoSwiper mtslogo={Matslogo[0]} slideBg={true} />
       </div>
 
       <section className="pb-[50px] lg:pb-[150px]">
