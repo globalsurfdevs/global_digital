@@ -96,7 +96,7 @@ const Industydetail: React.FC<ExpertiseSectionProps> = ({
                         {/* Default background color */}
                         <div className="absolute left-0 top-0 -z-20 h-full w-full bg-white transition-colors duration-500 group-hover:bg-transparent"></div>
                         {/* Image Wrapper */}
-                        <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 group-hover:bg-white   md:h-[50px] md:w-[50px]">
+                        <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 md:h-[50px] md:w-[50px]">
                           <Image
                             src={expertise.icon}
                             alt={expertise.title}
