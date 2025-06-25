@@ -16,12 +16,13 @@ interface LogoSwiperSectionProps {
   logosdata: LogoSwiperProps[];
   slidesPerView?: number | "auto";
   title1?: string;
+  reverseDirection?: boolean;
 }
 
 const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
   logosdata,
   slidesPerView = "auto",
-  title1,
+  title1,reverseDirection = false,
 }) => {
   return (
     <div className="overflow-hidden bg-white ">
@@ -57,6 +58,7 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
           autoplay={{
             delay: 0,
             disableOnInteraction: false,
+            reverseDirection,
           }}
           cssMode={false}
           slidesPerView={slidesPerView}

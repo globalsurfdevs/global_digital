@@ -9,7 +9,7 @@ export default function PartnersSec() {
       <LogoSwipera mtslogo={partnersLogoOne[0]} slideBg={true} />
   
       {/* <LogoSwiper logosdata={logosdatas} slidesPerView={6.5} title1="Our Partners" /> */}
-      <LogoSwiper logosdata={partnersLogosTwo} slidesPerView={6.5}  />
+      <LogoSwiper logosdata={partnersLogosTwo} slidesPerView={7}   reverseDirection={true} />
     </section>
   )
 }

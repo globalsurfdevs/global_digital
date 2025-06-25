@@ -765,6 +765,8 @@ import ini7 from "../assets/industry/ini7.svg";
 import ini8 from "../assets/industry/ini8.svg";
 import ini9 from "../assets/industry/ini9.svg";
 import ini10 from "../assets/industry/ini10.svg";
+import brnd_ini3 from "../assets/industry/brnd_ini3.svg";
+import data_an_ini2 from "../assets/industry/data_an_ini2.svg";
 import edbanner from "../assets/education/edubanner.jpg";
 import edic1 from "../assets/education/eduser1.svg";
 import edic2 from "../assets/education/eduser2.svg";
@@ -827,10 +829,16 @@ import ahrefsColour from "../assets/services/digital-marketing-service-kuwait/pa
 import semrushColour from "../assets/services/digital-marketing-service-kuwait/partners/semrush.svg";
 import seRanking from "../assets/services/digital-marketing-service-kuwait/partners/se-ranking.svg";
 import screMingfrog from "../assets/services/digital-marketing-service-kuwait/partners/scre-mingfrog.svg";
+import relatedImg2 from "../assets/services/digital-marketing-service-kuwait/related_img2.png";
+import relatedImg3 from "../assets/services/digital-marketing-service-kuwait/related_img3.png";
 
 
 export const assets = {
   edcover1,
+  relatedImg2,
+  brnd_ini3,
+  data_an_ini2,
+  relatedImg3,
   menuphoneicon,
   edcover2,
   edcover3,

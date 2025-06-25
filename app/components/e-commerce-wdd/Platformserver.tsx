@@ -88,10 +88,10 @@ const Platformserver: React.FC<PlatformsSectionProps> = ({
                     <div>
                       {platform.title && (
                         <p
-                          className={`text-30 transition-colors duration-300 group-hover:text-primary xxl:text-[65px]  ${bgblack ? "text-white" : ""}`}
+                          className={`text-30 transition-colors duration-300  xxl:text-[65px]  ${bgblack ? "text-white" : ""}`}
                         >
                           {platform.title}{" "}
-                          <span className="relative right-2  group-first:text-primary group-hover:text-[#00000080] ">
+                          <span className="relative right-2 group-hover:text-primary ">
                             +
                           </span>
                         </p>
