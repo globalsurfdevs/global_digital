@@ -70,6 +70,10 @@ const FeaturedProjectsSlider: React.FC<FeaturedProjectsSectionProps> = ({
             speed={5000}
             grabCursor={true}
             modules={[Autoplay]}
+             autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
             breakpoints={{
               320: { spaceBetween: 30, slidesPerView: 1 },
               768: { spaceBetween: 70, slidesPerView: 1 },
