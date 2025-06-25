@@ -261,7 +261,7 @@ const Header = () => {
         <AnimatePresence>
           {isServicesHovered && (
             <motion.div
-  className="absolute left-0 top-full z-50 w-full bg-white shadow-lg"
+  className="absolute left-0  z-50 w-full bg-white shadow-lg"
   onMouseEnter={() => setIsServicesHovered(true)}
   onMouseLeave={() => setIsServicesHovered(false)}
   initial={{ opacity: 0, y: -10 }}
