@@ -829,8 +829,8 @@ import ahrefsColour from "../assets/services/digital-marketing-service-kuwait/pa
 import semrushColour from "../assets/services/digital-marketing-service-kuwait/partners/semrush.svg";
 import seRanking from "../assets/services/digital-marketing-service-kuwait/partners/se-ranking.svg";
 import screMingfrog from "../assets/services/digital-marketing-service-kuwait/partners/scre-mingfrog.svg";
-import relatedImg2 from "../assets/services/digital-marketing-service-kuwait/related_img2.png";
-import relatedImg3 from "../assets/services/digital-marketing-service-kuwait/related_img3.png";
+import relatedImg2 from "../assets/services/digital-marketing-service-kuwait/related_Img2.png";
+import relatedImg3 from "../assets/services/digital-marketing-service-kuwait/related_Img3.png";
 
 
 export const assets = {
