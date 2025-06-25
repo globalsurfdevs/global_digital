@@ -134,7 +134,7 @@ export const relatedServicesData = {
       title: "Web Design & Development",
       hoverImg: assets.webdesigndev,
       desc: "Responsive, user-friendly websites built for conversion and speed. ",
-      url: "",
+      url: "/web-design-and-development",
     },
     {
       id: 2,
@@ -142,7 +142,7 @@ export const relatedServicesData = {
       title: "Branding & Creative",
       hoverImg: assets.relatedImg2,
       desc: "Brand identities that stand out and stay consistent across all digital touchpoints. ",
-      url: "",
+      url: "/creative-agency-dubai",
     },
 
     {
@@ -151,7 +151,7 @@ export const relatedServicesData = {
       title: "Data & Analytics",
       hoverImg: assets.relatedImg3,
       desc: "Track every touchpoint and turn insights into actions that move the needle. ",
-      url: "",
+      url: "/data-analytics-services-dubai",
     },
   ],
 };
