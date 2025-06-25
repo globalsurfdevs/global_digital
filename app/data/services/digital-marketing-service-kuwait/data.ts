@@ -138,18 +138,18 @@ export const relatedServicesData = {
     },
     {
       id: 2,
-      icon: assets.ini2,
+      icon: assets.brnd_ini3,
       title: "Branding & Creative",
-      hoverImg: assets.webdesigndev,
+      hoverImg: assets.relatedImg2,
       desc: "Brand identities that stand out and stay consistent across all digital touchpoints. ",
       url: "",
     },
 
     {
       id: 3,
-      icon: assets.ini3,
+      icon: assets.data_an_ini2,
       title: "Data & Analytics",
-      hoverImg: assets.webdesigndev,
+      hoverImg: assets.relatedImg3,
       desc: "Track every touchpoint and turn insights into actions that move the needle. ",
       url: "",
     },
@@ -363,8 +363,8 @@ export const Platformsecomdata = {
 export const Cta = [
   {
     textred:
-      "Let’s build a strategy that brings your brand’s digital potential to life. ",
-    text: "Book a Consultation and Take the First Step Toward Digital Growth.   ",
+      "digital potential to life.",
+    text: "Let’s build a strategy that brings your brand’s  ",
   },
 ];
 export const Faq = [

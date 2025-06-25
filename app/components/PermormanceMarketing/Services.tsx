@@ -63,7 +63,7 @@ const Services: React.FC<ServicesSectionProps> = ({
               </p>
             </div>
 
-            <div className={`serv-mn  w-full ps-0 text-font30 xl:ps-12 ${colcount ? `col-span-${colcount - 2}` : "col-span-4"}`} >
+            <div  className={`serv-mn  w-full ps-0 text-font30 xl:ps-12 ${colcount ? `col-span-${colcount - 2}` : "col-span-4"}`} >
               {data.map((service) => (
                 <div key={service.id} className={`${hrcontent1 ? "border-t last:border-b" : ""}`} >
                   <div className="group border-b relative flex gap-4 py-[15px] transition-all duration-300  ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[34px]">
@@ -76,7 +76,7 @@ const Services: React.FC<ServicesSectionProps> = ({
                       </h3>
                       {/* Hover Description */}
                       {hrcontent && (
-                        <div className="h-0 group-hover:h-auto">
+                        <div  className={`mt-2 overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out group-hover:max-h-[150px] group-hover:opacity-100 delay-100`}>
                           <p className={` mt-2 text-font19 leading-[1.2] opacity-0  transition-opacity duration-300 group-hover:opacity-100  ${bgtt4 ? `${bgtt4}` : "text-77787B"}`} >
                             {service.desc}
                           </p>

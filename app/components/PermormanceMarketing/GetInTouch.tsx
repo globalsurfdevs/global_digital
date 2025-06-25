@@ -66,7 +66,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               {data.map((item, index) =>
                 redlast ? (
                   <h2
-                    className="title-65 leading-[1.15]"
+                    className="title-65 leading-[1.15] capitalize"
                     key={index}
                     dangerouslySetInnerHTML={{
                       __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span><span class="text-primary">${item.textred}</span>`,
@@ -74,7 +74,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                   />
                 ) : (
                   <h2
-                    className="title-65 leading-[1.15]"
+                    className="title-65 leading-[1.15] capitalize"
                     key={index}
                     dangerouslySetInnerHTML={{
                       __html: `<span class="text-primary">${item.textred}</span><span class='${bgcolor ? `text-black` : ""}'>${item.text}</span>`,
