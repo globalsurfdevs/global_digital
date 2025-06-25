@@ -66,7 +66,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/digital-marketing-service-kuwait",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
     openGraph: {
       title: "Digital Marketing Services in Kuwait | G.S Digital",
       siteName: "Global Surf Digital",
