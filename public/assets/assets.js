@@ -93,6 +93,17 @@ import sm_management from "../assets/icons/sm_management.svg";
 import sm_strategy from "../assets/icons/sm_strategy.svg";
 import sm_marketing from "../assets/icons/sm_marketing.svg";
 
+import microicon1 from "../assets/icons/micro-em-ic1.svg";
+import microicon2 from "../assets/icons/micro-em-ic2.svg";
+import microicon3 from "../assets/icons/micro-em-ic3.svg";
+import microicon4 from "../assets/icons/micro-em-ic4.svg";
+import microicon5 from "../assets/icons/micro-em-ic5.svg";
+import microicon6 from "../assets/icons/micro-em-ic6.svg";
+import microicon7 from "../assets/icons/micro-em-ic7.svg";
+import microicon8 from "../assets/icons/micro-em-ic8.svg";
+import microicon9 from "../assets/icons/micro-em-ic9.svg";
+
+
 import b2b_seo from "../assets/icons/b2b_seo.svg";
 import ecom_seo from "../assets/icons/ecom_seo.svg";
 import local_seo from "../assets/icons/local_seo.svg";
@@ -839,6 +850,15 @@ import contpro from "../assets/content-production/cont-pro.svg";
 export const assets = {
   edcover1,
   relatedImg2,
+  microicon1,
+  microicon2,
+  microicon3, 
+  microicon4,
+  microicon5,
+  microicon6,
+  microicon7,
+  microicon8,
+  microicon9,
   photicn,
   vidicon,
   contpro,
