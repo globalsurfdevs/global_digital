@@ -831,11 +831,17 @@ import seRanking from "../assets/services/digital-marketing-service-kuwait/partn
 import screMingfrog from "../assets/services/digital-marketing-service-kuwait/partners/scre-mingfrog.svg";
 import relatedImg2 from "../assets/services/digital-marketing-service-kuwait/related_Img2.png";
 import relatedImg3 from "../assets/services/digital-marketing-service-kuwait/related_Img3.png";
+import photicn from "../assets/content-production/pht-icn.svg";
+import vidicon from "../assets/content-production/video-icn.svg";
+import contpro from "../assets/content-production/cont-pro.svg";
 
 
 export const assets = {
   edcover1,
   relatedImg2,
+  photicn,
+  vidicon,
+  contpro,
   brnd_ini3,
   data_an_ini2,
   relatedImg3,

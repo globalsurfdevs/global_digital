@@ -120,7 +120,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
                   <div
-                    className={` max-w-[1000px]`}
+                    className={` xxl:max-w-[1000px]`}
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
 
