@@ -9,7 +9,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
-        desc: "As a trusted digital marketing agency in Dubai, we help brands establish a powerful online presence with strategies tailored to their audience. From SEO and PPC to social media and content marketing, we create campaigns that make an impact. Our team handles everything from planning to execution so you can focus on growing your business. With a data-backed approach, our digital marketing services in Dubai are built to deliver real, measurable results. ",
+        desc: "As a trusted digital marketing service provider in Dubai, we help brands establish a powerful online presence with strategies tailored to their audience. From SEO and PPC to social media and content marketing, we create campaigns that make an impact. Our team handles everything from planning to execution so you can focus on growing your business. With a data-backed approach, our digital marketing services in Dubai are built to deliver real, measurable results. ",
       buttonTitle: "Book a Free Strategy Call",
       },
     ],
@@ -168,7 +168,7 @@ export const OurServices = {
 };
 
 export const Platformsecomdata = {
-  title: "Why Choose Our<br> Digital Media Agency?  ",
+  title: "Why Choose Our<br> Digital Marketing Service?  ",
   data: [
     {
       id: 1,
@@ -232,7 +232,7 @@ export const Faq = [
   {
     title: "What is digital marketing, and how does it work? ",
     description:
-      "Digital marketing involves online strategies like SEO, PPC, content marketing, and social media to increase brand awareness and drive engagement. Our digital marketing agency in Dubai helps businesses develop customized strategies for sustainable success.  ",
+      "Digital marketing involves online strategies like SEO, PPC, content marketing, and social media to increase brand awareness and drive engagement. Our digital marketing service provider in Dubai helps businesses develop customized strategies for sustainable success.  ",
   },
   {
     title: "How do I know if digital marketing is right for my business? ",
