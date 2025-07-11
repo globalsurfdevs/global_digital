@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: "https://www.globalsurf.ae",
     },
     openGraph: {
-      title: "Strategic Digital Marketing Solutions in Dubai | GS.Digital",
+      title: "Global Surf Digital: Full Stack Digital Marketing Agency in Dubai",
       site_name: "Global Surf Digital",
       url: "https://www.globalsurf.ae/",
       description:

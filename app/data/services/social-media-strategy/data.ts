@@ -10,6 +10,7 @@ export const BannerSection = [
       {
         stitle: "OUR APPROACH",
         desc: "At GS Digital, we know that successful social media is more than just posting content, it’s about connecting with your audience in a meaningful way. We take the time to understand your brand’s vision and get to know your target audience, so every post resonates and drives real growth. Our approach is thoughtful and strategic, from setting clear goals to choosing the right platforms. We’re here to help your brand stand out and genuinely connect with people online.",
+        buttonTitle: "Get Your Free Social Strategy Plan",
       },
     ],
   },

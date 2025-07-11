@@ -165,54 +165,57 @@ const ServicesMegaMenu = () => {
               const { titleurl, categoryText, ...services } = items;
               return (
                 <div key={category} className="group w-full">
-                    <div className="flex items-center xxl:mb-[30px] mb-[20px]">
-                    <motion.h4
-                    initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-          variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, ease: "easeOut" },
-            }, // Slide up and fade in
-          }}
-                      onMouseEnter={() => handleHover(category)}
-                      className={`font-[400] uppercase xxl:text-font19 text-[15px] pr-[16px] ${
-                      activeItem[0] === category
-                        ? "text-[#E43D30]"
-                        : "text-white"
-                      }`}
-                      dangerouslySetInnerHTML={{
-                      __html: titleurl
-                        ? `<a href="${titleurl}">${category}</a>`
-                        : category,
-                      }}
-                    />
-                    <motion.div  initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-          variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, ease: "easeOut" },
-            }, // Slide up and fade in
-          }}>
-                    <Image
-                      src={menuright}
-                      alt="arrow"
-                      className="m-0 p-0"
-                      style={{
-                      filter:
-                        activeItem[0] === category
-                        ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
-                        : "",
-                      }}
-                    /></motion.div>
-                    </div>
+                  
+               
+                     <Link href={titleurl || "#"} className="flex items-center xxl:mb-[30px] mb-[20px]">
+  <motion.h4
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={{
+      hidden: { opacity: 0, y: 50 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, ease: "easeOut" },
+      },
+    }}
+    onMouseEnter={() => handleHover(category)}
+    className={`font-[400] uppercase xxl:text-font19 text-[15px] pr-[16px] ${
+      activeItem[0] === category ? "text-[#E43D30]" : "text-white"
+    }`}
+  >
+    {category}
+  </motion.h4>
+
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={{
+      hidden: { opacity: 0, y: 50 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, ease: "easeOut" },
+      },
+    }}
+  >
+    <Image
+      src={menuright}
+      alt="arrow"
+      className="m-0 p-0"
+      style={{
+        filter:
+          activeItem[0] === category
+            ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
+            : "",
+      }}
+    />
+  </motion.div>
+</Link>
+
+                 
                   <motion.ul className="space-y-2"  initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
