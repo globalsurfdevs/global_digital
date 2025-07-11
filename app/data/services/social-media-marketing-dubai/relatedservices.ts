@@ -1,4 +1,5 @@
 import { assets } from "@/public/assets/assets";
+import { url } from "inspector";
 
 
 
@@ -9,7 +10,8 @@ export const relatedservices = {
       id: 1,
       title: "Social Media Strategy ",
       dec: "We develop data-driven strategies that align with your brand’s goals, ensuring meaningful engagement and long-term growth. ",
-      icon:assets.rs7
+      icon:assets.rs7,
+      url: "/social-media-strategy-agency-dubai"
     } ,
     {
       id: 2,
@@ -21,7 +23,8 @@ export const relatedservices = {
       id: 3,
       title: "PPC Advertising",
       dec: "We run highly targeted ad campaigns that drive traffic, generate leads, and maximize your return on investment. ",
-      icon:assets.rs14
+      icon:assets.rs14,
+      url: "/ppc-advertising-agency-dubai"
     } ,
     {
       id: 4,
