@@ -31,14 +31,14 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Full Service Digital Marketing Agency in Dubai |GS.Digital",
+    title: "Global Surf Digital: Full Stack Digital Marketing Agency in Dubai",
     description:
       "Fading into the digital noise? Global Surf digital marketing agency in Dubai, offers SEO, PPC, social media & more to elevate your brand. Learn more today! ",
     alternates: {
       canonical: "https://www.globalsurf.ae",
     },
     openGraph: {
-      title: "Global Surf Digital: Full Stack Digital Marketing Agency in Dubai",
+      title: "Strategic Digital Marketing Solutions in Dubai | GS.Digital",
       site_name: "Global Surf Digital",
       url: "https://www.globalsurf.ae/",
       description:
