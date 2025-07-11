@@ -10,6 +10,7 @@ export const BannerSection = [
       {
         stitle: "OUR APPROACH",
         desc: "As a trusted digital marketing agency in Dubai, we help brands establish a powerful online presence with strategies tailored to their audience. From SEO and PPC to social media and content marketing, we create campaigns that make an impact. Our team handles everything from planning to execution so you can focus on growing your business. With a data-backed approach, our digital marketing services in Dubai are built to deliver real, measurable results. ",
+      buttonTitle: "Book a Free Strategy Call",
       },
     ],
   },
