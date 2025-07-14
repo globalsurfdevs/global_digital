@@ -47,7 +47,7 @@ export const workSvgs = [
         text:"Hospitality",
         width: "28",
         height:"28",
-        urlpath:''
+        urlpath:'industry/digital-marketing-agency-for-hospitality'
     },
     {
         icon:"/assets/works/healthcare.svg",
