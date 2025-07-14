@@ -5,7 +5,7 @@ export const BannerSection = [
     image: assets.hospbanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Industry", url: "" },
+      { label: "Industry",url: "/industry" },
       { label: "Hospitality " },
     ],
     heroAlt: "Digital Marketing for the Construction Companies",

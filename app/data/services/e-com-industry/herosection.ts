@@ -6,7 +6,7 @@ export const BannerSection = [
     image: assets.ecombanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Industry", url: "" },
+      { label: "Industry", url: "/industry" },
       { label: "Ecommerce" },
     ],
     heroAlt: "Digital Marketing for the Construction Companies",

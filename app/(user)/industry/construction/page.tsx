@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import HeroSection from "../../../components/BannerSectionBC/HeroWithBc";
 import KeyDigital from "../../../components/IndConstruction/KeyDigital";
 import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
 import FAQ from "../../../components/PermormanceMarketing/FAQ";

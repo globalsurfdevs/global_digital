@@ -1,4 +1,5 @@
 import { assets } from "@/public/assets/assets";
+import { url } from "inspector";
 
 export const BannerSection = [
   {
@@ -6,7 +7,7 @@ export const BannerSection = [
     image: assets.inbanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Industry" },
+      { label: "Industry",url: "/industry" },
     ],
     heroAlt: "Industry-Focused Digital Solutions That Deliver",
 
