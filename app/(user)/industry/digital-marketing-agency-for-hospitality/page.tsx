@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical:
         "https://www.globalsurf.ae/industry/digital-marketing-agency-for-hospitality",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
      openGraph: {
       title:
         "Hospitality Digital Marketing Agency | Global Surf Digital | 25+ Experts, 11+ Years",

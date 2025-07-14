@@ -126,7 +126,7 @@ export const Example = () => {
 
 
 
-            <motion.div><h2 className="text-primary">Follow us on</h2></motion.div>
+            <motion.div><p className="text-primary">Follow us on</p></motion.div>
         <motion.div>
           <div className="flex w-full text-black text-2xl gap-5">
           <a href="https://www.facebook.com/globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"><FaFacebookF /></a>
