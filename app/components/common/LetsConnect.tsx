@@ -522,7 +522,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                 name="MultiLine"
                 onChange={handleChange}
                 maxLength={65535}
-                placeholder="Enter your message"
+                placeholder="Tell us about your project. What problems can we help you solve?"
                 className="gry-placeholder  h-[50px] w-full border-b border-gray-300 bg-dgray px-0 pb-3 text-gray1 focus:border-gray-300 focus:ring-0"
                 style={{
                   borderTop: "none",
