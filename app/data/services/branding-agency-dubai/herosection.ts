@@ -5,7 +5,7 @@ export const BannerSection = [
     id: 1,
     image: assets.bannerbrandig,
     title:
-      "Transform Your Brand’s Impact with Creative Strategies by Leading Branding Agency in Dubai",
+      "Transform Your Brand’s Impact with Leading Branding Agency in Dubai",
       heroAlt:"Creative Branding Agency in Dubai",
     sub: [
       {
