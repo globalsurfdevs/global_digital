@@ -14,26 +14,26 @@ import AuditSecTwo from "@/app/components/DigitalMarketingAudit/AuditSecTwo";
 import Expertiseheimg from "@/app/components/EcomIndustry/Expertise";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
 
-interface Canonicals {
-  canonical: string;
-}
+// interface Canonicals {
+//   canonical: string;
+// }
 
-type Metadata = {
-  title: string;
-  description: string;
-  alternates: Canonicals;
-};
+// type Metadata = {
+//   title: string;
+//   description: string;
+//   alternates: Canonicals;
+// };
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Data-Driven Performance Marketing Agency in Dubai | GS.Digital",
-    description:
-      "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
-    alternates: {
-      canonical: "https://www.globalsurf.ae/performance-marketing-agency-dubai",
-    },
-  };
-}
+// export async function generateMetadata(): Promise<Metadata> {
+//   return {
+//     title: "Data-Driven Performance Marketing Agency in Dubai | GS.Digital",
+//     description:
+//       "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
+//     alternates: {
+//       canonical: "https://www.globalsurf.ae/performance-marketing-agency-dubai",
+//     },
+//   };
+// }
 const page = () => {
   return (
     <div>
