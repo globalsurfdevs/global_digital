@@ -845,9 +845,58 @@ import relatedImg3 from "../assets/services/digital-marketing-service-kuwait/rel
 import photicn from "../assets/content-production/pht-icn.svg";
 import vidicon from "../assets/content-production/video-icn.svg";
 import contpro from "../assets/content-production/cont-pro.svg";
+import chlg1 from "../assets/digital-marketing-audit/chlg1.png";
+import chlg2 from "../assets/digital-marketing-audit/chlg2.png";
+import chlg3 from "../assets/digital-marketing-audit/chlg3.png";
+import chlg4 from "../assets/digital-marketing-audit/chlg4.png";
+import chlg5 from "../assets/digital-marketing-audit/chlg5.png";
+import bannerse from "../assets/digital-marketing-audit/bannerse.jpg";
+import insic1 from "../assets/digital-marketing-audit/insic1.svg";
+import insic2 from "../assets/digital-marketing-audit/insic2.svg";
+import insic3 from "../assets/digital-marketing-audit/insic3.svg";
+import insic4 from "../assets/digital-marketing-audit/insic4.svg";
+import insic5 from "../assets/digital-marketing-audit/insic5.svg";
+import sts1 from "../assets/digital-marketing-audit/sts1.jpg";
+import sts2 from "../assets/digital-marketing-audit/sts2.jpg";
+import sts3 from "../assets/digital-marketing-audit/sts3.jpg"; 
+import sts4 from "../assets/digital-marketing-audit/sts4.jpg";
+import gfsv1 from "../assets/digital-marketing-audit/gfsv1.svg";
+import gfsv2 from "../assets/digital-marketing-audit/gfsv2.svg";
+import gfsv3 from "../assets/digital-marketing-audit/gfsv3.svg";
+import gfsv4 from "../assets/digital-marketing-audit/gfsv4.svg";
+import gfsv5 from "../assets/digital-marketing-audit/gfsv5.svg";
+import gfsv6 from "../assets/digital-marketing-audit/gfsv6.svg";
+
+
+
+
+
+
+
 
 
 export const assets = {
+  gfsv1,
+  gfsv2,
+  gfsv3,
+  gfsv4,
+  gfsv5,
+  gfsv6,
+  sts1,
+  sts2,
+  sts3,
+  sts4,
+  insic1,
+  insic2,
+  insic3,
+  insic4,
+  insic5,
+  bannerse,
+  chlg1,
+  chlg2,
+  chlg3,
+  chlg4,
+  chlg5,
   edcover1,
   relatedImg2,
   microicon1,

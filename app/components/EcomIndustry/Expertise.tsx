@@ -7,10 +7,10 @@ import Link from "next/link";
 
 interface ExpertiseItem {
   id: number;
-  icon: string;
+  icon?: string;
   title: string;
   subttle?: string;
-  desc: string;
+  desc?: string;
   url?: string;
   hoverImg?: string | StaticImageData;
 }
@@ -75,7 +75,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
             }}
           >
             {/* Item 1 */}
-            {data.map((expertise) => (
+            {data.map((expertise, index) => (
               <div key={expertise.id}>
                 {expertise.url ? (
                   <div key={expertise.id}>
@@ -91,13 +91,14 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                         {/* Default background color */}
                         <div className="absolute left-0 top-0 -z-20 h-full w-full bg-white transition-colors duration-500 group-hover:bg-transparent"></div>
                         {/* Image Wrapper */}
-                        <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 group-hover:bg-white   md:h-[50px] md:w-[50px]">
-                          <Image
+                        <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary   p-2 transition-colors duration-500 group-hover:bg-white   md:h-[50px] md:w-[50px]">
+                        {expertise.icon ? (<Image
                             src={expertise.icon}
                             alt={expertise.title}
                             className="fltrcls transition duration-500 group-hover:invert-0"
-                          />
-                        </div>
+                          />) : ( <div className="align-center flex flex-col items-center    h-[30px] w-[30px] justify-center bg-primary group-hover:bg-white   p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]  ">
+                            <p className="text-font19  text-white group-hover:text-primary transition-transform duration-500">0{index+1}</p></div>) }
+                      </div>
                         {/* Content */}
                         <div>
                           {/* Title */}
@@ -135,13 +136,15 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                       {/* Default background color */}
                       <div className="absolute left-0 top-0 -z-20 h-full w-full bg-white transition-colors duration-500 group-hover:bg-transparent"></div>
                       {/* Image Wrapper */}
-                      <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]">
+                     
+                      {expertise.icon ? ( <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary   p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]">
                         <Image
-                          src={expertise.icon}
-                          alt={expertise.title}
-                          className="fltrcls transition duration-500 "
-                        />
-                      </div>
+                            src={expertise.icon}
+                            alt={expertise.title}
+                            className="fltrcls transition duration-500 group-hover:invert-0"
+                          /></div>) : (<div className="align-center flex flex-col items-center    h-[30px] w-[30px] justify-center bg-primary group-hover:bg-white   p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]  ">
+                            <p className="text-font19  text-white group-hover:text-primary transition-transform duration-500">0{index+1}</p></div>) }
+                      
                       {/* Content */}
                       <div>
                         {/* Title */}
