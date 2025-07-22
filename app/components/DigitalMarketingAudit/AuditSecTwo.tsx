@@ -108,7 +108,7 @@ const [modalOpen, setModalOpen] = useState(false);
               }, // Slide up and fade in
             }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8  mt-8 lg:mt-[58px]  bg-dgray py-5 py-14 px-10 md:px-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8  mt-8 lg:mt-[58px]  bg-dgray py-5 md:py-14 px-10 md:px-20">
               {data.map((boost,index) => (
                 <div className="flex flex-col  " key={boost.id}>
                   <div className="pb-3 md:pb-5 border-gray-500 imsr">
