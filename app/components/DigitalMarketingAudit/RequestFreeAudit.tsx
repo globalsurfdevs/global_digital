@@ -315,14 +315,14 @@ const RequestFreeAudit: React.FC = () => {
               </div>
 
 
-
-              <div className="flex flex-wrap md:flex-nowrap items-center justify-between">
-                {/* <div >
+              <div >
             <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
 
             
               {error !== "" && <div className='text-red-500'>{error}</div>}
-              </div> */}
+              </div>
+              <div className="flex flex-wrap md:flex-nowrap items-center justify-between">
+               
                 <button
                   className="h-fit lg:w-[540px] md:my-0 mt-4  hover:bg-prtext-primary group mt-5 md:mt-10  flex items-center space-x-2 rounded-full border border-primary px-6 lg:px-8 py-4 lg:py-5 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
                   type="submit"
