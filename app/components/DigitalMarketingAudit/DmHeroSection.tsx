@@ -390,7 +390,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           }, // Slide up and fade in
         }}
       >
-        <div
+        <div 
           style={{ width: isSmallScreen ? "" : divWidth }}
           className={`${isSmallScreen ? "container mx-auto py-2" : ""
             } custom-class`}
@@ -404,8 +404,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection) => (
-            <div className=" w-full bg-black ">
+          {Bannerdata.map((herosection,index) => (
+            <div className=" w-full bg-black " key={index}>
               <Image
                 src={herosection.image}
                 className="w-full"
