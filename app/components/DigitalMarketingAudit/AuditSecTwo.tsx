@@ -108,7 +108,7 @@ const [modalOpen, setModalOpen] = useState(false);
               }, // Slide up and fade in
             }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8  mt-8 lg:mt-[58px]  bg-dgray py-5 md:py-14 px-10 md:px-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8  mt-8 lg:mt-[40px]  bg-dgray py-5 md:py-14 px-10 md:px-20">
               {data.map((boost,index) => (
                 <div className="flex flex-col  " key={boost.id}>
                   <div className="pb-3 md:pb-5 border-gray-500 imsr">
@@ -127,7 +127,7 @@ const [modalOpen, setModalOpen] = useState(false);
               ))}
             </div>
           </motion.div>
-          <div className="mt-5 lg:mt-14 mb-6 lg:mb-20">
+          <div className="mt-5 lg:mt-[65px] mb-6 lg:mb-[75px]">
       <p className="font-normal text-font25  gap-y-2 lg:gap-y-0  flex flex-wrap items-center">
         We’ve helped brands like 
         <div className="relative lg:w-[163px] lg:h-[62px] w-[100px] h-[40px] mx-4 border border-primary rounded-full overflow-hidden">
