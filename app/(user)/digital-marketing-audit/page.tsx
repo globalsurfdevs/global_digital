@@ -14,26 +14,58 @@ import AuditSecTwo from "@/app/components/DigitalMarketingAudit/AuditSecTwo";
 import Expertiseheimg from "@/app/components/EcomIndustry/Expertise";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
 
-// interface Canonicals {
-//   canonical: string;
-// }
 
-// type Metadata = {
-//   title: string;
-//   description: string;
-//   alternates: Canonicals;
-// };
+interface Canonicals {
+  canonical: string;
+}
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   return {
-//     title: "Data-Driven Performance Marketing Agency in Dubai | GS.Digital",
-//     description:
-//       "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
-//     alternates: {
-//       canonical: "https://www.globalsurf.ae/performance-marketing-agency-dubai",
-//     },
-//   };
-// }
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+  robots: string;
+  openGraph: {
+    title: string;
+    siteName: string;
+    url: string;
+    description: string;
+    type: string;
+    images?: {
+      url: string;
+      width: number;
+      height: number;
+      alt: string;
+    }[];
+  };
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: " ",
+    description:
+      "",
+    alternates: {
+      canonical: "https://www.globalsurf.ae",
+    },
+    robots: "noindex, nofollow",
+    openGraph: {
+      title: "",
+      siteName: "Global Surf Digital",
+      url: "",
+      description:
+        "",
+      type: "website",
+      images: [
+        {
+          url: "",
+          width: 1200,
+          height: 630,
+          alt: "",
+        },
+      ],
+    },
+  };
+}
 const page = () => {
   return (
     <div>
