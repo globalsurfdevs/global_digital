@@ -20,38 +20,38 @@ export const BannerSection = [
 ];
 export const logoSwipper = [
   {
-    icon: "/assets/digital-marketing-audit/lgs1.png",
+    icon: "/assets/digital-marketing-audit/lgic1.png",
     alt: " logo",
     text: "E-commerce",
-    width: "147",
-    height: "48",
+    width: "152",
+    height: "76",
   },
   {
-    icon: "/assets/digital-marketing-audit/lgs2.png",
+    icon: "/assets/digital-marketing-audit/lgic22.png",
     alt: " logo",
     text: "Real Estate",
     width: "168",
-    height: "48",
+    height: "47",
   },
   {
-    icon: "/assets/digital-marketing-audit/lgs3.png",
+    icon: "/assets/digital-marketing-audit/lgic31.png",
     alt: " logo",
     text: "Education",
-    width: "60",
-    height: "76",
+    width: "76",
+    height: "77",
   },
   {
-    icon: "/assets/digital-marketing-audit/lgs4.png",
+    icon: "/assets/digital-marketing-audit/lgic41.png",
     alt: "logo",
     text: "Technology",
-    width: "70",
-    height: "76",
+    width: "72",
+    height: "78",
   },
   {
-    icon: "/assets/digital-marketing-audit/lgs5.png",
+    icon: "/assets/digital-marketing-audit/lgic5.png",
     alt: "Google logo",
     text: "Technology",
-    width: "110",
-    height: "75",
+    width: "100",
+    height: "76",
   } 
 ];

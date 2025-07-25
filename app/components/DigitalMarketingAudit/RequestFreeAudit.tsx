@@ -324,10 +324,10 @@ const RequestFreeAudit: React.FC = () => {
               {error !== "" && <div className='text-red-500'>{error}</div>}
               </div> */}
                 <button
-                  className="h-fit lg:w-[540px] md:my-0 mt-4  hover:bg-prtext-primary group mt-5 md:mt-10  flex items-center space-x-2 rounded-full border border-primary px-6 lg:px-8 py-4 lg:py-8 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
+                  className="h-fit lg:w-[540px] md:my-0 mt-4  hover:bg-prtext-primary group mt-5 md:mt-10  flex items-center space-x-2 rounded-full border border-primary px-6 lg:px-8 py-4 lg:py-5 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
                   type="submit"
                 >
-                  <span className="fnt-lexend m-auto uppercase duration-300 ease-in group-hover:text-black">
+                  <span className="fnt-lexend m-auto text-font30 font-[500] uppercase duration-300 ease-in group-hover:text-black">
                     Submit enquiry
                   </span>
 
