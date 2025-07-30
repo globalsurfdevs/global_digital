@@ -1,15 +1,15 @@
 import React from "react";
-import DmHeroSection from "../../components/DigitalMarketingAudit/DmHeroSection";  
+import DmHeroSection from "../../components/DigitalMarketingAudit/DmHeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
-import Framework from "../../components/PermormanceMarketing/Framework"; 
-import Testimonials from "../../components/HomePage/Testimonials"; 
+import Framework from "../../components/PermormanceMarketing/Framework";
+import Testimonials from "../../components/HomePage/Testimonials";
 import RequestFreeAudit from "../../components/DigitalMarketingAudit/RequestFreeAudit";
 
-import { BannerSection } from "../../data/services/digital-marketing-audit/herosection"; 
+import { BannerSection } from "../../data/services/digital-marketing-audit/herosection";
 import { boostEngage } from "../../data/services/digital-marketing-audit/boost-engage";
 import { OurServices } from "../../data/services/digital-marketing-audit/our-services";
 import { Frameworkdata, IndustriesWeServe,tpcontent } from "../../data/services/digital-marketing-audit/framework";
- 
+
 import AuditSecTwo from "@/app/components/DigitalMarketingAudit/AuditSecTwo";
 import Expertiseheimg from "@/app/components/EcomIndustry/Expertise";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
@@ -41,26 +41,26 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: " ",
+    title: "Free Digital Marketing Audit | Global Surf Digital",
     description:
-      "",
+      "Get a professional audit of your digital marketing strategy. Identify growth opportunities, reduce wasted ad spend, and boost your ROI today.",
     alternates: {
-      canonical: "https://www.globalsurf.ae",
+      canonical: "https://www.globalsurf.ae/free-digital-marketing-audit",
     },
     robots: "noindex, nofollow",
     openGraph: {
-      title: "",
+      title: "Free Digital Marketing Audit | Global Surf Digital",
       siteName: "Global Surf Digital",
-      url: "",
+      url: "https://www.globalsurf.ae/free-digital-marketing-audit",
       description:
-        "",
+        "Get a professional audit of your digital marketing strategy. Identify growth opportunities, reduce wasted ad spend, and boost your ROI today.",
       type: "website",
       images: [
         {
-          url: "",
+          url: "https://www.globalsurf.ae/_next/static/media/bannerse.13ce0087.jpg",
           width: 1200,
           height: 630,
-          alt: "",
+          alt: "Digital Marketing Audit",
         },
       ],
     },
@@ -71,12 +71,12 @@ const page = () => {
     <div>
       <section className=" ">
         <DmHeroSection
-          Bannerdata={BannerSection} 
+          Bannerdata={BannerSection}
           bannerlogp={false}
           maxchwidth={28}
           points={BannerSection[0].points}
         />
-      </section> 
+      </section>
       <AuditSecTwo title={boostEngage.title} data={boostEngage.data} />
       <Services bgcolor ="bg-dgray" title={OurServices.title} hrcontent={true} description={OurServices.desc} data={OurServices.data} />
       <div className="mnstsaq bg-black text-white">
@@ -96,7 +96,7 @@ const page = () => {
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}
         colnum={3}
-      />      
+      />
       <RequestFreeAudit  />
     </div>
   );

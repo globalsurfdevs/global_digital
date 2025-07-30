@@ -858,8 +858,8 @@ import insic4 from "../assets/digital-marketing-audit/insic4.svg";
 import insic5 from "../assets/digital-marketing-audit/insic5.svg";
 import sts1 from "../assets/digital-marketing-audit/sts1.jpg";
 import sts2 from "../assets/digital-marketing-audit/sts2.jpg";
-import sts3 from "../assets/digital-marketing-audit/sts3.jpg"; 
-import sts4 from "../assets/digital-marketing-audit/sts4.jpg";
+import sts3 from "../assets/digital-marketing-audit/sts3.jpg";
+import sts4 from "../assets/digital-marketing-audit/adt4.jpg";
 import gfsv1 from "../assets/digital-marketing-audit/gfsv1.svg";
 import gfsv2 from "../assets/digital-marketing-audit/gfsv2.svg";
 import gfsv3 from "../assets/digital-marketing-audit/gfsv3.svg";
@@ -901,7 +901,7 @@ export const assets = {
   relatedImg2,
   microicon1,
   microicon2,
-  microicon3, 
+  microicon3,
   microicon4,
   microicon5,
   microicon6,
