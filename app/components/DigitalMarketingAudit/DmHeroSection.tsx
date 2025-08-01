@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import LetsTalk from "../common/LetsConnect"; 
+import LetsTalk from "../common/LetsConnect";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
@@ -35,7 +35,7 @@ interface HeroSectionProps {
   hideslider?: boolean;
   bannerlogp?: boolean;
   Bannerdata: BannerSection[];
-  points:string[]
+  points: string[]
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -66,7 +66,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   // Ref for the next container (HTMLDivElement type)
   const nextContainerRef = useRef<HTMLDivElement | null>(null);
   const [divWidth, setDivWidth] = useState("100%");
-
+  const scrollToSection = () => {
+    const section = document.getElementById('requestst');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
   useEffect(() => {
     const updateDivWidth = () => {
       if (nextContainerRef.current) {
@@ -191,9 +194,43 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px] ">
                         {herosection.title1}
                       </p>
-                    )}
-
+                    )} 
+                      <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-8">
+                        <ul className="flex items-center space-x-2"> 
+                            <React.Fragment >
+                              <li>
+                                
+                                  <Link
+                                    href="/"
+                                    className="hover:underline"
+                                  >
+                                    HOME
+                                  </Link>
+                                  </li> 
+                                  <li>
+                                    <Image
+                                      src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
+                                      alt="Arrow"
+                                      width={7} // Adjust width as needed
+                                      height={12} // Adjust height as needed
+                                      className=""
+                                    />
+                                  </li> 
+                                  <li>
+                               
+                                  <span className="text-[#77787B]">
+                                   Free Digital Marketing Audit
+                                  </span>
+                             
+                              </li> 
+                                
+                            </React.Fragment>
+                         
+                        </ul>
+                      </nav>
+                  
                     <h1 className="title-80"> {herosection.title}</h1>
+
                     {herosection.subtitle && (
                       <h3 className="my-3 text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
                         {" "}
@@ -306,18 +343,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                             {su.desc}
                           </p>
                           <div className={`grid grid-cols-1 md:grid-cols-2 mb-2 lg:mb-0 max-w-fit gap-4 mt-6 lg:mt-14 ${lexend.className}`}>
-                          
-                          {points.map((point, index) => (
-                            <div className="flex items-center gap-2 max-w-fit" key={index}> 
-                              <div className="h-5 w-5 bg-primary"></div>
-                              <p className="text-gray1">{point}</p>
-                            </div>
-                          ))}
-                           
-                        </div>
+
+                            {points.map((point, index) => (
+                              <div className="flex items-center gap-2 max-w-fit" key={index}>
+                                <div className="h-5 w-5 bg-primary"></div>
+                                <p className="text-gray1">{point}</p>
+                              </div>
+                            ))}
+
+                          </div>
                           {su.buttonTitle && (
-                            <button
-                              onClick={() => setModalOpen(true)}
+                            <button onClick={scrollToSection}
                               className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
                                    before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
                                         after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-10 mt-8"
@@ -390,7 +426,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           }, // Slide up and fade in
         }}
       >
-        <div 
+        <div
           style={{ width: isSmallScreen ? "" : divWidth }}
           className={`${isSmallScreen ? "container mx-auto py-2" : ""
             } custom-class`}
@@ -399,12 +435,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="flex gap-5 bg-bglight  py-[17px]">
               <div className="  flexcl600 container mr-0 lg:mr-[-15px]">
                 <div className="w-full  overflow-hidden">
-                  <LogoSwiper logoSwiper={logoSwipper}/>
+                  <LogoSwiper logoSwiper={logoSwipper} />
                 </div>
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection,index) => (
+          {Bannerdata.map((herosection, index) => (
             <div className=" w-full bg-black " key={index}>
               <Image
                 src={herosection.image}
