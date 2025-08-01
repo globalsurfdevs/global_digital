@@ -70,12 +70,12 @@ const page = () => {
   return (
     <div>
       <style>
-        {` 
+        {`
           header nav div:nth-last-child(-n+2) {
             display: none;
           }
             header nav button.border-primary{
-              dis
+              dispaly: none;}
               html {
   scroll-behavior: smooth;
 }
