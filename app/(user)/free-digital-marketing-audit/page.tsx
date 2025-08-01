@@ -75,10 +75,10 @@ const page = () => {
             display: none;
           }
             header nav button.border-primary{
-              dispaly: none;}
+              display: none;}
               html {
-  scroll-behavior: smooth;
-}
+            scroll-behavior: smooth;
+          }
         `}
       </style>
       <section className=" ">
