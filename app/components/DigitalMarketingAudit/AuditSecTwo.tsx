@@ -1,9 +1,9 @@
-"use client"; 
+"use client";
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image"; 
+import Image from "next/image";
 import { motion,AnimatePresence } from "framer-motion";
-import { assets } from "@/public/assets/assets";  
-import { Lexend } from "next/font/google"; 
+import { assets } from "@/public/assets/assets";
+import { Lexend } from "next/font/google";
 import LetsTalk from "../common/LetsConnect";
 const lexend = Lexend({
   subsets: ["latin"],
@@ -12,7 +12,7 @@ const lexend = Lexend({
 interface BoostItem {
   id: number;
   icon: string;
-  title: string; 
+  title: string;
 }
 
 interface BoostSectionProps {
@@ -20,11 +20,9 @@ interface BoostSectionProps {
   data: BoostItem[];
 }
 const imagesdata = [
-  { image: assets.chlg1, multiplier: "2X" },
-  { image: assets.chlg2, multiplier: "3X" },
+  { image: assets.chlg1, multiplier: "10X" },
+  { image: assets.chlg2, multiplier: "5X" },
   { image: assets.chlg3, multiplier: "4X" },
-  { image: assets.chlg4, multiplier: "5X" },
-  { image: assets.chlg5, multiplier: "2X" }, // Loop back or add more if needed
 ];
 
 /**
@@ -42,7 +40,10 @@ const imagesdata = [
 const AuditSecTwo: React.FC<BoostSectionProps> = ({ title, data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 const [modalOpen, setModalOpen] = useState(false);
-
+const scrollToSection = () => {
+  const section = document.getElementById('requestst');
+  section?.scrollIntoView({ behavior: 'smooth' });
+};
   useEffect(() => {
     if (modalOpen) {
       document.body.style.overflow = "hidden";
@@ -91,9 +92,9 @@ const [modalOpen, setModalOpen] = useState(false);
           >
             <h2 className="title-65">{title}</h2>
             <p className="text-gray1 text-font30 font-normal mt-5 lg:mt-10 leading-[1.2]">80% of our audit recipients discover <span className="text-primary">3+</span> quick wins for business growth.</p>
-      
-             
- 
+
+
+
           </motion.div>
           <motion.div
             initial="hidden"
@@ -112,7 +113,7 @@ const [modalOpen, setModalOpen] = useState(false);
               {data.map((boost,index) => (
                 <div className="flex flex-col  " key={boost.id}>
                   <div className="pb-3 md:pb-5 border-gray-500 imsr">
-                    
+
                       <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
                      <p className="text-font19 md:text-30 leading-[1]  text-white transition-transform duration-500">0{index + 1}</p>
                                             </div>
@@ -129,9 +130,9 @@ const [modalOpen, setModalOpen] = useState(false);
           </motion.div>
           <div className="mt-5 lg:mt-[65px] mb-6 lg:mb-[75px]">
       <p className="font-normal text-font25  gap-y-2 lg:gap-y-0  flex flex-wrap items-center">
-        We’ve helped brands like 
+        We’ve helped brands like
         <div className="relative lg:w-[163px] lg:h-[62px] w-[100px] h-[40px] mx-4 border border-primary rounded-full overflow-hidden">
-         
+
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex + "-img"}
@@ -166,9 +167,8 @@ const [modalOpen, setModalOpen] = useState(false);
         </span>.
       </p>
     </div>
-    
-    <button
-                              onClick={() => setModalOpen(true)}
+
+    <button onClick={scrollToSection}
                               className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
                                    before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
                                         after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-10 mt-8"

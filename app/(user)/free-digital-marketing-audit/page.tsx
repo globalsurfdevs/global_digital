@@ -69,6 +69,18 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
+      <style>
+        {` 
+          header nav div:nth-last-child(-n+2) {
+            display: none;
+          }
+            header nav button.border-primary{
+              dis
+              html {
+  scroll-behavior: smooth;
+}
+        `}
+      </style>
       <section className=" ">
         <DmHeroSection
           Bannerdata={BannerSection}
