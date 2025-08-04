@@ -5,7 +5,13 @@ export const BannerSection = [
     id: 1,
     image: assets.mabanner,
     title:
-      "Experience powerful Apps & Flawless User Experiences with The Leading Mobile App Development Company in Dubai ",
+      "Mobile App Development Company in Dubai",
+      subtitle:"Creating Intuitive Mobile Applications for iOS and Android With Excellent User Experience",
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "Mobile Apps Development",url: "" },
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",

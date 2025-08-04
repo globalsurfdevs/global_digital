@@ -4,7 +4,12 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.web_bnr,
-    title: "Transform Your Business with Expert Web Solutions in Dubai",
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "" },
+    ],
+    title: "Web Solutions Experts in Dubai",
+    subtitle:"Delivering User-Friendly, Optimized Websites With Excellent UI/UX for Business Growth",
     sub: [
       {
         stitle: "OUR APPROACH",

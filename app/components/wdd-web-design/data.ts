@@ -5,7 +5,13 @@ export const BannerSection = [
     id: 1,
     image: assets.designbanner,
     title:
-      "Build Stronger Connections with Personalized Service by Leading Web Design Agency in Dubai",
+      "Creative Web Design Agency in Dubai",
+      subtitle:"Delivering Visually Stunning and Optimized Website Designs to Improve Online Presence",
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "Web Design Service",url: "" },
+    ],
     sub: [
       {
         stitle: "OUR APPROACH",

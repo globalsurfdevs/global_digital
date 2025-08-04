@@ -4,8 +4,13 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.dsbanner,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Digital Marketing",url: "" },
+    ],
     title:
-      "Digital Marketing Services in Dubai: Helping Brands Grow with Smart Strategies & Real Connections",
+      "Digital Marketing Services in Dubai",
+      subtitle:"Helping Brands Grow with Smart Strategies & Real Connections",
     sub: [
       {
         stitle: "OUR APPROACH",

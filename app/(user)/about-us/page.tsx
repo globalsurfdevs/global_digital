@@ -7,7 +7,8 @@ import SectionFive from "../../components/AboutUs/SectionFive";
 
 interface Canonicals {
   canonical: string;
-}
+} 
+ 
 
 type Metadata = {
   title: string;

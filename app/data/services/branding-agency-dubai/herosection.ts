@@ -4,8 +4,14 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.bannerbrandig,
+    navigation: [
+      { label: "Home", url: "/" }, 
+      { label: "Creative Services",url: "/creative-agency-dubai" }, 
+      { label: "Branding Service",url: "" },
+    ],
     title:
-      "Transform Your Brand’s Impact with Leading Branding Agency in Dubai",
+      "Leading Branding Agency in Dubai",
+      subtitle:"Building Strong Brand Identities With Creative Design, Marketing Collateral, and Storytelling",
       heroAlt:"Creative Branding Agency in Dubai",
     sub: [
       {

@@ -4,8 +4,14 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.bannersr,
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "E-commerce Development",url: "" },
+    ],
     title:
-      "Deliver Amazing Shopping Experiences with Expert E-commerce Development Company in Dubai ",
+      "Ecommerce Development Company in Dubai",
+    subtitle:"Building Scalable Online Stores Designed to Maximize Sales and Enhance Customer Experience",
     sub: [
       {
         stitle: "OUR APPROACH",

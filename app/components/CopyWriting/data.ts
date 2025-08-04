@@ -4,8 +4,14 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.cybanner,
+    navigation: [
+      { label: "Home", url: "/" }, 
+      { label: "Creative Services",url: "/creative-agency-dubai" }, 
+      { label: "Copy writing",url: "" },
+    ],
     title:
-      "Unlock the Power of Words with Expert Copywriting Services in Dubai That Captivate, Connect, & Convert",
+      "Professional Copywriting Services in Dubai",
+      subtitle:"Crafting powerful brand messaging and content strategies to engage, inspire, and convert audience",
     sub: [
       {
         stitle: "OUR APPROACH",

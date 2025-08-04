@@ -82,7 +82,7 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        maxchwidth={30}
+        maxchwidth={26}
       />
       <Platforms
         title={Wecanhelp.title}

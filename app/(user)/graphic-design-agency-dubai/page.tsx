@@ -68,7 +68,7 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        maxchwidth={23}
+        maxchwidth={18}
       />
 
       <Expertise

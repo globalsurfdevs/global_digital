@@ -5,7 +5,13 @@ export const BannerSection = [
     id: 1,
     image: assets.massbanner,
     title:
-      "Automate Tasks, Target Audiences & Personalize Outreach With Expert Marketing Automation Specialists in Dubai",
+      "Advanced Marketing Automation Agency in Dubai",
+      subtitle:"Enhancing Customer Engagement With Advanced AI-Powered Marketing Automation Solutions",
+    navigation: [
+      { label: "Home", url: "/" },   
+      { label: "Marketing Intelligence",url: "/marketing-intelligence-agency-dubai" },
+      { label: "Marketing Automation",url: "" },
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",

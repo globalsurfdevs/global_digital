@@ -141,8 +141,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
                   <div
-                    className={` xxl:max-w-[1000px]`}
-                    style={{ maxWidth: `${maxchwidth}ch` }}
+                  
                   >
 
                     <div>
@@ -190,12 +189,14 @@ const [modalOpen, setModalOpen] = useState(false);
                       </p>
                     )}
 
-                    <h1 className="title-80"> {herosection.title}</h1>
+                   <div   className={` xxl:max-w-[1000px]`}    style={{ maxWidth: `${maxchwidth}ch` }}>
+                      <h1 className="title-80"> {herosection.title}</h1>
+                      </div> 
                     {herosection.subtitle && (
-                      <h3 className="my-3 text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
+                      <p className="my-3 text-[20px] text-black lg:mt-6 lg:mb-2  lg:text-font30">
                         {" "}
                         {herosection.subtitle}
-                      </h3>
+                      </p>
                     )}
                     {herosection.buttontitle && (
                       <button
@@ -254,7 +255,7 @@ const [modalOpen, setModalOpen] = useState(false);
                     )}
                   </div>
                   {bannerlogp && (
-                    <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
+                    <div className="lg:gap-18 flex h-full   flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-1">
                       <Link
                         href="https://www.google.com/partners/agency?id=5412848486"
                         rel="nofollow"

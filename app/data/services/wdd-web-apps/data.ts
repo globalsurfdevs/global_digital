@@ -5,11 +5,17 @@ export const BannerSection = [
     id: 1,
     image: assets.wewbanner,
     title:
-      "Scalable, Secure, and Custom-Built Web Applications by a Leading Web App Development Agency in Dubai ",
+      "Secure Web App Development Agency in Dubai",
+      subtitle:"Developing Scalable and Secure Web Applications for Enhanced Digital Operations",
+    navigation: [
+      { label: "Home", url: "/" },   
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "Web App Development",url: "" },  
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",
-        desc: "We build powerful, custom web applications designed around your specific business needs. As a trusted web application development company in Dubai, we focus on creating secure, scalable, and intuitive solutions that truly work for you. Whether it's a tailored application or an enterprise-level platform, our web app developers in Dubai ensure seamless functionality and an exceptional user experience—so you can focus on what matters most. ",
+        desc: "We build powerful, custom web applications designed around your specific business needs. As a trusted web application development company in Dubai, we focus on creating secure, scalable, and intuitive solutions that truly work for you. Whether it's a tailored application or an enterprise-level platform, our web app developers in Dubai ensure seamless functionality and an exceptional user experience—so you can focus on what matters most.",
       },
     ],
   },

@@ -4,7 +4,13 @@ export const BannerSection = [
     id: 1,
     image: assets.dabanner,
     title:
-      "Make the Right Data-Driven Decisions with Expert Data Analytics Consulting Services in Dubai",
+      "Professional Data Analytics Consulting Services in Dubai",
+      subtitle:"Unlock Right Data-Driven Decisions with Advanced Data Analytics, BI Tools, and Predictive Analytics",
+    navigation: [
+      { label: "Home", url: "/" },   
+      { label: "Marketing Intelligence",url: "/marketing-intelligence-agency-dubai" }, 
+      { label: "Data Analytics",url: "" }, 
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",
