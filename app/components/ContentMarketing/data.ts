@@ -3,8 +3,14 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.cmbanner,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Digital Marketing",url: "/digital-marketing-services" },
+      { label: "Content Marketing",url: "" },
+    ],
     title:
-      "Storytelling That Connects: Personalized Content Marketing Agency in Dubai",
+      "Content Marketing Agency in Dubai",
+      subtitle:"Storytelling That Connects",
     sub: [
       {
         stitle: "OUR APPROACH",

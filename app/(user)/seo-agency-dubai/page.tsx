@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      <HeroSection Bannerdata={BannerSection} order={"02"} maxchwidth={28} />
+      <HeroSection Bannerdata={BannerSection} order={"02"} maxchwidth={40} />
       <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
       <Boost title={boostEngage.title} data={boostEngage.data} />
       <Services title={OurServices.title} data={OurServices.data} />

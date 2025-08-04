@@ -3,7 +3,12 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    title: "Crafting Stories. Shaping Brands. Your Creative Agency in Dubai. ",
+    navigation: [
+      { label: "Home", url: "/" }, 
+      { label: "Creative Services",url: "" },
+    ],
+    title: "Innovative Creative Agency in Dubai ",
+    subtitle:"Designing Engaging Campaigns and Creative Solutions to Elevate Brand Identity Across Digital Platforms",
     image: assets.branding_bnr,
     sub: [
       {

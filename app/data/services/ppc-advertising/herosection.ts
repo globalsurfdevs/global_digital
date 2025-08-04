@@ -4,9 +4,15 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.ppcbanner,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Performance Marketing",url: "/performance-marketing-agency-dubai" },
+      { label: "PPC Advertising & SEM",url: "" },
+    ],
     heroAlt: "PPC Advertising Services in Dubai ",
     title:
-      "Impactful, Customized Campaigns by Expert PPC Advertising Agency in Dubai",
+      "PPC Advertising & SEM Agency in Dubai",
+      subtitle:"Driving Targeted Traffic & Maximizing ROI with Data-Backed Paid Search Strategies",
     sub: [
       {
         stitle: "OUR APPROACH",

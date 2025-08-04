@@ -5,7 +5,13 @@ export const BannerSection = [
     id: 1,
     image: assets.crmbanner,
     title:
-      "Maximize Your Website's Potential with Expert Conversion Rate Optimization Company in Dubai",
+      "Conversion Rate Optimization Agency in Dubai",
+      subtitle:"Maximizing Website Performance through A/B Testing, UX Enhancements, and CRO Strategies",
+    navigation: [
+      { label: "Home", url: "/" },   
+      { label: "Marketing Intelligence",url: "/marketing-intelligence-agency-dubai" }, 
+      { label: "  CRO",url: "" }, 
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",

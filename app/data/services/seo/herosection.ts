@@ -3,7 +3,13 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    title: "Dominate Search. Amplify Growth with Our SEO Services.",
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Digital Marketing",url: "/digital-marketing-services" },
+      { label: "SEO",url: "" },
+    ],
+    title: "SEO Services Agency in Dubai",
+    subtitle:"Enhancing Search Engine Visibility with Advanced Optimization Strategies to Boost Traffic and Rankings.",
     image: assets.seo_banner,
     sub: [
       {

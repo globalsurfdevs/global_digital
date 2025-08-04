@@ -3,10 +3,15 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    image: assets.infbanner,
-    subtitle: "",
+    image: assets.infbanner, 
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Social Media",url: "/social-media-agency-dubai" },
+      { label: "Influencer Marketing",url: "" },
+    ],
     title:
-      "Effective Influencer Campaigns by Expert Influencer Marketing Agency in Dubai ",
+      "Influencer Marketing Agency in Dubai",
+    subtitle:"Connecting Brands with Influencers to Build Trust & Drive Conversions",
     sub: [
       {
         stitle: "OUR APPROACH",

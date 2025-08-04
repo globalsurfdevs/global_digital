@@ -5,8 +5,14 @@ export const BannerSection = [
     id: 1,
     image: assets.bc_image,
     heroAlt: "Professional Logo Design Services in Dubai",
+    navigation: [
+      { label: "Home", url: "/" }, 
+      { label: "Creative Services",url: "/creative-agency-dubai" }, 
+      { label: "Logo Design",url: "" },
+    ],
     title:
-      "Create a Powerful Brand Identity with Professional Logo Design Services in Dubai ",
+      "Creative Logo Design Services in Dubai",
+      subtitle:"Designing Professional Logos That Represent Brand Identity and Create Lasting Impressions",
     sub: [
       {
         stitle: "OUR APPROACH",

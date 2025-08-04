@@ -5,8 +5,15 @@ export const BannerSection = [
     id: 1,
     image: assets.localimage1,
     heroAlt: "Professional Logo Design Services in Dubai",
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Digital Marketing",url: "/digital-marketing-services" },
+      { label: "SEO",url: "/seo-agency-dubai" },
+      { label: "Local SEO",url: "" },
+    ],
     title:
-      "Strengthen Your Local Presence with Expert Local Seo Agency in Dubai",
+      "Expert Local SEO Agency in Dubai",
+      subtitle:"Helping Businesses Dominate Local Search and Connect With Nearby Customers",
     sub: [
       {
         stitle: "OUR APPROACH",

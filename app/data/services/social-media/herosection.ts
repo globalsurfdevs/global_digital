@@ -4,7 +4,13 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.social_bnr,
-    title: "Drive Results with the Best Social Media Agency in Dubai.",
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Digital Marketing",url: "/digital-marketing-services" },
+      { label: "Social Media",url: "" },
+    ],
+    title: "Social Media Advertising Agency in Dubai",
+    subtitle:"Driving Engagement & Growth Through Targeted Social Media Strategies",
     sub: [
       {
         stitle: "OUR APPROACH",

@@ -5,7 +5,13 @@ export const BannerSection = [
     id: 1,
     image: assets.wddbanner,
     title:
-      "Open Up a World of Possibilities for Business Growth By Expert Custom Web Development Company in Dubai ",
+      "Custom Web Development Agency in Dubai",
+      subtitle:"Building High-Performance Websites Tailored to Meet Unique Business Needs",
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "Web Development Service",url: "" },
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",

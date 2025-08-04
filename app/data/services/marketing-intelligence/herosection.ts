@@ -5,7 +5,12 @@ export const BannerSection = [
     id: 1,
     image: assets.marketing_bnr,
     title:
-      "Unlock Insights. Drive Decisions. Data-Driven Marketing Intelligence.",
+      "Data-Driven Marketing Intelligence Agency in Dubai",
+      subtitle:"Unlocking Actionable Insights to Drive Smarter Digital Marketing Decisions and Strategies ",
+    navigation: [
+      { label: "Home", url: "/" },   
+      { label: "Marketing Intelligence",url: "" },
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",

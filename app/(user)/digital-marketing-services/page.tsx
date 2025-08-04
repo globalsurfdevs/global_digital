@@ -71,7 +71,7 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        maxchwidth={34}
+        maxchwidth={20} 
       />
       <DigitalServ
         title={DigitalServdata.title}

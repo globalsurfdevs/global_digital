@@ -51,6 +51,7 @@ const page = () => {
           Bannerdata={BannerSection}
           order={"01"}
           bannerlogp={true}
+          maxchwidth={60}
         />
       </section>
       <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
