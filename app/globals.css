@@ -341,6 +341,9 @@ body {
     border: 1px solid #77787b !important;
   }
 }
+@media (max-width: 1023px) {.mbcs-63{
+  margin-top: 63px;
+}}
 @media (max-width: 1199px) {
   .bdrsm .border {
     border-width: 1px !important;
