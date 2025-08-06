@@ -81,14 +81,14 @@ const page = () => {
           }
         `}
       </style> */}
-      {/* <section className=" ">
+      <section className=" ">
         <DmHeroSection
           Bannerdata={BannerSection}
           bannerlogp={false}
           maxchwidth={28}
           points={BannerSection[0].points}
         />
-      </section> */}
+      </section>
       <AuditSecTwo title={boostEngage.title} data={boostEngage.data} />
       <Services bgcolor ="bg-dgray" title={OurServices.title} hrcontent={true} description={OurServices.desc} data={OurServices.data} />
       <div className="mnstsaq bg-black text-white">
@@ -109,7 +109,7 @@ const page = () => {
         data={IndustriesWeServe.data}
         colnum={3}
       />
-      {/* <RequestFreeAudit  /> */}
+      <RequestFreeAudit  />
     </div>
   );
 };
