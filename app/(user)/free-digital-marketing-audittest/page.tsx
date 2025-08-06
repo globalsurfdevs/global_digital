@@ -69,7 +69,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-      {/* <style>
+      <style>
         {`
           header nav div:nth-last-child(-n+2) {
             display: none;
@@ -80,7 +80,7 @@ const page = () => {
             scroll-behavior: smooth;
           }
         `}
-      </style> */}
+      </style>
       <section className=" ">
         <DmHeroSection
           Bannerdata={BannerSection}
@@ -109,7 +109,7 @@ const page = () => {
         data={IndustriesWeServe.data}
         colnum={3}
       />
-      <RequestFreeAudit  />
+      {/* <RequestFreeAudit  /> */}
     </div>
   );
 };
