@@ -109,7 +109,7 @@ const page = () => {
         data={IndustriesWeServe.data}
         colnum={3}
       />
-      {/* <RequestFreeAudit  /> */}
+      <RequestFreeAudit  />
     </div>
   );
 };
