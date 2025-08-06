@@ -22,7 +22,7 @@ const RequestFreeAudit: React.FC = () => {
   // const [isBudgetOpen, setIsBudgetOpen] = useState(false);
   // const [isServiceOpen, setIsServiceOpen] = useState(false);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  // const recaptcha = useRef<ReCAPTCHA>(null)
+  const recaptcha = useRef<ReCAPTCHA>(null)
   const [error, setError] = useState("")
   console.log("Entered email:", formData.Email);
 
@@ -85,16 +85,16 @@ const RequestFreeAudit: React.FC = () => {
 
     const form = document.getElementById("form") as HTMLFormElement;
     if (form) {
-      // if (recaptcha) {
-      //   const captchaValue = recaptcha?.current?.getValue()
-      //   if (!captchaValue) {
-      //     setError("Please verify yourself to continue")
-      //     return;
-      //   } else {
-      //     form.submit();
-      //   }
-      // }
-     form.submit();
+      if (recaptcha) {
+        const captchaValue = recaptcha?.current?.getValue()
+        if (!captchaValue) {
+          setError("Please verify yourself to continue")
+          return;
+        } else {
+          form.submit();
+        }
+      }
+      // form.submit();
     } else {
       console.error("Form element not found");
     }
@@ -315,12 +315,12 @@ const RequestFreeAudit: React.FC = () => {
               </div>
 
 
-              {/* <div >
+              <div >
             <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
 
             
               {error !== "" && <div className='text-red-500'>{error}</div>}
-              </div> */}
+              </div>
               <div className="flex flex-wrap md:flex-nowrap items-center justify-between">
                
                 <button
