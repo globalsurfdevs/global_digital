@@ -98,12 +98,15 @@ const RequestFreeAudit: React.FC = () => {
     } else {
       console.error("Form element not found");
     }
-  };
-
+  }; 
   useEffect(() => {
-    console.log(window.location.href);
-    setFormData((prev) => ({ ...prev, SingleLine2: window.location.href }));
-  }, [window.location.href]);
+    if (typeof window !== "undefined") {
+      setFormData((prev) => ({
+        ...prev,
+        SingleLine2: window.location.href,
+      }));
+    }
+  }, []);
 
   useEffect(() => {
     console.log(formData);
