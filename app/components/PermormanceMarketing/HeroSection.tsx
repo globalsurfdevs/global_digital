@@ -147,19 +147,19 @@ const [modalOpen, setModalOpen] = useState(false);
                     <div>
                       {herosection.navigation && (
                         <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[40px] xl:mb-[60px]">
-                          <ul className="flex items-center space-x-2">
+                          <ul className="flex items-center space-x-2 bredcbs">
                             {herosection.navigation.map((navItem, index) => (
                               <React.Fragment key={index}>
-                                <li>
+                                <li  >
                                   {navItem.url ? (
                                     <Link
                                       href={navItem.url}
-                                      className="hover:underline"
+                                      className="hover:underline text-[10px] sm:text-font14 lg:text-font19"
                                     >
                                       {navItem.label}
                                     </Link>
                                   ) : (
-                                    <span className="text-[#77787B]">
+                                    <span className="text-[#77787B] text-[10px] sm:text-font14 lg:text-font19">
                                       {navItem.label}
                                     </span>
                                   )}
@@ -173,7 +173,7 @@ const [modalOpen, setModalOpen] = useState(false);
                                         alt="Arrow"
                                         width={7} // Adjust width as needed
                                         height={12} // Adjust height as needed
-                                        className=""
+                                        className="relative top-[3px] lg:top-0"
                                       />
                                     </li>
                                   )}

@@ -146,8 +146,7 @@ body {
   right: 15px;
   width: 25px;
   height: 55px;
-  border-radius: 50%;
-  background: white;
+  border-radius: 50%; 
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -1137,4 +1136,7 @@ input[type="number"] {
   body {
     @apply bg-background text-foreground;
   }
+}
+.bredcbs li:nth-last-child(1) {
+  @apply truncate overflow-hidden whitespace-nowrap;
 }
