@@ -3,7 +3,7 @@ import DmHeroSection from "../../components/DigitalMarketingAudit/DmHeroSection"
 import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
 import Testimonials from "../../components/HomePage/Testimonials";
-import RequestFreeAudit from "../../components/DigitalMarketingAudit/RequestFreeAudit";
+import RequestFreeAuditNew from "../../components/DigitalMarketingAudit/RequestFreeAuditNew";
 
 import { BannerSection } from "../../data/services/digital-marketing-audit/herosection";
 import { boostEngage } from "../../data/services/digital-marketing-audit/boost-engage";
@@ -109,7 +109,7 @@ const page = () => {
         data={IndustriesWeServe.data}
         colnum={3}
       />
-      <RequestFreeAudit  />
+      <RequestFreeAuditNew   />
     </div>
   );
 };
