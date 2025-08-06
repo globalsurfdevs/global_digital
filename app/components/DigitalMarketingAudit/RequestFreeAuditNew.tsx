@@ -3,11 +3,9 @@
  import Link from "next/link";
  import ReCAPTCHA from 'react-google-recaptcha';
  
- interface LetsTalkProps {
-   onClose: () => void;
- }
+  
  
- const RequestFreeAuditNew: React.FC<LetsTalkProps> = ({ onClose }) => {
+ const RequestFreeAuditNew: React.FC = () => {
    const [formData, setFormData] = useState<{
      PhoneNumber_countrycode?: string;
      Email?: string;
@@ -186,15 +184,7 @@
        </div>
        <div className="psty bg-dgray  px-[20px] pt-[20px] pb-[80px] md:pt-[140px] xl:px-[80px]  xxl:px-[150px]">
          <div className="group">
-           <button onClick={onClose}>
-             <div className="  absolute right-5 top-[30px] z-[55px] w-fit cursor-pointer rounded-3xl bg-primary px-6 py-2 duration-200  ease-in-out group-hover:-translate-x-[-3px]    group-hover:bg-primary group-hover:shadow-lg  md:bg-white  ">
-               <div className="uppercase text-white">
-                 <p className="bolder text-font16 text-white duration-300  ease-in-out ease-in-out group-hover:text-white md:text-black">
-                   CLOSE
-                 </p>
-               </div>
-             </div>
-           </button>
+           
          </div>
          <div className="lg:mb-[100px[ mb-[20px] flex items-center gap-2">
            <p className="text-font30 uppercase">Message us</p>
