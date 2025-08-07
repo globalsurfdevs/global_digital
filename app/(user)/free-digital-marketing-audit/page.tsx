@@ -4,11 +4,12 @@ import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
 import Testimonials from "../../components/HomePage/Testimonials";
 import RequestFreeAudit from "../../components/DigitalMarketingAudit/RequestFreeAudit";
+import TrustedByBrands from "../../components/DigitalMarketingAudit/TrustedByBrands";
 
 import { BannerSection } from "../../data/services/digital-marketing-audit/herosection";
 import { boostEngage } from "../../data/services/digital-marketing-audit/boost-engage";
 import { OurServices } from "../../data/services/digital-marketing-audit/our-services";
-import { Frameworkdata, IndustriesWeServe,tpcontent } from "../../data/services/digital-marketing-audit/framework";
+import { Frameworkdata,Trustedbrands, IndustriesWeServe,tpcontent } from "../../data/services/digital-marketing-audit/framework";
 
 import AuditSecTwo from "@/app/components/DigitalMarketingAudit/AuditSecTwo";
 import Expertiseheimg from "@/app/components/EcomIndustry/Expertise";
@@ -104,6 +105,13 @@ const page = () => {
         data={tpcontent.data}
       />
       <Testimonials />
+      
+      <TrustedByBrands
+        title={Trustedbrands.title}
+        data={Trustedbrands.data} 
+        maxchwidth={20}
+        subttle={Trustedbrands.subttle}
+      />
       <Expertise
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}

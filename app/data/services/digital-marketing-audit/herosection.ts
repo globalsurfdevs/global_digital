@@ -5,7 +5,7 @@ export const BannerSection = [
     id: 1,
     image: assets.bannerse,
     title:
-      "Get a Free Digital Marketing Audit – No Strings Attached",
+      "What If a Free Audit Revealed the One Move to Outsmart Your Rivals?",
       sub: [
         {
           stitle: "OUR APPROACH",
@@ -13,7 +13,7 @@ export const BannerSection = [
         buttonTitle: "Get My Free Audit",
         },
       ], points: [ 
-          'Website SEO','Social Media Strategy','Google Ads Performance','Competitor Benchmark  '
+          'Pinpoint the SEO gap that’s costing you customers','Expose the blind spots in your social strategy','Discover ad inefficiencies silently draining your budget','Benchmark your brand—clearly, ruthlessly, profitably  '
         
       ],
   },

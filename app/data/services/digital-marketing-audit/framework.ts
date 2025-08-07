@@ -92,6 +92,77 @@ export const IndustriesWeServe = {
     }, 
   ],
 };
+export const Trustedbrands = {
+  title: "Trusted by Brands Across Industries and Borders.",
+  subttle: "From scale-ups to global leaders.",
+  data: [
+    { 
+      icon: '/assets/digital-marketing-audit/ics1.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics2.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics3.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics4.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics5.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics6.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics7.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics8.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics9.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics10.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics11.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics12.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics13.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics14.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics15.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics16.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics17.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics18.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics19.svg', 
+    },
+    { 
+      icon: '/assets/digital-marketing-audit/ics20.svg', 
+    },
+
+
+
+    
+    
+  ],
+};
 export const tpcontent = {
   title: "Who Is This Audit For? ",
   data: [
