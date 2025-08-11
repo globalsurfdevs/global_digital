@@ -1148,3 +1148,13 @@ input[type="number"] {
     max-width: 1250px;
   }
 }
+@media (min-width: 1650px) and (max-width: 1735px){
+  .container {
+      max-width: 1570px;
+  }
+}
+@media (min-width: 1736px){
+  .container {
+      max-width: 1650px;
+  }
+}
