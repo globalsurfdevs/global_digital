@@ -1143,3 +1143,8 @@ input[type="number"] {
 .bredcbs li:nth-last-child(1) {
   @apply truncate overflow-hidden whitespace-nowrap;
 }
+@media (min-width: 1400px) and (max-width: 1500px) {
+  .container{
+    max-width: 1250px;
+  }
+}
