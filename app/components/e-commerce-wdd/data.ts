@@ -15,6 +15,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "We build e-commerce websites that do more than just look good, they work effortlessly, grow with your business, and keep your data secure. As a trusted e-commerce development company in Dubai, we create online stores that enhance user experience, drive conversions, and simplify operations. Whether you need a Shopify or WooCommerce store, our team ensures a smooth, high-performance platform curated to meet your goals. ",
       },
     ],

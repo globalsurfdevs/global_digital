@@ -1,5 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
+import React from "react";
+import Link from "next/link";
+import Image, { StaticImageData } from "next/image";
 
 const HeroSection = () => {
   return (
@@ -17,14 +20,9 @@ const HeroSection = () => {
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
           }}
-        >
-          <div className="lg:grid lg:grid-cols-8 items-center border-b lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-[50px] flex flex-col gap-4">
-            <div className="text-font80 lg:col-span-8   lg:text-left w-full h-full">
-              <h1 className="title-80">About Us</h1>
-            </div>
-          </div>
+        > 
 
-          <div className="pb-[50px] lg:pb-[141px]  lg:pt-[139px] pt-[50px] flex flex-col gap-4 lg:gap-[30px]">
+          <div className="pb-[50px] lg:pb-[141px]  pt-[20px] sm:pt-[50px] lg:pt-[130px] flex flex-col gap-4 lg:gap-[30px]">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -39,9 +37,43 @@ const HeroSection = () => {
               }}
             >
               <div>
-                <h2 className="title-65 mb-3 lg:mb-5">
+                  
+                 <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-8">
+                                        <ul className="flex items-center space-x-2"> 
+                                            <React.Fragment >
+                                              <li>
+                                                
+                                                  <Link
+                                                    href="/"
+                                                    className="hover:underline text-[#77787B] text-[10px] sm:text-font14 lg:text-font19"
+                                                  >
+                                                    HOME
+                                                  </Link>
+                                                  </li> 
+                                                  <li>
+                                                    <Image
+                                                      src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
+                                                      alt="Arrow"
+                                                      width={7} // Adjust width as needed
+                                                      height={12} // Adjust height as needed
+                                                      className="relative top-[3px] lg:top-0"
+                                                    />
+                                                  </li> 
+                                                  <li>
+                                               
+                                                  <span className="hover:underline text-[10px] sm:text-font14 lg:text-font19">
+                                                   About Us
+                                                  </span>
+                                             
+                                              </li> 
+                                                
+                                            </React.Fragment>
+                                         
+                                        </ul>
+                                      </nav>
+                <h1 className="title-80 mb-3 lg:mb-5">
                 Master Every Pixel of Your Digital Presence
-                </h2>
+                </h1>
               </div>
               <div>
                 <p className="text-small-30 text-gray1 max-w-[48ch]">

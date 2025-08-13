@@ -16,6 +16,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "Content is more than just what people see, it’s how your brand is experienced. At GS Digital, a leading content production agency in Dubai, we bring your story to life through powerful visuals and purposeful storytelling. From brand video production to dynamic content production for social media, our work is crafted to captivate, connect, and convert. Every frame, photo, and edit are designed to reflect your brand’s identity and amplify its presence across every platform.",
       },
     ],
