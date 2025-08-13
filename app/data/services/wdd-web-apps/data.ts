@@ -15,6 +15,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "We build powerful, custom web applications designed around your specific business needs. As a trusted web application development company in Dubai, we focus on creating secure, scalable, and intuitive solutions that truly work for you. Whether it's a tailored application or an enterprise-level platform, our web app developers in Dubai ensure seamless functionality and an exceptional user experience—so you can focus on what matters most.",
       },
     ],

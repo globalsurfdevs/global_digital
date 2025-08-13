@@ -13,6 +13,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "Create a responsive website that establishes a powerful digital presence, delivering a seamless user experience. Engage your audience and highlight your unique offerings, ensuring visitors connect with your brand and easily navigate your site, all while enhancing overall customer satisfaction. ",
       },
     ],

@@ -14,6 +14,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "We help businesses make sense of their data. With advanced analytics, AI-driven insights, and predictive modeling, we turn raw numbers into clear, actionable intelligence. Our data analytics consulting services are designed to support informed decision-making, streamline operations, and fuel long-term growth. By combining big data expertise with intuitive visualization tools, we make complex data easy to understand so you can focus on what matters most.",
       },
     ],

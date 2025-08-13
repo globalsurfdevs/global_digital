@@ -15,6 +15,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "As a leading marketing automation agency in Dubai, we implement AI-driven solutions to streamline customer interactions and enhance campaign efficiency. Making use of data analytics, machine learning, and predictive modeling, we optimize workflows, automate lead nurturing, and refine engagement strategies, so you can focus on scaling your business with precision and impact.",
       },
     ],

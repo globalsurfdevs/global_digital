@@ -15,6 +15,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "At GS Digital, we understand that your website is more than just a digital presence; it's the face of your brand online. Our team collaborates closely with you to grasp your brand's vision and target audience, ensuring that every design element aligns with your business objectives. From setting clear goals to selecting the appropriate platforms, we craft websites that not only look impressive but also function seamlessly to drive growth.",
       },
     ],

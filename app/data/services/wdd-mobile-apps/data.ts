@@ -15,6 +15,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "From concept to launch, we create high-performing, user-focused mobile apps personalized to your business needs. As a trusted development team, we build custom applications designed to help startups make an impact and enterprises scale effectively. Our approach guarantees smooth performance, seamless user experiences, and intuitive functionality that keeps your audience engaged and your business growing. ",
       },
     ],
