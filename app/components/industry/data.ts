@@ -17,8 +17,9 @@ export const BannerSection = [
 
     sub: [
       {
-        stitle: "",
-        desc: "",
+        stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
+        desc: "We create custom websites that do more than just look good, they work seamlessly for you. As a trusted web development company in Dubai, we focus on building secure, scalable, and user-friendly websites that bring your vision to life. Whether it’s a dynamic corporate site or a powerful e-commerce platform, we make sure it runs smoothly and delivers a great experience, so you can focus on what matters most.",
       },
     ],
   },
