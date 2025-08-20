@@ -38,11 +38,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: " Industry Specific Marketing | Industries We Serve | Global Surf ",
     description:
-      "GS Digital delivers tailored digital marketing solutions for industries including construction, eCommerce, B2B, and more. Drive growth with strategies built for your sector.",
+      "GS Digital provides tailored digital marketing solutions for industries like construction, e-commerce, B2B, and more. Helping with strategies that fit your sector!",
     alternates: {
       canonical: "https://www.globalsurf.ae/industry",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
     openGraph: {
       title: "Digital Marketing for Key Industries | GS Digital Solutions",
       siteName: "Global Surf Digital",
