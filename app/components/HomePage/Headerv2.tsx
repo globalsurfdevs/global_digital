@@ -176,7 +176,7 @@ const Header = () => {
           <motion.div className="flex flex-col justify-center" whileHover="hover" initial="initial">
               <Link href="/industry" className="relative large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
   >
-                Industries
+                INDUSTRIES
               </Link>
             </motion.div>
             {/* PORTFOLIO */}
