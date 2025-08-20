@@ -9,12 +9,12 @@ export const BannerSection = [
       { label: "Digital Marketing",url: "" },
     ],
     title:
-      "Digital Marketing Services in Dubai",
+      "Digital Marketing Service Agency in Dubai",
       subtitle:"Helping Brands Grow with Smart Strategies & Real Connections",
     sub: [
       {
         stitle: "OUR APPROACH",
-        desc: "As a trusted digital marketing service provider in Dubai, we help brands establish a powerful online presence with strategies tailored to their audience. From SEO and PPC to social media and content marketing, we create campaigns that make an impact. Our team handles everything from planning to execution so you can focus on growing your business. With a data-backed approach, our digital marketing services in Dubai are built to deliver real, measurable results. ",
+        desc: "As a trusted digital marketing service agency in Dubai, we help brands establish a powerful online presence with strategies tailored to their audience. From SEO and PPC to social media and content marketing, we create campaigns that make an impact. Our team handles everything from planning to execution so you can focus on growing your business. With a data-backed approach, our digital marketing services in Dubai are built to deliver real, measurable results. ",
       buttonTitle: "Book a Free Strategy Call",
       },
     ],
@@ -23,7 +23,7 @@ export const BannerSection = [
 export const DigitalServdata = {
   title:
     "Digital Marketing Services That Outsmart the Competition. Outperform the Market. ",
-  desc: "We help brands cut through the noise with smart strategies and measurable results. Clear, compelling, conversion-focused, that’s how we build digital growth. <br><br> Built on purpose. Powered by data. <br>No guesswork. Just strategy, execution, and performance that moves the needle. ",
+  desc: "As a digital marketing company, we help brands cut through the noise with smart strategies and measurable results. Clear, compelling, conversion-focused, that’s how we build digital growth. <br><br> Built on purpose. Powered by data. <br>No guesswork. Just strategy, execution, and performance that moves the needle. ",
   btntitle: "Book a Free Strategy Call",
   btnurl: "/contact",
   data: [
@@ -147,7 +147,7 @@ export const OurServices = {
     {
       id: 4,
       title: "Creative Execution  ",
-      desc: "Our team produces compelling ad creatives, messaging, and content tailored to resonate with your audience across platforms.  ",
+      desc: "Our digital marketing company produces compelling ad creatives, messaging, and content tailored to resonate with your audience across platforms.",
     },
     {
       id: 5,

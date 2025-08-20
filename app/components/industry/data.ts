@@ -147,7 +147,7 @@ export const IndustriesWeServe = {
       title: "Hospitality ",
       hoverImg: assets.inds3,
       desc: "Deliver seamless guest experiences with smarter booking systems, personalized journeys, and backend tools that elevate efficiency behind the scenes.  ",
-      url: "",
+      url: "/industry/digital-marketing-agency-for-hospitality",
     },
     {
       id: 4,
@@ -155,7 +155,7 @@ export const IndustriesWeServe = {
       title: "Construction  ",
       hoverImg: assets.inds4,
       desc: "Built for collaboration and control, our digital tools align teams, manage resources, and ensure on-time, on-budget project delivery. ",
-      url: "",
+      url: "/industry/construction",
     },
     {
       id: 5,
@@ -163,7 +163,7 @@ export const IndustriesWeServe = {
       title: "E-commerce   ",
       hoverImg: assets.inds5,
       desc: "We craft high-performance platforms that make shopping effortless from discovery to checkout, while optimizing every step of the sales journey.  ",
-      url: "",
+      url: "/industry/ecommerce-digital-marketing",
     },
     {
       id: 6,
@@ -203,7 +203,7 @@ export const IndustriesWeServe = {
       title: "B2B  ",
       hoverImg: assets.inds10,
       desc: "We design tailored digital solutions that streamline complex workflows, support long sales cycles, and help you close with confidence.  ",
-      url: "",
+      url: "/industry/b2b-digital-marketing-services",
     },
   ],
 };
