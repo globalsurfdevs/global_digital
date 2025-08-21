@@ -307,7 +307,7 @@ const RequestFreeAudit: React.FC = () => {
                     onChange={handleChange}
                     maxLength={65535}
                     placeholder="Tell us about your project. What problems can we help you solve?"
-                    className="gry-placeholder  h-[40px] w-full border-b border-gray-300 bg-dgray px-0   text-gray1 focus:border-gray-300 focus:ring-0"
+                    className="gry-placeholder  h-[40px] w-full border-b border-gray-300 bg-dgray px-0   text-gray-700 focus:border-gray-300 focus:ring-0"
                     style={{
                       borderTop: "none",
                       borderLeft: "none",

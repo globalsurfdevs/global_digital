@@ -1,7 +1,16 @@
-"use client"
+ 
 import React from 'react'
 import { MdOutlineArrowBack,MdOutlineDoneOutline } from "react-icons/md";
 import Link from "next/link";
+ 
+type Metadata = { 
+  robots: string; 
+};
+export async function generateMetadata(): Promise<Metadata> {
+  return { 
+    robots: "noindex, nofollow", 
+  };
+}
 const page = () => {
 
   return (

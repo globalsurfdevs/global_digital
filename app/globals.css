@@ -1063,7 +1063,8 @@ input[type="number"] {
 .swpcs .swiper-wrapper {
   align-items: center;
 }
-.mainconnect .gry-placeholder::placeholder {
+.mainconnect .gry-placeholder::placeholder,
+.contctform .gry-placeholder::placeholder {
   color: #0000004d;
 }
 .textmnsa h2 ,.textmnsa h3{ color :#fff !important;}
