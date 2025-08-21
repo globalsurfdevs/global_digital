@@ -2,6 +2,7 @@
 import React from 'react'
 import { MdOutlineArrowBack,MdOutlineDoneOutline } from "react-icons/md";
 import Link from "next/link";
+
  
 type Metadata = { 
   robots: string; 
