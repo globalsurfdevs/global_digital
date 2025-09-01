@@ -141,7 +141,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               }}
             >
               <div
-                className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
+                className={` ptcs0 md:border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
               >
                 <div
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
@@ -195,7 +195,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                         {herosection.title1}
                       </p>
                     )} 
-                      <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-8">
+                      <nav className="mb-6 text-[10px] sm:text-font14 lg:text-font19 uppercase text-[#77787B] lg:mb-8">
                         <ul className="flex items-center space-x-2"> 
                             <React.Fragment >
                               <li>
@@ -314,6 +314,66 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
               </div>
+                {herosection.sub.map(
+                  (su, index) =>
+                    su.stitle &&
+                    su.desc && (
+                        <div key={index}>
+                          {su.buttonTitle && (
+                            <button onClick={scrollToSection}
+                              className="md:hidden flex z-2 z-1 group relative   w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
+                                   before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
+                                        after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 "
+                            >
+                              <div className="relative">
+                                <p
+                                  className={`duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                                >
+                                  {su.buttonTitle}
+                                </p>
+                              </div>
+                              <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="duration-200 ease-in-out group-hover:scale-125"
+                              >
+                                <g clipPath="url(#clip0_65_58)">
+                                  <path
+                                    d="M18.7892 1.2749L0.699219 19.0149"
+                                    stroke="#E53F30"
+                                    strokeWidth="3"
+                                    strokeMiterlimit="10"
+                                    className="group-hover:stroke-black"
+                                  />
+                                  <path
+                                    d="M0.699219 1.2749H18.7892V18.6649"
+                                    stroke="#E53F30"
+                                    strokeWidth="3"
+                                    strokeMiterlimit="10"
+                                    className="group-hover:stroke-black"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_65_58">
+                                    <rect
+                                      width="19.79"
+                                      height="19.45"
+                                      fill="white"
+                                      transform="translate(0 0.274902)"
+                                    />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                        )
+                      )
+                  }
+
             </motion.div>
             <motion.div
               initial="hidden"
@@ -342,7 +402,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                           <p className={`ms-0 text-gray1 text-font30 font-normal max-w-[48ch] `}>
                             {su.desc}
                           </p>
-                          <div className={`grid grid-cols-1 md:grid-cols-2 mb-2 lg:mb-0 max-w-fit gap-4 mt-6 lg:mt-14 ${lexend.className}`}>
+                          <div className={`grid grid-cols-1 md:grid-cols-2 mb-2 lg:mb-0 max-w-fit gap-8 mt-6 lg:mt-14 ${lexend.className}`}>
 
                             {points.map((point, index) => (
                               <div className="flex items-center gap-2 max-w-fit" key={index}>
@@ -354,7 +414,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                           </div>
                           {su.buttonTitle && (
                             <button onClick={scrollToSection}
-                              className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
+                              className="hidden z-2 z-1 group relative  md:flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
                                    before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
                                         after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-10 mt-8"
                             >
