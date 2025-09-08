@@ -105,7 +105,7 @@ header nav div:nth-child(6) {
         title={tpcontent.title}
         data={tpcontent.data}
       />
-      {/* <Testimonials />
+      <Testimonials />
       
       <TrustedByBrands
         title={Trustedbrands.title}
@@ -117,8 +117,8 @@ header nav div:nth-child(6) {
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}
         colnum={3}
-      /> */}
-      {/* <RequestFreeAudit  /> */}
+      />
+      <RequestFreeAudit  />
     </div>
   );
 };
