@@ -72,9 +72,10 @@ const page = () => {
     <div>
       <style>
         {`
-          header nav div:nth-last-child(-n+2) {
-            display: none;
-          }
+          header nav div:nth-child(5),
+header nav div:nth-child(6) {
+  display: none;
+}
             header nav button.border-primary{
               display: none;}
               html {

@@ -414,13 +414,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                           </div>
                           {su.buttonTitle && (
                             <button onClick={scrollToSection}
-                              className="hidden z-2 z-1 group relative  md:flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
-                                   before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
-                                        after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-10 mt-8"
+                              className="hidden z-2 z-1 group relative  md:flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-3 bg-primary
+                                    lg:mt-10 mt-8 rounded-[5px]"
                             >
                               <div className="relative">
                                 <p
-                                  className={`duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                                  className={`duration-200 text-sm font-medium uppercase ease-in-out text-white md:text-[16px] ${lexend.className}`}
                                 >
                                   {su.buttonTitle}
                                 </p>
@@ -436,17 +435,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                                 <g clipPath="url(#clip0_65_58)">
                                   <path
                                     d="M18.7892 1.2749L0.699219 19.0149"
-                                    stroke="#E53F30"
+                                    stroke="#fff"
                                     strokeWidth="3"
                                     strokeMiterlimit="10"
-                                    className="group-hover:stroke-black"
+                                    className=""
                                   />
                                   <path
                                     d="M0.699219 1.2749H18.7892V18.6649"
-                                    stroke="#E53F30"
+                                    stroke="#fff"
                                     strokeWidth="3"
                                     strokeMiterlimit="10"
-                                    className="group-hover:stroke-black"
+                                    className=""
                                   />
                                 </g>
                                 <defs>
