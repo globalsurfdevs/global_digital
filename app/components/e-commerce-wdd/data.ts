@@ -4,11 +4,18 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.bannersr,
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "E-commerce Development",url: "" },
+    ],
     title:
-      "Deliver Amazing Shopping Experiences with Expert E-commerce Development Company in Dubai ",
+      "Ecommerce Development Company in Dubai",
+    subtitle:"Building Scalable Online Stores Designed to Maximize Sales and Enhance Customer Experience",
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "We build e-commerce websites that do more than just look good, they work effortlessly, grow with your business, and keep your data secure. As a trusted e-commerce development company in Dubai, we create online stores that enhance user experience, drive conversions, and simplify operations. Whether you need a Shopify or WooCommerce store, our team ensures a smooth, high-performance platform curated to meet your goals. ",
       },
     ],

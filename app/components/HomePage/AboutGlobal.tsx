@@ -74,9 +74,7 @@ const AboutGlobal = () => {
             </motion.p>
           </motion.div>
           <p className="font-35 max-w-[50ch]">
-            We’re Global Surf Digital, a full-service digital marketing agency
-            in Dubai, specializing in data-driven strategies, creative
-            innovation, and business-focused solutions.
+            We’re Global Surf Digital, a full-service digital transformation company in Dubai, specializing in data-driven strategies, creative innovation, and business-focused solutions.
           </p>
           <button
             className="z-2 z-1 group relative flex w-fit items-center gap-1 lg:gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0

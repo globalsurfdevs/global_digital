@@ -4,11 +4,18 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.cybanner,
+    navigation: [
+      { label: "Home", url: "/" }, 
+      { label: "Creative Services",url: "/creative-agency-dubai" }, 
+      { label: "Copy writing",url: "" },
+    ],
     title:
-      "Unlock the Power of Words with Expert Copywriting Services in Dubai That Captivate, Connect, & Convert",
+      "Professional Copywriting Services in Dubai",
+      subtitle:"Crafting powerful brand messaging and content strategies to engage, inspire, and convert audience",
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "Words have the power to shape perceptions, inspire action, and drive engagement. As a leading copywriting agency in Dubai, we craft compelling, results-driven content tailored to your brand’s voice. Whether you need website copy, social media content, or advertising copy, our expert copywriters ensure that your message is clear, persuasive, and aligned with your business goals. Explore our copywriting services and elevate your brand’s communication.",
       },
     ],

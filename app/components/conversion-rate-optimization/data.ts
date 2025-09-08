@@ -5,10 +5,17 @@ export const BannerSection = [
     id: 1,
     image: assets.crmbanner,
     title:
-      "Maximize Your Website's Potential with Expert Conversion Rate Optimization Company in Dubai",
+      "Conversion Rate Optimization Agency in Dubai",
+      subtitle:"Maximizing Website Performance through A/B Testing, UX Enhancements, and CRO Strategies",
+    navigation: [
+      { label: "Home", url: "/" },   
+      { label: "Marketing Intelligence",url: "/marketing-intelligence-agency-dubai" }, 
+      { label: "  CRO",url: "" }, 
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "We help turn your website visitors into loyal customers with strategies that are backed by data. As a trusted CRO agency in Dubai, we focus on understanding how your users interact with your site, identifying what’s holding them back, and creating solutions that improve engagement and boost conversions. Whether you’re running an online store or managing a corporate website, we’re here to ensure your digital presence delivers real, measurable results",
       },
     ],

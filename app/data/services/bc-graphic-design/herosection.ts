@@ -6,11 +6,18 @@ export const BannerSection = [
     image: assets.bggra,
     heroAlt: "Leading Graphic Design Agency in Dubai",
     title:
-      "Leading Graphic Design Agency in Dubai – Crafting Designs That Speak for You ",
+      "Graphic Design Agency in Dubai ",
+    navigation: [
+      { label: "Home", url: "/" }, 
+      { label: "Creative Services",url: "/creative-agency-dubai" }, 
+      { label: "Graphic Design",url: "" },
+    ],
+    subtitle:"Crafting Unique Visual Experiences to Strengthen Brand Identity and User Engagement",
     sub: [
       {
         stitle: "OUR APPROACH",
-        desc: "Looking for graphic design experts in Dubai that bring your ideas to life? You’re in the right place. We create bold, eye-catching designs that don’t just look great—they tell your story and make a lasting impression. Whether it’s branding, marketing materials, or digital graphics, our designers craft visuals that connect with your audience and help your business stand out. With a passion for creativity and quality, we deliver designs that give you the edge in a competitive world. ",
+        buttonTitle :"Start Your Project",
+        desc: "At GS Digital, we focus on helping local businesses increase their visibility in search engines, ensuring your brand stands out in Dubai’s competitive digital landscape. We don’t just optimize for rankings—we build strategies that directly connect you with your local audience. Whether it’s refining your website’s on-page SEO, optimizing your Google My Business profile, or targeting the right keywords, our Local SEO services are designed to drive more relevant traffic to your business. We aim to create a seamless experience for your customers, turning online visits into real-world conversions.",
       },
     ],
   },

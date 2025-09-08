@@ -4,8 +4,14 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.prfbanner,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Performance Marketing",url: "/performance-marketing-agency-dubai" },
+      { label: "Programmatic Advertising",url: "" },
+    ],
     title:
-      "Unlock The Power of Programmatic Advertising with Expert Programmatic Advertising Agency",
+      "Programmatic Advertising Agency in Dubai",
+      subtitle:"Driving Performance with Data-Led Campaigns & Precision Targeting",
     sub: [
       {
         stitle: "OUR APPROACH",

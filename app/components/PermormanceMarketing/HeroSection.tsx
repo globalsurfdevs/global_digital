@@ -141,26 +141,25 @@ const [modalOpen, setModalOpen] = useState(false);
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
                   <div
-                    className={` xxl:max-w-[1000px]`}
-                    style={{ maxWidth: `${maxchwidth}ch` }}
+                  
                   >
 
                     <div>
                       {herosection.navigation && (
                         <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[40px] xl:mb-[60px]">
-                          <ul className="flex items-center space-x-2">
+                          <ul className="flex items-center space-x-2 bredcbs">
                             {herosection.navigation.map((navItem, index) => (
                               <React.Fragment key={index}>
-                                <li>
+                                <li  >
                                   {navItem.url ? (
                                     <Link
                                       href={navItem.url}
-                                      className="hover:underline"
+                                      className="hover:underline text-[10px] sm:text-font14 lg:text-font19"
                                     >
                                       {navItem.label}
                                     </Link>
                                   ) : (
-                                    <span className="text-[#77787B]">
+                                    <span className="text-[#77787B] text-[10px] sm:text-font14 lg:text-font19">
                                       {navItem.label}
                                     </span>
                                   )}
@@ -174,7 +173,7 @@ const [modalOpen, setModalOpen] = useState(false);
                                         alt="Arrow"
                                         width={7} // Adjust width as needed
                                         height={12} // Adjust height as needed
-                                        className=""
+                                        className="relative top-[3px] lg:top-0"
                                       />
                                     </li>
                                   )}
@@ -190,12 +189,14 @@ const [modalOpen, setModalOpen] = useState(false);
                       </p>
                     )}
 
-                    <h1 className="title-80"> {herosection.title}</h1>
+                   <div   className={` xxl:max-w-[1000px]`}    style={{ maxWidth: `${maxchwidth}ch` }}>
+                      <h1 className="title-80"> {herosection.title}</h1>
+                      </div> 
                     {herosection.subtitle && (
-                      <h3 className="my-3 text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
+                      <p className="my-3 text-[20px] text-black lg:mt-6 lg:mb-2  lg:text-font30">
                         {" "}
                         {herosection.subtitle}
-                      </h3>
+                      </p>
                     )}
                     {herosection.buttontitle && (
                       <button
@@ -254,7 +255,7 @@ const [modalOpen, setModalOpen] = useState(false);
                     )}
                   </div>
                   {bannerlogp && (
-                    <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
+                    <div className="lg:gap-18 flex h-full   flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-1">
                       <Link
                         href="https://www.google.com/partners/agency?id=5412848486"
                         rel="nofollow"

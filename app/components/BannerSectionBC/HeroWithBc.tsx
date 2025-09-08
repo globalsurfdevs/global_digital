@@ -14,7 +14,7 @@ const lexend = Lexend({
 });
 interface su {
   stitle?: string;
-
+  buttonTitle?: string; 
   desc?: string;
 }
 interface BannerSection {
@@ -183,12 +183,15 @@ const [modalOpen, setModalOpen] = useState(false);
 
                     <h1 className="title-80"> {herosection.title}</h1>
                     {herosection.subtitle && (
-                      <h2 className="my-3 text-[20px] text-gray1 lg:my-[75px] lg:max-w-[946px] lg:text-[35px]">
+                      <h2 className="my-3 text-[20px] text-gray1 lg:my-[45px] lg:max-w-[946px] lg:text-[35px]">
                         {" "}
                         {herosection.subtitle}
                       </h2>
-                    )}
-                    {herosection.buttontitle && (
+                    )} 
+                       {herosection.sub.map(
+                  (su, index) =>
+                    su.buttonTitle && (
+                      <div  key={index}>
                       <button
                       onClick={() => setModalOpen(true)}
                         className="z-2 z-1 group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
@@ -200,7 +203,7 @@ const [modalOpen, setModalOpen] = useState(false);
                           <p
                             className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                           >
-                            {herosection.buttontitle}
+                            {su.buttonTitle}
                           </p>
                           {/* <Link
                             href={herosection.buttonurl || "#"}
@@ -243,6 +246,8 @@ const [modalOpen, setModalOpen] = useState(false);
                           </defs>
                         </svg>
                       </button>
+                      </div>
+                          )
                     )}
                   </div>
                   {bannerlogp && (

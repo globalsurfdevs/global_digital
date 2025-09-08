@@ -4,12 +4,17 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.dsbanner,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Digital Marketing",url: "" },
+    ],
     title:
-      "Digital Marketing Services in Dubai: Helping Brands Grow with Smart Strategies & Real Connections",
+      "Digital Marketing Service Agency in Dubai",
+      subtitle:"Helping Brands Grow with Smart Strategies & Real Connections",
     sub: [
       {
         stitle: "OUR APPROACH",
-        desc: "As a trusted digital marketing service provider in Dubai, we help brands establish a powerful online presence with strategies tailored to their audience. From SEO and PPC to social media and content marketing, we create campaigns that make an impact. Our team handles everything from planning to execution so you can focus on growing your business. With a data-backed approach, our digital marketing services in Dubai are built to deliver real, measurable results. ",
+        desc: "As a trusted digital marketing service agency in Dubai, we help brands establish a powerful online presence with strategies tailored to their audience. From SEO and PPC to social media and content marketing, we create campaigns that make an impact. Our team handles everything from planning to execution so you can focus on growing your business. With a data-backed approach, our digital marketing services in Dubai are built to deliver real, measurable results. ",
       buttonTitle: "Book a Free Strategy Call",
       },
     ],
@@ -18,7 +23,7 @@ export const BannerSection = [
 export const DigitalServdata = {
   title:
     "Digital Marketing Services That Outsmart the Competition. Outperform the Market. ",
-  desc: "We help brands cut through the noise with smart strategies and measurable results. Clear, compelling, conversion-focused, that’s how we build digital growth. <br><br> Built on purpose. Powered by data. <br>No guesswork. Just strategy, execution, and performance that moves the needle. ",
+  desc: "As a digital marketing company, we help brands cut through the noise with smart strategies and measurable results. Clear, compelling, conversion-focused, that’s how we build digital growth. <br><br> Built on purpose. Powered by data. <br>No guesswork. Just strategy, execution, and performance that moves the needle. ",
   btntitle: "Book a Free Strategy Call",
   btnurl: "/contact",
   data: [
@@ -102,21 +107,21 @@ export const Frameworkdata = {
       title: "Content Marketing  ",
       dec: "Tell your brand’s story in a way that captivates, engages, and builds lasting connections.  ",
       icn: assets.dms4,
-      urllink: '',
+      urllink: '/content-marketing-agency-dubai',
     },
     {
       id: 5,
       title: "Marketing Automation   ",
       dec: "Save time and stay efficient by automating repetitive marketing tasks without losing the personal touch.  ",
       icn: assets.dms5,
-      urllink: '',
+      urllink: '/marketing-automation-agency-dubai',
     },
     {
       id: 6,
-      title: "Analytics  ",
+      title: "Data Analytics  ",
       dec: "Get a clear picture of what’s working with real-time insights that guide smarter decisions.  ",
       icn: assets.dms6,
-      urllink: '',
+      urllink: '/data-analytics-services-dubai',
     },
   ],
 };
@@ -142,7 +147,7 @@ export const OurServices = {
     {
       id: 4,
       title: "Creative Execution  ",
-      desc: "Our team produces compelling ad creatives, messaging, and content tailored to resonate with your audience across platforms.  ",
+      desc: "Our digital marketing company produces compelling ad creatives, messaging, and content tailored to resonate with your audience across platforms.",
     },
     {
       id: 5,

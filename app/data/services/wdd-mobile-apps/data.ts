@@ -5,10 +5,17 @@ export const BannerSection = [
     id: 1,
     image: assets.mabanner,
     title:
-      "Experience powerful Apps & Flawless User Experiences with The Leading Mobile App Development Company in Dubai ",
+      "Mobile App Development Company in Dubai",
+      subtitle:"Creating Intuitive Mobile Applications for iOS and Android With Excellent User Experience",
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "Mobile Apps Development",url: "" },
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "From concept to launch, we create high-performing, user-focused mobile apps personalized to your business needs. As a trusted development team, we build custom applications designed to help startups make an impact and enterprises scale effectively. Our approach guarantees smooth performance, seamless user experiences, and intuitive functionality that keeps your audience engaged and your business growing. ",
       },
     ],

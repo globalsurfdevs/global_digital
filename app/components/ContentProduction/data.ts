@@ -5,17 +5,22 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.cprbanner,
+      navigation: [
+        { label: "Home", url: "/" },
+        { label: "Creative Services",url: "/creative-agency-dubai" },
+        { label: "Content Production", url: "" },
+      ],
     title:
-      "Bring Your Brand to Life with Creative Content Production Services in Dubai",
+      "Creative Content Production Services in Dubai",
+    subtitle:"Producing Engaging Video, Photography, and Multimedia Content to Improve Brand Communication",
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "Content is more than just what people see, it’s how your brand is experienced. At GS Digital, a leading content production agency in Dubai, we bring your story to life through powerful visuals and purposeful storytelling. From brand video production to dynamic content production for social media, our work is crafted to captivate, connect, and convert. Every frame, photo, and edit are designed to reflect your brand’s identity and amplify its presence across every platform.",
       },
     ],
-    navigation: [
-      { label: "Engage, Inspire & Convert", url: "" },
-    ],
+  
   },
 ];
 

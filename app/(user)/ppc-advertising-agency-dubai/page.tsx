@@ -69,6 +69,7 @@ const page = () => {
         Bannerdata={BannerSection}
         hideslider={true}
         bannerlogp={true}
+        maxchwidth={24}
       />
       <Paidsearch title={Paidsearchdata.title} data={Paidsearchdata.data} />
       <Platforms

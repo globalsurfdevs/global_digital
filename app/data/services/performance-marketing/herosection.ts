@@ -4,8 +4,14 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.performance_bnr,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Digital Marketing",url: "/digital-marketing-services" },
+      { label: "Performance Marketing",url: "" },
+    ],
     title:
-      "Data-Driven Performance Marketing Agency in Dubai for Measurable Results.",
+      "ROI-Driven Performance Marketing Agency in Dubai",
+    subtitle:"Delivering ROI-Driven Digital Campaigns to Maximize Leads & Conversions in Dubai",
     sub: [
       {
         stitle: "OUR APPROACH",

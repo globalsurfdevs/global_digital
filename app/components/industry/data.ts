@@ -17,8 +17,9 @@ export const BannerSection = [
 
     sub: [
       {
-        stitle: "",
-        desc: "",
+        stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
+        desc: "We create custom websites that do more than just look good, they work seamlessly for you. As a trusted web development company in Dubai, we focus on building secure, scalable, and user-friendly websites that bring your vision to life. Whether it’s a dynamic corporate site or a powerful e-commerce platform, we make sure it runs smoothly and delivers a great experience, so you can focus on what matters most.",
       },
     ],
   },
@@ -147,7 +148,7 @@ export const IndustriesWeServe = {
       title: "Hospitality ",
       hoverImg: assets.inds3,
       desc: "Deliver seamless guest experiences with smarter booking systems, personalized journeys, and backend tools that elevate efficiency behind the scenes.  ",
-      url: "",
+      url: "/industry/digital-marketing-agency-for-hospitality",
     },
     {
       id: 4,
@@ -155,7 +156,7 @@ export const IndustriesWeServe = {
       title: "Construction  ",
       hoverImg: assets.inds4,
       desc: "Built for collaboration and control, our digital tools align teams, manage resources, and ensure on-time, on-budget project delivery. ",
-      url: "",
+      url: "/industry/construction",
     },
     {
       id: 5,
@@ -163,7 +164,7 @@ export const IndustriesWeServe = {
       title: "E-commerce   ",
       hoverImg: assets.inds5,
       desc: "We craft high-performance platforms that make shopping effortless from discovery to checkout, while optimizing every step of the sales journey.  ",
-      url: "",
+      url: "/industry/ecommerce-digital-marketing",
     },
     {
       id: 6,
@@ -203,7 +204,7 @@ export const IndustriesWeServe = {
       title: "B2B  ",
       hoverImg: assets.inds10,
       desc: "We design tailored digital solutions that streamline complex workflows, support long sales cycles, and help you close with confidence.  ",
-      url: "",
+      url: "/industry/b2b-digital-marketing-services",
     },
   ],
 };

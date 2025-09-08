@@ -58,7 +58,7 @@ const Services: React.FC<ServicesSectionProps> = ({
               <h2 className={`title-65 pb-2 ${bgcolor =="bg-black"? "text-white" : "text-black"}`} >
                 {title}
               </h2>
-              <p className={`text-19 fnt-lexend max-w-[38ch] pt-4 md:pt-6 xl:pt-14 ${bgcolor =="bg-black"? "text-white" : "text-gray1"}`}>
+              <p className={`text-19 fnt-lexend max-w-[40ch] pt-4 md:pt-6 xl:pt-14 ${bgcolor =="bg-black"? "text-white" : "text-gray1"}`}>
                 {description}
               </p>
             </div>

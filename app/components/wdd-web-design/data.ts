@@ -5,10 +5,17 @@ export const BannerSection = [
     id: 1,
     image: assets.designbanner,
     title:
-      "Build Stronger Connections with Personalized Service by Leading Web Design Agency in Dubai",
+      "Creative Web Design Agency in Dubai",
+      subtitle:"Delivering Visually Stunning and Optimized Website Designs to Improve Online Presence",
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "Web Design Service",url: "" },
+    ],
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "At GS Digital, we understand that your website is more than just a digital presence; it's the face of your brand online. Our team collaborates closely with you to grasp your brand's vision and target audience, ensuring that every design element aligns with your business objectives. From setting clear goals to selecting the appropriate platforms, we craft websites that not only look impressive but also function seamlessly to drive growth.",
       },
     ],

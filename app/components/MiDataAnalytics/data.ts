@@ -4,10 +4,17 @@ export const BannerSection = [
     id: 1,
     image: assets.dabanner,
     title:
-      "Make the Right Data-Driven Decisions with Expert Data Analytics Consulting Services in Dubai",
+      "Professional Data Analytics Consulting Services in Dubai",
+      subtitle:"Unlock Right Data-Driven Decisions with Advanced Data Analytics, BI Tools, and Predictive Analytics",
+    navigation: [
+      { label: "Home", url: "/" },   
+      { label: "Marketing Intelligence",url: "/marketing-intelligence-agency-dubai" }, 
+      { label: "Data Analytics",url: "" }, 
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "We help businesses make sense of their data. With advanced analytics, AI-driven insights, and predictive modeling, we turn raw numbers into clear, actionable intelligence. Our data analytics consulting services are designed to support informed decision-making, streamline operations, and fuel long-term growth. By combining big data expertise with intuitive visualization tools, we make complex data easy to understand so you can focus on what matters most.",
       },
     ],

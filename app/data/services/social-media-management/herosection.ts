@@ -4,8 +4,14 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.smmbanner,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Social Media",url: "/social-media-agency-dubai" },
+      { label: "Social Media Management",url: "" },
+    ],
     title:
-      "Connect, Engage & Grow with Social Media Management in Dubai ",
+      "Professional Social Media Management in Dubai",
+      subtitle:"Managing and Monitoring Your Online Presence for Maximum Impact & Engagement",
     sub: [
       {
         stitle: "OUR APPROACH",

@@ -5,10 +5,17 @@ export const BannerSection = [
     id: 1,
     image: assets.wddbanner,
     title:
-      "Open Up a World of Possibilities for Business Growth By Expert Custom Web Development Company in Dubai ",
+      "Custom Web Development Agency in Dubai",
+      subtitle:"Building High-Performance Websites Tailored to Meet Unique Business Needs",
+    navigation: [
+      { label: "Home", url: "/" },  
+      { label: "Web Solutions",url: "/web-design-and-development" }, 
+      { label: "Web Development Service",url: "" },
+    ],  
     sub: [
       {
         stitle: "OUR APPROACH",
+        buttonTitle :"Start Your Project",
         desc: "We create custom websites that do more than just look good, they work seamlessly for you. As a trusted web development company in Dubai, we focus on building secure, scalable, and user-friendly websites that bring your vision to life. Whether it’s a dynamic corporate site or a powerful e-commerce platform, we make sure it runs smoothly and delivers a great experience, so you can focus on what matters most.",
       },
     ],

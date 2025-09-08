@@ -48,7 +48,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <Header />
-        <div className="mt-[63px] lg:mt-0">
+        <div className="mbcs-63">
   {children}
         </div>
       
