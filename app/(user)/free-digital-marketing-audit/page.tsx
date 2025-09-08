@@ -72,9 +72,10 @@ const page = () => {
     <div>
       <style>
         {`
-          header nav div:nth-last-child(-n+2) {
-            display: none;
-          }
+          header nav div:nth-child(5),
+header nav div:nth-child(6) {
+  display: none;
+}
             header nav button.border-primary{
               display: none;}
               html {
@@ -104,7 +105,7 @@ const page = () => {
         title={tpcontent.title}
         data={tpcontent.data}
       />
-      <Testimonials />
+      {/* <Testimonials />
       
       <TrustedByBrands
         title={Trustedbrands.title}
@@ -116,8 +117,8 @@ const page = () => {
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}
         colnum={3}
-      />
-      <RequestFreeAudit  />
+      /> */}
+      {/* <RequestFreeAudit  /> */}
     </div>
   );
 };

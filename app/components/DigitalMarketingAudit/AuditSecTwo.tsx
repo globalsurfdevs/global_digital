@@ -128,9 +128,9 @@ const scrollToSection = () => {
               ))}
             </div>
           </motion.div>
-          <div className="mt-5 lg:mt-[65px] mb-6 lg:mb-[75px]">
-      <p className="font-normal text-font25  gap-y-2 lg:gap-y-0  flex flex-wrap items-center">
-        We’ve helped brands like
+          <div className="mt-5 lg:mt-[65px] mb-6 lg:mb-[75px] flex flex-wrap items-center">
+      <p className="font-normal text-font25  gap-y-2 lg:gap-y-0  ">
+        We’ve helped brands like  </p>
         <div className="relative lg:w-[163px] lg:h-[62px] w-[100px] h-[40px] mx-4 border border-primary rounded-full overflow-hidden">
 
           <AnimatePresence mode="wait">
@@ -150,8 +150,8 @@ const scrollToSection = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-        increase revenue by up to{" "}
-        <span className="text-primary relative   inline-block ml-2">
+        <p className="font-normal text-font25  gap-y-2 lg:gap-y-0  "> increase revenue by up to{" "}</p>
+        <span className="text-primary relative   inline-block ml-2 font-normal text-font25">
           <AnimatePresence mode="wait">
             <motion.span
               key={currentIndex + "-txt"}
@@ -164,8 +164,8 @@ const scrollToSection = () => {
               {imagesdata[currentIndex].multiplier}
             </motion.span>
           </AnimatePresence>
-        </span>.
-      </p>
+        </span><p className="font-normal text-font25">.</p>
+    
     </div>
 
     <button onClick={scrollToSection}

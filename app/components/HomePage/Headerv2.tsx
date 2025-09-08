@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ServicesMegaMenu from "./ServiceDropdown";
 import Link from "next/link";
 import LetsTalk from "@/app/components/common/LetsConnect";
+import { usePathname } from "next/navigation"; 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,13 +16,13 @@ const Header = () => {
 
   // Track hover on SERVICES button and mega menu container
   const [isServicesHovered, setIsServicesHovered] = useState(false);
-
+ 
   // Ref to SERVICES button to position mega menu
   const servicesButtonRef = useRef<HTMLButtonElement>(null);
 
   // Position of mega menu
   const [megaMenuPos, setMegaMenuPos] = useState<{ left: number; top: number }>({ left: 0, top: 0 });
-
+  const pathname = usePathname();
   // Sticky header
   const [isSticky, setIsSticky] = useState(false);
 
@@ -258,6 +259,20 @@ const Header = () => {
                 </svg>
               </div>
             </button>
+            {/*  GET AUDIT button only for /free-digital-marketing-audit */}
+            {pathname === "/free-digital-marketing-audit" && (
+  <Link
+    href="#requestst"
+    scroll={true}
+    className=" md:flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent px-3 py-2 bg-primary  rounded-[5px]" >
+    <div className="relative">
+    <p className="duration-200 text-sm font-medium uppercase ease-in-out text-white md:text-[16px]">
+        GET AUDIT
+      </p>
+    </div>
+
+  </Link>
+)}
           </nav>
 
           {/* -- End of container -- */}
