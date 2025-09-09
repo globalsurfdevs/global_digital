@@ -115,11 +115,13 @@ const Header = () => {
         <div className="container flex items-center justify-between relative z-20">
           <div className="logo-s relative">
             <Image
-              src={assets.logo}
+              src="/gs-digital-logo.svg"
               className="w-[200px]"
               alt="Global Surf Digital Logo"
               width={100}
               height={100}
+              priority
+  unoptimized
             />
             <Link href="/" className="absolute top-0 h-full w-full"></Link>
           </div>
