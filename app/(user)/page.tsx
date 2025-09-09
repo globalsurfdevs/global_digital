@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
       images: [
         {
-          url: "https://www.globalsurf.ae/_next/static/media/gs-digital-logo.2e30d388.svg",
+          url: "https://www.globalsurf.ae/gs-digital-logo.svg",
           alt: "Global Surf Digital Logo",
           type: "image/svg+xml", // Use appropriate MIME type if SVG
         },

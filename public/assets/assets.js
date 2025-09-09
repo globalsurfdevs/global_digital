@@ -851,6 +851,7 @@ import chlg3 from "../assets/digital-marketing-audit/chlg3.png";
 import chlg4 from "../assets/digital-marketing-audit/chlg4.png";
 import chlg5 from "../assets/digital-marketing-audit/chlg5.png";
 import bannerse from "../assets/digital-marketing-audit/bannerse.jpg";
+import free_digital_audit from "../assets/digital-marketing-audit/free_digital_audit.jpg";
 import insic1 from "../assets/digital-marketing-audit/insic1.svg";
 import insic2 from "../assets/digital-marketing-audit/insic2.svg";
 import insic3 from "../assets/digital-marketing-audit/insic3.svg";
@@ -877,6 +878,7 @@ import gfsv6 from "../assets/digital-marketing-audit/gfsv6.svg";
 
 export const assets = {
   gfsv1,
+  free_digital_audit,
   gfsv2,
   gfsv3,
   gfsv4,
