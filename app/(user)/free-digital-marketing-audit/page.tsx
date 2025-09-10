@@ -58,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "https://www.globalsurf.ae/_next/static/media/free_digital_audit.jpg",
+          url: "https://www.globalsurf.ae/assets/digital-marketing-audit/free_digital_audit.jpg",
           width: 1200,
           height: 630,
           alt: "Digital Marketing Audit",
