@@ -461,6 +461,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                               </svg>
                             </button>
                           )}
+                          <p className="mt-4 text-gray1">Limited free slots available this month</p>
                         </div>
 
 
