@@ -38,6 +38,12 @@ type Metadata = {
       alt: string;
     }[];
   };
+  twitter: {
+    card: string;
+    title: string;
+    description: string;
+    images: string[];
+  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -63,6 +69,15 @@ export async function generateMetadata(): Promise<Metadata> {
           height: 630,
           alt: "Digital Marketing Audit",
         },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Find out what’s holding back your digital growth",
+      description:
+        "Get a professional audit of your digital marketing strategy. Identify growth opportunities, reduce wasted ad spend, and boost your ROI today.",
+      images: [
+        "https://www.globalsurf.ae/assets/digital-marketing-audit/free_digital_audit.jpg",
       ],
     },
   };
