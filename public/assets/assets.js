@@ -145,6 +145,17 @@ import Subijith from "../assets/employee/Subijith.png";
 import Afsal from "../assets/employee/Afsal.png";
 import Dilna from "../assets/employee/Dilna.png";
 import Thanisha from "../assets/employee/Thanisha.png";
+import Afeefa from "../assets/employee/Afeefa.png";
+import Ajay from "../assets/employee/Ajay.png";
+import Arjun_VP from "../assets/employee/Arjun_VP.png";
+import Devika from "../assets/employee/Devika.png";
+import Divya from "../assets/employee/Divya.png";
+import Hisham from "../assets/employee/Hisham.png";
+import Krishnapriya from "../assets/employee/Krishnapriya.png";
+import Mariyambi from "../assets/employee/Mariyambi.png";
+import Renisha from "../assets/employee/Renisha.png";
+import Shilpa from "../assets/employee/Shilpa.png";
+import Vishnu_v from "../assets/employee/Vishnu_v.png";
 
 import seo_banner from "../assets/banner/SEO.jpg";
 import branding_bnr from "../assets/banner/Branding-&-Creatives-01.jpg";
@@ -1458,6 +1469,17 @@ export const assets = {
   Aashika,
   Anjana,
   Aravind,
+  Arjun_VP,
+  Ajay,
+  Afeefa,
+  Devika,
+  Divya,
+  Hisham,
+  Krishnapriya,
+  Mariyambi,
+  Renisha,
+  Shilpa,
+  Vishnu_v,
   up_arrow,
   down_arrow,
   seopr1,
