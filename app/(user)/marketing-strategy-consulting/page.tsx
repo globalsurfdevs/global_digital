@@ -36,13 +36,13 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Services Agency in Dubai | Global Surf Digital",
+    title: "Marketing Strategy Consulting in Dubai",
     description:
-      "Achieve your business goals with our top-tier digital marketing services in Dubai. Our digital company crafts custom strategies for long-term success. Start Now!",
+      "Marketing Strategy Consulting in Dubai",
     alternates: {
-      canonical: "https://www.globalsurf.ae/digital-marketing-services",
+      canonical: "",
     },
-    robots: "index, follow",
+    robots: "noindex, nofollow",
   };
 }
 
@@ -93,7 +93,7 @@ const page = () => {
         title={OurServices.title}
         data={OurServices.data}
         colcount={5}
-        // bgcolor="bg-black"
+         bgcolor="bg-dgray"
         // bgtt1="text-white"
         // bgtt3="text-white"
         hrcontent={true}
@@ -115,7 +115,9 @@ const page = () => {
         />
       </section>
      
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US TODAY!"} />
+     <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
+      <GetInTouch data={Cta} redlast={false} ctabbutton={"CONTACT US TODAY!"} />
+      </div>
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

@@ -20,7 +20,7 @@ export const BannerSection = [
   },
 ];
 export const Wecanhelp = {
-  title: "How We Can Help",
+  title: "We Can Help You",
   data: [
     {
       id: 1,
