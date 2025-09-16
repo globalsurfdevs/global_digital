@@ -1159,3 +1159,7 @@ input[type="number"] {
       max-width: 1650px;
   }
 }
+.innerwhite .bg-dgray{background-color: transparent !important;}
+.innerwhite .bg-dgray.left0w::after {
+  background: #fff !important;
+}

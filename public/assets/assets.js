@@ -878,6 +878,28 @@ import gfsv3 from "../assets/digital-marketing-audit/gfsv3.svg";
 import gfsv4 from "../assets/digital-marketing-audit/gfsv4.svg";
 import gfsv5 from "../assets/digital-marketing-audit/gfsv5.svg";
 import gfsv6 from "../assets/digital-marketing-audit/gfsv6.svg";
+import strsbanner from "../images/marketing-strategy-consulting/banner.jpg";
+import mschelp1 from "../images/marketing-strategy-consulting/help1.svg";
+import mschelp2 from "../images/marketing-strategy-consulting/help2.svg";
+import mschelp3 from "../images/marketing-strategy-consulting/help3.svg";
+import mschelp4 from "../images/marketing-strategy-consulting/help4.svg";
+import cmrst1 from "../images/marketing-strategy-consulting/cmrst1.svg"; 
+import cmrst2 from "../images/marketing-strategy-consulting/cmrst2.svg"; 
+import cmrst3 from "../images/marketing-strategy-consulting/cmrst3.svg"; 
+import cmrst4 from "../images/marketing-strategy-consulting/cmrst4.svg"; 
+import cmrst5 from "../images/marketing-strategy-consulting/cmrst5.svg"; 
+import cmrst6 from "../images/marketing-strategy-consulting/cmrst6.svg"; 
+
+import omst1 from "../images/marketing-strategy-consulting/omst1.svg"; 
+import omst2 from "../images/marketing-strategy-consulting/omst2.svg"; 
+import omst3 from "../images/marketing-strategy-consulting/omst3.svg"; 
+import omst4 from "../images/marketing-strategy-consulting/omst4.svg"; 
+import omst5 from "../images/marketing-strategy-consulting/omst5.svg"; 
+import omst6 from "../images/marketing-strategy-consulting/omst6.svg"; 
+
+
+
+
 
 
 
@@ -888,6 +910,23 @@ import gfsv6 from "../assets/digital-marketing-audit/gfsv6.svg";
 
 
 export const assets = {
+  omst1,
+  omst2,
+  omst3,
+  omst4,
+  omst5,
+  omst6,
+  strsbanner,
+  mschelp1,
+  mschelp2,
+  mschelp3,
+  mschelp4,
+  cmrst1,
+  cmrst2,
+  cmrst3,
+  cmrst4,
+  cmrst5,
+  cmrst6,
   gfsv1,
   free_digital_audit,
   gfsv2,
