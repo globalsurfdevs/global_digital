@@ -146,7 +146,7 @@ const [modalOpen, setModalOpen] = useState(false);
 
                     <div>
                       {herosection.navigation && (
-                        <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[40px] xl:mb-[60px]">
+                        <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-8">
                           <ul className="flex items-center space-x-2 bredcbs">
                             {herosection.navigation.map((navItem, index) => (
                               <React.Fragment key={index}>
