@@ -36,13 +36,13 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Services Agency in Dubai | Global Surf Digital",
+    title: "Marketing Strategy Consulting in Dubai",
     description:
-      "Achieve your business goals with our top-tier digital marketing services in Dubai. Our digital company crafts custom strategies for long-term success. Start Now!",
+      "Marketing Strategy Consulting in Dubai",
     alternates: {
-      canonical: "https://www.globalsurf.ae/digital-marketing-services",
+      canonical: "",
     },
-    robots: "index, follow",
+    robots: "noindex, nofollow",
   };
 }
 
