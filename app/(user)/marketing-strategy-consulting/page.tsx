@@ -98,7 +98,7 @@ const page = () => {
         // bgtt3="text-white"
         hrcontent={true}
       />
-      <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
+      <div className="pb-[50px] pt-[20px] lg:pb-[130px] lg:pt-[130px]">
         <LogoSwiper
           logosdata={logosdata}
           slidesPerView={7.5}
