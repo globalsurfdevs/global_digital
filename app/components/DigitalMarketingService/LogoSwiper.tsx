@@ -41,7 +41,7 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
           }}
         >
           {" "}
-          <div className="mb-2 mt-6 grid lg:mb-75 lg:mt-0">
+          <div className="mb-4 mt-6 grid lg:mb-75 lg:mt-0">
             {title1 && (
               <h2
                 className="title-65"
@@ -71,7 +71,7 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
           breakpoints={{
             320: {
               spaceBetween: 30,
-              slidesPerView: 4,
+              slidesPerView: 3,
             },
             768: {
               spaceBetween: 40,
