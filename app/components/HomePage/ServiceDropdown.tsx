@@ -91,6 +91,10 @@ const serviceData: ServiceData = {
   "Marketing Intelligence": {
     titleurl: "/marketing-intelligence-agency-dubai",
     categoryText: 'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
+    "Strategy Consulting": {
+      text: 'Built on Data<span class="text-[#E43D30]">.</span><br>Driven by Strategy<span class="text-[#E43D30]">.</span>',
+      url: "/marketing-strategy-consulting",
+    },
     "Data & Analytics": {
       text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
       url: "/data-analytics-services-dubai",
