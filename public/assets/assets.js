@@ -897,16 +897,39 @@ import omst4 from "../images/marketing-strategy-consulting/omst4.svg";
 import omst5 from "../images/marketing-strategy-consulting/omst5.svg"; 
 import omst6 from "../images/marketing-strategy-consulting/omst6.svg"; 
 
-
-
-
-
-
-
-
-
-
-
+import shareicon from "../images/blog-new/shareicon.svg";
+import linkedinicon from "../images/blog-new/linkedinicon.svg";
+import facebbokicon from "../images/blog-new/facebookicon.svg";
+import twittericon from "../images/blog-new/xicon.svg";
+import youtubeicon from "../images/blog-new/ytube.svg";
+import tiktokicon from "../images/blog-new/tiktok.svg";
+import instagramicon from "../images/blog-new/instablog.svg";
+import fbook from "../images/blog-new/fbook.svg";
+import algo from "../images/blog-new/algo.svg";
+import brand from "../images/blog-new/brand.svg";
+import budget from "../images/blog-new/budget.svg";
+import legal from "../images/blog-new/legal.svg";
+import mcontent from "../images/blog-new/mcontent.svg";
+import message from "../images/blog-new/message.svg";
+import platform from "../images/blog-new/platforms.svg";
+import videoblg from "../images/blog-new/video.svg";
+import blogbnr from "../images/blog-new/blog_2.png";
+import ashnablog from "../images/blog-new/ashna.png";
+import blogimg2 from "../images/blog-new/img2.png";
+import makevideo from "../images/blog-new/makevideo.png";
+import measurelearn from "../images/blog-new/measurelearn.png";
+import prepro1 from "../images/blog-new/prepro1.png";
+import prepro2 from "../images/blog-new/prepro2.png";
+import prepro3 from "../images/blog-new/prepro3.png";
+import prepro4 from "../images/blog-new/prepro4.png";
+import prepro5 from "../images/blog-new/prepro5.png";
+import scroll from "../images/blog-new/scroll.png";
+import tcom1 from "../images/blog-new/tcom1.png";
+import tcom2 from "../images/blog-new/tcom2.png";
+import tcom3 from "../images/blog-new/tcom3.png";
+import tcom4 from "../images/blog-new/tcom4.png";
+import tcom5 from "../images/blog-new/tcom5.png";
+import tcom6 from "../images/blog-new/tcom6.png";
 
 
 export const assets = {
@@ -916,6 +939,39 @@ export const assets = {
   omst4,
   omst5,
   omst6,
+  tcom1,
+  tcom2,
+  tcom3,
+  tcom4,
+  tcom5,
+  tcom6,
+  scroll,
+  prepro1,
+  prepro2,
+  prepro3,
+  prepro4,
+  prepro5,
+  measurelearn,
+  blogbnr,
+  blogimg2,
+  makevideo,
+  shareicon,
+  linkedinicon,
+  facebbokicon,
+  twittericon,
+  youtubeicon,
+  tiktokicon,
+  instagramicon,
+  fbook,
+  algo,
+  brand,
+  budget,
+  legal,
+  mcontent,
+  message,
+  platform,
+  videoblg,
+  ashnablog,
   strsbanner,
   mschelp1,
   mschelp2,

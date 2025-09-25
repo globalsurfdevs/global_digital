@@ -57,7 +57,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor ,title}) => {
           </div>
 
           <div className="col-span-5 w-full">
-            {data.map((item, index) => (
+            {data?.map((item, index) => (
               <div
                 className="flex w-full items-center justify-between gap-3 border-b border-t py-6 lg:pb-[50px] lg:pt-[50px]"
                 key={index}
