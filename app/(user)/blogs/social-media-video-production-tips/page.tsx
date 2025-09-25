@@ -1,16 +1,16 @@
 import React from "react";
-import HeroSection from "../../components/BlogSocialMedia/HeroSectionBlog";
-import Contentone from "../../components/BlogSocialMedia/ContentSectionOne";
-import Contenttwo from "../../components/BlogSocialMedia/ContentSectiontwo";
-import ThreeColumnTable from "../../components/BlogSocialMedia/ThreeColumnTable";
-import VideoGuide from "../../components/BlogSocialMedia/VideoGuide";
-import EssentialTips from "../../components/BlogSocialMedia/EssentialTips";
-import Troubleshooting from "../../components/BlogSocialMedia/Troubleshooting";
-import ListingSection from "../../components/BlogSocialMedia/ListingSection";
-import ScrollSection from "../../components/BlogSocialMedia/ScrollsSec";
-import Detailsauthor from "../../components/BlogSocialMedia/Author";
-import SocialShare from "../../components/BlogSocialMedia/SocialShare";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
+import HeroSection from "../../../components/BlogSocialMedia/HeroSectionBlog";
+import Contentone from "../../../components/BlogSocialMedia/ContentSectionOne";
+import Contenttwo from "../../../components/BlogSocialMedia/ContentSectiontwo";
+import ThreeColumnTable from "../../../components/BlogSocialMedia/ThreeColumnTable";
+import VideoGuide from "../../../components/BlogSocialMedia/VideoGuide";
+import EssentialTips from "../../../components/BlogSocialMedia/EssentialTips";
+import Troubleshooting from "../../../components/BlogSocialMedia/Troubleshooting";
+import ListingSection from "../../../components/BlogSocialMedia/ListingSection";
+import ScrollSection from "../../../components/BlogSocialMedia/ScrollsSec";
+import Detailsauthor from "../../../components/BlogSocialMedia/Author";
+import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
 
 
 
@@ -18,7 +18,7 @@ import { BannerSection ,videoProductionData,platformCheatSheetData,Faq,videoGuid
   troubleshootingData,listingSectionData,contentSectionsData,
   videoProductionsocialData,videocountData,scrollSectionsData,authors
 
-} from "../../data/blogdatas/data";
+} from "../../../data/blogdatas/data";
 
 
 interface Canonicals {
@@ -36,24 +36,31 @@ type Metadata = {
     url: string;
     description: string;
   };
+  authors?: { name: string; url?: string }[];
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Branding Agency Dubai | Creative Branding Company | GS Digital",
+    title: "Social Media Video Production Guide | Global Surf Blog",
     description:
-      "Dubai’s best creative branding agency, Global Surf Digital, offers customized branding services to drive engagement & growth. Click here to learn more",
+      "Learn how to create engaging social media videos. Discover strategies, tools, and tips to boost visibility, connect with your audience, and drive results.",
     alternates: {
-      canonical: "",
+      canonical: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
     },
     robots: "noindex, nofollow",
     openGraph: {
-      title: "Blog | GS Digital",
+      title: "Social Media Video Production Guide | Global Surf Blog",
       site_name: "Global Surf Digital Media",
-      url: "",
+      url: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
       description:
-        "Elevate your brand with GS Digital, the Branding Agency Dubai trusts. As a Creative Branding Company, we deliver unique and impactful branding solutions!",
+        "",
     },
+    authors: [
+      {
+        name: "Ashna Ganeeva",
+        url: "https://www.linkedin.com/in/ashna-ganeeva/",
+      },
+    ],
   };
 }
 

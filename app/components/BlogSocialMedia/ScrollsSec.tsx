@@ -24,7 +24,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
           <div className="col-span-5 w-full">
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
               <div className="flex-1 justify-between">
-                <h2 className="title-65 mb-[40px] leading-[1.3]">{title}</h2>
+                <h2 className="title-65 mb-[40px] ">{title}</h2>
                 {paragraphs.map((p, idx) => (
                   <p key={idx} className="text-[#77787B] mb-2 text-font19 le">
                     {p}
