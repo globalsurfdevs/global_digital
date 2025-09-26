@@ -35,7 +35,9 @@ type Metadata = {
     site_name: string;
     url: string;
     description: string;
+    type?: string; // keep it optional
   };
+  images?: { url: string; alt: string }[];
   authors?: { name: string; url?: string }[];
 };
 
@@ -49,12 +51,19 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     robots: "noindex, nofollow",
     openGraph: {
-      title: "Social Media Video Production Guide | Global Surf Blog",
-      site_name: "Global Surf Digital Media",
+      title: "Social Media Video Production Tips & Strategies | Global Surf Blog",
+      site_name: "Global Surf Digital",
       url: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
       description:
-        "",
+        "Master the art of social media video creation. Explore tools, strategies, and tips to engage your audience, boost visibility, and drive results.",
+      type: "article", // keep it optional
     },
+    images: [
+      {
+        url: "https://www.globalsurf.ae/_next/static/media/blog_2.1356d3b6.png",
+        alt: "Social Media Video Production Tips",
+      },
+    ],
     authors: [
       {
         name: "Ashna Ganeeva",
