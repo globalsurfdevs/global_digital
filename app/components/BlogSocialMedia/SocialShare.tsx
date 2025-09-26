@@ -31,7 +31,7 @@ const SocialShare = () => {
       <div className="flex items-center gap-[10px] group">
   <div
     onClick={handleCopy}
-    className="cursor-pointer p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#000000]"
+    className="cursor-pointer p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]"
     title="Copy Blog Link"
   >
     <Image
@@ -53,7 +53,7 @@ const SocialShare = () => {
     {/* Facebook */}
 <Link href={shareLinks.facebook} target="_blank" rel="noopener noreferrer">
   <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
-                  transition-colors duration-500 ease-in-out group hover:bg-[#000000]">
+                  transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
     <Image
       src={assets.facebbokicon}
       alt="Facebook"
@@ -67,7 +67,7 @@ const SocialShare = () => {
 {/* Twitter */}
 <Link href={shareLinks.twitter} target="_blank" rel="noopener noreferrer">
   <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
-                  transition-colors duration-500 ease-in-out group hover:bg-[#000000]">
+                  transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
     <Image
       src={assets.twittericon}
       alt="Twitter"
@@ -81,7 +81,7 @@ const SocialShare = () => {
 {/* LinkedIn */}
 <Link href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer">
   <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
-                  transition-colors duration-500 ease-in-out group hover:bg-[#000000]">
+                  transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
     <Image
       src={assets.linkedinicon}
       alt="LinkedIn"
