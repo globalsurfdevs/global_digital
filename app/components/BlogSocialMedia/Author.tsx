@@ -23,7 +23,7 @@ interface AuthorProps {
     return (
       <section>
         <div className="container mx-auto py-[50px] lg:py-[140px]">
-          <div className="border-b border-dark mb-[40px]"></div>
+          <div className="border-b border-dark mb-[40px] mt-[40px] lg:mt-0"></div>
           {authors.map((author, idx) => (
             <div key={idx} className="grid grid-cols-1 xl:grid-cols-7 mb-10">
               <div className="col-span-2 mb-5 xl:mb-0"></div>
@@ -35,7 +35,7 @@ interface AuthorProps {
                       width={78}
                       height={100}
                       alt={author.name}
-                      className="w-full h-full object-cover"
+                      className="w-full lg:h-full object-cover"
                     />
                   </div>
                   <div>

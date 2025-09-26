@@ -22,7 +22,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
         <div className="grid grid-cols-1 xl:grid-cols-7">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
           <div className="col-span-5 w-full">
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-left lg:items-center">
               <div className="flex-1 justify-between">
                 <h2 className="title-65 mb-[40px] ">{title}</h2>
                 {paragraphs.map((p, idx) => (
@@ -34,7 +34,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
               </div>
               {image && (
                 <div className="flex-1 lg:h-[553px]">
-                  <Image src={image} alt={imageAlt} className="w-full h-full object-cover" />
+                  <Image src={image} alt={imageAlt} className="w-full h-[300px] md:h-[500px] lg:h-full object-cover" />
                 </div>
               )}
             </div>
