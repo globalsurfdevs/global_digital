@@ -1,6 +1,46 @@
 export const BlogData = [
+ 
   {
     id: 1,
+    slug:"social-media-video-production-tips",
+    titles: "social media video production tips",
+    title: "social media video production tips",
+    list_heading: "Mastering Social Media Video Production: Tips to Boost Engagement",
+    meta_title: "Social Media Video Production Guide | Global Surf Blog",
+    description: "Learn how to create engaging social media videos. Discover strategies, tools, and tips to boost visibility, connect with your audience, and drive results.",
+    post_date: "Apr 16, 2022",
+    read_time: "9 min to read",
+    feature_thumb: "/images/blog-new/blog_2.png",
+    thumb: "/images/blog-new/blog_2.png",
+    large_thumb: "/images/blog-new/blog_2.png",
+    category: "Social Media Video Production Tips",
+    format: "standard",
+    views: "",
+    excerpt:
+      "Want to know the one thing that every successful digital marketer does first to ensure they get the biggest return on their marketing budget?",
+    body: [
+     ""
+    ],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para:
+      "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
+    id: 2,
     slug:"poor-sales-try-our-website-redesign-services-for-results",
     titles: "poor-sales-try-our-website-redesign-services-for-results",
     title: "<b>Poor Sales?</b> Try our website redesign services for results!",
@@ -39,7 +79,7 @@ export const BlogData = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     slug:"social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
     titles:
       "social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
@@ -82,7 +122,7 @@ export const BlogData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     slug:"the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
     titles: "b2b-marketing-trends-to-follow-in-2024",
     title:
