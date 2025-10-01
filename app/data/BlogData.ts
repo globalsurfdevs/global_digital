@@ -8,16 +8,16 @@ export const BlogData = [
     list_heading: "Mastering Social Media Video Production: Tips to Boost Engagement",
     meta_title: "Social Media Video Production Guide | Global Surf Blog",
     description: "Learn how to create engaging social media videos. Discover strategies, tools, and tips to boost visibility, connect with your audience, and drive results.",
-    post_date: "Apr 16, 2022",
-    read_time: "9 min to read",
+    post_date: "",
+    read_time: "",
     feature_thumb: "/images/blog-new/blog_2.png",
     thumb: "/images/blog-new/blog_2.png",
     large_thumb: "/images/blog-new/blog_2.png",
-    category: "Social Media Video Production Tips",
+    category: "Content Production",
     format: "standard",
     views: "",
     excerpt:
-      "Want to know the one thing that every successful digital marketer does first to ensure they get the biggest return on their marketing budget?",
+      "",
     body: [
      ""
     ],
