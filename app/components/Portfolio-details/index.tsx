@@ -7,6 +7,7 @@ import Result from './Result'
 import { useParams } from 'next/navigation'
 import { Portfolio } from '@/app/types/Portfolio'
 import { PortfolioHighlight } from '@/app/types/PortfolioHighlights'
+import MainSection from './MainSection'
 
 const PortfolioDetails = () => {
 
@@ -32,6 +33,7 @@ const PortfolioDetails = () => {
 
     return (
         <>
+            <MainSection data={data}/>
             <HeroSection data={data}/>
             <Goals data={data} companyName={companyName?.toString() ?? null}/>
             <Result data={data}/>

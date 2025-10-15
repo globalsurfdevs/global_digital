@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
-import { SuccessStories } from "../SuccessStories/SuccessStories";
+import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import LetsTalk from "@/app/components/common/LetsConnect";
@@ -89,8 +89,12 @@ const Result = ({
         </div>}
 
       </motion.div>) : null }
+      
+    </div>
 
-      <motion.div
+     <div className="bg-black mt-10  lg:mt-[80px] xl:mt-[100px]  2xl:mt-[140px]">
+       <motion.div
+       className="container mx-auto py-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -102,15 +106,16 @@ const Result = ({
             transition: { duration: 1.3, ease: "easeOut" },
           }, // Slide up and fade in
         }}
+        
       >
-        <div className="flex flex-col border-b py-[50px] lg:pb-[150px] lg:pt-[136px]  ">
-          <h2 className="title-65 pb-3 lg:pb-[30px]">Lets Create Something Iconic Together</h2>
+        <div className="flex flex-col  py-[50px] lg:py-[140px]  ">
+          <h2 className="title-65 pb-3 lg:pb-[30px] text-white">Lets Create Something Iconic Together</h2>
           <p className="text-19 lg-mb-[64px] fnt-lexend mb-0 text-gray1">
             Every great brand has a story. See how we’ve turned challenges into
             triumphs for our clients. Your brand could be next.{" "}
           </p>
           <div className="innerfnont mt-[20px] lg:mt-[64px] relative w-fit">
-            <Button text="LET'S COLLABORATE" textcolor={'black'} onClick={() => {
+            <Button text="LET'S COLLABORATE" textcolor={'white'} onClick={() => {
                   setModalOpen(true);
                   document.body.style.overflow = "hidden";
                 }}/>
@@ -118,9 +123,11 @@ const Result = ({
           </div>
         </div>
       </motion.div>
+     </div>
 
+    <div className="container mx-auto py-4">
       <div>
-        <SuccessStories companyId={data?.portfolio[0].id}/>
+        <SuccessStoriesPortfolio companyId={data?.portfolio[0].id}/>
       </div>
     </div>
     </>
