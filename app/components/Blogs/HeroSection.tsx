@@ -15,15 +15,14 @@ const HeroSection = () => {
                       visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
                       }}
         >
-        <div className='xl:grid  items-center border-b lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-[50px] flex flex-col gap-4'>
-
-          <div className='text-font80   w-full h-full'>
-            <h1 className='title-80'>Blogs</h1>
+         <div className='xl:grid xl:grid-cols-8 items-center border-b lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-[50px] flex flex-col gap-4'>
+            <div className='text-font80 lg:col-span-2 xl:col-span-3 lg:text-left w-full h-full'>
+              <h1 className='title-80'>Blogs</h1>
+            </div>
+            <div className='lg:col-span-6 xl:col-span-5 flex   items-center w-full h-full   lg:py-4 pt-4 pb-0'>
+              <p className='text-30 text-gray1'>Perspectives on strategy, creativity, and technology — helping brands navigate change and drive measurable growth.</p>
+            </div>
           </div>
-
-
-
-        </div>
         </motion.div>
 
       </div>
