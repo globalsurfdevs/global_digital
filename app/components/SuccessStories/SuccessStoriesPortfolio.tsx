@@ -14,14 +14,29 @@ export const SuccessStoriesPortfolio = ({companyId}:{
     
         useEffect(() => {
             
+            // const fetchPortfolios = async () => {
+            //     const response = await fetch(`/api/portfolio`);
+            //     if (response.ok) {
+            //         const data = await response.json();
+            //         console.log(data)
+            //         setData(data?.portfolio.filter((item:Portfolio)=>item.id!==companyId).sort(() => Math.random() - 0.5).slice(0,3))
+            //     }
+            // }
             const fetchPortfolios = async () => {
                 const response = await fetch(`/api/portfolio`);
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data)
-                    setData(data?.portfolio.filter((item:Portfolio)=>item.id!==companyId).sort(() => Math.random() - 0.5).slice(0,3))
+                    console.log(data);
+
+                    const allowedIds = [46, 49, 57, 85, 73, 83, 1, 43];
+
+                    const filtered = data?.portfolio
+                        ?.filter((item: Portfolio) => allowedIds.includes(item.id))
+                        .sort(() => Math.random() - 0.5).slice(0,3);
+
+                    setData(filtered);
                 }
-            }
+            }; 
     
             fetchPortfolios()
     
@@ -72,15 +87,25 @@ console.log(data)
                             <div>
                             <h4 className='text-font30'>{item.companyName}</h4>
                             <div className="flex flex-wrap gap-2">
-                                {item.channels?.map((ch, index) => (
-                                    <p
-                                    key={index}
-                                    className="text-font16 text-gray1 group-hover:text-primary transition duration-300 ease-in-out"
-                                    >
-                                    {ch.channelName}
-                                    {index !== item.channels.length - 1 && ','}
+                                {item.channels && item.channels.length > 0 ? (
+                                    <div className="flex flex-wrap gap-2">
+                                        {item.channels.map((ch, index) => (
+                                        <p
+                                            key={index}
+                                            className="text-font16 text-gray1 group-hover:text-primary transition duration-300 ease-in-out"
+                                        >
+                                            {ch.channelName}
+                                            {index !== item.channels.length - 1 && ','}
+                                        </p>
+                                        ))}
+                                    </div>
+                                    ) : (
+                                    <p className="text-font16 text-gray1 group-hover:text-primary transition duration-300 ease-in-out">
+                                        {item.channelsUsed}
                                     </p>
-                                ))}
+                                    )}
+
+                               
                                 </div>
 
                          </div>
