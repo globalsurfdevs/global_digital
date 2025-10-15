@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
     openGraph: {
       title: "Social Media Video Production Tips & Strategies | Global Surf Blog",
       site_name: "Global Surf Digital",
