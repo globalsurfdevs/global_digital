@@ -12,7 +12,7 @@ const HeroSection = () => {
             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
           }}
         >
-          <div className='xl:grid xl:grid-cols-8 items-center border-b lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-[50px] flex flex-col gap-4'>
+          <div className='xl:grid xl:grid-cols-8 items-center  lg:pt-[130px] sm:pt-[50px] pt-[20px] pb-[50px] flex flex-col gap-4'>
             <div className='text-font80 lg:col-span-2 xl:col-span-3 lg:text-left w-full h-full'>
               <h1 className='title-80'>Results</h1>
             </div>

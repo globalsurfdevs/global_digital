@@ -46,7 +46,7 @@ import { BlogData } from "@/app/data/BlogData";
             },
           }}
         >
-          <div className="portfolio pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px] ">
+          <div className="portfolio pb-[50px] pt-[60px] ">
             <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
 
 
