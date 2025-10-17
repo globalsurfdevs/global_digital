@@ -118,15 +118,15 @@ const CaseStudyList = () => {
             <div className="border-b  mb-[30px] md:mb-[50px] filterbtn no-scrollbar">
 
             <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
-            <div className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === "all" ? "border-b border-black text-black" : "text-gray1"
+            <div className={`pb-1 md:pb-4 mb-[0px] whitespace-nowrap divro ${
+                  filter === "all" ? "border-b-2 border-black text-black" : "text-gray1"
                 }`}>
                 <span  onClick={() => handleFiltering("all")}>View All</span>
                 </div>
                 
               {newFilterTags.map((item,index)=>(
-                <div key={index} className={`pb-1 md:pb-4 mb-[0px] md:mb-[-1px] whitespace-nowrap divro ${
-                  filter === item ? "border-b border-black text-black" : "text-gray1"
+                <div key={index} className={`pb-1 md:pb-4 mb-[0px]  whitespace-nowrap divro ${
+                  filter === item ? "border-b-2 border-black text-black" : "text-gray1"
                 }`}><span  onClick={() => handleFiltering(item)}>{item}</span></div>
               ))}
             </div>
