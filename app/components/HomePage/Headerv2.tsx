@@ -25,6 +25,7 @@ const Header = () => {
   const pathname = usePathname();
   // Sticky header
   const [isSticky, setIsSticky] = useState(false);
+  const [isShadow, setIsShadow] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -44,14 +45,56 @@ const Header = () => {
     window.addEventListener("resize", handleMobileMenuToggle);
     return () => window.removeEventListener("resize", handleMobileMenuToggle);
   }, []);
+  
+ useEffect(() => {
+  let lastScrollY = window.scrollY;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50);
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY <= 0) {
+      setIsShadow(true);
+      setIsSticky(true); // At top → show header
+    } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      setIsSticky(false); // Scrolling down → hide
+      setIsShadow(true);
+    } else {
+      setIsSticky(true); // Scrolling up → show
+      setIsShadow(false);
+    }
+
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  // ✅ Run once immediately to set correct initial position
+  handleScroll();
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
+
+  const headerRef = useRef<HTMLDivElement>(null);
+  const parentRef = useRef<HTMLDivElement>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+useEffect(() => {
+    const updateHeight = () => {
+      if (headerRef.current && parentRef.current) {
+        const height = headerRef.current.offsetHeight;
+        setHeaderHeight(height);
+        parentRef.current.style.paddingTop = `${height}px`;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+
+    return () => window.removeEventListener("resize", updateHeight);
   }, []);
+
 
   useEffect(() => {
     if (modalOpen) {
@@ -83,7 +126,7 @@ const Header = () => {
     if (modalOpen) return null;
 
     return (
-      <div className="fixed top-0 left-0 right-0 z-20 flex items-center p-4 align-middle bg-white shadow-[0_2px_10px_0_rgba(0,0,0,0.1)] animate-[headerSlideDown_0.8s_forwards] transition-all duration-500 ease-in-out" >
+      <div className={` fixed top-0 left-0 right-0 z-20 flex items-center p-4 align-middle bg-white shadow-[0_2px_10px_0_rgba(0,0,0,0.1)] animate-[headerSlideDown_0.8s_forwards] transition-all duration-500 ease-in-out`} >
         <Link href="/">
           <Image src="/gs-digital-logo.svg"  width={100}
               height={100} alt="logo" />
@@ -110,10 +153,14 @@ const Header = () => {
           <div className="fixed inset-0 z-[1000] bg-white overflow-y-auto">
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
-      )}
-
-      <header className={`py-4 pb-4 lg:py-[22px] z-[999] ${isSticky ? "header" : ""} relative`}>
-        <div className="container flex items-center justify-between relative z-20">
+      )} 
+      <header ref={parentRef} >
+       <div  ref={headerRef} className={`py-4 pb-4 lg:py-[22px] z-[999] header 
+        ${isSticky ? " translate-y-0 " : "-translate-y-full"}
+        ${isShadow ? "shado " : "shadowss"} 
+        
+         relative`}>
+         <div className="container flex items-center justify-between relative z-20">
           <div className="logo-s relative">
             <Image
               src="/gs-digital-logo.svg"
@@ -300,6 +347,7 @@ const Header = () => {
 
           )}
         </AnimatePresence>
+       </div>
       </header>
     </>
   );

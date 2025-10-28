@@ -9,15 +9,19 @@ export const services = [
     buttonTexts: [
       {
         title: "PPC Advertising",
+        url: "/ppc-advertising-agency-dubai",
       },
       {
         title: "Social Media Marketing",
+        url: "/social-media-marketing-dubai",
       },
       {
         title: "Programmatic  Advertising",
+        url: "/programmatic-advertising-agency-dubai",
       },
       {
         title: "Influencer Marketing ",
+        url: "/influencer-marketing-agency",
       },
     ],
   },
@@ -31,12 +35,15 @@ export const services = [
     buttonTexts: [
       {
         title: "B2B SEO",
+        url: "/b2b-seo-agency-dubai",
       },
       {
         title: "E-commerce SEO",
+        url: "/ecommerce-seo-dubai",
       },
       {
         title: "Local SEO",
+        url: "/local-seo-agency-dubai",
       },
     ],
   },
@@ -50,12 +57,15 @@ export const services = [
     buttonTexts: [
       {
         title: "Social Media Strategy",
+        url: "/social-media-strategy-agency-dubai",
       },
       {
         title: "Social Media Management",
+        url: "/social-media-management-services",
       },
       {
         title: "Social Media Marketing",
+        url: "/social-media-marketing-dubai",
       },
     ],
   },
@@ -69,18 +79,24 @@ export const services = [
     buttonTexts: [
       {
         title: "Website Design",
+        url: "/web-design-agency-dubai",
       },
       {
         title: "Custom Web Development",
+        url: "/web-development-agency-dubai",
       },
       {
         title: "E-commerce Web Development",
+        url: "/e-commerce-web-development-company",
       },
       {
         title: "CMS Integration",
+        url: "",
       },
       {
         title: "Full Stack Development",
+        url: "",
+
       },
     ],
   },
@@ -94,24 +110,31 @@ export const services = [
     buttonTexts: [
       {
         title: "Branding",
+        url: "/branding-agency-dubai",
       },
       {
         title: "Logo Design",
+        url: "/logo-design-agency-dubai",
       },
       {
         title: "Brand Identity",
+        url: "",
       },
       {
         title: "Video Production",
+        url: "",
       },
       {
         title: "Photography",
+        url: "",
       },
       {
         title: "Copywriting",
+        url: "/creative-copywriting-agency-dubai",
       },
       {
         title: "Graphic Design",
+        url: "/graphic-design-agency-dubai",
       },
     ],
   },
@@ -125,15 +148,19 @@ export const services = [
     buttonTexts: [
       {
         title: "Strategy Consulting",
+        url: "/marketing-strategy-consulting",
       },
       {
         title: "Data Analytics",
+        url: "/data-analytics-services-dubai",
       },
       {
         title: "Marketing Automation",
+        url: "/marketing-automation-agency-dubai",
       },
       {
         title: "Conversion Rate Optimization (CRO)",
+        url: "/conversion-rate-optimization-agency-dubai",
       },
     ],
   },
