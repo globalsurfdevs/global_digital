@@ -70,9 +70,10 @@ const Tours = () => {
           <div className="grid gap-8 md:grid-cols-2">
             {portfolios.length > 0 ? (
               portfolios.map((item) => (
-                <div
-                  className="tour-card relative h-full min-h-[350px] lg:min-h-[500px]"
-                  key={item.id}
+                <div   key={item.id}>
+                  <div
+                  className="tour-card relative  min-h-[350px] lg:min-h-[500px] xl:min-h-[905px]"
+                
                 >
                   <img
                     src={item.bannerImage ?? item.coverImage}
@@ -81,8 +82,18 @@ const Tours = () => {
                     height={350}
                     className="absolute h-full   w-full object-cover duration-300 ease-linear"
                   />
-                  <div className="absolute bottom-[15px] left-[15px] z-10 lg:bottom-[46px] lg:left-[59px]">
-                    <h3 className="text-font30 leading-lh1p66 text-white">
+                  
+                  <Link
+                    href={
+                      item.section == "portfolio"
+                        ? `/portfolio/${formatLinkForPortfolio(item.companyName)}`
+                        : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
+                    }
+                    className="absolute left-0 top-0 z-10 h-full w-full"
+                  ></Link>
+                </div>
+                <div className="  mt-5 ">
+                    <h3 className="text-font30 leading-lh1p66 text-black">
                       {item.companyName}
                     </h3>
                     <div className="flex gap-1">
@@ -97,14 +108,6 @@ const Tours = () => {
                       ))}
                     </div>
                   </div>
-                  <Link
-                    href={
-                      item.section == "portfolio"
-                        ? `/portfolio/${formatLinkForPortfolio(item.companyName)}`
-                        : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
-                    }
-                    className="absolute left-0 top-0 z-10 h-full w-full"
-                  ></Link>
                 </div>
               ))
             ) : (
