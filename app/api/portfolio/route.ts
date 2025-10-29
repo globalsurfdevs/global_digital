@@ -154,6 +154,7 @@ export async function POST(req: NextRequest) {
     const selectedHighlightForHome = formData.get("selectedHighlightForHome") as string;
     const homeTitle = formData.get("homeTitle") as string;
     const homeSubTitle = formData.get("homeSubTitle") as string;
+    const homeImage = formData.get("homeImage") as string;
     const websiteLink = formData.get("websiteLink") as string;
     const bannerTitle = formData.get("bannerTitle") as string;
 
@@ -179,6 +180,7 @@ export async function POST(req: NextRequest) {
     let coverImagePath;
     let image1Path;
     let image2Path;
+    let homeImagePath;
 
 
     if (resultImage1) {
@@ -265,6 +267,12 @@ export async function POST(req: NextRequest) {
         image2Path = undefined
     } else {
         image2Path = image2
+    }
+
+    if (homeImage == null) {
+        homeImagePath = undefined
+    } else {
+        homeImagePath = homeImage
     }
 
     // console.log("imagePAth", imagePath)
@@ -510,6 +518,7 @@ export async function POST(req: NextRequest) {
                             categories: addedCategoriesRaw,
                             image1: image1 == null ? image1Path : image1,
                             image2: image2 == null ? image2Path : image2,
+                            homeImage: homeImage == null ? homeImagePath : homeImage,
                             logo: logo == null ? logoPath : logo,
                             companyName,
                             slug,
@@ -611,6 +620,7 @@ export async function POST(req: NextRequest) {
                             story,
                             image1: image1Path,
                             image2: image2Path,
+                            homeImage: homeImagePath,
                             goals,
                             objectives,
                             challenge,
