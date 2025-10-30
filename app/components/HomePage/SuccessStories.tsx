@@ -80,7 +80,7 @@ const SuccessStories = () => {
               data.caseStudyHighlights.length > 0 &&
               data.caseStudyHighlights.map((item, index) => (
                 <div
-                  className="group   relative bg-black text-white duration-300 ease-linear hover:cursor-pointer"
+                  className="group   relative bg-black hover:bg-primary text-white duration-300 ease-linear hover:cursor-pointer"
                   key={index}
                   ref={ref}
                 >
@@ -91,10 +91,13 @@ const SuccessStories = () => {
                     backgroundPosition: "center",
                   }}>
                     <Image src={item.portfolios.logo} alt={item.portfolios.companyName} width={100} height={100} className="absolute bottom-4 right-4 brightness-0 invert-[1]"/>
-                    <div className="minh247 relative flex h-full flex-col justify-between">
+                    
+                  </div>
+                  <div className="flex flex-col justify-center gap-8 px-8 py-10  text-white xl:px-[3.5rem]">
+                    <div className="  relative flex h-full flex-col justify-between">
                        
                       
-                      <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
+                      <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100 group-hover:-translate-y-2 group-hover:translate-x-3">
                         <svg
                           width="36"
                           height="35"
@@ -117,8 +120,6 @@ const SuccessStories = () => {
                         </svg>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex flex-col justify-center gap-8 px-8 py-10  text-white xl:px-[3.5rem]">
                     <div className="lg:mb-2">
                       <p className="mb-[28px] text-font65 leading-lh0p76 text-white">
                         {/* {index == 0 ? <span>&#8595;</span> : <span>&#8593;</span>}
@@ -135,7 +136,7 @@ const SuccessStories = () => {
                       {item.portfolios.homeTitle}
                     </p>
                     <p
-                      className={`text-font19 leading-lh1p4 ${lexend.className} text-[#959AA6]`}
+                      className={`text-font19 leading-lh1p4 ${lexend.className} text-[#959AA6] group-hover:text-white`}
                     >
                       {item.portfolios.homeSubTitle}
                     </p>
