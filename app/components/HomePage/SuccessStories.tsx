@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { stories } from "../../data/stories";
 import { Lexend } from "next/font/google";
+import Image from "next/image";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -83,10 +84,13 @@ const SuccessStories = () => {
                   key={index}
                   ref={ref}
                 >
-                  <div className="flex flex-col justify-center h-[273px] gap-5   px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]"
+                  <div className="relative flex flex-col justify-center h-[273px] gap-5   px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]"
                     style={{
                     backgroundImage: `url(${item.portfolios.homeImage})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                   }}>
+                    <Image src={item.portfolios.logo} alt={item.portfolios.companyName} width={100} height={100} className="absolute bottom-4 right-4 brightness-0 invert-[1]"/>
                     <div className="minh247 relative flex h-full flex-col justify-between">
                        
                       

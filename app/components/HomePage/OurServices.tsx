@@ -151,10 +151,10 @@ const OurServices = () => {
                   </p>
                   <div className="srvbt mb-5 flex flex-wrap gap-2 xl:mb-[4em]">
                     {service.buttonTexts.map((item, index) => (
-                      <Link href={item.url} >
+                      <Link href={item.url} key={index}>
                       <button
                         className="rounded-full border px-4 py-3 pmac text-font19 font-[500] text-gray-500 duration-200 ease-in hover:border-primary hover:text-black"
-                        key={index}
+                       
                       >
                         {item.title}
                       </button>
