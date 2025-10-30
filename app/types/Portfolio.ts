@@ -13,6 +13,7 @@ export type Portfolio = {
     goals:string;
     objectives:string;
     result:string;
+    homeImage:string;
     resultImage1:string;
     resultImage2:string;
     section2BannerImage:string;

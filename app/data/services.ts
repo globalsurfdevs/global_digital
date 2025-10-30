@@ -90,12 +90,12 @@ export const services = [
         url: "/e-commerce-web-development-company",
       },
       {
-        title: "CMS Integration",
-        url: "",
+        title: "Mobile App Development",
+        url: "/mobile-app-development-company-dubai",
       },
       {
-        title: "Full Stack Development",
-        url: "",
+        title: "Web App Development",
+        url: "/web-app-dev-agency",
 
       },
     ],
@@ -115,19 +115,7 @@ export const services = [
       {
         title: "Logo Design",
         url: "/logo-design-agency-dubai",
-      },
-      {
-        title: "Brand Identity",
-        url: "",
-      },
-      {
-        title: "Video Production",
-        url: "",
-      },
-      {
-        title: "Photography",
-        url: "",
-      },
+      } ,
       {
         title: "Copywriting",
         url: "/creative-copywriting-agency-dubai",
@@ -136,6 +124,10 @@ export const services = [
         title: "Graphic Design",
         url: "/graphic-design-agency-dubai",
       },
+      {
+        title: "Content Production",
+        url: "/content-production-agency-dubai",
+      }, 
     ],
   },
   {

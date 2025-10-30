@@ -566,7 +566,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
                   xmlns="http://www.w3.org/2000/svg"
                   className="group-hover:scale-105"
                 >
-                  <g clip-path="url(#clip0_65_39)">
+                  <g clipPath="url(#clip0_65_39)">
                     <path
                       d="M8.88346 1.26172L1.13281 8.8624"
                       stroke="white"
