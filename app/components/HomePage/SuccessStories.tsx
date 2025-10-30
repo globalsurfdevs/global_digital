@@ -83,21 +83,13 @@ const SuccessStories = () => {
                   key={index}
                   ref={ref}
                 >
-                  <div className="flex flex-col justify-center  gap-5 bg-gray2 px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]">
+                  <div className="flex flex-col justify-center h-[273px] gap-5   px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]"
+                    style={{
+                    backgroundImage: `url(${item.portfolios.homeImage})`,
+                  }}>
                     <div className="minh247 relative flex h-full flex-col justify-between">
-                      <h3 className="mb-[14px] text-font30 leading-lh1p66">
-                        {item.portfolios.companyName}
-                      </h3>
-                      <p className="mb-[28px] text-font65 leading-lh0p76 text-white">
-                        {/* {index == 0 ? <span>&#8595;</span> : <span>&#8593;</span>}
-                    {animatedValues[index] + "%"} */}
-                        {item.number}
-                      </p>
-                      <p
-                        className={`w-3/4 text-font25 leading-lh1p4 ${lexend.className}`}
-                      >
-                        {item.text}
-                      </p>
+                       
+                      
                       <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100">
                         <svg
                           width="36"
@@ -122,12 +114,24 @@ const SuccessStories = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col justify-center gap-8 px-8 py-12  text-white xl:px-[3.5rem]">
+                  <div className="flex flex-col justify-center gap-8 px-8 py-10  text-white xl:px-[3.5rem]">
+                    <div className="lg:mb-2">
+                      <p className="mb-[28px] text-font65 leading-lh0p76 text-white">
+                        {/* {index == 0 ? <span>&#8595;</span> : <span>&#8593;</span>}
+                    {animatedValues[index] + "%"} */}
+                        {item.number}
+                      </p>
+                      <p
+                        className={`w-3/4 text-font25 leading-lh1p4 ${lexend.className}`}
+                      >
+                        {item.text}
+                      </p>
+                    </div>
                     <p className="text-font30 leading-lh1p26">
                       {item.portfolios.homeTitle}
                     </p>
                     <p
-                      className={`text-font19 leading-lh1p4 ${lexend.className}`}
+                      className={`text-font19 leading-lh1p4 ${lexend.className} text-[#959AA6]`}
                     >
                       {item.portfolios.homeSubTitle}
                     </p>
