@@ -17,7 +17,8 @@ import { Faq } from "../../../data/services/ind-constructions/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import SliderInd from "@/app/components/IndConstruction/SliderInd";
 import { Platformsdata } from "../../../data/services/ind-constructions/clientslogo";
-
+import HowWeHelp from "@/app/components/IndConstruction/HowWeHelp";
+import { howwehelp } from "../../../data/services/ind-constructions/howwehelp";
 interface Canonicals {
   canonical: string;
 }
@@ -46,7 +47,8 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        bannerlogp={false}
+        bannerlogp={false} 
+        maxchwidth={23}
       />
       <KeyDigital
         title={KeyDigitalData.title}
@@ -57,6 +59,10 @@ const page = () => {
         title={AreaExpertise.title}
         data={AreaExpertise.data}
         subtitle="How We Help Construction Companies Grow"
+      />
+      <HowWeHelp
+        title={howwehelp.title}
+        data={howwehelp.data} 
       />
       <SuccessStories
         Clientsformsdata={Clientsformsdata}

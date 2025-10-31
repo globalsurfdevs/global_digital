@@ -11,9 +11,9 @@ export const BannerSection = [
     ],
     heroAlt: "Digital Marketing for the Construction Companies",
     title1: "Outrank, Outperform & Outgrow",
-    title: "Put Your Construction Brand  on the Digital Map.",
+    title: "Building Digital Foundations for the Built Environment",
     subtitle:
-      "From increasing visibility to securing high-value projects, we help construction firms thrive online. ",
+      "From stronger visibility to winning high-value projects, we help  construction, building material, and real estate brands grow with digital clarity and measurable impact.",
     buttontitle: "Get a Free Strategy Session",
     buttonurl: "https://www.globalsurf.ae/lets-talk",
     sub: [
