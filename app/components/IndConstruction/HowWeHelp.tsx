@@ -84,7 +84,7 @@ const HowWeHelp: React.FC<PlatformsSectionProps> = ({
                   className={`flex items-end justify-between gap-7 ${icontitle ? "flex-col items-baseline " : ""}`}
                 >
                   <p
-                    className={`text-30 transition-colors duration-300 group-hover:text-primary   ${bgblack ? "text-white" : ""}`}
+                    className={`text-30 transition-colors duration-300 group-hover:text-primary max-w-[16ch] ${bgblack ? "text-white" : ""}`}
                   >
                     {platform.title}
                   </p>

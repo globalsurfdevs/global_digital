@@ -11,15 +11,16 @@ export const BannerSection = [
     heroAlt: "Digital Marketing for the Construction Companies",
     title1: "Outrank, Outperform & Outgrow ",
     title:
-      "Reach More Guests & Boost Bookings with Hospitality Digital Marketing Outshine, Outbook & Outperform  ",
+      "Reach More Guests & Boost Bookings with Hospitality Digital Marketing. ",
     subtitle:
-      "From driving direct bookings to building lasting guest relationships, we help hotels and tourism brands grow with result-driven digital strategies curiated for the hospitality industry. ",
+      "Outshine, Outbook & Outperform ",
     buttontitle: "Get a Free Strategy Session",
     // buttonurl: "",
     sub: [
-      {
-        stitle: "",
-        desc: "",
+       {
+        stitle: "OUR APPROACH",
+        desc: "We approach hospitality with a simple belief: digital should make the guest journey feel easier, not more complicated.We start by understanding how your property actually works — not just what you offer, but how guests discover you, evaluate options, compare pricing, and convert. Then we design digital systems that support each stage with clarity and intention.",
+      buttonTitle: "Start Your Project",
       },
     ],
   },

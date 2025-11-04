@@ -48,7 +48,7 @@ const page = () => {
         Bannerdata={BannerSection}
         hideslider={true}
         bannerlogp={false} 
-        maxchwidth={23}
+        maxchwidth={28}
       />
       <KeyDigital
         title={KeyDigitalData.title}
