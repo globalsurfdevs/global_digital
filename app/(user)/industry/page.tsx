@@ -84,8 +84,9 @@ const page = () => {
         hideslider={true}
         bannerlogp={false}
         maxchwidth={28}
+        maxtextwidth={61}
       />
-      <Industydetail title={IndustriesWeServe.title} data={IndustriesWeServe.data} />
+      <Industydetail title={IndustriesWeServe.title} data={IndustriesWeServe.data} subttle={IndustriesWeServe.subttle}/>
       <GetInTouch data={Cta} redlast={false} bgcolor="#F2F2F2" ctabbutton={"LET'S GET STARTED TODAY!"} />
     </div>
   );

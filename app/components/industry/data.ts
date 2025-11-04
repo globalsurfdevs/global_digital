@@ -9,17 +9,17 @@ export const BannerSection = [
       { label: "Home", url: "/" },
       { label: "Industry",url: "/industry" },
     ],
-    heroAlt: "Industry-Focused Digital Solutions That Deliver",
+    heroAlt: "Industry-Focused Digital Solutions ",
 
-    title: "Industry-Focused Digital Solutions That Deliver ",
+    title: "Industry-Focused Digital Solutions That Move Your Business Forward",
     subtitle:
-      "Specializing in practical technology solutions that help businesses grow, work smarter, and strengthen customer connections.",
+      "We transform industries by applying tailored technology strategies that help teams grow, work smarter and build stronger customer relationships.",
 
     sub: [
       {
         stitle: "OUR APPROACH",
         buttonTitle :"Start Your Project",
-        desc: "We create custom websites that do more than just look good, they work seamlessly for you. As a trusted web development company in Dubai, we focus on building secure, scalable, and user-friendly websites that bring your vision to life. Whether it’s a dynamic corporate site or a powerful e-commerce platform, we make sure it runs smoothly and delivers a great experience, so you can focus on what matters most.",
+        desc: "Businesses vary — and so must their digital tools. At Global Surf Digital, we don’t believe in one-size-fits-all solutions. We specialise in building websites, platforms and systems that reflect your industry’s realities, align with your growth ambitions and serve your teams and customers in meaningful ways. Whether your challenge is managing a complex project, delighting end-users or streamlining operations — we build the infrastructure, you lead the business.",
       },
     ],
   },
@@ -124,26 +124,19 @@ export const Cta = [
 ]
 export const IndustriesWeServe = {
   title: "Industries We Serve",
+  subttle: "Here’s how we tailor our work for different sectors — we listen to the specific needs, then craft systems that fit perfectly.",
   data: [
+   
     {
       id: 1,
-      icon: assets.ini1,
-      title: "Engineering  ",
-      hoverImg: assets.inds1,
-      desc: "From streamlined project management to integrated design workflows, our solutions keep your teams precise, connected, and always on track. ",
-      url: "",
+      icon: assets.ini4,
+      title: "Construction and Building Materials",
+      hoverImg: assets.inds4,
+      desc: "Built for collaboration and control, our digital tools align teams, manage resources, and ensure on-time, on-budget project delivery. ",
+      url: "/industry/construction",
     },
     {
       id: 2,
-      icon: assets.ini2,
-      title: "Education  ",
-      hoverImg: assets.inds2,
-      desc: " We partner with institutions to create intuitive digital tools from learning platforms to student portals that enhance access and engagement across every level. ",
-      url: "",
-    },
-
-    {
-      id: 3,
       icon: assets.ini3,
       title: "Hospitality ",
       hoverImg: assets.inds3,
@@ -151,23 +144,40 @@ export const IndustriesWeServe = {
       url: "/industry/digital-marketing-agency-for-hospitality",
     },
     {
-      id: 4,
-      icon: assets.ini4,
-      title: "Construction  ",
-      hoverImg: assets.inds4,
-      desc: "Built for collaboration and control, our digital tools align teams, manage resources, and ensure on-time, on-budget project delivery. ",
-      url: "/industry/construction",
-    },
-    {
-      id: 5,
+      id: 3,
       icon: assets.ini5,
       title: "E-commerce   ",
       hoverImg: assets.inds5,
       desc: "We craft high-performance platforms that make shopping effortless from discovery to checkout, while optimizing every step of the sales journey.  ",
       url: "/industry/ecommerce-digital-marketing",
     },
+    
+    {
+      id: 4,
+      icon: assets.ini10,
+      title: "B2B  ",
+      hoverImg: assets.inds10,
+      desc: "We design tailored digital solutions that streamline complex workflows, support long sales cycles, and help you close with confidence.  ",
+      url: "/industry/b2b-digital-marketing-services",
+    },
+     {
+      id: 5,
+      icon: assets.ini1,
+      title: "Engineering  ",
+      hoverImg: assets.inds1,
+      desc: "From streamlined project management to integrated design workflows, our solutions keep your teams precise, connected, and always on track. ",
+      url: "",
+    },
     {
       id: 6,
+      icon: assets.ini2,
+      title: "Education  ",
+      hoverImg: assets.inds2,
+      desc: " We partner with institutions to create intuitive digital tools from learning platforms to student portals that enhance access and engagement across every level. ",
+      url: "",
+    }, 
+    {
+      id: 7,
       icon: assets.ini6,
       title: "Fashion  ",
       hoverImg: assets.inds6,
@@ -175,7 +185,7 @@ export const IndustriesWeServe = {
       url: "",
     },
     {
-      id: 7,
+      id: 8,
       icon: assets.ini7,
       title: "Information Technology ",
       hoverImg: assets.inds7,
@@ -183,7 +193,7 @@ export const IndustriesWeServe = {
       url: "",
     },
     {
-      id: 8,
+      id: 9,
       icon: assets.ini8,
       title: "Manufacturing  ",
       hoverImg: assets.inds8,
@@ -191,20 +201,12 @@ export const IndustriesWeServe = {
       url: "",
     },
     {
-      id: 9,
+      id: 10,
       icon: assets.ini9,
       title: "Retail  ",
       hoverImg: assets.inds9,
       desc: "Create seamless cross-channel experiences with integrated POS, inventory, and customer engagement tools online and in-store. ",
       url: "",
-    },
-    {
-      id: 10,
-      icon: assets.ini10,
-      title: "B2B  ",
-      hoverImg: assets.inds10,
-      desc: "We design tailored digital solutions that streamline complex workflows, support long sales cycles, and help you close with confidence.  ",
-      url: "/industry/b2b-digital-marketing-services",
     },
   ],
 };
