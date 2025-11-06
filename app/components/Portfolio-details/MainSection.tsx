@@ -21,11 +21,11 @@ import Link from "next/link";
     <section>
        <div className="container mx-auto py-2"  >
           <div className=" ptcs0 border-b pb-10  lg:pb-[80px] xl:pb-[100px]  2xl:pb-[140px]  pt-[20px] sm:pt-[50px] lg:pt-[100px] ">
-              <div className="flex items-end justify-between pb-5 lg:pb-[60px]  mb-5 lg:mb-[50px] border-b">
+              <div className="md:flex items-end justify-between pb-5 lg:pb-[60px]  mb-5 lg:mb-[50px] border-b">
                 <div className=" xxl:max-w-[120ch]"  >
                   <h1 className="title-80">{data.portfolio[0].bannerTitle == "null" || data.portfolio[0].bannerTitle == "undefined" ? "" : data.portfolio[0].bannerTitle}</h1>
               </div> 
-              <div><Image src={data.portfolio[0].logo} alt={data.portfolio[0].companyName}  width={150} height={100} /></div>
+              <div className="w-fit ml-auto mt-3 md:mt-0"><Image src={data.portfolio[0].logo} alt={data.portfolio[0].companyName}  width={150} height={100} className="max-w-[100px] md:max-w-[150px]" /></div>
               </div>
               <div className="flex flex-col lg:flex-row  gap-4   justify-between">
                 <div className="flex gap-5 lg:gap-10 xl:gap-[120px]  justify-between">
