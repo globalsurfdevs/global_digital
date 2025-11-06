@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import Header from "@/app/components/HomePage/Headerv2";
+import Breadcrumb from "../components/HomePage/BreadcrumbSchema";
 import { Space_Grotesk } from "next/font/google";
 import Footer from "@/app/components/HomePage/Footer";
 import Script from "next/script";
@@ -53,7 +54,7 @@ export default function RootLayout({
         </div>
       
         <Footer />
-
+<Breadcrumb/>
         <Script
         id="zoho-salesiq"
         strategy="afterInteractive"
