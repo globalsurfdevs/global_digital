@@ -32,6 +32,7 @@ interface BannerSection {
 interface HeroSectionProps {
   order?: string;
   maxchwidth?: number;
+  maxtextwidth?: number;
   hideslider?: boolean;
   bannerlogp?: boolean;
   Bannerdata: BannerSection[];
@@ -43,6 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   hideslider,
   bannerlogp,
   maxchwidth,
+  maxtextwidth,
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -145,7 +147,7 @@ const [modalOpen, setModalOpen] = useState(false);
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
                     {herosection.navigation && (
-                      <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                      <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-8">
                         <ul className="flex items-center space-x-2">
                           {herosection.navigation.map((navItem, index) => (
                             <React.Fragment key={index}>
@@ -183,72 +185,11 @@ const [modalOpen, setModalOpen] = useState(false);
 
                     <h1 className="title-80"> {herosection.title}</h1>
                     {herosection.subtitle && (
-                      <h2 className="my-3 text-[20px] text-gray1 lg:my-[45px] lg:max-w-[946px] lg:text-[35px]">
+                      <h2 className="my-3 text-[20px] text-gray1 lg:mt-6 lg:mb-2  lg:text-font30" style={{ maxWidth: `${maxtextwidth}ch` }}>
                         {" "}
                         {herosection.subtitle}
                       </h2>
                     )} 
-                       {herosection.sub.map(
-                  (su, index) =>
-                    su.buttonTitle && (
-                      <div  key={index}>
-                      <button
-                      onClick={() => setModalOpen(true)}
-                        className="z-2 z-1 group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
-                before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
-                after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mb-[45px]
-                "
-                      >
-                        <div className="relative">
-                          <p
-                            className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
-                          >
-                            {su.buttonTitle}
-                          </p>
-                          {/* <Link
-                            href={herosection.buttonurl || "#"}
-                            className="absolute top-0 z-[1] h-full w-full"
-                          ></Link> */}
-                        </div>
-                        <svg
-                          width="10"
-                          height="10"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="duration-200 ease-in-out group-hover:scale-125 "
-                        >
-                          <g clipPath="url(#clip0_65_58)">
-                            <path
-                              d="M18.7892 1.2749L0.699219 19.0149"
-                              stroke="#E53F30"
-                              strokeWidth="3"
-                              strokeMiterlimit="10"
-                              className="group-hover:stroke-black"
-                            />
-                            <path
-                              d="M0.699219 1.2749H18.7892V18.6649"
-                              stroke="#E53F30"
-                              strokeWidth="3"
-                              strokeMiterlimit="10"
-                              className="group-hover:stroke-black"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_65_58">
-                              <rect
-                                width="19.79"
-                                height="19.45"
-                                fill="white"
-                                transform="translate(0 0.274902)"
-                              />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </button>
-                      </div>
-                          )
-                    )}
                   </div>
                   {bannerlogp && (
                     <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
@@ -306,6 +247,57 @@ const [modalOpen, setModalOpen] = useState(false);
                           <p className={`text-font19 ${lexend.className}`}>
                             {su.desc}
                           </p>
+                           {su.buttonTitle && (
+  <button
+    onClick={() => setModalOpen(true)}
+    className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
+                before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
+                after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px] mt-3"
+  >
+    <div className="relative">
+      <p
+        className={`duration-200 text-sm font-medium text-black uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+      >
+        {su.buttonTitle}
+      </p>
+    </div>
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="duration-200 ease-in-out group-hover:scale-125"
+    >
+      <g clipPath="url(#clip0_65_58)">
+        <path
+          d="M18.7892 1.2749L0.699219 19.0149"
+          stroke="#E53F30"
+          strokeWidth="3"
+          strokeMiterlimit="10"
+          className="group-hover:stroke-black"
+        />
+        <path
+          d="M0.699219 1.2749H18.7892V18.6649"
+          stroke="#E53F30"
+          strokeWidth="3"
+          strokeMiterlimit="10"
+          className="group-hover:stroke-black"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_65_58">
+          <rect
+            width="19.79"
+            height="19.45"
+            fill="white"
+            transform="translate(0 0.274902)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  </button>
+)}
                         </div>
                       </div>
                     ),

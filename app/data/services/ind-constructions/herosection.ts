@@ -11,15 +11,16 @@ export const BannerSection = [
     ],
     heroAlt: "Digital Marketing for the Construction Companies",
     title1: "Outrank, Outperform & Outgrow",
-    title: "Put Your Construction Brand  on the Digital Map.",
+    title: "Building Digital Foundations for the Built Environment",
     subtitle:
-      "From increasing visibility to securing high-value projects, we help construction firms thrive online. ",
+      "Helping construction, interior fit-out, and building material brands build stronger visibility, accelerate digital growth, and convert trust into measurable commercial results.",
     buttontitle: "Get a Free Strategy Session",
     buttonurl: "https://www.globalsurf.ae/lets-talk",
     sub: [
       {
-        stitle: "",
-        desc: "",
+        stitle: "Our Approach",
+        desc: "We help building materials, construction, and interior fit-out brands connect with the decision-makers who matter — architects, designers, contractors, procurement teams, and key stakeholders. We focus on three levers for growth: better discoverability, trust built on real proof, and simplified multi-stakeholder buying journeys. Instead of chasing generic traffic, we target high-intent demand that leads to specification, tender shortlists, and awarded projects — turning your digital presence into a direct driver of commercial growth and material adoption.",
+        buttonTitle: "Start Your Project",
       },
     ],
   },

@@ -84,7 +84,23 @@ const Industydetail: React.FC<ExpertiseSectionProps> = ({
                         key={expertise.id}
                         className="group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 md:h-[370px] lg:h-[475px] lg:gap-0 lg:p-10 xl:h-[475px]"
                       >
-                        {" "}
+                       <a className="absolute opacity-0 group-hover:opacity-[1]   right-5 w-[50px] h-[50px] bg-[#5a5656] top-5
+                       rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500 ease-in-out">
+                        <div
+                          className="group relative z-10 flex w-fit items-center   border-b-0 border-transparent    decoration-0 before:h-[1px]    ">
+                          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="duration-500 delay-200 ease-in-out group-hover:scale-125" >
+                            <g clipPath="url(#clip0_65_58)">
+                              <path d="M18.7892 1.2749L0.699219 19.0149" stroke="#E53F30" strokeWidth="3" strokeMiterlimit="10" className="group-hover:stroke-primary" />
+                              <path d="M0.699219 1.2749H18.7892V18.6649" stroke="#E53F30" strokeWidth="3" strokeMiterlimit="10" className="group-hover:stroke-primary" />
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_65_58">
+                                <rect width="19.79" height="19.45" fill="white" transform="translate(0 0.274902)" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        </a>
                         {expertise.hoverImg && (
                           <Image
                             src={expertise.hoverImg}
