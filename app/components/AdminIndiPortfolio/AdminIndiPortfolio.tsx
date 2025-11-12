@@ -96,6 +96,9 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [resultImage2Preview, setResultImage2Preview] = useState<null | string>(null)
     const [resultImage1Error, setResultImage1Error] = useState<null | string>(null)
     const [resultImage2Error, setResultImage2Error] = useState<null | string>(null)
+    const [video, setVideo] = useState<null | File>(null)
+    const [videoPreview, setVideoPreview] = useState<null | string>(null)
+    const [videoError, setVideoError] = useState<null | string>(null)
 
 
     const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
@@ -336,6 +339,10 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                         if (data.portfolio[0].resultImage2) {
                             setResultImage2Preview(data.portfolio[0].resultImage2 as string);
+                        }
+
+                        if (data.portfolio[0].video) {
+                            setVideoPreview(data.portfolio[0].video as string);
                         }
 
                         if (data.portfolio[0].logo) {
@@ -1102,6 +1109,62 @@ const AdminIndiPortfolio = ({ editMode }: {
                         </div>
     
                     </div>
+
+                    <div className='mt-20'>
+                            <Label content='Video' />
+                            <div
+                                className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden mt-2"
+                                onDragOver={(e) => e.preventDefault()}
+                                onClick={() => document?.getElementById("video")?.click()}
+                            >
+                                {videoPreview ? (
+                                    <div className="relative w-full h-full">
+                                        <Image src={videoPreview} alt="Preview" layout="fill" objectFit="cover" />
+                                        {<button
+                                            type="button"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setVideoPreview(null); // Clear the preview image
+                                                setVideo(null);
+                                            }}
+                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                        </button>}
+                                    </div>
+                                ) : (
+                                    <>
+                                        <svg
+                                            className="mx-auto h-12 w-12 text-gray-400"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            viewBox="0 0 48 48"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            />
+                                        </svg>
+                                        <p className="mt-1 text-sm text-gray-600">Drag and drop an video here, or click to select a file</p>
+                                    </>
+                                )}
+                                <input type="file" id="video" accept="video/*" className="hidden" onChange={(e) => handleImageChange({
+                                    e,
+                                    setImageError: setVideoError,
+                                    setImageFile: setVideo,
+                                    setPreviewImage: setVideoPreview
+                                })} />
+                            </div>
+                        </div>
     
                     <div className='grid grid-cols-3 mt-15 h-96 gap-5'>
                         <div className=''>
