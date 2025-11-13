@@ -133,6 +133,7 @@ export async function POST(req: NextRequest) {
     const section2BannerImage = formData.get("section2BannerImage") as string;
     const resultImage1 = formData.get("resultImage1") as File | null
     const resultImage2 = formData.get("resultImage2") as File | null
+    const video = formData.get("video") as string
 
     const description = formData.get("description") as string;
     const tag = formData.get("tag") as string;
@@ -312,6 +313,7 @@ export async function POST(req: NextRequest) {
                             section2BannerImage: section2BannerImage == null ? section2BannerImagePath : section2BannerImage,
                             resultImage1: resultImage1PAth,
                             resultImage2: resultImage2Path,
+                            video,
                             tag,
                             description,
                             categories: addedCategoriesRaw,
@@ -417,6 +419,7 @@ export async function POST(req: NextRequest) {
                             section2BannerImage: section2BannerImagePath,
                             resultImage1: resultImage1PAth,
                             resultImage2: resultImage2Path,
+                            video,
                             tag,
                             description,
                             categories: addedCategoriesRaw,

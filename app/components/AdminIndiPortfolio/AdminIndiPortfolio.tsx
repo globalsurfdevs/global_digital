@@ -41,6 +41,7 @@ type Inputs = {
     metaDescription: string;
     websiteLink: string;
     bannerTitle: string;
+    video: string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {
@@ -299,6 +300,8 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("metaDescription", data.portfolio[0].metaDescription)
                         setValue("bannerTitle", data.portfolio[0].bannerTitle)
                         setValue("websiteLink", data.portfolio[0].websiteLink)
+                        setValue("video", data.portfolio[0].video)
+                        
                         
                         
                         if(data.portfolio[0].section=='portfolio'){
@@ -337,6 +340,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                         if (data.portfolio[0].resultImage2) {
                             setResultImage2Preview(data.portfolio[0].resultImage2 as string);
                         }
+
 
                         if (data.portfolio[0].logo) {
                             setPreviewLogo(data.portfolio[0].logo as string);
@@ -1102,6 +1106,14 @@ const AdminIndiPortfolio = ({ editMode }: {
                         </div>
     
                     </div>
+
+                    <div className='mt-20'>
+                            <div className='w-full flex flex-col gap-2'>
+                                    <Label content='Video' />
+                                    <input type="text" {...register("video")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                    {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
+                                </div>
+                        </div>
     
                     <div className='grid grid-cols-3 mt-15 h-96 gap-5'>
                         <div className=''>
