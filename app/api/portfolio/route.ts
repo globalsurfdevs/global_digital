@@ -134,6 +134,7 @@ export async function POST(req: NextRequest) {
     const resultImage1 = formData.get("resultImage1") as File | null
     const resultImage2 = formData.get("resultImage2") as File | null
     const video = formData.get("video") as string
+    const videoTitle = formData.get("videoTitle") as string
 
     const description = formData.get("description") as string;
     const tag = formData.get("tag") as string;
@@ -158,6 +159,7 @@ export async function POST(req: NextRequest) {
     const homeImage = formData.get("homeImage") as string;
     const websiteLink = formData.get("websiteLink") as string;
     const bannerTitle = formData.get("bannerTitle") as string;
+    const videoThumbnail = formData.get("videoThumbnail") as File | null
 
    
     console.log("description", description)
@@ -182,6 +184,7 @@ export async function POST(req: NextRequest) {
     let image1Path;
     let image2Path;
     let homeImagePath;
+    let videoThumbnailPath;
 
 
     if (resultImage1) {
@@ -205,6 +208,20 @@ export async function POST(req: NextRequest) {
 
             resultImage2Path = await uploadToDropbox(resultImage2, dropboxPath);
             console.log("New image uploaded to Dropbox:", resultImage2Path);
+
+        } catch (error) {
+            console.error("Error uploading new image to Dropbox:", error);
+            return NextResponse.json({ error: "Error uploading new image" }, { status: 500 });
+        }
+    }
+
+    if (videoThumbnail) {
+        try {
+            const filename = `${Date.now()}-${videoThumbnail.name || "image"}`;
+            const dropboxPath = `/portfolio/${companyName}/${filename}`;
+
+            videoThumbnailPath = await uploadToDropbox(videoThumbnail, dropboxPath);
+            console.log("New image uploaded to Dropbox:", videoThumbnailPath);
 
         } catch (error) {
             console.error("Error uploading new image to Dropbox:", error);
@@ -276,6 +293,7 @@ export async function POST(req: NextRequest) {
         homeImagePath = homeImage
     }
 
+
     // console.log("imagePAth", imagePath)
     // console.log("section2Image1Path", section2Image1Path)
     // console.log("section2Image2Path", section2Image2Path)
@@ -323,7 +341,8 @@ export async function POST(req: NextRequest) {
                             metaDescription,
                             websiteLink,
                             bannerTitle,
-                            
+                            videoThumbnail: videoThumbnailPath,
+                            videoTitle,
                         })
                         .eq('id', id)
                         .select()
@@ -430,6 +449,8 @@ export async function POST(req: NextRequest) {
                             customId:uuidv4(),
                             websiteLink,
                             bannerTitle,
+                            videoThumbnail: videoThumbnailPath,
+                            videoTitle,
                         },
                     ])
                     .select('id')
