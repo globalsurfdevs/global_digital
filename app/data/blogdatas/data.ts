@@ -24,7 +24,7 @@ export const BannerSection = [
 // data.ts
 export const contentSectionsData = [
   {
-    title: "How Small Brands Can Make Every Scroll Count",
+    title: "The 2026 Playbook for Small Brands & Agencies ",
     paragraphs: [
       "In the age of quick scrolling and short attention spans, video content stands out as a key way to grab attention. Social clips are essential. They cover everything from product launches to behind-the-scenes looks and short stories. Brands need them to remain relevant.",
       "Still, many businesses, marketers, and creators feel stuck. A lack of time, clarity, or confidence can make video production feel challenging. ",
@@ -355,21 +355,7 @@ export const videoProductionData = [
     // add more authors here
   ];
   export const Faq =[
-    {
-        title: "What is social media video production?",
-        description:
-          "Social media video production is the process of planning, filming, editing, and publishing videos specifically designed for social platforms like Instagram, TikTok, YouTube, and Facebook. These videos are usually short-form, mobile-optimized, and crafted for engagement. ",
-      },
-      {
-        title: "Why is video important for social media?",
-        description:
-          "Video grabs attention faster than static posts, encourages more interaction, and is prioritized by platform algorithms. It helps brands build trust, explain products, and connect emotionally with their audience. ",
-      },
-      {
-        title: "How do I start creating videos for social media? ",
-        description:
-          "Start with your goals and target audience. Use a smartphone, natural lighting, and free editing tools like CapCut or Canva. Begin with short, simple videos and focus on clarity and storytelling.  ",
-      },
+    
       {
         title: "What does a social media video production company do? ",
         description:
