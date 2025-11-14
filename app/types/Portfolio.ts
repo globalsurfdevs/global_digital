@@ -33,4 +33,5 @@ export type Portfolio = {
     slug:string;
     bannerTitle:string;
     websiteLink:string;
+    video?: string;
 }

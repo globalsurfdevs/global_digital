@@ -8,6 +8,7 @@ import { useParams } from 'next/navigation'
 import { Portfolio } from '@/app/types/Portfolio'
 import { PortfolioHighlight } from '@/app/types/PortfolioHighlights'
 import MainSection from './MainSection'
+import YtVideo from './YtVideo'
 
 const PortfolioDetails = () => {
 
@@ -36,6 +37,7 @@ const PortfolioDetails = () => {
             <MainSection data={data}/>
             <HeroSection data={data}/>
             <Goals data={data} companyName={companyName?.toString() ?? null}/>
+            <YtVideo data={data}/>
             <Result data={data}/>
         </>
     )
