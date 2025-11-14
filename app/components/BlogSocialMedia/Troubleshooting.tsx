@@ -76,7 +76,7 @@ const Troubleshooting: React.FC<TroubleshootingProps> = ({
   ))}
 </h3>
                   <div className="border-b border-dark my-[20px]"></div>
-                  <h3 className="text-30">{issue.title2}</h3>
+                  {issue.title2?.trim() && <h3 className="text-30">{issue.title2}</h3>}
                   <p className="text-font19 text-[#77787B]">
                     {issue.description}
                   </p>

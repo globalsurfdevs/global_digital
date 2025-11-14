@@ -184,7 +184,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   
                   </div>
                   <div>
-                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on Sep 15, 2025  |  Updated on 16, 2025
+                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on Sep 15, 2025  |  Updated on 14, 2025
                         </p>
                 
                   </div>
