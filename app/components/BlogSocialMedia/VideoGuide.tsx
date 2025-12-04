@@ -3,7 +3,7 @@ import Image, { type StaticImageData } from 'next/image';
 
 // Define the shape of a single step
 interface Step {
-  stepNumber: number;
+  stepNumber?: number;
   title: string;
   image: StaticImageData;
   tasks: string[];
@@ -26,7 +26,8 @@ const StepCard: React.FC<StepCardProps> = ({ step }) => {
       />
       <div className="step-content flex flex-col flex-grow">
         <h3 className="text-30 mt-[30px] mb-3">
-          {step.stepNumber}. {step.title}
+          {step.stepNumber && `${step.stepNumber}. `}
+          {step.title}
         </h3>
         <ul className="lg:max-w-[460px] list-inside flex-grow">
           {step.tasks.map((task, index) => (
@@ -46,7 +47,7 @@ const StepCard: React.FC<StepCardProps> = ({ step }) => {
 
 interface VideoGuideProps {
   maintitle: string;
-  subtitle: string;
+  subtitle?: string;
   videoGuideSteps: Step[];
 }
 
