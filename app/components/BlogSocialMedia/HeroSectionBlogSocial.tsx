@@ -193,7 +193,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   
                   </div>
                   <div>
-                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on Sep 15, 2025  |  Updated on 14, 2025
+                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on Sep 15, 2025  |  Updated on 15, 2025
                         </p>
                 
                   </div>
@@ -225,26 +225,28 @@ const [modalOpen, setModalOpen] = useState(false);
                                     </p>
                                   )}
                                 </div>
-                       
+                    <Link href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank"  rel="noopener noreferrer" className="w-full">   
   <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
                   transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
     <Image src={assets.linkedinicon} alt="linkedin"  className="w-full h-full object-cover 
                  transition-transform transition-filter duration-500 ease-in-out 
                  group-hover:invert group-hover:scale-110"/>
-  </div>
+  </div></Link>
+  <Link href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"  rel="noopener noreferrer" className="w-full">
   <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
                   transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
     <Image src={assets.facebbokicon} alt="facebook"  className="w-full h-full object-cover 
                  transition-transform transition-filter duration-500 ease-in-out 
                  group-hover:invert group-hover:scale-110"/>
-  </div>
+  </div></Link>
+  <Link href="https://twitter.com/intent/tweet?url=" target="_blank"  rel="noopener noreferrer" className="w-full">
   <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
                   transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]  ">
     <Image src={assets.twittericon} alt="twitter"  className="w-full h-full object-cover 
                  transition-transform transition-filter duration-500 ease-in-out 
                  group-hover:invert group-hover:scale-110"/>
   </div>
-
+</Link>
 
                             </div>
                            
@@ -257,19 +259,22 @@ Visible in LLMs<br className="d-none lg:d-block"/>
 (And What to Do About it) 
                           </h1>
                           <div className="gap-[16px] mt-[40px] xl:hidden flex">
-                        
+                       
   <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
     <Image src={assets.shareicon} alt="share" />
   </div>
+  <Link href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank"  rel="noopener noreferrer" className="w-full">   
   <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
     <Image src={assets.linkedinicon} alt="linkedin" />
-  </div>
+  </div></Link>
+  <Link href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"  rel="noopener noreferrer" className="w-full">
   <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
     <Image src={assets.facebbokicon} alt="facebook" />
-  </div>
+  </div></Link>
+  <Link href="https://twitter.com/intent/tweet?url=" target="_blank"  rel="noopener noreferrer" className="w-full">
   <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
     <Image src={assets.twittericon} alt="twitter" />
-  </div>
+  </div></Link>
 
 
                             </div>
