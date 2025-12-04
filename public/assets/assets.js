@@ -930,9 +930,30 @@ import tcom3 from "../images/blog-new/tcom3.png";
 import tcom4 from "../images/blog-new/tcom4.png";
 import tcom5 from "../images/blog-new/tcom5.png";
 import tcom6 from "../images/blog-new/tcom6.png";
+import bgimg1 from "../images/blogs2/bgimg1.png";
+import bgimg2 from "../images/blogs2/bgimg2.png";
+import bgimg3 from "../images/blogs2/bgimg3.png";
+import blogbnrnew from "../images/blogs2/blogbnr.png";
+import blogimgnew2 from "../images/blogs2/blogimg2.png";
+import llm from "../images/blogs2/llm.png";
+import content from "../images/blogs2/content.svg";
+import ecosys from "../images/blogs2/ecosys.svg";
+import seonew from "../images/blogs2/seo.svg";
+import structure from "../images/blogs2/structure.svg";
+
 
 
 export const assets = {
+bgimg1,
+bgimg2,
+bgimg3,
+blogbnrnew,
+blogimgnew2,
+llm,
+content,
+ecosys,
+seonew,
+structure,
   omst1,
   omst2,
   omst3,

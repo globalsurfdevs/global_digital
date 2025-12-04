@@ -7,6 +7,7 @@ interface PlatformDetail {
     duration: string;
     icon: StaticImageData;
     title ?: string;
+    description ?: string;
 }
 
 interface Tip {
@@ -22,9 +23,10 @@ interface Tip {
 interface VideoTipsSectionProps {
   tipsData: Tip[]; // This is the array of all 10 tips
   title: string;
+  description?: string;
 }
 
-const VideoTipsSection: React.FC<VideoTipsSectionProps> = ({ tipsData ,title}) => {
+const VideoTipsSection: React.FC<VideoTipsSectionProps> = ({ tipsData ,title,description}) => {
 
 
     return (
@@ -42,6 +44,7 @@ const VideoTipsSection: React.FC<VideoTipsSectionProps> = ({ tipsData ,title}) =
               <h2 className="title-65 lg:max-w-[1000px]">
                 {title}
               </h2>
+              <p>{description}</p>
               
               {tipsData.map((tip) => (
                     <div

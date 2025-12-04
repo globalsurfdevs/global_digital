@@ -7,10 +7,12 @@ import Image, { StaticImageData } from "next/image";
 
 export interface ContentSectionData {
   title: string;
+    subdesc?: string;
   image?: StaticImageData;
   paragraphs?: string[];        // supports HTML including <br /> and <strong>
   listItems?: { label: string; description?: string }[]; // label & description support HTML
-  paragraphs2?: string[];       // supports HTML
+  paragraphs2?: string[];  
+       // supports HTML
 }
 
 type ContentSectionProps = {
@@ -27,6 +29,9 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
               <div className="col-span-2 mb-5 xl:mb-0"></div>
               <div className="col-span-5 w-full">
                 <h2 className="title-65 mb-[40px]">{data.title}</h2>
+                {data.subdesc && (
+                    <p className="text-font19 text-[#77787B] mb-[40px]">{data.subdesc}</p>
+                )}
 
                 {data.image && (
                   <Image src={data.image} alt={data.title} className="my-[40px]" />
@@ -47,7 +52,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                     {data.listItems.map((item, index) => (
                       <li
                         key={index}
-                        className="text-font19 mb-2"
+                        className="text-font19 mb-2 text-[#77787B]"
                       >
                         <span
                           dangerouslySetInnerHTML={{ __html: item.label }}
@@ -67,7 +72,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                 {data.paragraphs2?.map((p, index) => (
                   <p
                     key={index}
-                    className={`text-font19 text-[#77787B] ${p && p.includes('<br') ? '' : 'mt-4'}`}
+                    className="text-font19 text-[#77787B] mt-4 "
                     dangerouslySetInnerHTML={{ __html: p }}
                   />
                 ))}
