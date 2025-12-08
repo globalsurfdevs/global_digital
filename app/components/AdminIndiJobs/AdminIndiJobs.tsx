@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 import { useParams } from 'next/navigation'
 import { JobInputType } from '@/app/types/JobInputType'
 import RichEditor from '../RichEditor/RichEditor'
-import 'react-quill-new/dist/quill.snow.css';
+import "quill/dist/quill.snow.css";
 import { formatLinkForCareer } from '@/app/helpers/formatLink'
 
 

@@ -4,12 +4,11 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import Label from '../Label/Label';
 import ReactQuill from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css';
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import "react-quill/dist/quill.snow.css";
+import "quill/dist/quill.snow.css";
 import MetaDataSection from '../MetaData/MetaDataSection';
 
 type Inputs = {

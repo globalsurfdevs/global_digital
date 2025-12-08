@@ -16,31 +16,61 @@ const SECTIONS = [
 
 const LeftSideScrollBar = () => {
   const [visible, setVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string | null>(
+    SECTIONS[0].id
+  );
 
   useEffect(() => {
     const hero = document.getElementById("hero-section");
+    const faq = document.getElementById("faq-section");
 
     const handleScroll = () => {
-      if (!hero) return;
+      const scrollY = window.scrollY;
+      const scrollPosition = scrollY + 120; // offset for header
 
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      setVisible(window.scrollY > heroBottom - 80);
+      // ----------------- SHOW / HIDE SIDEBAR -----------------
+      let showSidebar = true;
 
-      // Detect active section
-      let current: string | null = null;
+      if (hero) {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        // hide while we are still on hero
+        if (scrollY <= heroBottom - 80) {
+          showSidebar = false;
+        }
+      }
+
+      if (faq) {
+        const faqTop = faq.offsetTop;
+        // hide when we reach FAQ and below
+        if (scrollPosition >= faqTop) {
+          showSidebar = false;
+        }
+      }
+
+      setVisible(showSidebar);
+
+      // ----------------- ACTIVE SECTION LOGIC -----------------
+      let currentId = SECTIONS[0].id;
 
       SECTIONS.forEach((sec) => {
         const element = document.getElementById(sec.id);
         if (!element) return;
 
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          current = sec.id;
+        const sectionTop = element.offsetTop;
+        if (sectionTop <= scrollPosition) {
+          currentId = sec.id; // last matched wins
         }
       });
 
-      setActiveSection(current);
+      // At very bottom → force last section active
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
+
+      if (isBottom) {
+        currentId = SECTIONS[SECTIONS.length - 1].id;
+      }
+
+      setActiveSection(currentId);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,6 +86,7 @@ const LeftSideScrollBar = () => {
         top: el.offsetTop - 80,
         behavior: "smooth",
       });
+      setActiveSection(id);
     }
   };
 
@@ -78,7 +109,11 @@ const LeftSideScrollBar = () => {
               onClick={() => scrollToSection(sec.id)}
               className={`
                 text-font19 cursor-pointer transition-all duration-200
-                ${isActive ? "  border-b-[1px] border-[#E63E31] pb-1" : "text-[#77787B]"}
+                ${
+                  isActive
+                    ? "border-b-[1px] border-[#E63E31] pb-1"
+                    : "text-[#77787B]"
+                }
               `}
             >
               {sec.label}

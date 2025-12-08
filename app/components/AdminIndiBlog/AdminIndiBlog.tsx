@@ -7,7 +7,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { handleImageChange } from '@/app/helpers/handleImageChange'
 import Image from 'next/image'
 import RichEditor from '../RichEditor/RichEditor'
-import 'react-quill-new/dist/quill.snow.css';
+import "quill/dist/quill.snow.css";
 import ReactQuill, { Quill } from 'react-quill-new'
 import htmlEditButton from "quill-html-edit-button";
 // import ImageResize from 'quill-image-resize-module-react';
