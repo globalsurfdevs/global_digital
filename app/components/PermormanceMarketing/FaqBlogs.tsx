@@ -28,7 +28,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => {
   };
 
   return (
-    <div className={bgcolor ? bgcolor : "bg-white"}>
+  <div className={` ${bgcolor  ? `bg-[${bgcolor }]` : 'bg-white'}` }>
       <div className="container mx-auto py-4">
         <motion.div
           initial="hidden"
