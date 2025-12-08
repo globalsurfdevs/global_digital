@@ -234,7 +234,9 @@ const page = () => {
     ))}
   </div>
      <Detailsauthor data={authors} />
+     <div id="faq-section">
       <FAQ data={Faq} bgcolor="#F2F2F2"/>
+      </div>
     </div>
   );
 };
