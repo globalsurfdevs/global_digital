@@ -22,34 +22,37 @@ const LeftSideScrollBar = () => {
 
   useEffect(() => {
     const hero = document.getElementById("hero-section");
-    const faq = document.getElementById("faq-section");
+    const brandVisibility = document.getElementById("brand-visibility");
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const scrollPosition = scrollY + 120; // offset for header
 
-      // ----------------- SHOW / HIDE SIDEBAR -----------------
       let showSidebar = true;
 
+      // 1) Hide while still in hero
       if (hero) {
         const heroBottom = hero.offsetTop + hero.offsetHeight;
-        // hide while we are still on hero
         if (scrollY <= heroBottom - 80) {
           showSidebar = false;
         }
       }
 
-      if (faq) {
-        const faqTop = faq.offsetTop;
-        // hide when we reach FAQ and below
-        if (scrollPosition >= faqTop) {
+   
+      if (brandVisibility) {
+        const brandBottom =
+          brandVisibility.offsetTop + brandVisibility.offsetHeight;
+
+        // when we reach the author block (which comes right after this),
+        // sidebar disappears
+        if (scrollPosition >= brandBottom) {
           showSidebar = false;
         }
       }
 
       setVisible(showSidebar);
 
-      // ----------------- ACTIVE SECTION LOGIC -----------------
+      // --- active section logic ---
       let currentId = SECTIONS[0].id;
 
       SECTIONS.forEach((sec) => {
@@ -62,9 +65,9 @@ const LeftSideScrollBar = () => {
         }
       });
 
-      // At very bottom → force last section active
       const isBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 2;
 
       if (isBottom) {
         currentId = SECTIONS[SECTIONS.length - 1].id;
