@@ -6,7 +6,7 @@
 // import { toast } from 'sonner'
 // import Label from '../Label/Label'
 // import ReactQuill from 'react-quill-new';
-// import 'react-quill-new/dist/quill.snow.css';
+// import "quill/dist/quill.snow.css";
 // import Image from 'next/image'
 // import { IoIosClose } from "react-icons/io";
 // import { PortfolioHighlight } from '@/app/types/PortfolioHighlights'

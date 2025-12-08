@@ -6,7 +6,7 @@ import Label from '../Label/Label';
 import { useRouter } from 'next/navigation';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import ReactQuill from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css';
+import "quill/dist/quill.snow.css";
 
 import Image from 'next/image';
 import { toast } from 'sonner';
