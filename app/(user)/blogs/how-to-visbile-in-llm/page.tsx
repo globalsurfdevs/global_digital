@@ -8,7 +8,7 @@ import VideoGuide from "../../../components/BlogSocialMedia/VideoGuide";
 import LlmWorks from "../../../components/BlogSocialMedia/LlmWorks";
 import ScrollSection from "../../../components/BlogSocialMedia/ScrollsSec";
 import Detailsauthor from "../../../components/BlogSocialMedia/Author";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import FAQ from "../../../components/PermormanceMarketing/FaqBlogs";
 import LeftSideScrollBar from "@/app/components/BlogSocialMedia/LeftSideFixedTabs";
 import NewRules from "../../../components/BlogSocialMedia/NewRules";
 
@@ -233,10 +233,11 @@ const page = () => {
       />
     ))}
   </div>
+  <div id="faq-section">
      <Detailsauthor data={authors} />
-     <div id="faq-section">
-      <FAQ data={Faq} bgcolor="#F2F2F2"/>
       </div>
+      <FAQ data={Faq} bgcolor="#F2F2F2"/>
+     
     </div>
   );
 };

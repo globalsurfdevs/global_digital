@@ -291,23 +291,35 @@ export const authors = [
   
 export const Faq = [
   {
-    title: "What does a social media video production company do?",
-    description:
-      "A social media video production company handles everything from content planning and scripting to filming, editing, and publishing. They specialize in creating videos tailored to social platforms and often help with strategy, platform optimization, and performance tracking.",
+    title: "Why do AI tools sometimes give outdated or inaccurate information about my brand?",
+    description: [
+      "AI models don’t browse the internet in real time. They rely on what they learned earlier.",
+      "If your brand updates aren’t reflected in trusted and consistent sources, AI may present old information.",
+      "Maintaining visibility in AI requires ongoing reinforcement, not a one-time fix.",
+    ],
   },
+
   {
-    title: "Should I work with a social media video production agency?",
-    description:
-      "If you're scaling your content or want consistent, high-quality output, working with a social media video production company or agency can save time and improve results. Agencies often offer editing, strategy, and platform optimization as a package.",
+    title: "Do AI models recognize Dubai-specific or regional brands?",
+    description: [
+      "Not always.",
+      "Global models often struggle with regional context — unless it’s strongly supported online.",
+      "Local brands must build:",
+    ],
+    bullets: [
+      "Verified business listings",
+      "Regional media and citations",
+      "Presence in trusted industry ecosystems",
+      "Regional authority needs to be built and signaled clearly.",
+    ],
   },
+
   {
-    title: "How can I measure video performance on social media?",
-    description:
-      "Track metrics like views, engagement rate (likes, comments, shares), watch time, reach, and click-through rates. On platforms like Instagram or YouTube, you can also use Insights/Analytics tools for deeper reporting.",
-  },
-  {
-    title: "What makes a social media video effective?",
-    description:
-      "An effective social video grabs attention within the first few seconds, tells a compelling story, is optimized for mobile viewing, includes captions, and ends with a strong call-to-action (CTA). It should also align with your brand voice and appeal to your target audience.",
+    title: "Why does one AI tool mention us while another doesn’t?",
+    description: [
+      "Each model learns from different data and updates at different times.",
+      "So visibility in one system won’t automatically carry over to others.",
+      "Brands need to monitor and strengthen their footprint across multiple AI platforms to stay discoverable.",
+    ],
   },
 ];
