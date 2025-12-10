@@ -16,12 +16,13 @@ interface LogoSwiperSectionProps {
   logosdata: LogoSwiperProps[];
   slidesPerView?: number | "auto";
   title1?: string;
+  subcontent?: string;
   reverseDirection?: boolean;
 }
 
 const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
   logosdata,
-  slidesPerView = "auto",
+  slidesPerView = "auto",subcontent,
   title1,reverseDirection = false,
 }) => {
   return (
@@ -47,6 +48,9 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
                 className="title-65"
                 dangerouslySetInnerHTML={{ __html: title1 }}
               ></h2>
+            )}
+            {subcontent && (
+              <p className="  text-30  leading-[1.2] text-black  pt-6 lg:pt-[40px]">{subcontent}</p>
             )}
           </div>
         </motion.div>
