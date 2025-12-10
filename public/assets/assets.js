@@ -940,10 +940,51 @@ import content from "../images/blogs2/content.svg";
 import ecosys from "../images/blogs2/ecosys.svg";
 import seonew from "../images/blogs2/seo.svg";
 import structure from "../images/blogs2/structure.svg";
-
-
+import geobanner from "../images/geo-imgs/geo-banner.jpg";
+import geolg1 from "../images/geo-imgs/geo-lg1.png";
+import geolg2 from "../images/geo-imgs/geo-lg2.png";
+import geolg3 from "../images/geo-imgs/geo-lg3.png";
+import geolg4 from "../images/geo-imgs/geo-lg4.png";
+import geolg5 from "../images/geo-imgs/geo-lg5.png";
+import geolg6 from "../images/geo-imgs/geo-lg6.png";
+import geolg7 from "../images/geo-imgs/geo-lg7.png";
+import geolg8 from "../images/geo-imgs/geo-lg8.png";
+import geolg9 from "../images/geo-imgs/geo-lg9.png";
+import geolg10 from "../images/geo-imgs/geo-lg10.png";
+import geolg11 from "../images/geo-imgs/geo-lg11.png";
+import geolg12 from "../images/geo-imgs/geo-lg12.png";
+import geolg13 from "../images/geo-imgs/geo-lg13.png";
+import geolg14 from "../images/geo-imgs/geo-lg14.png";
+import geolg15 from "../images/geo-imgs/geo-lg15.png";
+import hvrimg1 from "../images/geo-imgs/hvrimg1.png";
+import hvrimg2 from "../images/geo-imgs/hvrimg2.png";
+import hvrimg3 from "../images/geo-imgs/hvrimg3.png";
+import hvrimg4 from "../images/geo-imgs/hvrimg4.png";
+import hvrimg5 from "../images/geo-imgs/hvrimg5.png";
+import bnf1 from "../images/geo-imgs/bnf1.svg";
+import bnf2 from "../images/geo-imgs/bnf2.svg";
+import bnf3 from "../images/geo-imgs/bnf3.svg";
+import bnf4 from "../images/geo-imgs/bnf4.svg";
+import bnf5 from "../images/geo-imgs/bnf5.svg";
+import bnf6 from "../images/geo-imgs/bnf6.svg";
+import expg1 from "../images/geo-imgs/expg1.svg";
+import expg2 from "../images/geo-imgs/expg2.svg";
+import expg3 from "../images/geo-imgs/expg3.svg";
+import expg4 from "../images/geo-imgs/expg4.svg";
+import expg5 from "../images/geo-imgs/expg5.svg";
+import expg6 from "../images/geo-imgs/expg6.svg";
+import wecanhelp1 from "../images/geo-imgs/wh1.svg";
+import wecanhelp2 from "../images/geo-imgs/wh2.svg";
+import wecanhelp3 from "../images/geo-imgs/wh3.svg";
+import wecanhelp4 from "../images/geo-imgs/wh4.svg";
+import wecanhelp5 from "../images/geo-imgs/wh5.svg";
+import wecanhelp6 from "../images/geo-imgs/wh6.svg";
 
 export const assets = {
+geolg1, geolg2, geolg3, geolg4, geolg5, geolg6, geolg7, geolg8, geolg9, geolg10, geolg11, geolg12, geolg13, geolg14, geolg15,
+hvrimg1, hvrimg2, hvrimg3, hvrimg4, hvrimg5,
+bnf1, bnf2, bnf3, bnf4, bnf5, bnf6,wecanhelp1,wecanhelp2,wecanhelp3,wecanhelp4,wecanhelp5,wecanhelp6,
+expg1, expg2, expg3, expg4, expg5, expg6,geobanner,
 bgimg1,
 bgimg2,
 bgimg3,
