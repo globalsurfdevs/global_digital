@@ -91,10 +91,18 @@ export const Employees = [
         height:"auto"
     },
     {
+        id: 1,
+        image: assets.Vidhu,
+        name:"Vidhukrishna",
+        designation: "Project Manager",
+        width: "100%",
+        height:"auto"
+    },
+    {
         id: 15,
         image: assets.Ajay,
         name:"Ajaykumar",
-        designation: "Performance Marketing Executive",
+        designation: "Performance Marketing Lead",
         width: "100%",
         height:"auto"
     },
@@ -122,14 +130,7 @@ export const Employees = [
     //     width: "100%",
     //     height:"auto"
     // } ,
-    {
-        id: 8,
-        image: assets.Mariyambi,
-        name:"Mariyambi",
-        designation: "Technical Content Writer",
-        width: "100%",
-        height:"auto"
-    },
+    
     {
         id: 17,
         image: assets.Divya,
@@ -211,14 +212,7 @@ export const Employees = [
         height:"auto"
     }
     ,
-    {
-        id: 12,
-        image: assets.Renisha,
-        name:"Renisha",
-        designation: "Client Relationship Specialist",
-        width: "100%",
-        height:"auto"
-    },
+    
     {
         id: 20,
         image: assets.Krishnapriya,
@@ -226,32 +220,14 @@ export const Employees = [
         designation: "Digital Marketing Trainee",
         width: "100%",
         height:"auto"
-    },
-    {
-        id: 2,
-        image: assets.Devika,
-        name:"Devika",
-        designation: "Marketing Support Executive",
-        width: "100%",
-        height:"auto"
-    }, {
+    },{
         id: 9,
         image: assets.Ganesh,
         name:"Ganesh",
         designation: "SEO Specialist",
         width: "100%",
         height:"auto"
-    }
-    ,
-    {
-        id: 7,
-        image: assets.Afeefa,
-        name:"AFEEFA",
-        designation: "Digital Marketing Executive",
-        width: "100%",
-        height:"auto"
-    }
-
+    } 
     , {
         id: 11,
         image: assets.Nived,
@@ -265,6 +241,34 @@ export const Employees = [
         image: assets.Thanisha,
         name:"Thanisha ",
         designation: "Business Process Associate",
+        width: "100%",
+        height:"auto"
+    }, {
+        id: 11,
+        image: assets.Anjanaseo,
+        name:"Anjana Das ",
+        designation: "SEO Specialist",
+        width: "100%",
+        height:"auto"
+    }, {
+        id: 11,
+        image: assets.Gayathri,
+        name:"Gayathri ",
+        designation: "Quality Analyst",
+        width: "100%",
+        height:"auto"
+    }, {
+        id: 11,
+        image: assets.Diya,
+        name:"Diya Saji ",
+        designation: "Creative Copy Writer",
+        width: "100%",
+        height:"auto"
+    }, {
+        id: 11,
+        image: assets.Sneha,
+        name:"Sneha ",
+        designation: "Social Media Specialist",
         width: "100%",
         height:"auto"
     }
