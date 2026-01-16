@@ -246,28 +246,28 @@ export const Employees = [
     }, {
         id: 11,
         image: assets.Anjanaseo,
-        name:"Anjana Das ",
+        name:"Anjana",
         designation: "SEO Specialist",
         width: "100%",
         height:"auto"
     }, {
         id: 11,
         image: assets.Gayathri,
-        name:"Gayathri ",
+        name:"Gayathri",
         designation: "Quality Analyst",
         width: "100%",
         height:"auto"
     }, {
         id: 11,
         image: assets.Diya,
-        name:"Diya Saji ",
+        name:"Diya ",
         designation: "Creative Copy Writer",
         width: "100%",
         height:"auto"
     }, {
         id: 11,
         image: assets.Sneha,
-        name:"Sneha ",
+        name:"Sneha",
         designation: "Social Media Specialist",
         width: "100%",
         height:"auto"
