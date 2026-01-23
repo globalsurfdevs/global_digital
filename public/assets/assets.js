@@ -157,6 +157,12 @@ import Renisha from "../assets/employee/Renisha.png";
 import Shilpa from "../assets/employee/Shilpa.png";
 import Vishnu_v from "../assets/employee/Vishnu_v.png";
 
+import Vidhu from "../assets/employee/Vidhukrishna.png";
+import Anjanaseo from "../assets/employee/Anjanaseo.png";
+import Diya from "../assets/employee/Diya.png";
+import Gayathri from "../assets/employee/Gayathri.png";
+import Sneha from "../assets/employee/Sneha.png";
+
 import seo_banner from "../assets/banner/SEO.jpg";
 import branding_bnr from "../assets/banner/Branding-&-Creatives-01.jpg";
 import marketing_bnr from "../assets/banner/Marketing.jpg";
@@ -981,6 +987,11 @@ import wecanhelp5 from "../images/geo-imgs/wh5.svg";
 import wecanhelp6 from "../images/geo-imgs/wh6.svg";
 
 export const assets = {
+  Vidhu,
+Anjanaseo,
+Diya,
+Gayathri,
+Sneha,
 geolg1, geolg2, geolg3, geolg4, geolg5, geolg6, geolg7, geolg8, geolg9, geolg10, geolg11, geolg12, geolg13, geolg14, geolg15,
 hvrimg1, hvrimg2, hvrimg3, hvrimg4, hvrimg5,
 bnf1, bnf2, bnf3, bnf4, bnf5, bnf6,wecanhelp1,wecanhelp2,wecanhelp3,wecanhelp4,wecanhelp5,wecanhelp6,

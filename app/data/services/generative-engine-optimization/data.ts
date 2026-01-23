@@ -8,6 +8,7 @@ export const BannerSection = [
     navigation: [
       { label: "Home", url: "/" },
       { label: "Digital marketing",url: "" },
+      { label: "SEO",url: "" },
       {label: "geo",url:"",}
     ],
     title:
