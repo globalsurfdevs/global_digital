@@ -985,9 +985,14 @@ import wecanhelp3 from "../images/geo-imgs/wh3.svg";
 import wecanhelp4 from "../images/geo-imgs/wh4.svg";
 import wecanhelp5 from "../images/geo-imgs/wh5.svg";
 import wecanhelp6 from "../images/geo-imgs/wh6.svg";
+import newblog23bnr from "../images/blog-new/new-blog-bnr-23.jpg";
+import bloggs2 from "../images/blog-new/blog-gs2.jpg";
+import bloggs3 from "../images/blog-new/blog-gs3.jpg";
+import bloggs4 from "../images/blog-new/blog-gs4.jpg";
 
 export const assets = {
   Vidhu,
+  newblog23bnr,bloggs2,bloggs3,bloggs4,
 Anjanaseo,
 Diya,
 Gayathri,
