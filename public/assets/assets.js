@@ -989,10 +989,12 @@ import newblog23bnr from "../images/blog-new/new-blog-bnr-23.jpg";
 import bloggs2 from "../images/blog-new/blog-gs2.jpg";
 import bloggs3 from "../images/blog-new/blog-gs3.jpg";
 import bloggs4 from "../images/blog-new/blog-gs4.jpg";
+import bloggs5 from "../images/blog-new/blog-gs5.png";
+import blogg6 from "../images/blog-new/blog-gs6.jpg";
 
 export const assets = {
   Vidhu,
-  newblog23bnr,bloggs2,bloggs3,bloggs4,
+  newblog23bnr,bloggs2,bloggs3,bloggs4,bloggs5,blogg6,
 Anjanaseo,
 Diya,
 Gayathri,

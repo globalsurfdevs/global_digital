@@ -115,14 +115,14 @@ with how this discipline continues to evolve.
               </li>
             </ul>
              <p className="text-font19 text-[#77787B] ">In this landscape, the role of a Social Media <a href='/social-media-agency-dubai'>Marketing Agency</a> in UAE extends beyond execution. Brands need partners who can connect creativity, performance, and purpose into a cohesive growth strategy. </p>
-          <Image src="" alt="" />
+          <Image src={assets.bloggs5} alt="" />
           <h2 className="title-65 pt-[50px] lg:pt-[140px] mb-[40px]">GS Digital’s Takeaway: Building Influence That Lasts 
 </h2>
  <p className="text-font19 text-[#77787B] mb-[16px]">One conclusion stood out clearly. Sustainable influence is built through strategy, not scale alone. This directly reflects how GS Digital approaches digital growth.</p>
  <p className="text-font19 text-[#77787B] mb-[16px]">Influence works best when it is intentional, performance led, and aligned with long term brand objectives. Creativity plays a critical role, but it must be accountable and supported by data. 
 </p>
  <p className="text-font19 text-[#77787B] ">GS Digital’s participation reaffirmed our commitment to staying aligned with how influence continues to evolve and how it translates into real value for brands.</p>
-<Image src="" alt=""  />
+<Image src={assets.blogg6} alt=""  />
 <h2 className="title-65 pt-[50px] lg:pt-[140px] mb-[40px]">Looking Ahead: The Future of Digital Attention 
 </h2>
  <p className="text-font19 text-[#77787B] mb-[16px]">The 1 Billion Followers Summit reinforced a simple but important reality. Digital attention is becoming more selective and increasingly tied to trust. </p>
