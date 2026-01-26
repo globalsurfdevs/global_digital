@@ -114,14 +114,14 @@ with how this discipline continues to evolve.
                 Integrated digital ecosystems connecting content, performance, and community 
               </li>
             </ul>
-             <p className="text-font19 text-[#77787B] ">In this landscape, the role of a Social Media <a href='/social-media-agency-dubai'>Marketing Agency</a> in UAE extends beyond execution. Brands need partners who can connect creativity, performance, and purpose into a cohesive growth strategy. </p>
+             <p className="text-font19 text-[#77787B] mb-[25px]">In this landscape, the role of a Social Media <a href='/social-media-agency-dubai'>Marketing Agency</a> in UAE extends beyond execution. Brands need partners who can connect creativity, performance, and purpose into a cohesive growth strategy. </p>
           <Image src={assets.bloggs5} alt="" />
           <h2 className="title-65 pt-[50px] lg:pt-[140px] mb-[40px]">GS Digital’s Takeaway: Building Influence That Lasts 
 </h2>
  <p className="text-font19 text-[#77787B] mb-[16px]">One conclusion stood out clearly. Sustainable influence is built through strategy, not scale alone. This directly reflects how GS Digital approaches digital growth.</p>
  <p className="text-font19 text-[#77787B] mb-[16px]">Influence works best when it is intentional, performance led, and aligned with long term brand objectives. Creativity plays a critical role, but it must be accountable and supported by data. 
 </p>
- <p className="text-font19 text-[#77787B] ">GS Digital’s participation reaffirmed our commitment to staying aligned with how influence continues to evolve and how it translates into real value for brands.</p>
+ <p className="text-font19 text-[#77787B] mb-[25px] ">GS Digital’s participation reaffirmed our commitment to staying aligned with how influence continues to evolve and how it translates into real value for brands.</p>
 <Image src={assets.blogg6} alt=""  />
 <h2 className="title-65 pt-[50px] lg:pt-[140px] mb-[40px]">Looking Ahead: The Future of Digital Attention 
 </h2>
@@ -143,7 +143,7 @@ with how this discipline continues to evolve.
 </p>
  <p className="text-font19 text-[#77787B] ">Connect with us to explore how your brand can build credible, purpose driven digital influence that delivers long term value. 
 </p>
-<Image src={assets.bloggs4} alt="The Way Forward for Brands" className="my-[40px]" />
+<Image src={assets.bloggs4} alt="The Way Forward for Brands" className="mt-[25px]" />
           </div>
         </div>
       </div>
