@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ReCAPTCHA from 'react-google-recaptcha';
 
- 
+
 
 const ContactUs = () => {
   const [formData, setFormData] = useState<{
@@ -84,14 +84,14 @@ const ContactUs = () => {
 
     const form = document.getElementById("form") as HTMLFormElement;
     if (form) {
-      if(recaptcha){
+      if (recaptcha) {
         const captchaValue = recaptcha?.current?.getValue()
-                if (!captchaValue) {
-                    setError("Please verify yourself to continue")
-                    return;
-                }else{
-                  form.submit();
-                }
+        if (!captchaValue) {
+          setError("Please verify yourself to continue")
+          return;
+        } else {
+          form.submit();
+        }
       }
       // form.submit();
     } else {
@@ -110,217 +110,217 @@ const ContactUs = () => {
 
   return (
     <>
-    <div className="mainconnect !h-auto container">
-      <div className="   pb-[20px] pe-[20px] pt-10 md:pt-[75px] md:pb-0 xl:pe-[80px]   xxl:pe-[80px]  ">
-        <h1 className="title-65">
-         Contact Us<span className="text-primary">!</span>
-        </h1>
-        <p className="mt-2 text-gray1">
-          Share your requirement with us and our team will get in touch to discuss the next steps
-        </p>
-        <div className="mt-[30px] flex flex-col gap-8 md:col-span-3 lg:mt-[50px] 2xl:mt-[80px]">
-          <div className="flex flex-col gap-3">
-            <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:gap-[50px] lg:pb-[25px] w-fit">
-              <p className="text-[20px] md:text-[22px] md:text-[25px] xl:text-font35">
-                <a href="mailto:hello@globalsurf.ae" className="break-words">
-                  hello<span className="text-primary">@</span>globalsurf.ae
-                </a>
-              </p>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 36 35"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="transition-transform duration-300 group-hover:scale-110"
-              >
-                <path
-                  d="M33.8105 1.7998L1.25781 33.7227"
-                  stroke="#E63E31"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                ></path>
-                <path
-                  d="M1.25781 1.7998H33.8105V33.0929"
-                  stroke="#E63E31"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                ></path>
-              </svg>
-            </div>
-            <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:pb-[25px]  xxl:gap-[120px] w-fit ">
-              <p className="text-[20px] md:text-[22px] md:text-[25px] xl:text-font35 min-w-fit">
-                <a href="tel:+97145821133">+971 4 582 1133</a>
-              </p>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 36 35"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="transition-transform duration-300 group-hover:scale-110"
-              >
-                <path
-                  d="M33.8105 1.7998L1.25781 33.7227"
-                  stroke="#E63E31"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                ></path>
-                <path
-                  d="M1.25781 1.7998H33.8105V33.0929"
-                  stroke="#E63E31"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                ></path>
-              </svg>
+      <div className="mainconnect !h-auto container">
+        <div className="   pb-[20px] pe-[20px] pt-10 md:pt-[75px] md:pb-0 xl:pe-[80px]   xxl:pe-[80px]  ">
+          <h1 className="title-65">
+            Contact Us<span className="text-primary">!</span>
+          </h1>
+          <p className="mt-2 text-gray1">
+            Share your requirement with us and our team will get in touch to discuss the next steps
+          </p>
+          <div className="mt-[30px] flex flex-col gap-8 md:col-span-3 lg:mt-[50px] 2xl:mt-[80px]">
+            <div className="flex flex-col gap-3">
+              <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:gap-[50px] lg:pb-[25px] w-fit">
+                <p className="text-[20px] md:text-[22px] md:text-[25px] xl:text-font35">
+                  <a href="mailto:hello@globalsurf.ae" className="break-words">
+                    hello<span className="text-primary">@</span>globalsurf.ae
+                  </a>
+                </p>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 36 35"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-transform duration-300 group-hover:scale-110"
+                >
+                  <path
+                    d="M33.8105 1.7998L1.25781 33.7227"
+                    stroke="#E63E31"
+                    stroke-width="2"
+                    stroke-miterlimit="10"
+                  ></path>
+                  <path
+                    d="M1.25781 1.7998H33.8105V33.0929"
+                    stroke="#E63E31"
+                    stroke-width="2"
+                    stroke-miterlimit="10"
+                  ></path>
+                </svg>
+              </div>
+              <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:pb-[25px]  xxl:gap-[120px] w-fit ">
+                <p className="text-[20px] md:text-[22px] md:text-[25px] xl:text-font35 min-w-fit">
+                  <a href="tel:+97145821133">+971 4 582 1133</a>
+                </p>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 36 35"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-transform duration-300 group-hover:scale-110"
+                >
+                  <path
+                    d="M33.8105 1.7998L1.25781 33.7227"
+                    stroke="#E63E31"
+                    stroke-width="2"
+                    stroke-miterlimit="10"
+                  ></path>
+                  <path
+                    d="M1.25781 1.7998H33.8105V33.0929"
+                    stroke="#E63E31"
+                    stroke-width="2"
+                    stroke-miterlimit="10"
+                  ></path>
+                </svg>
+              </div>
             </div>
           </div>
+          <div className="mb-3 mt-[30px] lg:mb-0 lg:mt-[50px] 2xl:mt-[70px]">
+            {/* <img src="/images/location.svg" alt="location" className="" /> */}
+            <h2 className="text-font25 mt-2">Visit or reach our Dubai office</h2>
+            <p className="text-19 mt-2 md:mt-[10px] text-gray1">
+              Global Surf Digital Media L.L.C,
+              P.O.Box 13653, 901 - SIT Tower,
+              Dubai Silicon Oasis,
+              Dubai, UAE
+            </p>
+          </div>
         </div>
-        <div className="mb-3 mt-[30px] lg:mb-0 lg:mt-[50px] 2xl:mt-[70px]">
-          {/* <img src="/images/location.svg" alt="location" className="" /> */}
-          <h2 className="text-font25 mt-2">Visit or reach our Dubai office</h2>
-          <p className="text-19 mt-2 md:mt-[10px] text-gray1">
-           Global Surf Digital Media L.L.C, 
-           P.O.Box 13653, 901 - SIT Tower, 
-           Dubai Silicon Oasis, 
-           Dubai, UAE
-          </p>
-        </div>
-      </div>
-      <div className="psty bg-dgray  px-[20px] pt-[20px] pb-[30px] lg:pb-0 lg:pt-[75px] xl:px-[80px]  xxl:px-[80px] ">
-       
-        <div className="lg:mb-[100px[ mb-[20px] flex items-center gap-2">
-          <p className="text-font30 uppercase">Message us</p>
-          <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
-        </div>
+        <div className="psty bg-dgray  px-[20px] pt-[20px] pb-[30px] lg:pb-0 lg:pt-[75px] xl:px-[80px]  xxl:px-[80px] ">
 
-        <div className="contctform pt-[15px] lg:pt-[40px]">
-          <form
-            onSubmit={handleSubmit}
-            action="https://forms.zohopublic.com/Globalsurf/form/GlobalsurfNewForm/formperma/ed-ixp-D06mNuOfW52SHqkLRh7ZZV4AbxY-Ks8LcP_s/htmlRecords/submit"
-            name="form"
-            id="form"
-            method="POST"
-            acceptCharset="UTF-8"
-            encType="multipart/form-data"
-          >
-            <div className="md:grid md:grid-cols-2 md:gap-5">
-              <input
-                type="text"
-                className="hidden"
-                name="SingleLine2"
-                value={formData.SingleLine2 || ""}
-              />
+          <div className="lg:mb-[100px[ mb-[20px] flex items-center gap-2">
+            <p className="text-font30 uppercase">Message us</p>
+            <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
+          </div>
 
-              <div className="mb-[30px]">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Full Name
-                </label>
+          <div className="contctform pt-[15px] lg:pt-[40px]">
+            <form
+              onSubmit={handleSubmit}
+              action="https://forms.zohopublic.com/Globalsurf/form/GlobalsurfNewForm/formperma/ed-ixp-D06mNuOfW52SHqkLRh7ZZV4AbxY-Ks8LcP_s/htmlRecords/submit"
+              name="form"
+              id="form"
+              method="POST"
+              acceptCharset="UTF-8"
+              encType="multipart/form-data"
+            >
+              <div className="md:grid md:grid-cols-2 md:gap-5">
                 <input
                   type="text"
-                  name="SingleLine"
-                  id="SingleLine"
-                  required
-                  onChange={handleChange}
-                  className=" gry-placeholder w-full border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0"
-                  placeholder="Enter your name"
-                  style={{
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                  }}
+                  className="hidden"
+                  name="SingleLine2"
+                  value={formData.SingleLine2 || ""}
                 />
-                {nameError && (
-                  <p className="mt-1 text-sm text-red-500">{nameError}</p>
-                )}
+
+                <div className="mb-[30px]">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="SingleLine"
+                    id="SingleLine"
+                    required
+                    onChange={handleChange}
+                    className=" gry-placeholder w-full border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0"
+                    placeholder="Enter your name"
+                    style={{
+                      borderTop: "none",
+                      borderLeft: "none",
+                      borderRight: "none",
+                    }}
+                  />
+                  {nameError && (
+                    <p className="mt-1 text-sm text-red-500">{nameError}</p>
+                  )}
+                </div>
+                <div className="mb-[30px]">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="Email"
+                    required
+                    onChange={handleChange}
+                    maxLength={255}
+                    className=" gry-placeholder w-full border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0"
+                    style={{
+                      borderTop: "none",
+                      borderLeft: "none",
+                      borderRight: "none",
+                    }}
+                    placeholder="Enter your email"
+                  />
+                  {emailError && (
+                    <p className="mt-1 text-sm text-red-500">{emailError}</p>
+                  )}
+                </div>
               </div>
-              <div className="mb-[30px]">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="Email"
-                  required
-                  onChange={handleChange}
-                  maxLength={255}
-                  className=" gry-placeholder w-full border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0"
-                  style={{
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                  }}
-                  placeholder="Enter your email"
-                />
-                {emailError && (
-                  <p className="mt-1 text-sm text-red-500">{emailError}</p>
-                )}
+              <div className="md:grid md:grid-cols-2 md:gap-5">
+                <div className="mb-[30px]">
+                  <label className="mb-2 block text-sm font-medium text-gray-700 ">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    name="SingleLine1"
+                    onChange={handleChange}
+                    maxLength={255}
+                    className=" gry-placeholder w-full border-b border-gray-300  bg-dgray px-0 pb-3   focus:border-gray-300 focus:ring-0"
+                    style={{
+                      borderTop: "none",
+                      borderLeft: "none",
+                      borderRight: "none",
+                    }}
+                    placeholder="Enter your company name"
+                  />
+                </div>
+                <div className="mb-[30px]">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Phone Number
+                  </label>
+                  <input
+                    type="number"
+                    name="PhoneNumber_countrycode"
+                    id="international_PhoneNumber_countrycode"
+                    className=" gry-placeholder w-full border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0"
+                    placeholder="Contact Number"
+                    style={{
+                      borderTop: "none",
+                      borderLeft: "none",
+                      borderRight: "none",
+                    }}
+                    required
+                    onChange={handleChange}
+                  />
+                  {phoneError && (
+                    <p className="mt-1 text-sm text-red-500">{phoneError}</p>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-5">
-              <div className="mb-[30px]">
-                <label className="mb-2 block text-sm font-medium text-gray-700 ">
-                  Company
-                </label>
-                <input
-                  type="text"
-                  name="SingleLine1"
-                  onChange={handleChange}
-                  maxLength={255}
-                  className=" gry-placeholder w-full border-b border-gray-300  bg-dgray px-0 pb-3   focus:border-gray-300 focus:ring-0"
-                  style={{
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                  }}
-                  placeholder="Enter your company name"
-                />
-              </div>
-              <div className="mb-[30px]">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  type="number"
-                  name="PhoneNumber_countrycode"
-                  id="international_PhoneNumber_countrycode"
-                  className=" gry-placeholder w-full border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0"
-                  placeholder="Contact Number"
-                  style={{
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                  }}
-                  required
-                  onChange={handleChange}
-                />
-                {phoneError && (
-                  <p className="mt-1 text-sm text-red-500">{phoneError}</p>
-                )}
-              </div>
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-5">
-              <div className="mb-[30px]">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Budget Range
-                </label>
-                <div
-                  className="relative"
-                  onClick={() => setSelectedBudget("first")}
-                  style={{
-                    cursor: "pointer",
-                    color:
-                      selectedBudget === "Select Your Budget"
-                        ? "#0000004d"
-                        : "black",
-                  }}
-                >
-                  {/* <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
+              <div className="md:grid md:grid-cols-2 md:gap-5">
+                <div className="mb-[30px]">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Budget Range
+                  </label>
+                  <div
+                    className="relative"
+                    onClick={() => setSelectedBudget("first")}
+                    style={{
+                      cursor: "pointer",
+                      color:
+                        selectedBudget === "Select Your Budget"
+                          ? "#0000004d"
+                          : "black",
+                    }}
+                  >
+                    {/* <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
                     {selectedBudget}
                     <img src="images/dp-arrow.svg" alt="dropdown arrow" />
                     <input type="hidden" name="Dropdown2" value={selectedBudget} />
                   </div> */}
-                  {/* {isBudgetOpen && (
+                    {/* {isBudgetOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
                       <li
                         className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
@@ -388,43 +388,43 @@ const ContactUs = () => {
                     </ul>
 
                   )} */}
-                  <select
-                  name="Dropdown"
-                  onChange={handleChange}
-                  className="bg-transparent  w-full border-t-0 border-x-0 border-b border-gray-300 outline-none pr-3 pl-0 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                >
-                  <option value="-Select-">Select Your Budget</option>
-                  <option value="AED < 5000">AED &lt; 5000</option>
-                  <option value="AED 5000 - 10000">AED 5000 - 10000</option>
-                  <option value="AED 10000 - 20000">AED 10000 - 20000</option>
-                  <option value="AED 20000 - 30000">AED 20000 - 30000</option>
-                  <option value="AED 30000 - 40000">AED 30000 - 40000</option>
-                  <option value="AED 50000 - 100000">AED 50000 - 100000</option>
-                  <option value="AED > 100000">AED &gt; 100000</option>
-                </select>
+                    <select
+                      name="Dropdown"
+                      onChange={handleChange}
+                      className="bg-transparent  w-full border-t-0 border-x-0 border-b border-gray-300 outline-none pr-3 pl-0 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                    >
+                      <option value="-Select-">Select Your Budget</option>
+                      <option value="AED < 5000">AED &lt; 5000</option>
+                      <option value="AED 5000 - 10000">AED 5000 - 10000</option>
+                      <option value="AED 10000 - 20000">AED 10000 - 20000</option>
+                      <option value="AED 20000 - 30000">AED 20000 - 30000</option>
+                      <option value="AED 30000 - 40000">AED 30000 - 40000</option>
+                      <option value="AED 50000 - 100000">AED 50000 - 100000</option>
+                      <option value="AED > 100000">AED &gt; 100000</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div className="mb-[30px]">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Service
-                </label>
-                <div
-                  className="relative"
-                  onClick={() => setSelectedService("first")}
-                  style={{
-                    cursor: "pointer",
-                    color:
-                      selectedService === "Service Looking for"
-                        ? "#0000004d"
-                        : "#000",
-                  }}
-                >
-                  {/* <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
+                <div className="mb-[30px]">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Service
+                  </label>
+                  <div
+                    className="relative"
+                    onClick={() => setSelectedService("first")}
+                    style={{
+                      cursor: "pointer",
+                      color:
+                        selectedService === "Service Looking for"
+                          ? "#0000004d"
+                          : "#000",
+                    }}
+                  >
+                    {/* <div className="gry-placeholder mt-3 flex w-full items-center justify-between border-b border-gray-300 bg-dgray px-0 pb-3 focus:border-gray-300 focus:ring-0">
                     {selectedService}
                     <img src="images/dp-arrow.svg" alt="dropdown arrow" />
                     <input type="hidden" name="Dropdown1" value={selectedService} />
                   </div> */}
-                  {/* {isServiceOpen && (
+                    {/* {isServiceOpen && (
                     <ul className="absolute z-10 mt-2 w-full rounded-lg border border-gray-300 bg-dgray">
                       <li
                         className="cursor-pointer px-2 py-1 text-black hover:bg-gray-200"
@@ -482,124 +482,125 @@ const ContactUs = () => {
                       </li>
                     </ul>
                   )} */}
-                  <select
-                  name="Dropdown1"
-                  onChange={handleChange}
-                  className="bg-transparent w-full  border-t-0 border-x-0 border-b border-gray-300  pl-0 pr-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
-                >
-                  <option value="-Select-">Service Looking for</option>
-                  <option value="Performance Marketing">
-                    Performance Marketing
-                  </option>
-                  <option value="SEO">SEO</option>
-                  <option value="Social Media">Social Media</option>
-                  <option value="Web Design and Development">
-                    Web Design and Development
-                  </option>
-                  <option value="Branding and Creatives">
-                    Branding and Creatives
-                  </option>
-                  <option value="Marketing Intelligence">
-                    Marketing Intelligence
-                  </option>
-                </select>
+                    <select
+                      name="Dropdown1"
+                      onChange={handleChange}
+                      className="bg-transparent w-full  border-t-0 border-x-0 border-b border-gray-300  pl-0 pr-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                    >
+                      <option value="-Select-">Service Looking for</option>
+                      <option value="Performance Marketing">
+                        Performance Marketing
+                      </option>
+                      <option value="SEO">SEO</option>
+                      <option value="Social Media">Social Media</option>
+                      <option value="Web Design and Development">
+                        Web Design and Development
+                      </option>
+                      <option value="Branding and Creatives">
+                        Branding and Creatives
+                      </option>
+                      <option value="Marketing Intelligence">
+                        Marketing Intelligence
+                      </option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="mb-[30px]">
-              <label className="mb-2 block text-sm font-medium text-gray-700 lg:mb-[40px]">
-                Message
-              </label>
-              <textarea
-                name="MultiLine"
-                onChange={handleChange}
-                maxLength={65535}
-                placeholder="Tell us about your project. What problems can we help you solve?"
-                className="gry-placeholder  h-[50px] w-full border-b border-gray-300 bg-dgray px-0 pb-3 text-gray1 focus:border-gray-300 focus:ring-0"
-                style={{
-                  borderTop: "none",
-                  borderLeft: "none",
-                  borderRight: "none",
-                }}
-              />
-            </div>
+              <div className="mb-[30px]">
+                <label className="mb-2 block text-sm font-medium text-gray-700 lg:mb-[40px]">
+                  Message
+                </label>
+                <textarea
+                  name="MultiLine"
+                  onChange={handleChange}
+                  maxLength={65535}
+                  placeholder="Tell us about your project. What problems can we help you solve?"
+                  className="gry-placeholder  h-[50px] w-full border-b border-gray-300 bg-dgray px-0 pb-3 text-gray1 focus:border-gray-300 focus:ring-0"
+                  style={{
+                    borderTop: "none",
+                    borderLeft: "none",
+                    borderRight: "none",
+                  }}
+                />
+              </div>
 
-                <div className="flex flex-wrap md:flex-nowrap items-center justify-between">
-                  <div >
-            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
+              <div className="flex flex-wrap gap-4 flex-col md:flex-nowrap items-end justify-between">
 
-            {/* <div>
+                <div >
+                  <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
+
+                  {/* <div>
               <p className="font-19 fnt-lexend mb-5 font-[500] text-gray1 md:mb-[30px]">
                 In submitting this form, you are agreeing to{" "}
                 <Link href="/privacy-policy">Privacy Policy</Link>.
               </p>
             </div> */}
-            {/* <button
+                  {/* <button
                 type="submit"
                 className="w-fit rounded-[55px] bg-primary px-[40px] py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray hover:text-primary md:px-[50px] md:py-[20px]"
               >
                 Submit
               </button> */}
-              {error !== "" && <div className='text-red-500'>{error}</div>}
-              </div>
-            <button
-              className="h-fit md:my-0 mt-4 lg:mb-[75px] xl:mb-[100px] hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
-              type="submit"
-            >
-              <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
-                Get in Touch
-              </span>
-              <div className=" bg-primary p-1">
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="group-hover:scale-105"
+                  {error !== "" && <div className='text-red-500'>{error}</div>}
+                </div>
+                <button
+                  className="h-fit md:my-0 mt-4 lg:mb-[75px] xl:mb-[100px] hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
+                  type="submit"
                 >
-                  <g clipPath="url(#clip0_65_39)">
-                    <path
-                      d="M8.88346 1.26172L1.13281 8.8624"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-miterlimit="10"
-                    ></path>
-                    <path
-                      d="M1.13281 1.26172H8.88346V8.71245"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-miterlimit="10"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_65_39">
-                      <rect width="10" height="10" fill="white"></rect>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </button>
-            
-            </div>
-          </form>
-        </div>
-        <div>
+                  <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
+                    Get in Touch
+                  </span>
+                  <div className=" bg-primary p-1">
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 10 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="group-hover:scale-105"
+                    >
+                      <g clipPath="url(#clip0_65_39)">
+                        <path
+                          d="M8.88346 1.26172L1.13281 8.8624"
+                          stroke="white"
+                          stroke-width="2"
+                          stroke-miterlimit="10"
+                        ></path>
+                        <path
+                          d="M1.13281 1.26172H8.88346V8.71245"
+                          stroke="white"
+                          stroke-width="2"
+                          stroke-miterlimit="10"
+                        ></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_65_39">
+                          <rect width="10" height="10" fill="white"></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                </button>
 
+              </div>
+            </form>
+          </div>
+          <div>
+
+          </div>
         </div>
       </div>
-    </div>
       <div className="pt-[0px] md:pt-[30px] lg:pt-[75px] ">
-          <div className="relative w-full h-[400px]   overflow-hidden shadow-xl ">
-            <iframe
-              className="absolute inset-0 w-full h-full border-0"
-              loading="lazy"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5293502271115!2d55.3906747!3d25.1177885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5cde96bd7e5f%3A0x8632d41bbf01c71!2sGlobal%20Surf%20Digital!5e0!3m2!1sen!2sin!4v1769506669019!5m2!1sen!2sin">
-            </iframe> 
-         </div>
+        <div className="relative w-full h-[400px]   overflow-hidden shadow-xl ">
+          <iframe
+            className="absolute inset-0 w-full h-full border-0"
+            loading="lazy"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5293502271115!2d55.3906747!3d25.1177885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5cde96bd7e5f%3A0x8632d41bbf01c71!2sGlobal%20Surf%20Digital!5e0!3m2!1sen!2sin!4v1769506669019!5m2!1sen!2sin">
+          </iframe>
+        </div>
       </div>
-</>
+    </>
   );
 };
 
