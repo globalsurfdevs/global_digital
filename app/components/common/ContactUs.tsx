@@ -527,7 +527,7 @@ const ContactUs = () => {
 
                 <div className="flex flex-wrap md:flex-nowrap items-center justify-between">
                   <div >
-            {/* <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} /> */}
+            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
 
             {/* <div>
               <p className="font-19 fnt-lexend mb-5 font-[500] text-gray1 md:mb-[30px]">
