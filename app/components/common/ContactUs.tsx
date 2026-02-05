@@ -115,9 +115,9 @@ const ContactUs = () => {
           <h1 className="title-65">
             Contact Us<span className="text-primary">!</span>
           </h1>
-          <p className="mt-2 text-gray1">
+          {/* <p className="mt-2 text-gray1">
             Share your requirement with us and our team will get in touch to discuss the next steps
-          </p>
+          </p> */}
           <div className="mt-[30px] flex flex-col gap-8 md:col-span-3 lg:mt-[50px] 2xl:mt-[80px]">
             <div className="flex flex-col gap-3">
               <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:gap-[50px] lg:pb-[25px] w-fit">
@@ -190,7 +190,7 @@ const ContactUs = () => {
         <div className="psty bg-dgray  px-[20px] pt-[20px] pb-[30px] lg:pb-0 lg:pt-[75px] xl:px-[80px]  xxl:px-[80px] ">
 
           <div className="lg:mb-[100px] mb-[20px] flex items-center gap-2">
-            <p className="text-[26px] uppercase">Send us your details and our team will reach out.</p>
+            <p className="text-font30 uppercase">Send us your details and our team will reach out.</p>
             <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
           </div>
 
