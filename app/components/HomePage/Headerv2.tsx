@@ -280,7 +280,33 @@ useEffect(() => {
             </motion.div>
 
             {/* LET'S TALK */}
-            <button
+            <Link
+               href="/contact-us"
+              className="hover:bg-prtext-primary group hidden items-center space-x-2 rounded-full border border-primary px-6 py-2 text-primary transition duration-300 ease-in hover:text-black hover:shadow-lg lg:flex"
+            >
+              <span className="duration-300 ease-in group-hover:text-black uppercase">Contact Us</span>
+              <div className="bg-primary p-1">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="group-hover:scale-105"
+                >
+                  <g clipPath="url(#clip0_65_39)">
+                    <path d="M8.88346 1.26172L1.13281 8.8624" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+                    <path d="M1.13281 1.26172H8.88346V8.71245" stroke="white" strokeWidth="2" strokeMiterlimit="10" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_65_39">
+                      <rect width="10" height="10" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </Link>
+            {/* <button
               onClick={() => {
                 setModalOpen(true);
                 document.body.style.overflow = "hidden";
@@ -308,7 +334,7 @@ useEffect(() => {
                   </defs>
                 </svg>
               </div>
-            </button>
+            </button> */}
             {/*  GET AUDIT button only for /free-digital-marketing-audit */}
             {pathname === "/free-digital-marketing-audit" && (
   <Link

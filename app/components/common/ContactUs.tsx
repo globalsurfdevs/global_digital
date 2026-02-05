@@ -189,8 +189,8 @@ const ContactUs = () => {
         </div>
         <div className="psty bg-dgray  px-[20px] pt-[20px] pb-[30px] lg:pb-0 lg:pt-[75px] xl:px-[80px]  xxl:px-[80px] ">
 
-          <div className="lg:mb-[100px[ mb-[20px] flex items-center gap-2">
-            <p className="text-font30 uppercase">Message us</p>
+          <div className="lg:mb-[100px] mb-[20px] flex items-center gap-2">
+            <p className="text-font30 uppercase">Send us your details and our team will reach out.</p>
             <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
           </div>
 
