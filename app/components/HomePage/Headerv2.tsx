@@ -193,7 +193,7 @@ useEffect(() => {
           <nav
             className={`${
               isMenuOpen ? "block" : "hidden"
-            } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium lg:static lg:flex lg:w-auto lg:space-x-8 lg:bg-transparent`}
+            } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium lg:static lg:flex lg:w-auto lg:space-x-5 xl:space-x-8 lg:bg-transparent`}
           >
             {/* ABOUT */}
             <motion.div className="flex flex-col justify-center" whileHover="hover" initial="initial">

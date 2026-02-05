@@ -72,11 +72,11 @@ const nextConfig: NextConfig = {
       //   destination: "/social-media-agency-dubai", // The new URL path
       //   permanent: true, // Set to true for 301 (permanent) redirect
       // },
-      {
-        source: "/contact-us", // The old URL path
-        destination: "/lets-talk", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
+      // {
+      //   source: "/contact-us", // The old URL path
+      //   destination: "/lets-talk", // The new URL path
+      //   permanent: true, // Set to true for 301 (permanent) redirect
+      // },
       // {
       //   source: "/web-design-development", // The old URL path
       //   destination: "/web-design-and-development", // The new URL path

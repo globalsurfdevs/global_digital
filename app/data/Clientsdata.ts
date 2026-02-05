@@ -1,6 +1,6 @@
 // import { assets } from "@/public/assets/assets";
 
-export const Clientsdata = [
+export const Clientsdata = [  
   {
     id: 1,
     image: "/assets/clients/ASGC.svg",
@@ -239,5 +239,59 @@ export const Clientsdata = [
     image: "/assets/clients/sobha.svg",
     title: "Sobha",
     alt: "Sobha Constructions Logo",
+  },
+
+  {
+    id: 41,
+    image: "/assets/clients/bafco.svg",
+    title: "Bafco",
+    alt: "Bafco Logo",
+  },{
+    id: 42,
+    image: "/assets/clients/quaddream.svg",
+    title: "Quaddream",
+    alt: "Quaddream Logo",
+  },
+  {
+    id: 43,
+    image: "/assets/clients/dalmorel.svg",
+    title: "Dalmorel",
+    alt: "Dalmorel Logo",
+  },
+  {
+    id: 44,
+    image: "/assets/clients/arcadia.svg",
+    title: "Arcadia",
+    alt: "Arcadia Logo",
+  },
+  {
+    id: 45,
+    image: "/assets/clients/micolights.svg",
+    title: "Micolights",
+    alt: "Mico Lights Logo",
+  },
+  {
+    id: 46,
+    image: "/assets/clients/eet.svg",
+    title: "EET",
+    alt: "EET Logo",
+  },
+  {
+    id: 47,
+    image: "/assets/clients/cibes.svg",
+    title: "Cibes",
+    alt: "cibes Logo",
+  },
+  {
+    id: 48,
+    image: "/assets/clients/healthybuzz.svg",
+    title: "Healthy Buzz",
+    alt: "Healthy Buzz Logo",
+  },
+  {
+    id: 49,
+    image: "/assets/clients/best.svg",
+    title: "Best",
+    alt: "Best Logo",
   },
 ];
