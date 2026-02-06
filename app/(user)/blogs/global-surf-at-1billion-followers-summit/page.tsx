@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/blogs/global-surf-at-1billion-followers-summit",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
 
   };
 }
