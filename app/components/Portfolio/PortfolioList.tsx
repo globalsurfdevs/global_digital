@@ -155,15 +155,15 @@ const PortfolioList = () => {
                           {item.companyName}
                         </h3>
                         <div className="flex gap-1">
-                        {item?.channels?.map((channel,index)=>(
-                            <p key={index} className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{index==item.channels.length-1 ? channel.channelName : channel.channelName + ", "}</p>
-                        ))}
+                          {item?.channels?.map((channel, index) => (
+                            <p key={index} className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{index == item.channels.length - 1 ? channel.channelName : channel.channelName + ", "}</p>
+                          ))}
                         </div>
-                        {item?.channels?.length==0 && <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>}
+                        {item?.channels?.length == 0 && <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>}
                       </div>
                     </div>
 
-                    <Link href={item.section == "case study" ? `/case-study/${formatLinkForCaseStudy(item.companyName)}` : `/portfolio/${formatLinkForPortfolio(item.companyName)}`}
+                    <Link href={item.section == "case study" || item.section == "case study new" ? `/case-study/${formatLinkForCaseStudy(item.companyName)}` : `/portfolio/${formatLinkForPortfolio(item.companyName)}`}
                       className="absolute top-0 z-[1] h-full w-full" ></Link>
                   </div>
                 </motion.div>

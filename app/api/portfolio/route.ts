@@ -42,28 +42,28 @@ export async function GET(req: NextRequest) {
                     .from('portfolioHighlights')
                     .select("*")
                     .eq('companyId', portfolio[0].id)
-                    
-                    console.log(portfolio,"PortfolioH",portfolioHighlights)
+
+                console.log(portfolio, "PortfolioH", portfolioHighlights)
 
 
-                    return NextResponse.json({ portfolio, portfolioHighlights });
+                return NextResponse.json({ portfolio, portfolioHighlights });
             }
 
 
         } else {
             if (userType !== "admin") {
 
-                const cashedData:[] = await redisClient.get('portfolios') || []
-                
-                if(cashedData.length > 0){
+                const cashedData: [] = await redisClient.get('portfolios') || []
+
+                if (cashedData.length > 0) {
                     const portfolio = [...cashedData]
                     console.log("From cache")
-                    return NextResponse.json({portfolio})
+                    return NextResponse.json({ portfolio })
                 }
-                
+
                 let { data: portfolio, } = await supabase
                     .from('portfolios')
-                    .select('*').order('index',{ascending:true})
+                    .select('*').order('index', { ascending: true })
 
 
                 // let { data: caseStudy } = await supabase
@@ -73,26 +73,26 @@ export async function GET(req: NextRequest) {
 
                 // const combinedData = [...(portfolio || []), ...(caseStudy?.map((item) => ({ ...item, type: "case-study" })) || [])]
 
-                await redisClient.set('portfolios',portfolio,{
-                    ex:300
+                await redisClient.set('portfolios', portfolio, {
+                    ex: 300
                 })
 
                 console.log("From fresh")
 
                 return NextResponse.json({ portfolio });
-                
+
             } else {
 
                 console.log("Here")
                 let { data: portfolio, } = await supabase
                     .from('portfolios')
                     .select('*')
-                    .order('index',{ascending:true})
-                
+                    .order('index', { ascending: true })
 
-                   
 
-                if (portfolio && portfolio.length>0) {
+
+
+                if (portfolio && portfolio.length > 0) {
                     return NextResponse.json({ portfolio });
                 } else {
                     return NextResponse.json({ error: "Fetching portfolio failed" })
@@ -124,6 +124,8 @@ export async function POST(req: NextRequest) {
     const challenge = formData.get("challenge") as string
     const solutions = formData.get("solutions") as string
     const result = formData.get("result") as string
+    const strategyApproach = formData.get("strategyApproach") as string;
+    const socialMediaImages = formData.get("socialMediaImages") as string;
     const companyName = formData.get("companyName") as string
 
     // const metadataDesc = formData.get("metadataDesc") as string
@@ -161,12 +163,12 @@ export async function POST(req: NextRequest) {
     const bannerTitle = formData.get("bannerTitle") as string;
     const videoThumbnail = formData.get("videoThumbnail") as File | null
 
-   
+
     console.log("description", description)
     console.log("tag", tag)
     console.log("added", addedCategories)
 
-    console.log("section",section)
+    console.log("section", section)
 
     let addedCategoriesRaw;
     if (addedCategories) {
@@ -301,15 +303,15 @@ export async function POST(req: NextRequest) {
 
 
     try {
-        console.log("channelsUsed",channels)
+        console.log("channelsUsed", channels)
 
-        if(section=='portfolio'){
+        if (section == 'portfolio' || section == 'case study new') {
             if (id) {
                 const { data: portfolio, error } = await supabase
                     .from('portfolios')
                     .select('*')
                     .eq('id', id)
-    
+
                 if (portfolio) {
                     console.log("FIRSTTTTTTTTTTTTTTTT")
                     const { data, error } = await supabase
@@ -327,6 +329,8 @@ export async function POST(req: NextRequest) {
                             objectives,
                             challenge,
                             solutions,
+                            strategyApproach,
+                            socialMediaImages: JSON.parse(socialMediaImages),
                             result,
                             section2BannerImage: section2BannerImage == null ? section2BannerImagePath : section2BannerImage,
                             resultImage1: resultImage1PAth,
@@ -343,30 +347,31 @@ export async function POST(req: NextRequest) {
                             bannerTitle,
                             videoThumbnail: videoThumbnailPath,
                             videoTitle,
+                            section
                         })
                         .eq('id', id)
                         .select()
-    
-                    
-    
+
+
+
                     const highlights: { customId: string, number: string, text: string }[] = [];
-    
+
                     hightLightIds.forEach((item: number) => {
                         const customId = formData.get(`highlightId${item}`) as string;
                         const number = formData.get(`highlightNumber${item}`) as string;
                         const text = formData.get(`highlightText${item}`) as string;
-    
+
                         highlights.push({ customId, number, text });
-    
+
                         console.log("Item", item)
                     })
-    
+
                     console.log("highlights", highlights)
-    
-    
-    
+
+
+
                     for (let i = 0; i < highlights.length; i++) {
-    
+
                         if (highlights[i].customId.length > 36) {
                             console.log("deleteData", highlights[i].customId)
                             const deleteId = highlights[i].customId.slice(0, 36)
@@ -374,22 +379,22 @@ export async function POST(req: NextRequest) {
                                 .from('portfolioHighlights')
                                 .delete()
                                 .eq('customId', deleteId)
-    
+
                             continue;
                         }
-    
+
                         let { data: portfolioHighlight, error } = await supabase
                             .from('portfolioHighlights')
                             .select("*")
                             .eq('customId', highlights[i].customId)
-    
+
                         if (portfolioHighlight && portfolioHighlight.length > 0) {
                             const { data, error } = await supabase
                                 .from('portfolioHighlights')
                                 .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
                                 .eq('customId', highlights[i].customId)
                                 .select()
-    
+
                         } else {
                             console.log("in else yooooo")
                             const { data, error } = await supabase
@@ -399,25 +404,25 @@ export async function POST(req: NextRequest) {
                                 ])
                                 .select()
                         }
-    
+
                     }
-    
-    
+
+
                     return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
-    
-    
-    
-    
+
+
+
+
                 } else if (error) {
                     return NextResponse.json({ error: "Updating portfolio failed" }, { status: 400 })
                 } else {
                     return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
                 }
             }
-    
+
             else {
-    
-    
+
+
                 const { data, error } = await supabase
                     .from('portfolios')
                     .insert([
@@ -434,6 +439,8 @@ export async function POST(req: NextRequest) {
                             objectives,
                             challenge,
                             solutions,
+                            strategyApproach,
+                            socialMediaImages: JSON.parse(socialMediaImages),
                             result,
                             section2BannerImage: section2BannerImagePath,
                             resultImage1: resultImage1PAth,
@@ -446,40 +453,41 @@ export async function POST(req: NextRequest) {
                             slug,
                             metaTitle,
                             metaDescription,
-                            customId:uuidv4(),
+                            customId: uuidv4(),
                             websiteLink,
                             bannerTitle,
                             videoThumbnail: videoThumbnailPath,
                             videoTitle,
+                            section
                         },
                     ])
                     .select('id')
-    
+
                 let newId: number;
                 if (data) {
                     newId = data[0].id
                 }
-    
+
                 const highlights: { customId: string, number: string, text: string, companyId: number }[] = [];
-    
+
                 hightLightIds.forEach((item: number) => {
                     const customId = formData.get(`highlightId${item}`) as string;
                     const number = formData.get(`highlightNumber${item}`) as string;
                     const text = formData.get(`highlightText${item}`) as string;
                     const companyId = newId
                     highlights.push({ customId, number, text, companyId });
-    
+
                     console.log("Item", item)
                 })
-    
+
                 for (let i = 0; i < highlights.length; i++) {
                     console.log(highlights)
-    
+
                     let { data: portfolioHighlight, error } = await supabase
                         .from('portfolioHighlights')
                         .select("*")
                         .eq('customId', highlights[i].customId)
-    
+
                     if (portfolioHighlight && portfolioHighlight.length > 0) {
                         console.log("data", portfolioHighlight)
                         const { data, error } = await supabase
@@ -488,9 +496,9 @@ export async function POST(req: NextRequest) {
                             .eq('customId', highlights[i].customId)
                             .select()
                         console.log("in if")
-    
+
                     } else {
-    
+
                         console.log("Inserting")
                         const { data, error } = await supabase
                             .from('portfolioHighlights')
@@ -498,14 +506,14 @@ export async function POST(req: NextRequest) {
                                 { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId },
                             ])
                             .select()
-    
+
                     }
-    
+
                 }
-    
+
                 if (data) {
                     return NextResponse.json({ message: "Portfolio added successfully" }, { status: 200 })
-    
+
                 } else if (error) {
                     return NextResponse.json({ error: "Adding portfolio failed" }, { status: 400 })
                 } else {
@@ -514,13 +522,13 @@ export async function POST(req: NextRequest) {
             }
         }
 
-        else{
+        else {
             if (id) {
                 const { data: portfolio, error } = await supabase
                     .from('portfolios')
                     .select('*')
                     .eq('id', id)
-    
+
                 if (portfolio) {
                     const { data, error } = await supabase
                         .from('portfolios')
@@ -548,34 +556,34 @@ export async function POST(req: NextRequest) {
                             slug,
                             metaTitle,
                             metaDescription,
-                            customId:uuidv4(),
+                            customId: uuidv4(),
                             section,
                             homeTitle,
                             homeSubTitle
                         })
                         .eq('id', id)
                         .select()
-    
-                    
-    
-                    const highlights: { customId: string, number: string, text: string , showInHome:boolean }[] = [];
-    
+
+
+
+                    const highlights: { customId: string, number: string, text: string, showInHome: boolean }[] = [];
+
                     hightLightIds.forEach((item: number) => {
                         const customId = formData.get(`highlightId${item}`) as string;
                         const number = formData.get(`highlightNumber${item}`) as string;
                         const text = formData.get(`highlightText${item}`) as string;
-    
-                        highlights.push({ customId, number, text, showInHome:selectedHighlightForHome==customId });
-    
+
+                        highlights.push({ customId, number, text, showInHome: selectedHighlightForHome == customId });
+
                         console.log("Item", item)
                     })
-    
+
                     console.log("highlights", highlights)
-    
-    
-    
+
+
+
                     for (let i = 0; i < highlights.length; i++) {
-    
+
                         if (highlights[i].customId.length > 36) {
                             console.log("delete pls")
                             console.log("deleteData", highlights[i].customId)
@@ -585,51 +593,51 @@ export async function POST(req: NextRequest) {
                                 .from('portfolioHighlights')
                                 .delete()
                                 .eq('customId', deleteId)
-    
+
                             continue;
                         }
-    
+
                         console.log("no delete")
-    
+
                         let { data: portfolioHighlights, error } = await supabase
                             .from('portfolioHighlights')
                             .select("*")
                             .eq('customId', highlights[i].customId)
-    
+
                         if (portfolioHighlights && portfolioHighlights.length > 0) {
                             const { data, error } = await supabase
                                 .from('portfolioHighlights')
-                                .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId,showInHome:highlights[i].showInHome })
+                                .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, showInHome: highlights[i].showInHome })
                                 .eq('customId', highlights[i].customId)
                                 .select()
-    
+
                         } else {
                             console.log("in else yooooo")
                             const { data, error } = await supabase
                                 .from('portfolioHighlights')
                                 .insert([
-                                    { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id, showInHome:highlights[i].showInHome },
+                                    { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id, showInHome: highlights[i].showInHome },
                                 ])
                                 .select()
                         }
-    
+
                     }
-    
-    
+
+
                     return NextResponse.json({ message: "Case study updated successfully" }, { status: 200 })
-    
-    
-    
-    
+
+
+
+
                 } else if (error) {
                     return NextResponse.json({ error: "Updating case study failed" }, { status: 400 })
                 } else {
                     return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
                 }
             }
-    
+
             else {
-    
+
                 console.log("here in add")
                 const { data, error } = await supabase
                     .from('portfolios')
@@ -664,58 +672,58 @@ export async function POST(req: NextRequest) {
                         },
                     ])
                     .select('id')
-    
+
                 let newId: number;
                 if (data) {
                     newId = data[0].id
                 }
-    
-                const highlights: { customId: string, number: string, text: string, companyId: number,showInHome:boolean }[] = [];
-    
+
+                const highlights: { customId: string, number: string, text: string, companyId: number, showInHome: boolean }[] = [];
+
                 hightLightIds.forEach((item: number) => {
                     const customId = formData.get(`highlightId${item}`) as string;
                     const number = formData.get(`highlightNumber${item}`) as string;
                     const text = formData.get(`highlightText${item}`) as string;
                     const companyId = newId
-                    highlights.push({ customId, number, text, companyId,showInHome:selectedHighlightForHome==customId });
-    
+                    highlights.push({ customId, number, text, companyId, showInHome: selectedHighlightForHome == customId });
+
                     console.log("Item", item)
                 })
-    
+
                 for (let i = 0; i < highlights.length; i++) {
                     console.log(highlights)
-    
+
                     let { data: portfolioHighlights, error } = await supabase
                         .from('portfolioHighlights')
                         .select("*")
                         .eq('customId', highlights[i].customId)
-    
+
                     if (portfolioHighlights && portfolioHighlights.length > 0) {
                         console.log("data", portfolioHighlights)
                         const { data, error } = await supabase
                             .from('portfolioHighlights')
-                            .update({ number: highlights[i].number, text: highlights[i].text,showInHome:highlights[i].showInHome })
+                            .update({ number: highlights[i].number, text: highlights[i].text, showInHome: highlights[i].showInHome })
                             .eq('customId', highlights[i].customId)
                             .select()
                         console.log("in if")
-    
+
                     } else {
-    
+
                         console.log("Inserting")
                         const { data, error } = await supabase
                             .from('portfolioHighlights')
                             .insert([
-                                { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId,showInHome:highlights[i].showInHome },
+                                { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId, showInHome: highlights[i].showInHome },
                             ])
                             .select()
-    
+
                     }
-    
+
                 }
-    
+
                 if (data) {
                     return NextResponse.json({ message: "Case study added successfully" }, { status: 200 })
-    
+
                 } else if (error) {
                     return NextResponse.json({ error: "Adding case study failed" }, { status: 400 })
                 } else {
@@ -723,7 +731,7 @@ export async function POST(req: NextRequest) {
                 }
             }
         }
-        
+
 
     }
 
