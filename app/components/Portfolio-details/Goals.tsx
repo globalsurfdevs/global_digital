@@ -17,6 +17,8 @@ const Goals = ({
 
   console.log("CompanyName", companyName !== "bec-arabia")
 
+  console.log("section", data)
+
   return (
     <>
       <div className="container mx-auto py-4">
@@ -70,7 +72,7 @@ const Goals = ({
                 }}
               >
                 <div className="">
-                  <h2 className="text-font65">Goals</h2>  
+                  <h2 className="text-font65">Goals</h2>
                 </div>
                 <div className="fnt-lexend pt-2 text-font19  text-gray1">
                   {parse(data?.portfolio[0].goals || "")}
@@ -127,7 +129,7 @@ const Goals = ({
         </div>
       ) : null}
 
-      {data?.portfolio[0].challenge !== "undefined" &&
+      {data?.portfolio[0].section !== "case study new" ? (data?.portfolio[0].challenge !== "undefined" &&
         data?.portfolio[0].challenge !== "<p><br></p>" &&
         data?.portfolio[0].challenge !== "<p>undefined</p>" ||
         data?.portfolio[0].solutions !== "undefined" &&
@@ -147,7 +149,7 @@ const Goals = ({
               }, // Slide up and fade in
             }}
           >
-            <div className="grid space-y-5 py-[50px]  md:space-y-0 lg:grid-cols-2 lg:space-x-5 lg:py-[150px]">
+            <div className="grid space-y-5 py-[50px]  md:space-y-0 lg:grid-cols-2 lg:space-x-5 lg:py-[140px]">
               {data?.portfolio[0].challenge == "undefined" ||
                 data?.portfolio[0].challenge == "<p>undefined</p>" ||
                 data?.portfolio[0].challenge == "<p><br></p>" ? (
@@ -167,7 +169,7 @@ const Goals = ({
                 null
               ) : <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
                 <div>
-                  <h2 className="title-65 mb-3 lg:mb-[30px]">Solutions</h2>
+                  <h2 className="title-65 mb-3 lg:mb-[30px]">Solutions </h2>
                 </div>
                 <div className="fnt-lexend text-19 ollist pl-4 text-gray1">
                   {parse(data?.portfolio[0].solutions || "")}
@@ -176,7 +178,75 @@ const Goals = ({
             </div>
           </motion.div>
         </div>
-      ) : null}
+      ) : null)
+
+
+        :
+
+
+        (data?.portfolio[0].challenge !== "undefined" &&
+          data?.portfolio[0].challenge !== "<p><br></p>" &&
+          data?.portfolio[0].challenge !== "<p>undefined</p>" ||
+          data?.portfolio[0].solutions !== "undefined" &&
+          data?.portfolio[0].solutions !== "<p><br></p>" &&
+          data?.portfolio[0].solutions !== "<p>undefined</p>" ? (
+          <div className="container mx-auto py-4 lg:py-[150px]">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
+            >
+              <div className="grid space-y-5 py-[50px]  md:space-y-0 lg:grid-cols-2 lg:space-x-5">
+                {data?.portfolio[0].challenge == "undefined" ||
+                  data?.portfolio[0].challenge == "<p>undefined</p>" ||
+                  data?.portfolio[0].challenge == "<p><br></p>" ? (
+                  null
+                ) : <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
+                  <div>
+                    <h2 className="title-65 mb-3 lg:mb-[30px]">Challenge</h2>
+                  </div>
+                  <div className="text-19 fnt-lexend text-gray1">
+                    {parse(data?.portfolio[0].challenge || "")}
+                  </div>
+                </div>}
+
+                {data?.portfolio[0].strategyApproach == "undefined" ||
+                  data?.portfolio[0].strategyApproach == "<p>undefined</p>" ||
+                  data?.portfolio[0].strategyApproach == "<p><br></p>" ? (
+                  null
+                ) : <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
+                  <div>
+                    <h2 className="title-65 mb-3 lg:mb-[30px] 3xl:text-nowrap">Strategy & Approach</h2>
+                  </div>
+                  <div className="text-19 fnt-lexend text-gray1 strategy-approach">
+                    {parse(data?.portfolio[0].strategyApproach || "")}
+                  </div>
+                </div>}
+              </div>
+              {data?.portfolio[0].solutions == "undefined" ||
+                data?.portfolio[0].solutions == "<p>undefined</p>" ||
+                data?.portfolio[0].solutions == "<p><br></p>" ? (
+                null
+              ) : <div className="flex w-full flex-col bg-dgray px-5 pb-5 pt-5 lg:px-[80px]  lg:pb-[91px] lg:pt-[70px]">
+                <div>
+                  <h2 className="title-65 mb-3 lg:mb-[30px]">Solutions </h2>
+                </div>
+                <div className="fnt-lexend text-19 ollist pl-4 text-gray1">
+                  {parse(data?.portfolio[0].solutions || "")}
+                </div>
+              </div>}
+            </motion.div>
+          </div>
+        ) : null)}
+
     </>
   );
 };

@@ -21,17 +21,20 @@ import RichEditor from '../RichEditor/RichEditor'
 import { RxCross2 } from "react-icons/rx";
 import { generateSlugForPortfolio } from '@/app/helpers/generateSlug'
 import AdminIndiCaseStudy from '../AdminIndiCaseStudy/AdminIndiCaseStudy'
+import { ImageUploader } from '@/components/ui/image-uploader'
 
 
 type Inputs = {
     companyName: string
     industry: string
     country: string
-    channelsUsed: {channelName?:string}[]
+    channelsUsed: { channelName?: string }[]
     story: string
     goals: string;
     objectives: string;
     challenge: string;
+    strategyApproach: string;
+    socialMediaImages: string[];
     solutions: string;
     result: string;
     description: string;
@@ -42,7 +45,7 @@ type Inputs = {
     websiteLink: string;
     bannerTitle: string;
     video: string;
-    videoTitle:string;
+    videoTitle: string;
 } & {
     [key: `highlightNumber${string}`]: string;
 } & {
@@ -73,7 +76,7 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [addedHighlights, setAddedHighlights] = useState<addingHighlights[]>([])
     const [highlightNumber, setHighlightNumber] = useState('')
     const [highlightText, setHighlightText] = useState('')
-    const [channelsAvailable, setChannelsAvailable] = useState<{channelName:string}[]>([])
+    const [channelsAvailable, setChannelsAvailable] = useState<{ channelName: string }[]>([])
 
 
     const [modalOpen, setModalOpen] = useState(false)
@@ -109,7 +112,7 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [previewLogo, setPreviewLogo] = useState<null | string>(null)
     const [logoError, setLogoError] = useState<string | null>(null)
 
-    const [selectedSection,setSelectedSection] = useState('portfolio')
+    const [selectedSection, setSelectedSection] = useState('portfolio')
 
 
 
@@ -121,8 +124,8 @@ const AdminIndiPortfolio = ({ editMode }: {
         watch,
         formState: { errors },
     } = useForm<Inputs>({
-        defaultValues:{
-            channelsUsed:[{channelName:''}]
+        defaultValues: {
+            channelsUsed: [{ channelName: '' }]
         }
     })
 
@@ -140,6 +143,8 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("goals", data.goals);
         formData.append("objectives", data.objectives);
         formData.append("challenge", data.challenge);
+        formData.append("strategyApproach", data.strategyApproach);
+        formData.append("socialMediaImages", JSON.stringify(data.socialMediaImages));
         formData.append("solutions", data.solutions);
         formData.append("result", data.result);
         formData.append("slug", data.slug)
@@ -170,7 +175,7 @@ const AdminIndiPortfolio = ({ editMode }: {
         formData.append("tag", data.tag)
         formData.append("metaTitle", data.metaTitle)
         formData.append("metaDescription", data.metaDescription)
-        formData.append("section","portfolio")
+        formData.append("section", selectedSection)
 
         if (!previewImage || !previewLogo) {
             const check = checkLogoAndBanner(imageFile, setImageError, logoFile, setLogoError)
@@ -267,19 +272,19 @@ const AdminIndiPortfolio = ({ editMode }: {
         }
     }
 
-      useEffect(() => {
+    useEffect(() => {
         const fetchChannels = async () => {
-          try {
-            const response = await fetch(`/api/portfolio/channels`);
-            const data = await response.json();
-            console.log(data)
-            setChannelsAvailable(data.data)
-          } catch (error) {
-            console.error("Error fetching channels:", error);
-          }
+            try {
+                const response = await fetch(`/api/portfolio/channels`);
+                const data = await response.json();
+                console.log(data)
+                setChannelsAvailable(data.data)
+            } catch (error) {
+                console.error("Error fetching channels:", error);
+            }
         };
         fetchChannels();
-      }, []);
+    }, []);
 
 
     useEffect(() => {
@@ -293,16 +298,18 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("companyName", data.portfolio[0].companyName)
                         setValue("industry", data.portfolio[0].industry)
                         setValue("country", data.portfolio[0].country)
-                        if(data.portfolio[0].channels){
+                        if (data.portfolio[0].channels) {
                             setValue("channelsUsed", data.portfolio[0].channels)
                             setChannelsUsed(data.portfolio[0].channels)
                         }
-                        
+
                         setValue("story", data.portfolio[0].story)
                         setValue("goals", data.portfolio[0].goals)
                         setValue("objectives", data.portfolio[0].objectives)
                         setValue("challenge", data.portfolio[0].challenge)
                         setValue("solutions", data.portfolio[0].solutions)
+                        setValue("strategyApproach", data.portfolio[0].strategyApproach)
+
                         setValue("result", data.portfolio[0].result)
                         setValue("description", data.portfolio[0].description)
                         setValue("tag", data.portfolio[0].tag)
@@ -313,14 +320,17 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("websiteLink", data.portfolio[0].websiteLink)
                         setValue("video", data.portfolio[0].video)
                         setValue("videoTitle", data.portfolio[0].videoTitle)
-                        
-                        
-                        
-                        
-                        if(data.portfolio[0].section=='portfolio'){
+                        setImageUrls(data.portfolio[0].socialMediaImages);
+                        setValue("socialMediaImages", data.portfolio[0].socialMediaImages);
+
+
+
+                        if (data.portfolio[0].section == 'portfolio') {
                             setSelectedSection('portfolio')
-                        }else{
+                        } else if (data.portfolio[0].section == 'case study') {
                             setSelectedSection('case study')
+                        } else if (data.portfolio[0].section == 'case study new') {
+                            setSelectedSection('case study new')
                         }
 
                         if (data.portfolio[0].categories) {
@@ -551,41 +561,59 @@ const AdminIndiPortfolio = ({ editMode }: {
         }
     }
 
-    const [channelsUsed, setChannelsUsed] = useState<{channelName:string}[]>([])
+    const [channelsUsed, setChannelsUsed] = useState<{ channelName: string }[]>([])
     const handleChangeInChannel = (index: number) => {
         const channel = channelsAvailable[index];
-      
+
         const alreadyExists = channelsUsed.find(
-          (item: { channelName: string }) => item.channelName === channel.channelName
+            (item: { channelName: string }) => item.channelName === channel.channelName
         );
-      
+
         if (alreadyExists) {
-          const updated = channelsUsed.filter(
-            (item: { channelName: string }) => item.channelName !== channel.channelName
-          );
-          setChannelsUsed(updated);
-          setValue("channelsUsed", updated); // ✅ use updated
+            const updated = channelsUsed.filter(
+                (item: { channelName: string }) => item.channelName !== channel.channelName
+            );
+            setChannelsUsed(updated);
+            setValue("channelsUsed", updated); // ✅ use updated
         } else {
-          const updated = [...channelsUsed, channel];
-          setChannelsUsed(updated);
-          setValue("channelsUsed", updated); // ✅ use updated
+            const updated = [...channelsUsed, channel];
+            setChannelsUsed(updated);
+            setValue("channelsUsed", updated); // ✅ use updated
         }
-      };
+    };
+
+    const [imageUrls, setImageUrls] = useState<string[]>([]);
+    const handleImageUpload = (uploadedUrl: string) => {
+        setImageUrls((prev) => {
+            const updated = [...prev, uploadedUrl];
+            setValue("socialMediaImages", updated);
+            return updated;
+        });
+    };
+
+    const handleRemoveImage = (indexToRemove: number) => {
+        setImageUrls((prev) => {
+            const updated = prev.filter((_, index) => index !== indexToRemove);
+            setValue("socialMediaImages", updated);
+            return updated;
+        });
+    };
 
 
-    if(selectedSection=='portfolio'){
+    if (selectedSection == 'portfolio' || selectedSection == 'case study new') {
         return (
             <div>
                 <h1 className='text-3xl'>{`${editMode ? "Edit" : "Add"} Portfolio Content`}</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className='h-full'>
-    
+
                     {!editMode && <div className='mt-5'>
                         <div className="w-full max-w-sm min-w-[200px]">
                             <div className="relative">
-                                <select value={selectedSection} onChange={(e)=>setSelectedSection(e.target.value)}
+                                <select value={selectedSection} onChange={(e) => setSelectedSection(e.target.value)}
                                     className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
                                     <option value="portfolio">Portfolio</option>
                                     <option value="case study">Case Study</option>
+                                    <option value="case study new">Case Study New</option>
                                 </select>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.2" stroke="currentColor" className="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-700">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
@@ -593,65 +621,65 @@ const AdminIndiPortfolio = ({ editMode }: {
                             </div>
                         </div>
                     </div>}
-    
+
                     <div className='grid grid-cols-2 gap-10 mt-5'>
-                    <div className='flex flex-col'>
-                        <div
-                            className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
-                            onDragOver={(e) => e.preventDefault()}
-                            onClick={() => document?.getElementById("image")?.click()}
-                        >
-                            {previewImage ? (
-                                <div className="relative w-full h-full">
-                                    <Image src={previewImage} alt="Preview" layout="fill" objectFit="cover" />
-                                    {<button
-                                        type="button"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setPreviewImage(null); // Clear the preview image
-                                            setImageFile(null);
-                                            const inputElement = document.getElementById("image") as HTMLInputElement;
-                                            if (inputElement) {
-                                                inputElement.value = ""; // Reset the input value
-                                            }
-                                        }}
-                                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <div className='flex flex-col'>
+                            <div
+                                className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
+                                onDragOver={(e) => e.preventDefault()}
+                                onClick={() => document?.getElementById("image")?.click()}
+                            >
+                                {previewImage ? (
+                                    <div className="relative w-full h-full">
+                                        <Image src={previewImage} alt="Preview" layout="fill" objectFit="cover" />
+                                        {<button
+                                            type="button"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setPreviewImage(null); // Clear the preview image
+                                                setImageFile(null);
+                                                const inputElement = document.getElementById("image") as HTMLInputElement;
+                                                if (inputElement) {
+                                                    inputElement.value = ""; // Reset the input value
+                                                }
+                                            }}
+                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                        </button>}
+                                    </div>
+                                ) : (
+                                    <>
+                                        <svg
+                                            className="mx-auto h-12 w-12 text-gray-400"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            viewBox="0 0 48 48"
+                                            aria-hidden="true"
+                                        >
                                             <path
-                                                fillRule="evenodd"
-                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                clipRule="evenodd"
+                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
                                             />
                                         </svg>
-                                    </button>}
-                                </div>
-                            ) : (
-                                <>
-                                    <svg
-                                        className="mx-auto h-12 w-12 text-gray-400"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        viewBox="0 0 48 48"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                    </svg>
-                                    <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
-                                </>
-                            )}
-                            <input type="file" id="image" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError, setImageFile, setPreviewImage })} />
-                            {imageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
+                                        <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
+                                    </>
+                                )}
+                                <input type="file" id="image" accept="image/*" className="hidden" onChange={(e) => handleImageChange({ e, setImageError, setImageFile, setPreviewImage })} />
+                                {imageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
 
 
-                        </div>
+                            </div>
 
-                        <div>
+                            <div>
                                 <div className='w-full flex flex-col gap-2'>
                                     <Label content='Banner Title' />
                                     <input type="text" {...register("bannerTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
@@ -667,9 +695,9 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
                             </div>
 
-                            </div>
+                        </div>
 
-    
+
                         <div>
                             <div className='flex flex-col'>
                                 <div className='w-full flex flex-col gap-2'>
@@ -677,19 +705,19 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     <input type="text" {...register("companyName", { required: "Company name is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                     {errors.companyName && <p className='mt-1 text-sm text-red'>{errors.companyName.message}</p>}
                                 </div>
-    
+
                                 <div className='w-full flex flex-col gap-2'>
                                     <Label content='Industry' />
                                     <input type="text" {...register("industry", { required: "Industry is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                     {errors.industry && <p className='mt-1 text-sm text-red'>{errors.industry.message}</p>}
                                 </div>
-    
+
                                 <div className='w-full flex flex-col gap-2'>
                                     <Label content='Country' />
                                     <input type="text" {...register("country", { required: "Country is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                     {errors.country && <p className='mt-1 text-sm text-red'>{errors.country.message}</p>}
                                 </div>
-    
+
                                 {/* <div className='w-full flex flex-col gap-2'>
                                     <Label content='Channels Used' />
                                     <input type="text" {...register("channelsUsed", { required: "Channels used is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
@@ -701,20 +729,20 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     <div className='flex gap-2 border p-5 flex-wrap h-[200px]'>
                                         {channelsAvailable.map((channel, index) => (
                                             <div key={index} className='relative'>
-                                            <div className={`h-4 w-4 rounded-full absolute -top-2 right-1 border-2 cursor-pointer ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`} onClick={() => handleChangeInChannel(index)}></div>
+                                                <div className={`h-4 w-4 rounded-full absolute -top-2 right-1 border-2 cursor-pointer ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`} onClick={() => handleChangeInChannel(index)}></div>
                                                 <span className="px-6 py-3 border border-gray-300 rounded-md" key={index}>{channel.channelName}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-    
+
                             </div>
-    
+
                         </div>
                     </div>
-    
+
                     <div className='grid grid-cols-2 gap-10 mt-5'>
-    
+
                         <div className='h-full'>
                             <div className='w-full flex flex-col gap-2 h-full'>
                                 <Label content='Story' />
@@ -732,7 +760,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 {errors.story && <p className="mt-1 text-sm text-red-600">{errors.story.message}</p>}
                             </div>
                         </div>
-    
+
                         <div className='h-full'>
                             <div className='flex gap-2 items-center'>
                                 <h3>Highligths</h3>
@@ -740,20 +768,20 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     <FaPlus className='text-sm' onClick={() => setModalOpen(true)} />
                                 </div>
                             </div>
-    
+
                             <div className='overflow-y-scroll h-64 p-1 gap-2 flex flex-col'>
-    
-    
-    
+
+
+
                                 {highlights.length > 0 ?
-    
+
                                     (
-    
+
                                         highlights.map((item: PortfolioHighlight) => (
-    
+
                                             item.customId.length == 36 ? (
                                                 <div className='grid grid-cols-2 gap-5 bg-gray-400 p-3 text-white rounded-xl relative' key={item.customId}>
-    
+
                                                     <div className='absolute right-2 top-1 flex gap-2'>
                                                         {/* <div className='w-5 h-5 bg-yellow-200 rounded-full text-black flex items-center justify-center'>
                             <MdEdit />
@@ -762,45 +790,45 @@ const AdminIndiPortfolio = ({ editMode }: {
                                                             <IoIosClose />
                                                         </div>
                                                     </div>
-    
+
                                                     <div className='w-full'>
                                                         <label>Number</label>
                                                         <input type="text" value={item.number} onChange={(e) => handleInputChange(item.customId, 'number', e.target.value)} className={'w-full rounded-xl text-black pl-2'} />
                                                     </div>
-    
+
                                                     <div className='w-full'>
                                                         <label>Text</label>
                                                         <input type='text' value={item.text} onChange={(e) => handleInputChange(item.customId, 'text', e.target.value)} className='w-full rounded-xl text-black pl-2'></input>
                                                     </div>
-    
+
                                                 </div>
                                             ) : (
                                                 null
                                             )
-    
+
                                         ))
-    
-    
+
+
                                     ) : (
-    
+
                                         <div>No highlights available</div>
                                     )
                                 }
-    
-    
-    
-    
+
+
+
+
                             </div>
                         </div>
-    
-    
+
+
                         {modalOpen && <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    
+
                             <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
-    
+
                             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-    
+
                                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                                         <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                             {/* <div className="sm:flex sm:items-start">
@@ -816,17 +844,17 @@ const AdminIndiPortfolio = ({ editMode }: {
                                                     </div>
                                                 </div>
                                             </div> */}
-    
+
                                             <div className='w-full'>
                                                 <label>Number</label>
                                                 <input type="text" value={highlightNumber} onChange={(e) => setHighlightNumber(e.target.value)} className={'w-full rounded-xl text-black pl-2'} />
                                             </div>
-    
+
                                             <div className='w-full'>
                                                 <label>Text</label>
                                                 <input type='text' value={highlightText} onChange={(e) => setHighlightText(e.target.value)} className='w-full rounded-xl text-black pl-2'></input>
                                             </div>
-    
+
                                         </div>
                                         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                             <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={handleAddHighlight}>Submit</button>
@@ -836,24 +864,24 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
                             </div>
                         </div>}
-    
-    
+
+
                         {categoryModal && <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    
+
                             <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
-    
+
                             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-    
+
                                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                                         <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-    
-    
+
+
                                             <div className='w-full'>
                                                 <label>Category Name</label>
                                                 <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className={'w-full rounded-xl text-black pl-2'} />
                                             </div>
-    
+
                                         </div>
                                         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                             <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={handleAddCategory}>Submit</button>
@@ -863,13 +891,13 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
                             </div>
                         </div>}
-    
-    
+
+
                     </div>
-    
+
                     <div className='border-t mt-15 pt-5 flex flex-col gap-6'>
                         <h3 className='text-3xl'>Section 2</h3>
-    
+
                         <div className='grid grid-cols-2 gap-5'>
                             <div>
                                 <div>Section 2 - Image 1</div>
@@ -927,8 +955,8 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
                                 {section2Image1Error && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
                             </div>
-    
-    
+
+
                             <div>
                                 <div>Section 2 - Image 2</div>
                                 <div
@@ -985,9 +1013,9 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
                                 {section2Image2Error && <p className="mt-1 text-sm text-red-600">{section2Image2Error}</p>}
                             </div>
-    
+
                         </div>
-    
+
                         <div className='grid grid-cols-2 gap-5'>
                             <div>
                                 <Label content='Goals' />
@@ -1002,10 +1030,10 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     /> */}
                                     <RichEditor control={control} name='goals' />
                                 </div>
-    
+
                             </div>
-    
-    
+
+
                             <div>
                                 <Label content='Objectives' />
                                 <div className='h-full'>
@@ -1019,11 +1047,11 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     /> */}
                                     <RichEditor control={control} name='objectives' />
                                 </div>
-    
+
                             </div>
-    
+
                         </div>
-    
+
                         <div className='mt-15'>
                             <div>
                                 <div>Section 2 - Banner Image</div>
@@ -1082,9 +1110,9 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 {section2BannerImageError && <p className="mt-1 text-sm text-red-600">{section2BannerImageError}</p>}
                             </div>
                         </div>
-    
+
                     </div>
-    
+
                     <div className='grid grid-cols-2 gap-5 mt-5'>
                         <div className='h-full'>
                             <div className='w-full flex flex-col gap-2 h-full'>
@@ -1100,10 +1128,10 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     /> */}
                                     <RichEditor control={control} name='challenge' />
                                 </div>
-    
+
                             </div>
                         </div>
-    
+
                         <div className='h-full'>
                             <div className='w-full flex flex-col gap-2 h-full'>
                                 <Label content='Solutions' />
@@ -1118,24 +1146,73 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     /> */}
                                     <RichEditor control={control} name='solutions' />
                                 </div>
-    
+
                             </div>
                         </div>
+
+                        <div className='h-full my-12'>
+                            <div className='w-full flex flex-col gap-2 h-full'>
+                                <Label content='Strategy & Approach' />
+                                <div className='h-full'>
+                                    {/* <Controller
+                                        name="solutions"
+                                        control={control}
     
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                        )}
+                                    /> */}
+                                    <RichEditor control={control} name='strategyApproach' />
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div className='mt-20 flex gap-3 flex-col'>
-                            <div className='w-full flex flex-col'>
-                                    <Label content='Video' />
-                                    <input type="text" {...register("video")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-                                    {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
+                    <div className='mt-28'>
+                        <div className='flex justify-between items-center'>
+                            <Label content='Social Media' />
+                        </div>
+                        <div className="mt-2">
+                            <ImageUploader onChange={handleImageUpload} deleteAfterUpload={true} multiple={true} />
+                        </div>
+
+
+                        <div className="mt-4 grid grid-cols-3 gap-4">
+                            {imageUrls.map((url, index) => (
+                                <div key={index} className="relative h-40">
+                                    <Image
+                                        src={url}
+                                        alt={`Uploaded image ${index + 1}`}
+                                        className="h-full w-full object-cover rounded-lg"
+                                        width={100}
+                                        height={100}
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => handleRemoveImage(index)}
+                                        className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                                    >
+                                        ×
+                                    </button>
                                 </div>
-                                <div className='w-full flex flex-col'>
-                                    <Label content='Video Title' />
-                                    <input type="text" {...register("videoTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-                                    {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
-                                </div>
-                                <div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className='mt-28 flex gap-3 flex-col'>
+                        <div className='w-full flex flex-col'>
+                            <Label content='Video' />
+                            <input type="text" {...register("video")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                            {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
+                        </div>
+                        <div className='w-full flex flex-col'>
+                            <Label content='Video Title' />
+                            <input type="text" {...register("videoTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                            {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
+                        </div>
+                        <div>
                             <Label content='Video Thumbnail' />
                             <div
                                 className="w-full h-[300px] border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden mt-2"
@@ -1191,8 +1268,8 @@ const AdminIndiPortfolio = ({ editMode }: {
                             </div>
                             {videoThumbnailError && <p className="mt-1 text-sm text-red-600">{videoThumbnailError}</p>}
                         </div>
-                        </div>
-    
+                    </div>
+
                     <div className='grid grid-cols-3 mt-15 h-96 gap-5'>
                         <div className=''>
                             <div className='w-full flex flex-col gap-2 h-full'>
@@ -1208,10 +1285,10 @@ const AdminIndiPortfolio = ({ editMode }: {
                                     /> */}
                                     <RichEditor control={control} name='result' />
                                 </div>
-    
+
                             </div>
                         </div>
-    
+
                         <div>
                             <Label content='Result-Image1' />
                             <div
@@ -1268,7 +1345,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                             </div>
                             {resultImage1Error && <p className="mt-1 text-sm text-red-600">{resultImage1Error}</p>}
                         </div>
-    
+
                         <div>
                             <Label content='Result-Image2' />
                             <div
@@ -1325,35 +1402,35 @@ const AdminIndiPortfolio = ({ editMode }: {
                             </div>
                             {resultImage2Error && <p className="mt-1 text-sm text-red-600">{resultImage2Error}</p>}
                         </div>
-    
+
                     </div>
-    
+
                     <div className='mt-15 grid grid-cols-2 gap-5'>
-    
+
                         <div className='w-full flex flex-col gap-2'>
                             <div>
                                 <Label content='Description' />
                                 <input type="text" {...register("description", { required: "Description is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                 {errors.description && <p className='mt-1 text-sm text-red'>{errors.description.message}</p>}
                             </div>
-    
+
                         </div>
-    
+
                         <div className='w-full flex flex-col gap-2'>
                             <Label content='Tag' />
                             <input type="text" {...register("tag", { required: "Tag is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                             {errors.tag && <p className='mt-1 text-sm text-red'>{errors.tag.message}</p>}
                         </div>
-    
-    
+
+
                     </div>
-    
+
                     {/* <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
                                 <Droppable categories={categories}/>
                     </DndContext> */}
-    
+
                     <div className='grid grid-cols-2 mt-14 gap-5'>
-    
+
                         <div>
                             <Label content='Added Categories' className='' />
                             <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
@@ -1365,12 +1442,12 @@ const AdminIndiPortfolio = ({ editMode }: {
                                                 <MdOutlineSwapHorizontalCircle />
                                             </div>
                                         </div>
-    
+
                                     </>
                                 ))}
                             </div>
                         </div>
-    
+
                         <div>
                             <div className='flex gap-1 items-center'>
                                 <Label content='Available Categories' className='' />
@@ -1379,7 +1456,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
                             </div>
                             <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
-    
+
                                 {categories.filter(
                                     (item) => !addedCategories.some((addedItem) => addedItem.id === item.id)
                                 ).map((item) => (
@@ -1391,11 +1468,11 @@ const AdminIndiPortfolio = ({ editMode }: {
                                         </div>
                                     </div>
                                 ))}
-    
-    
+
+
                             </div>
                         </div>
-    
+
                     </div>
                     <div className='h-36 w-1/3 mt-10'>
                         <Label content='Logo' />
@@ -1452,47 +1529,47 @@ const AdminIndiPortfolio = ({ editMode }: {
                         </div>
                         {logoError && <p className="mt-1 text-sm text-red-600">{logoError}</p>}
                     </div>
-    
+
                     <div className='w-full flex flex-col gap-2 mt-15'>
                         <div>
                             <Label content='slug' />
                             <input type="text" {...register("slug")} readOnly className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-    
+
                         </div>
-    
+
                     </div>
-    
+
                     <div className='grid grid-cols-2 gap-5 mt-5'>
                         <div>
                             <Label content='meta-title' />
                             <input type="text" {...register("metaTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-    
+
                         </div>
-    
+
                         <div>
                             <Label content='meta-description' />
                             <input type="text" {...register("metaDescription")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-    
+
                         </div>
-    
+
                     </div>
-    
+
                     <div className='mt-25 pb-5'>
                         <div
-    
+
                             className="inline-flex items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 w-[15%]"
                         >
                             <button type='submit' disabled={isSubmitting}>{isSubmitting ? "Saving" : "Save"}</button>
                         </div>
                     </div>
                 </form>
-    
+
             </div>
         )
-     
-    }else if(selectedSection=='case study'){
+
+    } else if (selectedSection == 'case study') {
         return (
-            <AdminIndiCaseStudy selectedSection={selectedSection} setSelectedSection={setSelectedSection}/>
+            <AdminIndiCaseStudy selectedSection={selectedSection} setSelectedSection={setSelectedSection} />
         )
     }
 

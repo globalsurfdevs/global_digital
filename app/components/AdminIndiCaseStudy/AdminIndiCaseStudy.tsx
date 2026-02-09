@@ -32,10 +32,10 @@ type addingHighlights = {
 
 
 
-const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
+const AdminIndiCaseStudy = ({ editMode, selectedSection, setSelectedSection }: {
     editMode?: boolean;
-    selectedSection?:string;
-    setSelectedSection?:Dispatch<React.SetStateAction<string>>
+    selectedSection?: string;
+    setSelectedSection?: Dispatch<React.SetStateAction<string>>
 }) => {
     const { companyId } = useParams()
     const router = useRouter()
@@ -74,7 +74,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
 
     const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
     const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
-    const [selectedHighlightForHome,setSelectedHighlightForHome] = useState<string | null>(null)
+    const [selectedHighlightForHome, setSelectedHighlightForHome] = useState<string | null>(null)
 
     const {
         register,
@@ -107,10 +107,10 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
         formData.append("slug", data.slug)
         formData.append("metaTitle", data.metaTitle)
         formData.append("metaDescription", data.metaDescription)
-        formData.append("section","case study")
-        formData.append("selectedHighlightForHome",selectedHighlightForHome || "")
-        formData.append("homeTitle",data.homeTitle)
-        formData.append("homeSubTitle",data.homeSubTitle)
+        formData.append("section", "case study")
+        formData.append("selectedHighlightForHome", selectedHighlightForHome || "")
+        formData.append("homeTitle", data.homeTitle)
+        formData.append("homeSubTitle", data.homeSubTitle)
 
         const hightLightIds: string[] = []
         console.log(highlights)
@@ -250,8 +250,8 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                         setValue("slug", data.portfolio[0].slug)
                         setValue("metaTitle", data.portfolio[0].metaTitle)
                         setValue("metaDescription", data.portfolio[0].metaDescription)
-                        setValue("homeTitle",data.portfolio[0].homeTitle)
-                        setValue("homeSubTitle",data.portfolio[0].homeSubTitle)
+                        setValue("homeTitle", data.portfolio[0].homeTitle)
+                        setValue("homeSubTitle", data.portfolio[0].homeSubTitle)
 
                         if (data.portfolio[0].categories) {
 
@@ -259,7 +259,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
 
                         }
 
-                        
+
 
                         // if (data.caseStudy[0].categories) {
 
@@ -269,7 +269,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                         console.log(data.portfolio[0].coverImage)
 
                         if (data.portfolio[0].coverImage) {
-                           
+
                             setPreviewCoverImage(data.portfolio[0].coverImage as string);
 
                         }
@@ -310,7 +310,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                         data.portfolioHighlights.forEach((item: PortfolioHighlight) => {
                             setValue(`highlightText${item.customId}`, item.text)
                             setValue(`highlightNumber${item.customId}`, item.number)
-                            if(item.showInHome){
+                            if (item.showInHome) {
                                 setSelectedHighlightForHome(item.customId)
                             }
                         })
@@ -375,7 +375,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                 return;
             }
 
-            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4(),showInHome:false }]))
+            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4(), showInHome: false }]))
             setModalOpen(false)
             setHighlightNumber("")
             setHighlightText("")
@@ -493,8 +493,8 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
     }
 
     useEffect(() => {
-            setValue("slug", generateSlugForCaseStudy(watch("companyName")))
-        }, [watch("companyName")])
+        setValue("slug", generateSlugForCaseStudy(watch("companyName")))
+    }, [watch("companyName")])
 
 
     const modules = {
@@ -515,21 +515,22 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
         <div>
             <h1 className='text-3xl'>{`${editMode ? "Edit" : "Add"} Case Study Content`}</h1>
             <form onSubmit={handleSubmit(onSubmit)} className='h-full'>
-            
-            {!editMode && setSelectedSection && <div className='mt-5'>
-                        <div className="w-full max-w-sm min-w-[200px]">
-                            <div className="relative">
-                                <select value={selectedSection} onChange={(e)=>setSelectedSection(e.target.value)}
-                                    className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
-                                    <option value="portfolio">Portfolio</option>
-                                    <option value="case study">Case Study</option>
-                                </select>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.2" stroke="currentColor" className="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-700">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                </svg>
-                            </div>
+
+                {!editMode && setSelectedSection && <div className='mt-5'>
+                    <div className="w-full max-w-sm min-w-[200px]">
+                        <div className="relative">
+                            <select value={selectedSection} onChange={(e) => setSelectedSection(e.target.value)}
+                                className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
+                                <option value="portfolio">Portfolio</option>
+                                <option value="case study">Case Study</option>
+                                <option value="case study new">Case Study New</option>
+                            </select>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.2" stroke="currentColor" className="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-700">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                            </svg>
                         </div>
-                    </div>}
+                    </div>
+                </div>}
 
                 <div className='grid grid-cols-2 gap-10 mt-5'>
                     <div
@@ -667,7 +668,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                                                     {/* <div className='w-5 h-5 bg-yellow-200 rounded-full text-black flex items-center justify-center'>
                         <MdEdit />
                     </div> */}                      <div className='w-5 h-5 rounded-full text-black flex items-center justify-center'>
-                                                        <input type="checkbox" checked={item.customId==selectedHighlightForHome} name="" id="" className='rounded-full text-red-600' onChange={()=>setSelectedHighlightForHome(prev => prev === item.customId ? null : item.customId)}/>
+                                                        <input type="checkbox" checked={item.customId == selectedHighlightForHome} name="" id="" className='rounded-full text-red-600' onChange={() => setSelectedHighlightForHome(prev => prev === item.customId ? null : item.customId)} />
                                                     </div>
 
                                                     <div className='w-5 h-5 bg-red-500 rounded-full text-black flex items-center justify-center' onClick={() => handleDeleteHighlight(item.customId)}>
@@ -705,7 +706,7 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                         </div>
 
                         <div className='flex gap-5 flex-col'>
-                        <div className='w-full flex flex-col gap-2'>
+                            <div className='w-full flex flex-col gap-2'>
                                 <Label content='Title for home' />
                                 <input type="text" {...register("homeTitle", { required: "Home title is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
                                 {errors.homeTitle && <p className='mt-1 text-sm text-red'>{errors.homeTitle.message}</p>}
@@ -716,61 +717,61 @@ const AdminIndiCaseStudy = ({ editMode,selectedSection,setSelectedSection }: {
                                 {errors.homeTitle && <p className='mt-1 text-sm text-red'>{errors.homeTitle.message}</p>}
                             </div>
                             <div>
-                            <div>Image for home</div>
-                            <div
-                                className="w-full h-96 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
-                                onDragOver={(e) => e.preventDefault()}
-                                onClick={() => document?.getElementById("image1")?.click()}
-                            >
-                                {homeImagePreview ? (
-                                    <div className="relative w-full h-full">
-                                        <Image src={homeImagePreview} alt="Preview" layout="fill" objectFit="cover" />
-                                        {<button
-                                            type="button"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setHomeImagePreview(null); // Clear the preview image
-                                                setHomeImage(null);
-                                            }}
-                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <div>Image for home</div>
+                                <div
+                                    className="w-full h-96 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
+                                    onDragOver={(e) => e.preventDefault()}
+                                    onClick={() => document?.getElementById("image1")?.click()}
+                                >
+                                    {homeImagePreview ? (
+                                        <div className="relative w-full h-full">
+                                            <Image src={homeImagePreview} alt="Preview" layout="fill" objectFit="cover" />
+                                            {<button
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setHomeImagePreview(null); // Clear the preview image
+                                                    setHomeImage(null);
+                                                }}
+                                                className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                            </button>}
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <svg
+                                                className="mx-auto h-12 w-12 text-gray-400"
+                                                stroke="currentColor"
+                                                fill="none"
+                                                viewBox="0 0 48 48"
+                                                aria-hidden="true"
+                                            >
                                                 <path
-                                                    fillRule="evenodd"
-                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                    clipRule="evenodd"
+                                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
                                                 />
                                             </svg>
-                                        </button>}
-                                    </div>
-                                ) : (
-                                    <>
-                                        <svg
-                                            className="mx-auto h-12 w-12 text-gray-400"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            viewBox="0 0 48 48"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            />
-                                        </svg>
-                                        <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
-                                    </>
-                                )}
-                                <input type="file" id="image1" accept="image/*" className="hidden" onChange={(e) => handleImageChange({
-                                    e,
-                                    setImageError: setHomeImageError,
-                                    setImageFile: setHomeImage,
-                                    setPreviewImage: setHomeImagePreview
-                                })} />
+                                            <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
+                                        </>
+                                    )}
+                                    <input type="file" id="image1" accept="image/*" className="hidden" onChange={(e) => handleImageChange({
+                                        e,
+                                        setImageError: setHomeImageError,
+                                        setImageFile: setHomeImage,
+                                        setPreviewImage: setHomeImagePreview
+                                    })} />
+                                </div>
+                                {homeImageError && <p className="mt-1 text-sm text-red-600">{homeImageError}</p>}
                             </div>
-                            {homeImageError && <p className="mt-1 text-sm text-red-600">{homeImageError}</p>}
-                        </div>
                         </div>
                     </div>
 

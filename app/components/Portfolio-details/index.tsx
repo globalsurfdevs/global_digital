@@ -9,15 +9,16 @@ import { Portfolio } from '@/app/types/Portfolio'
 import { PortfolioHighlight } from '@/app/types/PortfolioHighlights'
 import MainSection from './MainSection'
 import YtVideo from './YtVideo'
+import SocialMedia from './SocialMedia'
 
 const PortfolioDetails = () => {
 
-    const {companyName} = useParams()
+    const { companyName } = useParams()
 
     const [data, setData] = useState<{ portfolio: Portfolio[]; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
 
     useEffect(() => {
-        
+
         const fetchPortfolioDetails = async () => {
             const response = await fetch(`/api/portfolio?slug=${companyName}`);
             if (response.ok) {
@@ -34,11 +35,12 @@ const PortfolioDetails = () => {
 
     return (
         <>
-            <MainSection data={data}/>
-            <HeroSection data={data}/>
-            <Goals data={data} companyName={companyName?.toString() ?? null}/>
-            <YtVideo data={data}/>
-            <Result data={data}/>
+            <MainSection data={data} />
+            <HeroSection data={data} />
+            <Goals data={data} companyName={companyName?.toString() ?? null} />
+            <YtVideo data={data} />
+            {data?.portfolio[0].section == "case study new" && <SocialMedia data={data} />}
+            <Result data={data} />
         </>
     )
 }
