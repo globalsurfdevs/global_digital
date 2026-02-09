@@ -320,7 +320,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                         setValue("websiteLink", data.portfolio[0].websiteLink)
                         setValue("video", data.portfolio[0].video)
                         setValue("videoTitle", data.portfolio[0].videoTitle)
-                        setImageUrls(data.portfolio[0].socialMediaImages);
+                        setImageUrls(data.portfolio[0].socialMediaImages || []);
                         setValue("socialMediaImages", data.portfolio[0].socialMediaImages);
 
 
@@ -1150,7 +1150,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                             </div>
                         </div>
 
-                        <div className='h-full my-12'>
+                        {selectedSection === 'case study new' && <div className='h-full my-12'>
                             <div className='w-full flex flex-col gap-2 h-full'>
                                 <Label content='Strategy & Approach' />
                                 <div className='h-full'>
@@ -1166,11 +1166,11 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
 
                             </div>
-                        </div>
+                        </div>}
 
                     </div>
 
-                    <div className='mt-28'>
+                    {selectedSection === 'case study new' && <div className='mt-28'>
                         <div className='flex justify-between items-center'>
                             <Label content='Social Media' />
                         </div>
@@ -1199,7 +1199,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </div>}
 
                     <div className='mt-28 flex gap-3 flex-col'>
                         <div className='w-full flex flex-col'>
