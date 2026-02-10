@@ -1,7 +1,45 @@
 export const BlogData = [
- 
-  {
+ {
     id: 1,
+    slug:"global-surf-at-1billion-followers-summit",
+    titles: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+    title: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+    list_heading: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+    meta_title: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit | Global Surf Blog",
+    description: "",
+    post_date: "",
+    read_time: "",
+    feature_thumb: "/images/blog-new/new-blog-bnr-23.jpg",
+    thumb: "/images/blog-new/new-blog-bnr-23.jpg",
+    large_thumb: "/images/blog-new/new-blog-bnr-23.jpg",
+    category: "Content Production",
+    format: "standard",
+    views: "",
+    excerpt:
+      "",
+    body: [
+     ""
+    ],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para:
+      "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
+    id: 2,
     slug:"social-media-video-production-tips",
     titles: "social media video production tips",
     title: "social media video production tips",
@@ -40,7 +78,7 @@ export const BlogData = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     slug:"poor-sales-try-our-website-redesign-services-for-results",
     titles: "poor-sales-try-our-website-redesign-services-for-results",
     title: "<b>Poor Sales?</b> Try our website redesign services for results!",
@@ -79,7 +117,7 @@ export const BlogData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     slug:"social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
     titles:
       "social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
@@ -122,7 +160,7 @@ export const BlogData = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     slug:"the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
     titles: "b2b-marketing-trends-to-follow-in-2024",
     title:
