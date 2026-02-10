@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
                 .select("*")
                 .eq('slug', slug)
 
-                console.log("case study",caseStudy)
+            console.log("case study", caseStudy)
 
             if (caseStudy && caseStudy.length > 0) {
                 let { data: caseStudyHighlights } = await supabase
@@ -45,10 +45,10 @@ export async function GET(req: NextRequest) {
                 return NextResponse.json({ caseStudy, caseStudyHighlights });
             }
         } else {
-            let { data: caseStudy, error } = await supabase
+            const { data: caseStudy, error } = await supabase
                 .from('portfolios')
                 .select('*')
-                .eq('section','case study')
+                .in('section', ['case study', 'case study new']);
 
 
             if (!caseStudy) {
@@ -225,7 +225,7 @@ export async function POST(req: NextRequest) {
                         slug,
                         metaTitle,
                         metaDescription,
-                        customId:uuidv4()
+                        customId: uuidv4()
                     })
                     .eq('id', id)
                     .select()
