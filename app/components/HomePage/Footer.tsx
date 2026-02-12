@@ -151,7 +151,7 @@ const Footer = () => {
             </p>
             <p className="fw-[400] xshd text-font14 leading-lh1p78">|</p>
             <p className="fw-[400] text-font14 leading-lh1p78">
-              ©2025 Global Surf Digital. All rights reserved
+              ©2026 Global Surf Digital. All rights reserved
             </p>
           </div>
         </div>
