@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { services } from "../../data/services";
 import { Lexend } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -119,13 +120,15 @@ const OurServices = () => {
                   },
                 }}
               ><Link href={service.url} >
-                <motion.img
+                <motion.Image  src={service.image}  alt={service.title} width={1000} height={800}    viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}/>
+             {/*    <motion.img
                   src={service.image}
                   alt={service.title}
                   // className="h-full object-cover objectstm"
                   viewport={{ once: false, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  />
+                  /> */}
                   </Link>
               </motion.div>
             </div>
