@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
-import { formatLinkForPortfolio ,formatLinkForCaseStudy} from "@/app/helpers/formatLink";
+import { formatLinkForPortfolio, formatLinkForCaseStudy } from "@/app/helpers/formatLink";
 import { CaseStudy } from "@/app/types/CaseStudy";
 
 
@@ -20,7 +20,7 @@ const CaseStudyList = () => {
   const CACHE_DURATION = 10 * 60 * 1000;
 
   useEffect(() => {
-    
+
     const cachedData = localStorage.getItem('case-study')
 
 
@@ -46,17 +46,17 @@ const CaseStudyList = () => {
       }
     };
 
-    if(cachedData){
+    if (cachedData) {
       const { timestamp, data } = JSON.parse(cachedData);
       if (Date.now() - timestamp < CACHE_DURATION) {
         setCaseStudies(data)
-      }else{ 
+      } else {
         localStorage.removeItem('case-study')
         fetchCaseStudies();
       }
-    }else{
+    } else {
       localStorage.removeItem('case-study')
-      fetchCaseStudies(); 
+      fetchCaseStudies();
     }
 
   }, []);
@@ -64,7 +64,7 @@ const CaseStudyList = () => {
 
   const [filter, setFilter] = useState("all");
 
-  const [originalCaseStudy,setOriginalCaseStudy] = useState<CaseStudy[]>([])
+  const [originalCaseStudy, setOriginalCaseStudy] = useState<CaseStudy[]>([])
 
   useEffect(() => {
     if (originalCaseStudy.length === 0 && caseStudies.length > 0) {
@@ -88,53 +88,51 @@ const CaseStudyList = () => {
     }
   };
 
-  const [newFilterTags,setNewFilterTags] = useState<string[]>([])
+  const [newFilterTags, setNewFilterTags] = useState<string[]>([])
 
-  useEffect(()=>{
-    const allExistingCategories = caseStudies.map((item)=>(
-      item.categories.map((category)=>(
+  useEffect(() => {
+    const allExistingCategories = caseStudies.map((item) => (
+      item.categories.map((category) => (
         category.name
       ))
     ))
 
     console.log(allExistingCategories)
 
-    if(allExistingCategories){
+    if (allExistingCategories) {
       setNewFilterTags([...new Set(allExistingCategories.flat())])
     }
-    
-  },[caseStudies])
 
-  
+  }, [caseStudies])
+
+
 
   return (
     <>
       <div className="container mx-auto py-4">
         <div
-          
+
         >
           <div className="portfolio pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px] ">
             {/* Filter Tabs */}
             <div className="border-b  mb-[30px] md:mb-[50px] filterbtn no-scrollbar">
 
-            <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
-            <div className={`pb-1 md:pb-4 mb-[0px] whitespace-nowrap divro ${
-                  filter === "all" ? "border-b-2 border-black text-black" : "text-gray1"
-                }`}>
-                <span  onClick={() => handleFiltering("all")}>View All</span>
+              <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
+                <div className={`pb-1 md:pb-4 mb-[0px] whitespace-nowrap divro ${filter === "all" ? "border-b-2 border-black text-black" : "text-gray1"
+                  }`}>
+                  <span onClick={() => handleFiltering("all")}>View All</span>
                 </div>
-                
-              {newFilterTags.map((item,index)=>(
-                <div key={index} className={`pb-1 md:pb-4 mb-[0px]  whitespace-nowrap divro ${
-                  filter === item ? "border-b-2 border-black text-black" : "text-gray1"
-                }`}><span  onClick={() => handleFiltering(item)}>{item}</span></div>
-              ))}
-            </div>
+
+                {newFilterTags.map((item, index) => (
+                  <div key={index} className={`pb-1 md:pb-4 mb-[0px]  whitespace-nowrap divro ${filter === item ? "border-b-2 border-black text-black" : "text-gray1"
+                    }`}><span onClick={() => handleFiltering(item)}>{item}</span></div>
+                ))}
+              </div>
             </div>
 
             {/* Portfolio Items */}
             <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
-              {caseStudies.length >0 && caseStudies.map((item, index) => (
+              {caseStudies.length > 0 && caseStudies.map((item, index) => (
                 <motion.div
                   key={index}
                   className="w-full"
@@ -153,7 +151,7 @@ const CaseStudyList = () => {
                   <div className="portfolio-card group relative col-span-1">
                     <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px] group">
                       <Image
-                        src={item.coverImage}
+                        src={item.coverImage ?? item.bannerImage}
                         alt="image"
                         className="h-full w-full object-cover"
                         fill
@@ -164,16 +162,21 @@ const CaseStudyList = () => {
                         </div>
                       </div>
                       <div className="absolute bottom-0 mt-3 md:mt-4 z-[1] p-5">
-                      <h3 className="text-30 mb-1 duration-200 ease-in-out  md:mb-2 text-white  duration-200 duration-300 ease-in-out ease-in-out ">
-                        {item.companyName}
-                      </h3>
-                      <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>
-                    </div>
+                        <h3 className="text-30 mb-1 duration-200 ease-in-out  md:mb-2 text-white  duration-200 duration-300 ease-in-out ease-in-out ">
+                          {item.companyName}
+                        </h3>
+                        <div className="flex gap-1">
+                          {item?.channels?.map((channel, index) => (
+                            <p key={index} className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{index == item.channels.length - 1 ? channel.channelName : channel.channelName + ", "}</p>
+                          ))}
+                        </div>
+                        {item?.channels?.length == 0 && <p className="text-19 text-gray1 text-white  group-hover:-translate-x-[-3px] group-hover:text-primary duration-200 ease-in-out">{item.channelsUsed}</p>}
+                      </div>
                     </div>
 
                     <Link href={`/case-study/${formatLinkForCaseStudy(item.companyName)}`}
-                  className="absolute top-0 z-[1] h-full w-full"
-                ></Link>
+                      className="absolute top-0 z-[1] h-full w-full"
+                    ></Link>
                   </div>
                 </motion.div>
               ))}
