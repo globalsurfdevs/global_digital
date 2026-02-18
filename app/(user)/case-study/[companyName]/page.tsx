@@ -26,7 +26,7 @@ export async function generateMetadata(
 
   const metadataTitle = data.caseStudy[0].metaTitle=="null" || !data.caseStudy[0].metaTitle ? "Global Surf Digital" : data.caseStudy[0].metaTitle;
   const metadataDescription = data.caseStudy[0].metaDescription=="null" || !data.caseStudy[0].metaDescription ? "Global Surf Digital" : data.caseStudy[0].metaDescription;
-  const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
+  const canonicalUrl = `https://www.globalsurf.ae/case-study/${slug}`
 
   return {
     title: metadataTitle,
