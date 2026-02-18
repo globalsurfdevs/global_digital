@@ -32,9 +32,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Global Surf Digital: Digital Transformation Company in Dubai",
+    title: "Full service Digital Marketing Agency Dubai | Global Surf Digital",
     description:
-      "Fading into the digital noise? Global Surf Digital, a digital solutions agency in Dubai, offers SEO, PPC, social media, and more to elevate your brand. Learn more! ",
+      "Full-service digital marketing agency in Dubai. From SEO to web development, we help 100+ brands dominate search & social. Start your growth journey today. ",
     alternates: {
       canonical: "https://www.globalsurf.ae",
     },

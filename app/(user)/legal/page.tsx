@@ -1,6 +1,26 @@
 import React from "react";
 import Link from "next/link";
+interface Canonicals {
+  canonical: string;
+}
 
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+    robots: string;
+};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Legal | GS.Digital",
+    description:
+      "GS.Digital",
+    alternates: {
+      canonical: "https://www.globalsurf.ae/legal",
+    },
+     robots: "Noindex, Nofollow",
+  };
+}
 const page = () => {
   return (
     <>

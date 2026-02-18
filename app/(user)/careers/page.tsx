@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Digital Marketing Careers |GS.Digital",
     description:
-      "Digital Marketing Careers. Contact us now",
+      "Build your digital marketing career at Global Surf Dubai. Work on bold brands, big campaigns & cutting-edge tech. See open roles & join our growing team.",
     alternates: {
       canonical: "https://www.globalsurf.ae/careers",
     },

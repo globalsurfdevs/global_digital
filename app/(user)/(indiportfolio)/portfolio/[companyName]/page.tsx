@@ -9,6 +9,7 @@ type Data = {
   portfolio:{
     metaTitle:string;
     metaDescription:string;
+    
   }[]
 }
 
@@ -26,10 +27,14 @@ export async function generateMetadata(
 
   const metadataTitle = data.portfolio[0].metaTitle=="null" || !data.portfolio[0].metaTitle ? "Global Surf Digital" : data.portfolio[0].metaTitle;
   const metadataDescription = data.portfolio[0].metaDescription=="null" || !data.portfolio[0].metaTitle ? "Global Surf Digital" : data.portfolio[0].metaDescription;
+  const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
 
   return {
     title: metadataTitle,
     description: metadataDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
   };
 }
 

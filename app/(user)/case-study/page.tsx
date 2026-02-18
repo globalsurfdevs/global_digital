@@ -11,12 +11,19 @@ type Data = {
     metaDescription:string;
   }[]
 }
-
-// export async function generateMetadata({params}:{
-//   params:Promise<{
-//     companyName:string
-//   }>
-// }
+interface Canonicals {
+  canonical: string;
+}
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Case Study | G.S Digital",
+    description:
+      "",
+    alternates: {
+      canonical: "https://www.globalsurf.ae/case-study",
+    },
+  };
+}
 // ): Promise<Metadata>{
 //     const {companyName} = await params
 

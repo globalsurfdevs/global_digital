@@ -34,7 +34,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Unrivaled SEO Services in Dubai for Maximum Visibility |GS.Digital",
+    title: "#1 SEO Agency in Dubai | Best SEO Service for Organic Traffic",
     description:
       "Our team of SEO experts crafts bespoke campaigns that deliver unparalleled visibility and drive tangible results. Contact us now",
     alternates: {

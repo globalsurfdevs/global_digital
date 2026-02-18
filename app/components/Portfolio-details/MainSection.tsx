@@ -30,11 +30,11 @@ import Link from "next/link";
               <div className="flex flex-col lg:flex-row  gap-4   justify-between">
                 <div className="flex gap-5 lg:gap-10 xl:gap-[120px]  justify-between">
                   <div>
-                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Industry</h5>
+                    <p className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Industry</p>
                     <p className="text-30 leading-lh1p33 font-normal">{data.portfolio[0].industry}</p>
                   </div>
                   <div>
-                    <h5 className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Country</h5>
+                    <p className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Country</p>
                     <p className="text-30 leading-lh1p33 font-normal">{data.portfolio[0].country}</p>
                   </div>
                 </div>
