@@ -1,65 +1,49 @@
-"use client"
-
-import React, { useEffect, useState } from 'react'
-import HeroSection from '@/app/components/CaseStudy/HeroSection'
-import Goals from '@/app/components/CaseStudy/Goals'
-import Percentages from '@/app/components/CaseStudy/Percentages'
-import Ready from '@/app/components/CaseStudy/Ready'
-import { SuccessStories } from '@/app/components/SuccessStories/SuccessStories'
-import { useParams } from 'next/navigation'
+import React from 'react'
+import CaseStudyDetails from '@/app/components/CaseStudy-details'
+import apiService from '@/app/lib/apiService'
+import { formatLinkForCaseStudy } from '@/app/helpers/formatLink'
+import { Metadata } from 'next'
 import { CaseStudy } from '@/app/types/CaseStudy'
-import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
-import PortfolioDetails from '@/app/components/Portfolio-details'
-
-
-const CaseStudyPage = () => {
-  const [data, setData] = useState<{ caseStudy: CaseStudy[], caseStudyHighlights: CaseStudyHighlights[] } | null>(null)
-
-  const { companyName } = useParams()
-
-  useEffect(() => {
-    const fetchCaseStudyData = async () => {
-      try {
-        const response = await fetch(`/api/case-study?slug=${companyName}`, {
-          cache: "no-cache"
-        })
-        if (response.ok) {
-          const data = await response.json()
-          // console.log(data)
-          if (!data.error) {
-            setData(data)
-          }
-        }
-      } catch (error) {
-        console.log("Error fetching case study data", error)
-      }
-    }
-
-    if (companyName !== "quad-dream") {
-      fetchCaseStudyData()
-    }
-
-  }, [])
-
-  if (companyName == "quad-dream") {
-    return (
-      <>
-        <PortfolioDetails />
-      </>
-    )
-  } else {
-    return (
-      <>
-        <HeroSection data={data} />
-        <Goals data={data} />
-        <Percentages data={data} />
-        <Ready data={data} />
-        <div className='container mx-auto py-4'>
-          <SuccessStories companyId={data?.caseStudy[0].id} />
-        </div>
-      </>
-    )
-  }
+type Data = {
+  caseStudy:{
+    metaTitle:string;
+    metaDescription:string;
+    
+  }[]
 }
 
-export default CaseStudyPage
+export async function generateMetadata(
+  props:{
+    params: Promise<{
+      companyName:string
+    }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
+  const slug = formatLinkForCaseStudy(params.companyName)
+
+  const data:Data = await apiService.get(`/api/case-study?slug=${slug}`)
+
+  const metadataTitle = data.caseStudy[0].metaTitle=="null" || !data.caseStudy[0].metaTitle ? "Global Surf Digital" : data.caseStudy[0].metaTitle;
+  const metadataDescription = data.caseStudy[0].metaDescription=="null" || !data.caseStudy[0].metaDescription ? "Global Surf Digital" : data.caseStudy[0].metaDescription;
+  const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
+
+  return {
+    title: metadataTitle,
+    description: metadataDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
+
+const page = ()=>{
+
+  return (
+    <>
+        <CaseStudyDetails/>
+    </>
+  )
+}
+
+export default page

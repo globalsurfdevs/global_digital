@@ -1,5 +1,23 @@
 import React from "react";
+interface Canonicals {
+  canonical: string;
+}
 
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Modern Slavery and Human Trafficking Statement | GS.Digital",
+    description:
+      "GS.Digital",
+    alternates: {
+      canonical: "https://www.globalsurf.ae/modern-slavery-statement",
+    },
+  };
+}
 const page = () => {
   return (
     <>

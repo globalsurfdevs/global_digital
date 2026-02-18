@@ -8,6 +8,7 @@ import Boost from "../../components/PermormanceMarketing/Boost";
 import SuccessStories from "../../components/DigitalMarketingService/SuccessStories";
 import Expertises from "../../components/EcomIndustry/Expertise";
 import LogoSwiper from "../../components/DigitalMarketingService/LogoSwiper";
+import {DigitalMarketingServicesSchema} from "../../components/Schema/OfferCatalog";
 import Head from "next/head";
 
 import {
@@ -53,7 +54,9 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
+        <DigitalMarketingServicesSchema />
       <Head>
+      
         <meta
           property="og:title"
           content="Comprehensive Digital Marketing Services in Dubai | Maximize Impact"

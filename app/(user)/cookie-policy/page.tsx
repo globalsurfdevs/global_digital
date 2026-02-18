@@ -1,5 +1,25 @@
 import React from "react";
+interface Canonicals {
+  canonical: string;
+}
 
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+  robots: string;
+};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Cookie Policy | GS.Digital",
+    description:
+      "GS.Digital",
+    alternates: {
+      canonical: "https://www.globalsurf.ae/cookie-policy",
+    },
+     robots: "Noindex, Nofollow",
+  };
+}
 const page = () => {
   return (
     <>
