@@ -120,15 +120,15 @@ const OurServices = () => {
                   },
                 }}
               ><Link href={service.url} >
-                <motion.Image  src={service.image}  alt={service.title} width={1000} height={800}    viewport={{ once: false, amount: 0.5 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}/>
-             {/*    <motion.img
+                {/* <motion.Image  src={service.image}  alt={service.title} width={1000} height={800}    viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}/> */}
+                <motion.img
                   src={service.image}
                   alt={service.title}
                   // className="h-full object-cover objectstm"
                   viewport={{ once: false, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  /> */}
+                  />
                   </Link>
               </motion.div>
             </div>
