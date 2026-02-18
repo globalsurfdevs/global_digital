@@ -3,7 +3,7 @@ import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic"
 import Contentone from "../../../components/BlogSocialMedia/ContentSectionOne";
 import ContentSectionStaic from "../../../components/BlogSocialMedia/ContentSectionStatic"
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
-
+import {OneBillionFollowersSchema} from "../../../components/Schema/OfferCatalog";
 
 
 
@@ -44,6 +44,7 @@ const page = () => {
 
   return (
     <div className="relative">
+      <OneBillionFollowersSchema />
 <SocialShare/>
       
       <HeroSection
