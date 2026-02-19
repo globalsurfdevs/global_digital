@@ -25,8 +25,23 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  // ✅ HEADERS (moved here)
+  async headers() {
+    return [
+      {
+        source: "/:all*(svg|webp|avif|gif|ico|woff|woff2|ttf|otf|js|css)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
+      
       {
         source: "/performance-marketing", // The old URL path
         destination: "/performance-marketing-agency-dubai", // The new URL path
@@ -117,6 +132,7 @@ const nextConfig: NextConfig = {
       destination: "/industry/b2b-digital-marketing-services", // The new URL path
       permanent: true, // Set to true for 301 (permanent) redirect
     },
+    
     ];
   },
 };
