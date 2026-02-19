@@ -10,7 +10,7 @@ export default function SitemapList() {
                     <h1 className="title-80 mb-10">Sitemap</h1>
                 </div>
                 
-                <div className="flex flex-col md:flex-row items-left md:items-center gap-4 md:gap-10 mb-5">
+                <div className="flex flex-col md:flex-row items-left md:items-center gap-4 md:gap-10 mb-6">
                     <div className="mb-2 lg:mb-0">
                         <div className="flex  items-center gap-2">
                             <div className="h-3 w-3 bg-primary"></div>
@@ -107,7 +107,7 @@ export default function SitemapList() {
 
                 </div>
 
-                <div className="flex flex-col md:flex-row items-left md:items-center gap-4 md:gap-10 my-5 ">
+                <div className="flex flex-col md:flex-row items-left md:items-center gap-4 md:gap-10 my-6 ">
                     <div className="">
                         <div className="flex items-center gap-2">
                             <div className="h-3 w-3 bg-primary"></div>
@@ -147,7 +147,7 @@ export default function SitemapList() {
 
 
                 </div>
-                <div className="flex flex-col md:flex-row items-left md:items-center gap-4 md:gap-10 mt-5 ">
+                <div className="flex flex-col md:flex-row items-left md:items-center gap-4 md:gap-10 mt-6 ">
                     <div className="mb-2 lg:mb-0">
                         <div className="flex items-center gap-2">
                             <div className="h-3 w-3 bg-primary"></div>
