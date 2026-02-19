@@ -3,13 +3,15 @@ import { BlogData } from "@/app/data/BlogData";
 import { Metadata } from "next";
 
 type Props = {
-  params: { heading: string };
+  params: Promise<{ heading: string }>;
 };
 
 // ✅ META TAGS
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const blog = BlogData.find((b) => b.slug === params.heading);
-  const canonicalUrl = `https://www.globalsurf.ae/blogs/${params.heading}`;
+  const { heading } = await params;
+
+  const blog = BlogData.find((b) => b.slug === heading);
+  const canonicalUrl = `https://www.globalsurf.ae/blogs/${heading}`;
 
   if (!blog) {
     return {
@@ -27,19 +29,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: blog.meta_title,
       description: blog.description,
       images: [
-        `https://www.globalsurf.ae${blog.feature_thumb}`, // ✅ must be absolute
+        `https://www.globalsurf.ae${blog.feature_thumb}`,
       ],
     },
   };
 }
 
 // ✅ PAGE RENDER
-export default function Page({ params }: Props) {
-  const blog = BlogData.find((b) => b.slug === params.heading);
+export default async function Page({ params }: Props) {
+  const { heading } = await params;
+
+  const blog = BlogData.find((b) => b.slug === heading);
 
   if (!blog) return null;
 
-  // 🔥 Dynamic JSON-LD Schema
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -67,7 +70,6 @@ export default function Page({ params }: Props) {
 
   return (
     <>
-      {/* ✅ JSON-LD Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
