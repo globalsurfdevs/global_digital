@@ -1,3 +1,15 @@
+User-agent: *                   
+Disallow: /admin/            
+Disallow: /?                    
+Disallow: *?s=                  
+Disallow: *&s=                  
+Disallow: /search               
+Disallow: /author/              
+Disallow: */embed$                       
+Disallow: *utm*=                
+Disallow: *openstat=           
+ 
+Sitemap: https://www.globalsurf.ae/sitemap.xml
 User-agent: GPTBot
 Disallow:
 User-agent: ChatGPT-User
