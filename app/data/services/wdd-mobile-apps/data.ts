@@ -309,37 +309,42 @@ export const relatedservices = {
       id: 1,
       title: "Strategy Consulting ",
       dec: "Align your mobile app development with long-term business goals. ",
-      icon:assets.marr1
+      icon:assets.marr1,
+      url:'/marketing-strategy-consulting'
     } ,
     {
       id: 2,
       title: "Web Design ",
       dec: "Thoughtfully crafted designs that blend creativity with functionality ensuring your website looks stunning and works seamlessly. ",
-      icon:assets.marr2
+      icon:assets.marr2,
+      url:'/web-design-agency-dubai'
     } ,
     {
       id: 3,
       title: "Custom Web Development",
       dec: "Custom development solutions built from the ground up to meet your unique business needs and deliver a flawless user experience.",
-      icon:assets.marr3
+      icon:assets.marr3,
+      url:'/web-development-agency-dubai'
     } ,
     {
       id: 4,
       title: "E-commerce",
       dec: "Powerful, user-friendly online stores designed to make browsing, buying, and returning customers effortless. ",
-      icon:assets.marr4
+      icon:assets.marr4,
+      url:'/e-commerce-web-development-company'
     } ,
     {
       id: 5,
       title: "Web Apps ",
       dec: "Dynamic web applications that are as engaging as they are efficiently built to scale with your business. ",
-      icon:assets.marr5
+      icon:assets.marr5,
+      url:'/web-app-dev-agency'
     },
     {
       id: 6,
       title: "UI/UX Design ",
       dec: "Crafting engaging mobile apps design that captivates users. ",
-      icon:assets.marr6
+      icon:assets.marr6 
     }
   ],
 };

@@ -16,7 +16,7 @@ export const Frameworkdata = {
     } ,
     {
       id: 3,
-      title: "Logo Design",
+      title: "<a href='/logo-design-agency-dubai' class='  opacity-[.8] hover:opacity-[1]'>Logo Design</a>",
       dec: "Creating timeless logos that portray your brand’s essence.",
     } ,
     {
@@ -26,7 +26,7 @@ export const Frameworkdata = {
     },
     {
       id: 5,
-      title: "Graphic Design  ",
+      title: "<a href='/graphic-design-agency-dubai' class='  opacity-[.8] hover:opacity-[1]'>Graphic Design</a>  ",
       dec: "Delivering visual storytelling that leaves a lasting impact. ",
     }
   ],

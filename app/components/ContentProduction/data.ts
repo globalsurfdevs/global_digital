@@ -141,7 +141,7 @@ export const Platformsecomdata = {
       icon: assets.google,
       title: "100",
       rsubtitle: "Projects",
-      dec: "100+ Projects delivered across industries each tailored to reflect unique brand stories and audience needs.",
+      dec: "<a href='/portfolio' class='text-primary opacity-[.8] hover:opacity-[1]'>100+ Projects</a> delivered across industries each tailored to reflect unique brand stories and audience needs.",
     },
     {
       id: 2,
@@ -211,7 +211,8 @@ export const relatedservices = {
       id: 1,
       title: " Content Marketing",
       dec: "With a mix of strategy, storytelling, and SEO, we help your brand stay relevant, valuable, and always one step ahead.",
-      icon:assets.cpric1
+      icon:assets.cpric1,
+      url:'/content-marketing-agency-dubai'
     
     } ,
     {
@@ -232,7 +233,8 @@ export const relatedservices = {
       id: 4,
       title: "Copywriting",
       dec: "Words that complement visuals and tell your story with clarity and intent.",
-      icon:assets.cpric4
+      icon:assets.cpric4,
+      url:'/creative-copywriting-agency-dubai'
     } ,
     {
       id: 5,
