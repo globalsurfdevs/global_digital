@@ -3,14 +3,14 @@ import { assets } from "@/public/assets/assets";
 
 export const Platformsecomdata = {
   title: "Why Choose GS. Digital for Branding?",
-  desc:"With a team of certified experts in <a href='/social-media-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>social media strategy</a>, content creation, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our creative branding agency in Dubai.",
+  desc:"With a team of certified experts in <a href='/social-media-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>social media strategy</a>, <a href='/content-production-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>content creation</a>, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our creative branding agency in Dubai.",
   data: [
     {
       id: 1,
       icon: assets.google,
       title: "100+",
       rttitel:"Projects ",
-      dec: "100+ Projects across various industries, providing customized solutions for every brand’s needs.",
+      dec: "<a href='/portfolio' class='text-primary opacity-[.8] hover:opacity-[1]'>100+ Projects across various industries</a>, providing customized solutions for every brand’s needs.",
     },
     {
       id: 2,

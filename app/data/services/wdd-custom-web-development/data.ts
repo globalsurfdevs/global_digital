@@ -364,19 +364,22 @@ export const relatedservices = {
       id: 1,
       title: "Web Design  ",
       dec: "Thoughtfully crafted designs that blend creativity with functionality—ensuring your website looks stunning and works seamlessly. ",
-      icon:assets.rsa6
+      icon:assets.rsa6,
+      url: "/web-design-agency-dubai",
     } ,
     {
       id: 2,
       title: "E-commerce  ",
       dec: "Powerful, user-friendly online stores designed to make browsing, buying, and returning customers effortless. ",
-      icon:assets.rsa5
+      icon:assets.rsa5,
+      url: "/e-commerce-web-development-company",
     } ,
     {
       id: 3,
       title: "Mobile Apps ",
       dec: "Intuitive mobile apps that put your business in the palm of your customers’ hands—anytime, anywhere. ",
-      icon:assets.rsa4
+      icon:assets.rsa4,
+      url: "/mobile-app-development-company-dubai",
     } ,
     {
       id: 4,
@@ -388,13 +391,15 @@ export const relatedservices = {
       id: 5,
       title: "Web Application Development",
       dec: "Build secure, scalable, and custom web applications designed to enhance efficiency and user experience. ",
-      icon:assets.rsa2
+      icon:assets.rsa2,
+      url: "/web-app-dev-agency",
     } ,
     {
       id: 6,
       title: "Logo Design Services ",
       dec: "Create a distinctive brand identity with professionally designed logos that leave a lasting impression. ",
-      icon:assets.rsa1
+      icon:assets.rsa1,
+      url: "/logo-design-agency-dubai",
     }
   ],
 };

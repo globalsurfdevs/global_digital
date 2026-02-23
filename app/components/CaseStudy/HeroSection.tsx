@@ -71,7 +71,7 @@ const HeroSection = ({data}:{
           >
             <div className="flex flex-col gap-2 py-[50px] lg:w-[70%] lg:gap-6 lg:py-[142px]">
               <div className="flex items-center gap-2">
-                <h4 className="text-30 leading-[1.5]">STORY</h4>
+                <h3 className="text-30 leading-[1.5]">STORY</h3>
                 <div className="h-4 w-4 bg-primary lg:h-5 lg:w-5 "></div>
               </div>
 
@@ -124,7 +124,7 @@ const HeroSection = ({data}:{
                         Industry
                       </p>
                       {/* <h4 className="text-30">Food & Beverage</h4> */}
-                      <h4 className="text-30"> {data.caseStudy[0].industry}</h4>
+                      <h3 className="text-30"> {data.caseStudy[0].industry}</h3>
                     </div>
 
                     <div className="mb-[20px] flex flex-col border-b border-black pb-[20px] lg:mb-[36px] lg:pb-[40px]">
@@ -132,7 +132,7 @@ const HeroSection = ({data}:{
                         Country
                       </p>
                       {/* <h4 className="text-30">UAE, Kuwait, Qatar</h4> */}
-                      <h4 className="text-30">{data.caseStudy[0].country}</h4>
+                      <h3 className="text-30">{data.caseStudy[0].country}</h3>
                     </div>
 
                     <div className="flex flex-col border-black  ">
@@ -140,7 +140,7 @@ const HeroSection = ({data}:{
                       Services
                       </p>
                       {/* <h4 className="text-30">Website - Google Ads - META Ads</h4> */}
-                      <h4 className="text-30">{data.caseStudy[0].channelsUsed}</h4>
+                      <h3 className="text-30">{data.caseStudy[0].channelsUsed}</h3>
                     </div>
                   </div>
                 </div>

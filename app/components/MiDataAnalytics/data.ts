@@ -217,37 +217,42 @@ export const relatedservices = {
       id: 1,
       title: " Performance Marketing",
       dec: "Data-driven strategies to enhance online visibility and drive traffic. ",
-      icon:assets.dare1
+      icon:assets.dare1,
+      url:'/performance-marketing-agency-dubai'
     } ,
     {
       id: 2,
       title: "Marketing Automation ",
       dec: "Leverage automation to streamline customer engagement and optimize marketing efforts.",
-      icon:assets.dare2
+      icon:assets.dare2,
+      url:'/marketing-automation-agency-dubai'
     } ,
     {
       id: 3,
       title: "Social Media Analytics ",
       dec: "Monitor performance, track engagement, and refine social strategies using analytics.",
-      icon:assets.dare3
+      icon:assets.dare3,
+      url:'/social-media-agency-dubai'
     } ,
     {
       id: 4,
       title: "Business Intelligence Consulting",
       dec: "Develop customized BI solutions for smarter, faster decision-making.",
-      icon:assets.dare4
+      icon:assets.dare4,
+      url:'/marketing-strategy-consulting'
     } ,
     {
       id: 5,
       title: "Data Engineering & Integration",
       dec: "Design and implement scalable data infrastructures to support analytics needs.",
-      icon:assets.dare5
+      icon:assets.dare5 
     } ,
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO)",
       dec: " Utilize data insights to enhance website performance and increase conversions.",
-      icon:assets.dare6
+      icon:assets.dare6,
+      url:'/conversion-rate-optimization-agency-dubai'
     }
   ],
 };

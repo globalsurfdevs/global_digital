@@ -366,25 +366,29 @@ export const relatedservices = {
       id: 3,
       title: "Social Media Marketing",
       dec: "Save time while effortlessly managing and optimizing your social media presence. ",
-      icon:assets.rsd3
+      icon:assets.rsd3,
+      url: "/social-media-agency-dubai",
     } ,
     {
       id: 4,
       title: "Strategy Consulting ",
       dec: "We work with you to refine your digital strategy and drive long-term success. ",
-      icon:assets.rsd4
+      icon:assets.rsd4,
+      url:'/marketing-strategy-consulting'
     } ,
     {
       id: 5,
       title: "Data Analytics ",
       dec: "We turn complex data into clear insights to improve your marketing decisions. ",
-      icon:assets.rsd5
+      icon:assets.rsd5,
+      url:'/data-analytics-services-dubai'
     } ,
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO) ",
       dec: " We fine-tune your website to turn visitors into loyal customers.",
-      icon:assets.rsd6
+      icon:assets.rsd6,
+      url:'/conversion-rate-optimization-agency-dubai'
     }
   ],
 };

@@ -225,25 +225,29 @@ export const relatedservices = {
       id: 1,
       title: "Digital Marketing ",
       dec: "Promote your website through various online channels to reach a broader audience.",
-      icon:assets.sese2
+      icon:assets.sese2,
+      url:"/digital-marketing-services",
     } ,
     {
       id: 2,
       title: "Branding ",
       dec: "Develop a cohesive brand identity that resonates with your target market. ",
-      icon:assets.rst2
+      icon:assets.rst2,
+      url:"/branding-agency-dubai",
     } ,
     {
       id: 3,
       title: "Mobile App Development",
       dec: "Extend your reach by creating mobile applications that complement your website.",
-      icon:assets.rst3
+      icon:assets.rst3,
+      url:'/mobile-app-development-company-dubai'
     } ,
     {
       id: 4,
       title: "Graphic Design ",
       dec: "Enhance your visual content with professional graphic design services.",
-      icon:assets.rst4
+      icon:assets.rst4,
+      url:'/graphic-design-agency-dubai'
     } ,
 
   ],

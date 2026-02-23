@@ -188,37 +188,43 @@ export const relatedservices = {
       id: 1,
       title: "E-commerce SEO",
       dec: "Helping your online store get found and turn visitors into customers.",
-      icon:assets.rse1
+      icon:assets.rse1,
+      url:'/e-commerce-web-development-company'
     } ,
     {
       id: 2,
       title: "Logo Design",
       dec: "Creating a logo that truly represents who you are. ",
-      icon:assets.rse2
+      icon:assets.rse2,
+      url:'/logo-design-agency-dubai'
     } ,
     {
       id: 3,
       title: "Website Design",
       dec: "Designing websites that look great and feel effortless to use. ",
-      icon:assets.rse3
+      icon:assets.rse3,
+      url:'/web-design-agency-dubai'
     } ,
     {
       id: 4,
       title: "Custom Web Development",
       dec: "Building a website that fits your needs, not the other way around. ",
-      icon:assets.rse4
+      icon:assets.rse4,
+      url:'/web-development-agency-dubai'
     } ,
     {
       id: 5,
-      title: "Branding ",
+      title: "Branding",
       dec: "Build a memorable identity that resonates with your audience and sets you apart from the competition. ",
-      icon:assets.rst2
+      icon:assets.rst2,
+      url:'/branding-agency-dubai'
     } ,
     {
       id: 6,
-      title: "Web Apps ",
+      title: "Web Apps",
       dec: "Dynamic web applications that are as engaging as they are efficiently built to scale with your business. ",
-      icon:assets.rse6
+      icon:assets.rse6,
+      url:'/web-app-dev-agency'
     }
 
   ],
