@@ -85,7 +85,7 @@ export default function RootLayout({
         "@type": "Person", 
         "name": "Alissar Nasrallah" 
       }, 
-      "description":"Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you'll find them next to you in critical moments." 
+      "description":"Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you will find them next to you in critical moments." 
     },    
     { 
       "@type": "Review", 
@@ -187,7 +187,7 @@ export default function RootLayout({
         "@type": "Person", 
         "name": "Alissar Nasrallah" 
       }, 
-      "description":"Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you'll find them next to you in critical moments." 
+      "description":"Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you will find them next to you in critical moments." 
     },    
     { 
       "@type": "Review", 
