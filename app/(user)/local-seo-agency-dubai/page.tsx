@@ -45,9 +45,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Local SEO Agency | Google Business Profile Service | GS Digital",
+    title: "Local SEO Agency | Google Business Profile Optimization",
     description:
-      "Drive more local traffic with expert Local SEO services. We optimize your Google Business Profile and help you rank higher on Google Maps and Search. ",
+      "Local SEO Agency in Dubai boosting rankings, traffic & local sales. Optimize your Google Business Profile & attract more customers. Grow your business today",
     alternates: {
       canonical: "https://www.globalsurf.ae/local-seo-agency-dubai",
     },
