@@ -443,7 +443,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                 return;
             }
 
-            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4() }]))
+            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4(), companyId: 0 }]))
             setModalOpen(false)
             setHighlightNumber("")
             setHighlightText("")

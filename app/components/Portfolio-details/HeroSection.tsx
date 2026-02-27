@@ -55,7 +55,7 @@ const HeroSection = ({
               <div className="grid grid-cols-1 lg:grid-cols-[35%_65%]">
                 <div> 
                   <div className="mb-2 flex items-center gap-2 lg:mb-8">
-                    <h3 className="text-30 leading-lh1p33">STORY</h3>
+                    <p className="text-30 leading-lh1p33">STORY</p>
                     <div className="h-4 w-4 bg-primary lg:h-5 lg:w-5 "></div>
                   </div>
                 </div>

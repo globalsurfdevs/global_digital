@@ -46,7 +46,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor ,title}) => {
           }, // Slide up and fade in
         }}
       >
-        <div className={`grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7  ` } >
+        <div className={`grid grid-cols-1 py-[50px] lg:py-[140px] xl:grid-cols-7  ` } >
           <div className="col-span-2  mb-5 xl:mb-0">
               <h2 className="title-65">
                 {!title && "FAQ"}
@@ -59,7 +59,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor ,title}) => {
           <div className="col-span-5 w-full">
             {data?.map((item, index) => (
               <div
-                className="flex w-full items-center justify-between gap-3 border-b border-t py-6 lg:pb-[50px] lg:pt-[50px]"
+                className="flex w-full items-center justify-between gap-3 border-b first:border-t py-6 lg:pb-[50px] lg:pt-[50px]"
                 key={index}
                 onClick={() => toggle(index)}
               >

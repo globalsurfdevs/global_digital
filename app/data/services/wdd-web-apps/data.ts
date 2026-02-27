@@ -373,31 +373,34 @@ export const relatedservices = {
       id: 1,
       title: "Website Design ",
       dec: "Crafting beautiful, user-friendly websites that make a great first impression.  ",
-      icon:assets.rel1
+      icon:assets.rel1,
+      url:'/web-design-agency-dubai'
     } ,
     {
       id: 2,
       title: "Custom Web Development ",
       dec: "Building web solutions that fit your business perfectly and grow with you.  ",
-      icon:assets.rel2
+      icon:assets.rel2,
+      url:'/web-development-agency-dubai'
     } ,
     {
       id: 3,
       title: "E-commerce Web Development",
       dec: "Creating smooth, hassle-free shopping experiences that drive sales.   ",
-      icon:assets.rel3
+      icon:assets.rel3,
+      url:'/e-commerce-web-development-company'
     } ,
     {
       id: 4,
       title: "CMS Integration   ",
       dec: "Making content management effortless so you stay in control.",
-      icon:assets.rel4
+      icon:assets.rel4 
     } ,
     {
       id: 5,
       title: "Full Stack Development",
       dec: "Taking care of both front-end and back-end to keep everything running seamlessly. ",
-      icon:assets.rel5
+      icon:assets.rel5 
     }
   ],
 };

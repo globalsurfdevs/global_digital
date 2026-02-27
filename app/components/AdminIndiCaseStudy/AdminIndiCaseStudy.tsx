@@ -375,7 +375,7 @@ const AdminIndiCaseStudy = ({ editMode, selectedSection, setSelectedSection }: {
                 return;
             }
 
-            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4(), showInHome: false }]))
+            setHighlights((prev) => ([...prev, { number: highlightNumber, text: highlightText, customId: uuidv4(), showInHome: false, companyId: 0 }]))
             setModalOpen(false)
             setHighlightNumber("")
             setHighlightText("")

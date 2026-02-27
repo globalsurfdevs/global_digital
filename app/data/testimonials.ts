@@ -8,6 +8,7 @@ import logothree from "@/public/assets/testimonials/asgc.svg";
 import karim from "@/public/assets/testimonials/karim.jpeg";
 import dummy from "@/public/assets/testimonials/dummy-user.png";
 import educap from "@/public/assets/testimonials/educap.svg";
+import alissar from "@/public/assets/testimonials/alissar.jpeg";
 
 export const testimonials = [
   {
@@ -21,7 +22,7 @@ export const testimonials = [
     alt: "ASGC Group Logo",
   },
   {
-    image: one,
+    image: alissar,
     name: "Alissar Nasrallah",
     position: "Regional Marcomms Manager",
     message:

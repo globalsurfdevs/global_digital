@@ -6,43 +6,43 @@ import { Metadata } from 'next'
 import { Portfolio } from '@/app/types/Portfolio'
 
 type Data = {
-  portfolio:{
-    metaTitle:string;
-    metaDescription:string;
-    
+  portfolio: {
+    metaTitle: string;
+    metaDescription: string;
+
   }[]
 }
 
-export async function generateMetadata(
-  props:{
-    params: Promise<{
-      companyName:string
-    }>
-  }
-): Promise<Metadata> {
-  const params = await props.params;
-  const slug = formatLinkForPortfolio(params.companyName)
+// export async function generateMetadata(
+//   props:{
+//     params: Promise<{
+//       companyName:string
+//     }>
+//   }
+// ): Promise<Metadata> {
+//   const params = await props.params;
+//   const slug = formatLinkForPortfolio(params.companyName)
 
-  const data:Data = await apiService.get(`/api/portfolio?slug=${slug}`)
+//   const data:Data = await apiService.get(`/api/portfolio?slug=${slug}`)
 
-  const metadataTitle = data.portfolio[0].metaTitle=="null" || !data.portfolio[0].metaTitle ? "Global Surf Digital" : data.portfolio[0].metaTitle;
-  const metadataDescription = data.portfolio[0].metaDescription=="null" || !data.portfolio[0].metaTitle ? "Global Surf Digital" : data.portfolio[0].metaDescription;
-  const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
+//   const metadataTitle = data.portfolio[0].metaTitle=="null" || !data.portfolio[0].metaTitle ? "Global Surf Digital" : data.portfolio[0].metaTitle;
+//   const metadataDescription = data.portfolio[0].metaDescription=="null" || !data.portfolio[0].metaTitle ? "Global Surf Digital" : data.portfolio[0].metaDescription;
+//   const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
 
-  return {
-    title: metadataTitle,
-    description: metadataDescription,
-    alternates: {
-      canonical: canonicalUrl,
-    },
-  };
-}
+//   return {
+//     title: metadataTitle,
+//     description: metadataDescription,
+//     alternates: {
+//       canonical: canonicalUrl,
+//     },
+//   };
+// }
 
-const page = ()=>{
+const page = () => {
 
   return (
     <>
-        <PortfolioDetails/>
+      <PortfolioDetails />
     </>
   )
 }

@@ -338,37 +338,43 @@ export const relatedservices = {
       id: 1,
       title: " Performance Marketing",
       dec: "Drive results across paid search, social, and programmatic advertising with conversion-focused campaigns. ",
-      icon:assets.cmrst1
+      icon:assets.cmrst1,
+      url:'/performance-marketing-agency-dubai'
     } ,
     {
       id: 2,
       title: "Search Engine Optimization (SEO) ",
       dec: "Increase organic visibility and grow traffic with on-page, off-page, and technical SEO services.",
-      icon:assets.cmrst2
+      icon:assets.cmrst2,
+      url:"/seo-agency-dubai"
     } ,
     {
       id: 3,
       title: "Brand Strategy & Identity",
       dec: "Create a strong, consistent brand that resonates across every touchpoint. ",
-      icon:assets.cmrst3
+      icon:assets.cmrst3,
+      url:"/branding-agency-dubai"
     } ,
     {
       id: 4,
       title: "CRM & Marketing Automation",
       dec: "Streamline lead nurturing and retention through email marketing, automation flows, and CRM integration. ",
-      icon:assets.cmrst4
+      icon:assets.cmrst4,
+      url:"/marketing-automation-agency-dubai"
     } ,
     {
       id: 5,
       title: "Content Strategy & Creation",
       dec: "Engage your audience with compelling content aligned with your brand and strategy. ",
-      icon:assets.cmrst5
+      icon:assets.cmrst5,
+      url:"/content-marketing-agency-dubai"
     } ,
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO)",
       dec: " Optimize your website experience to turn more visitors into customers. ",
-      icon:assets.cmrst6
+      icon:assets.cmrst6,
+      url:"/conversion-rate-optimization-agency-dubai"
     }
   ],
 };

@@ -186,14 +186,14 @@ export const Platformsecomdata = {
       icon: assets.google,
       title: "100",
       rsubtitle: "Projects ",
-      dec: "Completed across diverse industries—each tailored to the unique tone, audience, and goals of our clients. ",
+      dec: "Completed across <a href='/industry' class='text-primary opacity-[.8] hover:opacity-[1]'>diverse industries</a> each tailored to the unique tone, audience, and goals of our clients.",
     },
     {
       id: 2,
       icon: assets.linkedin,
       title: "35",
       rsubtitle: "Tools and Platforms  ",
-      dec: "Leveraged to ensure your content performs—be it search engine optimization, readability, or conversion.",
+      dec: "Leveraged to ensure your content performs—be it <a href='/seo-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>search engine optimization</a>, readability, or conversion.",
     },
     {
       id: 3,
