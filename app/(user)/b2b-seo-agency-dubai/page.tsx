@@ -44,9 +44,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "B2B SEO Agency in Dubai | B2B SEO Services | GS Digital",
+    title: "B2B SEO Agency in Dubai | Generate Qualified Leads",
     description:
-      "Partner with Dubai’s top B2B SEO agency for tailored SEO services that drive results. Increase traffic, generate leads, & grow your business with us.  Call us!",
+      "B2B SEO Agency in Dubai driving organic growth that converts and generates qualified leads to help you win bigger contracts. Schedule your strategy call now.",
     alternates: {
       canonical: "https://www.globalsurf.ae/b2b-seo-agency-dubai",
     },
