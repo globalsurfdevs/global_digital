@@ -76,10 +76,11 @@ const OurServices = () => {
             }, // Slide up and fade in
           }}
         >
-          <div className="mb-5 flex items-center gap-2 lg:mb-[89px]">
+          <div className="mb-5 flex items-center gap-2 ">
             <h2 className="text-30 font-[400] leading-[1.5]">OUR SERVICES</h2>
-            <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
+              <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
           </div>
+              <p className="text-font25 mb-5 lg:mb-[45px] max-w-[60ch]">Strategy-first digital solutions built to generate qualified demand and accountable business performance.</p>
         </motion.div>
       </div>
       <div className="container mx-auto flex flex-col gap-5 px-4 py-8 xl:gap-24">
@@ -89,7 +90,7 @@ const OurServices = () => {
           <div
           key={service.id}>
           <motion.div
-            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] relative"
+            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] relative items-center"
             ref={nextContainerRef}
             initial="hidden"
             whileInView="visible"

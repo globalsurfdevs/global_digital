@@ -5,7 +5,7 @@ export const services = [
     title: "Performance Marketing",
     url: "/performance-marketing-agency-dubai",
     description:
-      "Expand your reach and boost lifetime value with precise targeting strategies and highly focused advertising campaigns. ",
+      "We execute revenue-focused strategies across Google Ads, paid social, and search environments. Campaigns are built around cost-per-lead benchmarks and commercial impact.  ",
     buttonTexts: [
       {
         title: "PPC Advertising",
@@ -31,7 +31,7 @@ export const services = [
     title: "SEO",
     url: "/seo-agency-dubai",
     description:
-      "Enhance your online visibility and drive consistent organic traffic growth through innovative, data-focused optimization techniques. ",
+      "Our SEO strategies capture high-intent demand across search and AI-driven platforms. As a full stack digital marketing agency, the focus remains organic acquisition, not vanity rankings.",
     buttonTexts: [
       {
         title: "B2B SEO",
@@ -53,7 +53,7 @@ export const services = [
     title: "Social Media",
     url: "/social-media-agency-dubai",
     description:
-      "Connect with your audience on the platforms they love through tailored content and meaningful interactions, fostering trust and driving results. ",
+      "As a digital transformation company in Dubai, we design and develop conversion-focused digital platforms engineered to support acquisition and long decision cycles.",
     buttonTexts: [
       {
         title: "Social Media Strategy",
@@ -75,7 +75,7 @@ export const services = [
     title: "Web Design & Development",
     url: "/web-design-and-development",
     description:
-      "Craft engaging experiences that captivate consumers by blending functionality with creativity. ",
+      "We manage social media as a performance and brand growth channel. Instead of posting for visibility alone, we focus on building trust and improving engagement. ",
     buttonTexts: [
       {
         title: "Website Design",
@@ -106,7 +106,7 @@ export const services = [
     title: "Branding & Creatives",
     url: "/creative-agency-dubai",
     description:
-      "We help you create a brand identity that resonates with your audience. Our creative assets are designed to enhance recognition and drive engagement. ",
+      "Our branding work centres on positioning and differentiation. Every creative asset  supports commercial objectives while maintaining consistency across digital touchpoints.",
     buttonTexts: [
       {
         title: "Branding",
@@ -136,7 +136,7 @@ export const services = [
     title: "Marketing Intelligence",
     url: "/marketing-intelligence-agency-dubai",
     description:
-      "We optimize your marketing with data-driven insights for better results. Real-time analytics and market trends help you make informed decisions. ",
+      "We provide clear business insights through KPI tracking and channel analysis, enabling smarter budget allocation, sharper targeting, and continuous optimisation. ",
     buttonTexts: [
       {
         title: "Strategy Consulting",
