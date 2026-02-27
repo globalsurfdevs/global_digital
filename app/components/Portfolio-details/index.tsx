@@ -52,6 +52,7 @@ const PortfolioDetails = () => {
         categories: parseJSON(item.categories),
         channels: parseJSON(item.channels),
         channelsUsed: parseJSON(item.channelsUsed),
+        socialMediaImages: parseJSON(item.socialMediaImages),
     }));
 
     const portfolioHighlightsList: PortfolioHighlight[] =
