@@ -14,7 +14,7 @@ import IndustriesweWork from "@/app/components/HomePage/IndustriesweWork";
 import Head from "next/head";
 import { 
   Faq, 
-} from "@/app/components/ContentProduction/data";
+} from "@/app/components/HomePage/data";
 
 interface Canonicals {
   canonical: string;
