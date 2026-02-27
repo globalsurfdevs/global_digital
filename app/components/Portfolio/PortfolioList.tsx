@@ -7,47 +7,70 @@ import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
 import { formatLinkForPortfolio, formatLinkForCaseStudy } from "@/app/helpers/formatLink";
+import portfolioList from '@/portfolios_rows_converted.json'
 const PortfolioList = () => {
-  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
-  const CACHE_DURATION = 10 * 60 * 1000;
-  useEffect(() => {
-    const cachedData = localStorage.getItem('portfolios')
-    const fetchPortfolios = async () => {
-      try {
-        const response = await fetch(`/api/portfolio`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data.portfolio);
-          setPortfolios(data.portfolio);
-          localStorage.setItem(
-            'portfolios',
-            JSON.stringify({
-              timestamp: Date.now(),
-              data: data.portfolio,
-            })
-          )
-        } else {
-          console.error("Failed to fetch portfolio data");
-        }
-      } catch (error) {
-        console.error("Error fetching portfolio data:", error);
-      }
-    };
 
-    if (cachedData) {
-      const { timestamp, data } = JSON.parse(cachedData);
-      if (Date.now() - timestamp < CACHE_DURATION) {
-        setPortfolios(data)
-      } else {
-        localStorage.removeItem('portfolios')
-        fetchPortfolios();
-      }
-    } else {
-      localStorage.removeItem('portfolios')
-      fetchPortfolios();
+  const parseJSON = (value: any) => {
+    if (!value) return [];
+
+    if (Array.isArray(value)) return value;
+
+    try {
+      return JSON.parse(value);
+    } catch {
+      return [];
     }
+  };
 
-  }, []);
+  // const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+  const normalizedPortfolios: Portfolio[] = portfolioList.map((item: any) => ({
+    ...item,
+    categories: parseJSON(item.categories),
+    channels: parseJSON(item.channels),
+    channelsUsed: parseJSON(item.channelsUsed),
+  }));
+
+  const [portfolios, setPortfolios] = useState<Portfolio[]>(normalizedPortfolios);
+
+  const CACHE_DURATION = 10 * 60 * 1000;
+  // useEffect(() => {
+  //   const cachedData = localStorage.getItem('portfolios')
+  //   const fetchPortfolios = async () => {
+  //     try {
+  //       const response = await fetch(`/api/portfolio`);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log(data.portfolio);
+  //         setPortfolios(data.portfolio);
+  //         localStorage.setItem(
+  //           'portfolios',
+  //           JSON.stringify({
+  //             timestamp: Date.now(),
+  //             data: data.portfolio,
+  //           })
+  //         )
+  //       } else {
+  //         console.error("Failed to fetch portfolio data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching portfolio data:", error);
+  //     }
+  //   };
+
+  //   if (cachedData) {
+  //     const { timestamp, data } = JSON.parse(cachedData);
+  //     if (Date.now() - timestamp < CACHE_DURATION) {
+  //       setPortfolios(data)
+  //     } else {
+  //       localStorage.removeItem('portfolios')
+  //       fetchPortfolios();
+  //     }
+  //   } else {
+  //     localStorage.removeItem('portfolios')
+  //     fetchPortfolios();
+  //   }
+
+  // }, []);
 
 
   const [filter, setFilter] = useState("all");
@@ -140,7 +163,7 @@ const PortfolioList = () => {
                   <div className="portfolio-card group relative col-span-1">
                     <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px] group">
                       <Image
-                        src={item.bannerImage ?? item.coverImage}
+                        src={item.bannerImage == "" || null ? item.coverImage : item.bannerImage}
                         alt="image"
                         className="h-full w-full object-cover"
                         fill
