@@ -37,6 +37,9 @@ export async function GET(req: NextRequest) {
                 .select("*")
                 .eq('slug', slug)
 
+            console.log(error);
+
+
             if (portfolio && portfolio.length > 0) {
                 let { data: portfolioHighlights } = await supabase
                     .from('portfolioHighlights')
@@ -78,6 +81,7 @@ export async function GET(req: NextRequest) {
                 })
 
                 console.log("From fresh")
+
 
                 return NextResponse.json({ portfolio });
 

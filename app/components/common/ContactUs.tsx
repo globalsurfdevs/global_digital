@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ReCAPTCHA from 'react-google-recaptcha';
+import { submitContact } from "@/app/actions/contact";
 
 
 
@@ -59,7 +60,7 @@ const ContactUs = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (
@@ -90,6 +91,11 @@ const ContactUs = () => {
           setError("Please verify yourself to continue")
           return;
         } else {
+          // const formData = new FormData(form)
+          // const response = await submitContact(formData)
+          // if (response.success) {
+          //   alert("Form saved")
+          // }
           form.submit();
         }
       }

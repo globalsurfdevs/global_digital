@@ -19,16 +19,16 @@ const BLOCKED_COUNTRIES: string[] = [];
 const BLOCKED_IPS: string[] = [];
 
 function isBlocked(request: NextRequest): boolean {
-  const city    = request.headers.get("x-vercel-ip-city")?.toLowerCase()    ?? "";
+  const city = request.headers.get("x-vercel-ip-city")?.toLowerCase() ?? "";
   const country = request.headers.get("x-vercel-ip-country")?.toLowerCase() ?? "";
-  const ip      = request.headers.get("x-vercel-ip") ??
-                  request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
+  const ip = request.headers.get("x-vercel-ip") ??
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
 
   console.log("GEO CHECK:", { city, country, ip });
 
-  if (BLOCKED_CITIES.includes(city))       return true;
+  if (BLOCKED_CITIES.includes(city)) return true;
   if (BLOCKED_COUNTRIES.includes(country)) return true;
-  if (BLOCKED_IPS.includes(ip))            return true;
+  if (BLOCKED_IPS.includes(ip)) return true;
 
   return false;
 }
@@ -38,9 +38,9 @@ export default auth((request: NextRequest) => {
 
   // ✅ Exclude these from middleware to prevent redirect loops
   const isExcluded =
-    nextUrl.pathname.startsWith("/_next")             ||
-    nextUrl.pathname.startsWith("/favicon")           ||
-    nextUrl.pathname.startsWith("/blocked")           ||
+    nextUrl.pathname.startsWith("/_next") ||
+    nextUrl.pathname.startsWith("/favicon") ||
+    nextUrl.pathname.startsWith("/blocked") ||
     nextUrl.pathname.startsWith("/admin/auth");       // ← key fix: exclude signin page
 
   if (isExcluded) return NextResponse.next();
@@ -53,7 +53,7 @@ export default auth((request: NextRequest) => {
 
   // ✅ Step 2: Admin auth
   const isAdminRoute = nextUrl.pathname.startsWith("/admin");
-  const isLoggedIn   = !!(request as any).auth;
+  const isLoggedIn = !!(request as any).auth;
 
   if (isAdminRoute && !isLoggedIn) {
     const loginUrl = new URL("/admin/auth/signin", request.url);
