@@ -8,6 +8,7 @@ import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
 import { formatLinkForPortfolio, formatLinkForCaseStudy } from "@/app/helpers/formatLink";
 import { CaseStudy } from "@/app/types/CaseStudy";
+import portfolioList from '@/portfolios_rows_converted.json'
 
 
 
@@ -15,51 +16,75 @@ import { CaseStudy } from "@/app/types/CaseStudy";
 
 const CaseStudyList = () => {
 
-  const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
+  const parseJSON = (value: any) => {
+    if (!value) return [];
+
+    if (Array.isArray(value)) return value;
+
+    try {
+      return JSON.parse(value);
+    } catch {
+      return [];
+    }
+  };
+
+  // const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+  const normalizedCaseStudy: CaseStudy[] = portfolioList
+    .map((item: any): CaseStudy => ({
+      ...item,
+      categories: parseJSON(item.categories),
+      channels: parseJSON(item.channels),
+      channelsUsed: parseJSON(item.channelsUsed),
+    }))
+    .filter((item) =>
+      ["case study", "case study new"].includes(item.section)
+    );
+
+  const [caseStudies, setCaseStudies] = useState<CaseStudy[]>(normalizedCaseStudy);
 
   const CACHE_DURATION = 10 * 60 * 1000;
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const cachedData = localStorage.getItem('case-study')
+  //   const cachedData = localStorage.getItem('case-study')
 
 
-    const fetchCaseStudies = async () => {
-      try {
-        const response = await fetch(`/api/case-study`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data.caseStudy);
-          setCaseStudies(data.caseStudy);
-          localStorage.setItem(
-            'case-study',
-            JSON.stringify({
-              timestamp: Date.now(),
-              data: data.caseStudy,
-            })
-          )
-        } else {
-          console.error("Failed to fetch case study data");
-        }
-      } catch (error) {
-        console.error("Error fetching case study data:", error);
-      }
-    };
+  //   const fetchCaseStudies = async () => {
+  //     try {
+  //       const response = await fetch(`/api/case-study`);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log(data.caseStudy);
+  //         setCaseStudies(data.caseStudy);
+  //         localStorage.setItem(
+  //           'case-study',
+  //           JSON.stringify({
+  //             timestamp: Date.now(),
+  //             data: data.caseStudy,
+  //           })
+  //         )
+  //       } else {
+  //         console.error("Failed to fetch case study data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching case study data:", error);
+  //     }
+  //   };
 
-    if (cachedData) {
-      const { timestamp, data } = JSON.parse(cachedData);
-      if (Date.now() - timestamp < CACHE_DURATION) {
-        setCaseStudies(data)
-      } else {
-        localStorage.removeItem('case-study')
-        fetchCaseStudies();
-      }
-    } else {
-      localStorage.removeItem('case-study')
-      fetchCaseStudies();
-    }
+  //   if (cachedData) {
+  //     const { timestamp, data } = JSON.parse(cachedData);
+  //     if (Date.now() - timestamp < CACHE_DURATION) {
+  //       setCaseStudies(data)
+  //     } else {
+  //       localStorage.removeItem('case-study')
+  //       fetchCaseStudies();
+  //     }
+  //   } else {
+  //     localStorage.removeItem('case-study')
+  //     fetchCaseStudies();
+  //   }
 
-  }, []);
+  // }, []);
 
 
   const [filter, setFilter] = useState("all");
@@ -151,7 +176,7 @@ const CaseStudyList = () => {
                   <div className="portfolio-card group relative col-span-1">
                     <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px] group">
                       <Image
-                        src={item.coverImage ?? item.bannerImage}
+                        src={item.coverImage == "" || null ? item.bannerImage : item.coverImage}
                         alt="image"
                         className="h-full w-full object-cover"
                         fill

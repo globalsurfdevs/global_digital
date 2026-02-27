@@ -21,4 +21,6 @@ export type CaseStudy = {
     companyName: string;
     categories: { name: string }[]
     channels: { channelName: string }[]
+    section: string;
+    slug: string;
 }
