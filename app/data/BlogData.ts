@@ -1,4 +1,43 @@
 export const BlogData = [
+  {
+    id: 6,
+    slug:"no-clicks-google-ai-search-built-environment",
+    titles: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+    title: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+    list_heading: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+    meta_title: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results | Global Surf Blog",
+    description: "",
+    post_date: "",
+    read_time: "",
+    feature_thumb: "/images/blog-new/blog6/blog_3.jpg",
+    thumb: "/images/blog-new/blog6/blog_3.jpg",
+    large_thumb: "/images/blog-new/blog6/blog_3.jpg",
+    category: "Content Production",
+    format: "standard",
+    views: "",
+    excerpt:
+      "",
+    body: [
+     ""
+    ],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para:
+      "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
  {
     id: 1,
     slug:"global-surf-at-1billion-followers-summit",
@@ -201,4 +240,5 @@ export const BlogData = [
       },
     ],
   },
+  
 ];

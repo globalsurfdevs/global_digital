@@ -991,8 +991,21 @@ import bloggs3 from "../images/blog-new/blog-gs3.jpg";
 import bloggs4 from "../images/blog-new/blog-gs4.jpg";
 import bloggs5 from "../images/blog-new/blog-gs5.png";
 import blogg6 from "../images/blog-new/blog-gs6.jpg";
+import newblog01bnr from "../images/blog-new/blog6/ai-powered.png";
+import morg from "../images/blog-new/blog6/monthly-organic-comparison.png";
+import zeroclick from "../images/blog-new/blog6/zero-click.png";
+import eeatseo from "../images/blog-new/blog6/eeat-seo.png";
+import meassuringav from "../images/blog-new/blog6/meassuring-av.jpg";
+import blog_3 from "../images/blog-new/blog6/blog_3.jpg";
+
 
 export const assets = {
+  blog_3,
+  meassuringav,
+  eeatseo,
+  zeroclick,
+  morg,
+  newblog01bnr,
   Vidhu,
   newblog23bnr,bloggs2,bloggs3,bloggs4,bloggs5,blogg6,
 Anjanaseo,
