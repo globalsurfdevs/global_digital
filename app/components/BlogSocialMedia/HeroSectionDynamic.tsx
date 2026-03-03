@@ -21,6 +21,8 @@ interface BannerSection {
   title: string;
   title1?: string;
   subtitle?: string;
+  publishedon?: string;
+  updatedon?: string;
   buttontitle?: string;
   buttonurl?: string;
   image: string | StaticImageData;
@@ -42,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   hideslider,
   bannerlogp,
   maxchwidth,
-}) => {
+}) => { 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 const [modalOpen, setModalOpen] = useState(false);
 
@@ -120,8 +122,7 @@ const [modalOpen, setModalOpen] = useState(false);
       <div className="container mx-auto py-2" ref={nextContainerRef}>
      
         {Bannerdata.map((herosection) => (
-          
-          <div key={herosection.id}>
+          <div key={herosection.id}>  
             <motion.div
               className="title-80"
               initial="hidden"
@@ -184,7 +185,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   
                   </div>
                   <div>
-                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on Sep 15, 2025  |  Updated on 14, 2025
+                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on {herosection.publishedon}  |  Updated on {herosection.updatedon}
                         </p>
                 
                   </div>
@@ -197,8 +198,7 @@ const [modalOpen, setModalOpen] = useState(false);
                         </div>
                         <div className="col-span-5 w-full ">
                           <h1 className="title-80">
-                         Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 
-Billion Followers Summit 
+                         {herosection.title} 
                           </h1>
                           <div className="gap-[16px] mt-[40px] xl:hidden flex">
                         
@@ -255,8 +255,8 @@ Billion Followers Summit
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection) => (
-            <div className=" w-full bg-black ">
+          {Bannerdata.map((herosection,index) => (
+            <div className=" w-full bg-black " key={index}>
               <Image
                 src={herosection.image}
                 className="w-full"

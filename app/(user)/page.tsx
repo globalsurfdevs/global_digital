@@ -92,7 +92,7 @@ export default function Home() {
       <SuccessStories />
       <Clients /> 
       <Testimonials />
-      <FAQ data={Faq.slice(0, 3)}  />
+      <FAQ data={Faq}  />
       <Cta />
     </>
   );
