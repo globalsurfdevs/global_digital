@@ -11,33 +11,33 @@ import MainSection from './MainSection'
 import YtVideo from './YtVideo'
 import SocialMedia from './SocialMedia'
 
-const PortfolioDetails = () => {
+const PortfolioDetails = ({ data }: any) => {
 
-    const { companyName } = useParams()
+    // const { companyName } = useParams()
 
-    const [data, setData] = useState<{ portfolio: Portfolio; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
+    // const [data, setData] = useState<{ portfolio: Portfolio; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const fetchPortfolioDetails = async () => {
-            const response = await fetch(`/api/portfolio?slug=${companyName}`);
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data)
-                setData(data)
-            }
-        }
+    //     const fetchPortfolioDetails = async () => {
+    //         const response = await fetch(`/api/portfolio?slug=${companyName}`);
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             console.log(data)
+    //             setData(data)
+    //         }
+    //     }
 
-        fetchPortfolioDetails()
+    //     fetchPortfolioDetails()
 
-    }, [])
+    // }, [])
 
 
     return (
         <>
             <MainSection data={data} />
             <HeroSection data={data} />
-            <Goals data={data} companyName={companyName?.toString() ?? null} />
+            <Goals data={data} companyName={data.companyName?.toString() ?? null} />
             <YtVideo data={data} />
             {data?.portfolio.section == "case study new" && <SocialMedia data={data} />}
             <Result data={data} />
