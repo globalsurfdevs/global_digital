@@ -7,11 +7,13 @@ import PortfolioHighlight from "@/app/models/PortfolioHighlight";
 import mongoose from "mongoose";
 import '@/app/models/Category'
 import '@/app/models/Channel'
+import connectDB from "@/lib/mongodb";
 
 export async function GET(req: NextRequest) {
 
     try {
         console.log("This worlds")
+        await connectDB()
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
         const slug = searchParams.get("slug")
@@ -85,9 +87,11 @@ export async function GET(req: NextRequest) {
                 .populate("channels")
                 .lean();
 
-
-            if (!caseStudy) {
-                return NextResponse.json({ error: "Case study not found" }, { status: 404 });
+            if (caseStudy.length === 0) {
+                return NextResponse.json(
+                    { error: "Case study not found" },
+                    { status: 404 }
+                );
             }
 
             return NextResponse.json({ caseStudy });
@@ -105,6 +109,7 @@ export async function POST(req: NextRequest) {
     console.log("Here")
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
+    await connectDB()
 
     const formData = await req.formData()
     // const title = formData.get("title") as string
@@ -442,6 +447,7 @@ export async function POST(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
+    await connectDB()
 
     try {
 
