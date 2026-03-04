@@ -1,55 +1,81 @@
 import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
-import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials"
 
-import connectDB from "@/lib/mongodb";
-import User from "@/app/models/User";
-import ratelimit from "@/app/lib/rateLimit";
+import { supabase } from '@/app/lib/initSupabase'
+import ratelimit from "./app/lib/rateLimit";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  ...authConfig,
 
+type User = {
+  id: string;
+  username: string;
+  email: string;
+};
+
+export const {
+  handlers,
+  auth,
+  signIn,
+  signOut,
+} = NextAuth({
   providers: [
-    ...authConfig.providers,
-
-    CredentialsProvider({
-      name: "Credentials",
-
-      credentials: {
-        username: {},
-        password: {},
-      },
-
-      async authorize(credentials) {
-        await connectDB();
-
-        const user = await User.findOne({
-          username: credentials?.username,
-        });
-
-        if (!user) throw new Error("Invalid Credentials");
-
-        if (user.password !== credentials?.password) {
-          throw new Error("Invalid Credentials");
-        }
-
-        return {
-          id: user._id.toString(),
-          name: user.username,
-          email: user.email,
-        };
-      },
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. 'Sign in with...')
+      name: 'Credentials',
+      // The credentials is used to generate a suitable form on the sign in page.
+      // You can specify whatever fields you are expecting to be submitted.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
+      credentials: {
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials, req) {
+        // You need to provide your own logic here that takes the credentials
+        // submitted and returns either a object representing a user or value
+        // that is false/null if the credentials are invalid.
+        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
+        // You can also use the `req` object to obtain additional parameters
+        // (i.e., the request IP address)
+
+        console.log(supabase)
+
+
+        let { data: user } = await supabase
+          .from('users')
+          .select('*').eq('username', credentials.username).single()
+
+
+        if (user) {
+          if (user.password === credentials.password) {
+            return user
+          } else {
+            throw new Error("Invalid Credentials")
+          }
+        }
+        // If no error and we have user data, return it
+        // Return null if user data could not be retrieved
+        throw new Error("Invalid Credentials")
+      }
+    })
   ],
-
+  session: {
+    strategy: "jwt",
+    maxAge: 24 * 60 * 60
+  },
+  jwt: {
+    maxAge: 24 * 60 * 60
+  },
   callbacks: {
-    async authorized({ request, auth }) {
-      const isLoggedIn = auth?.user;
+    authorized: async ({ request, auth }) => {
 
+      const isLoggedIn = auth?.user
       if (isLoggedIn) {
-        const ip =
-          request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-          "127.0.0.1";
+        const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "127.0.0.1";
 
         const result = await ratelimit.limit(ip);
 
@@ -58,24 +84,33 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             { message: "Too many requests. Please try again later." },
             { status: 429 }
           );
-        }
-
-        if (request.nextUrl.pathname.startsWith("/admin/auth/signin")) {
-          return Response.redirect(new URL("/admin", request.nextUrl));
+        } else {
+          if (request.nextUrl.pathname.startsWith('/admin/auth/signin')) {
+            return Response.redirect((new URL('/admin', request.nextUrl)))
+          }
         }
       }
 
-      return !!auth;
+      return !!auth
     },
-
     jwt({ token, user }) {
-      if (user) token.id = user.id;
-      return token;
-    },
 
+      if (user) {
+        token.id = user?.id
+      }
+
+      return token
+    },
     session({ session, token }) {
-      if (token?.id) session.user.id = token.id;
+      if (token?.id) {
+        session.user.id = token.id;
+      }
+
       return session;
     },
+
+  },
+  pages: {
+    signIn: '/admin/auth/signin'
   },
 });

@@ -1,14 +1,9 @@
-import React from 'react'
 import CaseStudyDetails from '@/app/components/CaseStudy-details'
-import apiService from '@/app/lib/apiService'
-import { formatLinkForCaseStudy } from '@/app/helpers/formatLink'
-import { Metadata } from 'next'
-import { CaseStudy } from '@/app/types/CaseStudy'
+
 type Data = {
   caseStudy: {
     metaTitle: string;
     metaDescription: string;
-
   }
 }
 
@@ -48,6 +43,7 @@ const page = async ({ params }: { params: Promise<{ companyName: string }> }) =>
 
 
   const data = await response.json();
+  console.log(data)
   return (
     <>
       <CaseStudyDetails data={data} />
