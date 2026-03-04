@@ -44,6 +44,9 @@ const page = async ({ params }: { params: Promise<{ companyName: string }> }) =>
     { next: { revalidate: 60 } }
   );
 
+  console.log(process.env.BASE_URL);
+
+
   const data = await response.json();
   return (
     <>
