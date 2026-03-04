@@ -35,7 +35,7 @@ type Data = {
 const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
   const companyName = (await params).companyName;
   const response = await fetch(
-    `${process.env.BASE_URL}/api/case-study?slug=${companyName}`,
+    `https://www.globalsurf.ae/api/case-study?slug=${companyName}`,
     { next: { revalidate: 60 } }
   );
 
