@@ -32,21 +32,11 @@ type Data = {
 //   };
 // }
 
-const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
-  const companyName = (await params).companyName;
-  const response = await fetch(
-    `https://www.globalsurf.ae/api/case-study?slug=${companyName}`,
-    { next: { revalidate: 60 } }
-  );
+const page = async () => {
 
-  console.log(process.env.BASE_URL);
-
-
-  const data = await response.json();
-  console.log(data)
   return (
     <>
-      <CaseStudyDetails data={data} />
+      <CaseStudyDetails />
     </>
   )
 }
