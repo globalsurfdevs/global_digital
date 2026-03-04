@@ -9,85 +9,37 @@ import { useParams } from 'next/navigation'
 import { CaseStudy } from '@/app/types/CaseStudy'
 import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
 import PortfolioDetails from '@/app/components/Portfolio-details'
-import portfolioListRaw from "@/portfolios_rows_converted.json";
-import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 
 
 const CaseStudyPage = () => {
-  // const [data, setData] = useState<{ caseStudy: CaseStudy[], caseStudyHighlights: CaseStudyHighlights[] } | null>(null)
+  const [data, setData] = useState<{ caseStudy: CaseStudy, caseStudyHighlights: CaseStudyHighlights[] } | null>(null)
 
   const { companyName } = useParams()
 
-  // useEffect(() => {
-  //   const fetchCaseStudyData = async () => {
-  //     try {
-  //       const response = await fetch(`/api/case-study?slug=${companyName}`, {
-  //         cache: "no-cache"
-  //       })
-  //       if (response.ok) {
-  //         const data = await response.json()
-  //         // console.log(data)
-  //         if (!data.error) {
-  //           setData(data)
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.log("Error fetching case study data", error)
-  //     }
-  //   }
-
-  //   if (companyName !== "quad-dream") {
-  //     fetchCaseStudyData()
-  //   }
-
-  // }, [])
-
-  const parseJSON = (value: any) => {
-    if (!value) return [];
-    if (Array.isArray(value)) return value;
-
-    try {
-      return JSON.parse(value);
-    } catch {
-      return [];
+  useEffect(() => {
+    const fetchCaseStudyData = async () => {
+      try {
+        const response = await fetch(`/api/case-study?slug=${companyName}`, {
+          cache: "no-cache"
+        })
+        if (response.ok) {
+          const data = await response.json()
+          console.log(data)
+          if (!data.error) {
+            console.log(data)
+            setData(data)
+          }
+        }
+      } catch (error) {
+        console.log("Error fetching case study data", error)
+      }
     }
-  };
 
-  const caseStudyList: CaseStudy[] = portfolioListRaw.map((item: any) => ({
-    ...item,
-    categories: parseJSON(item.categories),
-    channels: parseJSON(item.channels),
-    channelsUsed: parseJSON(item.channelsUsed),
-  }));
+    if (companyName !== "quad-dream") {
+      fetchCaseStudyData()
+    }
 
-  const caseStudyHighlightsList: CaseStudyHighlights[] =
-    portfolioHighlightsRaw.map((item: any) => ({
-      ...item,
-      companyId: Number(item.companyId), // 🔥 force to number
-    }));
-
-  // ✅ Mimic Supabase `.select().eq()` (returns array)
-  const caseStudy = caseStudyList.filter(
-    (item) => item.slug === companyName
-  );
-
-  let caseStudyHighlights: CaseStudyHighlights[] = [];
-
-  if (caseStudy.length > 0) {
-    caseStudyHighlights = caseStudyHighlightsList.filter(
-      (item) => item.companyId === caseStudy[0].id
-    );
-  }
-
-  if (caseStudy.length === 0) {
-    return <div>Portfolio not found</div>;
-  }
-
-  const data = {
-    caseStudy,
-    caseStudyHighlights,
-  };
-
+  }, [])
 
   if (companyName == "quad-dream") {
     return (
@@ -103,7 +55,7 @@ const CaseStudyPage = () => {
         <Percentages data={data} />
         <Ready data={data} />
         <div className='container mx-auto py-4'>
-          <SuccessStories companyId={data?.caseStudy[0].id} />
+          <SuccessStories companyId={data?.caseStudy._id} />
         </div>
       </>
     )

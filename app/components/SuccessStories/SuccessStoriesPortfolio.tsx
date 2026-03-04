@@ -5,63 +5,42 @@ import Image from "next/image"
 import Link from 'next/link';
 import { Portfolio } from '@/app/types/Portfolio';
 import { formatLinkForPortfolio, formatLinkForCaseStudy } from '@/app/helpers/formatLink';
-import portfolioListRaw from '@/portfolios_rows_converted.json'
 
 export const SuccessStoriesPortfolio = ({ companyId }: {
-    companyId: number | undefined
+    companyId: string | undefined
 }) => {
 
-    // const [data, setData] = useState<Portfolio[] | null>(null)
+    const [data, setData] = useState<Portfolio[] | null>(null)
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     // const fetchPortfolios = async () => {
-    //     //     const response = await fetch(`/api/portfolio`);
-    //     //     if (response.ok) {
-    //     //         const data = await response.json();
-    //     //         console.log(data)
-    //     //         setData(data?.portfolio.filter((item:Portfolio)=>item.id!==companyId).sort(() => Math.random() - 0.5).slice(0,3))
-    //     //     }
-    //     // }
-    //     const fetchPortfolios = async () => {
-    //         const response = await fetch(`/api/portfolio`);
-    //         if (response.ok) {
-    //             const data = await response.json();
-    //             console.log(data);
+        // const fetchPortfolios = async () => {
+        //     const response = await fetch(`/api/portfolio`);
+        //     if (response.ok) {
+        //         const data = await response.json();
+        //         console.log(data)
+        //         setData(data?.portfolio.filter((item:Portfolio)=>item.id!==companyId).sort(() => Math.random() - 0.5).slice(0,3))
+        //     }
+        // }
+        const fetchPortfolios = async () => {
+            const response = await fetch(`/api/portfolio`);
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
 
-    //             const allowedIds = [46, 49, 57, 85, 73, 83, 1, 43];
+                const allowedIds = [46, 49, 57, 85, 73, 83, 1, 43];
 
-    //             const filtered = data?.portfolio
-    //                 ?.filter((item: Portfolio) => allowedIds.includes(item.id))
-    //                 .sort(() => Math.random() - 0.5).slice(0,3);
+                const filtered = data?.portfolio
+                    ?.filter((item: Portfolio) => allowedIds.includes(item.id))
+                    .sort(() => Math.random() - 0.5).slice(0, 3);
 
-    //             setData(filtered);
-    //         }
-    //     }; 
+                setData(filtered);
+            }
+        };
 
-    //     fetchPortfolios()
+        fetchPortfolios()
 
-    // }, [companyId])
-
-    const parseJSON = (value: any) => {
-        if (!value) return [];
-        if (Array.isArray(value)) return value;
-
-        try {
-            return JSON.parse(value);
-        } catch {
-            return [];
-        }
-    };
-
-    const portfolioList = portfolioListRaw.map((item: any): Portfolio => ({
-        ...item,
-        categories: parseJSON(item.categories),
-        channels: parseJSON(item.channels),
-    }));
-
-    const allowedIds = [46, 49, 57, 85, 73, 83, 1, 43];
-    const data = portfolioList?.filter((item) => allowedIds.includes(item.id)).sort(() => Math.random() - 0.5).slice(0, 3);
+    }, [companyId])
 
 
     return (
@@ -93,7 +72,7 @@ export const SuccessStoriesPortfolio = ({ companyId }: {
                     {data && data.length > 0 ? (data?.map((item, index) => (
                         <div className='flex flex-col relative group' key={index}>
                             <div className='card-img h-[250px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px] relative mb-4 lg:mb-[31px]'>
-                                <Image src={item.bannerImage == "" || null ? item.coverImage : item.bannerImage} alt="image" className="absolute object-cover w-full h-full" fill />
+                                <Image src={item.bannerImage ?? item.coverImage} alt="image" className="absolute object-cover w-full h-full" fill />
                                 <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 duration-300 ease-in-out ease-in-out   group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  md:left-5 md:top-5">
                                     <div className="uppercase text-white">
                                         <p className="text-font14 text-white">{item.industry}</p>

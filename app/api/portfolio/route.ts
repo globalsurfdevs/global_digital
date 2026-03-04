@@ -3,11 +3,19 @@ import redisClient from "@/app/lib/redisClient"
 import { uploadToDropbox } from "@/app/lib/uploadToDropbox"
 import { NextRequest, NextResponse } from "next/server"
 import { v4 as uuidv4 } from 'uuid';
+import connectDB from "@/lib/mongodb";
+import Portfolio from "@/app/models/Portfolio";
+import PortfolioHighlight from "@/app/models/PortfolioHighlight";
+import mongoose from "mongoose";
+import '@/app/models/Category'
+import '@/app/models/Channel'
+
 
 
 export async function GET(req: NextRequest) {
 
     try {
+        await connectDB();
         console.log("This worlds hehehehhe")
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
@@ -18,56 +26,85 @@ export async function GET(req: NextRequest) {
 
         if (id) {
 
-            let { data: portfolio, error } = await supabase
-                .from('portfolios')
-                .select("*")
-                .eq('id', id)
+            // let { data: portfolio, error } = await supabase
+            //     .from('portfolios')
+            //     .select("*")
+            //     .eq('id', id)
 
 
-            let { data: portfolioHighlights } = await supabase
-                .from('portfolioHighlights')
-                .select("*")
-                .eq('companyId', id)
+            // let { data: portfolioHighlights } = await supabase
+            //     .from('portfolioHighlights')
+            //     .select("*")
+            //     .eq('companyId', id)
+
+            // const portfolio = await Portfolio.findById({ _id: id }).populate("categories").populate("channels");
+
+            const portfolio = await Portfolio
+                .findById(id)
+                .populate("categories")
+                .populate("channels")
+                .lean();
+
+            console.log(portfolio);
+
+            const portfolioHighlights = await PortfolioHighlight.find({
+                companyId: new mongoose.Types.ObjectId(id)
+            });
 
             return NextResponse.json({ portfolio, portfolioHighlights });
         } else if (slug) {
 
-            let { data: portfolio, error } = await supabase
-                .from('portfolios')
-                .select("*")
-                .eq('slug', slug)
+            // let { data: portfolio, error } = await supabase
+            //     .from('portfolios')
+            //     .select("*")
+            //     .eq('slug', slug)
 
-            console.log(error);
-
-
-            if (portfolio && portfolio.length > 0) {
-                let { data: portfolioHighlights } = await supabase
-                    .from('portfolioHighlights')
-                    .select("*")
-                    .eq('companyId', portfolio[0].id)
-
-                console.log(portfolio, "PortfolioH", portfolioHighlights)
+            // console.log(error);
 
 
-                return NextResponse.json({ portfolio, portfolioHighlights });
+            // if (portfolio && portfolio.length > 0) {
+            //     let { data: portfolioHighlights } = await supabase
+            //         .from('portfolioHighlights')
+            //         .select("*")
+            //         .eq('companyId', portfolio[0].id)
+
+            //     console.log(portfolio, "PortfolioH", portfolioHighlights)
+
+            const portfolio = await Portfolio
+                .findOne({ slug })
+                .populate("categories")
+                .populate("channels")
+
+            if (!portfolio || !portfolio._id) {
+                throw new Error("Portfolio not found");
             }
+
+            const portfolioHighlights = await PortfolioHighlight.find({
+                companyId: new mongoose.Types.ObjectId(portfolio._id)
+            });
+
+            return NextResponse.json({ portfolio, portfolioHighlights });
+
 
 
         } else {
             if (userType !== "admin") {
 
-                const cashedData: [] = await redisClient.get('portfolios') || []
+                // const cashedData: [] = await redisClient.get('portfolios') || []
 
-                if (cashedData.length > 0) {
-                    const portfolio = [...cashedData]
-                    console.log("From cache")
-                    return NextResponse.json({ portfolio })
-                }
+                // if (cashedData.length > 0) {
+                //     const portfolio = [...cashedData]
+                //     console.log("From cache")
+                //     return NextResponse.json({ portfolio })
+                // }
 
-                let { data: portfolio, } = await supabase
-                    .from('portfolios')
-                    .select('*').order('index', { ascending: true })
+                // let { data: portfolio, } = await supabase
+                //     .from('portfolios')
+                //     .select('*').order('index', { ascending: true })
 
+                const portfolio = await Portfolio.find({}).sort({ index: "ascending" }).populate("categories")
+                    .populate("channels")
+                    .lean();
 
                 // let { data: caseStudy } = await supabase
                 //     .from('caseStudy')
@@ -88,10 +125,12 @@ export async function GET(req: NextRequest) {
             } else {
 
                 console.log("Here")
-                let { data: portfolio, } = await supabase
-                    .from('portfolios')
-                    .select('*')
-                    .order('index', { ascending: true })
+                // let { data: portfolio, } = await supabase
+                //     .from('portfolios')
+                //     .select('*')
+                //     .order('index', { ascending: true })
+
+                const portfolio = await Portfolio.find({}).sort({ index: "asc" })
 
 
 
@@ -116,12 +155,26 @@ export async function POST(req: NextRequest) {
     console.log("Here")
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
+    await connectDB()
+
+    console.log("ID:", id);
+    console.log("TYPE:", typeof id);
 
     const formData = await req.formData()
     // const title = formData.get("title") as string
     const industry = formData.get("industry") as string
     const country = formData.get("country") as string
     const channels = JSON.parse(formData.get("channels") as string);
+    let parsedChannels;
+    let channelIds;
+    if (channels) {
+        parsedChannels =
+            typeof channels === "string" ? JSON.parse(channels) : channels;
+
+        channelIds = parsedChannels.map((c: { _id: string }) => c._id)
+    }
+
+
     const story = formData.get("story") as string
     const goals = formData.get("goals") as string
     const objectives = formData.get("objectives") as string
@@ -175,8 +228,10 @@ export async function POST(req: NextRequest) {
     console.log("section", section)
 
     let addedCategoriesRaw;
+    let addedCategoriesIds;
     if (addedCategories) {
         addedCategoriesRaw = JSON.parse(addedCategories)
+        addedCategoriesIds = addedCategoriesRaw.map((c: { _id: string }) => c._id)
     }
 
     let imagePath;
@@ -304,6 +359,7 @@ export async function POST(req: NextRequest) {
     // console.log("section2Image1Path", section2Image1Path)
     // console.log("section2Image2Path", section2Image2Path)
 
+    console.log("socialMediaImages", socialMediaImages)
 
 
     try {
@@ -311,165 +367,197 @@ export async function POST(req: NextRequest) {
 
         if (section == 'portfolio' || section == 'case study new') {
             if (id) {
-                const { data: portfolio, error } = await supabase
-                    .from('portfolios')
-                    .select('*')
-                    .eq('id', id)
+                // const { data: portfolio, error } = await supabase
+                //     .from('portfolios')
+                //     .select('*')
+                //     .eq('id', id)
 
-                if (portfolio) {
-                    console.log("FIRSTTTTTTTTTTTTTTTT")
-                    const { data, error } = await supabase
-                        .from('portfolios')
-                        .update({
-                            companyName,
-                            industry,
-                            country,
-                            channels,
-                            bannerImage: image == null ? imagePath : image,
-                            story,
-                            section2Image1: section2Image1 == null ? section2Image1Path : section2Image1,
-                            section2Image2: section2Image2 == null ? section2Image2Path : section2Image2,
-                            goals,
-                            objectives,
-                            challenge,
-                            solutions,
-                            strategyApproach,
-                            socialMediaImages: JSON.parse(socialMediaImages),
-                            result,
-                            section2BannerImage: section2BannerImage == null ? section2BannerImagePath : section2BannerImage,
-                            resultImage1: resultImage1PAth,
-                            resultImage2: resultImage2Path,
-                            video,
-                            tag,
-                            description,
-                            categories: addedCategoriesRaw,
-                            logo: logo == null ? logoPath : logo,
-                            slug,
-                            metaTitle,
-                            metaDescription,
-                            websiteLink,
-                            bannerTitle,
-                            videoThumbnail: videoThumbnailPath,
-                            videoTitle,
-                            section
-                        })
-                        .eq('id', id)
-                        .select()
+                await Portfolio.findByIdAndUpdate(id, {
+                    companyName,
+                    industry,
+                    country,
+                    channels: channelIds,
+                    bannerImage: image == null ? imagePath : image,
+                    story,
+                    section2Image1: section2Image1 == null ? section2Image1Path : section2Image1,
+                    section2Image2: section2Image2 == null ? section2Image2Path : section2Image2,
+                    goals,
+                    objectives,
+                    challenge,
+                    solutions,
+                    strategyApproach,
+                    socialMediaImages:
+                        !socialMediaImages || socialMediaImages === "undefined"
+                            ? []
+                            : JSON.parse(socialMediaImages),
+                    result,
+                    section2BannerImage: section2BannerImage == null ? section2BannerImagePath : section2BannerImage,
+                    resultImage1: resultImage1PAth,
+                    resultImage2: resultImage2Path,
+                    video,
+                    tag,
+                    description,
+                    categories: addedCategoriesIds,
+                    logo: logo == null ? logoPath : logo,
+                    slug,
+                    metaTitle,
+                    metaDescription,
+                    websiteLink,
+                    bannerTitle,
+                    videoThumbnail: videoThumbnailPath,
+                    videoTitle,
+                    section
+                })
 
 
+                const highlights: { customId: string, number: string, text: string }[] = [];
 
-                    const highlights: { customId: string, number: string, text: string }[] = [];
+                hightLightIds.forEach((item: number) => {
+                    const customId = formData.get(`highlightId${item}`) as string;
+                    const number = formData.get(`highlightNumber${item}`) as string;
+                    const text = formData.get(`highlightText${item}`) as string;
 
-                    hightLightIds.forEach((item: number) => {
-                        const customId = formData.get(`highlightId${item}`) as string;
-                        const number = formData.get(`highlightNumber${item}`) as string;
-                        const text = formData.get(`highlightText${item}`) as string;
+                    highlights.push({ customId, number, text });
 
-                        highlights.push({ customId, number, text });
+                    console.log("Item", item)
+                })
 
-                        console.log("Item", item)
-                    })
-
-                    console.log("highlights", highlights)
+                console.log("highlights", highlights)
 
 
 
-                    for (let i = 0; i < highlights.length; i++) {
+                for (let i = 0; i < highlights.length; i++) {
 
-                        if (highlights[i].customId.length > 36) {
-                            console.log("deleteData", highlights[i].customId)
-                            const deleteId = highlights[i].customId.slice(0, 36)
-                            const { error: deleteError } = await supabase
-                                .from('portfolioHighlights')
-                                .delete()
-                                .eq('customId', deleteId)
+                    if (highlights[i].customId.length > 36) {
+                        console.log("deleteData", highlights[i].customId)
+                        const deleteId = highlights[i].customId.slice(0, 36)
+                        // const { error: deleteError } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .delete()
+                        //     .eq('customId', deleteId)
+                        await PortfolioHighlight.deleteOne({ customId: deleteId })
 
-                            continue;
-                        }
-
-                        let { data: portfolioHighlight, error } = await supabase
-                            .from('portfolioHighlights')
-                            .select("*")
-                            .eq('customId', highlights[i].customId)
-
-                        if (portfolioHighlight && portfolioHighlight.length > 0) {
-                            const { data, error } = await supabase
-                                .from('portfolioHighlights')
-                                .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
-                                .eq('customId', highlights[i].customId)
-                                .select()
-
-                        } else {
-                            console.log("in else yooooo")
-                            const { data, error } = await supabase
-                                .from('portfolioHighlights')
-                                .insert([
-                                    { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id },
-                                ])
-                                .select()
-                        }
-
+                        continue;
                     }
 
+                    // let { data: portfolioHighlight, error } = await supabase
+                    //     .from('portfolioHighlights')
+                    //     .select("*")
+                    //     .eq('customId', highlights[i].customId)
+                    const portfolioHighlight = await PortfolioHighlight.findOne({ customId: highlights[i].customId })
 
-                    return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
+                    if (portfolioHighlight) {
+                        // const { data, error } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
+                        //     .eq('customId', highlights[i].customId)
+                        //     .select()
 
+                        await PortfolioHighlight.updateOne({ customId: highlights[i].customId }, { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
 
+                    } else {
+                        console.log("in else yooooo")
+                        // const { data, error } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .insert([
+                        //         { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id },
+                        //     ])
+                        //     .select()
 
+                        await PortfolioHighlight.create({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id })
+                    }
 
-                } else if (error) {
-                    return NextResponse.json({ error: "Updating portfolio failed" }, { status: 400 })
-                } else {
-                    return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
                 }
+
+
+                return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
+
             }
 
             else {
 
 
-                const { data, error } = await supabase
-                    .from('portfolios')
-                    .insert([
-                        {
-                            companyName,
-                            industry,
-                            country,
-                            channels,
-                            bannerImage: imagePath,
-                            story,
-                            section2Image1: section2Image1Path,
-                            section2Image2: section2Image2Path,
-                            goals,
-                            objectives,
-                            challenge,
-                            solutions,
-                            strategyApproach,
-                            socialMediaImages: JSON.parse(socialMediaImages),
-                            result,
-                            section2BannerImage: section2BannerImagePath,
-                            resultImage1: resultImage1PAth,
-                            resultImage2: resultImage2Path,
-                            video,
-                            tag,
-                            description,
-                            categories: addedCategoriesRaw,
-                            logo: logoPath,
-                            slug,
-                            metaTitle,
-                            metaDescription,
-                            customId: uuidv4(),
-                            websiteLink,
-                            bannerTitle,
-                            videoThumbnail: videoThumbnailPath,
-                            videoTitle,
-                            section
-                        },
-                    ])
-                    .select('id')
+                // const { data, error } = await supabase
+                //     .from('portfolios')
+                //     .insert([
+                //         {
+                //             companyName,
+                //             industry,
+                //             country,
+                //             channels,
+                //             bannerImage: imagePath,
+                //             story,
+                //             section2Image1: section2Image1Path,
+                //             section2Image2: section2Image2Path,
+                //             goals,
+                //             objectives,
+                //             challenge,
+                //             solutions,
+                //             strategyApproach,
+                //             socialMediaImages: JSON.parse(socialMediaImages),
+                //             result,
+                //             section2BannerImage: section2BannerImagePath,
+                //             resultImage1: resultImage1PAth,
+                //             resultImage2: resultImage2Path,
+                //             video,
+                //             tag,
+                //             description,
+                //             categories: addedCategoriesRaw,
+                //             logo: logoPath,
+                //             slug,
+                //             metaTitle,
+                //             metaDescription,
+                //             customId: uuidv4(),
+                //             websiteLink,
+                //             bannerTitle,
+                //             videoThumbnail: videoThumbnailPath,
+                //             videoTitle,
+                //             section
+                //         },
+                //     ])
+                //     .select('id')
+
+                const portfolio = await Portfolio.create({
+                    companyName,
+                    industry,
+                    country,
+                    channels: channelIds,
+                    bannerImage: imagePath,
+                    story,
+                    section2Image1: section2Image1Path,
+                    section2Image2: section2Image2Path,
+                    goals,
+                    objectives,
+                    challenge,
+                    solutions,
+                    strategyApproach,
+                    socialMediaImages:
+                        !socialMediaImages || socialMediaImages === "undefined"
+                            ? []
+                            : JSON.parse(socialMediaImages),
+                    result,
+                    section2BannerImage: section2BannerImagePath,
+                    resultImage1: resultImage1PAth,
+                    resultImage2: resultImage2Path,
+                    video,
+                    tag,
+                    description,
+                    categories: addedCategoriesIds,
+                    logo: logoPath,
+                    slug,
+                    metaTitle,
+                    metaDescription,
+                    customId: uuidv4(),
+                    websiteLink,
+                    bannerTitle,
+                    videoThumbnail: videoThumbnailPath,
+                    videoTitle,
+                    section
+                })
 
                 let newId: number;
-                if (data) {
-                    newId = data[0].id
+                if (portfolio) {
+                    newId = portfolio._id
                 }
 
                 const highlights: { customId: string, number: string, text: string, companyId: number }[] = [];
@@ -487,38 +575,44 @@ export async function POST(req: NextRequest) {
                 for (let i = 0; i < highlights.length; i++) {
                     console.log(highlights)
 
-                    let { data: portfolioHighlight, error } = await supabase
-                        .from('portfolioHighlights')
-                        .select("*")
-                        .eq('customId', highlights[i].customId)
+                    // let { data: portfolioHighlight, error } = await supabase
+                    //     .from('portfolioHighlights')
+                    //     .select("*")
+                    //     .eq('customId', highlights[i].customId)
+
+                    const portfolioHighlight = await PortfolioHighlight.findOne({ customId: highlights[i].customId })
 
                     if (portfolioHighlight && portfolioHighlight.length > 0) {
                         console.log("data", portfolioHighlight)
-                        const { data, error } = await supabase
-                            .from('portfolioHighlights')
-                            .update({ number: highlights[i].number, text: highlights[i].text })
-                            .eq('customId', highlights[i].customId)
-                            .select()
-                        console.log("in if")
+                        // const { data, error } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .update({ number: highlights[i].number, text: highlights[i].text })
+                        //     .eq('customId', highlights[i].customId)
+                        //     .select()
+                        // console.log("in if")
+
+                        await PortfolioHighlight.updateOne({ customId: highlights[i].customId }, { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
 
                     } else {
 
-                        console.log("Inserting")
-                        const { data, error } = await supabase
-                            .from('portfolioHighlights')
-                            .insert([
-                                { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId },
-                            ])
-                            .select()
+                        // console.log("Inserting")
+                        // const { data, error } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .insert([
+                        //         { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId },
+                        //     ])
+                        //     .select()
+
+                        await PortfolioHighlight.create({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId })
 
                     }
 
                 }
 
-                if (data) {
+                if (portfolio) {
                     return NextResponse.json({ message: "Portfolio added successfully" }, { status: 200 })
 
-                } else if (error) {
+                } else if (!portfolio) {
                     return NextResponse.json({ error: "Adding portfolio failed" }, { status: 400 })
                 } else {
                     return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
@@ -528,104 +622,133 @@ export async function POST(req: NextRequest) {
 
         else {
             if (id) {
-                const { data: portfolio, error } = await supabase
-                    .from('portfolios')
-                    .select('*')
-                    .eq('id', id)
 
-                if (portfolio) {
-                    const { data, error } = await supabase
-                        .from('portfolios')
-                        .update({
-                            heading,
-                            sHeading,
-                            industry,
-                            country,
-                            channels,
-                            coverImage: coverImage == null ? coverImagePath : coverImage,
-                            story,
-                            goals,
-                            objectives,
-                            challenge,
-                            overcomingChallenges,
-                            achievements,
-                            description,
-                            tag,
-                            categories: addedCategoriesRaw,
-                            image1: image1 == null ? image1Path : image1,
-                            image2: image2 == null ? image2Path : image2,
-                            homeImage: homeImage == null ? homeImagePath : homeImage,
-                            logo: logo == null ? logoPath : logo,
-                            companyName,
-                            slug,
-                            metaTitle,
-                            metaDescription,
-                            customId: uuidv4(),
-                            section,
-                            homeTitle,
-                            homeSubTitle
-                        })
-                        .eq('id', id)
-                        .select()
+                await Portfolio.findByIdAndUpdate(id, {
+                    heading,
+                    sHeading,
+                    industry,
+                    country,
+                    channels,
+                    coverImage: coverImage == null ? coverImagePath : coverImage,
+                    story,
+                    goals,
+                    objectives,
+                    challenge,
+                    overcomingChallenges,
+                    achievements,
+                    description,
+                    tag,
+                    categories: addedCategoriesIds,
+                    image1: image1 == null ? image1Path : image1,
+                    image2: image2 == null ? image2Path : image2,
+                    homeImage: homeImage == null ? homeImagePath : homeImage,
+                    logo: logo == null ? logoPath : logo,
+                    companyName,
+                    slug,
+                    metaTitle,
+                    metaDescription,
+                    customId: uuidv4(),
+                    section,
+                    homeTitle,
+                    homeSubTitle
+                })
 
 
+                const highlights: { customId: string, number: string, text: string, showInHome: boolean }[] = [];
 
-                    const highlights: { customId: string, number: string, text: string, showInHome: boolean }[] = [];
+                hightLightIds.forEach((item: number) => {
+                    const customId = formData.get(`highlightId${item}`) as string;
+                    const number = formData.get(`highlightNumber${item}`) as string;
+                    const text = formData.get(`highlightText${item}`) as string;
 
-                    hightLightIds.forEach((item: number) => {
-                        const customId = formData.get(`highlightId${item}`) as string;
-                        const number = formData.get(`highlightNumber${item}`) as string;
-                        const text = formData.get(`highlightText${item}`) as string;
+                    highlights.push({ customId, number, text, showInHome: selectedHighlightForHome == customId });
 
-                        highlights.push({ customId, number, text, showInHome: selectedHighlightForHome == customId });
+                    console.log("Item", item)
+                })
 
-                        console.log("Item", item)
-                    })
-
-                    console.log("highlights", highlights)
+                console.log("highlights", highlights)
 
 
 
-                    for (let i = 0; i < highlights.length; i++) {
+                for (let i = 0; i < highlights.length; i++) {
 
-                        if (highlights[i].customId.length > 36) {
-                            console.log("delete pls")
-                            console.log("deleteData", highlights[i].customId)
-                            const deleteId = highlights[i].customId.slice(0, 36)
-                            console.log(deleteId)
-                            const { error: deleteError } = await supabase
-                                .from('portfolioHighlights')
-                                .delete()
-                                .eq('customId', deleteId)
+                    if (highlights[i].customId.length > 36) {
+                        console.log("delete pls")
+                        console.log("deleteData", highlights[i].customId)
+                        const deleteId = highlights[i].customId.slice(0, 36)
+                        console.log(deleteId)
+                        // const { error: deleteError } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .delete()
+                        //     .eq('customId', deleteId)
+                        await PortfolioHighlight.deleteOne({ customId: deleteId })
 
-                            continue;
-                        }
 
-                        console.log("no delete")
-
-                        let { data: portfolioHighlights, error } = await supabase
-                            .from('portfolioHighlights')
-                            .select("*")
-                            .eq('customId', highlights[i].customId)
-
-                        if (portfolioHighlights && portfolioHighlights.length > 0) {
-                            const { data, error } = await supabase
-                                .from('portfolioHighlights')
-                                .update({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, showInHome: highlights[i].showInHome })
-                                .eq('customId', highlights[i].customId)
-                                .select()
-
-                        } else {
-                            console.log("in else yooooo")
-                            const { data, error } = await supabase
-                                .from('portfolioHighlights')
-                                .insert([
-                                    { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id, showInHome: highlights[i].showInHome },
-                                ])
-                                .select()
-                        }
-
+                        continue;
                     }
+
+                    console.log("no delete")
+
+                    const portfolioHighlights = await PortfolioHighlight.findOne({ customId: highlights[i].customId })
+
+                    if (portfolioHighlights && portfolioHighlights.length > 0) {
+                        await PortfolioHighlight.updateOne({ customId: highlights[i].customId }, { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
+
+                    } else {
+                        console.log("in else yooooo")
+                        // const { data, error } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .insert([
+                        //         { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id, showInHome: highlights[i].showInHome },
+                        //     ])
+                        //     .select()
+                        await PortfolioHighlight.create({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: id })
+                    }
+
+                    // const { data: portfolio, error } = await supabase
+                    //     .from('portfolios')
+                    //     .select('*')
+                    //     .eq('id', id)
+
+                    // if (portfolio) {
+                    //     const { data, error } = await supabase
+                    //         .from('portfolios')
+                    //         .update({
+                    //             heading,
+                    //             sHeading,
+                    //             industry,
+                    //             country,
+                    //             channels,
+                    //             coverImage: coverImage == null ? coverImagePath : coverImage,
+                    //             story,
+                    //             goals,
+                    //             objectives,
+                    //             challenge,
+                    //             overcomingChallenges,
+                    //             achievements,
+                    //             description,
+                    //             tag,
+                    //             categories: addedCategoriesIds,
+                    //             image1: image1 == null ? image1Path : image1,
+                    //             image2: image2 == null ? image2Path : image2,
+                    //             homeImage: homeImage == null ? homeImagePath : homeImage,
+                    //             logo: logo == null ? logoPath : logo,
+                    //             companyName,
+                    //             slug,
+                    //             metaTitle,
+                    //             metaDescription,
+                    //             customId: uuidv4(),
+                    //             section,
+                    //             homeTitle,
+                    //             homeSubTitle
+                    //         })
+                    //         .eq('id', id)
+                    //         .select()
+
+
+
+
+                    //     }
 
 
                     return NextResponse.json({ message: "Case study updated successfully" }, { status: 200 })
@@ -633,53 +756,78 @@ export async function POST(req: NextRequest) {
 
 
 
-                } else if (error) {
-                    return NextResponse.json({ error: "Updating case study failed" }, { status: 400 })
-                } else {
-                    return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
                 }
             }
 
             else {
 
-                console.log("here in add")
-                const { data, error } = await supabase
-                    .from('portfolios')
-                    .insert([
-                        {
-                            heading,
-                            sHeading,
-                            industry,
-                            country,
-                            channels,
-                            coverImage: coverImagePath,
-                            story,
-                            image1: image1Path,
-                            image2: image2Path,
-                            homeImage: homeImagePath,
-                            goals,
-                            objectives,
-                            challenge,
-                            overcomingChallenges,
-                            achievements,
-                            logo: logoPath,
-                            description,
-                            tag,
-                            categories: addedCategoriesRaw,
-                            companyName,
-                            slug,
-                            metaTitle,
-                            metaDescription,
-                            section,
-                            homeTitle,
-                            homeSubTitle
-                        },
-                    ])
-                    .select('id')
+                // console.log("here in add")
+                // const { data, error } = await supabase
+                //     .from('portfolios')
+                //     .insert([
+                //         {
+                //             heading,
+                //             sHeading,
+                //             industry,
+                //             country,
+                //             channels,
+                //             coverImage: coverImagePath,
+                //             story,
+                //             image1: image1Path,
+                //             image2: image2Path,
+                //             homeImage: homeImagePath,
+                //             goals,
+                //             objectives,
+                //             challenge,
+                //             overcomingChallenges,
+                //             achievements,
+                //             logo: logoPath,
+                //             description,
+                //             tag,
+                //             categories: addedCategoriesRaw,
+                //             companyName,
+                //             slug,
+                //             metaTitle,
+                //             metaDescription,
+                //             section,
+                //             homeTitle,
+                //             homeSubTitle
+                //         },
+                //     ])
+                //     .select('id')
+
+                const portfolio = await Portfolio.create({
+                    heading,
+                    sHeading,
+                    industry,
+                    country,
+                    channels,
+                    coverImage: coverImagePath,
+                    story,
+                    image1: image1Path,
+                    image2: image2Path,
+                    homeImage: homeImagePath,
+                    goals,
+                    objectives,
+                    challenge,
+                    overcomingChallenges,
+                    achievements,
+                    logo: logoPath,
+                    description,
+                    tag,
+                    categories: addedCategoriesRaw,
+                    companyName,
+                    slug,
+                    metaTitle,
+                    metaDescription,
+                    section,
+                    homeTitle,
+                    homeSubTitle
+                })
 
                 let newId: number;
-                if (data) {
-                    newId = data[0].id
+                if (portfolio) {
+                    newId = portfolio[0]._id
                 }
 
                 const highlights: { customId: string, number: string, text: string, companyId: number, showInHome: boolean }[] = [];
@@ -697,38 +845,44 @@ export async function POST(req: NextRequest) {
                 for (let i = 0; i < highlights.length; i++) {
                     console.log(highlights)
 
-                    let { data: portfolioHighlights, error } = await supabase
-                        .from('portfolioHighlights')
-                        .select("*")
-                        .eq('customId', highlights[i].customId)
+                    // let { data: portfolioHighlights, error } = await supabase
+                    //     .from('portfolioHighlights')
+                    //     .select("*")
+                    //     .eq('customId', highlights[i].customId)
+
+                    const portfolioHighlights = await PortfolioHighlight.findOne({ customId: highlights[i].customId })
 
                     if (portfolioHighlights && portfolioHighlights.length > 0) {
-                        console.log("data", portfolioHighlights)
-                        const { data, error } = await supabase
-                            .from('portfolioHighlights')
-                            .update({ number: highlights[i].number, text: highlights[i].text, showInHome: highlights[i].showInHome })
-                            .eq('customId', highlights[i].customId)
-                            .select()
-                        console.log("in if")
+                        // console.log("data", portfolioHighlights)
+                        // const { data, error } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .update({ number: highlights[i].number, text: highlights[i].text, showInHome: highlights[i].showInHome })
+                        //     .eq('customId', highlights[i].customId)
+                        //     .select()
+                        // console.log("in if")
+
+                        await PortfolioHighlight.updateOne({ customId: highlights[i].customId }, { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
 
                     } else {
 
-                        console.log("Inserting")
-                        const { data, error } = await supabase
-                            .from('portfolioHighlights')
-                            .insert([
-                                { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId, showInHome: highlights[i].showInHome },
-                            ])
-                            .select()
+                        // console.log("Inserting")
+                        // const { data, error } = await supabase
+                        //     .from('portfolioHighlights')
+                        //     .insert([
+                        //         { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId, showInHome: highlights[i].showInHome },
+                        //     ])
+                        //     .select()
+
+                        await PortfolioHighlight.create({ number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId, companyId: highlights[i].companyId })
 
                     }
 
                 }
 
-                if (data) {
+                if (portfolio) {
                     return NextResponse.json({ message: "Case study added successfully" }, { status: 200 })
 
-                } else if (error) {
+                } else if (!portfolio) {
                     return NextResponse.json({ error: "Adding case study failed" }, { status: 400 })
                 } else {
                     return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
@@ -748,35 +902,30 @@ export async function POST(req: NextRequest) {
 }
 
 
-
 export async function DELETE(req: NextRequest) {
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
 
     try {
+        const portfolio = await Portfolio.findByIdAndDelete(id);
 
-
-        const { error } = await supabase
-            .from('portfolios')
-            .delete()
-            .eq('id', id)
-
-
-
-        if (!error) {
-
-            return NextResponse.json({ message: "Removed portfolio successfully" }, { status: 200 })
-
-        } else if (error) {
-            return NextResponse.json({ error: "Removing portfolio failed" }, { status: 400 })
-        } else {
-            return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
+        if (!portfolio) {
+            return NextResponse.json(
+                { error: "Portfolio not found" },
+                { status: 404 }
+            );
         }
 
+        return NextResponse.json(
+            { message: "Removed portfolio successfully" },
+            { status: 200 }
+        );
 
     } catch (error) {
-        console.log("Removing portfolio failed", error)
-        return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
+        return NextResponse.json(
+            { error: "Removing portfolio failed" },
+            { status: 500 }
+        );
     }
 
 }

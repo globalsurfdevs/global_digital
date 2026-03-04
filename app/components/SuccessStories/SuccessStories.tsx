@@ -8,45 +8,25 @@ import { formatLinkForPortfolio, formatLinkForCaseStudy } from '@/app/helpers/fo
 import portfolioListRaw from '@/portfolios_rows_converted.json'
 
 export const SuccessStories = ({ companyId }: {
-    companyId: number | undefined
+    companyId: string | undefined
 }) => {
 
-    // const [data, setData] = useState<Portfolio[] | null>(null)
+    const [data, setData] = useState<Portfolio[] | null>(null)
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const fetchPortfolios = async () => {
-    //         const response = await fetch(`/api/portfolio`);
-    //         if (response.ok) {
-    //             const data = await response.json();
-    //             console.log(data)
-    //             setData(data?.portfolio.filter((item:Portfolio)=>item.id!==companyId).sort(() => Math.random() - 0.5).slice(0,3))
-    //         }
-    //     }
-
-    //     fetchPortfolios()
-
-    // }, [companyId])
-
-    const parseJSON = (value: any) => {
-        if (!value) return [];
-        if (Array.isArray(value)) return value;
-
-        try {
-            return JSON.parse(value);
-        } catch {
-            return [];
+        const fetchPortfolios = async () => {
+            const response = await fetch(`/api/portfolio`);
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data)
+                setData(data?.portfolio.filter((item: Portfolio) => item._id !== companyId).sort(() => Math.random() - 0.5).slice(0, 3))
+            }
         }
-    };
 
-    const portfolioList = portfolioListRaw.map((item: any): Portfolio => ({
-        ...item,
-        categories: parseJSON(item.categories),
-        channels: parseJSON(item.channels),
-    }));
+        fetchPortfolios()
 
-    const data = portfolioList?.filter((item) => item.id !== companyId).sort(() => Math.random() - 0.5).slice(0, 3);
-
+    }, [companyId])
 
 
     return (

@@ -9,33 +9,33 @@ type Data = {
     metaTitle: string;
     metaDescription: string;
 
-  }[]
+  }
 }
 
-// export async function generateMetadata(
-//   props:{
-//     params: Promise<{
-//       companyName:string
-//     }>
-//   }
-// ): Promise<Metadata> {
-//   const params = await props.params;
-//   const slug = formatLinkForCaseStudy(params.companyName)
+export async function generateMetadata(
+  props: {
+    params: Promise<{
+      companyName: string
+    }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
+  const slug = formatLinkForCaseStudy(params.companyName)
 
-//   const data:Data = await apiService.get(`/api/case-study?slug=${slug}`)
+  const data: Data = await apiService.get(`/api/case-study?slug=${slug}`)
 
-//   const metadataTitle = data.caseStudy[0].metaTitle=="null" || !data.caseStudy[0].metaTitle ? "Global Surf Digital" : data.caseStudy[0].metaTitle;
-//   const metadataDescription = data.caseStudy[0].metaDescription=="null" || !data.caseStudy[0].metaDescription ? "Global Surf Digital" : data.caseStudy[0].metaDescription;
-//   const canonicalUrl = `https://www.globalsurf.ae/case-study/${slug}`
+  const metadataTitle = data.caseStudy.metaTitle == "null" || !data.caseStudy.metaTitle ? "Global Surf Digital" : data.caseStudy.metaTitle;
+  const metadataDescription = data.caseStudy.metaDescription == "null" || !data.caseStudy.metaDescription ? "Global Surf Digital" : data.caseStudy.metaDescription;
+  const canonicalUrl = `https://www.globalsurf.ae/case-study/${slug}`
 
-//   return {
-//     title: metadataTitle,
-//     description: metadataDescription,
-//     alternates: {
-//       canonical: canonicalUrl,
-//     },
-//   };
-// }
+  return {
+    title: metadataTitle,
+    description: metadataDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 const page = () => {
 

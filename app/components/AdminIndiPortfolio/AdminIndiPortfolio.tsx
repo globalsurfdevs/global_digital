@@ -294,83 +294,83 @@ const AdminIndiPortfolio = ({ editMode }: {
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data)
-                    if (data.portfolio[0]) {
-                        setValue("companyName", data.portfolio[0].companyName)
-                        setValue("industry", data.portfolio[0].industry)
-                        setValue("country", data.portfolio[0].country)
-                        if (data.portfolio[0].channels) {
-                            setValue("channelsUsed", data.portfolio[0].channels)
-                            setChannelsUsed(data.portfolio[0].channels)
+                    if (data.portfolio) {
+                        setValue("companyName", data.portfolio.companyName)
+                        setValue("industry", data.portfolio.industry)
+                        setValue("country", data.portfolio.country)
+                        if (data.portfolio.channels) {
+                            setValue("channelsUsed", data.portfolio.channels)
+                            setChannelsUsed(data.portfolio.channels)
                         }
 
-                        setValue("story", data.portfolio[0].story)
-                        setValue("goals", data.portfolio[0].goals)
-                        setValue("objectives", data.portfolio[0].objectives)
-                        setValue("challenge", data.portfolio[0].challenge)
-                        setValue("solutions", data.portfolio[0].solutions)
-                        setValue("strategyApproach", data.portfolio[0].strategyApproach)
+                        setValue("story", data.portfolio.story)
+                        setValue("goals", data.portfolio.goals)
+                        setValue("objectives", data.portfolio.objectives)
+                        setValue("challenge", data.portfolio.challenge)
+                        setValue("solutions", data.portfolio.solutions)
+                        setValue("strategyApproach", data.portfolio.strategyApproach)
 
-                        setValue("result", data.portfolio[0].result)
-                        setValue("description", data.portfolio[0].description)
-                        setValue("tag", data.portfolio[0].tag)
-                        setValue("slug", data.portfolio[0].slug)
-                        setValue("metaTitle", data.portfolio[0].metaTitle)
-                        setValue("metaDescription", data.portfolio[0].metaDescription)
-                        setValue("bannerTitle", data.portfolio[0].bannerTitle)
-                        setValue("websiteLink", data.portfolio[0].websiteLink)
-                        setValue("video", data.portfolio[0].video)
-                        setValue("videoTitle", data.portfolio[0].videoTitle)
-                        setImageUrls(data.portfolio[0].socialMediaImages || []);
-                        setValue("socialMediaImages", data.portfolio[0].socialMediaImages);
+                        setValue("result", data.portfolio.result)
+                        setValue("description", data.portfolio.description)
+                        setValue("tag", data.portfolio.tag)
+                        setValue("slug", data.portfolio.slug)
+                        setValue("metaTitle", data.portfolio.metaTitle)
+                        setValue("metaDescription", data.portfolio.metaDescription)
+                        setValue("bannerTitle", data.portfolio.bannerTitle)
+                        setValue("websiteLink", data.portfolio.websiteLink)
+                        setValue("video", data.portfolio.video)
+                        setValue("videoTitle", data.portfolio.videoTitle)
+                        setImageUrls(data.portfolio.socialMediaImages || []);
+                        setValue("socialMediaImages", data.portfolio.socialMediaImages);
 
 
 
-                        if (data.portfolio[0].section == 'portfolio') {
+                        if (data.portfolio.section == 'portfolio') {
                             setSelectedSection('portfolio')
-                        } else if (data.portfolio[0].section == 'case study') {
+                        } else if (data.portfolio.section == 'case study') {
                             setSelectedSection('case study')
-                        } else if (data.portfolio[0].section == 'case study new') {
+                        } else if (data.portfolio.section == 'case study new') {
                             setSelectedSection('case study new')
                         }
 
-                        if (data.portfolio[0].categories) {
+                        if (data.portfolio.categories) {
 
-                            setAddedCategories(data.portfolio[0].categories)
-
-                        }
-
-                        if (data.portfolio[0].bannerImage) {
-                            setPreviewImage(data.portfolio[0].bannerImage as string);
+                            setAddedCategories(data.portfolio.categories)
 
                         }
 
-                        if (data.portfolio[0].section2Image1) {
-                            setSection2Image1Preview(data.portfolio[0].section2Image1 as string);
+                        if (data.portfolio.bannerImage) {
+                            setPreviewImage(data.portfolio.bannerImage as string);
+
                         }
 
-                        if (data.portfolio[0].section2Image2) {
-                            setSection2Image2Preview(data.portfolio[0].section2Image2 as string);
+                        if (data.portfolio.section2Image1) {
+                            setSection2Image1Preview(data.portfolio.section2Image1 as string);
                         }
 
-                        if (data.portfolio[0].section2BannerImage) {
-                            setSection2BannerImagePreview(data.portfolio[0].section2BannerImage as string);
+                        if (data.portfolio.section2Image2) {
+                            setSection2Image2Preview(data.portfolio.section2Image2 as string);
                         }
 
-                        if (data.portfolio[0].resultImage1) {
-                            setResultImage1Preview(data.portfolio[0].resultImage1 as string);
+                        if (data.portfolio.section2BannerImage) {
+                            setSection2BannerImagePreview(data.portfolio.section2BannerImage as string);
                         }
 
-                        if (data.portfolio[0].resultImage2) {
-                            setResultImage2Preview(data.portfolio[0].resultImage2 as string);
+                        if (data.portfolio.resultImage1) {
+                            setResultImage1Preview(data.portfolio.resultImage1 as string);
                         }
 
-                        if (data.portfolio[0].videoThumbnail) {
-                            setVideoThumbnailPreview(data.portfolio[0].videoThumbnail as string);
+                        if (data.portfolio.resultImage2) {
+                            setResultImage2Preview(data.portfolio.resultImage2 as string);
+                        }
+
+                        if (data.portfolio.videoThumbnail) {
+                            setVideoThumbnailPreview(data.portfolio.videoThumbnail as string);
                         }
 
 
-                        if (data.portfolio[0].logo) {
-                            setPreviewLogo(data.portfolio[0].logo as string);
+                        if (data.portfolio.logo) {
+                            setPreviewLogo(data.portfolio.logo as string);
                         }
 
 
