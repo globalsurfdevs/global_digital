@@ -3,17 +3,17 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    image: assets.newblog23bnr,
+    image: assets.blog_3,
     navigation: [
       { label: "Blog", url: "" }, 
       { label: "5 Minutes Read",url: "" },
     ],
     title:
-      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
-      publishedon: "Sep 15, 2025",
-      updatedon: "14, 2025",
+      " No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+      publishedon: "March 4, 2026",
+      updatedon: "March 4, 2026",
       subtitle:"Building Strong Brand Identities With Creative Design, Marketing Collateral, and Storytelling",
-      heroAlt:"Creative Branding Agency in Dubai",
+      heroAlt:"AI-powered Google search results",
     sub: [
       {
         stitle: "OUR APPROACH",
@@ -26,26 +26,34 @@ export const BannerSection = [
 // data.ts
 export const contentSectionsData = [
   {
-    title: "Why Presence Matters in Today’s Influence Economy ",
+    title: "Table Of Content",
     paragraphs: [
-      "Global Surf Digital participated in the 1 Billion Followers Summit because staying relevant in today’s digital economy requires more than delivering campaigns. It requires being present where the future of influence, platforms, and performance is actively being shaped.  ",
-      "Influence is evolving rapidly. It is no longer defined by visibility or follower counts alone, but by intent, credibility, and measurable impact. For a <a href='https://www.globalsurf.ae/'>Digital Marketing Agency </a> operating in a high growth and competitive market like the UAE, understanding this shift is essential. ",
-      "The summit brought together global platforms, creators, brands, and industry leaders to validate a reality GS Digital has long recognized. Influence has moved from a marketing metric to a strategic business lever that affects trust, consideration, and long-term growth. ",
-      "By participating in this global forum, GS Digital reinforced its commitment to staying aligned with how digital authority is built today. Not by chasing trends, but by engaging directly with conversations shaping platform evolution, creator maturity, and performance driven influence. ",
-      "In today’s digital economy, relevance is earned through awareness, presence, and action. GS Digital’s participation reflects a deliberate step toward staying ahead of that curve.  "
+      "1.	Why Google Rankings No Longer Deliver Clicks",
+"2.	What Is a Zero-Click Search?",
+"3.	How AI Search Changes User Behaviour",
+"4.	Why Built Environment Brands Are More Affected",
+"5.	Ranking vs References: How Visibility Has Changed",
+"6.	How to Structure Content AI Overviews Cite",
+"7.	How to Build E-E-A-T for AI Trust and Citations",
+"8.	How to Measure AI Search Visibility",
+"9.	How AI Visibility Connects to Leads and Revenue",
+"10.	90-Day Action Plan for AI Search Visibility",
+"11.	The Bottom Line: AI Search Is the New Visibility Battleground",
+"12.	Frequently Asked Questions", 
     ]
   },
   
 ];
 export const videoProductionsocialData = [
   {
-    title: "About the 1 Billion Followers Summit  ",
+    title: "sdsdsdsdsdHow AI Search is Stealing Your Clicks and What is Really Happening",
     image: assets.bloggs2,
     paragraphs: [
-      "The 1 Billion Followers Summit is a three-day global event hosted in Dubai, bringing together platforms, creators, brands, policymakers, and industry leaders shaping the digital and creator economy.  ",
-      "The summit focuses on how digital influence is being built, measured, and scaled in a more structured and accountable way. For GS Digital, it offered direct exposure to conversations shaping platform evolution, creator maturity, and performance driven influence.  ",
-      "This made it particularly relevant for brands and agencies operating in high growth digital markets like the Middle East, where influence is increasingly tied to business outcomes rather than visibility alone.  ",
-      "<strong>Key Focus Areas:</strong> "
+      "Google is no longer just a list of blue links. It increasingly acts like an answer engine.",
+"When AI Overviews appear, users often see a full summary at the top of the page. Even if your website ranks well, fewer people feel the need to click.",
+"<h3>What Is a Zero Click Search?</h3>",
+
+ 
     ],
     listItems: [
       { label: "", description: "The professionalization of the creator economy " },

@@ -360,4 +360,90 @@ export const OneBillionFollowersSchema = () => {
   );
 };
 
+export const OneClickSchema = () => {
+  return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: ` 
+        {  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How often should we audit our brand’s presence in AI search results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Review AI search visibility at least quarterly. If search is a major lead source, test priority queries monthly. Consistent monitoring helps you spot visibility gaps before they affect pipeline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which tools can help track brand mentions inside AI Overviews and chatbots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use AI visibility monitoring tools where available and combine them with structured manual prompt testing. Track brand mentions, competitor citations, and how your expertise is described across platforms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should we create separate content specifically for AI search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Focus on structuring existing and new content clearly with direct answers, strong expertise signals, and logical formatting. Well-structured content benefits both traditional SEO and AI search visibility."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do FAQ sections and schema markup help in zero click and AI results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FAQ sections reflect real user questions, making answers easier for AI systems to extract. Schema markup improves machine readability, increasing your chances of being cited in AI generated summaries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we handle inaccuracies or outdated information about our brand in AI answers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Update and strengthen your authoritative pages first. Clear, current, and well-structured content improves the likelihood that AI systems reference accurate information about your brand."
+      }
+    }
+  ]
+}`
+      }}
+    />
 
+ <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: `{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+  "description": "A practical guide explaining how built environment brands can adapt to zero-click and AI-led search by earning visibility through AI citations and structured content.",
+  "author": {
+    "@type": "Person",
+    "name": "Anandu S"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Globalsurf",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
+    }
+  }},
+  "datePublished": "2026-02-26",
+  "dateModified": "2026-02-26",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalsurf.ae/blog/no-clicks-google-ai-search-built-environment"
+  }
+}`
+      }}
+    />
+    </>
+  );
+};

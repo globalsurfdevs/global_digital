@@ -34,9 +34,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "eCommerce SEO Services Agency in Dubai | G.S Digital",
+    title: "Ecommerce SEO Services in Dubai | Revenue-Driven SEO Agency",
     description:
-      "Global Surf Digital, a trusted eCommerce SEO agency, offers expert services to boost your store’s visibility and sales. Contact our consultants today! ",
+      "Drive more revenue with expert Ecommerce SEO services in Dubai. Improve rankings, attract buyers & grow your online store.Book your strategy now ",
     alternates: {
       canonical: "https://www.globalsurf.ae/ecommerce-seo-dubai",
     },

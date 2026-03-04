@@ -21,6 +21,8 @@ interface BannerSection {
   title: string;
   title1?: string;
   subtitle?: string;
+  publishedon?: string;
+  updatedon?: string;
   buttontitle?: string;
   buttonurl?: string;
   image: string | StaticImageData;
@@ -42,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   hideslider,
   bannerlogp,
   maxchwidth,
-}) => {
+}) => { 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 const [modalOpen, setModalOpen] = useState(false);
 
@@ -120,8 +122,7 @@ const [modalOpen, setModalOpen] = useState(false);
       <div className="container mx-auto py-2" ref={nextContainerRef}>
      
         {Bannerdata.map((herosection) => (
-          
-          <div key={herosection.id}>
+          <div key={herosection.id}>  
             <motion.div
               className="title-80"
               initial="hidden"
@@ -137,10 +138,10 @@ const [modalOpen, setModalOpen] = useState(false);
               }}
             >
               <div
-                className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] mb-[20px] sm:mb-[40px] lg:mb-[60px]  `}
+                className={` ptcs0 border-b lg:pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] mb-[20px] sm:mb-[40px] lg:mb-[60px]  `}
               >
                 <div
-                  className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
+                  className={`flex  justify-between flex-col lg:flex-row  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
                   <div
                   
@@ -184,21 +185,20 @@ const [modalOpen, setModalOpen] = useState(false);
                   
                   </div>
                   <div>
-                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on Sep 15, 2025  |  Updated on 14, 2025
+                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on {herosection.publishedon}  |  Updated on {herosection.updatedon}
                         </p>
                 
                   </div>
                   
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
-                <div className="grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7   ">
+                <div className="grid grid-cols-1 pb-[50px] pt-[20px] lg:py-[150px] xl:grid-cols-7   ">
       <div className="col-span-2  mb-5 xl:mb-0">
 
                         </div>
                         <div className="col-span-5 w-full ">
                           <h1 className="title-80">
-                         Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 
-Billion Followers Summit 
+                         {herosection.title} 
                           </h1>
                           <div className="gap-[16px] mt-[40px] xl:hidden flex">
                         
@@ -255,8 +255,8 @@ Billion Followers Summit
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection) => (
-            <div className=" w-full bg-black ">
+          {Bannerdata.map((herosection,index) => (
+            <div className=" w-full bg-black " key={index}>
               <Image
                 src={herosection.image}
                 className="w-full"
