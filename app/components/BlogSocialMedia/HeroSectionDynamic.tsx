@@ -138,10 +138,10 @@ const [modalOpen, setModalOpen] = useState(false);
               }}
             >
               <div
-                className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] mb-[20px] sm:mb-[40px] lg:mb-[60px]  `}
+                className={` ptcs0 border-b lg:pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] mb-[20px] sm:mb-[40px] lg:mb-[60px]  `}
               >
                 <div
-                  className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
+                  className={`flex  justify-between flex-col lg:flex-row  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
                   <div
                   
@@ -192,7 +192,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
-                <div className="grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7   ">
+                <div className="grid grid-cols-1 pb-[50px] pt-[20px] lg:py-[150px] xl:grid-cols-7   ">
       <div className="col-span-2  mb-5 xl:mb-0">
 
                         </div>
