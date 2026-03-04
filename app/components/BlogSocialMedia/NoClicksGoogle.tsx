@@ -14,30 +14,30 @@ const ClicksGoogle = () => {
           <div className="col-span-5 w-full ">
             <p className="text-font19 text-[#77787B] mb-[16px]">If your rankings look stable but traffic is falling, the reason is simple. Google zero click features and AI Overviews now answer many queries directly on the search page. </p>
             <p className="text-font19 text-[#77787B] mb-[16px]">For built environment brands, this shift is significant. Developers, architects, contractors, and engineering firms have long relied on search visibility to generate project enquiries. When users stop clicking, lead opportunities shrink. </p>
-            <p className="text-font19 text-[#77787B] mb-[16px]">Today, success is not just about ranking. It is about being referenced inside AI generated summaries. This guide explains how built environment brands can adapt and stay visible in an AI led search environment. </p>
+            <p className="text-font19 text-[#77787B] mb-0">Today, success is not just about ranking. It is about being referenced inside AI generated summaries. This guide explains how built environment brands can adapt and stay visible in an AI led search environment. </p>
 
 
             {/* Title */}
-            <h2 className="title-65 mb-[40px] pt-[50px] lg:pt-[110px]" id="content1">
+            <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id="content1">
               How AI Search is Stealing Your Clicks and What is Really Happening
             </h2>
 
-            <Image src={assets.morg} alt="How zero-click searches reduce website traffic" className='mb-[40px] '/>
+            <Image src={assets.morg} alt="How zero-click searches reduce website traffic" className='mb-5 lg:mb-[40px] '/>
             {/* Paragraphs */}
             <p className="text-font19 text-[#77787B] mb-[16px]">
               Google is no longer just a list of blue links. It increasingly acts like an answer engine.
 
             </p>
 
-            <p className="text-font19 text-[#77787B] mb-[16px]">
+            <p className="text-font19 text-[#77787B] mb-0">
 
               When AI Overviews appear, users often see a full summary at the top of the page. Even if your website ranks well, fewer people feel the need to click.
             </p>
-            <h3 className="title-65 mb-[40px] pt-[50px] lg:pt-[110px]" id="content2">
+            <h3 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id="content2">
               What Is a Zero Click Search?
             </h3>
 
-            <Image src={assets.zeroclick} alt="Google zero-click search result answering a query directly" className='mb-[40px] ' />
+            <Image src={assets.zeroclick} alt="Google zero-click search result answering a query directly" className='mb-5 lg:mb-[40px] ' />
             <p className="text-font19 text-[#77787B] mb-[16px]">
 
               A zero click search happens when users get their answer directly on Google without visiting a website.  </p>
@@ -109,7 +109,7 @@ const ClicksGoogle = () => {
 
               {/* -------------------- New Section -------------------- */}
 
-                <h2 className="title-65 mb-[40px] pt-[110px]" id='content5'>
+                <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content5'>
                   Ranking vs References: How Visibility Has Changed
                 </h2>
 
@@ -129,34 +129,34 @@ const ClicksGoogle = () => {
                   The Shift from Ranking to References
                 </h3>
 
-                <div className="overflow-x-auto mb-[24px]">
+                <div className="overflow-x-auto mb-3 lg:mb-[24px]">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr>
-                        <th className="border-b border-gray-300 text-left py-3 px-4">Traditional SEO</th>
-                        <th className="border-b border-gray-300 text-left py-3 px-4">AI First Search</th>
+                        <th className="border-b border-gray-300 text-left py-3 px-0 lg:px-4">Traditional SEO</th>
+                        <th className="border-b border-gray-300 text-left py-3 px-0 lg:px-4">AI First Search</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="border-b py-3 px-4">Focus on keyword rankings</td>
-                        <td className="border-b py-3 px-4">Focus on brand mentions in AI answers</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Focus on keyword rankings</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Focus on brand mentions in AI answers</td>
                       </tr>
                       <tr>
-                        <td className="border-b py-3 px-4">Measure organic position</td>
-                        <td className="border-b py-3 px-4">Measure citation frequency</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Measure organic position</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Measure citation frequency</td>
                       </tr>
                       <tr>
-                        <td className="border-b py-3 px-4">Compete for clicks</td>
-                        <td className="border-b py-3 px-4">Compete to be referenced</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Compete for clicks</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Compete to be referenced</td>
                       </tr>
                       <tr>
-                        <td className="border-b py-3 px-4">Visibility = Traffic</td>
-                        <td className="border-b py-3 px-4">Visibility = Mentions & Inclusion</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Visibility = Traffic</td>
+                        <td className="border-b py-3 px-0 lg:px-4">Visibility = Mentions & Inclusion</td>
                       </tr>
                       <tr>
-                        <td className="py-3 px-4">Blue links shape decisions</td>
-                        <td className="py-3 px-4">AI summaries shape decisions</td>
+                        <td className="py-3 px-0 lg:px-4">Blue links shape decisions</td>
+                        <td className="py-3 px-0 lg:px-4">AI summaries shape decisions</td>
                       </tr>
                     </tbody>
                   </table>
@@ -192,7 +192,7 @@ const ClicksGoogle = () => {
                 </p>
 {/* -------------------- How to Structure Content Section -------------------- */}
 
-                <h2 className="title-65 mb-[40px] pt-[110px]" id='content6'>
+                <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content6'>
                   How to Structure Content That AI Overviews Actually Cite
                 </h2>
 
@@ -318,11 +318,11 @@ const ClicksGoogle = () => {
 
                 {/* -------------------- E-E-A-T Section -------------------- */}
 
-                <h2 className="title-65 mb-[40px] pt-[110px]" id='content7'>
+                <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content7'>
                   How to Build E-E-A-T for AI Trust and Citations
                 </h2>
 
-                <Image src={assets.eeatseo} alt="E-E-A-T trust signals that influence AI search citations" className="mb-[30px]" />
+                <Image src={assets.eeatseo} alt="E-E-A-T trust signals that influence AI search citations" className="mb-5 lg:mb-[30px]" />
 
                 <p className="text-font19 text-[#77787B] mb-[16px]">
                   Search platforms evaluate credibility before selecting sources.
@@ -386,10 +386,10 @@ const ClicksGoogle = () => {
 
                 {/* -------------------- Measure AI Visibility -------------------- */}
 
-                <h2 className="title-65 mb-[40px] pt-[110px]" id='content8'>
+                <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content8'>
                   How to Measure AI Search Visibility
                 </h2>
-  <Image src={assets.meassuringav} alt="Tracking mentions across AI search platform" className='mb-[40px] '/>
+  <Image src={assets.meassuringav} alt="Tracking mentions across AI search platform" className='mb-5 lg:mb-[40px] '/>
            
                 <p className="text-font19 text-[#77787B] mb-[16px]">
                   Traditional SEO reporting focuses on rankings, clicks, and sessions. But in an AI led search environment, those numbers no longer tell the full story.
@@ -403,7 +403,7 @@ const ClicksGoogle = () => {
                   This is where AI search presence becomes a new performance metric.
                 </p>
 
-                <h3 className="text-30 mt-[30px] mb-3">
+                <h3 className="text-30 mt-7 mb-3">
                   What Should You Be Tracking?
                 </h3>
 
@@ -481,7 +481,7 @@ const ClicksGoogle = () => {
 
                   {/* -------------------- 90 Day Plan -------------------- */}
 
-                  <h2 className="title-65 mb-[40px] pt-[110px]" id='content10'>
+                  <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content10'>
                     A 90-Day Action Plan to Regain Visibility and Leads in an AI-Led Search World
                   </h2>
 
@@ -596,7 +596,7 @@ const ClicksGoogle = () => {
                   </p>
 
                   {/* -------------------- Bottom Line -------------------- */}
-                <h2 className="title-65 mb-[40px] pt-[50px] lg:pt-[110px]" id='content11'>The Bottom Line: AI Search Is the New Visibility Battleground</h2>
+                <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content11'>The Bottom Line: AI Search Is the New Visibility Battleground</h2>
                   <p className="text-font19 text-[#77787B] mb-[16px]">
                     AI led, zero click search is not a passing trend. It represents a permanent shift in how visibility is earned and how decisions are shaped. For built environment brands, rankings alone no longer guarantee influence. What matters now is whether your brand is cited and trusted inside AI generated answers. </p>
 
@@ -609,13 +609,14 @@ const ClicksGoogle = () => {
                   <p className="text-font19 text-[#77787B] mb-0">
                  The opportunity is still there. Search still drives demand. But the competitive advantage now belongs to brands that adapt early and position themselves as reliable sources that AI engines are confident enough to quote.  </p>
 {/* -------------------- FAQ Section -------------------- */}
+<div className="  pb-10 lg:pb-[60px]">
 
-                      <h2 className="title-65 mb-[40px] pt-[50px] lg:pt-[110px]" id='content12'>
+                      <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content12'>
                         Frequently Asked Questions
                       </h2>
 
                       {/* Question 1 */}
-                      <p className="font-bold text-30 mt-[30px] mb-3">
+                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
                         1. How often should we audit our brand’s presence in AI search results?
                       </p>
 
@@ -624,7 +625,7 @@ const ClicksGoogle = () => {
                       </p>
 
                       {/* Question 2 */}
-                      <p className="font-bold text-30 mt-[30px] mb-3">
+                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
                         2. Which tools can help track brand mentions inside AI Overviews and chatbots?
                       </p>
 
@@ -633,7 +634,7 @@ const ClicksGoogle = () => {
                       </p>
 
                       {/* Question 3 */}
-                      <p className="font-bold text-30 mt-[30px] mb-3">
+                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
                         3. Should we create separate content specifically for AI search?
                       </p>
 
@@ -642,7 +643,7 @@ const ClicksGoogle = () => {
                       </p>
 
                       {/* Question 4 */}
-                      <p className="font-bold text-30 mt-[30px] mb-3">
+                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
                         4. How do FAQ sections and schema markup help in zero click and AI results?
                       </p>
 
@@ -651,13 +652,14 @@ const ClicksGoogle = () => {
                       </p>
 
                       {/* Question 5 */}
-                      <p className="font-bold text-30 mt-[30px] mb-3">
+                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
                         5. How do we handle inaccuracies or outdated information about our brand in AI answers?
                       </p>
 
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
+                      <p className="text-font19 text-[#77787B]  ">
                         Update and strengthen your authoritative pages first. Clear, current, and well-structured content improves the likelihood that AI systems reference accurate information about your brand.
                       </p>
+</div>
           </div>
         </div>
       </div>

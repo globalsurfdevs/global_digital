@@ -26,7 +26,7 @@ const ContentSectionrefOne: React.FC<ContentSectionProps> = ({ sections }) => {
             <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
               <div className="col-span-2 mb-5 xl:mb-0"></div>
               <div className="col-span-5 w-full">
-                <h2 className="title-65 mb-[40px]">{data.title}</h2>
+                <h2 className="title-65 mb-5 lg:mb-[40px]">{data.title}</h2>
 
                 {data.image && (
                   <Image src={data.image} alt={data.title} className="my-[40px]" />
