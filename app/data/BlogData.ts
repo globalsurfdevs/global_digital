@@ -12,7 +12,7 @@ export const BlogData = [
     feature_thumb: "/images/blog-new/blog6/blog_3.jpg",
     thumb: "/images/blog-new/blog6/blog_3.jpg",
     large_thumb: "/images/blog-new/blog6/blog_3.jpg",
-    category: "Content Production",
+    category: "SEO",
     format: "standard",
     views: "",
     excerpt:
