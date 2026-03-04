@@ -25,7 +25,7 @@ export const Wecanhelp = {
       id: 4,
       icon: assets.bc4,
       title: "Drive <br>Conversions ",
-      dec: "From call-to-action banners to persuasive ad creatives, our designs influence customer decisions and improve conversion rates.",
+      dec: "From call-to-action banners to persuasive ad creatives, our designs influence customer decisions and <a href='/conversion-rate-optimization-agency-dubai' class='text-primary opacity-80 hover:opacity-100'>improve conversion rates.</a>",
     },
   ],
 };
