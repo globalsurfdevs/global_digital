@@ -22,7 +22,7 @@ type Inputs = {
 }
 
 const SignIn: React.FC = () => {
-  
+
   const router = useRouter()
 
   const {
@@ -32,19 +32,19 @@ const SignIn: React.FC = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = async(data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const response = await signInWithCredentials(data)
-    if(response.success){
+    if (response.success) {
       alert(response.message)
       router.push('/admin')
-    }else{
+    } else {
       alert(response.message)
     }
   }
 
   return (
     <>
-    {/* <div className="flex justify-between w-full items-center p-5">
+      {/* <div className="flex justify-between w-full items-center p-5">
       <Breadcrumb pageName="Sign In"/>
       </div> */}
       <div className="rounded-sm border-stroke dark:border-strokedark dark:bg-boxdark justify-center flex flex-col h-screen bg-[#000]">
@@ -214,7 +214,7 @@ const SignIn: React.FC = () => {
                     <input
                       type="text"
                       {...register("username")}
-                      
+
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />
 
@@ -246,7 +246,7 @@ const SignIn: React.FC = () => {
                     <input
                       type="password"
                       {...register("password")}
-                      
+
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />
 
@@ -332,7 +332,7 @@ const SignIn: React.FC = () => {
           </div>
         </div>
       </div>
-      </>
+    </>
   );
 };
 
