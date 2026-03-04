@@ -41,6 +41,10 @@ const CaseStudyPage = () => {
 
   }, [])
 
+  if (!data) {
+    return null
+  }
+
   if (companyName == "quad-dream") {
     return (
       <>
