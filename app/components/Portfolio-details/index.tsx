@@ -10,31 +10,78 @@ import { PortfolioHighlight } from '@/app/types/PortfolioHighlights'
 import MainSection from './MainSection'
 import YtVideo from './YtVideo'
 import SocialMedia from './SocialMedia'
+import portfolioListRaw from "@/portfolios_rows_converted.json";
+import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 
 const PortfolioDetails = () => {
 
     const { companyName } = useParams()
 
-    const [data, setData] = useState<{ portfolio: Portfolio; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
+    const parseJSON = (value: any) => {
+        if (!value) return [];
+        if (Array.isArray(value)) return value;
 
-    useEffect(() => {
-
-        const fetchPortfolioDetails = async () => {
-            const response = await fetch(`/api/portfolio?slug=${companyName}`);
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data)
-                setData(data)
-            }
+        try {
+            return JSON.parse(value);
+        } catch {
+            return [];
         }
+    };
 
-        fetchPortfolioDetails()
 
-    }, [])
+    const portfolioList: Portfolio[] = portfolioListRaw.map((item: any) => ({
+        ...item,
+        categories: parseJSON(item.categories),
+        channels: parseJSON(item.channels),
+        channelsUsed: parseJSON(item.channelsUsed),
+    }));
 
-    if (!data) {
-        return null
+    const portfolioHighlightsList: PortfolioHighlight[] =
+        portfolioHighlightsRaw.map((item: any) => ({
+            ...item,
+            companyId: Number(item.companyId), // 🔥 force to number
+        }));
+
+    // ✅ Mimic Supabase `.select().eq()` (returns array)
+    const portfolio = portfolioList.filter(
+        (item) => item.slug === companyName
+    )[0];
+
+
+
+    // const [data, setData] = useState<{ portfolio: Portfolio; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
+
+    // useEffect(() => {
+
+    //     const fetchPortfolioDetails = async () => {
+    //         const response = await fetch(`/api/portfolio?slug=${companyName}`);
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             console.log(data)
+    //             setData(data)
+    //         }
+    //     }
+
+    //     fetchPortfolioDetails()
+
+    // }, [])
+
+    // if (!data) {
+    //     return null
+    // }
+
+    let portfolioHighlights: PortfolioHighlight[] = [];
+
+    if (portfolio) {
+        portfolioHighlights = portfolioHighlightsList.filter(
+            (item) => item.companyId === portfolio.id
+        );
     }
+
+    const data = {
+        portfolio,
+        portfolioHighlights,
+    };
 
 
     return (
