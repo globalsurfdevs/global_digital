@@ -5,8 +5,7 @@ import { BlogInputTypes } from "@/app/types/BlogInputs";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { BlogData } from "@/app/data/BlogData";
+import { useEffect, useState } from "react"; 
 
 
 
