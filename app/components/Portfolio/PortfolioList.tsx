@@ -100,6 +100,7 @@ const PortfolioList = () => {
     <>
       <div className="container mx-auto py-4">
         <div>
+          <span className="hidden">{process.env.NEXT_PUBLIC_BASE_URL}</span>
           <div className="portfolio pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px] ">
             {/* Filter Tabs */}
             <div className="border-b  mb-[30px] md:mb-[50px] filterbtn no-scrollbar">

@@ -32,11 +32,17 @@ type Data = {
 //   };
 // }
 
-const page = async () => {
+const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
+  const companyName = (await params).companyName;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study?slug=${companyName}`,
+    { next: { revalidate: 60 } }
+  );
 
+  const data = await response.json();
   return (
     <>
-      <CaseStudyDetails />
+      <CaseStudyDetails data={data} />
     </>
   )
 }

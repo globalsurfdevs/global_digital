@@ -13,36 +13,43 @@ type Data = {
   }
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{
-      companyName: string
-    }>
-  }
-): Promise<Metadata> {
-  const params = await props.params;
-  const slug = formatLinkForPortfolio(params.companyName)
+// export async function generateMetadata(
+//   props: {
+//     params: Promise<{
+//       companyName: string
+//     }>
+//   }
+// ): Promise<Metadata> {
+//   const params = await props.params;
+//   const slug = formatLinkForPortfolio(params.companyName)
 
-  const data: Data = await apiService.get(`/api/portfolio?slug=${slug}`)
+//   const data: Data = await apiService.get(`/api/portfolio?slug=${slug}`)
 
-  const metadataTitle = data.portfolio.metaTitle == "null" || !data.portfolio.metaTitle ? "Global Surf Digital" : data.portfolio.metaTitle;
-  const metadataDescription = data.portfolio.metaDescription == "null" || !data.portfolio.metaTitle ? "Global Surf Digital" : data.portfolio.metaDescription;
-  const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
+//   const metadataTitle = data.portfolio.metaTitle == "null" || !data.portfolio.metaTitle ? "Global Surf Digital" : data.portfolio.metaTitle;
+//   const metadataDescription = data.portfolio.metaDescription == "null" || !data.portfolio.metaTitle ? "Global Surf Digital" : data.portfolio.metaDescription;
+//   const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
 
-  return {
-    title: metadataTitle,
-    description: metadataDescription,
-    alternates: {
-      canonical: canonicalUrl,
-    },
-  };
-}
+//   return {
+//     title: metadataTitle,
+//     description: metadataDescription,
+//     alternates: {
+//       canonical: canonicalUrl,
+//     },
+//   };
+// }
 
-const page = async () => {
+const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
+  const companyName = (await params).companyName;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolio?slug=${companyName}`,
+    { next: { revalidate: 60 } }
+  );
+
+  const data = await response.json();
 
   return (
     <>
-      <PortfolioDetails />
+      <PortfolioDetails data={data} />
     </>
   )
 }
