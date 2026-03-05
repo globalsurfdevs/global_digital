@@ -45,25 +45,27 @@ const CaseStudyPage = ({ data }: any) => {
   //   return null
   // }
 
-  if (data.companyName == "quad-dream") {
-    return (
-      <>
-        <PortfolioDetails />
-      </>
-    )
-  } else {
-    return (
-      <>
-        <HeroSection data={data} />
-        <Goals data={data} />
-        <Percentages data={data} />
-        <Ready data={data} />
-        <div className='container mx-auto py-4'>
-          <SuccessStories companyId={data?.caseStudy._id} />
-        </div>
-      </>
-    )
-  }
+  // if (data.companyName == "quad-dream") {
+  //   return (
+  //     <>
+  //       <PortfolioDetails />
+  //     </>
+  //   )
+  // } else {
+  //   return (
+  //     <>
+  //       <HeroSection data={data} />
+  //       <Goals data={data} />
+  //       <Percentages data={data} />
+  //       <Ready data={data} />
+  //       <div className='container mx-auto py-4'>
+  //         <SuccessStories companyId={data?.caseStudy._id} />
+  //       </div>
+  //     </>
+  //   )
+  // }
+
+  return null
 }
 
 export default CaseStudyPage
