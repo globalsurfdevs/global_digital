@@ -33,21 +33,21 @@ type Data = {
 // }
 
 const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
-  const companyName = (await params).companyName;
+  // const companyName = (await params).companyName;
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study?slug=${companyName}`,
-    { next: { revalidate: 60 } }
-  );
+  // const response = await fetch(
+  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study?slug=${companyName}`,
+  //   { next: { revalidate: 60 } }
+  // );
 
-  if (!response.ok) {
-    console.error("API Error:", response.status);
-    return <div>Failed to load case study</div>;
-  }
+  // if (!response.ok) {
+  //   console.error("API Error:", response.status);
+  //   return <div>Failed to load case study</div>;
+  // }
 
-  const data = await response.json();
+  // const data = await response.json();
 
-  return <CaseStudyDetails data={data} />;
+  return <CaseStudyDetails />;
 };
 
 export default page;
