@@ -11,61 +11,59 @@ import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
 import PortfolioDetails from '@/app/components/Portfolio-details'
 
 
-const CaseStudyPage = ({ data }: any) => {
-  // const [data, setData] = useState<{ caseStudy: CaseStudy, caseStudyHighlights: CaseStudyHighlights[] } | null>(null)
+const CaseStudyPage = () => {
+  const [data, setData] = useState<{ caseStudy: CaseStudy, caseStudyHighlights: CaseStudyHighlights[] } | null>(null)
 
-  // const { companyName } = useParams()
+  const { companyName } = useParams()
 
-  // useEffect(() => {
-  //   const fetchCaseStudyData = async () => {
-  //     try {
-  //       const response = await fetch(`/api/case-study?slug=${companyName}`, {
-  //         cache: "no-cache"
-  //       })
-  //       if (response.ok) {
-  //         const data = await response.json()
-  //         console.log(data)
-  //         if (!data.error) {
-  //           console.log(data)
-  //           setData(data)
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.log("Error fetching case study data", error)
-  //     }
-  //   }
+  useEffect(() => {
+    const fetchCaseStudyData = async () => {
+      try {
+        const response = await fetch(`/api/case-study?slug=${companyName}`, {
+          cache: "no-cache"
+        })
+        if (response.ok) {
+          const data = await response.json()
+          console.log(data)
+          if (!data.error) {
+            console.log(data)
+            setData(data)
+          }
+        }
+      } catch (error) {
+        console.log("Error fetching case study data", error)
+      }
+    }
 
-  //   if (companyName !== "quad-dream") {
-  //     fetchCaseStudyData()
-  //   }
+    if (companyName !== "quad-dream") {
+      fetchCaseStudyData()
+    }
 
-  // }, [])
+  }, [])
 
-  // if (!data) {
-  //   return null
-  // }
+  if (!data) {
+    return null
+  }
 
-  // if (data.companyName == "quad-dream") {
-  //   return (
-  //     <>
-  //       <PortfolioDetails />
-  //     </>
-  //   )
-  // } else {
-  //   return (
-  //     <>
-  //       <HeroSection data={data} />
-  //       <Goals data={data} />
-  //       <Percentages data={data} />
-  //       <Ready data={data} />
-  //       <div className='container mx-auto py-4'>
-  //         <SuccessStories companyId={data?.caseStudy._id} />
-  //       </div>
-  //     </>
-  //   )
-  // }
-
-  return null
+  if (companyName == "quad-dream") {
+    return (
+      <>
+        <PortfolioDetails />
+      </>
+    )
+  } else {
+    return (
+      <>
+        <HeroSection data={data} />
+        <Goals data={data} />
+        <Percentages data={data} />
+        <Ready data={data} />
+        <div className='container mx-auto py-4'>
+          <SuccessStories companyId={data?.caseStudy._id} />
+        </div>
+      </>
+    )
+  }
 }
 
 export default CaseStudyPage
