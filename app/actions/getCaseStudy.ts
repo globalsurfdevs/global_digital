@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import "@/app/models/Category";
 import "@/app/models/Channel";
 
-export async function getCaseStudy(slug: string) {
+export async function getCaseStudyOrPortfolio(slug: string, type: string) {
     await connectDb();
 
     const caseStudy = await Portfolio
@@ -20,7 +20,11 @@ export async function getCaseStudy(slug: string) {
         companyId: new mongoose.Types.ObjectId(caseStudy._id)
     }).lean();
 
-    const data = { caseStudy, caseStudyHighlights };
-
+    let data;
+    if (type == "portfolio") {
+        data = { portfolio: caseStudy, portfolioHighlights: caseStudyHighlights };
+    } else {
+        data = { caseStudy, caseStudyHighlights };
+    }
     return JSON.parse(JSON.stringify(data));
 }

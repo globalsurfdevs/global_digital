@@ -38,10 +38,20 @@ type Data = {
 //   };
 // }
 
-const page = async () => {
+
+import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
+
+
+const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
+
+  const data = await getCaseStudyOrPortfolio((await params).companyName, "portfolio");
+
+  if (!data) {
+    return <div>Portfolio not found</div>;
+  }
   return (
     <>
-      <PortfolioDetails />
+      <PortfolioDetails data={data} />
     </>
   )
 }
