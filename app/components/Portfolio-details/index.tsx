@@ -13,39 +13,39 @@ import SocialMedia from './SocialMedia'
 import portfolioListRaw from "@/portfolios_rows_converted.json";
 import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 
-const PortfolioDetails = ({ data }: any) => {
+const PortfolioDetails = () => {
 
-    // const { companyName } = useParams()
+    const { companyName } = useParams()
 
-    // const parseJSON = (value: any) => {
-    //     if (!value) return [];
-    //     if (Array.isArray(value)) return value;
+    const parseJSON = (value: any) => {
+        if (!value) return [];
+        if (Array.isArray(value)) return value;
 
-    //     try {
-    //         return JSON.parse(value);
-    //     } catch {
-    //         return [];
-    //     }
-    // };
+        try {
+            return JSON.parse(value);
+        } catch {
+            return [];
+        }
+    };
 
 
-    // const portfolioList: Portfolio[] = portfolioListRaw.map((item: any) => ({
-    //     ...item,
-    //     categories: parseJSON(item.categories),
-    //     channels: parseJSON(item.channels),
-    //     channelsUsed: parseJSON(item.channelsUsed),
-    // }));
+    const portfolioList: Portfolio[] = portfolioListRaw.map((item: any) => ({
+        ...item,
+        categories: parseJSON(item.categories),
+        channels: parseJSON(item.channels),
+        channelsUsed: parseJSON(item.channelsUsed),
+    }));
 
-    // const portfolioHighlightsList: PortfolioHighlight[] =
-    //     portfolioHighlightsRaw.map((item: any) => ({
-    //         ...item,
-    //         companyId: Number(item.companyId), // 🔥 force to number
-    //     }));
+    const portfolioHighlightsList: PortfolioHighlight[] =
+        portfolioHighlightsRaw.map((item: any) => ({
+            ...item,
+            companyId: Number(item.companyId), // 🔥 force to number
+        }));
 
-    // // ✅ Mimic Supabase `.select().eq()` (returns array)
-    // const portfolio = portfolioList.filter(
-    //     (item) => item.slug === companyName
-    // )[0];
+    // ✅ Mimic Supabase `.select().eq()` (returns array)
+    const portfolio = portfolioList.filter(
+        (item) => item.slug === companyName
+    )[0];
 
 
 
@@ -70,25 +70,25 @@ const PortfolioDetails = ({ data }: any) => {
     //     return null
     // }
 
-    // let portfolioHighlights: PortfolioHighlight[] = [];
+    let portfolioHighlights: PortfolioHighlight[] = [];
 
-    // if (portfolio) {
-    //     portfolioHighlights = portfolioHighlightsList.filter(
-    //         (item) => item.companyId === portfolio.id
-    //     );
-    // }
+    if (portfolio) {
+        portfolioHighlights = portfolioHighlightsList.filter(
+            (item) => item.companyId === portfolio.id
+        );
+    }
 
-    // const data = {
-    //     portfolio,
-    //     portfolioHighlights,
-    // };
+    const data = {
+        portfolio,
+        portfolioHighlights,
+    };
 
 
     return (
         <>
             <MainSection data={data} />
             <HeroSection data={data} />
-            <Goals data={data} companyName={data.companyName?.toString() ?? null} />
+            <Goals data={data} companyName={companyName?.toString() ?? null} />
             <YtVideo data={data} />
             {data?.portfolio.section == "case study new" && <SocialMedia data={data} />}
             <Result data={data} />
