@@ -53,10 +53,10 @@ type Data = {
 // export default page;
 
 
-import { getCaseStudy } from "@/app/actions/getCaseStudy";
+import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
 
 const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
-  const data = await getCaseStudy((await params).companyName);
+  const data = await getCaseStudyOrPortfolio((await params).companyName, "case study");
 
   if (!data) {
     return <div>Case study not found</div>;
