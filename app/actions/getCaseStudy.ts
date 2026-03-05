@@ -21,10 +21,11 @@ export async function getCaseStudyOrPortfolio(slug: string, type: string) {
     }).lean();
 
     let data;
-    if (type == "portfolio") {
+    if (type == "portfolio" || slug == "quad-dream") {
         data = { portfolio: caseStudy, portfolioHighlights: caseStudyHighlights };
     } else {
         data = { caseStudy, caseStudyHighlights };
     }
+
     return JSON.parse(JSON.stringify(data));
 }

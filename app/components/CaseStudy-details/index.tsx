@@ -45,10 +45,11 @@ const CaseStudyPage = ({ data }: any) => {
   //   return null
   // }
 
-  if (data.companyName == "quad-dream") {
+
+  if (data.portfolio?.slug == "quad-dream") {
     return (
       <>
-        <PortfolioDetails />
+        <PortfolioDetails data={data} />
       </>
     )
   } else {
