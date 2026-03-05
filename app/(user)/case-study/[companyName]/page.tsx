@@ -32,22 +32,37 @@ type Data = {
 //   };
 // }
 
+// const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
+//   // const companyName = (await params).companyName;
+
+//   // const response = await fetch(
+//   //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study?slug=${companyName}`,
+//   //   { next: { revalidate: 60 } }
+//   // );
+
+//   // if (!response.ok) {
+//   //   console.error("API Error:", response.status);
+//   //   return <div>Failed to load case study</div>;
+//   // }
+
+//   // const data = await response.json();
+
+//   return <CaseStudyDetails />;
+// };
+
+// export default page;
+
+
+import { getCaseStudy } from "@/app/actions/getCaseStudy";
+
 const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
-  // const companyName = (await params).companyName;
+  const data = await getCaseStudy((await params).companyName);
 
-  // const response = await fetch(
-  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study?slug=${companyName}`,
-  //   { next: { revalidate: 60 } }
-  // );
+  if (!data) {
+    return <div>Case study not found</div>;
+  }
 
-  // if (!response.ok) {
-  //   console.error("API Error:", response.status);
-  //   return <div>Failed to load case study</div>;
-  // }
-
-  // const data = await response.json();
-
-  return <CaseStudyDetails />;
+  return <CaseStudyDetails data={data} />;
 };
 
 export default page;
