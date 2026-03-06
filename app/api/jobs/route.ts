@@ -1,10 +1,12 @@
 import { supabase } from "@/app/lib/initSupabase"
 import Job from "@/app/models/Job"
 import { NextRequest, NextResponse } from "next/server"
+import connectDB from "@/lib/mongodb"
 
 export async function GET(req: NextRequest) {
     try {
 
+        await connectDB()
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
         const slug = searchParams.get("slug")
@@ -64,6 +66,7 @@ export async function GET(req: NextRequest) {
 
 
 export async function POST(req: NextRequest) {
+    await connectDB()
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
 
@@ -116,7 +119,7 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
     try {
-
+        await connectDB()
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
 
