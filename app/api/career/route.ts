@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
-import Contact from "@/app/models/Contact";
+import Career from "@/app/models/Career";
 
 
 export async function GET(req: Request) {
@@ -12,13 +12,13 @@ export async function GET(req: Request) {
 
     const skip = (page - 1) * limit;
 
-    const enquiries = await Contact.find()
+    const enquiries = await Career.find()
         .skip(skip)
         .limit(limit)
         .sort({ _id: -1 })
         .lean();
 
-    const total = await Contact.countDocuments();
+    const total = await Career.countDocuments();
 
     return Response.json({
         data: enquiries,
@@ -30,7 +30,7 @@ export async function DELETE(request: NextRequest) {
     try {
         await connectDB();
         const id = request.nextUrl.searchParams.get("id");
-        const contact = await Contact.findByIdAndDelete(id);
+        const contact = await Career.findByIdAndDelete(id);
         if (!contact) {
             return NextResponse.json({ message: "Enquiry not deleted" }, { status: 404 });
         }
