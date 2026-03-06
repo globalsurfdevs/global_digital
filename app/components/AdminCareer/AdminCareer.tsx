@@ -4,20 +4,23 @@ import React, { useEffect, useState } from 'react'
 import { IoIosClose } from 'react-icons/io'
 import { toast } from 'sonner'
 import { LuMessageSquareShare } from "react-icons/lu";
-import SmartPagination from "./Pagination";
+import SmartPagination from "../AdminEnquiry/Pagination";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { MdDelete } from "react-icons/md";
+import { FaFilePdf } from "react-icons/fa6";
+import Link from 'next/link';
 
 type Enquiry = {
     _id: string;
     name: string;
     email: string;
-    company: string;
+    jobTitle: string;
+    experience: string;
+    currentSalary: string;
+    expectedSalary: string;
+    noticePeriod: string;
     phone: string;
-    budget: string;
-    service: string;
-    message: string;
-    page_url: string;
+    resume: string;
 }
 
 const AdminEnquiry = () => {
@@ -51,7 +54,7 @@ const AdminEnquiry = () => {
 
         const fetchEnquiriesData = async () => {
             try {
-                const response = await fetch(`/api/enquiry?page=${page}&limit=10`);
+                const response = await fetch(`/api/career?page=${page}&limit=10`);
 
                 if (response.ok) {
                     const data = await response.json();
@@ -84,7 +87,7 @@ const AdminEnquiry = () => {
         }
 
         try {
-            const response = await fetch(`/api/enquiry/bulk-delete`, {
+            const response = await fetch(`/api/career/bulk-delete`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -154,14 +157,14 @@ const AdminEnquiry = () => {
                                     <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                         <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
-                                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto  mt-20">
+                                            <div className="flex  items-end justify-center p-4 text-center sm:items-center sm:p-0">
 
                                                 <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                                                     <div className="flex flex-col gap-2">
 
                                                     </div>
-                                                    <div className="grid grid-cols-1 gap-4 text-sm">
+                                                    <div className="grid grid-cols-1 gap-4 text-sm h-[300px] overflow-auto">
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Full Name</label>
@@ -174,35 +177,39 @@ const AdminEnquiry = () => {
                                                         </div>
 
                                                         <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Company</label>
-                                                            <span className="text-gray-900">{item.company}</span>
+                                                            <label className="font-semibold text-gray-600">Job Title</label>
+                                                            <span className="text-gray-900">{item.jobTitle}</span>
+                                                        </div>
+
+                                                        <div className="flex flex-col">
+                                                            <label className="font-semibold text-gray-600">Experience</label>
+                                                            <span className="text-gray-900">{item.experience}</span>
+                                                        </div>
+
+                                                        <div className="flex flex-col">
+                                                            <label className="font-semibold text-gray-600">Current Salary</label>
+                                                            <span className="text-gray-900">{item.currentSalary}</span>
+                                                        </div>
+
+                                                        <div className="flex flex-col">
+                                                            <label className="font-semibold text-gray-600">Expected Salary</label>
+                                                            <span className="text-gray-900">{item.expectedSalary}</span>
+                                                        </div>
+
+                                                        <div className="flex flex-col">
+                                                            <label className="font-semibold text-gray-600">Notice Period</label>
+                                                            <span className="text-gray-900 break-all">{item.noticePeriod}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Phone</label>
-                                                            <span className="text-gray-900">{item.phone}</span>
+                                                            <span className="text-gray-900 break-all">{item.phone}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Budget</label>
-                                                            <span className="text-gray-900">{item.budget}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Service</label>
-                                                            <span className="text-gray-900">{item.service}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Page URL</label>
-                                                            <span className="text-gray-900 break-all">{item.page_url}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Message</label>
-                                                            <p className="text-gray-900 whitespace-pre-line">
-                                                                {item.message}
-                                                            </p>
+                                                            <label className="font-semibold text-gray-600">Resume</label>
+                                                            <Link href={item.resume} target='_blank'><FaFilePdf /></Link>
+                                                            {/* <span className="text-gray-900 break-all">{item.resume}</span> */}
                                                         </div>
 
                                                     </div>
