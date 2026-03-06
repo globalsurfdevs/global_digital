@@ -1,9 +1,12 @@
 "use server";
 
-import { supabase } from "@/app/lib/initSupabase";
+import connectDb from "@/lib/mongodb";
+// import { supabase } from "@/app/lib/initSupabase";
+import Contact from "../models/Contact";
 
 export async function submitContact(formData: FormData) {
     try {
+        await connectDb()
         const data = {
             name: formData.get("SingleLine") as string,
             email: formData.get("Email") as string,
@@ -15,16 +18,24 @@ export async function submitContact(formData: FormData) {
             page_url: formData.get("SingleLine2") as string,
         };
 
-        const { error } = await supabase
-            .from("contacts")
-            .insert([data]);
+        // const { error } = await supabase
+        //     .from("contacts")
+        //     .insert([data]);
 
-        if (error) {
-            console.error("Form submission failed", error);
+        // if (error) {
+        //     console.error("Form submission failed", error);
+        //     return { success: false };
+        // }
+
+        const contact = await Contact.create(data)
+
+        if (!contact) {
+            console.error("Form submission failed");
             return { success: false };
         }
 
         return { success: true };
+
     } catch (err) {
         console.error("Server error:", err);
         return { success: false };

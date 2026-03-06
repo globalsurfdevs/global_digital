@@ -84,25 +84,30 @@ const ContactUs = () => {
     }
 
     const form = document.getElementById("form") as HTMLFormElement;
-    if (form) {
-      if (recaptcha) {
-        const captchaValue = recaptcha?.current?.getValue()
-        if (!captchaValue) {
-          setError("Please verify yourself to continue")
-          return;
-        } else {
-          // const formData = new FormData(form)
-          // const response = await submitContact(formData)
-          // if (response.success) {
-          //   alert("Form saved")
-          // }
-          form.submit();
-        }
-      }
-      // form.submit();
-    } else {
+
+    if (!form) {
       console.error("Form element not found");
+      return;
     }
+
+    if (recaptcha) {
+      const captchaValue = recaptcha?.current?.getValue();
+
+      if (!captchaValue) {
+        setError("Please verify yourself to continue");
+        return;
+      }
+    }
+    const formDataObj = new FormData(form);
+    const tasks = [
+      submitContact(formDataObj), // database save
+      new Promise((resolve) => {
+        form.submit(); // CRM / external submit
+        resolve(true);
+      }),
+    ];
+
+    await Promise.allSettled(tasks);
   };
 
   useEffect(() => {
@@ -110,9 +115,6 @@ const ContactUs = () => {
     setFormData((prev) => ({ ...prev, SingleLine2: window.location.href }));
   }, [window.location.href]);
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <>
