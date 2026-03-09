@@ -32,6 +32,7 @@ const AdminEnquiry = () => {
     const router = useRouter();
     const pathname = usePathname();
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
+    const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
 
     const toggleSelect = (id: string) => {
         setSelectedIds((prev) =>
@@ -148,9 +149,9 @@ const AdminEnquiry = () => {
                                 <h5 className=" text-xl font-bold tracking-tight text-gray-900 dark:text-white">{item.name}</h5>
                             </div>
                             <div className='flex items-center gap-10'>
-                                <button onClick={() => setIsModalOpen(true)}><LuMessageSquareShare /></button>
+                                <button onClick={() => setSelectedEnquiry(item)}><LuMessageSquareShare /></button>
 
-                                {isModalOpen &&
+                                {selectedEnquiry &&
                                     <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                         <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
@@ -165,50 +166,50 @@ const AdminEnquiry = () => {
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Full Name</label>
-                                                            <span className="text-gray-900">{item.name}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.name}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Email</label>
-                                                            <span className="text-gray-900">{item.email}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.email}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Company</label>
-                                                            <span className="text-gray-900">{item.company}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.company}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Phone</label>
-                                                            <span className="text-gray-900">{item.phone}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.phone}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Budget</label>
-                                                            <span className="text-gray-900">{item.budget}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.budget}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Service</label>
-                                                            <span className="text-gray-900">{item.service}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.service}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Page URL</label>
-                                                            <span className="text-gray-900 break-all">{item.page_url}</span>
+                                                            <span className="text-gray-900 break-all">{selectedEnquiry.page_url}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Message</label>
                                                             <p className="text-gray-900 whitespace-pre-line">
-                                                                {item.message}
+                                                                {selectedEnquiry.message}
                                                             </p>
                                                         </div>
 
                                                     </div>
                                                     <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                                         {/* <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto">Save</button> */}
-                                                        <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setIsModalOpen(false)}>Close</button>
+                                                        <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setSelectedEnquiry(null)}>Close</button>
                                                     </div>
                                                 </div>
                                             </div>

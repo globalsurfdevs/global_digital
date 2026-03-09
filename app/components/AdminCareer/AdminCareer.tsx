@@ -29,12 +29,12 @@ const AdminEnquiry = () => {
     const pageFromUrl = Number(searchParams.get("page")) || 1;
     const [enquiries, setEnquiries] = useState<Enquiry[] | []>([])
     const [refetch, setRefetch] = useState(false)
-    const [isModalOpen, setIsModalOpen] = useState(false)
     const [page, setPage] = useState(pageFromUrl);
     const [totalPages, setTotalPages] = useState(1);
     const router = useRouter();
     const pathname = usePathname();
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
+    const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
 
     const toggleSelect = (id: string) => {
         setSelectedIds((prev) =>
@@ -108,10 +108,62 @@ const AdminEnquiry = () => {
     };
 
 
+    const exportToCSV = () => {
+        if (!enquiries.length) {
+            toast.error("No data to export");
+            return;
+        }
+
+        const headers = [
+            "Name",
+            "Email",
+            "Job Title",
+            "Experience",
+            "Current Salary",
+            "Expected Salary",
+            "Notice Period",
+            "Phone",
+            "Resume"
+        ];
+
+        const rows = enquiries.map((item) => [
+            item.name,
+            item.email,
+            item.jobTitle,
+            item.experience,
+            item.currentSalary,
+            item.expectedSalary,
+            item.noticePeriod,
+            item.phone,
+            item.resume
+        ]);
+
+        const csvContent =
+            [headers, ...rows]
+                .map((row) => row.map((val) => `"${val}"`).join(","))
+                .join("\n");
+
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "career-enquiries.csv";
+        link.click();
+    };
+
+
     return (
         <div className='flex flex-col gap-5'>
             <div className='flex justify-between items-center'>
                 <h1 className='text-3xl'>Enquiries</h1>
+                <button
+                    onClick={exportToCSV}
+                    className="px-3 py-1 bg-blue-600 text-white rounded"
+                >
+                    Export CSV
+                </button>
             </div>
             <div className='flex flex-col gap-3 min-h-[calc(100vh-200px)]'>
                 <div className="flex items-center gap-10 justify-end px-5">
@@ -151,9 +203,9 @@ const AdminEnquiry = () => {
                                 <h5 className=" text-xl font-bold tracking-tight text-gray-900 dark:text-white">{item.name}</h5>
                             </div>
                             <div className='flex items-center gap-10'>
-                                <button onClick={() => setIsModalOpen(true)}><LuMessageSquareShare /></button>
+                                <button onClick={() => setSelectedEnquiry(item)}><LuMessageSquareShare /></button>
 
-                                {isModalOpen &&
+                                {selectedEnquiry &&
                                     <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                         <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
@@ -168,54 +220,54 @@ const AdminEnquiry = () => {
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Full Name</label>
-                                                            <span className="text-gray-900">{item.name}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.name}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Email</label>
-                                                            <span className="text-gray-900">{item.email}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.email}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Job Title</label>
-                                                            <span className="text-gray-900">{item.jobTitle}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.jobTitle}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Experience</label>
-                                                            <span className="text-gray-900">{item.experience}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.experience}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Current Salary</label>
-                                                            <span className="text-gray-900">{item.currentSalary}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.currentSalary}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Expected Salary</label>
-                                                            <span className="text-gray-900">{item.expectedSalary}</span>
+                                                            <span className="text-gray-900">{selectedEnquiry.expectedSalary}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Notice Period</label>
-                                                            <span className="text-gray-900 break-all">{item.noticePeriod}</span>
+                                                            <span className="text-gray-900 break-all">{selectedEnquiry.noticePeriod}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Phone</label>
-                                                            <span className="text-gray-900 break-all">{item.phone}</span>
+                                                            <span className="text-gray-900 break-all">{selectedEnquiry.phone}</span>
                                                         </div>
 
                                                         <div className="flex flex-col">
                                                             <label className="font-semibold text-gray-600">Resume</label>
-                                                            <Link href={item.resume} target='_blank'><FaFilePdf /></Link>
+                                                            <Link href={selectedEnquiry.resume} target='_blank'><FaFilePdf /></Link>
                                                             {/* <span className="text-gray-900 break-all">{item.resume}</span> */}
                                                         </div>
 
                                                     </div>
                                                     <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                                         {/* <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto">Save</button> */}
-                                                        <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setIsModalOpen(false)}>Close</button>
+                                                        <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setSelectedEnquiry(null)}>Close</button>
                                                     </div>
                                                 </div>
                                             </div>
