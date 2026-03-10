@@ -1,9 +1,9 @@
 "use server";
 
 import connectDb from "@/lib/mongodb";
-import Contact from "../models/Contact";
 import { uploadToDropbox } from "../lib/uploadToDropbox";
 import Career from "../models/Career";
+import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
 
 export async function submitCareer(formData: FormData) {
     try {
@@ -32,6 +32,24 @@ export async function submitCareer(formData: FormData) {
 
 
         const career = await Career.create(data);
+
+        const attachments =
+            resume && resume.size > 0
+                ? [
+                    {
+                        filename: resume.name,
+                        content: Buffer.from(await resume.arrayBuffer()).toString("base64"),
+                    },
+                ]
+                : [];
+
+        await sendMailWithAttachments({
+            to: "talenthunt@globalsurf.ae",
+            subject: `New Career Application: ${data.name}`,
+            fields: data,
+            attachments,
+        });
+
 
         if (!career) {
             console.error("Form submission failed");
