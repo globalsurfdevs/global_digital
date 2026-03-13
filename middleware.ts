@@ -1,12 +1,9 @@
-//  export { auth as middleware } from "@/auth";
-
-
-// export const config = {
-//     matcher: ["/admin/:path*"], // Matches all routes under /admin
-//   };
-import { auth } from "@/auth";
+import NextAuth from "next-auth";
+import { authConfig } from "@/auth.config";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+
+const { auth } = NextAuth(authConfig);
 
 const BLOCKED_CITIES = [
   "north charleston",
@@ -15,16 +12,15 @@ const BLOCKED_CITIES = [
 ];
 
 const BLOCKED_COUNTRIES: string[] = [];
-
 const BLOCKED_IPS: string[] = [];
 
 function isBlocked(request: NextRequest): boolean {
   const city = request.headers.get("x-vercel-ip-city")?.toLowerCase() ?? "";
   const country = request.headers.get("x-vercel-ip-country")?.toLowerCase() ?? "";
-  const ip = request.headers.get("x-vercel-ip") ??
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
-
-  console.log("GEO CHECK:", { city, country, ip });
+  const ip =
+    request.headers.get("x-vercel-ip") ??
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    "";
 
   if (BLOCKED_CITIES.includes(city)) return true;
   if (BLOCKED_COUNTRIES.includes(country)) return true;
@@ -36,22 +32,18 @@ function isBlocked(request: NextRequest): boolean {
 export default auth((request: NextRequest) => {
   const { nextUrl } = request;
 
-  // ✅ Exclude these from middleware to prevent redirect loops
   const isExcluded =
     nextUrl.pathname.startsWith("/_next") ||
     nextUrl.pathname.startsWith("/favicon") ||
     nextUrl.pathname.startsWith("/blocked") ||
-    nextUrl.pathname.startsWith("/admin/auth");       // ← key fix: exclude signin page
+    nextUrl.pathname.startsWith("/admin/auth");
 
   if (isExcluded) return NextResponse.next();
 
-  // ✅ Step 1: Geo block
   if (isBlocked(request)) {
-    console.log("Blocked request from:", request.headers.get("x-vercel-ip-city"));
     return NextResponse.rewrite(new URL("/blocked", request.url));
   }
 
-  // ✅ Step 2: Admin auth
   const isAdminRoute = nextUrl.pathname.startsWith("/admin");
   const isLoggedIn = !!(request as any).auth;
 
@@ -65,8 +57,5 @@ export default auth((request: NextRequest) => {
 });
 
 export const config = {
-  matcher: [
-    '/admin/:path*',
-    '/:path*',
-  ],
+  matcher: ["/admin/:path*", "/:path*"],
 };

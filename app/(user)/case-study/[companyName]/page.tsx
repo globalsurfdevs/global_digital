@@ -1,31 +1,26 @@
-import React from 'react'
 import CaseStudyDetails from '@/app/components/CaseStudy-details'
-import apiService from '@/app/lib/apiService'
-import { formatLinkForCaseStudy } from '@/app/helpers/formatLink'
-import { Metadata } from 'next'
-import { CaseStudy } from '@/app/types/CaseStudy'
+
 type Data = {
   caseStudy: {
     metaTitle: string;
     metaDescription: string;
-
-  }[]
+  }
 }
 
 // export async function generateMetadata(
-//   props:{
+//   props: {
 //     params: Promise<{
-//       companyName:string
+//       companyName: string
 //     }>
 //   }
 // ): Promise<Metadata> {
 //   const params = await props.params;
 //   const slug = formatLinkForCaseStudy(params.companyName)
 
-//   const data:Data = await apiService.get(`/api/case-study?slug=${slug}`)
+//   const data: Data = await apiService.get(`/api/case-study?slug=${slug}`)
 
-//   const metadataTitle = data.caseStudy[0].metaTitle=="null" || !data.caseStudy[0].metaTitle ? "Global Surf Digital" : data.caseStudy[0].metaTitle;
-//   const metadataDescription = data.caseStudy[0].metaDescription=="null" || !data.caseStudy[0].metaDescription ? "Global Surf Digital" : data.caseStudy[0].metaDescription;
+//   const metadataTitle = data.caseStudy.metaTitle == "null" || !data.caseStudy.metaTitle ? "Global Surf Digital" : data.caseStudy.metaTitle;
+//   const metadataDescription = data.caseStudy.metaDescription == "null" || !data.caseStudy.metaDescription ? "Global Surf Digital" : data.caseStudy.metaDescription;
 //   const canonicalUrl = `https://www.globalsurf.ae/case-study/${slug}`
 
 //   return {
@@ -37,13 +32,37 @@ type Data = {
 //   };
 // }
 
-const page = () => {
+// const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
+//   // const companyName = (await params).companyName;
 
-  return (
-    <>
-      <CaseStudyDetails />
-    </>
-  )
-}
+//   // const response = await fetch(
+//   //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study?slug=${companyName}`,
+//   //   { next: { revalidate: 60 } }
+//   // );
 
-export default page
+//   // if (!response.ok) {
+//   //   console.error("API Error:", response.status);
+//   //   return <div>Failed to load case study</div>;
+//   // }
+
+//   // const data = await response.json();
+
+//   return <CaseStudyDetails />;
+// };
+
+// export default page;
+
+
+import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
+
+const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
+  const data = await getCaseStudyOrPortfolio((await params).companyName, "case study");
+
+  if (!data) {
+    return <div>Case study not found</div>;
+  }
+
+  return <CaseStudyDetails data={data} />;
+};
+
+export default page;

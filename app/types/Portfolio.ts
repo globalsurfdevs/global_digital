@@ -1,4 +1,5 @@
 export type Portfolio = {
+    _id: string;
     customId: string;
     section: string;
     heading: string;

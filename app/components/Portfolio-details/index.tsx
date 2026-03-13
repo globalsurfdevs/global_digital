@@ -13,22 +13,43 @@ import SocialMedia from './SocialMedia'
 import portfolioListRaw from "@/portfolios_rows_converted.json";
 import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 
-const parseJSON = (value: any) => {
-    if (!value) return [];
-    if (Array.isArray(value)) return value;
+const PortfolioDetails = ({ data }: any) => {
 
-    try {
-        return JSON.parse(value);
-    } catch {
-        return [];
-    }
-};
+    // const { companyName } = useParams()
 
-const PortfolioDetails = () => {
+    // const parseJSON = (value: any) => {
+    //     if (!value) return [];
+    //     if (Array.isArray(value)) return value;
 
-    const { companyName } = useParams()
+    //     try {
+    //         return JSON.parse(value);
+    //     } catch {
+    //         return [];
+    //     }
+    // };
 
-    // const [data, setData] = useState<{ portfolio: Portfolio[]; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
+
+    // const portfolioList: Portfolio[] = portfolioListRaw.map((item: any) => ({
+    //     ...item,
+    //     categories: parseJSON(item.categories),
+    //     channels: parseJSON(item.channels),
+    //     channelsUsed: parseJSON(item.channelsUsed),
+    // }));
+
+    // const portfolioHighlightsList: PortfolioHighlight[] =
+    //     portfolioHighlightsRaw.map((item: any) => ({
+    //         ...item,
+    //         companyId: Number(item.companyId), // 🔥 force to number
+    //     }));
+
+    // // ✅ Mimic Supabase `.select().eq()` (returns array)
+    // const portfolio = portfolioList.filter(
+    //     (item) => item.slug === companyName
+    // )[0];
+
+
+
+    // const [data, setData] = useState<{ portfolio: Portfolio; portfolioHighlights: PortfolioHighlight[]; } | null>(null)
 
     // useEffect(() => {
 
@@ -45,52 +66,31 @@ const PortfolioDetails = () => {
 
     // }, [])
 
-    // 🔥 Normalize portfolios (fix stringified arrays)
+    // if (!data) {
+    //     return null
+    // }
 
-    const portfolioList: Portfolio[] = portfolioListRaw.map((item: any) => ({
-        ...item,
-        categories: parseJSON(item.categories),
-        channels: parseJSON(item.channels),
-        channelsUsed: parseJSON(item.channelsUsed),
-        socialMediaImages: parseJSON(item.socialMediaImages),
-    }));
+    // let portfolioHighlights: PortfolioHighlight[] = [];
 
-    const portfolioHighlightsList: PortfolioHighlight[] =
-        portfolioHighlightsRaw.map((item: any) => ({
-            ...item,
-            companyId: Number(item.companyId), // 🔥 force to number
-        }));
+    // if (portfolio) {
+    //     portfolioHighlights = portfolioHighlightsList.filter(
+    //         (item) => item.companyId === portfolio.id
+    //     );
+    // }
 
-    // ✅ Mimic Supabase `.select().eq()` (returns array)
-    const portfolio = portfolioList.filter(
-        (item) => item.slug === companyName
-    );
-
-    let portfolioHighlights: PortfolioHighlight[] = [];
-
-    if (portfolio.length > 0) {
-        portfolioHighlights = portfolioHighlightsList.filter(
-            (item) => item.companyId === portfolio[0].id
-        );
-    }
-
-    if (portfolio.length === 0) {
-        return <div>Portfolio not found</div>;
-    }
-
-    const data = {
-        portfolio,
-        portfolioHighlights,
-    };
+    // const data = {
+    //     portfolio,
+    //     portfolioHighlights,
+    // };
 
 
     return (
         <>
             <MainSection data={data} />
             <HeroSection data={data} />
-            <Goals data={data} companyName={companyName?.toString() ?? null} />
+            <Goals data={data} companyName={data.companyName?.toString() ?? null} />
             <YtVideo data={data} />
-            {data?.portfolio[0].section == "case study new" && <SocialMedia data={data} />}
+            {data?.portfolio.section == "case study new" && <SocialMedia data={data} />}
             <Result data={data} />
         </>
     )

@@ -1,4 +1,6 @@
 import { supabase } from "@/app/lib/initSupabase";
+import Category from "@/app/models/Category";
+import connectDB from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(req: NextRequest) {
@@ -6,16 +8,19 @@ export async function GET(req: NextRequest) {
     try {
 
 
-        let { data: categories, error } = await supabase
-            .from('categories')
-            .select('*')
+        // let { data: categories, error } = await supabase
+        //     .from('categories')
+        //     .select('*')
+
+        await connectDB()
+        const categories = await Category.find({})
 
         if (categories) {
 
             return NextResponse.json({ categories });
         }
 
-        if (error) {
+        if (!categories) {
             return NextResponse.json({ error: "Fetching categories failed" })
         }
 
@@ -71,7 +76,7 @@ export async function DELETE(req: NextRequest) {
         const { error } = await supabase
             .from('categories')
             .delete()
-            .eq('id',id)
+            .eq('id', id)
 
 
 

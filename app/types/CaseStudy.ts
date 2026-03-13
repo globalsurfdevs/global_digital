@@ -1,4 +1,5 @@
 export type CaseStudy = {
+    _id: string;
     id: number;
     heading: string;
     sHeading: string;

@@ -1,27 +1,39 @@
-import { supabase } from "@/app/lib/initSupabase";
-import { Portfolio } from "@/app/types/Portfolio";
+import Portfolio from "@/app/models/Portfolio";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     try {
-        const formData = await req.formData()
-        const portfolios = formData.get("portfolios") as string
-        const actualPortfolios = JSON.parse(portfolios)
+        const formData = await req.formData();
+        const portfolios = formData.get("portfolios") as string;
 
-        console.log(actualPortfolios)
-        
-        for (let i = 0; i < actualPortfolios.length; i++) {
-
-            const { data, error } = await supabase
-                .from('portfolios')
-                .update({ index: actualPortfolios[i].index })
-                .eq('id', actualPortfolios[i].id)
-                .select()
+        if (!portfolios) {
+            return NextResponse.json(
+                { error: "Portfolios data missing" },
+                { status: 400 }
+            );
         }
 
-        return NextResponse.json({ message: "Hello" })
+        const actualPortfolios = JSON.parse(portfolios);
+
+        await Promise.all(
+            actualPortfolios.map((portfolio: any) =>
+                Portfolio.findByIdAndUpdate(portfolio._id, {
+                    index: portfolio.index,
+                })
+            )
+        );
+
+        return NextResponse.json(
+            { message: "Portfolios updated successfully" },
+            { status: 200 }
+        );
 
     } catch (error) {
-        console.log(error)
+        console.error(error);
+
+        return NextResponse.json(
+            { error: "Something went wrong" },
+            { status: 500 }
+        );
     }
 }

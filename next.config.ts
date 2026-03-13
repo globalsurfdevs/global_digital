@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      
+
       {
         source: "/performance-marketing", // The old URL path
         destination: "/performance-marketing-agency-dubai", // The new URL path
@@ -112,27 +112,27 @@ const nextConfig: NextConfig = {
         destination: "https://www.globalsurf.ae", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
-    {
-      source: "/branding", // The old URL path
-      destination: "/branding-agency-dubai", // The new URL path
-      permanent: true, // Set to true for 301 (permanent) redirect
-    },
-    {
-      source: "/blog/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The old URL path
-      destination: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The new URL path
-      permanent: true, // Set to true for 301 (permanent) redirect
-    },
-     {
-      source: "/industry/ecommerce", // The old URL path
-      destination: "/industry/ecommerce-digital-marketing", // The new URL path
-      permanent: true, // Set to true for 301 (permanent) redirect
-    },
-    {
-      source: "/industry/b2b", // The old URL path
-      destination: "/industry/b2b-digital-marketing-services", // The new URL path
-      permanent: true, // Set to true for 301 (permanent) redirect
-    },
-    
+      {
+        source: "/branding", // The old URL path
+        destination: "/branding-agency-dubai", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/blog/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The old URL path
+        destination: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/industry/ecommerce", // The old URL path
+        destination: "/industry/ecommerce-digital-marketing", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/industry/b2b", // The old URL path
+        destination: "/industry/b2b-digital-marketing-services", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+
     ];
   },
 };
