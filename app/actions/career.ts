@@ -4,6 +4,7 @@ import connectDb from "@/lib/mongodb";
 import { uploadToDropbox } from "../lib/uploadToDropbox";
 import Career from "../models/Career";
 import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
+import { getToEmail } from "../helpers/getToEmail";
 
 export async function submitCareer(formData: FormData) {
     try {
@@ -43,8 +44,10 @@ export async function submitCareer(formData: FormData) {
                 ]
                 : [];
 
+        const toEmail = await getToEmail("career");
+
         await sendMailWithAttachments({
-            to: "talenthunt@globalsurf.ae",
+            to: toEmail,
             subject: `New Career Application: ${data.name}`,
             fields: data,
             attachments,
