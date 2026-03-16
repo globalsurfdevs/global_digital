@@ -1,5 +1,44 @@
 export const BlogData = [
   {
+    id: 7,
+    slug:"technical-seo-for-built-environment-websites-2026",
+    titles: "Technical SEO Essentials Every Built Environment Website Needs in 2026",
+    title: "Technical SEO Essentials Every Built Environment Website Needs in 2026",
+    list_heading: "Technical SEO Essentials Every Built Environment Website Needs in 2026",
+    meta_title: "Technical SEO Essentials for AEC Websites in 2026 | Global Surf",
+    description: "A practical technical SEO guide for architecture, engineering, & construction websites. Fix crawl issues, improve speed, and optimize for AI. Checklist included.",
+    post_date: "",
+    read_time: "",
+    feature_thumb: "/images/blog-new/blog7/mn.jpg",
+    thumb: "/images/blog-new/blog7/mn.jpg",
+    large_thumb: "/images/blog-new/blog7/mn.jpg",
+    category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt:
+      "",
+    body: [
+     ""
+    ],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para:
+      "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 6,
     slug:"no-clicks-google-ai-search-built-environment",
     titles: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",

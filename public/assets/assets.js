@@ -998,8 +998,25 @@ import eeatseo from "../images/blog-new/blog6/eeat-seo.png";
 import meassuringav from "../images/blog-new/blog6/meassuring-av.jpg";
 import blog_3 from "../images/blog-new/blog6/blog_3.jpg";
 
+import blog_71 from "../images/blog-new/blog7/71.png";
+import blog_72 from "../images/blog-new/blog7/72.png";
+import blog_73 from "../images/blog-new/blog7/techseo1.png";
+import blog_74 from "../images/blog-new/blog7/techseo2.png";
+import blog_75 from "../images/blog-new/blog7/techseo3.png";
+import blog_76 from "../images/blog-new/blog7/mn.jpg";
+import blog_77 from "../images/blog-new/blog7/sec.png";
+import blog_78 from "../images/blog-new/blog7/third.png";
+
 
 export const assets = {
+  blog_71,
+  blog_76,
+  blog_77,
+  blog_78,
+blog_72,
+blog_73,
+blog_74,
+blog_75,  
   blog_3,
   meassuringav,
   eeatseo,
