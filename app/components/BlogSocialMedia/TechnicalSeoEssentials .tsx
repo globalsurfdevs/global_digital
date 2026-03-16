@@ -29,7 +29,7 @@ const TechnicalSeoEssentials  = () => {
             </p>
  
 
-            <Image src={assets.blog_77 } alt="Google zero-click search result answering a query directly" className='mb-5 lg:mb-[40px] ' />
+            <Image src={assets.blog_77 } alt="Importance of Technical SEO " className='mb-5 lg:mb-[40px] ' />
             <p className="text-font19 text-[#77787B] mb-[16px]">
 In 2026, technical SEO determines whether your architecture firm SEO, construction SEO audit efforts, or <Link className='text-primary' href="/seo-agency-dubai">real estate SEO strategy</Link> can actually deliver returns.
  </p>
@@ -95,7 +95,7 @@ In 2026, technical SEO determines whether your architecture firm SEO, constructi
                 <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id="content3">
   Speed, Core Web Vitals & Hosting: Keeping Heavy Project Pages Fast
 </h2>
- <Image src={assets.blog_78 } alt="Google zero-click search result answering a query directly" className='mb-5 lg:mb-[40px] ' />
+ <Image src={assets.blog_78 } alt="Page Speed Insights" className='mb-5 lg:mb-[40px] ' />
             
 
                 <p className="text-font19 text-[#77787B] mb-[16px]">
@@ -279,7 +279,7 @@ Better AI interpretation in answer engines. Pages with valid schema see 30-40% h
                   Common Technical SEO Issues on Built Environment Websites (and How to Fix Them)
                 </h2>
 
-                <Image src={assets.blog_75} alt="E-E-A-T trust signals that influence AI search citations" className="mb-5 lg:mb-[30px]" />
+                <Image src={assets.blog_75} alt="GSC Errors" className="mb-5 lg:mb-[30px]" />
 
                 <p className="text-font19 text-[#77787B] mb-[16px]">
                    Many architecture, construction, and property websites struggle not because of weak branding, but because of hidden technical SEO issues. Below are the most common problems seen during a construction SEO audit, along with simple fixes teams can brief to developers.
@@ -384,7 +384,7 @@ Better AI interpretation in answer engines. Pages with valid schema see 30-40% h
                 <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content7'>
                   A Simple Technical SEO Health Checklist for Your AEC Website
                 </h2>
-  <Image src={assets.blog_73} alt="Tracking mentions across AI search platform" className='mb-5 lg:mb-[40px] '/>
+  <Image src={assets.blog_73} alt="Technical SEO Checklist" className='mb-5 lg:mb-[40px] '/>
            
                 <p className="text-font19 text-[#77787B] mb-[16px]">
                   Before investing heavily in new content or campaigns, your architecture, construction, or property website should pass a basic technical health check. Think of this as a routine inspection to confirm your site is fit for 2026 and ready to support deeper SEO work.  </p>
