@@ -2,7 +2,7 @@ import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
 import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne"; 
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
-import {OneClickSchema} from "../../../components/Schema/OfferCatalog";
+import {TechnicalSEOSchema} from "../../../components/Schema/OfferCatalog";
 import TechnicalSeoEssentials  from "../../../components/BlogSocialMedia/TechnicalSeoEssentials ";
 
 
@@ -42,7 +42,7 @@ const page = () => {
 
   return (
     <div className="relative">
-      <OneClickSchema />
+      <TechnicalSEOSchema />
 <SocialShare/>
       
       <HeroSection

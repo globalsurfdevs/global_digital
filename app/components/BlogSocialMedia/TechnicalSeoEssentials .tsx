@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { assets } from '@/public/assets/assets';
-
+import Link from 'next/link';
 const TechnicalSeoEssentials  = () => {
   return (
     <section>
@@ -31,7 +31,7 @@ const TechnicalSeoEssentials  = () => {
 
             <Image src={assets.blog_77 } alt="Google zero-click search result answering a query directly" className='mb-5 lg:mb-[40px] ' />
             <p className="text-font19 text-[#77787B] mb-[16px]">
-In 2026, technical SEO determines whether your architecture firm SEO, construction SEO audit efforts, or real estate SEO strategy can actually deliver returns.
+In 2026, technical SEO determines whether your architecture firm SEO, construction SEO audit efforts, or <Link className='text-primary' href="/seo-agency-dubai">real estate SEO strategy</Link> can actually deliver returns.
  </p>
             <p className="text-font19 text-[#77787B] mb-[16px]">
               For AEC brands, technical performance affects three commercial realities:     </p>
@@ -319,7 +319,7 @@ Better AI interpretation in answer engines. Pages with valid schema see 30-40% h
 </h3> 
 
 <p className="text-font19 text-[#77787B] mb-[16px]">
-  Consolidate similar pages, use canonical tags correctly, and enrich thin pages with more detailed, unique content.
+  Consolidate similar pages, use canonical tags correctly, and <Link className='text-primary' href="/creative-copywriting-agency-dubai">enrich thin pages with more detailed, unique content</Link>.
 </p>
 
 <h3 className="text-30 mt-[30px] mb-3"> 
@@ -356,7 +356,7 @@ Better AI interpretation in answer engines. Pages with valid schema see 30-40% h
 </h3> 
 
 <p className="text-font19 text-[#77787B] mb-[16px]">
-  Ensure responsive design, clear CTAs, and simple navigation.
+  Ensure <Link className='text-primary' href="/web-design-agency-dubai">responsive design</Link>, clear CTAs, and simple navigation.
 </p>
 
 
