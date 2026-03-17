@@ -8,8 +8,7 @@ import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import LetsTalk from "@/app/components/common/LetsConnect";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
+import { Navigation } from "swiper/modules"; 
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -87,7 +86,7 @@ const ResultDetails = ({
         <SwiperSlide>
           <div>
             <Image
-              src={data.portfolio.resultImage1}
+              src={'/assets/portfolio/slide3.jpg'}
               alt="image"
               width={900}
               height={746}
@@ -100,7 +99,7 @@ const ResultDetails = ({
         <SwiperSlide>
           <div>
             <Image
-              src={data.portfolio.resultImage2}
+              src={'/assets/portfolio/slide4.jpg'}
               alt="image"
               width={900}
               height={746}
