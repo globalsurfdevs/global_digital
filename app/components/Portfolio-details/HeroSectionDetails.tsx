@@ -122,7 +122,7 @@ const HeroSectionDetails = ({
                     <div className="flex flex-col gap-5  lg:grid lg:grid-cols-3 lg:gap-5 lg:gap-x-[50px] ">
                       {data.portfolioHighlights.map((item) => (
                         <div
-                          className="group border-b border-black/10   last:border-b-0 last:border-r-0 lg:border-b-0 lg:border-r "
+                          className="group border-b border-black/10   last:border-b-0 last:border-r-0 lg:border-b-0 lg:border-r pb-3 lg:pb-0 "
                           key={item.customId}
                         >
                           <p className="title-65 font-400 text-primary duration-500 group-hover:-translate-y-1">
