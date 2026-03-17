@@ -231,10 +231,12 @@ const AdminIndiPortfolio = ({ editMode }: {
         }
 
         if (resultImage1) {
+            console.log("Result Image 1", resultImage1)
             formData.append("resultImage1", resultImage1)
         }
 
         if (resultImage2) {
+            console.log("Result Image 2", resultImage2)
             formData.append("resultImage2", resultImage2)
         }
 

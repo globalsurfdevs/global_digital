@@ -16,13 +16,10 @@ export async function GET(req: NextRequest) {
 
     try {
         await connectDB();
-        console.log("This worlds hehehehhe")
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
         const slug = searchParams.get("slug")
         const userType = req.headers.get('x-auth-type')
-
-        console.log(id)
 
         if (id) {
 
@@ -45,7 +42,6 @@ export async function GET(req: NextRequest) {
                 .populate("channels")
                 .lean();
 
-            console.log(portfolio);
 
             const portfolioHighlights = await PortfolioHighlight.find({
                 companyId: new mongoose.Types.ObjectId(id)
@@ -117,14 +113,12 @@ export async function GET(req: NextRequest) {
                     ex: 300
                 })
 
-                console.log("From fresh")
 
 
                 return NextResponse.json({ portfolio });
 
             } else {
 
-                console.log("Here")
                 // let { data: portfolio, } = await supabase
                 //     .from('portfolios')
                 //     .select('*')
@@ -152,13 +146,10 @@ export async function GET(req: NextRequest) {
 
 
 export async function POST(req: NextRequest) {
-    console.log("Here")
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
     await connectDB()
 
-    console.log("ID:", id);
-    console.log("TYPE:", typeof id);
 
     const formData = await req.formData()
     // const title = formData.get("title") as string
@@ -221,12 +212,6 @@ export async function POST(req: NextRequest) {
     const videoThumbnail = formData.get("videoThumbnail") as File | null
 
 
-    console.log("description", description)
-    console.log("tag", tag)
-    console.log("added", addedCategories)
-
-    console.log("section", section)
-
     let addedCategoriesRaw;
     let addedCategoriesIds;
     if (addedCategories) {
@@ -249,6 +234,8 @@ export async function POST(req: NextRequest) {
 
 
     if (resultImage1) {
+        console.log("FPOIDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+
         try {
             const filename = `${Date.now()}-${resultImage1.name || "image"}`;
             const dropboxPath = `/portfolio/${companyName}/${filename}`;
@@ -296,7 +283,6 @@ export async function POST(req: NextRequest) {
         hightLightIds = JSON.parse(highlightIdsRaw.toString())
     }
 
-    console.log("highlightids raw", highlightIdsRaw)
 
 
     if (image == null) {
@@ -354,16 +340,13 @@ export async function POST(req: NextRequest) {
         homeImagePath = homeImage
     }
 
-
     // console.log("imagePAth", imagePath)
     // console.log("section2Image1Path", section2Image1Path)
     // console.log("section2Image2Path", section2Image2Path)
 
-    console.log("socialMediaImages", socialMediaImages)
 
 
     try {
-        console.log("channelsUsed", channels)
 
         if (section == 'portfolio' || section == 'case study new') {
             if (id) {
@@ -371,6 +354,8 @@ export async function POST(req: NextRequest) {
                 //     .from('portfolios')
                 //     .select('*')
                 //     .eq('id', id)
+
+                console.log("resultImage1Path", resultImage1PAth)
 
                 await Portfolio.findByIdAndUpdate(id, {
                     companyName,
@@ -419,17 +404,14 @@ export async function POST(req: NextRequest) {
 
                     highlights.push({ customId, number, text });
 
-                    console.log("Item", item)
                 })
 
-                console.log("highlights", highlights)
 
 
 
                 for (let i = 0; i < highlights.length; i++) {
 
                     if (highlights[i].customId.length > 36) {
-                        console.log("deleteData", highlights[i].customId)
                         const deleteId = highlights[i].customId.slice(0, 36)
                         // const { error: deleteError } = await supabase
                         //     .from('portfolioHighlights')
@@ -456,7 +438,6 @@ export async function POST(req: NextRequest) {
                         await PortfolioHighlight.updateOne({ customId: highlights[i].customId }, { number: highlights[i].number, text: highlights[i].text, customId: highlights[i].customId })
 
                     } else {
-                        console.log("in else yooooo")
                         // const { data, error } = await supabase
                         //     .from('portfolioHighlights')
                         //     .insert([
