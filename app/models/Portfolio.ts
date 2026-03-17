@@ -10,13 +10,19 @@ const PortfolioSchema = new mongoose.Schema({
     country: {
         type: String
     },
-    channelsUsed: {
+    channelsUsed: [{
         type: String
-    },
+    }],
     bannerImage: {
         type: String
     },
     story: {
+        type: String
+    },
+    section2Image1: {
+        type: String
+    },
+    section2Image2: {
         type: String
     },
     goals: {
@@ -35,6 +41,12 @@ const PortfolioSchema = new mongoose.Schema({
         type: String
     },
     result: {
+        type: String
+    },
+    resultImage1: {
+        type: String
+    },
+    resultImage2: {
         type: String
     },
     categories: [{
