@@ -5,7 +5,8 @@ const CategoriesSchema = new mongoose.Schema({
         type: String
     },
     zone: {
-        type: String
+        type: String,
+        default: "zone2"
     },
 });
 
