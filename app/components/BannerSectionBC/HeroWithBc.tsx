@@ -244,8 +244,8 @@ const [modalOpen, setModalOpen] = useState(false);
                           </div>
                         </div>
                         <div className="ms-0 text-[19px] text-gray1 ">
-                          <p className={`text-font19 ${lexend.className}`}>
-                            {su.desc}
+                          <p className={`text-font19 ${lexend.className}`} dangerouslySetInnerHTML={{ __html: su.desc }}>
+                           
                           </p>
                            {su.buttonTitle && (
   <button

@@ -87,7 +87,7 @@ const page = () => {
         maxtextwidth={61}
       />
       <Industydetail title={IndustriesWeServe.title} data={IndustriesWeServe.data} subttle={IndustriesWeServe.subttle}/>
-      <GetInTouch data={Cta} redlast={false} bgcolor="#F2F2F2" ctabbutton={"LET'S GET STARTED TODAY!"} />
+      <GetInTouch data={Cta} redlast={false} bgcolor="#F2F2F2" ctabbutton={"Start the conversation"} />
     </div>
   );
 };

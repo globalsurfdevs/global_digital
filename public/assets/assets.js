@@ -1007,8 +1007,17 @@ import blog_76 from "../images/blog-new/blog7/mn.jpg";
 import blog_77 from "../images/blog-new/blog7/sec.png";
 import blog_78 from "../images/blog-new/blog7/third.png";
 
+import icss1 from "../images/icon/ics1.svg";
+import icss2 from "../images/icon/ics2.svg"; 
+import icss3 from "../images/icon/ics3.svg"; 
+import icss4 from "../images/icon/ics4.svg";
+
 
 export const assets = {
+  icss1,
+  icss2,
+  icss3,
+  icss4,
   blog_71,
   blog_76,
   blog_77,
