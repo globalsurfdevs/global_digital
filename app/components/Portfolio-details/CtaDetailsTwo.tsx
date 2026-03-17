@@ -63,7 +63,7 @@ const CtaDetailsTwo = ({
             <h2 className="title-65   text-black max-w-[32ch]">Like what you see? Let's build something for your brand.</h2>
              
             <div className="innerfnont mt-[20px] lg:mt-[60px] relative w-fit">
-              <Button text="Book a free consultation" textcolor={'black'}     className="text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 transition-all duration-300 ease-in hover:bg-primary hover:text-white  hover:shadow-lg lg:px-[34px] "
+              <Button text="Book a free consultation" textcolor={'black'}     className="uppercase text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 transition-all duration-300 ease-in hover:bg-primary hover:text-white  hover:shadow-lg lg:px-[34px] "
           onClick={() => {
                 setModalOpen(true);
                 document.body.style.overflow = "hidden";
