@@ -107,7 +107,7 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [videoThumbnailError, setVideoThumbnailError] = useState<null | string>(null)
 
 
-    const [categories, setCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
+    const [categories, setCategories] = useState<{ _id: string; name: string; zone: string; }[]>([])
     const [logoFile, setLogoFile] = useState<File | null>(null)
     const [previewLogo, setPreviewLogo] = useState<null | string>(null)
     const [logoError, setLogoError] = useState<string | null>(null)
@@ -496,21 +496,21 @@ const AdminIndiPortfolio = ({ editMode }: {
     }
 
 
-    const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
+    const [addedCategories, setAddedCategories] = useState<{ _id: string; name: string; zone: string; }[]>([])
 
 
-    const handleSwapItem = (id: number) => {
-        const itemInCategory = categories.find((item) => item.id === id)
-        const itemInAddedCategory = addedCategories.find((item) => item.id === id)
+    const handleSwapItem = (id: string) => {
+        const itemInCategory = categories.find((item) => item._id === id)
+        const itemInAddedCategory = addedCategories.find((item) => item._id === id)
 
         if (itemInCategory) {
             setAddedCategories((prev) => [...prev, itemInCategory])
-            setCategories((categories) => categories.filter((item) => item.id !== itemInCategory.id))
+            setCategories((categories) => categories.filter((item) => item._id !== itemInCategory._id))
         }
 
         if (itemInAddedCategory) {
             setCategories((prev) => [...prev, itemInAddedCategory])
-            setAddedCategories((addedCategories) => addedCategories.filter((item) => item.id !== itemInAddedCategory.id))
+            setAddedCategories((addedCategories) => addedCategories.filter((item) => item._id !== itemInAddedCategory._id))
         }
     }
 
@@ -1438,7 +1438,7 @@ const AdminIndiPortfolio = ({ editMode }: {
                             <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
                                 {addedCategories.map((item) => (
                                     <>
-                                        <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item.id)}>
+                                        <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group' onClick={() => handleSwapItem(item._id)}>
                                             <span className='group-hover:opacity-50'>{item.name}</span>
                                             <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
                                                 <MdOutlineSwapHorizontalCircle />
@@ -1460,12 +1460,12 @@ const AdminIndiPortfolio = ({ editMode }: {
                             <div className='w-full h-full border rounded-md gap-1 flex flex-wrap items-start p-4'>
 
                                 {categories.filter(
-                                    (item) => !addedCategories.some((addedItem) => addedItem.id === item.id)
+                                    (item) => !addedCategories.some((addedItem) => addedItem._id === item._id)
                                 ).map((item) => (
                                     <div className='border rounded-full w-fit py-1 px-2 h-fit bg-blue-950 text-white cursor-pointer relative group min-w-20 flex justify-center'>
                                         <span className='group-hover:opacity-50'>{item.name}</span>
                                         <div className='w-full h-full bg-transparent absolute rounded-full top-0 left-0 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xl'>
-                                            <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item.id)} />
+                                            <MdOutlineSwapHorizontalCircle onClick={() => handleSwapItem(item._id)} />
                                             {/* <RxCross2 onClick={() => handleDeleteCategory(item.id)} /> */}
                                         </div>
                                     </div>
