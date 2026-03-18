@@ -792,6 +792,11 @@ import ini6 from "../assets/industry/ini6.svg";
 import ini7 from "../assets/industry/ini7.svg";
 import ini8 from "../assets/industry/ini8.svg";
 import ini9 from "../assets/industry/ini9.svg";
+import ini12 from "../assets/industry/ini12.svg";
+import ini13 from "../assets/industry/ini13.svg";
+import realestate from "../assets/industry/realestate.jpg";
+import corporateservices from "../assets/industry/corporate-services.jpg";
+
 import ini10 from "../assets/industry/ini10.svg";
 import brnd_ini3 from "../assets/industry/brnd_ini3.svg";
 import data_an_ini2 from "../assets/industry/data_an_ini2.svg";
@@ -1014,6 +1019,8 @@ import icss4 from "../images/icon/ics4.svg";
 
 
 export const assets = {
+  realestate,
+  corporateservices,
   icss1,
   icss2,
   icss3,
@@ -1171,6 +1178,8 @@ structure,
   ini7,
   ini8,
   ini9,
+  ini12,
+  ini13,
   ini10,
   inds1,
   inds2,
