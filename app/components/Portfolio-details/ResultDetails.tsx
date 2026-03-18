@@ -44,15 +44,22 @@ const ResultDetails = ({
       >
 
       <Swiper
-        modules={[Navigation]}
-        spaceBetween={20}
-        loop={true}
-        slidesPerView={2}
-        navigation={{
-          nextEl: ".custom-next",
-        }}
-        className="portfolio-swiper "
-      >
+          modules={[Navigation]}
+          spaceBetween={20}
+          loop={true}
+          navigation={{
+            nextEl: ".custom-next",
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+          }}
+          className="portfolio-swiper"
+        >
 
       {data?.portfolio?.resultImage1 && (
         <SwiperSlide>
@@ -112,7 +119,7 @@ const ResultDetails = ({
       </Swiper>
 
       {/* CENTER NEXT BUTTON */}
-      <button className="custom-next absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-primary text-white w-[105px] h-[105px] text-md rounded-full flex items-center justify-center shadow-lg">
+      <button className="custom-next absolute top-auto bottom-0 md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-primary text-white w-[50px] h-[50px] md:w-[105px] md:h-[105px] text-[13px] md:text-md rounded-full flex items-center justify-center shadow-lg">
         NEXT
       </button>
 
