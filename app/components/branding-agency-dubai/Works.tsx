@@ -71,12 +71,12 @@ const Works: React.FC<ServicesSectionProps> = ({ title }) => {
             }, // Slide up and fade in
           }}
         >
-          <div className="grid gap-5 md:grid-cols-3 lg:gap-[60px]">
+          <div className="grid gap-5 md:grid-cols-3 lg:gap-[30px] xl:gap-[60px]">
             {portfolios.length > 0 ? (
               portfolios.map((item) => (
                 <div className="group">
                   <div
-                    className="tour-card relative min-h-[400px] lg:min-h-[580px] "
+                    className="tour-card relative min-h-[300px] xl:min-h-[420px] 2xl:min-h-[580px] "
                     key={item.id}
                   >
                     <img

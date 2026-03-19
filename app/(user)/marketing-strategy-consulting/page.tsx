@@ -115,7 +115,7 @@ const page = () => {
         />
       </section>
      
-     <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
+     <div className="  pt-[50px]   lg:pt-[130px]">
       <GetInTouch data={Cta} redlast={false} ctabbutton={"CONTACT US TODAY!"} />
       </div>
       <FAQ data={Faq} />
