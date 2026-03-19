@@ -119,9 +119,25 @@ const ResultDetails = ({
       </Swiper>
 
       {/* CENTER NEXT BUTTON */}
-      <button className="custom-next absolute top-auto bottom-0 md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-primary text-white w-[50px] h-[50px] md:w-[105px] md:h-[105px] text-[13px] md:text-md rounded-full flex items-center justify-center shadow-lg">
-        NEXT
-      </button>
+      <button
+          className="custom-next absolute top-auto bottom-0 md:top-1/2 left-1/2 
+          -translate-x-1/2 -translate-y-1/2 z-10 
+          bg-primary text-white 
+          w-[50px] h-[50px] md:w-[105px] md:h-[105px] 
+          text-[13px] md:text-md 
+          rounded-full 
+          flex items-center justify-center 
+          shadow-lg
+
+          transition-all duration-500 ease-out
+          hover:scale-105
+          hover:opacity-90
+          hover:shadow-[0_0_40px_rgba(0,0,0,0.25)]
+          hover:tracking-wider
+          "
+        >
+          NEXT
+        </button>
 
       </motion.div>
 
@@ -143,7 +159,7 @@ const ResultDetails = ({
                     }, // Slide up and fade in
                   }}
                   className="container mx-auto ">
-                    <div className="h-[70vh] lg:h-max mt-[20px]">
+                    <div className="h-[300px] lg:h-[70vh] lg:h-max mt-[20px]">
               <Image src={data?.portfolio.section2BannerImage || ""} alt="web-mockup" width={1500} height={900} className="h-full w-full object-cover" />
                    </div>
                   </motion.div>
