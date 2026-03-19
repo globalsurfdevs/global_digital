@@ -80,7 +80,7 @@ const VideoTipsSection: React.FC<VideoTipsSectionProps> = ({ tipsData ,title,des
                           
                           {/* 1. Show keyDetails as a paragraph (Introductory text for the section) */}
                           {tip.keyDetails && tip.keyDetails.length > 0 && (
-                            <p className="mb-3 text-font19 text-[#77787B] font-regular">{tip.keyDetails}</p>
+                            <p className="mb-3 text-font19 text-[#77787B] font-regular" dangerouslySetInnerHTML={{ __html: tip.keyDetails || "" }}  />
                           )}
 
                           {/* 2. Show the DYNAMIC GRID (using keyDetailsList2 for Tip 4) */}

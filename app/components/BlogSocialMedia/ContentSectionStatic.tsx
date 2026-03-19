@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { assets } from '@/public/assets/assets';
-
+import Link from 'next/link';
 const ContentSection = () => {
   return (
     <section>
@@ -62,8 +62,7 @@ const ContentSection = () => {
             </ul>
 
             <p className="text-font19 text-[#77787B] mt-4">
-              Brands are increasingly demanding accountability from influencer
-              campaigns, with success defined by trust, qualified engagement, and
+              Brands are increasingly demanding accountability from <Link href="/influencer-marketing-agency" className="text-primary hover:underline">influencer campaigns</Link> , with success defined by trust, qualified engagement, and
               long-term brand value rather than impressions alone.
             </p>
             <h3 className="text-30 my-[30px] my-3">
@@ -96,7 +95,7 @@ with how this discipline continues to evolve.
                 Social impact as part of brand narratives
               </li>
               <li className="text-font19 mb-2">
-                Conscious content creation that respects audiences 
+                <Link href="/content-production-agency-dubai" className="text-primary hover:underline">Conscious content creation</Link> that respects audiences 
               </li>
             </ul>
              <p className="text-font19 text-[#77787B] mb-[16px]">Purpose led content strengthens trust, supports brand longevity, and encourages community-driven growth. For GS Digital, this reinforces the importance of aligning purpose with performance. </p>
@@ -139,7 +138,7 @@ with how this discipline continues to evolve.
             <h2 className="title-65 pt-[50px] lg:pt-[140px] mb-[40px]">The Way Forward for Brands 
 </h2>
  <p className="text-font19 text-[#77787B] mb-[16px]">For brands navigating an increasingly competitive digital landscape, the opportunity lies in building credibility that lasts and performance that compounds over time.</p>
- <p className="text-font19 text-[#77787B] mb-[16px]">At Global Surf Digital, we help brands transform digital presence into meaningful growth through strategy led, performance driven influence. 
+ <p className="text-font19 text-[#77787B] mb-[16px]">At <Link href="/" className="text-primary hover:underline">Global Surf Digital</Link>, we help brands transform digital presence into meaningful growth through strategy led, performance driven influence. 
 </p>
  <p className="text-font19 text-[#77787B] ">Connect with us to explore how your brand can build credible, purpose driven digital influence that delivers long term value. 
 </p>
