@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Label from '../Label/Label'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -21,7 +21,7 @@ const AdminIndiJob = ({ editMode }: {
 
 
     const router = useRouter()
-    const {jobId} = useParams()
+    const { jobId } = useParams()
 
     const {
         register,
@@ -37,70 +37,70 @@ const AdminIndiJob = ({ editMode }: {
     const onSubmit: SubmitHandler<JobInputType> = async (data) => {
         setIsSubmitting(true);
 
-            const formData = new FormData();
-            formData.append("jobTitle", data.jobTitle);
-            formData.append("team", data.team);
-            formData.append("description", data.description)
-            formData.append("slug", data.slug)
+        const formData = new FormData();
+        formData.append("jobTitle", data.jobTitle);
+        formData.append("team", data.team);
+        formData.append("description", data.description)
+        formData.append("slug", data.slug)
 
-            try {
-                const url = editMode ? `/api/jobs?id=${jobId}` : `/api/jobs`;
-                const method = "POST";
-                console.log("Here")
-                const response = await fetch(url, {
-                    method: method,
-                    body: formData,
-                });
-                const data = await response.json();
-                console.log(data);
-    
-                if (!data.error) {
-                    toast.success(data.message)
-                    router.push('/admin/jobs')
-                } else {
-                    toast.error(data.error)
-                }
-                
-            } catch (error) {
-                console.error("Error updating jobs:", error);
-                toast.error("Failed to update job data. Please try again.");
-            } finally {
-                setIsSubmitting(false);
+        try {
+            const url = editMode ? `/api/jobs?id=${jobId}` : `/api/jobs`;
+            const method = "POST";
+            console.log("Here")
+            const response = await fetch(url, {
+                method: method,
+                body: formData,
+            });
+            const data = await response.json();
+            console.log(data);
+
+            if (!data.error) {
+                toast.success(data.message)
+                router.push('/admin/jobs')
+            } else {
+                toast.error(data.error)
             }
+
+        } catch (error) {
+            console.error("Error updating jobs:", error);
+            toast.error("Failed to update job data. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
-    
+
     useEffect(() => {
-            const fetchJobData = async () => {
-                try {
-                    const response = await fetch(`/api/jobs?id=${jobId}`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        
-                        if (data.jobs[0]) {
-                            setValue("jobTitle", data.jobs[0].jobTitle)
-                            setValue("team", data.jobs[0].team)
-                           setValue("description",data.jobs[0].description)
-    
-                        }
+        const fetchJobData = async () => {
+            try {
+                const response = await fetch(`/api/jobs?id=${jobId}`);
+                if (response.ok) {
+                    const data = await response.json();
 
-                    } else {
-                        console.error("Failed to fetch job data");
+                    if (data.jobs) {
+                        setValue("jobTitle", data.jobs.jobTitle)
+                        setValue("team", data.jobs.team)
+                        setValue("description", data.jobs.description)
+
                     }
-                } catch (error) {
-                    console.error("Error fetching job data:", error);
-                }
-            }
-    
-            if (editMode) {
-                fetchJobData()
-            }
-    
-        }, [])
 
-        useEffect(()=>{
-            setValue("slug",formatLinkForCareer(watch("jobTitle")))
-        },[watch("jobTitle")])
+                } else {
+                    console.error("Failed to fetch job data");
+                }
+            } catch (error) {
+                console.error("Error fetching job data:", error);
+            }
+        }
+
+        if (editMode) {
+            fetchJobData()
+        }
+
+    }, [])
+
+    useEffect(() => {
+        setValue("slug", formatLinkForCareer(watch("jobTitle")))
+    }, [watch("jobTitle")])
 
 
     return (

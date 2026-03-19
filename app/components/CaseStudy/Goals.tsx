@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 import React from "react";
 import parse from 'html-react-parser'
 
-const Goals = ({data}:{
-  data:{
-    caseStudy:CaseStudy[]
-  }|null
+const Goals = ({ data }: {
+  data: {
+    caseStudy: CaseStudy
+  } | null
 }) => {
-  if(!data){
+  if (!data) {
     return null
   }
 
   return (
     <div className="container mx-auto py-4">
       <div className="py-[50px] lg:py-[150px]">
-        {data.caseStudy[0].goals=="<p><br></p>" || data.caseStudy[0].goals=="<p>undefined</p>" || data.caseStudy[0].goals=="undefined" ? null : <motion.div
+        {data.caseStudy.goals == "<p><br></p>" || data.caseStudy.goals == "<p>undefined</p>" || data.caseStudy.goals == "undefined" ? null : <motion.div
           className="grid border-t pb-[25px]  pt-[50px] lg:grid-cols-2 lg:pb-[95px] lg:pt-[53px]"
           initial="hidden"
           whileInView="visible"
@@ -43,10 +43,10 @@ const Goals = ({data}:{
               retain visitors longer, and increase conversions by attracting
               more new users while maintaining a consistent user base.
             </p> */}
-            {parse(data.caseStudy[0].goals)}
+            {parse(data.caseStudy.goals)}
           </div>
         </motion.div>}
-        {data.caseStudy[0].objectives=="<p><br></p>" || data.caseStudy[0].objectives=="<p>undefined</p>" || data.caseStudy[0].objectives=="undefined" ? null : <motion.div
+        {data.caseStudy.objectives == "<p><br></p>" || data.caseStudy.objectives == "<p>undefined</p>" || data.caseStudy.objectives == "undefined" ? null : <motion.div
           className="grid border-t py-[25px]   lg:grid-cols-2 lg:pb-[95px] lg:pt-[53px]"
           initial="hidden"
           whileInView="visible"
@@ -73,11 +73,11 @@ const Goals = ({data}:{
               ensuring a consistent and professional appearance across all
               touchpoints.
             </p> */}
-            {parse(data.caseStudy[0].objectives)}
+            {parse(data.caseStudy.objectives)}
           </div>
         </motion.div>}
 
-        {data.caseStudy[0].challenge=="<p><br></p>" || data.caseStudy[0].challenge=="<p>undefined</p>" || data.caseStudy[0].challenge=="undefined" ? null : <motion.div
+        {data.caseStudy.challenge == "<p><br></p>" || data.caseStudy.challenge == "<p>undefined</p>" || data.caseStudy.challenge == "undefined" ? null : <motion.div
           className="grid border-t py-[25px] pb-[0px] lg:grid-cols-2 lg:pb-[0px] lg:pt-[95px]"
           initial="hidden"
           whileInView="visible"
@@ -104,32 +104,32 @@ const Goals = ({data}:{
               With a product launch looming, we delivered efficiently within
               tight deadlines.
             </p> */}
-            {parse(data.caseStudy[0].challenge)}
+            {parse(data.caseStudy.challenge)}
           </div>
         </motion.div>}
 
-        {data.caseStudy[0].overcomingChallenges=="<p><br></p>" || data.caseStudy[0].overcomingChallenges=="<p>undefined</p>" || data.caseStudy[0].overcomingChallenges=="undefined"
-        && data.caseStudy[0].achievements=="<p><br></p>" || data.caseStudy[0].achievements=="<p>undefined</p>" || data.caseStudy[0].achievements=="undefined" ? null :
-        <motion.div
-          className="grid gap-2 space-y-5  pt-[50px] md:space-y-0 lg:grid-cols-2 lg:gap-[0px] lg:space-x-5 lg:pt-[146px]"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-          variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, ease: "easeOut" },
-            }, // Slide up and fade in
-          }}
-        >
-          {data.caseStudy[0].overcomingChallenges && <div className="flex w-full flex-col gap-4   bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
-            <div>
-              <h2 className="title-65">Solutions</h2>
-            </div>
-            <div className="pl-4 text-19 fnt-lexend text-gray1">
-              {/* <ul className="flex list-disc flex-col gap-6 text-font19">
+        {data.caseStudy.overcomingChallenges == "<p><br></p>" || data.caseStudy.overcomingChallenges == "<p>undefined</p>" || data.caseStudy.overcomingChallenges == "undefined"
+          && data.caseStudy.achievements == "<p><br></p>" || data.caseStudy.achievements == "<p>undefined</p>" || data.caseStudy.achievements == "undefined" ? null :
+          <motion.div
+            className="grid gap-2 space-y-5  pt-[50px] md:space-y-0 lg:grid-cols-2 lg:gap-[0px] lg:space-x-5 lg:pt-[146px]"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+            variants={{
+              hidden: { opacity: 0, y: 50 }, // Start below and invisible
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 1, ease: "easeOut" },
+              }, // Slide up and fade in
+            }}
+          >
+            {data.caseStudy.overcomingChallenges && <div className="flex w-full flex-col gap-4   bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
+              <div>
+                <h2 className="title-65">Solutions</h2>
+              </div>
+              <div className="pl-4 text-19 fnt-lexend text-gray1">
+                {/* <ul className="flex list-disc flex-col gap-6 text-font19">
                 <li className="fnt-lexend text-gray1">
                   Implemented a more robust website platform to enhance
                   scalability and security, resulting in a 50% reduction in
@@ -141,16 +141,16 @@ const Goals = ({data}:{
                   experience.
                 </li>
               </ul> */}
-              {parse(data.caseStudy[0].overcomingChallenges)}
-            </div>
-          </div>}
+                {parse(data.caseStudy.overcomingChallenges)}
+              </div>
+            </div>}
 
-          {data.caseStudy[0].achievements && <div className="flex w-full flex-col gap-6  bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
-            <div>
-              <h2 className="title-65">Results</h2>
-            </div>
-            <div className="pl-4 fnt-lexend text-19 ollist pl-4 text-gray1">
-              {/* <ul className="fnt-lexend flex list-disc flex-col gap-4 text-font19">
+            {data.caseStudy.achievements && <div className="flex w-full flex-col gap-6  bg-dgray p-6 lg:gap-[41px] lg:p-[75px]">
+              <div>
+                <h2 className="title-65">Results</h2>
+              </div>
+              <div className="pl-4 fnt-lexend text-19 ollist pl-4 text-gray1">
+                {/* <ul className="fnt-lexend flex list-disc flex-col gap-4 text-font19">
                 <li className="text-gray1">
                   Optimized keywords to drive a 107.3% increase in new user
                   traffic and a 125.5% boost in page views.
@@ -165,10 +165,10 @@ const Goals = ({data}:{
                   to boost brand visibility and strengthen brand perception.
                 </li>
               </ul> */}
-              {parse(data.caseStudy[0].achievements)}
-            </div>
-          </div>}
-        </motion.div>}
+                {parse(data.caseStudy.achievements)}
+              </div>
+            </div>}
+          </motion.div>}
       </div>
     </div>
   );

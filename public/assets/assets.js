@@ -792,6 +792,11 @@ import ini6 from "../assets/industry/ini6.svg";
 import ini7 from "../assets/industry/ini7.svg";
 import ini8 from "../assets/industry/ini8.svg";
 import ini9 from "../assets/industry/ini9.svg";
+import ini12 from "../assets/industry/ini12.svg";
+import ini13 from "../assets/industry/ini13.svg";
+import realestate from "../assets/industry/realestate.jpg";
+import corporateservices from "../assets/industry/corporate-services.jpg";
+
 import ini10 from "../assets/industry/ini10.svg";
 import brnd_ini3 from "../assets/industry/brnd_ini3.svg";
 import data_an_ini2 from "../assets/industry/data_an_ini2.svg";
@@ -991,8 +996,49 @@ import bloggs3 from "../images/blog-new/blog-gs3.jpg";
 import bloggs4 from "../images/blog-new/blog-gs4.jpg";
 import bloggs5 from "../images/blog-new/blog-gs5.png";
 import blogg6 from "../images/blog-new/blog-gs6.jpg";
+import newblog01bnr from "../images/blog-new/blog6/ai-powered.png";
+import morg from "../images/blog-new/blog6/monthly-organic-comparison.png";
+import zeroclick from "../images/blog-new/blog6/zero-click.png";
+import eeatseo from "../images/blog-new/blog6/eeat-seo.png";
+import meassuringav from "../images/blog-new/blog6/meassuring-av.jpg";
+import blog_3 from "../images/blog-new/blog6/blog_3.jpg";
+
+import blog_71 from "../images/blog-new/blog7/71.png";
+import blog_72 from "../images/blog-new/blog7/72.png";
+import blog_73 from "../images/blog-new/blog7/techseo1.png";
+import blog_74 from "../images/blog-new/blog7/techseo2.png";
+import blog_75 from "../images/blog-new/blog7/techseo3.png";
+import blog_76 from "../images/blog-new/blog7/mn.jpg";
+import blog_77 from "../images/blog-new/blog7/sec.png";
+import blog_78 from "../images/blog-new/blog7/third.png";
+
+import icss1 from "../images/icon/ics1.svg";
+import icss2 from "../images/icon/ics2.svg"; 
+import icss3 from "../images/icon/ics3.svg"; 
+import icss4 from "../images/icon/ics4.svg";
+
 
 export const assets = {
+  realestate,
+  corporateservices,
+  icss1,
+  icss2,
+  icss3,
+  icss4,
+  blog_71,
+  blog_76,
+  blog_77,
+  blog_78,
+blog_72,
+blog_73,
+blog_74,
+blog_75,  
+  blog_3,
+  meassuringav,
+  eeatseo,
+  zeroclick,
+  morg,
+  newblog01bnr,
   Vidhu,
   newblog23bnr,bloggs2,bloggs3,bloggs4,bloggs5,blogg6,
 Anjanaseo,
@@ -1132,6 +1178,8 @@ structure,
   ini7,
   ini8,
   ini9,
+  ini12,
+  ini13,
   ini10,
   inds1,
   inds2,

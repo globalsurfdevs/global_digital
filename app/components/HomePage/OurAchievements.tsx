@@ -4,51 +4,52 @@ import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useInView, useSpring } from "motion/react";
+// import { useInView, useSpring } from "motion/react";
 import { motion } from "framer-motion";
+import SeoCounter from "./SeoCounter";
 
 const OurAchievements = () => {
-  const [yearCount, setYearCount] = useState(0);
-  const [clientCount, setClientCount] = useState(0);
-  const [projectCount, setProjectCount] = useState(0);
+  // const [yearCount, setYearCount] = useState(0);
+  // const [clientCount, setClientCount] = useState(0);
+  // const [projectCount, setProjectCount] = useState(0);
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  // const isInView = useInView(ref, { once: true });
 
-  const springYearCount = useSpring(0, {
-    bounce: 0,
-    duration: 2000,
-  });
+  // const springYearCount = useSpring(0, {
+  //   bounce: 0,
+  //   duration: 2000,
+  // });
 
-  const springClientCount = useSpring(0, {
-    bounce: 0,
-    duration: 2000,
-  });
+  // const springClientCount = useSpring(0, {
+  //   bounce: 0,
+  //   duration: 2000,
+  // });
 
-  const springProjectCount = useSpring(0, {
-    bounce: 0,
-    duration: 2000,
-  });
+  // const springProjectCount = useSpring(0, {
+  //   bounce: 0,
+  //   duration: 2000,
+  // });
 
-  springYearCount.on("change", (value) => {
-    setYearCount(Math.round(value));
-  });
+  // springYearCount.on("change", (value) => {
+  //   setYearCount(Math.round(value));
+  // });
 
-  springClientCount.on("change", (value) => {
-    setClientCount(Math.round(value));
-  });
+  // springClientCount.on("change", (value) => {
+  //   setClientCount(Math.round(value));
+  // });
 
-  springProjectCount.on("change", (value) => {
-    setProjectCount(Math.round(value));
-  });
+  // springProjectCount.on("change", (value) => {
+  //   setProjectCount(Math.round(value));
+  // });
 
-  useEffect(() => {
-    if (isInView) {
-      springYearCount.set(11);
-      springClientCount.set(125);
-      springProjectCount.set(250);
-    }
-  }, [isInView, springYearCount]);
+  // useEffect(() => {
+  //   if (isInView) {
+  //     springYearCount.set(11);
+  //     springClientCount.set(125);
+  //     springProjectCount.set(250);
+  //   }
+  // }, [isInView, springYearCount]);
 
   const [activeSection, setActiveSection] = useState(2); // Initialize with the second section active
 
@@ -90,8 +91,9 @@ const OurAchievements = () => {
                 />
               </div>
               <div className="transition-all duration-500 group-hover:-translate-y-3 ">
-                <p className="mt-4 text-font65 font-[400] leading-lh1p07">
-                  <span
+                {/* <p className="mt-4 text-font65 font-[400] leading-lh1p07">
+                  <span className="sr-only">11</span>  
+                  <span aria-hidden="true" 
                     className={`
                       count-number
                     transition-colors duration-300 ease-in-out`}
@@ -99,15 +101,9 @@ const OurAchievements = () => {
                     {yearCount}
                   </span>{" "}
                   Years
-                </p>
-                {/* <p className={`text-font30  leading-lh2p3 text-gray1 `}>
-                  and{" "}
-                  <span className="count-number"
-                    // className={`${activeSection === 1 ? "text-primary" : ""}`}
-                  >
-                    Counting
-                  </span>
                 </p> */}
+                <SeoCounter value={11} label="Years" />
+                
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
@@ -145,7 +141,7 @@ const OurAchievements = () => {
                 />
               </div>
               <div className="transition-all duration-500 group-hover:-translate-y-3">
-                <p className="mt-4 text-font65 font-[400] leading-lh1p07">
+                {/* <p className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
                     className={`count-number
                     transition-colors duration-300 ease-in-out`}
@@ -153,16 +149,8 @@ const OurAchievements = () => {
                     {clientCount}
                   </span>{" "}
                   Clients
-                </p>
-                {/* <p className={`text-font30 leading-lh2p3 text-gray1`}>
-                  {" "}
-                  and{" "}
-                  <span
-                    className={`${activeSection === 2 ? "text-primary" : ""}`}
-                  >
-                    Growing
-                  </span>{" "}
                 </p> */}
+                 <SeoCounter value={125} label="Clients" />
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
@@ -199,7 +187,7 @@ const OurAchievements = () => {
                 />
               </div>
               <div className="transition-all duration-500 group-hover:-translate-y-3">
-                <p className="mt-4 text-font65 font-[400] leading-lh1p07">
+                {/* <p className="mt-4 text-font65 font-[400] leading-lh1p07">
                   <span
                     className={`count-number
                     transition-colors duration-300 ease-in-out`}
@@ -207,15 +195,10 @@ const OurAchievements = () => {
                     {projectCount}
                   </span>{" "}
                   Projects
-                </p>
-                {/* <p className={`text-font30   leading-lh2p3 text-gray1`}>
-                  and{" "}
-                  <span
-                    className={`${activeSection === 3 ? "text-primary" : ""}`}
-                  >
-                    More to Come
-                  </span>
                 </p> */}
+
+                 <SeoCounter value={250} label="Projects" />
+              
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">

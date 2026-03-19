@@ -39,7 +39,7 @@ export const videoProductionsocialData = [
     title: "What is Social Media Video Production? ",
     image: assets.blogimg2,
     paragraphs: [
-      "Social media video production involves planning, filming, and editing videos. These videos are made for platforms like Instagram, TikTok, LinkedIn, and YouTube. Unlike traditional ads, social videos are: "
+      "<a href='/content-production-agency-dubai' class='text-primary hover:underline'>Social media video production</a> involves planning, filming, and editing videos. These videos are made for platforms like Instagram, TikTok, LinkedIn, and YouTube. Unlike traditional ads, social videos are: "
     ],
     listItems: [
       { label: "Brief:", description: "Usually under 60 seconds" },
@@ -220,7 +220,7 @@ export const videoProductionData = [
     {
       no: 9,
       tip: 'Post Regularly, But Focus on Quality',
-      keyDetails: 'While consistency is key, avoid posting just for the sake of it. Use a simple content calendar and batch-produce videos with the help of a social media video production tool or with the support of a production agency.',
+      keyDetails: 'While consistency is key, avoid posting just for the sake of it. Use a simple content calendar and batch-produce videos with the help of a social media video production tool or with the support of a <a href="/content-production-agency-dubai" class="text-primary hover:underline">production agency</a>.',
     },
     {
       no: 10, // MODIFIED THIS ENTRY
@@ -334,7 +334,7 @@ export const videoProductionData = [
     {
       title: "Make Every Scroll Count ",
       paragraphs: [
-        "Great videos aren’t just about creativity—they need the right strategy behind them. With the right mix of storytelling and platform know-how, brands can shine, engage their audience, and grow faster. That’s exactly the approach we take at Global Surf Digital, so your content works as hard as you do. "
+        "Great videos aren’t just about creativity—they need the right strategy behind them. With the right mix of storytelling and platform know-how, brands can shine, engage their audience, and grow faster. That’s exactly the approach we take at <a href='/' class='text-primary hover:underline'>Global Surf Digital</a>, so your content works as hard as you do. "
       ],
       image: assets.scroll,
       imageAlt: "Blog Image",

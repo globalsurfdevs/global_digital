@@ -1,7 +1,8 @@
 export type JobType = {
-    id:number;
-    jobTitle:string;
-    team:string;
-    description:string;
-    slug:string;
+    _id: string;
+    id: number;
+    jobTitle: string;
+    team: string;
+    description: string;
+    slug: string;
 }

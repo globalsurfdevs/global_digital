@@ -11,7 +11,7 @@ import { Portfolio } from "@/app/types/Portfolio";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
-const SocialMedia = ({ data }: { data: { portfolio: Portfolio[] } }) => {
+const SocialMedia = ({ data }: { data: { portfolio: Portfolio } }) => {
 
     const containerRef = useRef<HTMLDivElement>(null);
     const [leftOffset, setLeftOffset] = useState(0);
@@ -69,7 +69,7 @@ const SocialMedia = ({ data }: { data: { portfolio: Portfolio[] } }) => {
                                     1600: { slidesPerView: 4, spaceBetween: 30 },
                                 }}
                             >
-                                {data?.portfolio[0].socialMediaImages.map((item, index) => (
+                                {data?.portfolio.socialMediaImages.map((item, index) => (
                                     <SwiperSlide key={index}>
 
 

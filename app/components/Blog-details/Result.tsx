@@ -12,7 +12,7 @@ const Result = ({
   data,
 }: {
   data: {
-    portfolio: Portfolio[];
+    portfolio: Portfolio;
   } | null;
 }) => {
   return (
@@ -36,7 +36,7 @@ const Result = ({
           </div>
           <div className="text-19 fnt-lexend text-gray1 ollist pl-5">
 
-            {parse(data?.portfolio[0].result || "")}
+            {parse(data?.portfolio.result || "")}
           </div>
         </motion.div>
       </div>
@@ -57,7 +57,7 @@ const Result = ({
       >
         <div>
           <Image
-            src={data?.portfolio[0].resultImage1 ?? assets.success1}
+            src={data?.portfolio.resultImage1 ?? assets.success1}
             alt="image"
             width={900}
             height={900}
@@ -66,7 +66,7 @@ const Result = ({
 
         <div>
           <Image
-            src={data?.portfolio[0].resultImage2 ?? assets.success1}
+            src={data?.portfolio.resultImage2 ?? assets.success1}
             alt="image"
             width={900}
             height={900}
@@ -96,13 +96,13 @@ const Result = ({
             triumphs for our clients. Your brand could be next.{" "}
           </p>
           <div className="innerfnont mt-[20px] lg:mt-[64px]">
-            <Button text="LET'S COLLABORATE" textcolor={'black'}/>
+            <Button text="LET'S COLLABORATE" textcolor={'black'} />
           </div>
         </div>
       </motion.div>
 
       <div>
-        <SuccessStories companyId={data?.portfolio[0].id}/>
+        <SuccessStories companyId={data?.portfolio._id} />
       </div>
     </div>
   );

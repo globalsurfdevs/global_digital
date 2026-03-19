@@ -2,11 +2,18 @@ import { categories } from "@/app/data/categories"
 import { supabase } from "@/app/lib/initSupabase"
 import { NextRequest, NextResponse } from "next/server"
 import { v4 as uuidv4 } from 'uuid';
+import Portfolio from "@/app/models/Portfolio";
+import PortfolioHighlight from "@/app/models/PortfolioHighlight";
+import mongoose from "mongoose";
+import '@/app/models/Category'
+import '@/app/models/Channel'
+import connectDB from "@/lib/mongodb";
 
 export async function GET(req: NextRequest) {
 
     try {
         console.log("This worlds")
+        await connectDB()
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
         const slug = searchParams.get("slug")
@@ -15,44 +22,76 @@ export async function GET(req: NextRequest) {
 
         if (id) {
 
-            let { data: caseStudy, error } = await supabase
-                .from('portfolios')
-                .select("*")
-                .eq('id', id)
+            // let { data: caseStudy, error } = await supabase
+            //     .from('portfolios')
+            //     .select("*")
+            //     .eq('id', id)
 
 
-            let { data: caseStudyHighlights } = await supabase
-                .from('portfolioHighlights')
-                .select("*")
-                .eq('companyId', id)
+            // let { data: caseStudyHighlights } = await supabase
+            //     .from('portfolioHighlights')
+            //     .select("*")
+            //     .eq('companyId', id)
+
+            const caseStudy = await Portfolio
+                .findById(id)
+                .populate("categories")
+                .populate("channels")
+                .lean();
+
+
+            const caseStudyHighlights = await PortfolioHighlight.find({
+                companyId: new mongoose.Types.ObjectId(id)
+            });
 
             return NextResponse.json({ caseStudy, caseStudyHighlights });
         } else if (slug) {
 
-            let { data: caseStudy, error } = await supabase
-                .from('portfolios')
-                .select("*")
-                .eq('slug', slug)
+            // let { data: caseStudy, error } = await supabase
+            //     .from('portfolios')
+            //     .select("*")
+            //     .eq('slug', slug)
 
-            console.log("case study", caseStudy)
+            // console.log("case study", caseStudy)
 
-            if (caseStudy && caseStudy.length > 0) {
-                let { data: caseStudyHighlights } = await supabase
-                    .from('portfolioHighlights')
-                    .select("*")
-                    .eq('companyId', caseStudy[0].id)
+            // if (caseStudy && caseStudy.length > 0) {
+            //     let { data: caseStudyHighlights } = await supabase
+            //         .from('portfolioHighlights')
+            //         .select("*")
+            //         .eq('companyId', caseStudy[0].id)
 
-                return NextResponse.json({ caseStudy, caseStudyHighlights });
+            const caseStudy = await Portfolio
+                .findOne({ slug })
+                .populate("categories")
+                .populate("channels")
+
+            if (!caseStudy || !caseStudy._id) {
+                throw new Error("Portfolio not found");
             }
+
+            const caseStudyHighlights = await PortfolioHighlight.find({
+                companyId: new mongoose.Types.ObjectId(caseStudy._id)
+            });
+
+            return NextResponse.json({ caseStudy, caseStudyHighlights });
+
         } else {
-            const { data: caseStudy, error } = await supabase
-                .from('portfolios')
-                .select('*')
-                .in('section', ['case study', 'case study new']);
+            // const { data: caseStudy, error } = await supabase
+            //     .from('portfolios')
+            //     .select('*')
+            //     .in('section', ['case study', 'case study new']);
 
+            const caseStudy = await Portfolio
+                .find({ section: { $in: ['case study', 'case study new'] } })
+                .populate("categories")
+                .populate("channels")
+                .lean();
 
-            if (!caseStudy) {
-                return NextResponse.json({ error: "Case study not found" }, { status: 404 });
+            if (caseStudy.length === 0) {
+                return NextResponse.json(
+                    { error: "Case study not found" },
+                    { status: 404 }
+                );
             }
 
             return NextResponse.json({ caseStudy });
@@ -70,6 +109,7 @@ export async function POST(req: NextRequest) {
     console.log("Here")
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
+    await connectDB()
 
     const formData = await req.formData()
     // const title = formData.get("title") as string
@@ -407,6 +447,7 @@ export async function POST(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
+    await connectDB()
 
     try {
 

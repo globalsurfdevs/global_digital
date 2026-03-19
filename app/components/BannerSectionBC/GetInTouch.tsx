@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import Button from "../Button/Button";
-import Link from "next/link";
-import { motion, useInView, useSpring } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react"; 
+import { motion } from "framer-motion";
 import LetsTalk from "../../components/common/LetsConnect";
+import SeoCounters from "../EcomIndustry/SeoCounters";
 
 type PartnerDataType = {
   text: string;
@@ -41,41 +40,41 @@ const GetInTouch: React.FC<PartnerListProps> = ({
         document.body.style.overflow = "";
       };
     }, [modalOpen]);
-  const [clientCount, setClientCount] = useState(0);
-  const [retentionCount, setRetentionCount] = useState(0);
+  // const [clientCount, setClientCount] = useState(0);
+  // const [retentionCount, setRetentionCount] = useState(0);
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  // const isInView = useInView(ref, { once: true });
 
-  const springClientCount = useSpring(0, {
-    bounce: 0,
-    duration: 2000,
-  });
+  // const springClientCount = useSpring(0, {
+  //   bounce: 0,
+  //   duration: 2000,
+  // });
 
-  const springRetentionCount = useSpring(0, {
-    bounce: 0,
-    duration: 2000,
-  });
+  // const springRetentionCount = useSpring(0, {
+  //   bounce: 0,
+  //   duration: 2000,
+  // });
 
-  const springYearsCount = useSpring(0, {
-    bounce: 0,
-    duration: 2000,
-  });
+  // const springYearsCount = useSpring(0, {
+  //   bounce: 0,
+  //   duration: 2000,
+  // });
 
-  springClientCount.on("change", (value) => {
-    setClientCount(Math.round(value));
-  });
+  // springClientCount.on("change", (value) => {
+  //   setClientCount(Math.round(value));
+  // });
 
-  springRetentionCount.on("change", (value) => {
-    setRetentionCount(Math.round(value));
-  });
+  // springRetentionCount.on("change", (value) => {
+  //   setRetentionCount(Math.round(value));
+  // });
 
-  useEffect(() => {
-    if (isInView) {
-      springClientCount.set(100);
-      springRetentionCount.set(95);
-    }
-  }, [isInView, springClientCount, springRetentionCount, springYearsCount]);
+  // useEffect(() => {
+  //   if (isInView) {
+  //     springClientCount.set(100);
+  //     springRetentionCount.set(95);
+  //   }
+  // }, [isInView, springClientCount, springRetentionCount, springYearsCount]);
 
   return (
       <>
@@ -155,16 +154,13 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               ref={ref}
               className="align-center group mt-6 grid grid-cols-1 gap-6 md:grid-cols-2  "
             >
-              <div className="clients">
-                <h3 className="text-font65 hover:text-[#E63E31]">
-                  {clientCount}+
-                </h3>
+              <div className="clients"> 
+                <SeoCounters value={100} label="+" />
                 <p className="text-[30px] text-[#77787B]">B2B Brands Scaled</p>
               </div>
               <div className="retention border-l-[1px] border-[#333333] pl-6 lg:pl-10">
-                <h3 className="text-font65 hover:text-[#E63E31]">
-                  {retentionCount}%
-                </h3>
+                 
+                 <SeoCounters value={95} label="+" />
                 <p className="text-[30px] text-[#77787B]">
                   Client Satisfaction
                 </p>

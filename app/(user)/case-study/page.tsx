@@ -6,9 +6,9 @@ import { formatLinkForCaseStudy } from '@/app/helpers/formatLink';
 import LandingCaseStudy from '@/app/components/LandingCaseStudy';
 
 type Data = {
-  caseStudy:{
-    metaTitle:string;
-    metaDescription:string;
+  caseStudy: {
+    metaTitle: string;
+    metaDescription: string;
   }[]
 }
 interface Canonicals {
@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const page = () => {
   return (
-    <LandingCaseStudy/>
+    <LandingCaseStudy />
   )
 }
 

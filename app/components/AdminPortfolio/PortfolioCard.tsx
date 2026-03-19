@@ -20,7 +20,7 @@ const PortfolioCard = ({ item, setRefetch, id, reorderMode }: {
         transform: CSS.Transform.toString(transform)
     }
 
-    const handlePortfolioDelete = async (id: number) => {
+    const handlePortfolioDelete = async (id: string) => {
         try {
             const response = await fetch(`/api/portfolio?id=${id}`, {
                 method: "DELETE"
@@ -40,7 +40,7 @@ const PortfolioCard = ({ item, setRefetch, id, reorderMode }: {
     return (
         <div className='w-full relative' key={item.id} ref={setNodeRef} {...attributes} {...listeners} style={style}>
 
-            <Link href={!reorderMode && item.section == 'portfolio' || item.section == 'case study new' ? `/admin/portfolio/${item.id}` : !reorderMode && item.section == "case study" ? `/admin/case-study/${item.id}` : '#'} className="w-full h-32 flex flex-col items-center justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <Link href={!reorderMode && item.section == 'portfolio' || item.section == 'case study new' ? `/admin/portfolio/${item._id}` : !reorderMode && item.section == "case study" ? `/admin/case-study/${item._id}` : '#'} className="w-full h-32 flex flex-col items-center justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <div className='h-full grid grid-cols-2 w-full'>
                     <div className='flex h-full w-full'>
                         <img className="object-cover w-full rounded-t-lg h-full md:h-full md:w-48 md:rounded-none md:rounded-s-lg" src={item.bannerImage ?? item.coverImage} alt="" />
@@ -57,7 +57,7 @@ const PortfolioCard = ({ item, setRefetch, id, reorderMode }: {
             </Link>
 
             <div className='justify-start flex h-full p-2 absolute top-5 right-5'>
-                <div className='size-5 bg-red-600 rounded-full items-center flex justify-center text-xl text-white' onClick={() => handlePortfolioDelete(item.id)}><IoIosClose /></div>
+                <div className='size-5 bg-red-600 rounded-full items-center flex justify-center text-xl text-white' onClick={() => handlePortfolioDelete(item._id)}><IoIosClose /></div>
             </div>
 
         </div>

@@ -232,30 +232,30 @@ const AdminIndiCaseStudy = ({ editMode, selectedSection, setSelectedSection }: {
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data.portfolio[0])
-                    if (data.portfolio[0]) {
-                        setValue("heading", data.portfolio[0].heading)
-                        setValue("sHeading", data.portfolio[0].sHeading)
-                        setValue("industry", data.portfolio[0].industry)
-                        setValue("country", data.portfolio[0].country)
-                        setValue("channelsUsed", data.portfolio[0].channelsUsed)
-                        setValue("story", data.portfolio[0].story)
-                        setValue("goals", data.portfolio[0].goals)
-                        setValue("objectives", data.portfolio[0].objectives)
-                        setValue("challenge", data.portfolio[0].challenge)
-                        setValue("overcomingChallenges", data.portfolio[0].overcomingChallenges)
-                        setValue("achievements", data.portfolio[0].achievements)
-                        setValue("description", data.portfolio[0].description)
-                        setValue("tag", data.portfolio[0].tag)
-                        setValue("companyName", data.portfolio[0].companyName)
-                        setValue("slug", data.portfolio[0].slug)
-                        setValue("metaTitle", data.portfolio[0].metaTitle)
-                        setValue("metaDescription", data.portfolio[0].metaDescription)
-                        setValue("homeTitle", data.portfolio[0].homeTitle)
-                        setValue("homeSubTitle", data.portfolio[0].homeSubTitle)
+                    if (data.portfolio) {
+                        setValue("heading", data.portfolio.heading)
+                        setValue("sHeading", data.portfolio.sHeading)
+                        setValue("industry", data.portfolio.industry)
+                        setValue("country", data.portfolio.country)
+                        setValue("channelsUsed", data.portfolio.channelsUsed)
+                        setValue("story", data.portfolio.story)
+                        setValue("goals", data.portfolio.goals)
+                        setValue("objectives", data.portfolio.objectives)
+                        setValue("challenge", data.portfolio.challenge)
+                        setValue("overcomingChallenges", data.portfolio.overcomingChallenges)
+                        setValue("achievements", data.portfolio.achievements)
+                        setValue("description", data.portfolio.description)
+                        setValue("tag", data.portfolio.tag)
+                        setValue("companyName", data.portfolio.companyName)
+                        setValue("slug", data.portfolio.slug)
+                        setValue("metaTitle", data.portfolio.metaTitle)
+                        setValue("metaDescription", data.portfolio.metaDescription)
+                        setValue("homeTitle", data.portfolio.homeTitle)
+                        setValue("homeSubTitle", data.portfolio.homeSubTitle)
 
-                        if (data.portfolio[0].categories) {
+                        if (data.portfolio.categories) {
 
-                            setAddedCategories(data.portfolio[0].categories)
+                            setAddedCategories(data.portfolio.categories)
 
                         }
 
@@ -266,24 +266,24 @@ const AdminIndiCaseStudy = ({ editMode, selectedSection, setSelectedSection }: {
                         //     setAddedCategories(data.caseStudy[0].categories)
                         // }
 
-                        console.log(data.portfolio[0].coverImage)
+                        console.log(data.portfolio.coverImage)
 
-                        if (data.portfolio[0].coverImage) {
+                        if (data.portfolio.coverImage) {
 
-                            setPreviewCoverImage(data.portfolio[0].coverImage as string);
+                            setPreviewCoverImage(data.portfolio.coverImage as string);
 
                         }
 
-                        if (data.portfolio[0].image1) {
-                            setImage1Preview(data.portfolio[0].image1 as string);
+                        if (data.portfolio.image1) {
+                            setImage1Preview(data.portfolio.image1 as string);
                         }
 
-                        if (data.portfolio[0].image2) {
-                            setImage2Preview(data.portfolio[0].image2 as string);
+                        if (data.portfolio.image2) {
+                            setImage2Preview(data.portfolio.image2 as string);
                         }
 
-                        if (data.portfolio[0].homeImage) {
-                            setHomeImagePreview(data.portfolio[0].homeImage as string);
+                        if (data.portfolio.homeImage) {
+                            setHomeImagePreview(data.portfolio.homeImage as string);
                         }
 
                         // if (data.portfolio[0].section2BannerImage) {
@@ -298,8 +298,8 @@ const AdminIndiCaseStudy = ({ editMode, selectedSection, setSelectedSection }: {
                         //     setResultImage2Preview(data.portfolio[0].resultImage2 as string);
                         // }
 
-                        if (data.portfolio[0].logo) {
-                            setPreviewLogo(data.portfolio[0].logo as string);
+                        if (data.portfolio.logo) {
+                            setPreviewLogo(data.portfolio.logo as string);
                         }
 
 

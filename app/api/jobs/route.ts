@@ -1,18 +1,23 @@
 import { supabase } from "@/app/lib/initSupabase"
+import Job from "@/app/models/Job"
 import { NextRequest, NextResponse } from "next/server"
+import connectDB from "@/lib/mongodb"
 
 export async function GET(req: NextRequest) {
     try {
 
+        await connectDB()
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
         const slug = searchParams.get("slug")
 
         if (id) {
 
-            let { data: jobs, error } = await supabase
-                .from('jobs')
-                .select('*')
+            // let { data: jobs, error } = await supabase
+            //     .from('jobs')
+            //     .select('*')
+
+            const jobs = await Job.findById(id)
 
 
             if (!jobs) {
@@ -23,13 +28,15 @@ export async function GET(req: NextRequest) {
         }
 
         else if (slug) {
-            let { data: job, error } = await supabase
-                .from('jobs')
-                .select('*')
-                .eq('slug', slug)
+            // let { data: job, error } = await supabase
+            //     .from('jobs')
+            //     .select('*')
+            //     .eq('slug', slug)
+
+            const job = await Job.findOne({ slug })
 
             if (!job) {
-                    return NextResponse.json({ error: "Job not found" }, { status: 404 });
+                return NextResponse.json({ error: "Job not found" }, { status: 404 });
             } else {
                 return NextResponse.json({ job });
             }
@@ -38,9 +45,11 @@ export async function GET(req: NextRequest) {
         } else {
 
 
-            let { data: jobs, error } = await supabase
-                .from('jobs')
-                .select("*")
+            // let { data: jobs, error } = await supabase
+            //     .from('jobs')
+            //     .select("*")
+
+            const jobs = await Job.find()
 
             if (!jobs) {
                 return NextResponse.json({ error: "Job not found" }, { status: 404 });
@@ -57,6 +66,7 @@ export async function GET(req: NextRequest) {
 
 
 export async function POST(req: NextRequest) {
+    await connectDB()
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
 
@@ -69,34 +79,34 @@ export async function POST(req: NextRequest) {
     try {
 
         if (!id) {
-            const { data, error } = await supabase
-                .from('jobs')
-                .insert([
-                    { jobTitle, team, description,slug },
-                ])
-                .select()
+            // const { data, error } = await supabase
+            //     .from('jobs')
+            //     .insert([
+            //         { jobTitle, team, description, slug },
+            //     ])
+            //     .select()
 
-            if (data) {
+            const job = await Job.create({ jobTitle, team, description, slug })
+
+            if (job) {
                 return NextResponse.json({ message: "Job added successfully" }, { status: 200 })
-            } else if (error) {
-                return NextResponse.json({ error: "Adding job failed" }, { status: 400 })
             } else {
-                return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
+                return NextResponse.json({ error: "Adding job failed" }, { status: 400 })
             }
         } else {
 
-            const { data, error } = await supabase
-                .from('jobs')
-                .update({jobTitle, team, description,slug})
-                .eq('id', id)
-                .select()
+            // const { data, error } = await supabase
+            //     .from('jobs')
+            //     .update({ jobTitle, team, description, slug })
+            //     .eq('id', id)
+            //     .select()
 
-            if (data) {
+            const job = await Job.findByIdAndUpdate(id, { jobTitle, team, description, slug })
+
+            if (job) {
                 return NextResponse.json({ message: "Job updated successfully" }, { status: 200 })
-            } else if (error) {
-                return NextResponse.json({ error: "Updating job failed" }, { status: 400 })
             } else {
-                return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
+                return NextResponse.json({ error: "Updating job failed" }, { status: 400 })
             }
         }
 
@@ -109,7 +119,7 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
     try {
-
+        await connectDB()
         const { searchParams } = new URL(req.url)
         const id = searchParams.get("id")
 
@@ -118,16 +128,18 @@ export async function DELETE(req: NextRequest) {
         }
 
 
-        const { error } = await supabase
-            .from('jobs')
-            .delete()
-            .eq('id', id)
+        // const { error } = await supabase
+        //     .from('jobs')
+        //     .delete()
+        //     .eq('id', id)
 
-            if(error){
-                return NextResponse.json({error:"Deleting job failed"},{status:400})
-            }
+        const job = await Job.findByIdAndDelete(id)
 
-            return NextResponse.json({message:"job deleted successfully"},{status:200})
+        if (!job) {
+            return NextResponse.json({ error: "Deleting job failed" }, { status: 400 })
+        }
+
+        return NextResponse.json({ message: "job deleted successfully" }, { status: 200 })
 
     } catch (error) {
         console.log("error getting news:", error);

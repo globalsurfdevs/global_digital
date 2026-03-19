@@ -47,13 +47,13 @@ export const {
 
         let { data: user } = await supabase
           .from('users')
-          .select('*').eq('username',credentials.username).single()
+          .select('*').eq('username', credentials.username).single()
 
 
         if (user) {
-          if(user.password === credentials.password){
+          if (user.password === credentials.password) {
             return user
-          }else{
+          } else {
             throw new Error("Invalid Credentials")
           }
         }
@@ -63,52 +63,52 @@ export const {
       }
     })
   ],
-  session:{
-    strategy:"jwt",
+  session: {
+    strategy: "jwt",
     maxAge: 24 * 60 * 60
   },
-  jwt:{
+  jwt: {
     maxAge: 24 * 60 * 60
   },
   callbacks: {
     authorized: async ({ request, auth }) => {
-      
+
       const isLoggedIn = auth?.user
       if (isLoggedIn) {
         const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "127.0.0.1";
-        
+
         const result = await ratelimit.limit(ip);
-        
+
         if (!result.success) {
           return Response.json(
             { message: "Too many requests. Please try again later." },
             { status: 429 }
           );
-        }else{
-          if(request.nextUrl.pathname.startsWith('/admin/auth/signin')){
+        } else {
+          if (request.nextUrl.pathname.startsWith('/admin/auth/signin')) {
             return Response.redirect((new URL('/admin', request.nextUrl)))
           }
         }
       }
-      
+
       return !!auth
     },
     jwt({ token, user }) {
-      
-      if(user){
+
+      if (user) {
         token.id = user?.id
       }
-      
+
       return token
     },
     session({ session, token }) {
       if (token?.id) {
         session.user.id = token.id;
       }
-      
+
       return session;
     },
-    
+
   },
   pages: {
     signIn: '/admin/auth/signin'

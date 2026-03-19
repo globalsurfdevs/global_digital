@@ -11,15 +11,15 @@ export const BannerSection = [
     ],
     heroAlt: "Industry-Focused Digital Solutions ",
 
-    title: "Industry-Focused Digital Solutions That Move Your Business Forward",
+    title: "Digital Marketing Services for Key Industries in Dubai & the UAE",
     subtitle:
-      "We transform industries by applying tailored technology strategies that help teams grow, work smarter and build stronger customer relationships.",
+      "We help organisations across complex industries attract high-intent audiences, influence buying decisions, and convert digital demand into measurable revenue growth.",
 
     sub: [
       {
         stitle: "OUR APPROACH",
         buttonTitle :"Start Your Project",
-        desc: "Businesses vary — and so must their digital tools. At Global Surf Digital, we don’t believe in one-size-fits-all solutions. We specialise in building websites, platforms and systems that reflect your industry’s realities, align with your growth ambitions and serve your teams and customers in meaningful ways. Whether your challenge is managing a complex project, delighting end-users or streamlining operations — we build the infrastructure, you lead the business.",
+        desc: "Every industry follows a different buying journey. At Global Surf Digital, we analyse how buyers in each sector search for solutions, evaluate suppliers and move toward final decisions.<br>From procurement led industries with long evaluation cycles to consumer markets with faster decision paths, our industry specific digital marketing approach aligns digital execution with real buying behaviour. This helps organisations generate qualified demand and convert digital engagement into revenue-generating leads, enquiries, and contracts. ",
       },
     ],
   },
@@ -118,21 +118,21 @@ export const services = [
 ];
 export const Cta = [
   {
-      textred: "Make your move, ",
-      text:"getting started takes less than a minute."
+      textred: "Tell us about your business ",
+      text:"and we'll show you how we'd approach it."
   }
 ]
 export const IndustriesWeServe = {
   title: "Industries We Serve",
-  subttle: "Here’s how we tailor our work for different sectors — we listen to the specific needs, then craft systems that fit perfectly.",
+  subttle: "Our work spans multiple industries, each with distinct market dynamics and decision processes.",
   data: [
    
     {
       id: 1,
       icon: assets.ini4,
-      title: "Construction and Building Materials",
+      title: "Construction",
       hoverImg: assets.inds4,
-      desc: "Built for collaboration and control, our digital tools align teams, manage resources, and ensure on-time, on-budget project delivery. ",
+      desc: "Improve visibility during early tender research, influence procurement decisions, and generate high-value project enquiries.",
       url: "/industry/construction",
     },
     {
@@ -155,9 +155,9 @@ export const IndustriesWeServe = {
     {
       id: 4,
       icon: assets.ini10,
-      title: "B2B  ",
+      title: "B2B and Industrial",
       hoverImg: assets.inds10,
-      desc: "We design tailored digital solutions that streamline complex workflows, support long sales cycles, and help you close with confidence.  ",
+      desc: "Generate pipeline from decision-makers navigating complex procurement cycles and position your brand before the shortlist is made.",
       url: "/industry/b2b-digital-marketing-services",
     },
      {
@@ -206,6 +206,22 @@ export const IndustriesWeServe = {
       title: "Retail  ",
       hoverImg: assets.inds9,
       desc: "Create seamless cross-channel experiences with integrated POS, inventory, and customer engagement tools online and in-store. ",
+      url: "",
+    },
+    {
+      id: 11,
+      icon: assets.ini12,
+      title: "Real Estate",
+      hoverImg: assets.realestate,
+      desc: "Attract serious property buyers, improve enquiry quality, and strengthen sales conversion across competitive project launches and off-plan developments.",
+      url: "",
+    },
+    {
+      id: 12,
+      icon: assets.ini13,
+      title: "Corporate and Professional Services",
+      hoverImg: assets.corporateservices,
+      desc: "Build authority within your sector, strengthen thought leadership, and influence decision makers during extended evaluation stages.",
       url: "",
     },
   ],

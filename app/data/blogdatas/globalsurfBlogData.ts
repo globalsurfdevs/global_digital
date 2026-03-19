@@ -9,7 +9,9 @@ export const BannerSection = [
       { label: "5 Minutes Read",url: "" },
     ],
     title:
-      "Leading Branding Agency in Dubai",
+      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+      publishedon: "Sep 15, 2025",
+      updatedon: "14, 2025",
       subtitle:"Building Strong Brand Identities With Creative Design, Marketing Collateral, and Storytelling",
       heroAlt:"Creative Branding Agency in Dubai",
     sub: [
