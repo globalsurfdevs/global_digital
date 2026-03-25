@@ -102,7 +102,7 @@ const OurAchievements = () => {
                   </span>{" "}
                   Years
                 </p> */}
-                <SeoCounter value={11} label="Years" />
+                <SeoCounter value={12} label="Years" />
                 
                 <div className="ttlbx">
                   <div className="letter-wrapper">
