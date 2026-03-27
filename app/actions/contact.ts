@@ -3,6 +3,8 @@
 import connectDb from "@/lib/mongodb";
 // import { supabase } from "@/app/lib/initSupabase";
 import Contact from "../models/Contact";
+import { getToEmail } from "../helpers/getToEmail";
+import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
 
 export async function submitContact(formData: FormData) {
     try {
@@ -29,10 +31,20 @@ export async function submitContact(formData: FormData) {
 
         const contact = await Contact.create(data)
 
+
         if (!contact) {
             console.error("Form submission failed");
             return { success: false };
         }
+
+        const toEmail = await getToEmail("contact");
+
+        await sendMailWithAttachments({
+            type: "contact",
+            to: toEmail,
+            subject: `New Contact Application: ${data.name}`,
+            fields: data,
+        });
 
         return { success: true };
 

@@ -47,6 +47,7 @@ export async function submitCareer(formData: FormData) {
         const toEmail = await getToEmail("career");
 
         await sendMailWithAttachments({
+            type: "career",
             to: toEmail,
             subject: `New Career Application: ${data.name}`,
             fields: data,
