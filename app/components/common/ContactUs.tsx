@@ -110,11 +110,21 @@ const ContactUs = () => {
     await Promise.allSettled(tasks);
   };
 
-  useEffect(() => {
-    console.log(window.location.href);
-    setFormData((prev) => ({ ...prev, SingleLine2: window.location.href }));
-  }, [window.location.href]);
+  // useEffect(() => {
+  //   console.log(window.location.href);
+  //   setFormData((prev) => ({ ...prev, SingleLine2: window.location.href }));
+  // }, [window.location.href]);
 
+  useEffect(() => {
+  const url = window.location.href;
+ 
+  console.log(url);
+
+  setFormData((prev) => ({
+    ...prev,
+    SingleLine2: url,
+  }));
+}, []);
 
   return (
     <>
