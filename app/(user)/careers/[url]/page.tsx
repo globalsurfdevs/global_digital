@@ -52,6 +52,7 @@ export default function CareerDetailsPage() {
   const [error, setError] = useState('');
   const [fileName, setFileName] = useState('');
   const recaptcha = useRef<ReCAPTCHA>(null) // This will hold the file name if you're using a file input.
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files ? e.target.files[0] : null; // Safely access files
@@ -80,6 +81,7 @@ export default function CareerDetailsPage() {
     }
 
     try {
+      setIsSubmitting(true)
       const formDataObj = new FormData(form);
 
       const result = await submitCareer(formDataObj);
@@ -99,6 +101,8 @@ export default function CareerDetailsPage() {
     } catch (err) {
       console.error(err);
       alert("Submission failed.");
+    } finally {
+      setIsSubmitting(false)
     }
   };
 
@@ -224,6 +228,7 @@ export default function CareerDetailsPage() {
 
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-fit rounded-[55px] bg-primary md:px-[40px] md:py-[10px]  px-[40px] py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray  hover:text-primary mt-5"
             >
               Submit
