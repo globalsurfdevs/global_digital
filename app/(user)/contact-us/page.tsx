@@ -1,5 +1,4 @@
-import React from "react";
-import Script from "next/script";
+import React from "react"; 
 import ContactUs from "../../components/common/ContactUs"; 
 
 interface Canonicals {
@@ -11,6 +10,7 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
+  robots: string;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,6 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/contact-us",
     },
+     robots: "index, follow",
   };
 }
 
