@@ -5,16 +5,16 @@ export const BannerSection = [
     image: assets.cmbanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Digital Marketing",url: "/digital-marketing-services" },
-      { label: "Content Marketing",url: "" },
+      { label: "Digital Marketing", url: "/digital-marketing-services" },
+      { label: "Content Marketing", url: "" },
     ],
     title:
       "Content Marketing Agency in Dubai",
-      subtitle:"Storytelling That Connects",
+    subtitle: "Storytelling That Connects",
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "We craft compelling, high-quality content that truly speaks to your audience and aligns with your goals. As your trusted content marketing partner in Dubai, we create strategies that build credibility and drive engagement. Whether it’s website content, blogs, email campaigns, or video marketing, our tailored solutions in the UAE are designed to make a real impact.",
       },
     ],
@@ -236,48 +236,49 @@ export const relatedservices = {
       id: 1,
       title: " Performance Marketing",
       dec: "Data-driven strategies to enhance online visibility and drive traffic. ",
-      icon:assets.dare1
-    } ,
+      icon: assets.dare1
+    },
     {
       id: 2,
       title: "Marketing Automation ",
       dec: "Leverage automation to streamline customer engagement and optimize marketing efforts.",
-      icon:assets.dare2
-    } ,
+      icon: assets.dare2
+    },
     {
       id: 3,
       title: "Social Media Analytics ",
       dec: "Monitor performance, track engagement, and refine social strategies using analytics.",
-      icon:assets.dare3
-    } ,
+      icon: assets.dare3
+    },
     {
       id: 4,
       title: "Business Intelligence Consulting",
       dec: "Develop customized BI solutions for smarter, faster decision-making.",
-      icon:assets.dare4
-    } ,
+      icon: assets.dare4
+    },
     {
       id: 5,
       title: "Data Engineering & Integration",
       dec: "Design and implement scalable data infrastructures to support analytics needs.",
-      icon:assets.dare5
-    } ,
+      icon: assets.dare5
+    },
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO)",
       dec: " Utilize data insights to enhance website performance and increase conversions.",
-      icon:assets.dare6
+      icon: assets.dare6
     }
   ],
 };
 export const Becomebrand = [
   {
     title: "Become Brand People Trust",
+    alt: "Becom brand people trust",
     image: assets.become,
     paragraph: [
-       "Every industry has its leaders—the names people quote, follow, and rely on. With the right content, that name can be yours." ,
-       "We create strategic, insight-driven content that doesn’t just talk at your audience—it speaks to them. Content that answers questions they haven’t even asked yet. That earns trust, builds credibility, and turns your brand into the authority in your field." ,
-       "No fluff. No filler. Just smart, valuable content—designed to get you noticed, remembered, and respected. "
+      "Every industry has its leaders—the names people quote, follow, and rely on. With the right content, that name can be yours.",
+      "We create strategic, insight-driven content that doesn’t just talk at your audience—it speaks to them. Content that answers questions they haven’t even asked yet. That earns trust, builds credibility, and turns your brand into the authority in your field.",
+      "No fluff. No filler. Just smart, valuable content—designed to get you noticed, remembered, and respected. "
     ]
 
   },

@@ -11,76 +11,51 @@ import Tours from "@/app/components/HomePage/Tours";
 import FAQ from "@/app/components/PermormanceMarketing/FAQ";
 import Cta from "@/app/components/HomePage/Cta";
 import IndustriesweWork from "@/app/components/HomePage/IndustriesweWork";
-import Head from "next/head";
-import { 
-  Faq, 
+import Script from "next/script";
+import {
+  Faq,
 } from "@/app/components/HomePage/data";
+import type { Metadata } from "next";
 
-interface Canonicals {
-  canonical: string;
-}
-
-type Metadata = {
-  title: string;
-  description: string;
-  alternates: Canonicals;
-  robots: string;
+export const metadata: Metadata = {
+  title: "Full service Digital Marketing Agency Dubai | Global Surf Digital",
+  description: "Full-service digital marketing agency in Dubai. From SEO to web development, we help 100+ brands dominate search & social. Start your growth journey today.",
+  alternates: {
+    canonical: "https://www.globalsurf.ae",
+  },
+  robots: "index, follow",
   openGraph: {
-    title: string;
-    site_name: string;
-    url: string;
-    description: string;
-    type: string;
-    images: { url: string; alt: string; type: string }[];
-  };
+    title: "Strategic Digital Marketing Solutions in Dubai | GS.Digital",
+    siteName: "Global Surf Digital", // ✅ siteName not site_name
+    url: "https://www.globalsurf.ae/",
+    description: "GS.Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
+    images: [
+      {
+        url: "https://www.globalsurf.ae/gs-digital-logo.svg",
+        alt: "Global Surf Digital Logo",
+        type: "image/svg+xml",
+      },
+    ],
+    type: "website",
+  },
 };
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Full service Digital Marketing Agency Dubai | Global Surf Digital",
-    description:
-      "Full-service digital marketing agency in Dubai. From SEO to web development, we help 100+ brands dominate search & social. Start your growth journey today. ",
-    alternates: {
-      canonical: "https://www.globalsurf.ae",
-    },
-    robots: "index, follow",
-    openGraph: {
-      title: "Strategic Digital Marketing Solutions in Dubai | GS.Digital",
-      site_name: "Global Surf Digital",
-      url: "https://www.globalsurf.ae/",
-      description:
-        "GS.Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
-
-      images: [
-        {
-          url: "https://www.globalsurf.ae/gs-digital-logo.svg",
-          alt: "Global Surf Digital Logo",
-          type: "image/svg+xml", // Use appropriate MIME type if SVG
-        },
-      ],
-      type:"website"
-    },
-  };
-}
 
 export default function Home() {
   return (
     <>
-      <Head>
-
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Global Surf Digital",
-              "url": "https://www.globalsurf.ae"
-            })
-          }}
-        />
-      </Head>
+      <Script
+        id="website-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Global Surf Digital",
+            url: "https://www.globalsurf.ae",
+          }),
+        }}
+      />
       <HeroSection />
       <LogoSwiper />
       <AboutGlobal />
@@ -90,9 +65,9 @@ export default function Home() {
       {/* <WorkIn /> */}
       <Tours />
       <SuccessStories />
-      <Clients /> 
+      <Clients />
       <Testimonials />
-      <FAQ data={Faq}  />
+      <FAQ data={Faq} />
       <Cta />
     </>
   );

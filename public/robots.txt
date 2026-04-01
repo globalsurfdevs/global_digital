@@ -1,24 +1,31 @@
-User-agent: *                   
-Disallow: /admin/            
-Disallow: /?                    
-Disallow: *?s=                  
-Disallow: *&s=                  
-Disallow: /search               
-Disallow: /author/              
-Disallow: */embed$                       
-Disallow: *utm*=                
-Disallow: *openstat=           
- 
+User-agent: *
+Disallow: /admin/
+Disallow: /search
+Disallow: /author/
+Disallow: /*?s=
+Disallow: /*&s=
+Disallow: /*?utm=
+Disallow: /*&utm=
+Disallow: /*?openstat=
+Disallow: /*&openstat=
+Disallow: /*/embed$
+
 Sitemap: https://www.globalsurf.ae/sitemap.xml
+
 User-agent: GPTBot
-Disallow:
+Allow: /
+
 User-agent: ChatGPT-User
-Disallow:
+Allow: /
+
 User-agent: Google-Extended
-Disallow:
+Allow: /
+
 User-agent: anthropic-ai
-Disallow:
+Allow: /
+
 User-agent: Claude-Web
-Disallow:
+Allow: /
+
 User-agent: bingbot
 Crawl-delay: 5

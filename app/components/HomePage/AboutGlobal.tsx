@@ -83,10 +83,10 @@ const AboutGlobal = () => {
         "
           >
             <div className="relative">
-             <Link href="about-us" className="" >
-              <p className={`duration-200" text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}>
-                ABOUT US
-              </p>
+              <Link href="contact-us" className="" >
+                <p className={`duration-200" text-sm font-medium ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}>
+                  CONTACT US
+                </p>
               </Link>
             </div>
             <svg
