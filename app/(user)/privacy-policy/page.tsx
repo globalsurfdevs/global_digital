@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/privacy-policy",
     },
-    robots: "Noindex, Nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {
@@ -80,16 +80,16 @@ const page = () => {
             <div  >
               <ul className="list-disc pl-[40px] list-outside">
                 <li>
-                Service Provision: To deliver the digital media services and content you have requested or subscribed to.
+                  Service Provision: To deliver the digital media services and content you have requested or subscribed to.
                 </li>
                 <li>
-                Communication: To send you important updates, promotional materials, or responses to your inquiries. You can opt out of receiving promotional content at any time.
+                  Communication: To send you important updates, promotional materials, or responses to your inquiries. You can opt out of receiving promotional content at any time.
                 </li>
                 <li>
-                Improvement: To enhance our website, services, and overall user experience based on the data we collect.
+                  Improvement: To enhance our website, services, and overall user experience based on the data we collect.
                 </li>
                 <li>
-                Legal Compliance: To comply with legal obligations and protect our rights and the rights of our users.
+                  Legal Compliance: To comply with legal obligations and protect our rights and the rights of our users.
                 </li>
               </ul>
             </div>
@@ -102,13 +102,13 @@ const page = () => {
             <div  >
               <ul className="list-disc pl-[40px] list-outside">
                 <li>
-                Service Providers: With trusted third-party service providers who assist us in operating our business and delivering our services. These partners are contractually bound to maintain the confidentiality of your information.
+                  Service Providers: With trusted third-party service providers who assist us in operating our business and delivering our services. These partners are contractually bound to maintain the confidentiality of your information.
                 </li>
                 <li>
-                Legal Requirements: If required by law or to respond to valid legal processes, we may disclose your information to comply with legal obligations.
+                  Legal Requirements: If required by law or to respond to valid legal processes, we may disclose your information to comply with legal obligations.
                 </li>
                 <li>
-                Business Transfers: In the event of a merger, acquisition, or sale of assets, your personal information may be transferred as part of the transaction.
+                  Business Transfers: In the event of a merger, acquisition, or sale of assets, your personal information may be transferred as part of the transaction.
                 </li>
               </ul>
             </div>

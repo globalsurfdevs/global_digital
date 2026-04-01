@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/cookie-policy",
     },
-     robots: "Noindex, Nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {
@@ -55,45 +55,45 @@ const page = () => {
             <div>
               <ul className="list-outside list-decimal pl-[40px]">
                 <li>
-                Essential Cookies
+                  Essential Cookies
                 </li>
               </ul>
               <ul className="list-outside list-disc pl-[60px]">
                 <li>
-                These cookies are necessary for the core functionality of our website. Without them, certain features may not work.
+                  These cookies are necessary for the core functionality of our website. Without them, certain features may not work.
                 </li>
               </ul>
 
               <ul className="list-outside list-decimal pl-[40px]">
                 <li>
-                Analytical/Performance Cookies
+                  Analytical/Performance Cookies
                 </li>
               </ul>
               <ul className="list-outside list-disc pl-[60px]">
                 <li>
-                These cookies help us understand how visitors interact with our website by collecting data on user behaviour and site performance.
+                  These cookies help us understand how visitors interact with our website by collecting data on user behaviour and site performance.
                 </li>
               </ul>
 
               <ul className="list-outside list-decimal pl-[40px]">
                 <li>
-                Functionality Cookies
+                  Functionality Cookies
                 </li>
               </ul>
               <ul className="list-outside list-disc pl-[60px]">
                 <li>
-                These cookies remember your preferences and choices to provide a more personalized experience.
+                  These cookies remember your preferences and choices to provide a more personalized experience.
                 </li>
               </ul>
 
               <ul className="list-outside list-decimal pl-[40px]">
                 <li>
-                Advertising/Targeting Cookies
+                  Advertising/Targeting Cookies
                 </li>
               </ul>
               <ul className="list-outside list-disc pl-[60px]">
                 <li>
-                These cookies deliver relevant advertisements based on your browsing habits and interests.
+                  These cookies deliver relevant advertisements based on your browsing habits and interests.
                 </li>
               </ul>
             </div>
@@ -103,18 +103,18 @@ const page = () => {
               <strong>How We Use Cookies  </strong>
             </p>
             <p>
-            We use cookies to:
+              We use cookies to:
             </p>
             <div>
               <ul className="list-outside list-disc pl-[40px]">
                 <li>
-                Provide and enhance our services.
+                  Provide and enhance our services.
                 </li>
                 <li>
-                Remember your preferences and improve user experience.
+                  Remember your preferences and improve user experience.
                 </li>
                 <li>
-                Analyze site traffic and user interactions to optimize our content.
+                  Analyze site traffic and user interactions to optimize our content.
                 </li>
               </ul>
             </div>
@@ -134,7 +134,7 @@ const page = () => {
             <div  >
               <p >You have the option to manage or disable cookies through your browser settings. Please note that disabling certain cookies may affect the functionality of our website.
 
-              For more information on managing cookies, visit <a href="https://www.aboutcookies.org/" target="_blank" rel="nofollow" className="text-primary">aboutcookies.org</a>. </p>
+                For more information on managing cookies, visit <a href="https://www.aboutcookies.org/" target="_blank" rel="nofollow" className="text-primary">aboutcookies.org</a>. </p>
             </div>
           </div>
         </div>

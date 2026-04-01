@@ -8,7 +8,7 @@ type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
-    robots: string;
+  robots: string;
 };
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/legal",
     },
-     robots: "Noindex, Nofollow",
+    robots: "index, follow",
   };
 }
 const page = () => {
