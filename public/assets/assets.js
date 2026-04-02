@@ -1011,6 +1011,7 @@ import blog_75 from "../images/blog-new/blog7/techseo3.png";
 import blog_76 from "../images/blog-new/blog7/mn.jpg";
 import blog_77 from "../images/blog-new/blog7/sec.png";
 import blog_78 from "../images/blog-new/blog7/third.png";
+import blog_81 from "../images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png";
 
 import icss1 from "../images/icon/ics1.svg";
 import icss2 from "../images/icon/ics2.svg"; 
@@ -1034,6 +1035,7 @@ blog_73,
 blog_74,
 blog_75,  
   blog_3,
+  blog_81,
   meassuringav,
   eeatseo,
   zeroclick,

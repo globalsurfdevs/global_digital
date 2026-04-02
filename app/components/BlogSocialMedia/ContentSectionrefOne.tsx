@@ -38,11 +38,11 @@ const ContentSectionrefOne: React.FC<ContentSectionProps> = ({ sections }) => {
                     key={index}
                     className="text-font19 text-[#77787B] mb-[16px] cursor-pointer hover:text-primary"
                     dangerouslySetInnerHTML={{ __html: p }}
-                     onClick={() => {
-    document
-      .getElementById(`content${index+1}`)
-      ?.scrollIntoView({ behavior: "smooth" });
-  }}
+                    onClick={() => {
+                      document
+                        .getElementById(`content${index + 1}`)
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
                   />
                 ))}
 
