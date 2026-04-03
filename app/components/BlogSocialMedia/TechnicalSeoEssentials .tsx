@@ -509,4 +509,4 @@ Yes. Slow or unreliable hosting can delay page loads, increase downtime, and lim
   );
 };
 
-export default TechnicalSeoEssentials ;
+export default TechnicalSeoEssentials;

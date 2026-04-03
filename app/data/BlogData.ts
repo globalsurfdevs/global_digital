@@ -2,17 +2,23 @@ export const BlogData = [
   {
     id: 8,
     slug: "google-ads-vs-meta-ads-for-uae-lead-generation",
-    titles: "Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins?",
-    title: " How Google Ads and Meta Ads work differently and why it matters for UAE businesses",
-    list_heading: " How Google Ads and Meta Ads work differently and why it matters for UAE businesses",
+    titles:
+      "Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins?",
+    title:
+      " How Google Ads and Meta Ads work differently and why it matters for UAE businesses",
+    list_heading:
+      " How Google Ads and Meta Ads work differently and why it matters for UAE businesses",
     meta_title: "Google Ads vs Meta Ads for UAE Lead Generation | Global Surf ",
     description:
       "Find out whether Google Ads or Meta Ads wins for UAE lead generation. See how intent, cost, and conversion quality impact campaign performance. ",
     post_date: "",
     read_time: "",
-    feature_thumb: "/images/blog-new/blog7/mn.jpg",
-    thumb: "/images/blog-new/blog7/mn.jpg",
-    large_thumb: "/images/blog-new/blog7/mn.jpg",
+    feature_thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main-featured.jpg",
+    thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main-featured.jpg",
+    large_thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png",
     category: "SEO",
     format: "standard",
     views: "",

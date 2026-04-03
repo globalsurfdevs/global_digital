@@ -39,6 +39,36 @@ export const contentSectionsData = [
     ],
   },
 ];
+
+export const keyDifferenceTableTitles = [
+  "Factor",
+  "Google Ads",
+  "Meta Ads",
+];
+
+export const keyDifferenceTableData = [
+  {
+    "Factor": "User intent",
+    "Google Ads": "High, search driven",
+    "Meta Ads": "Low to medium, discovery driven",
+  },
+  {
+    "Factor": "Role in funnel",
+    "Google Ads": "Capture demand",
+    "Meta Ads": "Create and nurture demand",
+  },
+  {
+    "Factor": "Targeting method",
+    "Google Ads": "Keywords and search queries",
+    "Meta Ads": "Interest, behaviour, and demographics",
+  },
+  {
+    "Factor": "Best for",
+    "Google Ads": "Lead generation and conversions",
+    "Meta Ads": "Awareness, retargeting, and audience building",
+  },
+];
+
 export const videoProductionsocialData = [
   {
     title: "sdsdsdsdsdHow AI Search is Stealing Your Clicks and What is Really Happening",
