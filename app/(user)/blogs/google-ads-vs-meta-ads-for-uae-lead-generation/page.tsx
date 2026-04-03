@@ -2,13 +2,12 @@ import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
 import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne";
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
-import { TechnicalSEOSchema } from "../../../components/Schema/OfferCatalog";
-import TechnicalSeoEssentials from "../../../components/BlogSocialMedia/TechnicalSeoEssentials ";
+import { GoogleAdsVsMetaAdsSchema } from "../../../components/Schema/OfferCatalog";
+import GoogleAdsVsMetaAdsContent from "../../../components/Blog-details/GoogleAdsVsMetaAdsContent";
 
 
 import {
   BannerSection, contentSectionsData,
-  videoProductionsocialData,
 
 } from "../../../data/blogdatas/how-google-ads-meta-ads-works";
 
@@ -33,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://www.globalsurf.ae/blogs/google-ads-vs-meta-ads-for-uae-lead-generation",
     },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
 
   };
 }
@@ -43,11 +42,11 @@ const page = () => {
 
   return (
     <div className="relative">
-      <TechnicalSEOSchema />
+      <GoogleAdsVsMetaAdsSchema />
       <SocialShare />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
       <ContentSectionrefOne sections={contentSectionsData} />
-      <TechnicalSeoEssentials />
+      <GoogleAdsVsMetaAdsContent />
     </div>
   );
 };
