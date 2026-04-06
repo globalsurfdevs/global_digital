@@ -1,5 +1,47 @@
 export const BlogData = [
   {
+    id: 9,
+    slug: "why-email-marketing-still-quietly-drives",
+    titles:
+      "Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
+    title:
+      " Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
+    list_heading:
+      " Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
+    meta_title: " ",
+    description:
+      " ",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blog-new/blog8/banner.png",
+    thumb:
+      "/images/blog-new/blog8/banner.png",
+    large_thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png",
+    category: "performance marketing",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 8,
     slug: "google-ads-vs-meta-ads-for-uae-lead-generation",
     titles:
