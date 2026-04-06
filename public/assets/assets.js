@@ -1002,6 +1002,12 @@ import zeroclick from "../images/blog-new/blog6/zero-click.png";
 import eeatseo from "../images/blog-new/blog6/eeat-seo.png";
 import meassuringav from "../images/blog-new/blog6/meassuring-av.jpg";
 import blog_3 from "../images/blog-new/blog6/blog_3.jpg";
+import blog_4 from "../images/blog-new/blog8/banner.png";
+
+import blog_801 from "../images/blog-new/blog8/section1.jpg";
+import blog_802 from "../images/blog-new/blog8/section2.png";
+import blog_803 from "../images/blog-new/blog8/section3.png";
+import blog_804 from "../images/blog-new/blog8/section4.png";
 
 import blog_71 from "../images/blog-new/blog7/71.png";
 import blog_72 from "../images/blog-new/blog7/72.png";
@@ -1035,7 +1041,12 @@ blog_73,
 blog_74,
 blog_75,  
   blog_3,
+  blog_4,
   blog_81,
+  blog_801,
+  blog_802,
+  blog_803,
+  blog_804,
   meassuringav,
   eeatseo,
   zeroclick,
