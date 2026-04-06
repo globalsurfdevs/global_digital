@@ -129,37 +129,106 @@ const ClicksGoogle = () => {
                   The Shift from Ranking to References
                 </h3>
 
-                <div className="overflow-x-auto mb-3 lg:mb-[24px]">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr>
-                        <th className="border-b border-gray-300 text-left py-3 px-0 lg:px-4">Traditional SEO</th>
-                        <th className="border-b border-gray-300 text-left py-3 px-0 lg:px-4">AI First Search</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border-b py-3 px-0 lg:px-4">Focus on keyword rankings</td>
-                        <td className="border-b py-3 px-0 lg:px-4">Focus on brand mentions in AI answers</td>
-                      </tr>
-                      <tr>
-                        <td className="border-b py-3 px-0 lg:px-4">Measure organic position</td>
-                        <td className="border-b py-3 px-0 lg:px-4">Measure citation frequency</td>
-                      </tr>
-                      <tr>
-                        <td className="border-b py-3 px-0 lg:px-4">Compete for clicks</td>
-                        <td className="border-b py-3 px-0 lg:px-4">Compete to be referenced</td>
-                      </tr>
-                      <tr>
-                        <td className="border-b py-3 px-0 lg:px-4">Visibility = Traffic</td>
-                        <td className="border-b py-3 px-0 lg:px-4">Visibility = Mentions & Inclusion</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-0 lg:px-4">Blue links shape decisions</td>
-                        <td className="py-3 px-0 lg:px-4">AI summaries shape decisions</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div className="overflow-x-auto mb-3 lg:mb-[24px] ">
+                    <table className="min-w-full divide-y divide-gray-200 border border-gray-200 overflow-x-auto  ">
+                      <thead className="bg-[#F2F2F2]">
+                        <tr> 
+                            <th 
+                              className={`px-6 py-3 text-left text-font19 font-medium text-dark tracking-wider border-r last:border-r-0 border-gray-200  `}
+                            >
+                              Traditional SEO
+                            </th> 
+                            <th 
+                              className={`px-6 py-3 text-left text-font19 font-medium text-dark tracking-wider border-r last:border-r-0 border-gray-200  `}
+                            >
+                              AI First Search
+                            </th> 
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                      
+                            <tr > 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Focus on keyword rankings
+                                  </div>
+                                </td>
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Focus on brand mentions in AI answers
+                                  </div>
+                                </td>
+                            </tr>  
+                            <tr > 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Measure organic position
+                                  </div>
+                                </td> 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Measure citation frequency
+                                  </div>
+                                </td> 
+                            </tr>  
+                            <tr > 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Compete for clicks
+                                  </div>
+                                </td> 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Compete to be referenced
+                                  </div>
+                                </td> 
+                            </tr>  
+                            <tr > 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Visibility = Traffic
+                                  </div>
+                                </td> 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Visibility = Mentions & Inclusion
+                                  </div>
+                                </td> 
+                            </tr>  
+                            <tr > 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    Blue links shape decisions
+                                  </div>
+                                </td> 
+                                <td 
+                                  className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ` }
+                                >
+                                  <div className="text-font19 text-[#77787B]"> 
+                                    AI summaries shape decisions
+                                  </div>
+                                </td> 
+                            </tr>  
+                      </tbody>
+                    </table> 
                 </div>
 
                 <p className="text-font19 text-[#77787B] mb-[16px]">
