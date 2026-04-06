@@ -165,6 +165,7 @@ For UAE-based decision makers, B2B email marketing matters because of three prac
 </p>
 <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id="content6">
 Signals You Can Learn From Email Marketing (That You Rarely See Elsewhere)</h2>
+<Image src={assets.blog_804} alt="Why Ignoring Email Marketing" className='mb-5 lg:mb-[40px] '/>
 <p className="text-font19 text-[#77787B] mb-[16px]">
 One of email marketing's biggest advantages in B2B demand generation is the clarity of its engagement signals. Unlike many other channels, you can see not just that someone interacted, but how and when.
 </p>
@@ -288,7 +289,7 @@ Each of these behaviours tells you something different:</p>
 <p className="text-font19 text-[#77787B] mt-4">
   Treat it as essential infrastructure rather than an optional campaign. Build a simple, respectful sequence. Measure real engagement. And align your sales conversations with what the inbox is already telling you.
 </p>
-<Image src={assets.blog_804} alt="Why Ignoring Email Marketing" className='mt-5 lg:mt-[40px] '/>
+
      
 <div className="  pb-10 lg:pb-[60px]">
 
