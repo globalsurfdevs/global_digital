@@ -36,7 +36,7 @@ interface HeroSectionProps {
   Bannerdata: BannerSection[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({
+const HeroSectionType2: React.FC<HeroSectionProps> = ({
   Bannerdata,
   order,
   hideslider,
@@ -283,20 +283,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   (su, index) =>
                     su.stitle &&
                     su.desc && (
-                      <div
-                        key={`hero-sub-${herosection.id ?? heroIndex}-${su.stitle}-${index}`}
-                        className="grid grid-cols-1 py-[50px] lg:grid-cols-2 lg:py-[142px] "
+                      <div key={`hero-sub-${herosection.id ?? heroIndex}-${su.stitle}-${index}`} className="pt-5 xl:pt-10 xl:pb-140"
                       >
-                        <div className="col-span-1 mb-2 lg:mb-0">
+                        {/* <div className="col-span-1 mb-2 lg:mb-0">
                           <div className="flex items-center gap-2">
                             <h2 className="text-30 leading-[1.5]">
                               {su.stitle}
                             </h2>
                             <div className="h-5 w-5 bg-primary"></div>
                           </div>
-                        </div>
+                        </div> */}
                         <div className=" ">
-                          <p className={`ms-0 text-gray1 text-font19 ${lexend.className}`}>
+                          <p className={`ms-0 text-gray1 text-font19 max-w-[120ch] ${lexend.className}`}>
                             {su.desc}
                           </p>
                           {su.buttonTitle && (
@@ -408,4 +406,4 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   );
 };
 
-export default HeroSection;
+export default HeroSectionType2;

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import arrowactive from "@/public/assets/logos/arr-active.svg";
 import arrowdown from "@/public/assets/logos/arr-down.svg";
@@ -9,7 +9,7 @@ import { Lexend } from "next/font/google";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-});import { motion, AnimatePresence } from "framer-motion";
+}); import { motion, AnimatePresence } from "framer-motion";
 type PartnerDataType = {
   title: string;
   description: string;
@@ -20,6 +20,7 @@ type PartnerListProps = {
   subp?: string;
   bgcolor?: string;
   title?: string;
+  defActive?: string;
 };
 const containerVariants = {
   hidden: {},
@@ -34,9 +35,30 @@ const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
-const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor ,title}) => {
-  const [open, setOpen] = useState<number | null>(null);
-const [showAll, setShowAll] = useState(false);
+const FAQ: React.FC<PartnerListProps> = ({
+  data,
+  subp,
+  bgcolor,
+  title,
+  defActive,
+}) => {
+  const getDefaultOpenIndex = (value?: string) => {
+    const parsedValue = Number.parseInt(value ?? "", 10);
+
+    if (Number.isNaN(parsedValue) || parsedValue < 1 || parsedValue > data.length) {
+      return null;
+    }
+
+    return parsedValue - 1;
+  };
+
+  const [open, setOpen] = useState<number | null>(() => getDefaultOpenIndex(defActive));
+  const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    setOpen(getDefaultOpenIndex(defActive));
+  }, [defActive, data.length]);
+
   const toggle = (itemIndex: number) => {
     if (open == itemIndex) {
       setOpen(null);
@@ -47,90 +69,73 @@ const [showAll, setShowAll] = useState(false);
   };
 
   return (
-    <div className={` ${bgcolor  ? `bg-[${bgcolor }]` : 'bg-white'}` }>
-    <div className="container mx-auto py-4">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-        variants={{
-          hidden: { opacity: 0, y: 50 }, // Start below and invisible
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1, ease: "easeOut" },
-          }, // Slide up and fade in
-        }}
-      >
-        <div className={`grid grid-cols-1 py-[50px] lg:py-[140px] xl:grid-cols-8  ` } >
-          <div className="col-span-2  mb-5 xl:mb-0">
+    <div className={` ${bgcolor ? `bg-[${bgcolor}]` : 'bg-white'}`}>
+      <div className="container mx-auto py-4">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+          variants={{
+            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 1, ease: "easeOut" },
+            }, // Slide up and fade in
+          }}
+        >
+          <div className={`grid grid-cols-1 py-[50px] lg:py-[140px] xl:grid-cols-8  `} >
+            <div className="col-span-2  mb-5 xl:mb-0">
               <h2 className="title-65">
                 {!title && "FAQ"}
                 {title}</h2>
-            <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
-              {subp}
-            </p>
-          </div>
+              <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
+                {subp}
+              </p>
+            </div>
 
-        <div
-  className={`col-span-5 w-full overflow-hidden   `}
->
-
-  
-       <motion.div
-  layout
-  variants={containerVariants}
-  initial="hidden"
-  animate="visible"
->
-  <AnimatePresence mode="popLayout">
-    {(showAll ? data : data.slice(0, 3))?.map((item, index) => (
-      <motion.div
-        key={item.title} // ⚠️ Important: never use index
-        layout
-        variants={itemVariants}
-        initial="hidden"
-        animate="visible"
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="overflow-hidden flex w-full items-center justify-between gap-3 border-b first:border-t py-6 lg:pb-[50px] lg:pt-[50px]"
-      >
-                <div className="flex cursor-pointer  flex-col" onClick={() => toggle(index)}>
-                  <h3
-                    className={` ${open === index ? "text-30 cursor-pointer text-black" : "text-30 text-gray1"}`}
-                  >
-                    {index + 1}. {item.title}
-                  </h3>
-                  <Collapse isOpened={open === index}>
-                    <div className="collapse-item pt-3 lg:pt-[22px]">
-                      <p className="text-19 fnt-lexend text-gray1 ">
-                        {item.description}
-                      </p>
-                    </div>
-                  </Collapse>
-                </div>
-                {open === index ? (
-                  <div className="text-5xl text-primary">
-                    <Image
-                      src={arrowactive}
-                      alt="image"
-                      className="min-h-[25px] min-w-[25px] lg:min-h-[35px] lg:min-w-[35px] "
-                    ></Image>
-                  </div>
-                ) : (
-                  <div className="text-xl">
-                    <Image
-                      src={arrowdown}
-                      alt="image"
-                      className="min-h-[15px] min-w-[15px]  "
-                    ></Image>
-                  </div>
-                )}
+            <div className={`col-span-5 w-full overflow-hidden`} >
+              <motion.div layout variants={containerVariants} initial="hidden" animate="visible" >
+                <AnimatePresence mode="popLayout">
+                  {data.map((item, index) => (
+                    <motion.div
+                      key={item.title} // ⚠️ Important: never use index
+                      layout
+                      variants={itemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="overflow-hidden flex w-full items-center justify-between gap-3 border-b first:border-t py-6 lg:pb-[50px] lg:pt-[50px]"
+                    >
+                      <div className="flex cursor-pointer  flex-col" onClick={() => toggle(index)}>
+                        <h3
+                          className={` ${open === index ? "text-30 cursor-pointer text-black" : "text-30 text-gray1"}`}
+                        >
+                          {index + 1}. {item.title}
+                        </h3>
+                        <Collapse isOpened={open === index}>
+                          <div className="collapse-item pt-3 lg:pt-[22px]">
+                            <p className="text-19 fnt-lexend text-gray1 ">
+                              {item.description}
+                            </p>
+                          </div>
+                        </Collapse>
+                      </div>
+                      {open === index ? (
+                        <div className="text-5xl text-primary">
+                          <Image src={arrowactive} alt="image" className="min-h-[25px] min-w-[25px] lg:min-h-[35px] lg:min-w-[35px] " ></Image>
+                        </div>
+                      ) : (
+                        <div className="text-xl">
+                          <Image src={arrowdown} alt="image" className="min-h-[15px] min-w-[15px]  " ></Image>
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </motion.div>
-    ))}
-  </AnimatePresence>
-</motion.div>
-            {/* <button 
+              {/* <button 
              onClick={() => setShowAll(!showAll)}
               className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
                           before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
@@ -181,12 +186,12 @@ const [showAll, setShowAll] = useState(false);
                 </defs>
               </svg>
             </button> */}
+            </div>
           </div>
-        </div>
-        
-      </motion.div>
+
+        </motion.div>
       </div>
-      </div>
+    </div>
   );
 };
 

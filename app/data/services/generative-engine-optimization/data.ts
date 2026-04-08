@@ -7,65 +7,67 @@ export const BannerSection = [
     image: assets.geobanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Digital marketing",url: "" },
-      { label: "SEO",url: "" },
-      {label: "geo",url:"",}
+      { label: "Digital marketing", url: "" },
+      { label: "SEO", url: "" },
+      { label: "geo", url: "" },
     ],
-    title:
-      "Generative Engine Optimization (GEO) Services",
-      subtitle:"Helping brands stay visible inside AI search tools, AI browsers, and generative answer engines. ",
+    title: "Generative Engine Optimization (GEO) Services",
+    subtitle:
+      "Helping brands stay visible across AI search engines, generative platforms, and AI-driven browsers.",
     sub: [
       {
         stitle: "Our Thoughts",
-        desc: "Search behavior is shifting rapidly. People now turn to ChatGPT search, Perplexity, Gemini, and Bing Copilot for direct, one-answer results. If your brand isn’t part of that answer, it disappears in AI search. This makes it essential for content to be clear, fact-based, structured for machines, and easy for AI to trust. At Global Surf Digital, we help brands create content systems that AI can understand, rely on, and include in its responses. ",
-      buttonTitle: "Request GEO Assessment ",
+        desc: "When someone asks ChatGPT, Perplexity, or Gemini about services like yours, does your brand appear in the answer, or do competitors get mentioned instead? Unlike traditional search, AI tools provide a single, direct response, making visibility dependent on how clearly your content is structured for AI to understand and trust. At Global Surf Digital, we help brands become part of that answer through structured content, entity optimisation, and machine-readable data that AI systems can reliably interpret and reference.",
+        buttonTitle: "Request Your GEO Assessment",
       },
     ],
   },
 ];
 export const logosdata = [
-  { src: assets.geolg1, alt: "Clutch logo" },
-  { src: assets.geolg2, alt: "Trustpilot logo" },
-  { src: assets.geolg3, alt: "Google logo" },
-  { src: assets.geolg4, alt: "TechBehemoths Logo" },
-  { src: assets.geolg5, alt: "G2 Logo" },
-  { src: assets.geolg6, alt: "Microsoft Advertisings Logo" },
-  { src: assets.geolg7, alt: "Digital Agency Network" },
-  
+  { src: assets.geolg1, alt: "ChatGPT" }, //	ChatGPT
+  { src: assets.geolg5, alt: "Perplexity " }, // perplexity
+  { src: assets.geolg4, alt: "Gemini " }, //gemini
+  { src: assets.geolg3, alt: "Copilot" }, // copilot
+  { src: assets.geolg8, alt: "Claude" }, //claude ai
+  { src: assets.geolg7, alt: "Grok" }, // Grok ai
+  { src: assets.geolg6, alt: "DeepSeek" }, //bing ai
 ];
 export const logosdatas = [
-  { src: assets.geolg8, alt: "Tik Tok Logo" },
-  { src: assets.geolg9, alt: "Clutch logo" },
-  { src: assets.geolg10, alt: "Trustpilot logo" },
-  { src: assets.geolg11, alt: "Google logo" },
-  { src: assets.geolg12, alt: "TechBehemoths Logo" },
-  { src: assets.geolg13, alt: "Clutch logo" },
-  { src: assets.geolg14, alt: "Trustpilot logo" },
-  { src: assets.geolg15, alt: "Google logo" },
-
+  { src: assets.geolg2, alt: "Meta" }, // Meta
+  { src: assets.geolg11, alt: "Google Assistant" }, // Google Assistant
+  { src: assets.geolg15, alt: "Brave" }, // Brave Search
+  { src: assets.geolg10, alt: "Cohere " }, // Cohere
+  { src: assets.geolg14, alt: "Mistral AI" }, // Mistral AI
+  { src: assets.geolg12, alt: "Qwen" }, // Qwen
+  { src: assets.geolg13, alt: "Z.ai" }, // Z.ai
+  // { src: assets.geolg9, alt: "Z.ai " }, // Z.ai
 ];
 export const Wecanhelp = {
-  title: "What shapes an<br/> AI-generated answer ",
+  title: "What shapes an AI-generated answer ",
   data: [
     {
       id: 1,
       icon: assets.mschelp1,
-      dec: "Trusted Brands Singnals ",
+      title: "Trusted Brand Signals",
+      dec: "Brand recognition, authority, and credible mentions that help AI identify your business with confidence.",
     },
     {
       id: 2,
       icon: assets.mschelp2,
-      dec: "Clear, Well-Structured Information  ",
+      title: "Clear, Well-Structured Information",
+      dec: "Content organised in a logical format that AI systems can easily interpret and summarise.",
     },
     {
       id: 3,
       icon: assets.mschelp3,
-      dec: "Strong Machine-Readable Data",
+      title: "Strong Machine-Readable Data",
+      dec: "Structured data and schema that clearly define your content for accurate AI processing.",
     },
     {
       id: 4,
       icon: assets.mschelp4,
-      dec: "Verified Sources ",
+      title: "Verified Sources",
+      dec: "Fact-based information supported by consistent and traceable references.",
     }, 
   ],
 };
@@ -325,45 +327,45 @@ export const WhyBrands = {
   data: [
     {
       id: 1,
-      title: "AI-Aligned Content Strategy",
-      dec: "Built for how LLMs read, interpret, and prioritize information.",
+      title: "Regional GEO Expertise",
+      dec: "Deep understanding of AI search behaviour across Dubai, the UAE and wider GCC markets.",
       icn: assets.omst1,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 2,
-      title: "Entity & Context Optimization ",
-      dec: "Strengthening your brand as a clear, credible entity AI can reliably reference.",
+      title: "Proven Experience",
+      dec: "Backed by decades of expertise in SEO, content strategy and AI-led optimisation across industries.",
       icn: assets.omst2,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 3,
-      title: "Adaptive to AI Evolution",
-      dec: "Continuous refinement as generative models and behaviors change. ",
+      title: "Measurable Impact",
+      dec: "Our approach focuses on improving how often and how accurately your brand appears in AI-generated answers.",
       icn: assets.omst3,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 4,
-      title: "Multi-Platform AI Visibility",
-      dec: "Optimized for ChatGPT Search, Perplexity, Gemini, Copilot & voice AI.",
+      title: "Specialised Team",
+      dec: "A team combining technical SEO, structured data expertise and evolving AI and LLM knowledge.",
       icn: assets.omst4,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 5,
-      title: "Answer-Inclusion Advantage",
-      dec: "Crafted to increase your likelihood of being featured in AI outputs.",
+      title: "Multi-Platform Focus",
+      dec: "Coverage across ChatGPT, Perplexity, Gemini, Copilot and voice-enabled search environments.",
       icn: assets.omst5,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 6,
-      title: "Proven GEO Framework",
-      dec: "A structured, repeatable approach designed specifically for AI-led search.",
+      title: "Structured GEO Methodology",
+      dec: "A defined, repeatable approach designed to align your brand with how AI systems interpret and reference information",
       icn: assets.omst6,
-      urllink: '',
+      urllink: "",
     },
   ],
 };
@@ -375,22 +377,31 @@ export const Cta = [
 ];
 export const Faq = [
   {
-    title: "Does GEO replace SEO? ",
+    title: "What does GEO cost? ",
     description:
-      "No. GEO strengthens your brand inside AI answers, while SEO improves traditional search rankings. Both work together. ",
+      "The investment depends on your current website structure, competitive landscape, and scope of work. We offer both project-based and ongoing engagement models based on your requirements.",
   },
   {
-    title: "How long does GEO take? ",
-    description: "Most implementations show improvement within 4–12 weeks depending on content quality and technical structure.",
-  }, 
+    title: "Do I need to redesign my website for GEO?",
+    description:
+      "In most cases, no. GEO focuses on improving existing content, adding structured data, and refining how information is presented for AI systems.",
+  },
   {
-    title: "How is GEO performance measured?  ",
-    description: "Through LLM visibility tracking, structured data improvements, entity strength, and monitoring how AI models reference your brand.",
-  }, 
+    title: "Which AI platforms do you optimise for?",
+    description:
+      "We work across ChatGPT, Perplexity, Google Gemini, Bing Copilot, and voice assistants such as Siri and Google Assistant to ensure broad visibility.",
+  },
   {
-    title: "Is GEO only for large brands? ",
-    description: "No. Smaller brands benefit even more because AI engines often prioritize clarity and structure over size.",
-  }, 
-  
+    title: "How long does it take to see results?",
+    description:
+      "Most brands begin to see improved visibility in AI-generated answers within a few months, depending on competition and current content quality.",
+  },
+  {
+    title: "Can you guarantee my brand will appear in AI answers?",
+    description:
+      "AI platforms are constantly evolving, so specific placements cannot be guaranteed. However, our approach significantly improves the likelihood of being referenced.",
+  },
 ];
+
+
 
