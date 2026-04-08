@@ -48,7 +48,7 @@ export const Wecanhelp = {
     {
       id: 1,
       icon: assets.mschelp1,
-      title: "Trusted Brand Signals",
+      title: "Trusted Brand\nSignals",
       dec: "Brand recognition, authority, and credible mentions that help AI identify your business with confidence.",
     },
     {
@@ -66,7 +66,7 @@ export const Wecanhelp = {
     {
       id: 4,
       icon: assets.mschelp4,
-      title: "Verified Sources",
+      title: "Verified\nSources",
       dec: "Fact-based information supported by consistent and traceable references.",
     }, 
   ],

@@ -47,12 +47,9 @@ const GeoLogoSwiper: React.FC<GeoLogoSwiperProps> = ({
             },
           }}
         >
-          <div className="mb-4 mt-6 grid lg:mb-75 lg:mt-0">
+          <div className="mb-4 md:mt-6 grid lg:mb-75 lg:mt-0">
             {title1 && (
-              <h2
-                className="title-65"
-                dangerouslySetInnerHTML={{ __html: title1 }}
-              ></h2>
+              <h2 className="title-65" dangerouslySetInnerHTML={{ __html: title1 }} ></h2>
             )}
             {subcontent && (
               <p className="text-30 pt-6 leading-[1.2] text-black lg:pt-[40px]">
@@ -97,7 +94,7 @@ const GeoLogoSwiper: React.FC<GeoLogoSwiperProps> = ({
           >
             {logosdata.map((logo, index) => (
               <SwiperSlide key={index}>
-                <div className="mx-2 w-fit rounded-[5px] bg-[#F2F2F2]">
+                <div className="mx-2 w-fit rounded-[5px] bg-[#F2F2F2] 2xl:min-w-[222px] 2xl:h-[103px] flex flex-col items-center justify-center">
                   <img
                     src={
                       typeof logo.src === "string"

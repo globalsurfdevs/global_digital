@@ -135,7 +135,7 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
               }}
             >
               <div
-                className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
+                className={` ptcs0 border-b pb-5 md:pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
               >
                 <div className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`} >
                   <div >
@@ -283,7 +283,7 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
                   (su, index) =>
                     su.stitle &&
                     su.desc && (
-                      <div key={`hero-sub-${herosection.id ?? heroIndex}-${su.stitle}-${index}`} className="pt-5 xl:pt-10 xl:pb-140"
+                      <div key={`hero-sub-${herosection.id ?? heroIndex}-${su.stitle}-${index}`} className="pt-5 pb-8 xl:pt-10 xl:pb-140"
                       >
                         {/* <div className="col-span-1 mb-2 lg:mb-0">
                           <div className="flex items-center gap-2">

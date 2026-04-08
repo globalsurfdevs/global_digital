@@ -67,7 +67,7 @@ const page = () => {
         />
       </Head>
       <HeroSectionType2 Bannerdata={BannerSection} hideslider={true} maxchwidth={24} />
-      <div className="pb-[50px] pt-[20px] lg:pb-[130px] lg:pt-[130px]">
+      <div className="py-10 md:py-24 xl:py-140">
         <GeoLogoSwiper logosdata={logosdata} slidesPerView={5.6} title1="Platforms We Optimize For " subcontent="Ensure your brand appears across all major AI search engines " />
         <GeoLogoSwiper logosdata={logosdatas} slidesPerView={5.6} direction="reverse" />
       </div>

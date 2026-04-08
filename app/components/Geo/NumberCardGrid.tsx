@@ -39,7 +39,7 @@ const NumberCardGrid: React.FC<NumberCardGridProps> = ({
           }}
         >
           {title && (
-            <h2 className="title-65 text-white mb-10 xl:mb-60">{title}</h2>
+            <h2 className="title-65 text-white mb-10 xl:mb-60" >{title}</h2>
           )}
         </motion.div>
 
@@ -75,9 +75,7 @@ const NumberCardGrid: React.FC<NumberCardGridProps> = ({
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <h3 className="max-w-[320px] text-30 leading-[1.2] text-white">
-                  {item.title}
-                </h3>
+                <h3 className="text-30 leading-[1.2] text-white whitespace-pre-line">{item.title} </h3>
 
                 <p className="fnt-lexend mt-8 max-w-[360px] text-19 leading-[1.35] text-[#8E8E93] lg:mt-10">
                   {item.dec}

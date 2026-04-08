@@ -84,14 +84,18 @@ const FAQ: React.FC<PartnerListProps> = ({
             }, // Slide up and fade in
           }}
         >
-          <div className={`grid grid-cols-1 py-[50px] lg:py-[140px] xl:grid-cols-8  `} >
+          <div className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[140px] xl:grid-cols-8  `} >
             <div className="col-span-2  mb-5 xl:mb-0">
               <h2 className="title-65">
                 {!title && "FAQ"}
                 {title}</h2>
+              {
+                subp && (
               <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
                 {subp}
               </p>
+                )
+              }
             </div>
 
             <div className={`col-span-5 w-full overflow-hidden`} >
