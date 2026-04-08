@@ -35,7 +35,7 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
   return (
     <div className="">
       <div className="container mx-auto py-4">
-        <div className="pd-cus flex flex-col py-[50px] lg:py-[111px]">
+        <div className="pd-cus flex flex-col py-8 md:py-[50px] lg:py-[111px]">
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -107,7 +107,7 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
                     </div>
                   )}
                   {framework.icn && (
-                    <div className="mb-4 mt-6  lg:mb-8 lg:mt-10 h-[50px] w-[50px]">
+                    <div className="mb-4 mt-4 first:mt-0 md:mt-6 first:md:mt-6 lg:mb-8 lg:mt-10 h-[50px] w-[50px]">
                       <Image
                         src={framework.icn}
                         alt="icon"

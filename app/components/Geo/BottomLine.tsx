@@ -39,8 +39,8 @@ const BottomLine: React.FC<FrameworkSectionProps> = ({
 }) => {
   return (
     <div className="bg-[#F2F2F2]">
-      <div className="container mx-auto py-4">
-        <div className="pd-cus flex flex-col py-[50px] lg:py-[111px]">
+      <div className="container mx-auto ">
+        <div className="pd-cus flex flex-col py-8 md:py-[50px] lg:py-[111px]">
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -100,25 +100,25 @@ const BottomLine: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 gap-3 lg:gap-[75px]  md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
+              className={`grid grid-cols-1 gap-5 md:gap-10 xl:gap-[75px]  md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
             >
               {data.map((framework) => (
                 <div key={framework.id} className="group relative flex h-full flex-col overflow-hidden" >
-                  <div className="flex flex-1 flex-col">
+                  <div className="flex flex-1 flex-col ">
                     <div className="text-2xl relative w-fit">
-                    <h3 className="text-30 mb-[30px] text-black transition-colors duration-300 group-hover:text-primary" dangerouslySetInnerHTML={{ __html: framework.title }} ></h3>
+                    <h3 className="text-30 mb-3 md:mb-[30px] text-black transition-colors duration-300 group-hover:text-primary" dangerouslySetInnerHTML={{ __html: framework.title }} ></h3>
                         { framework.urllink && (   <Link href={framework.urllink} className="absolute top-0 w-full h-full"> </Link>
                         )}
                     </div>
                     
                   <div className="flex-1">
-                    <p className="fnt-lexend text-19 font-medium text-[#77787B] mb-[30px]">
+                    <p className="fnt-lexend text-19 font-medium text-[#77787B] group-last:mb-0 sm:group-last:mb-[30px] mb-[30px]">
                       {framework.dec}
                     </p>
                   </div>
                   </div>
                   <div
-                    className={`relative h-[1px]  overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
+                    className={`relative h-[1px] group-last:h-0 sm:group-last:h-[1px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
                   >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
