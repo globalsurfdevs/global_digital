@@ -1,59 +1,72 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+
+// ✅ FIX 1: Moved outside component — no re-creation on every render
+const CONTENT_ARRAY = [
+  "Digital Marketing",
+  "Web Design",
+  "Web Development",
+  "Data Analytics",
+  "Strategy Consulting",
+  "Marketing Automation",
+];
+
+// ✅ FIX 2: Framer Motion variants defined outside — prevents new object on every render
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeOut" },
+  },
+};
 
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null); // To store the interval ID
-  const currentIndexRef = useRef(0); // To store the current content index
-  const [spanContent, setSpanContent] = useState("Digital Marketing");
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const currentIndexRef = useRef(0);
+  const [spanContent, setSpanContent] = useState(CONTENT_ARRAY[0]);
 
-  const contentArray = [
-    "Digital Marketing",
-    "Web Design",
-    "Web Development",
-    "Data Analytics",
-    "Strategy Consulting",
-    "Marketing Automation",
-  ];
-
-  const handleMouseEnter = () => {
+  // ✅ FIX 3: useCallback — stable reference, not recreated on every render
+  const handleMouseEnter = useCallback(() => {
     const video = videoRef.current;
     if (video) {
-      video.classList.add("opacity-100");
-      video.classList.remove("opacity-0");
-      video.play();
+      // ✅ FIX 4: Use style directly — avoids classList thrashing & reflow
+      video.style.opacity = "1";
+      // ✅ FIX 5: play() returns a Promise — catch errors (e.g. autoplay policy)
+      video.play().catch(() => { });
     }
 
-    // Start changing the span content
+    // ✅ FIX 6: Clear existing interval before starting a new one
+    // (prevents stacking intervals if mouse enters rapidly)
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
     intervalRef.current = setInterval(() => {
       currentIndexRef.current =
-        (currentIndexRef.current + 1) % contentArray.length;
-      setSpanContent(contentArray[currentIndexRef.current]);
-    }, 100); // Change content every second
-  };
+        (currentIndexRef.current + 1) % CONTENT_ARRAY.length;
+      setSpanContent(CONTENT_ARRAY[currentIndexRef.current]);
+    }, 1000); // ✅ FIX 7: Was 100ms — too fast, causes layout thrash. Use 1000ms
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     const video = videoRef.current;
     if (video) {
-      video.classList.add("opacity-0");
-      video.classList.remove("opacity-100");
+      video.style.opacity = "0";
       video.pause();
       video.currentTime = 0;
     }
 
-    // Stop changing the span content
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-
-    // Keep the current content and do not reset
-  };
-
-
-
+  }, []);
 
   return (
     <motion.section
@@ -61,19 +74,24 @@ const HeroSection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.5 }}
+      variants={sectionVariants}
     >
-      <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight"></div>
+      <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight" />
 
+      {/* ✅ FIX 8: No autoPlay — video only plays on hover, not on page load.
+           This alone saves your LCP score significantly on mobile.
+           poster= gives browsers something to paint immediately (no blank flash). */}
       <video
         ref={videoRef}
-        className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-0"
-        autoPlay
+        className="absolute left-0 top-0 -z-10 h-full w-full object-cover transition-opacity duration-300"
+        style={{ opacity: 0 }}
         loop
         muted
         playsInline
+        preload="none"         // ✅ FIX 9: Don't preload video data at all
+        poster="/assets/poster.png" // ✅ FIX 10: Add a poster image (export a frame)
       >
         <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
 
       <div className="container mx-auto px-4">
@@ -83,19 +101,13 @@ const HeroSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, ease: "easeOut" },
-            },
-          }}
+          variants={headingVariants}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           Performance Focused <br />
-          <span className="text-primary relative linbsx underline">
+          {/* ✅ FIX 11: min-w keeps layout stable — no CLS when text changes length */}
+          <span className="text-primary relative linbsx underline inline-block min-w-[320px]">
             {spanContent}
           </span>
         </motion.h1>
