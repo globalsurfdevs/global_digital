@@ -1,12 +1,13 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
-import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne"; 
+import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne";
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
-import {TechnicalSEOSchema} from "../../../components/Schema/OfferCatalog";
-import TechnicalSeoEssentials  from "../../../components/BlogSocialMedia/TechnicalSeoEssentials ";
+import { TechnicalSEOSchema } from "../../../components/Schema/OfferCatalog";
+import TechnicalSeoEssentials from "../../../components/BlogSocialMedia/TechnicalSeoEssentials ";
 
 
-import { BannerSection ,contentSectionsData,
+import {
+  BannerSection, contentSectionsData,
   videoProductionsocialData,
 
 } from "../../../data/blogdatas/TechnicalSeo";
@@ -38,20 +39,20 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const page = () => {
-  
+
 
   return (
     <div className="relative">
       <TechnicalSEOSchema />
-<SocialShare/>
-      
+      <SocialShare />
+
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
         maxchwidth={27}
-      /> 
-     <ContentSectionrefOne sections={contentSectionsData} />  
-<TechnicalSeoEssentials  />
+      />
+      <ContentSectionrefOne sections={contentSectionsData} />
+      <TechnicalSeoEssentials />
     </div>
   );
 };

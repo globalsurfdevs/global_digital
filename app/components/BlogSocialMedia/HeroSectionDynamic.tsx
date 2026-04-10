@@ -13,7 +13,7 @@ const lexend = Lexend({
 });
 interface su {
   stitle?: string;
-buttonTitle?: string;
+  buttonTitle?: string;
   desc?: string;
 }
 interface BannerSection {
@@ -44,9 +44,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   hideslider,
   bannerlogp,
   maxchwidth,
-}) => { 
+}) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (modalOpen) {
@@ -113,16 +113,16 @@ const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-    {/* Modal section */}
+      {/* Modal section */}
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
       <div className="container mx-auto py-2" ref={nextContainerRef}>
-     
+
         {Bannerdata.map((herosection) => (
-          <div key={herosection.id}>  
+          <div key={herosection.id}>
             <motion.div
               className="title-80"
               initial="hidden"
@@ -144,7 +144,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   className={`flex  justify-between flex-col lg:flex-row  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
                   <div
-                  
+
                   >
                     <div>
                       {herosection.navigation && (
@@ -170,9 +170,9 @@ const [modalOpen, setModalOpen] = useState(false);
                                   (herosection.navigation?.length || 0) -
                                   1 && (
                                     <li>
-                                
-                            <div className="h-[14px] w-[14px] bg-primary"></div>
-                          
+
+                                      <div className="h-[14px] w-[14px] bg-primary"></div>
+
                                     </li>
                                   )}
                               </React.Fragment>
@@ -181,52 +181,52 @@ const [modalOpen, setModalOpen] = useState(false);
                         </nav>
                       )}
                     </div>
-                    
-                  
+
+
                   </div>
                   <div>
                     <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on {herosection.publishedon}  |  Updated on {herosection.updatedon}
-                        </p>
-                
+                    </p>
+
                   </div>
-                  
+
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
                 <div className="grid grid-cols-1 pb-[50px] pt-[20px] lg:py-[150px] xl:grid-cols-7   ">
-      <div className="col-span-2  mb-5 xl:mb-0">
+                  <div className="col-span-2  mb-5 xl:mb-0">
 
-                        </div>
-                        <div className="col-span-5 w-full ">
-                          <h1 className="title-80">
-                         {herosection.title} 
-                          </h1>
-                          <div className="gap-[16px] mt-[40px] xl:hidden flex">
-                        
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.shareicon} alt="share" />
-  </div>
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.linkedinicon} alt="linkedin" />
-  </div>
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.facebbokicon} alt="facebook" />
-  </div>
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.twittericon} alt="twitter" />
-  </div>
+                  </div>
+                  <div className="col-span-5 w-full ">
+                    <h1 className="title-80">
+                      {herosection.title}
+                    </h1>
+                    <div className="gap-[16px] mt-[40px] xl:hidden flex">
+
+                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                        <Image src={assets.shareicon} alt="share" />
+                      </div>
+                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                        <Image src={assets.linkedinicon} alt="linkedin" />
+                      </div>
+                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                        <Image src={assets.facebbokicon} alt="facebook" />
+                      </div>
+                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                        <Image src={assets.twittericon} alt="twitter" />
+                      </div>
 
 
-                            </div>
-           
+                    </div>
 
-                        </div>
-      </div>
+
+                  </div>
+                </div>
               </div>
             </motion.div>
-        
+
           </div>
         ))}
-        
+
       </div>
       <motion.div
         initial="hidden"
@@ -255,15 +255,9 @@ const [modalOpen, setModalOpen] = useState(false);
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection,index) => (
+          {Bannerdata.map((herosection, index) => (
             <div className=" w-full bg-black " key={index}>
-              <Image
-                src={herosection.image}
-                className="w-full"
-                alt={herosection.heroAlt || "Banner image"}
-                width={1500}
-                height={700}
-              />
+              <Image src={herosection.image} className="w-full" alt={herosection.heroAlt || "Banner image"} width={1500} height={700} />
             </div>
           ))}
         </div>

@@ -48,7 +48,7 @@ const NumberHovImg: React.FC<ExpertiseSectionProps> = ({
   return (
     <section className="bg-[#F2F2F2]">
     <div className="container mx-auto py-4 ">
-      <div className="padding0 flex flex-col pb-[50px] pt-[50px] lg:pb-[150px] lg:pt-[136px]">
+      <div className="padding0 flex flex-col pt-8 pb-8 md:pb-[50px] md:pt-[50px] lg:pb-[150px] lg:pt-[136px]">
         {/* Heading */}
         <div className="mb-5 lg:mb-[56px]">
           <motion.div

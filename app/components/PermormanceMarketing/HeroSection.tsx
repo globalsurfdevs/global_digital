@@ -13,7 +13,7 @@ const lexend = Lexend({
 });
 interface su {
   stitle?: string;
-buttonTitle?: string;
+  buttonTitle?: string;
   desc?: string;
 }
 interface BannerSection {
@@ -44,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   maxchwidth,
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (modalOpen) {
@@ -111,15 +111,15 @@ const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-    {/* Modal section */}
+      {/* Modal section */}
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
       <div className="container mx-auto py-2" ref={nextContainerRef}>
-        {Bannerdata.map((herosection) => (
-          <div key={herosection.id}>
+        {Bannerdata.map((herosection, heroIndex) => (
+          <div key={`hero-content-${herosection.id ?? heroIndex}`}>
             <motion.div
               className="title-80"
               initial="hidden"
@@ -137,31 +137,20 @@ const [modalOpen, setModalOpen] = useState(false);
               <div
                 className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
               >
-                <div
-                  className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
-                >
-                  <div
-                  
-                  >
+                <div className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`} >
+                  <div >
 
                     <div>
                       {herosection.navigation && (
                         <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-8">
                           <ul className="flex items-center space-x-2 bredcbs">
                             {herosection.navigation.map((navItem, index) => (
-                              <React.Fragment key={index}>
-                                <li  >
+                              <React.Fragment key={`hero-nav-${herosection.id ?? heroIndex}-${navItem.label}-${index}`} >
+                                <li>
                                   {navItem.url ? (
-                                    <Link
-                                      href={navItem.url}
-                                      className="hover:underline text-[10px] sm:text-font14 lg:text-font19"
-                                    >
-                                      {navItem.label}
-                                    </Link>
+                                    <Link href={navItem.url} className="hover:underline text-[10px] sm:text-font14 lg:text-font19" > {navItem.label} </Link>
                                   ) : (
-                                    <span className="text-[#77787B] text-[10px] sm:text-font14 lg:text-font19">
-                                      {navItem.label}
-                                    </span>
+                                    <span className="text-[#77787B] text-[10px] sm:text-font14 lg:text-font19"> {navItem.label} </span>
                                   )}
                                 </li>
                                 {index <
@@ -189,9 +178,9 @@ const [modalOpen, setModalOpen] = useState(false);
                       </p>
                     )}
 
-                   <div   className={` xxl:max-w-[1000px]`}    style={{ maxWidth: `${maxchwidth}ch` }}>
+                    <div className={` xxl:max-w-[1000px]`} style={{ maxWidth: `${maxchwidth}ch` }}>
                       <h1 className="title-80"> {herosection.title}</h1>
-                      </div> 
+                    </div>
                     {herosection.subtitle && (
                       <p className="my-3 text-[20px] text-black lg:mt-6 lg:mb-2  lg:text-font30">
                         {" "}
@@ -295,7 +284,7 @@ const [modalOpen, setModalOpen] = useState(false);
                     su.stitle &&
                     su.desc && (
                       <div
-                        key={index}
+                        key={`hero-sub-${herosection.id ?? heroIndex}-${su.stitle}-${index}`}
                         className="grid grid-cols-1 py-[50px] lg:grid-cols-2 lg:py-[142px] "
                       >
                         <div className="col-span-1 mb-2 lg:mb-0">
@@ -310,59 +299,59 @@ const [modalOpen, setModalOpen] = useState(false);
                           <p className={`ms-0 text-gray1 text-font19 ${lexend.className}`}>
                             {su.desc}
                           </p>
-                           {su.buttonTitle && (
-  <button
-    onClick={() => setModalOpen(true)}
-    className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
+                          {su.buttonTitle && (
+                            <button
+                              onClick={() => setModalOpen(true)}
+                              className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
                 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
                 after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px] mt-3"
-  >
-    <div className="relative">
-      <p
-        className={`duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
-      >
-        {su.buttonTitle}
-      </p>
-    </div>
-    <svg
-      width="10"
-      height="10"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="duration-200 ease-in-out group-hover:scale-125"
-    >
-      <g clipPath="url(#clip0_65_58)">
-        <path
-          d="M18.7892 1.2749L0.699219 19.0149"
-          stroke="#E53F30"
-          strokeWidth="3"
-          strokeMiterlimit="10"
-          className="group-hover:stroke-black"
-        />
-        <path
-          d="M0.699219 1.2749H18.7892V18.6649"
-          stroke="#E53F30"
-          strokeWidth="3"
-          strokeMiterlimit="10"
-          className="group-hover:stroke-black"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_65_58">
-          <rect
-            width="19.79"
-            height="19.45"
-            fill="white"
-            transform="translate(0 0.274902)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  </button>
-)}
+                            >
+                              <div className="relative">
+                                <p
+                                  className={`duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                                >
+                                  {su.buttonTitle}
+                                </p>
+                              </div>
+                              <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="duration-200 ease-in-out group-hover:scale-125"
+                              >
+                                <g clipPath="url(#clip0_65_58)">
+                                  <path
+                                    d="M18.7892 1.2749L0.699219 19.0149"
+                                    stroke="#E53F30"
+                                    strokeWidth="3"
+                                    strokeMiterlimit="10"
+                                    className="group-hover:stroke-black"
+                                  />
+                                  <path
+                                    d="M0.699219 1.2749H18.7892V18.6649"
+                                    stroke="#E53F30"
+                                    strokeWidth="3"
+                                    strokeMiterlimit="10"
+                                    className="group-hover:stroke-black"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_65_58">
+                                    <rect
+                                      width="19.79"
+                                      height="19.45"
+                                      fill="white"
+                                      transform="translate(0 0.274902)"
+                                    />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </button>
+                          )}
                         </div>
-                       
+
 
                       </div>
                     ),
@@ -399,8 +388,11 @@ const [modalOpen, setModalOpen] = useState(false);
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection) => (
-            <div className=" w-full bg-black ">
+          {Bannerdata.map((herosection, heroIndex) => (
+            <div
+              key={`hero-image-${herosection.id ?? heroIndex}`}
+              className=" w-full bg-black "
+            >
               <Image
                 src={herosection.image}
                 className="w-full"

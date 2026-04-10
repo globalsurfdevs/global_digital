@@ -1,12 +1,101 @@
 export const BlogData = [
   {
+    id: 9,
+    slug: "why-email-marketing-still-quietly-drives",
+    titles:
+      "Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
+    title:
+      " Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
+    list_heading:
+      " Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
+    meta_title: " ",
+    description:
+      " ",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blog-new/blog8/banner.png",
+    thumb:
+      "/images/blog-new/blog8/banner.png",
+    large_thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png",
+    category: "performance marketing",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
+    id: 8,
+    slug: "google-ads-vs-meta-ads-for-uae-lead-generation",
+    titles:
+      "Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins?",
+    title:
+      " How Google Ads and Meta Ads work differently and why it matters for UAE businesses",
+    list_heading:
+      " How Google Ads and Meta Ads work differently and why it matters for UAE businesses",
+    meta_title: "Google Ads vs Meta Ads for UAE Lead Generation | Global Surf ",
+    description:
+      "Find out whether Google Ads or Meta Ads wins for UAE lead generation. See how intent, cost, and conversion quality impact campaign performance. ",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main-featured.jpg",
+    thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main-featured.jpg",
+    large_thumb:
+      "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png",
+    category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 7,
-    slug:"technical-seo-for-built-environment-websites-2026",
-    titles: "Technical SEO Essentials Every Built Environment Website Needs in 2026",
-    title: "Technical SEO Essentials Every Built Environment Website Needs in 2026",
-    list_heading: "Technical SEO Essentials Every Built Environment Website Needs in 2026",
-    meta_title: "Technical SEO Essentials for AEC Websites in 2026 | Global Surf",
-    description: "A practical technical SEO guide for architecture, engineering, & construction websites. Fix crawl issues, improve speed, and optimize for AI. Checklist included.",
+    slug: "technical-seo-for-built-environment-websites-2026",
+    titles:
+      "Technical SEO Essentials Every Built Environment Website Needs in 2026",
+    title:
+      "Technical SEO Essentials Every Built Environment Website Needs in 2026",
+    list_heading:
+      "Technical SEO Essentials Every Built Environment Website Needs in 2026",
+    meta_title:
+      "Technical SEO Essentials for AEC Websites in 2026 | Global Surf",
+    description:
+      "A practical technical SEO guide for architecture, engineering, & construction websites. Fix crawl issues, improve speed, and optimize for AI. Checklist included.",
     post_date: "",
     read_time: "",
     feature_thumb: "/images/blog-new/blog7/mn.jpg",
@@ -15,16 +104,12 @@ export const BlogData = [
     category: "SEO",
     format: "standard",
     views: "",
-    excerpt:
-      "",
-    body: [
-     ""
-    ],
+    excerpt: "",
+    body: [""],
     features_img: [""],
     author_name: " ",
     author_avatar: "",
-    author_para:
-      "",
+    author_para: "",
     social: [
       {
         facebook: "",
@@ -40,11 +125,15 @@ export const BlogData = [
   },
   {
     id: 6,
-    slug:"no-clicks-google-ai-search-built-environment",
-    titles: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
-    title: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
-    list_heading: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
-    meta_title: "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results | Global Surf Blog",
+    slug: "no-clicks-google-ai-search-built-environment",
+    titles:
+      "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+    title:
+      "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+    list_heading:
+      "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
+    meta_title:
+      "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results | Global Surf Blog",
     description: "",
     post_date: "",
     read_time: "",
@@ -54,16 +143,12 @@ export const BlogData = [
     category: "SEO",
     format: "standard",
     views: "",
-    excerpt:
-      "",
-    body: [
-     ""
-    ],
+    excerpt: "",
+    body: [""],
     features_img: [""],
     author_name: " ",
     author_avatar: "",
-    author_para:
-      "",
+    author_para: "",
     social: [
       {
         facebook: "",
@@ -77,13 +162,17 @@ export const BlogData = [
       },
     ],
   },
- {
+  {
     id: 1,
-    slug:"global-surf-at-1billion-followers-summit",
-    titles: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
-    title: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
-    list_heading: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
-    meta_title: "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit | Global Surf Blog",
+    slug: "global-surf-at-1billion-followers-summit",
+    titles:
+      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+    title:
+      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+    list_heading:
+      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+    meta_title:
+      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit | Global Surf Blog",
     description: "",
     post_date: "",
     read_time: "",
@@ -93,16 +182,12 @@ export const BlogData = [
     category: "Content Production",
     format: "standard",
     views: "",
-    excerpt:
-      "",
-    body: [
-     ""
-    ],
+    excerpt: "",
+    body: [""],
     features_img: [""],
     author_name: " ",
     author_avatar: "",
-    author_para:
-      "",
+    author_para: "",
     social: [
       {
         facebook: "",
@@ -118,12 +203,14 @@ export const BlogData = [
   },
   {
     id: 2,
-    slug:"social-media-video-production-tips",
+    slug: "social-media-video-production-tips",
     titles: "social media video production tips",
     title: "social media video production tips",
-    list_heading: "Mastering Social Media Video Production: Tips to Boost Engagement",
+    list_heading:
+      "Mastering Social Media Video Production: Tips to Boost Engagement",
     meta_title: "Social Media Video Production Guide | Global Surf Blog",
-    description: "Learn how to create engaging social media videos. Discover strategies, tools, and tips to boost visibility, connect with your audience, and drive results.",
+    description:
+      "Learn how to create engaging social media videos. Discover strategies, tools, and tips to boost visibility, connect with your audience, and drive results.",
     post_date: "",
     read_time: "",
     feature_thumb: "/images/blog-new/blog_2.png",
@@ -132,16 +219,12 @@ export const BlogData = [
     category: "Content Production",
     format: "standard",
     views: "",
-    excerpt:
-      "",
-    body: [
-     ""
-    ],
+    excerpt: "",
+    body: [""],
     features_img: [""],
     author_name: " ",
     author_avatar: "",
-    author_para:
-      "",
+    author_para: "",
     social: [
       {
         facebook: "",
@@ -157,7 +240,7 @@ export const BlogData = [
   },
   {
     id: 3,
-    slug:"poor-sales-try-our-website-redesign-services-for-results",
+    slug: "poor-sales-try-our-website-redesign-services-for-results",
     titles: "poor-sales-try-our-website-redesign-services-for-results",
     title: "<b>Poor Sales?</b> Try our website redesign services for results!",
     list_heading: "Poor Sales? Try our website redesign services for results!",
@@ -196,7 +279,7 @@ export const BlogData = [
   },
   {
     id: 4,
-    slug:"social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
+    slug: "social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
     titles:
       "social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
     title:
@@ -239,7 +322,7 @@ export const BlogData = [
   },
   {
     id: 5,
-    slug:"the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
+    slug: "the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
     titles: "b2b-marketing-trends-to-follow-in-2024",
     title:
       "<b>The B2B marketing trends </b> to follow in 2024 to overcome your B2B challenges",
@@ -279,5 +362,4 @@ export const BlogData = [
       },
     ],
   },
-  
 ];

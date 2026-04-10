@@ -53,14 +53,18 @@ const Services: React.FC<ServicesSectionProps> = ({
             }, // Slide up and fade in
           }}
         >
-          <div className={`gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px]  lg:gap-10 lg:pb-[150px] lg:pt-[140px] pas  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}>
+          <div className={`gap-xl-0 grid grid-cols-1 gap-0 md:gap-5 pb-8 pt-8  md:pb-[60px]  md:pt-[50px]  lg:gap-10 lg:pb-[150px] lg:pt-[140px] pas  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}>
             <div className="col-span-2 text-5xl">
               <h2 className={`title-65 pb-2 ${bgcolor =="bg-black"? "text-white" : "text-black"}`} >
                 {title}
               </h2>
+              {
+                description && (
               <p className={`text-19 fnt-lexend max-w-[40ch] pt-4 md:pt-6 xl:pt-14 ${bgcolor =="bg-black"? "text-white" : "text-gray1"}`}>
                 {description}
               </p>
+                )
+              }
             </div>
 
             <div  className={`serv-mn  w-full ps-0 text-font30 xl:ps-12 ${colcount ? `col-span-${colcount - 2}` : "col-span-4"}`} >

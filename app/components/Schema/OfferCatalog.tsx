@@ -65,7 +65,7 @@ export const CreativeOfferSchema = () => {
 
 export const MarketingIntelligenceSchema = () => {
   return (
-   <script
+    <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: `{
@@ -117,9 +117,9 @@ export const MarketingIntelligenceSchema = () => {
   );
 };
 
-export const DigitalMarketingServicesSchema =() => {
+export const DigitalMarketingServicesSchema = () => {
   return (
-   <script
+    <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: `{
@@ -363,10 +363,10 @@ export const OneBillionFollowersSchema = () => {
 export const OneClickSchema = () => {
   return (
     <>
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: ` 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: ` 
         {  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -412,13 +412,13 @@ export const OneClickSchema = () => {
     }
   ]
 }`
-      }}
-    />
+        }}
+      />
 
- <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: `{
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `{
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "No Clicks from Google? How Built Environment Brands Can Win Visibility in AI Search Results",
@@ -442,8 +442,8 @@ export const OneClickSchema = () => {
     "@id": "https://www.globalsurf.ae/blog/no-clicks-google-ai-search-built-environment"
   }
 }`
-      }}
-    />
+        }}
+      />
     </>
   );
 };
@@ -519,6 +519,86 @@ export const TechnicalSEOSchema = () => {
 }
 
 `
+      }}
+    />
+  );
+};
+
+export const GoogleAdsVsMetaAdsSchema = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins?",
+    description:
+      "Compare Google Ads and Meta Ads for UAE lead generation. Learn cost per lead benchmarks, targeting differences, and how to split your ad budget for better ROI.",
+    image: "https://www.globalsurf.ae/images/google-vs-meta-ads-uae.jpg",
+    author: {
+      "@type": "Organization",
+      name: "Global Surf Digital",
+      url: "https://www.globalsurf.ae/",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Global Surf Digital",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.globalsurf.ae/gs-digital-logo.svg",
+      },
+    },
+    datePublished: "2026-03-27",
+    dateModified: "2026-03-27",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      url: "https://www.globalsurf.ae/blogs/google-ads-vs-meta-ads-for-uae-lead-generation",
+    },
+    articleSection: "Performance Marketing",
+    wordCount: 2200,
+    articleBody:
+      "Google Ads captures high-intent users actively searching for solutions, while Meta Ads builds awareness and demand through discovery. In the UAE market, both platforms play different roles across the buyer journey. Businesses that align platform selection with intent, cost per qualified lead, and conversion outcomes achieve better performance. This guide compares cost benchmarks, industry performance, targeting differences, and budget allocation strategies.",
+    hasPart: [
+      {
+        "@type": "WebPageElement",
+        name: "How Google Ads and Meta Ads work differently and why it matters for UAE businesses",
+        position: 1,
+      },
+      {
+        "@type": "WebPageElement",
+        name: "Cost per lead benchmarks: Google Ads vs Meta Ads in the UAE",
+        position: 2,
+      },
+      {
+        "@type": "WebPageElement",
+        name: "Which platform wins by industry: real estate, B2B, healthcare, education and e-commerce",
+        position: 3,
+      },
+      {
+        "@type": "WebPageElement",
+        name: "Audience targeting: where Google and Meta pull apart",
+        position: 4,
+      },
+      {
+        "@type": "WebPageElement",
+        name: "How to split your UAE ad budget between Google and Meta",
+        position: 5,
+      },
+      {
+        "@type": "WebPageElement",
+        name: "The combined play: how to use Google and Meta together in the UAE",
+        position: 6,
+      },
+      {
+        "@type": "WebPageElement",
+        name: "So, which channel wins for UAE lead generation?",
+        position: 7,
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
       }}
     />
   );

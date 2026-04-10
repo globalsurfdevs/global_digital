@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 
 
   const PortfolioList = ({ BlogData }: { BlogData: any[] }) => {
-
           const [data, setData] = useState< BlogInputTypes[] | null>(null)
       
           useEffect(() => {

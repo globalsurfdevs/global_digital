@@ -3,13 +3,14 @@ import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic"
 import Contentone from "../../../components/BlogSocialMedia/ContentSectionOne";
 import ContentSectionStaic from "../../../components/BlogSocialMedia/ContentSectionStatic"
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
-import {OneBillionFollowersSchema} from "../../../components/Schema/OfferCatalog";
+import { OneBillionFollowersSchema } from "../../../components/Schema/OfferCatalog";
 
 
 
-import { BannerSection ,videoProductionData,platformCheatSheetData,Faq,videoGuideSteps,videoTips,
-  troubleshootingData,listingSectionData,contentSectionsData,
-  videoProductionsocialData,videocountData,scrollSectionsData,authors
+import {
+  BannerSection, videoProductionData, platformCheatSheetData, Faq, videoGuideSteps, videoTips,
+  troubleshootingData, listingSectionData, contentSectionsData,
+  videoProductionsocialData, videocountData, scrollSectionsData, authors
 
 } from "../../../data/blogdatas/globalsurfBlogData";
 
@@ -40,22 +41,16 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const page = () => {
-  
+
 
   return (
     <div className="relative">
       <OneBillionFollowersSchema />
-<SocialShare/>
-      
-      <HeroSection
-        Bannerdata={BannerSection}
-        hideslider={true}
-        maxchwidth={27}
-      />
-     
-     <Contentone sections={contentSectionsData} />
-     <Contentone sections={videoProductionsocialData}  />
-<ContentSectionStaic />
+      <SocialShare />
+      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
+      <Contentone sections={contentSectionsData} />
+      <Contentone sections={videoProductionsocialData} />
+      <ContentSectionStaic />
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
+import HeroSectionType2 from "../../components/PermormanceMarketing/HeroSectionType2";
 import Services from "../../components/Geo/RightSideBulletsPoints";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";  
-import LogoSwiper from "../../components/DigitalMarketingService/LogoSwiper";
-import Platforms from "@/app/components/Geo/NumberLineText";
+import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import GeoLogoSwiper from "@/app/components/Geo/GeoLogoSwiper";
+import NumberCardGrid from "@/app/components/Geo/NumberCardGrid";
 import Expertise from "../../components/PermormanceMarketing/Expertise";
 import IconlineTitle from "@/app/components/Geo/IconlineTtitle";
 import Expertises from "../../components/Geo/NumberHovImg";
@@ -13,19 +13,19 @@ import BottomLine from "@/app/components/Geo/BottomLine";
 import Head from "next/head";
 
 import {
-  BannerSection, 
+  BannerSection,
   OurServices,
   Frameworkdata,
   Wecanhelp,
   Cta,
   Faq,
   logosdata,
-  logosdatas, AreaExpertise,Wehelp, IndustriesWeServe,WhyBrands,
+  logosdatas, AreaExpertise, Wehelp, IndustriesWeServe, WhyBrands,
 } from "../../data/services/generative-engine-optimization/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
 import Framework from "@/app/components/Geo/IconsTopContentBelow";
-import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices"; 
+import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
 interface Canonicals {
   canonical: string;
@@ -39,7 +39,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Consultants Dubai – Global Surf Digital",
+    title: "Generative Engine Optimization (GEO) Services Dubai | Global Surf Digital",
     description:
       "Global Surf Digital is a top-rated digital marketing consulting agency in Dubai. We craft data-driven strategies across SEO, PPC, Social Media, and Performance Marketing to help ambitious brands grow sales, visibility, and market authority.",
     alternates: {
@@ -53,8 +53,7 @@ const page = () => {
   return (
     <div>
       <Head>
-        <meta
-          property="og:title"
+        <meta property="og:title"
           content="Comprehensive Digital Marketing Services in Dubai | Maximize Impact"
         />
         <meta property="og:site_name" content="Global Surf Digital Media" />
@@ -67,57 +66,40 @@ const page = () => {
           content="From SEO to analytics, our digital marketing services in Dubai are designed to enhance your brand’s impact, engagement, and conversions. Partner with Global Surf today."
         />
       </Head>
-      <HeroSection
-        Bannerdata={BannerSection}
-        hideslider={true}
-        maxchwidth={24} 
-      />
-       <div className="pb-[50px] pt-[20px] lg:pb-[130px] lg:pt-[130px]">
-        <LogoSwiper
-          logosdata={logosdata}
-          slidesPerView={6.5}
-          title1="Platforms We Optimize For "
-          subcontent="Where You Show Up "
-        />
-        <LogoSwiper logosdata={logosdatas} slidesPerView={6.5} />
+      <HeroSectionType2 Bannerdata={BannerSection} hideslider={true} maxchwidth={24} />
+      <div className="py-10 md:py-24 xl:py-140">
+        <GeoLogoSwiper logosdata={logosdata} slidesPerView={5.6} title1="Platforms We Optimize For " subcontent="Ensure your brand appears across all major AI search engines " />
+        <GeoLogoSwiper logosdata={logosdatas} slidesPerView={5.6} direction="reverse" />
       </div>
-<div className="bg-[#F2F2F2]">
-  <Platforms
-    title={Wecanhelp.title}
-    data={Wecanhelp.data}
-    icontitle={false}
-    hiddentitle={true}
-    leftzero={true}
-    colcount={4}
-    hideIcon={true}      // hide icons
-    showNumbers={true}   // show 01, 02, 03...
-  />
-</div>
+      <div className="bg-black py-140">
+        <NumberCardGrid
+          title={Wecanhelp.title}
+          data={Wecanhelp.data}
+          leftzero={true}
+          colcount={4}
+        />
+      </div>
 
       <div className="">
         <Framework
           title={Frameworkdata.title}
           data={Frameworkdata.data}
           colcount={3}
-        /> 
-      </div>       
-     
-     
-      <Services
-      />
+        />
+      </div>
+      <Services />
       <Expertise title={AreaExpertise.title} subttle={AreaExpertise.subttle} data={AreaExpertise.data} colnum={3} />
-<IconlineTitle  title={Wehelp.title}
-          data={Wehelp.data}
-  
-          bgcolor="bg-black"
-          colcount={3}
-          />
+      <IconlineTitle title={Wehelp.title}
+        data={Wehelp.data}
+        bgcolor="bg-black"
+        colcount={3}
+      />
 
-          <Expertises colnum={3}
+      <Expertises colnum={3}
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}
       />
-       <GeoProcess
+      <GeoProcess
         title={OurServices.title}
         data={OurServices.data}
         bgcolor="bg-white"
@@ -126,17 +108,19 @@ const page = () => {
         hrcontent={true}
       />
 
-    <BottomLine title={WhyBrands.title}
-              data={WhyBrands.data}
-             subtitle="We help your brand become part of the answer — not just another search result. "
-              colcount={3} />
-     
-     
+      <BottomLine title={WhyBrands.title}
+        titlemb="mb-5 xl:mb-10"
+        data={WhyBrands.data}
+        subtitle="We position your brand within AI-generated answers, not just traditional search results."
+        colcount={3} />
+
+
       <GetInTouch data={Cta} redlast={true} ctabbutton={"Book Now"} />
-      <FAQ data={Faq} />
-    
+      <FAQ data={Faq} defActive="2" />
+
     </div>
   );
 };
 
 export default page;
+

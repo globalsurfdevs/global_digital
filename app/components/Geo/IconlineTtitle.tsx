@@ -36,7 +36,7 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
   return (
     <div className={` ${bgcolor ? `${bgcolor}` : "bg-dgray"}`}>
       <div className="container mx-auto py-4">
-        <div className="pd-cus flex flex-col py-[50px] lg:py-[111px]">
+        <div className="pd-cus flex flex-col py-8 md:py-[50px] lg:py-[111px]">
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -92,12 +92,12 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 gap-6  md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
+              className={`grid grid-cols-1 gap-2 md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
             >
               {data.map((framework) => (
                 <div
                   key={framework.id}
-                  className="group relative    flex flex-col overflow-hidden"
+                  className="group relative flex flex-col overflow-hidden"
                 >
                      {!framework.icn && (
                     <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary   transition-transform duration-500  lg:mb-8 lg:mt-10">
@@ -107,7 +107,7 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
                     </div>
                   )}
                   {framework.icn && (
-                    <div className="mb-4 mt-6 flex h-[50px]  w-[50px]   lg:mt-10">
+                    <div className="mb-4 md:mt-6 flex h-[50px] w-[50px] lg:mt-10">
                       <Image
                         src={framework.icn}
                         alt="icon"
@@ -117,7 +117,7 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
                   )}
                   {/* Animated Red Border */}
                   <div
-                    className={`relative h-[1px] overflow-hidden rounded-xl lg:my-8 ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
+                    className={`relative h-[1px] overflow-hidden rounded-xl mb-4 lg:my-8 ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
                   >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>

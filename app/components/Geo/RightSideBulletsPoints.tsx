@@ -4,7 +4,7 @@ import React from "react";
 
 const AiToolsPreferenceSection: React.FC = () => {
   return (
-    <section className="bg-[#F4F4F4] py-16 lg:py-24">
+    <section className="bg-[#F4F4F4] py-8 md:py-16 lg:py-24">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Top row */}
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
@@ -13,13 +13,13 @@ const AiToolsPreferenceSection: React.FC = () => {
             <h2 className="title-65 text-black">
               What AI Tools Prefer
               <br className="hidden md:block" />
-              &nbsp;Today
+              Today
             </h2>
           </div>
 
           {/* Right side columns */}
           <div className="lg:w-6/12 flex-col lg:justify-end">
-          <div className="flex flex-col gap-[80px] lg:flex-row ">
+          <div className="flex flex-col gap-3 md:gap-10 xl:gap-[80px] lg:flex-row ">
             {/* What They Avoid */}
             <div className="space-y-4">
               <div className="flex items-center gap-[30px]">
