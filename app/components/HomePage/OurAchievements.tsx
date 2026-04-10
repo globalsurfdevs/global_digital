@@ -81,12 +81,14 @@ const OurAchievements = () => {
                   width={38}
                   height={52}
                   className="transition-transform  duration-500 group-hover:scale-110 group-hover:opacity-50"
+                  loading="lazy"
                 />
                 <Image
                   src={assets.yr1}
                   alt="years"
                   width={72}
                   height={80}
+                  loading="lazy"
                   className="absolute top-0 opacity-0 transition-transform   duration-500 group-hover:scale-110 group-hover:opacity-[1]"
                 />
               </div>
@@ -103,7 +105,7 @@ const OurAchievements = () => {
                   Years
                 </p> */}
                 <SeoCounter value={12} label="Years" />
-                
+
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
@@ -150,7 +152,7 @@ const OurAchievements = () => {
                   </span>{" "}
                   Clients
                 </p> */}
-                 <SeoCounter value={125} label="Clients" />
+                <SeoCounter value={125} label="Clients" />
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
@@ -197,8 +199,8 @@ const OurAchievements = () => {
                   Projects
                 </p> */}
 
-                 <SeoCounter value={250} label="Projects" />
-              
+                <SeoCounter value={250} label="Projects" />
+
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
