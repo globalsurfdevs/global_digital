@@ -53,7 +53,7 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
 
               {title1 && (
                 <Link href="">
-                <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                  <p className=" border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] mb-2 md:mb-6 xl:mb-[79px]">
                   {title1}
                   </p>
                 </Link>
@@ -90,7 +90,7 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 gap-6  md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
+              className={`grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
             >
               {data.map((framework) => (
                 <div
@@ -126,7 +126,7 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
                         )}
                   </div>
                    <div
-                    className={`relative h-[1px] my-[30px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
+                    className={`relative h-[1px] my-4 md:my-[30px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
                   >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
