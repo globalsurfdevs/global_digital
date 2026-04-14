@@ -1,5 +1,6 @@
 import React from "react";
 import Portfolio from "@/app/components/Portfolio";
+import { getPortfolio } from "@/app/lib/portfolio.service";
 interface Canonicals {
   canonical: string;
 }
@@ -21,13 +22,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 const page = async() => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolio`, {
-    next: { revalidate: 60 },
-  });
-  const data = await response.json();
+  const portfolio = await getPortfolio();
   return (
     <>
-      <Portfolio data={data.portfolio}/>
+      <Portfolio data={portfolio}/>
     </>
   );
 };
