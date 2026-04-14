@@ -46,10 +46,10 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
             }}
           >
             <h2
-  className="title-65"
-  style={{ maxWidth: maxchwidth ? `${maxchwidth}ch` : undefined }}
-  dangerouslySetInnerHTML={{ __html: title }}
-></h2>
+              className="title-65"
+              style={{ maxWidth: maxchwidth ? `${maxchwidth}ch` : undefined }}
+              dangerouslySetInnerHTML={{ __html: title }}
+            ></h2>
 
             <p className="text-19 fnt-lexend font-400 mt-6 text-[#77787B] lg:mt-[30px] lg:max-w-[96ch]">
               {subttle}
@@ -133,9 +133,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                         </h3>
 
                         <div className=" overflow-hidden">
-                          <p
-                            className="text-19 fnt-lexend cntsmd hided-content max-h-0 w-[102%] overflow-hidden pt-2 text-white
-                                   opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100"
+                          <p className="text-19 fnt-lexend cntsmd hided-content max-h-0 w-[102%] overflow-hidden pt-2 text-white opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100"
                           >
                             {expertise.desc}
                           </p>

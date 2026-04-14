@@ -7,58 +7,63 @@ import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
 import { formatLinkForPortfolio, formatLinkForCaseStudy } from "@/app/helpers/formatLink";
-const PortfolioList = () => {
+const PortfolioList = ({data}:{data:Portfolio[]}) => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const CACHE_DURATION = 10 * 60 * 1000;
+  // useEffect(() => {
+  //   const cachedData = localStorage.getItem('portfolios')
+  //   const fetchPortfolios = async () => {
+  //     try {
+  //       const response = await fetch(`/api/portfolio`);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log(data.portfolio);
+  //         setPortfolios(data.portfolio);
+  //         localStorage.setItem(
+  //           'portfolios',
+  //           JSON.stringify({
+  //             timestamp: Date.now(),
+  //             data: data.portfolio,
+  //           })
+  //         )
+  //       } else {
+  //         console.error("Failed to fetch portfolio data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching portfolio data:", error);
+  //     }
+  //   };
+
+  //   if (cachedData) {
+  //     const { timestamp, data } = JSON.parse(cachedData);
+  //     if (Date.now() - timestamp < CACHE_DURATION) {
+  //       setPortfolios(data)
+  //     } else {
+  //       localStorage.removeItem('portfolios')
+  //       fetchPortfolios();
+  //     }
+  //   } else {
+  //     localStorage.removeItem('portfolios')
+  //     fetchPortfolios();
+  //   }
+
+  // }, []);
+
   useEffect(() => {
-    const cachedData = localStorage.getItem('portfolios')
-    const fetchPortfolios = async () => {
-      try {
-        const response = await fetch(`/api/portfolio`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data.portfolio);
-          setPortfolios(data.portfolio);
-          localStorage.setItem(
-            'portfolios',
-            JSON.stringify({
-              timestamp: Date.now(),
-              data: data.portfolio,
-            })
-          )
-        } else {
-          console.error("Failed to fetch portfolio data");
-        }
-      } catch (error) {
-        console.error("Error fetching portfolio data:", error);
-      }
-    };
-
-    if (cachedData) {
-      const { timestamp, data } = JSON.parse(cachedData);
-      if (Date.now() - timestamp < CACHE_DURATION) {
-        setPortfolios(data)
-      } else {
-        localStorage.removeItem('portfolios')
-        fetchPortfolios();
-      }
-    } else {
-      localStorage.removeItem('portfolios')
-      fetchPortfolios();
-    }
-
-  }, []);
-
+  if (data && data.length > 0) {
+    setPortfolios(data);
+  }
+}, [data]);
 
   const [filter, setFilter] = useState("all");
 
   const [originalPortfolio, setOriginalPortfolio] = useState<Portfolio[]>([])
 
-  useEffect(() => {
-    if (originalPortfolio.length === 0 && portfolios.length > 0) {
-      setOriginalPortfolio(portfolios); // Initialize the original portfolio only once
-    }
-  }, [portfolios]);
+  // useEffect(() => {
+  //   if (originalPortfolio.length === 0 && portfolios.length > 0) {
+  //     setOriginalPortfolio(portfolios); // Initialize the original portfolio only once
+  //   }
+  // }, [portfolios]);
 
   const handleFiltering = (filter: string) => {
 
@@ -68,11 +73,11 @@ const PortfolioList = () => {
 
     if (filter === "all") {
       // If the filter is "all", reset to the original portfolio
-      setPortfolios(originalPortfolio);
+      setPortfolios(data);
     } else {
       // Filter the original portfolio
       setPortfolios(
-        originalPortfolio.filter((portfolio) =>
+        data.filter((portfolio:Portfolio) =>
           portfolio.categories.some((category) => category.name === filter)
         )
       );
@@ -82,17 +87,15 @@ const PortfolioList = () => {
   const [newFilterTags, setNewFilterTags] = useState<string[]>([])
 
   useEffect(() => {
-    const allExistingCategories = portfolios.map((portfolio) => (
+    const allExistingCategories = data.map((portfolio:Portfolio) => (
       portfolio.categories.map((category) => (
         category.name
       ))
     ))
 
-    console.log(allExistingCategories)
-
     setNewFilterTags([...new Set(allExistingCategories.flat())])
 
-  }, [originalPortfolio])
+  }, [data])
 
 
 

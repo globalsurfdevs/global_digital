@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import apiService from '@/app/lib/apiService';
 import { formatLinkForCaseStudy } from '@/app/helpers/formatLink';
 import LandingCaseStudy from '@/app/components/LandingCaseStudy';
+import { getCaseStudies } from '@/app/lib/case-study.service';
 
 type Data = {
   caseStudy: {
@@ -39,9 +40,10 @@ export async function generateMetadata(): Promise<Metadata> {
 //   };
 // }
 
-const page = () => {
+const page = async() => {
+    const caseStudy = await getCaseStudies()
   return (
-    <LandingCaseStudy />
+    <LandingCaseStudy data={caseStudy}/>
   )
 }
 

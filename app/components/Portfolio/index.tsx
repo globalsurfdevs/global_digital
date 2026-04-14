@@ -3,11 +3,11 @@ import React from 'react'
 import HeroSection from './HeroSection'
 import PortfolioList from './PortfolioList'
 
-const Portfolio = () => {
+const Portfolio = ({data}:any) => {
   return (
     <>
         <HeroSection/>
-        <PortfolioList/>
+        <PortfolioList data={data}/>
     </>
   )
 }

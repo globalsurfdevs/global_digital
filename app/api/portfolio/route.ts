@@ -9,6 +9,7 @@ import PortfolioHighlight from "@/app/models/PortfolioHighlight";
 import mongoose from "mongoose";
 import '@/app/models/Category'
 import '@/app/models/Channel'
+import { revalidateTag } from "next/cache";
 
 
 
@@ -450,7 +451,7 @@ export async function POST(req: NextRequest) {
 
                 }
 
-
+                revalidateTag("portfolio");
                 return NextResponse.json({ message: "Portfolio updated successfully" }, { status: 200 })
 
             }
@@ -591,6 +592,7 @@ export async function POST(req: NextRequest) {
                 }
 
                 if (portfolio) {
+                    revalidateTag("portfolio");
                     return NextResponse.json({ message: "Portfolio added successfully" }, { status: 200 })
 
                 } else if (!portfolio) {
@@ -731,7 +733,7 @@ export async function POST(req: NextRequest) {
 
                     //     }
 
-
+                    revalidateTag("caseStudies")
                     return NextResponse.json({ message: "Case study updated successfully" }, { status: 200 })
 
 
@@ -861,6 +863,7 @@ export async function POST(req: NextRequest) {
                 }
 
                 if (portfolio) {
+                    revalidateTag("caseStudies")
                     return NextResponse.json({ message: "Case study added successfully" }, { status: 200 })
 
                 } else if (!portfolio) {
@@ -896,7 +899,7 @@ export async function DELETE(req: NextRequest) {
                 { status: 404 }
             );
         }
-
+        revalidateTag("portfolio");
         return NextResponse.json(
             { message: "Removed portfolio successfully" },
             { status: 200 }
