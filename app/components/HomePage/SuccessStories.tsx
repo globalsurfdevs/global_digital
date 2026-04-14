@@ -86,17 +86,17 @@ const SuccessStories = () => {
                 >
                   <div className="relative flex flex-col justify-center h-[273px] gap-5   px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]"
                     style={{
-                    backgroundImage: `url(${item.portfolios.homeImage})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}>
-                    <Image src={item.portfolios.logo} alt={item.portfolios.companyName} width={100} height={100} className="absolute bottom-4 right-4 brightness-0 invert-[1]"/>
-                    
+                      backgroundImage: `url(${item.portfolios.homeImage})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}>
+                    <Image src={item.portfolios.logo} alt={item.portfolios.companyName} width={100} height={100} className="absolute bottom-4 right-4 brightness-0 invert-[1]" loading="lazy" />
+
                   </div>
                   <div className="flex flex-col justify-center gap-8 px-8 py-10  text-white xl:px-[3.5rem]">
                     <div className="  relative flex h-full flex-col justify-between">
-                       
-                      
+
+
                       <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100 group-hover:-translate-y-2 group-hover:translate-x-3">
                         <svg
                           width="36"

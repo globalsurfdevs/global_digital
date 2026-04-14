@@ -132,6 +132,7 @@ const OurAchievements = () => {
                   alt="Clients"
                   width={38}
                   height={52}
+                  loading="lazy"
                   className="transition-transform  duration-500 group-hover:scale-110 group-hover:opacity-50"
                 />
                 <Image
@@ -139,6 +140,7 @@ const OurAchievements = () => {
                   alt="Clients"
                   width={72}
                   height={80}
+                  loading="lazy"
                   className="absolute top-0 opacity-0 transition-transform   duration-500 group-hover:scale-110 group-hover:opacity-[1]"
                 />
               </div>
@@ -178,6 +180,7 @@ const OurAchievements = () => {
                   alt="Projects"
                   width={38}
                   height={52}
+                  loading="lazy"
                   className="transition-transform  duration-500 group-hover:scale-110 group-hover:opacity-50"
                 />
                 <Image
@@ -185,6 +188,7 @@ const OurAchievements = () => {
                   alt="Projects"
                   width={72}
                   height={80}
+                  loading="lazy"
                   className="absolute top-0 opacity-0 transition-transform   duration-500 group-hover:scale-110 group-hover:opacity-[1]"
                 />
               </div>
