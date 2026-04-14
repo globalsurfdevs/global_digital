@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import apiService from '@/app/lib/apiService';
 import { formatLinkForCaseStudy } from '@/app/helpers/formatLink';
 import LandingCaseStudy from '@/app/components/LandingCaseStudy';
+import { getCaseStudies } from '@/app/lib/case-study.service';
 
 type Data = {
   caseStudy: {
@@ -40,12 +41,9 @@ export async function generateMetadata(): Promise<Metadata> {
 // }
 
 const page = async() => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study`, {
-    next: { revalidate: 60 },
-  });
-  const data = await response.json();
+    const caseStudy = await getCaseStudies()
   return (
-    <LandingCaseStudy data={data.caseStudy}/>
+    <LandingCaseStudy data={caseStudy}/>
   )
 }
 
