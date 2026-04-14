@@ -91,9 +91,9 @@ const FAQ: React.FC<PartnerListProps> = ({
                 {title}</h2>
               {
                 subp && (
-              <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
-                {subp}
-              </p>
+                  <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
+                    {subp}
+                  </p>
                 )
               }
             </div>
@@ -128,11 +128,11 @@ const FAQ: React.FC<PartnerListProps> = ({
                       </div>
                       {open === index ? (
                         <div className="text-5xl text-primary">
-                          <Image src={arrowactive} alt="image" className="min-h-[25px] min-w-[25px] lg:min-h-[35px] lg:min-w-[35px] " ></Image>
+                          <Image src={arrowactive} alt="image" width={25} height={25} className="min-h-[25px] min-w-[25px] lg:min-h-[35px] lg:min-w-[35px] " loading="lazy" ></Image>
                         </div>
                       ) : (
                         <div className="text-xl">
-                          <Image src={arrowdown} alt="image" className="min-h-[15px] min-w-[15px]  " ></Image>
+                          <Image src={arrowdown} alt="image" height={25} width={25} className="min-h-[15px] min-w-[15px]  " loading="lazy" ></Image>
                         </div>
                       )}
                     </motion.div>
