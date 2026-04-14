@@ -10,64 +10,69 @@ import { formatLinkForPortfolio, formatLinkForCaseStudy } from "@/app/helpers/fo
 import { CaseStudy } from "@/app/types/CaseStudy";
 
 
-const CaseStudyList = () => {
+const CaseStudyList = ({data}:{data:CaseStudy[]}) => {
 
   const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
 
-  const CACHE_DURATION = 10 * 60 * 1000;
+  // const CACHE_DURATION = 10 * 60 * 1000;
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const cachedData = localStorage.getItem('case-study')
+  //   const cachedData = localStorage.getItem('case-study')
 
 
-    const fetchCaseStudies = async () => {
-      try {
-        const response = await fetch(`/api/case-study`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data.caseStudy);
-          setCaseStudies(data.caseStudy);
-          localStorage.setItem(
-            'case-study',
-            JSON.stringify({
-              timestamp: Date.now(),
-              data: data.caseStudy,
-            })
-          )
-        } else {
-          console.error("Failed to fetch case study data");
-        }
-      } catch (error) {
-        console.error("Error fetching case study data:", error);
-      }
-    };
+  //   const fetchCaseStudies = async () => {
+  //     try {
+  //       const response = await fetch(`/api/case-study`);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log(data.caseStudy);
+  //         setCaseStudies(data.caseStudy);
+  //         localStorage.setItem(
+  //           'case-study',
+  //           JSON.stringify({
+  //             timestamp: Date.now(),
+  //             data: data.caseStudy,
+  //           })
+  //         )
+  //       } else {
+  //         console.error("Failed to fetch case study data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching case study data:", error);
+  //     }
+  //   };
 
-    if (cachedData) {
-      const { timestamp, data } = JSON.parse(cachedData);
-      if (Date.now() - timestamp < CACHE_DURATION) {
-        setCaseStudies(data)
-      } else {
-        localStorage.removeItem('case-study')
-        fetchCaseStudies();
-      }
-    } else {
-      localStorage.removeItem('case-study')
-      fetchCaseStudies();
-    }
+  //   if (cachedData) {
+  //     const { timestamp, data } = JSON.parse(cachedData);
+  //     if (Date.now() - timestamp < CACHE_DURATION) {
+  //       setCaseStudies(data)
+  //     } else {
+  //       localStorage.removeItem('case-study')
+  //       fetchCaseStudies();
+  //     }
+  //   } else {
+  //     localStorage.removeItem('case-study')
+  //     fetchCaseStudies();
+  //   }
 
-  }, []);
+  // }, []);
 
+    useEffect(() => {
+  if (data && data.length > 0) {
+    setCaseStudies(data);
+  }
+}, [data]);
 
   const [filter, setFilter] = useState("all");
 
   const [originalCaseStudy, setOriginalCaseStudy] = useState<CaseStudy[]>([])
 
   useEffect(() => {
-    if (originalCaseStudy.length === 0 && caseStudies.length > 0) {
-      setOriginalCaseStudy(caseStudies); // Initialize the original portfolio only once
+    if (originalCaseStudy.length === 0 && data.length > 0) {
+      setOriginalCaseStudy(data); // Initialize the original portfolio only once
     }
-  }, [caseStudies]);
+  }, [data]);
 
   const handleFiltering = (filter: string) => {
     setFilter(filter);
@@ -89,7 +94,7 @@ const CaseStudyList = () => {
 
   useEffect(() => {
     if (newFilterTags.length > 0) return;
-    const allExistingCategories = caseStudies.map((item) => (
+    const allExistingCategories = data.map((item) => (
       item.categories.map((category) => (
         category.name
       ))
@@ -101,7 +106,7 @@ const CaseStudyList = () => {
       setNewFilterTags([...new Set(allExistingCategories.flat())])
     }
 
-  }, [caseStudies])
+  }, [data])
 
 
 
