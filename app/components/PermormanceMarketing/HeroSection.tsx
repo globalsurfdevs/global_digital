@@ -157,7 +157,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                                   (herosection.navigation?.length || 0) -
                                   1 && (
                                     <li>
-
+                                      <Image src="/assets/bc-arrow.png" alt="Arrow" width={7} height={12}
+                                        className="relative top-[3px] lg:top-0" loading="lazy" />
                                     </li>
                                   )}
                               </React.Fragment>
