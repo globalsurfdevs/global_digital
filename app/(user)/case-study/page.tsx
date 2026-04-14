@@ -39,9 +39,13 @@ export async function generateMetadata(): Promise<Metadata> {
 //   };
 // }
 
-const page = () => {
+const page = async() => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study`, {
+    next: { revalidate: 60 },
+  });
+  const data = await response.json();
   return (
-    <LandingCaseStudy />
+    <LandingCaseStudy data={data.caseStudy}/>
   )
 }
 
