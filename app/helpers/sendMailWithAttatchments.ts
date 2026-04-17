@@ -27,6 +27,7 @@ export async function sendMailWithAttachments({
       from: "Enquiry <enquiry@globalsurf.ae>",
       to,
       subject,
+      cc:["faisal@globalsurf.ae","preethika@globalsurf.ae"],
       react: CareerTemplate(fields) as ReactElement,
       attachments,
     });
