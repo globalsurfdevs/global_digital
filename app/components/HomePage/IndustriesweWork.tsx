@@ -4,56 +4,56 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { motion } from "framer-motion";
 import { Navigation, Autoplay } from "swiper/modules";
+import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 
 const images = [
-  
-  {
-    src: "../../assets/works/realestate.svg",
 
+  {
+    src: assets.realestate1,
     title: "Construction",
     desc: "Helping contractors, developers and EPC firms capture qualified project enquiries and strengthen visibility during procurement and tender evaluation stages.",
   },
   {
-    src: "../../assets/works/real.svg",
+    src: assets.real1,
 
     title: "Real Estate",
     desc: "Empowering developers and property brands with digital strategies that improve buyer quality, project visibility, and sales conversion performance.",
   },
   {
-    src: "../../assets/works/b2b.svg",
+    src: assets.b2b1,
 
     title: "B2B & Industrial",
     desc: "Enabling manufacturers and industrial firms to attract decision-makers, improve lead qualification, and support high-value contract acquisition.",
   },
   {
-    src: "../../assets/works/profserv.svg",
+    src: assets.profserv1,
 
     title: "Corporate & Professional Services",
     desc: "Strengthening authority for consulting, legal, and advisory firms through credibility-driven digital presence and thought leadership.",
   },
   {
-    src: "../../assets/works/ecommerce.svg",
+    src: assets.ecommerce1,
 
-      title: "E-Commerce",
+    title: "E-Commerce",
     desc: "Driving scalable traffic, higher AOV, and revenue growth for online retailers through performance media, CRO, and data-led strategies optimized for UAE's competitive retail landscape.",
-  },  
+  },
   {
-    src: "../../assets/works/education.svg",
+    src: assets.education1,
 
-      title: "Education",
+    title: "Education",
     desc: "Helping institutions improve programme visibility, attract qualified applicants, and strengthen credibility among prospective students and parents.",
-  }, 
+  },
   {
-    src: "../../assets/works/hospitality.svg",
+    src: assets.hospitality1,
 
-      title: "Hospitality",
+    title: "Hospitality",
     desc: "Enhancing brand visibility and direct booking demand for hotels, resorts, and hospitality groups with precision social, SEO, and performance ads that cut through Dubai's crowded tourism market.",
-  }, 
+  },
   {
-    src: "../../assets/works/healthcare.svg",
+    src: assets.healthcare1,
 
-      title: "Healthcare",
+    title: "Healthcare",
     desc: "Strengthening patient acquisition and digital trust for providers with compliant, credibility-focused strategies that drive enquiries while navigating strict regulations.",
   }
 ];
@@ -63,7 +63,7 @@ const IndustriesweWork = () => {
     <div className="flex flex-col  py-[50px] lg:pb-[140px] lg:pt-[140px] bg-gray-100">
       <div className="  ">
         <motion.div
-        className="container  mx-auto"
+          className="container  mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -80,7 +80,7 @@ const IndustriesweWork = () => {
           <p className="text-font25 leading-[1.4] max-w-[70ch] mb-5 lg:mb-[58px]">We partner with businesses across diverse industries to deliver digital solutions that align with real-world challenges and growth goals. Our strategies are tailored to each sector’s audience behavior, competition, and market dynamics.</p>
         </motion.div>
         <motion.div
-        className="ps-4 pe-4 lg:pe-0 container lg:!max-w-full" 
+          className="ps-4 pe-4 lg:pe-0 container lg:!max-w-full"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -132,37 +132,36 @@ const IndustriesweWork = () => {
               {images.map((image, index) => (
                 <SwiperSlide key={index} className={`custom-swiper-slide `}>
                   <div className="custom-slide">
-                     
+
 
                     <div
-                                            key={index}
-                                            className="group flex flex-col justify-between gap-3 border p-5 transition-all duration-500 hover:bg-primary h-[300px]  lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
-                                          >
-                                            {/* Image Wrapper */}
-                                            <div className="align-center flex h-[30px] w-[30px] justify-center bg-white p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
-                                              
-                                               <Image   src={image.src}   alt={`Slide ${index}`} width= {54} height={34}
-                                                                            className="  transition duration-500 "
-                                                                          />
-                                            </div>
-                    
-                                            {/* Content */}
-                                            <div>
-                                              {/* Title */}
-                                              <h3 className="text-30  titlesp transition-colors duration-300 group-hover:text-white">
-                                                {image.title}
-                                              </h3>
-                    
-                                              <div className=" overflow-hidden">
-                                                <p
-                                                  className="text-19 fnt-lexend cntsmd hided-content max-h-0 w-[102%] overflow-hidden pt-2 text-white
+                      key={index}
+                      className="group flex flex-col justify-between gap-3 border p-5 transition-all duration-500 hover:bg-primary h-[300px]  lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                    >
+                      {/* Image Wrapper */}
+                      <div className="align-center flex h-[30px] w-[30px] justify-center bg-white p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
+                        <Image src={image.src} alt={`Slide ${index}`} width={54} height={34}
+                          className="  transition duration-500 "
+                        />
+                      </div>
+
+                      {/* Content */}
+                      <div>
+                        {/* Title */}
+                        <h3 className="text-30  titlesp transition-colors duration-300 group-hover:text-white">
+                          {image.title}
+                        </h3>
+
+                        <div className=" overflow-hidden">
+                          <p
+                            className="text-19 fnt-lexend cntsmd hided-content max-h-0 w-[102%] overflow-hidden pt-2 text-white
                                                     opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100"
-                                                >
-                                                  {image.desc}
-                                                </p>
-                                              </div>
-                                            </div>
-                                          </div>
+                          >
+                            {image.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </SwiperSlide>
               ))}
