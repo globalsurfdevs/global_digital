@@ -41,7 +41,7 @@ const serviceData: ServiceData = {
     "Content Production": {
       text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
       url: "/content-production-agency-dubai",
-      
+
     },
   },
   "Web Design & Development": {
@@ -105,7 +105,7 @@ const serviceData: ServiceData = {
     },
     "Marketing Automation": {
       text: 'Automated to Convert<span class="text-[#E43D30]">.</span><br> Designed to Engage<span class="text-[#E43D30]">.</span>',
-      url:"/marketing-automation-agency-dubai",
+      url: "/marketing-automation-agency-dubai",
     },
   },
 };
@@ -145,18 +145,18 @@ const ServicesMegaMenu = () => {
         <div className="w-full mx-auto px-8 xxl:pt-[80px] xxl:pb-[130px] py-[30px] flex justify-between items-center xxl:pl-[150px] lg:pl-[50px] bg-black text-white">
           {/* Header Section */}
           <div className="w-1/3">
-           <motion.h2
-           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-          variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, ease: "easeOut" },
-            }, // Slide up and fade in
-          }}
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
               className="xxl:text-[48px] lg:text-[35px] xxl:leading-[60px] lg:leading-[50px] mb-4 capitalize "
               dangerouslySetInnerHTML={{
                 __html: getActiveText(),
@@ -169,83 +169,81 @@ const ServicesMegaMenu = () => {
               const { titleurl, categoryText, ...services } = items;
               return (
                 <div key={category} className="group w-full">
-                  
-               
-                     <Link href={titleurl || "#"} className="flex items-center xxl:mb-[30px] mb-[20px]">
-  <motion.h4
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.3 }}
-    variants={{
-      hidden: { opacity: 0, y: 50 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 1, ease: "easeOut" },
-      },
-    }}
-    onMouseEnter={() => handleHover(category)}
-    className={`font-[400] uppercase xxl:text-font19 text-[15px] pr-[16px] ${
-      activeItem[0] === category ? "text-[#E43D30]" : "text-white"
-    }`}
-  >
-    {category}
-  </motion.h4>
 
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.3 }}
-    variants={{
-      hidden: { opacity: 0, y: 50 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 1, ease: "easeOut" },
-      },
-    }}
-  >
-    <Image
-      src={menuright}
-      alt="arrow"
-      className="m-0 p-0"
-      style={{
-        filter:
-          activeItem[0] === category
-            ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
-            : "",
-      }}
-    />
-  </motion.div>
-</Link>
 
-                 
-                  <motion.ul className="space-y-2"  initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-          variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, ease: "easeOut" },
-            }, // Slide up and fade in
-          }}>
-                    
+                  <Link href={titleurl || "#"} className="flex items-center xxl:mb-[30px] mb-[20px]">
+                    <motion.h4
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.3 }}
+                      variants={{
+                        hidden: { opacity: 0, y: 50 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1, ease: "easeOut" },
+                        },
+                      }}
+                      onMouseEnter={() => handleHover(category)}
+                      className={`font-[400] uppercase xxl:text-font19 text-[15px] pr-[16px] ${activeItem[0] === category ? "text-[#E43D30]" : "text-white"
+                        }`}
+                    >
+                      {category}
+                    </motion.h4>
+
+                    <motion.div
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.3 }}
+                      variants={{
+                        hidden: { opacity: 0, y: 50 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1, ease: "easeOut" },
+                        },
+                      }}
+                    >
+                      <Image
+                        src={menuright}
+                        alt="arrow"
+                        className="m-0 p-0"
+                        style={{
+                          filter:
+                            activeItem[0] === category
+                              ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
+                              : "",
+                        }}
+                      />
+                    </motion.div>
+                  </Link>
+
+
+                  <motion.ul className="space-y-2" initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                    variants={{
+                      hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 1, ease: "easeOut" },
+                      }, // Slide up and fade in
+                    }}>
+
                     {Object.entries(services).map(([title, data]) => {
                       const item = data as ServiceItem;
                       const isActive =
                         activeItem[0] === category && activeItem[1] === title;
                       return (
                         <li
-                       
+
                           key={title}
                           onMouseEnter={() => handleHover(category, title)}
-                          className={` xxl:text-font19 text-[14px] transition-opacity duration-200 ${
-                            isActive
-                              ? "text-white opacity-100"
-                              : "text-white opacity-60 hover:opacity-100"
-                          }`}
+                          className={` xxl:text-font19 text-[14px] transition-opacity duration-200 ${isActive
+                            ? "text-white opacity-100"
+                            : "text-white opacity-60 hover:opacity-100"
+                            }`}
                         >
                           <Link className="cursor-pointer" href={item.url ?? "#"}>{title}</Link>
                         </li>

@@ -894,19 +894,19 @@ import mschelp1 from "../images/marketing-strategy-consulting/help1.svg";
 import mschelp2 from "../images/marketing-strategy-consulting/help2.svg";
 import mschelp3 from "../images/marketing-strategy-consulting/help3.svg";
 import mschelp4 from "../images/marketing-strategy-consulting/help4.svg";
-import cmrst1 from "../images/marketing-strategy-consulting/cmrst1.svg"; 
-import cmrst2 from "../images/marketing-strategy-consulting/cmrst2.svg"; 
-import cmrst3 from "../images/marketing-strategy-consulting/cmrst3.svg"; 
-import cmrst4 from "../images/marketing-strategy-consulting/cmrst4.svg"; 
-import cmrst5 from "../images/marketing-strategy-consulting/cmrst5.svg"; 
-import cmrst6 from "../images/marketing-strategy-consulting/cmrst6.svg"; 
+import cmrst1 from "../images/marketing-strategy-consulting/cmrst1.svg";
+import cmrst2 from "../images/marketing-strategy-consulting/cmrst2.svg";
+import cmrst3 from "../images/marketing-strategy-consulting/cmrst3.svg";
+import cmrst4 from "../images/marketing-strategy-consulting/cmrst4.svg";
+import cmrst5 from "../images/marketing-strategy-consulting/cmrst5.svg";
+import cmrst6 from "../images/marketing-strategy-consulting/cmrst6.svg";
 
-import omst1 from "../images/marketing-strategy-consulting/omst1.svg"; 
-import omst2 from "../images/marketing-strategy-consulting/omst2.svg"; 
-import omst3 from "../images/marketing-strategy-consulting/omst3.svg"; 
-import omst4 from "../images/marketing-strategy-consulting/omst4.svg"; 
-import omst5 from "../images/marketing-strategy-consulting/omst5.svg"; 
-import omst6 from "../images/marketing-strategy-consulting/omst6.svg"; 
+import omst1 from "../images/marketing-strategy-consulting/omst1.svg";
+import omst2 from "../images/marketing-strategy-consulting/omst2.svg";
+import omst3 from "../images/marketing-strategy-consulting/omst3.svg";
+import omst4 from "../images/marketing-strategy-consulting/omst4.svg";
+import omst5 from "../images/marketing-strategy-consulting/omst5.svg";
+import omst6 from "../images/marketing-strategy-consulting/omst6.svg";
 
 import shareicon from "../images/blog-new/shareicon.svg";
 import linkedinicon from "../images/blog-new/linkedinicon.svg";
@@ -1020,12 +1020,31 @@ import blog_78 from "../images/blog-new/blog7/third.png";
 import blog_81 from "../images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png";
 
 import icss1 from "../images/icon/ics1.svg";
-import icss2 from "../images/icon/ics2.svg"; 
-import icss3 from "../images/icon/ics3.svg"; 
+import icss2 from "../images/icon/ics2.svg";
+import icss3 from "../images/icon/ics3.svg";
 import icss4 from "../images/icon/ics4.svg";
+
+import realestate1 from "../images/works/realestate1.svg";
+import real1 from "../images/works/real1.svg";
+import b2b1 from "../images/works/b2b.svg";
+import profserv1 from "../images/works/profserv.svg";
+import ecommerce1 from "../images/works/ecommerce.svg";
+import education1 from "../images/works/education.svg";
+import hospitality1 from "../images/works/hospitality.svg";
+import healthcare1 from "../images/works/healthcare.svg";
+
 
 
 export const assets = {
+
+  realestate1,
+  real1,
+  b2b1,
+  profserv1,
+  ecommerce1,
+  education1,
+  hospitality1,
+  healthcare1,
   realestate,
   corporateservices,
   icss1,
@@ -1036,10 +1055,10 @@ export const assets = {
   blog_76,
   blog_77,
   blog_78,
-blog_72,
-blog_73,
-blog_74,
-blog_75,  
+  blog_72,
+  blog_73,
+  blog_74,
+  blog_75,
   blog_3,
   blog_4,
   blog_81,
@@ -1053,25 +1072,25 @@ blog_75,
   morg,
   newblog01bnr,
   Vidhu,
-  newblog23bnr,bloggs2,bloggs3,bloggs4,bloggs5,blogg6,
-Anjanaseo,
-Diya,
-Gayathri,
-Sneha,
-geolg1, geolg2, geolg3, geolg4, geolg5, geolg6, geolg7, geolg8, geolg9, geolg10, geolg11, geolg12, geolg13, geolg14, geolg15,
-hvrimg1, hvrimg2, hvrimg3, hvrimg4, hvrimg5,
-bnf1, bnf2, bnf3, bnf4, bnf5, bnf6,wecanhelp1,wecanhelp2,wecanhelp3,wecanhelp4,wecanhelp5,wecanhelp6,
-expg1, expg2, expg3, expg4, expg5, expg6,geobanner,
-bgimg1,
-bgimg2,
-bgimg3,
-blogbnrnew,
-blogimgnew2,
-llm,
-content,
-ecosys,
-seonew,
-structure,
+  newblog23bnr, bloggs2, bloggs3, bloggs4, bloggs5, blogg6,
+  Anjanaseo,
+  Diya,
+  Gayathri,
+  Sneha,
+  geolg1, geolg2, geolg3, geolg4, geolg5, geolg6, geolg7, geolg8, geolg9, geolg10, geolg11, geolg12, geolg13, geolg14, geolg15,
+  hvrimg1, hvrimg2, hvrimg3, hvrimg4, hvrimg5,
+  bnf1, bnf2, bnf3, bnf4, bnf5, bnf6, wecanhelp1, wecanhelp2, wecanhelp3, wecanhelp4, wecanhelp5, wecanhelp6,
+  expg1, expg2, expg3, expg4, expg5, expg6, geobanner,
+  bgimg1,
+  bgimg2,
+  bgimg3,
+  blogbnrnew,
+  blogimgnew2,
+  llm,
+  content,
+  ecosys,
+  seonew,
+  structure,
   omst1,
   omst2,
   omst3,
