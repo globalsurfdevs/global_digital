@@ -99,15 +99,17 @@ const ContactUs = () => {
       }
     }
     const formDataObj = new FormData(form);
-    const tasks = [
-      submitContact(formDataObj), // database save
-      new Promise((resolve) => {
-        form.submit(); // CRM / external submit
-        resolve(true);
-      }),
-    ];
+    // const tasks = [
+    //   submitContact(formDataObj), // database save
+    //   new Promise((resolve) => {
+    //     form.submit(); // CRM / external submit
+    //     resolve(true);
+    //   }),
+    // ];
 
-    await Promise.allSettled(tasks);
+    const result = submitContact(formDataObj)
+    if((await result).success) window.location.replace("/thank-you")
+      else alert("Something went wrong, try again later")
   };
 
   // useEffect(() => {
@@ -215,7 +217,7 @@ const ContactUs = () => {
           <div className="contctform pt-[15px] lg:pt-[40px]">
             <form
               onSubmit={handleSubmit}
-              action="https://forms.zohopublic.com/Globalsurf/form/GlobalsurfNewForm/formperma/ed-ixp-D06mNuOfW52SHqkLRh7ZZV4AbxY-Ks8LcP_s/htmlRecords/submit"
+              action=""
               name="form"
               id="form"
               method="POST"
