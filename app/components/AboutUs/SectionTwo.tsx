@@ -1,7 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import aboutbnnr from "@/public/assets/aboutus/banner-aboutus.jpg";
 
 const SectionTwo = () => {
   return (
@@ -26,6 +24,8 @@ const SectionTwo = () => {
           loop
           muted
           playsInline
+          preload="metadata"
+          poster="/assets/about-banner-poster.png"
         >
           <source src="/assets/Globalsurf_About_Banner.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -58,7 +58,7 @@ const SectionTwo = () => {
                   story and impactful ideas to share. Our mission is to empower
                   ambitious brands with strategies and expertise to share their
                   vision, connect deeply with their audiences, and drive
-                  meaningful change. 
+                  meaningful change.
                 </p>
               </div>
             </div>

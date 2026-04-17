@@ -14,7 +14,7 @@ const lexend = Lexend({
 });
 interface su {
   stitle?: string;
-  buttonTitle?: string; 
+  buttonTitle?: string;
   desc?: string;
 }
 interface BannerSection {
@@ -96,7 +96,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     // Clean up the event listener on unmount
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
-const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (modalOpen) {
@@ -113,7 +113,7 @@ const [modalOpen, setModalOpen] = useState(false);
   }, [modalOpen]);
   return (
     <>
-     {/* Modal section */}
+      {/* Modal section */}
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
           <LetsTalk onClose={() => setModalOpen(false)} />
@@ -167,16 +167,16 @@ const [modalOpen, setModalOpen] = useState(false);
                               </li>
                               {index <
                                 (herosection.navigation?.length || 0) - 1 && (
-                                <li>
-                                  <Image
-                                    src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
-                                    alt="Arrow"
-                                    width={7} // Adjust width as needed
-                                    height={12} // Adjust height as needed
-                                    className=""
-                                  />
-                                </li>
-                              )}
+                                  <li>
+                                    <Image
+                                      src="/assets/bc-arrow.png"
+                                      alt="Arrow"
+                                      width={7} // Adjust width as needed
+                                      height={12} // Adjust height as needed
+                                      className="w-100 h-100"
+                                    />
+                                  </li>
+                                )}
                             </React.Fragment>
                           ))}
                         </ul>
@@ -189,7 +189,7 @@ const [modalOpen, setModalOpen] = useState(false);
                         {" "}
                         {herosection.subtitle}
                       </h2>
-                    )} 
+                    )}
                   </div>
                   {bannerlogp && (
                     <div className="lg:gap-18 flex h-full w-full flex-col justify-between gap-5 pb-0 pt-4 lg:col-span-3 lg:items-end lg:py-4 xl:col-span-3">
@@ -245,59 +245,59 @@ const [modalOpen, setModalOpen] = useState(false);
                         </div>
                         <div className="ms-0 text-[19px] text-gray1 ">
                           <p className={`text-font19 ${lexend.className}`} dangerouslySetInnerHTML={{ __html: su.desc }}>
-                           
+
                           </p>
-                           {su.buttonTitle && (
-  <button
-    onClick={() => setModalOpen(true)}
-    className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
+                          {su.buttonTitle && (
+                            <button
+                              onClick={() => setModalOpen(true)}
+                              className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
                 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
                 after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px] mt-3"
-  >
-    <div className="relative">
-      <p
-        className={`duration-200 text-sm font-medium text-black uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
-      >
-        {su.buttonTitle}
-      </p>
-    </div>
-    <svg
-      width="10"
-      height="10"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="duration-200 ease-in-out group-hover:scale-125"
-    >
-      <g clipPath="url(#clip0_65_58)">
-        <path
-          d="M18.7892 1.2749L0.699219 19.0149"
-          stroke="#E53F30"
-          strokeWidth="3"
-          strokeMiterlimit="10"
-          className="group-hover:stroke-black"
-        />
-        <path
-          d="M0.699219 1.2749H18.7892V18.6649"
-          stroke="#E53F30"
-          strokeWidth="3"
-          strokeMiterlimit="10"
-          className="group-hover:stroke-black"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_65_58">
-          <rect
-            width="19.79"
-            height="19.45"
-            fill="white"
-            transform="translate(0 0.274902)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  </button>
-)}
+                            >
+                              <div className="relative">
+                                <p
+                                  className={`duration-200 text-sm font-medium text-black uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                                >
+                                  {su.buttonTitle}
+                                </p>
+                              </div>
+                              <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="duration-200 ease-in-out group-hover:scale-125"
+                              >
+                                <g clipPath="url(#clip0_65_58)">
+                                  <path
+                                    d="M18.7892 1.2749L0.699219 19.0149"
+                                    stroke="#E53F30"
+                                    strokeWidth="3"
+                                    strokeMiterlimit="10"
+                                    className="group-hover:stroke-black"
+                                  />
+                                  <path
+                                    d="M0.699219 1.2749H18.7892V18.6649"
+                                    stroke="#E53F30"
+                                    strokeWidth="3"
+                                    strokeMiterlimit="10"
+                                    className="group-hover:stroke-black"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_65_58">
+                                    <rect
+                                      width="19.79"
+                                      height="19.45"
+                                      fill="white"
+                                      transform="translate(0 0.274902)"
+                                    />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </button>
+                          )}
                         </div>
                       </div>
                     ),
@@ -322,9 +322,8 @@ const [modalOpen, setModalOpen] = useState(false);
       >
         <div
           style={{ width: isSmallScreen ? "" : divWidth }}
-          className={`${
-            isSmallScreen ? "container mx-auto py-2" : ""
-          } custom-class`}
+          className={`${isSmallScreen ? "container mx-auto py-2" : ""
+            } custom-class`}
         >
           {!hideslider && (
             <div className="flex gap-5 bg-bglight  py-[17px]">

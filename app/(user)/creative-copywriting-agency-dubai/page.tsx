@@ -5,7 +5,8 @@ import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 import LogoSwiper from "../../components/CopyWriting/LogoSwiper";
 
-import {Matslogo,
+import {
+  Matslogo,
   BannerSection,
   OurServices,
   Platformsecomdata,
@@ -49,9 +50,6 @@ const page = () => {
         hideslider={true}
         maxchwidth={27}
       />
-
-
-
       <Services
         title={OurServices.title}
         data={OurServices.data}
@@ -60,12 +58,12 @@ const page = () => {
       />
 
       <section className="textmnsa">
-      <Framework
-            title={Frameworkdata.title}
-            data={Frameworkdata.data}
-            bgcolor="bg-black"
-            colcount={3}
-          />
+        <Framework
+          title={Frameworkdata.title}
+          data={Frameworkdata.data}
+          bgcolor="bg-black"
+          colcount={3}
+        />
       </section>
       <section className="py-[50px] lg:py-[130px]">
         <Platformserver
@@ -75,7 +73,7 @@ const page = () => {
         />
       </section>
       <div className="pb-[50px]   lg:pb-[130px]">
-      <LogoSwiper mtslogo={Matslogo[0]}   />
+        <LogoSwiper mtslogo={Matslogo[0]} />
       </div>
 
       <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US TODAY!"} />

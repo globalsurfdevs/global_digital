@@ -41,7 +41,7 @@ const TestimonialsSwiper = () => {
               <div className="mb-6 flex   flex-col border-b border-black pt-[20px] lg:mb-[41px] lg:pt-[65px]">
                 <Image
                   src={item.image}
-                  alt={item.name}
+                  alt={item.name} loading="lazy"
                   className="mb-4 h-20 w-20 bg-white p-1 lg:mb-[30px]"
                 ></Image>
                 <h3 className="text-30  mb-[5px]">{item.name}</h3>
@@ -53,7 +53,7 @@ const TestimonialsSwiper = () => {
                   src={item.logo}
                   alt={item.alt || item.company}
                   width={70}
-                  height={35}
+                  height={35} loading="lazy"
                   className="mb-5 lg:mb-[26px] "
                 ></Image>
               </div>

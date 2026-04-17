@@ -70,6 +70,7 @@ const Clients = () => {
                       alt={itm.alt || "global"}
                       width={250}
                       height={80}
+                      loading="lazy"
                     />
                   </div>
                 </SwiperSlide>

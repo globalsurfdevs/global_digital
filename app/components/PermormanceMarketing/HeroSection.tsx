@@ -157,13 +157,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                                   (herosection.navigation?.length || 0) -
                                   1 && (
                                     <li>
-                                      <Image
-                                        src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
-                                        alt="Arrow"
-                                        width={7} // Adjust width as needed
-                                        height={12} // Adjust height as needed
-                                        className="relative top-[3px] lg:top-0"
-                                      />
+                                      <Image src="/assets/bc-arrow.png" alt="Arrow" width={7} height={12}
+                                        className="relative top-[3px] lg:top-0" loading="lazy" />
                                     </li>
                                   )}
                               </React.Fragment>
@@ -257,6 +252,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                           className="w-20 md:w-48"
                           width={10}
                           height={10}
+                          loading="lazy"
                         />
                       </Link>
                     </div>

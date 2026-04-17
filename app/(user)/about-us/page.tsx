@@ -8,8 +8,8 @@ import SectionFive from "../../components/AboutUs/SectionFive";
 
 interface Canonicals {
   canonical: string;
-} 
- 
+}
+
 
 type Metadata = {
   title: string;
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <>
-    <Script
+      <Script
         id="breadcrumb-schema"
         type="application/ld+json"
         strategy="afterInteractive"
