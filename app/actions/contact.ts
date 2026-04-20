@@ -39,9 +39,22 @@ export async function submitContact(formData: FormData) {
 
         const toEmail = await getToEmail("contact");
 
+        const emails = toEmail.split(",").map((e:string) => e.trim());
+
+        console.log(emails.slice(1))
+
         await sendMailWithAttachments({
             type: "contact",
-            to: toEmail,
+            to: emails[0],
+            cc: emails.slice(1),
+            subject: `New Contact Application: ${data.name}`,
+            fields: data,
+        });
+
+        await sendMailWithAttachments({
+            type: "contact",
+            to: toEmail.split(",")[0],
+            cc: toEmail.split(",").slice(1),
             subject: `New Contact Application: ${data.name}`,
             fields: data,
         });
