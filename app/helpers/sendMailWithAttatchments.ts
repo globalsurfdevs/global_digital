@@ -11,12 +11,14 @@ interface Attachment {
 export async function sendMailWithAttachments({
   type,
   to,
+  cc,
   subject,
   fields,
   attachments,
 }: {
   type: string;
   to: string | string[];
+  cc: string | string[];
   subject: string;
   fields: any;
   attachments?: Attachment[];
@@ -27,7 +29,7 @@ export async function sendMailWithAttachments({
       from: "Enquiry <enquiry@globalsurf.ae>",
       to,
       subject,
-      cc:["faisal@globalsurf.ae","preethika@globalsurf.ae"],
+      cc,
       react: CareerTemplate(fields) as ReactElement,
       attachments,
     });
@@ -40,6 +42,7 @@ export async function sendMailWithAttachments({
     const { error } = await resend.emails.send({
       from: "Enquiry <enquiry@globalsurf.ae>",
       to,
+      cc,
       subject,
       react: ContactTemplate(fields) as ReactElement,
     });
