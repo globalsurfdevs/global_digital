@@ -26,6 +26,8 @@ const ContactUs = () => {
   const [error, setError] = useState("")
   console.log("Entered email:", formData.Email);
 
+  const [isSubmitting,setIsSubmitting] = useState(false)
+
 
 
   const handleChange = (
@@ -61,56 +63,58 @@ const ContactUs = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (
-      formData.PhoneNumber_countrycode &&
-      formData.PhoneNumber_countrycode.length < 5
-    ) {
-      setPhoneError("Phone number must be at least 5 digits.");
-      return;
-    }
-    if (
-      !formData.Email ||
-      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.Email)
-    ) {
-      setEmailError("Please enter a valid email address.");
-      return;
-    }
+  if (isSubmitting) return;
 
-    if (!formData.SingleLine || formData.SingleLine.trim().length < 3) {
-      setNameError("Name must be at least 3 characters.");
-      return;
-    }
+  // validations...
+  if (
+    formData.PhoneNumber_countrycode &&
+    formData.PhoneNumber_countrycode.length < 5
+  ) {
+    setPhoneError("Phone number must be at least 5 digits.");
+    return;
+  }
+
+  if (
+    !formData.Email ||
+    !emailRegex.test(formData.Email)
+  ) {
+    setEmailError("Please enter a valid email address.");
+    return;
+  }
+
+  if (!formData.SingleLine || formData.SingleLine.trim().length < 3) {
+    setNameError("Name must be at least 3 characters.");
+    return;
+  }
+
+  const captchaValue = recaptcha?.current?.getValue();
+  if (!captchaValue) {
+    setError("Please verify yourself to continue");
+    return;
+  }
+
+  try {
+    setIsSubmitting(true);
 
     const form = document.getElementById("form") as HTMLFormElement;
-
-    if (!form) {
-      console.error("Form element not found");
-      return;
-    }
-
-    if (recaptcha) {
-      const captchaValue = recaptcha?.current?.getValue();
-
-      if (!captchaValue) {
-        setError("Please verify yourself to continue");
-        return;
-      }
-    }
     const formDataObj = new FormData(form);
-    // const tasks = [
-    //   submitContact(formDataObj), // database save
-    //   new Promise((resolve) => {
-    //     form.submit(); // CRM / external submit
-    //     resolve(true);
-    //   }),
-    // ];
 
-    const result = submitContact(formDataObj)
-    if((await result).success) window.location.replace("/thank-you")
-      else alert("Something went wrong, try again later")
-  };
+    const result = await submitContact(formDataObj);
+
+    if (result.success) {
+      window.location.replace("/thank-you");
+    } else {
+      alert("Something went wrong, try again later");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Submission failed");
+  } finally {
+    setIsSubmitting(false); // ✅ always reset
+  }
+};
 
   // useEffect(() => {
   //   console.log(window.location.href);
@@ -565,8 +569,9 @@ const ContactUs = () => {
                   {error !== "" && <div className='text-red-500'>{error}</div>}
                 </div>
                 <button
-                  className="h-fit md:my-0 mt-4 lg:mb-[75px] xl:mb-[100px] hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
+                  className={`h-fit md:my-0 mt-4 lg:mb-[75px] xl:mb-[100px] hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
                   type="submit"
+                  disabled={isSubmitting}
                 >
                   <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
                     Get in Touch
