@@ -80,7 +80,7 @@ const page = () => {
             <Contentone sections={keySectorsData} />
             <Contentone sections={trendsData} />
 
-            <section className="py-[50px] lg:py-[140px]" id="navigating-uaes-built-environment-regulations">
+            <section className="pt-[50px] lg:pt-[140px]" id="navigating-uaes-built-environment-regulations">
                 <ThreeColumnTable
                     title="Navigating UAE's built environment regulations"
                     subtitle="The UAE’s regulatory framework varies across emirates but follows a structured approach."
