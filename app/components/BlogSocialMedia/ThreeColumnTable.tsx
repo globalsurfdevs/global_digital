@@ -10,6 +10,7 @@ interface ThreeColumnTableProps {
   }[];
   paddingBottom?: string;
   columnTitles: string[]; // This will be an array of column titles
+  paragraph?: string;
 }
 
 const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
@@ -17,7 +18,7 @@ const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
   subtitle,
   data,
   paddingBottom = 'pb-16',
-  columnTitles,
+  columnTitles, paragraph
 }) => {
   return (
     <section className={`px-4 sm:px-6 lg:px-8 ${paddingBottom}`}>
@@ -62,7 +63,7 @@ const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
                 </tbody>
               </table>
             </div>
-
+            {paragraph && <p className="text-lg text-gray-600 mt-[30px]">{paragraph}</p>}
           </div>
         </div>
       </div>

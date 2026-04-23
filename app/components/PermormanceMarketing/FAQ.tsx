@@ -17,6 +17,7 @@ type PartnerDataType = {
 
 type PartnerListProps = {
   data: PartnerDataType[];
+  sections?: PartnerDataType[]; // alias
   subp?: string;
   bgcolor?: string;
   title?: string;
@@ -37,15 +38,17 @@ const itemVariants = {
 };
 const FAQ: React.FC<PartnerListProps> = ({
   data,
+  sections,
   subp,
   bgcolor,
   title,
   defActive,
 }) => {
+  const items = data ?? sections ?? [];
   const getDefaultOpenIndex = (value?: string) => {
     const parsedValue = Number.parseInt(value ?? "", 10);
 
-    if (Number.isNaN(parsedValue) || parsedValue < 1 || parsedValue > data.length) {
+    if (Number.isNaN(parsedValue) || parsedValue < 1 || parsedValue > items.length) {
       return null;
     }
 
@@ -57,7 +60,7 @@ const FAQ: React.FC<PartnerListProps> = ({
 
   useEffect(() => {
     setOpen(getDefaultOpenIndex(defActive));
-  }, [defActive, data.length]);
+  }, [defActive, items.length]);
 
   const toggle = (itemIndex: number) => {
     if (open == itemIndex) {
@@ -101,7 +104,7 @@ const FAQ: React.FC<PartnerListProps> = ({
             <div className={`col-span-5 w-full overflow-hidden`} >
               <motion.div layout variants={containerVariants} initial="hidden" animate="visible" >
                 <AnimatePresence mode="popLayout">
-                  {data.map((item, index) => (
+                  {items.map((item, index) => (
                     <motion.div
                       key={item.title} // ⚠️ Important: never use index
                       layout

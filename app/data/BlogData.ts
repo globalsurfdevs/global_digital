@@ -1,5 +1,47 @@
 export const BlogData = [
   {
+    id: 10,
+    slug: "what-does-built-environment-really-mean-in-the-uae",
+    titles:
+      "What Does the “Built Environment” Really Mean in the UAE?",
+    title:
+      " What Does the “Built Environment” Really Mean in the UAE?",
+    list_heading:
+      " What Does the “Built Environment” Really Mean in the UAE?",
+    meta_title: " ",
+    description:
+      " ",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "images/blogs/environment/envblog1.jpg",
+    thumb:
+      "images/blogs/environment/envblog1.jpg",
+    large_thumb:
+      "images/blogs/environment/envblog1.jpg",
+    category: "Digital Marketing",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 9,
     slug: "why-email-marketing-still-quietly-drives",
     titles:

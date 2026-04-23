@@ -603,3 +603,139 @@ export const GoogleAdsVsMetaAdsSchema = () => {
     />
   );
 };
+
+export const BuiltEnvironmentSchema = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Does the Built Environment Really Mean in the UAE?",
+    "description": "A practical guide to the built environment in the UAE — covering definitions, key sectors, regulations, smart city development, and what it means for construction businesses.",
+    "image": "https://www.globalsurf.ae/_next/static/media/envblog1.22e3bfb5.jpg",
+    "datePublished": "2026-04-23T09:00:00+04:00",
+    "dateModified": "2026-04-23T09:00:00+04:00",
+    "inLanguage": "en-AE",
+    "keywords": "built environment UAE, construction industry Dubai, UAE smart cities, built environment companies Dubai, contractor digital marketing UAE",
+    "author": {
+      "@type": "Organization",
+      "name": "Global Surf Digital",
+      "url": "https://www.globalsurf.ae"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Global Surf Digital",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.globalsurf.ae/blogs/what-does-built-environment-really-mean-in-the-uae"
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the built environment in simple terms?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The built environment includes all human-made structures and spaces, from buildings and roads to parks and utilities. It represents everything constructed to support how people live, work, and move through cities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the UAE's built environment different from other countries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The UAE’s built environment stands out due to its rapid transformation since 1971, extreme climate considerations, and large-scale developments combining advanced infrastructure and smart city technologies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What sectors are part of the built environment industry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The built environment industry includes residential and commercial construction, infrastructure such as roads and utilities, industrial facilities, public buildings like schools and hospitals, and energy systems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should construction companies care about digital marketing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Decision-makers in the UAE construction sector often research companies online before shortlisting them. A strong digital presence builds credibility and helps differentiate from competitors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What regulations govern the built environment in UAE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The built environment in the UAE is regulated by authorities such as Dubai Municipality and Abu Dhabi Department of Municipalities and Transport. Regulations cover building codes, safety standards, sustainability requirements, and environmental approvals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What trends are shaping the UAE's built environment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key trends include sustainability initiatives, smart building technologies, modular construction, wellness-focused design, mixed-use developments, BIM integration, and AI-driven infrastructure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can my construction company improve its online presence?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with an SEO-optimised website showcasing projects and expertise. Publish industry-focused content and maintain a strong LinkedIn presence to build credibility and visibility."
+        }
+      }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.globalsurf.ae/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blogs",
+        "item": "https://www.globalsurf.ae/blogs"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "What Does the Built Environment Really Mean in the UAE?",
+        "item": "https://www.globalsurf.ae/blogs/what-does-built-environment-really-mean-in-the-uae"
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+};

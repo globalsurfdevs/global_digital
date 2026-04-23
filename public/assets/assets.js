@@ -1033,6 +1033,14 @@ import education1 from "../images/works/education.svg";
 import hospitality1 from "../images/works/hospitality.svg";
 import healthcare1 from "../images/works/healthcare.svg";
 
+import envblog1 from "../images/blogs/environment/envblog1.jpg";
+import envblog2 from "../images/blogs/environment/envblog2.jpg";
+import envblog3 from "../images/blogs/environment/envblog3.jpg";
+import envblog4 from "../images/blogs/environment/envblog4.jpg";
+import envblog5 from "../images/blogs/environment/envblog5.jpg";
+import envblog6 from "../images/blogs/environment/envblog6.jpg";
+import envblog7 from "../images/blogs/environment/envblog7.jpg";
+
 
 
 export const assets = {
@@ -1051,6 +1059,13 @@ export const assets = {
   icss2,
   icss3,
   icss4,
+  envblog1,
+  envblog2,
+  envblog3,
+  envblog4,
+  envblog5,
+  envblog6,
+  envblog7,
   blog_71,
   blog_76,
   blog_77,

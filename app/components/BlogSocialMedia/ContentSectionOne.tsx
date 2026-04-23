@@ -2,20 +2,76 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 
-// Extended support allowing <br/> and <strong> inside content strings using React's dangerouslySetInnerHTML
-// You must provide sanitized HTML strings in paragraphs, list descriptions, etc.
+export interface SubSection {
+  sectionSubtitle?: string;
+  paragraphs?: string[];
+  listItems?: { label: string; description?: string }[];
+  paragraphs2?: string[];
+  imagesecond?: StaticImageData;
+  imagealt?: string;
+}
 
 export interface ContentSectionData {
   title: string;
   image?: StaticImageData;
-  paragraphs?: string[];        // supports HTML including <br /> and <strong>
-  listItems?: { label: string; description?: string }[]; // label & description support HTML
-  paragraphs2?: string[];       // supports HTML
+  imagesecond?: StaticImageData;
+  imagealt?: string;
+  paragraphs3?: string[];
+  // top-level single sub-section fields (backward compatible)
+  sectionSubtitle?: string;
+  paragraphs?: string[];
+  listItems?: { label: string; description?: string }[];
+  paragraphs2?: string[];
+  // repeatable sub-sections
+  subSections?: SubSection[];
 }
 
 type ContentSectionProps = {
   sections: ContentSectionData[];
 };
+
+const renderSubSection = (data: SubSection, idx: number) => (
+  <div key={idx}>
+    {data.sectionSubtitle && (
+      <h3 className="text-30 mt-[30px] mb-3">{data.sectionSubtitle}</h3>
+    )}
+    {data.imagesecond && (
+      <Image src={data.imagesecond} alt={data.imagealt || data.sectionSubtitle || 'Subsection image'} className="my-[20px]" />
+    )}
+
+    {data.paragraphs?.map((p, index) => (
+      <p
+        key={index}
+        className="text-font19 text-[#77787B] mb-[16px]"
+        dangerouslySetInnerHTML={{ __html: p }}
+      />
+    ))}
+
+    {data.listItems?.length ? (
+      <ul className="list-disc pl-10 mt-3">
+        {data.listItems.map((item, index) => (
+          <li key={index} className="text-font19 mb-2">
+            <span dangerouslySetInnerHTML={{ __html: item.label }} />
+            {item.description && (
+              <span
+                className="text-[#77787B]"
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              />
+            )}
+          </li>
+        ))}
+      </ul>
+    ) : null}
+
+    {data.paragraphs2?.map((p, index) => (
+      <p
+        key={index}
+        className={`text-font19 text-[#77787B] ${p?.includes('<br') ? '' : 'mt-4'}`}
+        dangerouslySetInnerHTML={{ __html: p }}
+      />
+    ))}
+  </div>
+);
 
 const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
   return (
@@ -32,45 +88,26 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                   <Image src={data.image} alt={data.title} className="my-[40px]" />
                 )}
 
-                {/* Render paragraphs with HTML support */}
-                {data.paragraphs?.map((p, index) => (
+                {data.paragraphs3?.map((p, index) => (
                   <p
                     key={index}
-                    className="text-font19 text-[#77787B] mb-[16px]"
+                    className={`text-font19 text-[#77787B] ${p?.includes('<br') ? '' : 'mt-4'}`}
                     dangerouslySetInnerHTML={{ __html: p }}
                   />
                 ))}
 
-                {/* List items with HTML support */}
-                {data.listItems?.length ? (
-                  <ul className="list-disc pl-10 mt-3">
-                    {data.listItems.map((item, index) => (
-                      <li
-                        key={index}
-                        className="text-font19 mb-2"
-                      >
-                        <span
-                          dangerouslySetInnerHTML={{ __html: item.label }}
-                        />
-                        {item.description && (
-                          <span
-                            className="text-[#77787B]"
-                            dangerouslySetInnerHTML={{ __html: item.description }}
-                          />
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
+                {/* Backward compatible: render top-level single sub-section */}
+                {(data.sectionSubtitle || data.paragraphs || data.listItems || data.paragraphs2) &&
+                  renderSubSection({
+                    sectionSubtitle: data.sectionSubtitle,
+                    paragraphs: data.paragraphs,
+                    listItems: data.listItems,
+                    paragraphs2: data.paragraphs2,
+                  }, -1)
+                }
 
-                {/* Second paragraph group with HTML */}
-                {data.paragraphs2?.map((p, index) => (
-                  <p
-                    key={index}
-                    className={`text-font19 text-[#77787B] ${p && p.includes('<br') ? '' : 'mt-4'}`}
-                    dangerouslySetInnerHTML={{ __html: p }}
-                  />
-                ))}
+                {/* Repeatable sub-sections */}
+                {data.subSections?.map((sub, subIdx) => renderSubSection(sub, subIdx))}
               </div>
             </div>
           </div>
