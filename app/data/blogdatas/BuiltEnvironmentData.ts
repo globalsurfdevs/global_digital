@@ -26,28 +26,23 @@ export const BannerSection = [
 export const contentSectionsData = [
     {
         title: "Table Of Content",
+        isTOC: true,
         paragraphs: [
-            "1.	Understanding the built environment: more than just buildings ",
-            "2.	What makes the UAE's built environment unique? ",
-            "3.	Why understanding the built environment matters for your business",
-            "4.	Key built environment sectors shaping UAE development ",
-            "5.	Current trends transforming the UAE's built environment ",
-            "6.	Navigating UAE's built environment regulations",
-            "7.	How digital technology is reshaping the UAE's built environment ",
-            "8.	Why contractor digital marketing matters for built environment companies in dubai and the UAE ",
-            "9.	What is next for the UAE's built environment? ",
-            "10. Understanding the built environment: your competitive advantage ",
-            "11. Frequently asked questions ",
-            "Stand on the observation deck of the Burj Khalifa on a clear morning and look out. You can see Dubai Marina's towers to the west, the creek and old city to the east, highways threading between communities, solar panels glinting in Deira, and cranes across the horizon. What you are looking at is not just a collection of buildings. It is a built environment. ",
-            "And understanding what that term actually means, and why it matters, can change how you position your construction or development business. ",
-            "The term \"built environment\" appears across UAE tenders, sustainability reports, and planning documents. But definitions vary in practice.",
-            "This guide gives a clear, practical definition, explains what makes the UAE’s built environment distinct, and shows why understanding it properly is a real advantage for contractors, developers, and built environment professionals. "
-
-
+            `<a href="#understanding-the-built-environment-more-than-just-buildings" class='hover:text-primary'>1. Understanding the built environment: more than just buildings</a>`,
+            `<a href="#what-makes-the-uaes-built-environment-unique" class='hover:text-primary'>2. What makes the UAE's built environment unique?</a>`,
+            `<a href="#why-understanding-the-built-environment-matters-for-your-business" class='hover:text-primary'>3. Why understanding the built environment matters for your business</a>`,
+            `<a href="#key-built-environment-sectors-shaping-uae-development" class='hover:text-primary'>4. Key built environment sectors shaping UAE development</a>`,
+            `<a href="#current-trends-transforming-the-uaes-built-environment" class='hover:text-primary'>5. Current trends transforming the UAE's built environment</a>`,
+            `<a href="#navigating-uaes-built-environment-regulations" class='hover:text-primary'>6. Navigating UAE's built environment regulations</a>`,
+            `<a href="#how-digital-technology-is-reshaping-the-uaes-built-environment" class='hover:text-primary'>7. How digital technology is reshaping the UAE's built environment</a>`,
+            `<a href="#why-contractor-digital-marketing-matters-for-built-environment-companies-in-dubai-and-the-uae" class='hover:text-primary'>8. Why contractor digital marketing matters for built environment companies in dubai and the UAE</a>`,
+            `<a href="#what-is-next-for-the-uaes-built-environment" class='hover:text-primary'>9. What is next for the UAE's built environment?</a>`,
+            `<a href="#understanding-the-built-environment-your-competitive-advantage" class='hover:text-primary'>10. Understanding the built environment: your competitive advantage</a>`,
+            `<a href="#faq" class='hover:text-primary'>11. Frequently asked questions</a>`,
+            "Stand on the observation deck of the Burj Khalifa on a clear morning and look out...",
+            "And understanding what that term actually means, and why it matters, can change how you position your construction or development business.",
         ]
-
     },
-
 ];
 // data.ts
 

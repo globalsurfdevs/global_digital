@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
-import Contentone from "../../../components/BlogSocialMedia/ContentSectionOne";
+import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
 import ContentSectionStaic from "../../../components/BlogSocialMedia/ContentSectionStatic"
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
 import { BuiltEnvironmentSchema } from "../../../components/Schema/OfferCatalog";
@@ -80,7 +80,7 @@ const page = () => {
             <Contentone sections={keySectorsData} />
             <Contentone sections={trendsData} />
 
-            <section className="py-[50px] lg:py-[140px]">
+            <section className="py-[50px] lg:py-[140px]" id="navigating-uaes-built-environment-regulations">
                 <ThreeColumnTable
                     title="Navigating UAE's built environment regulations"
                     subtitle="The UAE’s regulatory framework varies across emirates but follows a structured approach."
@@ -89,13 +89,15 @@ const page = () => {
                     paddingBottom="pb-0"
                     paragraph="Recent regulatory developments include updates to Dubai's Building Code incorporating new sustainability thresholds, expanded Estidama Pearl Rating requirements in Abu Dhabi, and increasing federal-level focus on environmental impact reporting for major infrastructure projects. "
                 />
-                <Contentone sections={digitalTechnologyData} />
-                <Contentone sections={contractorMarketingData} />
-                <Contentone sections={understandingBuiltEnvironmentData} />
             </section>
+            <Contentone sections={digitalTechnologyData} />
+            <Contentone sections={contractorMarketingData} />
+            <Contentone sections={understandingBuiltEnvironmentData} />
 
-            {/* <Contentone sections={contractorMarketingData} /> */}
-            <FAQ data={Faq} bgcolor="#F2F2F2" />
+            <section id="faq" className="mt-[50px] lg:mt-[140px]">
+                {/* <Contentone sections={contractorMarketingData} /> */}
+                <FAQ data={Faq} bgcolor="#F2F2F2" />
+            </section>
         </div>
     );
 };
