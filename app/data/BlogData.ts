@@ -1,7 +1,7 @@
 export const BlogData = [
   {
     id: 10,
-    slug: "why-email-marketing-still-quietly-drives",
+    slug: "what-does-built-environment-really-mean-in-the-uae",
     titles:
       "What Does the “Built Environment” Really Mean in the UAE?",
     title:
