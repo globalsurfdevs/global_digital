@@ -288,7 +288,7 @@ export const contractorMarketingData = [
             {
                 sectionSubtitle: "B2B decision-makers research suppliers online first",
                 paragraphs: ["Gartner research suggests B2B buyers increasingly prefer self-directed, digital-first research before engaging with vendors. Tender committees are no different. Before they open your pre-qualification document, many will have already formed an impression of your company based on what they found when they searched your name.  ",
-                    'A <a class="text-primary hover:underline" href="web-design-and-development">professional website</a> with a strong project portfolio, active LinkedIn presence, and visible industry thought leadership creates a halo effect that makes everything in your technical submission more credible.'
+                    'A <a class="text-primary hover:underline" href="https://www.globalsurf.ae/web-design-and-development">professional website</a> with a strong project portfolio, active LinkedIn presence, and visible industry thought leadership creates a halo effect that makes everything in your technical submission more credible.'
                 ]
             },
             {
@@ -304,7 +304,7 @@ export const contractorMarketingData = [
             },
             {
                 sectionSubtitle: "What an effective construction company website strategy looks like",
-                paragraphs: ["For a UAE construction or built environment company, an effective online strategy means: ",
+                paragraphs: ['<a href="https://www.globalsurf.ae/industry/construction" class="text-primary hover:underline">For a UAE construction or built environment company</a> , an effective online strategy means:',
                     "<ul class='list-disc pl-5'><li><strong>An SEO-optimised</strong> construction company website with a detailed, current project portfolio - not stock photography </li> <li><strong>A LinkedIn company</strong> page built for contractor digital marketing that posts regularly and showcases real team expertise </li> <li><strong>Content</strong> that demonstrates genuine understanding of UAE built environment trends, regulations, and challenges </li> <li><strong>Case studies</strong> written to address the questions developers and procurement managers ask at shortlist stage </li> <li><strong>Consistent branding</strong> and frictionless <strong>contact pathways</strong> across every channel where clients search for built environment companies in Dubai </li></ul>"
                 ]
 
@@ -313,7 +313,7 @@ export const contractorMarketingData = [
                 sectionSubtitle: " Global Surf Perspective",
                 imagesecond: assets.envblog6,
                 imagealt: "Construction digital marketing",
-                paragraphs: ["At Global Surf Digital, we work specifically with built environment companies because we understand the sector and its commercial dynamics. Our clients include construction groups, contracting businesses, and building material brands operating across the UAE. We help them communicate their expertise to developers, consultants, and procurement teams through <a class='text-primary hover:underline' href='seo-agency-dubai'>SEO</a>, <a class='text-primary hover:underline' href='content-marketing-agency-dubai'>content marketing</a>, LinkedIn strategy, and project portfolio development. ",
+                paragraphs: ["At Global Surf Digital, we work specifically with built environment companies because we understand the sector and its commercial dynamics. Our clients include construction groups, contracting businesses, and building material brands operating across the UAE. We help them communicate their expertise to developers, consultants, and procurement teams through <a class='text-primary hover:underline' href='https://www.globalsurf.ae/seo-agency-dubai'>SEO</a>, <a class='text-primary hover:underline' href='https://www.globalsurf.ae/content-marketing-agency-dubai'>content marketing</a>, LinkedIn strategy, and project portfolio development. ",
                     "The built environment companies winning the most commercially valuable projects in the UAE right now are not necessarily the most technically capable. They are the most visible and the most credible online. That is a gap our team is built to close. ",
                     "The most commercially successful firms in UAE construction combine technical excellence with strong online visibility. In competitive tenders where capabilities are comparable, that visibility becomes the differentiator. Technical credibility is still table stakes - what we help companies do is ensure their online presence reflects the standard of work they are already delivering."
 
