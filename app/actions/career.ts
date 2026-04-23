@@ -45,10 +45,13 @@ export async function submitCareer(formData: FormData) {
                 : [];
 
         const toEmail = await getToEmail("career");
+        const emails = toEmail.split(",").map((e: string) => e.trim());
+        
 
         await sendMailWithAttachments({
             type: "career",
-            to: toEmail,
+            to: emails[0],
+            cc: emails.slice(1),
             subject: `New Career Application: ${data.name}`,
             fields: data,
             attachments,

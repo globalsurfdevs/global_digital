@@ -25,6 +25,10 @@ const ContactSchema = new mongoose.Schema({
     page_url: {
         type: String
     },
+    created_at:{
+        type:Date,
+        default:Date.now
+    }
 });
 
 export default mongoose.models?.contact || mongoose.model("contact", ContactSchema);

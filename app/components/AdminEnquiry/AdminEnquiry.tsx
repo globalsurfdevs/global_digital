@@ -34,6 +34,9 @@ const AdminEnquiry = () => {
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
     const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
 
+    const [fromDate, setFromDate] = useState<string>("");
+    const [toDate, setToDate] = useState<string>("");
+
     const toggleSelect = (id: string) => {
         setSelectedIds((prev) =>
             prev.includes(id)
@@ -52,7 +55,15 @@ const AdminEnquiry = () => {
 
         const fetchEnquiriesData = async () => {
             try {
-                const response = await fetch(`/api/enquiry?page=${page}&limit=10`);
+
+                const query = new URLSearchParams({
+                    page: String(page),
+                    limit: "10",
+                    ...(fromDate && { from: fromDate }),
+                    ...(toDate && { to: toDate }),
+                });
+
+                const response = await fetch(`/api/enquiry?${query.toString()}`);
 
                 if (response.ok) {
                     const data = await response.json();
@@ -113,7 +124,43 @@ const AdminEnquiry = () => {
             </div>
             <div className='flex flex-col gap-3 min-h-[calc(100vh-200px)]'>
                 <div className="flex items-center gap-10 justify-end px-5">
+                    <div className="flex gap-3 items-center px-5">
+                        <input
+                            type="date"
+                            value={fromDate}
+                            onChange={(e) => setFromDate(e.target.value)}
+                            className="border px-2 py-1 rounded"
+                        />
 
+                        <input
+                            type="date"
+                            value={toDate}
+                            onChange={(e) => setToDate(e.target.value)}
+                            className="border px-2 py-1 rounded"
+                        />
+
+                        <button
+                            onClick={() => {
+                                setPage(1);
+                                setRefetch(prev => !prev);
+                            }}
+                            className="px-3 py-1 bg-black text-white rounded"
+                        >
+                            Apply
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                setFromDate("");
+                                setToDate("");
+                                setPage(1);
+                                setRefetch(prev => !prev);
+                            }}
+                            className="px-3 py-1 border rounded"
+                        >
+                            Reset
+                        </button>
+                    </div>
                     {/* <button
                         onClick={toggleSelectAll}
                         className="px-3 py-1 border rounded"
@@ -159,9 +206,6 @@ const AdminEnquiry = () => {
                                             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 
                                                 <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                                    <div className="flex flex-col gap-2">
-
-                                                    </div>
                                                     <div className="grid grid-cols-1 gap-4 text-sm">
 
                                                         <div className="flex flex-col">
