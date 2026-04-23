@@ -10,8 +10,8 @@ export const BannerSection = [
         ],
         title:
             "What Does the “Built Environment” Really Mean in the UAE?",
-        publishedon: "April 23, 2025",
-        updatedon: "April 23, 2025",
+        publishedon: "April 23, 2026",
+        updatedon: "April 23, 2026",
         subtitle: "Building Strong Brand Identities With Creative Design, Marketing Collateral, and Storytelling",
         heroAlt: "1 Billion Followers Summit",
         sub: [
