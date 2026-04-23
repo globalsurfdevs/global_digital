@@ -304,7 +304,7 @@ export const contractorMarketingData = [
             },
             {
                 sectionSubtitle: "What an effective construction company website strategy looks like",
-                paragraphs: ['<a href="https://www.globalsurf.ae/industry/construction" class="text-primary hover:underline">For a UAE construction or built environment company</a> , an effective online strategy means:',
+                paragraphs: ['For a <a href="https://www.globalsurf.ae/industry/construction" class="text-primary hover:underline">UAE construction or built environment company</a> , an effective online strategy means:',
                     "<ul class='list-disc pl-5'><li><strong>An SEO-optimised</strong> construction company website with a detailed, current project portfolio - not stock photography </li> <li><strong>A LinkedIn company</strong> page built for contractor digital marketing that posts regularly and showcases real team expertise </li> <li><strong>Content</strong> that demonstrates genuine understanding of UAE built environment trends, regulations, and challenges </li> <li><strong>Case studies</strong> written to address the questions developers and procurement managers ask at shortlist stage </li> <li><strong>Consistent branding</strong> and frictionless <strong>contact pathways</strong> across every channel where clients search for built environment companies in Dubai </li></ul>"
                 ]
 
