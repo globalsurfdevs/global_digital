@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { assets } from '@/public/assets/assets';
 import Link from 'next/link';
-const ContentSection = () => {
+const ContentStaticSection = () => {
   return (
     <section>
       <div className="container mx-auto py-[50px] lg:py-[140px]">
@@ -150,4 +150,4 @@ const ContentSection = () => {
   );
 };
 
-export default ContentSection;
+export default ContentStaticSection;
