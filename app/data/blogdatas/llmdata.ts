@@ -21,7 +21,26 @@ export const BannerSection = [
     ],
   },
 ];
+export const tableOfContents = [
+  {
+    title: "Table Of Content",
+    isTOC: true,
+    paragraphs: [
+      `<a href="#silent-shift" class='hover:text-primary'>1. The Silent Shift Happening Right Now</a>`,
+      `<a href="#how-llms-work" class='hover:text-primary'>2. How LLMs Work (In Simple Terms)</a>`,
+      `<a href="#invisible-llms" class='hover:text-primary'>3. Why You Might Be Invisible in LLMs</a>`,
+      `<a href="#ai-visibility-framework" class='hover:text-primary'>4. The 5-Step AI Visibility Framework</a>`,
+      `<a href="#content-llms-read" class='hover:text-primary'>5. Content That LLMs Actually Read</a>`,
+      `<a href="#rules-visibility" class='hover:text-primary'>6. The New Rules of Visibility</a>`,
+      `<a href="#impact-b2b-b2c" class='hover:text-primary'>7. How This Impacts B2B and B2C</a>`,
+      `<a href="#takeaway" class='hover:text-primary'>8. The Takeaway</a>`,
+      `<a href="#brand-visibility" class='hover:text-primary'>9. Ready to See How Visible Your Brand Is?</a>`,
+      '<a href="#faq-section" class="hover:text-primary">10. Frequently Asked Questions</a>',
+    ]
+  },
+];
 // data.ts
+
 export const contentSectionsData = [
   {
     title: "The Silent Shift Happening Right Now",
@@ -117,7 +136,7 @@ export const videoProductionData = [
       title: "For B2B brands",
       image: assets.bgimg1,
       tasks: [
-        "Buyers are researching suppliers, certifications, and case studies through AI assistants - not just search engines.  If your brand isn’t visible there, competitors will shape the perception before your first meeting. ",
+        "Buyers are researching suppliers, certifications, and case studies through AI assistants - not just search engines. If your brand isn’t visible there, competitors will shape the perception before your first meeting. ",
       ],
     },
     {

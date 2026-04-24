@@ -1,5 +1,47 @@
 export const BlogData = [
   {
+    id: 11,
+    slug: "how-to-visible-in-llm",
+    titles:
+      "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+    title:
+      "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+    list_heading:
+      "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+    meta_title: " ",
+    description:
+      " ",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs2/blogbnr.png",
+    thumb:
+      "/images/blogs2/blogbnr.png",
+    large_thumb:
+      "/images/blogs2/blogbnr.png",
+    category: "Digital Marketing",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 10,
     slug: "what-does-built-environment-really-mean-in-the-uae",
     titles:
