@@ -38,7 +38,7 @@ type Metadata = {
     type?: string; // keep it optional
   };
   images?: { url: string; alt: string }[];
-  authors?: { name: string; url?: string }[];
+  // authors?: { name: string; url?: string }[];
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -51,11 +51,11 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     robots: "index, follow",
     openGraph: {
-      title: "Social Media Video Production Tips & Strategies | Global Surf Blog",
+      title: "How Digital Marketing Wins Projects for Construction Companies in UAE",
       site_name: "Global Surf Digital",
-      url: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
+      url: "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae",
       description:
-        "Master the art of social media video creation. Explore tools, strategies, and tips to engage your audience, boost visibility, and drive results.",
+        "Developers in DIFC and Business Bay research contractors online before a single call is made. Learn the 5 digital channels that drive project enquiries in the UAE built environment.",
       type: "article", // keep it optional
     },
     images: [
@@ -64,12 +64,12 @@ export async function generateMetadata(): Promise<Metadata> {
         alt: "Social Media Video Production Tips",
       },
     ],
-    authors: [
-      {
-        name: "Ashna Ganeeva",
-        url: "https://www.linkedin.com/in/ashna-ganeeva/",
-      },
-    ],
+    // authors: [
+    //   {
+    //     name: "Ashna Ganeeva",
+    //     url: "https://www.linkedin.com/in/ashna-ganeeva/",
+    //   },
+    // ],
   };
 }
 

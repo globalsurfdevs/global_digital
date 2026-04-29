@@ -3,7 +3,7 @@ import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic"
 import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne";
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
 import { GoogleAdsVsMetaAdsSchema } from "../../../components/Schema/OfferCatalog";
-import GoogleAdsVsMetaAdsContent from "../../../components/Blog-details/GoogleAdsVsMetaAdsContent";
+import GoogleAdsVsMetaAdsContent from "../../../components/Blog-details/HowDigitalMarketingWinsContent";
 
 
 import {
