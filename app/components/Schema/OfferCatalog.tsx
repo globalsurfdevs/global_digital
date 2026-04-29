@@ -739,3 +739,244 @@ export const BuiltEnvironmentSchema = () => {
     </>
   );
 };
+
+export const HowDigitalMarketingWinsSchema = () => {
+  const schema = {
+
+    "@context": "https://schema.org",
+
+    "@type": "Article",
+
+    "headline": "How Digital Marketing Wins Projects for Construction Companies in the UAE",
+
+    "description": "A practical guide to digital visibility for UAE construction and built environment companies — covering SEO, LinkedIn, Google Business Profile, content marketing, and website CRO.",
+
+    "image": "https://www.globalsurf.ae/images/blog-new/construction-digital-marketing-uae/hero.jpg",
+
+    "datePublished": "2026-04-25T09:00:00+04:00",
+
+    "dateModified": "2026-04-25T09:00:00+04:00",
+
+    "inLanguage": "en-AE",
+
+    "keywords": "digital marketing construction companies UAE, contractor SEO Dubai, construction company website UAE, built environment digital marketing, contractor LinkedIn UAE",
+
+    "author": {
+
+      "@type": "Organization",
+
+      "name": "Global Surf Digital",
+
+      "url": "https://www.globalsurf.ae"
+
+    },
+
+    "publisher": {
+
+      "@type": "Organization",
+
+      "name": "Global Surf Digital",
+
+      "logo": {
+
+        "@type": "ImageObject",
+
+        "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
+
+      }
+
+    },
+
+    "mainEntityOfPage": {
+
+      "@type": "WebPage",
+
+      "@id": "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/"
+
+    },
+
+    "mentions": [
+
+      { "@type": "Organization", "name": "ASGC Group" },
+
+      { "@type": "Organization", "name": "Assent Steel" }
+
+    ]
+
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
+    />
+  );
+};
+export const HowDigitalMarketingWinsFaqSchema = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does digital marketing actually work for construction companies in the UAE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Digital marketing is measurably effective for construction and contracting companies in the UAE when the strategy is aligned with how clients actually search and procure services. Built environment clients including developers, government entities, and real estate firms now use Google and LinkedIn to research and shortlist contractors before making contact. Companies that rank for relevant service and location keywords, maintain a credible online presence, and produce authoritative project content consistently generate more project enquiries than those that rely solely on referrals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is digital visibility and why does it matter for built environment companies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Digital visibility is the ability of a company to be found, assessed, and shortlisted through online channels during a client's procurement process. For built environment companies including contractors, developers, architecture firms, and MEP consultancies, it matters because procurement decisions in the UAE now begin with online research. If a company cannot be found for its core services on Google, or its website does not demonstrate clear capability and credibility, it is effectively excluded from the early procurement conversation before it ever begins."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does SEO take to show results for a construction company?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SEO typically delivers visible ranking improvements within three to six months for most construction and contracting companies, depending on the competitiveness of target keywords and the current state of the website. Technical fixes and on-page optimisation produce the fastest initial gains. For highly competitive terms like 'general contractor Dubai,' the timeline is typically six to nine months to reach page one. GS.Digital's built environment clients have seen meaningful traffic improvement within 90 days of programme launch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which digital channels work best for B2B construction companies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For B2B construction companies in the UAE, the highest-performing channels are organic search, LinkedIn, Google Business Profile, and content marketing anchored to project case studies and service expertise. Organic search delivers the highest-quality inbound intent - clients actively seeking specific services. LinkedIn is the most effective paid channel for targeting procurement managers, developers, and government entities by role, company, and geography. The right channel mix depends on your target client type and current digital baseline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should a construction company website include to generate project enquiries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A construction company website that generates project enquiries should include clear service scope pages with location targeting, a project portfolio with scope, scale, client type, and outcome descriptions rather than just photographs, visible accreditations such as ISO, CIOB, RICS, or RERA registration, a frictionless enquiry pathway including phone, WhatsApp, and email on every page, and an About section that communicates leadership credibility and track record."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does GS.Digital help construction and built environment companies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GS.Digital works with UAE-based construction companies, fit-out contractors, developers, and real estate firms to build digital presence strategies that generate project-ready enquiries. Our work spans website redevelopment, SEO implementation, LinkedIn strategy, content marketing, and conversion optimisation - all delivered within the context of how built environment clients actually research and procure services. Clients include ASGC Group, where GS.Digital delivered a 926% increase in weekly active users following website redevelopment and SEO implementation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is digital marketing relevant for companies that mostly win work through relationships and tenders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Digital visibility strengthens relationship-driven and tender-based business development - it does not replace it. Procurement teams reviewing a tender submission now routinely check the submitting company's website, LinkedIn, and Google presence before progressing. A weak or absent digital presence can undermine an otherwise strong tender submission. In the UAE's increasingly transparent procurement environment, digital credibility has become part of the pre-qualification standard."
+        }
+      }
+    ]
+
+
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
+    />
+  );
+};
+
+
+export const HowDigitalMarketingWinsBreadcrumbSchema = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.globalsurf.ae/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blogs",
+        "item": "https://www.globalsurf.ae/blogs"
+      },
+
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Digital Marketing for Construction Companies in UAE",
+        "item": "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/ "
+      }
+    ]
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
+    />
+  );
+};
+
+export const HowDigitalMarketingWinsHowToSchema = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Audit Your Construction Company's Digital Presence in the UAE",
+    "description": "A 5-question audit any business development director at a UAE construction company can complete in under 10 minutes.",
+    "totalTime": "PT10M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Check search visibility",
+        "text": "Search Google for your core service and location — for example 'general contractor Dubai' or 'MEP contractor Abu Dhabi'. If you do not appear on page one, every potential client running that search is being directed to a competitor."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Test homepage clarity",
+        "text": "When a client lands on your homepage, can they identify your services, locations served, and sector specialisations within ten seconds? If not, most visitors will leave without exploring further."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Review portfolio depth",
+        "text": "Does your project portfolio include scope, scale, client type, and outcome descriptions — or just photographs? Photographs without context do not build procurement confidence."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Verify accreditation visibility",
+        "text": "Are your accreditations and certifications — including ISO, CIOB, RICS, and RERA registration — visible on your website? These are procurement trust signals, not just credentials."
+      },
+
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Test your enquiry pathway",
+        "text": "Is there a clear, frictionless enquiry pathway — phone, WhatsApp, email, and an RFQ form on every key page? If a developer has to hunt for contact information, most will not bother."
+      }
+    ]
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
+    />
+  );
+};
+

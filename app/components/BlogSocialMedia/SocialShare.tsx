@@ -34,13 +34,7 @@ const SocialShare = () => {
     className="cursor-pointer p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]"
     title="Copy Blog Link"
   >
-    <Image
-      src={assets.shareicon}
-      alt="Copy Link"
-      className="w-full h-full object-cover 
-                 transition-transform transition-filter duration-500 ease-in-out 
-                 group-hover:invert group-hover:scale-110"
-    />
+    <Image src={assets.shareicon} alt="Copy Link" className="w-full h-full object-cover transition-transform transition-filter duration-500 ease-in-out group-hover:invert group-hover:scale-110" />
   </div>
 
   {copied && (

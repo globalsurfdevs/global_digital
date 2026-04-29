@@ -1,24 +1,61 @@
 export const BlogData = [
   {
-    id: 11,
-    slug: "how-to-visible-in-llm",
+    id: 12,
+    slug: "how-digital-marketing-wins-projects-for-construction-companies-in-uae",
     titles:
-      "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+      "How Digital Marketing Wins Projects for Construction Companies in the UAE",
     title:
-      "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+      "How Digital Marketing Wins Projects for Construction Companies in the UAE",
     list_heading:
-      "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
-    meta_title: " ",
+      "How Digital Marketing Wins Projects for Construction Companies in the UAE",
+    meta_title:
+      "How Digital Marketing Wins Projects for Construction Companies in the UAE | Global Surf",
     description:
-      " ",
+      "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
     post_date: "",
     read_time: "",
     feature_thumb:
-      "/images/blogs2/blogbnr.png",
+      "/images/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/main-featured.jpg",
     thumb:
-      "/images/blogs2/blogbnr.png",
+      "/images/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/main-featured.jpg",
     large_thumb:
-      "/images/blogs2/blogbnr.png",
+      "/images/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/main.jpg",
+    category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
+    id: 11,
+    slug: "how-to-visible-in-llm",
+    titles: "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+    title: "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+    list_heading:
+      "Why Your Brand Isn’t Visible in LLMs (And What to Do About it) ",
+    meta_title: " ",
+    description: " ",
+    post_date: "",
+    read_time: "",
+    feature_thumb: "/images/blogs2/blogbnr.png",
+    thumb: "/images/blogs2/blogbnr.png",
+    large_thumb: "/images/blogs2/blogbnr.png",
     category: "Digital Marketing",
     format: "standard",
     views: "",
@@ -44,23 +81,16 @@ export const BlogData = [
   {
     id: 10,
     slug: "what-does-built-environment-really-mean-in-the-uae",
-    titles:
-      "What Does the “Built Environment” Really Mean in the UAE?",
-    title:
-      " What Does the “Built Environment” Really Mean in the UAE?",
-    list_heading:
-      " What Does the “Built Environment” Really Mean in the UAE?",
+    titles: "What Does the “Built Environment” Really Mean in the UAE?",
+    title: " What Does the “Built Environment” Really Mean in the UAE?",
+    list_heading: " What Does the “Built Environment” Really Mean in the UAE?",
     meta_title: " ",
-    description:
-      " ",
+    description: " ",
     post_date: "",
     read_time: "",
-    feature_thumb:
-      "images/blogs/environment/envblog1.jpg",
-    thumb:
-      "images/blogs/environment/envblog1.jpg",
-    large_thumb:
-      "images/blogs/environment/envblog1.jpg",
+    feature_thumb: "images/blogs/environment/envblog1.jpg",
+    thumb: "images/blogs/environment/envblog1.jpg",
+    large_thumb: "images/blogs/environment/envblog1.jpg",
     category: "Digital Marketing",
     format: "standard",
     views: "",
@@ -93,14 +123,11 @@ export const BlogData = [
     list_heading:
       " Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
     meta_title: " ",
-    description:
-      " ",
+    description: " ",
     post_date: "",
     read_time: "",
-    feature_thumb:
-      "/images/blog-new/blog8/banner.png",
-    thumb:
-      "/images/blog-new/blog8/banner.png",
+    feature_thumb: "/images/blog-new/blog8/banner.png",
+    thumb: "/images/blog-new/blog8/banner.png",
     large_thumb:
       "/images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png",
     category: "performance marketing",
