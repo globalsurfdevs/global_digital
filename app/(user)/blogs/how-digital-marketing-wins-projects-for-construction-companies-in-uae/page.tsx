@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "How Digital Marketing Wins Projects for Construction Companies in the UAE | Global Surf",
     description: "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
     alternates: { canonical: "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae", },
-    robots: "noindex, nofollow",
+    robots: "index, follow",
     openGraph: {
       title: "How Digital Marketing Wins Projects for Construction Companies in the UAE | Global Surf",
       site_name: "Global Surf",
