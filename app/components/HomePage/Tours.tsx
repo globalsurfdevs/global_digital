@@ -72,7 +72,7 @@ const Tours = () => {
               portfolios.map((item) => (
                 <div   key={item.id}>
                   <div
-                  className="tour-card relative  min-h-[350px] lg:min-h-[500px] xl:min-h-[905px]"
+                  className="tour-card relative  min-h-[350px] lg:min-h-[500px] xl:min-h-[620px] 3xl:min-h-[905px]"
                 
                 >
                   <img
@@ -96,7 +96,7 @@ const Tours = () => {
                     <h3 className="text-font30 leading-lh1p66 text-black">
                       {item.companyName}
                     </h3>
-                    <div className="flex gap-1">
+                    <div className="flex gap-1 flex-wrap text-[14px] md:text-[16px]">
                       
                       {item.channels.length == 0 && <h4 className={`text-primary ${lexend.className}`}>
                         {item.channelsUsed}
