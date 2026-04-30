@@ -980,3 +980,155 @@ export const HowDigitalMarketingWinsHowToSchema = () => {
   );
 };
 
+export const BafcoCaseStudySchema = () => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital",
+    "description":
+      "How GS Digital's 16-month performance marketing programme delivered double the leads at significantly lower cost per lead for BAFCO, one of the UAE's leading furniture and fitout companies — through Meta, Google Ads, and sustained strategic optimisation.",
+    "image":
+      "https://www.globalsurf.ae/images/blog-new/bafco-performance-marketing/og-cover.jpg",
+    "datePublished": "2026-03-25T09:00:00+04:00",
+    "dateModified": "2026-03-25T09:00:00+04:00",
+    "inLanguage": "en-AE",
+    "keywords":
+      "performance marketing UAE, performance marketing agency Dubai, digital marketing agency Dubai, digital marketing service UAE, meta ads UAE, Google Ads Dubai, lead generation UAE, BAFCO, furniture marketing UAE",
+    "author": {
+      "@type": "Organization",
+      "name": "Global Surf Digital",
+      "url": "https://www.globalsurf.ae"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Global Surf Digital",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":
+        "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai/"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Performance Marketing",
+      "description":
+        "Results-driven digital advertising optimised for measurable outcomes"
+    },
+    "mentions": [
+      {
+        "@type": "Organization",
+        "name": "BAFCO",
+        "url": "https://www.bafco.com"
+      },
+      {
+        "@type": "Organization",
+        "name": "Global Surf Digital",
+        "url": "https://www.globalsurf.ae"
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name":
+          "What is performance marketing and how does it differ from standard digital advertising?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "Performance marketing is a results-driven approach to digital advertising where every budget and targeting decision is grounded in measurable outcomes such as leads generated, cost per lead, and return on spend. GS Digital manages Meta and Google campaigns with continuous optimisation rather than a set-and-forget structure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name":
+          "How long does it take to see compounding results from performance marketing in the UAE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "Initial improvements typically appear within 4 to 8 weeks as campaigns gather data. Strong compounding efficiency builds over 6 to 12 months as audience insights and creative learnings accumulate through sustained optimisation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name":
+          "How did lead volume double without increasing the budget?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "Through systematic optimisation over 12 months. Audience targeting was refined based on performance data, creative assets were continuously tested, and budget was dynamically reallocated to the highest-performing segments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name":
+          "What digital marketing services does GS Digital provide for UAE businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "GS Digital provides performance marketing across Meta and Google, SEO, web development, social media management, branding, UI/UX design, and conversion rate optimisation — delivered as an integrated system."
+        }
+      },
+      {
+        "@type": "Question",
+        "name":
+          "Is GS Digital suited for B2B companies with longer sales cycles?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "Yes. GS Digital maintains consistent audience visibility and structured optimisation throughout the year, which is particularly effective for B2B companies with extended consideration and project-based purchasing cycles."
+        }
+      }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.globalsurf.ae/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blogs",
+        "item": "https://www.globalsurf.ae/blogs"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Same Peak Month. 2X the Leads. 56% Lower Cost.",
+        "item":
+          "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai/"
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+};

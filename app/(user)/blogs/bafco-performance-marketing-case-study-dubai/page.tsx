@@ -1,0 +1,98 @@
+import React from "react";
+import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
+import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
+import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
+import { BafcoCaseStudySchema } from "../../../components/Schema/OfferCatalog";
+import NewRules from "../../../components/BlogSocialMedia/NewRules";
+import Contenttwo from "../../../components/BlogSocialMedia/IconContentPara";
+
+
+
+
+import {
+  BannerSection, Faq, contentSectionsData, UAEBuiltEnvironmentData,
+  videoProductionsocialData, builtEnvironmentData, keySectorsData,  rulesData, googleAds,
+
+} from "../../../data/blogdatas/bafcoBlogData";
+
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+
+
+interface Canonicals {
+  canonical: string;
+}
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: Canonicals;
+  robots: string;
+  openGraph: {
+    title: string;
+    site_name: string;
+    url: string;
+    description: string;
+    type?: string; // keep it optional
+  };
+  images?: { url: string; alt: string }[];
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital ",
+    description:
+      "How GS Digital helped BAFCO double leads & cut CPL by 56% in the same peak month through 12 months of strategic Meta & Google Ads optimization in the UAE",
+    alternates: {
+      canonical: "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai",
+    },
+    robots: "index, follow",
+    openGraph: {
+      title: "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital",
+      site_name: "Global Surf Digital",
+      url: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
+      description:
+        "How GS Digital helped BAFCO double leads & cut CPL by 56% in the same peak month through 12 months of strategic Meta & Google Ads optimization in the UAE.",
+      type: "article", // keep it optional
+    },
+    images: [
+      {
+        url: "https://www.globalsurf.ae/_next/static/media/envblog1.22e3bfb5.jpg",
+        alt: 'BAFCO x GS Digital — Performance Marketing UAE Case Study',
+      },
+    ],
+
+  };
+}
+
+const page = () => {
+  const videoProductionTitles = ['Authority', 'Scope'];
+
+  return (
+    <div className="relative">
+
+      <BafcoCaseStudySchema />
+      <SocialShare />
+      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
+      <Contentone sections={contentSectionsData} />
+      <Contentone sections={videoProductionsocialData} />
+      <Contentone sections={UAEBuiltEnvironmentData} />
+      <Contentone sections={builtEnvironmentData} />
+      <div id="rules-visibility">
+        <NewRules rules={rulesData} pb="pb-0" />
+      </div>
+      <div id="rules-visibility">
+        <NewRules rules={googleAds} pb="pb-0" />
+      </div>
+      <Contentone sections={keySectorsData} />
+      <Contenttwo />
+     
+
+      <section id="faq" className="mt-[50px] lg:mt-[140px]">
+        {/* <Contentone sections={contractorMarketingData} /> */}
+        <FAQ data={Faq} bgcolor="#F2F2F2" />
+      </section>
+    </div>
+  );
+};
+
+export default page;
