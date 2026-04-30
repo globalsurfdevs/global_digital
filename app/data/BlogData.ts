@@ -1,4 +1,49 @@
+
+
 export const BlogData = [
+  {
+    id: 13,
+    slug: "bafco-performance-marketing-case-study-dubai",
+    titles:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+    title:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+    list_heading:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+    meta_title:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months. | Global Surf",
+    description:
+      "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs/llm/llmblog1.jpg",
+    thumb:
+      "/images/blogs/llm/llmblog1.jpg",
+    large_thumb:
+      "/images/blogs/llm/llmblog1.jpg",
+    category: "Performance Marketing",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
   {
     id: 12,
     slug: "how-digital-marketing-wins-projects-for-construction-companies-in-uae",

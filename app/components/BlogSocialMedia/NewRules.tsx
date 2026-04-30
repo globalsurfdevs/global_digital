@@ -5,27 +5,47 @@ import Image, { StaticImageData } from "next/image";
 // Extended support allowing <br/> and <strong> inside content strings using React's dangerouslySetInnerHTML
 // You must provide sanitized HTML strings in paragraphs, list descriptions, etc.
 
+export interface CalloutBlock {
+  label: string;
+  text: string;
+}
 export interface RuleItem {
   heading: string;
   kicker?: string;
   description?: string; // supports HTML now
   bullets?: string[];   // supports HTML optionally
+  calloutBlock?: CalloutBlock;
 }
 
 export interface RulesData {
   title: string;
   intro?: string;
   sections: RuleItem[];
+  calloutBlock?: CalloutBlock;
 }
 
 type NewRulesProps = {
   rules: RulesData;
+  pt?: string; // custom top padding, e.g. "pt-[80px] lg:pt-[200px]"
+  pb?: string; // custom bottom padding, e.g. "pb-[80px] lg:pb-[200px]"
 };
 
-const NewRules: React.FC<NewRulesProps> = ({ rules }) => {
+const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
+  // Build vertical padding class:
+  // - If both pt and pb are provided, use them individually (no py)
+  // - If only pt is provided, use pt + default bottom
+  // - If only pb is provided, use default top + pb
+  // - If neither, use default py
+  const paddingClass = (() => {
+    if (pt && pb) return `${pt} ${pb}`;
+    if (pt) return `${pt} pb-[50px] lg:pb-[140px]`;
+    if (pb) return `pt-[50px] lg:pt-[140px] ${pb}`;
+    return "py-[50px] lg:py-[140px]";
+  })();
+
   return (
     <section>
-      <div className="container mx-auto py-[50px] lg:py-[140px]">
+      <div className={`container mx-auto ${paddingClass}`}>
         <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 
@@ -55,7 +75,7 @@ const NewRules: React.FC<NewRulesProps> = ({ rules }) => {
                       {/* DESCRIPTION with HTML SUPPORT */}
                       {s.description && (
                         <p
-                          className="text-font19 text-[#77787B] mb-3 max-w-3xl"
+                          className="text-font19 text-[#77787B] mb-3 "
                           dangerouslySetInnerHTML={{ __html: s.description }}
                         />
                       )}
@@ -87,6 +107,21 @@ const NewRules: React.FC<NewRulesProps> = ({ rules }) => {
                 </div>
               ))}
             </div>
+            {rules.calloutBlock && (
+              <div className="mt-[40px] bg-[#000000] p-[30px]">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="bg-[#E63E31] w-[14px] h-[14px] shrink-0"></div>
+                  <p
+                    className="text-[#77787B] text-font19"
+                    dangerouslySetInnerHTML={{ __html: rules.calloutBlock.label }}
+                  />
+                </div>
+                <p
+                  className="text-white text-30 leading-[40px] mt-3 lg:mt-[37px]"
+                  dangerouslySetInnerHTML={{ __html: rules.calloutBlock.text }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

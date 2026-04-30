@@ -3,6 +3,13 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
+
+export interface StatItem {
+    value: string;
+    unit: string;
+    description: string;
+}
+
 export interface SubSection {
     sectionSubtitle?: string;
     paragraphs?: string[];
@@ -10,6 +17,8 @@ export interface SubSection {
     paragraphs2?: string[];
     imagesecond?: StaticImageData;
     imagealt?: string;
+    calloutText?: string;
+    paragraphs1?: string[];
 }
 
 export interface ContentSectionData {
@@ -19,11 +28,14 @@ export interface ContentSectionData {
     imagesecond?: StaticImageData;
     imagealt?: string;
     paragraphs3?: string[];
+    paragraphs1?: string[];
     sectionSubtitle?: string;
     paragraphs?: string[];
     listItems?: { label: string; description?: string }[];
     paragraphs2?: string[];
     subSections?: SubSection[];
+    calloutText?: string;
+    stats?: StatItem[];
 }
 
 type ContentSectionProps = {
@@ -77,6 +89,7 @@ const renderSubSection = (data: SubSection, idx: number) => (
                 dangerouslySetInnerHTML={{ __html: p }}
             />
         ))}
+
         {data.listItems?.length ? (
             <ul className="list-disc pl-10 mt-3">
                 {data.listItems.map((item, index) => (
@@ -92,6 +105,14 @@ const renderSubSection = (data: SubSection, idx: number) => (
                 ))}
             </ul>
         ) : null}
+        {data.calloutText && (
+            <div className="my-4 bg-[#F2F2F2] p-[30px]">
+                <div className="flex gap-2 ">
+                    <div className="bg-primary w-[14px] h-[14px] mt-3 "></div>
+                    <h3 className="text-30 mt-0 ml-3 lg:ml-[40px]" dangerouslySetInnerHTML={{ __html: data.calloutText }}></h3>
+                </div>
+            </div>
+        )}
         {data.paragraphs2?.map((p, index) => (
             <p
                 key={index}
@@ -124,7 +145,38 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                     <h2 className="title-65 mb-[40px]">
                                         {data.title}
                                     </h2>
-
+                                    {data.paragraphs1?.map((p, index) => (
+                                        <p
+                                            key={index}
+                                            className={`text-font19 text-[#77787B] ${p?.includes("<br") ? "" : "mt-4"}`}
+                                            dangerouslySetInnerHTML={{ __html: p }}
+                                        />
+                                    ))}
+                                    {data.stats?.length ? (
+                                        <div className="bg-[#F2F2F2] p-[30px] mt-[40px]">
+                                            <div className="grid grid-cols-3">
+                                                {data.stats.map((stat, statIdx) => (
+                                                    <div
+                                                        key={statIdx}
+                                                        className={`
+                        ${statIdx === 0 ? "pr-6 border-r border-[#D0D0D0]" : ""}
+                        ${statIdx > 0 && statIdx < data.stats!.length - 1 ? "px-6 border-r border-[#D0D0D0]" : ""}
+                        ${statIdx === data.stats!.length - 1 ? "pl-6" : ""}
+                    `}
+                                                    >
+                                                        <h3 className="title-65">
+                                                            <span dangerouslySetInnerHTML={{ __html: stat.value }} />
+                                                            <span className="text-[#E43D30] text-2xl" dangerouslySetInnerHTML={{ __html: stat.unit }} />
+                                                        </h3>
+                                                        <p
+                                                            className="text-font19 text-[#77787B]"
+                                                            dangerouslySetInnerHTML={{ __html: stat.description }}
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ) : null}
                                     {data.image && (
                                         <Image
                                             src={data.image}
@@ -140,6 +192,13 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                             dangerouslySetInnerHTML={{ __html: p }}
                                         />
                                     ))}
+                                    {data.imagesecond && (
+                                        <Image
+                                            src={data.imagesecond}
+                                            alt={data.imagealt || ""}
+                                            className="my-[40px]"
+                                        />
+                                    )}
 
                                     {(data.sectionSubtitle ||
                                         data.paragraphs ||

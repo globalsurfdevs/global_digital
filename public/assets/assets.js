@@ -1042,7 +1042,14 @@ import envblog5 from "../images/blogs/environment/envblog5.jpg";
 import envblog6 from "../images/blogs/environment/envblog6.jpg";
 import envblog7 from "../images/blogs/environment/envblog7.jpg";
 
-
+import llmblog1 from "../images/blogs/llm/llmblog1.jpg";
+import llmblog2 from "../images/blogs/llm/llmblog2.jpg";
+import llmblog3 from "../images/blogs/llm/llmblog3.jpg";
+import llmicon1 from "../images/blogs/llm/llmicon1.svg";
+import llmicon2 from "../images/blogs/llm/llmicon2.svg";
+import llmicon3 from "../images/blogs/llm/llmicon3.svg";
+import llicon4 from "../images/blogs/llm/llmicon4.svg";
+import llicon5 from "../images/blogs/llm/llmicon5.svg";
 
 export const assets = {
 
@@ -1056,6 +1063,14 @@ export const assets = {
   healthcare1,
   realestate,
   corporateservices,
+  llmblog1,
+  llmblog2,
+  llmblog3,
+  llmicon1,
+  llmicon2,
+  llmicon3,
+  llicon5,
+  llicon4,
   icss1,
   icss2,
   icss3,
