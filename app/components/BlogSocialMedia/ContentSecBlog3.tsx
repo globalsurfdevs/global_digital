@@ -31,6 +31,7 @@ export interface ContentSectionData {
     paragraphs1?: string[];
     sectionSubtitle?: string;
     paragraphs?: string[];
+    dividerAfterIndex?: number;
     listItems?: { label: string; description?: string }[];
     paragraphs2?: string[];
     subSections?: SubSection[];
@@ -217,10 +218,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                                         if (targetId) {
                                                             return (
                                                                 <p key={index} className="text-font19 text-[#77787B] mb-[16px]">
-                                                                    <Link
-                                                                        href={`#${targetId}`}
-                                                                        className="hover:underline hover:text-black transition-colors duration-150"
-                                                                    >
+                                                                    <Link href={`#${targetId}`} className="hover:underline hover:text-black transition-colors duration-150">
                                                                         <span dangerouslySetInnerHTML={{ __html: p }} />
                                                                     </Link>
                                                                 </p>
@@ -228,11 +226,15 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                                         }
                                                     }
                                                     return (
-                                                        <p
-                                                            key={index}
-                                                            className="text-font19 text-[#77787B] mb-[16px]"
-                                                            dangerouslySetInnerHTML={{ __html: p }}
-                                                        />
+                                                        <React.Fragment key={index}>
+                                                            {data.dividerAfterIndex === index && (
+                                                                <hr className="border-t border-[#b1aaaab0] my-[25px] lg:my-[50px]" />
+                                                            )}
+                                                            <p
+                                                                className="text-font19 text-[#77787B] mb-[16px]"
+                                                                dangerouslySetInnerHTML={{ __html: p }}
+                                                            />
+                                                        </React.Fragment>
                                                     );
                                                 })}
 

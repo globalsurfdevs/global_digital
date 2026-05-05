@@ -27,6 +27,7 @@ export const contentSectionsData = [
     {
         title: "Table of Contents",
         isTOC: true,
+        dividerAfterIndex: 8,
         paragraphs: [
             `<a href="#section1" class='hover:text-primary'>1. The Challenge: Winning Peak Season in a Competitive UAE Market</a>`,
             `<a href="#section2" class='hover:text-primary'>2. Most Office Fit-Out Brands Try to Win in January — BAFCO Prepared All Year</a>`,
