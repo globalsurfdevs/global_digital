@@ -31,7 +31,7 @@ export interface ContentSectionData {
     paragraphs1?: string[];
     sectionSubtitle?: string;
     paragraphs?: string[];
-    dividerAfterIndex?: number;
+    dividerAfterIndex?: number; /** If true, renders a horizontal divider between every paragraph  */
     listItems?: { label: string; description?: string }[];
     paragraphs2?: string[];
     subSections?: SubSection[];
@@ -228,7 +228,10 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                                     return (
                                                         <React.Fragment key={index}>
                                                             {data.dividerAfterIndex === index && (
-                                                                <hr className="border-t border-[#b1aaaab0] my-[25px] lg:my-[50px]" />
+                                                                <hr className="border-t border-[#b1aaaab0] my-[25px] lg:my-[50px]" /> 
+                                                            //    dividerAfterIndex: draws a horizontal rule before the paragraph at that index
+                                                            //    e.g. dividerAfterIndex: 8 draws a line before the 9th paragraph (index 8),
+                                                            //    visually separating TOC links from intro paragraphs
                                                             )}
                                                             <p
                                                                 className="text-font19 text-[#77787B] mb-[16px]"
