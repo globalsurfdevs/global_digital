@@ -1050,6 +1050,7 @@ import llmicon2 from "../images/blogs/llm/llmicon2.svg";
 import llmicon3 from "../images/blogs/llm/llmicon3.svg";
 import llicon4 from "../images/blogs/llm/llmicon4.svg";
 import llicon5 from "../images/blogs/llm/llmicon5.svg";
+import llmthumb from "../images/blogs/llm/blog-nw-thumb.jpg";
 
 export const assets = {
 
@@ -1071,6 +1072,7 @@ export const assets = {
   llmicon3,
   llicon5,
   llicon4,
+  llmthumb,
   icss1,
   icss2,
   icss3,

@@ -17,11 +17,11 @@ export const BlogData = [
     post_date: "",
     read_time: "",
     feature_thumb:
-      "/images/blogs/llm/llmblog1.jpg",
+      "/images/blogs/llm/blog-nw-thumb.jpg",
     thumb:
-      "/images/blogs/llm/llmblog1.jpg",
+      "/images/blogs/llm/blog-nw-thumb.jpg",
     large_thumb:
-      "/images/blogs/llm/llmblog1.jpg",
+      "/images/blogs/llm/blog-nw-thumb.jpg",
     category: "Performance Marketing",
     format: "standard",
     views: "",
