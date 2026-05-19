@@ -73,24 +73,36 @@ const page = () => {
       <BafcoCaseStudySchema />
       <SocialShare />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
+     
       <Contentone sections={contentSectionsData} />
+    
+      <div id="section1">
       <Contentone sections={videoProductionsocialData} />
+      </div>
+      <div id="section2">
       <Contentone sections={UAEBuiltEnvironmentData} />
+      </div>
+      <div id="section3">
       <Contentone sections={builtEnvironmentData} />
-      <div id="rules-visibility">
+      </div>
+      <div id="section4">
         <NewRules rules={rulesData} pb="pb-0" />
       </div>
-      <div id="rules-visibility">
+      <div id="section5">
         <NewRules rules={googleAds} pb="pb-0" />
       </div>
+      <div id="section6">
       <Contentone sections={keySectorsData} />
+      </div>
+      <div id="section7">
       <Contenttwo />
-     
-
-      <section id="faq" className="mt-[50px] lg:mt-[140px]">
+     </div>
+<div id="section8">
+      <section  className="mt-[50px] lg:mt-[140px]">
         {/* <Contentone sections={contractorMarketingData} /> */}
         <FAQ data={Faq} bgcolor="#F2F2F2" />
       </section>
+      </div>
     </div>
   );
 };
