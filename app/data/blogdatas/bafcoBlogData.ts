@@ -36,7 +36,7 @@ export const contentSectionsData = [
             `<a href="#section5" class='hover:text-primary'>5. Google Ads: Converting High-Intent Search into Qualified Leads</a>`,
             `<a href="#section6" class='hover:text-primary'>6. Peak Season Rewards Preparation, Not Reaction</a>`,
             `<a href="#section7" class='hover:text-primary'>7. What Full-Service Digital Marketing Looks Like in Practice</a>`,
-            `<a href="section8" class='hover:text-primary'>8. Frequently Asked Questions</a>`,
+            `<a href="#section8" class='hover:text-primary'>8. Frequently Asked Questions</a>`,
             "What does 12 months of consistent ad optimisation look like when peak season finally arrives?",
             "For <a href='https://www.bafco.com/' target='_blank' rel='noopener noreferrer' class='text-primary hover:underline'>BAFCO</a>, one of the UAE's leading furniture and fitout companies, it looked like double the leads — on the same budget — with cost per lead cut by more than half compared to the same peak month the previous year.",
             "As a digital marketing agency in Dubai, GS Digital has been managing BAFCO's full digital marketing service for over 16 months. What you are about to read is not a one-month success story. It is what sustained, strategic performance marketing compounds into when every decision is built on real data."
