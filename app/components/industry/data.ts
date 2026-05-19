@@ -19,7 +19,7 @@ export const BannerSection = [
       {
         stitle: "OUR APPROACH",
         buttonTitle :"Start Your Project",
-        desc: "Every industry follows a different buying journey. At Global Surf Digital, we analyse how buyers in each sector search for solutions, evaluate suppliers and move toward final decisions.<br>From procurement led industries with long evaluation cycles to consumer markets with faster decision paths, our industry specific digital marketing approach aligns digital execution with real buying behaviour. This helps organisations generate qualified demand and convert digital engagement into revenue-generating leads, enquiries, and contracts. ",
+        desc: "Every industry follows a different buying journey. At GS Digital, we analyse how buyers in each sector search for solutions, evaluate suppliers and move toward final decisions.<br>From procurement led industries with long evaluation cycles to consumer markets with faster decision paths, our industry specific digital marketing approach aligns digital execution with real buying behaviour. This helps organisations generate qualified demand and convert digital engagement into revenue-generating leads, enquiries, and contracts. ",
       },
     ],
   },

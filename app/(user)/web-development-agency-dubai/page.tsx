@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Dubai’s Trusted Partner for Web Development Solutions",
-      siteName: "Global Surf Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/web-development-agency-dubai",
       description:
         "Discover top-tier custom web development services in Dubai. We build high-performance, secure websites tailored to your business goals.",

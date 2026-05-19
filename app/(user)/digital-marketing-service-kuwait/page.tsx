@@ -69,7 +69,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Digital Marketing Services in Kuwait | G.S Digital",
-      siteName: "Global Surf Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/digital-marketing-service-kuwait",
       description:
         "Digital Marketing Services in Kuwait Trusted Digital Marketing Partner for Data-Driven Growth",

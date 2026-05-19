@@ -4,8 +4,8 @@ import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
 
 export const metadata: Metadata = {
   title:
-    "Backend Console - Global Surf Digital",
-  description: "Backend Console - Global Surf Digital",
+    "Backend Console - GS Digital",
+  description: "Backend Console - GS Digital",
 };
 
 export default function Home() {

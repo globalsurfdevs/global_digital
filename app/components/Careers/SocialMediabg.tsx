@@ -34,10 +34,10 @@ const SocialMediabg = () => {
                   {/* Main Content */}
                   <div>
                     <h2 className="leading-1 text-font65 text-white lg:leading-[4.5rem]">
-                      Get on the Global Surf Digital talent radar.
+                      Get on the GS Digital talent radar.
                     </h2>
                     <p className="text-19 my-10 leading-relaxed text-white">
-                      You think you might be a good fit for Global Surf Digital?
+                      You think you might be a good fit for GS Digital?
                       Send us your LinkedIn profile with just one click. If we
                       have a position that we think you're perfect for, we'll
                       reach out to you.

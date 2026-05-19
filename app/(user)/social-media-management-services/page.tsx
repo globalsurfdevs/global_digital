@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Social Media Management Agency in Dubai | G.S Digital  ",
     description:
-      "Global Surf Digital is your trusted social media management agency in Dubai. We create engaging content and manage your platforms for maximum growth.",
+      "GS Digital is your trusted social media management agency in Dubai. We create engaging content and manage your platforms for maximum growth.",
     alternates: {
       canonical: "https://www.globalsurf.ae/social-media-management-services",
     },

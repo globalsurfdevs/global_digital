@@ -33,7 +33,7 @@ const page = () => {
             </p>
             <div>
               <p>
-                Global Surf Digital Media (“GS.Digital”) is committed to
+                GS Digital Media (“GS.Digital”) is committed to
                 preventing modern slavery and human trafficking in all aspects
                 of its business and supply chains. This statement is made
                 pursuant to applicable anti-slavery laws and regulations, and it
@@ -174,7 +174,7 @@ const page = () => {
             <div>
               <p>
                 This statement has been approved by the Board of Directors of
-                Global Surf Digital Media and is reviewed annually.
+                GS Digital Media and is reviewed annually.
               </p>
             </div>
           </div>

@@ -346,7 +346,7 @@ export const videoProductionData = [
     {
       title: "Make Every Scroll Count ",
       paragraphs: [
-        "Great videos aren’t just about creativity—they need the right strategy behind them. With the right mix of storytelling and platform know-how, brands can shine, engage their audience, and grow faster. That’s exactly the approach we take at Global Surf Digital, so your content works as hard as you do. "
+        "Great videos aren’t just about creativity—they need the right strategy behind them. With the right mix of storytelling and platform know-how, brands can shine, engage their audience, and grow faster. That’s exactly the approach we take at GS Digital, so your content works as hard as you do. "
       ],
       image: assets.scroll,
       imageAlt: "Blog Image",

@@ -115,7 +115,7 @@ const Header = () => {
         <Link href="/">
           <Image
             src="/gs-digital-logo.svg"
-            alt="Global Surf Digital"
+            alt="GS Digital"
             width={100}
             height={32}
             priority
@@ -170,7 +170,7 @@ const Header = () => {
               <Image
                 src="/gs-digital-logo.svg"
                 className="w-[200px]"
-                alt="Global Surf Digital Logo"
+                alt="GS Digital Logo"
                 width={200}
                 height={50}
                 priority

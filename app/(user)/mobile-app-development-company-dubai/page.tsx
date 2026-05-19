@@ -56,7 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title:
         "Mobile App Development Company in Dubai |  iOS, Android, & Hybrid Development",
-      siteName: "Global Surf Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/mobile-app-development-company-dubai",
       description:
         "From concept to post-launch updates, we’ve got you covered. Partner with Dubai’s trusted mobile app developers for seamless, future-ready solutions. Get a quote today!",

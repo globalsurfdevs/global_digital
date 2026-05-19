@@ -46,7 +46,7 @@ const page = () => {
           property="og:title"
           content="B2B Digital Marketing Services | Drive Growth & Maximize ROI"
         />
-        <meta property="og:site_name" content="Global Surf Digital Media" />
+        <meta property="og:site_name" content="GS Digital Media" />
         <meta
           property="og:url"
           content="https://www.globalsurf.ae/industry/b2b-digital-marketing-services"

@@ -47,7 +47,7 @@ const page = () => {
           property="og:title"
           content="Boost E-Commerce Sales with Expert Digital Marketing | Global Surf"
         />
-        <meta property="og:site_name" content="Global Surf Digital Media" />
+        <meta property="og:site_name" content="GS Digital Media" />
         <meta
           property="og:url"
           content="https://www.globalsurf.ae/industry/ecommerce-digital-marketing"

@@ -47,8 +47,8 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
      openGraph: {
       title:
-        "Hospitality Digital Marketing Agency | Global Surf Digital | 25+ Experts, 11+ Years",
-      siteName: "Global Surf Digital",
+        "Hospitality Digital Marketing Agency | GS Digital | 25+ Experts, 11+ Years",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/industry/digital-marketing-agency-for-hospitality",
       description:
         "Get more bookings and reach high-intent travelers with expert hospitality SEO, PPC, and digital branding services. From resorts to boutique stays, we help hospitality brands grow with tailored digital marketing. Get a quote today!",

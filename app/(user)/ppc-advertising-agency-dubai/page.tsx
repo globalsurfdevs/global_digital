@@ -55,7 +55,7 @@ const page = () => {
           property="og:title"
           content="PPC Agency Dubai | Pay Per Click Services for All Industries"
         />
-        <meta property="og:site_name" content="Global Surf Digital Media" />
+        <meta property="og:site_name" content="GS Digital Media" />
         <meta
           property="og:url"
           content="https://www.globalsurf.ae/performance-marketing-agency-dubai"

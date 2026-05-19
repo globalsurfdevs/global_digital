@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Transform Your Brand with Dubai’s Top Graphic Design Agency",
-      siteName: "Global Surf Digital Media",
+      siteName: "GS Digital Media",
       url: "https://www.globalsurf.ae/graphic-design-agency-dubai",
       description:
         "Elevate your business with custom branding, packaging, and social media designs that captivate. Partner with a leading graphic design agency in Dubai for visuals that sell. Get a quote today!",

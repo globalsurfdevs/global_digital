@@ -48,7 +48,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Free Digital Marketing Audit | Global Surf Digital",
+    title: "Free Digital Marketing Audit | GS Digital",
     description:
       "Get a professional audit of your digital marketing strategy. Identify growth opportunities, reduce wasted ad spend, and boost your ROI today.",
     alternates: {
@@ -56,8 +56,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     robots: "noindex, nofollow",
     openGraph: {
-      title: "Free Digital Marketing Audit | Global Surf Digital",
-      siteName: "Global Surf Digital",
+      title: "Free Digital Marketing Audit | GS Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/free-digital-marketing-audit",
       description:
         "Get a professional audit of your digital marketing strategy. Identify growth opportunities, reduce wasted ad spend, and boost your ROI today.",

@@ -39,7 +39,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        title: "What Is the Built Environment in UAE? A Practical Guide | Global Surf Digital ",
+        title: "What Is the Built Environment in UAE? A Practical Guide | GS Digital ",
         description:
             "The built environment in the UAE covers buildings, infrastructure, and smart cities. Learn what it means, what makes the UAE unique, and why it matters for construction businesses. ",
         alternates: {
@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
         robots: "index, follow",
         openGraph: {
             title: "What Is the Built Environment in UAE? A Practical Guide",
-            site_name: "Global Surf Digital",
+            site_name: "GS Digital",
             url: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
             description:
                 "From the Burj Khalifa to Masdar City — what the built environment really means in the UAE, and why construction and development businesses need to understand it",

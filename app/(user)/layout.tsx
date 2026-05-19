@@ -19,8 +19,8 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
-    default: "Global Surf Digital",
-    template: "%s | Global Surf Digital", // page title will be: "Page Title | Global Surf Digital"
+    default: "GS Digital",
+    template: "%s | GS Digital", // page title will be: "Page Title | Global Surf Digital"
   },
   description: "Full-service digital marketing agency in Dubai.",
   other: {
@@ -36,10 +36,10 @@ export default function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Global Surf Digital",
+    "name": "GS Digital",
     "url": "https://www.globalsurf.ae/",
     "logo": "https://www.globalsurf.ae/gs-digital-logo.svg",
-    "description": "Global Surf Digital Media is a premium full-service digital marketing agency in Dubai, specializing in SEO, performance marketing, social media marketing, and web design and development.",
+    "description": "GS Digital Media is a premium full-service digital marketing agency in Dubai, specializing in SEO, performance marketing, social media marketing, and web design and development.",
     "slogan": "Master Every Pixel of Your Digital Presence",
     "foundingDate": "2013",
     "address": {

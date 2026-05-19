@@ -322,13 +322,13 @@ export const BlogData = [
     id: 1,
     slug: "global-surf-at-1billion-followers-summit",
     titles:
-      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+      "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summit",
     title:
-      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+      "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summit",
     list_heading:
-      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+      "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summit",
     meta_title:
-      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit | Global Surf Blog",
+      "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summit | Global Surf Blog",
     description: "",
     post_date: "",
     read_time: "",
