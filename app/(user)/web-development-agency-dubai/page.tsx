@@ -48,7 +48,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Custom Web Development Company in Dubai | G.S Digital",
+    title: "Custom Web Development Company in Dubai | GS Digital",
     description:
       "Elevate your digital presence with expert web development in Dubai. We craft tailored websites that are fast, secure, and built to scale with your business.",
     alternates: {

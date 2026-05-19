@@ -49,7 +49,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Web Application Development Agency Dubai | G.S Digital",
+    title: "Web Application Development Agency Dubai | GS Digital",
     description:
       "Partner with a top web app development company in Dubai specializing in custom web applications. We build secure web apps tailored to your business. ",
     alternates: {
@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     robots: "index, follow",
     openGraph: {
-      title: "Custom Web App Solutions in Dubai | G.S Digital",
+      title: "Custom Web App Solutions in Dubai | GS Digital",
       siteName: "GS Digital",
       url: "https://www.globalsurf.ae/web-app-dev-agency",
       description:
