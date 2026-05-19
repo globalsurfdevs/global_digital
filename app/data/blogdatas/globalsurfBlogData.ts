@@ -9,7 +9,7 @@ export const BannerSection = [
       { label: "5 Minutes Read", url: "" },
     ],
     title:
-      "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+      "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summit",
     publishedon: "Sep 15, 2025",
     updatedon: "14, 2025",
     subtitle: "Building Strong Brand Identities With Creative Design, Marketing Collateral, and Storytelling",
@@ -28,7 +28,7 @@ export const contentSectionsData = [
   {
     title: "Why Presence Matters in Today’s Influence Economy ",
     paragraphs: [
-      "Global Surf Digital participated in the 1 Billion Followers Summit because staying relevant in today’s digital economy requires more than delivering campaigns. It requires being present where the future of influence, platforms, and performance is actively being shaped.  ",
+      "GS Digital participated in the 1 Billion Followers Summit because staying relevant in today’s digital economy requires more than delivering campaigns. It requires being present where the future of influence, platforms, and performance is actively being shaped.  ",
       "Influence is evolving rapidly. It is no longer defined by visibility or follower counts alone, but by intent, credibility, and measurable impact. For a <a href='https://www.globalsurf.ae/'>Digital Marketing Agency </a> operating in a high growth and competitive market like the UAE, understanding this shift is essential. ",
       "The summit brought together global platforms, creators, brands, and industry leaders to validate a reality GS Digital has long recognized. Influence has moved from a marketing metric to a strategic business lever that affects trust, consideration, and long-term growth. ",
       "By participating in this global forum, GS Digital reinforced its commitment to staying aligned with how digital authority is built today. Not by chasing trends, but by engaging directly with conversations shaping platform evolution, creator maturity, and performance driven influence. ",
@@ -340,7 +340,7 @@ export const scrollSectionsData = [
   {
     title: "Make Every Scroll Count ",
     paragraphs: [
-      "Great videos aren’t just about creativity—they need the right strategy behind them. With the right mix of storytelling and platform know-how, brands can shine, engage their audience, and grow faster. That’s exactly the approach we take at Global Surf Digital, so your content works as hard as you do. "
+      "Great videos aren’t just about creativity—they need the right strategy behind them. With the right mix of storytelling and platform know-how, brands can shine, engage their audience, and grow faster. That’s exactly the approach we take at GS Digital, so your content works as hard as you do. "
     ],
     image: assets.scroll,
     imageAlt: "Blog Image",

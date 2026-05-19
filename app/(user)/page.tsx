@@ -18,7 +18,7 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Full service Digital Marketing Agency Dubai | Global Surf Digital",
+  title: "Full service Digital Marketing Agency Dubai | GS Digital",
   description: "Full-service digital marketing agency in Dubai. From SEO to web development, we help 100+ brands dominate search & social. Start your growth journey today.",
   alternates: {
     canonical: "https://www.globalsurf.ae",
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
   robots: "index, follow",
   openGraph: {
     title: "Strategic Digital Marketing Solutions in Dubai | GS.Digital",
-    siteName: "Global Surf Digital", // ✅ siteName not site_name
+    siteName: "GS Digital", // ✅ siteName not site_name
     url: "https://www.globalsurf.ae/",
     description: "GS.Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
     images: [
       {
         url: "https://www.globalsurf.ae/gs-digital-logo.svg",
-        alt: "Global Surf Digital Logo",
+        alt: "GS Logo",
         type: "image/svg+xml",
       },
     ],
@@ -51,7 +51,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "Global Surf Digital",
+            name: "GS Digital",
             url: "https://www.globalsurf.ae",
           }),
         }}

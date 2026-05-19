@@ -143,7 +143,7 @@ export const builtEnvironmentData = [
             },
             {
                 sectionSubtitle: "Global Surf Perspective",
-                paragraphs: ["At Global Surf Digital, we consistently see that many built environment companies have strong technical expertise but struggle to communicate it effectively. ",
+                paragraphs: ["At GS Digital, we consistently see that many built environment companies have strong technical expertise but struggle to communicate it effectively. ",
                     "Understanding the built environment is one part. Clearly positioning that expertise in a way decision - makers understand is what creates measurable business impact."
                 ]
             }
@@ -313,7 +313,7 @@ export const contractorMarketingData = [
                 sectionSubtitle: " Global Surf Perspective",
                 imagesecond: assets.envblog6,
                 imagealt: "Construction digital marketing",
-                paragraphs: ["At Global Surf Digital, we work specifically with built environment companies because we understand the sector and its commercial dynamics. Our clients include construction groups, contracting businesses, and building material brands operating across the UAE. We help them communicate their expertise to developers, consultants, and procurement teams through <a class='text-primary hover:underline' href='https://www.globalsurf.ae/seo-agency-dubai'>SEO</a>, <a class='text-primary hover:underline' href='https://www.globalsurf.ae/content-marketing-agency-dubai'>content marketing</a>, LinkedIn strategy, and project portfolio development. ",
+                paragraphs: ["At GS Digital, we work specifically with built environment companies because we understand the sector and its commercial dynamics. Our clients include construction groups, contracting businesses, and building material brands operating across the UAE. We help them communicate their expertise to developers, consultants, and procurement teams through <a class='text-primary hover:underline' href='https://www.globalsurf.ae/seo-agency-dubai'>SEO</a>, <a class='text-primary hover:underline' href='https://www.globalsurf.ae/content-marketing-agency-dubai'>content marketing</a>, LinkedIn strategy, and project portfolio development. ",
                     "The built environment companies winning the most commercially valuable projects in the UAE right now are not necessarily the most technically capable. They are the most visible and the most credible online. That is a gap our team is built to close. ",
                     "The most commercially successful firms in UAE construction combine technical excellence with strong online visibility. In competitive tenders where capabilities are comparable, that visibility becomes the differentiator. Technical credibility is still table stakes - what we help companies do is ensure their online presence reflects the standard of work they are already delivering."
 
@@ -365,7 +365,7 @@ export const understandingBuiltEnvironmentData = [
             "For construction contractors, developers, facility managers, and government contractors, understanding the built environment in its full scope is a genuine strategic advantage. It shapes how you identify opportunities, how you write tenders, how you position your services, and how you communicate your expertise to the decision-makers who matter. ",
             "For construction contractors, developers, facility managers, and government contractors, understanding the built environment in its full scope is a genuine strategic advantage. It shapes how you identify opportunities, how you write tenders, how you position your services, and how you communicate your expertise to the decision-makers who matter. ",
             "<strong>Want to ensure your built environment expertise reaches the right decision-makers? </strong>",
-            "Global Surf Digital helps UAE construction and contracting companies turn their technical expertise into digital credibility that wins projects. Let us show you how. "
+            "GS Digital helps UAE construction and contracting companies turn their technical expertise into digital credibility that wins projects. Let us show you how. "
         ],
     }
 ];

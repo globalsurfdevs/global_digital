@@ -35,7 +35,7 @@ type Metadata = {
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title:
-      "Marketing Intelligence Services in Dubai | Global Surf Digital",
+      "Marketing Intelligence Services in Dubai | GS Digital",
     description:
       "Accelerate your business growth with our data-driven growth strategies. Leverage market insights, competitor analysis, and data-driven strategies to stay ahead in the market.",
     alternates: {

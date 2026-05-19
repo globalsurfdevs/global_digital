@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
      openGraph: {
       title:
         "Dubai's Trusted Content Production Agency | GS Digital",
-      siteName: "Global Surf Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/content-production-agency-dubai",
       description:
         "Looking for a creative content production agency in Dubai? From brand videos to social media visuals, GS Digital offers complete content production services tailored for your brand. Get in touch with us!",

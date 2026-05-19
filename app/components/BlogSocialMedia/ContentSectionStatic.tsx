@@ -138,7 +138,7 @@ const ContentStaticSection = () => {
             <h2 className="title-65 pt-[50px] lg:pt-[140px] mb-[40px]">The Way Forward for Brands
             </h2>
             <p className="text-font19 text-[#77787B] mb-[16px]">For brands navigating an increasingly competitive digital landscape, the opportunity lies in building credibility that lasts and performance that compounds over time.</p>
-            <p className="text-font19 text-[#77787B] mb-[16px]">At <Link href="/" className="text-primary hover:underline">Global Surf Digital</Link>, we help brands transform digital presence into meaningful growth through strategy led, performance driven influence.
+            <p className="text-font19 text-[#77787B] mb-[16px]">At <Link href="/" className="text-primary hover:underline">GS Digital</Link>, we help brands transform digital presence into meaningful growth through strategy led, performance driven influence.
             </p>
             <p className="text-font19 text-[#77787B] ">Connect with us to explore how your brand can build credible, purpose driven digital influence that delivers long term value.
             </p>

@@ -76,7 +76,7 @@ const page = () => {
       <Contentone sections={visibilitysec} />
       <div id="invisible-llms"> <Contenttwo /></div>
       <div id="ai-visibility-framework"><ThreeColumnTable
-        title="The 5-Step AI Visibility Framework by Global Surf Digital"
+        title="The 5-Step AI Visibility Framework by GS Digital"
 paddingBottom="pb-0"
         data={videoProductionData}
         columnTitles={videoProductionTitles} // Corrected: passing the array of strings

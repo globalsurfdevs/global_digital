@@ -59,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Top E-commerce Development Experts in Dubai | GS Digital",
-      siteName: "Global Surf Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/e-commerce-web-development-company",
       description:
         "Launch and grow your online store with Dubai’s leading e-commerce developers specializing in Shopify and WooCommerce solutions.",

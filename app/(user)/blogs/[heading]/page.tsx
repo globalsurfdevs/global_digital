@@ -54,11 +54,11 @@ export default async function Page({ params }: Props) {
     image: `https://www.globalsurf.ae${blog.feature_thumb}`,
     author: {
       "@type": "Organization",
-      name: "Global Surf Digital",
+      name: "GS Digital",
     },
     publisher: {
       "@type": "Organization",
-      name: "Global Surf Digital",
+      name: "GS Digital",
       logo: {
         "@type": "ImageObject",
         url: "https://www.globalsurf.ae/gs-digital-logo.svg",

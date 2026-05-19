@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Digital Marketing for Key Industries | GS Digital Solutions",
-      siteName: "Global Surf Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/industry",
       description:
         "From construction to eCommerce, GS Digital crafts industry-specific marketing strategies that fuel growth and performance. Explore solutions tailored to your sector.",
@@ -69,7 +69,7 @@ const page = () => {
           property="og:title"
           content="B2B Digital Marketing Services | Drive Growth & Maximize ROI"
         />
-        <meta property="og:site_name" content="Global Surf Digital Media" />
+        <meta property="og:site_name" content="GS Digital Media" />
         <meta
           property="og:url"
           content="https://www.globalsurf.ae/industry/b2b-digital-marketing-services"

@@ -39,7 +39,7 @@ export const Frameworkdata = {
 };
 
 export const IndustriesWeServe = {
-  title: "Why Global Surf Digital Media? ",
+  title: "Why GS Digital Media? ",
   data: [
     {
       id: 1,

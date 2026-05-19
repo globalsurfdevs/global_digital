@@ -17,7 +17,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "Our Thoughts",
-        desc: "When someone asks ChatGPT, Perplexity, or Gemini about services like yours, does your brand appear in the answer, or do competitors get mentioned instead? Unlike traditional search, AI tools provide a single, direct response, making visibility dependent on how clearly your content is structured for AI to understand and trust. At Global Surf Digital, we help brands become part of that answer through structured content, entity optimisation, and machine-readable data that AI systems can reliably interpret and reference.",
+        desc: "When someone asks ChatGPT, Perplexity, or Gemini about services like yours, does your brand appear in the answer, or do competitors get mentioned instead? Unlike traditional search, AI tools provide a single, direct response, making visibility dependent on how clearly your content is structured for AI to understand and trust. At GS Digital, we help brands become part of that answer through structured content, entity optimisation, and machine-readable data that AI systems can reliably interpret and reference.",
         buttonTitle: "Request Your GEO Assessment",
       },
     ],

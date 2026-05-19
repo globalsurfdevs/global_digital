@@ -24,7 +24,7 @@ export type Portfolio = {
     challenge: string;
     strategyApproach: string;
     socialMediaImages: string[];
-    categories: { name: string }[]
+    categories: { name: string,link:string }[]
     tag: string;
     description: string;
     logo: string;
