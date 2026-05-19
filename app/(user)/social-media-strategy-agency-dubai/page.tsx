@@ -38,7 +38,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Social Media Strategy Consulting in Dubai | Global Surf Digital ",
+    title: "Social Media Strategy Consulting in Dubai | GS Digital ",
     description:
       "Get expert social media strategy consulting from GS Digital. We help you optimize campaigns and achieve impactful results with tailored solutions. Contact now! ",
     alternates: {

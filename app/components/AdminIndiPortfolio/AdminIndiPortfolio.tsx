@@ -82,6 +82,7 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [modalOpen, setModalOpen] = useState(false)
     const [categoryModal, setCategoryModal] = useState(false)
     const [category, setCategory] = useState("")
+    const [categoryLink, setCategoryLink] = useState("")
     const [refetch, setRefetch] = useState(false)
     const [refetchCategorySection, setRefetchCategorySection] = useState(false)
     const [section2Image1, setSection2Image1] = useState<null | File>(null)
@@ -525,6 +526,7 @@ const AdminIndiPortfolio = ({ editMode }: {
 
             const formData = new FormData()
             formData.append("category", category)
+            formData.append("categoryLink", categoryLink)
 
             const response = await fetch('/api/categories', {
                 method: "POST",
@@ -533,6 +535,7 @@ const AdminIndiPortfolio = ({ editMode }: {
             if (response.ok) {
                 setRefetchCategorySection((prev) => !prev)
                 setCategory("")
+                setCategoryLink("")
                 setCategoryModal(false)
             } else {
                 toast.error("Adding category failed")
@@ -881,7 +884,12 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                                             <div className='w-full'>
                                                 <label>Category Name</label>
-                                                <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className={'w-full rounded-xl text-black pl-2'} />
+                                                <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className={'w-full rounded-xl text-black pl-2 border'} />
+                                            </div>
+
+                                            <div className='w-full'>
+                                                <label>Category Link</label>
+                                                <input type="text" value={categoryLink} onChange={(e) => setCategoryLink(e.target.value)} className={'w-full rounded-xl text-black pl-2 border'} />
                                             </div>
 
                                         </div>

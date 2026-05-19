@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title:
         "Boost Conversions with Dubai’s Top CRO Agency | GS Digital | 25+ Experts, 11+ Years",
-      siteName: "Global Surf Digital",
+      siteName: "GS Digital",
       url: "https://www.globalsurf.ae/conversion-rate-optimization-agency-dubai",
       description:
         "Dubai’s #1 CRO agency for eCommerce & corporate websites. We specialize in A/B testing, landing page optimization & UX improvements. Book a free consultation today!",

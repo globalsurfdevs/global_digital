@@ -250,7 +250,7 @@ export const B2BMarketingTrendsSchema = () => {
   "image": "https://www.globalsurf.ae/assets/blogs/blog_3_thumb.png",
   "author": {
     "@type": "Organization",
-    "name": "Global Surf Digital"
+    "name": "GS Digital"
   },
   "publisher": {
     "@type": "Organization",
@@ -281,7 +281,7 @@ export const SocialMediaShowdownSchema = () => {
   "image": "https://www.globalsurf.ae/assets/blogs/blg-02.jpg",
   "author": {
     "@type": "Organization",
-    "name": "Global Surf Digital"
+    "name": "GS Digital"
   },
   "publisher": {
     "@type": "Organization",
@@ -312,7 +312,7 @@ export const PoorSalesSchema = () => {
   "image": "https://www.globalsurf.ae/assets/blogs/blg-1.webp",
   "author": {
     "@type": "Organization",
-    "name": "Global Surf Digital"
+    "name": "GS Digital"
   },
   "publisher": {
     "@type": "Organization",
@@ -339,13 +339,13 @@ export const OneBillionFollowersSchema = () => {
     "@type": "WebPage",
     "@id": "https://www.globalsurf.ae/blogs/global-surf-at-1billion-followers-summit"
   },
-  "headline": "Beyond Reach and Scale: Global Surf Digital’s Reflections on the 1 Billion Followers Summit",
+  "headline": "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summit",
   "image": "https://www.globalsurf.ae/_next/static/media/new-blog-bnr-23.cc17b243.jpg",
   "datePublished": "Sep 15, 2025",
   "dateModified": "Dec 14, 2025",
   "author": {
     "@type": "Organization",
-    "name": "Global Surf Digital"
+    "name": "GS Digital"
   },
   "publisher": {
     "@type": "Organization",
@@ -534,12 +534,12 @@ export const GoogleAdsVsMetaAdsSchema = () => {
     image: "https://www.globalsurf.ae/images/google-vs-meta-ads-uae.jpg",
     author: {
       "@type": "Organization",
-      name: "Global Surf Digital",
+      name: "GS Digital",
       url: "https://www.globalsurf.ae/",
     },
     publisher: {
       "@type": "Organization",
-      name: "Global Surf Digital",
+      name: "GS Digital",
       logo: {
         "@type": "ImageObject",
         url: "https://www.globalsurf.ae/gs-digital-logo.svg",
@@ -617,12 +617,12 @@ export const BuiltEnvironmentSchema = () => {
     "keywords": "built environment UAE, construction industry Dubai, UAE smart cities, built environment companies Dubai, contractor digital marketing UAE",
     "author": {
       "@type": "Organization",
-      "name": "Global Surf Digital",
+      "name": "GS Digital",
       "url": "https://www.globalsurf.ae"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Global Surf Digital",
+      "name": "GS Digital",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
@@ -765,7 +765,7 @@ export const HowDigitalMarketingWinsSchema = () => {
 
       "@type": "Organization",
 
-      "name": "Global Surf Digital",
+      "name": "GS Digital",
 
       "url": "https://www.globalsurf.ae"
 
@@ -775,7 +775,7 @@ export const HowDigitalMarketingWinsSchema = () => {
 
       "@type": "Organization",
 
-      "name": "Global Surf Digital",
+      "name": "GS Digital",
 
       "logo": {
 
@@ -996,12 +996,12 @@ export const BafcoCaseStudySchema = () => {
       "performance marketing UAE, performance marketing agency Dubai, digital marketing agency Dubai, digital marketing service UAE, meta ads UAE, Google Ads Dubai, lead generation UAE, BAFCO, furniture marketing UAE",
     "author": {
       "@type": "Organization",
-      "name": "Global Surf Digital",
+      "name": "GS Digital",
       "url": "https://www.globalsurf.ae"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Global Surf Digital",
+      "name": "GS Digital",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
@@ -1026,7 +1026,7 @@ export const BafcoCaseStudySchema = () => {
       },
       {
         "@type": "Organization",
-        "name": "Global Surf Digital",
+        "name": "GS Digital",
         "url": "https://www.globalsurf.ae"
       }
     ]

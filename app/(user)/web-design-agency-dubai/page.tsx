@@ -51,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Dubai’s Best Web Design Agency | 25+ Experts, 11+ Years",
-      siteName: "Global Surf Digital Media",
+      siteName: "GS Digital Media",
       url: "https://www.globalsurf.ae/web-design-agency-dubai ",
       description:
         "From wireframes to launch, trust our web design experts to build a site that reflects your brand. Mobile-first, fast, and pixel-perfect—every time. Get a quote today!",

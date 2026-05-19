@@ -36,9 +36,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Consultants Dubai – Global Surf Digital",
+    title: "Digital Marketing Consultants Dubai – GS Digital",
     description:
-      "Global Surf Digital is a top-rated digital marketing consulting agency in Dubai. We craft data-driven strategies across SEO, PPC, Social Media, and Performance Marketing to help ambitious brands grow sales, visibility, and market authority.",
+      "GS Digital is a top-rated digital marketing consulting agency in Dubai. We craft data-driven strategies across SEO, PPC, Social Media, and Performance Marketing to help ambitious brands grow sales, visibility, and market authority.",
     alternates: {
       canonical: "https://www.globalsurf.ae/marketing-strategy-consulting",
     },
@@ -54,7 +54,7 @@ const page = () => {
           property="og:title"
           content="Comprehensive Digital Marketing Services in Dubai | Maximize Impact"
         />
-        <meta property="og:site_name" content="Global Surf Digital Media" />
+        <meta property="og:site_name" content="GS Digital Media" />
         <meta
           property="og:url"
           content="https://www.globalsurf.ae/digital-marketing-services"

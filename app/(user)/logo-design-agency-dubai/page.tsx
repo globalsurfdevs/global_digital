@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "Dubai’s #1 Logo Design Company | Craft a Timeless Brand Identity",
-      siteName: "Global Surf Digital Media",
+      siteName: "GS Digital Media",
       url: "https://www.globalsurf.ae/logo-design-agency-dubai",
       description:
         "Your brand deserves a logo that lasts. Partner with Dubai’s top-rated logo design company for custom, modern logos that captivate audiences and build instant trust. Let’s create magic!",

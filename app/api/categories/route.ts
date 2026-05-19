@@ -37,12 +37,13 @@ export async function POST(req: NextRequest) {
 
         const formData = await req.formData();
         const category = formData.get("category") as string;
+        const categoryLink = formData.get("categoryLink") as string;
 
         if (!category) {
             return NextResponse.json({ error: "Category is required" }, { status: 400 });
         }
 
-        await Category.create({ name: category });
+        await Category.create({ name: category,link:categoryLink });
 
         return NextResponse.json(
             { message: "Added category successfully" },

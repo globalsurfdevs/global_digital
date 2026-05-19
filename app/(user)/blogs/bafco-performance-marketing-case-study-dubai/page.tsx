@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital",
-      site_name: "Global Surf Digital",
+      site_name: "GS Digital",
       url: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
       description:
         "How GS Digital helped BAFCO double leads & cut CPL by 56% in the same peak month through 12 months of strategic Meta & Google Ads optimization in the UAE.",

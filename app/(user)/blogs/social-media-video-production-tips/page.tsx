@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "How Digital Marketing Wins Projects for Construction Companies in UAE",
-      site_name: "Global Surf Digital",
+      site_name: "GS Digital",
       url: "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae",
       description:
         "Developers in DIFC and Business Bay research contractors online before a single call is made. Learn the 5 digital channels that drive project enquiries in the UAE built environment.",
@@ -89,7 +89,7 @@ const page = () => {
     "dateModified": "2026-03-01",
     "publisher": {
       "@type": "Organization",
-      "name": "Global Surf Digital",
+      "name": "GS Digital",
       "logo": "https://www.globalsurf.ae/logo.png"
     },
     "mainEntityOfPage": {

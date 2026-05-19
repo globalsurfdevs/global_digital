@@ -7,9 +7,11 @@ import { Portfolio } from "@/app/types/Portfolio";
 import { filterTags } from "@/app/data/filterTags";
 import Link from "next/link";
 import { formatLinkForPortfolio, formatLinkForCaseStudy } from "@/app/helpers/formatLink";
+import { usePathname, useRouter } from "next/navigation";
 const PortfolioList = ({data}:{data:Portfolio[]}) => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
-  const CACHE_DURATION = 10 * 60 * 1000;
+  const pathname = usePathname();
+  // const CACHE_DURATION = 10 * 60 * 1000;
   // useEffect(() => {
   //   const cachedData = localStorage.getItem('portfolios')
   //   const fetchPortfolios = async () => {
@@ -48,6 +50,7 @@ const PortfolioList = ({data}:{data:Portfolio[]}) => {
   //   }
 
   // }, []);
+  
 
   useEffect(() => {
   if (data && data.length > 0) {
@@ -59,15 +62,21 @@ const PortfolioList = ({data}:{data:Portfolio[]}) => {
 
   const [originalPortfolio, setOriginalPortfolio] = useState<Portfolio[]>([])
 
+  const router = useRouter();
+
   // useEffect(() => {
   //   if (originalPortfolio.length === 0 && portfolios.length > 0) {
   //     setOriginalPortfolio(portfolios); // Initialize the original portfolio only once
   //   }
   // }, [portfolios]);
 
-  const handleFiltering = (filter: string) => {
+  const handleFiltering = (filter: string,link:string) => {
 
     console.log(filter)
+
+    if (link) {
+    window.history.replaceState(null, "", `/portfolio${link}`);
+  }
 
     setFilter(filter);
 
@@ -84,18 +93,58 @@ const PortfolioList = ({data}:{data:Portfolio[]}) => {
     }
   };
 
-  const [newFilterTags, setNewFilterTags] = useState<string[]>([])
+  const [newFilterTags, setNewFilterTags] = useState<{name:string;link:string}[]>([])
+
 
   useEffect(() => {
-    const allExistingCategories = data.map((portfolio:Portfolio) => (
-      portfolio.categories.map((category) => (
-        category.name
-      ))
-    ))
+    if (!pathname || newFilterTags.length === 0) return;
+    
+    // remove "/portfolio"
+    const currentPath = pathname.replace("/portfolio", "");
+    console.log(currentPath)
 
-    setNewFilterTags([...new Set(allExistingCategories.flat())])
+  // if root portfolio page
+  if (currentPath === "") {
+    setFilter("all");
+    setPortfolios(data);
+    return;
+  }
 
-  }, [data])
+
+  const matchedCategory = newFilterTags.find(
+    (item) => item.link === currentPath
+  );
+
+  if (matchedCategory) {
+    setFilter(matchedCategory.name);
+
+    setPortfolios(
+      data.filter((portfolio: Portfolio) =>
+        portfolio.categories.some(
+          (category) => category.name === matchedCategory.name
+        )
+      )
+    );
+  }
+}, [pathname, newFilterTags, data]);
+
+useEffect(() => {
+  const allExistingCategories = data.flatMap((portfolio: Portfolio) =>
+    portfolio.categories.map((category) => ({
+      name: category.name,
+      link: category.link,
+    }))
+  );
+
+  // Remove duplicates using Map
+  const uniqueCategories = Array.from(
+    new Map(
+      allExistingCategories.map((item) => [item.name, item])
+    ).values()
+  );
+
+  setNewFilterTags(uniqueCategories);
+}, [data]);
 
 
 
@@ -111,11 +160,11 @@ const PortfolioList = ({data}:{data:Portfolio[]}) => {
               <div className="filter-tabs  flex space-x-4  w-full gap-[15px] md:gap-[30px] ">
                 <div className={`pb-1 md:pb-4 mb-[0px]  whitespace-nowrap divro ${filter === "all" ? "border-b-2 border-black text-black" : "text-gray1"
                   }`}>
-                  <span onClick={() => handleFiltering("all")}>View All</span>
+                  <span onClick={() => handleFiltering("all","#")}>View All</span>
                 </div>
                 {newFilterTags.map((item, index) => (
-                  <div key={index} className={`pb-1 md:pb-4 mb-[0px]  whitespace-nowrap divro ${filter === item ? "border-b-2 border-black text-black" : "text-gray1"
-                    }`}><span onClick={() => handleFiltering(item)}>{item}</span></div>
+                  <div key={index} className={`pb-1 md:pb-4 mb-[0px]  whitespace-nowrap divro ${filter === item.name ? "border-b-2 border-black text-black" : "text-gray1"
+                    }`}><span onClick={() => handleFiltering(item.name,item.link)}>{item.name}</span></div>
                 ))}
               </div>
             </div>

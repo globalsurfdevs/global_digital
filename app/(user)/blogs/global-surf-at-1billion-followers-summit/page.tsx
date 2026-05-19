@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Rethinking Influence | Global Surf at the 1 Billion Followers Summit",
     description:
-      "Global Surf Digital reflects on key insights from the 1 Billion Followers Summit, exploring how influence is shifting from scale to strategic impact. ",
+      "GS Digital reflects on key insights from the 1 Billion Followers Summit, exploring how influence is shifting from scale to strategic impact. ",
     alternates: {
       canonical: "https://www.globalsurf.ae/blogs/global-surf-at-1billion-followers-summit",
     },

@@ -95,7 +95,7 @@ const Footer = () => {
               <div className={`col-span-2 flex h-full flex-col justify-between ${lexend.className}`}>
                 {/* ✅ FIX 9: Use address tag — semantic HTML, good for LocalBusiness SEO */}
                 <address className="not-italic text-font19 text-gray-500">
-                  Global Surf Digital Media L.L.C<br />
+                  GS Digital Media L.L.C<br />
                   P.O.Box 13653, 901 - SIT Tower<br />
                   Dubai Silicon Oasis<br />
                   Dubai, UAE
@@ -148,7 +148,7 @@ const Footer = () => {
             ))}
             <span className="text-font14" aria-hidden="true">|</span>
             <span className="fw-[400] text-font14 leading-lh1p78">
-              ©2026 Global Surf Digital. All rights reserved
+              ©2026 GS Digital. All rights reserved
             </span>
           </nav>
 

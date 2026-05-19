@@ -53,10 +53,10 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "index, follow",
     openGraph: {
       title: "B2B  SEO Agency in Dubai | B2B SEO Services | GS Digital",
-      site_name: "Global Surf Digital Media",
+      site_name: "GS Digital Media",
       url: "https://www.globalsurf.ae/b2b-seo-agency-dubai",
       description:
-        "Boost your B2B business with expert SEO services in Dubai. Global Surf Digital helps companies increase visibility, generate high-quality leads, and dominate search rankings with data-driven SEO strategies. Get a free consultation today!",
+        "Boost your B2B business with expert SEO services in Dubai. GS Digital helps companies increase visibility, generate high-quality leads, and dominate search rankings with data-driven SEO strategies. Get a free consultation today!",
     },
   };
 }

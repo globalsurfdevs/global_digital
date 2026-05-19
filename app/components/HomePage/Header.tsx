@@ -144,7 +144,7 @@ const Header = () => {
               <Image
                 src={assets.logo}
                 className="w-[200px]"
-                alt="Global Surf Digital Logo"
+                alt="GS Digital Logo"
                 width={100}
                 height={100}
               />

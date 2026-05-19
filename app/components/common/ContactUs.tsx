@@ -204,7 +204,7 @@ const ContactUs = () => {
             {/* <img src="/images/location.svg" alt="location" className="" /> */}
             <h2 className="text-font25 mt-2">Visit or reach our Dubai office</h2>
             <p className="text-19 mt-2 md:mt-[10px] text-gray1">
-              Global Surf Digital Media L.L.C,
+              GS Digital Media L.L.C,
               P.O.Box 13653, 901 - SIT Tower,
               Dubai Silicon Oasis,
               Dubai, UAE
