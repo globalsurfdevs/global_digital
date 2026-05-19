@@ -31,7 +31,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "#1 Influencer Marketing Agency in Dubai | G.S Digital",
+    title: "#1 Influencer Marketing Agency in Dubai | GS Digital",
     description:
       "Achieve high ROI with our professional influencer marketing services in Dubai. Our company helps you achieve your social media marketing goals efficiently.",
     alternates: {

@@ -50,7 +50,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Ecommerce Web Development Company in Dubai | G.S Digital",
+    title: "Ecommerce Web Development Company in Dubai | GS Digital",
     description:
       "Looking to build your online store? Our Dubai-based e-commerce development company specializes in Shopify & WooCommerce solutions tailored for growth. ",
     alternates: {
