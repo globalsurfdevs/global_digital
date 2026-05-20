@@ -17,7 +17,7 @@ interface Canonicals {
 }
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Case Study | G.S Digital",
+    title: "Case Study | GS Digital",
     description:
       "",
     alternates: {

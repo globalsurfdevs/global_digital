@@ -60,7 +60,7 @@ type Metadata = {
 export async function generateMetadata(): Promise<Metadata> {
    
   return {
-    title: "Digital Marketing Services in Kuwait | G.S Digital",
+    title: "Digital Marketing Services in Kuwait | GS Digital",
     description:
       "Digital Marketing Services in Kuwait Trusted Digital Marketing Partner for Data-Driven Growth",
     alternates: {
@@ -68,7 +68,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     robots: "index, follow",
     openGraph: {
-      title: "Digital Marketing Services in Kuwait | G.S Digital",
+      title: "Digital Marketing Services in Kuwait | GS Digital",
       siteName: "GS Digital",
       url: "https://www.globalsurf.ae/digital-marketing-service-kuwait",
       description:
