@@ -11,9 +11,9 @@ type Metadata = {
 };
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Cookie Policy | GS.Digital",
+    title: "Cookie Policy | GS Digital",
     description:
-      "GS.Digital",
+      "GS Digital",
     alternates: {
       canonical: "https://www.globalsurf.ae/cookie-policy",
     },
@@ -25,11 +25,11 @@ const page = () => {
     <>
       <div className="container px-4">
         <div className="py-[50px] lg:py-[100px]">
-          <p className=" text-font19">GS.Digital</p>
+          <p className=" text-font19">GS Digital</p>
           <h1 className="mb-2 text-font65"> Cookie Policy </h1>
           <p className="mb-5 max-w-[44ch] text-font35 leading-[1.2]">
             <strong>
-              At GS.Digital, we are committed to protecting the privacy and
+              At GS Digital, we are committed to protecting the privacy and
               personal information of our users.
             </strong>
           </p>

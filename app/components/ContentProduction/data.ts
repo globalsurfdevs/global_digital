@@ -133,7 +133,7 @@ export const Clientsformsdata = [
 ];
 
 export const Platformsecomdata = {
-  title: "Why Choose GS.Digital for Content Production?",
+  title: "Why Choose GS Digital for Content Production?",
   desc: "",
   data: [
     {

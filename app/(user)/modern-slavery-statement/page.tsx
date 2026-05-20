@@ -10,9 +10,9 @@ type Metadata = {
 };
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Modern Slavery and Human Trafficking Statement | GS.Digital",
+    title: "Modern Slavery and Human Trafficking Statement | GS Digital",
     description:
-      "GS.Digital",
+      "GS Digital",
     alternates: {
       canonical: "https://www.globalsurf.ae/modern-slavery-statement",
     },
@@ -33,11 +33,11 @@ const page = () => {
             </p>
             <div>
               <p>
-                GS Digital Media (“GS.Digital”) is committed to
+                GS Digital Media (“GS Digital”) is committed to
                 preventing modern slavery and human trafficking in all aspects
                 of its business and supply chains. This statement is made
                 pursuant to applicable anti-slavery laws and regulations, and it
-                outlines the steps GS.Digital has taken and continues to take to
+                outlines the steps GS Digital has taken and continues to take to
                 ensure that modern slavery and human trafficking do not occur
                 within its business operations.
               </p>
@@ -49,7 +49,7 @@ const page = () => {
             </p>
             <div>
               <p>
-                GS.Digital is a full-service digital marketing agency based in
+                GS Digital is a full-service digital marketing agency based in
                 Dubai, UAE, offering services including SEO, social media
                 marketing, performance marketing, and web design and
                 development. While our operations are primarily office-based, we
@@ -67,7 +67,7 @@ const page = () => {
             </p>
             <div>
               <p>
-                GS.Digital has implemented the following policies to address the
+                GS Digital has implemented the following policies to address the
                 risks of modern slavery:{" "}
               </p>
               <ul className="list-outside list-disc pl-[40px]">
@@ -96,7 +96,7 @@ const page = () => {
             </p>
             <div>
               <p>
-                GS.Digital conducts regular risk assessments to identify and
+                GS Digital conducts regular risk assessments to identify and
                 mitigate potential risks of modern slavery in our operations and
                 supply chains. Our due diligence processes include:
               </p>
@@ -126,7 +126,7 @@ const page = () => {
               </p>
               <ul className="list-outside list-disc pl-[40px]">
                 <li>Recognizing signs of modern slavery.</li>
-                <li>Reporting mechanisms within GS.Digital.</li>
+                <li>Reporting mechanisms within GS Digital.</li>
                 <li>Understanding the impact of unethical labour practices.</li>
               </ul>
             </div>
@@ -137,7 +137,7 @@ const page = () => {
             </p>
             <div>
               <p>
-                GS.Digital is committed to ongoing improvements in addressing
+                GS Digital is committed to ongoing improvements in addressing
                 modern slavery risks. We monitor our effectiveness through:
               </p>
               <ul className="list-outside list-disc pl-[40px]">
@@ -159,7 +159,7 @@ const page = () => {
             </p>
             <div>
               <p>
-                GS.Digital remains resolute in its commitment to ethical
+                GS Digital remains resolute in its commitment to ethical
                 business practices and the eradication of modern slavery and
                 human trafficking. We continuously review and enhance our
                 policies and practices to ensure compliance with evolving laws

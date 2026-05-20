@@ -12,9 +12,9 @@ type Metadata = {
 };
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Privacy Policy | GS.Digital",
+    title: "Privacy Policy | GS Digital",
     description:
-      "GS.Digital",
+      "GS Digital",
     alternates: {
       canonical: "https://www.globalsurf.ae/privacy-policy",
     },
@@ -26,11 +26,11 @@ const page = () => {
     <>
       <div className="container px-4">
         <div className="py-[50px] lg:py-[100px]">
-          <p className=" text-font19">GS.Digital</p>
+          <p className=" text-font19">GS Digital</p>
           <h1 className="mb-2 text-font65 leading-[1.2]"> Privacy Policy </h1>
           <p className="mb-5 max-w-[44ch] text-font35 leading-[1.2]">
             <strong>
-              At GS.Digital, we are committed to protecting the privacy and
+              At GS Digital, we are committed to protecting the privacy and
               personal information of our users.{" "}
             </strong>
           </p>
@@ -39,10 +39,10 @@ const page = () => {
               This Privacy Policy informs you about how we use any personal data
               you provide to us, including through our website globalsurf.ae
               (the “Website”). The Website is owned and operated by Global Surf
-              Digital Media under the brand name GS.Digital, a company
+              Digital Media under the brand name GS Digital, a company
               incorporated and registered in Dubai, UAE, with its registered
               office at 901, SIT Tower, Dubai Silicon Oasis, Dubai, UAE
-              (referred to as “we,” “our,” “us,” and “GS.Digital”).
+              (referred to as “we,” “our,” “us,” and “GS Digital”).
             </p>
           </div>
           <div className="mb-2">
@@ -61,7 +61,7 @@ const page = () => {
               <strong>Non-Personal Information   </strong>
             </p>
             <div  >
-              <p >GS.Digital automatically collects certain non-personal information when you visit our website or use our digital media platforms. This includes your IP address, browser type, operating system, and general location data. This information helps us analyze trends, administer the site, and gather broad demographic information for aggregate use. </p>
+              <p >GS Digital automatically collects certain non-personal information when you visit our website or use our digital media platforms. This includes your IP address, browser type, operating system, and general location data. This information helps us analyze trends, administer the site, and gather broad demographic information for aggregate use. </p>
             </div>
           </div>
           <div className=" grid grid-cols-1 gap-2 mb-5">
@@ -118,7 +118,7 @@ const page = () => {
               <strong>Your Choices and Rights </strong>
             </p>
             <div  >
-              <p >You have the right to access, correct, or delete your personal information held by GS.Digital. You can also opt out of receiving marketing communications from us. To exercise these rights, please contact marketing@globalsurf.ae. </p>
+              <p >You have the right to access, correct, or delete your personal information held by GS Digital. You can also opt out of receiving marketing communications from us. To exercise these rights, please contact marketing@globalsurf.ae. </p>
             </div>
           </div>
           <div className=" grid grid-cols-1 gap-2 mb-5">
@@ -143,7 +143,7 @@ const page = () => {
             </p>
             <div  >
               <p className="  ">If you have any questions, concerns, or feedback regarding this Privacy Policy or our data practices, please reach out to our dedicated team at marketing@globalsurf.ae </p>
-              <p className="  ">Thank you for choosing GS.Digital, and we look forward to providing you with an exceptional digital media experience while respecting your privacy. </p>
+              <p className="  ">Thank you for choosing GS Digital, and we look forward to providing you with an exceptional digital media experience while respecting your privacy. </p>
             </div>
           </div>
         </div>

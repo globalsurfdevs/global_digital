@@ -22,7 +22,7 @@ const OurServices = () => {
                 <div className="flex flex-col gap-5">
                   <p className="mb-2 text-font25 leading-lh1p4">{service.description}</p>
                   {/* <button className="border-b-primary border w-fit p-0 pb-3 mb-5 flex gap-1 items-center border-t-0 border-l-0 border-r-0 flex gap-3 ">
-                    <h5 className="text-font16 font-bold">ABOUT GS.DIGITAL</h5>
+                    <h5 className="text-font16 font-bold">ABOUT GS DIGITAL</h5>
                     <svg width="10" height="10" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g clipPath="url(#clip0_65_58)">
                         <path d="M18.7892 1.2749L0.699219 19.0149" stroke="#E53F30" strokeWidth="3" strokeMiterlimit="10" />

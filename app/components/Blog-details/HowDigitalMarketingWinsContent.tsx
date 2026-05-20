@@ -245,7 +245,7 @@ const HowDigitalMarketingWinsContent = () => {
                     width={1200} height={630} className="mb-5 lg:mb-[40px]" />
                   {/* Paragraphs */}
                   <p className="text-font19 text-[#77787B] mb-[16px]">
-                    ASGC Group - one of the UAE's leading general contracting and construction conglomerates, achieved immediate and sustained growth following their website redevelopment and SEO programme with GS.Digital:
+                    ASGC Group - one of the UAE's leading general contracting and construction conglomerates, achieved immediate and sustained growth following their website redevelopment and SEO programme with GS Digital:
                   </p>
                   <ul className="list-disc pl-10 mt-3 mb-[24px]">
                     <li className="text-font19 mb-2">926% increase in weekly active users in the first week post-launch</li>

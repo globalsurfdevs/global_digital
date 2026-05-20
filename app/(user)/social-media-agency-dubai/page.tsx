@@ -32,7 +32,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Social Media Services That Delivers Results |GS.Digital",
+    title: "Social Media Services That Delivers Results | GS Digital",
     description:
       "Captivate Audiences. Our human-first approach combines strategy & creativity for meaningful social media results.Contact us today for a free consultation.",
     alternates: {

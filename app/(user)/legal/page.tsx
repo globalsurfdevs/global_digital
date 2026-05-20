@@ -12,9 +12,9 @@ type Metadata = {
 };
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Legal | GS.Digital",
+    title: "Legal | GS Digital",
     description:
-      "GS.Digital",
+      "GS Digital",
     alternates: {
       canonical: "https://www.globalsurf.ae/legal",
     },
@@ -39,7 +39,7 @@ const page = () => {
             <p>
               These Terms and Conditions ("Terms") govern your use of our
               website, globalsurf.ae (the "Website"), and the services provided
-              by GS Digital Media ("GS.digital," "we," "us," or "our").
+              by GS Digital Media ("GS digital," "we," "us," or "our").
               By accessing or using our Website and services, you agree to
               comply with these Terms. If you do not agree, you must discontinue
               use immediately.
@@ -53,7 +53,7 @@ const page = () => {
               <ul className="list-outside list-disc pl-[40px]">
                 <li>
                   <strong>“Website”</strong> refers to globalsurf.ae, owned and
-                  operated by GS.Digital.{" "}
+                  operated by GS Digital.{" "}
                 </li>
                 <li>
                   <strong>“User,” “you,” or “your”</strong> refers to any
@@ -61,7 +61,7 @@ const page = () => {
                 </li>
                 <li>
                   <strong>“Services”</strong> refers to the digital marketing,
-                  web development, and other offerings provided by GS.Digital.{" "}
+                  web development, and other offerings provided by GS Digital.{" "}
                 </li>
               </ul>
             </div>
@@ -101,7 +101,7 @@ const page = () => {
                 <li>
                   All content, trademarks, logos, and other intellectual
                   property displayed on the Website are the exclusive property
-                  of GS.Digital or its licensors.
+                  of GS Digital or its licensors.
                 </li>
                 <li>
                   You may not reproduce, distribute, or modify any content
@@ -121,7 +121,7 @@ const page = () => {
             <div>
               <ul className="list-outside list-disc pl-[40px]">
                 <li>
-                  GS.Digital provides digital marketing and web development
+                  GS Digital provides digital marketing and web development
                   services as outlined on the Website.
                 </li>
                 <li>
@@ -142,7 +142,7 @@ const page = () => {
             <div>
               <ul className="list-outside list-disc pl-[40px]">
                 <li>
-                  GS.Digital is not liable for any direct, indirect, incidental,
+                  GS Digital is not liable for any direct, indirect, incidental,
                   or consequential damages arising from:
                 </li>
                 <ul className="list-outside list-disc pl-[40px]">
@@ -169,7 +169,7 @@ const page = () => {
                   links are provided for convenience only.
                 </li>
                 <li>
-                  GS.Digital does not endorse, monitor, or assume responsibility
+                  GS Digital does not endorse, monitor, or assume responsibility
                   for the content or privacy practices of third-party websites.
                 </li>
               </ul>
@@ -194,7 +194,7 @@ const page = () => {
                   personal data.
                 </li>
                 <li>
-                  GS.Digital does not endorse, monitor, or assume responsibility
+                  GS Digital does not endorse, monitor, or assume responsibility
                   for the content or privacy practices of third-party websites.
                 </li>
               </ul>
@@ -205,7 +205,7 @@ const page = () => {
               <strong>8. Indemnification </strong>
             </p>
             <p>
-              You agree to indemnify and hold GS.Digital harmless from any
+              You agree to indemnify and hold GS Digital harmless from any
               claims, damages, or expenses arising from:{" "}
             </p>
             <div>
@@ -223,7 +223,7 @@ const page = () => {
             <div>
               <ul className="list-outside list-disc pl-[40px]">
                 <li>
-                  GS.Digital reserves the right to update or modify these Terms
+                  GS Digital reserves the right to update or modify these Terms
                   at any time without prior notice.
                 </li>
                 <li>
