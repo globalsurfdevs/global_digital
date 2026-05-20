@@ -25,10 +25,10 @@ export const metadata: Metadata = {
   },
   robots: "index, follow",
   openGraph: {
-    title: "Strategic Digital Marketing Solutions in Dubai | GS.Digital",
+    title: "Strategic Digital Marketing Solutions in Dubai | GS Digital",
     siteName: "GS Digital", // ✅ siteName not site_name
     url: "https://www.globalsurf.ae/",
-    description: "GS.Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
+    description: "GS Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
     images: [
       {
         url: "https://www.globalsurf.ae/gs-digital-logo.svg",

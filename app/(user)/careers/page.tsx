@@ -14,7 +14,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Careers |GS.Digital",
+    title: "Digital Marketing Careers | GS Digital",
     description:
       "Build your digital marketing career at Global Surf Dubai. Work on bold brands, big campaigns & cutting-edge tech. See open roles & join our growing team.",
     alternates: {
