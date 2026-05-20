@@ -1,7 +1,6 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
 import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
-import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
 import { BafcoCaseStudySchema } from "../../../components/Schema/OfferCatalog";
 import NewRules from "../../../components/BlogSocialMedia/NewRules";
 import Contenttwo from "../../../components/BlogSocialMedia/IconContentPara";
@@ -15,7 +14,7 @@ import {
 
 } from "../../../data/blogdatas/bafcoBlogData";
 
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import Blogfaq from "../../../components/common/BlogFaq";
 
 
 interface Canonicals {
@@ -71,7 +70,6 @@ const page = () => {
     <div className="relative">
 
       <BafcoCaseStudySchema />
-      <SocialShare />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
      
       <Contentone sections={contentSectionsData} />
@@ -98,9 +96,9 @@ const page = () => {
       <Contenttwo />
      </div>
 <div id="section8">
-      <section  className="mt-[50px] lg:mt-[140px]">
+      <section  className="mt-[50px] lg:mt-[100px]">
         {/* <Contentone sections={contractorMarketingData} /> */}
-        <FAQ data={Faq} bgcolor="#F2F2F2" />
+        <Blogfaq data={Faq}  />
       </section>
       </div>
     </div>

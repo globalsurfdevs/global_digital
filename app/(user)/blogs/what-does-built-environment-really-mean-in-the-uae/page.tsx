@@ -15,7 +15,7 @@ import {
 } from "../../../data/blogdatas/BuiltEnvironmentData";
 
 import ThreeColumnTable from "../../../components/BlogSocialMedia/ThreeColumnTable";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import BlogFaq from "../../../components/common/BlogFaq";
 
 
 interface Canonicals {
@@ -71,7 +71,6 @@ const page = () => {
         <div className="relative">
 
             <BuiltEnvironmentSchema />
-            <SocialShare />
             <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
             <Contentone sections={contentSectionsData} />
             <Contentone sections={videoProductionsocialData} />
@@ -80,7 +79,7 @@ const page = () => {
             <Contentone sections={keySectorsData} />
             <Contentone sections={trendsData} />
 
-            <section className="pt-[50px] lg:pt-[140px]" id="navigating-uaes-built-environment-regulations">
+            <section className="pt-[50px] lg:pt-[100px]" id="navigating-uaes-built-environment-regulations">
                 <ThreeColumnTable
                     title="Navigating UAE's built environment regulations"
                     subtitle="The UAE’s regulatory framework varies across emirates but follows a structured approach."
@@ -94,9 +93,9 @@ const page = () => {
             <Contentone sections={contractorMarketingData} />
             <Contentone sections={understandingBuiltEnvironmentData} />
 
-            <section id="faq" className="mt-[50px] lg:mt-[140px]">
+            <section id="faq" className="mt-[50px] lg:mt-[100px]">
                 {/* <Contentone sections={contractorMarketingData} /> */}
-                <FAQ data={Faq} bgcolor="#F2F2F2" />
+                <BlogFaq data={Faq}  />
             </section>
         </div>
     );

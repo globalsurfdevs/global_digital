@@ -49,8 +49,8 @@ const cplComparisonByIndustryData = [
 const HowDigitalMarketingWinsContent = () => {
   return (
     <section>
-      <div className="container mx-auto py-[50px] lg:py-[50px]">
-        <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
+      <div className="container mx-auto py-[50px] lg:py-[100px]">
+        <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 
           <div className="col-span-5 w-full ">
@@ -64,7 +64,7 @@ const HowDigitalMarketingWinsContent = () => {
 
             <div>
               {/* Title */}
-              <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id="content1">
+              <h2 className="title-65 mb-5 lg:mb-[40px] " id="content1">
                 Why Visibility Is Now a Procurement Criterion
               </h2>
               {/* 
@@ -89,17 +89,17 @@ const HowDigitalMarketingWinsContent = () => {
                 <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id="content1">
                   How the Built Environment Procurement Journey Has Changed
                 </h2>
-                <p className="text-font19 text-[#77787B] mb-[16px]">
+                <p className="text-font19 text-[#77787B] ">
                   The built environment procurement journey now begins online in most major UAE markets. Before a developer in DIFC picks up the phone, their team has typically reviewed five to eight contractor websites, checked project portfolios on LinkedIn, and formed a preliminary shortlist based on digital evidence alone.</p>
                 <Image
                   src="/images/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/main-2.jpg"
                   alt="Importance of Technical SEO"
                   width={1200}
                   height={630}
-                  className="mb-5 lg:mb-[40px]"
+                  className="my-5 lg:my-[40px]"
                 />
                 <div>
-                  <h3 className="text-30 mb-4 font-bold pt-4">The Research Phase: How Clients Search Before They Call</h3>
+                  <h3 className="text-30 mb-4 font-bold ">The Research Phase: How Clients Search Before They Call</h3>
                   <p className="text-font19 text-[#77787B] mb-[16px] ">
                     A procurement officer at a government entity in Abu Dhabi searching for a structural contractor does not browse a trade directory. They search Google. They look for companies that rank for queries like 'structural contractor Abu Dhabi' or 'general contractor Dubai.' They cross-reference LinkedIn to check the company's project history, team credibility, and industry activity. Platforms like Zawya and ProQuo contribute to the picture. By the time they make contact, the shortlist is already formed.
                   </p>
@@ -124,7 +124,7 @@ const HowDigitalMarketingWinsContent = () => {
                   <p className="text-font19 text-[#77787B] mb-[16px] ">
                     If a company cannot be found for its core services in UAE search results, it is invisible to the right audience. It does not lose to competitors. It simply does not appear in the conversation at all. The procurement manager moves on to the next result. This is the default operating reality for projects across Dubai, Abu Dhabi, and the wider Gulf right now.
                   </p>
-                  <p className="text-font19 text-[#77787B] mb-[16px] ">
+                  <p className="text-font19 text-[#77787B] ">
                     <strong>The procurement reality in 2026:</strong> Companies that rank on page one of Google for 'construction contractor Dubai' or 'MEP contractor Abu Dhabi' are already in the client's consideration set. Companies that do not rank are not.
                   </p>
                 </div>
@@ -161,7 +161,7 @@ const HowDigitalMarketingWinsContent = () => {
                   <p className="text-font19 text-[#77787B] mb-[16px] ">
                     Turning visibility into enquiries. A phone number, WhatsApp click-to-chat, and a clear RFQ pathway on every key page. Removing friction from the contact process is a business development decision, not a design preference.
                   </p>
-                  <p className="text-font19 text-[#77787B] mb-[16px] ">
+                  <p className="text-font19 text-[#77787B] ">
                     <span className="text-black">Key insight:</span> Most <Link href="/blogs/what-does-built-environment-really-mean-in-the-uae" className="text-primary">
                     built environment companies in the UAE</Link> excel at their craft. What they often lack is the digital infrastructure to make that capability visible to the clients who are actively looking for it. The gap between capability and visibility is where project opportunities are lost.
                   </p>
@@ -208,7 +208,7 @@ const HowDigitalMarketingWinsContent = () => {
                   <p className="text-font19 text-[#77787B] mb-[16px] ">
                     Traffic without conversion is wasted. <Link href="/conversion-rate-optimization-agency-dubai" className="text-primary">CRO for built environment companies</Link> means clear service scope on every page, visible accreditations and certifications, easy enquiry pathways including RFQ forms and WhatsApp click-to-chat, and a project portfolio that functions as a capability statement rather than a photo gallery.
                   </p>
-                  <p className="text-font19 text-[#77787B] mb-[16px] ">
+                  <p className="text-font19 text-[#77787B] ">
                     <span className="text-black">GS.Digital perspective:</span> If you are unsure which of these channels to prioritise first, the answer depends on your current digital baseline, your target client type, and your project pipeline goals. That is exactly what GS.Digital's strategy consultation is designed to work through.
                   </p>
                 </div>
@@ -230,7 +230,7 @@ const HowDigitalMarketingWinsContent = () => {
                     <li className="text-font19 mb-2"> <strong>Friction in the contact process</strong> - a contact form with no phone number, no WhatsApp, and no direct email. A developer in a hurry moves to the next result.</li>
                     <li className="text-font19 mb-2"> <strong>No service and location landing pages</strong>targeting combinations like 'MEP contractor Dubai' or 'fit-out specialist Abu Dhabi,' which is where procurement searches actually land.</li>
                   </ul>
-                  <p className="text-font19 text-[#77787B] mb-[16px]">
+                  <p className="text-font19 text-[#77787B] ">
                     The result is a website that looks professional but functions as a digital brochure rather than a business development tool. Fixing these issues does not require a full website rebuild. It requires a structured audit, a clear content strategy, and technical SEO implementation - work that typically delivers measurable improvement within 60 to 90 days.
                   </p>
                 </div>
@@ -255,7 +255,7 @@ const HowDigitalMarketingWinsContent = () => {
                 </div>
 
                 <p className="text-font19 text-[#77787B] mb-[16px]"> <Link href="/case-study/assent-steel" className="text-primary">ASSENT STEEL</Link> - a UAE-based structural steel fabricator and erector - achieved a 2x increase in organic traffic following a content and SEO programme focused on their core service keywords and project documentation. For a specialist contractor in a competitive sector, that increase represented a meaningful expansion of the project enquiry pipeline.</p>
-                <p className="text-font19 text-[#77787B] mb-[16px]"> The consistent finding across built environment clients: the gap between current performance and potential is almost always larger than expected - and faster to close than most companies assume.</p>
+                <p className="text-font19 text-[#77787B] "> The consistent finding across built environment clients: the gap between current performance and potential is almost always larger than expected - and faster to close than most companies assume.</p>
               </div>
 
                 <div>
@@ -280,7 +280,7 @@ const HowDigitalMarketingWinsContent = () => {
                     <strong>Enquiry pathway:</strong> Is there a clear, frictionless enquiry pathway - phone, WhatsApp, email, and an RFQ form on every key page? If a developer has to hunt for contact information, most will not bother.
                   </li>
                 </ol>
-                <p className="text-font19 text-[#77787B] mb-[16px]">
+                <p className="text-font19 text-[#77787B] ">
                   <span className="text-black">GS.Digital:</span> GS.Digital offers a structured digital audit specifically for built environment companies, identifying exactly where the gaps are and what to prioritise first. The audit covers search visibility, website conversion performance, content authority, and LinkedIn presence - mapped against the procurement journey of your target client type.
                 </p>
               </div>

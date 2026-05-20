@@ -5,7 +5,7 @@ const ContentSectiontwo = () => {
     return (
         <section>
             <div className="container mx-auto ">
-                <div className="grid grid-cols-1 py-[50px] lg:py-[140px] xl:grid-cols-7   ">
+                <div className="grid  py-[50px] lg:py-[100px] ">
                     <div className="col-span-2  mb-5 xl:mb-0">
 
                     </div>
@@ -14,7 +14,7 @@ const ContentSectiontwo = () => {
                         Why Social Video Works Better Now Than Ever
                         </h2>
                         <p className="text-font19  text-[#77787B] mb-[16px]">Let’s break down the urgency behind investing in video content: </p>
-                        <div className="grid lg:grid-cols-2 gap-[30px]">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[30px]">
                             <div className="flex flex-col">
                                 <div >
                                     <Image src={assets.message} alt="" className="bg-primary w-[50px] h-[50px] p-2"/>

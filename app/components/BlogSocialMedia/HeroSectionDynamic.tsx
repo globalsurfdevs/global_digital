@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import LetsTalk from "../../components/common/LetsConnect";
+import SocialShare from "../../components/BlogSocialMedia/SocialShare";
 import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
@@ -192,15 +193,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
-                <div className="grid grid-cols-1 pb-[50px] pt-[20px] lg:py-[150px] xl:grid-cols-7   ">
+                <div className="grid grid-cols-1 pb-[50px] pt-[20px] lg:py-[150px]  ">
                   <div className="col-span-2  mb-5 xl:mb-0">
 
                   </div>
-                  <div className="col-span-5 w-full ">
-                    <h1 className="title-80">
+                  <div className="col-span-5 w-full  ">
+                    <h1 className="title-80 ">
                       {herosection.title}
                     </h1>
-                    <div className="gap-[16px] mt-[40px] xl:hidden flex">
+                    <SocialShare />
+                    <div className="gap-[16px] mt-[40px] hidden ">
 
                       <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
                         <Image src={assets.shareicon} alt="share" />

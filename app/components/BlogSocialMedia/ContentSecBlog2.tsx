@@ -24,8 +24,8 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
     <>
       {sections.map((data, idx) => (
         <section key={idx}>
-          <div className="container mx-auto pt-[50px] lg:pt-[140px]">
-            <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
+          <div className="container mx-auto pt-[50px] lg:pt-[100px]">
+            <div className="grid grid-cols-1  gap-4">
               <div className="col-span-2 mb-5 xl:mb-0"></div>
               <div className="col-span-5 w-full">
                 <h2 className="title-65 mb-[40px]">{data.title}</h2>

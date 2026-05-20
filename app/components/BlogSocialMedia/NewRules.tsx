@@ -38,18 +38,18 @@ const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
   // - If neither, use default py
   const paddingClass = (() => {
     if (pt && pb) return `${pt} ${pb}`;
-    if (pt) return `${pt} pb-[50px] lg:pb-[140px]`;
-    if (pb) return `pt-[50px] lg:pt-[140px] ${pb}`;
-    return "py-[50px] lg:py-[140px]";
+    if (pt) return `${pt} pb-[50px] lg:pb-[100px]`;
+    if (pb) return `pt-[50px] lg:pt-[100px] ${pb}`;
+    return "py-[50px] lg:py-[100px]";
   })();
 
   return (
     <section>
-      <div className={`container mx-auto ${paddingClass}`}>
-        <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
-          <div className="col-span-2 mb-5 xl:mb-0"></div>
+      <div className={`container mx-auto `}>
+        <div className={`grid grid-cols-1 gap-4 ${paddingClass}`}>
+          
 
-          <div className="col-span-5 w-full">
+          <div className="w-full">
             <h2 className="title-65 mb-[40px]">
               {rules.title}
             </h2>
@@ -110,7 +110,10 @@ const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
             {rules.calloutBlock && (
               <div className="mt-[40px] bg-[#000000] p-[30px]">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="bg-[#E63E31] w-[14px] h-[14px] shrink-0"></div>
+                  <div className="bg-primary 
+                w-[14px] h-[14px] 
+                ">
+                  </div>
                   <p
                     className="text-[#77787B] text-font19"
                     dangerouslySetInnerHTML={{ __html: rules.calloutBlock.label }}

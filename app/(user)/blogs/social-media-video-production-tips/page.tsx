@@ -10,7 +10,7 @@ import ListingSection from "../../../components/BlogSocialMedia/ListingSection";
 import ScrollSection from "../../../components/BlogSocialMedia/ScrollsSec";
 import Detailsauthor from "../../../components/BlogSocialMedia/Author";
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import BlogFaq from "../../../components/common/BlogFaq";
 
 
 
@@ -205,9 +205,6 @@ const page = () => {
           }),
         }}
       />
-  {/* Fixed social icons */}
-<SocialShare/>
-      
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
@@ -251,7 +248,7 @@ const page = () => {
         />
       ))}
      <Detailsauthor data={authors} />
-      <FAQ data={Faq} bgcolor="#F2F2F2"/>
+      <BlogFaq data={Faq} />
     </div>
   );
 };

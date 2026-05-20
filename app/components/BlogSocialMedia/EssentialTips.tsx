@@ -33,7 +33,7 @@ const VideoTipsSection: React.FC<VideoTipsSectionProps> = ({ tipsData ,title,des
       <section className="">
         <div className="container mx-auto ">
           {/* Main Grid Structure */}
-          <div className="grid grid-cols-1 xl:grid-cols-7 py-[50px] lg:py-[140px]">
+          <div className="grid py-[50px] lg:py-[100px]">
             {/* Empty Space/Image Column (col-span-2) */}
             <div className="col-span-2 mb-8 xl:mb-0">
              

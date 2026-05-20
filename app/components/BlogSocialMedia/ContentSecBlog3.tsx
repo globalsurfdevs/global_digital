@@ -86,7 +86,8 @@ const renderSubSection = (data: SubSection, idx: number) => (
         {data.paragraphs?.map((p, index) => (
             <p
                 key={index}
-                className="text-font19 text-[#77787B] mb-[16px]"
+                className={`text-font19 text-[#77787B] ${index !== data.paragraphs!.length - 1 ? 'mb-[16px]' : ''
+                    }`}
                 dangerouslySetInnerHTML={{ __html: p }}
             />
         ))}
@@ -107,9 +108,13 @@ const renderSubSection = (data: SubSection, idx: number) => (
             </ul>
         ) : null}
         {data.calloutText && (
-            <div className="my-4 bg-[#F2F2F2] p-[30px]">
+            <div className="my-4 bg-[#F2F2F2] p-[20px] md:p-[30px]">
                 <div className="flex gap-2 ">
-                    <div className="bg-primary w-[14px] h-[14px] mt-3 "></div>
+                    <div className="bg-primary 
+               
+                w-[14px] h-[14px] 
+                mt-3 shrink-0">
+                    </div>
                     <h3 className="text-30 mt-0 ml-3 lg:ml-[40px]" dangerouslySetInnerHTML={{ __html: data.calloutText }}></h3>
                 </div>
             </div>
@@ -139,8 +144,8 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
 
                 return (
                     <section key={idx}>
-                        <div className="container mx-auto pt-[50px] lg:pt-[140px]">
-                            <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
+                        <div className="container mx-auto pt-[50px] lg:pt-[100px]">
+                            <div className="grid grid-cols-1 gap-4">
                                 <div className="col-span-2 mb-5 xl:mb-0" />
                                 <div className="col-span-5 w-full" id={headingId}>
                                     <h2 className="title-65 mb-[40px]">
@@ -155,15 +160,22 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                     ))}
                                     {data.stats?.length ? (
                                         <div className="bg-[#F2F2F2] p-[30px] mt-[40px]">
-                                            <div className="grid grid-cols-3">
+                                            <div className="grid grid-cols-1 md:grid-cols-3">
                                                 {data.stats.map((stat, statIdx) => (
                                                     <div
                                                         key={statIdx}
                                                         className={`
-                        ${statIdx === 0 ? "pr-6 border-r border-[#D0D0D0]" : ""}
-                        ${statIdx > 0 && statIdx < data.stats!.length - 1 ? "px-6 border-r border-[#D0D0D0]" : ""}
-                        ${statIdx === data.stats!.length - 1 ? "pl-6" : ""}
-                    `}
+    
+    ${statIdx !== data.stats!.length - 1 ? "border-b border-[#D0D0D0] md:border-b-0" : ""}
+    
+    ${statIdx === 0 ? "md:pr-6 md:border-r md:border-[#D0D0D0]" : ""}
+    
+    ${statIdx > 0 && statIdx < data.stats!.length - 1 ? "md:px-6 md:border-r md:border-[#D0D0D0]" : ""}
+    
+    ${statIdx === data.stats!.length - 1 ? "md:pl-6" : ""}
+    
+    pb-6 md:pb-0   mb-6 md:mb-0
+  `}
                                                     >
                                                         <h3 className="title-65">
                                                             <span dangerouslySetInnerHTML={{ __html: stat.value }} />

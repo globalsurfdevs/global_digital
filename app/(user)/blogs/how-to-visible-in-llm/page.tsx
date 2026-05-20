@@ -7,7 +7,7 @@ import VideoGuide from "../../../components/BlogSocialMedia/VideoGuide";
 import LlmWorks from "../../../components/BlogSocialMedia/LlmWorks";
 import ScrollSection from "../../../components/BlogSocialMedia/ScrollsSec";
 import Detailsauthor from "../../../components/BlogSocialMedia/Author";
-import FAQ from "../../../components/PermormanceMarketing/FaqBlogs";
+import BlogFaq from "../../../components/common/BlogFaq";
 import LeftSideScrollBar from "@/app/components/BlogSocialMedia/LeftSideFixedTabs";
 import NewRules from "../../../components/BlogSocialMedia/NewRules";
 
@@ -109,10 +109,10 @@ paddingBottom="pb-0"
           />
         ))}
       </div>
-      <div id="faq-section" className="mt-[50px] lg:mt-[140px]">
+      <div id="faq-section" className="mt-[50px] lg:mt-[100px]">
         {/* <Detailsauthor data={authors} /> */}
 
-        <FAQ data={Faq} bgcolor="#F2F2F2" />
+        <BlogFaq data={Faq}  />
       </div>
     </div>
   );

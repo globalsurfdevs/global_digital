@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import LetsTalk from "../../components/common/LetsConnect";
 import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
+import SocialShare from "../../components/BlogSocialMedia/SocialShare";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
@@ -191,7 +192,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
-                <div className="grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7   ">
+                <div className="grid py-[50px] lg:py-[140px]  ">
       <div className="col-span-2  mb-5 xl:mb-0">
                           
                             {/* <div className="flex flex-col items-start gap-[16px]">
@@ -215,27 +216,11 @@ const [modalOpen, setModalOpen] = useState(false);
                           
                         </div>
                         <div className="col-span-5 w-full ">
-                          <h1 className="title-80">
+                          <h1 className="title-80 mb-[40px]">
                           Mastering Social Media Video Production: Tips to Boost Engagement
                           </h1>
-                          <div className="gap-[16px] mt-[40px] xl:hidden flex">
-                        
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.shareicon} alt="share" />
-  </div>
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.linkedinicon} alt="linkedin" />
-  </div>
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.facebbokicon} alt="facebook" />
-  </div>
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.twittericon} alt="twitter" />
-  </div>
-
-
-                            </div>
-           
+                   
+                    <SocialShare />
 
                         </div>
       </div>

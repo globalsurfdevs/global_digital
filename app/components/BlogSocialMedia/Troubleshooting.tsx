@@ -30,7 +30,7 @@ const Troubleshooting: React.FC<TroubleshootingProps> = ({
   return (
     <section>
       <div className="container mx-auto">
-        <div className="grid grid-cols-1  xl:grid-cols-7">
+        <div className="grid ">
           {/* Left column (currently empty, but could be props later) */}
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 

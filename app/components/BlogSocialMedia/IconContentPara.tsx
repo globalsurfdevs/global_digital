@@ -5,7 +5,7 @@ const ContentSectiontwo = () => {
     return (
         <section>
             <div className="container mx-auto ">
-                <div className="grid grid-cols-1 py-[50px] lg:py-[140px] xl:grid-cols-7   ">
+                <div className="grid grid-cols-1 pt-[50px] lg:pt-[140px]   ">
                     <div className="col-span-2  mb-5 xl:mb-0">
 
                     </div>
@@ -15,7 +15,7 @@ const ContentSectiontwo = () => {
                         </h2>
                         <p className="text-font19 text-[#77787B] my-5 lg:my-[40px]">The BAFCO outcome is a demonstration of what a comprehensive <a href="https://www.globalsurf.ae/" className="text-primary hover:underline">digital marketing service in UAE</a> looks like when all components are managed as a connected system over time, not as isolated monthly campaigns.</p>
 
-                        <div className="grid lg:grid-cols-2 gap-[30px]">
+                        <div className="grid lg:grid-cols-3 gap-[30px]">
                             <div className="flex flex-col">
                                 <div className="flex items-center gap-4 ">
                                     <Image src={assets.llmicon1} alt="" className="bg-primary w-[50px] h-[50px] p-2" />

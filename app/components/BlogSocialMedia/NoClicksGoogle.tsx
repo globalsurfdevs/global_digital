@@ -1,14 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { assets } from '@/public/assets/assets';
+import { Collapse } from 'react-collapse';
+import arrowactive from "@/public/assets/logos/arr-active.svg";
+import arrowdown from "@/public/assets/logos/arr-down.svg";
 
 const ClicksGoogle = () => {
+     const [open, setOpen] = useState<number | null>(null);
+    
+      const toggle = (index: number) => {
+        if (open === index) {
+          setOpen(null);
+        } else {
+          setOpen(index);
+        }
+      };
   return (
     <section>
-      <div className="container mx-auto py-[50px] lg:py-[50px]">
-        <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
+      <div className="container mx-auto py-[50px] lg:py-[100px]">
+        <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 
           <div className="col-span-5 w-full ">
@@ -677,61 +689,96 @@ const ClicksGoogle = () => {
                     </p> 
                   <p className="text-font19 text-[#77787B] mb-0">
                  The opportunity is still there. Search still drives demand. But the competitive advantage now belongs to brands that adapt early and position themselves as reliable sources that AI engines are confident enough to quote.  </p>
-{/* -------------------- FAQ Section -------------------- */}
-<div className="  pb-10 lg:pb-[60px]">
 
-                      <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content12'>
-                        Frequently Asked Questions
-                      </h2>
-
-                      {/* Question 1 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                        1. How often should we audit our brand’s presence in AI search results?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
-                        Review AI search visibility at least quarterly. If search is a major lead source, test priority queries monthly. Consistent monitoring helps you spot visibility gaps before they affect pipeline.
-                      </p>
-
-                      {/* Question 2 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                        2. Which tools can help track brand mentions inside AI Overviews and chatbots?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
-                        Use AI visibility monitoring tools where available and combine them with structured manual prompt testing. Track brand mentions, competitor citations, and how your expertise is described across platforms.
-                      </p>
-
-                      {/* Question 3 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                        3. Should we create separate content specifically for AI search?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
-                        No. Focus on structuring existing and new content clearly with direct answers, strong expertise signals, and logical formatting. Well-structured content benefits both traditional SEO and AI search visibility.
-                      </p>
-
-                      {/* Question 4 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                        4. How do FAQ sections and schema markup help in zero click and AI results?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
-                        FAQ sections reflect real user questions, making answers easier for AI systems to extract. Schema markup improves machine readability, increasing your chances of being cited in AI generated summaries.
-                      </p>
-
-                      {/* Question 5 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                        5. How do we handle inaccuracies or outdated information about our brand in AI answers?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B]  ">
-                        Update and strengthen your authoritative pages first. Clear, current, and well-structured content improves the likelihood that AI systems reference accurate information about your brand.
-                      </p>
-</div>
           </div>
         </div>
       </div>
+      <div className="bg-[#F2F2F2]">
+                    <div className="container mx-auto py-4">
+                      <div className="grid py-[50px] lg:py-[150px]">
+            
+                        {/* Left Column */}
+                        <div className="col-span-2 mb-5 xl:mb-0">
+                          <h2 className="title-65 mb-[40px]">FAQ</h2>
+                          <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]" />
+                        </div>
+            
+                        {/* Right Column */}
+                        <div className="col-span-5 w-full">
+            
+                          {[
+                {
+                  question: "How often should we audit our brand’s presence in AI search results?",
+                  answer:
+                    "Review AI search visibility at least quarterly. If search is a major lead source, test priority queries monthly. Consistent monitoring helps you spot visibility gaps before they affect pipeline."
+                },
+                {
+                  question: "Which tools can help track brand mentions inside AI Overviews and chatbots?",
+                  answer:
+                    "Use AI visibility monitoring tools where available and combine them with structured manual prompt testing. Track brand mentions, competitor citations, and how your expertise is described across platforms."
+                },
+                {
+                  question: "Should we create separate content specifically for AI search?",
+                  answer:
+                    "No. Focus on structuring existing and new content clearly with direct answers, strong expertise signals, and logical formatting. Well-structured content benefits both traditional SEO and AI search visibility."
+                },
+                {
+                  question: "How do FAQ sections and schema markup help in zero click and AI results?",
+                  answer:
+                    "FAQ sections reflect real user questions, making answers easier for AI systems to extract. Schema markup improves machine readability, increasing your chances of being cited in AI generated summaries."
+                },
+                {
+                  question: "How do we handle inaccuracies or outdated information about our brand in AI answers?",
+                  answer:
+                    "Update and strengthen your authoritative pages first. Clear, current, and well-structured content improves the likelihood that AI systems reference accurate information about your brand."
+                }
+                          ].map((item, index) => (
+                            <div
+                              key={index}
+                              className="flex w-full items-center justify-between gap-3 border-b first:border-t py-6 lg:py-[50px]"
+                            >
+                              <div
+                                className="flex cursor-pointer flex-col"
+                                onClick={() => toggle(index)}
+                              >
+                                <h3
+                                  className={`text-30 ${open === index ? "text-black" : "text-gray1"
+                                    }`}
+                                >
+                                  {index + 1}. {item.question}
+                                </h3>
+            
+                                <Collapse isOpened={open === index}>
+                                  <div className="pt-3 lg:pt-[22px]">
+                                    <p className="text-19 fnt-lexend text-gray1">
+                                      {item.answer}
+                                    </p>
+                                  </div>
+                                </Collapse>
+                              </div>
+            
+                              {open === index ? (
+                                <Image
+                                  src={arrowactive}
+                                  alt="Toggle"
+                                  width={25}
+                                  height={25}
+                                />
+                              ) : (
+                                <Image
+                                  src={arrowdown}
+                                  alt="Toggle"
+                                  width={20}
+                                  height={20}
+                                />
+                              )}
+                            </div>
+                          ))}
+            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
     </section>
   );
 };

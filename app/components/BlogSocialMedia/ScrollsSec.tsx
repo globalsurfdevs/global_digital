@@ -27,8 +27,8 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
 
   return (
     <section>
-      <div className="container mx-auto pt-[50px] lg:pt-[140px]">
-        <div className="grid grid-cols-1 xl:grid-cols-7">
+      <div className="container mx-auto pt-[50px] lg:pt-[100px]">
+        <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0" />
           <div className="col-span-5 w-full">
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-start lg:items-center">
