@@ -5,7 +5,7 @@ const ContentSectiontwo = () => {
     return (
         <section>
             <div className="container mx-auto ">
-                <div className="grid grid-cols-1 py-[50px] lg:py-[140px] xl:grid-cols-7   ">
+                <div className="grid grid-cols-1 py-[50px] lg:py-[100px]    ">
                     <div className="col-span-2  mb-5 xl:mb-0">
 
                     </div>

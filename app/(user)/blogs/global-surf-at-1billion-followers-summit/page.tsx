@@ -46,7 +46,6 @@ const page = () => {
   return (
     <div className="relative">
       <OneBillionFollowersSchema />
-      <SocialShare />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
       <Contentone sections={contentSectionsData} />
       <Contentone sections={videoProductionsocialData} />

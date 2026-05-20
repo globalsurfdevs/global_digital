@@ -202,7 +202,7 @@ export const takeaway = [
    {
     title: "The Takeaway ",
     paragraphs: [
-   `The future of search isn’t about keywords anymore. It’s about knowledge presence. <br>
+   `The future of search isn’t about keywords anymore. It’s about knowledge presence. 
     In the era of large language models, the most trusted voice wins - not the loudest one. `
     
     ],

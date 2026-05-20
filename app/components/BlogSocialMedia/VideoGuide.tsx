@@ -60,12 +60,12 @@ const VideoGuide: React.FC<VideoGuideProps> = ({
   return (
     <section>
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 xl:grid-cols-7">
+        <div className="grid grid-cols-1 ">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
           <div className="col-span-5 w-full">
             <h2 className="title-65">{maintitle}</h2>
             <p className="text-30 my-[40px] text-[#77787B]">{subtitle}</p>
-            <div className="steps-grid grid grid-cols-1 md:grid-cols-2 gap-[37px] items-stretch">
+            <div className="steps-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[37px] items-stretch">
               {videoGuideSteps.map((step) => (
                 <StepCard key={step.stepNumber} step={step} />
               ))}

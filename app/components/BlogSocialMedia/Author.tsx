@@ -22,10 +22,10 @@ interface AuthorProps {
   
     return (
       <section>
-        <div className="container mx-auto py-[50px] lg:py-[140px]">
+        <div className="container mx-auto py-[50px] lg:py-[100px]">
           <div className="border-b border-dark mb-[40px] mt-[40px] lg:mt-0"></div>
           {authors.map((author, idx) => (
-            <div key={idx} className="grid grid-cols-1 xl:grid-cols-7 mb-10">
+            <div key={idx} className="grid mb-10">
               <div className="col-span-2 mb-5 xl:mb-0"></div>
               <div className="col-span-5">
                 <div className="flex items-center gap-[30px]">

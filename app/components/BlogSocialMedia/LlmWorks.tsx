@@ -31,7 +31,7 @@ const LlmWorks: React.FC<VideoTipsSectionProps> = ({ title, description, columnT
   return (
     <section>
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 xl:grid-cols-7 pt-[50px] lg:pt-[140px]">
+        <div className="grid pt-[50px] lg:pt-[100px]">
           {/* Empty Left Space */}
           <div className="col-span-2"></div>
 

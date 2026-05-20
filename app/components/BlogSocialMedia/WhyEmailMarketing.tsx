@@ -1,14 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { assets } from '@/public/assets/assets';
+import { Collapse } from 'react-collapse';
+import arrowactive from "@/public/assets/logos/arr-active.svg";
+import arrowdown from "@/public/assets/logos/arr-down.svg";
 
 const WhyEmailMarketing = () => {
+  const [open, setOpen] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    if (open === index) {
+      setOpen(null);
+    } else {
+      setOpen(index);
+    }
+  };
   return (
     <section>
-      <div className="container mx-auto py-[50px] lg:py-[50px]">
-        <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
+      <div className="container mx-auto py-[50px] lg:py-[100px]">
+        <div className="grid gap-4">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 
           <div className="col-span-5 w-full ">
@@ -291,45 +303,93 @@ Each of these behaviours tells you something different:</p>
 </p>
 
      
-<div className="  pb-10 lg:pb-[60px]">
 
-                      <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content11'>
-                        Frequently Asked Questions
-                      </h2>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[#F2F2F2]">
+        <div className="container mx-auto py-4">
+          <div className="grid py-[50px] lg:py-[150px]">
 
-                      {/* Question 1 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                        1. Is email marketing still effective if my prospects are very senior and time-poor?
-                      </p>
+            {/* Left Column */}
+            <div className="mb-5 xl:mb-0">
+              <h2 className="title-65 mb-[40px]">Frequently Asked Questions</h2>
+              <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]" />
+            </div>
 
-                      <p className="text-font19 text-[#77787B] mb-[16px]">Yes. In fact, email is often the only digital channel they consistently engage with during working hours, precisely because it is where their core responsibilities are managed. The key is relevance and brevity, not volume.
-                       </p>
+            {/* Right Column */}
+            <div className="col-span-5 w-full">
 
-                         <p className="font-bold text-30 mt-5 lg:mt-[30px]">2. How often should we email B2B decision makers in the UAE? </p>
+              {[
+                {
+                  question: "Is email marketing still effective if my prospects are very senior and time-poor?",
+                  answer:
+                    "Yes. In fact, email is often the only digital channel they consistently engage with during working hours, precisely because it is where their core responsibilities are managed. The key is relevance and brevity, not volume."
+                },
+                {
+                  question: "How often should we email B2B decision makers in the UAE?",
+                  answer:
+                    "There is no universal number, but most successful B2B programmes focus on a clear, spaced sequence rather than aggressive frequency."
+                },
+                {
+                  question: "What kind of content works best in B2B email marketing for high-value deals?",
+                  answer:
+                    "Insight-led content tends to perform best: market observations, benchmark data, relevant case studies, and practical frameworks."
+                },
+                {
+                  question: "Do we need complex marketing automation to make email marketing work?",
+                  answer:
+                    "Not initially. Many brands start with structured manual sequences or simple automation aligned with their CRM."
+                },
+                {
+                  question: "How should we measure success from email marketing in B2B demand generation?",
+                  answer:
+                    "Beyond opens and clicks, look for movement in the pipeline and qualified conversations triggered."
+                }
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex w-full items-center justify-between gap-3 border-b first:border-t py-6 lg:py-[50px]"
+                >
+                  <div
+                    className="flex cursor-pointer flex-col"
+                    onClick={() => toggle(index)}
+                  >
+                    <h3
+                      className={`text-30 ${open === index ? "text-black" : "text-gray1"
+                        }`}
+                    >
+                      {index + 1}. {item.question}
+                    </h3>
 
-                        <p className="text-font19 text-[#77787B] mb-[16px]">
-There is no universal number, but most successful B2B programmes focus on a clear, spaced sequence rather than aggressive frequency. A cadence of one to two high-value emails per month per segment is common, with additional context-based follow-ups for those who show clear engagement.
-</p>
+                    <Collapse isOpened={open === index}>
+                      <div className="pt-3 lg:pt-[22px]">
+                        <p className="text-19 fnt-lexend text-gray1">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </Collapse>
+                  </div>
 
-                         <p className="font-bold text-30 mt-5 lg:mt-[30px]">3. What kind of content works best in B2B email marketing for high-value deals?</p>
+                  {open === index ? (
+                    <Image
+                      src={arrowactive}
+                      alt="Toggle"
+                      width={25}
+                      height={25}
+                    />
+                  ) : (
+                    <Image
+                      src={arrowdown}
+                      alt="Toggle"
+                      width={20}
+                      height={20}
+                    />
+                  )}
+                </div>
+              ))}
 
-                        <p className="text-font19 text-[#77787B] mb-[16px]">
-Insight-led content tends to perform best: market observations, benchmark data, relevant case studies, and practical frameworks. These give decision makers something they can think about and share internally, rather than just a list of features.
-</p>
-
-                         <p className="font-bold text-30 mt-5 lg:mt-[30px]">4. Do we need complex marketing automation to make email marketing work?</p>
-
-                        <p className="text-font19 text-[#77787B] mb-[16px]">Not initially. Many brands start with well-structured manual sequences or simple automation, aligned with their CRM. What matters more is clarity of message, segmentation by role or sector, and consistent follow-up based on engagement.</p>
-
-                         <p className="font-bold text-30 mt-5 lg:mt-[30px]">5. How should we measure success from email marketing in B2B demand generation?
-</p>
-
-                        <p className="text-font19 text-[#77787B] mb-[16px]">Beyond opens and clicks, look for movement in the pipeline: number of qualified conversations triggered, opportunities influenced, and how email engagement correlates with deal velocity and win rates. Over time, you can also track how often email threads are referenced in late-stage discussions.
-</p>
- 
-
-           
-</div>
+            </div>
           </div>
         </div>
       </div>

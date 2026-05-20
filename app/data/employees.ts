@@ -43,14 +43,6 @@ export const Employees = [
     },
     {
         id: 3,
-        image: assets.Aashika,
-        name:"Aashika",
-        designation: "Content Development Lead",
-        width: "100%",
-        height:"auto"
-    },
-    {
-        id: 3,
         image: assets.Mobin,
         name:"Mobin",
         designation: "Creative Department Lead",

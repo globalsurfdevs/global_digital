@@ -7,8 +7,8 @@ import Link from 'next/link';
 const ContentStaticSection = () => {
   return (
     <section>
-      <div className="container mx-auto py-[50px] lg:py-[140px]">
-        <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
+      <div className="container mx-auto py-[50px] lg:py-[100px]">
+        <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 
           <div className="col-span-5 w-full">

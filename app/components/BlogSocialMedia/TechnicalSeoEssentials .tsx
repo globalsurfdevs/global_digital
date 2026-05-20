@@ -1,14 +1,27 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { assets } from '@/public/assets/assets';
 import Link from 'next/link';
+import { Collapse } from 'react-collapse';
+import arrowactive from "@/public/assets/logos/arr-active.svg";
+import arrowdown from "@/public/assets/logos/arr-down.svg";
+
 const TechnicalSeoEssentials  = () => {
+    const [open, setOpen] = useState<number | null>(null);
+  
+    const toggle = (index: number) => {
+      if (open === index) {
+        setOpen(null);
+      } else {
+        setOpen(index);
+      }
+    };
   return (
     <section>
-      <div className="container mx-auto py-[50px] lg:py-[50px]">
-        <div className="grid grid-cols-1 xl:grid-cols-7 gap-4">
+      <div className="container mx-auto py-[50px] lg:py-[100px]">
+        <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 
           <div className="col-span-5 w-full ">
@@ -451,60 +464,90 @@ Better AI interpretation in answer engines. Pages with valid schema see 30-40% h
 
                 <p className="text-font19 text-[#77787B] mb-[16px]">Treat this checklist like routine maintenance. Review it regularly, fix small issues early, and ensure your digital infrastructure remains strong. In competitive AEC markets, technical strength quietly protects your rankings and safeguards your pipeline.</p>
               
-             {/* -------------------- FAQ Section -------------------- */}
-<div className="  pb-10 lg:pb-[60px]">
-
-                      <h2 className="title-65 mb-5 lg:mb-[40px] pt-7 lg:pt-[50px] 2xl:pt-[110px]" id='content9'>
-                        Frequently Asked Questions
-                      </h2>
-
-                      {/* Question 1 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                        1. What are the biggest technical SEO red flags on websites in 2026?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]"> 
-                      Common red flags include blocked or non-indexed service pages, duplicate content, slow project galleries, broken internal links, and poor mobile experience, and failing INP scores on interactive elements. These issues often go unnoticed but quietly reduce visibility and enquiries.
-                        </p>
-
-                      {/* Question 2 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                      2.	Why do project gallery pages often fail performance tests?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
-Project pages usually contain large, uncompressed images, sliders, PDFs, and heavy scripts. Without proper optimisation, they load slowly and create unstable layouts, which frustrates users and weaken search performance.
-   </p>
-
-                      {/* Question 3 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                       3.	What technical fixes most quickly lift rankings for architecture firms?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
-Improving page speed (especially LCP and INP), fixing crawl and index errors, cleaning up internal links, and ensuring mobile responsiveness often deliver the fastest gains. Stabilising technical foundations allows existing content to perform better.
-  </p>
-
-                      {/* Question 4 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                      4.	How do broken internal links quietly damage AEC SEO performance?
-                      </p>
-
-                      <p className="text-font19 text-[#77787B] mb-[16px]">
-Broken links waste crawl budget, disrupt user journeys, and reduce authority flow between service and project pages. Over time, this weakens ranking stability and user trust.
- </p>
-
-                      {/* Question 5 */}
-                      <p className="font-bold text-30 mt-5 lg:mt-[30px]">
-                   5.	Can poor hosting alone ruin technical SEO for property websites?  </p>
-
-                      <p className="text-font19 text-[#77787B]  "> 
-Yes. Slow or unreliable hosting can delay page loads, increase downtime, and limit overall performance. Even well-optimised pages struggle if the server infrastructure is weak.
- </p>
-</div>
           </div>
         </div>
       </div>
+      <div className="bg-[#F2F2F2]">
+              <div className="container mx-auto py-4">
+                <div className="grid py-[50px] lg:py-[150px]">
+      
+                  {/* Left Column */}
+                  <div className="col-span-2 mb-5 xl:mb-0">
+                    <h2 className="title-65 mb-[40px]">FAQ</h2>
+                    <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]" />
+                  </div>
+      
+                  {/* Right Column */}
+                  <div className="col-span-5 w-full">
+      
+                    {[
+                {
+                  question: "What are the biggest technical SEO red flags on websites in 2026?",
+                  answer: "Common red flags include blocked or non-indexed service pages, duplicate content, slow project galleries, broken internal links, and poor mobile experience, and failing INP scores on interactive elements. These issues often go unnoticed but quietly reduce visibility and enquiries."
+                },
+                {
+                  question: "Why do project gallery pages often fail performance tests?",
+                  answer: "Project pages usually contain large, uncompressed images, sliders, PDFs, and heavy scripts. Without proper optimisation, they load slowly and create unstable layouts, which frustrates users and weaken search performance."
+                },
+                {
+                  question: "What technical fixes most quickly lift rankings for architecture firms?",
+                  answer: "Improving page speed (especially LCP and INP), fixing crawl and index errors, cleaning up internal links, and ensuring mobile responsiveness often deliver the fastest gains. Stabilising technical foundations allows existing content to perform better."
+                },
+                {
+                  question: "How do broken internal links quietly damage AEC SEO performance?",
+                  answer: "Broken links waste crawl budget, disrupt user journeys, and reduce authority flow between service and project pages. Over time, this weakens ranking stability and user trust."
+                },
+                {
+                  question: "Can poor hosting alone ruin technical SEO for property websites?",
+                  answer: "Yes. Slow or unreliable hosting can delay page loads, increase downtime, and limit overall performance. Even well-optimised pages struggle if the server infrastructure is weak."
+                }
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex w-full items-center justify-between gap-3 border-b first:border-t py-6 lg:py-[50px]"
+                      >
+                        <div
+                          className="flex cursor-pointer flex-col"
+                          onClick={() => toggle(index)}
+                        >
+                          <h3
+                            className={`text-30 ${open === index ? "text-black" : "text-gray1"
+                              }`}
+                          >
+                            {index + 1}. {item.question}
+                          </h3>
+      
+                          <Collapse isOpened={open === index}>
+                            <div className="pt-3 lg:pt-[22px]">
+                              <p className="text-19 fnt-lexend text-gray1">
+                                {item.answer}
+                              </p>
+                            </div>
+                          </Collapse>
+                        </div>
+      
+                        {open === index ? (
+                          <Image
+                            src={arrowactive}
+                            alt="Toggle"
+                            width={25}
+                            height={25}
+                          />
+                        ) : (
+                          <Image
+                            src={arrowdown}
+                            alt="Toggle"
+                            width={20}
+                            height={20}
+                          />
+                        )}
+                      </div>
+                    ))}
+      
+                  </div>
+                </div>
+              </div>
+            </div>
     </section>
   );
 };

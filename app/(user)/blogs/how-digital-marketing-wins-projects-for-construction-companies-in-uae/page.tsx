@@ -1,12 +1,11 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
 import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne";
-import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
 import { HowDigitalMarketingWinsSchema, HowDigitalMarketingWinsFaqSchema, HowDigitalMarketingWinsHowToSchema } from "../../../components/Schema/OfferCatalog";
 
 import { BannerSection, contentSectionsData, Faq} from "../../../data/blogdatas/how-digital-marketing-wins-projects-for-construction-companies-in-uae";
 import HowDigitalMarketingWinsContent from "../../../components/Blog-details/HowDigitalMarketingWinsContent";
-import FAQ from "@/app/components/common/Faq";
+import BlogFaq from "@/app/components/common/BlogFaq";
 
 
 
@@ -53,11 +52,10 @@ const page = () => {
       <HowDigitalMarketingWinsSchema />
       <HowDigitalMarketingWinsFaqSchema />
       <HowDigitalMarketingWinsHowToSchema />
-      <SocialShare />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
       <ContentSectionrefOne sections={contentSectionsData} />
       <HowDigitalMarketingWinsContent />
-      <FAQ data={Faq} />
+      <BlogFaq data={Faq}  />
     </div>
   );
 };

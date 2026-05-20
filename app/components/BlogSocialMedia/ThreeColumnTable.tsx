@@ -17,13 +17,13 @@ const ThreeColumnTable: React.FC<ThreeColumnTableProps> = ({
   title,
   subtitle,
   data,
-  paddingBottom = 'pb-16',
+  paddingBottom = 'pb-[100px] ',
   columnTitles, paragraph
 }) => {
   return (
-    <section className={`px-4 sm:px-6 lg:px-8 ${paddingBottom}`}>
+    <section className={` ${paddingBottom}`}>
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 xl:grid-cols-7">
+        <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
           <div className="col-span-5 w-full">
             <h2 className="title-65 mb-[40px]">{title}</h2>

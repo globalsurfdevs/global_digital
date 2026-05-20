@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import LetsTalk from "../../components/common/LetsConnect";
+import SocialShare from "../../components/BlogSocialMedia/SocialShare";
 import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
@@ -14,7 +15,7 @@ const lexend = Lexend({
 });
 interface su {
   stitle?: string;
-buttonTitle?: string;
+  buttonTitle?: string;
   desc?: string;
 }
 interface BannerSection {
@@ -45,12 +46,12 @@ const HeroSectionSocialM: React.FC<HeroSectionProps> = ({
   maxchwidth,
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const pathname = usePathname();
   const currentUrl = typeof window !== "undefined" ? window.location.origin + pathname : "";
 
   const [copied, setCopied] = useState(false);
- const handleCopy = () => {
+  const handleCopy = () => {
     navigator.clipboard.writeText(currentUrl).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 1000);
@@ -120,16 +121,16 @@ const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-    {/* Modal section */}
+      {/* Modal section */}
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
       <div className="container mx-auto py-2" ref={nextContainerRef}>
-     
+
         {Bannerdata.map((herosection) => (
-          
+
           <div key={herosection.id}>
             <motion.div
               className="title-80"
@@ -152,7 +153,7 @@ const [modalOpen, setModalOpen] = useState(false);
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
                   <div
-                  
+
                   >
                     <div>
                       {herosection.navigation && (
@@ -178,9 +179,9 @@ const [modalOpen, setModalOpen] = useState(false);
                                   (herosection.navigation?.length || 0) -
                                   1 && (
                                     <li>
-                                
-                            <div className="h-[14px] w-[14px] bg-primary"></div>
-                          
+
+                                      <div className="h-[14px] w-[14px] bg-primary"></div>
+
                                     </li>
                                   )}
                               </React.Fragment>
@@ -189,105 +190,36 @@ const [modalOpen, setModalOpen] = useState(false);
                         </nav>
                       )}
                     </div>
-                    
-                  
+
+
                   </div>
                   <div>
                     <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on Sep 15, 2025  |  Updated on 15, 2025
-                        </p>
-                
+                    </p>
+
                   </div>
-                  
+
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
                 <div className="grid grid-cols-1 py-[50px] lg:py-[150px] xl:grid-cols-7   ">
-      <div className="col-span-2  mb-5 xl:mb-0 xl:block hidden">
-                          
-                            <div className="flex flex-col items-start gap-[16px]">
-                                <div className="flex items-center gap-[10px] group">
-                                  <div
-                                    onClick={handleCopy}
-                                    className="cursor-pointer p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]"
-                                    title="Copy Blog Link"
-                                  >
-                                    <Image
-                                      src={assets.shareicon}
-                                      alt="Copy Link"
-                                      className="w-full h-full object-cover 
-                                                 transition-transform transition-filter duration-500 ease-in-out 
-                                                 group-hover:invert group-hover:scale-110"
-                                    />
-                                  </div>
-                                
-                                  {copied && (
-                                    <p className="text-dark text-[12px]">
-                                      Link Copied!
-                                    </p>
-                                  )}
-                                </div>
-                    <Link href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank"  rel="noopener noreferrer" className="w-full">   
-  <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
-                  transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
-    <Image src={assets.linkedinicon} alt="linkedin"  className="w-full h-full object-cover 
-                 transition-transform transition-filter duration-500 ease-in-out 
-                 group-hover:invert group-hover:scale-110"/>
-  </div></Link>
-  <Link href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"  rel="noopener noreferrer" className="w-full">
-  <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
-                  transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
-    <Image src={assets.facebbokicon} alt="facebook"  className="w-full h-full object-cover 
-                 transition-transform transition-filter duration-500 ease-in-out 
-                 group-hover:invert group-hover:scale-110"/>
-  </div></Link>
-  <Link href="https://twitter.com/intent/tweet?url=" target="_blank"  rel="noopener noreferrer" className="w-full">
-  <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
-                  transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]  ">
-    <Image src={assets.twittericon} alt="twitter"  className="w-full h-full object-cover 
-                 transition-transform transition-filter duration-500 ease-in-out 
-                 group-hover:invert group-hover:scale-110"/>
-  </div>
-</Link>
 
-                            </div>
-                           
-                          
-                        </div>
-                        <div className="col-span-5 w-full ">
-                          <h1 className="title-80">
-                         Why Your Brand Isn’t<br className="d-none lg:d-block"/>
-Visible in LLMs<br className="d-none lg:d-block"/>
-(And What to Do About it) 
-                          </h1>
-                          <div className="gap-[16px] mt-[40px] xl:hidden flex">
-                       
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.shareicon} alt="share" />
-  </div>
-  <Link href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank"  rel="noopener noreferrer" className="w-full">   
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.linkedinicon} alt="linkedin" />
-  </div></Link>
-  <Link href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"  rel="noopener noreferrer" className="w-full">
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.facebbokicon} alt="facebook" />
-  </div></Link>
-  <Link href="https://twitter.com/intent/tweet?url=" target="_blank"  rel="noopener noreferrer" className="w-full">
-  <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
-    <Image src={assets.twittericon} alt="twitter" />
-  </div></Link>
+                  <div className="col-span-5 w-full ">
+                    <h1 className="title-80 mb-6">
+                      Why Your Brand Isn’t<br className="d-none lg:d-block" />
+                      Visible in LLMs<br className="d-none lg:d-block" />
+                      (And What to Do About it)
+                    </h1>
+                    <SocialShare />
 
 
-                            </div>
-           
-
-                        </div>
-      </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
-        
+
           </div>
         ))}
-        
+
       </div>
       <motion.div
         initial="hidden"

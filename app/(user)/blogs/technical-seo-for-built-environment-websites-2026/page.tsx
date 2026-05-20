@@ -44,8 +44,6 @@ const page = () => {
   return (
     <div className="relative">
       <TechnicalSEOSchema />
-      <SocialShare />
-
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}

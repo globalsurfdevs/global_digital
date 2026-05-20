@@ -16,8 +16,8 @@ type ListingSectionProps = {
 const ListingSection: React.FC<ListingSectionProps> = ({ data }) => {
   return (
     <section>
-      <div className="container mx-auto pt-[50px] lg:pt-[140px]">
-        <div className="grid grid-cols-1 xl:grid-cols-7">
+      <div className="container mx-auto pt-[50px] lg:pt-[100px]">
+        <div className="grid ">
           {/* Left column (empty for now, could accept image/text as prop later) */}
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 

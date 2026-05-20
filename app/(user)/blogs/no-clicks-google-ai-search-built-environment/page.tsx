@@ -43,8 +43,6 @@ const page = () => {
   return (
     <div className="relative">
       <OneClickSchema />
-<SocialShare/>
-      
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
