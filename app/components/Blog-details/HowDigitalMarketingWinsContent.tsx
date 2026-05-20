@@ -209,7 +209,7 @@ const HowDigitalMarketingWinsContent = () => {
                     Traffic without conversion is wasted. <Link href="/conversion-rate-optimization-agency-dubai" className="text-primary">CRO for built environment companies</Link> means clear service scope on every page, visible accreditations and certifications, easy enquiry pathways including RFQ forms and WhatsApp click-to-chat, and a project portfolio that functions as a capability statement rather than a photo gallery.
                   </p>
                   <p className="text-font19 text-[#77787B] mb-[16px] ">
-                    <span className="text-black">GS.Digital perspective:</span> If you are unsure which of these channels to prioritise first, the answer depends on your current digital baseline, your target client type, and your project pipeline goals. That is exactly what GS.Digital's strategy consultation is designed to work through.
+                    <span className="text-black">GS Digital perspective:</span> If you are unsure which of these channels to prioritise first, the answer depends on your current digital baseline, your target client type, and your project pipeline goals. That is exactly what GS Digital's strategy consultation is designed to work through.
                   </p>
                 </div>
 
@@ -245,7 +245,7 @@ const HowDigitalMarketingWinsContent = () => {
                     width={1200} height={630} className="mb-5 lg:mb-[40px]" />
                   {/* Paragraphs */}
                   <p className="text-font19 text-[#77787B] mb-[16px]">
-                    ASGC Group - one of the UAE's leading general contracting and construction conglomerates, achieved immediate and sustained growth following their website redevelopment and SEO programme with GS.Digital:
+                    ASGC Group - one of the UAE's leading general contracting and construction conglomerates, achieved immediate and sustained growth following their website redevelopment and SEO programme with GS Digital:
                   </p>
                   <ul className="list-disc pl-10 mt-3 mb-[24px]">
                     <li className="text-font19 mb-2">926% increase in weekly active users in the first week post-launch</li>
@@ -281,7 +281,7 @@ const HowDigitalMarketingWinsContent = () => {
                   </li>
                 </ol>
                 <p className="text-font19 text-[#77787B] mb-[16px]">
-                  <span className="text-black">GS.Digital:</span> GS.Digital offers a structured digital audit specifically for built environment companies, identifying exactly where the gaps are and what to prioritise first. The audit covers search visibility, website conversion performance, content authority, and LinkedIn presence - mapped against the procurement journey of your target client type.
+                  <span className="text-black">GS Digital:</span> GS Digital offers a structured digital audit specifically for built environment companies, identifying exactly where the gaps are and what to prioritise first. The audit covers search visibility, website conversion performance, content authority, and LinkedIn presence - mapped against the procurement journey of your target client type.
                 </p>
               </div>
             </div>

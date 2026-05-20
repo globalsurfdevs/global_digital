@@ -437,7 +437,7 @@ export const Faq = [
   {
     title: "How long does SEO take to show results for a construction company?",
     description:
-      "SEO typically delivers visible ranking improvements within three to six months for most construction and contracting companies, depending on the competitiveness of target keywords and the current state of the website. Technical fixes and on-page optimisation produce the fastest initial gains. For highly competitive terms like 'general contractor Dubai,' the timeline is typically six to nine months to reach page one. GS.Digital's built environment clients have seen meaningful traffic improvement within 90 days of programme launch.",
+      "SEO typically delivers visible ranking improvements within three to six months for most construction and contracting companies, depending on the competitiveness of target keywords and the current state of the website. Technical fixes and on-page optimisation produce the fastest initial gains. For highly competitive terms like 'general contractor Dubai,' the timeline is typically six to nine months to reach page one. GS Digital's built environment clients have seen meaningful traffic improvement within 90 days of programme launch.",
   },
   {
     title: "Which digital channels work best for B2B construction companies?",
@@ -452,9 +452,9 @@ export const Faq = [
   },
   {
     title:
-      "How does GS.Digital help construction and built environment companies?",
+      "How does GS Digital help construction and built environment companies?",
     description:
-      "GS.Digital works with UAE-based construction companies, fit-out contractors, developers, and real estate firms to build digital presence strategies that generate project-ready enquiries. Our work spans website redevelopment, SEO implementation, LinkedIn strategy, content marketing, and conversion optimisation - all delivered within the context of how built environment clients actually research and procure services. Clients include ASGC Group, where GS.Digital delivered a 926% increase in weekly active users following website redevelopment and SEO implementation.",
+      "GS Digital works with UAE-based construction companies, fit-out contractors, developers, and real estate firms to build digital presence strategies that generate project-ready enquiries. Our work spans website redevelopment, SEO implementation, LinkedIn strategy, content marketing, and conversion optimisation - all delivered within the context of how built environment clients actually research and procure services. Clients include ASGC Group, where GS Digital delivered a 926% increase in weekly active users following website redevelopment and SEO implementation.",
   },
   {
     title:

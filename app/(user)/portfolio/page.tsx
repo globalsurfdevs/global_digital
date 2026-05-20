@@ -13,9 +13,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Digital Marketing Agency Portfolio | GS.Digital",
+    title: "Digital Marketing Agency Portfolio | GS Digital",
     description:
-      "Explore GS.Digital’s portfolio featuring innovative marketing strategies, creative designs, and impactful branding solutions.",
+      "Explore GS Digital’s portfolio featuring innovative marketing strategies, creative designs, and impactful branding solutions.",
     alternates: {
       canonical: "https://www.globalsurf.ae/portfolio",
     },
