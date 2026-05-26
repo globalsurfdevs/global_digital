@@ -3,6 +3,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
+import { motion } from "framer-motion";
 
 export interface StatItem {
     value: string;
@@ -145,6 +146,19 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                 return (
                     <section key={idx}>
                         <div className="container mx-auto pt-[50px] lg:pt-[100px]">
+                             <motion.div
+                                      initial="hidden"
+                                      whileInView="visible"
+                                      viewport={{ once: true, amount: 0.3 }}
+                                      variants={{
+                                        hidden: { opacity: 0, y: 50 },
+                                        visible: {
+                                          opacity: 1,
+                                          y: 0,
+                                          transition: { duration: 1, ease: "easeOut" },
+                                        },
+                                      }}
+                                    >
                             <div className="grid grid-cols-1 gap-4">
                                 <div className="col-span-2 mb-5 xl:mb-0" />
                                 <div className="col-span-5 w-full" id={headingId}>
@@ -284,6 +298,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                     )}
                                 </div>
                             </div>
+                            </motion.div>
                         </div>
                     </section>
                 );
