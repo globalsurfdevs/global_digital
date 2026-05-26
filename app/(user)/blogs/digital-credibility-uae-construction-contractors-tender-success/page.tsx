@@ -1,9 +1,6 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
-import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
-import { BafcoCaseStudySchema } from "../../../components/Schema/OfferCatalog";
-import NewRules from "../../../components/BlogSocialMedia/NewRules";
-import Contenttwo from "../../../components/BlogSocialMedia/IconContentPara";
+import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3"; 
 import TextUi from "../../../components/BlogDigitalCredibilityUae/TextUi"; 
 import TitleImagecontent from "../../../components/BlogDigitalCredibilityUae/TitleImagecontent";
 import SectionTwo from "../../../components/BlogDigitalCredibilityUae/SectionTwo";
@@ -13,6 +10,7 @@ import SectionFive from "../../../components/BlogDigitalCredibilityUae/SectionFi
 import SectionSix from "../../../components/BlogDigitalCredibilityUae/SectionSix";
 import SectionSeven from "../../../components/BlogDigitalCredibilityUae/SectionSeven";
 import SectionEight from "../../../components/BlogDigitalCredibilityUae/SectionEight";
+import { DigitalStudySchema } from "../../../components/Schema/OfferCatalog";
 
 
 import {
@@ -45,25 +43,25 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital ",
+    title: "How UAE Construction Contractors Win More Tenders with Digital Credibility | Global Surf Digital",
     description:
-      "How GS Digital helped BAFCO double leads & cut CPL by 56% in the same peak month through 12 months of strategic Meta & Google Ads optimization in the UAE",
+      "UAE construction contractors are losing tenders before evaluation begins. Learn how digital credibility directly influences pre-qualification and tender outcomes.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai",
+      canonical: "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
     },
     robots: "index, follow",
     openGraph: {
-      title: "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital",
+      title: "How UAE Construction Contractors Win More Tenders with Digital Credibility",
       site_name: "GS Digital",
-      url: "https://www.globalsurf.ae/blogs/social-media-video-production-tips",
+      url: "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
       description:
-        "How GS Digital helped BAFCO double leads & cut CPL by 56% in the same peak month through 12 months of strategic Meta & Google Ads optimization in the UAE.",
+        "UAE contractors lose tenders before evaluation begins. See how digital credibility — website, LinkedIn, and project portfolio — directly improves pre-qualification success and tender win rates.",
       type: "article", // keep it optional
     },
     images: [
       {
-        url: "https://www.globalsurf.ae/_next/static/media/envblog1.22e3bfb5.jpg",
-        alt: 'BAFCO x GS Digital — Performance Marketing UAE Case Study',
+        url: "https://www.globalsurf.ae/_next/static/media/uae-construction-contractor-digital-credibility-hero.41a7a760.webp",
+        alt: 'How UAE Construction Contractors Win More Tenders with Digital Credibility',
       },
     ],
 
@@ -76,7 +74,7 @@ const page = () => {
   return (
     <div className="relative">
 
-      <BafcoCaseStudySchema />
+      <DigitalStudySchema />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27}  />
      
       <Contentone sections={contentSectionsData}  />

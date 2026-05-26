@@ -1132,3 +1132,113 @@ export const BafcoCaseStudySchema = () => {
     </>
   );
 };
+export const DigitalStudySchema = () => {
+  const articleSchema = {
+      "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How UAE Construction Contractors Win More Tenders with Digital Credibility",
+  "description": "UAE construction contractors lose tenders before evaluation begins. This article explains how digital credibility — website, LinkedIn, project portfolio, and thought leadership — directly influences pre-qualification and tender outcomes in the UAE market.",
+  "image": "https://www.globalsurf.ae/_next/static/media/uae-construction-contractor-digital-credibility-hero.41a7a760.webp",
+  "author": {
+    "@type": "Organization",
+    "name": "Global Surf Digital",
+    "url": "https://www.globalsurf.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Surf Digital",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
+    }
+  },
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success"
+  },
+  "keywords": ["digital credibility UAE construction", "UAE construction tender digital marketing", "digital presence construction contractors UAE", "pre-qualification UAE contractors", "construction company digital marketing UAE"],
+  "articleSection": "Built Environment",
+  "inLanguage": "en"
+
+  };
+
+  const faqSchema = {
+      "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to see results from digital marketing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Initial search visibility improvements typically appear within 3 to 6 months. Measurable tender success improvements generally follow at 6 to 12 months. Results compound over time as your content library, backlinks, and industry reputation develop. This is a medium-term investment that builds durable commercial value, not a short-term fix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if we are already winning tenders without digital marketing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consider what opportunities you are not being invited to, and what happens as competitors invest in digital credibility. The next generation of procurement decision-makers expects digital professionalism as standard. A strong online presence protects your current pipeline and opens doors to project opportunities that never reach the formal tender stage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is LinkedIn important for UAE construction contractors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. LinkedIn is where UAE developers, consultants, and government procurement teams conduct professional research. It is the primary platform for thought leadership and business development in the UAE construction sector. Contractors with an active, well-maintained LinkedIn presence are more visible during the informal research phase that precedes formal tender invitations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we do digital marketing in-house?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is possible, but digital marketing requires current expertise in SEO, content strategy, web development, and analytics that most construction companies do not maintain internally. Most successful contractors partner with a specialist agency for strategy and execution while retaining internal oversight on project information and brand direction. A hybrid model typically delivers the strongest results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the first step to improving our digital presence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with an honest audit. Search your company name and review what appears. Assess your website as a tender evaluator would. Review the top three competitors for comparison. Prioritise quick wins first - updating your website and adding recent projects - then move to content marketing and SEO. A free agency consultation can accelerate this process."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What digital platforms matter most for UAE construction contractors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For UAE contractors, the highest-priority platforms are a well-structured company website, LinkedIn for professional visibility and thought leadership, and Google Business Profile for local search credibility. Secondary channels include industry directories such as Zawya and Construction Week, and targeted content on YouTube for project documentation and capability showcase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does digital presence affect government tender pre-qualification in the UAE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Government procurement teams in the UAE, including those at ADNOC, RTA, DEWA, and Abu Dhabi's GPG, routinely conduct background research on contractors during pre-qualification. A credible website, verifiable project portfolio, and visible credentials reduce the information gap that evaluators fill with doubt. A strong digital presence directly supports pre-qualification progression. "
+      }
+    }
+  ]
+
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+       
+    </>
+  );
+};
