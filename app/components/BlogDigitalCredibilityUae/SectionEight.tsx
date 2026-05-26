@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-
+import Link from "next/link";
 import React from "react";
   
   const SectionEight = () => {
@@ -12,7 +12,7 @@ import React from "react";
 
         <h2 className="title-65 mb-[40px]">The digital edge in UAE construction tenders</h2>
         <p className="text-font19 text-[#77787B] mb-4">
-          The UAE construction market is competitive by any global standard. Technical excellence is no longer a differentiator. It is the entry requirement. Every contractor shortlisted for a major project has technical capability. What separates the ones who win from the ones who do not is increasingly about perceived credibility, visible track record, and digital professionalism.
+          The <Link href="/how-digital-marketing-wins-projects-for-construction-companies-in-uae">UAE construction market is competitive </Link> by any global standard. Technical excellence is no longer a differentiator. It is the entry requirement. Every contractor shortlisted for a major project has technical capability. What separates the ones who win from the ones who do not is increasingly about perceived credibility, visible track record, and digital professionalism.
         </p>
         <p className="text-font19 text-[#77787B] mb-8">
           Here is the choice every UAE contractor faces:
