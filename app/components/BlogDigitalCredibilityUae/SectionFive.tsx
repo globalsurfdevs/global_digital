@@ -103,7 +103,7 @@ import React from "react";
                     <li>Target keywords relevant to UAE construction contractors</li>
                     <li>Optimise website pages for target construction keywords in UAE</li>
                     <li>Improve page loading speed and fix broken links</li>
-                    <li>Implement local SEO for UAE presence across emirate-level searches</li>
+                    <li>Implement local <a href="https://www.globalsurf.ae/seo-agency-dubai" className="text-primary hover:underline">SEO</a> for UAE presence across emirate-level searches</li>
                     <li>Build links through industry associations, supplier partnerships, and media coverage</li>
                   </ul>
                 </div>
