@@ -93,12 +93,12 @@ export const Faq = [
     {
         title: "What is the first step to improving our digital presence?",
         description:
-            "Start with an honest audit. Search your company name and review what appears. Assess your website as a tender evaluator would. Review the top three competitors for comparison. Prioritise quick wins first - updating your website and adding recent projects - then move to content marketing and SEO. A free agency consultation can accelerate this process.",
+            "Start with an honest audit. Search your company name and review what appears. Assess your website as a tender evaluator would. Review the top three competitors for comparison. Prioritise quick wins first - updating your website and adding recent projects - then move to <a class='text-primary hover:underline' href=/content-marketing-agency-dubai>content marketing</a> and SEO. A free agency consultation can accelerate this process.",
     }, 
     {
         title: "What digital platforms matter most for UAE construction contractors?",
         description:
-            "For UAE contractors, the highest-priority platforms are a well-structured company website, LinkedIn for professional visibility and thought leadership, and Google Business Profile for local search credibility. Secondary channels include industry directories such as Zawya and Construction Week, and targeted content on YouTube for project documentation and capability showcase.",
+            "For UAE contractors, the highest-priority platforms are a well-structured company website, LinkedIn for professional visibility and thought leadership, and <a class='text-primary hover:underline' href=/local-seo-agency-dubai>Google Business Profile for local search credibility</a>. Secondary channels include industry directories such as Zawya and Construction Week, and targeted content on YouTube for project documentation and capability showcase.",
     }, 
     {
         title: "How does digital presence affect government tender pre-qualification in the UAE?",

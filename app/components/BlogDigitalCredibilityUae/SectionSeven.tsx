@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-
+import Link from "next/link";
 import React from "react";
   
   const SectionSeven = () => {
@@ -42,7 +42,7 @@ import React from "react";
             </div>
             <ul className="list-disc pl-6 text-font19 text-[#77787B] space-y-2">
               <li>You want professional results faster than internal learning allows</li>
-              <li>You lack the in-house expertise in SEO, content strategy, web development, or analytics</li>
+              <li>You lack the in-house expertise in SEO, content strategy, <Link className="text-primary hover:underline" href="/web-development-agency-dubai">web development</Link>, or analytics</li>
               <li>You want to measure success by tender outcomes, not by follower counts</li>
               <li>You need someone who already understands UAE construction, not one learning it on your account</li>
             </ul>
