@@ -2,27 +2,27 @@
 
 export const BlogData = [
   {
-    id: 13,
-    slug: "bafco-performance-marketing-case-study-dubai",
+    id: 15,
+    slug: "digital-credibility-uae-construction-contractors-tender-success",
     titles:
-      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+      "How UAE Construction Contractors Win More Tenders with Digital Credibility",
     title:
-      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+      "How UAE Construction Contractors Win More Tenders with Digital Credibility",
     list_heading:
-      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+      "How UAE Construction Contractors Win More Tenders with Digital Credibility",
     meta_title:
-      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months. | Global Surf",
+      "How UAE Construction Contractors Win More Tenders with Digital Credibility | Global Surf",
     description:
-      "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
+      "UAE construction contractors are losing tenders before evaluation begins. Learn how digital credibility directly influences pre-qualification and tender outcomes.",
     post_date: "",
     read_time: "",
     feature_thumb:
-      "/images/blogs/llm/blog-nw-thumb.jpg",
+      "/images/blogs/uae-construction-contractor-digital-credibility-hero.webp",
     thumb:
-      "/images/blogs/llm/blog-nw-thumb.jpg",
+      "/images/blogs/uae-construction-contractor-digital-credibility-thumb.webp",
     large_thumb:
-      "/images/blogs/llm/blog-nw-thumb.jpg",
-    category: "Performance Marketing",
+      "/images/blogs/uae-construction-contractor-digital-credibility-large.webp",
+    category: "SEO",
     format: "standard",
     views: "",
     excerpt: "",
@@ -45,7 +45,7 @@ export const BlogData = [
     ],
   },
   {
-    id: 12,
+    id: 14,
     slug: "how-digital-marketing-wins-projects-for-construction-companies-in-uae",
     titles:
       "How Digital Marketing Wins Projects for Construction Companies in the UAE",
@@ -66,6 +66,49 @@ export const BlogData = [
     large_thumb:
       "/images/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/main.jpg",
     category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
+    id: 13,
+    slug: "bafco-performance-marketing-case-study-dubai",
+    titles:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+    title:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+    list_heading:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months.",
+    meta_title:
+      "Same Peak Month. 2X the Leads. 56% Lower Cost. What BAFCO Built in 12 Months. | Global Surf",
+    description:
+      "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs/llm/blog-nw-thumb.jpg",
+    thumb:
+      "/images/blogs/llm/blog-nw-thumb.jpg",
+    large_thumb:
+      "/images/blogs/llm/blog-nw-thumb.jpg",
+    category: "Performance Marketing",
     format: "standard",
     views: "",
     excerpt: "",

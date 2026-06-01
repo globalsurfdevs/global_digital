@@ -49,7 +49,7 @@ const cplComparisonByIndustryData = [
 const HowDigitalMarketingWinsContent = () => {
   return (
     <section>
-      <div className="container mx-auto py-[50px] lg:py-[100px]">
+      <div className="container mx-auto pt-[50px] lg:pt-[100px]">
         <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0"></div>
 
