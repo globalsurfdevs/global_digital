@@ -1051,8 +1051,10 @@ import llmicon3 from "../images/blogs/llm/llmicon3.svg";
 import llicon4 from "../images/blogs/llm/llmicon4.svg";
 import llicon5 from "../images/blogs/llm/llmicon5.svg";
 import llmthumb from "../images/blogs/llm/blog-nw-thumb.jpg";
+import blgbanner from "../assets/blogs/uae-construction-contractor-digital-credibility-hero.webp";
 
 export const assets = {
+  blgbanner,
 
   realestate1,
   real1,

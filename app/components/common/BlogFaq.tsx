@@ -83,9 +83,7 @@ const BlogFaq: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => 
                             </p>
                           ))
                         ) : (
-                          <p className="text-19 fnt-lexend text-gray1">
-                            {item.description}
-                          </p>
+                          <p className="text-19 fnt-lexend text-gray1" dangerouslySetInnerHTML={{ __html: item.description }} />
                         )}
 
                         {/* ✅ optional bullets */}
