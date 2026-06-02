@@ -99,7 +99,7 @@ import React from "react";
             <h3 className="text-[#77787B] text-font19">Global Surf Perspective</h3>
           </div>
           <p className="text-white text-30 leading-[40px] mt-3 lg:mt-[37px]">
-            At Global Surf Digital, we specialise in UAE construction and contracting because we understand how the industry actually works. We know what tender committees look for. We know what pre-qualification documents need to be supported by. And we know that for a construction company, a "like" on Instagram is meaningless but a qualified inbound inquiry from a developer worth AED 20 million is everything.
+            At GS Digital, we specialise in UAE construction and contracting because we understand how the industry actually works. We know what tender committees look for. We know what pre-qualification documents need to be supported by. And we know that for a construction company, a "like" on Instagram is meaningless but a qualified inbound inquiry from a developer worth AED 20 million is everything.
           </p>
           <p className="text-white text-30 leading-[40px] mt-4">
             We build digital presences that change that equation. Our work is specific to the construction and contracting sector because a specialist agency that already understands UAE tender processes, pre-qualification requirements, and sector buyer behaviour will consistently outperform a generalist agency learning it on your account.
