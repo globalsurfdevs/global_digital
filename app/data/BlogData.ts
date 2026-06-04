@@ -2,6 +2,49 @@
 
 export const BlogData = [
   {
+    id: 16,
+    slug: "google-ai-overviews-what-uae-businesses-must-do-for-organic-traffic",
+    titles:
+      "Google's AI Overviews Are Here: What UAE Businesses Must Do to Protect Organic Traffic",
+    title:
+      "Google's AI Overviews Are Here: What UAE Businesses Must Do to Protect Organic Traffic",
+    list_heading:
+      "Google's AI Overviews Are Here: What UAE Businesses Must Do to Protect Organic Traffic",
+    meta_title:
+      "Google's AI Overviews Are Here: What UAE Businesses Must Do to Protect Organic Traffic | Global Surf",
+    description:
+      "UAE construction contractors are losing tenders before evaluation begins. Learn how digital credibility directly influences pre-qualification and tender outcomes.",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs/ai/ai1.png",
+    thumb:
+      "/images/blogs/ai/ai1.png",
+    large_thumb:
+      "/images/blogs/ai/ai1.png",
+    category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 15,
     slug: "digital-credibility-uae-construction-contractors-tender-success",
     titles:

@@ -43,7 +43,7 @@ const BlogFaq: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => 
             },
           }}
         >
-          <div className="grid py-[50px] lg:py-[140px] ">
+          <div className="grid pb-[50px] lg:pb-[140px] ">
             <div className="col-span-2 mb-5 xl:mb-0">
             </div>
 
