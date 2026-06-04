@@ -1053,9 +1053,18 @@ import llicon5 from "../images/blogs/llm/llmicon5.svg";
 import llmthumb from "../images/blogs/llm/blog-nw-thumb.jpg";
 import blgbanner from "../assets/blogs/uae-construction-contractor-digital-credibility-hero.webp";
 
+import aibanner from "../images/blogs/ai/ai1.png";
+import ai5 from "../images/blogs/ai/ai5.webp";
+import ai3 from "../images/blogs/ai/ai3.webp";
+import ai4 from "../images/blogs/ai/ai4.webp";
+import ai6 from "../images/blogs/ai/ai6.png";
+
 export const assets = {
   blgbanner,
-
+  aibanner,
+ai5,
+  ai3,ai6,
+  ai4,
   realestate1,
   real1,
   b2b1,

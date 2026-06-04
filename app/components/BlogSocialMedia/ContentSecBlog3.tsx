@@ -14,6 +14,7 @@ export interface StatItem {
 export interface SubSection {
     sectionSubtitle?: string;
     paragraphs?: string[];
+    listTitle?: string; 
     listItems?: { label: string; description?: string }[];
     paragraphs2?: string[];
     imagesecond?: StaticImageData;
@@ -25,6 +26,7 @@ export interface SubSection {
 export interface ContentSectionData {
     title: string;
     isTOC?: boolean;
+    imageTitle?: string;
     image?: StaticImageData;
     imagesecond?: StaticImageData;
     imagealt?: string;
@@ -33,6 +35,7 @@ export interface ContentSectionData {
     sectionSubtitle?: string;
     paragraphs?: string[];
     dividerAfterIndex?: number; /** If true, renders a horizontal divider between every paragraph  */
+    listTitle?: string;
     listItems?: { label: string; description?: string }[];
     paragraphs2?: string[];
     subSections?: SubSection[];
@@ -94,19 +97,27 @@ const renderSubSection = (data: SubSection, idx: number) => (
         ))}
 
         {data.listItems?.length ? (
-            <ul className="list-disc pl-10 mt-3">
-                {data.listItems.map((item, index) => (
-                    <li key={index} className="text-font19 mb-2">
-                        <span dangerouslySetInnerHTML={{ __html: item.label }} />
-                        {item.description && (
-                            <span
-                                className="text-[#77787B]"
-                                dangerouslySetInnerHTML={{ __html: item.description }}
-                            />
-                        )}
-                    </li>
-                ))}
-            </ul>
+            <>
+                {data.listTitle && (
+                    <h3 className="text-30 mt-[30px] mb-3">
+                        {data.listTitle}
+                    </h3>
+                )}
+
+                <ul className="list-disc pl-10 mt-3">
+                    {data.listItems.map((item, index) => (
+                        <li key={index} className="text-font19 mb-2">
+                            <span dangerouslySetInnerHTML={{ __html: item.label }} />
+                            {item.description && (
+                                <span
+                                    className="text-[#77787B]"
+                                    dangerouslySetInnerHTML={{ __html: item.description }}
+                                />
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            </>
         ) : null}
         {data.calloutText && (
             <div className="my-4 bg-[#F2F2F2] p-[20px] md:p-[30px]">
@@ -204,6 +215,11 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                             </div>
                                         </div>
                                     ) : null}
+                                        {data.imageTitle && (
+                                            <h3 className="text-30 mt-[30px] mb-4">
+                                                {data.imageTitle}
+                                            </h3>
+                                        )}
                                     {data.image && (
                                         <Image
                                             src={data.image}
@@ -268,19 +284,27 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                                 })}
 
                                                 {data.listItems?.length ? (
-                                                    <ul className="list-disc pl-10 mt-3">
-                                                        {data.listItems.map((item, index) => (
-                                                            <li key={index} className="text-font19 mb-2">
-                                                                <span dangerouslySetInnerHTML={{ __html: item.label }} />
-                                                                {item.description && (
-                                                                    <span
-                                                                        className="text-[#77787B]"
-                                                                        dangerouslySetInnerHTML={{ __html: item.description }}
-                                                                    />
-                                                                )}
-                                                            </li>
-                                                        ))}
-                                                    </ul>
+                                                    <>
+                                                        {data.listTitle && (
+                                                            <h3 className="text-30 mt-[30px] mb-3">
+                                                                {data.listTitle}
+                                                            </h3>
+                                                        )}
+
+                                                        <ul className="list-disc pl-10 mt-3">
+                                                            {data.listItems.map((item, index) => (
+                                                                <li key={index} className="text-font19 mb-2">
+                                                                    <span dangerouslySetInnerHTML={{ __html: item.label }} />
+                                                                    {item.description && (
+                                                                        <span
+                                                                            className="text-[#77787B]"
+                                                                            dangerouslySetInnerHTML={{ __html: item.description }}
+                                                                        />
+                                                                    )}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </>
                                                 ) : null}
 
                                                 {data.paragraphs2?.map((p, index) => (
