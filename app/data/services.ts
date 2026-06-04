@@ -53,7 +53,7 @@ export const services = [
     title: "Social Media",
     url: "/social-media-agency-dubai",
     description:
-      "As a digital transformation company in Dubai, we design and develop conversion-focused digital platforms engineered to support acquisition and long decision cycles.",
+      "We manage social media as a performance and brand growth channel. Instead of posting for visibility alone, we focus on building trust and improving engagement.",
     buttonTexts: [
       {
         title: "Social Media Strategy",
@@ -75,7 +75,7 @@ export const services = [
     title: "Web Design & Development",
     url: "/web-design-and-development",
     description:
-      "We manage social media as a performance and brand growth channel. Instead of posting for visibility alone, we focus on building trust and improving engagement. ",
+      "As a digital transformation company in Dubai, we design and develop conversion-focused digital platforms engineered to support acquisition and long decision cycles.",
     buttonTexts: [
       {
         title: "Website Design",
