@@ -1,6 +1,6 @@
-import AboutGlobal from "@/app/components/HomePage/AboutGlobal";
 import HeroSection from "@/app/components/HomePage/HeroSection";
 import LogoSwiper from "@/app/components/HomePage/LogoSwiper";
+import AboutGlobal from "@/app/components/HomePage/AboutGlobal";
 import OurAchievements from "@/app/components/HomePage/OurAchievements";
 import OurServices from "@/app/components/HomePage/OurServices";
 import SuccessStories from "@/app/components/HomePage/SuccessStories";

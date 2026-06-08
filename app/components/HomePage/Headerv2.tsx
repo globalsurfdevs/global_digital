@@ -186,6 +186,7 @@ const Header = () => {
                 width={200}
                 height={50}
                 priority
+                fetchPriority="high"
               />
               <Link href="/" className="absolute top-0 h-full w-full" />
             </div>

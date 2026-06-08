@@ -1397,3 +1397,17 @@ input[type="number"] {
 .strategy-approach a {
   @apply underline text-black
 }
+
+@keyframes heroReveal {
+  from {
+    transform: translateY(50px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero-heading {
+  animation: heroReveal 700ms ease-in-out;
+}

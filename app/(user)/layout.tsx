@@ -15,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
 
 
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
@@ -120,7 +120,7 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
-      <body>
+      <body className={spaceGrotesk.className}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
@@ -170,7 +170,7 @@ export default function RootLayout({
           }}
         />
 
-        <Script id="zsiqscript" strategy="afterInteractive" src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5" defer ></Script>
+        <Script id="zsiqscript" strategy="lazyOnload" src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5" defer ></Script>
 
       </body>
     </html>
