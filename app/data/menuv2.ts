@@ -8,36 +8,36 @@ export const menuItems = [
   {
     item: "SERVICES",
     children: [
-       {
-      item: "CREATIVE SERVICES",
-   
-      url: "/creative-agency-dubai",
-      children: [
-        {
-          item: "Branding",
-          url: "/branding-agency-dubai",
-        },
-        {
-          item: "Logo Design",
-          url: "/logo-design-agency-dubai",
-        },
-        {
-          item: "Graphic Design",
-          url: "/graphic-design-agency-dubai",
-        },
-        {
-          item: "Copywriting",
-          url: "",
-        },
-        {
-          item: "Content Production",
-          url: "",
-        },  
-      ],
-    },
+      {
+        item: "CREATIVE SERVICES",
+
+        url: "/creative-agency-dubai",
+        children: [
+          {
+            item: "Branding",
+            url: "/branding-agency-dubai",
+          },
+          {
+            item: "Logo Design",
+            url: "/logo-design-agency-dubai",
+          },
+          {
+            item: "Graphic Design",
+            url: "/graphic-design-agency-dubai",
+          },
+          {
+            item: "Copywriting",
+            url: "/creative-copywriting-agency-dubai",
+          },
+          {
+            item: "Content Production",
+            url: "/content-production-agency-dubai",
+          },
+        ],
+      },
       {
         item: "Web Design & Development",
-    
+
         url: "/web-design-and-development",
         children: [
           {
@@ -64,7 +64,7 @@ export const menuItems = [
       },
       {
         item: "DIGITAL MARKETING",
-        
+
         url: "/digital-marketing-services",
         children: [
           {
@@ -78,30 +78,28 @@ export const menuItems = [
           {
             item: "Social Media Services",
             url: "/social-media-agency-dubai",
-          }
-          
+          },
         ],
       },
       {
         item: "Marketing intelligence",
-       
-        url: "/marketing-intelligence-agency-dubai ",
+
+        url: "/marketing-intelligence-agency-dubai",
         children: [
           {
             item: "Data & Analytics",
-            url: "",
+            url: "/data-analytics-services-dubai",
           },
           {
             item: "Conversion Rate Optimization (CRO)",
-            url: "",
+            url: "/conversion-rate-optimization-agency-dubai",
           },
           {
             item: "Marketing Automation",
-            url: "",
+            url: "/marketing-automation-agency-dubai",
           },
         ],
       },
-     
     ],
     url: "#",
   },
