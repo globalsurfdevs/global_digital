@@ -18,8 +18,8 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
             variants={{
-              hidden: { opacity: 0, y: 50 }, // Start below and invisible
-              visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+              hidden: { y: 50 }, // Start below and invisible
+              visible: { y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
             }}
             className="lg:flex items-center gap-3 justify-between"
           >
@@ -75,8 +75,8 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
               variants={{
-                hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
+                hidden: { y: 50 }, // Start below and invisible
+                visible: { y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
               }}
             >
               <TestimonialsSwiper />

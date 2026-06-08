@@ -13,6 +13,7 @@ import {
   formatLinkForCaseStudy,
   formatLinkForPortfolio,
 } from "@/app/helpers/formatLink";
+import Image from "next/image";
 
 const Tours = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
@@ -44,9 +45,8 @@ const Tours = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -59,9 +59,8 @@ const Tours = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -75,7 +74,9 @@ const Tours = () => {
                   className="tour-card relative  min-h-[350px] lg:min-h-[500px] xl:min-h-[620px] 3xl:min-h-[905px]"
                 
                 >
-                  <img
+                  <Image
+                  loading="lazy"
+                  priority={false}
                     src={item.bannerImage ?? item.coverImage}
                     alt={item.companyName}
                     width={500}
