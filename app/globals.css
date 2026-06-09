@@ -1398,16 +1398,18 @@ input[type="number"] {
   @apply underline text-black
 }
 
+
 @keyframes heroReveal {
   from {
     transform: translateY(50px);
+    opacity: 0;
   }
-
   to {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.hero-heading {
-  animation: heroReveal 700ms ease-in-out;
+.hero-heading-wrapper {
+  animation: heroReveal 700ms ease-in-out both;
 }
