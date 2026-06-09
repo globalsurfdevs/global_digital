@@ -228,8 +228,6 @@
 
 
 
-
-// HeroSection.tsx — Server Component (no "use client")
 import HeroInteractive from "./HeroInteractive";
 
 const HeroSection = () => {
@@ -237,23 +235,25 @@ const HeroSection = () => {
     <section className="bnrnmn relative flex h-[70vh] items-center py-24 text-black xl:h-screen">
       <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight" />
 
-      {/* h1 renders on server — LCP measured immediately */}
+      {/* Video stays here — covers full section, no JS needed for placement */}
+      <video
+        className="absolute left-0 top-0 -z-10 h-full w-full object-cover transition-opacity duration-300"
+        style={{ opacity: 0 }}
+        loop
+        muted
+        playsInline
+        preload="none"
+        poster="/assets/poster.png"
+        id="hero-video"
+      >
+        <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
+      </video>
+
       <div className="container mx-auto px-4">
         <div className="hero-heading-wrapper">
-          <h1
-            className="title-120 inline-block cursor-pointer font-[400]"
-            id="triggerSection"
-          >
-            Performance Focused <br />
-            <span className="linbsx relative inline-block min-w-[320px] text-primary underline">
-              Digital Marketing {/* static default */}
-            </span>
-          </h1>
+          <HeroInteractive />
         </div>
       </div>
-
-      {/* Only interactive parts are client */}
-      <HeroInteractive />
     </section>
   );
 };
