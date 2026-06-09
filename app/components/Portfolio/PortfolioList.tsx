@@ -38,9 +38,11 @@ const PortfolioList = ({
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
+    let hasDragged = false;
 
     const onMouseDown = (e: MouseEvent) => {
       isDown = true;
+      hasDragged = false;
       el.style.cursor = "grabbing";
       startX = e.pageX - el.offsetLeft;
       scrollLeft = el.scrollLeft;
@@ -61,6 +63,7 @@ const PortfolioList = ({
       e.preventDefault();
       const x = e.pageX - el.offsetLeft;
       const walk = (x - startX) * 1.5;
+      if (Math.abs(walk) > 5) hasDragged = true;
       el.scrollLeft = scrollLeft - walk;
     };
 
@@ -342,7 +345,10 @@ const PortfolioList = ({
                 className="filter-tabs flex min-w-0 cursor-grab gap-[20px] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
                 <button
-                  onClick={() => handleFiltering("all", "#")}
+                  onClick={(e) => {
+                    if ((tabsRef.current as any)?._hasDragged) return;
+                    handleFiltering("all", "#");
+                  }}
                   className={`whitespace-nowrap rounded-[57px] px-[20px] py-[11.5px] text-[16px] leading-[1.5] transition-colors ${
                     filter === "all"
                       ? "bg-[#1A1A1A] text-white"
