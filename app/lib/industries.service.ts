@@ -1,8 +1,13 @@
 import connectDB from "@/lib/mongodb";
-import Industry from "@/app/models/Industry";
+import PortfolioIndustry from "@/app/models/PortfolioIndustry";
 
 export const getIndustries = async () => {
     await connectDB();
-    const industries = await Industry.find({}).sort({ name: "asc" }).lean();
-    return JSON.parse(JSON.stringify(industries));
+    const categories = await PortfolioIndustry.find({}).sort({ name: "asc" }).lean();
+    const parsed = JSON.parse(JSON.stringify(categories));
+    return parsed.map((cat: any) => ({
+        _id: cat._id,
+        name: cat.name,
+        subCategories: (cat.subCategories ?? []).map((s: any) => s.name) as string[],
+    }));
 };

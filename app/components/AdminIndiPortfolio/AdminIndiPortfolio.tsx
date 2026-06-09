@@ -120,7 +120,13 @@ useEffect(() => {
     const fetchIndustries = async () => {
         const res = await fetch('/api/industries')
         const data = await res.json()
-        if (!data.error) setIndustriesList(data.industries)
+        if (!data.error) {
+            // flatten all sub-categories from all categories
+            const allSubs = data.categories.flatMap((cat: { name: string; subCategories: { _id: string; name: string }[] }) =>
+                cat.subCategories.map((sub) => ({ _id: sub._id, name: sub.name }))
+            )
+            setIndustriesList(allSubs)
+        }
     }
     fetchIndustries()
 }, [])
@@ -723,7 +729,7 @@ useEffect(() => {
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <Label content='Industry' />
-                                    <select
+<select
     {...register("industry", { required: "Industry is required" })}
     className="rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none"
 >
