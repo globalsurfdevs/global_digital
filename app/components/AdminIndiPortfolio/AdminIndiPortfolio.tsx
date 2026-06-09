@@ -114,6 +114,16 @@ const AdminIndiPortfolio = ({ editMode }: {
     const [logoError, setLogoError] = useState<string | null>(null)
 
     const [selectedSection, setSelectedSection] = useState('portfolio')
+    const [industriesList, setIndustriesList] = useState<{ _id: string; name: string }[]>([])
+
+useEffect(() => {
+    const fetchIndustries = async () => {
+        const res = await fetch('/api/industries')
+        const data = await res.json()
+        if (!data.error) setIndustriesList(data.industries)
+    }
+    fetchIndustries()
+}, [])
 
 
 
@@ -713,7 +723,15 @@ const AdminIndiPortfolio = ({ editMode }: {
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <Label content='Industry' />
-                                    <input type="text" {...register("industry", { required: "Industry is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                    <select
+    {...register("industry", { required: "Industry is required" })}
+    className="rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none"
+>
+    <option value="">Select Industry</option>
+    {industriesList.map(item => (
+        <option key={item._id} value={item.name}>{item.name}</option>
+    ))}
+</select>
                                     {errors.industry && <p className='mt-1 text-sm text-red'>{errors.industry.message}</p>}
                                 </div>
 
