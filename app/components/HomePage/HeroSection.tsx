@@ -120,67 +120,123 @@
 
 
 
+// "use client";
+// import React, { useCallback, useRef, useState } from "react";
 
-"use client";
-import React, { useCallback, useRef, useState } from "react";
+// // ✅ FIX 1: Moved outside component — no re-creation on every render
+// const CONTENT_ARRAY = [
+//   "Digital Marketing",
+//   "Web Design",
+//   "Web Development",
+//   "Data Analytics",
+//   "Strategy Consulting",
+//   "Marketing Automation",
+// ];
 
-// ✅ FIX 1: Moved outside component — no re-creation on every render
-const CONTENT_ARRAY = [
-  "Digital Marketing",
-  "Web Design",
-  "Web Development",
-  "Data Analytics",
-  "Strategy Consulting",
-  "Marketing Automation",
-];
+// const HeroSection = () => {
+//   const videoRef = useRef<HTMLVideoElement>(null);
+//   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+//   const currentIndexRef = useRef(0);
+//   const [spanContent, setSpanContent] = useState(CONTENT_ARRAY[0]);
+
+//   // ✅ FIX 3: useCallback — stable reference, not recreated on every render
+//   const handleMouseEnter = useCallback(() => {
+//     const video = videoRef.current;
+//     if (video) {
+//       // ✅ FIX 4: Use style directly — avoids classList thrashing & reflow
+//       video.style.opacity = "1";
+//       // ✅ FIX 5: play() returns a Promise — catch errors (e.g. autoplay policy)
+//       video.play().catch(() => {});
+//     }
+
+//     // ✅ FIX 6: Clear existing interval before starting a new one
+//     // (prevents stacking intervals if mouse enters rapidly)
+//     if (intervalRef.current) clearInterval(intervalRef.current);
+
+//     intervalRef.current = setInterval(() => {
+//       currentIndexRef.current =
+//         (currentIndexRef.current + 1) % CONTENT_ARRAY.length;
+//       setSpanContent(CONTENT_ARRAY[currentIndexRef.current]);
+//     }, 1000); // ✅ FIX 7: Was 100ms — too fast, causes layout thrash. Use 1000ms
+//   }, []);
+
+//   const handleMouseLeave = useCallback(() => {
+//     const video = videoRef.current;
+//     if (video) {
+//       video.style.opacity = "0";
+//       video.pause();
+//       video.currentTime = 0;
+//     }
+
+//     if (intervalRef.current) {
+//       clearInterval(intervalRef.current);
+//       intervalRef.current = null;
+//     }
+//   }, []);
+
+//   return (
+//     <section className="bnrnmn relative flex h-[70vh] items-center py-24 text-black xl:h-screen">
+//       <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight" />
+
+//       <video
+//         ref={videoRef}
+//         className="absolute left-0 top-0 -z-10 h-full w-full object-cover transition-opacity duration-300"
+//         style={{ opacity: 0 }}
+//         loop
+//         muted
+//         playsInline
+//         preload="none"
+//         poster="/assets/poster.png"
+//       >
+//         <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
+//       </video>
+
+//       {/* <div className="container mx-auto px-4">
+//         <h1
+//   className="title-120 inline-block cursor-pointer font-[400] hero-heading"
+//           id="triggerSection"
+//           onMouseEnter={handleMouseEnter}
+//           onMouseLeave={handleMouseLeave}
+//         >
+//           Performance Focused <br />
+//           <span className="linbsx relative inline-block min-w-[320px] text-primary underline">
+//             {spanContent}
+//           </span>
+//         </h1>
+//       </div> */}
+
+//       <div className="container mx-auto px-4">
+//         <div className="hero-heading-wrapper">
+//           <h1
+//             className="title-120 inline-block cursor-pointer font-[400]"
+//             id="triggerSection"
+//             onMouseEnter={handleMouseEnter}
+//             onMouseLeave={handleMouseLeave}
+//           >
+//             Performance Focused <br />
+//             <span className="linbsx relative inline-block min-w-[320px] text-primary underline">
+//               {spanContent}
+//             </span>
+//           </h1>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default HeroSection;
+
+
+
+import HeroInteractive from "./HeroInteractive";
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const currentIndexRef = useRef(0);
-  const [spanContent, setSpanContent] = useState(CONTENT_ARRAY[0]);
-  
-  // ✅ FIX 3: useCallback — stable reference, not recreated on every render
-  const handleMouseEnter = useCallback(() => {
-    const video = videoRef.current;
-    if (video) {
-      // ✅ FIX 4: Use style directly — avoids classList thrashing & reflow
-      video.style.opacity = "1";
-      // ✅ FIX 5: play() returns a Promise — catch errors (e.g. autoplay policy)
-      video.play().catch(() => {});
-    }
-
-    // ✅ FIX 6: Clear existing interval before starting a new one
-    // (prevents stacking intervals if mouse enters rapidly)
-    if (intervalRef.current) clearInterval(intervalRef.current);
-
-    intervalRef.current = setInterval(() => {
-      currentIndexRef.current =
-        (currentIndexRef.current + 1) % CONTENT_ARRAY.length;
-      setSpanContent(CONTENT_ARRAY[currentIndexRef.current]);
-    }, 1000); // ✅ FIX 7: Was 100ms — too fast, causes layout thrash. Use 1000ms
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.style.opacity = "0";
-      video.pause();
-      video.currentTime = 0;
-    }
-
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  }, []);
-
   return (
     <section className="bnrnmn relative flex h-[70vh] items-center py-24 text-black xl:h-screen">
       <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight" />
 
+      {/* Video stays here — covers full section, no JS needed for placement */}
       <video
-        ref={videoRef}
         className="absolute left-0 top-0 -z-10 h-full w-full object-cover transition-opacity duration-300"
         style={{ opacity: 0 }}
         loop
@@ -188,23 +244,15 @@ const HeroSection = () => {
         playsInline
         preload="none"
         poster="/assets/poster.png"
+        id="hero-video"
       >
         <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
       </video>
 
       <div className="container mx-auto px-4">
-        <h1
-  className="title-120 inline-block cursor-pointer font-[400] hero-heading"
-          id="triggerSection"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Performance Focused <br />
-          {/* ✅ FIX 11: min-w keeps layout stable — no CLS when text changes length */}
-          <span className="linbsx relative inline-block min-w-[320px] text-primary underline">
-            {spanContent}
-          </span>
-        </h1>
+        <div className="hero-heading-wrapper">
+          <HeroInteractive />
+        </div>
       </div>
     </section>
   );
