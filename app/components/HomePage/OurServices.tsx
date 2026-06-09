@@ -5,10 +5,13 @@ import { services } from "../../data/services";
 import { Lexend } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
+
+const MotionImage = motion(Image);
 
 const OurServices = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -68,9 +71,8 @@ const OurServices = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: {  y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              // opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -97,9 +99,8 @@ const OurServices = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0 }} // Trigger animation once when 50% visible
               variants={{
-                hidden: {  y: 50 }, // Start below and invisible
+                hidden: { y: 50 }, // Start below and invisible
                 visible: {
-                  // opacity: 1,
                   y: 0,
                   transition: { duration: 1, ease: "easeOut" },
                 }, // Slide up and fade in
@@ -114,10 +115,9 @@ const OurServices = () => {
                 <motion.div
                   className=""
                   variants={{
-                    hidden: { y: 50, }, // Start below and fade in
+                    hidden: { y: 50 }, // Start below and fade in
                     visible: {
                       y: 0,
-                      // opacity: 1,
                       transition: { duration: 1, delay: 0.2 },
                     },
                   }}
@@ -125,13 +125,17 @@ const OurServices = () => {
                   <Link href={service.url}>
                     {/* <motion.Image  src={service.image}  alt={service.title} width={1000} height={800}    viewport={{ once: false, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}/> */}
-                    <motion.img
-                      src={service.image}
-                      alt={service.title}
-                      // className="h-full object-cover objectstm"
-                      viewport={{ once: false, amount: 0.5 }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                    />
+                    <div className="relative w-full">
+                      <MotionImage
+                        src={service.image}
+                        alt={service.title}
+                        width={1000}
+                        height={800}
+                        className="object-cover"
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                      />
+                    </div>
                   </Link>
                 </motion.div>
               </div>

@@ -118,8 +118,11 @@
 
 // export default HeroSection;
 
+
+
+
 "use client";
-import React, { useCallback, useRef, useState, useEffect } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
 // ✅ FIX 1: Moved outside component — no re-creation on every render
 const CONTENT_ARRAY = [
@@ -130,21 +133,6 @@ const CONTENT_ARRAY = [
   "Strategy Consulting",
   "Marketing Automation",
 ];
-
-// ✅ FIX 2: Framer Motion variants defined outside — prevents new object on every render
-const sectionVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
-
-const headingVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1, ease: "easeOut" },
-  },
-};
 
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
