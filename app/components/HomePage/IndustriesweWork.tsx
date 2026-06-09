@@ -138,7 +138,7 @@ const IndustriesweWork = () => {
                     >
                       {/* Image Wrapper */}
                       <div className="align-center flex h-[30px] w-[30px] justify-center bg-white p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
-                        <Image src={image.src} alt={`Slide ${index}`} width={54} height={34}
+                        <Image src={image.src} alt={`Slide ${index}`} width={54} height={34} loading="lazy"
                           className="  transition duration-500 "
                         />
                       </div>

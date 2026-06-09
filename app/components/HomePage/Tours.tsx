@@ -24,7 +24,7 @@ const Tours = () => {
         const response = await fetch(`/api/portfolio`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data.portfolio);
+          // console.log(data.portfolio);
           setPortfolios(data.portfolio.slice(0, 2));
         } else {
           console.error("Failed to fetch portfolio data");

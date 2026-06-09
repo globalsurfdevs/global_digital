@@ -23,7 +23,6 @@ const AboutGlobal = () => {
         variants={{
           hidden: {  y: 50 }, // Start below and invisible
           visible: {
-            // opacity: 1,
             y: 0,
             transition: { duration: 1, ease: "easeOut" },
           }, // Slide up and fade in

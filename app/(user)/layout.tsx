@@ -28,11 +28,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -118,6 +113,13 @@ export default function RootLayout({
       "https://www.tiktok.com/@globalsurf.digital"
     ]
   };
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
   return (
     <html lang="en">
       <body className={spaceGrotesk.className}>
@@ -143,13 +145,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         /> */}
-        <Script
+        {/* <Script
           id="organization-schema"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
+        /> */}
+        <script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <Header />
         <div className="mbcs-63">
