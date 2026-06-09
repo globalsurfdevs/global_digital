@@ -18,7 +18,7 @@ const PortfolioList = ({
   industries,
 }: {
   data: Portfolio[];
-  industries: { _id: string; name: string }[];
+  industries: { _id: string; name: string; subCategories: string[] }[];
 }) => {
   // const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const [portfolios, setPortfolios] = useState<Portfolio[]>(data);
@@ -197,21 +197,28 @@ const PortfolioList = ({
   //   }
   // };
 
-  const applyFilters = (category: string, industry: string | null) => {
+const applyFilters = (category: string, industry: string | null) => {
     let filtered = data;
 
     if (category !== "all") {
-      filtered = filtered.filter((p: Portfolio) =>
-        p.categories.some((c) => c.name === category),
-      );
+        filtered = filtered.filter((p: Portfolio) =>
+            p.categories.some((c) => c.name === category),
+        );
     }
 
     if (industry) {
-      filtered = filtered.filter((p: Portfolio) => p.industry === industry);
+        const selectedCat = industries.find((i) => i.name === industry);
+        const subNames = selectedCat?.subCategories ?? [];
+        console.log("selected main:", industry);
+        console.log("subNames:", subNames);
+        console.log("portfolio industries:", data.map(p => p.industry));
+        filtered = filtered.filter((p: Portfolio) =>
+            subNames.includes(p.industry),
+        );
     }
 
     setPortfolios(filtered);
-  };
+};
 
   const handleFiltering = (filterValue: string, link: string) => {
     if (link) window.history.replaceState(null, "", `/portfolio${link}`);
@@ -338,7 +345,12 @@ const PortfolioList = ({
               </div>
             </div> */}
 
-            <div className="filterbtn no-scrollbar mb-[30px] flex flex-wrap items-center justify-between gap-y-[15px] overflow-visible border-b pb-[20px] md:mb-[50px] md:flex-nowrap">
+            <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="filterbtn no-scrollbar mb-[30px] flex flex-wrap items-center justify-between gap-y-[15px] overflow-visible border-b pb-[20px] md:mb-[50px] md:flex-nowrap">
               {/* Left: Tab Filters */}
               <div
                 ref={tabsRef}
@@ -436,7 +448,7 @@ const PortfolioList = ({
                     document.body,
                   )}
               </div>
-            </div>
+            </motion.div>
 
             {/* Portfolio Items */}
             <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
