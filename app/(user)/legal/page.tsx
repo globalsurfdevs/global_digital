@@ -33,13 +33,13 @@ const page = () => {
           </p>
           <div className=" mb-5 grid grid-cols-1 gap-2">
             <p className=" text-font19">
-              <strong>GS Digital Media”</strong> maintains the{" "}
+              <strong>Global Surf Digital Media”</strong> maintains the{" "}
               <strong>www.globalsurf.ae</strong> (Website){" "}
             </p>
             <p>
               These Terms and Conditions ("Terms") govern your use of our
               website, globalsurf.ae (the "Website"), and the services provided
-              by GS Digital Media ("GS digital," "we," "us," or "our").
+              by Global Surf Digital Media ("GS digital," "we," "us," or "our").
               By accessing or using our Website and services, you agree to
               comply with these Terms. If you do not agree, you must discontinue
               use immediately.
