@@ -2,11 +2,11 @@ import React from 'react'
 import HeroSection from '../Portfolio/HeroSectionCaseStudy'
 import CaseStudyList from './CaseStudyList'
 
-const LandingCaseStudy = ({data}:any) => {
+const LandingCaseStudy = ({data, industries}:any) => {
   return (
     <>
         <HeroSection/>
-        <CaseStudyList data={data}/>
+        <CaseStudyList data={data} industries={industries}/>
     </>
   )
 }

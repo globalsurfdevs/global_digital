@@ -76,10 +76,10 @@ const AdminIndiCaseStudy = ({
   const [logoError, setLogoError] = useState<string | null>(null);
 
   const [addedCategories, setAddedCategories] = useState<
-    { id: number; name: string; zone: string }[]
+    { _id: string; name: string; zone: string }[]
   >([]);
   const [categories, setCategories] = useState<
-    { id: number; name: string; zone: string }[]
+    { _id: string; name: string; zone: string }[]
   >([]);
   const [selectedHighlightForHome, setSelectedHighlightForHome] = useState<
     string | null
@@ -452,21 +452,21 @@ const AdminIndiCaseStudy = ({
 
   // const [addedCategories, setAddedCategories] = useState<{ id: number; name: string; zone: string; }[]>([])
 
-  const handleSwapItem = (id: number) => {
-    const itemInCategory = categories.find((item) => item.id === id);
-    const itemInAddedCategory = addedCategories.find((item) => item.id === id);
+  const handleSwapItem = (id: string) => {
+    const itemInCategory = categories.find((item) => item._id === id);
+    const itemInAddedCategory = addedCategories.find((item) => item._id === id);
 
     if (itemInCategory) {
       setAddedCategories((prev) => [...prev, itemInCategory]);
       setCategories((categories) =>
-        categories.filter((item) => item.id !== itemInCategory.id),
+        categories.filter((item) => item._id !== itemInCategory._id),
       );
     }
 
     if (itemInAddedCategory) {
       setCategories((prev) => [...prev, itemInAddedCategory]);
       setAddedCategories((addedCategories) =>
-        addedCategories.filter((item) => item.id !== itemInAddedCategory.id),
+        addedCategories.filter((item) => item._id !== itemInAddedCategory._id),
       );
     }
   };
@@ -497,7 +497,7 @@ const AdminIndiCaseStudy = ({
     }
   };
 
-  const handleDeleteCategory = async (id: number) => {
+  const handleDeleteCategory = async (id: string) => {
     try {
       const formData = new FormData();
       formData.append("id", id.toString());
@@ -1415,7 +1415,7 @@ const AdminIndiCaseStudy = ({
                 <>
                   <div
                     className="group relative h-fit w-fit cursor-pointer rounded-full border bg-blue-950 px-2 py-1 text-white"
-                    onClick={() => handleSwapItem(item.id)}
+                    onClick={() => handleSwapItem(item._id)}
                   >
                     <span className="group-hover:opacity-50">{item.name}</span>
                     <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
@@ -1442,17 +1442,23 @@ const AdminIndiCaseStudy = ({
                 .filter(
                   (item) =>
                     !addedCategories.some(
-                      (addedItem) => addedItem.id === item.id,
+                      (addedItem) => addedItem._id === item._id,
                     ),
                 )
                 .map((item) => (
-                  <div className="group relative h-fit w-fit cursor-pointer rounded-full border bg-blue-950 px-2 py-1 text-white">
+                  <div
+                    key={item._id}
+                    className="group relative flex h-fit w-fit min-w-20 cursor-pointer justify-center rounded-full border bg-blue-950 px-2 py-1 text-white"
+                  >
                     <span className="group-hover:opacity-50">{item.name}</span>
-                    <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
+                    <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-2 rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
                       <MdOutlineSwapHorizontalCircle
-                        onClick={() => handleSwapItem(item.id)}
+                        onClick={() => handleSwapItem(item._id)} // ← was item.id
                       />
-                      {/* <RxCross2 onClick={()=>handleDeleteCategory(item.id)}/> */}
+                      <RxCross2
+                        className="text-red-400"
+                        onClick={() => handleDeleteCategory(item._id)} // ← was missing entirely
+                      />
                     </div>
                   </div>
                 ))}
