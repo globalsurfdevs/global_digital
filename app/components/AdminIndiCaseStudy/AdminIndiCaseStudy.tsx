@@ -62,9 +62,11 @@ const AdminIndiCaseStudy = ({
     name: string;
     link: string;
   } | null>(null);
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [categoryModal, setCategoryModal] = useState(false);
   const [category, setCategory] = useState("");
+  const [categoryLink, setCategoryLink] = useState("");
   const [refetch, setRefetch] = useState(false);
   const [refetchCategorySection, setRefetchCategorySection] = useState(false);
   const [image1, setImage1] = useState<null | File>(null);
@@ -82,10 +84,10 @@ const AdminIndiCaseStudy = ({
   const [logoError, setLogoError] = useState<string | null>(null);
 
   const [addedCategories, setAddedCategories] = useState<
-    { _id: string; name: string; zone: string }[]
+    { _id: string; name: string; zone: string; link?: string }[]
   >([]);
   const [categories, setCategories] = useState<
-    { _id: string; name: string; zone: string }[]
+    { _id: string; name: string; zone: string; link?: string }[]
   >([]);
   const [selectedHighlightForHome, setSelectedHighlightForHome] = useState<
     string | null
@@ -486,6 +488,7 @@ const AdminIndiCaseStudy = ({
 
       const formData = new FormData();
       formData.append("category", category);
+      formData.append("categoryLink", categoryLink);
 
       const response = await fetch("/api/categories", {
         method: "POST",
@@ -494,6 +497,7 @@ const AdminIndiCaseStudy = ({
       if (response.ok) {
         setRefetchCategorySection((prev) => !prev);
         setCategory("");
+        setCategoryLink("");
         setCategoryModal(false);
       } else {
         toast.error("Adding category failed");
@@ -503,10 +507,15 @@ const AdminIndiCaseStudy = ({
     }
   };
 
-  const handleDeleteCategory = async (id: string) => {
+  const handleDeleteCategory = (id: string) => {
+    setPendingDeleteId(id);
+  };
+
+  const confirmDeleteCategory = async () => {
+    if (!pendingDeleteId) return;
     try {
       const formData = new FormData();
-      formData.append("id", id.toString());
+      formData.append("id", pendingDeleteId);
 
       const response = await fetch("/api/categories", {
         method: "DELETE",
@@ -521,6 +530,8 @@ const AdminIndiCaseStudy = ({
       }
     } catch (error) {
       console.log("Removing category failed:", error);
+    } finally {
+      setPendingDeleteId(null);
     }
   };
 
@@ -1107,7 +1118,16 @@ const AdminIndiCaseStudy = ({
                           type="text"
                           value={category}
                           onChange={(e) => setCategory(e.target.value)}
-                          className={"w-full rounded-xl pl-2 text-black"}
+                          className={"w-full rounded-xl border pl-2 text-black"}
+                        />
+                      </div>
+                      <div className="mt-3 w-full">
+                        <label>Category Link</label>
+                        <input
+                          type="text"
+                          value={categoryLink}
+                          onChange={(e) => setCategoryLink(e.target.value)}
+                          className={"w-full rounded-xl border pl-2 text-black"}
                         />
                       </div>
                     </div>
@@ -1194,6 +1214,46 @@ const AdminIndiCaseStudy = ({
                         }}
                       >
                         Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {pendingDeleteId && (
+            <div className="relative z-10" role="dialog" aria-modal="true">
+              <div
+                className="fixed inset-0 bg-gray-500/75 transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div className="flex min-h-full items-center justify-center p-4">
+                  <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-sm">
+                    <div className="bg-white px-6 py-5">
+                      <h3 className="text-base font-semibold text-gray-900">
+                        Delete Category
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-500">
+                        Are you sure you want to delete this category? This
+                        action cannot be undone.
+                      </p>
+                    </div>
+                    <div className="flex justify-end gap-3 bg-gray-50 px-4 py-3">
+                      <button
+                        type="button"
+                        className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                        onClick={() => setPendingDeleteId(null)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"
+                        onClick={confirmDeleteCategory}
+                      >
+                        Yes, Delete
                       </button>
                     </div>
                   </div>
@@ -1534,7 +1594,7 @@ const AdminIndiCaseStudy = ({
                           setEditingCategory({
                             _id: item._id,
                             name: item.name,
-                            link: "",
+                            link: item.link || "",
                           });
                           setEditModal(true);
                         }}
@@ -1580,7 +1640,7 @@ const AdminIndiCaseStudy = ({
                           setEditingCategory({
                             _id: item._id,
                             name: item.name,
-                            link: "",
+                            link: item.link || "",
                           });
                           setEditModal(true);
                         }}
