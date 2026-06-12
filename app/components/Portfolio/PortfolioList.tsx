@@ -20,7 +20,6 @@ const PortfolioList = ({
   data: Portfolio[];
   industries: { _id: string; name: string; subCategories: string[] }[];
 }) => {
-  console.log(data, "ppp");
 
   // const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const [portfolios, setPortfolios] = useState<Portfolio[]>(data);

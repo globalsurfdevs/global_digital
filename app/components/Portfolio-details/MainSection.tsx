@@ -42,8 +42,8 @@ const MainSection = ({
               <div>
                 <p className="text-19 fnt-lexend pb-[5px] text-gray1 leadeing-[2.105263157894737]">Services</p>
                 <div className="flex flex-wrap gap-2 max-w-md">
-                  {data.portfolio.channels.map((item, index) => (
-                    <Link href={item.channelLink} key={index}><button className="btn-outline-primary-text-black">{item.channelName}</button></Link>
+                  {data.portfolio.categories.map((item, index) => (
+                    <Link href={item.link} key={index}><button className="btn-outline-primary-text-black">{item.name}</button></Link>
                   ))}
                 </div>
 
