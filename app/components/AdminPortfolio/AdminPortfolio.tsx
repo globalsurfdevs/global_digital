@@ -14,6 +14,7 @@ import {
 import { useSortable } from "@dnd-kit/sortable";
 import PortfolioCard from "./PortfolioCard";
 import IndustryManager from "../AdminIndsutries/IndustriesManager";
+import CategoryManager from "../AdminCategories/CategoryManager";
 
 const AdminPortfolio = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
@@ -89,6 +90,8 @@ const AdminPortfolio = () => {
   return (
     <div className="flex flex-col gap-5">
       <IndustryManager />
+
+      <CategoryManager />
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl">List of companies</h1>

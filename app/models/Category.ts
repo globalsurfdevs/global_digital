@@ -11,6 +11,10 @@ const CategoriesSchema = new mongoose.Schema({
         type: String,
         default: "zone2"
     },
+    sortOrder: {
+        type: Number,
+        default: 0
+    }
 });
 
 export default mongoose.models?.category || mongoose.model("category", CategoriesSchema);
