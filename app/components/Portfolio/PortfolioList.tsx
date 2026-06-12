@@ -16,11 +16,12 @@ import { createPortal } from "react-dom";
 const PortfolioList = ({
   data,
   industries,
+  categories,
 }: {
   data: Portfolio[];
   industries: { _id: string; name: string; subCategories: string[] }[];
+  categories: { _id: string; name: string; link: string; sortOrder: number }[];
 }) => {
-
   // const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const [portfolios, setPortfolios] = useState<Portfolio[]>(data);
   const pathname = usePathname();
@@ -293,20 +294,8 @@ const PortfolioList = ({
   }, [pathname, newFilterTags, data]);
 
   useEffect(() => {
-    const allExistingCategories = data.flatMap((portfolio: Portfolio) =>
-      portfolio.categories.map((category) => ({
-        name: category.name,
-        link: category.link,
-      })),
-    );
-
-    // Remove duplicates using Map
-    const uniqueCategories = Array.from(
-      new Map(allExistingCategories.map((item) => [item.name, item])).values(),
-    );
-
-    setNewFilterTags(uniqueCategories);
-  }, [data]);
+    setNewFilterTags(categories.map((c) => ({ name: c.name, link: c.link })));
+  }, [categories]);
 
   return (
     <>
