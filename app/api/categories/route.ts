@@ -84,3 +84,35 @@ export async function DELETE(req: NextRequest) {
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
+
+
+export async function PATCH(req: NextRequest) {
+    try {
+        await connectDB();
+
+        const formData = await req.formData();
+        const id = formData.get("id") as string;
+        const name = formData.get("name") as string;
+        const link = formData.get("link") as string;
+
+        if (!id) {
+            return NextResponse.json({ error: "ID is required" }, { status: 400 });
+        }
+
+        const updated = await Category.findByIdAndUpdate(
+            id,
+            { name, link },
+            { new: true }
+        );
+
+        if (!updated) {
+            return NextResponse.json({ error: "Category not found" }, { status: 404 });
+        }
+
+        return NextResponse.json({ message: "Category updated successfully" }, { status: 200 });
+
+    } catch (error) {
+        console.log("error updating category:", error);
+        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+}

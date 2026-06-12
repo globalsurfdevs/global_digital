@@ -15,7 +15,7 @@ import { handleImageChange } from "@/app/helpers/handleImageChange";
 import { v4 as uuidv4 } from "uuid";
 import { generateAndUploadImage } from "@/app/helpers/generateAndUploadImage";
 import { categories as importedCategories } from "@/app/data/categories";
-import { MdOutlineSwapHorizontalCircle } from "react-icons/md";
+import { MdOutlineSwapHorizontalCircle, MdEdit } from "react-icons/md";
 import { checkLogoAndBanner } from "@/app/helpers/checkLogoAndBanner";
 import RichEditor from "../RichEditor/RichEditor";
 import { CaseStudyInputs } from "@/app/types/CaseStudyInputs";
@@ -56,6 +56,12 @@ const AdminIndiCaseStudy = ({
   const [highlightNumber, setHighlightNumber] = useState("");
   const [highlightText, setHighlightText] = useState("");
 
+  const [editModal, setEditModal] = useState(false);
+  const [editingCategory, setEditingCategory] = useState<{
+    _id: string;
+    name: string;
+    link: string;
+  } | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [categoryModal, setCategoryModal] = useState(false);
   const [category, setCategory] = useState("");
@@ -515,6 +521,36 @@ const AdminIndiCaseStudy = ({
       }
     } catch (error) {
       console.log("Removing category failed:", error);
+    }
+  };
+
+  const handleEditCategory = async () => {
+    try {
+      if (!editingCategory || editingCategory.name.trim() === "") {
+        toast.error("Please provide a category name");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("id", editingCategory._id);
+      formData.append("name", editingCategory.name);
+      formData.append("link", editingCategory.link);
+
+      const response = await fetch("/api/categories", {
+        method: "PATCH",
+        body: formData,
+      });
+
+      if (response.ok) {
+        toast.success("Category updated successfully");
+        setRefetchCategorySection((prev) => !prev);
+        setEditModal(false);
+        setEditingCategory(null);
+      } else {
+        toast.error("Updating category failed");
+      }
+    } catch (error) {
+      console.log("Updating category failed:", error);
     }
   };
 
@@ -1096,6 +1132,75 @@ const AdminIndiCaseStudy = ({
               </div>
             </div>
           )}
+
+          {editModal && editingCategory && (
+            <div
+              className="relative z-10"
+              aria-labelledby="modal-title"
+              role="dialog"
+              aria-modal="true"
+            >
+              <div
+                className="fixed inset-0 bg-gray-500/75 transition-opacity"
+                aria-hidden="true"
+              ></div>
+              <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                  <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                      <div className="w-full">
+                        <label>Category Name</label>
+                        <input
+                          type="text"
+                          value={editingCategory.name}
+                          onChange={(e) =>
+                            setEditingCategory({
+                              ...editingCategory,
+                              name: e.target.value,
+                            })
+                          }
+                          className="w-full rounded-xl border pl-2 text-black"
+                        />
+                      </div>
+                      <div className="mt-3 w-full">
+                        <label>Category Link</label>
+                        <input
+                          type="text"
+                          value={editingCategory.link}
+                          onChange={(e) =>
+                            setEditingCategory({
+                              ...editingCategory,
+                              link: e.target.value,
+                            })
+                          }
+                          className="w-full rounded-xl border pl-2 text-black"
+                        />
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                      <button
+                        type="button"
+                        className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
+                        onClick={handleEditCategory}
+                      >
+                        Update
+                      </button>
+                      <button
+                        type="button"
+                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                        onClick={() => {
+                          setEditModal(false);
+                          setEditingCategory(null);
+                        }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="mt-15 flex flex-col gap-6 border-t pt-5">
@@ -1418,8 +1523,22 @@ const AdminIndiCaseStudy = ({
                     onClick={() => handleSwapItem(item._id)}
                   >
                     <span className="group-hover:opacity-50">{item.name}</span>
-                    <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
-                      <MdOutlineSwapHorizontalCircle />
+                    <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-2 rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
+                      <MdOutlineSwapHorizontalCircle
+                        onClick={() => handleSwapItem(item._id)}
+                      />
+                      <MdEdit
+                        className="text-yellow-400"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setEditingCategory({
+                            _id: item._id,
+                            name: item.name,
+                            link: "",
+                          });
+                          setEditModal(true);
+                        }}
+                      />
                     </div>
                   </div>
                 </>
@@ -1453,11 +1572,22 @@ const AdminIndiCaseStudy = ({
                     <span className="group-hover:opacity-50">{item.name}</span>
                     <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-2 rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
                       <MdOutlineSwapHorizontalCircle
-                        onClick={() => handleSwapItem(item._id)} // ← was item.id
+                        onClick={() => handleSwapItem(item._id)}
+                      />
+                      <MdEdit
+                        className="text-yellow-400"
+                        onClick={() => {
+                          setEditingCategory({
+                            _id: item._id,
+                            name: item.name,
+                            link: "",
+                          });
+                          setEditModal(true);
+                        }}
                       />
                       <RxCross2
                         className="text-red-400"
-                        onClick={() => handleDeleteCategory(item._id)} // ← was missing entirely
+                        onClick={() => handleDeleteCategory(item._id)}
                       />
                     </div>
                   </div>

@@ -20,6 +20,8 @@ const PortfolioList = ({
   data: Portfolio[];
   industries: { _id: string; name: string; subCategories: string[] }[];
 }) => {
+  console.log(data, "ppp");
+
   // const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const [portfolios, setPortfolios] = useState<Portfolio[]>(data);
   const pathname = usePathname();
@@ -197,28 +199,31 @@ const PortfolioList = ({
   //   }
   // };
 
-const applyFilters = (category: string, industry: string | null) => {
+  const applyFilters = (category: string, industry: string | null) => {
     let filtered = data;
 
     if (category !== "all") {
-        filtered = filtered.filter((p: Portfolio) =>
-            p.categories.some((c) => c.name === category),
-        );
+      filtered = filtered.filter((p: Portfolio) =>
+        p.categories.some((c) => c.name === category),
+      );
     }
 
     if (industry) {
-        const selectedCat = industries.find((i) => i.name === industry);
-        const subNames = selectedCat?.subCategories ?? [];
-        console.log("selected main:", industry);
-        console.log("subNames:", subNames);
-        console.log("portfolio industries:", data.map(p => p.industry));
-        filtered = filtered.filter((p: Portfolio) =>
-            subNames.includes(p.industry),
-        );
+      const selectedCat = industries.find((i) => i.name === industry);
+      const subNames = selectedCat?.subCategories ?? [];
+      console.log("selected main:", industry);
+      console.log("subNames:", subNames);
+      console.log(
+        "portfolio industries:",
+        data.map((p) => p.industry),
+      );
+      filtered = filtered.filter((p: Portfolio) =>
+        subNames.includes(p.industry),
+      );
     }
 
     setPortfolios(filtered);
-};
+  };
 
   const handleFiltering = (filterValue: string, link: string) => {
     if (link) window.history.replaceState(null, "", `/portfolio${link}`);
@@ -345,12 +350,13 @@ const applyFilters = (category: string, industry: string | null) => {
               </div>
             </div> */}
 
-            <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="filterbtn no-scrollbar mb-[30px] flex flex-wrap items-center justify-between gap-y-[15px] overflow-visible border-b pb-[20px] md:mb-[50px] md:flex-nowrap">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="filterbtn no-scrollbar mb-[30px] flex flex-wrap items-center justify-between gap-y-[15px] overflow-visible border-b pb-[20px] md:mb-[50px] md:flex-nowrap"
+            >
               {/* Left: Tab Filters */}
               <div
                 ref={tabsRef}
@@ -488,7 +494,7 @@ const applyFilters = (category: string, industry: string | null) => {
                           <h3 className="text-30 mb-1 text-white duration-200  duration-200 duration-300  ease-in-out ease-in-out ease-in-out md:mb-2 ">
                             {item.companyName}
                           </h3>
-                          <div className="flex gap-1">
+                          {/* <div className="flex gap-1">
                             {item?.channels &&
                               item.channels.length > 0 &&
                               item.channels.map((channel, index) => (
@@ -501,12 +507,24 @@ const applyFilters = (category: string, industry: string | null) => {
                                     : channel.channelName + ", "}
                                 </p>
                               ))}
-                          </div>
-                          {!item?.channels && (
+                          </div> */}
+                          {/* {!item?.channels && (
                             <p className="text-19 text-gray1 text-white  duration-200 ease-in-out group-hover:-translate-x-[-3px] group-hover:text-primary">
                               {item.channelsUsed}
                             </p>
-                          )}
+                          )} */}
+
+                          <div className="flex flex-wrap gap-1">
+                            {item?.categories?.map((category, index) => (
+                              <p
+                                key={index}
+                                className="text-19 text-white duration-300 ease-in-out group-hover:-translate-x-[-3px] group-hover:text-primary"
+                              >
+                                {category.name}
+                                {index < item.categories.length - 1 ? "," : ""}
+                              </p>
+                            ))}
+                          </div>
                         </div>
                       </div>
 
