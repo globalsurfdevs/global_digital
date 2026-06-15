@@ -8,6 +8,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Portfolio } from "@/app/types/Portfolio";
+
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -52,9 +53,8 @@ const SuccessStories = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -67,9 +67,8 @@ const SuccessStories = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -90,7 +89,7 @@ const SuccessStories = () => {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}>
-                    <Image src={item.portfolios.logo} alt={item.portfolios.companyName} width={100} height={100} className="absolute bottom-4 right-4 brightness-0 invert-[1]" loading="lazy" />
+                    <Image src={item.portfolios.logo} alt={item.portfolios.companyName} width={100} height={100} loading="lazy" className="absolute bottom-4 right-4 brightness-0 invert-[1]" />
 
                   </div>
                   <div className="flex flex-col justify-center gap-8 px-8 py-10  text-white xl:px-[3.5rem]">

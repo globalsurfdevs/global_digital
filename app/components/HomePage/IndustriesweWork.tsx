@@ -68,9 +68,8 @@ const IndustriesweWork = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -85,9 +84,8 @@ const IndustriesweWork = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -140,7 +138,7 @@ const IndustriesweWork = () => {
                     >
                       {/* Image Wrapper */}
                       <div className="align-center flex h-[30px] w-[30px] justify-center bg-white p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
-                        <Image src={image.src} alt={`Slide ${index}`} width={54} height={34}
+                        <Image src={image.src} alt={`Slide ${index}`} width={54} height={34} loading="lazy"
                           className="  transition duration-500 "
                         />
                       </div>

@@ -27,7 +27,7 @@ export const contentSectionsData = [
     {
         title: "Table of Contents",
         isTOC: true,
-        dividerAfterIndex: 8, // ← draws line before "What does 12 months..."(above line 8)
+        dividerAfterIndex: 10, // ← draws line before "What does 12 months..."(above line 8)
         paragraphs: [
             `<a href="#section1" class='hover:text-primary'>1. What Are Google AI Overviews? A Plain-Language Explainer for UAE Business Owners</a>`,
             `<a href="#section2" class='hover:text-primary'>2. How Google's AI Overviews Are Changing Search Behaviour and What It Means for UAE Markets</a>`,

@@ -39,9 +39,8 @@ const Cta = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-                hidden: { opacity: 0, y: 50 },
+                hidden: { y: 50 },
                 visible: {
-                  opacity: 1,
                   y: 0,
                   transition: { duration: 1, ease: "easeOut" },
                 },

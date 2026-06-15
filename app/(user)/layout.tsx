@@ -15,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
 
 
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
@@ -28,11 +28,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -118,9 +113,16 @@ export default function RootLayout({
       "https://www.tiktok.com/@globalsurf.digital"
     ]
   };
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
   return (
     <html lang="en">
-      <body>
+      <body className={spaceGrotesk.className}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
@@ -143,13 +145,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         /> */}
-        <Script
+        {/* <Script
           id="organization-schema"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
+        /> */}
+        <script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <Header />
         <div className="mbcs-63">
@@ -170,7 +177,7 @@ export default function RootLayout({
           }}
         />
 
-        <Script id="zsiqscript" strategy="afterInteractive" src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5" defer ></Script>
+        <Script id="zsiqscript" strategy="lazyOnload" src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5" defer ></Script>
 
       </body>
     </html>

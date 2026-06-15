@@ -5,10 +5,13 @@ import { services } from "../../data/services";
 import { Lexend } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
+
+const MotionImage = motion(Image);
 
 const OurServices = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -68,9 +71,8 @@ const OurServices = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
           variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
+            hidden: { y: 50 }, // Start below and invisible
             visible: {
-              opacity: 1,
               y: 0,
               transition: { duration: 1, ease: "easeOut" },
             }, // Slide up and fade in
@@ -78,103 +80,106 @@ const OurServices = () => {
         >
           <div className="mb-5 flex items-center gap-2 ">
             <h2 className="text-30 font-[400] leading-[1.5]">OUR SERVICES</h2>
-              <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
+            <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
           </div>
-              <p className="text-font25 mb-5 lg:mb-[45px] max-w-[60ch]">Strategy-first digital solutions built to generate qualified demand and accountable business performance.</p>
+          <p className="mb-5 max-w-[60ch] text-font25 lg:mb-[45px]">
+            Strategy-first digital solutions built to generate qualified demand
+            and accountable business performance.
+          </p>
         </motion.div>
       </div>
       <div className="container mx-auto flex flex-col gap-5 px-4 py-8 xl:gap-24">
         {/* Services */}
         {services.map((service) => (
-
-          <div
-          key={service.id}>
-          <motion.div
-            className="srv-item ref-ht grid grid-cols-1 gap-8  md:grid-cols-2 xl:gap-[88px] relative items-center"
-            ref={nextContainerRef}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 50 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
-          >
-            {/* Service Image */}
-
-            <div
-              // style={{ minHeight: divheight }}
-              className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
-            >
-              <motion.div
-                className=""
-                variants={{
-                  hidden: { y: 50, opacity: 0 }, // Start below and fade in
-                  visible: {
-                    y: 0,
-                    opacity: 1,
-                    transition: { duration: 1, delay: 0.2 },
-                  },
-                }}
-              ><Link href={service.url} >
-                {/* <motion.Image  src={service.image}  alt={service.title} width={1000} height={800}    viewport={{ once: false, amount: 0.5 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}/> */}
-                <motion.img
-                  src={service.image}
-                  alt={service.title}
-                  // className="h-full object-cover objectstm"
-                  viewport={{ once: false, amount: 0.5 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  />
-                  </Link>
-              </motion.div>
-            </div>
-
-            {/* Service Details */}
+          <div key={service.id}>
             <motion.div
-              // style={{ minHeight: divheight }}
-              className={`${isSmallScreen ? "targ-ht htsmedia flex flex-col justify-between border-b pb-5 lg:pb-2 h-full" : ""} custom-class`}
+              className="srv-item ref-ht relative grid grid-cols-1  items-center gap-8 md:grid-cols-2 xl:gap-[88px]"
+              ref={nextContainerRef}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { y: 50 }, // Start below and invisible
+                visible: {
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
             >
-              {/* Content Block */}
-              <div className="cntntblc flex flex-col gap-3">
-                <div className="group relative">
-                <Link href={service.url} > <h3 className="title-65 max-w-[14ch] macst transition-all duration-300 ease-in-out group-hover:text-primary">
-                    {service.title}
-                  </h3>
-                 </Link>
-                </div>
-                <div className="flex flex-col gap-2 lg:gap-7">
-                  <p
-                    className={`mb-2 text-font25 leading-lh1p4 ${lexend.className} font-light text-[#000]`}
-                  >
-                    {service.description}
-                  </p>
-                  <div className="srvbt mb-5 flex flex-wrap gap-2 xl:mb-[4em]">
-                    {service.buttonTexts.map((item, index) => (
-                      <Link href={item.url} key={index}>
-                      <button
-                        className="rounded-full border px-4 py-3 pmac text-font19 font-[500] text-gray-500 duration-200 ease-in hover:border-primary hover:text-black"
-                       
-                      >
-                        {item.title}
-                      </button>
-                      </Link>
-                    ))}
+              {/* Service Image */}
+
+              <div
+                // style={{ minHeight: divheight }}
+                className={`${isSmallScreen ? "srv-im targ-ht   justify-end border-b-gray-400 md:order-2" : ""} custom-class`}
+              >
+                <motion.div
+                  className=""
+                  variants={{
+                    hidden: { y: 50 }, // Start below and fade in
+                    visible: {
+                      y: 0,
+                      transition: { duration: 1, delay: 0.2 },
+                    },
+                  }}
+                >
+                  <Link href={service.url}>
+                    {/* <motion.Image  src={service.image}  alt={service.title} width={1000} height={800}    viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}/> */}
+                    <div className="relative w-full">
+                      <MotionImage
+                        src={service.image}
+                        alt={service.title}
+                        width={1000}
+                        height={800}
+                        className="object-cover"
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                      />
+                    </div>
+                  </Link>
+                </motion.div>
+              </div>
+
+              {/* Service Details */}
+              <motion.div
+                // style={{ minHeight: divheight }}
+                className={`${isSmallScreen ? "targ-ht htsmedia flex h-full flex-col justify-between border-b pb-5 lg:pb-2" : ""} custom-class`}
+              >
+                {/* Content Block */}
+                <div className="cntntblc flex flex-col gap-3">
+                  <div className="group relative">
+                    <Link href={service.url}>
+                      {" "}
+                      <h3 className="title-65 macst max-w-[14ch] transition-all duration-300 ease-in-out group-hover:text-primary">
+                        {service.title}
+                      </h3>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col gap-2 lg:gap-7">
+                    <p
+                      className={`mb-2 text-font25 leading-lh1p4 ${lexend.className} font-light text-[#000]`}
+                    >
+                      {service.description}
+                    </p>
+                    <div className="srvbt mb-5 flex flex-wrap gap-2 xl:mb-[4em]">
+                      {service.buttonTexts.map((item, index) => (
+                        <Link href={item.url} key={index}>
+                          <button className="pmac rounded-full border px-4 py-3 text-font19 font-[500] text-gray-500 duration-200 ease-in hover:border-primary hover:text-black">
+                            {item.title}
+                          </button>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Service ID */}
-              <div className="mb-3 flex">
-                <span className="text-gray-500">0{service.id}</span>
-              </div>
-            </motion.div> 
-          </motion.div>
-            </div>
+                {/* Service ID */}
+                <div className="mb-3 flex">
+                  <span className="text-gray-500">0{service.id}</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
         ))}
       </div>
     </>

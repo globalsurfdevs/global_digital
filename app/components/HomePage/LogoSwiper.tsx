@@ -3,32 +3,32 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import { logos } from "@/public/assets/assets";
+import "swiper/css";
+import Image from "next/image";
 
 
 const LogoSwiper = () => {
-  console.log(logos);
   return (
       <div className="bg-white py-5 overflow-hidden">
       <div className="container !overflow-visible">
         <Swiper
           className="!overflow-visible logo-swiper"
           loop={true}
-          freeMode={true}
+          // freeMode={true}
           autoplay={{
-            delay: 0,
+            delay: 1,
             disableOnInteraction: false,
           }}
-          cssMode={false}
+          // cssMode={false}
           slidesPerView="auto"
           speed={5000}
-          grabCursor={true}
-          loopAdditionalSlides={2}
+          // grabCursor={true}
+          // loopAdditionalSlides={2}
           modules={[Autoplay]}
 
-          simulateTouch={false}
-          allowTouchMove={false}
+          // simulateTouch={false}
+          // allowTouchMove={false}
           // watchSlidesProgress={true}
           breakpoints={{
             320: {
@@ -47,7 +47,7 @@ const LogoSwiper = () => {
           {logos.map((logo, index) => (
             <SwiperSlide key={index}>
               <div className="">
-                <img src={logo.src} alt={logo.alt} className="object-contain" />
+                <Image width={100} height={100} src={logo.src} loading="lazy" alt={logo.alt} className="object-contain h-[40px] w-auto" />
               </div>
             </SwiperSlide>
           ))}

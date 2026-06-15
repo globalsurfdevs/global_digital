@@ -140,7 +140,10 @@ const HeroSection = ({ data }: {
                       Services
                     </p>
                     {/* <h4 className="text-30">Website - Google Ads - META Ads</h4> */}
-                    <h3 className="text-30">{data.caseStudy.channelsUsed}</h3>
+                    {/* <h3 className="text-30">{data.caseStudy.channelsUsed}</h3> */}
+                    <h3 className="text-30">{data.caseStudy.categories.map((item, index) => (
+                      <span key={index}>{item.name}{index !== data.caseStudy.categories.length - 1 ? "," : ""} </span>
+                    ))}</h3>
                   </div>
                 </div>
               </div>

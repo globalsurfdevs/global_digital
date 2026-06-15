@@ -18,7 +18,7 @@ type ServiceData = {
 };
 
 
-const serviceData: ServiceData = {
+ export const serviceData: ServiceData = {
   "Creative Services": {
     titleurl: "/creative-agency-dubai",
     categoryText: 'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',

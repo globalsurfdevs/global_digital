@@ -8,6 +8,7 @@ import ServicesMegaMenu from "./ServiceDropdown";
 import Link from "next/link";
 import LetsTalk from "@/app/components/common/LetsConnect";
 import { usePathname } from "next/navigation";
+import { serviceData } from "./ServiceDropdown";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -100,14 +101,25 @@ const Header = () => {
   const hideServices = useCallback(() => setIsServicesHovered(false), []);
   const toggleServices = useCallback(
     () => setIsServicesHovered((prev) => !prev),
-    []
+    [],
   );
+
+  // derive all service links from serviceData
+  const allServiceLinks = Object.values(serviceData).flatMap((category) => {
+    const { titleurl, categoryText, ...services } = category;
+    const categoryLink = titleurl ? [{ url: titleurl, label: "" }] : [];
+    const serviceLinks = Object.values(services).map((s) => ({
+      url: (s as { url?: string }).url ?? "#",
+      label: "",
+    }));
+    return [...categoryLink, ...serviceLinks];
+  });
 
   // ─── Mobile layout ────────────────────────────────────────────────────────
   if (mobileMenu) {
     if (modalOpen) return null;
     return (
-      <div className="fixed top-0 left-0 right-0 z-20 flex items-center p-4 align-middle bg-white shadow-[0_2px_10px_0_rgba(0,0,0,0.1)] animate-[headerSlideDown_0.8s_forwards] transition-all duration-500 ease-in-out">
+      <div className="fixed left-0 right-0 top-0 z-20 flex animate-[headerSlideDown_0.8s_forwards] items-center bg-white p-4 align-middle shadow-[0_2px_10px_0_rgba(0,0,0,0.1)] transition-all duration-500 ease-in-out">
         {/*
           Logo: width/height match the actual rendered size (100px on mobile).
           No `unoptimized` — let Next.js optimise the SVG.
@@ -121,7 +133,7 @@ const Header = () => {
             priority
           />
         </Link>
-        <div className="flex justify-end items-center w-full gap-3">
+        <div className="flex w-full items-center justify-end gap-3">
           <a
             href="tel:+97145821133"
             className="flex items-center text-black hover:text-primary"
@@ -144,7 +156,7 @@ const Header = () => {
   return (
     <>
       {modalOpen && (
-        <div className="fixed inset-0 z-[1000] bg-white overflow-y-auto">
+        <div className="fixed inset-0 z-[1000] overflow-y-auto bg-white">
           <LetsTalk onClose={closeModal} />
         </div>
       )}
@@ -152,12 +164,12 @@ const Header = () => {
       <header ref={parentRef}>
         <div
           ref={headerRef}
-          className={`py-4 pb-4 lg:py-[22px] z-[999] header relative
-            transition-transform duration-300 ease-in-out
+          className={`header relative z-[999] py-4 pb-4 transition-transform
+            duration-300 ease-in-out lg:py-[22px]
             ${isSticky ? "translate-y-0" : "-translate-y-full"}
             ${isShadow ? "shado" : "shadowss"}`}
         >
-          <div className="container flex items-center justify-between relative z-20">
+          <div className="container relative z-20 flex items-center justify-between">
             {/* ── Logo ── */}
             <div className="logo-s relative">
               {/*
@@ -174,6 +186,7 @@ const Header = () => {
                 width={200}
                 height={50}
                 priority
+                fetchPriority="high"
               />
               <Link href="/" className="absolute top-0 h-full w-full" />
             </div>
@@ -202,17 +215,18 @@ const Header = () => {
 
             {/* ── Nav ── */}
             <nav
-              className={`${isMenuOpen ? "block" : "hidden"
-                } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
-              lg:static lg:flex lg:w-auto lg:space-x-5 xl:space-x-8 lg:bg-transparent`}
+              className={`${
+                isMenuOpen ? "block" : "hidden"
+              } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
+              lg:static lg:flex lg:w-auto lg:space-x-5 lg:bg-transparent xl:space-x-8`}
             >
               {/* ABOUT — plain div, hover handled by Tailwind CSS */}
               <div className="flex flex-col justify-center">
                 <Link
                   href="/about-us"
-                  className="relative large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0
-                    after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0
-                    after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                  className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
+                    after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
+                    after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
                 >
                   ABOUT
                 </Link>
@@ -239,9 +253,9 @@ const Header = () => {
               <div className="flex flex-col justify-center">
                 <Link
                   href="/industry"
-                  className="relative large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0
-                    after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0
-                    after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                  className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
+                    after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
+                    after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
                 >
                   INDUSTRIES
                 </Link>
@@ -251,9 +265,9 @@ const Header = () => {
               <div className="flex flex-col justify-center">
                 <Link
                   href="/portfolio"
-                  className="relative large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0
-                    after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0
-                    after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                  className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
+                    after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
+                    after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
                 >
                   PORTFOLIO
                 </Link>
@@ -262,14 +276,14 @@ const Header = () => {
               {/* INSIGHT — CSS-only dropdown, no JS state needed */}
               <div className="flex flex-col justify-center">
                 <div className="group relative">
-                  <div className="large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0 cursor-pointer">
+                  <div className="large-screen-menu-item block cursor-pointer px-4 text-black hover:text-primary lg:px-0">
                     INSIGHT
                   </div>
                   <div
-                    className="mt-4 invisible absolute left-0 top-full z-20 min-w-[200px]
-                      rounded-md bg-white p-4 shadow-lg opacity-0 translate-y-2
+                    className="invisible absolute left-0 top-full z-20 mt-4 min-w-[200px]
+                      translate-y-2 rounded-md bg-white p-4 opacity-0 shadow-lg
                       transition-all duration-200
-                      group-hover:visible group-hover:opacity-100 group-hover:translate-y-0"
+                      group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
                   >
                     <Link
                       href="/blogs"
@@ -305,9 +319,9 @@ const Header = () => {
               <div className="flex flex-col justify-center">
                 <Link
                   href="/careers"
-                  className="relative large-screen-menu-item block px-4 text-black hover:text-primary lg:px-0
-                    after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0
-                    after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                  className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
+                    after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
+                    after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
                 >
                   CAREERS
                 </Link>
@@ -320,7 +334,7 @@ const Header = () => {
                   border border-primary px-6 py-2 text-primary transition duration-300 ease-in
                   hover:text-black hover:shadow-lg lg:flex"
               >
-                <span className="duration-300 ease-in group-hover:text-black uppercase">
+                <span className="uppercase duration-300 ease-in group-hover:text-black">
                   Contact Us
                 </span>
                 <div className="bg-primary p-1">
@@ -359,10 +373,10 @@ const Header = () => {
                 <Link
                   href="#requestst"
                   scroll={true}
-                  className="md:flex w-fit items-center gap-3 border border-transparent
-                    px-3 py-2 bg-primary rounded-[5px]"
+                  className="w-fit items-center gap-3 rounded-[5px] border border-transparent
+                    bg-primary px-3 py-2 md:flex"
                 >
-                  <p className="duration-200 text-sm font-medium uppercase ease-in-out text-white md:text-[16px]">
+                  <p className="text-sm font-medium uppercase text-white duration-200 ease-in-out md:text-[16px]">
                     GET AUDIT
                   </p>
                 </Link>
@@ -386,6 +400,15 @@ const Header = () => {
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+
+        {/* ---- for seo purpose (ssr) ----- */}
+        <div className="sr-only">
+          {allServiceLinks.map(({ url }) => (
+            <Link key={url} href={url}>
+              {url}
+            </Link>
+          ))}
         </div>
       </header>
     </>
