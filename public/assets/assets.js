@@ -1059,9 +1059,19 @@ import ai3 from "../images/blogs/ai/ai3.webp";
 import ai4 from "../images/blogs/ai/ai4.webp";
 import ai6 from "../images/blogs/ai/ai6.png";
 
+import keyw1 from "../images/blogs/keywords/blogimg1.png";
+import keyw2 from "../images/blogs/keywords/blogimg2.png";
+import keyw3 from "../images/blogs/keywords/blogimg3.png";
+import keyw4 from "../images/blogs/keywords/blogimg4.png";
+
+
 export const assets = {
   blgbanner,
   aibanner,
+  keyw1,
+  keyw2,
+  keyw3,
+  keyw4,
 ai5,
   ai3,ai6,
   ai4,

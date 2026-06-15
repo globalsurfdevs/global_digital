@@ -11,6 +11,7 @@ export interface CalloutBlock {
 }
 export interface RuleItem {
   heading: string;
+  image?: string | StaticImageData;
   kicker?: string;
   description?: string; // supports HTML now
   bullets?: string[];   // supports HTML optionally
@@ -18,6 +19,7 @@ export interface RuleItem {
 }
 
 export interface RulesData {
+  image?: string | StaticImageData;
   title: string;
   intro?: string;
   sections: RuleItem[];
@@ -53,7 +55,15 @@ const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
             <h2 className="title-65 mb-[40px]">
               {rules.title}
             </h2>
-
+            {rules.image && (
+              <div className="mb-8">
+                <Image
+                  src={rules.image}
+                  alt={rules.title}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            )}
             {rules.intro && (
               <p
                 className="text-font19 text-[#77787B]  mb-8"

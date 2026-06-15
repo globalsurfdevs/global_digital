@@ -2,6 +2,49 @@
 
 export const BlogData = [
   {
+    id: 17,
+    slug: "how-construction-brands-uae-rank-high-intent-b2b-keywords",
+    titles:
+      "How Construction Brands in the UAE Can Rank for High-Intent B2B Keywords",
+    title:
+      "How Construction Brands in the UAE Can Rank for High-Intent B2B Keywords",
+    list_heading:
+      "How Construction Brands in the UAE Can Rank for High-Intent B2B Keywords",
+    meta_title:
+      "How UAE Construction Brands Rank for High-Intent Keywords",
+    description:
+      "Which searches actually win construction work in the UAE? The specific, high-intent ones. Here is how to rank for them, step by step. Read the guide.",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs/keywords/blogimg4.png",
+    thumb:
+      "/images/blogs/keywords/blogimg4.png",
+    large_thumb:
+      "/images/blogs/keywords/blogimg4.png",
+    category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 16,
     slug: "google-ai-overviews-what-uae-businesses-must-do-for-organic-traffic",
     titles:
