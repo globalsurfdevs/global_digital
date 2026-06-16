@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Which searches actually win construction work in the UAE? The specific, high-intent ones. Here is how to rank for them, step by step. Read the guide.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
+      canonical: "https://www.globalsurf.ae/blogs/how-construction-brands-uae-rank-high-intent-b2b-keywords",
     },
     robots: "index, follow",
     openGraph: {
