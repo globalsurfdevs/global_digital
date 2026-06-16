@@ -39,5 +39,12 @@ export const AreaExpertise = {
       desc: "International SEO optimizes your website for global audiences, helping you reach customers across languages and regions.",
       url: "",
     },
+    {
+      id: 6,
+      icon: assets.inter_seo,
+      title: "GEO",
+      desc: "Geo-targeted SEO optimizes your website for specific geographic regions, helping you reach local customers more effectively.",
+      url: "https://www.globalsurf.ae/generative-engine-optimization",
+    },
   ],
 };
