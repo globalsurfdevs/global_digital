@@ -56,7 +56,7 @@ export const testimonials = [
     name: "Omar M. Bin Dhaher Almheiri",
     position: "President",
     message:
-      "“We have vary good relation and experience with your professional company Not to mention the extra care we get from your team We like this relationship to continue for the success of both of us”",
+      "“We have very good relation and experience with your professional company Not to mention the extra care we get from your team We like this relationship to continue for the success of both of us”",
     company: "Prestige",
     logo: logotwo,
     alt: "Prestige Logo",

@@ -81,7 +81,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }
             >
               <TestimonialsSwiper />
               <div>
-                <p className="text-font30   font-400 text-black">Trusted by <span className="text-primary">100+ brands</span> across UAE & beyond</p>
+                <p className="text-font30   font-400 text-black">Trusted by <span className="text-primary">125+ brands</span> across UAE & beyond</p>
               </div>
             </motion.div>
           </div>

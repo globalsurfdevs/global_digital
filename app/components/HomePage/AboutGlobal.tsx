@@ -9,6 +9,9 @@ const lexend = Lexend({
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
+const heading =
+  "Digital Marketing Agency in Dubai Building Measurable Growth for UAE’s Built-environment and B2B Brands";
+
 const AboutGlobal = () => {
   const ref = useRef(null);
 
@@ -35,42 +38,36 @@ const AboutGlobal = () => {
             className="relative overflow-hidden"
             ref={ref}
           >
-            <motion.p className="title-65 leading-tight">
-              {"Hello".split("").map((l, i) => (
-                <motion.span
-                  key={i}
-                  variants={{
-                    initial: { y: 0 },
-                    animate: { y: "-100%" },
-                    transition: {
-                      delay: 0.2 * i,
-                    },
-                  }}
-                  transition={{ delay: 0.2 * i }}
-                  className="inline-block"
+            <motion.h1
+              className="title-65 leading-tight hover:text-primary transition-all duration-300"
+              aria-label={heading}
+            >
+              {heading.split(" ").map((word, wordIndex) => (
+                <span
+                  key={`${word}-${wordIndex}`}
+                  className="mr-[0.22em] inline-block overflow-hidden align-bottom"
+                  aria-hidden="true"
                 >
-                  {l}
-                </motion.span>
+                  {word.split("").map((char, charIndex) => (
+                    <motion.span
+                      key={`${char}-${charIndex}`}
+                      className="inline-block"
+                      variants={{
+                        initial: { y: "110%", opacity: 0 },
+                        animate: { y: 0, opacity: 1 },
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        delay: wordIndex * 0.06 + charIndex * 0.015,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
               ))}
-              <motion.span className="text-red-600">!</motion.span>
-            </motion.p>
-
-            <motion.p className="title-65 absolute inset-0 leading-tight">
-              {"Hello".split("").map((l, i) => (
-                <motion.span
-                  key={i}
-                  variants={{
-                    initial: { y: "100%" },
-                    animate: { y: 0 },
-                  }}
-                  transition={{ delay: 0.2 * i }}
-                  className="inline-block"
-                >
-                  {l}
-                </motion.span>
-              ))}
-              <motion.span className="text-red-600">!</motion.span>
-            </motion.p>
+            </motion.h1>
           </motion.div>
           <p className="font-35 max-w-[50ch]">
             We’re GS Digital, a full-service digital marketing company in Dubai,
