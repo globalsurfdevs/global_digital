@@ -99,12 +99,17 @@ const Tours = () => {
                     </h3>
                     <div className="flex gap-1 flex-wrap text-[14px] md:text-[16px]">
                       
-                      {item.channels.length == 0 && <h4 className={`text-primary ${lexend.className}`}>
+                      {/* {item.channels.length == 0 && <h4 className={`text-primary ${lexend.className}`}>
                         {item.channelsUsed}
-                      </h4>}
-                      {item.channels.length > 0 && item.channels.map((channel,index) => (
+                      </h4>} */}
+                      {/* {item.channels.length > 0 && item.channels.map((channel,index) => (
                         <h4 className={`text-primary ${lexend.className}`} key={channel.channelName}>
                           {index == item.channels.length - 1 ? channel.channelName : channel.channelName + ", "}
+                        </h4>
+                      ))} */}
+                      {item.categories.length > 0 && item.categories.map((category,index) => (
+                        <h4 className={`text-primary ${lexend.className}`} key={category.name}>
+                          {index == item.categories.length - 1 ? category.name : category.name + ", "}
                         </h4>
                       ))}
                     </div>
