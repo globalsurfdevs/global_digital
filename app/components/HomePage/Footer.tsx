@@ -94,11 +94,14 @@ const Footer = () => {
             <div className="grid gap-5 pt-8 md:grid-cols-5 md:gap-0 lg:pt-[121px]">
               <div className={`col-span-2 flex h-full flex-col justify-between ${lexend.className}`}>
                 {/* ✅ FIX 9: Use address tag — semantic HTML, good for LocalBusiness SEO */}
-                <address className="not-italic text-font19 text-gray-500">
-                  Global Surf Digital Media L.L.C<br />
-                  P.O.Box 13653, 901 - SIT Tower<br />
-                  Dubai Silicon Oasis<br />
-                  Dubai, UAE
+                
+                <address className="not-italic text-font19 text-gray-500 hover:text-white transition-colors duration-300">
+                  <Link href="https://maps.app.goo.gl/eYWH3VR2zco7dZJC9" target="_blank" rel="noopener noreferrer">
+                    Global Surf Digital Media L.L.C<br />
+                    P.O.Box 13653, 901 - SIT Tower<br />
+                    Dubai Silicon Oasis<br />
+                    Dubai, UAE
+                  </Link>
                 </address>
               </div>
 
