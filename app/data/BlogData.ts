@@ -60,11 +60,11 @@ export const BlogData = [
     post_date: "",
     read_time: "",
     feature_thumb:
-      "/images/blogs/ai/ai1.png",
+      "/images/blogs/ai/ai2.png",
     thumb:
-      "/images/blogs/ai/ai1.png",
+      "/images/blogs/ai/ai2.png",
     large_thumb:
-      "/images/blogs/ai/ai1.png",
+      "/images/blogs/ai/ai2.png",
     category: "SEO",
     format: "standard",
     views: "",

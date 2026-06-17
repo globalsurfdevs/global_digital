@@ -1058,6 +1058,7 @@ import ai5 from "../images/blogs/ai/ai5.webp";
 import ai3 from "../images/blogs/ai/ai3.webp";
 import ai4 from "../images/blogs/ai/ai4.webp";
 import ai6 from "../images/blogs/ai/ai6.png";
+import ai2 from "../images/blogs/ai/ai2.png";
 
 import keyw1 from "../images/blogs/keywords/blogimg1.png";
 import keyw2 from "../images/blogs/keywords/blogimg2.png";
@@ -1072,7 +1073,7 @@ export const assets = {
   keyw2,
   keyw3,
   keyw4,
-ai5,
+  ai5, ai2,
   ai3,ai6,
   ai4,
   realestate1,

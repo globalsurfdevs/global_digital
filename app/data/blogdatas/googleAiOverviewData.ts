@@ -3,7 +3,7 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
     {
         id: 1,
-        image: assets.aibanner,
+        image: assets.ai2,
         navigation: [
             { label: "Blog", url: "" },
             { label: "5 Minutes Read", url: "" },
@@ -13,7 +13,7 @@ export const BannerSection = [
         publishedon: "June 4, 2026",
         updatedon: "June 4, 2026",
         subtitle: "",
-        heroAlt: "Google's AI Overviews Are Here: What UAE Businesses Must Do to Protect Organic Traffic ",
+        heroAlt: "How Google AI overview affects organic traffic",
         sub: [
             {
                 stitle: "",
@@ -81,6 +81,7 @@ export const UAEBuiltEnvironmentData = [
             "The data on AI Overview traffic impact is now substantial, drawn from multiple independent studies covering hundreds of thousands of keywords. The picture is clear and consistent. "
         ],
         image: assets.ai5,
+        imagealt: "Organic CTR drop due to AI overview",
         paragraphs3: [
             "<strong>Key data points:</strong> Ahrefs analysed 300,000 keywords and found that position-one organic CTR dropped from 7.3% to 2.6% — a relative decline of approximately 64% — when an AI Overview was present (Ahrefs, 2025). Amsive's separate analysis of 700,000 keywords found an average CTR drop of 15.49% across all positions, rising to 37% when AI Overviews and featured snippets appeared together on the same results page (Amsive, 2025). Seer Interactive's longitudinal study of 25.1 million impressions across 42 organisations found organic CTR fell from 1.76% to 0.61% (Seer Interactive, 2025). ",
             "<strong>The citation advantage:</strong> Brands cited directly inside an AI Overview see 35% more organic clicks and 91% more paid clicks than brands that rank organically but are not cited (Seer Interactive, 2025). Being in the AI answer, not just below it, is the new competitive position. ",
@@ -99,7 +100,7 @@ export const GeoData = [
         ],
 
         imageTitle: "How GEO Differs from Traditional SEO",
-
+        imagealt: "Difference between traditional SEO and GEO",
         image: assets.ai3,
 
         paragraphs3: [

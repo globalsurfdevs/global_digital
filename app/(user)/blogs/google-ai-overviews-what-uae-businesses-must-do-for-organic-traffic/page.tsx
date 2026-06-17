@@ -1,11 +1,10 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
 import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
-import { BafcoCaseStudySchema } from "../../../components/Schema/OfferCatalog";
-import NewRules from "../../../components/BlogSocialMedia/NewRules";
-import Contenttwo from "../../../components/BlogSocialMedia/IconContentPara";
+import { GoogleAiOverviewSchema } from "../../../components/Schema/OfferCatalog";
 
 
+import FaqSchema from "../../../components/Schema/FaqSchemad";
 
 
 import {
@@ -15,7 +14,6 @@ import {
 } from "../../../data/blogdatas/googleAiOverviewData";
 
 import Blogfaq from "../../../components/common/BlogFaq";
-import { videoProductionData } from "@/app/data/blogdatas/llmdata";
 import ThreeColumnTable from "@/app/components/BlogSocialMedia/AiThreecolsTable";
 import Twosecblog from "@/app/components/BlogSocialMedia/TwoHsec";
 
@@ -68,12 +66,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 
 const page = () => {
-  const videoProductionTitles = ['Authority', 'Scope'];
 
   return (
     <div className="relative">
-
-      <BafcoCaseStudySchema />
+<GoogleAiOverviewSchema />
+      <FaqSchema faq={Faq} />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
      
       <Contentone sections={contentSectionsData} />

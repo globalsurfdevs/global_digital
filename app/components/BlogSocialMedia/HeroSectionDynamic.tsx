@@ -122,7 +122,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       )}
       <div className="container mx-auto py-2" ref={nextContainerRef}>
 
-        {Bannerdata.map((herosection) => (
+        {Bannerdata.map((herosection: BannerSection) => (
           <div key={herosection.id}>
             <motion.div
               className="title-80"
@@ -257,9 +257,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection, index) => (
+          {Bannerdata.map((herosection: BannerSection, index: number) => (
             <div className=" w-full bg-black " key={index}>
-              <Image src={herosection.image} className="w-full" alt={herosection.heroAlt || "Banner image"} width={1500} height={700} />
+              <Image src={herosection.image} className="w-full" alt={herosection.heroAlt || herosection.title || "Banner image"} width={1500} height={700} />
             </div>
           ))}
         </div>

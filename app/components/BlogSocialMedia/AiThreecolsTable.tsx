@@ -52,7 +52,7 @@ const ThreeColumnTable: React.FC = ({
               Which Queries Trigger AI Overviews in UAE Search
             </h3>
 
-            <Image alt="Comparison of weak versus strong contractor website" loading="lazy" width="1100" height="500" decoding="async" data-nimg="1" className="my-[40px] m-auto" src="../../assets/blogs/ai/ai4.webp" />
+            <Image alt="Search query types affected by Google AI Overviews" loading="lazy" width="1100" height="500" decoding="async" data-nimg="1" className="my-[40px] m-auto" src="../../assets/blogs/ai/ai4.webp" />
 
 
             <p className="text-font19 text-[#77787B] mb-[30px]">
