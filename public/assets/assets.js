@@ -1065,10 +1065,21 @@ import keyw2 from "../images/blogs/keywords/blogimg2.png";
 import keyw3 from "../images/blogs/keywords/blogimg3.png";
 import keyw4 from "../images/blogs/keywords/blogimg4.png";
 
+import p1 from "../images/blogs/performance/blog-p1.jpg";
+import p2 from "../images/blogs/performance/blog-p2.png";
+import p3 from "../images/blogs/performance/blog-p3.png";
+import p4 from "../images/blogs/performance/blog-p4.png";
+import p5 from "../images/blogs/performance/blog-p5.png";
+
 
 export const assets = {
   blgbanner,
   aibanner,
+  p1,
+  p2,
+  p3,
+  p4,
+  p5,
   keyw1,
   keyw2,
   keyw3,

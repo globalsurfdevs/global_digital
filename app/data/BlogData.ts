@@ -2,6 +2,49 @@
 
 export const BlogData = [
   {
+    id: 18,
+    slug: "what-is-performance-marketing-and-how-it-works",
+    titles:
+      "What Is Performance Marketing and How Does It Work for UAE Businesses?",
+    title:
+      "What Is Performance Marketing and How Does It Work for UAE Businesses?",
+    list_heading:
+      "What Is Performance Marketing and How Does It Work for UAE Businesses?",
+    meta_title:
+      "Performance Marketing UAE: How It Works & What It Costs | GS Digital",
+    description:
+      "Understand performance marketing for UAE businesses — channels, costs in AED, what results to expect, and how to choose the right agency.",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs/performance/blog-p1.jpg",
+    thumb:
+      "/images/blogs/performance/blog-p1.jpg",
+    large_thumb:
+      "/images/blogs/performance/blog-p1.jpg",
+    category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 17,
     slug: "how-construction-brands-uae-rank-high-intent-b2b-keywords",
     titles:
