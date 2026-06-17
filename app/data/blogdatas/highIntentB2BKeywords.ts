@@ -44,27 +44,33 @@ export const contentSectionsData = [
 ];
 // data.ts 
 export const builtEnvironmentData = [
-    {
-        title: "What High-Intent B2B Keywords Actually Are",
-        image: assets.keyw1,
-        paragraphs3: [
-            'A high-intent B2B keyword is the search someone makes when they already know what they need and are close to choosing. In construction, these terms usually name a specific capability, certification, or requirement: "fit - out contractor DIFC, " "MEP contracting company in UAE, " or "ISO - certified design and build contractors.',
-            'It helps to picture where a searcher sits in their journey:'
-        ],
-        listItems: [
-            {
-                label: "Low intent (browsing): ", description: ' broad terms like "construction company Dubai, " which pull a wide, mixed audience and few buyers ready to award work. '},
-            { label: "Medium intent (comparing): ", description: ' terms like "best fit-out contractors for offices Dubai," where a shortlist is starting to form.' },
-            {
-                label: "High intent (ready to act): ", description: ' specific capability and location terms like "warehouse construction contractor Jebel Ali," typed by someone with a live project.' },
-           
-        ],
+  {
+    title: "What High-Intent B2B Keywords Actually Are",
+    image: assets.keyw1,
+    paragraphs3: [
+      "A high-intent B2B keyword is the search someone makes when they already know what they need and are close to choosing. In construction, these terms usually name a specific capability, certification, or requirement: &ldquo;fit-out contractor DIFC&rdquo;, &ldquo;MEP contracting company in UAE&rdquo;, or &ldquo;ISO-certified design and build contractors&rdquo;.",
+      "It helps to picture where a searcher sits in their journey:",
+    ],
+    listItems: [
+      {
+        label: "Low intent (browsing): ",
+        description:
+          " Broad terms such as &ldquo;construction company Dubai&rdquo; attract a wide and varied audience, including many users who are not yet ready to award a contract or engage a service provider.",
+      },
+      {
+        label: "Medium intent (comparing): ",
+        description: `Terms like &ldquo;best fit-out contractors for offices Dubai,&rdquo; where a shortlist is starting to form.`,
+      },
+      {
+        label: "High intent (ready to act): ",
+        description: `Specific capability and location terms like &ldquo;warehouse construction contractor Jebel Ali,&rdquo; typed by someone with a live project.`,
+      },
+    ],
 
-        paragraphs2: [
-            'Key insight: the more specific a keyword, the higher its commercial intent and, usually, the lower its competition. A high-intent keyword brings fewer visitors, but a far greater share of them are decision-makers.'
-        ],
-
-    }
+    paragraphs2: [
+      "Key insight: the more specific a keyword, the higher its commercial intent and, usually, the lower its competition. A high-intent keyword brings fewer visitors, but a far greater share of them are decision-makers.",
+    ],
+  },
 ];
  
 export const rulesData = {
@@ -125,7 +131,7 @@ export const webrank = [
 
             },
             {
-                label: 'Weak technical health.', description: 'Slow pages, poor mobile performance, and crawl issues quietly hold back rankings the content alone would otherwise earn.'
+                label: 'Weak technical health.', description: ' Slow pages, poor mobile performance, and crawl issues quietly hold back rankings the content alone would otherwise earn.'
             }
 
         ],
@@ -148,37 +154,43 @@ export const uaeresults = [
     }
 ];
 export const fivepoint = [
-    {
-        title: "A Five-Point Keyword Audit You Can Run Today",
-        paragraphs1: [
-            'Any marketing manager or business development lead can run this check in ten minutes.'
-        ],
-        listItems: [
-            {
-                label: '    Search your core service and location', description: ' (for example "MEP contractor Dubai"). Do you appear on page one? If not, that is a search where your company is not currently visible to the buyers using it.'
-            },
-            {
-                label: 'Count your service pages. ', description: ' Do you have a dedicated page for each core capability, or one "Services" page covering everything?'
-            },
-            {
-                label: ' Check for location pages.', description: ' Pages that could describe any contractor in any market give a buyer no reason to choose you, and Google no reason to rank you.                '
+  {
+    title: "A Five-Point Keyword Audit You Can Run Today",
+    paragraphs1: [
+      "Any marketing manager or business development lead can run this check in ten minutes.",
+    ],
+    listItems: [
+      {
+        label: " Search your core service and location",
+        description:
+          ' (for example "MEP contractor Dubai"). Do you appear on page one? If not, that is a search where your company is not currently visible to the buyers using it.',
+      },
+      {
+        label: "Count your service pages. ",
+        description:
+          ' Do you have a dedicated page for each core capability, or one "Services" page covering everything?',
+      },
+      {
+        label: " Check for location pages.",
+        description:
+          " Are the districts and emirates you work in reflected in real pages, or not at all?",
+      },
+      {
+        label: "Read your top page as a buyer.",
+        description:
+          " Does it prove specific expertise, or could it describe any contractor?",
+      },
+      {
+        label: "Test your speed on mobile. ",
+        description:
+          " Does the page load quickly on a phone, where most first searches happen?",
+      },
+    ],
 
-            },
-            {
-                label: 'Read your top page as a buyer.', description: 'Does it prove specific expertise, or could it describe any contractor?'
-            },
-            {
-                label: 'Test your speed on mobile. ', description: ' Does the page load quickly on a phone, where most first searches happen?'
-            },
-            
-
-        ],
-
-        paragraphs2: [
-            'Any "no" points to a high-intent keyword where there is visibility still to gain.'
-        ],
-
-    }
+    paragraphs2: [
+      'Any "no" points to a high-intent keyword where there is visibility still to gain.',
+    ],
+  },
 ];
 
 export const Faq = [
@@ -199,7 +211,7 @@ export const Faq = [
             "A specific term can move within one to three months once the right page exists and the technical basics are in place. More competitive terms take longer. The timeline depends on the current state of the website and how consistently the work is done.",
     },
     {
-        title: "Can one services page rank for several keywords at once?",
+        title: "Can one service page rank for several keywords at once?",
         description:
             "No. Google ranks individual pages, so a single page covering many services cannot build the depth needed to rank for several specific terms. Each core capability, and often each capability and location combination, needs its own dedicated page.",
     },

@@ -43,7 +43,7 @@ const HeroInteractive = () => {
   }, []);
 
   return (
-    <h1
+    <h2
       className="title-120 inline-block cursor-pointer font-[400]"
       id="triggerSection"
       onMouseEnter={handleMouseEnter}
@@ -56,7 +56,7 @@ const HeroInteractive = () => {
       >
         Digital Marketing
       </span>
-    </h1>
+    </h2>
   );
 };
 

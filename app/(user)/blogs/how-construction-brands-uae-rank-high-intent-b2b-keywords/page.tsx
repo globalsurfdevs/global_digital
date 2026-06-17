@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
-import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3"; 
+import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
 import SectionTwo from "../../../components/BlogDigitalCredibilityUae/Keywordsstatic";
 import NewRules from "../../../components/BlogSocialMedia/NewRules";
 import Cta from "../../../components/BlogSocialMedia/SecCta";
@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Which searches actually win construction work in the UAE? The specific, high-intent ones. Here is how to rank for them, step by step. Read the guide.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
+      canonical: "https://www.globalsurf.ae/blogs/how-construction-brands-uae-rank-high-intent-b2b-keywords",
     },
     robots: "index, follow",
     openGraph: {
@@ -69,11 +69,10 @@ const page = () => {
     <div className="relative">
 
       <DigitalStudySchema />
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27}  />
-     
-      <Contentone sections={contentSectionsData}  />
-    <div id="section1">
-      <Contentone sections={builtEnvironmentData}  />
+      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
+      <Contentone sections={contentSectionsData} />
+      <div id="section1">
+        <Contentone sections={builtEnvironmentData} />
       </div>
       <div id="section2">
         <NewRules rules={rulesData} pb="pb-0" />
@@ -85,7 +84,7 @@ const page = () => {
         <Contentone sections={webrank} />
       </div>
       <div id="section5">
-      <SectionTwo  />
+        <SectionTwo />
       </div>
       <div id="section6">
         <Contentone sections={uaeresults} />
@@ -93,15 +92,15 @@ const page = () => {
       <div id="section7">
         <Contentone sections={fivepoint} />
       </div>
-      
+
       <div id="section8" className="pt-[50px] lg:pt-[100px]">
-      <section>
-        {/* <Contentone sections={contractorMarketingData} /> */}
-        <Blogfaq data={Faq}  />
-      </section>
+        <section>
+          {/* <Contentone sections={contractorMarketingData} /> */}
+          <Blogfaq data={Faq} />
+        </section>
       </div>
       <div id="section9" >
-       
+
         <Cta />
 
       </div>

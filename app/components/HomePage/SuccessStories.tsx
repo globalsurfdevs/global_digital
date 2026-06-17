@@ -60,7 +60,7 @@ const SuccessStories = () => {
             }, // Slide up and fade in
           }}
         >
-          <h2 className="title-65">Discover Our Success Stories</h2>
+          <h2 className="title-65">Our Clients</h2>
         </motion.div>
         <motion.div
           initial="hidden"

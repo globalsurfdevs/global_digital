@@ -13,7 +13,7 @@ const SectionThree = () => {
                     On a site that is not yet optimised, ranking for a fiercely contested head term is not
                     realistic in the early months. Begin with keyword research that surfaces specific,
                     lower-competition terms you can genuinely win, build authority, and work toward the harder
-                    terms over time. This is the heart of <a
+                    terms over time. This is the heart for <a
                         href="https://www.globalsurf.ae/b2b-seo-agency-dubai"
                         className="text-inherit underline underline-offset-2 hover:opacity-70 transition-opacity"
                     >
