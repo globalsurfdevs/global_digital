@@ -1242,3 +1242,62 @@ export const DigitalStudySchema = () => {
     </>
   );
 };
+
+export const GoogleAiOverviewSchema = () => {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: `{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Google's AI Overviews Are Here: What UAE Businesses Must Do to Protect Organic Traffic",
+  "description": "Google AI Overviews are live in the UAE and already reducing organic traffic for businesses with stable rankings. This article explains what AI Overviews are, how they affect UAE businesses, and the 7 strategies to protect and rebuild search visibility.",
+  "image": "http://localhost:3000/_next/static/media/ai2.b8d3b159.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Global Surf Digital",
+    "url": "https://www.globalsurf.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Surf Digital",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
+    }
+  },
+  "datePublished": "2026-05-25",
+  "dateModified": "2026-05-25",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalsurf.ae/blogs/google-ai-overviews-what-uae-businesses-must-do-for-organic-traffic"
+  },
+  "keywords": [
+    "Google AI Overviews UAE",
+    "AI Overviews organic traffic UAE",
+    "GEO generative engine optimisation UAE",
+    "SEO UAE 2025",
+    "AI search UAE businesses"
+  ],
+  "articleSection": "SEO",
+  "inLanguage": "en-AE",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Google AI Overviews"
+    },
+    {
+      "@type": "Thing",
+      "name": "Generative Engine Optimisation"
+    },
+    {
+      "@type": "Place",
+      "name": "United Arab Emirates"
+    }
+  ]
+}`
+      }}
+    />
+  );
+};

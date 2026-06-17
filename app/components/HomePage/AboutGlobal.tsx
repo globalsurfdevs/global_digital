@@ -10,7 +10,7 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
 const heading =
-  "Digital Marketing Agency in Dubai Building Measurable Growth for UAE’s Built-environment and B2B Brands";
+  "Digital Marketing Agency in Dubai ";
 
 const AboutGlobal = () => {
   const ref = useRef(null);
@@ -42,6 +42,7 @@ const AboutGlobal = () => {
               className="title-65 leading-tight hover:text-primary transition-all duration-300"
               aria-label={heading}
             >
+              
               {heading.split(" ").map((word, wordIndex) => (
                 <span
                   key={`${word}-${wordIndex}`}
@@ -68,8 +69,9 @@ const AboutGlobal = () => {
                 </span>
               ))}
             </motion.h1>
+            <h3 className="font-35 mt-3">Building Measurable Growth for UAE’s Built-environment and B2B Brands</h3>
           </motion.div>
-          <p className="font-35 max-w-[50ch]">
+          <p className="text-font25 max-w-[50ch]">
             We’re GS Digital, a full-service digital marketing company in Dubai,
             specializing in data-driven strategies, creative innovation, and
             business-focused solutions.

@@ -20,7 +20,7 @@ const SectionCTA = () => {
                         },
                     }}
                 >
-                    <div className="grid grid-cols-1 gap-4">
+                    <div className="grid grid-cols-1">
                         <div className="col-span-2 mb-5 xl:mb-0"></div>
                         <div className="col-span-5 w-full">
 

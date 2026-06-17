@@ -71,7 +71,7 @@ const Twosecblog: React.FC = ({
                         <h2 className="title-65 mb-[40px]">
                             Which UAE Industries Face the Greatest Risk from Google AI Overviews?
                         </h2>
-                        <Image alt="Comparison of weak versus strong contractor website" loading="lazy" width="1100" height="500" decoding="async" data-nimg="1" className="my-[40px] m-auto" src="../../assets/blogs/ai/ai6.png" />
+                        <Image alt="AI overview risk levels for UAE industries" loading="lazy" width="1100" height="500" decoding="async" data-nimg="1" className="my-[40px] m-auto" src="../../assets/blogs/ai/ai6.png" />
 
                         <p className="text-font19 text-[#77787B] mb-[30px]">
                             AI Overview risk is not evenly distributed. The sectors most exposed are those that traditionally attracted traffic through informational and educational content, the very query types that AI Overviews are most likely to answer directly.
@@ -216,7 +216,7 @@ const Twosecblog: React.FC = ({
                     <h2 className="title-65 mt-[80px] mb-[40px]">
                         The Local SEO Silver Lining: Why UAE Businesses Have More Protection Than They Think
                     </h2>
-                    <Image alt="Comparison of weak versus strong contractor website" loading="lazy" width="1100" height="500" decoding="async" data-nimg="1" className="my-[40px] m-auto" src="../../assets/blogs/ai/ai12.webp" />
+                    <Image alt="Google local pack results on mobile" loading="lazy" width="1100" height="500" decoding="async" data-nimg="1" className="my-[40px] m-auto" src="../../assets/blogs/ai/ai12.webp" />
 
                     <p className="text-font19 text-[#77787B] mb-[30px]">
                         The data on AI Overview traffic displacement is significant. But it is not

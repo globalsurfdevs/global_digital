@@ -223,7 +223,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                                     {data.image && (
                                         <Image
                                             src={data.image}
-                                            alt={data.title}
+                                            alt={data.imagealt ?? data.title}
                                             className="my-[40px]"
                                         />
                                     )}

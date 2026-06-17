@@ -27,7 +27,7 @@ export const contentSectionsData = [
     {
         title: "Table of Contents",
         isTOC: true,
-        dividerAfterIndex: 11, // ← draws line before "What does 12 months..."(above line 8) 
+        dividerAfterIndex: 7, // ← draws line before "What does 12 months..."(above line 8) 
 
         paragraphs: [
             `<a href="#section1" class='hover:text-primary'>1. What high-intent B2B keywords actually are</a>`,

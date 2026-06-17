@@ -4,8 +4,8 @@ import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
 import SectionTwo from "../../../components/BlogDigitalCredibilityUae/Keywordsstatic";
 import NewRules from "../../../components/BlogSocialMedia/NewRules";
 import Cta from "../../../components/BlogSocialMedia/SecCta";
-import { DigitalStudySchema } from "../../../components/Schema/OfferCatalog";
 
+import FaqSchema from "../../../components/Schema/FaqSchemad";
 
 import {
   BannerSection, Faq, contentSectionsData,
@@ -47,14 +47,14 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "How UAE Construction Brands Rank for High-Intent Keywords",
       site_name: "GS Digital",
-      url: "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
+      url: "https://www.globalsurf.ae/blogs/how-construction-brands-uae-rank-high-intent-b2b-keywords",
       description:
         "Which searches actually win construction work in the UAE? The specific, high-intent ones. Here is how to rank for them, step by step. Read the guide.",
       type: "article", // keep it optional
     },
     images: [
       {
-        url: "https://www.globalsurf.ae/_next/static/media/uae-construction-contractor-digital-credibility-hero.41a7a760.webp",
+        url: "https://www.globalsurf.ae/_next/static/media/blogimg4.79e0cfaf.png",
         alt: 'How UAE Construction Brands Rank for High-Intent Keywords',
       },
     ],
@@ -68,7 +68,7 @@ const page = () => {
   return (
     <div className="relative">
 
-      <DigitalStudySchema />
+      <FaqSchema faq={Faq} />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
       <Contentone sections={contentSectionsData} />
       <div id="section1">
