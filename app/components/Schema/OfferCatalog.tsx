@@ -1301,3 +1301,61 @@ export const GoogleAiOverviewSchema = () => {
     />
   );
 };
+export const PerformanceMarketingSchema = () => {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: `{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Is Performance Marketing and How Does It Work for UAE Businesses?",
+  "description": "A plain-language guide to performance marketing for UAE businesses covering channels, AED cost benchmarks, agency fees, and how to assess readiness.",
+  "image": "http://localhost:3000/_next/static/media/performance-marketing.12345678.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Global Surf Digital",
+    "url": "https://www.globalsurf.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Surf Digital",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalsurf.ae/gs-digital-logo.svg",
+      "width": 200,
+      "height": 60
+    }
+  },
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalsurf.ae/blog/performance-marketing-uae"
+  },
+  "keywords": [
+    "performance marketing UAE",
+    "digital advertising Dubai",
+    "cost per lead UAE",
+    "Google Ads UAE",
+    "Meta Ads UAE",
+    "LinkedIn Ads B2B UAE",
+    "performance marketing agency Dubai"
+  ],
+  "articleSection": "Digital Marketing",
+  "inLanguage": "en-AE",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Performance Marketing"
+    }
+  ],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "UAE Business Owners and Marketing Decision-Makers"
+  }
+}`
+      }}
+    />
+  );
+};
