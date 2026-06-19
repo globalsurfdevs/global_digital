@@ -1058,7 +1058,7 @@ import ai5 from "../images/blogs/ai/ai5.webp";
 import ai3 from "../images/blogs/ai/ai3.webp";
 import ai4 from "../images/blogs/ai/ai4.webp";
 import ai6 from "../images/blogs/ai/ai6.png";
-import ai2 from "../images/blogs/ai/ai2.png";
+import ai2 from "../images/blogs/ai/ai2.jpg";
 
 import keyw1 from "../images/blogs/keywords/blogimg1.png";
 import keyw2 from "../images/blogs/keywords/blogimg2.png";
@@ -1071,6 +1071,13 @@ import p3 from "../images/blogs/performance/blog-p3.png";
 import p4 from "../images/blogs/performance/blog-p4.png";
 import p5 from "../images/blogs/performance/blog-p5.png";
 
+import dblog1 from "../images/blogs/digital/dblog1.webp";
+import dblog2 from "../images/blogs/digital/dblog2.webp";
+import dblog3 from "../images/blogs/digital/dblog3.webp";
+import dblog4 from "../images/blogs/digital/dblog4.webp";
+
+
+
 
 export const assets = {
   blgbanner,
@@ -1080,6 +1087,9 @@ export const assets = {
   p3,
   p4,
   p5,
+  dblog1,
+  dblog2,
+  dblog3,dblog4,
   keyw1,
   keyw2,
   keyw3,
