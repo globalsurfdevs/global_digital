@@ -1359,3 +1359,60 @@ export const PerformanceMarketingSchema = () => {
     />
   );
 };
+
+export const DigitalMarketingCompanyDubaiSchema = () => {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: `{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Digital Marketing Company in Dubai: Costs, Services, and How to Choose the Right Agency",
+  "description": "A practical guide for Dubai and UAE businesses comparing digital marketing agency costs, freelancer vs agency options, typical services, pricing models, and contract lengths.",
+  "image": "http://localhost:3000/_next/static/media/hero-image.12345678.png",
+  "author": {
+    "@type": "Organization",
+    "name": "GS Digital",
+    "url": "https://www.globalsurf.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GS Digital",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalsurf.ae/gs-digital-logo.svg",
+      "width": 200,
+      "height": 60
+    }
+  },
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-12",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalsurf.ae/blogs/digital-marketing-company-dubai-costs-services-guide/"
+  },
+  "keywords": [
+    "digital marketing company in Dubai",
+    "digital marketing agency cost Dubai",
+    "marketing agency services UAE",
+    "best SEO agency near me Dubai",
+    "affordable digital marketing services UAE"
+  ],
+  "articleSection": "Digital Marketing",
+  "inLanguage": "en-AE",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Digital Marketing"
+    }
+  ],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Dubai and UAE Business Owners and Marketing Decision-Makers"
+  }
+}`
+      }}
+    />
+  );
+};

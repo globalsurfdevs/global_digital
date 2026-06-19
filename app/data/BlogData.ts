@@ -2,6 +2,49 @@
 
 export const BlogData = [
   {
+    id: 19,
+    slug: "digital-marketing-company-dubai-costs-services-guide",
+    titles:
+      "Digital Marketing Company in Dubai: Costs and Services",
+    title:
+      "Digital Marketing Company in Dubai: Costs and Services ",
+    list_heading:
+      "Digital Marketing Company in Dubai: Costs and Services ",
+    meta_title:
+      "Digital Marketing Company in Dubai Costs, Services, and How to Choose the Right Agency",
+    description:
+      "Compare digital marketing agency costs in Dubai, freelancer vs agency options, key services, pricing models, and contract lengths to choose the right partner for growth",
+    post_date: "",
+    read_time: "",
+    feature_thumb:
+      "/images/blogs/digital/dblogthumb.jpg",
+    thumb:
+      "/images/blogs/digital/dblogthumb.jpg",
+    large_thumb:
+      "/images/blogs/digital/dblogthumb.jpg",
+    category: "SEO",
+    format: "standard",
+    views: "",
+    excerpt: "",
+    body: [""],
+    features_img: [""],
+    author_name: " ",
+    author_avatar: "",
+    author_para: "",
+    social: [
+      {
+        facebook: "",
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+        vimeo: "",
+        pinterst: "",
+        dribble: "",
+        behance: "",
+      },
+    ],
+  },
+  {
     id: 18,
     slug: "what-is-performance-marketing-and-how-it-works",
     titles:
@@ -17,11 +60,11 @@ export const BlogData = [
     post_date: "",
     read_time: "",
     feature_thumb:
-      "/images/blogs/performance/blog-p1.jpg",
+      "/images/blogs/digital/howblogthumb.jpg",
     thumb:
-      "/images/blogs/performance/blog-p1.jpg",
+      "/images/blogs/digital/howblogthumb.jpg",
     large_thumb:
-      "/images/blogs/performance/blog-p1.jpg",
+      "/images/blogs/digital/howblogthumb.jpg",
     category: "SEO",
     format: "standard",
     views: "",
@@ -103,11 +146,11 @@ export const BlogData = [
     post_date: "",
     read_time: "",
     feature_thumb:
-      "/images/blogs/ai/ai2.png",
+      "/images/blogs/ai/ai2.jpg",
     thumb:
-      "/images/blogs/ai/ai2.png",
+      "/images/blogs/ai/ai2.jpg",
     large_thumb:
-      "/images/blogs/ai/ai2.png",
+      "/images/blogs/ai/ai2.jpg",
     category: "SEO",
     format: "standard",
     views: "",
