@@ -25,6 +25,8 @@ import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices"
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
 import { Platformsdata } from "../../data/services/ppc-advertising/platforms";
 
+import FaqSchema from "../../components/Schema/FaqSchemad";
+
 interface Canonicals {
   canonical: string;
 }
@@ -64,7 +66,9 @@ const page = () => {
           property="og:description"
           content="Maximize your brand’s reach with our expert PPC advertising services. Drive targeted traffic, increase conversions, and achieve measurable ROI with data-driven paid search and display campaigns. Get results with Google Ads, bing ads, and more."
         />
+        
       </Head>
+      <FaqSchema faq={Faq} />
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}

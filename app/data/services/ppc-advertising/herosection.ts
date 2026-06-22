@@ -12,7 +12,7 @@ export const BannerSection = [
     heroAlt: "PPC Advertising Services in Dubai ",
     title:
       "PPC Advertising & SEM Agency in Dubai",
-      subtitle:"Driving Targeted Traffic & Maximizing ROI with Data-Backed Paid Search Strategies",
+    subtitle:"Google Partner–certified paid-search team, more qualified leads at a lower cost per acquisition for UAE brands",
     sub: [
       {
         stitle: "OUR APPROACH",

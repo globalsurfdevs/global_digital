@@ -402,14 +402,15 @@ const Header = () => {
           </AnimatePresence>
         </div>
 
+     
         {/* ---- for seo purpose (ssr) ----- */}
-        <div className="sr-only">
-          {allServiceLinks.map(({ url }) => (
+        <nav aria-label="Services sitemap" className="sr-only">
+          {allServiceLinks.map(({ url, label }) => (
             <Link key={url} href={url}>
-              {url}
+              {label || url.replace(/^\//, "").replace(/-/g, " ")}
             </Link>
           ))}
-        </div>
+        </nav>
       </header>
     </>
   );
