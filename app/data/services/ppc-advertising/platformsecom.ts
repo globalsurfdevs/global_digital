@@ -8,9 +8,9 @@ export const Platformsecomdata = {
     {
       id: 1,
       icon: assets.google,
-      title: "100+",
+      title: "125+",
       rttitel:"Projects ",
-      dec: "100+  Projects across diverse industries, delivering tailored solutions for every business need.",
+      dec: "125+  Projects across diverse industries, delivering tailored solutions for every business need.",
     },
     {
       id: 2,
@@ -22,9 +22,9 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "12+",
+      title: "25+",
       rttitel:"Experts ",
-      dec: "12+ Experts focused on delivering consistent, positive results for your brand through our comprehensive PPC advertising services.",
+      dec: "25+ Experts focused on delivering consistent, positive results for your brand through our comprehensive PPC advertising services.",
     },
   ],
 };
