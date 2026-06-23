@@ -161,8 +161,8 @@
 // }
 
 
-
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import connectDB from "@/lib/mongodb";
 import Blog from "@/app/models/Blog";
 
@@ -187,6 +187,8 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
 
   const blog = await Blog.create(body);
+
+  revalidateTag("blogs"); // ✅ bust listing + detail cache on create
   return NextResponse.json({ message: "Blog created", blog }, { status: 201 });
 }
 
@@ -199,6 +201,8 @@ export async function PUT(req: NextRequest) {
   const body = await req.json();
   const blog = await Blog.findByIdAndUpdate(id, body, { new: true });
   if (!blog) return NextResponse.json({ error: "Not found" }, { status: 404 });
+
+  revalidateTag("blogs"); // ✅ bust cache on update
   return NextResponse.json({ message: "Blog updated", blog });
 }
 
@@ -209,5 +213,7 @@ export async function DELETE(req: NextRequest) {
   if (!id) return NextResponse.json({ error: "ID required" }, { status: 400 });
 
   await Blog.findByIdAndDelete(id);
+
+  revalidateTag("blogs"); // ✅ bust cache on delete — this was the missing piece
   return NextResponse.json({ message: "Blog deleted" });
 }
