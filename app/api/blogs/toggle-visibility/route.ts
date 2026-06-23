@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import connectDB from "@/lib/mongodb";
 import Blog from "@/app/models/Blog";
 
@@ -13,6 +14,9 @@ export async function PATCH(req: NextRequest) {
 
   blog.isHidden = !blog.isHidden;
   await blog.save();
+
+  revalidateTag("blogs"); // ✅ add this
+
   return NextResponse.json({
     message: "Visibility toggled",
     isHidden: blog.isHidden,
