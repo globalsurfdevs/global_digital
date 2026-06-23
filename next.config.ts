@@ -41,7 +41,6 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-
       {
         source: "/performance-marketing", // The old URL path
         destination: "/performance-marketing-agency-dubai", // The new URL path
@@ -118,8 +117,10 @@ const nextConfig: NextConfig = {
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
-        source: "/blog/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The old URL path
-        destination: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The new URL path
+        source:
+          "/blog/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The old URL path
+        destination:
+          "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -132,7 +133,6 @@ const nextConfig: NextConfig = {
         destination: "/industry/b2b-digital-marketing-services", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
-
     ];
   },
 };
