@@ -1,19 +1,18 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
-import AdminIndiBlog from "@/app/components/AdminIndiBlog/AdminIndiBlog";
+import AdminBlogForm from "@/app/components/AdminBlog/AdminBlogForm";
 
 export const metadata: Metadata = {
-  title: "Next.js Calender | TailAdmin - Next.js Dashboard Template",
-  description:
-    "This is Next.js Calender page for TailAdmin  Tailwind CSS Admin Dashboard Template",
+  title: "Edit Blog",
+  description: "Edit blog post",
 };
 
-const BlogsPage = () => {
+const EditBlogPage = () => {
   return (
     <DefaultLayout>
-        <AdminIndiBlog editMode/>
+      <AdminBlogForm editMode />
     </DefaultLayout>
   );
 };
 
-export default BlogsPage;
+export default EditBlogPage;
