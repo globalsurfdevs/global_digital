@@ -1421,6 +1421,7 @@ input[type="number"] {
 
 .blog-content p {
   margin-bottom: 16px;
+  font-size: clamp(15px, 2vw, 19px);
 }
 
 .blog-content h2,
@@ -1431,12 +1432,17 @@ input[type="number"] {
   color: #000;
   margin-top: 40px;
   margin-bottom: 16px;
+  
+}
+.blog-content h3 {
+  font-size: 30px;
 }
 
 .blog-content ul,
 .blog-content ol {
   margin: 24px 0;
   padding-left: 40px;
+  font-size: clamp(15px, 2vw, 19px);
 }
 
 .blog-content ul {
@@ -1466,6 +1472,7 @@ input[type="number"] {
 
 .blog-content strong {
   font-weight: 600;
+  color: #000;
 }
 
 .blog-content blockquote {
