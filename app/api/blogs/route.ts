@@ -202,7 +202,8 @@ export async function PUT(req: NextRequest) {
   const blog = await Blog.findByIdAndUpdate(id, body, { new: true });
   if (!blog) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  revalidateTag("blogs"); // ✅ bust cache on update
+  revalidateTag("blogs");
+  revalidateTag(`blog-${blog.slug}`);
   return NextResponse.json({ message: "Blog updated", blog });
 }
 
@@ -212,8 +213,9 @@ export async function DELETE(req: NextRequest) {
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "ID required" }, { status: 400 });
 
-  await Blog.findByIdAndDelete(id);
+  const blog = await Blog.findByIdAndDelete(id);
 
-  revalidateTag("blogs"); // ✅ bust cache on delete — this was the missing piece
+  revalidateTag("blogs");
+  if (blog?.slug) revalidateTag(`blog-${blog.slug}`);
   return NextResponse.json({ message: "Blog deleted" });
 }
