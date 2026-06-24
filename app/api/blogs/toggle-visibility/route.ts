@@ -14,8 +14,8 @@ export async function PATCH(req: NextRequest) {
 
   blog.isHidden = !blog.isHidden;
   await blog.save();
-
-  revalidateTag("blogs"); // ✅ add this
+  revalidateTag("blogs");
+  revalidateTag(`blog-${blog.slug}`);
 
   return NextResponse.json({
     message: "Visibility toggled",

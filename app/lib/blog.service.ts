@@ -14,13 +14,14 @@ export const getAllBlogs = unstable_cache(
   { tags: ["blogs"] }
 );
 
-export const getBlogBySlug = unstable_cache(
-  async (slug: string) => {
-    await connectDB();
-    const blog = await Blog.findOne({ slug, isHidden: false }).lean();
-    if (!blog) return null;
-    return JSON.parse(JSON.stringify(blog));
-  },
-  ["blog-by-slug"],
-  { tags: ["blogs"] }
-);
+export const getBlogBySlug = (slug: string) =>
+  unstable_cache(
+    async () => {
+      await connectDB();
+      const blog = await Blog.findOne({ slug, isHidden: false }).lean();
+      if (!blog) return null;
+      return JSON.parse(JSON.stringify(blog));
+    },
+    [`blog-by-slug-${slug}`],
+    { tags: ["blogs", `blog-${slug}`] }
+  )();
