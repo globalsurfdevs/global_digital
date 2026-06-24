@@ -13,7 +13,6 @@ const PortfolioList = ({
   dbBlogs: any[];
 }) => {
   const allBlogs = [
-    ...BlogData,
     ...dbBlogs
       .filter((b: any) => !b.isHidden)
       .map((b: any) => ({
@@ -23,6 +22,9 @@ const PortfolioList = ({
         list_heading: b.heading,
         slug: b.slug,
       })),
+
+    // ...[...BlogData].sort((a, b) => b.id - a.id).map((b: any) => ({ ...b })),
+    ...BlogData,
   ];
 
   return (

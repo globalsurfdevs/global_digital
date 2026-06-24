@@ -87,11 +87,16 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
 
         setValue("metaTitle", b.metaTitle ?? "");
         setValue("metaDescription", b.metaDescription ?? "");
+        setValue("category", b.category ?? "");
         setValue("heading", b.heading ?? "");
         setValue("slug", b.slug ?? "");
         setValue("thumbnailAlt", b.thumbnailAlt ?? "");
         setValue("featuredImageAlt", b.featuredImageAlt ?? "");
         setValue("faqTitle", b.faqTitle ?? "");
+        setValue("ctaTitle", b.ctaTitle ?? "");
+        setValue("ctaDescription", b.ctaDescription ?? "");
+        setValue("ctaButtonText", b.ctaButtonText ?? "");
+        setValue("ctaButtonLink", b.ctaButtonLink ?? "");
         setValue("content", b.content ?? "");
         setValue("schemaScript", b.schemaScript ?? "");
         setContent(b.content ?? "");
@@ -281,6 +286,10 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
           <input {...register("metaTitle")} className={inputClass} />
         </div>
         <div className="flex flex-col gap-2">
+          <Label content="Meta Description" />
+          <input {...register("metaDescription")} className={inputClass} />
+        </div>
+        <div className="flex flex-col gap-2">
           <Label content="Schema Script (JSON)" />
           <textarea
             {...register("schemaScript")}
@@ -321,6 +330,13 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
           <input
             {...register("slug")}
             className={`${inputClass} cursor-not-allowed bg-gray-50`}
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <Label content="Category" />
+          <input
+            {...register("category")}
+            className={inputClass}
           />
         </div>
       </section>
@@ -506,6 +522,32 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
             </div>
           </div>
         ))}
+      </section>
+
+      <section className="mt-10 flex flex-col gap-6 rounded-md border border-gray-200 p-6 dark:border-gray-700">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          CTA Section
+        </h2>
+
+        <div className="flex flex-col gap-2">
+          <Label content="CTA Title" />
+          <input {...register("ctaTitle")} className={inputClass} />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Label content="CTA Description" />
+          <input {...register("ctaDescription")} className={inputClass} />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Label content="CTA Button Text" />
+          <input {...register("ctaButtonText")} className={inputClass} />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Label content="CTA Button Link" />
+          <input {...register("ctaButtonLink")} className={inputClass} />
+        </div>
       </section>
 
       {/* SUBMIT */}

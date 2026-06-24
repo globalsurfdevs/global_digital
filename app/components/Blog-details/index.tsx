@@ -158,8 +158,6 @@
 
 // export default BlogDetails;
 
-
-
 "use client";
 
 import React, { useEffect } from "react";
@@ -174,12 +172,17 @@ type DbBlogPost = {
   _id: string;
   heading: string;
   slug: string;
+  category: string;
   thumbnail: string;
   featuredImage: string;
   featuredImageAlt: string;
   publishedAt: string;
   updatedAt: string;
   content: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  ctaButtonLink: string;
   faqTitle: string;
   faqItems?: {
     question: string;
@@ -197,9 +200,7 @@ type Props = {
   dbBlog: DbBlogPost | null;
 };
 
-
 const BlogDetails = ({ dbBlog }: Props) => {
-
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
 
@@ -233,28 +234,35 @@ const BlogDetails = ({ dbBlog }: Props) => {
             publishedon={formatDate(dbBlog.publishedAt)}
             updatedon={formatDate(dbBlog.updatedAt)}
             readtime={dbBlog.items?.length}
+            category={dbBlog.category}
           />
         )}
       </div>
 
       {dbBlog?.items && (
-        <TableOfContents content={dbBlog?.content} items={dbBlog?.items}  hasFaq={faqData.length > 0} />
+        <TableOfContents
+          content={dbBlog?.content}
+          items={dbBlog?.items}
+          hasFaq={faqData.length > 0}
+        />
       )}
 
       {dbBlog?.items && <BlogContentSection items={dbBlog.items} />}
 
-     {faqData.length > 0 && (
+      {faqData.length > 0 && (
         <div id={FAQ_ANCHOR}>
           <BlogFAQ data={faqData} title={dbBlog?.faqTitle} />
         </div>
       )}
 
-      <Cta
-        title={ctaData.title}
-        description={ctaData.description}
-        buttonText={ctaData.buttonText}
-        buttonLink={ctaData.buttonLink}
-      />
+      {dbBlog?.ctaTitle && (
+        <Cta
+          title={dbBlog?.ctaTitle}
+          description={dbBlog?.ctaDescription}
+          buttonText={dbBlog?.ctaButtonText}
+          buttonLink={dbBlog?.ctaButtonLink}
+        />
+      )}
     </>
   );
 };

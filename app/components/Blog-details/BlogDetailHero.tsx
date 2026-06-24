@@ -12,6 +12,7 @@ interface BlogDetailHeroProps {
   publishedon?: string;
   updatedon?: string;
   readtime?: string | number;
+  category?: string;
 }
 
 const BlogDetailHero = ({
@@ -21,6 +22,7 @@ const BlogDetailHero = ({
   publishedon,
   updatedon,
   readtime,
+  category,
 }: BlogDetailHeroProps) => {
   return (
     <>
@@ -35,7 +37,7 @@ const BlogDetailHero = ({
             <div className="flex justify-between">
               <div className="flex items-center gap-2">
                 <p className="text-[10px] text-[#77787B] sm:text-font14 lg:text-font19">
-                Blog
+                {category}
                 </p>
                 <div className="h-[14px] w-[14px] bg-primary" />
                 <p className="text-[10px] text-[#77787B] sm:text-font14 lg:text-font19">
