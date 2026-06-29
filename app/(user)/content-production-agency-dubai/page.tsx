@@ -38,9 +38,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Creative Content Production Agency in Dubai | GS Digital ",
+    title: "Content Production Dubai | Video & Social Content | GS Digital ",
     description:
-      "We are a Dubai-based content production agency delivering high-impact content production for social media, video, and digital platforms.  Get in touch with us! ",
+      "Content production services in Dubai: short‑form video, long‑form content and production pipelines that drive engagement and conversions. Request a production brief.",
     alternates: {
       canonical: "https://www.globalsurf.ae/content-production-agency-dubai",
     },

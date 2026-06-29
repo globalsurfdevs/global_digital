@@ -18,9 +18,9 @@ interface Canonicals {
 }
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Case Study | GS Digital",
+    title: "Case Studies | Performance & Creative Results | GS Digital",
     description:
-      "",
+      "Explore case studies showing ROI-driven results across SEO, PPC, social and web development for Dubai clients. See measurable outcomes and approaches.",
     alternates: {
       canonical: "https://www.globalsurf.ae/case-study",
     },

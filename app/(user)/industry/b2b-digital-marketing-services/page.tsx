@@ -29,9 +29,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "B2B Digital Marketing Services in Dubai | Global Surf Digita ",
+    title: "B2B Digital Marketing Dubai | B2B digital agency | GS Digital",
     description:
-      "Partner with Dubai's top-tier B2B digital marketing agency to attract qualified leads, nurture relationships, and boost long-term growth. Get a quote now!",
+      "B2B digital marketing in Dubai: LinkedIn, content, SEO and ABM to attract procurement and enterprise buyers. Get a consultation.",
     alternates: {
       canonical: "https://www.globalsurf.ae/industry/b2b-digital-marketing-services",
     },
