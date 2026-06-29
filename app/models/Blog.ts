@@ -15,6 +15,7 @@ export interface IBlogFaqItem {
 export interface IBlog extends Document {
   metaTitle: string;
   metaDescription: string;
+  category: string;
   heading: string;
   slug: string;
   publishedAt: Date;
@@ -30,6 +31,10 @@ export interface IBlog extends Document {
   createdAt: Date;
   updatedAt: Date;
   schemaScript: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  ctaButtonLink: string;
 }
 
 const BlogItemSchema = new Schema<IBlogItem>({
@@ -46,6 +51,7 @@ const BlogSchema = new Schema<IBlog>(
   {
     metaTitle: { type: String, default: "" },
     metaDescription: { type: String, default: "" },
+    category: { type: String, default: "" },
     heading: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
     publishedAt: { type: Date, default: Date.now },
@@ -59,6 +65,10 @@ const BlogSchema = new Schema<IBlog>(
     faqItems: { type: [BlogFaqItemSchema], default: [] },
     isHidden: { type: Boolean, default: false },
     schemaScript: { type: String, default: "" },
+    ctaTitle: { type: String, default: "" },
+    ctaDescription: { type: String, default: "" },
+    ctaButtonText: { type: String, default: "" },
+    ctaButtonLink: { type: String, default: "" },
   },
   { timestamps: true }
 );

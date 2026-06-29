@@ -12,6 +12,7 @@ export interface BlogFaqItem {
 export interface BlogFormInputs {
   metaTitle: string;
   metaDescription: string;
+  category: string;
   heading: string;
   slug: string;
   thumbnail: string;
@@ -22,6 +23,10 @@ export interface BlogFormInputs {
   items: BlogItem[];
   faqTitle: string;
   faqItems: BlogFaqItem[];
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  ctaButtonLink: string;
   schemaScript?: string;
 }
 
