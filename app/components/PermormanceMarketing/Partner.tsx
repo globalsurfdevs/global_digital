@@ -42,7 +42,7 @@ const Partner: React.FC<PartnerListProps> = ({ data }) => {
             }}
           >
             <div className="border-b border-gray-500 pb-6   lg:pb-8">
-              <h2 className="title-65">Why choose GS Digital as your SEO company in Dubai</h2>
+              <h2 className="title-65">Why Choose GS Digital as your Performance Marketing Agency in Dubai</h2>
             </div>
           </motion.div>
           <motion.div

@@ -1,4 +1,5 @@
 import React from "react";
+import Script from "next/script";
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Expertise from "../../components/PermormanceMarketing/Expertise";
 import Boost from "../../components/PermormanceMarketing/Boost";
@@ -23,6 +24,11 @@ import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/performance-marketing/cta";
 import { Faq } from "../../data/services/performance-marketing/faq";
 
+import FaqSchema from "../../components/Schema/FaqSchemad";
+import {
+  PerformanceMarketingSchema,
+  PerformanceMarketingBreadcrumb  } from "../../components/Schema/ServiceSchema";
+
 interface Canonicals {
   canonical: string;
 }
@@ -35,7 +41,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Data-Driven Performance Marketing Agency in Dubai | GS Digital",
+    title: "ROI-Driven Performance Marketing Agency in Dubai | GS Digital",
     description:
       "Drive Measurable Results. Our performance-based approach aligns bespoke strategies with your brand's objectives. Contact us today for a free consultation.",
     alternates: {
@@ -46,10 +52,25 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
+      <Script
+        id="service-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(PerformanceMarketingSchema),
+        }}
+      />
+
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(PerformanceMarketingBreadcrumb),
+        }}
+      />
+      <FaqSchema faq={Faq} />
       <section className="hidegslider">
         <HeroSection
           Bannerdata={BannerSection}
-          order={"01"}
           bannerlogp={true}
           maxchwidth={60}
         />
