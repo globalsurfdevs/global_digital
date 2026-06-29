@@ -215,9 +215,8 @@ const Header = () => {
 
             {/* ── Nav ── */}
             <nav
-              className={`${
-                isMenuOpen ? "block" : "hidden"
-              } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
+              className={`${isMenuOpen ? "block" : "hidden"
+                } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
               lg:static lg:flex lg:w-auto lg:space-x-5 lg:bg-transparent xl:space-x-8`}
             >
               {/* ABOUT — plain div, hover handled by Tailwind CSS */}
@@ -402,14 +401,23 @@ const Header = () => {
           </AnimatePresence>
         </div>
 
-     
-        {/* ---- for seo purpose (ssr) ----- */}
+
+        {/* SEO: static service links for crawlers */}
         <nav aria-label="Services sitemap" className="sr-only">
-          {allServiceLinks.map(({ url, label }) => (
-            <Link key={url} href={url}>
-              {label || url.replace(/^\//, "").replace(/-/g, " ")}
-            </Link>
-          ))}
+          {allServiceLinks
+            .filter(({ url }) => url && url !== "#")
+            .map(({ url }) => {
+              const label = url
+                .replace(/^\//, "")           // strip leading slash
+                .replace(/-/g, " ")           // hyphens to spaces
+                .replace(/[<>]/g, "")         // ← strip any stray angle brackets
+                .trim();
+              return label ? (
+                <Link key={url} href={url}>
+                  {label}
+                </Link>
+              ) : null;
+            })}
         </nav>
       </header>
     </>

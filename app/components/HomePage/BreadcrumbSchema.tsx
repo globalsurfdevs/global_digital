@@ -7,8 +7,14 @@ import React from "react";
 const BreadcrumbSchema = () => {
   const pathname = usePathname();
 
-  // Skip home page
-  if (pathname === "/") return null;
+  // Skip home page + performance marketing page
+  const excludedPaths = [
+    "/",
+    "/performance-marketing-agency-dubai"
+  ];
+
+  if (excludedPaths.includes(pathname)) return null;
+
 
   const baseUrl = "https://www.globalsurf.ae";
 
