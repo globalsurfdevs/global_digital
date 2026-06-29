@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Cookie Policy | GS Digital",
     description:
-      "GS Digital",
+      "Legal cookie policy for GS Digital.",
     alternates: {
       canonical: "https://www.globalsurf.ae/cookie-policy",
     },

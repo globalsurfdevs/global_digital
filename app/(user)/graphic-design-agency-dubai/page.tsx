@@ -46,9 +46,9 @@ type Metadata = {
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title:
-      "Graphic Design Agency Dubai | Graphic Design Services UAE",
+      "Graphic Design Agency Dubai | Graphic Design Services UAE | GS Digital",
     description:
-      "Elevate your brand with Dubai’s leading graphic design agency. From logo design to packaging, we deliver graphic design services that drive ROI.  Call us!",
+      "Elevate your brand with Dubai's leading graphic design agency. From logo design to packaging, we deliver graphic design services that drive ROI. Call us!",
     alternates: {
       canonical: "https://www.globalsurf.ae/graphic-design-agency-dubai",
     },

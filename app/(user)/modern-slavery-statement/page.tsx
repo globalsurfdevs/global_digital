@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Modern Slavery and Human Trafficking Statement | GS Digital",
     description:
-      "GS Digital",
+      "Corporate modern slavery and human trafficking statement for GS Digital.",
     alternates: {
       canonical: "https://www.globalsurf.ae/modern-slavery-statement",
     },

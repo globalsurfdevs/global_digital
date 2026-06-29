@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Legal | GS Digital",
     description:
-      "GS Digital",
+      "Legal information and policies for GS Digital.",
     alternates: {
       canonical: "https://www.globalsurf.ae/legal",
     },

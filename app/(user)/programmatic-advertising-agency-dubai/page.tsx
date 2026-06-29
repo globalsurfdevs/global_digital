@@ -37,9 +37,9 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Programmatic Advertising Agency in Dubai | GS Digital ",
+    title: "Programmatic Advertising Agency in Dubai |  Targeted Display & Video | GS Digital",
     description:
-      "Unlock the power of programmatic advertising with the leading programmatic advertising agency in Dubai.  Reach your audience with GS Digital- call now! ",
+      "Programmatic advertising in Dubai: audience planning, DSP activation and optimisation for brand and performance campaigns. Request a programmatic demo.",
     alternates: {
       canonical:
         "https://www.globalsurf.ae/programmatic-advertising-agency-dubai",
