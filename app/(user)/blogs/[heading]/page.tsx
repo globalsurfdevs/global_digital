@@ -107,6 +107,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: canonicalUrl },
+    robots: "index, follow",
     openGraph: {
       title,
       description,
