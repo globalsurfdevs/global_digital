@@ -14,6 +14,13 @@ import { handleImageChange } from "@/app/helpers/handleImageChange";
 import { uploadImagesFromEditor } from "@/app/helpers/uploadImagesFromEditor";
 import { FiPlus, FiTrash2 } from "react-icons/fi";
 
+interface AuthorOption {
+  _id: string;
+  name: string;
+  designation: string;
+  imageSmall?: string;
+}
+
 const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   const router = useRouter();
   const { blogId } = useParams();
@@ -38,6 +45,11 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   const [content, setContent] = useState("");
   const [schemaError, setSchemaError] = useState<string | null>(null);
 
+  // authors list + selection
+  const [authors, setAuthors] = useState<AuthorOption[]>([]);
+  const [authorsLoading, setAuthorsLoading] = useState(true);
+  const [pendingAuthorId, setPendingAuthorId] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -50,6 +62,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
       items: [],
       faqItems: [],
       schemaScript: "",
+      author: "",
     },
   });
 
@@ -64,6 +77,33 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
     append: appendFaq,
     remove: removeFaq,
   } = useFieldArray({ control, name: "faqItems" });
+
+  const selectedAuthorId = watch("author");
+  const selectedAuthor = authors.find((a) => a._id === selectedAuthorId);
+
+  // load authors list for the select dropdown
+  useEffect(() => {
+    const fetchAuthors = async () => {
+      try {
+        const res = await fetch("/api/authors");
+        const data = await res.json();
+        setAuthors(data.data ?? []);
+      } catch {
+        toast.error("Failed to load authors");
+      } finally {
+        setAuthorsLoading(false);
+      }
+    };
+    fetchAuthors();
+  }, []);
+
+  // once authors are loaded, apply any author id that was waiting on them
+  // (e.g. arrived from the blog fetch before the authors list was ready)
+  useEffect(() => {
+    if (authorsLoading || !pendingAuthorId) return;
+    setValue("author", pendingAuthorId);
+    setPendingAuthorId(null);
+  }, [authorsLoading, pendingAuthorId, setValue]);
 
   // auto-slug from heading
   useEffect(() => {
@@ -99,6 +139,21 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         setValue("ctaButtonLink", b.ctaButtonLink ?? "");
         setValue("content", b.content ?? "");
         setValue("schemaScript", b.schemaScript ?? "");
+
+        // author may be a populated object ({ _id, ... }) or a raw id string
+        const authorId =
+          typeof b.author === "object" && b.author !== null
+            ? b.author._id
+            : b.author;
+
+        if (authorId) {
+          if (!authorsLoading) {
+            setValue("author", authorId);
+          } else {
+            setPendingAuthorId(authorId);
+          }
+        }
+
         setContent(b.content ?? "");
 
         if (b.thumbnail) setThumbnailPreview(b.thumbnail);
@@ -179,6 +234,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         items: processedItems,
         faqItems: processedFaqItems,
         schemaScript: data.schemaScript?.trim() ?? "",
+        author: data.author || null, // stores the selected author's _id
       };
 
       const url = editMode ? `/api/blogs?id=${blogId}` : `/api/blogs`;
@@ -548,6 +604,56 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
           <Label content="CTA Button Link" />
           <input {...register("ctaButtonLink")} className={inputClass} />
         </div>
+      </section>
+
+      {/* AUTHOR */}
+      <section className="mt-10 flex flex-col gap-4 rounded-md border border-gray-200 p-6 dark:border-gray-700">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          Author
+        </h2>
+
+        <div className="flex flex-col gap-2">
+          <Label content="Select Author" />
+          <select
+            {...register("author")}
+            className={`${inputClass} py-2`}
+            disabled={authorsLoading}
+          >
+            <option value="">
+              {authorsLoading ? "Loading authors..." : "-- Select an author --"}
+            </option>
+            {authors.map((a) => (
+              <option key={a._id} value={a._id}>
+                {a.name} — {a.designation}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {selectedAuthor && (
+          <div className="flex items-center gap-3 rounded-md border border-gray-200 p-3 dark:border-gray-700">
+            {selectedAuthor.imageSmall ? (
+              <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
+                <Image
+                  src={selectedAuthor.imageSmall}
+                  alt={selectedAuthor.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <div className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-200" />
+            )}
+            <div className="flex flex-col">
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                {selectedAuthor.name}
+              </span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                {selectedAuthor.designation}
+              </span>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* SUBMIT */}
