@@ -195,6 +195,7 @@ type DbBlogPost = {
     content: string;
     _id: string;
   }[];
+  author:string;
 };
 
 type Props = {

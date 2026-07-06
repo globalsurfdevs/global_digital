@@ -11,8 +11,9 @@ export default function AuthorBioCard({data}:{data:any}) {
         <div className="flex items-end gap-[31px]">
           <div className="relative w-[150px] h-[150.35px] group ease-in-out duration-300 overflow-hidden">
 
-            <div className="w-full h-full" >
-              <Image src={data.imageSmall} alt="image" fill className="absolute object-cover" />
+            <div className="w-full h-full relative">
+              <div className="before:content-[''] before:absolute  before:h-[75%] before:bg-[#b8bbbd] before:w-full  before:left-0 before:bottom-0"></div>
+              <Image src={data.imageBig} alt="image" fill className="absolute object-cover" />
             </div>
 
           </div>
