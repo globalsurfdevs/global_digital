@@ -167,6 +167,7 @@ import BlogContentSection from "./BlogContentSection";
 import Cta from "../BlogSocialMedia/DynamicBlogCta";
 import { ctaData } from "@/app/data/blogdatas/DigitalMarketingData";
 import BlogFAQ from "./BlogFAQ";
+import AuthorBioCard from "./AuthorBioCard";
 
 type DbBlogPost = {
   _id: string;
@@ -223,6 +224,8 @@ const BlogDetails = ({ dbBlog }: Props) => {
       description: f.answer,
     })) ?? [];
 
+    console.log(dbBlog)
+
   return (
     <>
       <div>
@@ -263,6 +266,8 @@ const BlogDetails = ({ dbBlog }: Props) => {
           buttonLink={dbBlog?.ctaButtonLink}
         />
       )}
+
+      {dbBlog?.author && <AuthorBioCard data={dbBlog.author}/>}
     </>
   );
 };

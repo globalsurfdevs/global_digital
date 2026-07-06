@@ -165,6 +165,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import connectDB from "@/lib/mongodb";
 import Blog from "@/app/models/Blog";
+import '@/app/models/Author'
 
 export async function GET(req: NextRequest) {
   await connectDB();
@@ -172,13 +173,13 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get("id");
 
   if (id) {
-    const blog = await Blog.findById(id).lean();
+    const blog = await Blog.findById(id).populate("author").lean();
     if (!blog)
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     return NextResponse.json({ blog });
   }
 
-  const blogs = await Blog.find({}).sort({ createdAt: -1 }).lean();
+  const blogs = await Blog.find({}).sort({ createdAt: -1 }).populate("author").lean();
   return NextResponse.json({ blogs });
 }
 

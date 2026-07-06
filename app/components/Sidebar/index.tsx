@@ -135,6 +135,13 @@ const menuGroups = [
         label: "Channels Used (Portfolio)",
         route: "/admin/portfolio/channels",
       },
+      {
+        icon: (
+          <MdOutlinePanTool />
+        ),
+        label: "Authors",
+        route: "/admin/authors",
+      },
       // {
       //   icon: (
       //     <ImBooks />
