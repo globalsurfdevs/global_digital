@@ -8,7 +8,7 @@ const AuthorSchema = new Schema(
     designation: { type: String, required: true },
     description: { type: String, default: "" },
     about: { type: String, default: "" },
-    imageSmall: { type: String, default: "" }, // blog page image
+    // imageSmall: { type: String, default: "" }, // blog page image
     imageBig: { type: String, default: "" }, // detail page image
   },
   { timestamps: true },
