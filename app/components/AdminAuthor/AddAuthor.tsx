@@ -96,20 +96,20 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
     setIsSubmitting(true);
     try {
       let detailImageUrl: string = detailImagePreview ?? "";
-      let blogImageUrl: string = blogImagePreview ?? "";
+      // let blogImageUrl: string = blogImagePreview ?? "";
 
       if (detailImage) {
         detailImageUrl =
           (await generateAndUploadImage(detailImage)) || detailImageUrl;
       }
-      if (blogImage) {
-        blogImageUrl = (await generateAndUploadImage(blogImage)) || blogImageUrl;
-      }
+      // if (blogImage) {
+      //   blogImageUrl = (await generateAndUploadImage(blogImage)) || blogImageUrl;
+      // }
 
       const payload = {
         ...data,
         imageBig: detailImageUrl,
-        imageSmall: blogImageUrl,
+        // imageSmall: blogImageUrl,
       };
 
       const url = editMode
@@ -298,7 +298,7 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
               error={detailImageError}
             />
           </div>
-          <div className="flex flex-col gap-2">
+          {/* <div className="flex flex-col gap-2">
             <Label content="Blog Page Image" />
             <ImageUploadZone
               preview={blogImagePreview}
@@ -317,7 +317,7 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
               }
               error={blogImageError}
             />
-          </div>
+          </div> */}
         </div>
       </section>
 
