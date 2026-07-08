@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { IoMdCloseCircle } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
 import { toast } from "sonner";
+import { FaRegEye } from "react-icons/fa";
+import Link from "next/link";
 
 interface Author {
   _id: string;
@@ -16,6 +18,7 @@ interface Author {
   imageBig: string;
   description: string;
   about: string;
+  slug:string;
 }
 
 const AdminPortfolioAuthor = () => {
@@ -87,6 +90,7 @@ const AdminPortfolioAuthor = () => {
             </div>
 
             <div className="ml-auto flex gap-5 items-center">
+              <Link href={`/author/${author.slug}`} target="_blank"><FaRegEye className="text-xl cursor-pointer"/></Link>
               <MdEdit
                 className="text-black cursor-pointer text-xl"
                 onClick={() =>

@@ -31,17 +31,17 @@ const PortfolioList = ({
     <>
       <div className="container mx-auto py-4">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1.3, ease: "easeOut" },
-            },
-          }}
+          // initial="hidden"
+          // whileInView="visible"
+          // viewport={{ once: true, amount: 0.1 }}
+          // variants={{
+          //   hidden: { opacity: 0, y: 50 },
+          //   visible: {
+          //     opacity: 1,
+          //     y: 0,
+          //     transition: { duration: 1.3, ease: "easeOut" },
+          //   },
+          // }}
         >
           <div className="portfolio pb-[50px] pt-[60px] ">
             <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
