@@ -30,7 +30,7 @@ export default function AuthorBioCard({data}:{data:any}) {
             href={data.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${name} on LinkedIn`}
+            aria-label={`${data.name} on LinkedIn`}
             className="w-[50px] h-[50px] flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors rounded-[14px]"
           >
             {/* <Linkedin size={16} className="text-gray-800" fill="currentColor" /> */}
