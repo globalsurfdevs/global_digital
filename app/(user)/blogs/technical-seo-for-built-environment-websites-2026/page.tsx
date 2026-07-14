@@ -12,7 +12,7 @@ import {
 
 } from "../../../data/blogdatas/TechnicalSeo";
 
-
+import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
 interface Canonicals {
   canonical: string;
 }
@@ -37,9 +37,21 @@ export async function generateMetadata(): Promise<Metadata> {
 
   };
 }
-
-const page = () => {
-
+async function getAuthor(authorId: string) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.globalsurf.ae";
+  try {
+    const res = await fetch(`${baseUrl}/api/authors?id=${authorId}`, {
+      next: { revalidate: 3600, tags: [`author-${authorId}`] },
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.author ?? null;
+  } catch {
+    return null;
+  }
+}
+const page = async () => {
+  const author = await getAuthor("6a4ca398c0f7cb5455693c8a");
 
   return (
     <div className="relative">
@@ -51,6 +63,9 @@ const page = () => {
       />
       <ContentSectionrefOne sections={contentSectionsData} />
       <TechnicalSeoEssentials />
+      <div className="pt-[50px] lg:pt-[100px]">
+      {author && <AuthorBioCard data={author} />}
+      </div>
     </div>
   );
 };

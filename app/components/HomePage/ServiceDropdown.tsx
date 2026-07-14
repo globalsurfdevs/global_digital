@@ -61,12 +61,6 @@ type ServiceData = {
        text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
        url: "/web-development-agency-dubai",
      },
-
-     "Web Design": {
-       text: 'Crafted for users<span class="text-[#E43D30]">.</span><br> Styled for brands<span class="text-[#E43D30]">.</span>',
-       url: "/web-design-agency-dubai ",
-     },
-
      "Mobile App Development": {
        text: 'Tap-worthy<span class="text-[#E43D30]">.</span><br> Tech-ready<span class="text-[#E43D30]">.</span>',
        url: "/mobile-app-development-company-dubai",
