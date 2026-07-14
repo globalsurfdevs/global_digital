@@ -13,6 +13,7 @@ import {
   videoProductionsocialData, videocountData, scrollSectionsData, authors
 
 } from "../../../data/blogdatas/globalsurfBlogData";
+import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
 
 
 interface Canonicals {
@@ -40,7 +41,22 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const page = () => {
+async function getAuthor(authorId: string) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.globalsurf.ae";
+  try {
+    const res = await fetch(`${baseUrl}/api/authors?id=${authorId}`, {
+      next: { revalidate: 3600, tags: [`author-${authorId}`] },
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.author ?? null;
+  } catch {
+    return null;
+  }
+}
+
+const page = async () => {
+  const author = await getAuthor("6a4b912e480d65685cc374f5");
 
 
   return (
@@ -50,6 +66,7 @@ const page = () => {
       <Contentone sections={contentSectionsData} />
       <Contentone sections={videoProductionsocialData} />
       <ContentSectionStaic />
+      {author && <AuthorBioCard data={author} />}
     </div>
   );
 };

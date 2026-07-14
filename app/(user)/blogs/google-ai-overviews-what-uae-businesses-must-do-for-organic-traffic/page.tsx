@@ -16,6 +16,7 @@ import {
 import Blogfaq from "../../../components/common/BlogFaq";
 import ThreeColumnTable from "@/app/components/BlogSocialMedia/AiThreecolsTable";
 import Twosecblog from "@/app/components/BlogSocialMedia/TwoHsec";
+import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
 
 
 interface Canonicals {
@@ -65,7 +66,22 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 
-const page = () => {
+async function getAuthor(authorId: string) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.globalsurf.ae";
+  try {
+    const res = await fetch(`${baseUrl}/api/authors?id=${authorId}`, {
+      next: { revalidate: 3600, tags: [`author-${authorId}`] },
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.author ?? null;
+  } catch {
+    return null;
+  }
+}
+
+const page = async () => {
+  const author = await getAuthor("6a4ca398c0f7cb5455693c8a");
 
   return (
     <div className="relative">
@@ -98,6 +114,7 @@ const page = () => {
         {/* <Contentone sections={contractorMarketingData} /> */}
         <Blogfaq data={Faq}  />
       </section>
+        {author && <AuthorBioCard data={author} />}
       </div>
     </div>
   );

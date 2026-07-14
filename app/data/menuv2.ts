@@ -48,10 +48,6 @@ export const menuItems = [
             url: "/web-development-agency-dubai",
           },
           {
-            item: "Web Design",
-            url: "/web-design-agency-dubai",
-          },
-          {
             item: "Mobile App Development",
             url: "/mobile-app-development-company-dubai",
           },
