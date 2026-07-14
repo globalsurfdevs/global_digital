@@ -40,21 +40,26 @@ export async function generateMetadata(): Promise<Metadata> {
 
   };
 }
+export const dynamic = 'force-dynamic';
 
 async function getAuthor(authorId: string) {
   const baseUrl = "https://www.globalsurf.ae";
+  const url = `${baseUrl}/api/authors?id=${authorId}`;
   try {
-    const res = await fetch(`${baseUrl}/api/authors?id=${authorId}`, {
-      next: { revalidate: 3600, tags: [`author-${authorId}`] },
-    });
-    if (!res.ok) return null;
+    const res = await fetch(url, { next: { revalidate: 3600, tags: [`author-${authorId}`] } });
+    console.log("getAuthor status:", res.status, res.headers.get("content-type"));
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("getAuthor bad response:", text.slice(0, 300));
+      return null;
+    }
     const data = await res.json();
     return data.author ?? null;
-  } catch {
+  } catch (err) {
+    console.error("getAuthor threw:", err);
     return null;
   }
 }
-
 const page = async () => {
   const author = await getAuthor("6a4b912e480d65685cc374f5");
 
