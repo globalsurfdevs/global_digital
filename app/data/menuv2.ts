@@ -9,93 +9,92 @@ export const menuItems = [
     item: "SERVICES",
     children: [
       {
-        item: "CREATIVE SERVICES",
-
-        url: "/creative-agency-dubai",
+        item: "DIGITAL MARKETING",
+        url: "/digital-marketing-services",
         children: [
           {
-            item: "Branding",
-            url: "/branding-agency-dubai",
+            item: "SEO",
+            url: "/seo-agency-dubai",
           },
           {
-            item: "Logo Design",
-            url: "/logo-design-agency-dubai",
+            item: "AI Search Visibility (GEO)",
+            url: "/generative-engine-optimization",
           },
           {
-            item: "Graphic Design",
-            url: "/graphic-design-agency-dubai",
+            item: "Performance Marketing",
+            url: "/performance-marketing-agency-dubai",
           },
           {
-            item: "Copywriting",
-            url: "/creative-copywriting-agency-dubai",
+            item: "Social Media",
+            url: "/social-media-agency-dubai",
           },
           {
-            item: "Content Production",
-            url: "/content-production-agency-dubai",
+            item: "Content Marketing",
+            url: "/content-marketing-agency-dubai",
+          },
+          {
+            item: "Marketing Strategy Consulting",
+            url: "/marketing-strategy-consulting",
           },
         ],
       },
-      {
-        item: "Web Design & Development",
 
-        url: "/web-design-and-development",
+      {
+        item: "WEB & APP DEVELOPMENT",
+        url: "",
         children: [
           {
             item: "Web Development",
             url: "/web-development-agency-dubai",
           },
           {
-            item: "Website Design",
+            item: "Web Design",
             url: "/web-design-agency-dubai",
           },
           {
-            item: "Mobile App",
+            item: "Mobile App Development",
             url: "/mobile-app-development-company-dubai",
           },
           {
-            item: "Web Apps",
+            item: "Web App Development",
             url: "/web-app-dev-agency",
           },
           {
-            item: "Ecommerce Development",
+            item: "E-Commerce Development",
             url: "/e-commerce-web-development-company",
           },
         ],
       },
-      {
-        item: "DIGITAL MARKETING",
 
-        url: "/digital-marketing-services",
+      {
+        item: "BRANDING & CONTENT PRODUCTION",
+        url: "/creative-agency-dubai",
         children: [
           {
-            item: "Performance Marketing",
-            url: "/performance-marketing-agency-dubai",
+            item: "Copywriting & Messaging",
+            url: "/creative-copywriting-agency-dubai",
           },
           {
-            item: "Search Engine Optimisation",
-            url: "/seo-agency-dubai",
-          },
-          {
-            item: "Social Media Services",
-            url: "/social-media-agency-dubai",
+            item: "Photography & Video Production",
+            url: "/content-production-agency-dubai",
           },
         ],
       },
-      {
-        item: "Marketing intelligence",
 
+      {
+        item: "AI, DATA & INTELLIGENCE",
         url: "/marketing-intelligence-agency-dubai",
         children: [
           {
-            item: "Data & Analytics",
-            url: "/data-analytics-services-dubai",
-          },
-          {
-            item: "Conversion Rate Optimization (CRO)",
+            item: "Conversion Rate Optimization",
             url: "/conversion-rate-optimization-agency-dubai",
           },
           {
-            item: "Marketing Automation",
+            item: "Data, Analytics & Performance Dashboards",
+            url: "/data-analytics-services-dubai",
+          },
+          {
+            item: "Marketing Automation & MarTech Consulting",
             url: "/marketing-automation-agency-dubai",
           },
         ],
