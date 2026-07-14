@@ -46,7 +46,8 @@ async function getAuthor(authorId: string) {
   const baseUrl = "https://www.globalsurf.ae";
   const url = `${baseUrl}/api/authors?id=${authorId}`;
   try {
-    const res = await fetch(url, { next: { revalidate: 3600, tags: [`author-${authorId}`] } });
+    // const res = await fetch(url, { next: { revalidate: 3600, tags: [`author-${authorId}`] } });
+    const res = await fetch(url);
     console.log("getAuthor status:", res.status, res.headers.get("content-type"));
     if (!res.ok) {
       const text = await res.text();
