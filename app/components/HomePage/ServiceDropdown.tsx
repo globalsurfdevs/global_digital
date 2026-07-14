@@ -59,12 +59,12 @@ type ServiceData = {
      categoryText: 'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
      "Web Development": {
        text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
-       url: "/web-design-agency-dubai",
+       url: "/web-development-agency-dubai",
      },
 
      "Web Design": {
        text: 'Crafted for users<span class="text-[#E43D30]">.</span><br> Styled for brands<span class="text-[#E43D30]">.</span>',
-       url: "/web-development-agency-dubai",
+       url: "/web-design-agency-dubai ",
      },
 
      "Mobile App Development": {
