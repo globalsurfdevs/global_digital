@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getAuthor(authorId: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.globalsurf.ae";
+  const baseUrl = "https://www.globalsurf.ae";
   try {
     const res = await fetch(`${baseUrl}/api/authors?id=${authorId}`, {
       next: { revalidate: 3600, tags: [`author-${authorId}`] },
