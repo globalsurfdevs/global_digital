@@ -62,6 +62,7 @@ async function getAuthor(authorId: string) {
 }
 const page = async () => {
   const author = await getAuthor("6a4b912e480d65685cc374f5");
+  console.log("Author data:", author);
 
 
   return (
