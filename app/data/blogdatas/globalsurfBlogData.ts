@@ -9,7 +9,7 @@ export const BannerSection = [
       { label: "5 Minutes Read", url: "" },
     ],
     title:
-      "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summit",
+      "Beyond Reach and Scale: GS Digital’s Reflections on the 1 Billion Followers Summits",
     publishedon: "Sep 15, 2025",
     updatedon: "14, 2025",
     subtitle: "Building Strong Brand Identities With Creative Design, Marketing Collateral, and Storytelling",
