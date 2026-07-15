@@ -4,7 +4,7 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.localimage1,
-    heroAlt: "Professional Logo Design Services in Dubai",
+    heroAlt: "Local SEO Agency in Dubai",
     navigation: [
       { label: "Home", url: "/" },
       { label: "Digital Marketing",url: "/digital-marketing-services" },

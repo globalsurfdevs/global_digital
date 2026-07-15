@@ -32,7 +32,12 @@ import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
 import { log } from "console";
+import FaqSchema from "@/app/components/Schema/FaqSchemad";
 
+import {
+  LocalSEOServiceSchema
+} from "@/app/components/Schema/ServiceSchema";
+import Script from "next/dist/client/script";
 interface Canonicals {
   canonical: string;
 }
@@ -58,6 +63,14 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(LocalSEOServiceSchema),
+        }}
+      />
+      <FaqSchema faq={Faq} />
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
