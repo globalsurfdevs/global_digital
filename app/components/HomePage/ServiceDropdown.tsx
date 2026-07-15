@@ -20,37 +20,37 @@ type ServiceData = {
 
  export const serviceData: ServiceData = {
    "Digital Marketing": {
-     titleurl: "/digital-marketing-services",
+     titleurl: "digital-marketing-services",
      categoryText: 'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
 
      "SEO": {
        text: 'Rank with Purpose<span class="text-[#E43D30]">.</span><br> Stay with Relevance<span class="text-[#E43D30]">.</span>',
-       url: "/seo-agency-dubai",
+       url: "seo-agency-dubai",
      },
 
      "AI Search Visibility (GEO)": {
        text: 'Indexed For Search<span class="text-[#E43D30]">.</span><br> Context For Every AI<span class="text-[#E43D30]">.</span>',
-       url: "/generative-engine-optimization",
+       url: "generative-engine-optimization",
      },
 
      "Performance Marketing": {
        text: 'Built to Scale<span class="text-[#E43D30]">.</span><br> Measured to Win<span class="text-[#E43D30]">.</span>',
-       url: "/performance-marketing-agency-dubai",
+       url: "performance-marketing-agency-dubai",
      },
 
      "Social Media": {
        text: 'Real Voices<span class="text-[#E43D30]">.</span><br> Real Impact<span class="text-[#E43D30]">.</span>',
-       url: "/social-media-agency-dubai",
+       url: "social-media-agency-dubai",
      },
 
      "Content Marketing": {
        text: 'Words that Move<span class="text-[#E43D30]">.</span><br> Stories that Stay<span class="text-[#E43D30]">.</span>',
-       url: "/content-marketing-agency-dubai",
+       url: "content-marketing-agency-dubai",
      },
 
      "Marketing Strategy Consulting": {
        text: 'Built on Data<span class="text-[#E43D30]">.</span><br>Driven by Strategy<span class="text-[#E43D30]">.</span>',
-       url: "/marketing-strategy-consulting",
+       url: "marketing-strategy-consulting",
      },
    },
 
@@ -59,54 +59,54 @@ type ServiceData = {
      categoryText: 'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
      "Web Development": {
        text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
-       url: "/web-development-agency-dubai",
+       url: "web-development-agency-dubai",
      },
      "Mobile App Development": {
        text: 'Tap-worthy<span class="text-[#E43D30]">.</span><br> Tech-ready<span class="text-[#E43D30]">.</span>',
-       url: "/mobile-app-development-company-dubai",
+       url: "mobile-app-development-company-dubai",
      },
 
      "Web App Development": {
        text: 'Complex needs<span class="text-[#E43D30]">.</span><br> Clean solutions<span class="text-[#E43D30]">.</span>',
-       url: "/web-app-dev-agency",
+       url: "web-app-dev-agency",
      },
 
      "E-Commerce Development": {
        text: 'Seamless Carts<span class="text-[#E43D30]">.</span><br>Serious Results<span class="text-[#E43D30]">.</span>',
-       url: "/e-commerce-web-development-company",
+       url: "e-commerce-web-development-company",
      },
    },
 
    "Branding & Content Production": {
-     titleurl: "/creative-agency-dubai",
+     titleurl: "creative-agency-dubai",
      categoryText: 'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',
      "Copywriting & Messaging": {
        text: 'Words that Win<span class="text-[#E43D30]">.</span><br>Stories that Stick<span class="text-[#E43D30]">.</span>',
-       url: "/creative-copywriting-agency-dubai",
+       url: "creative-copywriting-agency-dubai",
      },
 
      "Photography & Video Production": {
        text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
-       url: "/content-production-agency-dubai",
+       url: "content-production-agency-dubai",
      },
    },
 
    "AI, Data & Intelligence": {
-     titleurl: "/marketing-intelligence-agency-dubai",
+     titleurl: "marketing-intelligence-agency-dubai",
      categoryText: 'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
      "Conversion Rate Optimization": {
        text: 'Optimized Paths<span class="text-[#E43D30]">.</span><br> Maximized Results<span class="text-[#E43D30]">.</span>',
-       url: "/conversion-rate-optimization-agency-dubai",
+       url: "conversion-rate-optimization-agency-dubai",
      },
 
      "Data, Analytics & Performance Dashboards": {
        text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
-       url: "/data-analytics-services-dubai",
+       url: "data-analytics-services-dubai",
      },
 
      "Marketing Automation & MarTech Consulting": {
        text: 'Automated to Convert<span class="text-[#E43D30]">.</span><br> Designed to Engage<span class="text-[#E43D30]">.</span>',
-       url: "/marketing-automation-agency-dubai",
+       url: "marketing-automation-agency-dubai",
      },
    },
 };
