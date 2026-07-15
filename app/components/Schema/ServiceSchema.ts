@@ -246,3 +246,139 @@ export const PerformanceMarketingBreadcrumb = {
         }
     ]
 };
+
+export const LocalSEOServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Expert Local SEO Agency in Dubai",
+    "alternateName": "Local SEO Services Dubai",
+    "description":
+        "At GS Digital, we focus on helping local businesses increase their visibility in search engines, ensuring your brand stands out in Dubai's competitive digital landscape. We don't just optimize for rankings — we build strategies that directly connect you with your local audience. Whether it's refining your website's on-page SEO, optimizing your Google My Business profile, or targeting the right keywords, our Local SEO services are designed to drive more relevant traffic to your business.",
+    "url": "https://www.globalsurf.ae/local-seo-agency-dubai",
+    "provider": {
+        "@type": "Organization",
+        "name": "GS Digital",
+        "alternateName": "Global Surf Digital Media L.L.C",
+        "url": "https://www.globalsurf.ae",
+        "logo": "https://www.globalsurf.ae/gs-digital-logo.svg",
+        "email": "hello@globalsurf.ae",
+        "telephone": "+97145821133",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "901 - SIT Tower, Dubai Silicon Oasis",
+            "addressLocality": "Dubai",
+            "postalCode": "13653",
+            "addressCountry": "AE"
+        }
+    },
+    "areaServed": {
+        "@type": "City",
+        "name": "Dubai"
+    },
+    "serviceType": "Local SEO",
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Local SEO Services",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Local SEO Audit",
+                    "description":
+                        "We conduct a thorough analysis of your current local SEO standing, identifying areas for improvement and creating a tailored action plan."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Keyword Research & Strategy",
+                    "description":
+                        "Our team performs extensive research to identify geo-specific, industry-related keywords, organizing them by search intent to inform your content strategy."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Google Business Profile SEO",
+                    "description":
+                        "We optimize your Google Business Profile to ensure accurate and up-to-date information, enhancing your visibility in local search results."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "eCommerce SEO",
+                    "description":
+                        "We connect your brand with local consumers by optimizing your online store for local search, leveraging geo-targeted content and keywords."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "On-Page Optimization",
+                    "description":
+                        "We enhance your website's on-page elements, including metadata and content, to improve local search rankings and user experience."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Franchise SEO",
+                    "description":
+                        "We ensure brand consistency and success across multiple locations by optimizing local citations and promoting local reviews."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Link Building",
+                    "description":
+                        "We expand your digital footprint by building high-quality local citations and acquiring relevant backlinks to boost your site's authority."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Business Citation Management",
+                    "description":
+                        "We manage and optimize your business citations across various directories to ensure consistency and improve local search visibility."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Online Reputation Management (ORM)",
+                    "description":
+                        "We help protect your brand image by implementing effective online review acquisition strategies and managing customer feedback."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Content Writing",
+                    "description":
+                        "We create engaging, locally themed content to capture your target audience's interest and drive traffic to your website."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Conversion Rate Optimization (CRO)",
+                    "description": 
+                    "We analyze and optimize your website to improve conversion rates, turning visitors into loyal customers."
+                }
+            }
+        ]
+    }
+};
