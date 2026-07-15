@@ -29,7 +29,7 @@ type ServiceData = {
      },
 
      "AI Search Visibility (GEO)": {
-       text: '',
+       text: 'Indexed For Search<span class="text-[#E43D30]">.</span><br> Context For Every AI<span class="text-[#E43D30]">.</span>',
        url: "/generative-engine-optimization",
      },
 
