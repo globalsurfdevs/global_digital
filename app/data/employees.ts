@@ -131,14 +131,14 @@ export const Employees = [
         width: "100%",
         height:"auto"
     },
-    {
-        id: 19,
-        image: assets.Vishnu_v,
-        name:"Vishnu",
-        designation: "UI/UX Designer",
-        width: "100%",
-        height:"auto"
-    },
+    // {
+    //     id: 19,
+    //     image: assets.Vishnu_v,
+    //     name:"Vishnu",
+    //     designation: "UI/UX Designer",
+    //     width: "100%",
+    //     height:"auto"
+    // },
     {
         id: 18,
         image: assets.Dennis,
@@ -235,14 +235,16 @@ export const Employees = [
         designation: "Business Process Associate",
         width: "100%",
         height:"auto"
-    }, {
-        id: 11,
-        image: assets.Anjanaseo,
-        name:"Anjana",
-        designation: "SEO Specialist",
-        width: "100%",
-        height:"auto"
-    }, {
+    },
+    //  {
+    //     id: 11,
+    //     image: assets.Anjanaseo,
+    //     name:"Anjana",
+    //     designation: "SEO Specialist",
+    //     width: "100%",
+    //     height:"auto"
+    // },
+     {
         id: 11,
         image: assets.Gayathri,
         name:"Gayathri",
