@@ -69,10 +69,10 @@ const MainSectionDetails = ({
                   </p>
                 </div>
                 <div>
-                  <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
+                  {/* <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
                     Year
                   </p>
-                  <p className="text-30 font-normal leading-lh1p33">2025</p>
+                  <p className="text-30 font-normal leading-lh1p33">2025</p> */}
                 </div>
               </div>
               <div>
