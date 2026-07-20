@@ -222,7 +222,7 @@ const Header = () => {
               {/* ABOUT — plain div, hover handled by Tailwind CSS */}
               <div className="flex flex-col justify-center">
                 <Link
-                  href="about-us"
+                  href="/about-us"
                   className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
                     after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
                     after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
@@ -251,7 +251,7 @@ const Header = () => {
               {/* INDUSTRIES */}
               <div className="flex flex-col justify-center">
                 <Link
-                  href="industry"
+                  href="/industry"
                   className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
                     after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
                     after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
@@ -263,7 +263,7 @@ const Header = () => {
               {/* PORTFOLIO */}
               <div className="flex flex-col justify-center">
                 <Link
-                  href="portfolio"
+                  href="/portfolio"
                   className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
                     after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
                     after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
@@ -285,7 +285,7 @@ const Header = () => {
                       group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
                   >
                     <Link
-                      href="blogs"
+                      href="/blogs"
                       className="flex items-center gap-3 rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100"
                     >
                       <Image
@@ -298,7 +298,7 @@ const Header = () => {
                       <span>Blogs</span>
                     </Link>
                     <Link
-                      href="case-study"
+                      href="/case-study"
                       className="flex items-center gap-3 rounded-md px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100"
                     >
                       <Image
@@ -317,7 +317,7 @@ const Header = () => {
               {/* CAREERS */}
               <div className="flex flex-col justify-center">
                 <Link
-                  href="careers"
+                  href="/careers"
                   className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
                     after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
                     after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
@@ -328,7 +328,7 @@ const Header = () => {
 
               {/* CONTACT US */}
               <Link
-                href="contact-us"
+                href="/contact-us"
                 className="hover:bg-prtext-primary group hidden items-center space-x-2 rounded-full
                   border border-primary px-6 py-2 text-primary transition duration-300 ease-in
                   hover:text-black hover:shadow-lg lg:flex"
