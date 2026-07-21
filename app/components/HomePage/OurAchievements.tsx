@@ -153,7 +153,7 @@ const OurAchievements = () => {
                   </span>{" "}
                   Clients
                 </p> */}
-                <SeoCounter value={125} label="Clients" />
+                <SeoCounter value={140} label="Clients" />
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">

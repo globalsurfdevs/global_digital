@@ -101,7 +101,11 @@ const PortfolioSchema = new mongoose.Schema({
     strategyApproach: {
         type: String
     },
-    socialMediaImages: []
+    socialMediaImages: [],
+    featured: {
+        type: Boolean,
+        default: false
+    }
 });
 
 export default mongoose.models.portfolio || mongoose.model("portfolio", PortfolioSchema);
