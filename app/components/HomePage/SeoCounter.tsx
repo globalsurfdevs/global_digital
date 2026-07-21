@@ -46,7 +46,7 @@ export default function SeoCounter({
       <span className="sr-only">{value}</span>
 
       {/* Animated visual value */}
-      <span aria-hidden="true">{count}</span>{" "}
+      <span aria-hidden="true">{count}</span>+{" "}
 
       {label}
     </p>
