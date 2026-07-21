@@ -91,7 +91,7 @@ const Tours = () => {
               {portfolios.map((item) => (
                 <SwiperSlide key={item.id}>
                   <div>
-                    <div className="tour-card relative  min-h-[350px] lg:min-h-[500px] xl:min-h-[620px] 3xl:min-h-[905px]">
+                    <div className="tour-card relative  min-h-[350px] lg:min-h-[400px] xl:min-h-[400px] 3xl:min-h-[605px]">
                       <Image
                         loading="lazy"
                         priority={false}
