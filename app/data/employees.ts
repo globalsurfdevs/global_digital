@@ -4,50 +4,50 @@ export const Employees = [
     {
         id: 1,
         image: assets.Faizal,
-        name:"Faisal",
+        name: "Faisal",
         designation: "Digital Account Director",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 16,
         image: assets.Vipin,
-        name:"Vipin",
+        name: "Vipin",
         designation: "Marketing Lead",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 3,
         image: assets.Aravind,
-        name:"Aravind",
+        name: "Aravind",
         designation: "Digital Strategist",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 4,
         image: assets.Ashna,
-        name:"Ashna",
+        name: "Ashna",
         designation: "Social Media Strategist ",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
- {
+    {
         id: 2,
         image: assets.Preethika,
-        name:"Preethika",
+        name: "Preethika",
         designation: "Project Manager",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 3,
         image: assets.Mobin,
-        name:"Mobin",
+        name: "Mobin",
         designation: "Creative Department Lead",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     // {
     //     id: 3,
@@ -61,59 +61,59 @@ export const Employees = [
     {
         id: 17,
         image: assets.Yasir,
-        name:"Yasir",
+        name: "Yasir",
         designation: "Digital Development Lead",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 1,
         image: assets.Afsal,
-        name:"Afzal",
+        name: "Afzal",
         designation: "Digital Marketing Lead",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 1,
         image: assets.Anandhu,
-        name:"Anandu",
+        name: "Anandu",
         designation: "SEO Lead",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 1,
         image: assets.Vidhu,
-        name:"Vidhukrishna",
+        name: "Vidhukrishna",
         designation: "Project Manager",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 15,
         image: assets.Ajay,
-        name:"Ajaykumar",
+        name: "Ajaykumar",
         designation: "Performance Marketing Lead",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 6,
         image: assets.Arjun,
-        name:"Arjun",
+        name: "Arjun",
         designation: "Graphic Designer",
         width: "100%",
-        height:"auto"
-    } ,
+        height: "auto"
+    },
     {
         id: 6,
         image: assets.Harsha,
-        name:"Harsha",
+        name: "Harsha",
         designation: "Project Coordinator",
         width: "100%",
-        height:"auto"
-    } ,
+        height: "auto"
+    },
     // {
     //     id: 6,
     //     image: assets.Levin,
@@ -122,14 +122,14 @@ export const Employees = [
     //     width: "100%",
     //     height:"auto"
     // } ,
-    
+
     {
         id: 17,
         image: assets.Divya,
-        name:"Divya",
+        name: "Divya",
         designation: "Creative Content Writer",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     // {
     //     id: 19,
@@ -142,99 +142,99 @@ export const Employees = [
     {
         id: 18,
         image: assets.Dennis,
-        name:"Dennis",
+        name: "Dennis",
         designation: "Graphic Designer",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 10,
         image: assets.Jishnu,
-        name:"Jishnu",
+        name: "Jishnu",
         designation: "Front End Developer",
         width: "100%",
-        height:"auto"
-    },{
+        height: "auto"
+    }, {
         id: 14,
         image: assets.Sreemayi,
-        name:"Sreemayi",
+        name: "Sreemayi",
         designation: "Front End Developer",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 13,
         image: assets.Arjun_VP,
-        name:"Arjun",
+        name: "Arjun",
         designation: "UI/UX Designer",
         width: "100%",
-        height:"auto"
-    } ,
+        height: "auto"
+    },
     {
         id: 16,
         image: assets.Hisham,
-        name:"Hisham",
+        name: "Hisham",
         designation: "Full Stack Developer",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 12,
         image: assets.Rahees,
-        name:"Rahees",
+        name: "Rahees",
         designation: "Front End Developer",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     {
         id: 5,
         image: assets.Shilpa,
-        name:"Shilpa",
+        name: "Shilpa",
         designation: "HR Coordinator",
         width: "100%",
-        height:"auto"
+        height: "auto"
     }
     ,
     {
         id: 15,
         image: assets.Anjana,
-        name:"Anjana",
+        name: "Anjana",
         designation: "HR Recruiter",
         width: "100%",
-        height:"auto"
+        height: "auto"
     }
     ,
-    
+
     {
         id: 20,
         image: assets.Krishnapriya,
-        name:"Krishnapriya",
+        name: "Krishnapriya",
         designation: "Digital Marketing Trainee",
         width: "100%",
-        height:"auto"
-    },{
+        height: "auto"
+    }, {
         id: 9,
         image: assets.Ganesh,
-        name:"Ganesh",
+        name: "Ganesh",
         designation: "SEO Specialist",
         width: "100%",
-        height:"auto"
-    } 
+        height: "auto"
+    }
     , {
         id: 11,
         image: assets.Nived,
-        name:"Nived ",
+        name: "Nived ",
         designation: "Full Stack Developer",
         width: "100%",
-        height:"auto"
+        height: "auto"
     }
     , {
         id: 11,
         image: assets.Thanisha,
-        name:"Thanisha ",
+        name: "Thanisha ",
         designation: "Business Process Associate",
         width: "100%",
-        height:"auto"
+        height: "auto"
     },
     //  {
     //     id: 11,
@@ -244,26 +244,42 @@ export const Employees = [
     //     width: "100%",
     //     height:"auto"
     // },
-     {
+    {
         id: 11,
         image: assets.Gayathri,
-        name:"Gayathri",
+        name: "Gayathri",
         designation: "Quality Analyst",
         width: "100%",
-        height:"auto"
+        height: "auto"
     }, {
         id: 11,
         image: assets.Diya,
-        name:"Diya ",
+        name: "Diya ",
         designation: "Creative Copy Writer",
         width: "100%",
-        height:"auto"
+        height: "auto"
     }, {
         id: 11,
         image: assets.Sneha,
-        name:"Sneha",
+        name: "Sneha",
         designation: "Social Media Specialist",
         width: "100%",
-        height:"auto"
-    }
+        height: "auto"
+    },
+    {
+        id: 22,
+        image: assets.Ashik,
+        name: "Ashik",
+        designation: "Videographer",
+        width: "100%",
+        height: "auto"
+    },
+    {
+        id: 23,
+        image: assets.Hamna,
+        name: "Hamna",
+        designation: "Content Development Lead",
+        width: "100%",
+        height: "auto"
+    },
 ]

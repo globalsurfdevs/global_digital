@@ -163,6 +163,9 @@ import Diya from "../assets/employee/Diya.png";
 import Gayathri from "../assets/employee/Gayathri.png";
 import Sneha from "../assets/employee/Sneha.png";
 
+import Ashik from '../assets/employee/Ashik.png'
+import Hamna from '../assets/employee/Hamna.png'
+
 import seo_banner from "../assets/banner/SEO.jpg";
 import branding_bnr from "../assets/banner/Branding-&-Creatives-01.jpg";
 import marketing_bnr from "../assets/banner/Marketing.jpg";
@@ -1075,6 +1078,7 @@ import dblog1 from "../images/blogs/digital/dblog1.webp";
 import dblog2 from "../images/blogs/digital/dblog2.webp";
 import dblog3 from "../images/blogs/digital/dblog3.webp";
 import dblog4 from "../images/blogs/digital/dblog4.webp";
+
 
 
 
@@ -2073,6 +2077,8 @@ export const assets = {
   screMingfrog,
   microsoftAdvertising,
   adobCreativeCloud,
+  Ashik,
+  Hamna
 };
 
 export const logos = [
