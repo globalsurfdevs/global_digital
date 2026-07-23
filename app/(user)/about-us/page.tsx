@@ -5,6 +5,7 @@ import SectionTwo from "../../components/AboutUs/SectionTwo";
 import SectionThree from "../../components/AboutUs/SectionThree";
 import SectionFour from "../../components/AboutUs/SectionFour";
 import SectionFive from "../../components/AboutUs/SectionFive";
+import { getAbout } from "@/app/lib/about.service";
 
 interface Canonicals {
   canonical: string;
@@ -28,7 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const page = () => {
+const page = async() => {
+    const about = await getAbout();
+
+    console.log(about)
   return (
     <>
       <Script
@@ -66,7 +70,7 @@ const page = () => {
       <SectionTwo />
       <SectionThree />
       <SectionFour />
-      <SectionFive />
+      <SectionFive data={about.teamSection}/>
     </>
   );
 };

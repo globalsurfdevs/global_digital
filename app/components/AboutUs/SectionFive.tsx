@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
 import LetsTalk from "@/app/components/common/LetsConnect";
 
-const SectionFive = () => {
+const SectionFive = ({data}:any) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const SectionFive = () => {
             }}
           >
             <div className="mb-4  grid lg:mb-[47px]">
-              <h2 className="title-65 ">The Experts Who Drive Results</h2>
+              <h2 className="title-65 ">{data.title}</h2>
             </div>
           </motion.div>
         </div>
@@ -64,7 +64,7 @@ const SectionFive = () => {
           }, // Slide up and fade in
         }}
       >
-        <EmployeesSwiper />
+        <EmployeesSwiper data={data.items}/>
       </motion.div>
       <motion.div
         initial="hidden"
