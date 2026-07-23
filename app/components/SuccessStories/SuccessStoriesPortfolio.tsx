@@ -107,7 +107,7 @@ export const SuccessStoriesPortfolio = ({ companyId, colCount }: {
                       className="text-font16 text-gray1 group-hover:text-primary transition duration-300 ease-in-out"
                     >
                       {ch.name}
-                      {i !== item.channels.length - 1 && ','}
+                      {i !== item.categories.length - 1 && ','}
                     </p>
                   ))}
                 </div>
