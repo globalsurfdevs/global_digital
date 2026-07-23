@@ -20,6 +20,7 @@ import { Cta } from "../../data/services/seo-ecommerce/cta";
 import { Faq } from "../../data/services/seo-ecommerce/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import { faqSchema, serviceSchema } from "./data";
 
 interface Canonicals {
   canonical: string;
@@ -46,6 +47,14 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={28}/>
       <Platforms
         title={Platformsdata.title}
