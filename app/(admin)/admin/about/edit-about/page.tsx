@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <DefaultLayout>
-        <About editMode/>
+        <About/>
     </DefaultLayout>
   );
 };
