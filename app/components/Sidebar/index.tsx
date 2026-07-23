@@ -142,6 +142,13 @@ const menuGroups = [
         label: "Authors",
         route: "/admin/authors",
       },
+      {
+        icon: (
+          <MdOutlinePanTool />
+        ),
+        label: "About",
+        route: "/admin/about",
+      },
       // {
       //   icon: (
       //     <ImBooks />

@@ -28,8 +28,6 @@ const page = async () => {
   const industries = await getIndustries();
   const categories = await getCategories();
 
-  console.log(portfolio, "portfolio");
-
   return (
     <>
       <Portfolio data={portfolio} industries={industries ?? []} categories={categories ?? []} />
