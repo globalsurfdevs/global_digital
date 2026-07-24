@@ -46,6 +46,7 @@ type Inputs = {
   bannerTitle: string;
   video: string;
   videoTitle: string;
+  featured: string;
 } & {
   [key: `highlightNumber${string}`]: string;
 } & {
@@ -208,6 +209,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("bannerTitle", data.bannerTitle);
     formData.append("video", data.video);
     formData.append("videoTitle", data.videoTitle);
+    formData.append("featured", data.featured);
 
     const hightLightIds: string[] = [];
     console.log(highlights);
@@ -378,6 +380,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             setValue("videoTitle", data.portfolio.videoTitle);
             setImageUrls(data.portfolio.socialMediaImages || []);
             setValue("socialMediaImages", data.portfolio.socialMediaImages);
+            setValue("featured", data.portfolio.featured?.toString());
 
             if (data.portfolio.section == "portfolio") {
               setSelectedSection("portfolio");
@@ -2167,6 +2170,22 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 }
               />
             </div>
+          </div>
+
+          <div className="flex w-full flex-col gap-2">
+            <Label content="Featured Project" />
+            <select
+              {...register("featured")}
+              className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-3 text-black focus:outline-none"
+            >
+              <option value="">Select Featured</option>
+              <option value={"true"}>
+                Yes
+              </option>
+              <option value={"false"}>
+                No
+              </option>
+            </select>
           </div>
 
           <div className="mt-5 grid grid-cols-2 gap-5">

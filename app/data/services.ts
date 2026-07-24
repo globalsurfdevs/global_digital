@@ -11,18 +11,18 @@ export const services = [
         title: "PPC Advertising",
         url: "/ppc-advertising-agency-dubai",
       },
-      {
-        title: "Social Media Marketing",
-        url: "/social-media-marketing-dubai",
-      },
+      // {
+      //   title: "Social Media Marketing",
+      //   url: "/social-media-marketing-dubai",
+      // },
       {
         title: "Programmatic  Advertising",
         url: "/programmatic-advertising-agency-dubai",
       },
-      {
-        title: "Influencer Marketing ",
-        url: "/influencer-marketing-agency",
-      },
+      // {
+      //   title: "Influencer Marketing ",
+      //   url: "/influencer-marketing-agency",
+      // },
     ],
   },
   {
@@ -44,6 +44,10 @@ export const services = [
       {
         title: "Local SEO",
         url: "/local-seo-agency-dubai",
+      },
+      {
+        title: "AI Search Visibility (GEO)",
+        url: "/generative-engine-optimization",
       },
     ],
   },
@@ -67,24 +71,29 @@ export const services = [
         title: "Social Media Marketing",
         url: "/social-media-marketing-dubai",
       },
+      {
+        title: "Influencer Marketing",
+        url: "/influencer-marketing-agency",
+      },
     ],
   },
   {
     id: "4",
     image: "/assets/services/Web-development.jpg",
-    title: "Web Design & Development",
+    // title: "Web Design & Development",
+    title:"Web & App Development",
     url: "/web-design-and-development",
     description:
       "As a digital transformation company in Dubai, we design and develop conversion-focused digital platforms engineered to support acquisition and long decision cycles.",
     buttonTexts: [
-      {
-        title: "Website Design",
-        url: "/web-design-agency-dubai",
-      },
-      {
-        title: "Custom Web Development",
-        url: "/web-development-agency-dubai",
-      },
+      // {
+      //   title: "Website Design",
+      //   url: "/web-design-agency-dubai",
+      // },
+      // {
+      //   title: "Custom Web Development",
+      //   url: "/web-development-agency-dubai",
+      // },
       {
         title: "E-commerce Web Development",
         url: "/e-commerce-web-development-company",
@@ -103,47 +112,56 @@ export const services = [
   {
     id: "5",
     image: "/assets/services/Branding-creatives.jpg",
-    title: "Branding & Creatives",
+    title: "Branding & Content Production",
     url: "/creative-agency-dubai",
     description:
       "Our branding work centres on positioning and differentiation. Every creative asset  supports commercial objectives while maintaining consistency across digital touchpoints.",
     buttonTexts: [
       {
-        title: "Branding",
+        title: "Branding & Positioning",
         url: "/branding-agency-dubai",
       },
-      {
-        title: "Logo Design",
-        url: "/logo-design-agency-dubai",
-      } ,
+      // {
+      //   title: "Logo Design",
+      //   url: "/logo-design-agency-dubai",
+      // } ,
       {
         title: "Copywriting",
         url: "/creative-copywriting-agency-dubai",
       },
+      // {
+      //   title: "Graphic Design",
+      //   url: "/graphic-design-agency-dubai",
+      // },
+      // {
+      //   title: "Content Production",
+      //   url: "/content-production-agency-dubai",
+      // }, 
       {
-        title: "Graphic Design",
-        url: "/graphic-design-agency-dubai",
-      },
-      {
-        title: "Content Production",
+        title: "Photo & Video Production",
         url: "/content-production-agency-dubai",
-      }, 
+      },
     ],
   },
   {
     id: "6",
     image: "/assets/services/Marketing.jpg",
-    title: "Marketing Intelligence",
+    // title: "Marketing Intelligence",
+    title: "AI, Data & Intelligence",
     url: "/marketing-intelligence-agency-dubai",
     description:
       "We provide clear business insights through KPI tracking and channel analysis, enabling smarter budget allocation, sharper targeting, and continuous optimisation. ",
     buttonTexts: [
+      // {
+      //   title: "Strategy Consulting",
+      //   url: "/marketing-strategy-consulting",
+      // },
+      // {
+      //   title: "Data Analytics",
+      //   url: "/data-analytics-services-dubai",
+      // },
       {
-        title: "Strategy Consulting",
-        url: "/marketing-strategy-consulting",
-      },
-      {
-        title: "Data Analytics",
+        title: "Data & Analytics Dashboards",
         url: "/data-analytics-services-dubai",
       },
       {

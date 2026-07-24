@@ -211,6 +211,7 @@ export async function POST(req: NextRequest) {
     const websiteLink = formData.get("websiteLink") as string;
     const bannerTitle = formData.get("bannerTitle") as string;
     const videoThumbnail = formData.get("videoThumbnail") as File | null
+    const featured = formData.get("featured") as File | null
 
 
     let addedCategoriesRaw;
@@ -392,7 +393,8 @@ export async function POST(req: NextRequest) {
                     bannerTitle,
                     videoThumbnail: videoThumbnailPath,
                     videoTitle,
-                    section
+                    section,
+                    featured
                 })
 
 
@@ -534,7 +536,8 @@ export async function POST(req: NextRequest) {
                     bannerTitle,
                     videoThumbnail: videoThumbnailPath,
                     videoTitle,
-                    section
+                    section,
+                    featured
                 })
 
                 let newId: number;
@@ -633,7 +636,8 @@ export async function POST(req: NextRequest) {
                     customId: uuidv4(),
                     section,
                     homeTitle,
-                    homeSubTitle
+                    homeSubTitle,
+                    featured
                 })
 
 
@@ -805,7 +809,8 @@ export async function POST(req: NextRequest) {
                     metaDescription,
                     section,
                     homeTitle,
-                    homeSubTitle
+                    homeSubTitle,
+                    featured
                 })
 
                 let newId: number;

@@ -1,255 +1,311 @@
 "use client"
 
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link';
-import Label from '../Label/Label';
-import ReactQuill from 'react-quill-new';
-import { useForm, SubmitHandler, Controller } from "react-hook-form"
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
-import "quill/dist/quill.snow.css";
-import MetaDataSection from '../MetaData/MetaDataSection';
 
-type Inputs = {
-    title: string
-    description: string
-    metadataTitle:string
-    metadataDesc:string
+import { useForm, useFieldArray, Controller } from "react-hook-form";
+import { Button } from '@/components/ui/button'
+import { ImageUploader } from '@/components/ui/image-uploader'
+import { RiDeleteBinLine } from "react-icons/ri";
+import { FiChevronDown } from "react-icons/fi";
+import AdminItemContainer from '@/app/components/common/AdminItemContainer';
+import SeoFields from '@/app/components/common/SeoFields';
+import { SeoFormValues } from '@/app/types/seo';
+import { GiConfirmed } from 'react-icons/gi';
+import { TbReorder } from "react-icons/tb";
+import { RxDragHandleDots2 } from "react-icons/rx";
+import { closestCorners, DndContext, DragEndEvent } from '@dnd-kit/core'
+import { SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+
+export interface AboutFormProps {
+    seo: SeoFormValues
+    teamSection: {
+        title: string;
+        items: {
+            image: string;
+            imageAlt: string;
+            name: string;
+            designation: string;
+        }[];
+    };
 }
 
-
-const About = ({ editMode }: {
-    editMode?: boolean
+// --- Reusable accordion wrapper for top-level admin sections ---
+const AccordionSection = ({
+    title,
+    sectionKey,
+    openSection,
+    setOpenSection,
+    children,
+}: {
+    title: string;
+    sectionKey: string;
+    openSection: string | null;
+    setOpenSection: (key: string | null) => void;
+    children: React.ReactNode;
 }) => {
-
-    const editorModule = {
-        toolbar: editMode ? editMode : false
-    }
-
-    const [imageError, setImageError] = useState<null | string>(null)
-    const [imageFile, setImageFile] = useState<null | File>(null)
-    const [previewImage, setPreviewImage] = useState<null | string>(null)
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [metaTitle,setMetaTitle] = useState("")
-    const [metaDescription,setMetaDescription] = useState("")
-
-    const router = useRouter()
-
-    const {
-        register,
-        handleSubmit,
-        watch,
-        setValue,
-        control,
-        formState: { errors },
-    } = useForm<Inputs>()
-    
-    const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        setIsSubmitting(true);
-        const formData = new FormData();
-        formData.append("title", data.title);
-        formData.append("description", data.description);
-        formData.append("metadataTitle",metaTitle);
-        formData.append("metadataDesc",metaDescription);
-
-        if (imageFile) {
-            formData.append("image", imageFile);
-        }
-
-        try {
-            const url = `/api/about`;
-            const method = "POST";
-            const response = await fetch(url, {
-                method: method,
-                body: formData,
-            });
-            const data = await response.json();
-            console.log(data);
-
-            if (!data.error) {
-                toast.success(data.message)
-                router.push('/admin/about')
-            } else {
-                toast.error(data.error)
-            }
-            // Redirect to news list page
-        } catch (error) {
-            console.error("Error updating about:", error);
-            toast.error("Failed to update about. Please try again.");
-        } finally {
-            setIsSubmitting(false);
-        }
-    }
-
-    useEffect(()=>{
-        const fetchAboutData = async() =>{
-            try {
-                const response = await fetch(`/api/about`);
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log(data.about[0])
-                    if(data.about[0]){
-                        setValue("title",data.about[0].title)
-                        setValue("description",data.about[0].description)
-                        setMetaTitle(data.about[0].metadataTitle)
-                        setMetaDescription(data.about[0].metadataDesc)
-                        console.log(data.about[0])
-                        if(data.about[0].image){
-                            setPreviewImage(data.about[0].image as string);
-                          }
-                    }
-                } else {
-                    console.error("Failed to about data");
-                }
-            } catch (error) {
-                console.error("Error fetching about data:", error);
-            }
-        }
-        
-        fetchAboutData()
-    },[])
-
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-
-        if (file) {
-            // Validate the image file type
-            const validImageTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
-            if (!validImageTypes.includes(file.type)) {
-                setImageError("Please select an image file (JPEG, PNG, or GIF)");
-                return;
-            }
-
-            // Validate the image file size
-            const maxSize = 10 * 1024 * 1024; // 10MB
-            if (file.size > maxSize) {
-                setImageError("Image file size must not exceed 10MB");
-                return;
-            }
-
-            setImageFile(file);
-
-            setImageError(null); // Reset error message if there was one
-
-            // Generate the preview image
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setPreviewImage(reader.result as string);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            setPreviewImage(null);
-            setImageFile(null);
-        }
-    };
+    const isOpen = openSection === sectionKey;
 
     return (
-        <>
-            <div className='w-full justify-end flex min-h-10'>
-                {!editMode && <Link href={'/admin/about/edit-about'} className="inline-flex items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10">Edit About</Link>}
+        <AdminItemContainer>
+            <Label main><div className='flex justify-between w-full'>
+                <div>{title}</div>
+                <button
+                type="button"
+                onClick={() => setOpenSection(isOpen ? null : sectionKey)}
+                className="flex items-center justify-between pr-5"
+            >
+                <FiChevronDown
+                    className={`text-xl transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                />
+            </button>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='w-full h-full flex gap-x-15 mt-5'>
-                    <div className='w-3/4 flex flex-col gap-5'>
-                        <div className='w-full flex flex-col gap-2'>
-                            <Label content='Title' />
-                            <input type="text" {...register("title",{required:"Title is required"})} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-3 text-black bg-transparent focus:outline-none'} readOnly={!editMode}/>
-                            {errors.title && <p className='mt-1 text-sm text-red'>{errors.title.message}</p>}
-                        </div>
-                        <div className='w-full flex flex-col gap-2'>
-                            <Label content='Description' />
-                            <div>
-                                <Controller
-                                    name="description"
-                                    control={control}
-                                    rules={{ required: "Content is required" }}
-                                    render={({ field }) => (
-                                        <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="mt-1" readOnly={!editMode} modules={editorModule}/>
-                                    )}
-                                />
-                            </div>
-                            {errors.description && <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>}
-                        </div>
-                        {editMode && <button
+            </Label>
 
-                            className="inline-flex items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 w-[15%]"
-                        >
-                            <button type='submit' disabled={isSubmitting}>{isSubmitting ? "Saving" : "Save"}</button>
-                        </button>}
-                    </div>
-                    <div
-                        className="w-1/3 h-64 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer overflow-hidden"
-                        onDragOver={(e) => e.preventDefault()}
-                        onClick={() => document?.getElementById("image")?.click()}
-                    >
-                        {previewImage ? (
-                            <div className="relative w-full h-full">
-                                <Image src={previewImage} alt="Preview" layout="fill" objectFit="cover" />
-                                {editMode && <button
-                                    type="button"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setPreviewImage(null); // Clear the preview image
-                                        setImageFile(null);
-                                    }}
-                                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                </button>}
-                            </div>
-                        ) : (
-                            <>
-                                <svg
-                                    className="mx-auto h-12 w-12 text-gray-400"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 48 48"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                                <p className="mt-1 text-sm text-gray-600">Drag and drop an image here, or click to select a file</p>
-                            </>
-                        )}
-                        <input type="file" id="image" accept="image/*" className="hidden" onChange={handleImageChange} />
-                    </div>
-                    {imageError && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
 
+            {isOpen && (
+                <div className="pt-3">
+                    {children}
                 </div>
-                
-            </form >
-            
-            {/* <div className='mt-6 flex flex-col gap-4'>
-                    <div className='font-extrabold text-xl'>
-                        Seo Section
+            )}
+        </AdminItemContainer>
+    );
+};
+
+const SortableTeamItem = ({
+    id,
+    reorderMode,
+    children,
+}: {
+    id: string;
+    reorderMode: boolean;
+    children: React.ReactNode;
+}) => {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
+
+    if (reorderMode) {
+        return (
+            <div
+                ref={setNodeRef}
+                style={style}
+                {...attributes}
+                {...listeners}
+                className='flex items-center gap-2 bg-white border border-black/20 rounded-md px-3 py-2 cursor-grab touch-none'
+            >
+                <RxDragHandleDots2 className='text-xl text-gray-500 flex-shrink-0' />
+                {children}
+            </div>
+        );
+    }
+
+    return (
+        <div
+            ref={setNodeRef}
+            style={style}
+            className='grid grid-cols-2 gap-2 relative border-b border-black/20 pb-5 last:border-b-0 bg-white'
+        >
+            {children}
+        </div>
+    );
+};
+
+const AboutPage = () => {
+
+    const { register, handleSubmit, setValue, watch, control, formState: { errors } } = useForm<AboutFormProps>();
+
+    const {
+        fields: teamSectionItems,
+        append: teamSectionAppend,
+        remove: teamSectionRemove,
+        move: teamSectionMove,
+    } = useFieldArray({
+        control,
+        name: "teamSection.items"
+    });
+
+    const [reorderMode, setReorderMode] = useState(false);
+
+    // Which top-level section accordion is open. Default to team section open.
+    const [openSection, setOpenSection] = useState<string | null>("teamSection");
+
+    const handleAddAbout = async (data: AboutFormProps) => {
+        try {
+            const response = await fetch(`/api/about`, {
+                method: "PATCH",
+                body: JSON.stringify(data),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                alert(data.message);
+                // router.push("/admin/commitment");
+            }
+        } catch (error) {
+            console.log("Error in adding about", error);
+        }
+    }
+
+    const fetchAboutData = async () => {
+        try {
+            const response = await fetch(`/api/about`);
+            if (response.ok) {
+                const data = await response.json();
+                setValue("seo", data.data?.seo);
+                setValue("teamSection", data.data?.teamSection ?? { items: [] });
+                setValue("teamSection.items", data.data?.teamSection?.items ?? []);
+            } else {
+                const data = await response.json();
+                alert(data.message);
+            }
+        } catch (error) {
+            console.log("Error in fetching about data", error);
+        }
+    }
+
+    const handleDragEnd = (event: DragEndEvent) => {
+        const { active, over } = event;
+
+        if (!over || active.id === over.id) return;
+
+        const oldIndex = teamSectionItems.findIndex((item) => item.id === active.id);
+        const newIndex = teamSectionItems.findIndex((item) => item.id === over.id);
+
+        if (oldIndex === -1 || newIndex === -1) return;
+        teamSectionMove(oldIndex, newIndex);
+    };
+
+    useEffect(() => {
+        fetchAboutData();
+    }, []);
+
+
+    return (
+        <div className='flex flex-col gap-5'>
+            <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddAbout)}>
+
+                <AccordionSection
+                    title="Team Section"
+                    sectionKey="teamSection"
+                    openSection={openSection}
+                    setOpenSection={setOpenSection}
+                >
+                    <div className='p-5 rounded-md flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Title</Label>
+                                <Input type='text' placeholder='Title' {...register(`teamSection.title`, {
+                                    required: "Value is required"
+                                })} />
+                                {errors.teamSection?.title && <p className='text-red-500'>{errors.teamSection?.title.message}</p>}
+                            </div>
+                        </div>
+                        <div>
+                            <div className='flex justify-between mb-3'>
+                                <Label className='font-bold'>Items</Label>
+                                {<Button className="bg-green-600 text-white" type="button" onClick={() => setReorderMode(!reorderMode)}>{reorderMode ? <GiConfirmed /> : <TbReorder />}</Button>}
+                            </div>
+                            <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
+
+                                <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
+                                    <SortableContext
+                                        items={teamSectionItems.map((field) => field.id)}
+                                        strategy={verticalListSortingStrategy}
+                                    >
+                                        {teamSectionItems.map((field, index) => (
+                                            <SortableTeamItem key={field.id} id={field.id} reorderMode={reorderMode}>
+                                                {reorderMode ? (
+                                                    <span className='font-medium'>
+                                                        {watch(`teamSection.items.${index}.name`) || `Member ${index + 1}`}
+                                                    </span>
+                                                ) : (
+                                                    <>
+                                                        <div className='absolute top-2 right-2'>
+                                                            <RiDeleteBinLine onClick={() => teamSectionRemove(index)} className='cursor-pointer text-red-600' />
+                                                        </div>
+
+                                                        <div className='flex flex-col gap-2'>
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Image</Label>
+                                                                <Controller
+                                                                    name={`teamSection.items.${index}.image`}
+                                                                    control={control}
+                                                                    rules={{ required: "Image is required" }}
+                                                                    render={({ field }) => (
+                                                                        <ImageUploader
+                                                                            value={field.value}
+                                                                            onChange={field.onChange}
+                                                                            className='w-[200px] h-[200px]'
+                                                                        />
+                                                                    )}
+                                                                />
+                                                                {errors.teamSection?.items?.[index]?.image && (
+                                                                    <p className="text-red-500">{errors.teamSection?.items?.[index]?.image.message}</p>
+                                                                )}
+                                                            </div>
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Alt Tag</Label>
+                                                                <Input type='text' placeholder='Alt Tag' {...register(`teamSection.items.${index}.imageAlt`, {
+                                                                    required: "Alt Tag is required"
+                                                                })} />
+                                                                {errors.teamSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.teamSection?.items?.[index]?.imageAlt.message}</p>}
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='flex flex-col gap-2'>
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Name</Label>
+                                                                <Input type='text' placeholder='Name' {...register(`teamSection.items.${index}.name`, {
+                                                                    required: "Name is required"
+                                                                })} />
+                                                                {errors.teamSection?.items?.[index]?.name && <p className='text-red-500'>{errors.teamSection?.items?.[index]?.name.message}</p>}
+                                                            </div>
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Designation</Label>
+                                                                <Input type='text' placeholder='Designation' {...register(`teamSection.items.${index}.designation`, {
+                                                                    required: "Designation is required"
+                                                                })} />
+                                                                {errors.teamSection?.items?.[index]?.designation && <p className='text-red-500'>{errors.teamSection?.items?.[index]?.designation.message}</p>}
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </SortableTeamItem>
+                                        ))}
+                                    </SortableContext>
+                                </DndContext>
+
+                            </div>
+                            <div className='flex justify-end mt-2'>
+                                <Button type='button' addItem onClick={() => teamSectionAppend({ image: "", imageAlt: "", name: "", designation: "" })}>Add Item</Button>
+                            </div>
+                        </div>
+
                     </div>
-                    <hr></hr>
-                    <div className='w-full flex flex-col gap-2'>
-                            <Label content='MetaData:Title' />
-                            <input type="text" {...register("metadataTitle")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-3 text-black bg-transparent focus:outline-none'} readOnly={!editMode}/>
-                            
-                        </div>
-                        <div className='w-full flex flex-col gap-2'>
-                            <Label content='MetaData:Description' />
-                            <input type="text" {...register("metadataDesc")} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-3 text-black bg-transparent focus:outline-none'} readOnly={!editMode}/>
-                            
-                        </div>
-            </div> */}
-            <MetaDataSection editMode={editMode} metaTitle={metaTitle} metaDescription={metaDescription} setMetaTitle={setMetaTitle} setMetaDescription={setMetaDescription}/>
-        </>
+                </AccordionSection>
+
+                {/* When you add future sections, wrap each in its own AccordionSection with a unique sectionKey, e.g.:
+                <AccordionSection title="Hero Section" sectionKey="heroSection" openSection={openSection} setOpenSection={setOpenSection}>
+                    ... hero section fields ...
+                </AccordionSection>
+                */}
+
+                <SeoFields<AboutFormProps> control={control} register={register} errors={errors} />
+
+                <div className='flex'>
+                    <Button type='submit' className="cursor-pointer text-white text-[16px] w-full">Submit</Button>
+                </div>
+
+            </form>
+        </div>
     )
 }
 
-export default About
+export default AboutPage

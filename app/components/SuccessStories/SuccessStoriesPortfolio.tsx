@@ -98,15 +98,16 @@ export const SuccessStoriesPortfolio = ({ companyId, colCount }: {
             <h4 className='text-font30'>{item.companyName}</h4>
 
             <div className="flex flex-wrap gap-2">
-              {item.channels && item.channels.length > 0 ? (
+              
+              {item.categories && item.categories.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
-                  {item.channels.map((ch, i) => (
+                  {item.categories.map((ch, i) => (
                     <p
                       key={i}
                       className="text-font16 text-gray1 group-hover:text-primary transition duration-300 ease-in-out"
                     >
-                      {ch.channelName}
-                      {i !== item.channels.length - 1 && ','}
+                      {ch.name}
+                      {i !== item.categories.length - 1 && ','}
                     </p>
                   ))}
                 </div>

@@ -10,7 +10,7 @@ export const ResultsData = {
       brand: "Garden Concept",
       growth: "43%",
       traffic: "Increase in Oraganic Traffic",
-      title:"The Story Behind Garden Concept’s 77.54% Organic Traffic Growth ",
+      title:"The Story Behind Garden Concept’s 43% Organic Traffic Growth ",
       dec: "Explore The Garden Concept’s digital marketing strategy for boosting overall web traffic and store visit. ",
       url: "/case-study/the-garden-concept",
     }

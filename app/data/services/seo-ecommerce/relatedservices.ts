@@ -11,12 +11,12 @@ export const relatedservices = {
       dec: "Optimize your website to reach decision-makers and grow your business-to-business connections.",
       icon:assets.rs6
     } ,
-    {
-      id: 2,
-      title: "E-commerce SEO",
-      dec: "Drive more sales with targeted strategies that bring the right shoppers to your online store.",
-      icon:assets.rs5
-    } ,
+    // {
+    //   id: 2,
+    //   title: "E-commerce SEO",
+    //   dec: "Drive more sales with targeted strategies that bring the right shoppers to your online store.",
+    //   icon:assets.rs5
+    // } ,
     {
       id: 3,
       title: "Local SEO",
