@@ -22,10 +22,10 @@ export async function GET() {
 export async function PATCH(request: NextRequest) {
     try {
         const body = await request.json();
-        // const isAdmin = await verifyAdmin(request);
-        // if (!isAdmin) {
-        //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-        // }
+        const isAdmin = await verifyAdmin(request);
+        if (!isAdmin) {
+            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        }
         await connectDB();
         const about = await About.findOneAndUpdate({}, body,{upsert:true,new:true});
         if (!about) {

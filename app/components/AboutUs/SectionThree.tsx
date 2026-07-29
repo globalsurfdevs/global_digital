@@ -2,39 +2,48 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { About } from "@/app/types/about";
 
-const SectionThree = () => {
+const SectionThree = ({data}:{data:About['thirdSection']}) => {
   const items = [
-    {
-      text: "Extensive Expertise",
-      image: "/assets/aboutus/core1.svg",
-      width: 35,
-      height:50,
-    },
-    {
-      text: "Performance-Focused Strategies",
-      image: "/assets/aboutus/core2.svg",
-      width: 48,
-      height:50,
-    },
-    {
-      text: "Customized Solutions",
-      image: "/assets/aboutus/core3.svg",
-      width: 49,
-      height:50,
-    },
-    {
-      text: "Collaborative Approach",
-      image: "/assets/aboutus/core4.svg",
-      width: 50,
-      height:44,
-    },
-    {
-      text: "Transparent Communication",
-      image: "/assets/aboutus/core5.svg",
-      width: 50,
-      height:39,
-    },
+    // {
+    //   text: "Extensive Expertise",
+    //   image: "/assets/aboutus/core1.svg",
+    //   width: 35,
+    //   height:50,
+    // },
+    // {
+    //   text: "Performance-Focused Strategies",
+    //   image: "/assets/aboutus/core2.svg",
+    //   width: 48,
+    //   height:50,
+    // },
+    // {
+    //   text: "Customized Solutions",
+    //   image: "/assets/aboutus/core3.svg",
+    //   width: 49,
+    //   height:50,
+    // },
+    // {
+    //   text: "Collaborative Approach",
+    //   image: "/assets/aboutus/core4.svg",
+    //   width: 50,
+    //   height:44,
+    // },
+    // {
+    //   text: "Transparent Communication",
+    //   image: "/assets/aboutus/core5.svg",
+    //   width: 50,
+    //   height:39,
+    // },
+    ...data.items.map((item)=>(
+      {
+        text:item.title,
+        width:50,
+        height:30,
+        ...item
+      }
+    ))
   ];
   return (
     <div className="container mx-auto py-4">
@@ -53,7 +62,7 @@ const SectionThree = () => {
       >
         <div className=" pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-5 lg:gap-10 gap-xl-0">
           <div className="col-span-2 text-5xl">
-            <h2 className="title-65 pb-2">Core Advantages </h2>
+            <h2 className="title-65 pb-2">{data.title}</h2>
           </div>
 
           <div className="w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn ">

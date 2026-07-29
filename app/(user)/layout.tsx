@@ -15,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
 
 
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {

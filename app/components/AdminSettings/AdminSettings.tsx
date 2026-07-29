@@ -88,26 +88,26 @@ const AdminSettings = () => {
         }
     }
 
-    const handlePasswordChange = async () => {
-        if (newPass !== cPass) {
-            setError("Passwords does not match, try again")
-            return;
-        }
+    // const handlePasswordChange = async () => {
+    //     if (newPass !== cPass) {
+    //         setError("Passwords does not match, try again")
+    //         return;
+    //     }
 
-        if (newPass == "" || cPass == "") {
-            return;
-        }
+    //     if (newPass == "" || cPass == "") {
+    //         return;
+    //     }
 
-        const result = await changePass(newPass, session?.user.id)
-        if (result.success) {
-            toast.success(result.message)
-            await signOutAdmin()
-        } else {
-            toast.error(result.message)
-        }
+    //     const result = await changePass(newPass, session?.user.id)
+    //     if (result.success) {
+    //         toast.success(result.message)
+    //         await signOutAdmin()
+    //     } else {
+    //         toast.error(result.message)
+    //     }
 
-        // setNewPassSection(false)
-    }
+    //     // setNewPassSection(false)
+    // }
 
     const EmailSectionSubmit = async () => {
         try {
@@ -223,10 +223,10 @@ const AdminSettings = () => {
                                 </div>
                                 <div className="inline-flex items-center mt-2">
                                 </div>
-                                <button className="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                {/* <button className="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                     type="button" onClick={handlePasswordChange}>
                                     Save
-                                </button>
+                                </button> */}
 
                             </form>)
                         }

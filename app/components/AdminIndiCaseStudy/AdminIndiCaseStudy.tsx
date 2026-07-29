@@ -5,8 +5,6 @@ import { useParams, useRouter } from "next/navigation";
 import { Control, Controller, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import Label from "../Label/Label";
-import ReactQuill, { Quill } from "react-quill-new";
-import "quill/dist/quill.snow.css";
 import Image from "next/image";
 import { IoIosClose } from "react-icons/io";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
