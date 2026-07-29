@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     "Global Surf Digital | Backend Console",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,6 +30,8 @@ export default function RootLayout({
   // useEffect(() => {
   //   setTimeout(() => setLoading(false), 1000);
   // }, []);
+
+ 
 
   return (
     <html lang="en">

@@ -8,8 +8,9 @@ import { useRouter } from 'next/navigation'
 
 import { useParams } from 'next/navigation'
 import { JobInputType } from '@/app/types/JobInputType'
-import RichEditor from '../RichEditor/RichEditor'
-import "quill/dist/quill.snow.css";
+// import RichEditor from '../RichEditor/RichEditor'
+// import "quill/dist/quill.snow.css";
+// import dynamic from 'next/dynamic'
 import { formatLinkForCareer } from '@/app/helpers/formatLink'
 
 
@@ -125,7 +126,7 @@ const AdminIndiJob = ({ editMode }: {
             <div className='w-full flex flex-col gap-2'>
                 <Label content='Description' />
                 {/* <textarea {...register("description",{ required: "Description is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} /> */}
-                <RichEditor control={control} name="description" />
+                {/* <RichEditor control={control} name="description" /> */}
                 {errors.description && <p className='mt-1 text-sm text-red'>{errors.description.message}</p>}
             </div>
 
