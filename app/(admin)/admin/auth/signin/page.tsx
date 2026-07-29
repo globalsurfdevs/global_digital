@@ -199,9 +199,11 @@ const SignIn: React.FC = () => {
           </div> */}
 
           <div className="border-stroke dark:border-strokedark min-w-[350px] border bg-white">
-            <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              {/* <span className="mb-1.5 block font-medium">Start for free</span> */}
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2 text-center">
+            <div className="w-full p-4 sm:p-12.5 xl:p-17.5 flex justify-center flex-col">
+              <div className="mb-1.5 flex justify-center">
+                <Image src={"/gs-digital-logo.svg"} alt="" width={200} height={100}/>
+              </div>
+              <h2 className="mb-9 text-lg font-bold text-black dark:text-white text-center">
                 Backend Console
               </h2>
 

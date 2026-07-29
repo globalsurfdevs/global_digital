@@ -1,4 +1,3 @@
-"use client"
 
 import "jsvectormap/dist/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
@@ -8,20 +7,27 @@ import React, { useEffect, useState } from "react";
 import Loader from "@/app/components/common/Loader";
 import { SessionProvider } from "next-auth/react"
 import { Toaster } from 'sonner';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Global Surf Digital | Backend Console",
+  description:
+    "Global Surf Digital | Backend Console",
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [loading, setLoading] = useState<boolean>(true);
 
   // const pathname = usePathname();
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => setLoading(false), 1000);
+  // }, []);
 
   return (
     <html lang="en">
@@ -29,7 +35,7 @@ export default function RootLayout({
         <div className="dark:bg-boxdark-2 dark:text-bodydark">
           <SessionProvider>
           <Toaster />
-          {loading ? <Loader /> : children}
+          {children}
           </SessionProvider>
         </div>
       </body>

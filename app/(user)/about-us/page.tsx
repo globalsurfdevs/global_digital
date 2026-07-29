@@ -6,6 +6,7 @@ import SectionThree from "../../components/AboutUs/SectionThree";
 import SectionFour from "../../components/AboutUs/SectionFour";
 import SectionFive from "../../components/AboutUs/SectionFive";
 import { getAbout } from "@/app/lib/about.service";
+import { data } from "@/app/data/llmWorksData";
 
 interface Canonicals {
   canonical: string;
@@ -31,8 +32,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const page = async() => {
     const about = await getAbout();
-
-    console.log(about)
   return (
     <>
       <Script
@@ -66,11 +65,11 @@ const page = async() => {
           }),
         }}
       />
-      <HeroSection />
-      <SectionTwo />
-      <SectionThree />
-      <SectionFour />
-      <SectionFive data={about.teamSection}/>
+      <HeroSection data={about.firstSection}/>
+      <SectionTwo video={about.firstSection.video} title={about.secondSection.title} description={about.secondSection.description}/>
+      <SectionThree data={about.thirdSection}/>
+      <SectionFour data={about.fourthSection}/>
+      <SectionFive data={about.teamSection} lastSection={about.lastSection}/>
     </>
   );
 };

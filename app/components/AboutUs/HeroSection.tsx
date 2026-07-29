@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import React from "react";
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
+import { About } from "@/app/types/about";
 
-const HeroSection = () => {
+const HeroSection = ({data}:{data:About['firstSection']}) => {
   return (
     <>
       <div className="container mx-auto py-4">
@@ -73,12 +74,14 @@ const HeroSection = () => {
                   </ul>
                 </nav>
                 <h1 className="title-80 mb-3 lg:mb-5">
-                  Master Every Pixel of Your Digital Presence
+                  {/* Master Every Pixel of Your Digital Presence */}
+                  {data.title}
                 </h1>
               </div>
               <div>
                 <p className="text-small-30 text-gray1 max-w-[48ch]">
-                  Creative that’s sharp, strategy that’s smarter, we craft digital experiences where every pixel drives purpose and every design amplifies your brand’s impact.
+                  {/* Creative that’s sharp, strategy that’s smarter, we craft digital experiences where every pixel drives purpose and every design amplifies your brand’s impact. */}
+                {data.description}
                 </p>
               </div>
             </motion.div>
