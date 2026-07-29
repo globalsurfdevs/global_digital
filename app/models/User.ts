@@ -16,7 +16,11 @@ const UserSchema = new mongoose.Schema({
     },
     isAdmin: {
         type: Boolean
-    }
+    },
+    otp: {
+        type: String,
+        default: null,
+    },
 });
 
 export default mongoose.models?.user || mongoose.model("user", UserSchema);

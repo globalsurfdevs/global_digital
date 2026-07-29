@@ -19,6 +19,8 @@ type Metadata = {
   alternates: Canonicals;
 };
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "About GS Digital | Digital Growth Partner to Leading Brands in UAE",
