@@ -27,19 +27,19 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
   // ✅ HEADERS (moved here)
-  async headers() {
-    return [
-      {
-        source: "/:all*(svg|webp|avif|gif|ico|woff|woff2|ttf|otf|js|css)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/:all*(svg|webp|avif|gif|ico|woff|woff2|ttf|otf|js|css)",
+  //       headers: [
+  //         {
+  //           key: "Cache-Control",
+  //           value: "public, max-age=31536000, immutable",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
   async redirects() {
     return [
       {
