@@ -24,6 +24,7 @@ import { Platformsdata } from "../../data/services/b2b-seo/platforms";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
+import { getHome } from "@/app/lib/home.service";
 
 interface Canonicals {
   canonical: string;
@@ -61,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const page = () => {
+const page = async() => {
   return (
     <div>
       <HeroSection

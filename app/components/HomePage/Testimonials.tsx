@@ -2,13 +2,15 @@
 import React from 'react'
 import TestimonialsSwiper from './TestimonialsSwiper';
 import { motion } from 'framer-motion';
+import { HomeType } from '@/app/types/home';
 
 interface TestimonialsSectionProps {
   bgcolor?: string;
   bordertop?: boolean;
+  data?: HomeType['testimonialSection'];
 }
 
-const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }) => {
+const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop, data }) => {
   return (
     <div className={` ${bgcolor === 'white' ? 'bg-white' : 'bg-bglight'}`}  >
       <div className={`container px-4 mx-auto  ${bordertop ? ' border-t' : ''}`}>
@@ -23,7 +25,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }
             }}
             className="lg:flex items-center gap-3 justify-between"
           >
-            <h2 className="title-65">Hear From Our Partners</h2>
+            <h2 className="title-65">{data?.title ? data.title : "Hear From Our Partners"}</h2>
             <div className='mt-3 lg-mt-0 flex items-center gap-3'>
               <svg xmlns="http://www.w3.org/2000/svg" width="106" height="18" viewBox="0 0 106 18" fill="none">
                 <g clipPath="url(#clip0_29_91181)">
@@ -65,7 +67,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }
                   </clipPath>
                 </defs>
               </svg>
-              <p className="text-19 fnt-lexend font-400 text-[#77787B] ]"> 4.9 on Google Reviews</p>
+              <p className="text-19 fnt-lexend font-400 text-[#77787B] ]"> {data?.starText ? data.starText : "4.9 on Google Reviews"}</p>
             </div>
 
           </motion.div>
@@ -79,9 +81,10 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop }
                 visible: { y: 0, transition: { duration: 1.2, ease: "easeOut" } }, // Slide up and fade in
               }}
             >
-              <TestimonialsSwiper />
+              <TestimonialsSwiper data={data?.items} />
               <div>
-                <p className="text-font30   font-400 text-black">Trusted by <span className="text-primary">125+ brands</span> across UAE & beyond</p>
+                {!data?.bottomText ? <p className="text-font30   font-400 text-black">Trusted by <span className="text-primary">125+ brands</span> across UAE & beyond</p> :
+                  <p className="text-font30  font-400 text-black" dangerouslySetInnerHTML={{ __html: data?.bottomText }}></p>}
               </div>
             </motion.div>
           </div>
