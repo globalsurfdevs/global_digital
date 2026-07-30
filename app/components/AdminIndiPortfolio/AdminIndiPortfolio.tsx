@@ -5,8 +5,8 @@ import { useParams, useRouter } from "next/navigation";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import Label from "../Label/Label";
-// import ReactQuill, { Quill } from "react-quill-new";
-// import "quill/dist/quill.snow.css";
+import ReactQuill, { Quill } from "react-quill-new";
+import "quill/dist/quill.snow.css";
 import Image from "next/image";
 import { IoIosClose } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
@@ -920,7 +920,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
                 <div className="mt-1 flex w-full flex-col gap-1">
                   <Label content="Channels Used" />
-                  <div className="flex h-[200px] flex-wrap gap-2 border p-5">
+                  <div className="flex h-[300px] flex-wrap gap-2 border p-5 overflow-y-auto">
                     {channelsAvailable.map((channel, index) => (
                       <div key={index} className="relative">
                         <div

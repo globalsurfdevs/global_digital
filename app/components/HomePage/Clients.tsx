@@ -8,8 +8,9 @@ import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import { HomeType } from "@/app/types/home";
 
-const Clients = () => {
+const Clients = ({data}:{data:HomeType['clientSection']}) => {
   return (
     <div className="container mx-auto px-4">
       <div className="flex flex-col  gap-6 pb-[50px]    lg:gap-[50px] lg:pb-[150px]  ">
@@ -61,13 +62,13 @@ const Clients = () => {
             modules={[Autoplay, Navigation]}
             className="clntsSwpr"
           >
-            {Clientsdata.map((itm, index) => {
+            {data.items.map((itm, index) => {
               return (
                 <SwiperSlide key={index}>
                   <div className="clngsb">
                     <Image
                       src={itm.image}
-                      alt={itm.alt || "global"}
+                      alt={itm.imageAlt || "global"}
                       width={250}
                       height={80}
                       loading="lazy"
