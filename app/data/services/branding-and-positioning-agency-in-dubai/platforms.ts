@@ -4,7 +4,7 @@ import { assets } from "@/public/assets/assets";
 export const Platformsdata = {
   title: "Precision Advertising. Everywhere.",
   data: [
-    {
+    {  
       id: 1,
       icon: assets.google,
       title: "Google Ads",
