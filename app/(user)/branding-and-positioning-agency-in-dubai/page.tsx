@@ -4,7 +4,7 @@ import HeroSection from "../../components/BrandingAndPositioning/HeroSection";
 import TitleDescSec from "../../components/BrandingAndPositioning/TitleDesc";
 import Expertise from "../../components/PermormanceMarketing/Expertise";
 import Boost from "../../components/PermormanceMarketing/Boost";
-import Services from "../../components/PermormanceMarketing/Services";
+// import Services from "../../components/PermormanceMarketing/Services";
 import Framework from "../../components/PermormanceMarketing/Framework";
 import Industries from "../../components/PermormanceMarketing/Industries";
 import Results from "../../components/PermormanceMarketing/Results";
@@ -25,6 +25,13 @@ import { partnerData } from "../../data/partnerData";
 import { Cta } from "../../data/services/performance-marketing/cta";
 import { Faq } from "../../data/services/performance-marketing/faq";
 import TitleDesc from "../../components/BrandingAndPositioning/TitleDesc";
+import ImgDesc from "../../components/BrandingAndPositioning/ImgDesc";
+import GrayParaSec from "../../components/BrandingAndPositioning/GrayParaSec";
+import ServicesSec from "../../components/BrandingAndPositioning/ServicesSec";
+import { servicesData } from "../../data/services/branding-and-positioning-agency-in-dubai/data";
+import ProcessSlider from "@/app/components/BrandingAndPositioning/ProcessSlider";
+
+
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -79,6 +86,10 @@ const page = () => {
       </section> */}
       <HeroSection />
       <TitleDesc />
+      <ImgDesc />
+      <GrayParaSec />
+      <ServicesSec title={servicesData.title} description={servicesData.subtitle} items={servicesData.items} />
+      <ProcessSlider />
       {/* <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
       <Boost title={boostEngage.title} data={boostEngage.data} />
       <Services title={OurServices.title} data={OurServices.data} />
