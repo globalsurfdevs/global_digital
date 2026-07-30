@@ -134,6 +134,51 @@ const nextConfig: NextConfig = {
         destination: "/industry/b2b-digital-marketing-services", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+      {
+        source: "/industry/digital-marketing-services", // The old URL path
+        destination: "/digital-marketing-services", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
+        source: "/blogs/poor-sales-try-our-website-redesign-services-for-results",
+        destination: "/web-development-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
+        destination: "/blogs",
+        permanent: true,
+      },
+      {
+        source: "/digital-marketing",
+        destination: "/digital-marketing-services",
+        permanent: true,
+      },
+      {
+        source: "/digital-development",
+        destination: "/web-development-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/content-and-branding",
+        destination: "/creative-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/blogs/digital-marketing-services",
+        destination: "/digital-marketing-services",
+        permanent: true,
+      },
+      {
+        source: "/instagram-marketing-dubai",
+        destination: "/social-media-marketing-dubai",
+        permanent: true,
+      },
+      {
+        source: "/google-business-profile-dubai",
+        destination: "/local-seo-agency-dubai",
+        permanent: true,
+      },
     ];
   },
 };
