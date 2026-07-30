@@ -8,12 +8,27 @@ import "swiper/css/pagination";
 import { testimonials } from "../../data/testimonials";
 import Image from "next/image";
 import { Lexend } from "next/font/google";
+import { TestimonialItemType } from "@/app/types/home";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const TestimonialsSwiper = () => {
+const TestimonialsSwiper = ({ data }: { data?: TestimonialItemType[] }) => {
+  const testimonialsFromApi = data && [
+    ...data.map((item) => (
+      {
+        company: item.companyName,
+        position: item.designation,
+        logo: item.companyLogo,
+        alt:item.companyLogoAlt,
+        ...item
+      }
+    ))
+  ]
+
+  const testimonialsToMap = data ? testimonialsFromApi : testimonials
+
   return (
     <div className=" testimonialswiper">
       <Swiper
@@ -35,13 +50,15 @@ const TestimonialsSwiper = () => {
           },
         }}
       >
-        {testimonials.map((item, index) => (
+        {testimonialsToMap?.map((item, index) => (
           <SwiperSlide key={index} className="mb-2  md:mb-4  lg:mb-8">
             <div className={`flex flex-col  ${lexend.className}`}>
               <div className="mb-6 flex   flex-col border-b border-black pt-[20px] lg:mb-[41px] lg:pt-[65px]">
                 <Image
                   src={item.image}
                   alt={item.name}
+                  width={100}
+                  height={100}
                   loading="lazy"
                   className="mb-4 h-20 w-20 bg-white p-1 lg:mb-[30px]"
                 ></Image>

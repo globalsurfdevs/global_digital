@@ -94,7 +94,7 @@ const AdminPortfolio = () => {
       <CategoryManager />
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl">List of companies</h1>
+          <h1 className="text-xl">List of companies</h1>
         </div>
 
         <div className="flex gap-2">
