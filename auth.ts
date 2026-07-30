@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 
 import { supabase } from '@/app/lib/initSupabase'
 import ratelimit from "./app/lib/rateLimit";
+import User from "./app/models/User";
 
 
 type User = {
@@ -35,30 +36,20 @@ export const {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        // You need to provide your own logic here that takes the credentials
-        // submitted and returns either a object representing a user or value
-        // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
-
-        console.log(supabase)
-
-
-        let { data: user } = await supabase
-          .from('users')
-          .select('*').eq('username', credentials.username).single()
-
+        const user: any = await User.findOne({ username: credentials.username })
 
         if (user) {
           if (user.password === credentials.password) {
-            return user
+            return {
+              id: user._id.toString(),
+              username: user.username,
+              email: user.email,
+              isAdmin: user.isAdmin,
+            }
           } else {
             throw new Error("Invalid Credentials")
           }
         }
-        // If no error and we have user data, return it
-        // Return null if user data could not be retrieved
         throw new Error("Invalid Credentials")
       }
     })
@@ -97,6 +88,7 @@ export const {
 
       if (user) {
         token.id = user?.id
+        token.role = user.isAdmin ? "admin" : "user";
       }
 
       return token
@@ -104,6 +96,7 @@ export const {
     session({ session, token }) {
       if (token?.id) {
         session.user.id = token.id;
+        (session.user as any).role = token.role;
       }
 
       return session;

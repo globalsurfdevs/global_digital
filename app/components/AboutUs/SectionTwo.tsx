@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-const SectionTwo = () => {
+const SectionTwo = ({video,title,description}:{video:string;title:string;description:string}) => {
   return (
     <>
       <motion.div
@@ -27,7 +27,7 @@ const SectionTwo = () => {
           preload="metadata"
           poster="/assets/about-banner-poster.png"
         >
-          <source src="/assets/Globalsurf_About_Banner.mp4" type="video/mp4" />
+          <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </motion.div>
@@ -48,17 +48,18 @@ const SectionTwo = () => {
           >
             <div className="pb-[50px] pt-[50px]  lg:pb-[150px] lg:pt-[139px]">
               <div>
-                <h2 className="title-65 mb-3 lg:mb-5 ">Behind the Brand</h2>
+                <h2 className="title-65 mb-3 lg:mb-5 ">{title}</h2>
               </div>
               <div>
                 <p className="fnt-lexend text-19 max-w-[87ch] text-gray1">
-                  We are a dedicated team of creative thinkers, strategists, and
+                  {/* We are a dedicated team of creative thinkers, strategists, and
                   problem solvers, committed to being your digital growth
                   partner. We believe every purpose-driven brand has a unique
                   story and impactful ideas to share. Our mission is to empower
                   ambitious brands with strategies and expertise to share their
                   vision, connect deeply with their audiences, and drive
-                  meaningful change.
+                  meaningful change. */}
+                  {description}
                 </p>
               </div>
             </div>

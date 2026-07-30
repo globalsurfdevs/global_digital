@@ -920,7 +920,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
                 <div className="mt-1 flex w-full flex-col gap-1">
                   <Label content="Channels Used" />
-                  <div className="flex h-[200px] flex-wrap gap-2 border p-5">
+                  <div className="flex h-[300px] flex-wrap gap-2 border p-5 overflow-y-auto">
                     {channelsAvailable.map((channel, index) => (
                       <div key={index} className="relative">
                         <div

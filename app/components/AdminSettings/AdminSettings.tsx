@@ -88,26 +88,29 @@ const AdminSettings = () => {
         }
     }
 
-    const handlePasswordChange = async () => {
-        if (newPass !== cPass) {
-            setError("Passwords does not match, try again")
-            return;
-        }
-
-        if (newPass == "" || cPass == "") {
-            return;
-        }
-
-        const result = await changePass(newPass, session?.user.id)
-        if (result.success) {
-            toast.success(result.message)
-            await signOutAdmin()
-        } else {
-            toast.error(result.message)
-        }
-
-        // setNewPassSection(false)
+const handlePasswordChange = async () => {
+    if (newPass !== cPass) {
+        setError("Passwords does not match, try again")
+        return;
     }
+
+    if (newPass == "" || cPass == "") {
+        return;
+    }
+
+    if (!session?.user?.id) {
+        setError("Your session has expired. Please log in again.")
+        return;
+    }
+
+    const result = await changePass(newPass, session.user.id)
+    if (result.success) {
+        toast.success(result.message)
+        await signOutAdmin()
+    } else {
+        toast.error(result.message)
+    }
+}
 
     const EmailSectionSubmit = async () => {
         try {

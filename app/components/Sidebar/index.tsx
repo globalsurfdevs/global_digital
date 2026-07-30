@@ -7,10 +7,12 @@ import Image from "next/image";
 import SidebarItem from "@/app/components/Sidebar/SidebarItem";
 import ClickOutside from "@/app/components/ClickOutside";
 import useLocalStorage from "@/app/hooks/useLocalStorage";
-import { BsPersonVcard } from "react-icons/bs";
+import { BsPerson, BsPersonVcard } from "react-icons/bs";
 import { assets } from "@/public/assets/assets";
 import { GiNotebook } from "react-icons/gi";
-import { MdOutlinePanTool, MdOutlineWork } from "react-icons/md";
+import { MdManageHistory, MdOutlinePanTool, MdOutlineWork } from "react-icons/md";
+import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
+import { Settings2 } from "lucide-react";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -49,8 +51,8 @@ const menuGroups = [
             />
           </svg>
         ),
-        label: "Dashboard",
-        route: "#",
+        label: "Home",
+        route: "/admin/home",
         // children: [{ label: "eCommerce", route: "/" }],
       },
       // {
@@ -137,17 +139,25 @@ const menuGroups = [
       },
       {
         icon: (
-          <MdOutlinePanTool />
+          <BsPerson />
         ),
         label: "Authors",
         route: "/admin/authors",
       },
       {
         icon: (
-          <MdOutlinePanTool />
+          <IoAccessibilityOutline />
         ),
         label: "About",
         route: "/admin/about",
+      },
+      {
+        icon: (
+          <Settings2/>
+        ),
+        label: "Settings",
+        route: "#",
+        children: [{ label: "Sitemap", route: "/admin/sitemap" }],
       },
       // {
       //   icon: (

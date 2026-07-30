@@ -26,7 +26,6 @@ const AdminEnquiry = () => {
     const pageFromUrl = Number(searchParams.get("page")) || 1;
     const [enquiries, setEnquiries] = useState<Enquiry[] | []>([])
     const [refetch, setRefetch] = useState(false)
-    const [isModalOpen, setIsModalOpen] = useState(false)
     const [page, setPage] = useState(pageFromUrl);
     const [totalPages, setTotalPages] = useState(1);
     const router = useRouter();
@@ -45,17 +44,14 @@ const AdminEnquiry = () => {
         );
     };
 
-
     const changePage = (newPage: number) => {
         setPage(newPage);
         router.push(`${pathname}?page=${newPage}`);
     };
 
     useEffect(() => {
-
         const fetchEnquiriesData = async () => {
             try {
-
                 const query = new URLSearchParams({
                     page: String(page),
                     limit: "10",
@@ -67,7 +63,6 @@ const AdminEnquiry = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-
                     setEnquiries(data.data);
                     setTotalPages(data.totalPages);
                 }
@@ -79,7 +74,6 @@ const AdminEnquiry = () => {
         fetchEnquiriesData()
     }, [page, refetch])
 
-
     const toggleSelectAll = () => {
         if (selectedIds.length === enquiries.length) {
             setSelectedIds([]);
@@ -87,7 +81,6 @@ const AdminEnquiry = () => {
             setSelectedIds(enquiries.map((item) => item._id));
         }
     };
-
 
     const handleBulkDelete = async () => {
         if (selectedIds.length === 0) {
@@ -116,29 +109,42 @@ const AdminEnquiry = () => {
         }
     };
 
-
     return (
         <div className='flex flex-col gap-5'>
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl'>Enquiries</h1>
-            </div>
+
+
             <div className='flex flex-col gap-3 min-h-[calc(100vh-200px)]'>
-                <div className="flex items-center gap-10 justify-end px-5">
-                    <div className="flex gap-3 items-center px-5">
+                <div className="flex items-center gap-10 justify-between px-1">
+                    <div className='flex justify-between items-center'>
+                        <h1 className='text-xl'>Enquiries</h1>
+                    </div>
+                    <div>
+                        {selectedIds.length > 0 && (
+                            <div className="relative inline-flex">
+                                <MdDelete
+                                    className="text-red-600 cursor-pointer text-2xl"
+                                    onClick={handleBulkDelete}
+                                />
+                                <span className="absolute -top-2 -right-2 bg-red-600 text-white flex items-center justify-center text-[10px] rounded-full h-[15px] w-[15px]">
+                                    {selectedIds.length}
+                                </span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="flex gap-3 items-center">
                         <input
                             type="date"
                             value={fromDate}
                             onChange={(e) => setFromDate(e.target.value)}
                             className="border px-2 py-1 rounded"
                         />
-
                         <input
                             type="date"
                             value={toDate}
                             onChange={(e) => setToDate(e.target.value)}
                             className="border px-2 py-1 rounded"
                         />
-
                         <button
                             onClick={() => {
                                 setPage(1);
@@ -148,7 +154,6 @@ const AdminEnquiry = () => {
                         >
                             Apply
                         </button>
-
                         <button
                             onClick={() => {
                                 setFromDate("");
@@ -161,129 +166,130 @@ const AdminEnquiry = () => {
                             Reset
                         </button>
                     </div>
-                    {/* <button
-                        onClick={toggleSelectAll}
-                        className="px-3 py-1 border rounded"
-                    >
-                        {selectedIds.length === enquiries.length
-                            ? "Unselect All"
-                            : "Select All"}
-                    </button> */}
-                    {selectedIds.length > 0 && <div className="relative">
-                        <MdDelete className="text-red-600 cursor-pointer text-2xl" onClick={handleBulkDelete} />
-                        {selectedIds.length > 0 && <span className="absolute -top-1 left-4 w-full h-full bg-red-600 text-white flex items-center justify-center text-[10px] rounded-full h-[15px] w-[15px]">{selectedIds.length}</span>}
-                    </div>}
-
-                    {enquiries && enquiries.length > 0 && <input
-                        type="checkbox"
-                        checked={selectedIds.length === enquiries.length}
-                        onChange={toggleSelectAll}
-                    />}
-                    {/* <button
-                        onClick={handleBulkDelete}
-                        className="px-3 py-1 bg-red-600 text-white rounded"
-                    >
-                        Delete Selected ({selectedIds.length})
-                    </button> */}
-
-
                 </div>
-                {enquiries && enquiries.length > 0 ? (enquiries.map((item, i) => (
-                    <div className='w-full relative' key={i}>
 
-                        <div className='flex h-12 items-center px-5 justify-between bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'>
-                            <div className="">
-                                <h5 className=" text-xl font-bold tracking-tight text-gray-900 dark:text-white">{item.name}</h5>
-                            </div>
-                            <div className='flex items-center gap-10'>
-                                <button onClick={() => setSelectedEnquiry(item)}><LuMessageSquareShare /></button>
+                {enquiries && enquiries.length > 0 ? (
+                    <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
+                        <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
+                            <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                                <tr>
+                                    <th scope="col" className="px-4 py-3">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedIds.length === enquiries.length}
+                                            onChange={toggleSelectAll}
+                                        />
+                                    </th>
+                                    <th scope="col" className="px-4 py-3">Name</th>
+                                    <th scope="col" className="px-4 py-3">Email</th>
+                                    <th scope="col" className="px-4 py-3">Company</th>
+                                    <th scope="col" className="px-4 py-3">Phone</th>
+                                    <th scope="col" className="px-4 py-3">Service</th>
+                                    <th scope="col" className="px-4 py-3 text-center">View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {enquiries.map((item, i) => (
+                                    <tr
+                                        key={item._id ?? i}
+                                        className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                    >
+                                        <td className="px-4 py-3">
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedIds.includes(item._id)}
+                                                onChange={() => toggleSelect(item._id)}
+                                            />
+                                        </td>
+                                        <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                                            {item.name}
+                                        </td>
+                                        <td className="px-4 py-3">{item.email}</td>
+                                        <td className="px-4 py-3">{item.company}</td>
+                                        <td className="px-4 py-3">{item.phone}</td>
+                                        <td className="px-4 py-3">{item.service}</td>
+                                        <td className="px-4 py-3 text-center">
+                                            <button onClick={() => setSelectedEnquiry(item)}>
+                                                <LuMessageSquareShare className="mx-auto text-lg" />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <div>No enquiries available</div>
+                )}
 
-                                {selectedEnquiry &&
-                                    <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                        <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+                {selectedEnquiry && (
+                    <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                        <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
-                                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-
-                                                <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                                    <div className="grid grid-cols-1 gap-4 text-sm">
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Full Name</label>
-                                                            <span className="text-gray-900">{selectedEnquiry.name}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Email</label>
-                                                            <span className="text-gray-900">{selectedEnquiry.email}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Company</label>
-                                                            <span className="text-gray-900">{selectedEnquiry.company}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Phone</label>
-                                                            <span className="text-gray-900">{selectedEnquiry.phone}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Budget</label>
-                                                            <span className="text-gray-900">{selectedEnquiry.budget}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Service</label>
-                                                            <span className="text-gray-900">{selectedEnquiry.service}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Page URL</label>
-                                                            <span className="text-gray-900 break-all">{selectedEnquiry.page_url}</span>
-                                                        </div>
-
-                                                        <div className="flex flex-col">
-                                                            <label className="font-semibold text-gray-600">Message</label>
-                                                            <p className="text-gray-900 whitespace-pre-line">
-                                                                {selectedEnquiry.message}
-                                                            </p>
-                                                        </div>
-
-                                                    </div>
-                                                    <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                                        {/* <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto">Save</button> */}
-                                                        <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={() => setSelectedEnquiry(null)}>Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                                <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                    <div className="grid grid-cols-1 gap-4 text-sm">
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Full Name</label>
+                                            <span className="text-gray-900">{selectedEnquiry.name}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Email</label>
+                                            <span className="text-gray-900">{selectedEnquiry.email}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Company</label>
+                                            <span className="text-gray-900">{selectedEnquiry.company}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Phone</label>
+                                            <span className="text-gray-900">{selectedEnquiry.phone}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Budget</label>
+                                            <span className="text-gray-900">{selectedEnquiry.budget}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Service</label>
+                                            <span className="text-gray-900">{selectedEnquiry.service}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Page URL</label>
+                                            <span className="text-gray-900 break-all">{selectedEnquiry.page_url}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Message</label>
+                                            <p className="text-gray-900 whitespace-pre-line">
+                                                {selectedEnquiry.message}
+                                            </p>
                                         </div>
                                     </div>
-                                }
-                                <input
-                                    type="checkbox"
-                                    checked={selectedIds.includes(item._id)}
-                                    onChange={() => toggleSelect(item._id)}
-                                />
+                                    <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                        <button
+                                            type="button"
+                                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                            onClick={() => setSelectedEnquiry(null)}
+                                        >
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                )))
-                    :
-
-                    (<div>No enquiries available</div>)}
+                )}
             </div>
 
-            {enquiries && enquiries.length > 0 && <div className='mb-10'>
-                <SmartPagination
-                    page={page}
-                    totalPages={totalPages}
-                    setPage={changePage}
-                />
-
-            </div>}
-
+            {enquiries && enquiries.length > 0 && (
+                <div className='mb-10'>
+                    <SmartPagination
+                        page={page}
+                        totalPages={totalPages}
+                        setPage={changePage}
+                    />
+                </div>
+            )}
         </div>
     )
 }

@@ -5,8 +5,9 @@ import EmployeesSwiper from "./EmployeesSwiper";
 import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
 import LetsTalk from "@/app/components/common/LetsConnect";
+import { About } from "@/app/types/about";
 
-const SectionFive = ({data}:any) => {
+const SectionFive = ({data,lastSection}:{data:About['teamSection'],lastSection:About['lastSection']}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -82,11 +83,13 @@ const SectionFive = ({data}:any) => {
         <div className="container mx-auto py-4">
           <div className="flex flex-col pb-[50px] pt-[50px]  lg:pb-[150px] lg:pt-[138px]   ">
             <h2 className="title-65 mb-4 lg:mb-7">
-              Ready to Create the Extraordinary? Let’s Go!
+              {/* Ready to Create the Extraordinary? Let’s Go! */}
+              {lastSection.title}
             </h2>
             <p className="text-19 fnt-lexend max-w-[113ch] text-gray1">
-              Every great brand has a story. See how we’ve turned challenges
-              into triumphs for our clients. Your brand could be next.
+              {/* Every great brand has a story. See how we’ve turned challenges
+              into triumphs for our clients. Your brand could be next. */}
+              {lastSection.description}
             </p>
             <div>
               <div className="innerfnont mt-[20px] lg:mt-[64px]">
@@ -95,7 +98,8 @@ const SectionFive = ({data}:any) => {
                   className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 text-black transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
                 >
                   <span className="duration-300 ease-in group-hover:text-black">
-                    LET'S COLLABORATE
+                    {/* LET'S COLLABORATE */}
+                    {lastSection.buttonText}
                   </span>
                 </button>
                 {/* <Link href="/lets-talk">

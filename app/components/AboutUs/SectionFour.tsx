@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-const SectionFour = () => {
+import { About } from "@/app/types/about";
+const SectionFour = ({data}:{data:About['fourthSection']}) => {
   return (
     <div className="bg-dgray">
       <div className="container mx-auto py-4">
@@ -20,7 +21,7 @@ const SectionFour = () => {
         >
           <div className=" pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-5 lg:gap-10 gap-xl-0">
             <div className="col-span-2 text-5xl">
-              <h2 className="title-65 pb-2">We Believe In</h2>
+              <h2 className="title-65 pb-2">{data.title}</h2>
             </div>
 
             <div className="w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn">
@@ -39,26 +40,32 @@ const SectionFour = () => {
                 }}
               >
                 {[
-                  {
-                    title: "Pursuit of Excellence",
-                    content:
-                      "We aim for excellence in all that we do, delivering top-quality work, innovative strategies, and impactful results. Our team is dedicated to continuous improvement, staying ahead of industry trends, and maintaining high standards to achieve exceptional outcomes in digital marketing.",
-                  },
-                  {
-                    title: "Commitment to Integrity",
-                    content:
-                      "We operate with honesty, transparency, and ethical values in all our interactions. Building trust is at the core of our work, and we foster long-term relationships rooted in respect, reliability, and accountability with clients, partners, and colleagues.",
-                  },
-                  {
-                    title: "Fostering Diversity, Equity & Inclusion",
-                    content:
-                      "We are committed to creating an inclusive workplace that values diverse perspectives and experiences. We actively promote equal opportunities, challenge systemic barriers, and nurture an environment where every voice is respected and empowered to make meaningful contributions.",
-                  },
-                  {
-                    title: "Creating Lasting Impact",
-                    content:
-                      "We are motivated by the opportunity to create meaningful change. By empowering purpose-driven brands to share their messages and achieve their goals, we focus on driving positive outcomes for our clients, their audiences, and the communities they impact.",
-                  },
+                  // {
+                  //   title: "Pursuit of Excellence",
+                  //   content:
+                  //     "We aim for excellence in all that we do, delivering top-quality work, innovative strategies, and impactful results. Our team is dedicated to continuous improvement, staying ahead of industry trends, and maintaining high standards to achieve exceptional outcomes in digital marketing.",
+                  // },
+                  // {
+                  //   title: "Commitment to Integrity",
+                  //   content:
+                  //     "We operate with honesty, transparency, and ethical values in all our interactions. Building trust is at the core of our work, and we foster long-term relationships rooted in respect, reliability, and accountability with clients, partners, and colleagues.",
+                  // },
+                  // {
+                  //   title: "Fostering Diversity, Equity & Inclusion",
+                  //   content:
+                  //     "We are committed to creating an inclusive workplace that values diverse perspectives and experiences. We actively promote equal opportunities, challenge systemic barriers, and nurture an environment where every voice is respected and empowered to make meaningful contributions.",
+                  // },
+                  // {
+                  //   title: "Creating Lasting Impact",
+                  //   content:
+                  //     "We are motivated by the opportunity to create meaningful change. By empowering purpose-driven brands to share their messages and achieve their goals, we focus on driving positive outcomes for our clients, their audiences, and the communities they impact.",
+                  // },
+                  ...data.items.map((item)=>(
+                    {
+                      content:item.description,
+                      ...item
+                    }
+                  ))
                 ].map((item, index) => (
                   <div
                     key={index}

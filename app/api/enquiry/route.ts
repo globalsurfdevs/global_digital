@@ -4,6 +4,7 @@ import Contact from "@/app/models/Contact";
 
 
 export async function GET(req: NextRequest) {
+    await connectDB()
     const { searchParams } = new URL(req.url);
 
     const page = Number(searchParams.get("page")) || 1;

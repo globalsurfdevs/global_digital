@@ -23,7 +23,7 @@ type Data = {
   }[];
 };
 
-const SuccessStories = () => {
+const SuccessStories = ({clientTitle}:{clientTitle:string}) => {
   const ref = useRef(null);
 
   const [data, setData] = useState<Data | null>(null);
@@ -60,7 +60,7 @@ const SuccessStories = () => {
             }, // Slide up and fade in
           }}
         >
-          <h2 className="title-65">Our Clients</h2>
+          <h2 className="title-65">{clientTitle}</h2>
         </motion.div>
         <motion.div
           initial="hidden"
