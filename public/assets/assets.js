@@ -2081,6 +2081,8 @@ export const assets = {
   Hamna
 };
 
+
+
 export const logos = [
   { src: "../assets/logos/002.png", alt: "Clutch logo" },
   { src: "../assets/logos/003.png", alt: "Trustpilot logo" },
@@ -2099,3 +2101,7 @@ export const logos = [
   { src: "../assets/logos/009.png", alt: "Tik Tok Logo" },
   { src: "../assets/logos/11.png", alt: "Digital Agency Network" },
 ];
+
+export const brandingAndPositioning = {
+  hero_bnr: "../assets/branding-and-positioning-agency-in-dubai/hero_bnr.webp",
+};
