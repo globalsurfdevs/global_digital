@@ -11,6 +11,7 @@
   --spacing-120: clamp(5em, 5vw + 1rem, 120px);
 
   --text-70: clamp(28px, 5vw + 0.5rem, 70px);
+  --text-28: clamp(16px, 2vw + 0.25rem, 28px);
   --text-25: clamp(14px, 2vw + 0.25rem, 25px);
 
 }
@@ -560,14 +561,19 @@ body {
   filter: grayscale(0);
 }
 
+.py-120 {
+  padding-top: var(--spacing-120);
+  padding-bottom: var(--spacing-120);
+}
 @layer components {
-  .py-120 {
-    padding-top: var(--spacing-120);
-    padding-bottom: var(--spacing-120);
-  }
   .text-25 {
     font-size: var(--text-25);
   }
+  
+  .text-28 {
+    font-size: var(--text-28);
+  }
+  
   .text70 {
     font-size: var(--text-70);
   }
@@ -1224,6 +1230,9 @@ input[type="number"] {
 }
 
 .text-77787B {
+  color: #77787b !important;
+}
+.text-muted {
   color: #77787b !important;
 }
 

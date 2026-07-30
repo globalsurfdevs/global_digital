@@ -1,13 +1,13 @@
 const TitleDesc = () => {
   return (
-    <section className="py-[120px]">
-      <div className="container">
+    <section className="">
+      <div className="container py-120 border-b border-[#00000033]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-60">Brand strategy before <br />design. <br />every time.</h2>
+            <h2 className="title-65">Brand strategy before <br />design. <br />every time.</h2>
           </div>
           <div>
-            <p className="text-18">GS Digital is a branding agency in Dubai that builds brand positioning, visual identity systems, and graphic design assets for UAE businesses across construction, real estate, retail, fashion, and education. Unlike studios that move straight to logo concepts, we start with competitive positioning and audience research so every design decision has a strategic reason behind it.</p>
+            <p className="text-19 text-77787B">GS Digital is a branding agency in Dubai that builds brand positioning, visual identity systems, and graphic design assets for UAE businesses across construction, real estate, retail, fashion, and education. Unlike studios that move straight to logo concepts, we start with competitive positioning and audience research so every design decision has a strategic reason behind it.</p>
           </div>
         </div>
       </div>

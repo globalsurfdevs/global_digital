@@ -57,6 +57,7 @@ const config = {
         lg: "992px",
         xl: "1200px",
         xxl: "1400px",
+        xxxl:"1650px",
         "3xl": "1650px",
       },
       container: {
@@ -67,6 +68,7 @@ const config = {
           lg: "992px",
           xl: "1200px",
           xxl: "1400px",
+          xxxl:"1650px",
           "3xl": "1650px",
         },
       },
@@ -151,7 +153,6 @@ const config = {
       },
       spacing: {
         "140": "140px",
-        // "120": "120px",
         "75": "75px",
         "60": "60px",
       },

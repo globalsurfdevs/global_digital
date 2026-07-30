@@ -98,7 +98,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
           variant === "whatsapp"
             ? "flex items-center justify-center shrink-0"
             : cn(
-              "flex items-center justify-center  rounded-full shrink-0",
+              "flex items-center justify-center shrink-0",
               iconChipStyles[variant]
             )
         }
