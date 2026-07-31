@@ -143,6 +143,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
+        destination: "/blogs",
+        permanent: true,
+      },
+      {
         source: "/digital-marketing",
         destination: "/digital-marketing-services",
         permanent: true,
