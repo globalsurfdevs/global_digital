@@ -144,7 +144,7 @@ const ProcessSlider = ({data}:any) => {
             </h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
-            <h2 className="title-65" dangerouslySetInnerHTML={{__html:subTitle}}></h2>
+            <h2 className="title-60" dangerouslySetInnerHTML={{__html:subTitle}}></h2>
         </div>
       </div>
 
@@ -207,7 +207,7 @@ const ProcessSlider = ({data}:any) => {
                   </h3>
                 </div>
 
-                <p className="text-19 leading-[1.473684210526316] text-muted  font-lexend">
+                <p className="text-18 leading-[1.444444444444444] text-muted  font-lexend">
                   {item.description}
                 </p>
               </div>

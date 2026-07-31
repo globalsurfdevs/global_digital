@@ -16,8 +16,8 @@ const ImgDesc = ({data}:any) => {
               </h2>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-            <h2 className="title-65 mb-4 md:mb-5 xl:mb-10 tracking-[-0.025em]">{data.subTitle}</h2>
-            <p className="text-19 text-77787B fnt-lexend">{data.description}</p>
+            <h2 className="title-60 mb-4 md:mb-5 xl:mb-10 tracking-[-0.025em]">{data.subTitle}</h2>
+            <p className="text-18 text-77787B fnt-lexend leading-[1.444444444444444]">{data.description}</p>
           </div>
         </div>
       </div>

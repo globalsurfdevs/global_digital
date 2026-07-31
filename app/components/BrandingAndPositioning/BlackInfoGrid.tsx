@@ -96,7 +96,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
               )}
               {!description && (
                 <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                  <h2 className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-65 pb-6 lg:pb-[58px]`}>{subTitle}</h2>
+                  <h2 className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 pb-6 lg:pb-[58px]`}>{subTitle}</h2>
                 </div>
               )}
             </motion.div>
@@ -166,7 +166,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                             )}
                           </div>
 
-                          <p className="fnt-lexend text-19 font-normal text-[#a3a3a3]">
+                          <p className="fnt-lexend text-18 leading-[1.444444444444444] font-normal text-[#a3a3a3]">
                             {framework.dec}
                           </p>
                         </div>
