@@ -141,10 +141,7 @@ export async function POST(req: NextRequest) {
 }
 
 
-export async function PATCH(
-    req: NextRequest,
-    { params }: { params: Promise<{ slug: string }> }
-) {
+export async function PATCH(req: NextRequest) {
     try {
         await dbConnect();
         const { searchParams } = new URL(req.url);
