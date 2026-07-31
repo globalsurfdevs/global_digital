@@ -20,8 +20,8 @@ function cn(...classes: Array<string | false | null | undefined>) {
 }
 
 const baseStyles =
-  "group inline-flex items-center justify-center gap-3 " +
-  "px-6 py-3.5 text-base uppercase  tracking-wide whitespace-nowrap select-none " +
+  "group inline-flex items-center justify-center gap-3 fnt-lexend" +
+  "px-6 3xl:px-[25px] 3xl:py-[15px] py-3.5 text-base uppercase leading-[1] whitespace-nowrap select-none " +
   "rounded-full transition-all duration-300 ease-out " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
   "disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
@@ -43,8 +43,8 @@ const variantStyles: Record<ButtonVariant, string> = {
 
 // Icon chip background per variant
 const iconChipStyles: Record<ButtonVariant, string> = {
-  primary: "bg-[#E63E31] text-white w-7 h-7",
-  outline: "bg-[#E63E31] text-white w-7 h-7",
+  primary: "bg-[#E63E31] text-white w-3 h-3 xl:w-[18px] xl:h-[18px]",
+  outline: "bg-[#E63E31] text-white w-3 h-3 xl:w-[18px] xl:h-[18px]",
   whatsapp: "bg-transparent",
 };
 
@@ -117,7 +117,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 
     const content = (
       <>
-        <span>{children}</span>
+        <span className="fnt-lexend font-normal">{children}</span>
         {showIcon && icon}
       </>
     );

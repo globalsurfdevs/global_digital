@@ -10,9 +10,9 @@ const BECS = ({data}:any) => {
           <h2 className="title-65 mb-6 xl:mb-8 xxl:mb-60">{data.title}</h2>
 
           {/* Mobile: stacked cards, no connecting line */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden gap-4">
-            {data.items.map((item,index) => (
-              <div key={index} className="bg-white p-6 rounded-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden">
+            {data.items.map((item) => (
+              <div key={item.id} className="bg-white p-6  border-b border-black/10">
                 <div className="flex items-center justify-center gap-2 rounded-[10px] border border-black/20 py-3 px-4 w-fit mb-4">
                   <Image src={item.image} alt={item.imageAlt} width={42} height={42} className="w-7 h-7" />
                   <h3 className="text-28 font-normal leading-[1.214285714285714]">{item.title}</h3>

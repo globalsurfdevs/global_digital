@@ -4,7 +4,7 @@ const ImgDesc = ({data}:any) => {
   return ( 
     <section className="py-8 xl:py-20 3xl:py-[100px]">
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xxl:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-[auto_745px] gap-8 xxl:gap-20 items-center">
           <div>
             <Image src={data.image} alt={data.imageAlt} width={1500} height={1500}
              className="w-full h-full object-contain max-h-[600px]" />
@@ -16,7 +16,7 @@ const ImgDesc = ({data}:any) => {
               </h2>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-            <h2 className="title-65 mb-4 md:mb-5 xl:mb-10">{data.subTitle}</h2>
+            <h2 className="title-65 mb-4 md:mb-5 xl:mb-10 tracking-[-0.025em]">{data.subTitle}</h2>
             <p className="text-19 text-77787B fnt-lexend">{data.description}</p>
           </div>
         </div>

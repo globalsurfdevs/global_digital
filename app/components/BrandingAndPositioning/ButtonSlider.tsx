@@ -26,9 +26,9 @@ const ButtonSlider = ({data}:any) => {
   return (
    <div>
       <div className="container" ref={containerRef}></div>
-      <div style={{ marginLeft: containerLeft }} className="flex items-center gap-6 xl:gap-10 xxl:gap-20 3xl:gap-[100px]">
+      <div style={{ marginLeft: containerLeft }} className="flex flex-wrap items-center gap-6 xl:gap-10 xxl:gap-20 3xl:gap-[100px] px-3">
         {/* Heading */}
-        <div className="shrink-0">
+        <div className="shrink-0 w-full sm:w-auto">
           <div className="flex items-center gap-2">
             <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
               {data.title}
