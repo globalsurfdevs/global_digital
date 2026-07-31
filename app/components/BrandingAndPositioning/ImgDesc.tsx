@@ -11,13 +11,13 @@ const ImgDesc = () => {
           </div>
           <div>
             <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-[81px]">
-              <h2 className="text-30 leading-[1.5]">
+              <h2 className="text-28 uppercase tracking-[-0.025em] leading-[1] text-muted">
                 Our approach
               </h2>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-            <h2 className="title-65 mb-4 md:mb-5 xl:mb-10">Brand strategy before</h2>
-            <p className="text-19 text-77787B">GS Digital is a branding agency in Dubai that builds brand positioning, visual identity systems, and graphic design assets for UAE businesses across construction, real estate, retail, fashion, and education. Unlike studios that move straight to logo concepts, we start with competitive positioning and audience research so every design decision has a strategic reason behind it.</p>
+            <h2 className="title-65 mb-4 md:mb-5 xl:mb-10">A strategic reason behind every element</h2>
+            <p className="text-19 text-77787B fnt-lexend">GS Digital works with UAE businesses to define who they are, how they're positioned in their market, and how that positioning is expressed consistently across every touchpoint. Our work starts with brand strategy — competitive positioning, audience definition, and messaging framework — before a single design decision is made. The result is a brand identity that has a strategic reason behind every element, not just an aesthetic one.</p>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@
   --spacing-120: clamp(5em, 5vw + 1rem, 120px);
 
   --text-70: clamp(28px, 5vw + 0.5rem, 70px);
+  --text-60: clamp(24px, 4vw + 0.5rem, 60px);
   --text-28: clamp(16px, 2vw + 0.25rem, 28px);
   --text-25: clamp(14px, 2vw + 0.25rem, 25px);
 
@@ -573,7 +574,9 @@ body {
   .text-28 {
     font-size: var(--text-28);
   }
-  
+  .text-60 {
+    font-size: var(--text-60);
+  }
   .text70 {
     font-size: var(--text-70);
   }
