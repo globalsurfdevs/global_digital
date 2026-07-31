@@ -247,6 +247,7 @@ const HeroSection = () => {
         id="hero-video"
       >
         <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
+        {/* <source src="/assets/videos/home_banner.mp4" type="video/mp4" /> */}
       </video>
 
       <div className="container mx-auto px-4">

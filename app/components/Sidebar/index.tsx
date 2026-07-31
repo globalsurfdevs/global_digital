@@ -12,7 +12,8 @@ import { assets } from "@/public/assets/assets";
 import { GiNotebook } from "react-icons/gi";
 import { MdManageHistory, MdOutlinePanTool, MdOutlineWork } from "react-icons/md";
 import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
-import { Settings2 } from "lucide-react";
+import { CreativeCommons, Settings2 } from "lucide-react";
+import { FaServicestack } from "react-icons/fa";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -153,11 +154,26 @@ const menuGroups = [
       },
       {
         icon: (
-          <Settings2/>
+          <FaServicestack />
+        ),
+        label: "Services",
+        route: "/admin/services",
+      },
+      {
+        icon: (
+          <Settings2 />
         ),
         label: "Settings",
         route: "#",
         children: [{ label: "Sitemap", route: "/admin/sitemap" }],
+      },
+      {
+        icon: (
+          <CreativeCommons />
+        ),
+        label: "Common",
+        route: "#",
+        children: [{ label: "Testimonials", route: "/admin/testimonials" }],
       },
       // {
       //   icon: (
