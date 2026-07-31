@@ -21,6 +21,7 @@ import { whyChooseData } from "../../data/services/branding-and-positioning-agen
 import CaseSudiesSec from "@/app/components/BrandingAndPositioning/CaseSudiesSec";
 import { getService } from "@/app/lib/services.service";
 import { data } from "@/app/data/llmWorksData";
+import { getTestimonials } from "@/app/lib/testimonials";
 
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
@@ -55,6 +56,8 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const service = await getService(slug);
+
+  const testimonials = await getTestimonials()
 
   const servicesData = {
     title: service.fifthSection.title,
@@ -190,7 +193,7 @@ const page = async ({ params }: PageProps) => {
       </section>
       <WhyChoose data={whyChooseData} />
       <CaseSudiesSec data={caseStudiesData} />
-      <Testimonials topTitle="Testimonials" />
+      <Testimonials topTitle="Testimonials" data={testimonials.testimonialSection}/>
       <GetInTouch data={Cta} ctabbutton={"LET'S TALK GROWTH"} />
       <FAQ data={Faq} />
     </div>
