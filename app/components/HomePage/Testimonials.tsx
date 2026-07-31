@@ -8,13 +8,22 @@ interface TestimonialsSectionProps {
   bgcolor?: string;
   bordertop?: boolean;
   data?: HomeType['testimonialSection'];
+  topTitle?: string;
 }
 
-const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop, data }) => {
+const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop, data, topTitle }) => {
   return (
     <div className={` ${bgcolor === 'white' ? 'bg-white' : 'bg-bglight'}`}  >
       <div className={`container px-4 mx-auto  ${bordertop ? ' border-t' : ''}`}>
         <div className="pt-[50px] pb-[30px] md:py-10 lg:py-12 xl:pt-[138px] xl:pb-[110px] ptwhite">
+          {topTitle &&
+            <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
+              <h3 className="text-30 leading-[1] uppercase tracking-[-0.025em]  text-muted">
+                {topTitle}
+              </h3>
+              <div className="h-5 w-5 bg-primary"></div>
+            </div>
+          }
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -25,6 +34,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({ bgcolor, bordertop, 
             }}
             className="lg:flex items-center gap-3 justify-between"
           >
+        
             <h2 className="title-65">{data?.title ? data.title : "Hear From Our Partners"}</h2>
             <div className='mt-3 lg-mt-0 flex items-center gap-3'>
               <svg xmlns="http://www.w3.org/2000/svg" width="106" height="18" viewBox="0 0 106 18" fill="none">

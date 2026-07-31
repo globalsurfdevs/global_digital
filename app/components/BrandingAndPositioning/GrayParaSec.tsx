@@ -4,9 +4,9 @@ const GrayParaSec = () => {
       <div className="container">
         <div>
           <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h2 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
+            <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
               Why it matters
-            </h2>
+            </h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
           <h2 className="title-65 mb-4 md:mb-6 xl:mb-8 xxl:mb-12 max-w-[30ch]">Why UAE businesses need a specialist branding agency</h2>

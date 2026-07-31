@@ -28,7 +28,7 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
             <Link
               key={item.id}
               href={item.href}
-              className="group flex flex-col overflow-hidden  transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1"
             >
               {/* Top */}
               <div className="bg-white pt-5 xl:pt-8 xxl:pt-[41px] pl-5 xl:pl-8 xxl:pl-[41px] 3xl:pl-[49px] pr-5 xl:pr-8 xxl:pr-[41px] 3xl:pr-[65px] min-h-[160px] xxl:min-h-[220px] flex flex-col border border-[#00000033] rounded-[10px]">
@@ -37,12 +37,12 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
               </div>
 
               {/* Bottom */}
-              <div className="flex-1 bg-[#1F1F1F] text-white p-8 xl:p-12 rounded-[10px]">
+              <div className="flex-1 bg-[#1F1F1F] text-white p-8 xl:p-12 3xl:pt-[62px] 3xl:pl-[49px] 3xl:pr-[65px] rounded-[10px]">
                 <h3 className="text-30 leading-tight mb-6 group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
 
-                <p className="text-description leading-relaxed text-white/80">
+                <p className="text-description !text-19 leading-relaxed text-white">
                   {item.description}
                 </p>
               </div>
