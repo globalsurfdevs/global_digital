@@ -22,11 +22,11 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
           <div>
             <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
               <h3 className="text-30 leading-[1.5] text-muted">
-                SERVICES
+                {title}
               </h3>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-            <h2 className="title-60 tracking-[-0.025em]">Our branding & positioning services</h2>
+            <h2 className="title-60 tracking-[-0.025em]">{description}</h2>
           </div>
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2">
