@@ -18,7 +18,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
   return ( 
     <section className="py-120">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[520px_auto] gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[520px_auto] gap-6 3xl:gap-[30px]">
           <div>
             <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
               <h2 className="text-30 leading-[1.5] text-muted">
@@ -26,7 +26,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               </h2>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-            <h1 className="title-65">Our branding & positioning services</h1>
+            <h1 className="title-65 tracking-[-0.025em]">Our branding & positioning services</h1>
           </div>
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2">

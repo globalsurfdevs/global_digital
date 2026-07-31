@@ -7,7 +7,7 @@ const TitleDesc = () => {
             <h2 className="title-65">Brand strategy before <br />design. <br />every time.</h2>
           </div>
           <div>
-            <p className="text-19 text-77787B">GS Digital is a branding agency in Dubai that builds brand positioning, visual identity systems, and graphic design assets for UAE businesses across construction, real estate, retail, fashion, and education. Unlike studios that move straight to logo concepts, we start with competitive positioning and audience research so every design decision has a strategic reason behind it.</p>
+            <p className="text-19 text-muted leading-[1.444444444444444] fnt-lexend">GS Digital is a branding agency in Dubai that builds brand positioning, visual identity systems, and graphic design assets for UAE businesses across construction, real estate, retail, fashion, and education. Unlike studios that move straight to logo concepts, we start with competitive positioning and audience research so every design decision has a strategic reason behind it.</p>
           </div>
         </div>
       </div>

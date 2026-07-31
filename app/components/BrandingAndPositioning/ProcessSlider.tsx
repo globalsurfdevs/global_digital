@@ -139,18 +139,17 @@ const ProcessSlider = () => {
       <div className="container" ref={containerRef}>
         <div className="mb-4 xl:mb-8 xxl:mb-12">
           <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h2 className="text-30 leading-[1.5] uppercase tracking-[0.15em] text-muted">
+            <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
               {subtitle}
-            </h2>
+            </h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
-            <h1 className="title-65"> Our Strategic<br />Brand Development Process</h1>
+            <h2 className="title-65"> Our Strategic<br />Brand Development Process</h2>
         </div>
       </div>
 
       {/* Slider */}
-      <div
-        className="overflow-hidden px-3"
+      <div className="overflow-hidden px-3"
         style={{
           marginLeft: `${containerLeft}px`,
         }}
@@ -195,7 +194,7 @@ const ProcessSlider = () => {
         >
           {items.map((item, i) => (
             <SwiperSlide key={item.id} className="h-auto">
-              <div className={`h-full ${i === leftIndex ? '' : 'pl-6 md:pl-8 xl:pl-10 border-l border-black/10' }`} >
+              <div className={`h-full ${i === leftIndex ? '' : '' } pl-6 md:pl-8 xl:pl-10  border-l border-black/20`} >
                 <div className="flex gap-3 xl:gap-[20px]">
                   <div className="inline-flex items-center justify-center w-14 h-14 xl:w-20 xl:h-20 mb-5 rounded-[7px] bg-[#E63E310D] border border-[#E63E311F]">
                     <span className="text-primary text-28 font-normal">
