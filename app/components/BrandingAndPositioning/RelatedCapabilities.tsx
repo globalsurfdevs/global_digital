@@ -18,7 +18,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
             </h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
-          <h2 className="title-65 max-w-[25ch]"> {data.title}</h2>
+          <h2 className="title-60 max-w-[25ch]"> {data.title}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {data.items.map((item) => (
@@ -29,7 +29,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
                 </div>
                 <h3 className="text-28 font-normal tracking-[-0.025em]">{item.title}</h3>
               </div>
-              <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend text-[#77787B]">{item.description}</p>
+              <p className="text-18 xxl:text-20 leading-[1.444444444444444] fnt-lexend text-[#77787B]">{item.description}</p>
             </div>
           ))}
         </div>

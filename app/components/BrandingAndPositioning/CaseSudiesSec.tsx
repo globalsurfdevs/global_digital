@@ -19,7 +19,7 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
             <div className="h-5 w-5 bg-primary" />
           </div>
 
-          <h2 className="title-65 tracking-[-0.025em]">{data.title}</h2>
+          <h2 className="title-60 tracking-[-0.025em]">{data.title}</h2>
         </div>
 
         {/* Cards */}
@@ -42,7 +42,7 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
                   {item.title}
                 </h3>
 
-                <p className="text-description !text-19 leading-relaxed text-white">
+                <p className="text-description !text-18 leading-[1.444444444444444] text-white">
                   {item.description}
                 </p>
               </div>
