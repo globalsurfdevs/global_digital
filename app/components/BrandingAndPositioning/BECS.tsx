@@ -7,7 +7,7 @@ const BECS = () => {
     <section className="pt-8 xl:pt-12 xxl:pt-20 3xl:pt-[142px] pb-8 xl:pb-12 xxl:pb-20 3xl:pb-[146px]">
       <div className="container">
         <div className="row">
-          <h2 className="title-65 mb-6 xl:mb-8 xxl:mb-60">{becsData.title}</h2>
+          <h2 className="title-60 mb-6 xl:mb-8 xxl:mb-60">{becsData.title}</h2>
 
           {/* Mobile: stacked cards, no connecting line */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden">
@@ -17,7 +17,7 @@ const BECS = () => {
                   <Image src={item.icon} alt={item.title} width={42} height={42} className="w-7 h-7" />
                   <h3 className="text-28 font-normal leading-[1.214285714285714]">{item.title}</h3>
                 </div>
-                <p className="text-muted fnt-lexend text-19 font-normal">{item.description}</p>
+                <p className="text-muted fnt-lexend text-18 leading-[1.444444444444444] font-normal">{item.description}</p>
               </div>
             ))}
           </div>
@@ -38,7 +38,7 @@ const BECS = () => {
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {becsData.items.map((item) => (
-                <p key={item.id} className="text-muted fnt-lexend text-19 font-normal">
+                <p key={item.id} className="text-muted fnt-lexend text-18 leading-[1.444444444444444] font-normal">
                   {item.description}
                 </p>
               ))}

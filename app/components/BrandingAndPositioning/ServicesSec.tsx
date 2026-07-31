@@ -26,7 +26,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               </h3>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-            <h2 className="title-65 tracking-[-0.025em]">Our branding & positioning services</h2>
+            <h2 className="title-60 tracking-[-0.025em]">Our branding & positioning services</h2>
           </div>
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2">
@@ -39,7 +39,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                       </div>
                       <h3 className="text-28 font-normal tracking-[-0.025em]">{service.title}</h3>
                     </div>
-                    <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend text-[#77787B]">{service.description}</p>
+                    <p className="text-14 md:text-16 xl:text-18 leading-[1.444444444444444] xxl:text-20 fnt-lexend text-[#77787B]">{service.description}</p>
                   </div>
                 ))
               }

@@ -24,9 +24,9 @@ const WhyChoose = ({data}: {data: WhyChooseData}) => {
                 </h3>
                 <div className="h-5 w-5 bg-primary"></div>
               </div> 
-              <h2 className="title-65 tracking-[-0.025em]"> {data.title} </h2>
+              <h2 className="title-60 tracking-[-0.025em]"> {data.title} </h2>
             </div>
-            <p className="text-muted text-19 max-w-[58ch]">{data.description}</p>
+            <p className="text-muted text-18 max-w-[58ch]">{data.description}</p>
           </div>
           <div>
             {
