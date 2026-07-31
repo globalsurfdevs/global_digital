@@ -118,13 +118,6 @@ const nextConfig: NextConfig = {
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
-        source:
-          "/blog/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The old URL path
-        destination:
-          "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
         source: "/industry/ecommerce", // The old URL path
         destination: "/industry/ecommerce-digital-marketing", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
@@ -145,7 +138,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
+        source: "/blogs/the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
         destination: "/blogs",
         permanent: true,
       },
