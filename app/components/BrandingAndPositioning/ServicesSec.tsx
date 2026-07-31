@@ -21,21 +21,21 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[520px_auto] gap-6 3xl:gap-[30px]">
           <div>
             <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
-              <h2 className="text-30 leading-[1.5] text-muted">
+              <h3 className="text-30 leading-[1.5] text-muted">
                 SERVICES
-              </h2>
+              </h3>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-            <h1 className="title-65 tracking-[-0.025em]">Our branding & positioning services</h1>
+            <h2 className="title-65 tracking-[-0.025em]">Our branding & positioning services</h2>
           </div>
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2">
               {
                 items.map((service) => (
-                  <div key={service.id} className="p-6 border border-[#00000033] rounded-[10px] p-2 md:p-3 xl:p-5 xxl:p-10">
+                  <div key={service.id} className="border border-[#00000033] rounded-[10px] p-4 md:p-5 xl:p-8 xxl:p-10">
                     <div className="flex items-center gap-2 xl:gap-4 3xl:gap-[24px] mb-3 md:mb-4 xl:mb-5 xxl:mb-6">
-                      <div className="bg-primary/5 border border-primary/12 w-50 h-50 xl:w-[100px] xl:h-[100px] flex items-center justify-center rounded-[7px]">
-                        <Image src={service.icon} alt={service.title} width={50} height={50} />
+                      <div className="bg-primary/5 border border-primary/12 w-50 h-50 xl:w-[100px] xl:h-[100px] flex items-center justify-center rounded-[7px] p-3 xl:p-5 shrink-0">
+                        <Image src={service.icon} alt={service.title} width={60} height={60} className="w-10 h-10 xl:w-auto xl:h-auto xxl:w-[60px] xxl:h-[60px] object-contain" />
                       </div>
                       <h3 className="text-28 font-normal tracking-[-0.025em]">{service.title}</h3>
                     </div>
