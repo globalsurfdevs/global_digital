@@ -96,8 +96,8 @@ function getSlidesPerView(width: number) {
   return value;
 }
 
-const ProcessSlider = () => {
-  const { items, subtitle, title } = processSliderData;
+const ProcessSlider = ({data}:any) => {
+  const { items, subTitle, title } = data;
 
   const [previewIndex, setPreviewIndex] = useState(items.length - 1);
   const [leftIndex, setLeftIndex] = useState(0);
@@ -140,11 +140,11 @@ const ProcessSlider = () => {
         <div className="mb-4 xl:mb-8 xxl:mb-12">
           <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
             <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
-              {subtitle}
+              {title}
             </h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
-            <h2 className="title-65"> Our Strategic<br />Brand Development Process</h2>
+            <h2 className="title-65" dangerouslySetInnerHTML={{__html:subTitle}}></h2>
         </div>
       </div>
 
@@ -198,7 +198,7 @@ const ProcessSlider = () => {
                 <div className="flex gap-3 xl:gap-[20px]">
                   <div className="inline-flex items-center justify-center w-14 h-14 xl:w-20 xl:h-20 mb-5 rounded-[7px] bg-[#E63E310D] border border-[#E63E311F]">
                     <span className="text-primary text-28 font-normal">
-                      {item.number}
+                      {i < 10 ? `0${i+1}` :i+1}
                     </span>
                   </div>
 

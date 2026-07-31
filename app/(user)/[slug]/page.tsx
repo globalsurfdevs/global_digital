@@ -38,6 +38,8 @@ import ButtonSlider from "@/app/components/BrandingAndPositioning/ButtonSlider";
 import WhyChoose from "@/app/components/BrandingAndPositioning/WhyChoose";
 import { whyChooseData } from "../../data/services/branding-and-positioning-agency-in-dubai/data";
 import CaseSudiesSec from "@/app/components/BrandingAndPositioning/CaseSudiesSec";
+import { getService } from "@/app/lib/services.service";
+import { data } from "@/app/data/llmWorksData";
 
 
 
@@ -58,6 +60,10 @@ type Metadata = {
   alternates: Canonicals;
 };
 
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "",
@@ -68,7 +74,105 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
-const page = () => {
+const page = async ({ params }: PageProps) => {
+  const { slug } = await params;
+  const service = await getService(slug);
+
+  const servicesData = {
+    title: service.fifthSection.title,
+    subtitle: service.fifthSection.subTitle,
+    items: service.fifthSection.items.map((item, index) => (
+      {
+        id: index,
+        icon: item.image,
+        ...item
+      }
+    ))
+  };
+
+  const whatYouGetData = {
+    title: service.eighthSection.title,
+    subTitle: service.eighthSection.subTitle,
+    data: service.eighthSection.items.map((item, index) => (
+      {
+        id: index + 1,
+        dec: item.description,
+        ...item
+      }
+    ))
+  };
+
+  const capabilitiesData = {
+    tag: service.ninethSection.title,
+    title: service.ninethSection.subTitle,
+
+    items: service.ninethSection.items.map((item, index) => (
+      {
+        id: index + 1,
+        icon: item.image,
+        ...item
+      }
+    ))
+  }
+
+  const whyChooseData = {
+    tag: service.eleventhSection.title,
+    title: service.eleventhSection.subTitle,
+    description: service.eleventhSection.description,
+    items: service.eleventhSection.items.map((item, index) => (
+      {
+        id: index + 1,
+        value: item.number,
+        label: item.value
+      }
+    ))
+  };
+
+  console.log(service.caseStudySection.items)
+
+  const caseStudiesData = {
+    tag: service.caseStudySection.title,
+    title: service.caseStudySection.subTitle,
+    items: service.caseStudySection.items.map((item,index)=>(
+      {
+        id:index+1,
+        client:item.project.companyName,
+        logo:item.project.logo,
+        href:`/case-studies/${item.project.slug}`,
+        ...item
+      }
+    ))
+    // items: [
+    //   {
+    //     id: 1,
+    //     client: "ASGC Construction",
+    //     logo: "assets/images/branding-positioning/logos/logo-1.png",
+    //     title: "SEO Overhaul Boosts Visibility and User Engagement",
+    //     description:
+    //       "Explore The Garden Concept’s SEO strategy for boosting organic traffic and enhancing user experience through a redesigned website.",
+    //     href: "/case-studies/asgc-construction",
+    //   },
+    //   {
+    //     id: 2,
+    //     client: "ASGC Construction",
+    //     logo: "assets/images/branding-positioning/logos/logo-1.png",
+    //     title: "SEO Overhaul Boosts Visibility and User Engagement",
+    //     description:
+    //       "Explore The Garden Concept’s SEO strategy for boosting organic traffic and enhancing user experience through a redesigned website.",
+    //     href: "/case-studies/asgc-construction",
+    //   },
+    //   {
+    //     id: 3,
+    //     client: "ASGC Construction",
+    //     logo: "assets/images/branding-positioning/logos/logo-1.png",
+    //     title: "SEO Overhaul Boosts Visibility and User Engagement",
+    //     description:
+    //       "Explore The Garden Concept’s SEO strategy for boosting organic traffic and enhancing user experience through a redesigned website.",
+    //     href: "/case-studies/asgc-construction",
+    //   },
+    // ]
+  };
+
   return (
     <div>
       {/* <Script
@@ -94,17 +198,17 @@ const page = () => {
           maxchwidth={60}
         />
       </section> */}
-      <HeroSection />
-      <TitleDesc />
-      <ImgDesc />
-      <GrayParaSec />
+      <HeroSection data={service.firstSection} />
+      <TitleDesc data={service.secondSection} />
+      <ImgDesc data={service.thirdSection} />
+      <GrayParaSec data={service.fourthSection} />
       <ServicesSec title={servicesData.title} description={servicesData.subtitle} items={servicesData.items} />
-      <ProcessSlider />
-      <BECS />
-      <BlackInfoGrid title={whatYouGetData.title} data={whatYouGetData.data} bgcolor="bg-black" maxchwidth={50} colcount={4} />
+      <ProcessSlider data={service.sixthSection} />
+      <BECS data={service.seventhSection} />
+      <BlackInfoGrid title={whatYouGetData.title} subTitle={whatYouGetData.subTitle} data={whatYouGetData.data} bgcolor="bg-black" maxchwidth={50} colcount={4} />
       <RelatedCapabilities data={capabilitiesData} />
       <section className="mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px]">
-        <ButtonSlider />
+        <ButtonSlider data={service.tenthSection} />
       </section>
       <WhyChoose data={whyChooseData} />
       <CaseSudiesSec data={caseStudiesData} />
