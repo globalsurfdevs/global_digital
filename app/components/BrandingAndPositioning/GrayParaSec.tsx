@@ -1,4 +1,6 @@
-const GrayParaSec = ({ data }: any) => {
+import { ServiceItem } from "@/app/(user)/[slug]/type";
+
+const GrayParaSec = ({ data }: {data:ServiceItem['fourthSection']}) => {
   return (
     <section className="py-120 bg-[#F6F6F6]">
       <div className="container">

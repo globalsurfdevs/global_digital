@@ -5,7 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Autoplay, Pagination } from 'swiper/modules';
 import Image from "next/image";
-const ButtonSlider = ({data}:any) => {
+import { ServiceItem } from "@/app/(user)/[slug]/type";
+const ButtonSlider = ({data}:{data:ServiceItem['tenthSection']}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerLeft, setContainerLeft] = useState(0);
   useEffect(() => {

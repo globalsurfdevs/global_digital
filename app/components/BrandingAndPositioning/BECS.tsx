@@ -1,8 +1,9 @@
+import { ServiceItem } from "@/app/(user)/[slug]/type";
 import { becsData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import Image from "next/image";
 import { Fragment } from "react";
 
-const BECS = ({data}:any) => {
+const BECS = ({data}:{data:ServiceItem['seventhSection']}) => {
   return (
     <section className="pt-8 xl:pt-12 xxl:pt-20 3xl:pt-[142px] pb-8 xl:pb-12 xxl:pb-20 3xl:pb-[146px]">
       <div className="container">
@@ -11,8 +12,8 @@ const BECS = ({data}:any) => {
 
           {/* Mobile: stacked cards, no connecting line */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden">
-            {data.items.map((item) => (
-              <div key={item.id} className="bg-white p-6  border-b border-black/10">
+            {data.items.map((item,index) => (
+              <div key={index} className="bg-white p-6  border-b border-black/10">
                 <div className="flex items-center justify-center gap-2 rounded-[10px] border border-black/20 py-3 px-4 w-fit mb-4">
                   <Image src={item.image} alt={item.imageAlt} width={42} height={42} className="w-7 h-7" />
                   <h3 className="text-28 font-normal leading-[1.214285714285714]">{item.title}</h3>
