@@ -17,6 +17,7 @@ import {
 } from "@/app/components/HomePage/data";
 import type { Metadata } from "next";
 import { getHome } from "../lib/home.service";
+import { getTestimonials } from "../lib/testimonials";
 
 export const metadata: Metadata = {
   title: "Full service Digital Marketing Agency Dubai | GS Digital",
@@ -125,6 +126,7 @@ const localBusinessSchema = {
 
 export default async function Home() {
   const home = await getHome();
+  const testimonials = await getTestimonials()
   return (
     <>
       {/* Website Schema */}
@@ -166,7 +168,7 @@ export default async function Home() {
       <Tours />
       <SuccessStories clientTitle={home.clientSection.title} />
       <Clients data={home.clientSection} />
-      <Testimonials data={home.testimonialSection} />
+      <Testimonials data={testimonials.testimonialSection} />
       <FAQ title={home.faqSection.title}
         data={home.faqSection.items.map((item:{question:string,answer:string}) => ({
           title: item.question,
