@@ -1,8 +1,20 @@
 import Image from "next/image";
 import { heroData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import Button from "../common/buttons/PrimaryButton";
+interface HeroSectionProps {
+  data:{
+    title: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+    items: {
+      title: string;
+      link: string;
+    }[];
+  }
+}
 
-const HeroSection = ({data}:any) => {
+const HeroSection = ({data}:HeroSectionProps) => {
   return ( 
     <section className="relative overflow-hidden h-screen">
       <div className="absolute inset-0 w-full h-full z-0">
