@@ -21,7 +21,7 @@ function cn(...classes: Array<string | false | null | undefined>) {
 
 const baseStyles =
   "group inline-flex items-center justify-center gap-3 fnt-lexend" +
-  "px-6 3xl:px-[25px] 3xl:py-[15px] py-3.5 text-base uppercase leading-[1] whitespace-nowrap select-none " +
+  "xl:px-[25px] xl:py-[15px] px-5 py-3.5 text-base uppercase leading-[1] whitespace-nowrap select-none " +
   "rounded-full transition-all duration-300 ease-out " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
   "disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
