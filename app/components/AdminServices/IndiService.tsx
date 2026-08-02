@@ -122,6 +122,7 @@ export interface ServiceFormProps {
         }[];
     };
     ctaSection: {
+        titleRed:string;
         title: string;
         description: string;
         buttonText: string;
@@ -1457,6 +1458,15 @@ const IndiServicePage = () => {
                 >
                     <div className='p-5 rounded-md flex flex-col gap-2'>
                         <div className='flex flex-col gap-2'>
+
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Title Red</Label>
+                                <Input type='text' placeholder='Title Red' {...register(`ctaSection.titleRed`, {
+                                    required: "Title Red is required"
+                                })} />
+                                {errors.ctaSection?.titleRed && <p className='text-red-500'>{errors.ctaSection?.titleRed.message}</p>}
+                            </div>
+
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
                                 <Input type='text' placeholder='Title' {...register(`ctaSection.title`, {

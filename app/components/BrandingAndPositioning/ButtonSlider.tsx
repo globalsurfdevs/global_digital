@@ -5,7 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Autoplay, Pagination } from 'swiper/modules';
 import Image from "next/image";
-const ButtonSlider = () => {
+import { ServiceItem } from "@/app/(user)/[slug]/type";
+const ButtonSlider = ({data}:{data:ServiceItem['tenthSection']}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerLeft, setContainerLeft] = useState(0);
   useEffect(() => {
@@ -31,7 +32,7 @@ const ButtonSlider = () => {
         <div className="shrink-0 w-full sm:w-auto">
           <div className="flex items-center gap-2">
             <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
-              {industriesData.tag}
+              {data.title}
             </h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
@@ -57,13 +58,13 @@ const ButtonSlider = () => {
               },
             }}
           >
-            {industriesData.items.map((item) => (
+            {data.items.map((item,index) => (
               <SwiperSlide
-                key={item.id}
+                key={index}
                 className="!w-auto"
               >
                 <button className="px-4 lg:px-6 xl:px-10 py-2 lg:py-4 xl:py-8  rounded-full border border-black/10 whitespace-nowrap flex items-center gap-3">
-                  <Image src={item.icon} alt={item.title} width={36} height={36} className="w-5 h-auto xl:w-[36px] object-contain" />
+                  <Image src={item.image} alt={item.imageAlt} width={36} height={36} className="w-5 h-auto xl:w-[36px] object-contain" />
                   <span className="text-28 leading-[1.214285714285714]">{item.title}</span>
                 </button>
               </SwiperSlide>

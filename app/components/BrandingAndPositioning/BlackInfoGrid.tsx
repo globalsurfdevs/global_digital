@@ -20,6 +20,7 @@ interface FrameworkSectionProps {
   colcount?: number;
   maxchwidth?: number;
   data: FrameworkItem[];
+  subTitle:string;
 }
 
 const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
@@ -30,7 +31,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
   bgcolor,
   colcount,
   maxchwidth,
-
+  subTitle
 }) => {
 
   const [width, setWidth] = useState(0);
@@ -64,7 +65,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
         <div className="pd-cus flex flex-col pt-8 xl:pt-12 xxl:pt-[120px] pb-4 xl:pb-6 xxl:pb-60">
           <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
             <h2 className="text-30 leading-[1.5] text-[#A3A3A3] uppercase">
-              What You Get
+              {title}
             </h2>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
@@ -95,7 +96,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
               )}
               {!description && (
                 <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                  <h2 className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 pb-6 lg:pb-[58px]`}>{title}</h2>
+                  <h2 className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 pb-6 lg:pb-[58px]`}>{subTitle}</h2>
                 </div>
               )}
             </motion.div>
@@ -151,8 +152,8 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                           <div className="relative w-fit text-2xl">
                             <h3
                               className={`${bgcolor === "bg-black"
-                                  ? "text-white"
-                                  : "text-black"
+                                ? "text-white"
+                                : "text-black"
                                 } text-28 pb-3 leading-[1.214285714285714] lg:pb-6`}
                               dangerouslySetInnerHTML={{ __html: framework.title }}
                             />

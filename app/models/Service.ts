@@ -173,6 +173,9 @@ const serviceItemSchema = new mongoose.Schema({
         ]
     },
     ctaSection: {
+        titleRed: {
+            type: String
+        },
         title: {
             type: String
         },

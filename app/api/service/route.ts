@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Service from "@/app/models/Service";
 import "@/app/models/Portfolio"
+import { revalidateTag } from "next/cache";
 
 // Turns "Web Development" into "web-development"
 const slugify = (value: string) =>
@@ -17,40 +18,40 @@ const slugify = (value: string) =>
 export async function GET(req: NextRequest) {
     try {
         await dbConnect();
- 
+
         const { searchParams } = new URL(req.url);
         const slug = searchParams.get("slug");
- 
+
         // --- Fetch a single service by slug (full data, for the edit form) ---
         if (slug) {
             const doc = await Service.findOne(
                 { "items.slug": slug },
                 { "items.$": 1 }
             ).populate("items.caseStudySection.items.project", "companyName slug logo");
- 
+
             const item = doc?.items?.[0];
- 
+
             if (!item) {
                 return NextResponse.json(
                     { message: "Service not found" },
                     { status: 404 }
                 );
             }
- 
+
             return NextResponse.json({ data: item });
         }
- 
+
         // --- Otherwise, return the paginated list ---
         const page = Number(searchParams.get("page")) || 1;
         const limit = Number(searchParams.get("limit")) || 10;
         const skip = (page - 1) * limit;
- 
+
         const doc = await Service.findOne({}, { items: 1 });
         const allItems = doc?.items ?? [];
- 
+
         const totalItems = allItems.length;
         const totalPages = Math.max(Math.ceil(totalItems / limit), 1);
- 
+
         const paginatedItems = allItems
             .slice(skip, skip + limit)
             .map((item: any) => ({
@@ -59,7 +60,7 @@ export async function GET(req: NextRequest) {
                 slug: item.slug,
                 createdAt: item.createdAt,
             }));
- 
+
         return NextResponse.json({
             data: paginatedItems,
             totalPages,
@@ -120,6 +121,7 @@ export async function POST(req: NextRequest) {
 
         const createdItem = serviceDoc.items[serviceDoc.items.length - 1];
 
+        revalidateTag("service")
         return NextResponse.json(
             {
                 message: "Service created successfully",
@@ -148,39 +150,41 @@ export async function PATCH(req: NextRequest) {
         const slug = searchParams.get("slug");
         // const slug = "branding-and-positioning-agency-in-dubai"
         const body = await req.json();
- 
+
         // Never let the request body overwrite the slug that identifies this item —
         // slug changes should go through a dedicated rename flow, not a general PATCH.
         const { slug: _ignoredSlug, ...updateData } = body ?? {};
- 
+
         // Build a $set payload like { "items.$.seo": ..., "items.$.firstSection": ..., ... }
         const setPayload: Record<string, unknown> = {};
         for (const [key, value] of Object.entries(updateData)) {
             setPayload[`items.$.${key}`] = value;
         }
- 
+
         if (Object.keys(setPayload).length === 0) {
             return NextResponse.json(
                 { message: "No data provided to update" },
                 { status: 400 }
             );
         }
- 
+
         const updatedDoc = await Service.findOneAndUpdate(
             { "items.slug": slug },
             { $set: setPayload },
             { new: true }
         );
- 
+
         const updatedItem = updatedDoc?.items?.[0];
- 
+
         if (!updatedItem) {
             return NextResponse.json(
                 { message: "Service not found" },
                 { status: 404 }
             );
         }
- 
+
+        revalidateTag("service")
+
         return NextResponse.json({
             message: "Service updated successfully",
             data: updatedItem,

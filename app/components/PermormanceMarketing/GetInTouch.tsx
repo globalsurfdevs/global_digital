@@ -66,10 +66,10 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               {data.map((item, index) =>
                 redlast ? (
                   <h2
-                    className="title-65 leading-[1.15] capitalize"
+                    className="title-65 leading-[1.15]"
                     key={index}
                     dangerouslySetInnerHTML={{
-                      __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span><span class="text-primary">${item.textred}</span>`,
+                      __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span> <span class="text-primary">${item.textred}</span>`,
                     }}
                   />
                 ) : (
@@ -83,15 +83,13 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                 ),
               )}
 
-              {data.map((item, index) => {
-                item.subhead && item.subhead.length > 0 ? (
-                  <div key={index}>
-                    <p className="pt-5 text-font30 leading-[1.3] text-gray1 lg:mt-10">
-                      {item.subhead}
+              
+                  <div>
+                    <p className="text-font25 leading-[35px] text-gray1 lg:mt-10">
+                      {data[0].subhead}
                     </p>
                   </div>
-                ) : null;
-              })}
+                
             </motion.div>
 
             <motion.div
@@ -107,13 +105,13 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                 }, // Slide up and fade in
               }}
             >
-              <div className="innerfnont mt-6 lg:mt-[57px]">
+              <div className="innerfnont mt-6 lg:mt-[60px]">
                 <button onClick={() => setModalOpen(true)}
                   className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 ${
                     bgcolor ? "text-black" : "text-white"
                   } transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
                 >
-                  <span className="duration-300 ease-in group-hover:text-black">
+                  <span className="duration-300 ease-in group-hover:text-black uppercase">
                     {ctabbutton}
                   </span>
                 </button>
