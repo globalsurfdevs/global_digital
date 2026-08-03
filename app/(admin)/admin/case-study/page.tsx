@@ -6,9 +6,7 @@ import AdminCaseStudy from "@/app/components/AdminCaseStudy/AdminCaseStudy";
 
 const CaseStudyPage = () => {
   return (
-    <DefaultLayout>
         <AdminCaseStudy/>
-    </DefaultLayout>
   );
 };
 

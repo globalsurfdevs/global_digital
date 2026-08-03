@@ -8,9 +8,7 @@ import News from "@/app/components/News/News";
 
 const NewsPage = () => {
   return (
-    <DefaultLayout>
         <News/>
-    </DefaultLayout>
   );
 };
 

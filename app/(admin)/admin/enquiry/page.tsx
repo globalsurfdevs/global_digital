@@ -7,11 +7,9 @@ import { Suspense } from "react";
 
 const EnquiryPage = () => {
     return (
-        <DefaultLayout>
             <Suspense fallback={"Loading"}>
             <AdminEnquiry />
             </Suspense>
-        </DefaultLayout>
     );
 };
 

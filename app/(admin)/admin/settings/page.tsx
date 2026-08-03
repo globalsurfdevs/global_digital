@@ -7,9 +7,7 @@ import AdminSettings from "@/app/components/AdminSettings/AdminSettings";
 
 const SettingsPage = () => {
   return (
-    <DefaultLayout>
         <AdminSettings/>
-    </DefaultLayout>
   );
 };
 

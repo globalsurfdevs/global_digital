@@ -8,11 +8,9 @@ import AdminServiceList from "@/app/components/AdminServices/AdminServices";
 
 const ServicePage = () => {
     return (
-        <DefaultLayout>
             <Suspense fallback={"Loading"}>
             <AdminServiceList />
             </Suspense>
-        </DefaultLayout>
     );
 };
 

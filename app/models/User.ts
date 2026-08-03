@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     isAdmin: {
         type: Boolean
@@ -20,6 +20,11 @@ const UserSchema = new mongoose.Schema({
     otp: {
         type: String,
         default: null,
+    },
+    role: {
+        type: String,
+        enum: ["admin", "hr", "user"],
+        default: "user",
     },
 });
 

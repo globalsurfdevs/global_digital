@@ -4,9 +4,7 @@ import AdminPortfolioChannel from '@/app/components/AdminPortfolioChannel/AdminP
 
 const page = () => {
   return (
-    <DefaultLayout>
         <AdminPortfolioChannel />
-    </DefaultLayout>
   )
 }
 

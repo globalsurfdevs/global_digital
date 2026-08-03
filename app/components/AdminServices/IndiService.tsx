@@ -121,8 +121,11 @@ export interface ServiceFormProps {
             description: string;
         }[];
     };
+    testimonialsSection: {
+        title: string;
+    },
     ctaSection: {
-        titleRed:string;
+        titleRed: string;
         title: string;
         description: string;
         buttonText: string;
@@ -378,6 +381,7 @@ const IndiServicePage = () => {
                 setValue("faqSection", data.data?.faqSection);
                 setValue("faqSection.items", data.data?.faqSection?.items ?? []);
                 setValue("caseStudySection", data.data?.caseStudySection);
+                setValue("testimonialsSection", data.data?.testimonialsSection);
                 setValue(
                     "caseStudySection.items",
                     (data.data?.caseStudySection?.items ?? []).map((item: any) => ({
@@ -1444,6 +1448,26 @@ const IndiServicePage = () => {
                             </div>
                             <div className='flex justify-end mt-2'>
                                 <Button type='button' addItem onClick={() => caseStudySectionAppend({ title: "", description: "", project: "" })}>Add Item</Button>
+                            </div>
+                        </div>
+                    </div>
+                </AccordionSection>
+
+                {/* ---------------- Testimonials Section ---------------- */}
+                <AccordionSection
+                    title="Testimonials Section"
+                    sectionKey="testimonialsSection"
+                    openSection={openSection}
+                    setOpenSection={setOpenSection}
+                >
+                    <div className='p-5 rounded-md flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Title</Label>
+                                <Input type='text' placeholder='Title' {...register(`testimonialsSection.title`, {
+                                    required: "Title is required"
+                                })} />
+                                {errors.testimonialsSection?.title && <p className='text-red-500'>{errors.testimonialsSection?.title.message}</p>}
                             </div>
                         </div>
                     </div>

@@ -9,9 +9,7 @@ export const metadata: Metadata = {
 
 const BlogsPage = () => {
   return (
-    <DefaultLayout>
       <AdminBlogList />
-    </DefaultLayout>
   );
 };
 

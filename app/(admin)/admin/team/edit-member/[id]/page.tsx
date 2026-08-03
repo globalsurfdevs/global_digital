@@ -7,9 +7,7 @@ import AddMember from "@/app/components/AddMember/AddMember";
 
 const AddMemberPage = () => {
   return (
-    <DefaultLayout>
         <AddMember editMode/>
-    </DefaultLayout>
   );
 };
 

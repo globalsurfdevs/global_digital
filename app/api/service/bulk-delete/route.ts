@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Service from "@/app/models/Service";
+import { verifyAdmin } from "@/lib/verifyAdmin";
 
 // POST /api/service/bulk-delete
 // Body: { ids: string[] }
 // Removes every item whose _id is in the given list from the items array.
 export async function POST(req: NextRequest) {
     try {
+        const isAdmin = await verifyAdmin(req);
+        if (!isAdmin) {
+            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        }
         await dbConnect();
 
         const body = await req.json();

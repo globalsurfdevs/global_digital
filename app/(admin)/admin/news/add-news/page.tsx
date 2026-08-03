@@ -7,9 +7,7 @@ import AddNews from "@/app/components/AddNews/AddNews";
 
 const NewsPage = () => {
   return (
-    <DefaultLayout>
         <AddNews/>
-    </DefaultLayout>
   );
 };
 
