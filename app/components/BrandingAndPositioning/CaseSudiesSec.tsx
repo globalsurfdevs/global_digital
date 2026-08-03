@@ -31,9 +31,10 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
               className="group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1"
             >
               {/* Top */}
-              <div className="bg-white pt-5 xl:pt-8 xxl:pt-[41px] pl-5 xl:pl-8 xxl:pl-[41px] 3xl:pl-[49px] pr-5 xl:pr-8 xxl:pr-[41px] 3xl:pr-[65px] min-h-[160px] xxl:min-h-[220px] flex flex-col border border-[#00000033] rounded-[10px]">
+              {/* <div className="bg-white pt-5 xl:pt-8 xxl:pt-[41px] pl-5 xl:pl-8 xxl:pl-[41px] 3xl:pl-[49px] pr-5 xl:pr-8 xxl:pr-[41px] 3xl:pr-[65px] min-h-[160px] xxl:min-h-[220px] flex flex-col border border-[#00000033] rounded-[10px]"> */}
+              <div className="bg-white pt-5 xl:pt-8 xxl:pt-[41px] pl-5 xl:pl-8 xxl:pl-[41px] 3xl:pl-[49px] pr-5 xl:pr-8 xxl:pr-[41px] 3xl:pr-[65px] flex flex-col border border-[#00000033] rounded-[10px]">
                 <h3 className="text-28 leading-[1] mb-8 xl:mb-10">{item.client}</h3>
-                <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" />
+                {/* <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" /> */}
               </div>
 
               {/* Bottom */}
