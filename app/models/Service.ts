@@ -205,6 +205,11 @@ const serviceItemSchema = new mongoose.Schema({
             description: String
         }]
     },
+    testimonialsSection: {
+        title: {
+            type: String
+        }
+    },
     faqSection: {
         title: {
             type: String

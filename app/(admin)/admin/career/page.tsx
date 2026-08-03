@@ -6,9 +6,7 @@ import AdminCareer from "@/app/components/AdminCareer/AdminCareer";
 
 const EnquiryPage = () => {
     return (
-        <DefaultLayout>
             <AdminCareer />
-        </DefaultLayout>
     );
 };
 

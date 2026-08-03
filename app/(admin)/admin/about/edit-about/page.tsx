@@ -6,9 +6,7 @@ import About from "@/app/components/About/About";
 
 const AboutPage = () => {
   return (
-    <DefaultLayout>
         <About/>
-    </DefaultLayout>
   );
 };
 

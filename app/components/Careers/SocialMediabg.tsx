@@ -3,20 +3,49 @@ import aboutbnnr from "@/public/assets/aboutus/banner-aboutus.jpg";
 import Button from "../Button/Button";
 import Link from "next/link";
 import ButtonIcon from "../Button/ButtonIcon";
-import { IoArrowBack } from "react-icons/io5"; // Using a back arrow from react-icons
+import { IoArrowBack } from "react-icons/io5";
+import { submitLinkedIn } from "@/app/actions/submitLinkedIn";
 
 const SocialMediabg = () => {
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const [linkedinUrl, setLinkedinUrl] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleButtonClick = () => {
     setIsSectionVisible(!isSectionVisible);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    if (!isChecked) {
+      alert("Please confirm you'd like us to screen your profile.");
+      return;
+    }
+
+    const form = e.currentTarget; // no need for getElementById
+
+    try {
+      setIsSubmitting(true);
+      const formDataObj = new FormData(form);
+
+      const result = await submitLinkedIn(formDataObj);
+
+      if (result?.success) {
+        alert("Thank you, we will get back to you soon!");
+        form.reset();
+        setLinkedinUrl("");   // reset controlled state too
+        setIsChecked(false);  // form.reset() alone won't update React state
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Submission failed.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -31,7 +60,6 @@ const SocialMediabg = () => {
               <div className="flex flex-wrap items-stretch justify-end">
                 <div className="w-full lg:w-1/5"></div>
                 <div className="relative w-full overflow-hidden bg-black p-[20px] sm:p-[50px] lg:w-1/2 lg:p-[80px]">
-                  {/* Main Content */}
                   <div>
                     <h2 className="leading-1 text-font65 text-white lg:leading-[4.5rem]">
                       Get on the GS Digital talent radar.
@@ -43,25 +71,21 @@ const SocialMediabg = () => {
                       reach out to you.
                     </p>
                     <ButtonIcon
-                      icon={
-                        <img src="/images/linkedinicon.svg" alt="LinkedIn" />
-                      }
+                      icon={<img src="/images/linkedinicon.svg" alt="LinkedIn" />}
                       text="LinkedIn"
                       onClick={handleButtonClick}
                       className="sm:text-30 text-[15px]"
                     />
                   </div>
 
-                  {/* Sliding Section */}
                   <div
                     className={`absolute right-0 top-5 h-full w-full transform bg-black p-[20px] text-white transition-transform duration-500 md:p-[50px] lg:p-[80px] ${
                       isSectionVisible ? "translate-x-0" : "translate-x-full"
                     }`}
                   >
-                    {/* Back Arrow */}
                     <div
                       onClick={() => setIsSectionVisible(false)}
-                      className="absolute  top-0 cursor-pointer text-2xl text-white md:top-8"
+                      className="absolute top-0 cursor-pointer text-2xl text-white md:top-8"
                     >
                       <IoArrowBack />
                     </div>
@@ -70,10 +94,10 @@ const SocialMediabg = () => {
                       Send your LinkedIn profile
                     </h2>
 
-                    {/* New Form Section */}
                     <form onSubmit={handleSubmit} className="mt-3 md:mt-6">
                       <input
                         type="url"
+                        name="linkedinUrl"
                         value={linkedinUrl}
                         onChange={(e) => setLinkedinUrl(e.target.value)}
                         placeholder="Enter LinkedIn URL"
@@ -84,6 +108,7 @@ const SocialMediabg = () => {
                       <div className="mt-2 flex items-center md:mt-8">
                         <input
                           type="checkbox"
+                          name="agree"
                           checked={isChecked}
                           onChange={() => setIsChecked(!isChecked)}
                           id="agree"
@@ -93,12 +118,12 @@ const SocialMediabg = () => {
                           Yeah, go screen my skills!
                         </label>
                       </div>
-                      <p className="text-19 mb-4 mt-3  sm:my-8 text-gray1">
+                      <p className="text-19 mb-4 mt-3 sm:my-8 text-gray1">
                         We're keeping your personal details secure and don't
                         share it with 3rd parties of course. Find out more in
                         our <Link href="/privacy-policy" className="text-slate-400">privacy policy</Link>.
                       </p>
-                      <Button text="Send now" />
+                      <Button text="Send now" disabled={isSubmitting} />
                     </form>
                   </div>
                 </div>

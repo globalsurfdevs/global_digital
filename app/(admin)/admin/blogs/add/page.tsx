@@ -9,9 +9,7 @@ export const metadata: Metadata = {
 
 const AddBlogPage = () => {
   return (
-    <DefaultLayout>
       <AdminBlogForm />
-    </DefaultLayout>
   );
 };
 

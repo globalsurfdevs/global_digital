@@ -1,6 +1,7 @@
 "use client"
 
 import { changePass, checkCurrentPass, checkOtp } from '@/app/actions/otpActions';
+import { updateHrPassword } from '@/app/actions/otpActions';
 import React, { useEffect, useState } from 'react'
 import { useSession } from "next-auth/react";
 import { toast } from 'sonner';
@@ -29,11 +30,17 @@ const AdminSettings = () => {
     const [toEmailCareer, setToEmailCareer] = useState("")
     const [toEmailContact, setToEmailContact] = useState("")
 
+    // HR password reset state
+    const [hrNewPass, setHrNewPass] = useState("")
+    const [hrCPass, setHrCPass] = useState("")
+    const [hrError, setHrError] = useState("")
+    const [hrUpdating, setHrUpdating] = useState(false)
+
     const { data: session, status } = useSession();
+    const role = (session?.user as any)?.role;
 
     const handleChange = (index: number, value: string) => {
-        // Update the state for the specific input field
-        if (/^\d*$/.test(value)) { // Ensure only numeric input
+        if (/^\d*$/.test(value)) {
             setOtp((prev) => ({
                 ...prev,
                 [index]: value
@@ -57,12 +64,8 @@ const AdminSettings = () => {
         }
     }
 
-
-
     const handleCurrentPassCheck = async () => {
         const result = await checkCurrentPass(oldPass)
-        console.log(result)
-        console.log(oldPass)
         if (result?.success) {
             setCurrentPassError("")
             setOtpSection(true)
@@ -88,29 +91,56 @@ const AdminSettings = () => {
         }
     }
 
-const handlePasswordChange = async () => {
-    if (newPass !== cPass) {
-        setError("Passwords does not match, try again")
-        return;
+    const handlePasswordChange = async () => {
+        if (newPass !== cPass) {
+            setError("Passwords does not match, try again")
+            return;
+        }
+
+        if (newPass == "" || cPass == "") {
+            return;
+        }
+
+        if (!session?.user?.id) {
+            setError("Your session has expired. Please log in again.")
+            return;
+        }
+
+        const result = await changePass(newPass, session.user.id)
+        if (result.success) {
+            toast.success(result.message)
+            await signOutAdmin()
+        } else {
+            toast.error(result.message)
+        }
     }
 
-    if (newPass == "" || cPass == "") {
-        return;
-    }
+    const handleHrPasswordChange = async () => {
+        setHrError("");
 
-    if (!session?.user?.id) {
-        setError("Your session has expired. Please log in again.")
-        return;
-    }
+        if (hrNewPass !== hrCPass) {
+            setHrError("Passwords do not match, try again");
+            return;
+        }
 
-    const result = await changePass(newPass, session.user.id)
-    if (result.success) {
-        toast.success(result.message)
-        await signOutAdmin()
-    } else {
-        toast.error(result.message)
+        if (hrNewPass === "" || hrCPass === "") {
+            return;
+        }
+
+        setHrUpdating(true);
+        try {
+            const result = await updateHrPassword(hrNewPass);
+            if (result.success) {
+                toast.success(result.message);
+                setHrNewPass("");
+                setHrCPass("");
+            } else {
+                toast.error(result.message);
+            }
+        } finally {
+            setHrUpdating(false);
+        }
     }
-}
 
     const EmailSectionSubmit = async () => {
         try {
@@ -139,23 +169,8 @@ const handlePasswordChange = async () => {
         <div>
             <h1 className='text-2xl'>Admin Settings</h1>
             <div className='grid grid-cols-1 mt-10 gap-5'>
-                {/* <div className="relative flex flex-col rounded-lg bg-white shadow-sm border border-slate-200">
-                    <nav className="flex min-w-[240px] flex-col gap-1 p-1.5">
-                        {items.map((item) => (
-                            <div
-                                role="button"
-                                className={`text-slate-800 flex w-full items-center rounded-md p-3 transition-all ${button == item ? "bg-slate-100" : ""}  hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100`}
-                                onClick={() => setButton(item)}
-                            >
-                                {item}
-
-                            </div>
-                        ))}
-                    </nav>
-                </div> */}
 
                 <div className='grid grid-cols-2'>
-
 
                     <div className="relative flex flex-col rounded-xl bg-transparent">
                         <h4 className="block text-xl font-medium text-slate-800">
@@ -181,32 +196,23 @@ const handlePasswordChange = async () => {
                                     <div className="flex items-center justify-between gap-3 bg-slate-200 p-2 px-8">
                                         {Array.from({ length: 5 }).map((item, index) => (
                                             <input
+                                                key={index}
                                                 type="text"
                                                 value={otp[index]}
                                                 onChange={(e) => handleChange(index, e.target.value)}
                                                 className="w-full h-10 text-center text-sm font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                                                 pattern="\d*" maxLength={1} />
                                         ))}
-
-
                                     </div>
                                     <p>{otpError}</p>
                                 </div>}
-
-                            </div>
-                            <div className="inline-flex items-center mt-2">
-
                             </div>
                             <button className="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 type="button" onClick={otpSection ? handleOptCheckAndPass : handleCurrentPassCheck}>
                                 Enter new password -&gt;
                             </button>
-
                         </form>)
-
                             :
-
-
                             (<form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                                 <div className="mb-1 flex flex-col gap-6">
                                     <div className="w-full max-w-sm min-w-[200px]">
@@ -215,26 +221,20 @@ const handlePasswordChange = async () => {
                                         </label>
                                         <input type="text" value={newPass} onChange={(e) => setNewPass(e.target.value)} className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" />
                                     </div>
-
                                     <div className="w-full max-w-sm min-w-[200px]">
                                         <label className="block mb-2 text-sm text-slate-600">
                                             Retype the password again
                                         </label>
                                         <input type="text" value={cPass} onChange={(e) => setCPass(e.target.value)} className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" />
                                     </div>
-
-                                </div>
-                                <div className="inline-flex items-center mt-2">
                                 </div>
                                 <button className="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                     type="button" onClick={handlePasswordChange}>
-                                    Save
+                                    Save -&gt;
                                 </button>
-
                             </form>)
                         }
                     </div>
-
 
                     <div className="relative flex flex-col rounded-xl bg-transparent">
                         <h4 className="block text-xl font-medium text-slate-800">
@@ -243,7 +243,6 @@ const handlePasswordChange = async () => {
                         <p className="text-slate-500 font-light">
                             Edit the emails to connect to the forms present in the website
                         </p>
-                        <p className='text-red-600'>{error}</p>
                         <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                             <div className="mb-1 flex flex-col gap-6">
                                 <div className="w-full max-w-sm min-w-[200px]">
@@ -252,22 +251,66 @@ const handlePasswordChange = async () => {
                                     </label>
                                     <input type="text" value={toEmailCareer} onChange={(e) => setToEmailCareer(e.target.value)} className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" />
                                 </div>
-
                                 <div className="w-full max-w-sm min-w-[200px]">
                                     <label className="block mb-2 text-sm text-slate-600">
                                         To Email Contact
                                     </label>
                                     <input type="text" value={toEmailContact} onChange={(e) => setToEmailContact(e.target.value)} className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" />
                                 </div>
-
                             </div>
                             <button className="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 type="button" onClick={EmailSectionSubmit}>
                                 Save -&gt;
                             </button>
-
                         </form>
                     </div>
+
+                    {/* HR password reset — admin only */}
+                    {role === "admin" && (
+                        <div className="relative flex flex-col rounded-xl bg-transparent">
+                            <h4 className="block text-xl font-medium text-slate-800">
+                                Update HR Password
+                            </h4>
+                            <p className="text-slate-500 font-light">
+                                Reset the HR account's password. This does not require the current password.
+                            </p>
+                            <p className='text-red-600'>{hrError}</p>
+                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                                <div className="mb-1 flex flex-col gap-6">
+                                    <div className="w-full max-w-sm min-w-[200px]">
+                                        <label className="block mb-2 text-sm text-slate-600">
+                                            New password for HR
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={hrNewPass}
+                                            onChange={(e) => setHrNewPass(e.target.value)}
+                                            className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                        />
+                                    </div>
+                                    <div className="w-full max-w-sm min-w-[200px]">
+                                        <label className="block mb-2 text-sm text-slate-600">
+                                            Retype the password
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={hrCPass}
+                                            onChange={(e) => setHrCPass(e.target.value)}
+                                            className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                        />
+                                    </div>
+                                </div>
+                                <button
+                                    className="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    type="button"
+                                    disabled={hrUpdating}
+                                    onClick={handleHrPasswordChange}
+                                >
+                                    {hrUpdating ? "Updating..." : "Save ->"}
+                                </button>
+                            </form>
+                        </div>
+                    )}
 
                 </div>
 

@@ -5,6 +5,8 @@ import dbConnect from "@/lib/mongodb"
 import User from "../models/User"
 import { EmailTemplate } from '../components/EmailTemplate/EmailTemplate';
 import { Resend } from 'resend';
+import { auth } from "@/auth";
+import connectDB from "@/lib/mongodb";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -100,4 +102,38 @@ export const changePass = async (newPass: string, id: string) => {
         console.log("Failed in changePass", error)
         return { success: false, message: "Something went wrong" }
     }
+}
+
+
+export async function updateHrPassword(newPassword: string) {
+  try {
+    // Only an authenticated admin can call this — server-side enforcement,
+    // not just a hidden UI section.
+    const session = await auth();
+    const callerRole = (session?.user as any)?.role;
+
+    if (callerRole !== "admin") {
+      return { success: false, message: "Not authorized." };
+    }
+
+    if (!newPassword || newPassword.length < 6) {
+      return { success: false, message: "Password must be at least 6 characters." };
+    }
+
+    await connectDB();
+
+    const hrUser = await User.findOne({ role: "hr" });
+
+    if (!hrUser) {
+      return { success: false, message: "No HR user found." };
+    }
+
+    hrUser.password = newPassword;
+    await hrUser.save();
+
+    return { success: true, message: "HR password updated successfully." };
+  } catch (err) {
+    console.error("Error updating HR password:", err);
+    return { success: false, message: "Something went wrong." };
+  }
 }

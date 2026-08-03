@@ -6,9 +6,7 @@ import AdminPortfolio from "@/app/components/AdminPortfolio/AdminPortfolio";
 
 const PortfolioPage = () => {
   return (
-    <DefaultLayout>
         <AdminPortfolio/>
-    </DefaultLayout>
   );
 };
 

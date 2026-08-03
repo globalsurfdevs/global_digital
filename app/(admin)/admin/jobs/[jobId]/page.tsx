@@ -7,9 +7,7 @@ import AdminIndiJobs from "@/app/components/AdminIndiJobs/AdminIndiJobs";
 
 const JobsPage = () => {
   return (
-    <DefaultLayout>
         <AdminIndiJobs editMode/>
-    </DefaultLayout>
   );
 };
 

@@ -6,9 +6,7 @@ import AdminPortfolioAuthor from "@/app/components/AdminAuthor/AdminAuthor";
 
 const EditBlogPage = () => {
   return (
-    <DefaultLayout>
       <AdminPortfolioAuthor/>
-    </DefaultLayout>
   );
 };
 

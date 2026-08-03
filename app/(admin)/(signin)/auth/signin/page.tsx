@@ -6,7 +6,6 @@ import Image from "next/image";
 import Breadcrumb from "@/app/components/Breadcrumbs/Breadcrumb";
 import { Metadata } from "next";
 import { useForm, SubmitHandler } from "react-hook-form"
-import { signIn } from "@/auth";
 import { signInWithCredentials } from "@/app/actions/authActions";
 import { useRouter } from "next/navigation";
 
@@ -21,6 +20,11 @@ type Inputs = {
   password: string
 }
 
+const ROLE_HOME: Record<string, string> = {
+  hr: "/admin",
+  admin: "/admin",
+};
+
 const SignIn: React.FC = () => {
 
   const router = useRouter()
@@ -34,9 +38,18 @@ const SignIn: React.FC = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const response = await signInWithCredentials(data)
+
     if (response.success) {
-      alert(response.message)
-      router.push('/admin')
+      try {
+        const meRes = await fetch("/api/me"); // add this
+        const meData = await meRes.json();
+        alert("Successfully signed in") // add this
+        router.push(ROLE_HOME[meData.role] || "/admin");
+      } catch (e) {
+        alert("Sign in failed")
+        console.log("fetch /api/me failed:", e); // add this
+        router.push("/admin");
+      }
     } else {
       alert(response.message)
     }
@@ -201,7 +214,7 @@ const SignIn: React.FC = () => {
           <div className="border-stroke dark:border-strokedark min-w-[350px] border bg-white">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5 flex justify-center flex-col">
               <div className="mb-1.5 flex justify-center">
-                <Image src={"/gs-digital-logo.svg"} alt="" width={200} height={100}/>
+                <Image src={"/gs-digital-logo.svg"} alt="" width={200} height={100} />
               </div>
               <h2 className="mb-9 text-lg font-bold text-black dark:text-white text-center">
                 Backend Console

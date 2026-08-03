@@ -6,9 +6,7 @@ import Home from "@/app/components/AdminHome/AdminHome";
 
 const HomePage = () => {
   return (
-    <DefaultLayout>
         <Home/>
-    </DefaultLayout>
   );
 };
 

@@ -7,9 +7,7 @@ import AdminAuthorForm from "@/app/components/AdminAuthor/AddAuthor";
 
 const EditBlogPage = () => {
   return (
-    <DefaultLayout>
       <AdminAuthorForm/>
-    </DefaultLayout>
   );
 };
 

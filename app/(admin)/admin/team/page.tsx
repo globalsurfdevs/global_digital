@@ -8,9 +8,7 @@ import Team from "@/app/components/Team/Team";
 
 const TeamPage = () => {
   return (
-    <DefaultLayout>
         <Team/>
-    </DefaultLayout>
   );
 };
 

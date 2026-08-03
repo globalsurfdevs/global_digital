@@ -7,9 +7,7 @@ import SitemapPage from "@/app/components/AdminSitemap/AdminSitemap";
 
 const AboutPage = () => {
   return (
-    <DefaultLayout>
         <SitemapPage/>
-    </DefaultLayout>
   );
 };
 

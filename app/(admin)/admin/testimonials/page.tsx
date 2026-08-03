@@ -7,9 +7,7 @@ import TestimonialsPage from "@/app/components/AdminTestimonials/AdminTestimonia
 
 const HomePage = () => {
   return (
-    <DefaultLayout>
         <TestimonialsPage/>
-    </DefaultLayout>
   );
 };
 

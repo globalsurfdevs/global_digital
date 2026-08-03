@@ -6,11 +6,9 @@ import IndiServicePage from "@/app/components/AdminServices/IndiService";
 
 const ServicePage = () => {
     return (
-        <DefaultLayout>
             <Suspense fallback={"Loading"}>
             <IndiServicePage />
             </Suspense>
-        </DefaultLayout>
     );
 };
 
