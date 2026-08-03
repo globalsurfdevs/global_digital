@@ -1208,7 +1208,7 @@ const IndiServicePage = () => {
                                                                 <Controller
                                                                     name={`tenthSection.items.${index}.image`}
                                                                     control={control}
-                                                                    rules={{ required: "Image is required" }}
+                                                                    // rules={{ required: "Image is required" }}
                                                                     render={({ field }) => (
                                                                         <ImageUploader
                                                                             value={field.value}

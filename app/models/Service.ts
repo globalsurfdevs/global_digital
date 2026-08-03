@@ -149,7 +149,7 @@ const serviceItemSchema = new mongoose.Schema({
         },
         items: [
             {
-                image: { type: String, required: true },
+                image: { type: String },
                 imageAlt: { type: String, required: true },
                 title: { type: String, required: true },
             }
