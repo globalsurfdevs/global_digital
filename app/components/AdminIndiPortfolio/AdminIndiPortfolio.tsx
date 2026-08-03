@@ -738,7 +738,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
           )}
 
           <div className="mt-5 grid grid-cols-2 gap-10">
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-2">
               <div
                 className="flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
                 onDragOver={(e) => e.preventDefault()}
@@ -853,7 +853,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </div>
 
             <div>
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-2">
                 <div className="flex w-full flex-col gap-2">
                   <Label content="Company Name" />
                   <input
@@ -1283,7 +1283,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             <h3 className="text-3xl">Section 2</h3>
 
             <div className="grid grid-cols-2 gap-5">
-              <div>
+              <div className="flex flex-col gap-2">
                 <div>Section 2 - Image 1</div>
                 <div
                   className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
@@ -1364,7 +1364,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 )}
               </div>
 
-              <div>
+              <div className="flex flex-col gap-2">
                 <div>Section 2 - Image 2</div>
                 <div
                   className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
@@ -1449,7 +1449,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </div>
 
             <div className="grid grid-cols-2 gap-5">
-              <div>
+              <div className="flex flex-col gap-2">
                 <Label content="Goals" />
                 <div className="h-full">
                   {/* <Controller
@@ -1464,7 +1464,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 </div>
               </div>
 
-              <div>
+              <div className="flex flex-col gap-2">
                 <Label content="Objectives" />
                 <div className="h-full">
                   {/* <Controller
@@ -1481,7 +1481,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </div>
 
             <div className="mt-15">
-              <div>
+              <div className="flex flex-col gap-2">
                 <div>Section 2 - Banner Image</div>
                 <div
                   className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
@@ -1658,7 +1658,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
           )}
 
           <div className="mt-28 flex flex-col gap-3">
-            <div className="flex w-full flex-col">
+            <div className="flex w-full flex-col gap-2">
               <Label content="Video" />
               <input
                 type="text"
@@ -1669,7 +1669,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               />
               {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
             </div>
-            <div className="flex w-full flex-col">
+            <div className="flex w-full flex-col gap-2">
               <Label content="Video Title" />
               <input
                 type="text"
@@ -1953,7 +1953,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
           <div className="mt-15 grid grid-cols-2 gap-5">
             <div className="flex w-full flex-col gap-2">
-              <div>
+              <div className="flex flex-col gap-2">
                 <Label content="Description" />
                 <input
                   type="text"
@@ -1992,7 +1992,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                     </DndContext> */}
 
           <div className="mt-14 grid grid-cols-2 gap-5">
-            <div>
+            <div className="flex flex-col gap-2">
               <Label content="Added Categories" className="" />
               <div className="flex h-full w-full flex-wrap items-start gap-1 rounded-md border p-4">
                 {addedCategories.map((item) => (
@@ -2024,7 +2024,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               </div>
             </div>
 
-            <div>
+            <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">
                 <Label content="Available Categories" className="" />
                 <div className="flex size-5 items-center justify-center rounded-full bg-green-500">
@@ -2072,7 +2072,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               </div>
             </div>
           </div>
-          <div className="mt-10 h-36 w-1/3">
+          <div className="mt-10 h-36 w-1/3 flex flex-col gap-2">
             <Label content="Logo" />
             <div
               className="flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
@@ -2159,7 +2159,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
           </div>
 
           <div className="mt-15 flex w-full flex-col gap-2">
-            <div>
+            <div className="flex flex-col gap-2">
               <Label content="slug" />
               <input
                 type="text"
@@ -2172,7 +2172,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </div>
           </div>
 
-          <div className="flex w-full flex-col gap-2">
+          <div className="flex w-full flex-col gap-2 mt-2">
             <Label content="Featured Project" />
             <select
               {...register("featured")}
@@ -2189,7 +2189,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
           </div>
 
           <div className="mt-5 grid grid-cols-2 gap-5">
-            <div>
+            <div className="flex flex-col gap-2">
               <Label content="meta-title" />
               <input
                 type="text"
@@ -2200,7 +2200,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               />
             </div>
 
-            <div>
+            <div className="flex flex-col gap-2">
               <Label content="meta-description" />
               <input
                 type="text"

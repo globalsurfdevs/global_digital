@@ -2,9 +2,9 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
 
-import { supabase } from '@/app/lib/initSupabase'
 import ratelimit from "./app/lib/rateLimit";
 import User from "./app/models/User";
+import connectDB from "./lib/mongodb";
 
 
 type User = {
@@ -36,6 +36,7 @@ export const {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
+        await connectDB()
         const user: any = await User.findOne({ username: credentials.username })
 
         if (user) {

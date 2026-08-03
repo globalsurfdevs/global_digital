@@ -23,6 +23,7 @@ import { getService } from "@/app/lib/services.service";
 import { data } from "@/app/data/llmWorksData";
 import { getTestimonials } from "@/app/lib/testimonials";
 import { ServiceItem } from "./type";
+import { Metadata } from "next";
 
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
@@ -34,29 +35,51 @@ interface Canonicals {
   canonical: string;
 }
 
-type Metadata = {
-  title: string;
-  description: string;
-  alternates: Canonicals;
-};
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service: ServiceItem | null = await getService(slug);
+
+  if (!service) {
+    return {
+      title: "Not Found",
+      description: "",
+      alternates: { canonical: "https://www.globalsurf.ae/" },
+    };
+  }
+
+  const seo = service.seo;
+  const canonicalUrl = `https://www.globalsurf.ae/${service.slug}`;
+
   return {
-    title: "",
-    description:
-      "",
+    title: seo?.metaTitle ?? service.name,
+    description: seo?.metaDescription ?? "",
     alternates: {
-      canonical: "https://www.globalsurf.ae/branding-and-positioning-agency-in-dubai",
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: seo?.ogTitle ?? seo?.metaTitle ?? service.name,
+      description: seo?.ogDescription ?? seo?.metaDescription ?? "",
+      url: canonicalUrl,
+      images: seo?.ogImage ? [{ url: seo.ogImage }] : undefined,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.twitterTitle ?? seo?.metaTitle ?? service.name,
+      description: seo?.twitterDescription ?? seo?.metaDescription ?? "",
+      images: seo?.twitterImage ? [seo.twitterImage] : undefined,
     },
   };
 }
+
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
-  const service:ServiceItem = await getService(slug);
+  const service: ServiceItem = await getService(slug);
 
   const testimonials = await getTestimonials()
 
@@ -166,6 +189,12 @@ const page = async ({ params }: PageProps) => {
           maxchwidth={60}
         />
       </section> */}
+      {service.seo?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: service.seo.schema }}
+        />
+      )}
       <HeroSection data={service.firstSection} />
       <TitleDesc data={service.secondSection} />
       <ImgDesc data={service.thirdSection} />
