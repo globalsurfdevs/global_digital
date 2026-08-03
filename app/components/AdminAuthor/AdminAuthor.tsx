@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { IoMdCloseCircle } from "react-icons/io";
+import { IoMdTrash } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
 import { toast } from "sonner";
 import { FaRegEye } from "react-icons/fa";
@@ -57,8 +57,8 @@ const AdminPortfolioAuthor = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-end mt-5">
+    <div className="pb-5">
+      <div className="flex justify-end my-5">
         <button
           type="button"
           className="bg-blue-950 text-white px-5 py-2 rounded-xl"
@@ -68,7 +68,7 @@ const AdminPortfolioAuthor = () => {
         </button>
       </div>
 
-      <div className="flex flex-col gap-3 mt-5">
+      <div className="flex flex-col gap-3">
         {authors.map((author, index) => (
           <div
             key={index}
@@ -97,7 +97,7 @@ const AdminPortfolioAuthor = () => {
                   router.push(`/admin/authors/edit/${author.id || author._id}`)
                 }
               />
-              <IoMdCloseCircle
+              <IoMdTrash
                 className="text-red-500 cursor-pointer text-xl"
                 onClick={() => handleDeleteAuthor(author._id || "")}
               />
