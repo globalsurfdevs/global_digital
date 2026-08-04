@@ -4,11 +4,11 @@ import ServiceIndustry from "@/app/models/ServiceIndustry";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
     const body = await req.json();
 
     const updated = await ServiceIndustry.findByIdAndUpdate(id, body, {
@@ -37,11 +37,11 @@ export async function PATCH(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
 
     const deleted = await ServiceIndustry.findByIdAndDelete(id);
 
