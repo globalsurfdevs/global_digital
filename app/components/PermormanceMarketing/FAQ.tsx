@@ -45,7 +45,7 @@ const FAQ: React.FC<PartnerListProps> = ({
   bgcolor,
   title,
   defActive,
-  initialCount
+  initialCount,
 }) => {
   const items = data ?? sections ?? [];
   const getDefaultOpenIndex = (value?: string) => {
@@ -80,7 +80,7 @@ const FAQ: React.FC<PartnerListProps> = ({
     setOpen(itemIndex);
   };
 
-    // If initialCount isn't passed, behaves exactly like before (shows everything).
+  // If initialCount isn't passed, behaves exactly like before (shows everything).
   const hasLimit = typeof initialCount === "number" && initialCount > 0;
   const visibleItems =
     hasLimit && !showAll ? items.slice(0, initialCount) : items;
@@ -102,10 +102,10 @@ const FAQ: React.FC<PartnerListProps> = ({
           }}
         >
           <div
-            className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[140px] xl:grid-cols-8  `}
+            className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[120px] xl:grid-cols-8  `}
           >
             <div className="col-span-2  mb-5 xl:mb-0">
-              <h2 className="title-65">
+              <h2 className="title-60">
                 {!title && "FAQ"}
                 {title}
               </h2>
@@ -133,7 +133,7 @@ const FAQ: React.FC<PartnerListProps> = ({
                       animate="visible"
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="flex w-full items-center justify-between gap-3 overflow-hidden border-b py-6 first:border-t lg:pb-[50px] lg:pt-[50px]"
+                      className="flex w-full items-center justify-between gap-6 overflow-hidden border-b py-6 first:border-t lg:pb-[50px] lg:pt-[50px]"
                     >
                       <div
                         className="flex cursor-pointer  flex-col"
@@ -159,7 +159,7 @@ const FAQ: React.FC<PartnerListProps> = ({
                             alt="image"
                             width={25}
                             height={25}
-                            className="min-h-[25px] min-w-[25px] lg:min-h-[35px] lg:min-w-[35px] "
+                            className="min-h-[35px] min-w-[35px] lg:min-h-[45px] lg:min-w-[45px] "
                             loading="lazy"
                           ></Image>
                         </div>
@@ -170,7 +170,7 @@ const FAQ: React.FC<PartnerListProps> = ({
                             alt="image"
                             height={25}
                             width={25}
-                            className="min-h-[15px] min-w-[15px]  "
+                            className="min-h-[20px] min-w-[20px]  "
                             loading="lazy"
                           ></Image>
                         </div>
@@ -180,8 +180,7 @@ const FAQ: React.FC<PartnerListProps> = ({
                 </AnimatePresence>
               </motion.div>
 
-
-                            {showLoadMoreBtn && (
+              {showLoadMoreBtn && (
                 <button
                   onClick={() => setShowAll(true)}
                   className="z-2 z-1 group relative mt-3 flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
@@ -190,7 +189,7 @@ const FAQ: React.FC<PartnerListProps> = ({
                 >
                   <div className="relative">
                     <p
-                      className={`duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                      className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                     >
                       LOAD MORE
                     </p>
@@ -201,7 +200,7 @@ const FAQ: React.FC<PartnerListProps> = ({
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="rotate-0 duration-300 ease-in-out group-hover:scale-125 group-hover:rotate-45"
+                    className="rotate-0 duration-300 ease-in-out group-hover:rotate-45 group-hover:scale-125"
                   >
                     <g clipPath="url(#clip0_65_58)">
                       <path
@@ -232,7 +231,6 @@ const FAQ: React.FC<PartnerListProps> = ({
                   </svg>
                 </button>
               )}
-
 
               {/* <button 
              onClick={() => setShowAll(!showAll)}

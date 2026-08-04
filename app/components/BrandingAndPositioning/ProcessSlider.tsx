@@ -12,7 +12,6 @@ import { ServiceItem } from "@/app/(user)/[slug]/type";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 
-
 // -----------------------------------------------------------------------------
 // Data
 // -----------------------------------------------------------------------------
@@ -141,8 +140,8 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
     <section className="py-120 bg-[#F6F6F6]">
       {/* Header */}
       <div className="container" ref={containerRef}>
-        <div className="mb-4 xl:mb-8 xxl:mb-12">
-          <div className="mb-4 flex items-center gap-2 md:mb-6 xl:mb-8 xxl:mb-12">
+        <div className="mb-4 xl:mb-8 xxl:mb-[50px]">
+          <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
             <motion.h3
               variants={moveUp(0)}
               initial="hidden"
@@ -208,26 +207,26 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             el: ".process-pagination",
             clickable: true,
           }}
-          className="!overflow-visible"
+          className="!overflow-visible [&_.swiper-slide]:!h-auto [&_.swiper-wrapper]:!items-stretch"
         >
           {items.map((item, i) => (
             <SwiperSlide key={i} className="h-auto">
               <div
-                className={`h-full ${i === leftIndex ? "" : ""} border-l border-black/20 pl-6  md:pl-8 xl:pl-10`}
+                className={`h-full ${i === leftIndex ? "" : ""} border-l border-black/20 pb-6  pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}
               >
                 <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
+                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
                     <span className="text-28 font-normal text-primary">
                       {i < 10 ? `0${i + 1}` : i + 1}
                     </span>
                   </div>
 
-                  <h3 className="mb-4 max-w-[12ch] text-xl font-medium leading-snug md:text-[22px]">
+                  <h3 className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
                     {item.title}
                   </h3>
                 </div>
 
-                <p className="text-18 font-lexend leading-[1.444444444444444]  text-muted">
+                <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
                   {item.description}
                 </p>
               </div>

@@ -15,8 +15,8 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
     <section className="pb-8 pt-12 xl:pb-12 xl:pt-20 xxl:pb-[120px] xxl:pt-[160px]">
       <div className="container">
         {/* Heading */}
-        <div className="mb-8 xl:mb-12 xxl:mb-60">
-          <div className="mb-4 flex items-center gap-2 xl:mb-8 xxl:mb-60">
+        <div className="mb-8 xl:mb-12 xxl:mb-[50px]">
+          <div className="mb-4 flex items-center gap-3 xl:mb-8 xxl:mb-60">
             <motion.h3
               initial="hidden"
               whileInView="show"
@@ -52,15 +52,15 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
                 className="group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Top */}
-                {/* <div className="bg-white pt-5 xl:pt-8 xxl:pt-[41px] pl-5 xl:pl-8 xxl:pl-[41px] 3xl:pl-[49px] pr-5 xl:pr-8 xxl:pr-[41px] 3xl:pr-[65px] min-h-[160px] xxl:min-h-[220px] flex flex-col border border-[#00000033] rounded-[10px]"> */}
-                <div className="flex flex-col rounded-[10px] border border-[#00000033] bg-white pl-5 pr-5 pt-5 pb-5 xl:pl-8 xl:pr-8 xl:pt-8 xl:pb-8 xxl:pl-[41px] xxl:pr-[41px] xxl:pt-[41px] xxl:pb-[41px] 3xl:pl-[49px] 3xl:pr-[65px] 3xl:pb-[84px]">
+                {/* <div className="flex flex-col rounded-[10px] border border-[#00000033] bg-white pl-5 pr-5 pt-5 pb-5 xl:pl-8 xl:pr-8 xl:pt-8 xl:pb-8 xxl:pl-[41px] xxl:pr-[41px] xxl:pt-[41px] xxl:pb-[41px] 3xl:pl-[49px] 3xl:pr-[65px] 3xl:pb-[84px]"> */}
+                <div className="bg-white pt-5 xl:pt-8 xxl:pt-[41px] pl-5 xl:pl-8 xxl:pl-[41px] 3xl:pl-[49px] pr-5 xl:pr-8 xxl:pr-[41px] 3xl:pr-[65px] flex flex-col border border-[#00000033] rounded-[10px]">
                   <h3 className="text-28 mb-8 leading-[1] xl:mb-10">
                     {item.client}
                   </h3>
                   {/* <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" /> */}
                 </div>
                 {/* Bottom */}
-                <div className="flex-1 rounded-[10px] bg-[#1F1F1F] p-8 text-white xl:p-12 3xl:pl-[49px] 3xl:pr-[65px] 3xl:pt-[62px]">
+                <div className="flex-1 rounded-[10px] bg-[#1F1F1F] p-8 text-white xl:p-12 3xl:px-[49px] 3xl:pt-[62px] 3xl:pb-[100px]">
                   <h3 className="text-30 mb-6 leading-tight transition-colors group-hover:text-primary">
                     {item.title}
                   </h3>

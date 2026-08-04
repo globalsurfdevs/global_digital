@@ -16,18 +16,16 @@ const lexend = Lexend({
 
 const TestimonialsSwiper = ({ data }: { data?: TestimonialItemType[] }) => {
   const testimonialsFromApi = data && [
-    ...data.map((item) => (
-      {
-        company: item.companyName,
-        position: item.designation,
-        logo: item.companyLogo,
-        alt:item.companyLogoAlt,
-        ...item
-      }
-    ))
-  ]
+    ...data.map((item) => ({
+      company: item.companyName,
+      position: item.designation,
+      logo: item.companyLogo,
+      alt: item.companyLogoAlt,
+      ...item,
+    })),
+  ];
 
-  const testimonialsToMap = data ? testimonialsFromApi : testimonials
+  const testimonialsToMap = data ? testimonialsFromApi : testimonials;
 
   return (
     <div className=" testimonialswiper">
@@ -53,16 +51,16 @@ const TestimonialsSwiper = ({ data }: { data?: TestimonialItemType[] }) => {
         {testimonialsToMap?.map((item, index) => (
           <SwiperSlide key={index} className="mb-2  md:mb-4  lg:mb-8">
             <div className={`flex flex-col  ${lexend.className}`}>
-              <div className="mb-6 flex   flex-col border-b border-black pt-[20px] lg:mb-[41px] lg:pt-[65px]">
+              <div className="mb-6 flex   flex-col border-b border-black/20 pt-[20px] lg:mb-[41px] lg:pt-[45px]">
                 <Image
                   src={item.image}
                   alt={item.name}
                   width={100}
                   height={100}
                   loading="lazy"
-                  className="mb-4 h-20 w-20 bg-white p-1 lg:mb-[30px]"
+                  className="mb-4 h-20 w-20 bg-white p-1 lg:mb-[30px] 3xl:h-[88px] 3xl:w-[88px]"
                 ></Image>
-                <h3 className="text-30  mb-[5px]">{item.name}</h3>
+                <h3 className="text-30 mb-[5px]">{item.name}</h3>
                 <p className="mb-2 flex gap-1 text-font16 leading-lh2p3 text-gray1">
                   {item.position} -{" "}
                   <span className="font-bold">{item.company}</span>

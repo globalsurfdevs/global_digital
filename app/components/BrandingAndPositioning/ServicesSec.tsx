@@ -1,69 +1,6 @@
-// import { servicesData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
-// import { StaticImageData } from "next/image";
-// import Image from "next/image";
-
-// interface ServicesSecProps {
-//   title: string;
-//   description: string;
-//   items: {
-//     title: string;
-//     description: string;
-//     id: string;
-//     icon: string | StaticImageData;
-//   }[];
-// }
-
-// const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
-//   return (
-//     <section className="py-120">
-//       <div className="container">
-//         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[520px_auto] 3xl:gap-[30px]">
-//           <div>
-//             <div className="mb-4 flex items-center gap-2 md:mb-6 xl:mb-8 xxl:mb-12">
-//               <h3 className="text-30 leading-[1.5] text-muted">{title}</h3>
-//               <div className="h-5 w-5 bg-primary"></div>
-//             </div>
-//             <h2 className="title-60 tracking-[-0.025em]">{description}</h2>
-//           </div>
-//           <div>
-//             <div className="grid grid-cols-1 sm:grid-cols-2">
-//               {items.map((service) => (
-//                 <div
-//                   key={service.id}
-//                   className="rounded-[10px] border border-[#00000033] p-4 md:p-5 xl:p-8 xxl:p-10"
-//                 >
-//                   <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-6 3xl:gap-[24px]">
-//                     <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px] xl:p-5">
-//                       <Image
-//                         src={service.icon}
-//                         alt={service.title}
-//                         width={60}
-//                         height={60}
-//                         className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[60px] xxl:w-[60px]"
-//                       />
-//                     </div>
-//                     <h3 className="text-28 font-normal tracking-[-0.025em]">
-//                       {service.title}
-//                     </h3>
-//                   </div>
-//                   <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
-//                     {service.description}
-//                   </p>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default ServicesSec;
-
 "use client";
 
-import { servicesData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
+// import { servicesData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
@@ -94,7 +31,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 768px)", () => {
+      mm.add("(min-width: 1200px)", () => {
         const st = ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
@@ -117,10 +54,10 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
   return (
     <section className="py-120" ref={sectionRef}>
       <div className="container">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[520px_auto] 3xl:gap-[30px]">
+        <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[520px_auto] 3xl:gap-[30px]">
           {/* LEFT — pinned via GSAP */}
           <div ref={leftRef}>
-            <div className="mb-4 flex items-center gap-2 md:mb-6 xl:mb-8 xxl:mb-12">
+            <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
               <motion.h3
                 variants={moveUp(0)}
                 initial="hidden"
@@ -153,19 +90,19 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  className="rounded-[10px] border border-[#00000033] p-4 md:p-5 xl:p-8 xxl:p-10"
+                  className="-mb-px -mr-px rounded-[10px] border border-black/20 p-4 md:p-5 xl:p-8 xxl:p-10 xxl:pb-[70px]"
                 >
-                  <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-6 3xl:gap-[24px]">
-                    <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px] xl:p-5">
+                  <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-[30px] 3xl:gap-[26px]">
+                    <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px] p-3">
                       <Image
                         src={service.icon}
                         alt={service.title}
-                        width={60}
-                        height={60}
-                        className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[60px] xxl:w-[60px]"
+                        width={70}
+                        height={70}
+                        className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[70px] xxl:w-[70px]"
                       />
                     </div>
-                    <h3 className="text-28 font-normal tracking-[-0.025em]">
+                    <h3 className="text-28 leading-[1.2142] tracking-[-0.025em]">
                       {service.title}
                     </h3>
                   </div>
