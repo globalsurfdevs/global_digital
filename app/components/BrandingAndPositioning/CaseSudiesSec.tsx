@@ -57,7 +57,7 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
                   <h3 className="text-28 mb-8 leading-[1] xl:mb-10">
                     {item.client}
                   </h3>
-                  <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" />
+                  {/* <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" /> */}
                 </div>
                 {/* Bottom */}
                 <div className="flex-1 rounded-[10px] bg-[#1F1F1F] p-8 text-white xl:p-12 3xl:pl-[49px] 3xl:pr-[65px] 3xl:pt-[62px]">
