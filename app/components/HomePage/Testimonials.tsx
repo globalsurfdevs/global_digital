@@ -10,6 +10,7 @@ interface TestimonialsSectionProps {
   data?: HomeType["testimonialSection"];
   topTitle?: string;
   bottomText?: boolean;
+  reviews?: boolean;
 }
 
 const Testimonials: React.FC<TestimonialsSectionProps> = ({
@@ -18,6 +19,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
   data,
   topTitle,
   bottomText = true,
+  reviews = true,
 }) => {
   return (
     <div className={` ${bgcolor === "white" ? "bg-white" : "bg-bglight"}`}>
@@ -46,7 +48,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
             <h2 className="title-65">
               {data?.title ? data.title : "Hear From Our Partners"}
             </h2>
-            <div className="lg-mt-0 mt-3 flex items-center gap-3">
+            {reviews && <div className="lg-mt-0 mt-3 flex items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="106"
@@ -142,7 +144,8 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
                 {" "}
                 {data?.starText ? data.starText : "4.9 on Google Reviews"}
               </p>
-            </div>
+            </div>}
+            
           </motion.div>
 
           <div>

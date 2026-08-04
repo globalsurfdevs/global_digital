@@ -12,7 +12,7 @@ export const moveUp = (delay = 0): Variants => ({
     },
   },
   exit: {
-    opacity: 0,
+    opacity: 0.4,
     y: -50,
     transition: {
       duration: 0.6,

@@ -1,55 +1,95 @@
+"use client";
+
 import { ServiceItem } from "@/app/(user)/[slug]/type";
 import { becsData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import Image from "next/image";
 import { Fragment } from "react";
+import { motion } from "framer-motion";
+import { moveUp } from "../animations/motionVariants";
 
-const BECS = ({data}:{data:ServiceItem['seventhSection']}) => {
+const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
   return (
-    <section className="pt-8 xl:pt-12 xxl:pt-20 3xl:pt-[142px] pb-8 xl:pb-12 xxl:pb-20 3xl:pb-[146px]">
+    <section className="pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px]">
       <div className="container">
         <div className="row">
-          <h2 className="title-60 mb-6 xl:mb-8 xxl:mb-60">{data.title}</h2>
+          <motion.h2 
+          initial="hidden"
+          whileInView="show"
+          variants={moveUp(0)}
+          viewport={{once:true}}
+          className="title-60 mb-6 xl:mb-8 xxl:mb-60">{data.title}</motion.h2>
 
           {/* Mobile: stacked cards, no connecting line */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden">
-            {data.items.map((item,index) => (
-              <div key={index} className="bg-white p-6  border-b border-black/10">
-                <div className="flex items-center justify-center gap-2 rounded-[10px] border border-black/20 py-3 px-4 w-fit mb-4">
-                  <Image src={item.image} alt={item.imageAlt} width={42} height={42} className="w-7 h-7" />
-                  <h3 className="text-28 font-normal leading-[1.214285714285714]">{item.title}</h3>
+            {data.items.map((item, index) => (
+              <motion.div
+              initial="hidden"
+              whileInView="show"
+              variants={moveUp(index * 0.1)}
+              viewport={{once:true}}
+                key={index}
+                className="border-b border-black/10  bg-white p-6"
+              >
+                <div className="mb-4 flex w-fit items-center justify-center gap-2 rounded-[10px] border border-black/20 px-4 py-3">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    width={42}
+                    height={42}
+                    className="h-7 w-7"
+                  />
+                  <h3 className="text-28 font-normal leading-[1.214285714285714]">
+                    {item.title}
+                  </h3>
                 </div>
-                <p className="text-muted fnt-lexend text-18 leading-[1.444444444444444] font-normal">{item.description}</p>
-              </div>
+                <p className="fnt-lexend text-18 font-normal leading-[1.444444444444444] text-muted">
+                  {item.description}
+                </p>
+              </motion.div>
             ))}
           </div>
 
           {/* md and up: one continuous connected row + description grid below */}
           <div className="hidden md:block">
-            <div className="flex items-center mb-4 xl:mb-[30px]">
-              {data.items.map((item,index) => (
+            <div className="mb-4 flex items-center xl:mb-[30px]">
+              {data.items.map((item, index) => (
                 <Fragment key={index}>
-                  <div className="flex items-center justify-center gap-2 xl:gap-[14px] rounded-[10px] border border-black/20 py-3 xl:py-[24px] px-4 xl:px-6 xxl:px-10 w-fit bg-white relative z-10 shrink-0">
-                    <Image src={item.image} alt={item.imageAlt} width={42} height={42} className="w-7 h-7 xl:w-[42px] xl:h-[42px]" />
-                    <h3 className="text-28 font-normal leading-[1.214285714285714]">{item.title}</h3>
+                  <div className="relative z-10 flex w-fit shrink-0 items-center justify-center gap-2 rounded-[10px] border border-black/20 bg-white px-4 py-3 xl:gap-[14px] xl:px-6 xl:py-[24px] xxl:px-10">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      width={42}
+                      height={42}
+                      className="h-7 w-7 xl:h-[42px] xl:w-[42px]"
+                    />
+                    <h3 className="text-28 font-normal leading-[1.214285714285714]">
+                      {item.title}
+                    </h3>
                   </div>
-                  <span className="flex-1 h-px bg-black/10" />
+                  <span className="h-px flex-1 bg-black/10" />
                 </Fragment>
               ))}
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {data.items.map((item,idx) => (
-                <p key={idx*2} className="text-muted fnt-lexend text-18 leading-[1.444444444444444] font-normal">
+            <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+              {data.items.map((item, idx) => (
+                <motion.p
+                  initial="hidden"
+                  whileInView="show"
+                  variants={moveUp(idx * 0.1)}
+                  viewport={{once:true}}
+                  key={idx}
+                  className="fnt-lexend text-18 font-normal leading-[1.444444444444444] text-muted"
+                >
                   {item.description}
-                </p>
+                </motion.p>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default BECS;

@@ -1,21 +1,46 @@
-import { ServiceItem } from "@/app/(user)/[slug]/type";
+"use client";
 
-const GrayParaSec = ({ data }: {data:ServiceItem['fourthSection']}) => {
+import { ServiceItem } from "@/app/(user)/[slug]/type";
+import { motion } from "framer-motion";
+import { moveUp } from "../animations/motionVariants";
+
+const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
   return (
     <section className="py-120 bg-[#F6F6F6]">
       <div className="container">
         <div>
-          <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
+          <motion.div
+            variants={moveUp(0)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mb-4 flex items-center gap-2 md:mb-6 xl:mb-8 xxl:mb-12"
+          >
+            <h3 className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted">
               {data.title}
             </h3>
             <div className="h-5 w-5 bg-primary"></div>
-          </div>
-          <h2 className="title-65 mb-4 md:mb-6 xl:mb-8 xxl:mb-12 max-w-[30ch]">{data.subTitle}</h2>
-          {data.description.split("\n").map((item,index) => (
-            <p key={index} className="text-19 mb-4 last:mb-0 fnt-lexend text-muted">
+          </motion.div>
+          <motion.h2
+            variants={moveUp(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="title-65 mb-4 max-w-[30ch] md:mb-6 xl:mb-8 xxl:mb-12"
+          >
+            {data.subTitle}
+          </motion.h2>
+          {data.description.split("\n").map((item, index) => (
+            <motion.p
+              key={index}
+              variants={moveUp(0.2 + index * 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="text-19 fnt-lexend mb-4 text-muted last:mb-0"
+            >
               {item}
-            </p>
+            </motion.p>
           ))}
           {/* <p className="text-19 mb-4 last:mb-0 fnt-lexend text-muted">The UAE is a highly visually competitive market. Across construction, real estate, retail and professional services, brands compete for attention from a sophisticated, multi-cultural audience that has been exposed to global brand standards and expects the same from local businesses. In this environment, a generic logo and a basic colour palette don't constitute a brand — they constitute an absence of one.</p>
           <p className="text-19 mb-4 last:mb-0 fnt-lexend text-muted">
@@ -25,6 +50,6 @@ const GrayParaSec = ({ data }: {data:ServiceItem['fourthSection']}) => {
       </div>
     </section>
   );
-}
+};
 
 export default GrayParaSec;

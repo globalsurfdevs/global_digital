@@ -1,13 +1,17 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { ServiceItem } from '@/app/(user)/[slug]/type';
+import "swiper/css";
+import "swiper/css/pagination";
+import { ServiceItem } from "@/app/(user)/[slug]/type";
+
+import { motion } from "framer-motion";
+import { moveUp } from "../animations/motionVariants";
+
 
 // -----------------------------------------------------------------------------
 // Data
@@ -97,7 +101,7 @@ function getSlidesPerView(width: number) {
   return value;
 }
 
-const ProcessSlider = ({data}:{data:ServiceItem['sixthSection']}) => {
+const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
   const { items, subTitle, title } = data;
 
   const [previewIndex, setPreviewIndex] = useState(items.length - 1);
@@ -116,41 +120,54 @@ const ProcessSlider = ({data}:{data:ServiceItem['sixthSection']}) => {
 
     updateContainerLeft();
 
-    window.addEventListener('resize', updateContainerLeft);
+    window.addEventListener("resize", updateContainerLeft);
 
     return () => {
-      window.removeEventListener('resize', updateContainerLeft);
+      window.removeEventListener("resize", updateContainerLeft);
     };
   }, []);
 
   const updatePreview = (swiper: SwiperType) => {
-    const width = typeof window !== 'undefined' ? window.innerWidth : 1280;
+    const width = typeof window !== "undefined" ? window.innerWidth : 1280;
     const spv = getSlidesPerView(width);
 
-    const nextIndex =
-      Math.ceil(swiper.realIndex + spv - 1) % items.length;
+    const nextIndex = Math.ceil(swiper.realIndex + spv - 1) % items.length;
 
     setPreviewIndex(nextIndex);
     setLeftIndex(swiper.realIndex);
   };
 
   return (
-    <section className="bg-[#F6F6F6] py-120">
+    <section className="py-120 bg-[#F6F6F6]">
       {/* Header */}
       <div className="container" ref={containerRef}>
         <div className="mb-4 xl:mb-8 xxl:mb-12">
-          <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
+          <div className="mb-4 flex items-center gap-2 md:mb-6 xl:mb-8 xxl:mb-12">
+            <motion.h3
+              variants={moveUp(0)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
+            >
               {title}
-            </h3>
+            </motion.h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
-            <h2 className="title-60" dangerouslySetInnerHTML={{__html:subTitle}}></h2>
+          <motion.h2
+            variants={moveUp(0.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="title-60"
+            dangerouslySetInnerHTML={{ __html: subTitle }}
+          ></motion.h2>
         </div>
       </div>
 
       {/* Slider */}
-      <div className="overflow-hidden px-3"
+      <div
+        className="overflow-hidden px-3"
         style={{
           marginLeft: `${containerLeft}px`,
         }}
@@ -188,27 +205,29 @@ const ProcessSlider = ({data}:{data:ServiceItem['sixthSection']}) => {
             },
           }}
           pagination={{
-            el: '.process-pagination',
+            el: ".process-pagination",
             clickable: true,
           }}
           className="!overflow-visible"
         >
           {items.map((item, i) => (
             <SwiperSlide key={i} className="h-auto">
-              <div className={`h-full ${i === leftIndex ? '' : '' } pl-6 md:pl-8 xl:pl-10  border-l border-black/20`} >
+              <div
+                className={`h-full ${i === leftIndex ? "" : ""} border-l border-black/20 pl-6  md:pl-8 xl:pl-10`}
+              >
                 <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="inline-flex items-center justify-center w-14 h-14 xl:w-20 xl:h-20 mb-5 rounded-[7px] bg-[#E63E310D] border border-[#E63E311F]">
-                    <span className="text-primary text-28 font-normal">
-                      {i < 10 ? `0${i+1}` :i+1}
+                  <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
+                    <span className="text-28 font-normal text-primary">
+                      {i < 10 ? `0${i + 1}` : i + 1}
                     </span>
                   </div>
 
-                  <h3 className="text-xl md:text-[22px] leading-snug font-medium mb-4 max-w-[12ch]">
+                  <h3 className="mb-4 max-w-[12ch] text-xl font-medium leading-snug md:text-[22px]">
                     {item.title}
                   </h3>
                 </div>
 
-                <p className="text-18 leading-[1.444444444444444] text-muted  font-lexend">
+                <p className="text-18 font-lexend leading-[1.444444444444444]  text-muted">
                   {item.description}
                 </p>
               </div>
@@ -219,7 +238,7 @@ const ProcessSlider = ({data}:{data:ServiceItem['sixthSection']}) => {
 
       {/* Pagination */}
       <div className="container">
-        <div className="process-pagination flex gap-2 mt-10 md:hidden [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-black/15 [&_.swiper-pagination-bullet-active]:bg-primary" />
+        <div className="process-pagination mt-10 flex gap-2 md:hidden [&_.swiper-pagination-bullet-active]:bg-primary [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-black/15" />
       </div>
     </section>
   );
