@@ -209,9 +209,9 @@ const page = async ({ params }: PageProps) => {
       </section>
       <WhyChoose data={whyChooseData} />
       {caseStudiesData.items.length > 0 && <CaseSudiesSec data={caseStudiesData} />}
-      <Testimonials topTitle="Testimonials" data={testimonials.testimonialSection} bottomText={false} />
+      <Testimonials topTitle="Testimonials" data={testimonials.testimonialSection} bottomText={false} reviews={false} />
       <GetInTouch data={Cta} ctabbutton={service.ctaSection.buttonText} redlast />
-      <FAQ data={Faq} />
+      <FAQ data={Faq} initialCount={3} />
     </div>
   );
 };
