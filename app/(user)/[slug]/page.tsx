@@ -137,7 +137,7 @@ const page = async ({ params }: PageProps) => {
       id: index + 1,
       client: item.project.companyName,
       logo: item.project.logo,
-      href: `/case-studies/${item.project.slug}`,
+      href: `/case-study/${item.project.slug}`,
       ...item,
     })),
   };
