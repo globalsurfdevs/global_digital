@@ -136,25 +136,17 @@ const serviceItemSchema = new mongoose.Schema({
         },
         items: [
             {
-                title: { type: String, required: true },
-                description: { type: String, required: true },
-                image: { type: String, required: true },
-                imageAlt: { type: String, required: true },
-            }
-        ]
-    },
-    tenthSection: {
-        title: {
-            type: String
-        },
-        items: [
-            {
+                title: { type: String },
+                description: { type: String },
                 image: { type: String },
-                imageAlt: { type: String, required: true },
-                title: { type: String, required: true },
+                imageAlt: { type: String },
             }
         ]
     },
+tenthSection: {
+    title: { type: String },
+    serviceIndustries: [{ type: mongoose.Schema.Types.ObjectId, ref: "ServiceIndustry" }]
+},
     eleventhSection: {
         title: {
             type: String

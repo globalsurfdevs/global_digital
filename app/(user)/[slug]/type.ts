@@ -97,7 +97,7 @@ export interface ServiceItem {
 
     tenthSection: {
         title: string;
-        items: {
+        serviceIndustries: {
             _id: string;
             image: string;
             imageAlt: string;
