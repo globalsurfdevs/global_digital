@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import SmartPagination from "./Pagination";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit, MdPages, MdPageview } from "react-icons/md";
 import { IoIosClose } from 'react-icons/io'
+import { FaAddressBook, FaBookOpen, FaPage4 } from 'react-icons/fa';
 
 type ServiceListItem = {
     _id: string;
@@ -13,6 +14,14 @@ type ServiceListItem = {
     slug: string;
     createdAt?: string;
 }
+
+const slugify = (value: string) =>
+    value
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
 
 const AdminServiceList = () => {
 
@@ -26,19 +35,20 @@ const AdminServiceList = () => {
     const pathname = usePathname();
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
+    // Create modal state
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [newServiceName, setNewServiceName] = useState("");
     const [newServiceSlug, setNewServiceSlug] = useState("");
     const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
     const [creating, setCreating] = useState(false);
 
-    const slugify = (value: string) =>
-        value
-            .toLowerCase()
-            .trim()
-            .replace(/[^a-z0-9\s-]/g, "")
-            .replace(/\s+/g, "-")
-            .replace(/-+/g, "-");
+    // Edit modal state
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [editingService, setEditingService] = useState<ServiceListItem | null>(null);
+    const [editName, setEditName] = useState("");
+    const [editSlug, setEditSlug] = useState("");
+    const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
+    const [updating, setUpdating] = useState(false);
 
     const handleNameChange = (value: string) => {
         setNewServiceName(value);
@@ -56,6 +66,33 @@ const AdminServiceList = () => {
         setNewServiceName("");
         setNewServiceSlug("");
         setSlugManuallyEdited(false);
+    };
+
+    const handleEditNameChange = (value: string) => {
+        setEditName(value);
+        if (!editSlugManuallyEdited) {
+            setEditSlug(slugify(value));
+        }
+    };
+
+    const handleEditSlugChange = (value: string) => {
+        setEditSlugManuallyEdited(true);
+        setEditSlug(slugify(value));
+    };
+
+    const openEditModal = (service: ServiceListItem) => {
+        setEditingService(service);
+        setEditName(service.name);
+        setEditSlug(service.slug);
+        setEditSlugManuallyEdited(false);
+        setShowEditModal(true);
+    };
+
+    const resetEditForm = () => {
+        setEditingService(null);
+        setEditName("");
+        setEditSlug("");
+        setEditSlugManuallyEdited(false);
     };
 
     const toggleSelect = (id: string) => {
@@ -170,6 +207,52 @@ const AdminServiceList = () => {
         }
     };
 
+const handleUpdateService = async () => {
+    if (!editingService) return;
+
+    if (!editName.trim()) {
+        toast.error("Service name is required");
+        return;
+    }
+
+    if (!editSlug.trim()) {
+        toast.error("Slug is required");
+        return;
+    }
+
+    setUpdating(true);
+    try {
+        const response = await fetch(`/api/service`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                _id: editingService._id,
+                name: editName.trim(),
+                slug: editSlug.trim(),
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            toast.success(data.message ?? "Service updated");
+            resetEditForm();
+            setShowEditModal(false);
+            setRefetch((prev) => !prev);
+        } else {
+            toast.error(data.message ?? "Failed to update service");
+        }
+    } catch (error) {
+        console.error(error);
+        toast.error("Failed to update service");
+    } finally {
+        setUpdating(false);
+    }
+};
+
+    // Retained for its existing purpose elsewhere in the app
     const handleEdit = (slug: string) => {
         router.push(`/admin/services/${slug}`);
     };
@@ -220,6 +303,7 @@ const AdminServiceList = () => {
                                     </th>
                                     <th scope="col" className="px-4 py-3">Name</th>
                                     <th scope="col" className="px-4 py-3">Slug</th>
+                                    {/* <th scope="col" className="px-4 py-3 text-center">Edit Name/Slug</th> */}
                                     <th scope="col" className="px-4 py-3 text-center">Edit</th>
                                 </tr>
                             </thead>
@@ -240,9 +324,17 @@ const AdminServiceList = () => {
                                             {item.name}
                                         </td>
                                         <td className="px-4 py-3">{item.slug}</td>
-                                        <td className="px-4 py-3 text-center">
-                                            <button onClick={() => handleEdit(item.slug)}>
+                                        {/* <td className="px-4 py-3 text-center">
+                                            <button onClick={() => openEditModal(item)}>
                                                 <MdEdit className="mx-auto text-lg" />
+                                            </button>
+                                        </td> */}
+                                        <td className="py-3 text-center flex gap-5  justify-center">
+                                            <button onClick={() => openEditModal(item)}>
+                                                <MdEdit className="mx-auto text-lg" />
+                                            </button>
+                                            <button onClick={() => handleEdit(item.slug)}>
+                                                <FaBookOpen className="mx-auto text-lg" />
                                             </button>
                                         </td>
                                     </tr>
@@ -312,6 +404,75 @@ const AdminServiceList = () => {
                                             onClick={() => {
                                                 setShowCreateModal(false);
                                                 resetCreateForm();
+                                            }}
+                                        >
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {showEditModal && (
+                    <div className="relative z-10" aria-labelledby="edit-modal-title" role="dialog" aria-modal="true">
+                        <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                                <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                    <div className='flex justify-between items-center'>
+                                        <h2 className='text-lg font-semibold'>Edit Service</h2>
+                                        <IoIosClose
+                                            className='text-2xl cursor-pointer'
+                                            onClick={() => {
+                                                setShowEditModal(false);
+                                                resetEditForm();
+                                            }}
+                                        />
+                                    </div>
+
+                                    <div className='flex flex-col gap-2 text-left'>
+                                        <label className='font-semibold text-gray-600 text-sm'>Service Name</label>
+                                        <input
+                                            type='text'
+                                            value={editName}
+                                            onChange={(e) => handleEditNameChange(e.target.value)}
+                                            placeholder='e.g. Web Development'
+                                            className='border px-3 py-2 rounded'
+                                        />
+                                    </div>
+
+                                    <div className='flex flex-col gap-2 text-left'>
+                                        <label className='font-semibold text-gray-600 text-sm'>Slug</label>
+                                        <input
+                                            type='text'
+                                            value={editSlug}
+                                            onChange={(e) => handleEditSlugChange(e.target.value)}
+                                            placeholder='e.g. web-development'
+                                            className='border px-3 py-2 rounded font-mono text-sm'
+                                        />
+                                        <p className='text-xs text-gray-500'>
+                                            This becomes part of the page URL, e.g. /services/{editSlug || "your-slug"}
+                                        </p>
+                                    </div>
+
+                                    <div className="sm:flex sm:flex-row-reverse gap-2">
+                                        <button
+                                            type="button"
+                                            disabled={updating}
+                                            className="inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
+                                            onClick={handleUpdateService}
+                                        >
+                                            {updating ? "Saving..." : "Save Changes"}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                            onClick={() => {
+                                                setShowEditModal(false);
+                                                resetEditForm();
                                             }}
                                         >
                                             Cancel

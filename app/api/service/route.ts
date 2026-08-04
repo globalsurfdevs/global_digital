@@ -89,6 +89,7 @@ export async function POST(req: NextRequest) {
         await dbConnect();
 
         const body = await req.json();
+        const id = body?._id;
         const name = body?.name?.trim();
         const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
 
@@ -112,7 +113,46 @@ export async function POST(req: NextRequest) {
             serviceDoc = await Service.create({ items: [] });
         }
 
-        // Slug must be unique across all items
+        // ---- EDIT branch: _id present means update an existing item ----
+        if (id) {
+            const item = serviceDoc.items.id(id);
+            if (!item) {
+                return NextResponse.json(
+                    { message: "Service item not found" },
+                    { status: 404 }
+                );
+            }
+
+            // Slug must remain unique across all OTHER items
+            const slugTaken = serviceDoc.items.some(
+                (i: any) => i.slug === slug && String(i._id) !== String(id)
+            );
+            if (slugTaken) {
+                return NextResponse.json(
+                    { message: "A service with this slug already exists" },
+                    { status: 409 }
+                );
+            }
+
+            item.name = name;
+            item.slug = slug;
+            await serviceDoc.save();
+
+            revalidateTag("service")
+            return NextResponse.json(
+                {
+                    message: "Service updated successfully",
+                    data: {
+                        _id: item._id,
+                        name: item.name,
+                        slug: item.slug,
+                    },
+                },
+                { status: 200 }
+            );
+        }
+
+        // ---- CREATE branch: no _id means create a new item ----
         const slugTaken = serviceDoc.items.some((item: any) => item.slug === slug);
         if (slugTaken) {
             return NextResponse.json(
@@ -139,9 +179,9 @@ export async function POST(req: NextRequest) {
             { status: 201 }
         );
     } catch (error) {
-        console.error("Error creating service:", error);
+        console.error("Error saving service:", error);
         return NextResponse.json(
-            { message: "Failed to create service" },
+            { message: "Failed to save service" },
             { status: 500 }
         );
     }

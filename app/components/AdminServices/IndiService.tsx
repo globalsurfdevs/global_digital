@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { Button } from '@/components/ui/button'
 import { ImageUploader } from '@/components/ui/image-uploader'
-import { RiDeleteBinLine } from "react-icons/ri";
+import { RiAiGenerateText, RiDeleteBinLine } from "react-icons/ri";
 import { FiChevronDown } from "react-icons/fi";
 import AdminItemContainer from '@/app/components/common/AdminItemContainer';
 import SeoFields from '@/app/components/common/SeoFields';
@@ -122,7 +122,7 @@ export interface ServiceFormProps {
         }[];
     };
     ctaSection: {
-        titleRed:string;
+        titleRed: string;
         title: string;
         description: string;
         buttonText: string;
@@ -353,7 +353,6 @@ const IndiServicePage = () => {
             const response = await fetch(`/api/service?slug=${slug}`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 setValue("seo", data.data?.seo);
                 setValue("firstSection", data.data?.firstSection);
                 setValue("firstSection.items", data.data?.firstSection?.items ?? []);
@@ -431,6 +430,8 @@ const IndiServicePage = () => {
         }
     };
 
+
+
     useEffect(() => {
         fetchPortfolios().then(() => fetchServiceData());
     }, []);
@@ -483,6 +484,8 @@ const IndiServicePage = () => {
                                 })} />
                                 {errors.firstSection?.title && <p className='text-red-500'>{errors.firstSection?.title.message}</p>}
                             </div>
+
+                            
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
