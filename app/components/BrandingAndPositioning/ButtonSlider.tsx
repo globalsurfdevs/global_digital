@@ -36,7 +36,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
       >
         {/* Heading */}
         <div className="w-full shrink-0 sm:w-auto">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <motion.h3
               initial="hidden"
               whileInView="show"
@@ -56,12 +56,12 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
           whileInView="show"
           variants={moveUp(0.1)}
           viewport={{ once: true }}
-          className="flex-1 overflow-hidden"
+          className="flex-1 overflow-hidden cursor-grab"
         >
           <Swiper
             modules={[Autoplay]}
             slidesPerView="auto"
-            spaceBetween={20}
+            spaceBetween={12}
             className="!overflow-visible"
             autoplay={{
               delay: 3000,
@@ -69,16 +69,16 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
             }}
             breakpoints={{
               768: {
-                spaceBetween: 24,
+                spaceBetween: 14,
               },
               1280: {
-                spaceBetween: 28,
+                spaceBetween: 18,
               },
             }}
           >
             {data.serviceIndustries.map((item, index) => (
               <SwiperSlide key={index} className="!w-auto">
-                <button className="flex items-center gap-3 whitespace-nowrap rounded-full border  border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-8">
+                <button className="cursor-grab flex items-center gap-[14px] whitespace-nowrap rounded-full border  border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px]">
                   <Image
                     src={item.image}
                     alt={item.imageAlt}

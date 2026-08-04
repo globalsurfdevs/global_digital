@@ -47,7 +47,9 @@ const GetInTouch: React.FC<PartnerListProps> = ({
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
-      <div className={`flex flex-col   py-[50px] lg:py-[150px] ${bgcolor ? `bg-[${bgcolor}]` : "bg-black"}`} >
+      <div
+        className={`flex flex-col   py-[50px] lg:py-[150px] xxl:py-[160px] ${bgcolor ? `bg-[${bgcolor}]` : "bg-black"}`}
+      >
         <div className="container mx-auto px-4 text-white">
           <div className="flex h-1/3 flex-col justify-center ">
             <motion.div
@@ -63,33 +65,33 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                 }, // Slide up and fade in
               }}
             >
-              {data.map((item, index) =>
-                redlast ? (
-                  <h2
-                    className="title-65 leading-[1.15]"
-                    key={index}
-                    dangerouslySetInnerHTML={{
-                      __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span> <span class="text-primary">${item.textred}</span>`,
-                    }}
-                  />
-                ) : (
-                  <h2
-                    className="title-65 leading-[1.15] capitalize"
-                    key={index}
-                    dangerouslySetInnerHTML={{
-                      __html: `<span class="text-primary">${item.textred}</span><span class='${bgcolor ? `text-black` : ""}'>${item.text}</span>`,
-                    }}
-                  />
-                ),
-              )}
+              <div className="max-w-[100ch]">
+                {data.map((item, index) =>
+                  redlast ? (
+                    <h2
+                      className="title-60 leading-[1.083]"
+                      key={index}
+                      dangerouslySetInnerHTML={{
+                        __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span> <span class="text-primary">${item.textred}</span>`,
+                      }}
+                    />
+                  ) : (
+                    <h2
+                      className="title-65 capitalize leading-[1.15]"
+                      key={index}
+                      dangerouslySetInnerHTML={{
+                        __html: `<span class="text-primary">${item.textred}</span><span class='${bgcolor ? `text-black` : ""}'>${item.text}</span>`,
+                      }}
+                    />
+                  ),
+                )}
+              </div>
 
-              
-                  <div>
-                    <p className="text-font25 leading-[35px] text-gray1 lg:mt-10">
-                      {data[0].subhead}
-                    </p>
-                  </div>
-                
+              <div>
+                <p className="text-font25 leading-[35px] text-[#A3A3A3] lg:mt-10">
+                  {data[0].subhead}
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
@@ -106,12 +108,13 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               }}
             >
               <div className="innerfnont mt-6 lg:mt-[60px]">
-                <button onClick={() => setModalOpen(true)}
+                <button
+                  onClick={() => setModalOpen(true)}
                   className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 ${
                     bgcolor ? "text-black" : "text-white"
                   } transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
                 >
-                  <span className="duration-300 ease-in group-hover:text-black uppercase">
+                  <span className="uppercase duration-300 ease-in group-hover:text-black">
                     {ctabbutton}
                   </span>
                 </button>

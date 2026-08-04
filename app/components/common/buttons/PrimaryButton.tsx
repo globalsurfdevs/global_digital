@@ -20,8 +20,8 @@ function cn(...classes: Array<string | false | null | undefined>) {
 }
 
 const baseStyles =
-  "group inline-flex items-center justify-center gap-3 fnt-lexend" +
-  "xl:px-[25px] xl:py-[15px] px-5 py-3.5 text-base uppercase leading-[1] whitespace-nowrap select-none " +
+  "group inline-flex items-center justify-center gap-3 fnt-lexend h-full" +
+  "px-[25px] px-5 xl:px-[25px] py-[15px] xl:py-[16px]  text-base uppercase leading-[1] whitespace-nowrap select-none " +
   "rounded-full transition-all duration-300 ease-out " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
   "disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
@@ -57,7 +57,7 @@ function ArrowIcon() {
       strokeWidth={2.5}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="w-3.5 h-3.5"
+      className="w-4 h-4"
       aria-hidden="true"
     >
       <line x1="7" y1="17" x2="17" y2="7" />
