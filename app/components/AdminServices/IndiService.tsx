@@ -473,7 +473,6 @@ useEffect(() => {
                                 <Controller
                                     name={`firstSection.image`}
                                     control={control}
-                                    rules={{ required: "Image is required" }}
                                     render={({ field }) => (
                                         <ImageUploader
                                             value={field.value}
@@ -489,28 +488,21 @@ useEffect(() => {
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Image Alt Tag</Label>
-                                <Input type='text' placeholder='Alt Tag' {...register(`firstSection.imageAlt`, {
-                                    required: "Alt Tag is required"
-                                })} />
-                                {errors.firstSection?.imageAlt && <p className='text-red-500'>{errors.firstSection?.imageAlt.message}</p>}
+                                <Input type='text' placeholder='Alt Tag' {...register(`firstSection.imageAlt`)} />
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`firstSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.firstSection?.title && <p className='text-red-500'>{errors.firstSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`firstSection.title`)} />
+                                {/* {errors.firstSection?.title && <p className='text-red-500'>{errors.firstSection?.title.message}</p>} */}
                             </div>
 
                             
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("firstSection.description", {
-                                    required: "Description is required"
-                                })} />
-                                {errors.firstSection?.description && <p className='text-red-500'>{errors.firstSection?.description.message}</p>}
+                                <Textarea placeholder='Description' {...register("firstSection.description")} />
+                                {/* {errors.firstSection?.description && <p className='text-red-500'>{errors.firstSection?.description.message}</p>} */}
                             </div>
                         </div>
 
@@ -540,18 +532,14 @@ useEffect(() => {
 
                                                         <div className='flex flex-col gap-2'>
                                                             <Label className='font-bold'>Title</Label>
-                                                            <Input type='text' placeholder='Title' {...register(`firstSection.items.${index}.title`, {
-                                                                required: "Title is required"
-                                                            })} />
-                                                            {errors.firstSection?.items?.[index]?.title && <p className='text-red-500'>{errors.firstSection?.items?.[index]?.title.message}</p>}
+                                                            <Input type='text' placeholder='Title' {...register(`firstSection.items.${index}.title`)} />
+                                                            {/* {errors.firstSection?.items?.[index]?.title && <p className='text-red-500'>{errors.firstSection?.items?.[index]?.title.message}</p>} */}
                                                         </div>
 
                                                         <div className='flex flex-col gap-2'>
                                                             <Label className='font-bold'>Link</Label>
-                                                            <Input type='text' placeholder='Link' {...register(`firstSection.items.${index}.link`, {
-                                                                required: "Link is required"
-                                                            })} />
-                                                            {errors.firstSection?.items?.[index]?.link && <p className='text-red-500'>{errors.firstSection?.items?.[index]?.link.message}</p>}
+                                                            <Input type='text' placeholder='Link' {...register(`firstSection.items.${index}.link`)} />
+                                                            {/* {errors.firstSection?.items?.[index]?.link && <p className='text-red-500'>{errors.firstSection?.items?.[index]?.link.message}</p>} */}
                                                         </div>
                                                     </>
                                                 )}
@@ -579,18 +567,14 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`secondSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.secondSection?.title && <p className='text-red-500'>{errors.secondSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`secondSection.title`)} />
+                                {/* {errors.secondSection?.title && <p className='text-red-500'>{errors.secondSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("secondSection.description", {
-                                    required: "Description is required"
-                                })} />
-                                {errors.secondSection?.description && <p className='text-red-500'>{errors.secondSection?.description.message}</p>}
+                                <Textarea placeholder='Description' {...register("secondSection.description")} />
+                                {/* {errors.secondSection?.description && <p className='text-red-500'>{errors.secondSection?.description.message}</p>} */}
                             </div>
                         </div>
                     </div>
@@ -607,26 +591,20 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`thirdSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.thirdSection?.title && <p className='text-red-500'>{errors.thirdSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`thirdSection.title`)} />
+                                {/* {errors.thirdSection?.title && <p className='text-red-500'>{errors.thirdSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`thirdSection.subTitle`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.thirdSection?.subTitle && <p className='text-red-500'>{errors.thirdSection?.subTitle.message}</p>}
+                                <Input type='text' placeholder='Sub Title' {...register(`thirdSection.subTitle`)} />
+                                {/* {errors.thirdSection?.subTitle && <p className='text-red-500'>{errors.thirdSection?.subTitle.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("thirdSection.description", {
-                                    required: "Description is required"
-                                })} />
-                                {errors.thirdSection?.description && <p className='text-red-500'>{errors.thirdSection?.description.message}</p>}
+                                <Textarea placeholder='Description' {...register("thirdSection.description")} />
+                                {/* {errors.thirdSection?.description && <p className='text-red-500'>{errors.thirdSection?.description.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
@@ -634,7 +612,6 @@ useEffect(() => {
                                 <Controller
                                     name={`thirdSection.image`}
                                     control={control}
-                                    rules={{ required: "Image is required" }}
                                     render={({ field }) => (
                                         <ImageUploader
                                             value={field.value}
@@ -643,17 +620,15 @@ useEffect(() => {
                                         />
                                     )}
                                 />
-                                {errors.thirdSection?.image && (
+                                {/* {errors.thirdSection?.image && (
                                     <p className="text-red-500">{errors.thirdSection?.image.message}</p>
-                                )}
+                                )} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Image Alt Tag</Label>
-                                <Input type='text' placeholder='Alt Tag' {...register(`thirdSection.imageAlt`, {
-                                    required: "Alt Tag is required"
-                                })} />
-                                {errors.thirdSection?.imageAlt && <p className='text-red-500'>{errors.thirdSection?.imageAlt.message}</p>}
+                                <Input type='text' placeholder='Alt Tag' {...register(`thirdSection.imageAlt`)} />
+                                {/* {errors.thirdSection?.imageAlt && <p className='text-red-500'>{errors.thirdSection?.imageAlt.message}</p>} */}
                             </div>
                         </div>
                     </div>
@@ -670,26 +645,20 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`fourthSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.fourthSection?.title && <p className='text-red-500'>{errors.fourthSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`fourthSection.title`)} />
+                                {/* {errors.fourthSection?.title && <p className='text-red-500'>{errors.fourthSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`fourthSection.subTitle`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.fourthSection?.subTitle && <p className='text-red-500'>{errors.fourthSection?.subTitle.message}</p>}
+                                <Input type='text' placeholder='Sub Title' {...register(`fourthSection.subTitle`)} />
+                                {/* {errors.fourthSection?.subTitle && <p className='text-red-500'>{errors.fourthSection?.subTitle.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("fourthSection.description", {
-                                    required: "Description is required"
-                                })} />
-                                {errors.fourthSection?.description && <p className='text-red-500'>{errors.fourthSection?.description.message}</p>}
+                                <Textarea placeholder='Description' {...register("fourthSection.description")} />
+                                {/* {errors.fourthSection?.description && <p className='text-red-500'>{errors.fourthSection?.description.message}</p>} */}
                             </div>
                         </div>
                     </div>
@@ -706,18 +675,14 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`fifthSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.fifthSection?.title && <p className='text-red-500'>{errors.fifthSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`fifthSection.title`)} />
+                                {/* {errors.fifthSection?.title && <p className='text-red-500'>{errors.fifthSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`fifthSection.subTitle`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.fifthSection?.subTitle && <p className='text-red-500'>{errors.fifthSection?.subTitle.message}</p>}
+                                <Input type='text' placeholder='Sub Title' {...register(`fifthSection.subTitle`)} />
+                                {/* {errors.fifthSection?.subTitle && <p className='text-red-500'>{errors.fifthSection?.subTitle.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -750,7 +715,7 @@ useEffect(() => {
                                                                 <Controller
                                                                     name={`fifthSection.items.${index}.image`}
                                                                     control={control}
-                                                                    rules={{ required: "Image is required" }}
+                                                                    // rules={{ required: "Image is required" }}
                                                                     render={({ field }) => (
                                                                         <ImageUploader
                                                                             value={field.value}
@@ -760,35 +725,29 @@ useEffect(() => {
                                                                         />
                                                                     )}
                                                                 />
-                                                                {errors.fifthSection?.items?.[index]?.image && (
+                                                                {/* {errors.fifthSection?.items?.[index]?.image && (
                                                                     <p className="text-red-500">{errors.fifthSection?.items?.[index]?.image.message}</p>
-                                                                )}
+                                                                )} */}
                                                             </div>
 
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Alt Tag</Label>
-                                                                <Input type='text' placeholder='Alt Tag' {...register(`fifthSection.items.${index}.imageAlt`, {
-                                                                    required: "Alt Tag is required"
-                                                                })} />
-                                                                {errors.fifthSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.imageAlt.message}</p>}
+                                                                <Input type='text' placeholder='Alt Tag' {...register(`fifthSection.items.${index}.imageAlt`)} />
+                                                                {/* {errors.fifthSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.imageAlt.message}</p>} */}
                                                             </div>
                                                         </div>
 
                                                         <div className='flex flex-col gap-2'>
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Title</Label>
-                                                                <Input type='text' placeholder='Title' {...register(`fifthSection.items.${index}.title`, {
-                                                                    required: "Title is required"
-                                                                })} />
-                                                                {errors.fifthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.title.message}</p>}
+                                                                <Input type='text' placeholder='Title' {...register(`fifthSection.items.${index}.title`)} />
+                                                                {/* {errors.fifthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.title.message}</p>} */}
                                                             </div>
 
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Description</Label>
-                                                                <Textarea placeholder='Description' {...register(`fifthSection.items.${index}.description`, {
-                                                                    required: "Description is required"
-                                                                })} />
-                                                                {errors.fifthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.description.message}</p>}
+                                                                <Textarea placeholder='Description' {...register(`fifthSection.items.${index}.description`)} />
+                                                                {/* {errors.fifthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.description.message}</p>} */}
                                                             </div>
                                                         </div>
                                                     </>
@@ -817,18 +776,14 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`sixthSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.sixthSection?.title && <p className='text-red-500'>{errors.sixthSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`sixthSection.title`)} />
+                                {/* {errors.sixthSection?.title && <p className='text-red-500'>{errors.sixthSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`sixthSection.subTitle`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.sixthSection?.subTitle && <p className='text-red-500'>{errors.sixthSection?.subTitle.message}</p>}
+                                <Input type='text' placeholder='Sub Title' {...register(`sixthSection.subTitle`)} />
+                                {/* {errors.sixthSection?.subTitle && <p className='text-red-500'>{errors.sixthSection?.subTitle.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -857,18 +812,14 @@ useEffect(() => {
 
                                                         <div className='flex flex-col gap-2 col-span-2'>
                                                             <Label className='font-bold'>Title</Label>
-                                                            <Input type='text' placeholder='Title' {...register(`sixthSection.items.${index}.title`, {
-                                                                required: "Title is required"
-                                                            })} />
-                                                            {errors.sixthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.title.message}</p>}
+                                                            <Input type='text' placeholder='Title' {...register(`sixthSection.items.${index}.title`)} />
+                                                            {/* {errors.sixthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.title.message}</p>} */}
                                                         </div>
 
                                                         <div className='flex flex-col gap-2 col-span-2'>
                                                             <Label className='font-bold'>Description</Label>
-                                                            <Textarea placeholder='Description' {...register(`sixthSection.items.${index}.description`, {
-                                                                required: "Description is required"
-                                                            })} />
-                                                            {errors.sixthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.description.message}</p>}
+                                                            <Textarea placeholder='Description' {...register(`sixthSection.items.${index}.description`)} />
+                                                            {/* {errors.sixthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.description.message}</p>} */}
                                                         </div>
                                                     </>
                                                 )}
@@ -896,10 +847,8 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`seventhSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.seventhSection?.title && <p className='text-red-500'>{errors.seventhSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`seventhSection.title`)} />
+                                {/* {errors.seventhSection?.title && <p className='text-red-500'>{errors.seventhSection?.title.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -932,7 +881,7 @@ useEffect(() => {
                                                                 <Controller
                                                                     name={`seventhSection.items.${index}.image`}
                                                                     control={control}
-                                                                    rules={{ required: "Image is required" }}
+                                                                    // rules={{ required: "Image is required" }}
                                                                     render={({ field }) => (
                                                                         <ImageUploader
                                                                             value={field.value}
@@ -942,35 +891,29 @@ useEffect(() => {
                                                                         />
                                                                     )}
                                                                 />
-                                                                {errors.seventhSection?.items?.[index]?.image && (
+                                                                {/* {errors.seventhSection?.items?.[index]?.image && (
                                                                     <p className="text-red-500">{errors.seventhSection?.items?.[index]?.image.message}</p>
-                                                                )}
+                                                                )} */}
                                                             </div>
 
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Alt Tag</Label>
-                                                                <Input type='text' placeholder='Alt Tag' {...register(`seventhSection.items.${index}.imageAlt`, {
-                                                                    required: "Alt Tag is required"
-                                                                })} />
-                                                                {errors.seventhSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.imageAlt.message}</p>}
+                                                                <Input type='text' placeholder='Alt Tag' {...register(`seventhSection.items.${index}.imageAlt`)} />
+                                                                {/* {errors.seventhSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.imageAlt.message}</p>} */}
                                                             </div>
                                                         </div>
 
                                                         <div className='flex flex-col gap-2'>
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Title</Label>
-                                                                <Input type='text' placeholder='Title' {...register(`seventhSection.items.${index}.title`, {
-                                                                    required: "Title is required"
-                                                                })} />
-                                                                {errors.seventhSection?.items?.[index]?.title && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.title.message}</p>}
+                                                                <Input type='text' placeholder='Title' {...register(`seventhSection.items.${index}.title`)} />
+                                                                {/* {errors.seventhSection?.items?.[index]?.title && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.title.message}</p>} */}
                                                             </div>
 
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Description</Label>
-                                                                <Textarea placeholder='Description' {...register(`seventhSection.items.${index}.description`, {
-                                                                    required: "Description is required"
-                                                                })} />
-                                                                {errors.seventhSection?.items?.[index]?.description && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.description.message}</p>}
+                                                                <Textarea placeholder='Description' {...register(`seventhSection.items.${index}.description`)} />
+                                                                {/* {errors.seventhSection?.items?.[index]?.description && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.description.message}</p>} */}
                                                             </div>
                                                         </div>
                                                     </>
@@ -999,18 +942,14 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`eighthSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.eighthSection?.title && <p className='text-red-500'>{errors.eighthSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`eighthSection.title`)} />
+                                {/* {errors.eighthSection?.title && <p className='text-red-500'>{errors.eighthSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`eighthSection.subTitle`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.eighthSection?.subTitle && <p className='text-red-500'>{errors.eighthSection?.subTitle.message}</p>}
+                                <Input type='text' placeholder='Sub Title' {...register(`eighthSection.subTitle`)} />
+                                {/* {errors.eighthSection?.subTitle && <p className='text-red-500'>{errors.eighthSection?.subTitle.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -1039,18 +978,14 @@ useEffect(() => {
 
                                                         <div className='flex flex-col gap-2 col-span-2'>
                                                             <Label className='font-bold'>Title</Label>
-                                                            <Input type='text' placeholder='Title' {...register(`eighthSection.items.${index}.title`, {
-                                                                required: "Title is required"
-                                                            })} />
-                                                            {errors.eighthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.title.message}</p>}
+                                                            <Input type='text' placeholder='Title' {...register(`eighthSection.items.${index}.title`)} />
+                                                            {/* {errors.eighthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.title.message}</p>} */}
                                                         </div>
 
                                                         <div className='flex flex-col gap-2 col-span-2'>
                                                             <Label className='font-bold'>Description</Label>
-                                                            <Textarea placeholder='Description' {...register(`eighthSection.items.${index}.description`, {
-                                                                required: "Description is required"
-                                                            })} />
-                                                            {errors.eighthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.description.message}</p>}
+                                                            <Textarea placeholder='Description' {...register(`eighthSection.items.${index}.description`)} />
+                                                            {/* {errors.eighthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.description.message}</p>} */}
                                                         </div>
                                                     </>
                                                 )}
@@ -1079,13 +1014,13 @@ useEffect(() => {
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
                                 <Input type='text' placeholder='Title' {...register(`ninethSection.title`)} />
-                                {errors.ninethSection?.title && <p className='text-red-500'>{errors.ninethSection?.title.message}</p>}
+                                {/* {errors.ninethSection?.title && <p className='text-red-500'>{errors.ninethSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
                                 <Input type='text' placeholder='Sub Title' {...register(`ninethSection.subTitle`)} />
-                                {errors.ninethSection?.subTitle && <p className='text-red-500'>{errors.ninethSection?.subTitle.message}</p>}
+                                {/* {errors.ninethSection?.subTitle && <p className='text-red-500'>{errors.ninethSection?.subTitle.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -1274,10 +1209,8 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`tenthSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.tenthSection?.title && <p className='text-red-500'>{errors.tenthSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`tenthSection.title`)} />
+                                {/* {errors.tenthSection?.title && <p className='text-red-500'>{errors.tenthSection?.title.message}</p>} */}
                             </div>
                         </div>
 
@@ -1326,26 +1259,20 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`eleventhSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.eleventhSection?.title && <p className='text-red-500'>{errors.eleventhSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`eleventhSection.title`)} />
+                                {/* {errors.eleventhSection?.title && <p className='text-red-500'>{errors.eleventhSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`eleventhSection.subTitle`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.eleventhSection?.subTitle && <p className='text-red-500'>{errors.eleventhSection?.subTitle.message}</p>}
+                                <Input type='text' placeholder='Sub Title' {...register(`eleventhSection.subTitle`)} />
+                                {/* {errors.eleventhSection?.subTitle && <p className='text-red-500'>{errors.eleventhSection?.subTitle.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("eleventhSection.description", {
-                                    required: "Description is required"
-                                })} />
-                                {errors.eleventhSection?.description && <p className='text-red-500'>{errors.eleventhSection?.description.message}</p>}
+                                <Textarea placeholder='Description' {...register("eleventhSection.description")} />
+                                {/* {errors.eleventhSection?.description && <p className='text-red-500'>{errors.eleventhSection?.description.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -1374,18 +1301,14 @@ useEffect(() => {
 
                                                         <div className='flex flex-col gap-2'>
                                                             <Label className='font-bold'>Number</Label>
-                                                            <Input type='text' placeholder='Number' {...register(`eleventhSection.items.${index}.number`, {
-                                                                required: "Number is required"
-                                                            })} />
-                                                            {errors.eleventhSection?.items?.[index]?.number && <p className='text-red-500'>{errors.eleventhSection?.items?.[index]?.number.message}</p>}
+                                                            <Input type='text' placeholder='Number' {...register(`eleventhSection.items.${index}.number`)} />
+                                                            {/* {errors.eleventhSection?.items?.[index]?.number && <p className='text-red-500'>{errors.eleventhSection?.items?.[index]?.number.message}</p>} */}
                                                         </div>
 
                                                         <div className='flex flex-col gap-2'>
                                                             <Label className='font-bold'>Value</Label>
-                                                            <Input type='text' placeholder='Value' {...register(`eleventhSection.items.${index}.value`, {
-                                                                required: "Value is required"
-                                                            })} />
-                                                            {errors.eleventhSection?.items?.[index]?.value && <p className='text-red-500'>{errors.eleventhSection?.items?.[index]?.value.message}</p>}
+                                                            <Input type='text' placeholder='Value' {...register(`eleventhSection.items.${index}.value`)} />
+                                                            {/* {errors.eleventhSection?.items?.[index]?.value && <p className='text-red-500'>{errors.eleventhSection?.items?.[index]?.value.message}</p>} */}
                                                         </div>
                                                     </>
                                                 )}
@@ -1413,18 +1336,14 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`caseStudySection.title`, {
-                                    required: "Title is required"
-                                })} />
-                                {errors.caseStudySection?.title && <p className='text-red-500'>{errors.caseStudySection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`caseStudySection.title`)} />
+                                {/* {errors.caseStudySection?.title && <p className='text-red-500'>{errors.caseStudySection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`caseStudySection.subTitle`, {
-                                    required: "Sub Title is required"
-                                })} />
-                                {errors.caseStudySection?.subTitle && <p className='text-red-500'>{errors.caseStudySection?.subTitle.message}</p>}
+                                <Input type='text' placeholder='Sub Title' {...register(`caseStudySection.subTitle`)} />
+                                {/* {errors.caseStudySection?.subTitle && <p className='text-red-500'>{errors.caseStudySection?.subTitle.message}</p>} */}
                             </div>
 
                         </div>
@@ -1481,9 +1400,7 @@ useEffect(() => {
                                                             <Input
                                                                 type='text'
                                                                 placeholder='Title'
-                                                                {...register(`caseStudySection.items.${index}.title`, {
-                                                                    required: "Title is required",
-                                                                })}
+                                                                {...register(`caseStudySection.items.${index}.title`)}
                                                             />
                                                         </div>
 
@@ -1491,9 +1408,7 @@ useEffect(() => {
                                                             <Label className='font-bold'>Description</Label>
                                                             <Textarea
                                                                 placeholder='Description'
-                                                                {...register(`caseStudySection.items.${index}.description`, {
-                                                                    required: "Description is required",
-                                                                })}
+                                                                {...register(`caseStudySection.items.${index}.description`)}
                                                             />
                                                         </div>
 
@@ -1524,42 +1439,33 @@ useEffect(() => {
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title Red</Label>
-                                <Input type='text' placeholder='Title Red' {...register(`ctaSection.titleRed`, {
-                                    required: "Title Red is required"
-                                })} />
-                                {errors.ctaSection?.titleRed && <p className='text-red-500'>{errors.ctaSection?.titleRed.message}</p>}
+                                <Input type='text' placeholder='Title Red' {...register(`ctaSection.titleRed`)} />
+                                {/* {errors.ctaSection?.titleRed && <p className='text-red-500'>{errors.ctaSection?.titleRed.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`ctaSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.ctaSection?.title && <p className='text-red-500'>{errors.ctaSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`ctaSection.title`)} />
+                                {/* {errors.ctaSection?.title && <p className='text-red-500'>{errors.ctaSection?.title.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("ctaSection.description", {
-                                    required: "Description is required"
-                                })} />
-                                {errors.ctaSection?.description && <p className='text-red-500'>{errors.ctaSection?.description.message}</p>}
+                                <Textarea placeholder='Description' {...register("ctaSection.description")}
+                                />
+                                {/* {errors.ctaSection?.description && <p className='text-red-500'>{errors.ctaSection?.description.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Button Text</Label>
-                                <Input type='text' placeholder='Button Text' {...register("ctaSection.buttonText", {
-                                    required: "Button Text is required"
-                                })} />
-                                {errors.ctaSection?.buttonText && <p className='text-red-500'>{errors.ctaSection?.buttonText.message}</p>}
+                                <Input type='text' placeholder='Button Text' {...register("ctaSection.buttonText")} />
+                                {/* {errors.ctaSection?.buttonText && <p className='text-red-500'>{errors.ctaSection?.buttonText.message}</p>} */}
                             </div>
 
                             <div className='flex flex-col gap-1'>
                                 <Label className=' font-bold'>Button Link</Label>
-                                <Input type='text' placeholder='Button Link' {...register("ctaSection.buttonLink", {
-                                    required: "Button Link is required"
-                                })} />
-                                {errors.ctaSection?.buttonLink && <p className='text-red-500'>{errors.ctaSection?.buttonLink.message}</p>}
+                                <Input type='text' placeholder='Button Link' {...register("ctaSection.buttonLink")} />
+                                {/* {errors.ctaSection?.buttonLink && <p className='text-red-500'>{errors.ctaSection?.buttonLink.message}</p>} */}
                             </div>
                         </div>
                     </div>
@@ -1576,10 +1482,8 @@ useEffect(() => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`faqSection.title`, {
-                                    required: "Value is required"
-                                })} />
-                                {errors.faqSection?.title && <p className='text-red-500'>{errors.faqSection?.title.message}</p>}
+                                <Input type='text' placeholder='Title' {...register(`faqSection.title`)} />
+                                {/* {errors.faqSection?.title && <p className='text-red-500'>{errors.faqSection?.title.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -1608,18 +1512,14 @@ useEffect(() => {
 
                                                         <div className='flex flex-col gap-2 col-span-2'>
                                                             <Label className='font-bold'>Question</Label>
-                                                            <Input type='text' placeholder='Question' {...register(`faqSection.items.${index}.question`, {
-                                                                required: "Question is required"
-                                                            })} />
-                                                            {errors.faqSection?.items?.[index]?.question && <p className='text-red-500'>{errors.faqSection?.items?.[index]?.question.message}</p>}
+                                                            <Input type='text' placeholder='Question' {...register(`faqSection.items.${index}.question`)} />
+                                                            {/* {errors.faqSection?.items?.[index]?.question && <p className='text-red-500'>{errors.faqSection?.items?.[index]?.question.message}</p>} */}
                                                         </div>
 
                                                         <div className='flex flex-col gap-2 col-span-2'>
                                                             <Label className='font-bold'>Answer</Label>
-                                                            <Textarea placeholder='Answer' {...register(`faqSection.items.${index}.answer`, {
-                                                                required: "Answer is required"
-                                                            })} />
-                                                            {errors.faqSection?.items?.[index]?.answer && <p className='text-red-500'>{errors.faqSection?.items?.[index]?.answer.message}</p>}
+                                                            <Textarea placeholder='Answer' {...register(`faqSection.items.${index}.answer`)} />
+                                                            {/* {errors.faqSection?.items?.[index]?.answer && <p className='text-red-500'>{errors.faqSection?.items?.[index]?.answer.message}</p>} */}
                                                         </div>
                                                     </>
                                                 )}
