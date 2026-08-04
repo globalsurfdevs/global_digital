@@ -22,6 +22,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { useParams } from 'next/navigation';
 import { Portfolio } from '@/app/types/Portfolio';
 
+
+type ServiceIndustry = {
+    _id: string;
+    image: string;
+    imageAlt: string;
+    title: string;
+};
+
 export interface ServiceFormProps {
     seo: SeoFormValues
     firstSection: {
@@ -95,13 +103,9 @@ export interface ServiceFormProps {
             imageAlt: string;
         }[];
     };
-    tenthSection: {
+tenthSection: {
         title: string;
-        items: {
-            image: string;
-            imageAlt: string;
-            title: string;
-        }[];
+        serviceIndustries: string[];
     };
     eleventhSection: {
         title: string;
@@ -287,15 +291,7 @@ const IndiServicePage = () => {
         name: "ninethSection.items"
     });
 
-    const {
-        fields: tenthSectionItems,
-        append: tenthSectionAppend,
-        remove: tenthSectionRemove,
-        move: tenthSectionMove,
-    } = useFieldArray({
-        control,
-        name: "tenthSection.items"
-    });
+
 
     const {
         fields: eleventhSectionItems,
@@ -329,6 +325,7 @@ const IndiServicePage = () => {
 
     const [reorderMode, setReorderMode] = useState(false);
     const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+       const [serviceIndustries, setServiceIndustries] = useState<ServiceIndustry[]>([]);
 
     // Which top-level section accordion is open.
     const [openSection, setOpenSection] = useState<string | null>("");
@@ -369,8 +366,13 @@ const IndiServicePage = () => {
                 setValue("eighthSection.items", data.data?.eighthSection?.items ?? []);
                 setValue("ninethSection", data.data?.ninethSection);
                 setValue("ninethSection.items", data.data?.ninethSection?.items ?? []);
-                setValue("tenthSection", data.data?.tenthSection);
-                setValue("tenthSection.items", data.data?.tenthSection?.items ?? []);
+setValue("tenthSection", data.data?.tenthSection);
+                setValue(
+                    "tenthSection.serviceIndustries",
+                    (data.data?.tenthSection?.serviceIndustries ?? []).map((item: any) =>
+                        typeof item === "object" && item !== null ? item._id : item
+                    )
+                );
                 setValue("eleventhSection", data.data?.eleventhSection);
                 setValue("eleventhSection.items", data.data?.eleventhSection?.items ?? []);
                 setValue("ctaSection", data.data?.ctaSection);
@@ -432,8 +434,24 @@ const IndiServicePage = () => {
 
 
 
-    useEffect(() => {
-        fetchPortfolios().then(() => fetchServiceData());
+    const fetchServiceIndustries = async () => {
+        try {
+            const response = await fetch(`/api/service-industry`);
+            if (response.ok) {
+                const data = await response.json();
+                setServiceIndustries(data.data);
+            } else {
+                console.error("Failed to fetch service industries");
+            }
+        } catch (error) {
+            console.error("Error fetching service industries:", error);
+        }
+    };
+
+useEffect(() => {
+        Promise.all([fetchPortfolios(), fetchServiceIndustries()]).then(() =>
+            fetchServiceData()
+        );
     }, []);
 
 
@@ -1060,17 +1078,13 @@ const IndiServicePage = () => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Title</Label>
-                                <Input type='text' placeholder='Title' {...register(`ninethSection.title`, {
-                                    required: "Value is required"
-                                })} />
+                                <Input type='text' placeholder='Title' {...register(`ninethSection.title`)} />
                                 {errors.ninethSection?.title && <p className='text-red-500'>{errors.ninethSection?.title.message}</p>}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Sub Title</Label>
-                                <Input type='text' placeholder='Sub Title' {...register(`ninethSection.subTitle`, {
-                                    required: "Value is required"
-                                })} />
+                                <Input type='text' placeholder='Sub Title' {...register(`ninethSection.subTitle`)} />
                                 {errors.ninethSection?.subTitle && <p className='text-red-500'>{errors.ninethSection?.subTitle.message}</p>}
                             </div>
                         </div>
@@ -1104,7 +1118,7 @@ const IndiServicePage = () => {
                                                                 <Controller
                                                                     name={`ninethSection.items.${index}.image`}
                                                                     control={control}
-                                                                    rules={{ required: "Image is required" }}
+                                                                    // rules={{ required: "Image is required" }}
                                                                     render={({ field }) => (
                                                                         <ImageUploader
                                                                             value={field.value}
@@ -1114,35 +1128,29 @@ const IndiServicePage = () => {
                                                                         />
                                                                     )}
                                                                 />
-                                                                {errors.ninethSection?.items?.[index]?.image && (
+                                                                {/* {errors.ninethSection?.items?.[index]?.image && (
                                                                     <p className="text-red-500">{errors.ninethSection?.items?.[index]?.image.message}</p>
-                                                                )}
+                                                                )} */}
                                                             </div>
 
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Alt Tag</Label>
-                                                                <Input type='text' placeholder='Alt Tag' {...register(`ninethSection.items.${index}.imageAlt`, {
-                                                                    required: "Alt Tag is required"
-                                                                })} />
-                                                                {errors.ninethSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.imageAlt.message}</p>}
+                                                                <Input type='text' placeholder='Alt Tag' {...register(`ninethSection.items.${index}.imageAlt`)} />
+                                                                {/* {errors.ninethSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.imageAlt.message}</p>} */}
                                                             </div>
                                                         </div>
 
                                                         <div className='flex flex-col gap-2'>
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Title</Label>
-                                                                <Input type='text' placeholder='Title' {...register(`ninethSection.items.${index}.title`, {
-                                                                    required: "Title is required"
-                                                                })} />
-                                                                {errors.ninethSection?.items?.[index]?.title && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.title.message}</p>}
+                                                                <Input type='text' placeholder='Title' {...register(`ninethSection.items.${index}.title`)} />
+                                                                {/* {errors.ninethSection?.items?.[index]?.title && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.title.message}</p>} */}
                                                             </div>
 
                                                             <div className='flex flex-col gap-2'>
                                                                 <Label className='font-bold'>Description</Label>
-                                                                <Textarea placeholder='Description' {...register(`ninethSection.items.${index}.description`, {
-                                                                    required: "Description is required"
-                                                                })} />
-                                                                {errors.ninethSection?.items?.[index]?.description && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.description.message}</p>}
+                                                                <Textarea placeholder='Description' {...register(`ninethSection.items.${index}.description`)} />
+                                                                {/* {errors.ninethSection?.items?.[index]?.description && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.description.message}</p>} */}
                                                             </div>
                                                         </div>
                                                     </>
@@ -1161,7 +1169,7 @@ const IndiServicePage = () => {
                 </AccordionSection>
 
                 {/* ---------------- Tenth Section ---------------- */}
-                <AccordionSection
+                {/* <AccordionSection
                     title="Tenth Section"
                     sectionKey="tenthSection"
                     openSection={openSection}
@@ -1251,6 +1259,58 @@ const IndiServicePage = () => {
                             <div className='flex justify-end mt-2'>
                                 <Button type='button' addItem onClick={() => tenthSectionAppend({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
                             </div>
+                        </div>
+                    </div>
+                </AccordionSection> */}
+
+                {/* ---------------- Tenth Section ---------------- */}
+                <AccordionSection
+                    title="Tenth Section"
+                    sectionKey="tenthSection"
+                    openSection={openSection}
+                    setOpenSection={setOpenSection}
+                >
+                    <div className='p-5 rounded-md flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Title</Label>
+                                <Input type='text' placeholder='Title' {...register(`tenthSection.title`, {
+                                    required: "Value is required"
+                                })} />
+                                {errors.tenthSection?.title && <p className='text-red-500'>{errors.tenthSection?.title.message}</p>}
+                            </div>
+                        </div>
+
+                        <div>
+                            <Label className='font-bold'>Industries</Label>
+                            <Controller
+                                name="tenthSection.serviceIndustries"
+                                control={control}
+                                render={({ field }) => (
+                                    <div className='border border-black/20 p-3 rounded-md grid grid-cols-2 gap-3 mt-2'>
+                                        {serviceIndustries.map((ind) => (
+                                            <label key={ind._id} className='flex items-center gap-2 cursor-pointer'>
+                                                <input
+                                                    type="checkbox"
+                                                    checked={field.value?.includes(ind._id) ?? false}
+                                                    onChange={() => {
+                                                        const current = field.value ?? [];
+                                                        const next = current.includes(ind._id)
+                                                            ? current.filter((id: string) => id !== ind._id)
+                                                            : [...current, ind._id];
+                                                        field.onChange(next);
+                                                    }}
+                                                />
+                                                {ind.image && (
+                                                    // eslint-disable-next-line @next/next/no-img-element
+                                                    <img src={ind.image} alt={ind.imageAlt} className='h-6 w-6 rounded object-cover' />
+                                                )}
+                                                <span>{ind.title}</span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                )}
+                            />
                         </div>
                     </div>
                 </AccordionSection>

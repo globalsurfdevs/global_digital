@@ -76,7 +76,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
               },
             }}
           >
-            {data.items.map((item, index) => (
+            {data.serviceIndustries.map((item, index) => (
               <SwiperSlide key={index} className="!w-auto">
                 <button className="flex items-center gap-3 whitespace-nowrap rounded-full border  border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-8">
                   <Image

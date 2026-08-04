@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { heroData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
+// import { heroData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import Button from "../common/buttons/PrimaryButton";
+
 interface HeroSectionProps {
   data: {
     title: string;
@@ -16,14 +17,21 @@ interface HeroSectionProps {
 
 const HeroSection = ({ data }: HeroSectionProps) => {
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-[600px] md:h-screen overflow-hidden">
       <div className="absolute inset-0 z-0 h-full w-full">
         <Image
           src={data.image}
           alt={data.imageAlt}
           width={1920}
           height={1080}
-          className="h-full w-full object-cover"
+          className="hidden h-full w-full object-cover md:block"
+        />
+        <Image
+          src={"/images/service-hero-bg-mobile.jpg"}
+          alt={data.imageAlt}
+          width={1920}
+          height={1080}
+          className="h-full w-full object-cover md:hidden"
         />
       </div>
       <div className="container relative z-10 flex h-full flex-col justify-center">
