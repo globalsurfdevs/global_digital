@@ -82,10 +82,10 @@ export async function GET(req: NextRequest) {
 // If no Service document exists yet, one is created.
 export async function POST(req: NextRequest) {
     try {
-        const isAdmin = await verifyAdmin(req);
-        if (!isAdmin) {
-            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-        }
+        // const isAdmin = await verifyAdmin(req);
+        // if (!isAdmin) {
+        //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        // }
         await dbConnect();
 
         const body = await req.json();
@@ -150,10 +150,10 @@ export async function POST(req: NextRequest) {
 
 export async function PATCH(req: NextRequest) {
     try {
-        const isAdmin = await verifyAdmin(req);
-        if (!isAdmin) {
-            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-        }
+        // const isAdmin = await verifyAdmin(req);
+        // if (!isAdmin) {
+        //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        // }
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const slug = searchParams.get("slug");
