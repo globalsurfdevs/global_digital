@@ -208,7 +208,7 @@ const page = async ({ params }: PageProps) => {
         colcount={4}
       />
       {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
-      <section className="mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px]">
+      <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
         <ButtonSlider data={service.tenthSection} />
       </section>
       <WhyChoose data={whyChooseData} />
