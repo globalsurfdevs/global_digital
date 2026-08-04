@@ -53,11 +53,11 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
               >
                 {/* Top */}
                 {/* <div className="bg-white pt-5 xl:pt-8 xxl:pt-[41px] pl-5 xl:pl-8 xxl:pl-[41px] 3xl:pl-[49px] pr-5 xl:pr-8 xxl:pr-[41px] 3xl:pr-[65px] min-h-[160px] xxl:min-h-[220px] flex flex-col border border-[#00000033] rounded-[10px]"> */}
-                <div className="flex flex-col rounded-[10px] border border-[#00000033] bg-white pl-5 pr-5 pt-5 xl:pl-8 xl:pr-8 xl:pt-8 xxl:pl-[41px] xxl:pr-[41px] xxl:pt-[41px] 3xl:pl-[49px] 3xl:pr-[65px]">
+                <div className="flex flex-col rounded-[10px] border border-[#00000033] bg-white pl-5 pr-5 pt-5 xl:pl-8 xl:pr-8 xl:pt-8 xxl:pl-[41px] xxl:pr-[41px] xxl:pt-[41px] 3xl:pl-[49px] 3xl:pr-[65px] 3xl:pb-[84px]">
                   <h3 className="text-28 mb-8 leading-[1] xl:mb-10">
                     {item.client}
                   </h3>
-                  {/* <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" /> */}
+                  <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" />
                 </div>
                 {/* Bottom */}
                 <div className="flex-1 rounded-[10px] bg-[#1F1F1F] p-8 text-white xl:p-12 3xl:pl-[49px] 3xl:pr-[65px] 3xl:pt-[62px]">
