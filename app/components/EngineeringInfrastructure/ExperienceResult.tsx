@@ -1,0 +1,101 @@
+"use client";
+
+import { Lexend } from "next/font/google";
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+const lexend = Lexend({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+interface SuccessStoriesProps {
+  data: {
+    title: string;
+    items: {
+      id: string;
+      topTitle: string;
+      stat: string;
+      statLabel: string;
+      title: string;
+      description: string;
+      logo: string;
+      image: string;
+      slug: string;
+      accent: "primary" | "dark";
+    }[];
+  };
+}
+
+const ExperienceResult = ({ data }: SuccessStoriesProps) => {
+  return (
+    <section className="py-120">
+      <div className="container">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="title-60 mb-8 xl:mb-12"
+        >
+          {data.title}
+        </motion.h2>
+
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
+          {data.items.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: index * 0.12,
+                duration: 0.5, // entrance animation
+                ease: "easeOut",
+              }}
+              whileHover={{
+                y: -10,
+                transition: {
+                  duration: 0.25,
+                  ease: "easeOut",
+                },
+              }}
+              className="group relative overflow-hidden bg-black text-white"
+            >
+              {/* Top */}
+              <div className={`py-3 px-4 xl:px-6 xl:py-5 3xl:px-[50px] 3xl:pt-[37px] 3xl:pb-[50px] ${item.accent === "primary" ? "bg-primary" : "bg-[#4A4A4A]" }`} >
+                <p className={`mb-3 text-30 leading-[1.666666666666667] ${lexend.className}`} >
+                  {item.topTitle}
+                </p>
+
+                <h3 className="mb-2 text-65 leading-none font-light">
+                  {item.stat}
+                </h3>
+
+                <p className={`text-25 ${lexend.className}`}>
+                  {item.statLabel}
+                </p>
+              </div>
+
+              {/* Bottom */}
+              <div className="flex min-h-[220px] flex-col p-7 xl:p-8">
+                <h3 className="mb-6 text-30 leading-tight">
+                  {item.title}
+                </h3>
+
+                <p
+                  className={`text-19 leading-[1.6] text-[#B7B7B7] ${lexend.className}`}
+                >
+                  {item.description}
+                </p>
+              </div>
+
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ExperienceResult;
