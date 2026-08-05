@@ -159,9 +159,9 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "10",
+      title: "12",
       rsubtitle: "Years of<br>Excellence  ",
-      dec: "10+ Years of Excellence – A decade of experience in transforming businesses through data.",
+      dec: "12+ Years of Excellence – A decade of experience in transforming businesses through data.",
     },
   ],
 };

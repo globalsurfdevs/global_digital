@@ -202,7 +202,7 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "10",
+      title: "12",
       rsubtitle: "Years of Consulting Excellence",
       dec: "Combining market intelligence with executional agility ",
     },

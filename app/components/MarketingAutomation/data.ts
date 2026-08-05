@@ -286,9 +286,9 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "11",
+      title: "12",
       rsubtitle: "Years of<br>Excellence ",
-      dec: "11+ Years of Excellence Over a decade of expertise in martech solutions that combine innovation, performance, and long-term success.",
+      dec: "12+ Years of Excellence Over a decade of expertise in martech solutions that combine innovation, performance, and long-term success.",
     },
   ],
 };

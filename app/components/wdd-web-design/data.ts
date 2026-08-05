@@ -143,7 +143,7 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "11+",
+      title: "12+",
       rttitel:"Years of Excellence  ",
       dec: "Over a decade of expertise in designing websites that combine innovation, performance, and long-term success.  ",
     },

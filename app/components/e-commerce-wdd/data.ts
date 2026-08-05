@@ -106,7 +106,7 @@ export const Platformsecomdata = {
     {
       id: 2,
       icon: assets.linkedin,
-      title: "11",
+      title: "12",
       rttitel:"Years of Expertise",
       dec: "Blending creativity with strategy while leveraging leading platforms like Shopify, WooCommerce, Magento, and custom e-commerce frameworks. ",
     },

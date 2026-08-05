@@ -240,7 +240,7 @@ export const Platformsecomdata = {
     {
       id: 1,
       icon: assets.google,
-      title: "11",
+      title: "12",
       rttitel:"Years of Experience ",
       dec: "With over a decade of expertise, we build intuitive, high-performing apps tailored to your business needs. ",
     },
