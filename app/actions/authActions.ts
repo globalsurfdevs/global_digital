@@ -32,7 +32,6 @@ export const signOutAdmin = async () => {
         await signOut()
         redirectPath = '/admin/auth/signin'
         return { success: true, message: "Successfully signed off" }
-
     } catch (err) {
         redirectPath = '/admin'
         console.log("Error in signout action:", err)

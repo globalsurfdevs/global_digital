@@ -6,9 +6,7 @@ import Contact from "@/app/components/Contact/Contact";
 
 const ContactUs = () => {
   return (
-    <DefaultLayout>
         <Contact editMode/>
-    </DefaultLayout>
   );
 };
 

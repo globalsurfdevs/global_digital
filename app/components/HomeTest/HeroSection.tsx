@@ -243,7 +243,7 @@ const HeroSection = () => {
         muted
         playsInline
         preload="none"
-        poster="/assets/poster.png"
+        poster="/assets/videos/home_poster.jpg"
         id="hero-video"
       >
         {/* <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" /> */}

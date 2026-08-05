@@ -20,6 +20,7 @@ interface FrameworkSectionProps {
   colcount?: number;
   maxchwidth?: number;
   data: FrameworkItem[];
+  subTitle: string;
 }
 
 const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
@@ -30,9 +31,8 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
   bgcolor,
   colcount,
   maxchwidth,
-
+  subTitle,
 }) => {
-
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -45,12 +45,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  const columns =
-    width >= 1280
-      ? (colcount || 4)
-      : width >= 768
-        ? 2
-        : 1;
+  const columns = width >= 1280 ? colcount || 4 : width >= 768 ? 2 : 1;
 
   const rows = [];
 
@@ -61,10 +56,10 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
   return (
     <div className={` ${bgcolor ? `${bgcolor}` : "bg-dgray"}`}>
       <div className="container mx-auto py-4">
-        <div className="pd-cus flex flex-col pt-8 xl:pt-12 xxl:pt-[120px] pb-4 xl:pb-6 xxl:pb-60">
-          <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h2 className="text-30 leading-[1.5] text-[#A3A3A3] uppercase">
-              What You Get
+        <div className="pd-cus flex flex-col pb-4 pt-8 xl:pb-6 xl:pt-12 xxl:pb-60 xxl:pt-[120px]">
+          <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
+            <h2 className="text-30 uppercase leading-[1.5] text-[#A3A3A3]">
+              {title}
             </h2>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
@@ -82,20 +77,27 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-
               {title1 && (
                 <Link href="">
-                  <h2 className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">{title1}</h2>
+                  <h2 className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                    {title1}
+                  </h2>
                 </Link>
               )}
               {description && (
                 <div>
-                  <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">{description}</p>
+                  <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
+                    {description}
+                  </p>
                 </div>
               )}
               {!description && (
                 <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                  <h2 className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-65 pb-6 lg:pb-[58px]`}>{title}</h2>
+                  <h2
+                    className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 pb-6 lg:pb-[58px]`}
+                  >
+                    {subTitle}
+                  </h2>
                 </div>
               )}
             </motion.div>
@@ -117,12 +119,14 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
               {rows.map((row, rowIndex) => (
                 <div
                   key={rowIndex}
-                  className={`border-t ${bgcolor === "bg-black" ? "border-[#77787B]" : "border-black"
-                    }`}
+                  className={`border-t ${
+                    bgcolor === "bg-black" ? "border-[#77787B]" : "border-black"
+                  }`}
                 >
                   <div
-                    className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${colcount || 4
-                      }`}
+                    className={`grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-${
+                      colcount || 4
+                    }`}
                   >
                     {row.map((framework) => (
                       <div
@@ -130,7 +134,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                         className="group relative flex flex-col overflow-hidden pb-4 xl:pb-8 xxl:pb-60"
                       >
                         {!framework.icn && (
-                          <div className="mb-4 mt-6 flex h-[50px] w-[50px] items-center justify-center rounded-[7px] bg-[#2E0C0A] transition-transform duration-500 lg:mb-8 lg:mt-10">
+                          <div className="mb-4 mt-6 flex h-[50px] w-[50px] xxl:h-[60px] xxl:w-[60px] items-center justify-center rounded-[7px] bg-[#2E0C0A] transition-transform duration-500 lg:mb-[30px] lg:mt-10">
                             <p className="text-28 text-[#E63E31] transition-transform duration-500">
                               {String(framework.id).padStart(2, "0")}
                             </p>
@@ -150,11 +154,14 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                         <div className="pr-6 xl:pr-60">
                           <div className="relative w-fit text-2xl">
                             <h3
-                              className={`${bgcolor === "bg-black"
+                              className={`${
+                                bgcolor === "bg-black"
                                   ? "text-white"
                                   : "text-black"
-                                } text-28 pb-3 leading-[1.214285714285714] lg:pb-6`}
-                              dangerouslySetInnerHTML={{ __html: framework.title }}
+                              } text-28 pb-3 leading-[1.214285714285714] lg:pb-5`}
+                              dangerouslySetInnerHTML={{
+                                __html: framework.title,
+                              }}
                             />
 
                             {framework.urllink && (
@@ -165,7 +172,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                             )}
                           </div>
 
-                          <p className="fnt-lexend text-19 font-normal text-[#a3a3a3]">
+                          <p className="fnt-lexend text-18 font-normal leading-[1.444444444444444] text-[#a3a3a3]">
                             {framework.dec}
                           </p>
                         </div>

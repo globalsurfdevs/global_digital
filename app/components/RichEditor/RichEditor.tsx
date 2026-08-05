@@ -99,7 +99,7 @@ const RichEditor = <T extends PortfolioInputs | CaseStudyInputs | JobInputType>(
                     theme="snow" 
                     value={typeof field.value === 'string' ? field.value : ''} 
                     onChange={field.onChange} 
-                    className="h-full" 
+                    className="[&_.ql-container]:h-[200px] [&_.ql-container]:overflow-y-auto" 
                     modules={modules} 
                     formats={[
                     "header",

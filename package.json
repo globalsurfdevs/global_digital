@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "create-hr": "ts-node --project tsconfig.json scripts/create-hr-user.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -28,6 +29,7 @@
     "@upstash/redis": "^1.34.3",
     "apexcharts": "^3.45.2",
     "axios": "^1.7.9",
+    "bcrypt": "^6.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dropbox": "^10.34.0",
@@ -80,6 +82,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.23.5",
     "typescript": "^5"
   }
 }

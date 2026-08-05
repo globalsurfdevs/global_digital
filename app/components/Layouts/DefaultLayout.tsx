@@ -5,8 +5,10 @@ import Header from "@/app/components/Header";
 
 export default function DefaultLayout({
   children,
+  role
 }: {
   children: React.ReactNode;
+  role:string | null
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
@@ -14,7 +16,7 @@ export default function DefaultLayout({
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className="flex">
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} role={role}/>
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}

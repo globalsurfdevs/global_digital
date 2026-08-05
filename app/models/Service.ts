@@ -1,222 +1,230 @@
 import mongoose from "mongoose";
 import seoSchema from "./Seo";
 
-const serviceItemSchema = new mongoose.Schema({
+const serviceItemSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     slug: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
     seo: {
-        type: seoSchema,
+      type: seoSchema,
     },
     firstSection: {
-        image: {
-            type: String
+      image: {
+        type: String,
+      },
+      imageAlt: {
+        type: String,
+      },
+      title: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+      items: [
+        {
+          title: { type: String },
+          link: { type: String },
         },
-        imageAlt: {
-            type: String
-        },
-        title: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        items: [
-            {
-                title: { type: String, required: true },
-                link: { type: String, required: true },
-            }
-        ]
+      ],
     },
     secondSection: {
-        title: {
-            type: String
-        },
-        description: {
-            type: String
-        }
+      title: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
     },
     thirdSection: {
-        title: {
-            type: String
-        },
-        subTitle: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        image: {
-            type: String
-        },
-        imageAlt: {
-            type: String
-        }
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+      image: {
+        type: String,
+      },
+      imageAlt: {
+        type: String,
+      },
     },
     fourthSection: {
-        title: {
-            type: String
-        },
-        subTitle: {
-            type: String
-        },
-        description: {
-            type: String
-        }
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
     },
     fifthSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      items: [
+        {
+          title: { type: String },
+          image: { type: String },
+          imageAlt: { type: String },
+          description: { type: String },
         },
-        subTitle: {
-            type: String
-        },
-        items: [
-            {
-                title: { type: String, required: true },
-                image: { type: String, required: true },
-                imageAlt: { type: String, required: true },
-                description: { type: String, required: true },
-            }
-        ]
+      ],
     },
     sixthSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      items: [
+        {
+          title: { type: String },
+          description: { type: String },
         },
-        subTitle: {
-            type: String
-        },
-        items: [
-            {
-                title: { type: String, required: true },
-                description: { type: String, required: true },
-            }
-        ]
+      ],
     },
     seventhSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      items: [
+        {
+          title: { type: String },
+          image: { type: String },
+          imageAlt: { type: String },
+          description: { type: String },
         },
-        items: [
-            {
-                title: { type: String, required: true },
-                image: { type: String, required: true },
-                imageAlt: { type: String, required: true },
-                description: { type: String, required: true },
-            }
-        ]
+      ],
     },
     eighthSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      items: [
+        {
+          title: { type: String },
+          description: { type: String },
         },
-        subTitle: {
-            type: String
-        },
-        items: [
-            {
-                title: { type: String, required: true },
-                description: { type: String, required: true },
-            }
-        ]
+      ],
     },
     ninethSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      items: [
+        {
+          title: { type: String },
+          description: { type: String },
+          image: { type: String },
+          imageAlt: { type: String },
         },
-        subTitle: {
-            type: String
-        },
-        items: [
-            {
-                title: { type: String, required: true },
-                description: { type: String, required: true },
-                image: { type: String, required: true },
-                imageAlt: { type: String, required: true },
-            }
-        ]
+      ],
     },
     tenthSection: {
-        title: {
-            type: String
-        },
-        items: [
-            {
-                image: { type: String, required: true },
-                imageAlt: { type: String, required: true },
-                title: { type: String, required: true },
-            }
-        ]
+      title: { type: String },
+      serviceIndustries: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "ServiceIndustry" },
+      ],
     },
     eleventhSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+      items: [
+        {
+          number: { type: String },
+          value: { type: String },
         },
-        subTitle: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        items: [
-            {
-                number: { type: String, required: true },
-                value: { type: String, required: true },
-            }
-        ]
+      ],
     },
     ctaSection: {
-        title: {
-            type: String
-        },
-        description: {
-            type: String
-        },
-        buttonText: {
-            type: String
-        },
-        buttonLink: {
-            type: String
-        }
+      titleRed: {
+        type: String,
+      },
+      title: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+      buttonText: {
+        type: String,
+      },
+      buttonLink: {
+        type: String,
+      },
     },
     caseStudySection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      items: [
+        {
+          title: String,
+          project: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "portfolio",
+          },
+          description: String,
         },
-        subTitle: {
-            type: String
-        },
-        items: [{
-            title: String,
-            project: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "portfolio",
-            },
-            description: String
-        }]
+      ],
+    },
+    testimonialsSection: {
+      title: {
+        type: String,
+      },
     },
     faqSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      items: [
+        {
+          question: { type: String },
+          answer: { type: String },
         },
-        items: [
-            {
-                question: { type: String, required: true },
-                answer: { type: String, required: true },
-            }
-        ]
-    }
-}, { timestamps: true });
+      ],
+    },
+  },
+  { timestamps: true },
+);
 
 const serviceSchema = new mongoose.Schema({
-    items: [serviceItemSchema]
+  items: [serviceItemSchema],
 });
 
-export default mongoose.models.Service || mongoose.model("Service", serviceSchema);
+export default mongoose.models.Service ||
+  mongoose.model("Service", serviceSchema);

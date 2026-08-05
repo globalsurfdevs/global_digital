@@ -6,9 +6,7 @@ import AdminJobs from "@/app/components/AdminJobs/AdminJobs";
 
 const JobsPage = () => {
   return (
-    <DefaultLayout>
         <AdminJobs/>
-    </DefaultLayout>
   );
 };
 

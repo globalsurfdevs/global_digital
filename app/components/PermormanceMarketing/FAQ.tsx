@@ -9,7 +9,8 @@ import { Lexend } from "next/font/google";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-}); import { motion, AnimatePresence } from "framer-motion";
+});
+import { motion, AnimatePresence } from "framer-motion";
 type PartnerDataType = {
   title: string;
   description: string;
@@ -22,6 +23,7 @@ type PartnerListProps = {
   bgcolor?: string;
   title?: string;
   defActive?: string;
+  initialCount?: number;
 };
 const containerVariants = {
   hidden: {},
@@ -43,19 +45,26 @@ const FAQ: React.FC<PartnerListProps> = ({
   bgcolor,
   title,
   defActive,
+  initialCount,
 }) => {
   const items = data ?? sections ?? [];
   const getDefaultOpenIndex = (value?: string) => {
     const parsedValue = Number.parseInt(value ?? "", 10);
 
-    if (Number.isNaN(parsedValue) || parsedValue < 1 || parsedValue > items.length) {
+    if (
+      Number.isNaN(parsedValue) ||
+      parsedValue < 1 ||
+      parsedValue > items.length
+    ) {
       return null;
     }
 
     return parsedValue - 1;
   };
 
-  const [open, setOpen] = useState<number | null>(() => getDefaultOpenIndex(defActive));
+  const [open, setOpen] = useState<number | null>(() =>
+    getDefaultOpenIndex(defActive),
+  );
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
@@ -71,8 +80,14 @@ const FAQ: React.FC<PartnerListProps> = ({
     setOpen(itemIndex);
   };
 
+  // If initialCount isn't passed, behaves exactly like before (shows everything).
+  const hasLimit = typeof initialCount === "number" && initialCount > 0;
+  const visibleItems =
+    hasLimit && !showAll ? items.slice(0, initialCount) : items;
+  const showLoadMoreBtn = hasLimit && !showAll && items.length > initialCount!;
+
   return (
-    <div className={` ${bgcolor ? `bg-[${bgcolor}]` : 'bg-white'}`}>
+    <div className={` ${bgcolor ? `bg-[${bgcolor}]` : "bg-white"}`}>
       <div className="container mx-auto py-4">
         <motion.div
           initial="hidden"
@@ -86,24 +101,30 @@ const FAQ: React.FC<PartnerListProps> = ({
             }, // Slide up and fade in
           }}
         >
-          <div className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[140px] xl:grid-cols-8  `} >
+          <div
+            className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[120px] xl:grid-cols-8  `}
+          >
             <div className="col-span-2  mb-5 xl:mb-0">
-              <h2 className="title-65">
+              <h2 className="title-60">
                 {!title && "FAQ"}
-                {title}</h2>
-              {
-                subp && (
-                  <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
-                    {subp}
-                  </p>
-                )
-              }
+                {title}
+              </h2>
+              {subp && (
+                <p className="fnt-lexend text-19 mt-6 max-w-[74ch] text-gray1 lg:mt-[40px]">
+                  {subp}
+                </p>
+              )}
             </div>
 
-            <div className={`col-span-5 w-full overflow-hidden`} >
-              <motion.div layout variants={containerVariants} initial="hidden" animate="visible" >
+            <div className={`col-span-5 w-full overflow-hidden`}>
+              <motion.div
+                layout
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
                 <AnimatePresence mode="popLayout">
-                  {items.map((item, index) => (
+                  {visibleItems.map((item, index) => (
                     <motion.div
                       key={item.title} // ⚠️ Important: never use index
                       layout
@@ -112,9 +133,12 @@ const FAQ: React.FC<PartnerListProps> = ({
                       animate="visible"
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="overflow-hidden flex w-full items-center justify-between gap-3 border-b first:border-t py-6 lg:pb-[50px] lg:pt-[50px]"
+                      className="flex w-full items-center justify-between gap-6 overflow-hidden border-b py-6 first:border-t lg:pb-[50px] lg:pt-[50px]"
                     >
-                      <div className="flex cursor-pointer  flex-col" onClick={() => toggle(index)}>
+                      <div
+                        className="flex cursor-pointer  flex-col"
+                        onClick={() => toggle(index)}
+                      >
                         <h3
                           className={` ${open === index ? "text-30 cursor-pointer text-black" : "text-30 text-gray1"}`}
                         >
@@ -130,17 +154,84 @@ const FAQ: React.FC<PartnerListProps> = ({
                       </div>
                       {open === index ? (
                         <div className="text-5xl text-primary">
-                          <Image src={arrowactive} alt="image" width={25} height={25} className="min-h-[25px] min-w-[25px] lg:min-h-[35px] lg:min-w-[35px] " loading="lazy" ></Image>
+                          <Image
+                            src={arrowactive}
+                            alt="image"
+                            width={25}
+                            height={25}
+                            className="min-h-[35px] min-w-[35px] lg:min-h-[45px] lg:min-w-[45px] "
+                            loading="lazy"
+                          ></Image>
                         </div>
                       ) : (
                         <div className="text-xl">
-                          <Image src={arrowdown} alt="image" height={25} width={25} className="min-h-[15px] min-w-[15px]  " loading="lazy" ></Image>
+                          <Image
+                            src={arrowdown}
+                            alt="image"
+                            height={25}
+                            width={25}
+                            className="min-h-[20px] min-w-[20px]  "
+                            loading="lazy"
+                          ></Image>
                         </div>
                       )}
                     </motion.div>
                   ))}
                 </AnimatePresence>
               </motion.div>
+
+              {showLoadMoreBtn && (
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="z-2 z-1 group relative mt-3 flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
+                          before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
+                          after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px]"
+                >
+                  <div className="relative">
+                    <p
+                      className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                    >
+                      LOAD MORE
+                    </p>
+                  </div>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="rotate-0 duration-300 ease-in-out group-hover:rotate-45 group-hover:scale-125"
+                  >
+                    <g clipPath="url(#clip0_65_58)">
+                      <path
+                        d="M18.7892 1.2749L0.699219 19.0149"
+                        stroke="#E53F30"
+                        strokeWidth="3"
+                        strokeMiterlimit="10"
+                        className="group-hover:stroke-black"
+                      />
+                      <path
+                        d="M0.699219 1.2749H18.7892V18.6649"
+                        stroke="#E53F30"
+                        strokeWidth="3"
+                        strokeMiterlimit="10"
+                        className="group-hover:stroke-black"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_65_58">
+                        <rect
+                          width="19.79"
+                          height="19.45"
+                          fill="white"
+                          transform="translate(0 0.274902)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              )}
+
               {/* <button 
              onClick={() => setShowAll(!showAll)}
               className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
@@ -194,7 +285,6 @@ const FAQ: React.FC<PartnerListProps> = ({
             </button> */}
             </div>
           </div>
-
         </motion.div>
       </div>
     </div>

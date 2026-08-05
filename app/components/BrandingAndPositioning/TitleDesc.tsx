@@ -1,18 +1,44 @@
-const TitleDesc = () => {
+"use client";
+import { motion } from "framer-motion";
+import { moveUp } from "../animations/motionVariants";
+
+const TitleDesc = ({ data }: any) => {
   return (
-    <section className="">
-      <div className="container py-120 border-b border-[#00000033]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div>
-            <h2 className="title-65">Brand strategy before <br />design. <br />every time.</h2>
-          </div>
-          <div>
-            <p className="text-19 text-muted leading-[1.444444444444444] fnt-lexend">GS Digital is a branding agency in Dubai that builds brand positioning, visual identity systems, and graphic design assets for UAE businesses across construction, real estate, retail, fashion, and education. Unlike studios that move straight to logo concepts, we start with competitive positioning and audience research so every design decision has a strategic reason behind it.</p>
-          </div>
+    <section className="container">
+      <motion.div
+        variants={moveUp(0)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="py-120 border-b border-[#00000033]"
+      >
+        {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8"> */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[auto_minmax(0,1.2fr)] lg:gap-20 2xl:grid-cols-2 2xl:gap-8">
+          <motion.div
+            variants={moveUp(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <h2
+              className="title-60"
+              dangerouslySetInnerHTML={{ __html: data.title }}
+            ></h2>
+          </motion.div>
+          <motion.div
+            variants={moveUp(0.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <p className="text-18 fnt-lexend leading-[1.444444444444444] text-muted 3xl:max-w-[745px]">
+              {data.description}
+            </p>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
-}
+};
 
 export default TitleDesc;

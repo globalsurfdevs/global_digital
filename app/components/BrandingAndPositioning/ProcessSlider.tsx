@@ -1,79 +1,83 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
+import { ServiceItem } from "@/app/(user)/[slug]/type";
+
+import { motion } from "framer-motion";
+import { moveUp } from "../animations/motionVariants";
 
 // -----------------------------------------------------------------------------
 // Data
 // -----------------------------------------------------------------------------
 
-export const processSliderData = {
-  subtitle: 'Our Process',
-  title: 'Our Strategic Brand Development Process',
-  items: [
-    {
-      id: '1',
-      number: '01',
-      title: 'Discovery & brand audit',
-      description:
-        "We understand your business, your market, your competitors and your current brand — what's working, what isn't, and where the positioning opportunity sits.",
-    },
-    {
-      id: '2',
-      number: '02',
-      title: 'Positioning strategy',
-      description:
-        'We develop your brand positioning — the territory your brand will occupy, the audience it speaks to most directly, and the key messages that differentiate it.',
-    },
-    {
-      id: '3',
-      number: '03',
-      title: 'Concept development',
-      description:
-        'We develop two to three distinct brand identity concepts, each grounded in the positioning strategy and presented with a written rationale.',
-    },
-    {
-      id: '4',
-      number: '04',
-      title: 'Design execution',
-      description:
-        'The chosen concept is developed into a complete visual identity system — logo variations, colour palette, typography, supporting graphic elements and initial collateral.',
-    },
-    {
-      id: '5',
-      number: '05',
-      title: 'Lorem ipsum dolor',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    },
-    {
-      id: '6',
-      number: '06',
-      title: 'Consectetur adipiscing',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      id: '7',
-      number: '07',
-      title: 'Tempor incididunt',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    },
-    {
-      id: '8',
-      number: '08',
-      title: 'Excepteur sint occaecat',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    },
-  ],
-};
+// export const processSliderData = {
+//   subtitle: 'Our Process',
+//   title: 'Our Strategic Brand Development Process',
+//   items: [
+//     {
+//       id: '1',
+//       number: '01',
+//       title: 'Discovery & brand audit',
+//       description:
+//         "We understand your business, your market, your competitors and your current brand — what's working, what isn't, and where the positioning opportunity sits.",
+//     },
+//     {
+//       id: '2',
+//       number: '02',
+//       title: 'Positioning strategy',
+//       description:
+//         'We develop your brand positioning — the territory your brand will occupy, the audience it speaks to most directly, and the key messages that differentiate it.',
+//     },
+//     {
+//       id: '3',
+//       number: '03',
+//       title: 'Concept development',
+//       description:
+//         'We develop two to three distinct brand identity concepts, each grounded in the positioning strategy and presented with a written rationale.',
+//     },
+//     {
+//       id: '4',
+//       number: '04',
+//       title: 'Design execution',
+//       description:
+//         'The chosen concept is developed into a complete visual identity system — logo variations, colour palette, typography, supporting graphic elements and initial collateral.',
+//     },
+//     {
+//       id: '5',
+//       number: '05',
+//       title: 'Lorem ipsum dolor',
+//       description:
+//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+//     },
+//     {
+//       id: '6',
+//       number: '06',
+//       title: 'Consectetur adipiscing',
+//       description:
+//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+//     },
+//     {
+//       id: '7',
+//       number: '07',
+//       title: 'Tempor incididunt',
+//       description:
+//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+//     },
+//     {
+//       id: '8',
+//       number: '08',
+//       title: 'Excepteur sint occaecat',
+//       description:
+//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+//     },
+//   ],
+// };
 
 // -----------------------------------------------------------------------------
 // Slides-per-view helper
@@ -96,8 +100,8 @@ function getSlidesPerView(width: number) {
   return value;
 }
 
-const ProcessSlider = () => {
-  const { items, subtitle, title } = processSliderData;
+const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
+  const { items, subTitle, title } = data;
 
   const [previewIndex, setPreviewIndex] = useState(items.length - 1);
   const [leftIndex, setLeftIndex] = useState(0);
@@ -115,41 +119,54 @@ const ProcessSlider = () => {
 
     updateContainerLeft();
 
-    window.addEventListener('resize', updateContainerLeft);
+    window.addEventListener("resize", updateContainerLeft);
 
     return () => {
-      window.removeEventListener('resize', updateContainerLeft);
+      window.removeEventListener("resize", updateContainerLeft);
     };
   }, []);
 
   const updatePreview = (swiper: SwiperType) => {
-    const width = typeof window !== 'undefined' ? window.innerWidth : 1280;
+    const width = typeof window !== "undefined" ? window.innerWidth : 1280;
     const spv = getSlidesPerView(width);
 
-    const nextIndex =
-      Math.ceil(swiper.realIndex + spv - 1) % items.length;
+    const nextIndex = Math.ceil(swiper.realIndex + spv - 1) % items.length;
 
     setPreviewIndex(nextIndex);
     setLeftIndex(swiper.realIndex);
   };
 
   return (
-    <section className="bg-[#F6F6F6] py-120">
+    <section className="py-120 bg-[#F6F6F6]">
       {/* Header */}
       <div className="container" ref={containerRef}>
-        <div className="mb-4 xl:mb-8 xxl:mb-12">
-          <div className="flex items-center gap-2 mb-4 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h3 className="text-28 leading-[1] uppercase tracking-[-0.025em] text-muted">
-              {subtitle}
-            </h3>
+        <div className="mb-4 xl:mb-8 xxl:mb-[50px]">
+          <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
+            <motion.h3
+              variants={moveUp(0)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
+            >
+              {title}
+            </motion.h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
-            <h2 className="title-65"> Our Strategic<br />Brand Development Process</h2>
+          <motion.h2
+            variants={moveUp(0.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="title-60"
+            dangerouslySetInnerHTML={{ __html: subTitle }}
+          ></motion.h2>
         </div>
       </div>
 
       {/* Slider */}
-      <div className="overflow-hidden px-3"
+      <div
+        className="overflow-hidden px-3"
         style={{
           marginLeft: `${containerLeft}px`,
         }}
@@ -187,27 +204,29 @@ const ProcessSlider = () => {
             },
           }}
           pagination={{
-            el: '.process-pagination',
+            el: ".process-pagination",
             clickable: true,
           }}
-          className="!overflow-visible"
+          className="!overflow-visible [&_.swiper-slide]:!h-auto [&_.swiper-wrapper]:!items-stretch"
         >
           {items.map((item, i) => (
-            <SwiperSlide key={item.id} className="h-auto">
-              <div className={`h-full ${i === leftIndex ? '' : '' } pl-6 md:pl-8 xl:pl-10  border-l border-black/20`} >
+            <SwiperSlide key={i} className="h-auto">
+              <div
+                className={`h-full ${i === leftIndex ? "" : ""} border-l border-black/20 pb-6  pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}
+              >
                 <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="inline-flex items-center justify-center w-14 h-14 xl:w-20 xl:h-20 mb-5 rounded-[7px] bg-[#E63E310D] border border-[#E63E311F]">
-                    <span className="text-primary text-28 font-normal">
-                      {item.number}
+                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
+                    <span className="text-28 font-normal text-primary">
+                      {i < 10 ? `0${i + 1}` : i + 1}
                     </span>
                   </div>
 
-                  <h3 className="text-xl md:text-[22px] leading-snug font-medium mb-4 max-w-[12ch]">
+                  <h3 className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
                     {item.title}
                   </h3>
                 </div>
 
-                <p className="text-19 leading-[1.473684210526316] text-muted  font-lexend">
+                <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
                   {item.description}
                 </p>
               </div>
@@ -218,7 +237,7 @@ const ProcessSlider = () => {
 
       {/* Pagination */}
       <div className="container">
-        <div className="process-pagination flex gap-2 mt-10 md:hidden [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-black/15 [&_.swiper-pagination-bullet-active]:bg-primary" />
+        <div className="process-pagination mt-10 flex gap-2 md:hidden [&_.swiper-pagination-bullet-active]:bg-primary [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-black/15" />
       </div>
     </section>
   );

@@ -4,16 +4,12 @@ import AdminEnquiry from "@/app/components/AdminEnquiry/AdminEnquiry";
 import { Suspense } from "react";
 import AdminServiceList from "@/app/components/AdminServices/AdminServices";
 
-
-
 const ServicePage = () => {
-    return (
-        <DefaultLayout>
-            <Suspense fallback={"Loading"}>
-            <AdminServiceList />
-            </Suspense>
-        </DefaultLayout>
-    );
+  return (
+    <Suspense fallback={"Loading"}>
+      <AdminServiceList />
+    </Suspense>
+  );
 };
 
 export default ServicePage;
