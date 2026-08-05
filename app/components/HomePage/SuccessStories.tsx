@@ -28,22 +28,22 @@ const SuccessStories = ({clientTitle}:{clientTitle:string}) => {
 
   const [data, setData] = useState<Data | null>(null);
 
-  useEffect(() => {
-    const fetchCaseStudyData = async () => {
-      try {
-        const response = await fetch("/api/case-study/home");
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-          setData(data);
-        }
-      } catch (error) {
-        console.log("Failed fetching case study data:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCaseStudyData = async () => {
+  //     try {
+  //       const response = await fetch("/api/case-study/home");
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log(data);
+  //         setData(data);
+  //       }
+  //     } catch (error) {
+  //       console.log("Failed fetching case study data:", error);
+  //     }
+  //   };
 
-    fetchCaseStudyData();
-  }, []);
+  //   fetchCaseStudyData();
+  // }, []);
 
   return (
     <div className="container mx-auto px-4">

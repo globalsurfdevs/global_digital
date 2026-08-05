@@ -13,7 +13,7 @@ import { GiNotebook } from "react-icons/gi";
 import { MdManageHistory, MdOutlinePanTool, MdOutlineWork } from "react-icons/md";
 import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
 import { CreativeCommons, Settings2 } from "lucide-react";
-import { FaServicestack } from "react-icons/fa";
+import { FaIndustry, FaServicestack } from "react-icons/fa";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -164,6 +164,13 @@ const menuGroups = [
         ),
         label: "About",
         route: "/admin/about",
+      },
+      {
+        icon: (
+          <FaIndustry />
+        ),
+        label: "Industries",
+        route: "/admin/industries",
       },
       {
         icon: (
@@ -356,7 +363,7 @@ const menuGroups = [
   // },
 ];
 
-const HR_ALLOWED_LABELS = ["Careers","Jobs"];
+const HR_ALLOWED_LABELS = ["Careers", "Jobs"];
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
   const pathname = usePathname();
