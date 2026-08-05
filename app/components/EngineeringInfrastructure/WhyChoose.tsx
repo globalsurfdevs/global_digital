@@ -39,8 +39,10 @@ const WhyChoose = ({ data }: { data: WhyChooseData }) => {
                 variants={moveUp(0)}
                 viewport={{ once: true }}
                 className="title-60 tracking-[-0.025em]"
-                dangerouslySetInnerHTML={{ __html: data.title }}
-              />
+              >
+                {" "}
+                {data.title}{" "}
+              </motion.h2>
             </div>
             <motion.p
               initial="hidden"
