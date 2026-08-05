@@ -302,7 +302,7 @@ export const Platformsecomdata = {
     {
       id: 2,
       icon: assets.linkedin,
-      title: "11",
+      title: "12",
       rttitel:" Years of expertise",
       dec: "In leading technologies, ensuring secure, scalable, and future-ready web applications. ",
     },

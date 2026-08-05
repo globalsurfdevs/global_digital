@@ -168,7 +168,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
                   {!data?.bottomText ? (
                     <p className="font-400   text-font30 text-black">
                       Trusted by{" "}
-                      <span className="text-primary">125+ brands</span> across
+                      <span className="text-primary">140+ brands</span> across
                       UAE & beyond
                     </p>
                   ) : (

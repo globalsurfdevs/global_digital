@@ -74,7 +74,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
 
   useEffect(() => {
     if (isInView) {
-      springClientCount.set(150);
+      springClientCount.set(100);
       springRetentionCount.set(98);
     }
   }, [isInView, springClientCount, springRetentionCount, springYearsCount]);
