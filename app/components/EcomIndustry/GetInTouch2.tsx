@@ -182,7 +182,7 @@ const [modalOpen, setModalOpen] = useState(false);
                 {/* <h3 className="text-font65 hover:text-[#E63E31]">
                   {expCount}+
                 </h3> */}
-                 <SeoCounters value={11} label="+" />
+                 <SeoCounters value={12} label="+" />
                 <p className="text-[30px] text-[#77787B]">
                   Years of Experience
                 </p>

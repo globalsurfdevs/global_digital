@@ -164,7 +164,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                   {clientCount}+
                 </h3> */}
 
-                <SeoCounters value={100} label="+" />
+                  <SeoCounters value={140} label="+" />
                 <p className="text-[30px] text-[#77787B]">Clients Served</p>
               </div>
               <div className="retention">
@@ -178,7 +178,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                 {/* <h3 className="text-font65 hover:text-[#E63E31]">
                   {yearsCount}+
                 </h3> */}
-                  <SeoCounters value={11} label="+" />
+                  <SeoCounters value={12} label="+" />
                 <p className="text-[30px] text-[#77787B]">
                   Years of Experience
                 </p>
