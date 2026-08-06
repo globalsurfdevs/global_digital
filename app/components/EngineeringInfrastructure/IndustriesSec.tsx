@@ -43,20 +43,13 @@ const IndustriesSec = ({ data }: { data: ServiceItem["industries"] }) => {
               className={`group flex items-stretch overflow-hidden transition-all duration-300 `}
             >
               {/* Icon */}
-              <div className="flex h-full w-[64px] xl:w-[90px] xl:min-h-[90px] shrink-0 items-center justify-center rounded-[7px] border-r border-primary/10 bg-primary/5">
-                <img
-                  src={item.icon}
-                  alt={item.iconAlt}
-                  className="h-8 w-8 object-contain"
-                />
+              <div className="flex h-full w-[64px] xl:w-[90px] xl:min-h-[90px] shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-primary/5">
+                <Image src={item.icon} alt={item.iconAlt} width={40} height={40} className="h-8 w-auto xl:h-10 object-contain" />
               </div>
 
               {/* Title */}
-              <div className={`flex flex-1 items-center justify-between px-3 py-2 xl:px-5 xl:py-[18px] 3xl:pl-[26px] 3xl:pr-[35px] border border-primary/10 rounded-[7px]
-               ${item.active ? "bg-primary/10" : "bg-white hover:bg-primary/10"
-                }`}>
+              <div className={`flex flex-1 items-center justify-between px-3 py-[10px] 3xl:pl-[26px] 3xl:pr-[35px] border border-primary/10 rounded-[7px] bg-transparent hover:bg-primary/15`}>
                 <h3 className="text-28 leading-[1.214285714285714] tracking-[-0.025em]" dangerouslySetInnerHTML={{ __html: item.title }}></h3>
-
                 <Image
                   src="/assets/icons/top-right-arrow.svg"
                   alt="arrow-right"
