@@ -2,6 +2,7 @@ import Industries from "@/app/models/Industries";
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from '@/lib/mongodb'
+import { verifyAdmin } from "@/lib/verifyAdmin";
 
 const slugify = (value: string) =>
     value
@@ -74,10 +75,10 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
     try {
-        // const isAdmin = await verifyAdmin(req);
-        // if (!isAdmin) {
-        //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-        // }
+        const isAdmin = await verifyAdmin(req);
+        if (!isAdmin) {
+            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        }
         await dbConnect();
 
         const body = await req.json();
