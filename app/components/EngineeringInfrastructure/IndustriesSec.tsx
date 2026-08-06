@@ -4,8 +4,21 @@ import { moveUp } from "../animations/motionVariants";
 
 import { ServiceItem } from "@/app/(user)/engineering-and-infrastructure/type";
 import Image from "next/image";
+import { IndustryItem } from "@/app/(user)/industry/[slug]/type";
 
-const IndustriesSec = ({ data }: { data: ServiceItem["industries"] }) => {
+type Props = {
+  title: string;
+  subTitle: string;
+  items: {
+    _id:string;
+    slug: string;
+    icon: string;
+    iconAlt: string;
+    title: string;
+  }[]
+}
+
+const IndustriesSec = ({ data }: { data:Props}) => {
   return (
     <section className="py-120 bg-[#f6f6f6]">
       <div className="container">
@@ -18,7 +31,7 @@ const IndustriesSec = ({ data }: { data: ServiceItem["industries"] }) => {
               viewport={{ once: true }}
               className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
             >
-              {data.subTitle}
+              {data.title}
             </motion.h3>
             <div className="h-5 w-5 bg-primary"></div>
           </div>
@@ -28,14 +41,14 @@ const IndustriesSec = ({ data }: { data: ServiceItem["industries"] }) => {
             variants={moveUp(0)}
             viewport={{ once: true }}
             className="title-60 tracking-[-0.025em] max-w-[25ch]"
-            dangerouslySetInnerHTML={{ __html: data.title }}
+            dangerouslySetInnerHTML={{ __html: data.subTitle }}
           />
         </div>
         <div className="grid grid-cols-1 gap-3 xl:gap-[30px] md:grid-cols-2 xl:grid-cols-3">
           {data.items.map((item, index) => (
             <motion.a
               key={item._id}
-              href={`/${item.slug}`}
+              href={`/industry/${item.slug}`}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}

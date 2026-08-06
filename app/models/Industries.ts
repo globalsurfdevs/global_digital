@@ -22,6 +22,12 @@ const industriesItemSchema = new mongoose.Schema(
       imageAlt: {
         type: String,
       },
+      logo: {
+        type: String,
+      },
+      logoAlt: {
+        type: String,
+      },
       title: {
         type: String,
       },
@@ -39,6 +45,9 @@ const industriesItemSchema = new mongoose.Schema(
       title: {
         type: String,
       },
+      subTitle: {
+        type: String,
+      },
       description: {
         type: String,
       },
@@ -50,15 +59,15 @@ const industriesItemSchema = new mongoose.Schema(
       subTitle: {
         type: String,
       },
-      description: {
-        type: String,
-      },
-      image: {
-        type: String,
-      },
-      imageAlt: {
-        type: String,
-      },
+      items: [
+        {
+          title: { type: String },
+          image: { type: String },
+          imageAlt: { type: String },
+          description: { type: String },
+          link: { type: String },
+        },
+      ],
     },
     fourthSection: {
       title: {
@@ -67,90 +76,14 @@ const industriesItemSchema = new mongoose.Schema(
       subTitle: {
         type: String,
       },
-      description: {
-        type: String,
-      },
+      items: [
+        {
+          title: { type: String },
+          description: { type: String },
+        },
+      ],
     },
     fifthSection: {
-      title: {
-        type: String,
-      },
-      subTitle: {
-        type: String,
-      },
-      items: [
-        {
-          title: { type: String },
-          image: { type: String },
-          imageAlt: { type: String },
-          description: { type: String },
-        },
-      ],
-    },
-    sixthSection: {
-      title: {
-        type: String,
-      },
-      subTitle: {
-        type: String,
-      },
-      items: [
-        {
-          title: { type: String },
-          description: { type: String },
-        },
-      ],
-    },
-    seventhSection: {
-      title: {
-        type: String,
-      },
-      items: [
-        {
-          title: { type: String },
-          image: { type: String },
-          imageAlt: { type: String },
-          description: { type: String },
-        },
-      ],
-    },
-    eighthSection: {
-      title: {
-        type: String,
-      },
-      subTitle: {
-        type: String,
-      },
-      items: [
-        {
-          title: { type: String },
-          description: { type: String },
-        },
-      ],
-    },
-    ninethSection: {
-      title: {
-        type: String,
-      },
-      subTitle: {
-        type: String,
-      },
-      items: [
-        {
-          title: { type: String },
-          description: { type: String },
-          image: { type: String },
-          imageAlt: { type: String },
-        },
-      ],
-    },
-    tenthSection: {
-      title: { type: String },
-      industriesIndustries: [
-        { type: mongoose.Schema.Types.ObjectId, ref: "IndustriesIndustry" },
-      ],
-    },
-    eleventhSection: {
       title: {
         type: String,
       },
@@ -167,6 +100,35 @@ const industriesItemSchema = new mongoose.Schema(
         },
       ],
     },
+    sixthSection: {
+      title: {
+        type: String,
+      },
+      items: [
+        {
+          company: { type: String },
+          number: { type: String },
+          value: { type: String },
+          title: { type: String },
+          description: { type: String },
+          isPrimary: { type: Boolean, default: false }
+        },
+      ],
+    },
+    seventhSection: {
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      logo: {
+        type: String,
+      },
+      logoAlt: {
+        type: String,
+      },
+    },
     ctaSection: {
       titleRed: {
         type: String,
@@ -181,29 +143,6 @@ const industriesItemSchema = new mongoose.Schema(
         type: String,
       },
       buttonLink: {
-        type: String,
-      },
-    },
-    caseStudySection: {
-      title: {
-        type: String,
-      },
-      subTitle: {
-        type: String,
-      },
-      items: [
-        {
-          title: String,
-          project: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "portfolio",
-          },
-          description: String,
-        },
-      ],
-    },
-    testimonialsSection: {
-      title: {
         type: String,
       },
     },
@@ -226,5 +165,5 @@ const industriesSchema = new mongoose.Schema({
   items: [industriesItemSchema],
 });
 
-export default mongoose.models.Industries ||
-  mongoose.model("Industries", industriesSchema);
+export default mongoose.models.Industry_new ||
+  mongoose.model("Industry_new", industriesSchema);

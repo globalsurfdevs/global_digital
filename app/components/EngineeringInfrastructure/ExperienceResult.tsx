@@ -19,10 +19,7 @@ interface SuccessStoriesProps {
       statLabel: string;
       title: string;
       description: string;
-      logo: string;
-      image: string;
-      slug: string;
-      accent: "primary" | "dark";
+      accent: string;
     }[];
   };
 }
