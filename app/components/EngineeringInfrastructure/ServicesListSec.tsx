@@ -100,8 +100,8 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                   viewport={{ once: true }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  className={`grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] 3xl:grid-cols-[629px_765px] gap-x-4 3xl:gap-x-[167px] 
-                    py-4 md:py-5 xl:py-8 xxl:py-8 3xl:py-[40px] px-2 md:px-3 xxl:px-[30px] transition-all duration-300 ease-in-out relative
+                  className={`grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] 3xl:grid-cols-[629px_765px] gap-4 3xl:gap-x-[167px] 
+                    py-4 md:py-5 xl:py-8 xxl:py-8 3xl:py-[40px] px-2 md:px-3 xxl:px-[30px] transition-colors duration-300 ease-in-out relative
                   ${hoveredIndex === index ? "bg-[#A3A3A326]" : "bg-transparent" }
                   ${index === 0
                       ? hoveredIndex === 0
@@ -112,7 +112,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                   ${hoveredIndex === index || hoveredIndex === index + 1 ? "border-b border-b-transparent" : "border-b border-b-[#77787B]"} `} >
                     <Link href={service.link} className="absolute inset-0 w-full h-full" />
                   
-                <div className="flex gap-x-4 3xl:gap-x-[166px]">
+                <div className="flex gap-x-4 3xl:gap-x-[166px] gap-y-4">
                     <div className="border border-[#E63E311F] flex shrink-0 items-center justify-center rounded-[7px] bg-primary/5 p-3 w-10 h-10 xl:h-[60px] xl:w-[60px]">
                       <Image
                         src={service.icon}
