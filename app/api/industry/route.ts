@@ -3,6 +3,7 @@ import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from '@/lib/mongodb'
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import { getToken } from "next-auth/jwt";
 
 const slugify = (value: string) =>
     value
@@ -181,60 +182,60 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-  try {
-    // const isAdmin = await verifyAdmin(req);
-    // if (!isAdmin) {
-    //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    // }
-    await dbConnect();
-    const { searchParams } = new URL(req.url);
-    const slug = searchParams.get("slug");
-    // const slug = "branding-and-positioning-agency-in-dubai"
-    const body = await req.json();
+    try {
+        const isAdmin = await verifyAdmin(req);
+        if (!isAdmin) {
+            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        }
+        await dbConnect();
+        const { searchParams } = new URL(req.url);
+        const slug = searchParams.get("slug");
+        // const slug = "branding-and-positioning-agency-in-dubai"
+        const body = await req.json();
 
-    // Never let the request body overwrite the slug that identifies this item —
-    // slug changes should go through a dedicated rename flow, not a general PATCH.
-    const { slug: _ignoredSlug, ...updateData } = body ?? {};
+        // Never let the request body overwrite the slug that identifies this item —
+        // slug changes should go through a dedicated rename flow, not a general PATCH.
+        const { slug: _ignoredSlug, ...updateData } = body ?? {};
 
-    // Build a $set payload like { "items.$.seo": ..., "items.$.firstSection": ..., ... }
-    const setPayload: Record<string, unknown> = {};
-    for (const [key, value] of Object.entries(updateData)) {
-      setPayload[`items.$.${key}`] = value;
+        // Build a $set payload like { "items.$.seo": ..., "items.$.firstSection": ..., ... }
+        const setPayload: Record<string, unknown> = {};
+        for (const [key, value] of Object.entries(updateData)) {
+            setPayload[`items.$.${key}`] = value;
+        }
+
+        if (Object.keys(setPayload).length === 0) {
+            return NextResponse.json(
+                { message: "No data provided to update" },
+                { status: 400 },
+            );
+        }
+
+        const updatedDoc = await Industries.findOneAndUpdate(
+            { "items.slug": slug },
+            { $set: setPayload },
+            { new: true },
+        );
+
+        const updatedItem = updatedDoc?.items?.[0];
+
+        if (!updatedItem) {
+            return NextResponse.json(
+                { message: "Industry not found" },
+                { status: 404 },
+            );
+        }
+
+        revalidateTag("industry");
+
+        return NextResponse.json({
+            message: "Industry updated successfully",
+            data: updatedItem,
+        });
+    } catch (error) {
+        console.error("Error updating industry:", error);
+        return NextResponse.json(
+            { message: "Failed to update industry" },
+            { status: 500 },
+        );
     }
-
-    if (Object.keys(setPayload).length === 0) {
-      return NextResponse.json(
-        { message: "No data provided to update" },
-        { status: 400 },
-      );
-    }
-
-    const updatedDoc = await Industries.findOneAndUpdate(
-      { "items.slug": slug },
-      { $set: setPayload },
-      { new: true },
-    );
-
-    const updatedItem = updatedDoc?.items?.[0];
-
-    if (!updatedItem) {
-      return NextResponse.json(
-        { message: "Industry not found" },
-        { status: 404 },
-      );
-    }
-
-    revalidateTag("industry");
-
-    return NextResponse.json({
-      message: "Industry updated successfully",
-      data: updatedItem,
-    });
-  } catch (error) {
-    console.error("Error updating industry:", error);
-    return NextResponse.json(
-      { message: "Failed to update industry" },
-      { status: 500 },
-    );
-  }
 }
