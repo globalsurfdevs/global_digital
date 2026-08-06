@@ -1,6 +1,6 @@
 import React from "react";
 // import Script from "next/script";
-import HeroSection from "../../components/BrandingAndPositioning/HeroSection";
+import HeroSection from "../../components/EngineeringInfrastructure/HeroSection";
 import Testimonials from "../../components/HomePage/Testimonials";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";

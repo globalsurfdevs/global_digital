@@ -41,7 +41,7 @@ const ExperienceResult = ({ data }: SuccessStoriesProps) => {
           {data.title}
         </motion.h2>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 xxl:gap-8 lg:grid-cols-2 xl:grid-cols-3">
           {data.items.map((item, index) => (
             <motion.div
               key={item.id}
@@ -78,14 +78,9 @@ const ExperienceResult = ({ data }: SuccessStoriesProps) => {
               </div>
 
               {/* Bottom */}
-              <div className="flex min-h-[220px] flex-col p-7 xl:p-8">
-                <h3 className="mb-6 text-30 leading-tight">
-                  {item.title}
-                </h3>
-
-                <p
-                  className={`text-19 leading-[1.6] text-[#B7B7B7] ${lexend.className}`}
-                >
+              <div className="flex min-h-[220px] flex-col xxl:pt-[32.34px] xxl:pl-[50px] xxl:pr-[62.66px] xxl:pb-[60px] 3xl:min-h-[344.28px]">
+                <h3 className="mb-6 text-30 font-normal leading-[1.333333333333333] "> {item.title} </h3>
+                <p className={`text-19 leading-[1.478947368421053]  ${lexend.className}`} >
                   {item.description}
                 </p>
               </div>
