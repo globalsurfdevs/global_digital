@@ -19,7 +19,7 @@ const TitleDesc = ({ data }: any) => {
               </motion.h3>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[auto_minmax(0,1.2fr)] 3xl:grid-cols-[792px_auto] lg:gap-20 2xl:grid-cols-2 2xl:gap-8 3xl:gap-[139px]">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.2fr]  3xl:grid-cols-[792px_auto] lg:gap-20 2xl:grid-cols-2 2xl:gap-8 3xl:gap-[139px]">
           <div>
             <motion.div variants={moveUp(0.1)} initial="hidden" whileInView="show" viewport={{ once: true }} >
               <h2 className="title-60" dangerouslySetInnerHTML={{ __html: data.subTitle }} ></h2>
