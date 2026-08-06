@@ -76,13 +76,6 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
     try {
-        const token = await getToken({
-            req,
-            secret: process.env.AUTH_SECRET,
-            secureCookie: process.env.NODE_ENV === "production",
-        });
-
-        console.log("Current user role:", token?.role ?? "no token found");
         const isAdmin = await verifyAdmin(req);
         if (!isAdmin) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
@@ -190,10 +183,10 @@ export async function POST(req: NextRequest) {
 
 export async function PATCH(req: NextRequest) {
     try {
-        // const isAdmin = await verifyAdmin(req);
-        // if (!isAdmin) {
-        //     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-        // }
+        const isAdmin = await verifyAdmin(req);
+        if (!isAdmin) {
+            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+        }
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const slug = searchParams.get("slug");

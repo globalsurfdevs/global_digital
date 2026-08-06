@@ -12,7 +12,6 @@ export async function verifyAdmin(request: NextRequest) {
     return false;
   }
 
-  console.log("Token",token)
 
   return token.role === "admin";
 }
