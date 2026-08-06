@@ -33,7 +33,7 @@ export const secondSection = {
   title:
     "Why engineering & infrastructure firms in the UAE need specialist digital marketing",
   description:
-    "Engineering procurement does not begin with a phone call. It begins with a Google search, a LinkedIn profile review, and a check of documented project capability. Procurement teams, project directors, and government procurement authorities conduct structured background research on firms before formal tender processes begin. A firm that is not visible and credible in that research window is being excluded from consideration before the shortlist is even formed. \nThe marketing challenge for UAE engineering firms is closer to B2B lead generation and thought leadership than brand awareness. It requires being discoverable for the right capability searches, demonstrating sector depth through published content, and maintaining a professional digital presence that holds up to scrutiny from a technical evaluator.",
+    "<p>Engineering procurement does not begin with a phone call. It begins with a Google search, a LinkedIn profile review, and a check of documented project capability. Procurement teams, project directors, and government procurement authorities conduct structured background research on firms before formal tender processes begin. A firm that is not visible and credible in that research window is being excluded from consideration before the shortlist is even formed.</p><p>The marketing challenge for UAE engineering firms is closer to B2B lead generation and thought leadership than brand awareness. It requires being discoverable for the right capability searches, demonstrating sector depth through published content, and maintaining a professional digital presence that holds up to scrutiny from a technical evaluator.</p>",
 };
 
 // export const thirdSection = {
@@ -61,6 +61,7 @@ export const fifthSection = {
       imageAlt: "Building visibility icon",
       description:
         "Engineering projects involve lengthy planning, design, procurement, and approval stages. Maintaining visibility throughout this journey is essential to staying on buyers' shortlists.",
+      link: "/",
     },
     {
       _id: "2",
@@ -69,6 +70,7 @@ export const fifthSection = {
       imageAlt: "Technical expertise icon",
       description:
         "Decision makers evaluate suppliers based on technical capability, certifications, project experience, and compliance rather than marketing messages alone.",
+      link: "/",
     },
     {
       _id: "3",
@@ -77,6 +79,7 @@ export const fifthSection = {
       imageAlt: "Multiple stakeholders icon",
       description:
         "Winning projects often requires influencing developers, consultants, contractors, procurement teams, and project owners simultaneously.",
+      link: "/",
     },
     {
       _id: "4",
@@ -85,6 +88,7 @@ export const fifthSection = {
       imageAlt: "Differentiation icon",
       description:
         "Many engineering companies offer similar services. Clear positioning and technical authority help businesses stand apart before commercial discussions begin.",
+      link: "/",
     },
     {
       _id: "5",
@@ -93,6 +97,7 @@ export const fifthSection = {
       imageAlt: "Qualified enquiries icon",
       description:
         "Attracting high-quality opportunities requires targeting businesses actively researching engineering partners rather than broad audiences with limited purchasing intent.",
+      link: "/",
     },
   ],
 };

@@ -61,16 +61,16 @@ const HeroSection = ({ data }: HeroSectionProps) => {
       </div>
       <div className="container relative z-10 flex h-full flex-col justify-center">
         <div>
-          <h1 className="title-70 mb-3 max-w-[16ch] tracking-[-0.025em] xl:mb-5">
+          <h1 className="title-70 mb-3 max-w-[23ch] tracking-[-0.025em] xl:mb-5  leading-[1.142857142857143]">
             {data.title}
           </h1>
-          <p className="text-25 text-77787B max-w-[40ch] leading-[1.4] 3xl:max-w-[55ch]">
+          <p className="text-25 text-muted fnt-lexend max-w-[35ch] leading-[1.4] 3xl:max-w-[55ch] font-normal ">
             {data.description}
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[60px]">
             <Button
               className="max-h-[50px]"
-              variant="primary"
+              variant="outline"
               // href={data.items[0].link}
               onClick={() => setModalOpen(true)}
             >

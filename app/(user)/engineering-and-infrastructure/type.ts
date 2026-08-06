@@ -49,6 +49,7 @@ export interface ServiceItem {
             image: string;
             imageAlt: string;
             description: string;
+            link: string;
         }[];
     };
 
