@@ -75,6 +75,13 @@ export interface IndustryItem {
         }[];
     };
 
+    seventhSection:{
+        title:string;
+        subTitle:string;
+        logo:string;
+        logoAlt:string;
+    }
+
     ctaSection: {
         titleRed: string;
         title: string;

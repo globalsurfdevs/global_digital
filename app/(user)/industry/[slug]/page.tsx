@@ -10,8 +10,9 @@ import WhyChoose from "@/app/components/BrandingAndPositioning/WhyChoose";
 // import { industryData } from "@/app/components/EngineeringInfrastructure/data";
 import ExperienceResult from "@/app/components/EngineeringInfrastructure/ExperienceResult";
 import IndustriesSec from "@/app/components/EngineeringInfrastructure/IndustriesSec";
-import { getIndustry } from "@/app/lib/industry.service";
+import { getAllIndustry, getIndustry } from "@/app/lib/industry.service";
 import { IndustryItem } from "./type";
+import { all } from "axios";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -29,8 +30,7 @@ const page = async ({ params }: PageProps) => {
     const { slug } = await params;
     const industryData: IndustryItem = await getIndustry(slug)
 
-    console.log(industryData)
-
+    const allIndustryData:IndustryItem[] = await getAllIndustry()
 
     const servicesData = {
         title: industryData.thirdSection.title,
@@ -87,18 +87,17 @@ const page = async ({ params }: PageProps) => {
         })),
     };
 
-    // const industriesData = {
-    //     title: industryData.industries.title,
-    //     subTitle: industryData.industries.subTitle,
-    //     items: industryData.industries.items.map((item) => ({
-    //         _id: item.id,
-    //         title: item.title,
-    //         icon: item.icon,
-    //         iconAlt: item.iconAlt,
-    //         slug: item.slug,
-    //         active: item.active,
-    //     })),
-    // };
+    const industriesData = {
+        title: industryData.seventhSection.title,
+        subTitle: industryData.seventhSection.subTitle,
+        items: allIndustryData.map((item) => ({
+            _id: item._id,
+            title: item.name,
+            icon: item.seventhSection.logo,
+            iconAlt: item.seventhSection.logoAlt,
+            slug: item.slug,
+        })),
+    };
 
     // const caseStudiesData = {
     //   tag: industryData.caseStudySection.title,
@@ -183,7 +182,7 @@ const page = async ({ params }: PageProps) => {
       </section> */}
             <WhyChoose data={whyChooseData} />
             <ExperienceResult data={industryExperienceResultsData} />
-            {/* <IndustriesSec data={industriesData} /> */}
+            <IndustriesSec data={industriesData} />
             {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
       )} */}

@@ -77,8 +77,14 @@ export interface IndustryFormProps {
             value: string;
             title: string;
             description: string;
-            isPrimary:boolean;
+            isPrimary: boolean;
         }[];
+    };
+    seventhSection: {
+        title: string;
+        subTitle: string;
+        logo: string;
+        logoAlt: string;
     };
     ctaSection: {
         titleRed: string;
@@ -288,6 +294,7 @@ const IndiIndustryPage = () => {
                 setValue("fifthSection.items", data.data?.fifthSection?.items ?? []);
                 setValue("sixthSection", data.data?.sixthSection);
                 sixthSectionReplace(data.data?.sixthSection?.items ?? []);
+                setValue("seventhSection", data.data?.seventhSection);
                 setValue("ctaSection", data.data?.ctaSection);
                 setValue("faqSection", data.data?.faqSection);
                 setValue("faqSection.items", data.data?.faqSection?.items ?? []);
@@ -366,7 +373,7 @@ const IndiIndustryPage = () => {
 
                                 </div>
 
-                                <div>
+                                {/* <div>
                                     <div className='flex flex-col gap-2'>
                                         <Label className='font-bold'>Logo</Label>
                                         <Controller
@@ -393,7 +400,7 @@ const IndiIndustryPage = () => {
                                         <Input type='text' placeholder='Alt Tag' {...register(`firstSection.logoAlt`)} />
                                     </div>
 
-                                </div>
+                                </div> */}
 
                             </div>
 
@@ -849,7 +856,57 @@ const IndiIndustryPage = () => {
 
                             </div>
                             <div className='flex justify-end mt-2'>
-                                <Button type='button' addItem onClick={() => sixthSectionAppend({ title: "", description: "", number: "", value: "", company: "", isPrimary:false })}>Add Item</Button>
+                                <Button type='button' addItem onClick={() => sixthSectionAppend({ title: "", description: "", number: "", value: "", company: "", isPrimary: false })}>Add Item</Button>
+                            </div>
+                        </div>
+                    </div>
+                </AccordionSection>
+
+
+                {/* ---------------- Seventh Section ---------------- */}
+                <AccordionSection
+                    title="Seventh Section"
+                    sectionKey="seventhSection"
+                    openSection={openSection}
+                    setOpenSection={setOpenSection}
+                >
+                    <div className='p-5 rounded-md flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Title</Label>
+                                <Input type='text' placeholder='Title' {...register(`seventhSection.title`)} />
+                                {/* {errors.seventhSection?.title && <p className='text-red-500'>{errors.seventhSection?.title.message}</p>} */}
+                            </div>
+
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Sub Title</Label>
+                                <Input type='text' placeholder='Sub Title' {...register(`seventhSection.subTitle`)} />
+                                {/* {errors.seventhSection?.subTitle && <p className='text-red-500'>{errors.seventhSection?.subTitle.message}</p>} */}
+                            </div>
+
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Logo</Label>
+                                <Controller
+                                    name={`seventhSection.logo`}
+                                    control={control}
+                                    render={({ field }) => (
+                                        <ImageUploader
+                                            isLogo
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                            className='w-[300px] h-fit'
+                                        />
+                                    )}
+                                />
+                                {errors.seventhSection?.logo && (
+                                    <p className="text-red-500">{errors.seventhSection?.logo.message}</p>
+                                )}
+                            </div>
+
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Logo Alt Tag</Label>
+                                <Input type='text' placeholder='Alt Tag' {...register(`seventhSection.logoAlt`)} />
+                                {/* {errors.seventhSection?.logoAlt && <p className='text-red-500'>{errors.seventhSection?.logoAlt.message}</p>} */}
                             </div>
                         </div>
                     </div>

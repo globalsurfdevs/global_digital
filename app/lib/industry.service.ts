@@ -27,3 +27,24 @@ export const getIndustry = unstable_cache(
         tags: ["industry"],
     }
 );
+
+
+export const getAllIndustry = unstable_cache(
+    async () => {
+        await connectDB();
+
+        const doc = await Industries.findOne({})
+
+        const item = doc?.items;
+
+        if (!item) {
+            return null
+        }
+
+        return JSON.parse(JSON.stringify(item));
+    },
+    ["industry"],
+    {
+        tags: ["industry"],
+    }
+);

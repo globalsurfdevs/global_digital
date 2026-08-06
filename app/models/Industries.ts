@@ -115,6 +115,20 @@ const industriesItemSchema = new mongoose.Schema(
         },
       ],
     },
+    seventhSection: {
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      logo: {
+        type: String,
+      },
+      logoAlt: {
+        type: String,
+      },
+    },
     ctaSection: {
       titleRed: {
         type: String,
