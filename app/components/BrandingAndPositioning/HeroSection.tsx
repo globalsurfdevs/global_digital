@@ -36,7 +36,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
   }, [modalOpen]);
 
   return (
-    <section className="relative h-[600px] overflow-hidden md:h-screen">
+    <section className="relative py-[110px] overflow-hidden md:h-screen">
       {/* Modal section */}
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">

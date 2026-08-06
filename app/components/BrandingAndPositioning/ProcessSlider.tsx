@@ -195,7 +195,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
               spaceBetween: 32,
             },
             1024: {
-              slidesPerView: 2.6,
+              slidesPerView: 2.1,
               spaceBetween: 40,
             },
             1280: {
