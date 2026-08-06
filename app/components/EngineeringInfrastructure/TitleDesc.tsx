@@ -15,14 +15,14 @@ const TitleDesc = ({ data }: any) => {
                 viewport={{ once: true }}
                 className="text-28 leading-[1.5] text-muted uppercase"
               >
-                {data.badge}
+                {data.title}
               </motion.h3>
               <div className="h-5 w-5 bg-primary"></div>
             </div>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[auto_minmax(0,1.2fr)] 3xl:grid-cols-[792px_auto] lg:gap-20 2xl:grid-cols-2 2xl:gap-8 3xl:gap-[139px]">
           <div>
             <motion.div variants={moveUp(0.1)} initial="hidden" whileInView="show" viewport={{ once: true }} >
-              <h2 className="title-60" dangerouslySetInnerHTML={{ __html: data.title }} ></h2>
+              <h2 className="title-60" dangerouslySetInnerHTML={{ __html: data.subTitle }} ></h2>
             </motion.div>
           </div>
           <motion.div variants={moveUp(0.2)} initial="hidden" whileInView="show" viewport={{ once: true }} >
