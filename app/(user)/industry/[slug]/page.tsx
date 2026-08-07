@@ -28,26 +28,31 @@ interface PageProps {
 
 const page = async ({ params }: PageProps) => {
     const { slug } = await params;
-    const industryData: IndustryItem = await getIndustry(slug)
+    const industryData: IndustryItem = await getIndustry(slug);
 
-    const allIndustryData:IndustryItem[] = await getAllIndustry()
+    const allIndustryData: IndustryItem[] = (await getAllIndustry()) || [];
+
+    // Guard: if the primary data fetch failed/returned nothing, don't crash on the rest.
+    if (!industryData) {
+        return null; // or render a fallback/error/notFound() component here
+    }
 
     const servicesData = {
-        title: industryData.thirdSection.title,
-        subtitle: industryData.thirdSection.subTitle,
-        items: industryData.thirdSection.items.map((item, index) => ({
+        title: industryData?.thirdSection?.title,
+        subtitle: industryData?.thirdSection?.subTitle,
+        items: (industryData?.thirdSection?.items || []).map((item, index) => ({
             id: index.toString(),
-            icon: item.image,
+            icon: item?.image,
             ...item,
         })),
     };
 
     const whatYouGetData = {
-        title: industryData.fourthSection.title,
-        subTitle: industryData.fourthSection.subTitle,
-        data: industryData.fourthSection.items.map((item, index) => ({
+        title: industryData?.fourthSection?.title,
+        subTitle: industryData?.fourthSection?.subTitle,
+        data: (industryData?.fourthSection?.items || []).map((item, index) => ({
             id: index + 1,
-            dec: item.description,
+            dec: item?.description,
             ...item,
         })),
     };
@@ -64,38 +69,38 @@ const page = async ({ params }: PageProps) => {
     // };
 
     const whyChooseData = {
-        tag: industryData.fifthSection.title,
-        title: industryData.fifthSection.subTitle,
-        description: industryData.fifthSection.description,
-        items: industryData.fifthSection.items.map((item, index) => ({
+        tag: industryData?.fifthSection?.title,
+        title: industryData?.fifthSection?.subTitle,
+        description: industryData?.fifthSection?.description,
+        items: (industryData?.fifthSection?.items || []).map((item, index) => ({
             id: index + 1,
-            value: item.number,
-            label: item.value,
+            value: item?.number,
+            label: item?.value,
         })),
     };
 
     const industryExperienceResultsData = {
-        title: industryData.sixthSection.title,
-        items: industryData.sixthSection.items.map((item) => ({
-            id: item._id, // or String(item.id)
-            topTitle: item.company,
-            stat: item.number,
-            statLabel: item.value,
-            title: item.title,
-            description: item.description,
-            accent: item.isPrimary ? "primary" : "dark",
+        title: industryData?.sixthSection?.title,
+        items: (industryData?.sixthSection?.items || []).map((item) => ({
+            id: item?._id, // or String(item.id)
+            topTitle: item?.company,
+            stat: item?.number,
+            statLabel: item?.value,
+            title: item?.title,
+            description: item?.description,
+            accent: item?.isPrimary ? "primary" : "dark",
         })),
     };
 
     const industriesData = {
-        title: industryData.seventhSection.title,
-        subTitle: industryData.seventhSection.subTitle,
+        title: industryData?.seventhSection?.title,
+        subTitle: industryData?.seventhSection?.subTitle,
         items: allIndustryData.map((item) => ({
-            _id: item._id,
-            title: item.name,
-            icon: item.seventhSection.logo,
-            iconAlt: item.seventhSection.logoAlt,
-            slug: item.slug,
+            _id: item?._id,
+            title: item?.name,
+            icon: item?.seventhSection?.logo,
+            iconAlt: item?.seventhSection?.logoAlt,
+            slug: item?.slug,
         })),
     };
 
@@ -113,16 +118,16 @@ const page = async ({ params }: PageProps) => {
 
     const Cta = [
         {
-            textred: industryData.ctaSection.titleRed,
-            text: industryData.ctaSection.title,
-            subhead: industryData.ctaSection.description,
+            textred: industryData?.ctaSection?.titleRed,
+            text: industryData?.ctaSection?.title,
+            subhead: industryData?.ctaSection?.description,
         },
     ];
 
     const Faq = [
-        ...industryData.faqSection.items.map((item) => ({
-            title: item.question,
-            description: item.answer,
+        ...(industryData?.faqSection?.items || []).map((item) => ({
+            title: item?.question,
+            description: item?.answer,
         })),
     ];
 
@@ -157,32 +162,38 @@ const page = async ({ params }: PageProps) => {
           dangerouslySetInnerHTML={{ __html: industryData.seo.schema }}
         />
       )} */}
-            <HeroSection data={industryData.firstSection} />
-            <TitleDesc data={industryData.secondSection} />
+            {industryData?.firstSection && <HeroSection data={industryData.firstSection} />}
+            {industryData?.secondSection && <TitleDesc data={industryData.secondSection} />}
             {/* <ImgDesc data={industryData.thirdSection} /> */}
             {/* <GrayParaSec data={industryData.fourthSection} /> */}
-            <ServicesListSec
-                title={servicesData.title}
-                description={servicesData.subtitle}
-                items={servicesData.items}
-            />
+            {servicesData.items.length > 0 && (
+                <ServicesListSec
+                    title={servicesData.title}
+                    description={servicesData.subtitle}
+                    items={servicesData.items}
+                />
+            )}
             {/* <ProcessSlider data={industryData.sixthSection} />
       <BECS data={industryData.seventhSection} /> */}
-            <BlackInfoGrid
-                title={whatYouGetData.title}
-                subTitle={whatYouGetData.subTitle}
-                data={whatYouGetData.data}
-                bgcolor="bg-black"
-                maxchwidth={50}
-                colcount={3}
-            />
+            {whatYouGetData.data.length > 0 && (
+                <BlackInfoGrid
+                    title={whatYouGetData.title}
+                    subTitle={whatYouGetData.subTitle}
+                    data={whatYouGetData.data}
+                    bgcolor="bg-black"
+                    maxchwidth={50}
+                    colcount={3}
+                />
+            )}
             {/* {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
       <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
         <ButtonSlider data={industryData.tenthSection} />
       </section> */}
-            <WhyChoose data={whyChooseData} />
-            <ExperienceResult data={industryExperienceResultsData} />
-            <IndustriesSec data={industriesData} />
+            {whyChooseData.items.length > 0 && <WhyChoose data={whyChooseData} />}
+            {industryExperienceResultsData.items.length > 0 && (
+                <ExperienceResult data={industryExperienceResultsData} />
+            )}
+            {industriesData.items.length > 0 && <IndustriesSec data={industriesData} />}
             {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
       )} */}
@@ -192,12 +203,16 @@ const page = async ({ params }: PageProps) => {
         bottomText={false}
         reviews={false}
       /> */}
-            <GetInTouch
-                data={Cta}
-                ctabbutton={industryData.ctaSection.buttonText}
-                redlast
-            />
-            <FAQ data={Faq} initialCount={5} defActive="2" fullSpace={true} />
+            {industryData?.ctaSection && (
+                <GetInTouch
+                    data={Cta}
+                    ctabbutton={industryData.ctaSection.buttonText}
+                    redlast
+                />
+            )}
+            {Faq.length > 0 && (
+                <FAQ data={Faq} initialCount={5} defActive="2" fullSpace={true} />
+            )}
         </div>
     );
 };
