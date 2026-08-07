@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 const TitleDesc = ({ data }: any) => {
   return (
@@ -27,7 +28,7 @@ const TitleDesc = ({ data }: any) => {
           </div>
           <motion.div variants={moveUp(0.2)} initial="hidden" whileInView="show" viewport={{ once: true }} >
             <div className="text-18 [&_p]:mb-3 xl:[&_p]:mb-[25px] last:[&_p]:mb-0 fnt-lexend leading-[1.444444444444444]
-             text-muted 3xl:max-w-[745px] 3xl:pr-[2px] fnt-lexend font-medium" dangerouslySetInnerHTML={{ __html: data.description }} />
+             text-muted 3xl:max-w-[745px] 3xl:pr-[2px] fnt-lexend font-medium" dangerouslySetInnerHTML={{ __html: toSentenceCase(data.description) }} />
           </motion.div>
         </div>
       </motion.div>
