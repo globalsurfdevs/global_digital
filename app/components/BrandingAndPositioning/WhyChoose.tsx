@@ -1,5 +1,6 @@
 "use client";
 
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { moveUp } from "../animations/motionVariants";
 import { motion } from "framer-motion";
 
@@ -49,7 +50,7 @@ const WhyChoose = ({ data }: { data: WhyChooseData }) => {
               viewport={{ once: true }}
               className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] max-w-[60ch]"
             >
-              {data.description}
+              {toSentenceCase(data.description)}
             </motion.p>
           </div>
           <div>

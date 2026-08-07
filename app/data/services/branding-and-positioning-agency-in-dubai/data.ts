@@ -168,6 +168,7 @@ export const capabilitiesData = {
     description:
       "Support for brand naming projects for new businesses, product lines and sub-brands, testing names for linguistic suitability across Arabic and English, trademark availability, and domain availability before any design work begins.",
     icon: "assets/images/branding-positioning/icons/brand.svg",
+    link:""
   },
   {
     id: 2,
@@ -175,6 +176,7 @@ export const capabilitiesData = {
     description:
       "A broader graphic design service for work beyond brand-system assets.",
     icon: "assets/images/branding-positioning/icons/graphic.svg",
+    link:""
   },
   {
     id: 3,
@@ -182,6 +184,7 @@ export const capabilitiesData = {
     description:
       "Written content aligned to your brand’s messaging and positioning.",
     icon: "assets/images/branding-positioning/icons/content.svg",
+    link:""
   },
   ]
 }

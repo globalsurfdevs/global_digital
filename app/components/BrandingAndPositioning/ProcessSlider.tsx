@@ -11,6 +11,7 @@ import { ServiceItem } from "@/app/(user)/[slug]/type";
 
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 // -----------------------------------------------------------------------------
 // Data
@@ -181,9 +182,9 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           onResize={updatePreview}
           spaceBetween={32}
           slidesPerView={1.15}
-          loop={false}
+          loop={true}
           rewind
-          speed={700}
+          speed={1000}
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -227,7 +228,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
                 </div>
 
                 <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
-                  {item.description}
+                  {toSentenceCase(item.description)}
                 </p>
               </div>
             </SwiperSlide>

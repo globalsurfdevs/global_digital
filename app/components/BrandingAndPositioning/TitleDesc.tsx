@@ -13,7 +13,7 @@ const TitleDesc = ({ data }: any) => {
         className="py-120 border-b border-[#00000033]"
       >
         {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8"> */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[auto_minmax(0,1.2fr)] lg:gap-20 2xl:grid-cols-2 2xl:gap-8">
+        <div className="grid grid-cols-1 gap-8 xl:grid-cols-2 xl:gap-8">
           <motion.div
             variants={moveUp(0.1)}
             initial="hidden"

@@ -46,7 +46,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
             >
               {data.title}
             </motion.h3>
-            <div className="h-5 w-5 bg-primary"></div>
+            {data.title && <div className="h-5 w-5 bg-primary"></div>}
           </div>
         </div>
 
@@ -63,10 +63,12 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
             slidesPerView="auto"
             spaceBetween={12}
             className="!overflow-visible"
+            speed={1000}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
+            loop
             breakpoints={{
               768: {
                 spaceBetween: 14,

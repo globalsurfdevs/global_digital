@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
   return (
@@ -46,7 +47,7 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
                   </h3>
                 </div>
                 <p className="fnt-lexend text-18 font-normal leading-[1.444444444444444] text-muted">
-                  {item.description}
+                  {toSentenceCase(item.description)}
                 </p>
               </motion.div>
             ))}
