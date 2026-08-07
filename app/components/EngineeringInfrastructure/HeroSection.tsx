@@ -67,7 +67,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           <p className="text-25 text-muted fnt-lexend max-w-[35ch] leading-[1.4] 3xl:max-w-[55ch] font-normal ">
             {data.description}
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[60px]">
+          {data?.items[0]?.title && <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[60px]">
             <Button
               className="max-h-[50px]"
               variant="outline"
@@ -87,7 +87,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
                 {data.items[1].title}
               </Button>
             )}
-          </div>
+          </div>}
         </div>
       </div>
     </section>
