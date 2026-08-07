@@ -12,7 +12,7 @@ import ExperienceResult from "@/app/components/EngineeringInfrastructure/Experie
 import IndustriesSec from "@/app/components/EngineeringInfrastructure/IndustriesSec";
 import { getAllIndustry, getIndustry } from "@/app/lib/industry.service";
 import { IndustryItem } from "./type";
-import { all } from "axios";
+import { Metadata } from "next";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -24,6 +24,53 @@ interface PageProps {
     params: Promise<{ slug: string }>;
 }
 
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const industry: IndustryItem | null = await getIndustry(slug);
+
+  if (!industry) {
+    return {
+      title: "Not Found",
+      description: "",
+      alternates: { canonical: "https://www.globalsurf.ae/" },
+    };
+  }
+
+  const seo = industry.seo;
+  const canonicalUrl = `https://www.globalsurf.ae/industry/${industry.slug}`;
+
+  return {
+    title: seo?.metaTitle ?? industry.name,
+    description: seo?.metaDescription ?? "",
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+      googleBot: {
+        index: false,
+        follow: false,
+      },
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: seo?.ogTitle ?? seo?.metaTitle ?? industry.name,
+      description: seo?.ogDescription ?? seo?.metaDescription ?? "",
+      url: canonicalUrl,
+      images: seo?.ogImage ? [{ url: seo.ogImage }] : undefined,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.twitterTitle ?? seo?.metaTitle ?? industry.name,
+      description: seo?.twitterDescription ?? seo?.metaDescription ?? "",
+      images: seo?.twitterImage ? [seo.twitterImage] : undefined,
+    },
+  };
+}
 
 
 const page = async ({ params }: PageProps) => {
