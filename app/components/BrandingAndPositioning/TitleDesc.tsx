@@ -21,7 +21,7 @@ const TitleDesc = ({ data }: any) => {
             viewport={{ once: true }}
           >
             <h2
-              className="title-60"
+              className="title-60 "
               dangerouslySetInnerHTML={{ __html: data.title }}
             ></h2>
           </motion.div>

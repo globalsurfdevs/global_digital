@@ -23,7 +23,8 @@ import { useParams } from 'next/navigation';
 import { Portfolio } from '@/app/types/Portfolio';
 
 export interface IndustryFormProps {
-    seo: SeoFormValues
+    seo: SeoFormValues;
+
     firstSection: {
         image: string;
         imageAlt: string;
@@ -36,11 +37,13 @@ export interface IndustryFormProps {
             link: string;
         }[];
     };
+
     secondSection: {
         title: string;
         subTitle: string;
         description: string;
     };
+
     thirdSection: {
         title: string;
         subTitle: string;
@@ -52,25 +55,61 @@ export interface IndustryFormProps {
             description: string;
         }[];
     };
+
     fourthSection: {
         title: string;
         subTitle: string;
+        description: string; // was missing — registered via `fourthSection.description`
         items: {
             title: string;
             description: string;
         }[];
     };
+
     fifthSection: {
         title: string;
         subTitle: string;
-        description: string;
+        // was previously typed as { number, value }[] — doesn't match the actual JSX,
+        // which registers image / imageAlt / title / description
+        items: {
+            image: string;
+            imageAlt: string;
+            title: string;
+            description: string;
+        }[];
+    };
+
+    sixthSection: {
+        title: string;
+        subTitle: string;    // was missing — registered via `sixthSection.subTitle`
+        description: string; // was missing — registered via `sixthSection.description`
+        // was previously typed as { company, number, value, title, description, isPrimary }[]
+        // actual JSX only registers number / value for sixthSection items
         items: {
             number: string;
             value: string;
         }[];
     };
-    sixthSection: {
+
+    seventhSection: {
         title: string;
+        subTitle: string;
+        // interface had no `items` at all, but useFieldArray targets "seventhSection.items"
+        // and the JSX registers image / imageAlt / title per item
+        items: {
+            image: string;
+            imageAlt: string;
+            title: string;
+        }[];
+        // NOTE: top-level `logo` / `logoAlt` in the old interface were never
+        // actually registered anywhere in the JSX — removed as dead fields.
+        // Re-add them here if the API/schema still expects them at this level.
+    };
+
+    eighthSection: {
+        title: string;
+        // this is the { company, number, value, title, description, isPrimary }[]
+        // shape that was previously (incorrectly) attached to sixthSection
         items: {
             company: string;
             number: string;
@@ -80,12 +119,15 @@ export interface IndustryFormProps {
             isPrimary: boolean;
         }[];
     };
-    seventhSection: {
+
+    ninethSection: {
         title: string;
         subTitle: string;
         logo: string;
         logoAlt: string;
+        // no items array — Ninth Section has no useFieldArray in the JSX
     };
+
     ctaSection: {
         titleRed: string;
         title: string;
@@ -93,6 +135,7 @@ export interface IndustryFormProps {
         buttonText: string;
         buttonLink: string;
     };
+
     faqSection: {
         title: string;
         items: {
@@ -223,6 +266,28 @@ const IndiIndustryPage = () => {
         name: "sixthSection.items"
     });
 
+    const {
+        fields: seventhSectionItems,
+        append: seventhSectionAppend,
+        remove: seventhSectionRemove,
+        move: seventhSectionMove,
+        replace: seventhSectionReplace,
+    } = useFieldArray({
+        control,
+        name: "seventhSection.items"
+    });
+
+    const {
+        fields: eighthSectionItems,
+        append: eighthSectionAppend,
+        remove: eighthSectionRemove,
+        move: eighthSectionMove,
+        replace: eighthSectionReplace,
+    } = useFieldArray({
+        control,
+        name: "eighthSection.items"
+    });
+
 
     const {
         fields: fourthSectionItems,
@@ -277,35 +342,52 @@ const IndiIndustryPage = () => {
         }
     }
 
-    const fetchIndustryData = async () => {
-        try {
-            const response = await fetch(`/api/industry?slug=${slug}`);
-            if (response.ok) {
-                const data = await response.json();
-                setValue("seo", data.data?.seo);
-                setValue("firstSection", data.data?.firstSection);
-                setValue("firstSection.items", data.data?.firstSection?.items ?? []);
-                setValue("secondSection", data.data?.secondSection);
-                setValue("thirdSection", data.data?.thirdSection);
-                setValue("thirdSection.items", data.data?.thirdSection?.items ?? []);
-                setValue("fourthSection", data.data?.fourthSection);
-                setValue("fourthSection.items", data.data?.fourthSection?.items ?? []);
-                setValue("fifthSection", data.data?.fifthSection);
-                setValue("fifthSection.items", data.data?.fifthSection?.items ?? []);
-                setValue("sixthSection", data.data?.sixthSection);
-                sixthSectionReplace(data.data?.sixthSection?.items ?? []);
-                setValue("seventhSection", data.data?.seventhSection);
-                setValue("ctaSection", data.data?.ctaSection);
-                setValue("faqSection", data.data?.faqSection);
-                setValue("faqSection.items", data.data?.faqSection?.items ?? []);
-            } else {
-                const data = await response.json();
-                alert(data.message);
-            }
-        } catch (error) {
-            console.log("Error in fetching industry data", error);
+const fetchIndustryData = async () => {
+    try {
+        const response = await fetch(`/api/industry?slug=${slug}`);
+        if (response.ok) {
+            const data = await response.json();
+            setValue("seo", data.data?.seo);
+
+            setValue("firstSection", data.data?.firstSection);
+            setValue("firstSection.items", data.data?.firstSection?.items ?? []);
+
+            setValue("secondSection", data.data?.secondSection);
+
+            setValue("thirdSection", data.data?.thirdSection);
+            setValue("thirdSection.items", data.data?.thirdSection?.items ?? []);
+
+            setValue("fourthSection", data.data?.fourthSection);
+            setValue("fourthSection.items", data.data?.fourthSection?.items ?? []);
+
+            setValue("fifthSection", data.data?.fifthSection);
+            setValue("fifthSection.items", data.data?.fifthSection?.items ?? []);
+
+            setValue("sixthSection", data.data?.sixthSection);
+            sixthSectionReplace(data.data?.sixthSection?.items ?? []);
+
+            setValue("seventhSection", data.data?.seventhSection);
+            seventhSectionReplace(data.data?.seventhSection?.items ?? []);
+
+            // was previously not fetched at all
+            setValue("eighthSection", data.data?.eighthSection);
+            eighthSectionReplace(data.data?.eighthSection?.items ?? []);
+
+            // was previously not fetched at all
+            setValue("ninethSection", data.data?.ninethSection);
+
+            setValue("ctaSection", data.data?.ctaSection);
+
+            setValue("faqSection", data.data?.faqSection);
+            setValue("faqSection.items", data.data?.faqSection?.items ?? []);
+        } else {
+            const data = await response.json();
+            alert(data.message);
         }
+    } catch (error) {
+        console.log("Error in fetching industry data", error);
     }
+};
 
     // Factory for drag end handlers, reused across all field arrays
     const createDragEndHandler = (
@@ -629,6 +711,13 @@ const IndiIndustryPage = () => {
                                 <Input type='text' placeholder='Sub Title' {...register(`fourthSection.subTitle`)} />
                                 {/* {errors.fourthSection?.subTitle && <p className='text-red-500'>{errors.fourthSection?.subTitle.message}</p>} */}
                             </div>
+
+                            <div className='flex flex-col gap-1'>
+                                <Label className=' font-bold'>Description</Label>
+                                <Textarea placeholder='Description' {...register("fourthSection.description")} />
+                                {/* {errors.firstSection?.description && <p className='text-red-500'>{errors.firstSection?.description.message}</p>} */}
+                            </div>
+
                         </div>
                         <div>
                             <div className='flex justify-between mb-3'>
@@ -681,7 +770,6 @@ const IndiIndustryPage = () => {
                 </AccordionSection>
 
 
-                {/* ---------------- Fifth Section ---------------- */}
                 <AccordionSection
                     title="Fifth Section"
                     sectionKey="fifthSection"
@@ -701,12 +789,6 @@ const IndiIndustryPage = () => {
                                 <Input type='text' placeholder='Sub Title' {...register(`fifthSection.subTitle`)} />
                                 {/* {errors.fifthSection?.subTitle && <p className='text-red-500'>{errors.fifthSection?.subTitle.message}</p>} */}
                             </div>
-
-                            <div className='flex flex-col gap-1'>
-                                <Label className=' font-bold'>Description</Label>
-                                <Textarea placeholder='Description' {...register("fifthSection.description")} />
-                                {/* {errors.fifthSection?.description && <p className='text-red-500'>{errors.fifthSection?.description.message}</p>} */}
-                            </div>
                         </div>
                         <div>
                             <div className='flex justify-between mb-3'>
@@ -724,7 +806,7 @@ const IndiIndustryPage = () => {
                                             <SortableItem key={field.id} id={field.id} reorderMode={reorderMode}>
                                                 {reorderMode ? (
                                                     <span className='font-medium'>
-                                                        {watch(`fifthSection.items.${index}.number`) || `Item ${index + 1}`}
+                                                        {watch(`fifthSection.items.${index}.title`) || `Item ${index + 1}`}
                                                     </span>
                                                 ) : (
                                                     <>
@@ -733,15 +815,46 @@ const IndiIndustryPage = () => {
                                                         </div>
 
                                                         <div className='flex flex-col gap-2'>
-                                                            <Label className='font-bold'>Number</Label>
-                                                            <Input type='text' placeholder='Number' {...register(`fifthSection.items.${index}.number`)} />
-                                                            {/* {errors.fifthSection?.items?.[index]?.number && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.number.message}</p>} */}
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Image</Label>
+                                                                <Controller
+                                                                    name={`fifthSection.items.${index}.image`}
+                                                                    control={control}
+                                                                    // rules={{ required: "Image is required" }}
+                                                                    render={({ field }) => (
+                                                                        <ImageUploader
+                                                                            value={field.value}
+                                                                            onChange={field.onChange}
+                                                                            className=''
+                                                                            isLogo
+                                                                        />
+                                                                    )}
+                                                                />
+                                                                {/* {errors.fifthSection?.items?.[index]?.image && (
+                                                                    <p className="text-red-500">{errors.fifthSection?.items?.[index]?.image.message}</p>
+                                                                )} */}
+                                                            </div>
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Alt Tag</Label>
+                                                                <Input type='text' placeholder='Alt Tag' {...register(`fifthSection.items.${index}.imageAlt`)} />
+                                                                {/* {errors.fifthSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.imageAlt.message}</p>} */}
+                                                            </div>
                                                         </div>
 
                                                         <div className='flex flex-col gap-2'>
-                                                            <Label className='font-bold'>Value</Label>
-                                                            <Input type='text' placeholder='Value' {...register(`fifthSection.items.${index}.value`)} />
-                                                            {/* {errors.fifthSection?.items?.[index]?.value && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.value.message}</p>} */}
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Title</Label>
+                                                                <Input type='text' placeholder='Title' {...register(`fifthSection.items.${index}.title`)} />
+                                                                {/* {errors.fifthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.title.message}</p>} */}
+                                                            </div>
+
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Description</Label>
+                                                                <Textarea placeholder='Description' {...register(`fifthSection.items.${index}.description`)} />
+                                                                {/* {errors.fifthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.description.message}</p>} */}
+                                                            </div>
                                                         </div>
                                                     </>
                                                 )}
@@ -752,15 +865,11 @@ const IndiIndustryPage = () => {
 
                             </div>
                             <div className='flex justify-end mt-2'>
-                                <Button type='button' addItem onClick={() => fifthSectionAppend({ number: "", value: "" })}>Add Item</Button>
+                                <Button type='button' addItem onClick={() => fifthSectionAppend({ title: "", description: "", image: "", imageAlt: "" })}>Add Item</Button>
                             </div>
                         </div>
                     </div>
                 </AccordionSection>
-
-
-
-
 
                 {/* ---------------- Sixth Section ---------------- */}
                 <AccordionSection
@@ -775,6 +884,18 @@ const IndiIndustryPage = () => {
                                 <Label className='font-bold'>Title</Label>
                                 <Input type='text' placeholder='Title' {...register(`sixthSection.title`)} />
                                 {/* {errors.sixthSection?.title && <p className='text-red-500'>{errors.sixthSection?.title.message}</p>} */}
+                            </div>
+
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Sub Title</Label>
+                                <Input type='text' placeholder='Sub Title' {...register(`sixthSection.subTitle`)} />
+                                {/* {errors.sixthSection?.subTitle && <p className='text-red-500'>{errors.sixthSection?.subTitle.message}</p>} */}
+                            </div>
+
+                            <div className='flex flex-col gap-1'>
+                                <Label className=' font-bold'>Description</Label>
+                                <Textarea placeholder='Description' {...register("sixthSection.description")} />
+                                {/* {errors.sixthSection?.description && <p className='text-red-500'>{errors.sixthSection?.description.message}</p>} */}
                             </div>
                         </div>
                         <div>
@@ -793,7 +914,7 @@ const IndiIndustryPage = () => {
                                             <SortableItem key={field.id} id={field.id} reorderMode={reorderMode}>
                                                 {reorderMode ? (
                                                     <span className='font-medium'>
-                                                        {watch(`sixthSection.items.${index}.title`) || `Item ${index + 1}`}
+                                                        {watch(`sixthSection.items.${index}.number`) || `Item ${index + 1}`}
                                                     </span>
                                                 ) : (
                                                     <>
@@ -801,51 +922,16 @@ const IndiIndustryPage = () => {
                                                             <RiDeleteBinLine onClick={() => sixthSectionRemove(index)} className='cursor-pointer text-red-600' />
                                                         </div>
 
-                                                        <div className='flex flex-col gap-2 col-span-2'>
-                                                            <Label className='font-bold'>Company</Label>
-                                                            <Input type='text' placeholder='Company' {...register(`sixthSection.items.${index}.company`)} />
-                                                            {/* {errors.sixthSection?.items?.[index]?.company && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.company.message}</p>} */}
+                                                        <div className='flex flex-col gap-2'>
+                                                            <Label className='font-bold'>Number</Label>
+                                                            <Input type='text' placeholder='Number' {...register(`sixthSection.items.${index}.number`)} />
+                                                            {/* {errors.sixthSection?.items?.[index]?.number && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.number.message}</p>} */}
                                                         </div>
 
-                                                        <div className='gap-5 grid grid-cols-2 col-span-2 w-full'>
-
-                                                            <div className='flex flex-col gap-2 col-span-1'>
-                                                                <Label className='font-bold'>Number</Label>
-                                                                <Input type='text' placeholder='Number' {...register(`sixthSection.items.${index}.number`)} />
-                                                                {/* {errors.sixthSection?.items?.[index]?.number && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.number.message}</p>} */}
-                                                            </div>
-
-                                                            <div className='flex flex-col gap-2 col-span-1'>
-                                                                <Label className='font-bold'>Value</Label>
-                                                                <Input type='text' placeholder='Value' {...register(`sixthSection.items.${index}.value`)} />
-                                                                {/* {errors.sixthSection?.items?.[index]?.value && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.value.message}</p>} */}
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div className='flex items-center gap-2 col-span-2'>
-                                                            <input
-                                                                type='checkbox'
-                                                                id={`sixthSection.items.${index}.isPrimary`}
-                                                                className='w-4 h-4 cursor-pointer'
-                                                                {...register(`sixthSection.items.${index}.isPrimary`)}
-                                                            />
-                                                            <Label htmlFor={`sixthSection.items.${index}.isPrimary`} className='font-bold cursor-pointer'>
-                                                                Select as Primary
-                                                            </Label>
-                                                        </div>
-
-
-                                                        <div className='flex flex-col gap-2 col-span-2'>
-                                                            <Label className='font-bold'>Title</Label>
-                                                            <Input type='text' placeholder='Title' {...register(`sixthSection.items.${index}.title`)} />
-                                                            {/* {errors.sixthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.title.message}</p>} */}
-                                                        </div>
-
-                                                        <div className='flex flex-col gap-2 col-span-2'>
-                                                            <Label className='font-bold'>Description</Label>
-                                                            <Textarea placeholder='Description' {...register(`sixthSection.items.${index}.description`)} />
-                                                            {/* {errors.sixthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.description.message}</p>} */}
+                                                        <div className='flex flex-col gap-2'>
+                                                            <Label className='font-bold'>Value</Label>
+                                                            <Input type='text' placeholder='Value' {...register(`sixthSection.items.${index}.value`)} />
+                                                            {/* {errors.sixthSection?.items?.[index]?.value && <p className='text-red-500'>{errors.sixthSection?.items?.[index]?.value.message}</p>} */}
                                                         </div>
                                                     </>
                                                 )}
@@ -856,7 +942,7 @@ const IndiIndustryPage = () => {
 
                             </div>
                             <div className='flex justify-end mt-2'>
-                                <Button type='button' addItem onClick={() => sixthSectionAppend({ title: "", description: "", number: "", value: "", company: "", isPrimary: false })}>Add Item</Button>
+                                <Button type='button' addItem onClick={() => sixthSectionAppend({ number: "", value: "" })}>Add Item</Button>
                             </div>
                         </div>
                     </div>
@@ -883,11 +969,209 @@ const IndiIndustryPage = () => {
                                 <Input type='text' placeholder='Sub Title' {...register(`seventhSection.subTitle`)} />
                                 {/* {errors.seventhSection?.subTitle && <p className='text-red-500'>{errors.seventhSection?.subTitle.message}</p>} */}
                             </div>
+                        </div>
+                        <div>
+                            <div className='flex justify-between mb-3'>
+                                <Label className='font-bold'>Items</Label>
+                                {<Button className="bg-green-600 text-white" type="button" onClick={() => setReorderMode(!reorderMode)}>{reorderMode ? <GiConfirmed /> : <TbReorder />}</Button>}
+                            </div>
+                            <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
+
+                                <DndContext collisionDetection={closestCorners} onDragEnd={createDragEndHandler(seventhSectionItems, seventhSectionMove)}>
+                                    <SortableContext
+                                        items={seventhSectionItems.map((field) => field.id)}
+                                        strategy={verticalListSortingStrategy}
+                                    >
+                                        {seventhSectionItems.map((field, index) => (
+                                            <SortableItem key={field.id} id={field.id} reorderMode={reorderMode}>
+                                                {reorderMode ? (
+                                                    <span className='font-medium'>
+                                                        {watch(`seventhSection.items.${index}.title`) || `Item ${index + 1}`}
+                                                    </span>
+                                                ) : (
+                                                    <>
+                                                        <div className='absolute top-2 right-2'>
+                                                            <RiDeleteBinLine onClick={() => seventhSectionRemove(index)} className='cursor-pointer text-red-600' />
+                                                        </div>
+
+                                                        <div className='flex flex-col gap-2'>
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Image</Label>
+                                                                <Controller
+                                                                    name={`seventhSection.items.${index}.image`}
+                                                                    control={control}
+                                                                    // rules={{ required: "Image is required" }}
+                                                                    render={({ field }) => (
+                                                                        <ImageUploader
+                                                                            value={field.value}
+                                                                            onChange={field.onChange}
+                                                                            className=''
+                                                                            isLogo
+                                                                        />
+                                                                    )}
+                                                                />
+                                                                {/* {errors.seventhSection?.items?.[index]?.image && (
+                                                                    <p className="text-red-500">{errors.seventhSection?.items?.[index]?.image.message}</p>
+                                                                )} */}
+                                                            </div>
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Alt Tag</Label>
+                                                                <Input type='text' placeholder='Alt Tag' {...register(`seventhSection.items.${index}.imageAlt`)} />
+                                                                {/* {errors.seventhSection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.imageAlt.message}</p>} */}
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='flex flex-col gap-2'>
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Title</Label>
+                                                                <Input type='text' placeholder='Title' {...register(`seventhSection.items.${index}.title`)} />
+                                                                {/* {errors.seventhSection?.items?.[index]?.title && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.title.message}</p>} */}
+                                                            </div>
+
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </SortableItem>
+                                        ))}
+                                    </SortableContext>
+                                </DndContext>
+
+                            </div>
+                            <div className='flex justify-end mt-2'>
+                                <Button type='button' addItem onClick={() => seventhSectionAppend({ title: "", imageAlt: "", image: "" })}>Add Item</Button>
+                            </div>
+                        </div>
+                    </div>
+                </AccordionSection>
+
+
+                {/* ---------------- Eighth Section ---------------- */}
+                <AccordionSection
+                    title="Eighth Section"
+                    sectionKey="eighthSection"
+                    openSection={openSection}
+                    setOpenSection={setOpenSection}
+                >
+                    <div className='p-5 rounded-md flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Title</Label>
+                                <Input type='text' placeholder='Title' {...register(`eighthSection.title`)} />
+                                {/* {errors.eighthSection?.title && <p className='text-red-500'>{errors.eighthSection?.title.message}</p>} */}
+                            </div>
+                        </div>
+                        <div>
+                            <div className='flex justify-between mb-3'>
+                                <Label className='font-bold'>Items</Label>
+                                {<Button className="bg-green-600 text-white" type="button" onClick={() => setReorderMode(!reorderMode)}>{reorderMode ? <GiConfirmed /> : <TbReorder />}</Button>}
+                            </div>
+                            <div className='border border-black/20 p-2 rounded-md flex flex-col gap-5'>
+
+                                <DndContext collisionDetection={closestCorners} onDragEnd={createDragEndHandler(eighthSectionItems, eighthSectionMove)}>
+                                    <SortableContext
+                                        items={eighthSectionItems.map((field) => field.id)}
+                                        strategy={verticalListSortingStrategy}
+                                    >
+                                        {eighthSectionItems.map((field, index) => (
+                                            <SortableItem key={field.id} id={field.id} reorderMode={reorderMode}>
+                                                {reorderMode ? (
+                                                    <span className='font-medium'>
+                                                        {watch(`eighthSection.items.${index}.title`) || `Item ${index + 1}`}
+                                                    </span>
+                                                ) : (
+                                                    <>
+                                                        <div className='absolute top-2 right-2'>
+                                                            <RiDeleteBinLine onClick={() => eighthSectionRemove(index)} className='cursor-pointer text-red-600' />
+                                                        </div>
+
+                                                        <div className='flex flex-col gap-2 col-span-2'>
+                                                            <Label className='font-bold'>Company</Label>
+                                                            <Input type='text' placeholder='Company' {...register(`eighthSection.items.${index}.company`)} />
+                                                            {/* {errors.eighthSection?.items?.[index]?.company && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.company.message}</p>} */}
+                                                        </div>
+
+                                                        <div className='gap-5 grid grid-cols-2 col-span-2 w-full'>
+
+                                                            <div className='flex flex-col gap-2 col-span-1'>
+                                                                <Label className='font-bold'>Number</Label>
+                                                                <Input type='text' placeholder='Number' {...register(`eighthSection.items.${index}.number`)} />
+                                                                {/* {errors.eighthSection?.items?.[index]?.number && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.number.message}</p>} */}
+                                                            </div>
+
+                                                            <div className='flex flex-col gap-2 col-span-1'>
+                                                                <Label className='font-bold'>Value</Label>
+                                                                <Input type='text' placeholder='Value' {...register(`eighthSection.items.${index}.value`)} />
+                                                                {/* {errors.eighthSection?.items?.[index]?.value && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.value.message}</p>} */}
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div className='flex items-center gap-2 col-span-2'>
+                                                            <input
+                                                                type='checkbox'
+                                                                id={`eighthSection.items.${index}.isPrimary`}
+                                                                className='w-4 h-4 cursor-pointer'
+                                                                {...register(`eighthSection.items.${index}.isPrimary`)}
+                                                            />
+                                                            <Label htmlFor={`eighthSection.items.${index}.isPrimary`} className='font-bold cursor-pointer'>
+                                                                Select as Primary
+                                                            </Label>
+                                                        </div>
+
+
+                                                        <div className='flex flex-col gap-2 col-span-2'>
+                                                            <Label className='font-bold'>Title</Label>
+                                                            <Input type='text' placeholder='Title' {...register(`eighthSection.items.${index}.title`)} />
+                                                            {/* {errors.eighthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.title.message}</p>} */}
+                                                        </div>
+
+                                                        <div className='flex flex-col gap-2 col-span-2'>
+                                                            <Label className='font-bold'>Description</Label>
+                                                            <Textarea placeholder='Description' {...register(`eighthSection.items.${index}.description`)} />
+                                                            {/* {errors.eighthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.eighthSection?.items?.[index]?.description.message}</p>} */}
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </SortableItem>
+                                        ))}
+                                    </SortableContext>
+                                </DndContext>
+
+                            </div>
+                            <div className='flex justify-end mt-2'>
+                                <Button type='button' addItem onClick={() => eighthSectionAppend({ title: "", description: "", number: "", value: "", company: "", isPrimary: false })}>Add Item</Button>
+                            </div>
+                        </div>
+                    </div>
+                </AccordionSection>
+
+
+                {/* ---------------- Nineth Section ---------------- */}
+                <AccordionSection
+                    title="Nineth Section"
+                    sectionKey="ninethSection"
+                    openSection={openSection}
+                    setOpenSection={setOpenSection}
+                >
+                    <div className='p-5 rounded-md flex flex-col gap-2'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Title</Label>
+                                <Input type='text' placeholder='Title' {...register(`ninethSection.title`)} />
+                                {/* {errors.ninethSection?.title && <p className='text-red-500'>{errors.ninethSection?.title.message}</p>} */}
+                            </div>
+
+                            <div className='flex flex-col gap-2'>
+                                <Label className='font-bold'>Sub Title</Label>
+                                <Input type='text' placeholder='Sub Title' {...register(`ninethSection.subTitle`)} />
+                                {/* {errors.ninethSection?.subTitle && <p className='text-red-500'>{errors.ninethSection?.subTitle.message}</p>} */}
+                            </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Logo</Label>
                                 <Controller
-                                    name={`seventhSection.logo`}
+                                    name={`ninethSection.logo`}
                                     control={control}
                                     render={({ field }) => (
                                         <ImageUploader
@@ -898,15 +1182,15 @@ const IndiIndustryPage = () => {
                                         />
                                     )}
                                 />
-                                {errors.seventhSection?.logo && (
-                                    <p className="text-red-500">{errors.seventhSection?.logo.message}</p>
+                                {errors.ninethSection?.logo && (
+                                    <p className="text-red-500">{errors.ninethSection?.logo.message}</p>
                                 )}
                             </div>
 
                             <div className='flex flex-col gap-2'>
                                 <Label className='font-bold'>Logo Alt Tag</Label>
-                                <Input type='text' placeholder='Alt Tag' {...register(`seventhSection.logoAlt`)} />
-                                {/* {errors.seventhSection?.logoAlt && <p className='text-red-500'>{errors.seventhSection?.logoAlt.message}</p>} */}
+                                <Input type='text' placeholder='Alt Tag' {...register(`ninethSection.logoAlt`)} />
+                                {/* {errors.ninethSection?.logoAlt && <p className='text-red-500'>{errors.ninethSection?.logoAlt.message}</p>} */}
                             </div>
                         </div>
                     </div>
