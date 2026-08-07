@@ -22,9 +22,9 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "25+",
+      title: "50+",
       rttitel:"Experts ",
-      dec: "25+ Experts focused on delivering consistent, positive results for your brand through our comprehensive PPC advertising services.",
+      dec: "50+ Experts focused on delivering consistent, positive results for your brand through our comprehensive PPC advertising services.",
     },
   ],
 };

@@ -113,7 +113,7 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "12",
+      title: "50",
       rttitel:"Dedicated Professionals  ",
       dec: "Committed to building and optimizing high-performance e-commerce websites. ",
     },

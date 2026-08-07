@@ -279,9 +279,9 @@ export const Platformsecomdata = {
     {
       id: 2,
       icon: assets.linkedin,
-      title: "12",
+      title: "50",
       rsubtitle: "Dedicated<br>Professionals  ",
-      dec: "12+ Dedicated Professionals focused on streamlining marketing operations and driving engagement.",
+      dec: "50+ Dedicated Professionals focused on streamlining marketing operations and driving engagement.",
     },
     {
       id: 3,

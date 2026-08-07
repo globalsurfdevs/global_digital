@@ -22,9 +22,9 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "25+",
+      title: "50+",
       rttitel:"Experts ",
-      dec: "25+ Experts committed to delivering consistent, positive results through personalized social media marketing services that grow your brand. ",
+      dec: "50+ Experts committed to delivering consistent, positive results through personalized social media marketing services that grow your brand. ",
     },
   ],
 };

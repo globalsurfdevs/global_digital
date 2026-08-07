@@ -247,7 +247,7 @@ export const Platformsecomdata = {
     {
       id: 2,
       icon: assets.linkedin,
-      title: "25",
+      title: "50",
       rttitel:" Dedicated Professionals ",
       dec: "Our team of skilled developers, designers, and strategists ensures seamless execution from concept to launch. ",
     },

@@ -21,7 +21,7 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "25+",
+      title: "50+",
       rttitel: "Dedicated Professionals",
       dec: "Our expert SEO specialists optimize every aspect of your app to enhance visibility, drive organic traffic, and maximize conversions.",
     },

@@ -309,7 +309,7 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "15",
+      title: "50",
       rttitel:"Dedicated Professionals ",
       dec: "Committed to building, optimizing, and supporting web applications that empower your business. ",
     },

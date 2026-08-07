@@ -23,9 +23,9 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "25+",
+      title: "50+",
       rttitel:"Experts ",
-      dec: "25+ Experts dedicated to achieving consistent, positive results through personalized social media management packages that grow your brand.",
+      dec: "50+ Experts dedicated to achieving consistent, positive results through personalized social media management packages that grow your brand.",
     },
   ],
 };
