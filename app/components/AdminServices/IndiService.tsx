@@ -66,6 +66,7 @@ export interface ServiceFormProps {
             image: string;
             imageAlt: string;
             description: string;
+            link:string;
         }[];
     };
     sixthSection: {
@@ -101,6 +102,7 @@ export interface ServiceFormProps {
             description: string;
             image: string;
             imageAlt: string;
+            link:string;
         }[];
     };
 tenthSection: {
@@ -749,6 +751,13 @@ useEffect(() => {
                                                                 <Textarea placeholder='Description' {...register(`fifthSection.items.${index}.description`)} />
                                                                 {/* {errors.fifthSection?.items?.[index]?.description && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.description.message}</p>} */}
                                                             </div>
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Link</Label>
+                                                                <Input type='text' placeholder='Link' {...register(`fifthSection.items.${index}.link`)} />
+                                                                {/* {errors.fifthSection?.items?.[index]?.title && <p className='text-red-500'>{errors.fifthSection?.items?.[index]?.title.message}</p>} */}
+                                                            </div>
+
                                                         </div>
                                                     </>
                                                 )}
@@ -759,7 +768,7 @@ useEffect(() => {
 
                             </div>
                             <div className='flex justify-end mt-2'>
-                                <Button type='button' addItem onClick={() => fifthSectionAppend({ title: "", image: "", imageAlt: "", description: "" })}>Add Item</Button>
+                                <Button type='button' addItem onClick={() => fifthSectionAppend({ title: "", image: "", imageAlt: "", description: "", link:"" })}>Add Item</Button>
                             </div>
                         </div>
                     </div>
@@ -1087,6 +1096,13 @@ useEffect(() => {
                                                                 <Textarea placeholder='Description' {...register(`ninethSection.items.${index}.description`)} />
                                                                 {/* {errors.ninethSection?.items?.[index]?.description && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.description.message}</p>} */}
                                                             </div>
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Link</Label>
+                                                                <Input type='text' placeholder='Link' {...register(`ninethSection.items.${index}.link`)} />
+                                                                {/* {errors.ninethSection?.items?.[index]?.title && <p className='text-red-500'>{errors.ninethSection?.items?.[index]?.title.message}</p>} */}
+                                                            </div>
+
                                                         </div>
                                                     </>
                                                 )}
@@ -1097,7 +1113,7 @@ useEffect(() => {
 
                             </div>
                             <div className='flex justify-end mt-2'>
-                                <Button type='button' addItem onClick={() => ninethSectionAppend({ title: "", description: "", image: "", imageAlt: "" })}>Add Item</Button>
+                                <Button type='button' addItem onClick={() => ninethSectionAppend({ title: "", description: "", image: "", imageAlt: "", link:"" })}>Add Item</Button>
                             </div>
                         </div>
                     </div>

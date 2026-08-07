@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
   return (
@@ -23,7 +24,7 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
           </motion.h2>
 
           {/* Mobile: stacked cards, no connecting line */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:hidden">
             {data.items.map((item, index) => (
               <motion.div
                 initial="hidden"
@@ -46,14 +47,14 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
                   </h3>
                 </div>
                 <p className="fnt-lexend text-18 font-normal leading-[1.444444444444444] text-muted">
-                  {item.description}
+                  {toSentenceCase(item.description)}
                 </p>
               </motion.div>
             ))}
           </div>
 
           {/* md and up: one continuous connected row + description grid below */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <div className="relative mb-4 grid grid-cols-2 items-center gap-x-6 lg:grid-cols-4 xl:mb-[30px] xl:gap-x-10">
               {/* connecting line, now a background element spanning the full row */}
               <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-black/10" />

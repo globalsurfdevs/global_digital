@@ -4,6 +4,8 @@ import { capabilitiesData } from "@/app/data/services/branding-and-positioning-a
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import Link from "next/link";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 interface RelatedCapabiliProps {
   data: typeof capabilitiesData;
@@ -53,12 +55,21 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
                     className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[60px] xxl:w-[60px]"
                   />
                 </div>
-                <h3 className="text-28 font-normal tracking-[-0.025em]">
-                  {item.title}
-                </h3>
+                {item.link ? (
+                  <Link href={item.link}>
+                    <h3 className="text-28 font-normal tracking-[-0.025em]">
+                      {item.title}
+                    </h3>
+                  </Link>
+                ) : (
+                  <h3 className="text-28 font-normal tracking-[-0.025em]">
+                    {item.title}
+                  </h3>
+                )}
+
               </div>
               <p className="text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
-                {item.description}
+                {toSentenceCase(item.description)}
               </p>
             </motion.div>
           ))}

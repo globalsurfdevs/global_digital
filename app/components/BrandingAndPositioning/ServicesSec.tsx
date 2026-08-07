@@ -8,6 +8,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +21,7 @@ interface ServicesSecProps {
     description: string;
     id: string;
     icon: string | StaticImageData;
+    link: string;
   }[];
 }
 
@@ -63,11 +66,11 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="text-30 leading-[1.5] text-muted"
+                className="text-30 leading-[1.5] text-muted uppercase"
               >
                 {title}
+                <span className="ml-2 inline-block h-5 w-5  bg-primary" />
               </motion.h3>
-              <div className="h-5 w-5 bg-primary"></div>
             </div>
             <motion.h2
               variants={moveUp(0.1)}
@@ -102,12 +105,24 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                         className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[70px] xxl:w-[70px]"
                       />
                     </div>
-                    <h3 className="text-28 leading-[1.2142] tracking-[-0.025em]">
-                      {service.title}
-                    </h3>
+                    {service.link ? (
+                      <Link href={service.link}>
+                        <h3
+                          className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-pointer"
+                        >
+                          {service.title}
+                        </h3>
+                      </Link>
+                    ) : (
+                      <h3
+                        className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-default"
+                      >
+                        {service.title}
+                      </h3>
+                    )}
                   </div>
                   <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
-                    {service.description}
+                    {toSentenceCase(service.description)}
                   </p>
                 </motion.div>
               ))}

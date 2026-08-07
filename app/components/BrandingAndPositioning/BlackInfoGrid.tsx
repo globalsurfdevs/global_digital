@@ -1,4 +1,5 @@
 "use client";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -173,7 +174,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                           </div>
 
                           <p className="fnt-lexend text-18 font-normal leading-[1.444444444444444] text-[#a3a3a3]">
-                            {framework.dec}
+                            {toSentenceCase(framework.dec)}
                           </p>
                         </div>
                       </div>

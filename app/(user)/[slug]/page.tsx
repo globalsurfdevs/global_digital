@@ -98,9 +98,9 @@ const page = async ({ params }: PageProps) => {
   const testimonials = await getTestimonials();
 
   const servicesData = {
-    title: service.fifthSection.title,
-    subtitle: service.fifthSection.subTitle,
-    items: service.fifthSection.items.map((item, index) => ({
+    title: service?.fifthSection?.title,
+    subtitle: service?.fifthSection?.subTitle,
+    items: service?.fifthSection?.items.map((item, index) => ({
       id: index.toString(),
       icon: item.image,
       ...item,
@@ -108,9 +108,9 @@ const page = async ({ params }: PageProps) => {
   };
 
   const whatYouGetData = {
-    title: service.eighthSection.title,
-    subTitle: service.eighthSection.subTitle,
-    data: service.eighthSection.items.map((item, index) => ({
+    title: service?.eighthSection?.title,
+    subTitle: service?.eighthSection?.subTitle,
+    data: service?.eighthSection?.items.map((item, index) => ({
       id: index + 1,
       dec: item.description,
       ...item,
@@ -118,10 +118,10 @@ const page = async ({ params }: PageProps) => {
   };
 
   const capabilitiesData = {
-    tag: service.ninethSection.title,
-    title: service.ninethSection.subTitle,
+    tag: service?.ninethSection?.title,
+    title: service?.ninethSection?.subTitle,
 
-    items: service.ninethSection.items.map((item, index) => ({
+    items: service?.ninethSection?.items.map((item, index) => ({
       id: index + 1,
       icon: item.image,
       ...item,
@@ -129,10 +129,10 @@ const page = async ({ params }: PageProps) => {
   };
 
   const whyChooseData = {
-    tag: service.eleventhSection.title,
-    title: service.eleventhSection.subTitle,
-    description: service.eleventhSection.description,
-    items: service.eleventhSection.items.map((item, index) => ({
+    tag: service?.eleventhSection?.title,
+    title: service?.eleventhSection?.subTitle,
+    description: service?.eleventhSection?.description,
+    items: service?.eleventhSection?.items.map((item, index) => ({
       id: index + 1,
       value: item.number,
       label: item.value,
@@ -140,9 +140,9 @@ const page = async ({ params }: PageProps) => {
   };
 
   const caseStudiesData = {
-    tag: service.caseStudySection.title,
-    title: service.caseStudySection.subTitle,
-    items: service.caseStudySection.items.map((item, index) => ({
+    tag: service?.caseStudySection?.title,
+    title: service?.caseStudySection?.subTitle,
+    items: service?.caseStudySection?.items.map((item, index) => ({
       id: index + 1,
       client: item.project.companyName,
       logo: item.project.logo,
@@ -153,14 +153,14 @@ const page = async ({ params }: PageProps) => {
 
   const Cta = [
     {
-      textred: service.ctaSection.titleRed,
-      text: service.ctaSection.title,
-      subhead: service.ctaSection.description,
+      textred: service?.ctaSection?.titleRed,
+      text: service?.ctaSection?.title,
+      subhead: service?.ctaSection?.description,
     },
   ];
 
   const Faq = [
-    ...service.faqSection.items.map((item) => ({
+    ...service?.faqSection?.items.map((item) => ({
       title: item.question,
       description: item.answer,
     })),
@@ -221,9 +221,9 @@ const page = async ({ params }: PageProps) => {
         <ButtonSlider data={service.tenthSection} />
       </section>
       <WhyChoose data={whyChooseData} />
-      {caseStudiesData.items.length > 0 && (
+      {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
-      )}
+      )} */}
       <Testimonials
         topTitle="Testimonials"
         data={testimonials.testimonialSection}

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 const ImgDesc = ({ data }: any) => {
   return (
@@ -38,7 +39,7 @@ const ImgDesc = ({ data }: any) => {
               {data.subTitle}
             </h2>
             <p className="text-18 text-77787B fnt-lexend leading-[1.444444444444444]">
-              {data.description}
+              {toSentenceCase(data.description)}
             </p>
           </motion.div>
         </div>

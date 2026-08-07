@@ -24,6 +24,7 @@ type PartnerListProps = {
   title?: string;
   defActive?: string;
   initialCount?: number;
+  fullSpace?: boolean;
 };
 const containerVariants = {
   hidden: {},
@@ -46,6 +47,7 @@ const FAQ: React.FC<PartnerListProps> = ({
   title,
   defActive,
   initialCount,
+  fullSpace,
 }) => {
   const items = data ?? sections ?? [];
   const getDefaultOpenIndex = (value?: string) => {
@@ -116,7 +118,7 @@ const FAQ: React.FC<PartnerListProps> = ({
               )}
             </div>
 
-            <div className={`col-span-5 w-full overflow-hidden`}>
+            <div className={` ${fullSpace ? "col-span-6" : "col-span-5"} w-full overflow-hidden`}>
               <motion.div
                 layout
                 variants={containerVariants}
