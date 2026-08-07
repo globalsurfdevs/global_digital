@@ -76,6 +76,9 @@ const industriesItemSchema = new mongoose.Schema(
       subTitle: {
         type: String,
       },
+      description: {
+        type: String,
+      },
       items: [
         {
           title: { type: String },
@@ -84,6 +87,22 @@ const industriesItemSchema = new mongoose.Schema(
       ],
     },
     fifthSection: {
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      items: [
+        {
+          image: { type: String },
+          imageAlt: { type: String },
+          title: { type: String },
+          description: { type: String },
+        },
+      ],
+    },
+    sixthSection: {
       title: {
         type: String,
       },
@@ -100,7 +119,22 @@ const industriesItemSchema = new mongoose.Schema(
         },
       ],
     },
-    sixthSection: {
+    seventhSection: {
+      title: {
+        type: String,
+      },
+      subTitle: {
+        type: String,
+      },
+      items: [
+        {
+          image: { type: String },
+          imageAlt: { type: String },
+          title: { type: String },
+        },
+      ],
+    },
+    eighthSection: {
       title: {
         type: String,
       },
@@ -111,11 +145,11 @@ const industriesItemSchema = new mongoose.Schema(
           value: { type: String },
           title: { type: String },
           description: { type: String },
-          isPrimary: { type: Boolean, default: false }
+          isPrimary: { type: Boolean, default: false },
         },
       ],
     },
-    seventhSection: {
+    ninethSection: {
       title: {
         type: String,
       },
