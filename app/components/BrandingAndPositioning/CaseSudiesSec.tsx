@@ -44,12 +44,13 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
               initial="hidden"
               key={item.id}
               whileInView="show"
+              className="h-full"
               variants={moveUp(index * 0.1)}
               viewport={{ once: true }}
             >
               <Link
                 href={item.href}
-                className="group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 h-full"
               >
                 {/* Top */}
                 {/* <div className="flex flex-col rounded-[10px] border border-[#00000033] bg-white pl-5 pr-5 pt-5 pb-5 xl:pl-8 xl:pr-8 xl:pt-8 xl:pb-8 xxl:pl-[41px] xxl:pr-[41px] xxl:pt-[41px] xxl:pb-[41px] 3xl:pl-[49px] 3xl:pr-[65px] 3xl:pb-[84px]"> */}
@@ -60,7 +61,7 @@ const CaseSudiesSec = ({ data }: CaseSudiesSecProps) => {
                   {/* <Image src={item.logo} alt={item.client} width={200} height={60} className="h-auto w-auto object-contain 3xl:h-[34.59px] max-w-[160px]" /> */}
                 </div>
                 {/* Bottom */}
-                <div className="flex-1 rounded-[10px] bg-[#1F1F1F] p-8 text-white xl:p-12 3xl:px-[49px] 3xl:pt-[62px] 3xl:pb-[100px]">
+                <div className="flex flex-col flex-1 rounded-[10px] bg-[#1F1F1F] p-8 text-white xl:p-12 3xl:px-[49px] 3xl:pt-[62px] 3xl:pb-[100px]">
                   <h3 className="text-30 mb-6 leading-tight transition-colors group-hover:text-primary">
                     {item.title}
                   </h3>

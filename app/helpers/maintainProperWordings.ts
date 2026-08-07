@@ -2,7 +2,11 @@ const ACRONYMS = new Set([
   "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae",
 ]);
 
-const PHRASES: Record<string, string> = {
+
+const PROPER_NOUNS: Record<string, string> = {
+  linkedin: "LinkedIn",
+  uae: "UAE",
+  dubai: "Dubai",
   "gs digital": "GS Digital",
 };
 
@@ -31,37 +35,15 @@ export const toTitleCase = (text: string) => {
 };
 
 export const toSentenceCase = (text: string) => {
-  const words = text.trim().split(/\s+/);
+  // Capitalize the first letter after start-of-string or sentence-ending punctuation
+  let result = text.replace(
+    /(^\s*\w|[.!?]\s+\w)/g,
+    (match) => match.toUpperCase()
+  );
 
-  let result = words
-    .map((word, index) => {
-      const match = word.match(/^(\W*)(.*?)(\W*)$/);
-      const [, prefix, core, suffix] = match ?? ["", "", word, ""];
-
-      const cased = core
-        .split("-")
-        .map((part, partIndex) => {
-          const lower = part.toLowerCase();
-
-          if (ACRONYMS.has(lower)) {
-            return lower.toUpperCase();
-          }
-
-          if (index === 0 && partIndex === 0) {
-            return lower.charAt(0).toUpperCase() + lower.slice(1);
-          }
-
-          return lower;
-        })
-        .join("-");
-
-      return prefix + cased + suffix;
-    })
-    .join(" ");
-
-  // Fix known multi-word phrases regardless of how they came out above.
-  Object.entries(PHRASES).forEach(([phrase, correct]) => {
-    const regex = new RegExp(`\\b${phrase}\\b`, "gi");
+  // Restore known proper nouns/brand names to their correct casing
+  Object.entries(PROPER_NOUNS).forEach(([lower, correct]) => {
+    const regex = new RegExp(`\\b${lower}\\b`, "gi");
     result = result.replace(regex, correct);
   });
 

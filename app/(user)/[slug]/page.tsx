@@ -221,9 +221,9 @@ const page = async ({ params }: PageProps) => {
         <ButtonSlider data={service.tenthSection} />
       </section>
       <WhyChoose data={whyChooseData} />
-      {caseStudiesData.items.length > 0 && (
+      {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
-      )}
+      )} */}
       <Testimonials
         topTitle="Testimonials"
         data={testimonials.testimonialSection}
