@@ -192,9 +192,9 @@ export const Platformsecomdata = {
     {
       id: 3,
       icon: assets.twitterx,
-      title: "15",
+      title: "50",
       rsubtitle: "Experienced <br>Professionals  ",
-      dec: "25+ experienced professionals delivering data-driven results ",
+      dec: "50+ experienced professionals delivering data-driven results ",
     },
   ],
 };
