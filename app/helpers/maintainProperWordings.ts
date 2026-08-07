@@ -1,6 +1,10 @@
 const ACRONYMS = new Set([
-  "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae"
+  "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae",
 ]);
+
+const PHRASES: Record<string, string> = {
+  "gs digital": "GS Digital",
+};
 
 export const toTitleCase = (text: string) => {
   return text
@@ -29,7 +33,7 @@ export const toTitleCase = (text: string) => {
 export const toSentenceCase = (text: string) => {
   const words = text.trim().split(/\s+/);
 
-  return words
+  let result = words
     .map((word, index) => {
       const match = word.match(/^(\W*)(.*?)(\W*)$/);
       const [, prefix, core, suffix] = match ?? ["", "", word, ""];
@@ -43,7 +47,6 @@ export const toSentenceCase = (text: string) => {
             return lower.toUpperCase();
           }
 
-          // Capitalize only the very first letter of the very first word
           if (index === 0 && partIndex === 0) {
             return lower.charAt(0).toUpperCase() + lower.slice(1);
           }
@@ -55,4 +58,12 @@ export const toSentenceCase = (text: string) => {
       return prefix + cased + suffix;
     })
     .join(" ");
+
+  // Fix known multi-word phrases regardless of how they came out above.
+  Object.entries(PHRASES).forEach(([phrase, correct]) => {
+    const regex = new RegExp(`\\b${phrase}\\b`, "gi");
+    result = result.replace(regex, correct);
+  });
+
+  return result;
 };
