@@ -4,6 +4,7 @@ import Image from "next/image";
 import Button from "../common/buttons/PrimaryButton";
 import { useEffect, useState } from "react";
 import LetsTalk from "../../components/common/LetsConnect";
+import { toSentenceCase, toTitleCase } from "@/app/helpers/maintainProperWordings";
 
 interface HeroSectionProps {
   data: {
@@ -17,6 +18,7 @@ interface HeroSectionProps {
     }[];
   };
 }
+
 
 const HeroSection = ({ data }: HeroSectionProps) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -62,10 +64,10 @@ const HeroSection = ({ data }: HeroSectionProps) => {
       <div className="container relative z-10 flex h-full flex-col justify-center">
         <div>
           <h1 className="title-70 mb-3 max-w-[16ch] tracking-[-0.025em] xl:mb-5">
-            {data.title}
+            {toTitleCase(data.title)}
           </h1>
           <p className="text-25 text-77787B max-w-[40ch] leading-[1.4] 3xl:max-w-[55ch]">
-            {data.description}
+            {toSentenceCase(data.description)}
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[60px]">
             <Button

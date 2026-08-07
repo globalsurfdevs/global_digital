@@ -63,7 +63,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="text-30 leading-[1.5] text-muted"
+                className="text-30 leading-[1.5] text-muted uppercase"
               >
                 {title}
               </motion.h3>
