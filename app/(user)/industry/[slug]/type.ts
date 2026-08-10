@@ -57,12 +57,34 @@ export interface IndustryItem {
         description: string;
         items: {
             _id: string;
+            title: string;
+            description: string;
+            image: string;
+            imageAlt: string;
+        }[];
+    };
+
+    sixthSection: {
+        title: string;
+        subTitle: string;
+        description: string;
+        items: {
             number: string;
             value: string;
         }[];
     };
 
-    sixthSection: {
+    seventhSection:{
+        title:string;
+        subTitle:string;
+        items:{
+            title:string;
+            image:string;
+            imageAlt:string;
+        }[];
+    }
+
+    eighthSection: {
         title: string;
         items: {
             _id: string;
@@ -71,16 +93,16 @@ export interface IndustryItem {
             value: string;
             title: string;
             description: string;
-            isPrimary:boolean;
+            isPrimary: boolean;
         }[];
     };
 
-    seventhSection:{
-        title:string;
-        subTitle:string;
-        logo:string;
-        logoAlt:string;
-    }
+    ninethSection: {
+        title: string;
+        subTitle: string;
+        logo: string;
+        logoAlt: string;
+    };
 
     ctaSection: {
         titleRed: string;
