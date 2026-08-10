@@ -1079,11 +1079,28 @@ import dblog2 from "../images/blogs/digital/dblog2.webp";
 import dblog3 from "../images/blogs/digital/dblog3.webp";
 import dblog4 from "../images/blogs/digital/dblog4.webp";
 
-
+import futureproofwebsites from "../images/end-to-end-digitalmarketing/future-proof-websites.svg";
+import googleaisearch from "../images/end-to-end-digitalmarketing/google-ai-search.svg";
+import stricttracking from "../images/end-to-end-digitalmarketing/strict-tracking.svg";
+import benchmark from "../images/end-to-end-digitalmarketing/benchmark.svg";
+import innovodg from "../images/end-to-end-digitalmarketing/logos/innovo.png";
+import imtiaz from "../images/end-to-end-digitalmarketing/logos/imtiaz.png";
+import ulogo from "../images/end-to-end-digitalmarketing/logos/u.png";
+import sobha from "../images/end-to-end-digitalmarketing/logos/sobha.png";
+import sp from "../images/end-to-end-digitalmarketing/logos/sp.png";
 
 
 
 export const assets = {
+  futureproofwebsites,
+  googleaisearch,
+  stricttracking,
+  benchmark,
+  innovodg,
+  imtiaz,
+  ulogo,
+  sobha,
+  sp,
   blgbanner,
   aibanner,
   p1,
