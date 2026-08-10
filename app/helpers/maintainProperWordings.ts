@@ -35,6 +35,7 @@ export const toTitleCase = (text: string) => {
 };
 
 export const toSentenceCase = (text: string) => {
+  if(!text) return text;
   // Capitalize the first letter after start-of-string or sentence-ending punctuation
   let result = text.replace(
     /(^\s*\w|[.!?]\s+\w)/g,

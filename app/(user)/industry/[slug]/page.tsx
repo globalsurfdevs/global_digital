@@ -13,6 +13,7 @@ import IndustriesSec from "@/app/components/EngineeringInfrastructure/Industries
 import { getAllIndustry, getIndustry } from "@/app/lib/industry.service";
 import { IndustryItem } from "./type";
 import { Metadata } from "next";
+import WhoWeWork from "@/app/components/BrandingAndPositioning/WhoWeWork";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -237,6 +238,7 @@ const page = async ({ params }: PageProps) => {
         <ButtonSlider data={industryData.tenthSection} />
       </section> */}
             {whyChooseData.items.length > 0 && <WhyChoose data={whyChooseData} />}
+            <WhoWeWork/>
             {industryExperienceResultsData.items.length > 0 && (
                 <ExperienceResult data={industryExperienceResultsData} />
             )}
