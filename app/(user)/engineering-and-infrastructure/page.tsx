@@ -33,6 +33,7 @@ import { serviceData } from "@/app/components/EngineeringInfrastructure/data";
 import SuccessStories from "@/app/components/EngineeringInfrastructure/SuccessStories";
 import ExperienceResult from "@/app/components/EngineeringInfrastructure/ExperienceResult";
 import IndustriesSec from "@/app/components/EngineeringInfrastructure/IndustriesSec";
+import HowWeDo from "@/app/components/EngineeringInfrastructure/HowWeDo";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -204,7 +205,7 @@ const page = async ({ params }: PageProps) => {
       />
       {/* {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
       <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
-        <ButtonSlider data={serviceData.tenthSection} />
+      <ButtonSlider data={serviceData.tenthSection} />
       </section> */}
       <WhyChoose data={whyChooseData} />
       <ExperienceResult data={industryExperienceResultsData} />
@@ -217,7 +218,8 @@ const page = async ({ params }: PageProps) => {
         data={testimonials.testimonialSection}
         bottomText={false}
         reviews={false}
-      /> */}
+        /> */}
+        <HowWeDo data={serviceData.howWeDo} />
       <GetInTouch
         data={Cta}
         ctabbutton={serviceData.ctaSection.buttonText}
