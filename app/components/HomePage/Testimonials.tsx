@@ -11,6 +11,7 @@ interface TestimonialsSectionProps {
   topTitle?: string;
   bottomText?: boolean;
   reviews?: boolean;
+  page?: string;
 }
 
 const Testimonials: React.FC<TestimonialsSectionProps> = ({
@@ -20,6 +21,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
   topTitle,
   bottomText = true,
   reviews = true,
+  page
 }) => {
   return (
     <div className={` ${bgcolor === "white" ? "bg-white" : "bg-bglight"}`}>
@@ -29,10 +31,10 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
         <div className="ptwhite pb-[30px] pt-[50px] md:py-10 lg:py-12 xl:pb-[110px] xl:pt-[138px]">
           {topTitle && (
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-              <h3 className="text-30 uppercase leading-[1] tracking-[-0.025em]  text-muted">
+              <h3 className={`${page === "service" ? "text-18" : "text-30"} uppercase leading-[1] tracking-[-0.025em]  text-muted`}>
                 {topTitle}
               </h3>
-              <div className="h-5 w-5 bg-primary"></div>
+              <div className="h-4 w-4 bg-primary"></div>
             </div>
           )}
           <motion.div
