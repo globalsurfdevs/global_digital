@@ -6,7 +6,15 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { workSvgs } from "../../data/services/wdd-custom-web-development/data";
 
-const WorkSwiper = () => {
+interface Props {
+  icon: string;
+  alt: string;
+  text: string;
+  width: number;
+  height: number;
+}
+
+const WorkSwiper = ({ workSvgsData }: { workSvgsData: Props[] }) => {
   return (
     <div className="mnic">
       <Swiper
@@ -30,7 +38,8 @@ const WorkSwiper = () => {
           1600: { slidesPerView: 4.6, spaceBetween: 60 },
         }}
       >
-        {workSvgs.map((item, index) => (
+
+        {!workSvgsData ? (workSvgs.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="home-st   ">
               <div className=" me-1 flex min-h-[30px] w-fit min-w-[30px] items-center justify-center bg-primary duration-200 ease-linear   lg:me-2 lg:min-h-[50px] lg:min-w-[50px]">
@@ -45,7 +54,26 @@ const WorkSwiper = () => {
               <h3 className="textslide-30 pt-4 md:pt-7 ">{item.text}</h3>
             </div>
           </SwiperSlide>
-        ))}
+        ))) : (
+
+          workSvgsData.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="home-st   ">
+                <div className=" me-1 flex min-h-[30px] w-fit min-w-[30px] items-center justify-center bg-primary duration-200 ease-linear   lg:me-2 lg:min-h-[50px] lg:min-w-[50px]">
+                  <img
+                    src={item.icon}
+                    alt={item.text}
+                    width={item.width}
+                    height={item.height}
+                    className="w-[18px] duration-200 ease-linear   lg:w-auto brightness-[0] invert-[1]"
+                  />
+                </div>
+                <h3 className="textslide-30 pt-4 md:pt-7 ">{item.text}</h3>
+              </div>
+            </SwiperSlide>
+          ))
+
+        )}
       </Swiper>
     </div>
   );
