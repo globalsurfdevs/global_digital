@@ -147,6 +147,19 @@ export interface ServiceItem {
         }[];
     };
 
+    howWeDo: {
+        title: string;
+        subTitle: string;
+        description: string;
+        items: {
+            _id: string;
+            title: string;
+            description: string;
+            image: string;
+            imageAlt: string;
+        }[];
+    };
+
     ctaSection: {
         titleRed: string;
         title: string;
