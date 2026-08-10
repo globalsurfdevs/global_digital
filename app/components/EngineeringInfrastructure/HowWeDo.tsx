@@ -4,14 +4,20 @@ import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination } from "swiper/modules";
-
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
-import { ServiceItem } from "@/app/(user)/[slug]/type";
+import { ServiceItem } from "@/app/(user)/engineering-and-infrastructure/type";
 
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
+
+
+// -----------------------------------------------------------------------------
+// Slides-per-view helper
+// -----------------------------------------------------------------------------
 
 const BREAKPOINTS: [number, number][] = [
   [0, 1.15],
@@ -30,7 +36,7 @@ function getSlidesPerView(width: number) {
   return value;
 }
 
-const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
+const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
   const { items, subTitle, title } = data;
 
   const [previewIndex, setPreviewIndex] = useState(items.length - 1);
@@ -67,7 +73,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
   };
 
   return (
-    <section className="py-120 bg-[#F6F6F6]">
+    <section className="py-120">
       {/* Header */}
       <div className="container" ref={containerRef}>
         <div className="mb-4 xl:mb-8 xxl:mb-[50px]">
@@ -88,17 +94,20 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60"
+            className="title-60 max-w-[33ch] mb-4 md:mb-6 xl:mb-8 xxl:mb-10"
             dangerouslySetInnerHTML={{ __html: subTitle }}
           ></motion.h2>
+          <p className="text-18 fnt-lexend leading-[1.444444444444444] text-muted mb-4 lg:mb-5 xl:mb-6 xxl:mb-60 max-w-[110ch]">
+            {data.description}
+          </p>
         </div>
       </div>
 
       {/* Slider */}
       <div
-        className="overflow-hidden px-3"
+        className="overflow-hidden pr-3"
         style={{
-          marginLeft: `${containerLeft}px`,
+          marginLeft: `${containerLeft + 15}px`,
         }}
       >
         <Swiper
@@ -109,11 +118,11 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           }}
           onSlideChange={updatePreview}
           onResize={updatePreview}
-          spaceBetween={32}
+          spaceBetween={0}
           slidesPerView={1.15}
-          loop={false}
+          loop={true}
           rewind
-          speed={700}
+          speed={1000}
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -122,15 +131,15 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           breakpoints={{
             640: {
               slidesPerView: 1.8,
-              spaceBetween: 32,
+              // spaceBetween: 32,
             },
             1024: {
-              slidesPerView: 2.6,
-              spaceBetween: 40,
+              slidesPerView: 2.1,
+              // spaceBetween: 40,
             },
             1280: {
               slidesPerView: 3.4,
-              spaceBetween: 48,
+              // spaceBetween: 48,
             },
           }}
           pagination={{
@@ -139,25 +148,23 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           }}
           className="!overflow-visible [&_.swiper-slide]:!h-auto [&_.swiper-wrapper]:!items-stretch"
         >
-          {items.map((item, i) => (
+          {[...items, ...items].map((item, i) => (
             <SwiperSlide key={i} className="h-auto">
-              <div
-                className={`h-full ${i === leftIndex ? "" : ""} border-l border-black/20 pb-6  pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}
-              >
+              <div className={`h-full ${i === leftIndex ? "" : ""} border border-black/20 rounded-[10px] p-4 xl:p-8 xxl:p-10 -mr-px`} >
                 <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
-                    <span className="text-28 font-normal text-primary">
+                  <div className="mb-6 xl:mb-[30px] inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20 xxl:h-25 xxl:w-25">
+                    {/* <span className="text-28 font-normal text-primary">
                       {i < 10 ? `0${i + 1}` : i + 1}
-                    </span>
+                    </span> */}
+                    <Image src={item.image} alt={item.imageAlt} width={60} height={60} className="object-contain w-6 h-6 xl:h-10 xl:w-10 xxl:h-[60px] xxl:w-[60px]" />
                   </div>
-
-                  <h3 className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
+                  <h3 className="text-28 mb-4 max-w-[18ch] leading-[1.2142] tracking-[-0.025em]">
                     {item.title}
                   </h3>
                 </div>
 
                 <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
-                  {item.description}
+                  {toSentenceCase(item.description)}
                 </p>
               </div>
             </SwiperSlide>
@@ -173,4 +180,4 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
   );
 };
 
-export default ProcessSlider;
+export default HowWeDo;

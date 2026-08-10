@@ -164,6 +164,48 @@ export const eighthSection = {
   ],
 };
 
+export const howWeDo = {
+  subTitle:
+    " How do manufacturers in the UAE generate B2B leads through digital marketing?",
+  title: "HOW WE DO",
+  description:
+    "B2B lead generation for UAE manufacturers works through four primary digital channels, each addressing a different stage of how trade buyers find and evaluate suppliers.",
+  items: [
+    {
+      _id: "1",
+      title: "Search visibility for supplier discovery",
+      description:
+        "Most B2B buying journeys begin with a capability-specific search. Procurement teams look for manufacturers based on products, certifications, production expertise, and location. Ranking for these searches requires technical SEO built around the terminology and buying signals that manufacturing buyers actually use.",
+      image: "assets/icons/how-we-do/i-1.svg",
+      imageAlt: "Search visibility icon",
+    },
+    {
+      _id: "2",
+      title: "Technical content that builds supplier credibility",
+      description:
+        "Being found is only the first step. Buyers also need evidence that you can meet their requirements. Technical content covering certifications, manufacturing processes, production capacity, quality standards, export experience, and project case studies helps establish credibility before the first enquiry.",
+      image: "assets/icons/how-we-do/i-2.svg",
+      imageAlt: "Technical content icon",
+    },
+    {
+      _id: "3",
+      title: "Digital engagement with decision makers",
+      description:
+        "Procurement managers and distribution partners continue their research across professional channels such as LinkedIn. Consistent visibility through industry content, targeted campaigns, and thought leadership keeps your business in front of decision makers throughout lengthy B2B buying cycles.",
+      image: "assets/icons/how-we-do/i-3.svg",
+      imageAlt: "Digital engagement icon",
+    },
+    {
+      _id: "4",
+      title: "Export market visibility",
+      description:
+        "For manufacturers serving regional and international markets, digital visibility must extend beyond the UAE. Multilingual content, country specific search optimisation, and information addressing logistics, compliance, and export capability help attract qualified buyers from target markets across the GCC and beyond.",
+      image: "assets/icons/how-we-do/i-4.svg",
+      imageAlt: "Export market visibility icon",
+    },
+  ],
+};
+
 // export const ninethSection = {
 //   title: "",
 //   subTitle: "",
@@ -396,6 +438,7 @@ export const serviceData = {
   eighthSection,
   // ninethSection,
   // tenthSection,
+  howWeDo,
   industryExperienceResults,
   industries,
   eleventhSection,
