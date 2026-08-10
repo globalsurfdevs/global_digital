@@ -29,6 +29,7 @@ import { data } from "@/app/data/llmWorksData";
 import { getTestimonials } from "@/app/lib/testimonials";
 import { ServiceItem } from "./type";
 import { Metadata } from "next";
+import WorkIn from "@/app/components/common/WorkIn";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -206,6 +207,11 @@ const page = async ({ params }: PageProps) => {
         description={servicesData.subtitle}
         items={servicesData.items}
       />
+      {slug === "web-design-and-development-v2" && (
+        <section className="bg-black  pb-[50px]   pt-[50px] text-white lg:pb-[200px] lg:pt-[140px]">
+          <WorkIn />
+        </section>
+      )}
       <ProcessSlider data={service.sixthSection} />
       <BECS data={service.seventhSection} />
       <BlackInfoGrid
@@ -215,12 +221,13 @@ const page = async ({ params }: PageProps) => {
         bgcolor="bg-black"
         maxchwidth={50}
         colcount={4}
+        page="service"
       />
       {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
       <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
         <ButtonSlider data={service.tenthSection} />
       </section>
-      <WhyChoose data={whyChooseData} />
+      <WhyChoose data={whyChooseData} page="service" />
       {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
       )} */}
@@ -229,6 +236,7 @@ const page = async ({ params }: PageProps) => {
         data={testimonials.testimonialSection}
         bottomText={false}
         reviews={false}
+        page="service"
       />
       <GetInTouch
         data={Cta}

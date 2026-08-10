@@ -13,9 +13,10 @@ interface WhyChooseData {
     value: string;
     label: string;
   }[];
+
 }
 
-const WhyChoose = ({ data }: { data: WhyChooseData }) => {
+const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
   return (
     <section className="py-120 bg-[#f6f6f6]">
       <div className="container">
@@ -28,11 +29,11 @@ const WhyChoose = ({ data }: { data: WhyChooseData }) => {
                   whileInView="show"
                   variants={moveUp(0)}
                   viewport={{ once: true }}
-                  className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
+                  className={`${page === "service" ? "text-18" : "text-30"} uppercase leading-[1] tracking-[-0.025em] text-muted`}
                 >
                   {data.tag}
                 </motion.h3>
-                <div className="h-5 w-5 bg-primary"></div>
+                <div className={`${page === "service" ? "h-4 w-4" : "h-5 w-5"} bg-primary`}></div>
               </div>
               <motion.h2
                 initial="hidden"

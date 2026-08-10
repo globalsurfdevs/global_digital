@@ -44,6 +44,7 @@ export interface IndustryItem {
     fourthSection: {
         title: string;
         subTitle: string;
+        description: string;
         items: {
             _id: string;
             title: string;

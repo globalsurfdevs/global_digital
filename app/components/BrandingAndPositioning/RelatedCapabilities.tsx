@@ -22,11 +22,11 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
               whileInView="show"
               variants={moveUp(0)}
               viewport={{ once: true }}
-              className="text-30 uppercase leading-[1] tracking-[-0.025em]  text-muted"
+              className="text-18 uppercase leading-[1] tracking-[-0.025em]  text-muted"
             >
               {data.tag}
             </motion.h3>
-            <div className="h-5 w-5 bg-primary"></div>
+            <div className="h-4 w-4 bg-primary"></div>
           </div>
           <motion.h2
             initial="hidden"

@@ -22,6 +22,7 @@ interface FrameworkSectionProps {
   maxchwidth?: number;
   data: FrameworkItem[];
   subTitle: string;
+  page?: string;
 }
 
 const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
@@ -33,6 +34,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
   colcount,
   maxchwidth,
   subTitle,
+  page,
 }) => {
   const [width, setWidth] = useState(0);
 
@@ -59,11 +61,12 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
       <div className="container mx-auto py-4">
         <div className="pd-cus flex flex-col pb-4 pt-8 xl:pb-6 xl:pt-12 xxl:pb-60 xxl:pt-[120px]">
           <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h2 className="text-30 uppercase leading-[1.5] text-[#A3A3A3]">
+            <h2 className={` ${page === "service" ? "text-18" : "text-30"} uppercase leading-[1.5] text-[#A3A3A3]`}>
               {title}
             </h2>
-            <div className="h-5 w-5 bg-primary"></div>
+            <div className={`${page === "service" ? "h-4 w-4" : "h-5 w-5"} bg-primary`}></div>
           </div>
+          <div className="grid grid-cols-1 xl:justify-between xl:grid-cols-2">
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -85,14 +88,14 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                   </h2>
                 </Link>
               )}
-              {description && (
+              {/* {description && (
                 <div>
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
                 </div>
-              )}
-              {!description && (
+              )} */}
+              
                 <div style={{ maxWidth: `${maxchwidth}ch` }}>
                   <h2
                     className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 pb-6 lg:pb-[58px]`}
@@ -100,8 +103,32 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                     {subTitle}
                   </h2>
                 </div>
-              )}
+              
             </motion.div>
+          </div>
+          {description && <div className="">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
+            >
+              
+                <div className="flex xl:justify-end">
+                  <p className="pb-6 text-18 leading-[26px] text-[#A3A3A3] lg:pb-[58px] font-normal fnt-lexend  xl:max-w-[50ch] 2xl:max-w-[60ch]">
+                    {description}
+                  </p>
+                </div>
+              
+            </motion.div>
+          </div>}
           </div>
           <motion.div
             initial="hidden"
@@ -120,14 +147,12 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
               {rows.map((row, rowIndex) => (
                 <div
                   key={rowIndex}
-                  className={`border-t ${
-                    bgcolor === "bg-black" ? "border-[#77787B]" : "border-black"
-                  }`}
+                  className={`border-t ${bgcolor === "bg-black" ? "border-[#77787B]" : "border-black"
+                    }`}
                 >
                   <div
-                    className={`grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-${
-                      colcount || 4
-                    }`}
+                    className={`grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-${colcount || 4
+                      }`}
                   >
                     {row.map((framework) => (
                       <div
@@ -155,11 +180,10 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                         <div className="pr-6 xl:pr-60">
                           <div className="relative w-fit text-2xl">
                             <h3
-                              className={`${
-                                bgcolor === "bg-black"
+                              className={`${bgcolor === "bg-black"
                                   ? "text-white"
                                   : "text-black"
-                              } text-28 pb-3 leading-[1.214285714285714] lg:pb-5`}
+                                } text-28 pb-3 leading-[1.214285714285714] lg:pb-5`}
                               dangerouslySetInnerHTML={{
                                 __html: framework.title,
                               }}
