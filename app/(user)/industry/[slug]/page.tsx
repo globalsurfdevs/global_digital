@@ -14,6 +14,8 @@ import { getAllIndustry, getIndustry } from "@/app/lib/industry.service";
 import { IndustryItem } from "./type";
 import { Metadata } from "next";
 import WhoWeWork from "@/app/components/BrandingAndPositioning/WhoWeWork";
+import HowWeDo from "@/app/components/EngineeringInfrastructure/HowWeDo";
+import { serviceData } from "@/app/components/EngineeringInfrastructure/data";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -26,51 +28,51 @@ interface PageProps {
 }
 
 export async function generateMetadata({
-  params,
+    params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const industry: IndustryItem | null = await getIndustry(slug);
+    const { slug } = await params;
+    const industry: IndustryItem | null = await getIndustry(slug);
 
-  if (!industry) {
+    if (!industry) {
+        return {
+            title: "Not Found",
+            description: "",
+            alternates: { canonical: "https://www.globalsurf.ae/" },
+        };
+    }
+
+    const seo = industry.seo;
+    const canonicalUrl = `https://www.globalsurf.ae/industry/${industry.slug}`;
+
     return {
-      title: "Not Found",
-      description: "",
-      alternates: { canonical: "https://www.globalsurf.ae/" },
+        title: seo?.metaTitle ?? industry.name,
+        description: seo?.metaDescription ?? "",
+        robots: {
+            index: false,
+            follow: false,
+            nocache: true,
+            googleBot: {
+                index: false,
+                follow: false,
+            },
+        },
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        openGraph: {
+            title: seo?.ogTitle ?? seo?.metaTitle ?? industry.name,
+            description: seo?.ogDescription ?? seo?.metaDescription ?? "",
+            url: canonicalUrl,
+            images: seo?.ogImage ? [{ url: seo.ogImage }] : undefined,
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: seo?.twitterTitle ?? seo?.metaTitle ?? industry.name,
+            description: seo?.twitterDescription ?? seo?.metaDescription ?? "",
+            images: seo?.twitterImage ? [seo.twitterImage] : undefined,
+        },
     };
-  }
-
-  const seo = industry.seo;
-  const canonicalUrl = `https://www.globalsurf.ae/industry/${industry.slug}`;
-
-  return {
-    title: seo?.metaTitle ?? industry.name,
-    description: seo?.metaDescription ?? "",
-    robots: {
-      index: false,
-      follow: false,
-      nocache: true,
-      googleBot: {
-        index: false,
-        follow: false,
-      },
-    },
-    alternates: {
-      canonical: canonicalUrl,
-    },
-    openGraph: {
-      title: seo?.ogTitle ?? seo?.metaTitle ?? industry.name,
-      description: seo?.ogDescription ?? seo?.metaDescription ?? "",
-      url: canonicalUrl,
-      images: seo?.ogImage ? [{ url: seo.ogImage }] : undefined,
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: seo?.twitterTitle ?? seo?.metaTitle ?? industry.name,
-      description: seo?.twitterDescription ?? seo?.metaDescription ?? "",
-      images: seo?.twitterImage ? [seo.twitterImage] : undefined,
-    },
-  };
 }
 
 
@@ -116,20 +118,75 @@ const page = async ({ params }: PageProps) => {
     //   })),
     // };
 
-    const whyChooseData = {
-        tag: industryData?.fifthSection?.title,
-        title: industryData?.fifthSection?.subTitle,
-        description: industryData?.fifthSection?.description,
+    const howWeDo = {
+        subTitle:
+            industryData?.fifthSection?.subTitle,
+        title: industryData?.fifthSection?.title,
+        description:
+            industryData?.fifthSection?.description,
         items: (industryData?.fifthSection?.items || []).map((item, index) => ({
+            ...item,
+        })),
+    };
+        // items: [
+        //     {
+        //         _id: "1",
+        //         title: "Search visibility for supplier discovery",
+        //         description:
+        //             "Most B2B buying journeys begin with a capability-specific search. Procurement teams look for manufacturers based on products, certifications, production expertise, and location. Ranking for these searches requires technical SEO built around the terminology and buying signals that manufacturing buyers actually use.",
+        //         image: "assets/icons/how-we-do/i-1.svg",
+        //         imageAlt: "Search visibility icon",
+        //     },
+        //     {
+        //         _id: "2",
+        //         title: "Technical content that builds supplier credibility",
+        //         description:
+        //             "Being found is only the first step. Buyers also need evidence that you can meet their requirements. Technical content covering certifications, manufacturing processes, production capacity, quality standards, export experience, and project case studies helps establish credibility before the first enquiry.",
+        //         image: "assets/icons/how-we-do/i-2.svg",
+        //         imageAlt: "Technical content icon",
+        //     },
+        //     {
+        //         _id: "3",
+        //         title: "Digital engagement with decision makers",
+        //         description:
+        //             "Procurement managers and distribution partners continue their research across professional channels such as LinkedIn. Consistent visibility through industry content, targeted campaigns, and thought leadership keeps your business in front of decision makers throughout lengthy B2B buying cycles.",
+        //         image: "assets/icons/how-we-do/i-3.svg",
+        //         imageAlt: "Digital engagement icon",
+        //     },
+        //     {
+        //         _id: "4",
+        //         title: "Export market visibility",
+        //         description:
+        //             "For manufacturers serving regional and international markets, digital visibility must extend beyond the UAE. Multilingual content, country specific search optimisation, and information addressing logistics, compliance, and export capability help attract qualified buyers from target markets across the GCC and beyond.",
+        //         image: "assets/icons/how-we-do/i-4.svg",
+        //         imageAlt: "Export market visibility icon",
+        //     },
+        // ],
+
+    const whyChooseData = {
+        tag: industryData?.sixthSection?.title,
+        title: industryData?.sixthSection?.subTitle,
+        description: industryData?.sixthSection?.description,
+        items: (industryData?.sixthSection?.items || []).map((item, index) => ({
             id: index + 1,
             value: item?.number,
             label: item?.value,
         })),
     };
 
+    const whoWeWorkData = {
+        tag: industryData?.seventhSection?.title,
+        title: industryData?.seventhSection?.subTitle,
+        items: (industryData?.seventhSection?.items || []).map((item, index) => ({
+            id: index + 1,
+            label: item?.title,
+            icon: item?.image,
+        })),
+    };
+
     const industryExperienceResultsData = {
-        title: industryData?.sixthSection?.title,
-        items: (industryData?.sixthSection?.items || []).map((item) => ({
+        title: industryData?.eighthSection?.title,
+        items: (industryData?.eighthSection?.items || []).map((item) => ({
             id: item?._id, // or String(item.id)
             topTitle: item?.company,
             stat: item?.number,
@@ -141,13 +198,13 @@ const page = async ({ params }: PageProps) => {
     };
 
     const industriesData = {
-        title: industryData?.seventhSection?.title,
-        subTitle: industryData?.seventhSection?.subTitle,
+        title: industryData?.ninethSection?.title,
+        subTitle: industryData?.ninethSection?.subTitle,
         items: allIndustryData.map((item) => ({
             _id: item?._id,
             title: item?.name,
-            icon: item?.seventhSection?.logo,
-            iconAlt: item?.seventhSection?.logoAlt,
+            icon: item?.ninethSection?.logo,
+            iconAlt: item?.ninethSection?.logoAlt,
             slug: item?.slug,
         })),
     };
@@ -178,6 +235,7 @@ const page = async ({ params }: PageProps) => {
             description: item?.answer,
         })),
     ];
+
 
     return (
         <div>
@@ -237,8 +295,9 @@ const page = async ({ params }: PageProps) => {
       <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
         <ButtonSlider data={industryData.tenthSection} />
       </section> */}
+            <HowWeDo data={howWeDo} />
             {whyChooseData.items.length > 0 && <WhyChoose data={whyChooseData} />}
-            <WhoWeWork/>
+            <WhoWeWork data={whoWeWorkData} />
             {industryExperienceResultsData.items.length > 0 && (
                 <ExperienceResult data={industryExperienceResultsData} />
             )}

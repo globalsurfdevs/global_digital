@@ -15,39 +15,39 @@ interface WhoWeWorkData {
     }[];
 }
 
-export const data: WhoWeWorkData = {
-    tag: "Who we work",
-    title: "Who we work with in manufacturing",
-    items: [
-        {
-            id: 1,
-            label: "UAE residential and commercial property developers",
-            icon: "/images/industry/who_we_work_1.svg",
-        },
-        {
-            id: 2,
-            label: "Off-plan developers launching new projects",
-            icon: "/images/industry/who_we_work_2.svg",
-        },
-        {
-            id: 3,
-            label: "Master developers managing phased developments",
-            icon: "/images/industry/who_we_work_3.svg",
-        },
-        {
-            id: 4,
-            label: "Real estate groups attracting global investors",
-            icon: "/images/industry/who_we_work_4.svg",
-        },
-        {
-            id: 5,
-            label: "Mixed-use developers promoting integrated projects",
-            icon: "/images/industry/who_we_work_5.svg",
-        },
-    ],
-};
+// export const data: WhoWeWorkData = {
+//     tag: "Who we work",
+//     title: "Who we work with in manufacturing",
+//     items: [
+//         {
+//             id: 1,
+//             label: "UAE residential and commercial property developers",
+//             icon: "/images/industry/who_we_work_1.svg",
+//         },
+//         {
+//             id: 2,
+//             label: "Off-plan developers launching new projects",
+//             icon: "/images/industry/who_we_work_2.svg",
+//         },
+//         {
+//             id: 3,
+//             label: "Master developers managing phased developments",
+//             icon: "/images/industry/who_we_work_3.svg",
+//         },
+//         {
+//             id: 4,
+//             label: "Real estate groups attracting global investors",
+//             icon: "/images/industry/who_we_work_4.svg",
+//         },
+//         {
+//             id: 5,
+//             label: "Mixed-use developers promoting integrated projects",
+//             icon: "/images/industry/who_we_work_5.svg",
+//         },
+//     ],
+// };
 
-const WhoWeWork = () => {
+const WhoWeWork = ({ data }: { data: WhoWeWorkData }) => {
     return (
         <section className="py-120">
             <div className="container">
@@ -69,11 +69,11 @@ const WhoWeWork = () => {
                     whileInView="show"
                     variants={moveUp(0)}
                     viewport={{ once: true }}
-                    className="title-60 mb-8 max-w-[20ch] tracking-[-0.025em] md:mb-10 xl:mb-14"
+                    className="title-60 mb-8 max-w-[20ch] tracking-[-0.025em] md:mb-[22px]"
                     dangerouslySetInnerHTML={{ __html: data.title }}
                 />
 
-                <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-x-[30px] gap-y-[30px]  md:gap-y-[60px] sm:grid-cols-2 lg:grid-cols-3">
                     {data.items.map((item, index) => (
                         <motion.div
                             key={item.id}
@@ -82,13 +82,13 @@ const WhoWeWork = () => {
                             variants={moveUp(index * 0.1)}
                             viewport={{ once: true }}
                         >
-                            <div className="mb-4 h-[80px] w-[80px] rounded-lg border border-primary/30 p-3">
+                            <div className="relative mb-[40px] h-[80px] w-[80px] rounded-lg border border-[#E63E31]/12 bg-[#E63E31]/5 py-[15px] px-[12px]">
                                 <div className="relative h-full w-full">
                                     <Image src={item.icon} alt={item.label} fill className="object-contain" />
                                 </div>
                             </div>
-                            <div className="border-t border-black/20 pt-3">
-                                <p className="text-14 md:text-28 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                            <div className="border-t border-black/20 pt-[26px]">
+                                <p className="text-28 leading-[1.2142] tracking-[-0.025em]">
                                     {toSentenceCase(item.label)}
                                 </p>
                             </div>
