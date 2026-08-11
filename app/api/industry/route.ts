@@ -40,25 +40,35 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ data: item });
         }
 
-        // --- Otherwise, return the paginated list ---
-        const page = Number(searchParams.get("page")) || 1;
-        const limit = Number(searchParams.get("limit")) || 10;
-        const skip = (page - 1) * limit;
-
         const doc = await Industries.findOne({}, { items: 1 });
         const allItems = doc?.items ?? [];
 
-        const totalItems = allItems.length;
+        const mappedItems = allItems.map((item: any) => ({
+            _id: item._id,
+            name: item.name,
+            slug: item.slug,
+            createdAt: item.createdAt,
+        }));
+
+        // --- No page param: return everything, unpaginated ---
+        const pageParam = searchParams.get("page");
+        if (!pageParam) {
+            return NextResponse.json({
+                data: mappedItems,
+                totalPages: 1,
+                totalItems: mappedItems.length,
+            });
+        }
+
+        // --- Otherwise, return the paginated list ---
+        const page = Number(pageParam) || 1;
+        const limit = Number(searchParams.get("limit")) || 10;
+        const skip = (page - 1) * limit;
+
+        const totalItems = mappedItems.length;
         const totalPages = Math.max(Math.ceil(totalItems / limit), 1);
 
-        const paginatedItems = allItems
-            .slice(skip, skip + limit)
-            .map((item: any) => ({
-                _id: item._id,
-                name: item.name,
-                slug: item.slug,
-                createdAt: item.createdAt,
-            }));
+        const paginatedItems = mappedItems.slice(skip, skip + limit);
 
         return NextResponse.json({
             data: paginatedItems,

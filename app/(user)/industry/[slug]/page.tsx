@@ -321,7 +321,7 @@ const page = async ({ params }: PageProps) => {
                 />
             )}
             {Faq.length > 0 && (
-                <FAQ data={Faq} initialCount={5} defActive="2" fullSpace={true} />
+                <FAQ data={Faq} initialCount={3} defActive="2" fullSpace={true} />
             )}
         </div>
     );
