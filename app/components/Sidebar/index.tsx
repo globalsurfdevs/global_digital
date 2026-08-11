@@ -9,7 +9,7 @@ import ClickOutside from "@/app/components/ClickOutside";
 import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { BsPerson, BsPersonVcard } from "react-icons/bs";
 import { assets } from "@/public/assets/assets";
-import { GiNotebook } from "react-icons/gi";
+import { GiLeadPipe, GiNotebook } from "react-icons/gi";
 import { MdManageHistory, MdOutlinePanTool, MdOutlineWork } from "react-icons/md";
 import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
 import { CreativeCommons, Settings2 } from "lucide-react";
@@ -76,6 +76,14 @@ const menuGroups = [
         ),
         label: "Enquiries",
         route: "/admin/enquiry",
+      },
+      {
+        icon: (
+          <GiLeadPipe/>
+
+        ),
+        label: "Leads",
+        route: "/admin/lead",
       },
       {
         icon: (
@@ -420,7 +428,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
 
         <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
           {/* <!-- Sidebar Menu --> */}
-          <nav className="mt-5 px-4 py-4 lg:mt-9 lg:px-6">
+          <nav className="px-4 lg:px-6">
             {visibleMenuGroups.map((group, groupIndex) => (
               <div key={groupIndex}>
                 <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">

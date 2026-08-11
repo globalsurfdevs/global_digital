@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
-  console.log(data)
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerLeft, setContainerLeft] = useState(0);
   useEffect(() => {
