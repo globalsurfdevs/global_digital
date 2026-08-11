@@ -156,7 +156,7 @@ const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
                     {/* <span className="text-28 font-normal text-primary">
                       {i < 10 ? `0${i + 1}` : i + 1}
                     </span> */}
-                    <Image src={item.image} alt={item.imageAlt} width={60} height={60} className="object-contain w-6 h-6 xl:h-10 xl:w-10 xxl:h-[60px] xxl:w-[60px]" />
+                    <Image src={item.image} alt={item.imageAlt} width={100} height={100} className="object-contain w-6 h-6 xl:h-10 xl:w-10 xxl:h-[60px] xxl:w-[60px]" />
                   </div>
                   <h3 className="text-28 mb-4 max-w-[18ch] leading-[1.2142] tracking-[-0.025em]">
                     {item.title}

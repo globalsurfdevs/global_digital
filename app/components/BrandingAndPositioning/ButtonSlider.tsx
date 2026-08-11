@@ -8,8 +8,10 @@ import Image from "next/image";
 import { ServiceItem } from "@/app/(user)/[slug]/type";
 import { moveUp } from "../animations/motionVariants";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
+  console.log(data)
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerLeft, setContainerLeft] = useState(0);
   useEffect(() => {
@@ -78,9 +80,9 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
               },
             }}
           >
-            {data.serviceIndustries.map((item, index) => (
-              <SwiperSlide key={index} className="!w-auto">
-                <button className="cursor-grab flex items-center gap-[14px] whitespace-nowrap rounded-full border  border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px]">
+            {data.serviceIndustries.map((item, index) => {
+              const content = (
+                <button className={`${item.page ? "cursor-pointer" : "cursor-default"} flex items-center gap-[14px] whitespace-nowrap rounded-full border border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px]`}>
                   <Image
                     src={item.image}
                     alt={item.imageAlt}
@@ -92,8 +94,18 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
                     {item.title}
                   </span>
                 </button>
-              </SwiperSlide>
-            ))}
+              );
+
+              return (
+                <SwiperSlide key={index} className="!w-auto">
+                  {item.page ? (
+                    <Link href={`/industry/${item.page}`}>{content}</Link>
+                  ) : (
+                    content
+                  )}
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </motion.div>
       </div>

@@ -104,6 +104,7 @@ export interface ServiceItem {
             image: string;
             imageAlt: string;
             title: string;
+            page:string | null;
         }[];
     };
 
