@@ -11,17 +11,30 @@ type ServiceIndustryItem = {
   image: string;
   imageAlt: string;
   title: string;
+  page?: string;      // linked page's _id
+  pageLink?: string;  // linked page's slug, saved for convenience
+};
+
+// Adjust the shape here if your /api/page response differs
+type PageListItem = {
+  _id: string;
+  title: string; // change to `name` if that's what your Page model uses
+  slug: string;
+  name:string;
 };
 
 const AdminServiceIndustryList = () => {
   const [industries, setIndustries] = useState<ServiceIndustryItem[]>([]);
   const [refetch, setRefetch] = useState(false);
 
+  const [pages, setPages] = useState<PageListItem[]>([]);
+
   const [showModal, setShowModal] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [image, setImage] = useState("");
   const [imageAlt, setImageAlt] = useState("");
   const [title, setTitle] = useState("");
+  const [pageId, setPageId] = useState("");
   const [saving, setSaving] = useState(false);
 
   const resetForm = () => {
@@ -29,6 +42,7 @@ const AdminServiceIndustryList = () => {
     setImage("");
     setImageAlt("");
     setTitle("");
+    setPageId("");
   };
 
   useEffect(() => {
@@ -46,6 +60,22 @@ const AdminServiceIndustryList = () => {
     fetchIndustries();
   }, [refetch]);
 
+  // Fetch pages once, for the linked-page selector
+  useEffect(() => {
+    const fetchPages = async () => {
+      try {
+        const response = await fetch(`/api/industry`); // adjust endpoint if needed
+        if (response.ok) {
+          const data = await response.json();
+          setPages(data.data ?? data);
+        }
+      } catch (error) {
+        console.error("Error fetching pages:", error);
+      }
+    };
+    fetchPages();
+  }, []);
+
   const openCreateModal = () => {
     resetForm();
     setShowModal(true);
@@ -56,6 +86,7 @@ const AdminServiceIndustryList = () => {
     setImage(item.image);
     setImageAlt(item.imageAlt);
     setTitle(item.title);
+    setPageId(item.page ?? "");
     setShowModal(true);
   };
 
@@ -63,6 +94,8 @@ const AdminServiceIndustryList = () => {
     if (!image.trim()) return toast.error("Image is required");
     if (!imageAlt.trim()) return toast.error("Alt tag is required");
     if (!title.trim()) return toast.error("Title is required");
+
+    const selectedPage = pages.find((p) => p._id === pageId);
 
     setSaving(true);
     try {
@@ -74,7 +107,13 @@ const AdminServiceIndustryList = () => {
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image, imageAlt, title }),
+        body: JSON.stringify({
+          image,
+          imageAlt,
+          title,
+          page: pageId || null,
+          // pageLink: selectedPage?.slug ?? null,
+        }),
       });
 
       const data = await response.json();
@@ -231,6 +270,27 @@ const AdminServiceIndustryList = () => {
                     placeholder="e.g. Healthcare"
                     className="rounded border px-3 py-2"
                   />
+                </div>
+
+                <div className="flex flex-col gap-2 text-left">
+                  <label className="text-sm font-semibold text-gray-600">
+                    Linked Page
+                  </label>
+                  <select
+                    value={pageId}
+                    onChange={(e) => setPageId(e.target.value)}
+                    className="rounded border px-3 py-2"
+                  >
+                    <option value="">— No page —</option>
+                    {pages.map((p) => (
+                      <option key={p._id} value={p._id}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                  <p className="text-xs text-gray-500">
+                    Choose which page this industry should link to.
+                  </p>
                 </div>
 
                 <div className="gap-2 sm:flex sm:flex-row-reverse">

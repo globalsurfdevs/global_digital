@@ -19,7 +19,7 @@ const WorkIn = ({ workSvgsData }:any) => {
         >
       <div className='container mx-auto px-4 py-4 !overflow-visible'>
         <div className='  flex flex-col gap-12 xl:gap-[90px] home-slide'>
-          <motion.h2  className='text-font65 leading-lh1p07'>Web Development Technology Stack </motion.h2>
+          <motion.h2  className='text-font65 leading-lh1p07'>Web development technology stack </motion.h2>
           <WorkSwiper workSvgsData={workSvgsData} />
         </div>
         </div>

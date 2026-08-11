@@ -37,8 +37,12 @@ import {
   useMemo,
   useRef,
   useState,
+  useTransition,
   type ReactNode,
 } from "react";
+import { submitBooking } from "@/app/actions/submitBooking";
+
+
 
 /* ============================================================
    Shared design tokens (Tailwind arbitrary values reference these)
@@ -85,9 +89,8 @@ function useReveal<T extends HTMLElement>(delayMs = 0) {
   }, []);
 
   const style = { transitionDelay: `${delayMs}ms` };
-  const className = `transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${
-    revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-  }`;
+  const className = `transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+    }`;
 
   return { ref, className, style };
 }
@@ -172,15 +175,13 @@ function Kick({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-2.5 mb-5 ${
-        center ? "mx-auto" : ""
-      }`}
+      className={`inline-flex items-center gap-2.5 mb-5 ${center ? "mx-auto" : ""
+        }`}
     >
       <i className="w-2 h-2 bg-[#E63E31] block flex-none" />
       <span
-        className={`font-medium text-[11px] tracking-[0.12em] uppercase ${
-          dark ? "text-white/50" : "text-[#77787B]"
-        }`}
+        className={`font-medium text-[11px] tracking-[0.12em] uppercase ${dark ? "text-white/50" : "text-[#77787B]"
+          }`}
       >
         {label}
       </span>
@@ -195,6 +196,7 @@ function Btn({
   className = "",
   onClick,
   type,
+  disabled,
 }: {
   href?: string;
   children: ReactNode;
@@ -202,9 +204,10 @@ function Btn({
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit";
+  disabled?: boolean;
 }) {
   const base =
-    "group inline-flex items-center justify-center gap-2.5 font-medium text-sm px-7 py-4 rounded-[10px] border transition-colors duration-200 cursor-pointer";
+    "group inline-flex items-center justify-center gap-2.5 font-medium text-sm px-7 py-4 rounded-[10px] border transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
   const variants: Record<string, string> = {
     solid:
       "bg-[#E63E31] border-[#E63E31] text-white hover:bg-[#C9332A] hover:border-[#C9332A]",
@@ -229,9 +232,99 @@ function Btn({
     );
   }
   return (
-    <button type={type ?? "button"} onClick={onClick} className={classes}>
+    <button
+      type={type ?? "button"}
+      onClick={onClick}
+      disabled={disabled}
+      className={classes}
+    >
       {content}
     </button>
+  );
+}
+
+
+function Marquee({
+  children,
+  durationSec = 42,
+  reverse = false,
+  className = "",
+}: {
+  children: ReactNode;
+  durationSec?: number;
+  reverse?: boolean;
+  className?: string;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [dragging, setDragging] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const dragState = useRef<{ startX: number; startOffset: number } | null>(
+    null
+  );
+  const [manualOffset, setManualOffset] = useState(0);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    const track = trackRef.current;
+    if (!track) return;
+    (e.target as Element).setPointerCapture(e.pointerId);
+    dragState.current = { startX: e.clientX, startOffset: manualOffset };
+    setDragging(true);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging || !dragState.current) return;
+    const dx = e.clientX - dragState.current.startX;
+    setManualOffset(dragState.current.startOffset + dx);
+  };
+
+  const endDrag = () => {
+    setDragging(false);
+    dragState.current = null;
+  };
+
+  const isPaused = dragging || hovered;
+
+  return (
+    <div
+      className={`marquee-viewport  select-none ${className}`}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerLeave={endDrag}
+      onPointerCancel={endDrag}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      // style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
+    >
+      <style jsx>{`
+        @keyframes marqueeScroll {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+        .marquee-track {
+          animation-name: marqueeScroll;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+      `}</style>
+      <div
+        ref={trackRef}
+        className="marquee-track flex gap-3.5 w-max"
+        style={{
+          animationDuration: `${durationSec}s`,
+          animationDirection: reverse ? "reverse" : "normal",
+          animationPlayState: isPaused ? "paused" : "running",
+          transform: dragging ? `translateX(${manualOffset}px)` : undefined,
+          willChange: "transform",
+        }}
+      >
+        {children}
+      </div>
+    </div>
   );
 }
 
@@ -286,9 +379,8 @@ function Hero() {
               {offers.map((o, i) => (
                 <div
                   key={o.n}
-                  className={`pt-5 px-4 first:pl-0 first:border-l-0 ${
-                    i > 0 ? "border-l border-white/[0.16]" : ""
-                  }`}
+                  className={`pt-5 px-4 first:pl-0 first:border-l-0 ${i > 0 ? "border-l border-white/[0.16]" : ""
+                    }`}
                 >
                   <b className="block mb-2.5 font-semibold text-[9px] tracking-[0.12em] text-[#E63E31]">
                     {o.n}
@@ -329,7 +421,7 @@ function Hero() {
         <div className="relative overflow-hidden group">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-[150px] z-[2] bg-gradient-to-r from-black to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-[150px] z-[2] bg-gradient-to-l from-black to-transparent" />
-          <div className="flex gap-3.5 w-max animate-marquee group-hover:[animation-play-state:paused]">
+          <Marquee durationSec={42}>
             {loop.map((name, i) => (
               <div
                 key={`${name}-${i}`}
@@ -338,7 +430,7 @@ function Hero() {
                 {name}
               </div>
             ))}
-          </div>
+          </Marquee>
         </div>
       </Reveal>
     </section>
@@ -468,21 +560,18 @@ function WhoItsFor() {
               return (
                 <div
                   key={tag}
-                  className={`rounded-[18px] p-6 text-[15px] leading-[1.42] transition-all duration-300 border ${
-                    isUniversal
-                      ? "bg-[#0A0A0A] text-white border-transparent"
-                      : "bg-white border-black/[0.11] shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)]"
-                  } ${
-                    isHighlighted
+                  className={`rounded-[18px] p-6 text-[15px] leading-[1.42] transition-all duration-300 border ${isUniversal
+                    ? "bg-[#0A0A0A] text-white border-transparent"
+                    : "bg-white border-black/[0.11] shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)]"
+                    } ${isHighlighted
                       ? "border-[#E63E31] -translate-y-1 shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)]"
                       : ""
-                  }`}
+                    }`}
                 >
                   {quote}
                   <em
-                    className={`not-italic block mt-3 font-semibold text-[9px] tracking-[0.12em] uppercase ${
-                      isUniversal ? "text-white/40" : "text-[#A0A1A4]"
-                    }`}
+                    className={`not-italic block mt-3 font-semibold text-[9px] tracking-[0.12em] uppercase ${isUniversal ? "text-white/40" : "text-[#A0A1A4]"
+                      }`}
                   >
                     {tag}
                   </em>
@@ -585,11 +674,10 @@ function WhatYouGet() {
                 {g.items.map((item, idx) => (
                   <li
                     key={item.name}
-                    className={`text-[15px] py-3 flex gap-2.5 items-start ${
-                      idx !== g.items.length - 1
-                        ? "border-b border-black/[0.065]"
-                        : ""
-                    }`}
+                    className={`text-[15px] py-3 flex gap-2.5 items-start ${idx !== g.items.length - 1
+                      ? "border-b border-black/[0.065]"
+                      : ""
+                      }`}
                   >
                     <span className="w-1.5 h-1.5 rounded-sm bg-[#E63E31] flex-none mt-1.5" />
                     <span>
@@ -795,11 +883,10 @@ function Results() {
                   role="tab"
                   aria-selected={tab === i}
                   onClick={() => setTab(i)}
-                  className={`font-medium text-[12.5px] px-5 py-2.5 rounded-full whitespace-nowrap transition-colors duration-200 ${
-                    tab === i
-                      ? "bg-[#0A0A0A] text-white"
-                      : "text-[#77787B] hover:text-[#0A0A0A]"
-                  }`}
+                  className={`font-medium text-[12.5px] px-5 py-2.5 rounded-full whitespace-nowrap transition-colors duration-200 ${tab === i
+                    ? "bg-[#0A0A0A] text-white"
+                    : "text-[#77787B] hover:text-[#0A0A0A]"
+                    }`}
                 >
                   {label}
                 </button>
@@ -922,6 +1009,7 @@ function ToolRow({
           animationDirection: reverse ? "reverse" : "normal",
         }}
       >
+        <Marquee durationSec={durationSec} reverse={reverse}>
         {loop.map((name, i) => (
           <span
             key={`${name}-${i}`}
@@ -931,6 +1019,7 @@ function ToolRow({
             {name}
           </span>
         ))}
+        </Marquee>
       </div>
     </div>
   );
@@ -1212,9 +1301,8 @@ function Testimonials() {
                 ★★★★★
               </div>
               <blockquote
-                className={`font-normal text-lg sm:text-xl lg:text-2xl leading-[1.45] min-h-[112px] transition-opacity duration-300 ${
-                  visible ? "opacity-100" : "opacity-0"
-                }`}
+                className={`font-normal text-lg sm:text-xl lg:text-2xl leading-[1.45] min-h-[112px] transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"
+                  }`}
               >
                 “{t.quote}”
               </blockquote>
@@ -1272,9 +1360,8 @@ function Testimonials() {
               type="button"
               aria-label={`Testimonial ${i + 1}`}
               onClick={() => go(i)}
-              className={`h-[7px] rounded-full transition-all duration-200 ${
-                i === index ? "w-5 bg-[#E63E31]" : "w-[7px] bg-[#D3D4D5]"
-              }`}
+              className={`h-[7px] rounded-full transition-all duration-200 ${i === index ? "w-5 bg-[#E63E31]" : "w-[7px] bg-[#D3D4D5]"
+                }`}
             />
           ))}
         </Reveal>
@@ -1349,14 +1436,12 @@ function FaqColumn({
             >
               {item.q}
               <span
-                className={`absolute right-1.5 top-1/2 -translate-y-1/2 w-[13px] h-[1.5px] bg-[#E63E31] transition-transform duration-300 ${
-                  isOpen ? "rotate-0" : ""
-                }`}
+                className={`absolute right-1.5 top-1/2 -translate-y-1/2 w-[13px] h-[1.5px] bg-[#E63E31] transition-transform duration-300 ${isOpen ? "rotate-0" : ""
+                  }`}
               />
               <span
-                className={`absolute right-[11.7px] top-1/2 -translate-y-1/2 w-[1.5px] h-[13px] bg-[#E63E31] transition-all duration-300 ${
-                  isOpen ? "opacity-0 rotate-90" : "opacity-100"
-                }`}
+                className={`absolute right-[11.7px] top-1/2 -translate-y-1/2 w-[1.5px] h-[13px] bg-[#E63E31] transition-all duration-300 ${isOpen ? "opacity-0 rotate-90" : "opacity-100"
+                  }`}
               />
             </button>
             {isOpen && (
@@ -1407,18 +1492,109 @@ const SECTOR_OPTIONS = [
   "Something else",
 ];
 
+
+
+type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "sector", string>>;
+
+const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+// Accepts optional leading +, then 7–15 digits, allowing spaces/dashes/parens in between
+const PHONE_REGEX = /^\+?[0-9\s().-]{7,20}$/;
+
+function validateField(name: string, value: string): string | undefined {
+  const v = value.trim();
+
+  switch (name) {
+    case "name":
+      if (!v) return "Please enter your name.";
+      if (v.length < 2) return "Name looks too short.";
+      if (!NAME_REGEX.test(v)) return "Name can only contain letters.";
+      return undefined;
+
+    case "company":
+      if (!v) return "Please enter your company name.";
+      if (v.length < 2) return "Company name looks too short.";
+      return undefined;
+
+    case "email":
+      if (!v) return "Please enter your work email.";
+      if (!EMAIL_REGEX.test(v)) return "Enter a valid email address.";
+      return undefined;
+
+    case "phone":
+      // optional field — only validate format if something was typed
+      if (!v) return undefined;
+      if (!PHONE_REGEX.test(v)) return "Enter a valid phone number.";
+      return undefined;
+
+    case "sector":
+      if (!v) return "Please select a sector.";
+      return undefined;
+
+    default:
+      return undefined;
+  }
+}
+
 function FinalCta() {
   const [note, setNote] = useState("");
+  const [errors, setErrors] = useState<FormErrors>({});
   const formRef = useRef<HTMLFormElement>(null);
+  const [isPending, startTransition] = useTransition();
+
+  const runValidation = (form: HTMLFormElement): FormErrors => {
+    const data = new FormData(form);
+    const fields: (keyof FormErrors)[] = ["name", "company", "email", "phone", "sector"];
+    const nextErrors: FormErrors = {};
+
+    for (const field of fields) {
+      const value = (data.get(field) as string) ?? "";
+      const error = validateField(field, value);
+      if (error) nextErrors[field] = error;
+    }
+
+    return nextErrors;
+  };
+
+  const handleFieldBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    const error = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name } = e.target;
+    // clear the error for this field as soon as the user starts fixing it
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const valid = formRef.current?.checkValidity();
-    setNote(
-      valid
-        ? "Demo only. Connect this form to your CRM before launch."
-        : "Please complete the required fields."
-    );
+    const form = formRef.current;
+    if (!form) return;
+
+    const nextErrors = runValidation(form);
+    setErrors(nextErrors);
+
+    const hasErrors = Object.values(nextErrors).some(Boolean);
+    if (hasErrors) {
+      setNote("Please fix the highlighted fields.");
+      return;
+    }
+
+    setNote("");
+    const formData = new FormData(form);
+
+    startTransition(async () => {
+      const result = await submitBooking(formData);
+      setNote(result.message ?? (result.success ? "Thank you." : "Something went wrong."));
+      if (result.success) {
+        form.reset();
+        setErrors({});
+      }
+    });
   };
 
   return (
@@ -1445,24 +1621,51 @@ function FinalCta() {
               className="bg-white/[0.035] border border-white/[0.13] rounded-[18px] p-7 backdrop-blur-[6px]"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <Field label="Name" id="n" type="text" autoComplete="name" required />
+                <Field
+                  label="Name"
+                  id="n"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  error={errors.name}
+                  onBlur={handleFieldBlur}
+                  onChange={handleFieldChange}
+                />
                 <Field
                   label="Company"
                   id="c"
+                  name="company"
                   type="text"
                   autoComplete="organization"
                   required
+                  error={errors.company}
+                  onBlur={handleFieldBlur}
+                  onChange={handleFieldChange}
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
                 <Field
                   label="Work email"
                   id="e"
+                  name="email"
                   type="email"
                   autoComplete="email"
                   required
+                  error={errors.email}
+                  onBlur={handleFieldBlur}
+                  onChange={handleFieldChange}
                 />
-                <Field label="Phone" id="p" type="tel" autoComplete="tel" />
+                <Field
+                  label="Phone"
+                  id="p"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  error={errors.phone}
+                  onBlur={handleFieldBlur}
+                  onChange={handleFieldChange}
+                />
               </div>
 
               <div className="mb-3 mt-3">
@@ -1474,9 +1677,16 @@ function FinalCta() {
                 </label>
                 <select
                   id="s"
+                  name="sector"
                   required
                   defaultValue=""
-                  className="w-full bg-black/40 border border-white/[0.13] text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:border-[#E63E31] focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat"
+                  onBlur={handleFieldBlur}
+                  onChange={handleFieldChange}
+                  className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${
+                    errors.sector
+                      ? "border-[#E63E31]"
+                      : "border-white/[0.13] focus:border-[#E63E31]"
+                  }`}
                   style={{
                     backgroundImage:
                       "linear-gradient(45deg,transparent 50%,rgba(255,255,255,.4) 50%),linear-gradient(135deg,rgba(255,255,255,.4) 50%,transparent 50%)",
@@ -1490,10 +1700,13 @@ function FinalCta() {
                     <option key={opt}>{opt}</option>
                   ))}
                 </select>
+                {errors.sector && (
+                  <p className="text-[11px] text-[#E63E31] mt-1.5">{errors.sector}</p>
+                )}
               </div>
 
-              <Btn type="submit" className="w-full mt-2">
-                Book a 30 Minute Call
+              <Btn type="submit" className="w-full mt-2" disabled={isPending}>
+                {isPending ? "Sending..." : "Book a 30 Minute Call"}
               </Btn>
               <p className="text-[11.5px] text-[#E63E31] mt-3.5 text-center min-h-[16px]">
                 {note}
@@ -1509,15 +1722,23 @@ function FinalCta() {
 function Field({
   label,
   id,
+  name,
   type,
   autoComplete,
   required,
+  error,
+  onBlur,
+  onChange,
 }: {
   label: string;
   id: string;
+  name: string;
   type: string;
   autoComplete?: string;
   required?: boolean;
+  error?: string;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div>
@@ -1525,15 +1746,22 @@ function Field({
         htmlFor={id}
         className="block font-medium text-[9.5px] tracking-[0.12em] uppercase text-white/[0.42] mb-2"
       >
-        {label}
+        {label} {required && <span className="text-[#E63E31]">*</span>}
       </label>
       <input
         id={id}
+        name={name}
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="w-full bg-black/40 border border-white/[0.13] text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:border-[#E63E31] focus:bg-black/[0.62]"
+        onBlur={onBlur}
+        onChange={onChange}
+        aria-invalid={!!error}
+        className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
+          error ? "border-[#E63E31]" : "border-white/[0.13] focus:border-[#E63E31]"
+        }`}
       />
+      {error && <p className="text-[11px] text-[#E63E31] mt-1.5">{error}</p>}
     </div>
   );
 }
