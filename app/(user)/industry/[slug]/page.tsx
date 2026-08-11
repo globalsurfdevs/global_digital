@@ -100,6 +100,7 @@ const page = async ({ params }: PageProps) => {
     const whatYouGetData = {
         title: industryData?.fourthSection?.title,
         subTitle: industryData?.fourthSection?.subTitle,
+        description: industryData?.fourthSection?.description,
         data: (industryData?.fourthSection?.items || []).map((item, index) => ({
             id: index + 1,
             dec: item?.description,
@@ -285,6 +286,7 @@ const page = async ({ params }: PageProps) => {
                 <BlackInfoGrid
                     title={whatYouGetData.title}
                     subTitle={whatYouGetData.subTitle}
+                    description={whatYouGetData.description}
                     data={whatYouGetData.data}
                     bgcolor="bg-black"
                     maxchwidth={50}
@@ -295,9 +297,9 @@ const page = async ({ params }: PageProps) => {
       <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
         <ButtonSlider data={industryData.tenthSection} />
       </section> */}
-            <HowWeDo data={howWeDo} />
+            {howWeDo.items.length > 0 && <HowWeDo data={howWeDo} />}
             {whyChooseData.items.length > 0 && <WhyChoose data={whyChooseData} />}
-            <WhoWeWork data={whoWeWorkData} />
+            {whoWeWorkData.items.length > 0 && <WhoWeWork data={whoWeWorkData} />}
             {industryExperienceResultsData.items.length > 0 && (
                 <ExperienceResult data={industryExperienceResultsData} />
             )}

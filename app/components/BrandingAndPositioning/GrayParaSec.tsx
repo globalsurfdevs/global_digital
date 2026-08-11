@@ -17,10 +17,10 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
             viewport={{ once: true }}
             className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12"
           >
-            <h3 className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted">
+            <h3 className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
               {data.title}
             </h3>
-            <div className="h-5 w-5 bg-primary"></div>
+            <div className="h-4 w-4 bg-primary"></div>
           </motion.div>
           <motion.h2
             variants={moveUp(0.1)}

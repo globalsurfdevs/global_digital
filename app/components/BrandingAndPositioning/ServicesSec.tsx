@@ -66,10 +66,10 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="text-30 leading-[1.5] text-muted uppercase"
+                className="text-18 leading-[1.5] text-muted uppercase flex items-center"
               >
                 {title}
-                <span className="ml-2 inline-block h-5 w-5  bg-primary" />
+                <span className="ml-2 inline-block h-4 w-4  bg-primary" />
               </motion.h3>
             </div>
             <motion.h2

@@ -29,6 +29,7 @@ import { data } from "@/app/data/llmWorksData";
 import { getTestimonials } from "@/app/lib/testimonials";
 import { ServiceItem } from "./type";
 import { Metadata } from "next";
+import WorkIn from "@/app/components/common/WorkIn";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -166,6 +167,107 @@ const page = async ({ params }: PageProps) => {
     })),
   ];
 
+const workSvgsData = [
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech1.svg",
+    //   alt: "React js",
+    //   text: "React js",
+    //   width: "26",
+    //   height: "26"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech2.svg",
+    //   alt: "icNext.json",
+    //   text: "Next.js",
+    //   width: "21",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech3.svg",
+    //   alt: "Angular.js",
+    //   text: "Angular.js",
+    //   width: "36",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech4.svg",
+    //   alt: "vue.js",
+    //   text: "vue.js",
+    //   width: "28",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech5.svg",
+    //   alt: "Python",
+    //   text: "Python",
+    //   width: "27",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech6.svg",
+    //   alt: "node.js",
+    //   text: "node.js",
+    //   width: "28",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech7.svg",
+    //   alt: "icon",
+    //   text: "php",
+    //   width: "28",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech8.svg",
+    //   alt: "icon",
+    //   text: "Laravel",
+    //   width: "28",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech9.svg",
+    //   alt: "icon",
+    //   text: "Mongo db",
+    //   width: "28",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech10.svg",
+    //   alt: "icon",
+    //   text: "mysql",
+    //   width: "28",
+    //   height: "28"
+    // },
+    // {
+    //   icon: "../assets/services/wdd-custom-web-development/tech11.svg",
+    //   alt: "icon",
+    //   text: "Strapi",
+    //   width: "28",
+    //   height: "28"
+    // },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech12.svg",
+      alt: "icon",
+      text: "WordPress",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech13.svg",
+      alt: "icon",
+      text: "Drupal",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech14.svg",
+      alt: "icon",
+      text: "Joomla",
+      width: "28",
+      height: "28"
+    }
+  ]
+
   return (
     <div>
       {/* <Script
@@ -206,6 +308,11 @@ const page = async ({ params }: PageProps) => {
         description={servicesData.subtitle}
         items={servicesData.items}
       />
+      {slug === "web-design-and-development-v2" && (
+        <section className="bg-black  pb-[50px]   pt-[50px] text-white lg:pb-[200px] lg:pt-[140px]">
+          <WorkIn workSvgsData={workSvgsData}/>
+        </section>
+      )}
       <ProcessSlider data={service.sixthSection} />
       <BECS data={service.seventhSection} />
       <BlackInfoGrid
@@ -215,12 +322,13 @@ const page = async ({ params }: PageProps) => {
         bgcolor="bg-black"
         maxchwidth={50}
         colcount={4}
+        page="service"
       />
       {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
       <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
         <ButtonSlider data={service.tenthSection} />
       </section>
-      <WhyChoose data={whyChooseData} />
+      <WhyChoose data={whyChooseData} page="service" />
       {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
       )} */}
@@ -229,6 +337,7 @@ const page = async ({ params }: PageProps) => {
         data={testimonials.testimonialSection}
         bottomText={false}
         reviews={false}
+        page="service"
       />
       <GetInTouch
         data={Cta}
