@@ -16,20 +16,49 @@ type Props = {
     buttonLink: string;
     stats: StatItem[];
 };
-
+const ArrowIcon = ({ clipId }: { clipId: string }) => (
+    <svg
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="group-hover:scale-105"
+    >
+        <g clipPath={`url(#${clipId})`}>
+            <path
+                d="M8.88346 1.26172L1.13281 8.8624"
+                stroke="white"
+                strokeWidth="2"
+                strokeMiterlimit="10"
+            />
+            <path
+                d="M1.13281 1.26172H8.88346V8.71245"
+                stroke="white"
+                strokeWidth="2"
+                strokeMiterlimit="10"
+            />
+        </g>
+        <defs>
+            <clipPath id={clipId}>
+                <rect width="10" height="10" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
 const CredibilityStats = ({ data }: { data: Props }) => {
     return (
-        <section className="py-16 md:py-20 xl:py-120 bg-black text-white overflow-hidden">
+        <section className="py-16 md:py-20 xl:py-[120px] bg-black text-white overflow-hidden">
             <div className="container">
-                <div className="flex flex-col gap-10 lg:flex-row lg:gap-20 xl:gap-32">
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-6 lg:gap-20 xl:gap-32">
                     {/* Left */}
-                    <div className="col-span-2">
+                    <div className="lg:col-span-3">
                         <motion.h2
                             initial="hidden"
                             whileInView="show"
                             variants={moveUp(0)}
                             viewport={{ once: true }}
-                            className="text-32 sm:text-40 xl:title-60 leading-[1.1]"
+                            className="title-60"
                         >
                             {data.title}
                         </motion.h2>
@@ -38,34 +67,26 @@ const CredibilityStats = ({ data }: { data: Props }) => {
                             whileInView="show"
                             variants={moveUp(0.1)}
                             viewport={{ once: true }}
-                            className="mt-4 text-16 text-white/70 md:mt-5"
+                            className="text-28 text-white mt-10 md:mt-[30px] xl:mt-[60px]"
                         >
                             {data.description}
                         </motion.p>
-                        <motion.a
-                            href={data.buttonLink}
-                            initial="hidden"
-                            whileInView="show"
-                            variants={moveUp(0.2)}
-                            viewport={{ once: true }}
-                            className="group mt-6 inline-flex items-center gap-3 rounded-full border border-primary/50 py-2.5 pl-5 pr-2.5 text-11 uppercase tracking-wide transition-colors duration-300 hover:border-primary md:mt-8"
+                        <button
+                            type="button"
+                            className="group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 mt-[40px] text-white transition duration-300 ease-in hover:shadow-lg"
                         >
-                            {data.buttonText}
-                            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                                <Image
-                                    src="/assets/icons/engineering-and-infrastructure/top-right-arrow-thick-primary.svg"
-                                    alt="arrow-right"
-                                    width={12}
-                                    height={12}
-                                    className="invert"
-                                />
+                            <span className="fnt-lexend uppercase duration-300 ease-in">
+                                Request a Free Audit
                             </span>
-                        </motion.a>
+                            <div className="bg-primary p-1">
+                                <ArrowIcon clipId="clip-book-call" />
+                            </div>
+                        </button>
                     </div>
 
                     {/* Right - Stats grid */}
-                    <div className="col-span-3">
-                        <div className="grid grid-cols-2 gap-x-8">
+                    <div className="lg:col-span-3">
+                        <div className="grid grid-cols-2 ">
                             {data.stats.map((stat, index) => (
                                 <motion.div
                                     key={stat._id}
@@ -73,15 +94,15 @@ const CredibilityStats = ({ data }: { data: Props }) => {
                                     whileInView="show"
                                     variants={moveUp(index * 0.08)}
                                     viewport={{ once: true }}
-                                    className={`pb-6 ${index < data.stats.length - 2
-                                            ? "border-b border-white/10"
-                                            : ""
+                                    className={`pb-[40px] ${index < data.stats.length - 2
+                                        ? "border-b border-[#77787B] "
+                                        : ""
                                         }`}
                                 >
-                                    <span className="block text-[40px] sm:text-[52px] xl:text-[64px] leading-none text-primary">
+                                    <span className="block text-60 text-primary">
                                         {stat.value}
                                     </span>
-                                    <p className="mt-2 text-11 uppercase tracking-wide text-white/70 xl:text-12">
+                                    <p className="mt-2 text-18 uppercase fnt-lexend text-white">
                                         {stat.label}
                                     </p>
                                 </motion.div>

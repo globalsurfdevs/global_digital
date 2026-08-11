@@ -13,7 +13,7 @@ const FeatureStrip = ({ data }: any) => {
                 viewport={{ once: true }}
                 className="container "
             >
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-white/15">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-0 xl:divide-x xl:divide-white/15">
                     {data?.items?.map((item: any, index: number) => (
                         <motion.div
                             key={item._id || index}
@@ -21,7 +21,7 @@ const FeatureStrip = ({ data }: any) => {
                             initial="hidden"
                             whileInView="show"
                             viewport={{ once: true }}
-                            className="flex flex-col gap-4 lg:px-[90px] lg:first:pl-0 lg:last:pr-0"
+                            className="flex flex-col gap-4 xl:px-[90px] xl:first:pl-0 xl:last:pr-0"
                         >
                             <span className="flex h-[60px] w-[60px] items-center justify-center rounded-[7px] border border-primary/30 bg-primary/20">
                                 <img

@@ -1,7 +1,17 @@
 import { assets } from "@/public/assets/assets";
+import jadFarah from "@/public/assets/testimonials/jadfarah.jpeg";
+import ecc_logo from "@/public/assets/testimonials/ecc_logo.svg";
+import heshamabdeen from "@/public/assets/testimonials/heshamabdeen.png";
+import logoone from "@/public/assets/logos/abt-gulfcryo.svg";
+import logotwo from "@/public/assets/logos/abt-prestige.svg";
+import logothree from "@/public/assets/testimonials/asgc.svg";
+import karim from "@/public/assets/testimonials/karim.jpeg";
+import dummy from "@/public/assets/testimonials/dummy-user.png";
+import educap from "@/public/assets/testimonials/educap.svg";
+import alissar from "@/public/assets/testimonials/alissar.jpeg";
 
 export const firstSection = {
-  image: "assets/images/engineering-and-infrastructure/banner.jpg",
+  image: "images/end-to-end-digitalmarketing/banner.jpg",
   imageAlt: "Engineering and Infrastructure",
   title: "End-to-end digital marketing built specifically for the built industry",
   description:
@@ -20,7 +30,7 @@ export const featureStrip = {
     {
       _id: "1",
       icon: assets.futureproofwebsites,
-      text: "Fast, secure, and future-proof websites",
+      text: "Fast, secure, and future-proof websites ",
     },
     {
       _id: "2",
@@ -42,7 +52,7 @@ export const featureStrip = {
 
 
 export const trustedBy = {
-  label: "Trusted by built leaders",
+  label: "Trusted by Built Environment leaders",
   logos: [
     { _id: "1", name: "Innovo", image: assets.innovodg, alt: "Innovo" },
     { _id: "2", name: "Sobha Constructions", image: assets.sobha, alt: "Sobha Constructions" },
@@ -55,7 +65,7 @@ export const trustedBy = {
 
 export const whatWeHearData = {
   title: "What we usually hear in the first meeting.",
-  description: "From Google rankings and AI search visibility to high-performing websites, social media & paid campaigns, content, and brand strategy, we help built environment businesses attract the right audience and turn digital attention into real business.",
+  description: "From Google rankings and AI search visibility to high-performing websites, social media & paid campaigns, content, and brand strategy, we help built environment businesses attract the right audience and turn digital attention into real business.",
   data: [
     {
       id: 1,
@@ -92,50 +102,58 @@ export const whatWeHearData = {
 
 export const industriesData = {
   title: "industries",
-  subTitle: "Built for the sectors we know the best.",
+  subTitle: "Built for the sectors we know the best. ",
   items: [
     {
       _id: "1",
       title: "Construction",
-      icon: "assets/images/branding-positioning/icons/construction.svg",
+      icon: assets.construction,
       iconAlt: "Construction",
-      slug: "construction",
+      slug: "",
     },
     {
       _id: "2",
       title: "Engineering & infrastructure",
-      icon: "assets/images/branding-positioning/icons/eng-ing.svg",
+      icon: assets.enginma,
       iconAlt: "Engineering & infrastructure",
-      slug: "engineering-infrastructure",
+      slug: "",
     },
     {
       _id: "3",
-      title: "Education",
-      icon: "assets/images/branding-positioning/icons/education.svg",
-      iconAlt: "Education",
-      slug: "education",
+      title: "Real estate & property dev",
+      icon: assets.realestate2,
+      iconAlt: "Real estate & property dev",
+      slug: "",
     },
     {
       _id: "4",
-      title: "Manufacturing",
-      icon: "assets/images/branding-positioning/icons/manufacturing.svg",
-      iconAlt: "Manufacturing",
-      slug: "manufacturing",
+      title: "Industrial",
+      icon: assets.industrial,
+      iconAlt: "Industrial",
+      slug: " ",
     },
+    {
+      _id: "5",
+      title: "Manufacturing",
+      icon: assets.manufact,
+      iconAlt: "Manufacturing",
+      slug: "",
+    },
+    
   ],
 };
 
 
 export const credibilityStats = {
-  title: "The numbers behind our credibility",
-  description: "Get a complete audit of your online visibility",
-  buttonText: "Request a free audit",
+  title: "The Numbers Behind Our Credibility",
+  description: "Get a Complete Audit of Your Online Visibility ",
+  buttonText: "Request a Free Audit",
   buttonLink: "/contact",
   stats: [
-    { _id: "1", value: "14", label: "Services, one senior team" },
-    { _id: "2", value: "2", label: "Weeks to baseline" },
+    { _id: "1", value: "14", label: "Services, One Senior Team" },
+    { _id: "2", value: "2", label: "Weeks to Baseline" },
     { _id: "3", value: "50+", label: "Experts" },
-    { _id: "4", value: "12+", label: "Years of experience" },
+    { _id: "4", value: "12+", label: "years of experience " },
   ],
 };
 
@@ -185,13 +203,69 @@ export const packageChecklist = {
   ],
 };
 
-export const ctaSection = {
-  titleRed: "engineering business",
-  title: "Let's build stronger foundations for your",
-  description:
-    "See how specialist digital marketing can drive real results for your engineering or infrastructure firm.",
-  buttonText: "Start a Conversation",
-  buttonLink: "/contact",
+export const Testimonials = {
+  title: "12 Years. 140 Clients. Zero unverified claims.",
+  topTitle: "Testimonials",
+  starText: "We hold our reporting to the same engineering standards as your projects, 100% documented, tested, and client-verified.",
+  bottomText: "",
+  description: "Don't just take our word for it. Here's what some of our clients have to say about working with us.",
+  items: [
+    {
+      image: karim,
+      imageAlt: "Karim El Shennawy",
+      name: "Karim El Shennawy",
+      designation: "Business Development Director",
+      message:
+        "“Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.”",
+      companyName: "ASGC",
+      companyLogo: logothree,
+      companyLogoAlt: "ASGC Group Logo",
+    },
+    {
+      image: alissar,
+      imageAlt: "Alissar Nasrallah",
+      name: "Alissar Nasrallah",
+      designation: "Regional Marcomms Manager",
+      message:
+        "“Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you'll find them next to you in critical moments.”",
+      companyName: "Gulf Cryo",
+      companyLogo: logoone,
+      companyLogoAlt: "Gulf Cryo Logo",
+    },
+    {
+      image: jadFarah,
+      imageAlt: "Jad Farah",
+      name: "Jad Farah",
+      designation: "Group Marketing Manager",
+      message:
+        "“Working with Global Surf was an exceptional experience. Their customer support was outstanding, making the entire process smooth and efficient. I highly recommend Global Surf for their expertise, dedication, and ability to bring a brand's digital presence to life.”",
+      companyName: "ECC LLC",
+      companyLogo: ecc_logo,
+      companyLogoAlt: "Engineering Contracting Company Logo",
+    },
+    {
+      image: heshamabdeen,
+      imageAlt: "Hesham Abdeen",
+      name: "Hesham Abdeen",
+      designation: "Head of Accreditation and Evaluations",
+      message:
+        "“Because of the way that Global Surf encourages collaboration, working with the team has been a pleasure. Their staff welcomes our input and fosters open communication, which has led to a website that reflects our brand and serves our particular demands. Global Surf offers a plethora of knowledge and creativity.”",
+      companyName: "Educap",
+      companyLogo: educap,
+      companyLogoAlt: "Educap Logo",
+    },
+    {
+      image: dummy,
+      imageAlt: "Omar M. Bin Dhaher Almheiri",
+      name: "Omar M. Bin Dhaher Almheiri",
+      designation: "President",
+      message:
+        "“We have very good relation and experience with your professional company Not to mention the extra care we get from your team We like this relationship to continue for the success of both of us”",
+      companyName: "Prestige",
+      companyLogo: logotwo,
+      companyLogoAlt: "Prestige Logo",
+    },
+  ],
 };
 
 export const faqSection = {
@@ -200,53 +274,69 @@ export const faqSection = {
     {
       _id: "1",
       question:
-        "What digital marketing services does GS Digital provide for engineering consultancies?",
+        "Why is this package a strong fit for the construction and built environment sector?",
       answer:
-        "GS Digital provides SEO, technical content marketing, LinkedIn marketing, website optimisation, lead generation strategies, and digital campaigns tailored specifically for engineering consultancies, contractors, and infrastructure businesses across the UAE and GCC.",
+        "Because your audience is not looking for generic marketing — they are looking for trust, technical clarity, and proof. The package is built around the realities of tenders, JV structures, procurement cycles, and senior stakeholder review, which makes the output more relevant to this market.",
     },
     {
       _id: "2",
-      question:
-        "How do engineering firms in the UAE generate leads through digital marketing?",
+      question: "What if we miss the targets?",
       answer:
-        "Engineering firms generate leads primarily through organic search visibility for capability-specific queries, LinkedIn presence targeting procurement directors and project decision-makers, and thought leadership content that surfaces during the research phase that precedes formal tender or RFP processes.",
+        "At the six-month KPI checkpoint, if we have not reached the targets we agreed together, we keep working at no extra cost for up to two months. Then we review the position and agree what happens next. No token discount. No excuses. Just real accountability.",
     },
     {
       _id: "3",
-      question:
-        "How does digital marketing support the tender and RFP process for engineering firms?",
+      question: "We get most of our work through referrals. Why do we need this?",
       answer:
-        "Digital marketing strengthens tender success by showcasing technical expertise, project experience, certifications, and case studies online. It helps procurement teams verify credibility and evaluate engineering firms before inviting them to bid.",
+        "Referrals may open the door, but your digital presence helps you win the opportunity. When prospects or procurement teams research your company, your website should reinforce their confidence. This package ensures your online presence supports the reputation you have already built.",
     },
     {
       _id: "4",
-      question:
-        "How long does it take to see results from digital marketing for an engineering firm?",
+      question: "Our last agency did not work out. Why is this different?",
       answer:
-        "While paid campaigns can generate enquiries quickly, SEO and content marketing typically begin delivering measurable improvements within 3–6 months, with stronger long-term growth achieved through consistent optimisation and content publishing.",
+        "A senior strategist reviews your account every month and keeps the work aligned with your business goals. Our approach is built around your sector, buyers and commercial priorities rather than generic marketing activity. If agreed targets are missed, we continue working at no extra cost for up to two months.",
     },
     {
       _id: "5",
-      question:
-        "What makes GS Digital different from other digital marketing agencies for engineering firms?",
+      question: "Who actually works on our account?",
       answer:
-        "GS Digital specialises in B2B engineering and infrastructure marketing. We understand technical buying journeys, tender-driven procurement, and the credibility signals engineering decision-makers look for, enabling us to build marketing strategies that generate qualified business opportunities.",
+        "A senior specialist owns your strategy and reviews the account every month. Our wider team supports SEO, content, social media, website and technical delivery. Senior staff remain responsible for the direction, quality and progress of the work.",
+    },
+    {
+      _id: "6",
+      question: "Is this package really worth it?",
+      answer:
+        "The package gives you fourteen coordinated services, including SEO, social media, content production and website maintenance, without building a full in-house team. Every activity works together to help your business get found, look credible and stay visible. It is designed for companies that want consistent, accountable digital marketing rather than occasional content or disconnected services.",
+    },
+    {
+      _id: "7",
+      question: "What is not included?",
+      answer:
+        "Your advertising budget, a brand-new website, a new logo and PR work are not included in the monthly package. These are separate projects with separate pricing, depending on your requirements. We will explain any additional costs during the first call, not in month four.",
+    },
+    {
+      _id: "8",
+      question: "Why should we choose this package?",
+      answer:
+        "Because your digital marketing activities work better when they are connected. SEO, LinkedIn content, executive visibility, website improvements, analytics, and content production are managed together under one coordinated plan. You get one senior team, one monthly fee, and one clear direction instead of managing several disconnected agencies or freelancers.",
     },
   ],
 };
+
+
 export const serviceData = {
   _id: "",
   name: "",
   slug: "",
   // seo,
   firstSection,
-  ctaSection,
   featureStrip,
   trustedBy,
   whatWeHearData,
   industriesData,
   credibilityStats,
   packageChecklist,
+  Testimonials,
   faqSection,
   createdAt: "",
   updatedAt: "",

@@ -30,16 +30,14 @@ const CONTENT: Record<TabId, ComparisonRow[]> = {
         { before: "Nothing else on page one", after: "Real projects, photographed on site" },
     ],
     ai: [
-        { before: "No mention when someone asks who to call", after: "Cited by name for your specialty" },
-        { before: "A competitor's case study, not yours", after: "Your projects indexed and summarised correctly" },
-        { before: "Generic, outdated company facts", after: "Accurate scale, sectors, and credentials" },
-        { before: "Silence on tenders and specifications", after: "Referenced in the answers that matter" },
+        { before: "It names four competitors", after: "Your company, named" },
+        { before: "You are not mentioned", after: "Clear pages mentioned about your work" },
+        { before: "The buyer never sees you", after: "A list of real questions" },
     ],
     report: [
-        { before: "A vanity traffic number, no context", after: "Qualified leads tied to real enquiries" },
-        { before: "Metrics nobody on your team reads", after: "A plain-English summary of what moved" },
-        { before: "No link between spend and pipeline", after: "Cost per enquiry, tracked by channel" },
-        { before: "The same slide, month after month", after: "A short list of what we're doing next" },
+        { before: "Posts published", after: "Every number against its target" },
+        { before: "No starting point to compare against", after: "Where every number came from" },
+        { before: "No explanation when numbers move", after: "Why every number moved" },
     ],
 };
 
@@ -69,17 +67,19 @@ export default function WhatTheyFind() {
                             <h2 className="title-60 ">
                                 What they find today. what<br></br> they see after.
                             </h2>
+                            
+                            <div className="flex items-baseline gap-[15px] mt-[40px]"><div className="h-[15px] w-[15px] bg-primary"></div>
+                                <p className="fnt-lexend text-18 text-muted lg:max-w-[657px]">
+                                    Pick a moment and see what happens once all fourteen services are
+                                    running together.
+                                </p>
+                            </div>
                         </div>
-                        <div className="lg:w-2/5">
-                            <p className="fnt-lexend text-18 leading-relaxed text-[#77787B]">
-                                Pick a moment and see what happens once all fourteen services are
-                                running together.
-                            </p>
-                        </div>
+                        
                     </div>
 
                     {/* Tabs */}
-                    <div className="mt-8 flex flex-wrap gap-3 lg:mt-10">
+                    <div className="mt-10 flex flex-wrap gap-3 lg:mt-[60px]">
                         {TABS.map((tab) => {
                             const isActive = tab.id === active;
                             return (
@@ -88,7 +88,7 @@ export default function WhatTheyFind() {
                                     type="button"
                                     onClick={() => setActive(tab.id)}
                                     className={[
-                                        " flex items-center gap-2 rounded-full border px-[25px] py-[15px] text-[28px]  transition-colors duration-300",
+                                        " flex items-center gap-2 rounded-full border px-[25px] py-[15px] text-28 transition-colors duration-300",
                                         isActive
                                             ? "border-black bg-black text-white"
                                             : "border-[#E2E2E2] bg-white text-black hover:border-black/40",
@@ -111,9 +111,9 @@ export default function WhatTheyFind() {
                     {/* Comparison panels */}
                     <div className="mt-8 grid grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-2 lg:gap-8">
                         {/* Before */}
-                        <div className="rounded-[10px] bg-[#F1F1F1] p-[30px]">
-                            <div className="rounded-[8px] bg-[#DEDEDE] px-6 py-5">
-                                <h3 className="fnt-lexend text-[19px] font-medium text-black">
+                        <div className="rounded-[10px] bg-[#F1F1F1] px-[30px] pt-[30px] pb-[80px]">
+                            <div className="rounded-[8px] bg-[#000000]/10 p-[30px]">
+                                <h3 className="text-28 text-black">
                                     What they find today
                                 </h3>
                             </div>
@@ -124,20 +124,20 @@ export default function WhatTheyFind() {
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className=" py-2"
+                                    className=" pt-[30px]"
                                 >
                                     {rows.map((row, i) => (
                                         <li
                                             key={i}
                                             className={[
-                                                "flex items-center gap-3 py-4",
+                                                "flex items-center gap-3 py-[20px]",
                                                 i !== rows.length - 1 ? "border-b border-black/10" : "",
                                             ].join(" ")}
                                         >
                                             <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[4px] bg-[#C7C7C7]">
                                                 <X className="h-3 w-3 text-white" strokeWidth={3} />
                                             </span>
-                                            <span className="fnt-lexend text-[15px] text-[#6C6C6C]">
+                                            <span className="fnt-lexend text-18 text-muted  ">
                                                 {row.before}
                                             </span>
                                         </li>
@@ -148,8 +148,8 @@ export default function WhatTheyFind() {
 
                         {/* After */}
                         <div className="rounded-[10px] bg-black p-[30px]">
-                            <div className="rounded-[8px] bg-[#2B2B2B] px-6 py-5">
-                                <h3 className="fnt-lexend text-[19px] font-medium text-white">
+                            <div className="rounded-[8px] bg-[#FFFFFF]/20 p-[30px]">
+                                <h3 className="text-28 text-white">
                                     After six months with us
                                 </h3>
                             </div>
@@ -160,20 +160,20 @@ export default function WhatTheyFind() {
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3, delay: 0.08 }}
-                                    className="px-6 py-2"
+                                    className="pt-[30px]"
                                 >
                                     {rows.map((row, i) => (
                                         <li
                                             key={i}
                                             className={[
-                                                "flex items-center gap-3 py-4",
+                                                "flex items-center gap-3 py-[20px]",
                                                 i !== rows.length - 1 ? "border-b border-white/10" : "",
                                             ].join(" ")}
                                         >
                                             <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[4px] bg-primary">
                                                 <Check className="h-3 w-3 text-white" strokeWidth={3} />
                                             </span>
-                                            <span className="fnt-lexend text-[15px] text-white">
+                                            <span className="fnt-lexend text-18 text-[#A3A3A3]">
                                                 {row.after}
                                             </span>
                                         </li>

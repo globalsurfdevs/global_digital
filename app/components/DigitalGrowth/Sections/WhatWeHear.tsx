@@ -55,7 +55,7 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
                                     {description}
                                 </p>
                             )}
-                            <div className="flex flex-wrap gap-4 pt-6">
+                            <div className="flex flex-wrap gap-4 pt-6 lg:pt-[60px]">
                               
                                     <Button
                                         className="max-h-[50px] w-[465px]"
@@ -90,13 +90,13 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
                                                     key={framework.id}
                                                     className="group relative flex flex-col overflow-hidden"
                                                 >
-                                                    <div className="text-2xl">
-                                                        <h3 className="text-[28px] pb-3 text-black lg:pb-6">
+                                                    <div className="">
+                                                        <h3 className="text-28 pb-3 text-black lg:pb-[40px] leading-[34px]">
                                                             {framework.title}
                                                         </h3>
                                                     </div>
                                                     <div>
-                                                        <p className="fnt-lexend text-19 font-medium text-gray1">
+                                                        <p className="fnt-lexend text-18 font-medium text-gray1">
                                                             {framework.desc}
                                                         </p>
                                                     </div>

@@ -16,19 +16,19 @@ type Props = {
 
 const ExecutionRoadmap = ({ data }: { data: Props }) => {
     return (
-        <section className="py-16 md:py-20 xl:py-120 bg-white text-black overflow-hidden">
+        <section className="pb-16 md:pb-20 xl:pb-[120px] bg-white text-black overflow-hidden">
             <div className="container">
                 <motion.h2
                     initial="hidden"
                     whileInView="show"
                     variants={moveUp(0)}
                     viewport={{ once: true }}
-                    className="text-32 sm:text-40 xl:title-60 leading-[1.1] tracking-[-0.025em]"
+                    className="title-60"
                 >
                     {data.title}
                 </motion.h2>
 
-                <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0 lg:rounded-2xl lg:border lg:border-black/10 lg:overflow-hidden">
+                <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5 lg:gap-0 lg:overflow-hidden">
                     {data.items.map((item, index) => (
                         <motion.div
                             key={item._id}
@@ -36,22 +36,16 @@ const ExecutionRoadmap = ({ data }: { data: Props }) => {
                             whileInView="show"
                             variants={moveUp(index * 0.08)}
                             viewport={{ once: true }}
-                            className={`flex flex-col gap-4 rounded-2xl border border-black/10 p-6 lg:rounded-none lg:border-y-0 lg:border-l-0 lg:first:border-l lg:border-r ${item.highlighted
-                                    ? "bg-primary/10"
-                                    : "bg-white"
-                                }`}
+                            className="group flex flex-col gap-4 border border-black/10 px-[26px] pt-[20px] pb-[40px] rounded-[15px] lg:border lg:border-black/10 bg-white transition-colors duration-300 hover:bg-[#E53E31]/15"
                         >
                             <span
-                                className={`inline-flex w-fit items-center rounded-full border px-3.5 py-1 text-11 uppercase tracking-wide ${item.highlighted
-                                        ? "border-primary bg-primary text-white"
-                                        : "border-black/20 text-black/70"
-                                    }`}
+                                className="inline-flex w-fit items-center rounded-full border border-primary px-[15px] py-[10px] text-18 uppercase text-muted transition-colors duration-300 group-hover:bg-primary group-hover:!text-white"
                             >
                                 {item.badge}
                             </span>
-                            <p className="text-16 leading-snug text-black">
+                            <h4 className="text-28 leading-snug text-black mt-[68px]">
                                 {item.description}
-                            </p>
+                            </h4>
                         </motion.div>
                     ))}
                 </div>
