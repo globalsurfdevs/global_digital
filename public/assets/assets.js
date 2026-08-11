@@ -1079,11 +1079,86 @@ import dblog2 from "../images/blogs/digital/dblog2.webp";
 import dblog3 from "../images/blogs/digital/dblog3.webp";
 import dblog4 from "../images/blogs/digital/dblog4.webp";
 
+import futureproofwebsites from "../images/end-to-end-digitalmarketing/future-proof-websites.svg";
+import googleaisearch from "../images/end-to-end-digitalmarketing/google-ai-search.svg";
+import stricttracking from "../images/end-to-end-digitalmarketing/strict-tracking.svg";
+import benchmark from "../images/end-to-end-digitalmarketing/benchmark.svg";
+import innovodg from "../images/end-to-end-digitalmarketing/logos/innovo.png";
+import imtiaz from "../images/end-to-end-digitalmarketing/logos/imtiaz.png";
+import ulogo from "../images/end-to-end-digitalmarketing/logos/u.png";
+import sobha from "../images/end-to-end-digitalmarketing/logos/sobha.png";
+import sp from "../images/end-to-end-digitalmarketing/logos/sp.png";
 
+
+import claude from "../images/end-to-end-digitalmarketing/claude.svg";
+
+import hubspot from "../images/end-to-end-digitalmarketing/hubspot.svg";
+import manufact from "../images/end-to-end-digitalmarketing/manufact.svg";
+import schema from "../images/end-to-end-digitalmarketing/schema.svg";
+import webflow from "../images/end-to-end-digitalmarketing/webflow.svg";
+
+import ahrefs2 from "../images/end-to-end-digitalmarketing/ahrefs.svg";
+import construction from "../images/end-to-end-digitalmarketing/construction.svg";
+import googleAnalytics2 from "../images/end-to-end-digitalmarketing/google-analytics.svg";
+import industrial from "../images/end-to-end-digitalmarketing/industrial.svg";
+import perplexity from "../images/end-to-end-digitalmarketing/perplexity.svg";
+import screamingFrog from "../images/end-to-end-digitalmarketing/screaming-frog.svg";
+import wordpress from "../images/end-to-end-digitalmarketing/wordpress.svg";
+
+import ai from "../images/end-to-end-digitalmarketing/ai.svg";
+import ainew from "../images/end-to-end-digitalmarketing/ai-2.svg";
+import capacity from "../images/end-to-end-digitalmarketing/capacity.svg";
+import enginma from "../images/end-to-end-digitalmarketing/enginfra.svg";
+import gsc from "../images/end-to-end-digitalmarketing/gsc.svg";
+import linkedin2 from "../images/end-to-end-digitalmarketing/linkedin.svg";
+import realestate2 from "../images/end-to-end-digitalmarketing/realestate.svg";
+import search from "../images/end-to-end-digitalmarketing/search.svg";
+import zohoCrm from "../images/end-to-end-digitalmarketing/zoho-crm.svg";
+import chatgpt from "../images/end-to-end-digitalmarketing/chatgpt.svg";
+import lockerStudio from "../images/end-to-end-digitalmarketing/locker-studio.svg";
+import gurantee from "../images/end-to-end-digitalmarketing/gurantee.svg";
+import capacity2 from "../images/end-to-end-digitalmarketing/capacity.svg";
+
+import digitalbanner from "../images/end-to-end-digitalmarketing/banner.jpg";
 
 
 
 export const assets = {
+  futureproofwebsites,
+  googleaisearch,
+  stricttracking,
+  benchmark,
+  gurantee,
+  capacity2,
+  innovodg,
+  imtiaz,
+  ulogo,
+  sobha,
+  sp,
+  claude,
+  hubspot,
+  manufact,
+  ainew,
+  schema,
+  webflow,
+  ahrefs2,
+  construction,
+  googleAnalytics2,
+  industrial,
+  perplexity,
+  screamingFrog,
+  wordpress,
+  ai,
+  capacity,
+  enginma,
+  gsc,
+  linkedin2,
+  realestate2,
+  search,
+  zohoCrm,
+  chatgpt,
+  lockerStudio,
+  digitalbanner,
   blgbanner,
   aibanner,
   p1,

@@ -69,7 +69,7 @@ const NumberCardGrid: React.FC<NumberCardGridProps> = ({
                 <div className="mb-10 h-[1px] bg-white">
                   <div className="h-full w-0 bg-primary transition-all duration-500 group-hover:w-full"></div>
                 </div>
-                <span className="mb-4 md:mb-10 inline-flex w-fit items-center justify-center bg-primary px-[11px] py-[8px] text-[28px] 
+                <span className="mb-4 md:mb-10 inline-flex w-fit items-center justify-center bg-primary px-[11px] py-[8px] text-28 
                 font-normal leading-none text-white lg:text-30">
                   {String(index + 1).padStart(2, "0")}
                 </span>
