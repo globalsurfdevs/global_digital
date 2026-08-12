@@ -201,6 +201,8 @@ const serviceItemSchema = new mongoose.Schema(
             ref: "portfolio",
           },
           description: String,
+          image: String,
+          imageAlt: String,
         },
       ],
     },
