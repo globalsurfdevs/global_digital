@@ -1466,7 +1466,7 @@ useEffect(() => {
 
                             </div>
                             <div className='flex justify-end mt-2'>
-                                <Button type='button' addItem onClick={() => caseStudySectionAppend({ title: "", description: "", project: "" })}>Add Item</Button>
+                                <Button type='button' addItem onClick={() => caseStudySectionAppend({ title: "", description: "", project: "", image:"", imageAlt:"" })}>Add Item</Button>
                             </div>
                         </div>
                     </div>
