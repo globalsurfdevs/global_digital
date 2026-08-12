@@ -30,6 +30,10 @@ import { getTestimonials } from "@/app/lib/testimonials";
 import { ServiceItem } from "./type";
 import { Metadata } from "next";
 import WorkIn from "@/app/components/common/WorkIn";
+import CaseStudyNew from "@/app/components/BrandingAndPositioning/CaseStudyNew";
+import { assets } from "@/public/assets/assets";
+
+
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -152,6 +156,54 @@ const page = async ({ params }: PageProps) => {
     })),
   };
 
+  // const Clientsformsdata = [
+  //   {
+  //     id: 1,
+  //     image: assets.slider1,
+  //     title: "How Assent steel achieved 2X traffic growth ",
+  //     btntext: "Read the Full Case Study",
+  //     btnurl: "https://www.globalsurf.ae/case-study/assent-steel",
+  //   },
+  //   {
+  //     id: 2,
+  //     image: assets.slider2,
+  //     title: "Strategic Website Revamp for Innovo group",
+  //     btntext: "Check portfolio page",
+  //     btnurl: "https://www.globalsurf.ae/portfolio/innovo-group",
+  //   },
+  //   {
+  //     id: 3,
+  //     image: assets.slider3,
+  //     title: "Digital Launchpad: New Website for Shoba Construction",
+  //     btntext: "Check portfolio page",
+  //     btnurl: "https://www.globalsurf.ae/portfolio/sobha-constructions",
+  //   },
+  //   {
+  //     id: 4,
+  //     image: assets.slider4,
+  //     title: "Full-Funnel Growth: Digital Marketing for ASGC Group",
+  //     btntext: "Check portfolio page",
+  //     btnurl: "https://www.globalsurf.ae/portfolio/asgc",
+  //   },
+  //   {
+  //     id: 5,
+  //     image: assets.slider5,
+  //     title: "SEO-Driven Growth: 90% Organic Traffic Boost for BEC Arabia",
+  //     btntext: "Check portfolio page",
+  //     btnurl: "https://www.globalsurf.ae/portfolio/bec-arabia",
+  //   },
+  // ];
+
+  const Clientsformsdata = service.caseStudySection?.items.map((item, index) => (
+    {
+      id: index + 1,
+      image: item.image,
+      title: item.title,
+      btntext: item.project.section == "case study" || item.project.section == "case study new" ? "Read the Full Case Study" : "Check portfolio page",
+      btnurl: item.project.section == "case study" || item.project.section == "case study new" ? `https://www.globalsurf.ae/case-study/${item.project.slug}` : `https://www.globalsurf.ae/portfolio/${item.project.slug}`,
+    }
+  ))
+
   const Cta = [
     {
       textred: service?.ctaSection?.titleRed,
@@ -167,84 +219,84 @@ const page = async ({ params }: PageProps) => {
     })),
   ];
 
-const workSvgsData = [
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech1.svg",
-    //   alt: "React js",
-    //   text: "React js",
-    //   width: "26",
-    //   height: "26"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech2.svg",
-    //   alt: "icNext.json",
-    //   text: "Next.js",
-    //   width: "21",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech3.svg",
-    //   alt: "Angular.js",
-    //   text: "Angular.js",
-    //   width: "36",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech4.svg",
-    //   alt: "vue.js",
-    //   text: "vue.js",
-    //   width: "28",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech5.svg",
-    //   alt: "Python",
-    //   text: "Python",
-    //   width: "27",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech6.svg",
-    //   alt: "node.js",
-    //   text: "node.js",
-    //   width: "28",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech7.svg",
-    //   alt: "icon",
-    //   text: "php",
-    //   width: "28",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech8.svg",
-    //   alt: "icon",
-    //   text: "Laravel",
-    //   width: "28",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech9.svg",
-    //   alt: "icon",
-    //   text: "Mongo db",
-    //   width: "28",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech10.svg",
-    //   alt: "icon",
-    //   text: "mysql",
-    //   width: "28",
-    //   height: "28"
-    // },
-    // {
-    //   icon: "../assets/services/wdd-custom-web-development/tech11.svg",
-    //   alt: "icon",
-    //   text: "Strapi",
-    //   width: "28",
-    //   height: "28"
-    // },
+  const workSvgsData = [
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech1.svg",
+      alt: "React js",
+      text: "React js",
+      width: "26",
+      height: "26"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech2.svg",
+      alt: "icNext.json",
+      text: "Next.js",
+      width: "21",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech3.svg",
+      alt: "Angular.js",
+      text: "Angular.js",
+      width: "36",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech4.svg",
+      alt: "vue.js",
+      text: "vue.js",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech5.svg",
+      alt: "Python",
+      text: "Python",
+      width: "27",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech6.svg",
+      alt: "node.js",
+      text: "node.js",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech7.svg",
+      alt: "icon",
+      text: "php",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech8.svg",
+      alt: "icon",
+      text: "Laravel",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech9.svg",
+      alt: "icon",
+      text: "Mongo db",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech10.svg",
+      alt: "icon",
+      text: "mysql",
+      width: "28",
+      height: "28"
+    },
+    {
+      icon: "../assets/services/wdd-custom-web-development/tech11.svg",
+      alt: "icon",
+      text: "Strapi",
+      width: "28",
+      height: "28"
+    },
     {
       icon: "../assets/services/wdd-custom-web-development/tech12.svg",
       alt: "icon",
@@ -310,7 +362,7 @@ const workSvgsData = [
       />
       {slug === "web-design-and-development-v2" && (
         <section className="bg-black  pb-[50px]   pt-[50px] text-white lg:pb-[200px] lg:pt-[140px]">
-          <WorkIn workSvgsData={workSvgsData}/>
+          <WorkIn workSvgsData={workSvgsData} />
         </section>
       )}
       <ProcessSlider data={service.sixthSection} />
@@ -332,6 +384,7 @@ const workSvgsData = [
       {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
       )} */}
+      {Clientsformsdata.length > 0 && <CaseStudyNew Clientsformsdata={Clientsformsdata} title1={service.caseStudySection?.title} />}
       <Testimonials
         topTitle="Testimonials"
         data={testimonials.testimonialSection}
@@ -345,7 +398,7 @@ const workSvgsData = [
         redlast
         page="service"
       />
-      <FAQ data={Faq} initialCount={3} page="service"/>
+      <FAQ data={Faq} initialCount={3} page="service" />
     </div>
   );
 };
