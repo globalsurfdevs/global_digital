@@ -55,7 +55,7 @@ const PackageChecklist = ({ data }: { data: Props }) => {
                             whileInView="show"
                             variants={moveUp(colIndex * 0.1)}
                             viewport={{ once: true }}
-                            className="flex w-full flex-col px-[7px] sm:w-1/2 lg:w-1/4 xl:px-[15px] "
+                            className="flex w-full flex-col px-[7px] sm:w-1/2 lg:w-1/4 xl:px-[15px] mb-6 lg:mb-0"
                         >
                             {/* Column header */}
                             <div className="rounded-[8px] border border-primary/10 bg-gradient-to-r from-[#e63e310f] to-transparent px-4 py-4 xl:px-6 xl:py-[22px] mb-3 xl:mb-4">
