@@ -168,7 +168,8 @@ export default async function Home() {
       <Tours />
       <SuccessStories clientTitle={home.clientSection.title} />
       <Clients data={home.clientSection} />
-      <Testimonials data={testimonials.testimonialSection} />
+      <Testimonials data={testimonials.testimonialSection} reviews={false}
+        bottomText={false} />
       <FAQ title={home.faqSection.title}
         data={home.faqSection.items.map((item:{question:string,answer:string}) => ({
           title: item.question,
