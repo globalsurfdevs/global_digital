@@ -31,8 +31,8 @@ const TitleDesc = ({ data }: any) => {
             whileInView="show"
             viewport={{ once: true }}
           >
-            <p className="text-18 fnt-lexend leading-[1.444444444444444] text-muted 3xl:max-w-[745px]">
-              {data.description}
+            <p className="text-18 fnt-lexend leading-[1.444444444444444] text-muted 3xl:max-w-[745px]" dangerouslySetInnerHTML={{__html:data.description}}>
+              {/* {data.description} */}
             </p>
           </motion.div>
         </div>

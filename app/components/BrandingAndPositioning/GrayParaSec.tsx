@@ -39,8 +39,9 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
               whileInView="show"
               viewport={{ once: true }}
               className="text-19 fnt-lexend mb-4 xxl:mb-6 text-muted last:mb-0"
+              dangerouslySetInnerHTML={{ __html: toSentenceCase(item) }}
             >
-              {toSentenceCase(item)}
+              {/* {toSentenceCase(item)} */}
             </motion.p>
           ))}
           {/* <p className="text-19 mb-4 last:mb-0 fnt-lexend text-muted">The UAE is a highly visually competitive market. Across construction, real estate, retail and professional services, brands compete for attention from a sophisticated, multi-cultural audience that has been exposed to global brand standards and expects the same from local businesses. In this environment, a generic logo and a basic colour palette don't constitute a brand — they constitute an absence of one.</p>
