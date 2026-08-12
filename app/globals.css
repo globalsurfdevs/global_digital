@@ -8,7 +8,7 @@
   --spacing-140: clamp(2em, 5vw + 1rem, 140px);
   --spacing-60: clamp(25px, 5vw + 0.25rem, 60px);
   --spacing-75: clamp(1em, 5vw + 0.5rem, 75px);
---spacing-120: clamp(40px, 5vw + 1.5rem, 120px);
+  --spacing-120: clamp(40px, 5vw + 1.5rem, 120px);
 
   --text-70: clamp(28px, 5vw + 0.5rem, 70px);
   --text-60: clamp(24px, 4vw + 0.5rem, 60px);
@@ -18,7 +18,9 @@
   --text-28: clamp(16px, 2vw + 0.25rem, 28px);
   --text-25: clamp(13px, 2vw + 0.2rem, 25px);
   --text-18: clamp(12px, 1.5vw + 0.15rem, 18px);
-
+  --text-18-sm: clamp(11px, calc(1.5vw + 0.15rem - 1px), 17px);
+  --text-60-sm: clamp(14px, calc(4vw + 0.5rem - 10px), 50px);
+  --text-70-sm: clamp(18px, calc(5vw + 0.5rem - 10px), 60px);
 }
 
 html,
@@ -570,48 +572,52 @@ body {
   padding-top: var(--spacing-120);
   padding-bottom: var(--spacing-120);
 }
- .text-18 {
-   font-size: var(--text-18);
- }
+
+.text-18 {
+  font-size: var(--text-18);
+}
+
 @layer components {
   .text-25 {
     font-size: var(--text-25);
   }
-  
+
   .text-28 {
     font-size: var(--text-28);
   }
+
   .text-18 {
     font-size: var(--text-18);
   }
-  
+
   .text-30 {
     font-size: var(--text-30);
   }
-  
+
   .text-40 {
     font-size: var(--text-40);
   }
-  
+
   .text-60 {
     font-size: var(--text-60);
   }
-  
+
   .text-65 {
     font-size: var(--text-65);
   }
-  
+
   .text70 {
     font-size: var(--text-70);
   }
+
   .title-120 {
     @apply text-font120 leading-lh1p22;
   }
-  
+
   .title-70 {
     @apply text70 leading-[1.142857142857143];
   }
-  
+
   .title-80 {
     @apply text-font80 leading-lh1p22;
   }
@@ -619,11 +625,12 @@ body {
   .title-65 {
     @apply text-font65 leading-lh1p07;
   }
+
   .title-60 {
     @apply text-60 leading-[1.083333333333333] tracking-[-0.025em];
   }
 
-  
+
   .text-30 {
     @apply text-font30 leading-lh1p33;
   }
@@ -1262,6 +1269,7 @@ input[type="number"] {
 .text-77787B {
   color: #77787b !important;
 }
+
 .text-muted {
   color: #77787b !important;
 }
@@ -1463,6 +1471,7 @@ input[type="number"] {
     transform: translateY(50px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -1491,8 +1500,9 @@ input[type="number"] {
   color: #000;
   margin-top: 40px;
   margin-bottom: 16px;
-  
+
 }
+
 .blog-content h3 {
   font-size: 30px;
 }
