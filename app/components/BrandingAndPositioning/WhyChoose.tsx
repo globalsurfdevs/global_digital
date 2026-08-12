@@ -40,7 +40,7 @@ const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
                 whileInView="show"
                 variants={moveUp(0)}
                 viewport={{ once: true }}
-                className="title-60 tracking-[-0.025em]"
+                className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em]"
                 dangerouslySetInnerHTML={{ __html: data.title }}
               />
             </div>
@@ -65,7 +65,7 @@ const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
                 viewport={{ once: true }}
                 className="mb-4 border-b border-black/20 pb-4 lg:mb-6 lg:pb-6 xl:mb-8 xl:pb-10 xxl:mb-10 2xl:pb-[46px] 3xl:mb-[46px] last:mb-0 last:border-0"
               >
-                <h3 className="text-60 mb-3 font-normal leading-none tracking-[-0.025em] text-primary">
+                <h3 className="text-60  mb-3 font-normal leading-none tracking-[-0.025em] text-primary">
                   {item.value}
                 </h3>
                 <p className="text-18 tracking-[0.03em] font-lexend font-semibold uppercase leading-[1.444444444444444]">

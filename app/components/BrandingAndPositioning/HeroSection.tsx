@@ -38,7 +38,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
   }, [modalOpen]);
 
   return (
-    <section className="relative py-[110px] overflow-hidden md:h-[90vh] mt-[20px]">
+    <section className="relative py-[110px] overflow-hidden md:h-[70vh] 2xl:h-[90vh] mt-[20px]">
       {/* Modal section */}
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
@@ -63,13 +63,13 @@ const HeroSection = ({ data }: HeroSectionProps) => {
       </div>
       <div className="container relative z-10 flex h-full flex-col justify-center">
         <div>
-          <h1 className="title-70 mb-3 max-w-[16ch] tracking-[-0.025em] xl:mb-5">
+          <h1 className="title-70 text-[length:var(--text-70-sm)] mb-3 max-w-[16ch] tracking-[-0.025em] xl:mb-5">
             {toTitleCase(data.title)}
           </h1>
           <p className="text-25 text-77787B max-w-[40ch] leading-[1.4] 3xl:max-w-[55ch]">
             {toSentenceCase(data.description)}
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[60px]">
+          <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[40px]">
             <Button
               className="max-h-[50px]"
               variant="primary"

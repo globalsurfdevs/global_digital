@@ -159,7 +159,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60"
+            className="title-60 text-[length:var(--text-60-sm)]"
             dangerouslySetInnerHTML={{ __html: subTitle }}
           ></motion.h2>
         </div>

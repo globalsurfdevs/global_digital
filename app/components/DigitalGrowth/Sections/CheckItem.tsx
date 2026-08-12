@@ -1,8 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState, useTransition } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { moveUp } from "../../animations/motionVariants";
+import { submitBooking } from "@/app/actions/submitBooking";
 
 const trustPoints: string[] = [
     "A senior strategist, not a salesperson",
@@ -18,6 +19,46 @@ const sectors = [
     "Manufacturing",
     "Other",
 ];
+
+type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "sector", string>>;
+
+const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const PHONE_REGEX = /^\+?[0-9\s().-]{7,20}$/;
+
+function validateField(name: string, value: string): string | undefined {
+    const v = value.trim();
+
+    switch (name) {
+        case "name":
+            if (!v) return "Please enter your name.";
+            if (v.length < 2) return "Name looks too short.";
+            if (!NAME_REGEX.test(v)) return "Name can only contain letters.";
+            return undefined;
+
+        case "company":
+            if (!v) return "Please enter your company name.";
+            if (v.length < 2) return "Company name looks too short.";
+            return undefined;
+
+        case "email":
+            if (!v) return "Please enter your work email.";
+            if (!EMAIL_REGEX.test(v)) return "Enter a valid email address.";
+            return undefined;
+
+        case "phone":
+            if (!v) return undefined; // optional
+            if (!PHONE_REGEX.test(v)) return "Enter a valid phone number.";
+            return undefined;
+
+        case "sector":
+            if (!v) return "Please select a sector.";
+            return undefined;
+
+        default:
+            return undefined;
+    }
+}
 
 const ArrowIcon = ({ clipId }: { clipId: string }) => (
     <svg
@@ -69,37 +110,108 @@ const FormField = ({
     label,
     type = "text",
     name,
+    required,
+    error,
+    onBlur,
+    onChange,
 }: {
     label: string;
     type?: string;
     name: string;
+    required?: boolean;
+    error?: string;
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
-    <div className="border-b border-white/20 pb-3 transition-colors focus-within:border-white/60">
+    <div className="flex flex-col gap-1">
         <label htmlFor={name} className="block text-18 text-[#A3A3A3]">
-            {label}
+            {label} {required && <span className="text-primary">*</span>}
         </label>
         <input
             id={name}
             name={name}
             type={type}
-            className="mt-2 w-full appearance-none border-0 bg-transparent text-15 text-white outline-none ring-0 placeholder:text-white/30"
+            onBlur={onBlur}
+            onChange={onChange}
+            aria-invalid={!!error}
+            className={`mt-2 w-full appearance-none border-0 border-b bg-transparent pt-3 text-15 text-white outline-none ring-0 transition-colors placeholder:text-white/30 focus:outline-none focus:ring-0 focus:border-white/60 ${error ? "border-primary" : "border-white/20"
+                }`}
         />
+        {error && <p className="mt-1.5 text-[11px] text-primary">{error}</p>}
     </div>
 );
 
 const GetInTouch = ({ data }: { data: { title: string; description: string } }) => {
     const [sectorOpen, setSectorOpen] = useState(false);
     const [sector, setSector] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errors, setErrors] = useState<FormErrors>({});
+    const [note, setNote] = useState("");
+    const formRef = useRef<HTMLFormElement>(null);
+    const [isPending, startTransition] = useTransition();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        try {
-            // TODO: wire to API route / CRM endpoint
-        } finally {
-            setIsSubmitting(false);
+    const runValidation = (form: HTMLFormElement): FormErrors => {
+        const data = new FormData(form);
+        const fields: (keyof FormErrors)[] = ["name", "company", "email", "phone", "sector"];
+        const nextErrors: FormErrors = {};
+
+        for (const field of fields) {
+            const value = (data.get(field) as string) ?? "";
+            const error = validateField(field, value);
+            if (error) nextErrors[field] = error;
         }
+
+        return nextErrors;
+    };
+
+    const handleFieldBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        const error = validateField(name, value);
+        setErrors((prev) => ({ ...prev, [name]: error }));
+    };
+
+    const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name } = e.target;
+        if (errors[name as keyof FormErrors]) {
+            setErrors((prev) => ({ ...prev, [name]: undefined }));
+        }
+    };
+
+    const handleSectorSelect = (s: string) => {
+        setSector(s);
+        setSectorOpen(false);
+        if (errors.sector) {
+            setErrors((prev) => ({ ...prev, sector: undefined }));
+        }
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = formRef.current;
+        if (!form) return;
+
+        const nextErrors = runValidation(form);
+        setErrors(nextErrors);
+
+        const hasErrors = Object.values(nextErrors).some(Boolean);
+        if (hasErrors) {
+            setNote("Please fix the highlighted fields.");
+            return;
+        }
+
+        setNote("");
+        const formData = new FormData(form);
+        // sector isn't a native input, so append it manually
+        formData.set("sector", sector);
+
+        startTransition(async () => {
+            const result = await submitBooking(formData);
+            setNote(result.message ?? (result.success ? "Thank you." : "Something went wrong."));
+            if (result.success) {
+                form.reset();
+                setSector("");
+                setErrors({});
+            }
+        });
     };
 
     return (
@@ -123,7 +235,7 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                             variants={moveUp(0.05)}
                             viewport={{ once: true }}
                             className="mt-[40px] max-w-[520px] text-18 leading-[26px] text-[#A3A3A3]"
-                        >   
+                        >
                             {data.description}
                         </motion.p>
 
@@ -135,21 +247,53 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                     </div>
 
                     <motion.form
+                        ref={formRef}
                         initial="hidden"
                         whileInView="show"
                         variants={moveUp(0.15)}
                         viewport={{ once: true }}
                         onSubmit={handleSubmit}
+                        noValidate
                         className="flex flex-col gap-6"
                     >
                         <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                            <FormField label="Name" name="name" />
-                            <FormField label="Company" name="company" />
-                            <FormField label="Work email" name="email" type="email" />
-                            <FormField label="Phone" name="phone" type="tel" />
+                            <FormField
+                                label="Name"
+                                name="name"
+                                required
+                                error={errors.name}
+                                onBlur={handleFieldBlur}
+                                onChange={handleFieldChange}
+                            />
+                            <FormField
+                                label="Company"
+                                name="company"
+                                required
+                                error={errors.company}
+                                onBlur={handleFieldBlur}
+                                onChange={handleFieldChange}
+                            />
+                            <FormField
+                                label="Work email"
+                                name="email"
+                                type="email"
+                                required
+                                error={errors.email}
+                                onBlur={handleFieldBlur}
+                                onChange={handleFieldChange}
+                            />
+                            <FormField
+                                label="Phone"
+                                name="phone"
+                                type="tel"
+                                error={errors.phone}
+                                onBlur={handleFieldBlur}
+                                onChange={handleFieldChange}
+                            />
                         </div>
 
                         <div className="relative border-b border-white/20 pb-3">
+                            <input type="hidden" name="sector" value={sector} />
                             <button
                                 type="button"
                                 onClick={() => setSectorOpen((v) => !v)}
@@ -158,7 +302,9 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                                 aria-expanded={sectorOpen}
                             >
                                 <div>
-                                    <span className="block text-13 text-white/50">Sector</span>
+                                    <span className="block text-13 text-white/50">
+                                        Sector <span className="text-primary">*</span>
+                                    </span>
                                     <span className="mt-2 block text-15 text-white">
                                         {sector || "\u00A0"}
                                     </span>
@@ -181,10 +327,7 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                                                 type="button"
                                                 role="option"
                                                 aria-selected={sector === s}
-                                                onClick={() => {
-                                                    setSector(s);
-                                                    setSectorOpen(false);
-                                                }}
+                                                onClick={() => handleSectorSelect(s)}
                                                 className="w-full px-4 py-2.5 text-left text-14 text-white/80 hover:bg-white/10"
                                             >
                                                 {s}
@@ -193,17 +336,20 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                                     ))}
                                 </ul>
                             )}
+                            {errors.sector && (
+                                <p className="mt-1.5 text-[11px] text-primary">{errors.sector}</p>
+                            )}
                         </div>
 
                         <div className="mt-10 lg:mt-[60px] mb-10 lg:mb-0  flex flex-wrap gap-4">
                             <button
                                 type="submit"
-                                disabled={isSubmitting}
-                                className={`group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-white transition duration-300 ease-in hover:shadow-lg ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                                disabled={isPending}
+                                className={`group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-white transition duration-300 ease-in hover:shadow-lg ${isPending ? "opacity-50 cursor-not-allowed" : ""
                                     }`}
                             >
                                 <span className="fnt-lexend uppercase duration-300 ease-in">
-                                    Submit
+                                    {isPending ? "Submitting..." : "Submit"}
                                 </span>
                                 <div className="bg-primary p-1">
                                     <ArrowIcon clipId="clip-submit" />
@@ -211,7 +357,7 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                             </button>
 
                             <button
-                                type="button"
+                                type="submit"
                                 className="group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-white transition duration-300 ease-in hover:shadow-lg"
                             >
                                 <span className="fnt-lexend uppercase duration-300 ease-in">
@@ -222,6 +368,10 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                                 </div>
                             </button>
                         </div>
+
+                        <p className="min-h-[16px] text-start text-[11.5px] text-primary">
+                            {note}
+                        </p>
                     </motion.form>
                 </div>
             </div>

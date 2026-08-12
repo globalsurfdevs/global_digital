@@ -25,6 +25,7 @@ type PartnerListProps = {
   defActive?: string;
   initialCount?: number;
   fullSpace?: boolean;
+  page?: string;
 };
 const containerVariants = {
   hidden: {},
@@ -48,6 +49,7 @@ const FAQ: React.FC<PartnerListProps> = ({
   defActive,
   initialCount,
   fullSpace,
+  page
 }) => {
   const items = data ?? sections ?? [];
   const getDefaultOpenIndex = (value?: string) => {
@@ -107,7 +109,7 @@ const FAQ: React.FC<PartnerListProps> = ({
             className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[120px] xl:grid-cols-8  `}
           >
             <div className="col-span-2  mb-5 xl:mb-0">
-              <h2 className="title-60">
+              <h2 className={`${page === "service" ? "text-60 text-[length:var(--text-60-sm)]" : "text-60"}`}>
                 {!title && "FAQ"}
                 {title}
               </h2>

@@ -343,8 +343,9 @@ const workSvgsData = [
         data={Cta}
         ctabbutton={service.ctaSection.buttonText}
         redlast
+        page="service"
       />
-      <FAQ data={Faq} initialCount={3} />
+      <FAQ data={Faq} initialCount={3} page="service"/>
     </div>
   );
 };
