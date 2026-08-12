@@ -202,15 +202,15 @@ const OurAchievements = () => {
                   Projects
                 </p> */}
 
-                <SeoCounter value={250} label="Projects" />
+                <SeoCounter value={50} label="Talents" />
 
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
-                      More to Come
+                      Talents and Evolving
                     </div>
                     <div className="letter-hover  text-font30 leading-lh2p3 text-gray1">
-                      More to Come
+                      Talents and Evolving
                     </div>
                   </div>
                 </div>
