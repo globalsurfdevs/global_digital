@@ -65,13 +65,13 @@ const IndustriesSec = ({ data }: { data:Props}) => {
               {/* Title */}
               <div className={`flex flex-1 items-center justify-between px-3 py-[10px] 3xl:pl-[26px] 3xl:pr-[35px] border border-primary/10 rounded-[7px] bg-transparent hover:bg-primary/15`}>
                 <h3 className="text-28 leading-[1.214285714285714] tracking-[-0.025em]" dangerouslySetInnerHTML={{ __html: item.title }}></h3>
-                <Image
+                {/* <Image
                   src="/assets/icons/engineering-and-infrastructure/top-right-arrow-thick-primary.svg"
                   alt="arrow-right"
                   width={22}
                   height={22}
                   className="translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                />
+                /> */}
               </div>
             </motion.a>
           ))}

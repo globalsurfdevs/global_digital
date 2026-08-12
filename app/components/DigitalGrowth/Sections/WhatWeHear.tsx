@@ -74,21 +74,21 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
                                 {rows.map((row, rowIndex) => (
                                     <div key={rowIndex} className="group/row relative">
                                         {/* Full-width animated top border for this row */}
-                                        <div className="relative h-[1px] w-full overflow-hidden bg-black/20">
+                                        {/* <div className="relative h-[1px] w-full overflow-hidden bg-black/20">
                                             <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover/row:scale-x-100"></div>
-                                        </div>
+                                        </div> */}
 
                                         <div
                                             className={
                                                 rowIndex === rows.length - 1
-                                                    ? "grid grid-cols-1 gap-8 pt-[30px] pb-0 sm:grid-cols-2"
-                                                    : "grid grid-cols-1 gap-8 pt-[30px] pb-[80px] sm:grid-cols-2 "
+                                                    ? "grid grid-cols-1   pb-0 sm:grid-cols-2"
+                                                    : "grid grid-cols-1  sm:grid-cols-2 "
                                             }
                                         >
                                             {row.map((framework) => (
                                                 <div
                                                     key={framework.id}
-                                                    className="group relative flex flex-col overflow-hidden"
+                                                    className="group relative flex flex-col overflow-hidden border border-black/10 rounded-[10px] pt-[40px] pr-[36px] pb-[60px] pl-[36px]"
                                                 >
                                                     <div className="">
                                                         <h3 className="text-28 pb-3 text-black lg:pb-[40px] leading-[34px]">

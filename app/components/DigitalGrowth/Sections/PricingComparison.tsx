@@ -99,7 +99,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
         <section className="bg-white py-16 text-black md:py-20 xl:py-[120px]">
             <div className="container">
                 {/* Header */}
-                <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-end md:justify-between">
                     <motion.div
                         initial="hidden"
                         whileInView="show"
@@ -152,52 +152,50 @@ const PricingComparison = ({ data }: { data: Props }) => {
                     whileInView="show"
                     variants={moveUp(0.15)}
                     viewport={{ once: true }}
-                    className="mt-10 overflow-x-auto rounded-2xl border border-black/10"
+                    className="mt-10 overflow-hidden rounded-2xl border border-black/10"
                 >
-                    <div className="relative w-max min-w-full">
+                    <div className="relative w-full">
                         {/* Red overlay wash over the middle column only — matches column widths at each breakpoint */}
                         <div
                             className="pointer-events-none absolute inset-y-0 z-10 bg-[#E53E31]/[0.02]
-                                left-[180px] w-[160px]
-                                sm:left-[240px] sm:w-[200px]
-                                md:left-[320px] md:w-[260px]
-                                lg:left-[520px] lg:w-[320px]
-                                xl:left-[730px] xl:w-[399px]"
+                left-[46%] w-[27%]
+                md:left-[43%] md:w-[29%]
+                lg:left-[45%] lg:w-[28%]
+                xl:left-[45.5%] xl:w-[24.5%]"
                         />
 
                         <div
                             className="grid
-                                grid-cols-[180px_160px_160px]
-                                sm:grid-cols-[240px_200px_200px]
-                                md:grid-cols-[320px_260px_260px]
-                                lg:grid-cols-[520px_320px_320px]
-                                xl:grid-cols-[730px_399px_490px]"
+                grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]
+                md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)]
+                lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)]
+                xl:grid-cols-[minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1.1fr)]"
                         >
                             {/* Column headers */}
-                            <div className="flex items-end bg-[#F6F6F6] px-4 py-5 sm:px-6 md:px-[80px]">
-                                <span className="text-14 uppercase text-muted sm:text-16 md:text-18">
+                            <div className="flex items-end bg-[#F6F6F6] px-3 py-4 sm:px-6 sm:py-5 md:px-[80px]">
+                                <span className="text-12 uppercase text-muted sm:text-16 md:text-18">
                                     What you get
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center gap-1.5 bg-[#F6F6F6] px-3 py-5 text-center sm:px-4">
-                                <span className="text-12 uppercase text-muted sm:text-14 md:text-18">
+                            <div className="flex flex-col items-center gap-1 bg-[#F6F6F6] px-2 py-4 text-center sm:gap-1.5 sm:px-4 sm:py-5">
+                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
                                     Where most firms start
                                 </span>
-                                <span className="rounded-full border border-primary px-3 py-1 text-16 text-primary sm:text-20 md:text-28">
+                                <span className="rounded-full border border-primary px-2 py-0.5  text-primary sm:px-3 sm:py-1 text-[13px] md:text-28 leading-normal md:leading-[34px]">
                                     Growth Partnership
                                 </span>
-                                <span className="text-12 uppercase text-muted sm:text-14 md:text-18">
+                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
                                     From AED 10,000/mo
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center gap-1.5 bg-[#F6F6F6] px-3 py-5 text-center sm:px-4">
-                                <span className="text-12 uppercase text-muted sm:text-14 md:text-18">
+                            <div className="flex flex-col items-center gap-1 bg-[#F6F6F6] px-2 py-4 text-center sm:gap-1.5 sm:px-4 sm:py-5">
+                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
                                     Go wider
                                 </span>
-                                <span className="rounded-full border border-primary px-3 py-1 text-16 text-primary sm:text-20 md:text-28">
+                                <span className="rounded-full border border-primary px-2 py-0.5  text-primary sm:px-3 sm:py-1 text-[13px] md:text-28 leading-[34px]">
                                     Plus
                                 </span>
-                                <span className="text-12 uppercase text-muted sm:text-14 md:text-18">
+                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
                                     Custom price
                                 </span>
                             </div>
@@ -206,19 +204,19 @@ const PricingComparison = ({ data }: { data: Props }) => {
                             {rows.map((row, i) => (
                                 <Fragment key={i}>
                                     <div
-                                        className={`flex items-center px-4 py-5 text-14 text-black sm:px-6 sm:py-6 md:px-[80px] md:py-[30px] md:text-18 ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
+                                        className={`flex items-center px-3 py-4 text-13 text-black sm:px-6 sm:py-6 sm:text-14 md:px-[80px] md:py-[30px] md:text-18 ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
                                             }`}
                                     >
                                         {row.label}
                                     </div>
                                     <div
-                                        className={`flex items-center justify-center px-3 py-5 sm:px-4 sm:py-6 md:py-[30px] ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
+                                        className={`flex items-center justify-center px-2 py-4 sm:px-4 sm:py-6 md:py-[30px] ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
                                             }`}
                                     >
                                         <Mark included={row.growth} />
                                     </div>
                                     <div
-                                        className={`flex items-center justify-center px-3 py-5 sm:px-4 sm:py-6 md:py-[30px] ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
+                                        className={`flex items-center justify-center px-2 py-4 sm:px-4 sm:py-6 md:py-[30px] ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
                                             }`}
                                     >
                                         <Mark included={row.plus} />
@@ -227,14 +225,14 @@ const PricingComparison = ({ data }: { data: Props }) => {
                             ))}
 
                             {/* Footer row */}
-                            <div className="flex items-center px-4 py-5 text-14 leading-[1.5] text-muted fnt-lexend sm:px-6 md:px-[80px] md:py-[30px] md:text-18 md:leading-[26px]">
+                            <div className="flex items-center px-3 py-4 text-13 leading-[1.5] text-muted fnt-lexend sm:px-6 sm:text-14 md:px-[80px] md:py-[30px] md:text-18 md:leading-[26px]">
                                 Term and billing
                             </div>
-                            <div className="flex items-center justify-center px-3 py-5 text-center text-12 leading-[1.5] text-muted fnt-lexend sm:px-4 md:px-[30px] md:py-[30px] md:text-18 md:leading-[26px]">
+                            <div className="flex items-center justify-center px-2 py-4 text-center text-[10px] leading-[1.4] text-muted fnt-lexend sm:px-4 sm:text-12 md:px-[30px] md:py-[30px] md:text-18 md:leading-[26px]">
                                 12 months. Google ranking work has a 6 month minimum. VAT not
                                 included.
                             </div>
-                            <div className="flex items-center justify-center px-3 py-5 text-center text-12 leading-[1.5] text-muted fnt-lexend sm:px-4 md:px-[30px] md:py-[30px] md:text-18 md:leading-[26px]">
+                            <div className="flex items-center justify-center px-2 py-4 text-center text-[10px] leading-[1.4] text-muted fnt-lexend sm:px-4 sm:text-12 md:px-[30px] md:py-[30px] md:text-18 md:leading-[26px]">
                                 Set with you, always in a written proposal.
                             </div>
                         </div>

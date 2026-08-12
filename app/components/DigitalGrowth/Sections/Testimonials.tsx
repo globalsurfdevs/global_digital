@@ -47,7 +47,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
               hidden: { y: 50 }, // Start below and invisible
               visible: { y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
             }}
-            className="items-center justify-between gap-3 lg:flex"
+            className="items-center justify-between gap-3  xl:flex"
           >
             <h2 className="title-60">
               {data?.title ? data.title : "Hear From Our Partners"}
