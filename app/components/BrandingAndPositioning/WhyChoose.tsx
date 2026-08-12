@@ -50,8 +50,9 @@ const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
               variants={moveUp(0)}
               viewport={{ once: true }}
               className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] max-w-[60ch]"
+              dangerouslySetInnerHTML={{ __html: toSentenceCase(data.description) }}
             >
-              {toSentenceCase(data.description)}
+              {/* {toSentenceCase(data.description)} */}
             </motion.p>
           </div>
           <div>
