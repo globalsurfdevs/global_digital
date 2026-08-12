@@ -1,7 +1,13 @@
 "use client";
 import * as React from "react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
+import { moveUp } from "../../animations/motionVariants";
 import Button from "../../common/buttons/PrimaryButton";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface FrameworkItem {
     id: number;
@@ -17,6 +23,36 @@ interface ServicesSectionProps {
     hrcontent?: boolean;
     data: FrameworkItem[];
 }
+const ArrowIcon = ({ clipId }: { clipId: string }) => (
+    <svg
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="group-hover:scale-105"
+    >
+        <g clipPath={`url(#${clipId})`}>
+            <path
+                d="M8.88346 1.26172L1.13281 8.8624"
+                stroke="white"
+                strokeWidth="2"
+                strokeMiterlimit="10"
+            />
+            <path
+                d="M1.13281 1.26172H8.88346V8.71245"
+                stroke="white"
+                strokeWidth="2"
+                strokeMiterlimit="10"
+            />
+        </g>
+        <defs>
+            <clipPath id={clipId}>
+                <rect width="10" height="10" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
 
 const WhatWeHear: React.FC<ServicesSectionProps> = ({
     title,
@@ -24,91 +60,120 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
     description,
     data,
 }) => {
-    const [modalOpen, setModalOpen] = React.useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+    const leftRef = useRef<HTMLDivElement>(null);
+    const rightRef = useRef<HTMLDivElement>(null);
+
     // Group items into rows of 2
     const rows: FrameworkItem[][] = [];
     for (let i = 0; i < data.length; i += 2) {
         rows.push(data.slice(i, i + 2));
     }
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const mm = gsap.matchMedia();
+
+            mm.add("(min-width: 1200px)", () => {
+                const st = ScrollTrigger.create({
+                    trigger: sectionRef.current,
+                    start: "top top",
+                    endTrigger: rightRef.current,
+                    end: "bottom bottom",
+                    pin: leftRef.current,
+                    pinSpacing: false,
+                    // markers: true, // enable while debugging
+                });
+
+                return () => st.kill();
+            });
+
+            return () => mm.revert();
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="bg-[#F6F6F6] py-[50px] lg:py-[140px]">
+        <section className="bg-[#F6F6F6] py-[50px] lg:py-[140px]" ref={sectionRef}>
             <div className="container">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={{
-                        hidden: { opacity: 0, y: 50 },
-                        visible: {
-                            opacity: 1,
-                            y: 0,
-                            transition: { duration: 1, ease: "easeOut" },
-                        },
-                    }}
-                >
-                    <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-                        <div className="lg:w-3/5">
-                            <h2 className="title-65 pb-2">{title}</h2>
-                            {description && (
-                                <p className="text-19 fnt-lexend pt-4 text-[#77787B] md:pt-6 xl:pt-14">
-                                    {description}
-                                </p>
-                            )}
-                            <div className="flex flex-wrap gap-4 pt-6 lg:pt-[60px]">
-                              
-                                    <Button
-                                        className="max-h-[50px] w-[465px]"
-                                        variant="outline"
-                                        href="/contact"
+                <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[658px_859px] xl:gap-[100px]">
+                    {/* LEFT — pinned via GSAP */}
+                    <div ref={leftRef}>
+                        <motion.h2
+                            variants={moveUp(0)}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="title-60 pb-2"
+                        >
+                            {title}
+                        </motion.h2>
+                        {description && (
+                            <motion.p
+                                variants={moveUp(0.1)}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: true }}
+                                className="text-19 fnt-lexend pt-4 text-[#77787B] md:pt-6 xl:pt-14 mb-10 lg:mb-[60px]"
+                            >
+                                {description}
+                            </motion.p>
+                        )}
+                       
+                        <button
+                            type="button"
+                            className="group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 mt-[40px] text-black transition duration-300 ease-in hover:shadow-lg"
+                        >
+                            <span className="fnt-lexend uppercase duration-300 ease-in text-[14px] md:text-[16px]">
+                                Click to fix your marketing challenges
+                            </span>
+                            <div className="bg-primary p-1">
+                                <ArrowIcon clipId="clip-book-call" />
+                            </div>
+                        </button>
+                        
+                    </div>
+
+                    {/* RIGHT — scrolls, defines pin end */}
+                    <div ref={rightRef}>
+                        <div className="flex flex-col">
+                            {rows.map((row, rowIndex) => (
+                                <div key={rowIndex} className="group/row relative">
+                                    <div
+                                        className={
+                                            rowIndex === rows.length - 1
+                                                ? "grid grid-cols-1   pb-0 sm:grid-cols-2"
+                                                : "grid grid-cols-1  sm:grid-cols-2 "
+                                        }
                                     >
-                                        Click to fix your marketing challenges 
-                                    </Button>
-                                
-                            </div>
-                            
-                        </div>
-
-                        <div className="w-full lg:w-3/5">
-                            <div className="flex flex-col">
-                                {rows.map((row, rowIndex) => (
-                                    <div key={rowIndex} className="group/row relative">
-                                        {/* Full-width animated top border for this row */}
-                                        {/* <div className="relative h-[1px] w-full overflow-hidden bg-black/20">
-                                            <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover/row:scale-x-100"></div>
-                                        </div> */}
-
-                                        <div
-                                            className={
-                                                rowIndex === rows.length - 1
-                                                    ? "grid grid-cols-1   pb-0 sm:grid-cols-2"
-                                                    : "grid grid-cols-1  sm:grid-cols-2 "
-                                            }
-                                        >
-                                            {row.map((framework) => (
-                                                <div
-                                                    key={framework.id}
-                                                    className="group relative flex flex-col overflow-hidden border border-black/10 rounded-[10px] pt-[40px] pr-[36px] pb-[60px] pl-[36px]"
-                                                >
-                                                    <div className="">
-                                                        <h3 className="text-28 pb-3 text-black lg:pb-[40px] leading-[34px]">
-                                                            {framework.title}
-                                                        </h3>
-                                                    </div>
-                                                    <div>
-                                                        <p className="fnt-lexend text-18 font-medium text-gray1">
-                                                            {framework.desc}
-                                                        </p>
-                                                    </div>
+                                        {row.map((framework, index) => (
+                                            <motion.div
+                                                key={framework.id}
+                                                variants={moveUp(index * 0.11)}
+                                                initial="hidden"
+                                                whileInView="show"
+                                                viewport={{ once: true }}
+                                                className="group relative flex flex-col overflow-hidden border border-black/10 rounded-[10px] pt-[40px] pr-[36px] pb-[60px] pl-[36px]"
+                                            >
+                                                <div className="">
+                                                    <h3 className="text-28 pb-3 text-black lg:pb-[40px] leading-[34px]">
+                                                        {framework.title}
+                                                    </h3>
                                                 </div>
-                                            ))}
-                                        </div>
+                                                <div>
+                                                    <p className="fnt-lexend text-18 font-medium text-gray1">
+                                                        {framework.desc}
+                                                    </p>
+                                                </div>
+                                            </motion.div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
