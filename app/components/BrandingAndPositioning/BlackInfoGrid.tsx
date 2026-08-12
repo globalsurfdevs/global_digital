@@ -98,7 +98,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
               
                 <div style={{ maxWidth: `${maxchwidth}ch` }}>
                   <h2
-                    className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 pb-6 lg:pb-[58px]`}
+                    className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 text-[length:var(--text-60-sm)] pb-6 lg:pb-[58px]`}
                   >
                     {subTitle}
                   </h2>

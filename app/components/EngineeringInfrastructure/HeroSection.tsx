@@ -61,7 +61,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
       </div>
       <div className="container relative z-10 flex h-full flex-col justify-center">
         <div>
-          <h1 className="title-70 mb-3 max-w-[23ch] tracking-[-0.025em] xl:mb-5  leading-[1.142857142857143]">
+          <h1 className="title-70 text-[length:var(--text-70-sm)] mb-3 max-w-[23ch] tracking-[-0.025em] xl:mb-5  leading-[1.142857142857143]">
             {data.title}
           </h1>
           <p className="text-25 text-muted fnt-lexend max-w-[35ch] leading-[1.4] 3xl:max-w-[55ch] font-normal ">

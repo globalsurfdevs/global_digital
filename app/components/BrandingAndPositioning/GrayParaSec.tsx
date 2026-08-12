@@ -27,7 +27,7 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60 mb-4 max-w-[30ch] md:mb-6 xl:mb-8 xxl:mb-12"
+            className="title-60 text-[length:var(--text-60-sm)] mb-4 max-w-[30ch] md:mb-6 xl:mb-8 xxl:mb-12"
           >
             {data.subTitle}
           </motion.h2>

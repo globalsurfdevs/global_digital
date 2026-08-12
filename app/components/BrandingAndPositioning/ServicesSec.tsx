@@ -77,7 +77,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="title-60 tracking-[-0.025em]"
+              className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em]"
             >
               {description}
             </motion.h2>

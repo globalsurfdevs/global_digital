@@ -18,7 +18,7 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
             whileInView="show"
             variants={moveUp(0)}
             viewport={{ once: true }}
-            className="title-60 mb-6 xl:mb-8 xxl:mb-[50px]"
+            className="title-60 text-[length:var(--text-60-sm)] mb-6 xl:mb-8 xxl:mb-[50px]"
           >
             {data.title}
           </motion.h2>

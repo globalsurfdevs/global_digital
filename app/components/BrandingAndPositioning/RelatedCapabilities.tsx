@@ -33,7 +33,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
             whileInView="show"
             variants={moveUp(0.1)}
             viewport={{ once: true }}
-            className="title-60 max-w-[25ch]"> {data.title}</motion.h2>
+            className="title-60 text-[length:var(--text-60-sm)] max-w-[25ch]"> {data.title}</motion.h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {data.items.map((item, index) => (
