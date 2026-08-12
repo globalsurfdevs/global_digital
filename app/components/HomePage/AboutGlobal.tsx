@@ -10,7 +10,7 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
 const heading =
-  "Digital Marketing Agency in Dubai ";
+  "Digital Marketing Agency in Dubai for Industry-Specific Growth";
 
 const AboutGlobal = () => {
   const ref = useRef(null);

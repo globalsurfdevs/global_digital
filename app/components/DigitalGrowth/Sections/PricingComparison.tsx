@@ -185,7 +185,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
                                     Growth Partnership
                                 </span>
                                 <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
-                                    From AED 10,000/mo
+                                    From AED 10,000 a month
                                 </span>
                             </div>
                             <div className="flex flex-col items-center gap-1 bg-[#F6F6F6] px-2 py-4 text-center sm:gap-1.5 sm:px-4 sm:py-5">
