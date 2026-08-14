@@ -1,5 +1,5 @@
 const ACRONYMS = new Set([
-  "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae",
+  "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae","crm"
 ]);
 
 
