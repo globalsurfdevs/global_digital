@@ -7,13 +7,13 @@ type ExpertiseSectionProps = {};
 const Expertise: React.FC<ExpertiseSectionProps> = () => {
     return (
         <div className="container mx-auto py-4">
-            <div className="flex flex-col lg:flex-row  border-b py-120  gap-[50px] ">
+            <div className="flex flex-col lg:flex-row  border-b py-120  justify-between">
                 <div className="lg:w-6/12">
                     <h2 className="title-65">
                         Digital Marketing Agency in Dubai for Industry-Specific Growth
                     </h2>
                 </div>
-                <div className="lg:w-6/12">
+                <div className="lg:w-5/12">
                     <h3 className="text-28 text-black">
                         Senior-Led Expertise. Sector-Specific Strategies. Trusted by
                         140+ UAE Brands Since 2013.
