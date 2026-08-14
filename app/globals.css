@@ -16,6 +16,7 @@
   --text-30: clamp(18px, 2.5vw + 0.5rem, 30px);
   --text-40: clamp(20px, 3vw + 0.5rem, 40px);
   --text-28: clamp(16px, 2vw + 0.25rem, 28px);
+  --text-23: clamp(11px, calc(2vw + 0.2rem - 2px), 23px);
   --text-25: clamp(13px, 2vw + 0.2rem, 25px);
   --text-18: clamp(12px, 1.5vw + 0.15rem, 18px);
   --text-18-sm: clamp(11px, calc(1.5vw + 0.15rem - 1px), 17px);
