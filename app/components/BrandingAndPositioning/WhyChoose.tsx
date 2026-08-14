@@ -29,11 +29,11 @@ const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
                   whileInView="show"
                   variants={moveUp(0)}
                   viewport={{ once: true }}
-                  className={`${page === "service" ? "text-18" : "text-30"} uppercase leading-[1] tracking-[-0.025em] text-muted`}
+                  className={`text-18 uppercase leading-[1] tracking-[-0.025em] text-muted`}
                 >
                   {data.tag}
                 </motion.h3>
-                <div className={`${page === "service" ? "h-4 w-4" : "h-5 w-5"} bg-primary`}></div>
+                <div className={`h-4 w-4 bg-primary`}></div>
               </div>
               <motion.h2
                 initial="hidden"
@@ -49,7 +49,7 @@ const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
               whileInView="show"
               variants={moveUp(0)}
               viewport={{ once: true }}
-              className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] max-w-[60ch]"
+              className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] max-w-[60ch]"
               dangerouslySetInnerHTML={{ __html: toSentenceCase(data.description) }}
             >
               {/* {toSentenceCase(data.description)} */}
@@ -68,7 +68,7 @@ const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
                 <h3 className="text-60  mb-3 font-normal leading-none tracking-[-0.025em] text-primary">
                   {item.value}
                 </h3>
-                <p className="text-18 tracking-[0.03em] font-lexend font-semibold uppercase leading-[1.444444444444444]">
+                <p className="text-[length:var(--text-18-sm)] tracking-[0.03em] font-lexend font-semibold uppercase leading-[1.444444444444444]">
                   {item.label}
                 </p>
               </motion.div>

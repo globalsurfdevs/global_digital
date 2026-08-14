@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import WorkSwiper from './WorkSwiper'
 
-const WorkIn = ({ workSvgsData }:any) => {
+const WorkIn = ({ workSvgsData,page }:any) => {
 
   return (
     <div className=' overflow-hidden'>
@@ -19,7 +19,7 @@ const WorkIn = ({ workSvgsData }:any) => {
         >
       <div className='container mx-auto px-4 py-4 !overflow-visible'>
         <div className='  flex flex-col gap-12 xl:gap-[90px] home-slide'>
-          <motion.h2  className='text-font65 leading-lh1p07'>Web development technology stack </motion.h2>
+          <motion.h2  className={`${page === "service" ? "text-[length:var(--text-60-sm)]" : " text-font65"} leading-lh1p07`}>Web development technology stack </motion.h2>
           <WorkSwiper workSvgsData={workSvgsData} />
         </div>
         </div>

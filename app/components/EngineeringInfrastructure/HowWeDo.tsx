@@ -83,21 +83,21 @@ const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
+              className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
             >
               {title}
             </motion.h3>
-            <div className="h-5 w-5 bg-primary"></div>
+            <div className="h-4 w-4 bg-primary"></div>
           </div>
           <motion.h2
             variants={moveUp(0.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60 max-w-[33ch] mb-4 md:mb-6 xl:mb-8 xxl:mb-10"
+            className="title-60 text-[length:var(--text-60-sm)] max-w-[33ch] mb-4 md:mb-6 xl:mb-8 xxl:mb-10"
             dangerouslySetInnerHTML={{ __html: subTitle }}
           ></motion.h2>
-          <p className="text-18 fnt-lexend leading-[1.444444444444444] text-muted mb-4 lg:mb-5 xl:mb-6 xxl:mb-60 max-w-[110ch]">
+          <p className="text-[length:var(--text-18-sm)] fnt-lexend leading-[1.444444444444444] text-muted mb-4 lg:mb-5 xl:mb-6 xxl:mb-60 max-w-[110ch]">
             {data.description}
           </p>
         </div>
@@ -163,7 +163,7 @@ const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
                   </h3>
                 </div>
 
-                <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
                   {toSentenceCase(item.description)}
                 </p>
               </div>
