@@ -164,7 +164,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-              <TestimonialsSwiper data={data?.items} />
+              <TestimonialsSwiper data={data?.items} page={page}/>
               {bottomText && (
                 <div>
                   {!data?.bottomText ? (

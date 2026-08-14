@@ -201,7 +201,7 @@ const page = async ({ params }: PageProps) => {
     const industriesData = {
         title: industryData?.ninethSection?.title,
         subTitle: industryData?.ninethSection?.subTitle,
-        items: allIndustryData.map((item) => ({
+        items: allIndustryData.filter((item)=>item.slug!==industryData?.slug).map((item) => ({
             _id: item?._id,
             title: item?.name,
             icon: item?.ninethSection?.logo,
@@ -300,9 +300,9 @@ const page = async ({ params }: PageProps) => {
             {howWeDo.items.length > 0 && <HowWeDo data={howWeDo} />}
             {whyChooseData.items.length > 0 && <WhyChoose data={whyChooseData} />}
             {whoWeWorkData.items.length > 0 && <WhoWeWork data={whoWeWorkData} />}
-            {industryExperienceResultsData.items.length > 0 && (
+            {/* {industryExperienceResultsData.items.length > 0 && (
                 <ExperienceResult data={industryExperienceResultsData} />
-            )}
+            )} */}
             {industriesData.items.length > 0 && <IndustriesSec data={industriesData} />}
             {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
@@ -321,7 +321,7 @@ const page = async ({ params }: PageProps) => {
                 />
             )}
             {Faq.length > 0 && (
-                <FAQ data={Faq} initialCount={3} defActive="2" fullSpace={true} />
+                <FAQ data={Faq} initialCount={3} defActive="2" fullSpace={true} page="service"/>
             )}
         </div>
     );

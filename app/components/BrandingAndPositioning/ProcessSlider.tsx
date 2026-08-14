@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -13,77 +13,6 @@ import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
-// -----------------------------------------------------------------------------
-// Data
-// -----------------------------------------------------------------------------
-
-// export const processSliderData = {
-//   subtitle: 'Our Process',
-//   title: 'Our Strategic Brand Development Process',
-//   items: [
-//     {
-//       id: '1',
-//       number: '01',
-//       title: 'Discovery & brand audit',
-//       description:
-//         "We understand your business, your market, your competitors and your current brand — what's working, what isn't, and where the positioning opportunity sits.",
-//     },
-//     {
-//       id: '2',
-//       number: '02',
-//       title: 'Positioning strategy',
-//       description:
-//         'We develop your brand positioning — the territory your brand will occupy, the audience it speaks to most directly, and the key messages that differentiate it.',
-//     },
-//     {
-//       id: '3',
-//       number: '03',
-//       title: 'Concept development',
-//       description:
-//         'We develop two to three distinct brand identity concepts, each grounded in the positioning strategy and presented with a written rationale.',
-//     },
-//     {
-//       id: '4',
-//       number: '04',
-//       title: 'Design execution',
-//       description:
-//         'The chosen concept is developed into a complete visual identity system — logo variations, colour palette, typography, supporting graphic elements and initial collateral.',
-//     },
-//     {
-//       id: '5',
-//       number: '05',
-//       title: 'Lorem ipsum dolor',
-//       description:
-//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-//     },
-//     {
-//       id: '6',
-//       number: '06',
-//       title: 'Consectetur adipiscing',
-//       description:
-//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-//     },
-//     {
-//       id: '7',
-//       number: '07',
-//       title: 'Tempor incididunt',
-//       description:
-//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-//     },
-//     {
-//       id: '8',
-//       number: '08',
-//       title: 'Excepteur sint occaecat',
-//       description:
-//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-//     },
-//   ],
-// };
-
-// -----------------------------------------------------------------------------
-// Slides-per-view helper
-// -----------------------------------------------------------------------------
-
 const BREAKPOINTS: [number, number][] = [
   [0, 1.15],
   [640, 1.8],
@@ -93,18 +22,30 @@ const BREAKPOINTS: [number, number][] = [
 
 function getSlidesPerView(width: number) {
   let value = BREAKPOINTS[0][1];
-
   for (const [minWidth, spv] of BREAKPOINTS) {
     if (width >= minWidth) value = spv;
   }
-
   return value;
 }
+
+// Highest slidesPerView across all breakpoints is 3.4 — loop mode wants
+// roughly 2x that in real slides to build a stable clone buffer.
+const MIN_SLIDES_FOR_LOOP = 7;
 
 const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
   const { items, subTitle, title } = data;
 
-  const [previewIndex, setPreviewIndex] = useState(items.length - 1);
+  // Pad short lists by repeating the real items so Swiper has enough
+  // genuine slides to loop through cleanly.
+  const loopItems = useMemo(() => {
+    if (items.length === 0 || items.length >= MIN_SLIDES_FOR_LOOP) {
+      return items;
+    }
+    const repeats = Math.ceil(MIN_SLIDES_FOR_LOOP / items.length);
+    return Array.from({ length: repeats }, () => items).flat();
+  }, [items]);
+
+  const [previewIndex, setPreviewIndex] = useState(loopItems.length - 1);
   const [leftIndex, setLeftIndex] = useState(0);
   const [containerLeft, setContainerLeft] = useState(0);
 
@@ -114,24 +55,19 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
   useEffect(() => {
     const updateContainerLeft = () => {
       if (!containerRef.current) return;
-
-      setContainerLeft(containerRef.current.getBoundingClientRect().left);
+      setContainerLeft(containerRef.current.getBoundingClientRect().left + 15);
     };
 
     updateContainerLeft();
-
     window.addEventListener("resize", updateContainerLeft);
-
-    return () => {
-      window.removeEventListener("resize", updateContainerLeft);
-    };
+    return () => window.removeEventListener("resize", updateContainerLeft);
   }, []);
 
   const updatePreview = (swiper: SwiperType) => {
     const width = typeof window !== "undefined" ? window.innerWidth : 1280;
     const spv = getSlidesPerView(width);
 
-    const nextIndex = Math.ceil(swiper.realIndex + spv - 1) % items.length;
+    const nextIndex = Math.ceil(swiper.realIndex + spv - 1) % loopItems.length;
 
     setPreviewIndex(nextIndex);
     setLeftIndex(swiper.realIndex);
@@ -166,12 +102,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
       </div>
 
       {/* Slider */}
-      <div
-        className="overflow-hidden px-3"
-        style={{
-          marginLeft: `${containerLeft}px`,
-        }}
-      >
+      <div className="overflow-hidden" style={{ marginLeft: `${containerLeft}px` }}>
         <Swiper
           modules={[Autoplay, Pagination]}
           onSwiper={(swiper) => {
@@ -183,7 +114,6 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           spaceBetween={32}
           slidesPerView={1.15}
           loop={true}
-          rewind
           speed={1000}
           autoplay={{
             delay: 3500,
@@ -191,48 +121,39 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             pauseOnMouseEnter: true,
           }}
           breakpoints={{
-            640: {
-              slidesPerView: 1.8,
-              spaceBetween: 32,
-            },
-            1024: {
-              slidesPerView: 2.1,
-              spaceBetween: 40,
-            },
-            1280: {
-              slidesPerView: 3.4,
-              spaceBetween: 48,
-            },
+            640: { slidesPerView: 1.8, spaceBetween: 32 },
+            1024: { slidesPerView: 2.1, spaceBetween: 40 },
+            1280: { slidesPerView: 3.4, spaceBetween: 48 },
           }}
-          pagination={{
-            el: ".process-pagination",
-            clickable: true,
-          }}
+          pagination={{ el: ".process-pagination", clickable: true }}
           className="!overflow-visible [&_.swiper-slide]:!h-auto [&_.swiper-wrapper]:!items-stretch"
         >
-          {items.map((item, i) => (
-            <SwiperSlide key={i} className="h-auto">
-              <div
-                className={`h-full ${i === leftIndex ? "" : ""} border-l border-black/20 pb-6  pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}
-              >
-                <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
-                    <span className="text-28 font-normal text-primary">
-                      {i < 10 ? `0${i + 1}` : i + 1}
-                    </span>
+          {loopItems.map((item, i) => {
+            const originalIndex = i % items.length;
+            return (
+              <SwiperSlide key={i} className="h-auto">
+                <div
+                  className={`h-full border-l border-black/20 pb-6 pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}
+                >
+                  <div className="flex gap-3 xl:gap-[20px]">
+                    <div className="mb-6 inline-flex shrink-0 h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
+                      <span className="text-28 font-normal text-primary">
+                        {originalIndex < 9 ? `0${originalIndex + 1}` : originalIndex + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
+                      {item.title}
+                    </h3>
                   </div>
 
-                  <h3 className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
-                    {item.title}
-                  </h3>
+                  <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                    {toSentenceCase(item.description)}
+                  </p>
                 </div>
-
-                <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
-                  {toSentenceCase(item.description)}
-                </p>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
 

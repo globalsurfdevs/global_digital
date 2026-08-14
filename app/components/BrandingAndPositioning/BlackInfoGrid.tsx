@@ -66,7 +66,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
             </h2>
             <div className={`h-4 w-4 bg-primary`}></div>
           </div>
-          <div className="grid grid-cols-1 xl:justify-between xl:grid-cols-2">
+          <div className={`grid grid-cols-1 xl:justify-between ${page == "service" ? "xl:grid-cols-1" : "xl:grid-cols-2"}`}>
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -96,7 +96,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                 </div>
               )} */}
               
-                <div style={{ maxWidth: `${maxchwidth}ch` }}>
+                <div style={{ maxWidth: `${maxchwidth}ch` }} className="">
                   <h2
                     className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 text-[length:var(--text-60-sm)] pb-6 lg:pb-[58px]`}
                   >
