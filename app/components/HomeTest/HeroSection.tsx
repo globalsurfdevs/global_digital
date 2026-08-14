@@ -237,7 +237,7 @@ const HeroSection = () => {
 
       {/* Video stays here — covers full section, no JS needed for placement */}
       <video
-        className="absolute left-0 top-0 -z-10 h-full w-full object-cover transition-opacity duration-300"
+        className="absolute left-0 top-0 -z-10 h-full w-full object-cover grayscale transition-opacity duration-300"
         style={{ opacity: 0 }}
         loop
         muted
@@ -246,9 +246,11 @@ const HeroSection = () => {
         poster="/assets/videos/home_poster.jpg"
         id="hero-video"
       >
-        {/* <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" /> */}
         <source src="/assets/videos/home_banner_v2.mp4" type="video/mp4" />
       </video>
+
+      {/* Scrim: sits above video, below text — guarantees contrast regardless of footage */}
+      <div className="absolute left-0 top-0 -z-[5] h-full w-full bg-gradient-to-r from-white/70 via-white/40 to-transparent" />
 
       <div className="container mx-auto px-4">
         <div className="hero-heading-wrapper">
