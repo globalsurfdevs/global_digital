@@ -40,7 +40,7 @@ const WhyChoose = ({ data,page }: { data: WhyChooseData; page?: string }) => {
                 whileInView="show"
                 variants={moveUp(0)}
                 viewport={{ once: true }}
-                className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em]"
+                className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em] max-w-[22ch]"
                 dangerouslySetInnerHTML={{ __html: data.title }}
               />
             </div>

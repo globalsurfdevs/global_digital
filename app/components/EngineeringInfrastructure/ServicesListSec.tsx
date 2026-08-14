@@ -100,7 +100,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                   viewport={{ once: true }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  className={`grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] 3xl:grid-cols-[629px_765px] gap-4 3xl:gap-x-[167px] 
+                  className={`grid grid-cols-1 xl:grid-cols-[1fr_1.4fr] 3xl:grid-cols-[629px_765px] gap-4 xl:gap-60 3xl:gap-x-[167px] 
                     py-4 md:py-5 xl:py-8 xxl:py-8 3xl:py-[40px] px-2 md:px-3 xxl:px-[30px] transition-colors duration-300 ease-in-out relative
                   ${hoveredIndex === index ? "bg-[#A3A3A326]" : "bg-transparent" }
                   ${index === 0
@@ -130,10 +130,10 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                   <p className="text-14 fnt md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] max-w-[45ch]">
                     {service.description}
                   </p>
-                  <div>
+                  {/* <div>
                       <Image src="/assets/icons/top-right-arrow.svg" alt={service.title} width={40} height={40} 
                       className={` h-5 w-5 object-contain transition-all duration-300 ease-in-out ${hoveredIndex === index ? "h-[45px] w-auto" : "h-[20px] w-auto"} `} />
-                  </div>
+                  </div> */}
                  </div>
                 </motion.div>
               ))}
