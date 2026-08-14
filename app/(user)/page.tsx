@@ -20,8 +20,8 @@ import { getHome } from "../lib/home.service";
 import { getTestimonials } from "../lib/testimonials";
 
 export const metadata: Metadata = {
-  title: "Full service Digital Marketing Agency Dubai | GS Digital",
-  description: "Full-service digital marketing agency in Dubai. From SEO to web development, we help 100+ brands dominate search & social. Start your growth journey today.",
+  title: "Digital Marketing Agency in Dubai | GS Digital",
+  description: "GS Digital is a digital marketing agency in Dubai covering a full-service digital marketing services including SEO, paid media, social media, and web development for 140+ UAE and GCC brands since 2013. Talk to us today.",
   alternates: {
     canonical: "https://www.globalsurf.ae",
   },

@@ -72,7 +72,7 @@ const AboutGlobal = () => {
             <h3 className="font-35 mt-3">Building Measurable Growth for UAE’s Built-environment and B2B Brands</h3>
           </motion.div>
           <p className="text-font25 max-w-[50ch]">
-            We’re GS Digital, a full-service digital marketing company in Dubai,
+            We’re GS Digital, a full service digital marketing company in Dubai,
             specializing in data-driven strategies, creative innovation, and
             business-focused solutions.
           </p>
