@@ -125,6 +125,8 @@ tenthSection: {
             title: string;
             project: string;
             description: string;
+            image:string;
+            imageAlt:string;
         }[];
     };
     ctaSection: {
@@ -424,8 +426,7 @@ setValue("tenthSection", data.data?.tenthSection);
             });
             if (response.ok) {
                 const data = await response.json();
-                console.log(data.portfolio)
-                setPortfolios(data.portfolio.filter((item: { section: string }) => item.section == "case study" || item.section == "case study new"));
+                setPortfolios(data.portfolio);
             } else {
                 console.error("Failed to fetch portfolio data");
             }
@@ -1428,6 +1429,34 @@ useEffect(() => {
                                                             />
                                                         </div>
 
+                                                        <div className='flex flex-col gap-2'>
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Image</Label>
+                                                                <Controller
+                                                                    name={`caseStudySection.items.${index}.image`}
+                                                                    control={control}
+                                                                    // rules={{ required: "Image is required" }}
+                                                                    render={({ field }) => (
+                                                                        <ImageUploader
+                                                                            value={field.value}
+                                                                            onChange={field.onChange}
+                                                                            className=''
+                                                                            isLogo
+                                                                        />
+                                                                    )}
+                                                                />
+                                                                {/* {errors.caseStudySection?.items?.[index]?.image && (
+                                                                    <p className="text-red-500">{errors.caseStudySection?.items?.[index]?.image.message}</p>
+                                                                )} */}
+                                                            </div>
+
+                                                            <div className='flex flex-col gap-2'>
+                                                                <Label className='font-bold'>Alt Tag</Label>
+                                                                <Input type='text' placeholder='Alt Tag' {...register(`caseStudySection.items.${index}.imageAlt`)} />
+                                                                {/* {errors.caseStudySection?.items?.[index]?.imageAlt && <p className='text-red-500'>{errors.caseStudySection?.items?.[index]?.imageAlt.message}</p>} */}
+                                                            </div>
+                                                        </div>
+
                                                     </>
                                                 )}
                                             </SortableItem>
@@ -1437,7 +1466,7 @@ useEffect(() => {
 
                             </div>
                             <div className='flex justify-end mt-2'>
-                                <Button type='button' addItem onClick={() => caseStudySectionAppend({ title: "", description: "", project: "" })}>Add Item</Button>
+                                <Button type='button' addItem onClick={() => caseStudySectionAppend({ title: "", description: "", project: "", image:"", imageAlt:"" })}>Add Item</Button>
                             </div>
                         </div>
                     </div>

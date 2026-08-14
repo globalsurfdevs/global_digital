@@ -57,7 +57,7 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
       <div className="container" ref={nextContainerRef}></div>
       <div
         style={{ width: isSmallScreen ? "" : divWidth }}
-        className={`${isSmallScreen ? "container mx-auto py-10" : ""} custom-class ml-auto`}
+        className={`${isSmallScreen ? "container mx-auto py-10" : ""} ml-auto`}
       >
         <div className="flex w-full flex-col lg:flex-row">
           <Swiper
@@ -147,6 +147,8 @@ const PlatformSwiper: React.FC<PlatformsSectionProps> = ({
                       <Image
                         src={item.image}
                         alt={item.title}
+                        width={450}
+                        height={450}
                         className="h-full w-[400px] object-cover lg:w-[450px]"
                       />
                     </div>

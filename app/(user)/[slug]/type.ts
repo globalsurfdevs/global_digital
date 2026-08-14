@@ -133,11 +133,15 @@ export interface ServiceItem {
         items: {
             _id: string;
             title: string;
+            image:string;
             // Unpopulated: string (ObjectId). Populated: full Portfolio object.
             project: {
                 companyName:string;
                 logo:string;
                 slug:string;
+                image:string;
+                imageAlt:string
+                section:string;
             };
             description: string;
         }[];

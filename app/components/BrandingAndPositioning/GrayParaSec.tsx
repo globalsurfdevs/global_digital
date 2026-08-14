@@ -38,7 +38,7 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="text-19 fnt-lexend mb-4 xxl:mb-6 text-muted last:mb-0"
+              className="text-[length:var(--text-18-sm)] fnt-lexend mb-4 xxl:mb-6 text-muted last:mb-0"
               dangerouslySetInnerHTML={{ __html: toSentenceCase(item) }}
             >
               {/* {toSentenceCase(item)} */}
