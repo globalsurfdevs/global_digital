@@ -115,7 +115,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
     const updateContainerLeft = () => {
       if (!containerRef.current) return;
 
-      setContainerLeft(containerRef.current.getBoundingClientRect().left);
+      setContainerLeft(containerRef.current.getBoundingClientRect().left + 15);
     };
 
     updateContainerLeft();
@@ -167,7 +167,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
 
       {/* Slider */}
       <div
-        className="overflow-hidden px-3"
+        className="overflow-hidden"
         style={{
           marginLeft: `${containerLeft}px`,
         }}
@@ -183,7 +183,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           spaceBetween={32}
           slidesPerView={1.15}
           loop={true}
-          rewind
+          loopAdditionalSlides={items.length}
           speed={1000}
           autoplay={{
             delay: 3500,
@@ -191,23 +191,11 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             pauseOnMouseEnter: true,
           }}
           breakpoints={{
-            640: {
-              slidesPerView: 1.8,
-              spaceBetween: 32,
-            },
-            1024: {
-              slidesPerView: 2.1,
-              spaceBetween: 40,
-            },
-            1280: {
-              slidesPerView: 3.4,
-              spaceBetween: 48,
-            },
+            640: { slidesPerView: 1.8, spaceBetween: 32 },
+            1024: { slidesPerView: 2.1, spaceBetween: 40 },
+            1280: { slidesPerView: 3.4, spaceBetween: 48 },
           }}
-          pagination={{
-            el: ".process-pagination",
-            clickable: true,
-          }}
+          pagination={{ el: ".process-pagination", clickable: true }}
           className="!overflow-visible [&_.swiper-slide]:!h-auto [&_.swiper-wrapper]:!items-stretch"
         >
           {items.map((item, i) => (
@@ -216,7 +204,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
                 className={`h-full ${i === leftIndex ? "" : ""} border-l border-black/20 pb-6  pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}
               >
                 <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
+                  <div className="mb-6 inline-flex shrink-0 h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
                     <span className="text-28 font-normal text-primary">
                       {i < 10 ? `0${i + 1}` : i + 1}
                     </span>
