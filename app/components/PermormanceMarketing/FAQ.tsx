@@ -109,7 +109,7 @@ const FAQ: React.FC<PartnerListProps> = ({
             className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[120px] xl:grid-cols-8  `}
           >
             <div className="col-span-2  mb-5 xl:mb-0">
-              <h2 className={`${page === "service" ? "text-60 text-[length:var(--text-60-sm)]" : "text-60"}`}>
+              <h2 className={`text-60 text-[length:var(--text-60-sm)]`}>
                 {!title && "FAQ"}
                 {title}
               </h2>

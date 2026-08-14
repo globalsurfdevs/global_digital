@@ -61,10 +61,10 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
       <div className="container mx-auto py-4">
         <div className="pd-cus flex flex-col pb-4 pt-8 xl:pb-6 xl:pt-12 xxl:pb-60 xxl:pt-[120px]">
           <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h2 className={` ${page === "service" ? "text-18" : "text-30"} uppercase leading-[1.5] text-[#A3A3A3]`}>
+            <h2 className={`text-18 uppercase leading-[1.5] text-[#A3A3A3]`}>
               {title}
             </h2>
-            <div className={`${page === "service" ? "h-4 w-4" : "h-5 w-5"} bg-primary`}></div>
+            <div className={`h-4 w-4 bg-primary`}></div>
           </div>
           <div className="grid grid-cols-1 xl:justify-between xl:grid-cols-2">
           <div className="text-4xl">
@@ -122,7 +122,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
             >
               
                 <div className="flex xl:justify-end">
-                  <p className="pb-6 text-18 leading-[26px] text-[#A3A3A3] lg:pb-[58px] font-normal fnt-lexend  xl:max-w-[50ch] 2xl:max-w-[60ch]">
+                  <p className="pb-6 text-[length:var(--text-18-sm)] leading-[26px] text-[#A3A3A3] lg:pb-[58px] font-normal fnt-lexend  xl:max-w-[50ch] 2xl:max-w-[60ch]">
                     {description}
                   </p>
                 </div>
@@ -197,7 +197,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                             )}
                           </div>
 
-                          <p className="fnt-lexend text-18 font-normal leading-[1.444444444444444] text-[#a3a3a3]">
+                          <p className="fnt-lexend text-[length:var(--text-18-sm)] font-normal leading-[1.444444444444444] text-[#a3a3a3]">
                             {toSentenceCase(framework.dec)}
                           </p>
                         </div>

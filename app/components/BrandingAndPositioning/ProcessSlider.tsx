@@ -227,7 +227,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
                   </h3>
                 </div>
 
-                <p className="text-14 md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
                   {toSentenceCase(item.description)}
                 </p>
               </div>

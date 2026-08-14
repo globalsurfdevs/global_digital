@@ -71,7 +71,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                 {data.map((item, index) =>
                   redlast ? (
                     <h2
-                      className={`${page === "service" ? "text-60 text-[length:var(--text-60-sm)]" : "text-60"} leading-[1.083]`}
+                      className={`text-60 text-[length:var(--text-60-sm)] leading-[1.083]`}
                       key={index}
                       dangerouslySetInnerHTML={{
                         __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span> <span class="text-primary">${item.textred}</span>`,

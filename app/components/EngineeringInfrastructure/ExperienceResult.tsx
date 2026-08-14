@@ -33,7 +33,7 @@ const ExperienceResult = ({ data }: SuccessStoriesProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="title-60 mb-8 xl:mb-12"
+          className="title-60 text-[length:var(--text-60-sm)] mb-8 xl:mb-12"
         >
           {data.title}
         </motion.h2>

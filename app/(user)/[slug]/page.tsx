@@ -362,7 +362,7 @@ const page = async ({ params }: PageProps) => {
       />
       {slug === "web-design-and-development-v2" && (
         <section className="bg-black  pb-[50px]   pt-[50px] text-white lg:pb-[200px] lg:pt-[140px]">
-          <WorkIn workSvgsData={workSvgsData} />
+          <WorkIn workSvgsData={workSvgsData} page="service"/>
         </section>
       )}
       <ProcessSlider data={service.sixthSection} />

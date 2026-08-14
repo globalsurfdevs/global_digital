@@ -68,7 +68,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
                 )}
 
               </div>
-              <p className="text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+              <p className="text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
                 {toSentenceCase(item.description)}
               </p>
             </motion.div>
