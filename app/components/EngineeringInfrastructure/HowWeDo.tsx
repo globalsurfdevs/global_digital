@@ -152,7 +152,7 @@ const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
             <SwiperSlide key={i} className="h-auto">
               <div className={`h-full ${i === leftIndex ? "" : ""} border border-black/20 rounded-[10px] p-4 xl:p-8 xxl:p-10 -mr-px`} >
                 <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="mb-6 xl:mb-[30px] inline-flex h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20 xxl:h-25 xxl:w-25">
+                  <div className="mb-6 xl:mb-[30px] inline-flex shrink-0 h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20 xxl:h-25 xxl:w-25">
                     {/* <span className="text-28 font-normal text-primary">
                       {i < 10 ? `0${i + 1}` : i + 1}
                     </span> */}
