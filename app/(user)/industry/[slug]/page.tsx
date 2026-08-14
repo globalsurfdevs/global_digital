@@ -201,7 +201,7 @@ const page = async ({ params }: PageProps) => {
     const industriesData = {
         title: industryData?.ninethSection?.title,
         subTitle: industryData?.ninethSection?.subTitle,
-        items: allIndustryData.map((item) => ({
+        items: allIndustryData.filter((item)=>item.slug!==industryData?.slug).map((item) => ({
             _id: item?._id,
             title: item?.name,
             icon: item?.ninethSection?.logo,
