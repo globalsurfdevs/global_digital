@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.globalsurf.ae",
   },
-  robots: "index, follow",
+  robots: "noindex, nofollow",
   openGraph: {
     title: "Strategic Digital Marketing Solutions in Dubai | GS Digital",
     siteName: "GS Digital", // ✅ siteName not site_name

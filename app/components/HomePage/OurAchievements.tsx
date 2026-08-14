@@ -207,10 +207,10 @@ const OurAchievements = () => {
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
-                      Talents and Evolving
+                     and Evolving
                     </div>
                     <div className="letter-hover  text-font30 leading-lh2p3 text-gray1">
-                      Talents and Evolving
+                     and Evolving
                     </div>
                   </div>
                 </div>
