@@ -65,7 +65,7 @@ const OurServices = () => {
   return (
     <>
       {/* Section Heading */}
-      <div className="container mx-auto ">
+      <div className="container mx-auto md:pt-20 xl:pt-120">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -87,7 +87,7 @@ const OurServices = () => {
           </p>
         </motion.div>
       </div>
-      <div className="container mx-auto flex flex-col gap-5 px-4 py-8 xl:gap-24">
+      <div className="container mx-auto flex flex-col gap-5 px-4 py-8 xl:gap-24 ">
         {/* Services */}
         {services.map((service) => (
           <div key={service.id}>

@@ -1,6 +1,6 @@
 import HeroSection from "@/app/components/HomePage/HeroSection";
 import LogoSwiper from "@/app/components/HomePage/LogoSwiper";
-import AboutGlobal from "@/app/components/HomePage/AboutGlobal";
+import AboutGlobal from "@/app/components/HomePage/AboutGlobal2";
 import OurAchievements from "@/app/components/HomePage/OurAchievements";
 import OurServices from "@/app/components/HomePage/OurServices";
 import SuccessStories from "@/app/components/HomePage/SuccessStories";
@@ -170,7 +170,7 @@ export default async function Home() {
       <Clients data={home.clientSection} />
       <Testimonials data={testimonials.testimonialSection} reviews={false}
         bottomText={false} />
-      <FAQ title={home.faqSection.title}
+      <FAQ title={home.faqSection.title} initialCount={3}
         data={home.faqSection.items.map((item:{question:string,answer:string}) => ({
           title: item.question,
           description: item.answer,
