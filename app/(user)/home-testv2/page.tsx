@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "@/app/components/HomeTest/Index";
+import Home from "@/app/components/HomeTest/Indexv2";
 
 
 

@@ -69,12 +69,10 @@ const AboutGlobal = () => {
                 </span>
               ))}
             </motion.h1>
-            <h3 className="font-35 mt-3">Building Measurable Growth for UAE’s Built-environment and B2B Brands</h3>
+            <h3 className="font-35 mt-3">Senior-Led Expertise. Sector-Specific Strategies. Trusted by 140+ UAE Brands Since 2013. </h3>
           </motion.div>
-          <p className="text-font25 max-w-[50ch]">
-            We’re GS Digital, a full service digital marketing company in Dubai,
-            specializing in data-driven strategies, creative innovation, and
-            business-focused solutions.
+          <p className="text-font25 ">
+            We’re GS Digital, a full service digital marketing agency in Dubai delivering digital marketing services to brands across the UAE. With extensive experience across construction, real estate, B2B, education, retail, and other key industries, we work with organisations where long sales cycles, tender processes, and technical buyers demand a different digital approach. By combining data driven strategy, creative thinking, and business focused execution, we turn digital investment into measurable business results.
           </p>
           <button
             className="z-2 z-1 group relative flex w-fit items-center gap-1 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3

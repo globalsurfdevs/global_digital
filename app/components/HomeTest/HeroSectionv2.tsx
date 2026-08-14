@@ -231,34 +231,34 @@
 import HeroInteractive from "../HomePage/HeroInteractive";
 
 const HeroSection = () => {
-  return (
-    <section className="bnrnmn relative flex h-[70vh] items-center py-24 text-black xl:h-screen">
-      <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight" />
+    return (
+        <section className="bnrnmn relative flex h-[70vh] items-center py-24 text-black xl:h-screen">
+            <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight" />
 
-      {/* Video stays here — covers full section, no JS needed for placement */}
-      <video
-        className="absolute left-0 top-0 -z-10 h-full w-full object-cover transition-opacity duration-300"
-        style={{ opacity: 0 }}
-        loop
-        muted
-        playsInline
-        preload="none"
-        poster="/assets/videos/home_poster.jpg"
-        id="hero-video"
-      >
-        <source src="/assets/videos/home_banner_v2.mp4" type="video/mp4" />
-      </video>
+            {/* Video stays here — covers full section, no JS needed for placement */}
+            <video
+                className="absolute left-0 top-0 -z-10 h-full w-full object-cover grayscale transition-opacity duration-300"
+                style={{ opacity: 0 }}
+                loop
+                muted
+                playsInline
+                preload="none"
+                poster="/assets/videos/home_poster.jpg"
+                id="hero-video"
+            >
+                <source src="/assets/videos/home_banner_v2.mp4" type="video/mp4" />
+            </video>
 
-      {/* White overlay — sits above video, below text — keeps dark title readable */}
-      <div className="absolute left-0 top-0 -z-[5] h-full w-full bg-white/60" />
+            {/* Scrim: sits above video, below text — guarantees contrast regardless of footage */}
+            <div className="absolute left-0 top-0 -z-[5] h-full w-full bg-gradient-to-r from-white/70 via-white/40 to-transparent" />
 
-      <div className="container mx-auto px-4">
-        <div className="hero-heading-wrapper">
-          <HeroInteractive />
-        </div>
-      </div>
-    </section>
-  );
+            <div className="container mx-auto px-4">
+                <div className="hero-heading-wrapper">
+                    <HeroInteractive />
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default HeroSection;
