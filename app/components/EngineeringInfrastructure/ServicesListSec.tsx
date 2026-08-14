@@ -64,18 +64,18 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="text-28 leading-[1.5] text-muted"
+                className="text-18 leading-[1.5] text-muted"
               >
                 {title}
               </motion.h3>
-              <div className="h-5 w-5 bg-primary"></div>
+              <div className="h-4 w-4 bg-primary"></div>
             </div>
             <motion.h2
               variants={moveUp(0.1)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="title-60 tracking-[-0.025em] max-w-[20ch]"
+              className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em] max-w-[20ch]"
             >
               {description}
             </motion.h2>
@@ -127,7 +127,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                     </h3>
                 </div>
                  <div className="flex justify-between gap-x-10">
-                  <p className="text-14 fnt md:text-16 xl:text-18 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] max-w-[45ch]">
+                  <p className="text-14 fnt md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] max-w-[45ch]">
                     {service.description}
                   </p>
                   <div>

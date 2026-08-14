@@ -29,18 +29,18 @@ const IndustriesSec = ({ data }: { data:Props}) => {
               whileInView="show"
               variants={moveUp(0)}
               viewport={{ once: true }}
-              className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
+              className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
             >
               {data.title}
             </motion.h3>
-            <div className="h-5 w-5 bg-primary"></div>
+            <div className="h-4 w-4 bg-primary"></div>
           </div>
           <motion.h2
             initial="hidden"
             whileInView="show"
             variants={moveUp(0)}
             viewport={{ once: true }}
-            className="title-60 tracking-[-0.025em] max-w-[25ch]"
+            className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em] max-w-[25ch]"
             dangerouslySetInnerHTML={{ __html: data.subTitle }}
           />
         </div>

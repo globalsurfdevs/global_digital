@@ -57,11 +57,11 @@ const WhoWeWork = ({ data }: { data: WhoWeWorkData }) => {
                         whileInView="show"
                         variants={moveUp(0)}
                         viewport={{ once: true }}
-                        className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
+                        className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
                     >
                         {data.tag}
                     </motion.h3>
-                    <div className="h-5 w-5 bg-primary"></div>
+                    <div className="h-4 w-4 bg-primary"></div>
                 </div>
 
                 <motion.h2
@@ -69,7 +69,7 @@ const WhoWeWork = ({ data }: { data: WhoWeWorkData }) => {
                     whileInView="show"
                     variants={moveUp(0)}
                     viewport={{ once: true }}
-                    className="title-60 mb-8 max-w-[20ch] tracking-[-0.025em] md:mb-[22px]"
+                    className="title-60 text-[length:var(--text-60-sm)] mb-8 max-w-[20ch] tracking-[-0.025em] md:mb-[22px]"
                     dangerouslySetInnerHTML={{ __html: data.title }}
                 />
 
