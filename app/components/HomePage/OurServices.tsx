@@ -83,8 +83,7 @@ const OurServices = () => {
             <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
           </div>
           <p className="mb-5 max-w-[60ch] text-font25 lg:mb-[45px]">
-            Strategy-first digital solutions built to generate qualified demand
-            and accountable business performance.
+            Our digital marketing services in Dubai are strategy-first, built to generate qualified demand and accountable business performance for brands across the UAE.
           </p>
         </motion.div>
       </div>

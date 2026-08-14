@@ -14,51 +14,58 @@ const images = [
   {
     src: assets.realestate1,
     title: "Construction",
-    desc: "Helping contractors, developers and EPC firms capture qualified project enquiries and strengthen visibility during procurement and tender evaluation stages.",
+    desc: "Digital credibility and qualified project enquiry generation for contractors, developers, and EPC firms. ",
     link: "/industry/construction",
   },
   {
-    src: assets.real1,
-    title: "Real Estate",
-    desc: "Empowering developers and property brands with digital strategies that improve buyer quality, project visibility, and sales conversion performance.",
-    link: "",
-  },
-  {
     src: assets.b2b1,
-    title: "B2B & Industrial",
-    desc: "Enabling manufacturers and industrial firms to attract decision-makers, improve lead qualification, and support high-value contract acquisition.",
+    title: "Engineering and Infrastructure ",
+    desc: "B2B SEO, thought leadership content, and LinkedIn presence for engineering consultancies that need to be visible and credible.",
     link: "/industry/b2b-digital-marketing-services",
   },
   {
+    src: assets.real1,
+    title: "Real Estate and Property Development ",
+    desc: "Full lifecycle digital marketing for UAE property developers, from project launch brand building through to buyer acquisition campaigns. ",
+    link: "",
+  },
+
+  {
     src: assets.profserv1,
-    title: "Corporate & Professional Services",
-    desc: "Strengthening authority for consulting, legal, and advisory firms through credibility-driven digital presence and thought leadership.",
+    title: "Industrial ",
+    desc: "Supplier discovery SEO, LinkedIn Ads, and technical content for industrial equipment and services firms. ",
     link: "",
   },
   {
     src: assets.ecommerce1,
-    title: "E-Commerce",
-    desc: "Driving scalable traffic, higher AOV, and revenue growth for online retailers through performance media, CRO, and data-led strategies optimized for UAE's competitive retail landscape.",
+    title: "Manufacturing ",
+    desc: "B2B lead generation, export market visibility, and direct-to-consumer channel support for UAE and GCC manufacturers. ",
     link: "/industry/ecommerce-digital-marketing",
+  },
+  {
+    src: assets.hospitality1,
+    title: "Lifestyle and Retail",
+    desc: "Performance marketing, social media, and brand strategy for UAE consumer brands across fashion, retail, and lifestyle categories. ",
+    link: "/industry/digital-marketing-agency-for-hospitality",
   },
   {
     src: assets.education1,
     title: "Education",
-    desc: "Helping institutions improve programme visibility, attract qualified applicants, and strengthen credibility among prospective students and parents.",
+    desc: "Digital marketing for UAE universities, schools, and training providers, focused on brand visibility and student recruitment. ",
     link: "",
   },
-  {
-    src: assets.hospitality1,
-    title: "Hospitality",
-    desc: "Enhancing brand visibility and direct booking demand for hotels, resorts, and hospitality groups with precision social, SEO, and performance ads that cut through Dubai's crowded tourism market.",
-    link: "/industry/digital-marketing-agency-for-hospitality",
-  },
-  {
-    src: assets.healthcare1,
-    title: "Healthcare",
-    desc: "Strengthening patient acquisition and digital trust for providers with compliant, credibility-focused strategies that drive enquiries while navigating strict regulations.",
-    link: "",
-  }
+  // {
+  //   src: assets.hospitality1,
+  //   title: "Hospitality",
+  //   desc: "Enhancing brand visibility and direct booking demand for hotels, resorts, and hospitality groups with precision social, SEO, and performance ads that cut through Dubai's crowded tourism market.",
+  //   link: "/industry/digital-marketing-agency-for-hospitality",
+  // },
+  // {
+  //   src: assets.healthcare1,
+  //   title: "Healthcare",
+  //   desc: "Strengthening patient acquisition and digital trust for providers with compliant, credibility-focused strategies that drive enquiries while navigating strict regulations.",
+  //   link: "",
+  // }
 ];
 
 const IndustriesweWork = () => {
@@ -81,7 +88,7 @@ const IndustriesweWork = () => {
           }}
         >
           <h2 className="title-65 mb-5 md:mb-5">Industries We Work With</h2>
-          <p className="text-font25 leading-[1.4] max-w-[70ch] mb-5 lg:mb-[58px]">We partner with businesses across diverse industries to deliver digital solutions that align with real-world challenges and growth goals. Our strategies are tailored to each sector’s audience behavior, competition, and market dynamics.</p>
+          <p className="text-font25 leading-[1.4] max-w-[70ch] mb-5 lg:mb-[58px]">We partner with businesses across Dubai and the wider UAE to deliver digital solutions that align with real-world commercial challenges and growth goals. Our strategies are built around each sector's audience behaviour, competitive context, and market dynamics.</p>
         </motion.div>
         <motion.div
           className="ps-4 pe-4 lg:pe-0 container lg:!max-w-full"

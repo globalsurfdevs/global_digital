@@ -5,7 +5,7 @@ export const services = [
     title: "Performance Marketing",
     url: "/performance-marketing-agency-dubai",
     description:
-      "We execute revenue-focused strategies across Google Ads, paid social, and search environments. Campaigns are built around cost-per-lead benchmarks and commercial impact.  ",
+      "We plan and run paid media across search, social, programmatic, and video, aligned to one ROI and ROAS model so every channel is accountable to pipeline. Every dirham of media spend is tied to an agreed cost-per-acquisition target before a campaign goes live. ",
     buttonTexts: [
       {
         title: "PPC Advertising",
@@ -31,7 +31,7 @@ export const services = [
     title: "SEO",
     url: "/seo-agency-dubai",
     description:
-      "Our SEO strategies capture high-intent demand across search and AI-driven platforms. As a full stack digital marketing agency, the focus remains organic acquisition, not vanity rankings.",
+      "Organic search visibility for UAE businesses across local, e-commerce, and B2B contexts. We use Ahrefs, SEMrush, Google Search Console, and Screaming Frog to build programmes that connect organic traffic to pipeline value, not vanity rankings.",
     buttonTexts: [
       {
         title: "B2B SEO",
@@ -57,7 +57,7 @@ export const services = [
     title: "Social Media",
     url: "/social-media-agency-dubai",
     description:
-      "We manage social media as a performance and brand growth channel. Instead of posting for visibility alone, we focus on building trust and improving engagement.",
+      "We manage social media as a performance and brand growth channel, building audience relationships that improve conversion rates over time. Organic and paid social are managed as two separate functions with two separate commercial objectives. ",
     buttonTexts: [
       {
         title: "Social Media Strategy",
@@ -84,7 +84,7 @@ export const services = [
     title:"Web & App Development",
     url: "/web-design-and-development",
     description:
-      "As a digital transformation company in Dubai, we design and develop conversion-focused digital platforms engineered to support acquisition and long decision cycles.",
+      "We design and develop conversion-focused websites, e-commerce platforms, and mobile apps engineered to support acquisition and long B2B decision cycles. Every build is senior-led and delivered against an agreed scope and timeline.",
     buttonTexts: [
       // {
       //   title: "Website Design",
@@ -115,7 +115,7 @@ export const services = [
     title: "Branding & Content Production",
     url: "/creative-agency-dubai",
     description:
-      "Our branding work centres on positioning and differentiation. Every creative asset  supports commercial objectives while maintaining consistency across digital touchpoints.",
+      "Our branding work centres on positioning and differentiation before design. Every creative asset is built to support a commercial objective, not just to look good at launch.",
     buttonTexts: [
       {
         title: "Branding & Positioning",
@@ -150,7 +150,7 @@ export const services = [
     title: "AI, Data & Intelligence",
     url: "/marketing-intelligence-agency-dubai",
     description:
-      "We provide clear business insights through KPI tracking and channel analysis, enabling smarter budget allocation, sharper targeting, and continuous optimisation. ",
+      "We build marketing performance dashboards and cross-channel reporting for UAE brands using GA4 and Looker Studio. Clear data connects every channel to the business outcomes your leadership team needs to see. ",
     buttonTexts: [
       // {
       //   title: "Strategy Consulting",

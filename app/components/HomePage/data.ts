@@ -3,40 +3,40 @@
  
 export const Faq = [
   {
-    title: "How do you choose the right digital marketing agency in Dubai?",
+    title: "How do you choose the right digital marketing agency in Dubai? ",
     description:
-      "Choose a digital marketing agency in Dubai that defines strategy before activating channels. Engagements should begin with a growth audit covering competitive positioning, opportunity sizing, and KPI mapping tied to revenue goals. Only after strategic clarity should campaigns be executed, ensuring investment translates into accountable business performance rather than isolated activity.",
+      "Look for an agency that audits before it activates. The right digital marketing agency in Dubai begins with a structured review of your competitive position, your current digital baseline, and your commercial objectives before recommending any channel or budget. Ask specifically who will manage your account after signing and what commercial metrics they will report against monthly.",
   }, 
   {
     title: "What is a full-service digital marketing agency?",
     description:
-      "A full-service digital marketing agency integrates SEO, performance media, content, social, and web into one performance-led model. Every channel operates against shared commercial KPIs, preventing fragmented execution. This ensures all initiatives contribute directly to qualified demand, conversion efficiency, and measurable revenue impact.",
+      "An integrated digital marketing agency manages SEO, paid media, social media, content, and web development under one team accountable to one set of commercial KPIs. The advantage over single-channel specialists is that every channel is managed in relation to the others, preventing the fragmented reporting and duplicated spend that occurs when separate agencies manage separate channels with no shared objective. ",
   }, 
   {
-    title: "What does a full-service digital marketing agency offer?",
+    title: "What digital marketing services does a digital marketing company in Dubai provide? ",
     description:
-      "A full-service digital marketing agency delivers integrated services including SEO, paid acquisition, content strategy, social positioning, and conversion-focused web development. These services operate within a unified demand model where visibility, lead quality, and growth objectives remain aligned to clear performance benchmarks.",
+      "A digital marketing company in Dubai typically provides SEO, paid search and paid social advertising, social media management, content marketing, web design and development, and marketing analytics. GS Digital delivers all of these across one senior-led team, with every engagement scoped around a specific commercial objective rather than a fixed package. ",
   }, 
-  // {
-  //   title: "How much does digital marketing cost in Dubai?",
-  //   description:
-  //     "Monthly retainers in Dubai typically range from AED 5,000–30,000+ depending on scope, competition, and goals (e.g., SEO AED 3,000–15,000; full-funnel campaigns AED 10,000–30,000+). We build budgets through ROI modelling and opportunity analysis to align spend with projected demand capture and cost-per-lead targets—ensuring every dirham drives commercial returns.",
-  // }, 
-  // {
-  //   title: "Why choose a Dubai-based marketing agency?",
-  //   description:
-  //     "A Dubai-based marketing agency understands buyer cycles, cultural nuances, procurement timelines, and competitive intensity. Global Surf Digital combines regional market insight with performance-led strategy. This enables more precise targeting, relevant messaging, and channel optimisation across B2B, construction, real estate, and enterprise-driven sectors.",
-  // }, 
-  // {
-  //   title: "What results can I expect in the first 3 months?",
-  //   description:
-  //     "In the first 3 months, expect improved search visibility (often 20-50% lift in impressions), refined targeting, stronger engagement signals, and better cost control. Lead indicators show clearer intent and qualification—laying the foundation for scalable revenue growth in months 4-6.",
-  // }, 
-  // {
-  //   title: "How does digital marketing work for construction companies?",
-  //   description:
-  //     "Construction marketing follows a long-cycle acquisition approach. Stakeholder journeys are mapped, visibility gaps identified, and intent-driven SEO and paid campaigns deployed. The objective is qualified project enquiries and shortlist positioning during evaluation and procurement stages.",
-  // }, 
+  {
+    title: "Does GS Digital work across the UAE or only in Dubai?",
+    description:
+      "GS Digital is based in Dubai Silicon Oasis and delivers digital marketing services across the UAE including Abu Dhabi, Sharjah, and the Northern Emirates, as well as across the wider GCC. Our client base spans every emirate and several regional markets including Saudi Arabia and Qatar. ",
+  }, 
+  {
+    title: "What makes GS Digital different from other digital marketing agencies in Dubai? ",
+    description:
+      "Two things consistently separate GS Digital from other agencies in this market. First, sector depth: we work with genuine specialism in construction, real estate, B2B industrial, education, and retail, sectors where the buyer behaviour, procurement cycles, and content requirements are fundamentally different from consumer brand work. Second, senior-led delivery: the strategist who scopes your account manages it. No junior handover after the credentials meeting.",
+  }, 
+  {
+    title: "How long does it take to see results from digital marketing in the UAE?",
+    description:
+      "Paid media campaigns typically show meaningful performance data within 30 to 60 days of launch. SEO shows organic visibility improvement within 3 to 6 months and compounds significantly over 12 months. A combined paid and organic programme typically shows its clearest commercial return between 6 and 12 months of consistent execution. Cutting a campaign before 90 days of data rarely produces a reliable read on whether the strategy is working. ",
+  }, 
+  {
+    title: "Which industries does GS Digital work with? ",
+    description:
+      "GS Digital works with businesses across construction, engineering and infrastructure, real estate and property development, industrial, manufacturing, ecommerce, fashion, retail, and education. Our deepest experience is in UAE built environment and B2B sectors, where procurement-driven buying cycles and technical decision-makers require a materially different marketing approach than consumer or lifestyle brand work. ",
+  }, 
   // {
   //   title: "Can digital marketing help win large construction projects?",
   //   description:
