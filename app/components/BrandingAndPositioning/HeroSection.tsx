@@ -75,7 +75,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
         />
       </div>
       <div className="container" ref={containerRef}></div>
-      <div className="relative z-10 flex h-full flex-col justify-center md:w-[55%] 2xl:w-[50%] 3xl:w-[40%]" style={{ marginLeft: `${containerLeft}px` }}>
+      <div className="relative z-10 flex h-full flex-col justify-center md:w-[50%] 2xl:w-[50%] 3xl:w-[40%]" style={{ marginLeft: `${containerLeft}px` }}>
         <div>
           <h1 className="title-70 text-[length:var(--text-70-sm)] mb-3 tracking-[-0.025em] xl:mb-5">
             {toTitleCase(data.title)}
