@@ -1,33 +1,64 @@
 "use client";
 import Image from "next/image";
-import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { assets } from "@/public/assets/assets";
 
-type Cell = boolean; // true = included (check), false = not included (dot)
-
-type Row = {
-    label: string;
-    growth: Cell;
-    plus: Cell;
+type Feature = {
+    title: string;
+    description: string;
 };
 
-const rows: Row[] = [
-    { label: "All 14 services", growth: true, plus: true },
-    { label: "Signed baseline in week two", growth: true, plus: true },
-    { label: "Six reported numbers", growth: true, plus: true },
-    { label: "Six reported numbers", growth: true, plus: true },
-    { label: "Monthly report and senior call", growth: true, plus: true },
-    { label: "Quarterly deep review", growth: true, plus: true },
-    { label: "LinkedIn posts for one leader", growth: true, plus: true },
-    { label: "Several companies, brands or countries", growth: false, plus: true },
-    { label: "More content and more site visits", growth: false, plus: true },
-    { label: "Posts for several leaders", growth: false, plus: true },
-    { label: "Tender and bid content", growth: false, plus: true },
-    { label: "Named senior contact, priority turnaround", growth: false, plus: true },
+const growthFeatures: Feature[] = [
+    { title: "SEO", description: "Google ranking for the terms buyers actually search" },
+    { title: "GEO", description: "Named correctly when a buyer asks an AI tool" },
+    { title: "Social Media", description: "Named correctly when a buyer asks an AI tool" },
+    { title: "Social Media", description: "LinkedIn, eight to ten posts a month" },
+    { title: "Content Production", description: "One shoot day a month at your site" },
+    { title: "Executive Visibility", description: "Four posts a month for one senior leader" },
+    { title: "Website and Technical SEO", description: "Safe, fast, and checked every month" },
+    { title: "Analytics, CRO and Reporting", description: "Signed baseline, monthly report, quarterly audit" },
+    { title: "Strategy and Benchmarking", description: "One senior strategist, three competitors tracked" },
 ];
+
+const plusFeatures: Feature[] = [
+    { title: "Multi entity coverage", description: "Several companies, brands or countries" },
+    { title: "Executive Visibility, expanded", description: "Posts for multiple leaders" },
+    { title: "Content Production, extended", description: "More shoot days and more social output" },
+    { title: "Competitive Intelligence, expanded", description: "A wider competitor set" },
+];
+
+const ArrowIcon = ({ clipId, dark = false }: { clipId: string; dark?: boolean }) => (
+    <svg
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="group-hover:scale-105"
+    >
+        <g clipPath={`url(#${clipId})`}>
+            <path
+                d="M8.88346 1.26172L1.13281 8.8624"
+                stroke={dark ? "black" : "white"}
+                strokeWidth="2"
+                strokeMiterlimit="10"
+            />
+            <path
+                d="M1.13281 1.26172H8.88346V8.71245"
+                stroke={dark ? "black" : "white"}
+                strokeWidth="2"
+                strokeMiterlimit="10"
+            />
+        </g>
+        <defs>
+            <clipPath id={clipId}>
+                <rect width="10" height="10" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
 
 const infoCards = [
     {
@@ -43,51 +74,6 @@ const infoCards = [
             "We intentionally hold a limited number of built environment partners. Senior attention doesn't scale post a certain point, so we don't pretend it does.",
     },
 ];
-
-const ArrowIcon = ({ clipId }: { clipId: string }) => (
-    <svg
-        width="10"
-        height="10"
-        viewBox="0 0 10 10"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="group-hover:scale-105"
-    >
-        <g clipPath={`url(#${clipId})`}>
-            <path
-                d="M8.88346 1.26172L1.13281 8.8624"
-                stroke="white"
-                strokeWidth="2"
-                strokeMiterlimit="10"
-            />
-            <path
-                d="M1.13281 1.26172H8.88346V8.71245"
-                stroke="white"
-                strokeWidth="2"
-                strokeMiterlimit="10"
-            />
-        </g>
-        <defs>
-            <clipPath id={clipId}>
-                <rect width="10" height="10" fill="white" />
-            </clipPath>
-        </defs>
-    </svg>
-);
-
-const Mark = ({ included }: { included: boolean }) => (
-    <div className="flex justify-center">
-        {included ? (
-            <span className="flex h-4 w-4 shrink-0 items-center justify-center bg-red-600">
-                <Check size={10} strokeWidth={3} className="text-white" />
-            </span>
-        ) : (
-            <span className="flex h-4 w-4 shrink-0 items-center justify-center bg-[#77787B]/20">
-                <X size={14} strokeWidth={2} className="text-black/25" />
-            </span>
-        )}
-    </div>
-);
 
 type Props = {
     title: string;
@@ -146,98 +132,150 @@ const PricingComparison = ({ data }: { data: Props }) => {
                     </motion.div>
                 </div>
 
-                {/* Table */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="show"
-                    variants={moveUp(0.15)}
-                    viewport={{ once: true }}
-                    className="mt-10 overflow-hidden rounded-2xl border border-black/10"
-                >
-                    <div className="relative w-full">
-                        {/* Red overlay wash over the middle column only — matches column widths at each breakpoint */}
-                        <div
-                            className="pointer-events-none absolute inset-y-0 z-10 bg-[#E53E31]/[0.02]
-                left-[46%] w-[27%]
-                md:left-[43%] md:w-[29%]
-                lg:left-[45%] lg:w-[28%]
-                xl:left-[45.5%] xl:w-[24.5%]"
-                        />
+                {/* Cards */}
+                <div className="mt-10 grid gap-4 md:mt-[60px] lg:grid-cols-2">
+                    {/* Growth card */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="show"
+                        variants={moveUp(0.1)}
+                        viewport={{ once: true }}
+                        className="relative  rounded-2xl bg-black text-white md:pt-[50px] md:px-[40px] p-6"
+                    >
+                        <span className="absolute fnt-lexend left-1/2 top-[-14px] w-fit -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-[15px] py-[10px] text-18 uppercase tracking-wide text-white">
+                            What most firms take
+                        </span>
 
-                        <div
-                            className="grid
-                grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]
-                md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)]
-                lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)]
-                xl:grid-cols-[minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1.1fr)]"
-                        >
-                            {/* Column headers */}
-                            <div className="flex items-end bg-[#F6F6F6] px-3 py-4 sm:px-6 sm:py-5 md:px-[80px]">
-                                <span className="text-12 uppercase text-muted sm:text-16 md:text-18">
-                                    What you get
-                                </span>
-                            </div>
-                            <div className="flex flex-col items-center gap-1 bg-[#F6F6F6] px-2 py-4 text-center sm:gap-1.5 sm:px-4 sm:py-5">
-                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
-                                    Where most firms start
-                                </span>
-                                <span className="rounded-full border border-primary px-2 py-0.5  text-primary sm:px-3 sm:py-1 text-[13px] md:text-28 leading-normal md:leading-[34px]">
-                                    Growth Partnership
-                                </span>
-                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
-                                    From AED 10,000 a month
-                                </span>
-                            </div>
-                            <div className="flex flex-col items-center gap-1 bg-[#F6F6F6] px-2 py-4 text-center sm:gap-1.5 sm:px-4 sm:py-5">
-                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
-                                    Go wider
-                                </span>
-                                <span className="rounded-full border border-primary px-2 py-0.5  text-primary sm:px-3 sm:py-1 text-[13px] md:text-28 leading-[34px]">
-                                    Plus
-                                </span>
-                                <span className="text-[10px] uppercase text-muted sm:text-14 md:text-18">
-                                    Custom price
-                                </span>
-                            </div>
-
-                            {/* Rows */}
-                            {rows.map((row, i) => (
-                                <Fragment key={i}>
-                                    <div
-                                        className={`flex items-center px-3 py-4 text-13 text-black sm:px-6 sm:py-6 sm:text-14 md:px-[80px] md:py-[30px] md:text-18 ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
-                                            }`}
-                                    >
-                                        {row.label}
-                                    </div>
-                                    <div
-                                        className={`flex items-center justify-center px-2 py-4 sm:px-4 sm:py-6 md:py-[30px] ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
-                                            }`}
-                                    >
-                                        <Mark included={row.growth} />
-                                    </div>
-                                    <div
-                                        className={`flex items-center justify-center px-2 py-4 sm:px-4 sm:py-6 md:py-[30px] ${i % 2 === 1 ? "bg-[#F6F6F6]" : "bg-white"
-                                            }`}
-                                    >
-                                        <Mark included={row.plus} />
-                                    </div>
-                                </Fragment>
-                            ))}
-
-                            {/* Footer row */}
-                            <div className="flex items-center px-3 py-4 text-13 leading-[1.5] text-muted fnt-lexend sm:px-6 sm:text-14 md:px-[80px] md:py-[30px] md:text-18 md:leading-[26px]">
-                                Term and billing
-                            </div>
-                            <div className="flex items-center justify-center px-2 py-4 text-center text-[10px] leading-[1.4] text-muted fnt-lexend sm:px-4 sm:text-12 md:px-[30px] md:py-[30px] md:text-18 md:leading-[26px]">
-                                12 months. Google ranking work has a 6 month minimum. VAT not
-                                included.
-                            </div>
-                            <div className="flex items-center justify-center px-2 py-4 text-center text-[10px] leading-[1.4] text-muted fnt-lexend sm:px-4 sm:text-12 md:px-[30px] md:py-[30px] md:text-18 md:leading-[26px]">
-                                Set with you, always in a written proposal.
-                            </div>
+                        <span className="text-12 uppercase leading-[1.444444444444444] text-white/50 fnt-lexend">
+                            Growth
+                        </span>
+                        <h3 className="text-28 mt-[40px] leading-[1.214285714285714]">Growth Partnership</h3>
+                        <div className="mt-[30px] flex items-baseline gap-2">
+                            <span className="text-60 leading-[1.083333333333333]">
+                                AED 10,000
+                            </span>
+                            <span className="text-18 text-white/50 md:text-16">
+                                a month, from
+                            </span>
                         </div>
-                    </div>
-                </motion.div>
+                        <p className="mt-[20px] text-white/50 text-18 leading-[1.444444444444444]">
+                            Eight disciplines, one senior team, one monthly figure.
+                        </p>
+
+                        <button
+                            type="button"
+                            className="group mt-6 flex w-full items-center justify-center space-x-[12px] rounded-full border border-primary px-6 py-[15px] text-white transition duration-300 ease-in hover:shadow-lg md:mt-[30px]"
+                        >
+                            <span className="fnt-lexend uppercase duration-300 ease-in text-16">
+                                Book your 20-minute call
+                            </span>
+                            <div className="bg-primary p-1">
+                                <ArrowIcon clipId="clip-book-call" />
+                            </div>
+                        </button>
+
+                        <div className="mt-8 border-t border-white/10 pt-6 md:mt-[40px] md:pt-[40px]">
+                            <span className="text-18  fnt-lexend text-white/50 leading-[1.444444444444444]">
+                                What runs every month
+                            </span>
+
+                            <ul className="mt-4 space-y-5 md:mt-[24px] md:space-y-[25px] fnt-lexend">
+                                {growthFeatures.map((item, i) => (
+                                    <li key={i} className="flex flex-col items-start gap-3">
+                                        <div className="flex items-center gap-[20px]">
+                                            <span className="flex h-4 w-4 shrink-0 items-center justify-center bg-primary">
+                                                <Check size={10} strokeWidth={7} className="text-white" />
+                                            </span>
+                                            <p className="font-normal text-18 leading-[1.444444444444444]">
+                                                {item.title}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p className="mt-[5px] ml-[35px] text-white/50 fnt-lexend text-18">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <p className="mt-8 pt-6 leading-[1.444444444444444] text-white/50 fnt-lexend md:mt-[70px] md:mb-[85px] text-18">
+                            12 months. Google ranking work has a 6 month minimum. VAT not
+                            included.
+                        </p>
+                    </motion.div>
+
+                    {/* Plus card */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="show"
+                        variants={moveUp(0.15)}
+                        viewport={{ once: true }}
+                        className="rounded-2xl bg-[#F6F6F6] md:pt-[50px] md:px-[40px] p-6"
+                    >
+                        <span className="text-18 uppercase fnt-lexend text-muted leading-[1.444444444444444]">
+                            Plus
+                        </span>
+                        <h3 className="mt-[40px] text-28 leading-[1.214285714285714]">Plus</h3>
+                        <div className="mt-[30px] flex items-baseline gap-2">
+                            <span className="text-60 leading-[1.083333333333333]">
+                                Custom
+                            </span>
+                            <span className="text-muted text-18 leading-[1.444444444444444]">
+                                priced with you
+                            </span>
+                        </div>
+                        <p className="mt-[20px] text-muted text-18 leading-[1.444444444444444]">
+                            For groups running several companies, brands or countries at
+                            once
+                        </p>
+
+                        <button
+                            type="button"
+                            className="group mt-6 flex w-full items-center justify-center space-x-[12px] rounded-full border border-primary px-6 py-[15px] text-black transition duration-300 ease-in hover:shadow-lg md:mt-[30px]"
+                        >
+                            <span className="fnt-lexend uppercase duration-300 ease-in text-16">
+                                Ask about Plus
+                            </span>
+                            <div className="bg-primary p-1">
+                                <ArrowIcon clipId="clip-ask-plus" />
+                            </div>
+                        </button>
+
+                        <div className="mt-8 border-t border-black/10 pt-6 md:mt-[40px] md:pt-[40px]">
+                            <span className="text-18 text-muted fnt-lexend leading-[1.444444444444444]">
+                                What runs every month
+                            </span>
+
+                            <ul className="mt-4 space-y-5 md:mt-[24px] md:space-y-[25px] fnt-lexend">
+                                {plusFeatures.map((item, i) => (
+                                    <li key={i} className="flex flex-col items-start gap-3">
+                                        <div className="flex items-center gap-[20px]">
+                                            <span className="flex h-4 w-4 shrink-0 items-center justify-center bg-[#77787B]/20">
+                                                <Check size={10} strokeWidth={7} className="text-[#77787B]" />
+                                            </span>
+                                            <p className="font-normal text-18 leading-[1.444444444444444]">
+                                                {item.title}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p className="mt-[5px] ml-[35px] text-muted fnt-lexend text-18">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    
+                                ))}
+                            </ul>
+                        </div>
+
+                        <p className="mt-8 border-t border-[#00000033]/20  pt-6 leading-[1.444444444444444] text-[#77787B] fnt-lexend md:mt-[70px] md:mb-[85px] text-18">
+                            12 months. Google ranking work has a 6 month minimum. VAT not included.
+                        </p>
+                    </motion.div>
+                </div>
 
                 {/* Info cards */}
                 <div className="mt-8 grid gap-4 sm:grid-cols-2 md:mt-[40px]">
