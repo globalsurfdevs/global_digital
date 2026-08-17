@@ -398,7 +398,7 @@ const page = async ({ params }: PageProps) => {
         redlast
         page="service"
       />
-      <FAQ data={Faq} initialCount={3} page="service" />
+      <FAQ data={Faq} initialCount={3} page="service" title={service.faqSection?.title} />
     </div>
   );
 };

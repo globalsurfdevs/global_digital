@@ -1,26 +1,26 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Expertise from "../../components/PermormanceMarketing/Expertise";
-import Boost from "../../components/PermormanceMarketing/Boost";
-import Services from "../../components/PermormanceMarketing/Services";
-import Framework from "../../components/PermormanceMarketing/Framework";
-import Industries from "../../components/PermormanceMarketing/Industries";
-import Results from "../../components/PermormanceMarketing/Results";
-import Partner from "../../components/PermormanceMarketing/Partner";
-import Testimonials from "../../components/HomePage/Testimonials";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import Standards from "../../components/PermormanceMarketing/Standards";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Expertise from "../../../components/PermormanceMarketing/Expertise";
+import Boost from "../../../components/PermormanceMarketing/Boost";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Framework from "../../../components/PermormanceMarketing/Framework";
+import Industries from "../../../components/PermormanceMarketing/Industries";
+import Results from "../../../components/PermormanceMarketing/Results";
+import Partner from "../../../components/PermormanceMarketing/Partner";
+import Testimonials from "../../../components/HomePage/Testimonials";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import Standards from "../../../components/PermormanceMarketing/Standards";
 
-import { BannerSection } from "../../data/services/seo/herosection";
-import { AreaExpertise } from "../../data/services/seo/area-of-expertise";
-import { boostEngage } from "../../data/services/seo/boost-engage";
-import { OurServices } from "../../data/services/seo/our-services";
-import { Frameworkdata } from "../../data/services/seo/framework";
-import { ResultsData } from "../../data/services/seo/results";
-import { partnerData } from "../../data/partnerData";
-import { Cta } from "../../data/services/seo/cta";
-import { Faq } from "../../data/services/seo/faq";
+import { BannerSection } from "../../../data/services/seo/herosection";
+import { AreaExpertise } from "../../../data/services/seo/area-of-expertise";
+import { boostEngage } from "../../../data/services/seo/boost-engage";
+import { OurServices } from "../../../data/services/seo/our-services";
+import { Frameworkdata } from "../../../data/services/seo/framework";
+import { ResultsData } from "../../../data/services/seo/results";
+import { partnerData } from "../../../data/partnerData";
+import { Cta } from "../../../data/services/seo/cta";
+import { Faq } from "../../../data/services/seo/faq";
 
 interface Canonicals {
   canonical: string;
