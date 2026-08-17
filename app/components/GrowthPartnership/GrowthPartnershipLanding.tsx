@@ -41,6 +41,8 @@ import {
   type ReactNode,
 } from "react";
 import { submitBooking } from "@/app/actions/submitBooking";
+import { assets } from "@/public/assets/assets";
+import Image from "next/image";
 
 
 
@@ -294,7 +296,7 @@ function Marquee({
       onPointerCancel={endDrag}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      // style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
+    // style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
     >
       <style jsx>{`
         @keyframes marqueeScroll {
@@ -1010,15 +1012,15 @@ function ToolRow({
         }}
       >
         <Marquee durationSec={durationSec} reverse={reverse}>
-        {loop.map((name, i) => (
-          <span
-            key={`${name}-${i}`}
-            className="inline-flex items-center gap-2.5 bg-white/[0.045] border border-white/[0.12] rounded-full pl-3.5 pr-5 py-3 text-[15px] text-white/[0.82] flex-none transition-all duration-200 hover:border-[#E63E31] hover:text-white hover:bg-[#E63E31]/10 hover:-translate-y-0.5"
-          >
-            <i className="w-[22px] h-[22px] rounded-md bg-white/[0.06] border border-dashed border-white/[0.18] block flex-none" />
-            {name}
-          </span>
-        ))}
+          {loop.map((name, i) => (
+            <span
+              key={`${name}-${i}`}
+              className="inline-flex items-center gap-2.5 bg-white/[0.045] border border-white/[0.12] rounded-full pl-3.5 pr-5 py-3 text-[15px] text-white/[0.82] flex-none transition-all duration-200 hover:border-[#E63E31] hover:text-white hover:bg-[#E63E31]/10 hover:-translate-y-0.5"
+            >
+              <i className="w-[22px] h-[22px] rounded-md bg-white/[0.06] border border-dashed border-white/[0.18] block flex-none" />
+              {name}
+            </span>
+          ))}
         </Marquee>
       </div>
     </div>
@@ -1052,38 +1054,101 @@ function Tools() {
 /* ============================================================
    06 · PRICING
    ============================================================ */
-const PRICING_ROWS: { label: string; growth: boolean; plus: boolean }[] = [
-  { label: "All 14 services", growth: true, plus: true },
-  { label: "One senior strategist", growth: true, plus: true },
-  { label: "Google ranking and AI answers", growth: true, plus: true },
-  { label: "Website upkeep and monthly checks", growth: true, plus: true },
-  {
-    label: "LinkedIn posts and one shoot day a month",
-    growth: true,
-    plus: true,
-  },
-  { label: "Posts for one senior leader", growth: true, plus: true },
-  { label: "Signed baseline in week two", growth: true, plus: true },
-  { label: "Monthly report & senior call", growth: true, plus: true },
-  {
-    label: "Several companies, brands or countries",
-    growth: false,
-    plus: true,
-  },
-  { label: "Posts for multiple leaders", growth: false, plus: true },
-  {
-    label: "Extended content production & more social media output",
-    growth: false,
-    plus: true,
-  },
-  { label: "Expanded competitive intelligence", growth: false, plus: true },
+type PricingFeature = { title: string; note: string };
+
+const GROWTH_FEATURES: PricingFeature[] = [
+  { title: "SEO", note: "Google ranking for the terms buyers actually search" },
+  { title: "GEO", note: "Named correctly when a buyer asks an AI tool" },
+  { title: "Social Media", note: "Named correctly when a buyer asks an AI tool" },
+  { title: "Social Media", note: "LinkedIn, eight to ten posts a month" },
+  { title: "Content Production", note: "One shoot day a month at your site" },
+  { title: "Executive Visibility", note: "Four posts a month for one senior leader" },
+  { title: "Website and Technical SEO", note: "Safe, fast, and checked every month" },
+  { title: "Analytics, CRO and Reporting", note: "Signed baseline, monthly report, quarterly audit" },
+  { title: "Strategy and Benchmarking", note: "One senior strategist, three competitors tracked" },
 ];
 
-function Dot({ yes }: { yes: boolean }) {
-  return yes ? (
-    <span className="inline-block w-2 h-2 rounded-sm bg-[#E63E31]" />
-  ) : (
-    <span className="inline-block w-2 h-2 rounded-sm border border-[#D6D2C8]" />
+const PLUS_FEATURES: PricingFeature[] = [
+  { title: "Multi entity coverage", note: "Several companies, brands or countries" },
+  { title: "Executive Visibility, expanded", note: "Posts for multiple leaders" },
+  { title: "Content Production, extended", note: "More shoot days and more social output" },
+  { title: "Competitive Intelligence, expanded", note: "A wider competitor set" },
+];
+
+const PRICING_INFO_CARDS = [
+  {
+    icon: assets.gurantee,
+    title: "The guarantee",
+    body: "If targets are substantially missed on our side, you get a term extension at no fee, or a documented scope reset. Not a discount. Accountability.",
+  },
+  {
+    icon: assets.capacity2,
+    title: "Capacity is capped",
+    body: "We intentionally hold a limited number of built environment partners. Senior attention doesn't scale post a certain point, so we don't pretend it does.",
+  },
+];
+
+function CheckDot({ dark }: { dark: boolean }) {
+  return (
+    <span
+      className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] ${dark ? "bg-[#E63E31]" : "bg-[#77787B]/20"
+        }`}
+    >
+      <svg
+        width="9"
+        height="7"
+        viewBox="0 0 9 7"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1 3.4L3.2 5.6L8 1"
+          stroke={dark ? "#fff" : "#77787B"}
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function PricingArrow({ dark }: { dark: boolean }) {
+  return (
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M8.88346 1.26172L1.13281 8.8624"
+        stroke={dark ? "#fff" : "#fff"}
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M1.13281 1.26172H8.88346V8.71245"
+        stroke={dark ? "#fff" : "#fff"}
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+    </svg>
+  );
+}
+
+function PricingCta({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+
+    <a href="#book"
+      className={`group flex w-full items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 ${className}`}
+    >
+      <span>{children}</span>
+      <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31] transition-transform duration-300 group-hover:translate-x-0.5">
+        <PricingArrow dark />
+      </span>
+    </a>
   );
 }
 
@@ -1091,87 +1156,180 @@ function Pricing() {
   return (
     <section className="py-16 md:py-24 lg:py-[124px]" id="pricing">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-        <Reveal className="text-center max-w-none mx-auto">
-          <Kick label="06 · Pricing" center />
-          <h2 className="text-[27px] sm:text-4xl lg:text-[45px] leading-[1.15] mb-4">
-            One package, one price.
-          </h2>
-          <p className="max-w-[64ch] mx-auto text-[#77787B] text-base lg:text-lg">
-            Almost every firm we work with takes the Growth Partnership. Plus
-            exists for groups running several companies at once.
-          </p>
-        </Reveal>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <Reveal>
+            <Kick label="06 · Pricing" />
+            <h2 className="text-[27px] sm:text-4xl lg:text-[45px] leading-[1.15] max-w-[20ch]">
+              Find the structure that fits your roadmap.
+            </h2>
+            <p className="mt-4 max-w-[58ch] text-[#77787B] text-base lg:text-lg">
+              Both senior-led. Both measured against a baseline signed in
+              week two. The difference is coverage, not who works on your
+              account.
+            </p>
+          </Reveal>
 
-        <Reveal
-          delay={70}
-          className="mt-10 lg:mt-13 bg-white border border-black/[0.11] rounded-[18px] overflow-hidden text-left shadow-[0_26px_60px_-46px_rgba(10,10,10,.34)]"
-        >
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse min-w-[660px]">
-              <thead>
-                <tr>
-                  <th className="text-left align-bottom pt-5 pb-4 px-6 font-semibold text-[10.5px] tracking-[0.12em] uppercase text-[#77787B] border-b border-black/[0.065]" style={{ width: "56%" }}>
-                    What you get
-                  </th>
-                  <th className="text-left align-bottom pt-5 pb-4 px-6 font-semibold text-[10.5px] tracking-[0.12em] uppercase text-[#77787B] border-b border-black/[0.065] bg-gradient-to-b from-[#E63E31]/[0.07] to-[#E63E31]/[0.02] shadow-[inset_0_2px_0_#E63E31]" style={{ width: "22%" }}>
-                    What most firms take
-                    <span className="block text-base normal-case text-[#E63E31] mt-1.5 font-medium">
-                      Growth Partnership
-                    </span>
-                    <span className="block font-normal text-xs normal-case text-[#77787B] mt-0.5">
-                      From AED 10,000 a month
-                    </span>
-                  </th>
-                  <th className="text-left align-bottom pt-5 pb-4 px-6 font-semibold text-[10.5px] tracking-[0.12em] uppercase text-[#77787B] border-b border-black/[0.065]" style={{ width: "22%" }}>
-                    Only if you run several companies
-                    <span className="block text-base normal-case text-[#0A0A0A] mt-1.5 font-medium">
-                      Plus
-                    </span>
-                    <span className="block font-normal text-xs normal-case text-[#77787B] mt-0.5">
-                      Custom price
-                    </span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {PRICING_ROWS.map((row) => (
-                  <tr key={row.label} className="hover:bg-[#FCFBF9]">
-                    <td className="px-6 py-4 text-[15px] border-b border-black/[0.065]">
-                      {row.label}
-                    </td>
-                    <td className="px-6 py-4 text-center border-b border-black/[0.065] bg-[#E63E31]/[0.022]">
-                      <Dot yes={row.growth} />
-                    </td>
-                    <td className="px-6 py-4 text-center border-b border-black/[0.065]">
-                      <Dot yes={row.plus} />
-                    </td>
-                  </tr>
+          <Reveal
+            delay={70}
+            className="flex flex-col gap-3 sm:flex-row sm:items-center lg:shrink-0"
+          >
+
+            <a href="#book"
+              className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
+            >
+              Book your 20-minute call
+              <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31]">
+                <PricingArrow dark />
+              </span>
+            </a>
+
+            <a href="#book"
+              className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
+            >
+              Talk to sales
+              <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31]">
+                <PricingArrow dark />
+              </span>
+            </a>
+          </Reveal>
+        </div>
+
+        {/* Cards */}
+        <div className="mt-10 lg:mt-13 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          {/* Growth card */}
+          <Reveal
+            delay={70}
+            className="relative rounded-[18px] bg-[#0A0A0A] p-6 text-white md:p-10 shadow-[0_26px_60px_-46px_rgba(10,10,10,.34)]"
+          >
+            <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#E63E31] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-white">
+              What most firms take
+            </span>
+
+            <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-white/40">
+              Growth
+            </span>
+            <h3 className="mt-3 font-medium text-xl md:text-2xl">
+              Growth Partnership
+            </h3>
+            <div className="mt-2 flex items-baseline gap-2">
+              <span className="font-normal text-[34px] md:text-[42px] leading-none">
+                AED 10,000
+              </span>
+              <span className="text-sm text-white/50">a month, from</span>
+            </div>
+            <p className="mt-2 text-sm text-white/50">
+              Eight disciplines, one senior team, one monthly figure.
+            </p>
+
+            <PricingCta className="mt-6 md:mt-8 bg-transparent text-white hover:bg-[#E63E31]">
+              Book your 20-minute call
+            </PricingCta>
+
+            <div className="mt-8 border-t border-white/10 pt-6 md:mt-10 md:pt-8">
+              <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-white/40">
+                What runs every month
+              </span>
+              <ul className="mt-4 space-y-4 md:mt-5 md:space-y-5">
+                {GROWTH_FEATURES.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckDot dark />
+                    <div>
+                      <p className="text-sm font-medium md:text-[15px]">
+                        {item.title}
+                      </p>
+                      <p className="mt-0.5 text-[13px] text-white/50">
+                        {item.note}
+                      </p>
+                    </div>
+                  </li>
                 ))}
-                <tr>
-                  <td className="px-6 pt-[18px] pb-5 text-[13px] text-[#0A0A0A] align-top bg-[#FBFAF7]">
-                    Term and billing
-                  </td>
-                  <td className="px-6 pt-[18px] pb-5 text-[13px] text-[#77787B] align-top bg-[#FBFAF7] text-center">
-                    12 months. Google ranking work has a 6 month minimum. VAT
-                    not included.
-                  </td>
-                  <td className="px-6 pt-[18px] pb-5 text-[13px] text-[#77787B] align-top bg-[#FBFAF7] text-center">
-                    Set with you, always in a written proposal.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </Reveal>
+              </ul>
+            </div>
 
-        <Reveal delay={140} className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
-          <Btn href="#book" className="w-full">
-            Book a 30 Minute Call
-          </Btn>
-          <Btn href="#book" variant="line" className="w-full">
-            Run several companies? Ask about Plus
-          </Btn>
-        </Reveal>
+            <p className="mt-8 border-t border-white/10 pt-6 text-[13px] leading-[1.5] text-white/50 md:mt-10 md:pt-8">
+              12 months. Google ranking work has a 6 month minimum. VAT not
+              included.
+            </p>
+          </Reveal>
+
+          {/* Plus card */}
+          <Reveal
+            delay={140}
+            className="rounded-[18px] bg-[#F6F3EC] p-6 md:p-10 border border-black/[0.11]"
+          >
+            <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-[#77787B]">
+              Plus
+            </span>
+            <h3 className="mt-3 font-medium text-xl md:text-2xl text-[#0A0A0A]">
+              Plus
+            </h3>
+            <div className="mt-2 flex items-baseline gap-2">
+              <span className="font-normal text-[34px] md:text-[42px] leading-none text-[#0A0A0A]">
+                Custom
+              </span>
+              <span className="text-sm text-[#77787B]">priced with you</span>
+            </div>
+            <p className="mt-2 text-sm text-[#77787B]">
+              For groups running several companies, brands or countries at
+              once
+            </p>
+
+            <PricingCta className="mt-6 md:mt-8 bg-transparent text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white">
+              Ask about Plus
+            </PricingCta>
+
+            <div className="mt-8 border-t border-black/[0.11] pt-6 md:mt-10 md:pt-8">
+              <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-[#77787B]">
+                What runs every month
+              </span>
+              <ul className="mt-4 space-y-4 md:mt-5 md:space-y-5">
+                {PLUS_FEATURES.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckDot dark={false} />
+                    <div>
+                      <p className="text-sm font-medium text-[#0A0A0A] md:text-[15px]">
+                        {item.title}
+                      </p>
+                      <p className="mt-0.5 text-[13px] text-[#77787B]">
+                        {item.note}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <p className="mt-8 border-t border-black/[0.11] pt-6 text-[13px] leading-[1.5] text-[#77787B] md:mt-10 md:pt-8">
+              Set with you, always in a written proposal.
+            </p>
+          </Reveal>
+        </div>
+
+        {/* Info cards */}
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {PRICING_INFO_CARDS.map((card, i) => (
+            <Reveal
+              key={card.title}
+              delay={210 + i * 70}
+              className={`rounded-[18px] border border-black/[0.11] p-6 md:p-8 ${i === 1 ? "bg-[#F6F3EC]" : "bg-white"
+                }`}
+            >
+              <span className="flex h-[60px] w-[60px] items-center justify-center rounded-[7px] border border-primary/12 bg-primary/5">
+                <Image
+                  src={card.icon}
+                  alt={card.title}
+                  className="h-full w-full object-contain p-[10px]"
+                />
+              </span>
+              <h3 className="mt-5 font-medium text-lg md:text-xl text-[#0A0A0A]">
+                {card.title}
+              </h3>
+              <p className="mt-2.5 text-sm leading-[1.5] text-[#77787B]">
+                {card.body}
+              </p>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1682,11 +1840,10 @@ function FinalCta() {
                   defaultValue=""
                   onBlur={handleFieldBlur}
                   onChange={handleFieldChange}
-                  className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${
-                    errors.sector
+                  className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${errors.sector
                       ? "border-[#E63E31]"
                       : "border-white/[0.13] focus:border-[#E63E31]"
-                  }`}
+                    }`}
                   style={{
                     backgroundImage:
                       "linear-gradient(45deg,transparent 50%,rgba(255,255,255,.4) 50%),linear-gradient(135deg,rgba(255,255,255,.4) 50%,transparent 50%)",
@@ -1757,9 +1914,8 @@ function Field({
         onBlur={onBlur}
         onChange={onChange}
         aria-invalid={!!error}
-        className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
-          error ? "border-[#E63E31]" : "border-white/[0.13] focus:border-[#E63E31]"
-        }`}
+        className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] ${error ? "border-[#E63E31]" : "border-white/[0.13] focus:border-[#E63E31]"
+          }`}
       />
       {error && <p className="text-[11px] text-[#E63E31] mt-1.5">{error}</p>}
     </div>

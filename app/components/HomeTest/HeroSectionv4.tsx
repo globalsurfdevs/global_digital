@@ -6,7 +6,7 @@ const HeroSection = () => {
             <div className="absolute left-0 top-0 -z-20 h-full w-full bg-bglight" />
 
             <video
-                className="absolute left-0 top-0 -z-10 h-full w-full object-cover transition-opacity duration-300"
+                className="absolute left-0 top-0 -z-10 h-full w-full object-cover grayscale transition-opacity duration-300"
                 style={{ opacity: 0 }}
                 loop
                 muted
@@ -18,17 +18,12 @@ const HeroSection = () => {
                 <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
             </video>
 
-            {/* Scrim: radial vignette, fades in with the video */}
+            {/* Scrim: fades in with the video, dark greyish-black */}
             <div
                 id="hero-overlay"
-                className="absolute left-0 top-0 -z-[5] h-full w-full transition-opacity duration-300"
-                style={{
-                    opacity: 0,
-                    background:
-                        "radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.85) 100%)",
-                }}
+                className="absolute left-0 top-0 -z-[5] h-full w-full bg-gradient-to-r from-black/70 via-black/50 to-black/20 transition-opacity duration-300"
+                style={{ opacity: 0 }}
             />
-
 
             <div className="container mx-auto px-4">
                 <div className="hero-heading-wrapper">
