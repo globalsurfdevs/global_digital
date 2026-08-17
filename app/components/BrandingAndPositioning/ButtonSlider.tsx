@@ -98,7 +98,8 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
               return (
                 <SwiperSlide key={index} className="!w-auto ">
                   {item.page ? (
-                    <Link href={`/industry/${item.page}`}>{content}</Link>
+                    // <Link href={`/industry/${item.page}`}>{content}</Link>
+                    content
                   ) : (
                     content
                   )}
