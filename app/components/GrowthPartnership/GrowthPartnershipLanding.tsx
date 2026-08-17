@@ -1650,14 +1650,37 @@ const SECTOR_OPTIONS = [
   "Something else",
 ];
 
+const TIME_SLOT_OPTIONS = [
+  "9:00 AM – 9:30 AM",
+  "9:30 AM – 10:00 AM",
+  "10:00 AM – 10:30 AM",
+  "10:30 AM – 11:00 AM",
+  "11:00 AM – 11:30 AM",
+  "11:30 AM – 12:00 PM",
+  "2:00 PM – 2:30 PM",
+  "2:30 PM – 3:00 PM",
+  "3:00 PM – 3:30 PM",
+  "3:30 PM – 4:00 PM",
+  "4:00 PM – 4:30 PM",
+  "4:30 PM – 5:00 PM",
+  "5:00 PM – 5:30 PM",
+];
 
+type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "sector" | "date" | "timeSlot", string>>;
 
-type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "sector", string>>;
 
 const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 // Accepts optional leading +, then 7–15 digits, allowing spaces/dashes/parens in between
 const PHONE_REGEX = /^\+?[0-9\s().-]{7,20}$/;
+
+function todayISO(): string {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+}
 
 function validateField(name: string, value: string): string | undefined {
   const v = value.trim();
@@ -1689,6 +1712,19 @@ function validateField(name: string, value: string): string | undefined {
       if (!v) return "Please select a sector.";
       return undefined;
 
+    case "date": {
+      if (!v) return "Please pick a date.";
+      const picked = new Date(v);
+      const today = new Date(todayISO());
+      if (isNaN(picked.getTime())) return "Enter a valid date.";
+      if (picked < today) return "Pick a date from today onward.";
+      return undefined;
+    }
+
+    case "timeSlot":
+      if (!v) return "Please pick a time slot.";
+      return undefined;
+
     default:
       return undefined;
   }
@@ -1702,7 +1738,15 @@ function FinalCta() {
 
   const runValidation = (form: HTMLFormElement): FormErrors => {
     const data = new FormData(form);
-    const fields: (keyof FormErrors)[] = ["name", "company", "email", "phone", "sector"];
+    const fields: (keyof FormErrors)[] = [
+      "name",
+      "company",
+      "email",
+      "phone",
+      "sector",
+      "date",
+      "timeSlot",
+    ];
     const nextErrors: FormErrors = {};
 
     for (const field of fields) {
@@ -1714,13 +1758,17 @@ function FinalCta() {
     return nextErrors;
   };
 
-  const handleFieldBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleFieldBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     const error = validateField(name, value);
     setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
-  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name } = e.target;
     // clear the error for this field as soon as the user starts fixing it
     if (errors[name as keyof FormErrors]) {
@@ -1840,10 +1888,11 @@ function FinalCta() {
                   defaultValue=""
                   onBlur={handleFieldBlur}
                   onChange={handleFieldChange}
-                  className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${errors.sector
+                  className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${
+                    errors.sector
                       ? "border-[#E63E31]"
                       : "border-white/[0.13] focus:border-[#E63E31]"
-                    }`}
+                  }`}
                   style={{
                     backgroundImage:
                       "linear-gradient(45deg,transparent 50%,rgba(255,255,255,.4) 50%),linear-gradient(135deg,rgba(255,255,255,.4) 50%,transparent 50%)",
@@ -1860,6 +1909,72 @@ function FinalCta() {
                 {errors.sector && (
                   <p className="text-[11px] text-[#E63E31] mt-1.5">{errors.sector}</p>
                 )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                <div>
+                  <label
+                    htmlFor="d"
+                    className="block font-medium text-[9.5px] tracking-[0.12em] uppercase text-white/[0.42] mb-2"
+                  >
+                    Preferred date <span className="text-[#E63E31]">*</span>
+                  </label>
+                  <input
+                    id="d"
+                    name="date"
+                    type="date"
+                    required
+                    min={todayISO()}
+                    onBlur={handleFieldBlur}
+                    onChange={handleFieldChange}
+                    aria-invalid={!!errors.date}
+                    className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] [color-scheme:dark] ${
+                      errors.date
+                        ? "border-[#E63E31]"
+                        : "border-white/[0.13] focus:border-[#E63E31]"
+                    }`}
+                  />
+                  {errors.date && (
+                    <p className="text-[11px] text-[#E63E31] mt-1.5">{errors.date}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="ts"
+                    className="block font-medium text-[9.5px] tracking-[0.12em] uppercase text-white/[0.42] mb-2"
+                  >
+                    Time slot <span className="text-[#E63E31]">*</span>
+                  </label>
+                  <select
+                    id="ts"
+                    name="timeSlot"
+                    required
+                    defaultValue=""
+                    onBlur={handleFieldBlur}
+                    onChange={handleFieldChange}
+                    className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${
+                      errors.timeSlot
+                        ? "border-[#E63E31]"
+                        : "border-white/[0.13] focus:border-[#E63E31]"
+                    }`}
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(45deg,transparent 50%,rgba(255,255,255,.4) 50%),linear-gradient(135deg,rgba(255,255,255,.4) 50%,transparent 50%)",
+                      backgroundPosition:
+                        "calc(100% - 19px) 50%, calc(100% - 14px) 50%",
+                      backgroundSize: "5px 5px, 5px 5px",
+                    }}
+                  >
+                    <option value="">Select one</option>
+                    {TIME_SLOT_OPTIONS.map((opt) => (
+                      <option key={opt}>{opt}</option>
+                    ))}
+                  </select>
+                  {errors.timeSlot && (
+                    <p className="text-[11px] text-[#E63E31] mt-1.5">{errors.timeSlot}</p>
+                  )}
+                </div>
               </div>
 
               <Btn type="submit" className="w-full mt-2" disabled={isPending}>
@@ -1914,8 +2029,9 @@ function Field({
         onBlur={onBlur}
         onChange={onChange}
         aria-invalid={!!error}
-        className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] ${error ? "border-[#E63E31]" : "border-white/[0.13] focus:border-[#E63E31]"
-          }`}
+        className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
+          error ? "border-[#E63E31]" : "border-white/[0.13] focus:border-[#E63E31]"
+        }`}
       />
       {error && <p className="text-[11px] text-[#E63E31] mt-1.5">{error}</p>}
     </div>

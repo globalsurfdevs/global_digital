@@ -90,7 +90,7 @@ const page = async ({ params }: PageProps) => {
         }
         page="service"
       />
-      <FAQ data={Faq} defActive="2" fullSpace={false} />
+      <FAQ data={Faq} defActive="2" fullSpace={false} py="90" />
       <CheckItem data={{
         title: "Make Sure they like\nwhat they find.",
         description:

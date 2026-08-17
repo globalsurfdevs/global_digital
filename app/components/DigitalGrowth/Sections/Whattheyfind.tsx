@@ -46,7 +46,7 @@ export default function WhatTheyFind() {
     const rows = CONTENT[active];
 
     return (
-        <section className="bg-white py-[50px] lg:py-[140px]">
+        <section className="bg-white py-[50px] lg:py-[90px]">
             <div className="container">
                 <motion.div
                     initial="hidden"

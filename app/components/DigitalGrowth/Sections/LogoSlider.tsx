@@ -26,7 +26,7 @@ const LogoSlider = ({ data }: any) => {
     }, [logos.length]);
 
     return (
-        <section className="bg-white py-120 overflow-hidden">
+        <section className="bg-white py-[90px] overflow-hidden">
             <motion.div
                 variants={moveUp(0)}
                 initial="hidden"

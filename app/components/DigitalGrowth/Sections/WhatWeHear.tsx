@@ -95,7 +95,7 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
     }, []);
 
     return (
-        <section className="bg-[#F6F6F6] py-[50px] lg:py-[140px]" ref={sectionRef}>
+        <section className="bg-[#F6F6F6] py-[50px] lg:py-[90px]" ref={sectionRef}>
             <div className="container">
                 <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[658px_859px] xl:gap-[100px]">
                     {/* LEFT — pinned via GSAP */}

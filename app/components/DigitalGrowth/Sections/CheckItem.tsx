@@ -20,11 +20,35 @@ const sectors = [
     "Other",
 ];
 
-type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "sector", string>>;
+const timeSlots = [
+    "9:00 AM – 9:30 AM",
+    "9:30 AM – 10:00 AM",
+    "10:00 AM – 10:30 AM",
+    "10:30 AM – 11:00 AM",
+    "11:00 AM – 11:30 AM",
+    "11:30 AM – 12:00 PM",
+    "2:00 PM – 2:30 PM",
+    "2:30 PM – 3:00 PM",
+    "3:00 PM – 3:30 PM",
+    "3:30 PM – 4:00 PM",
+    "4:00 PM – 4:30 PM",
+    "4:30 PM – 5:00 PM",
+    "5:00 PM – 5:30 PM",
+];
+
+type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "sector" | "date" | "timeSlot", string>>;
 
 const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_REGEX = /^\+?[0-9\s().-]{7,20}$/;
+
+function todayISO(): string {
+    const d = new Date();
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+}
 
 function validateField(name: string, value: string): string | undefined {
     const v = value.trim();
@@ -53,6 +77,19 @@ function validateField(name: string, value: string): string | undefined {
 
         case "sector":
             if (!v) return "Please select a sector.";
+            return undefined;
+
+        case "date": {
+            if (!v) return "Please pick a date.";
+            const picked = new Date(v);
+            const today = new Date(todayISO());
+            if (isNaN(picked.getTime())) return "Enter a valid date.";
+            if (picked < today) return "Pick a date from today onward.";
+            return undefined;
+        }
+
+        case "timeSlot":
+            if (!v) return "Please pick a time slot.";
             return undefined;
 
         default:
@@ -112,6 +149,7 @@ const FormField = ({
     name,
     required,
     error,
+    min,
     onBlur,
     onChange,
 }: {
@@ -120,6 +158,7 @@ const FormField = ({
     name: string;
     required?: boolean;
     error?: string;
+    min?: string;
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
@@ -131,10 +170,11 @@ const FormField = ({
             id={name}
             name={name}
             type={type}
+            min={min}
             onBlur={onBlur}
             onChange={onChange}
             aria-invalid={!!error}
-            className={`mt-2 w-full appearance-none border-0 border-b bg-transparent pt-3 text-15 text-white outline-none ring-0 transition-colors placeholder:text-white/30 focus:outline-none focus:ring-0 focus:border-white/60 ${error ? "border-primary" : "border-white/20"
+            className={`mt-2 w-full appearance-none border-0 border-b bg-transparent pt-3 text-15 text-white outline-none ring-0 transition-colors [color-scheme:dark] placeholder:text-white/30 focus:outline-none focus:ring-0 focus:border-white/60 ${error ? "border-primary" : "border-white/20"
                 }`}
         />
         {error && <p className="mt-1.5 text-[11px] text-primary">{error}</p>}
@@ -144,6 +184,8 @@ const FormField = ({
 const GetInTouch = ({ data }: { data: { title: string; description: string } }) => {
     const [sectorOpen, setSectorOpen] = useState(false);
     const [sector, setSector] = useState("");
+    const [timeSlotOpen, setTimeSlotOpen] = useState(false);
+    const [timeSlot, setTimeSlot] = useState("");
     const [errors, setErrors] = useState<FormErrors>({});
     const [note, setNote] = useState("");
     const formRef = useRef<HTMLFormElement>(null);
@@ -151,7 +193,15 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
 
     const runValidation = (form: HTMLFormElement): FormErrors => {
         const data = new FormData(form);
-        const fields: (keyof FormErrors)[] = ["name", "company", "email", "phone", "sector"];
+        const fields: (keyof FormErrors)[] = [
+            "name",
+            "company",
+            "email",
+            "phone",
+            "sector",
+            "date",
+            "timeSlot",
+        ];
         const nextErrors: FormErrors = {};
 
         for (const field of fields) {
@@ -184,6 +234,14 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
         }
     };
 
+    const handleTimeSlotSelect = (t: string) => {
+        setTimeSlot(t);
+        setTimeSlotOpen(false);
+        if (errors.timeSlot) {
+            setErrors((prev) => ({ ...prev, timeSlot: undefined }));
+        }
+    };
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = formRef.current;
@@ -200,8 +258,9 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
 
         setNote("");
         const formData = new FormData(form);
-        // sector isn't a native input, so append it manually
+        // sector and timeSlot aren't native inputs, so append them manually
         formData.set("sector", sector);
+        formData.set("timeSlot", timeSlot);
 
         startTransition(async () => {
             const result = await submitBooking(formData);
@@ -209,6 +268,7 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
             if (result.success) {
                 form.reset();
                 setSector("");
+                setTimeSlot("");
                 setErrors({});
             }
         });
@@ -339,6 +399,68 @@ const GetInTouch = ({ data }: { data: { title: string; description: string } }) 
                             {errors.sector && (
                                 <p className="mt-1.5 text-[11px] text-primary">{errors.sector}</p>
                             )}
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                            <FormField
+                                label="Preferred date"
+                                name="date"
+                                type="date"
+                                required
+                                min={todayISO()}
+                                error={errors.date}
+                                onBlur={handleFieldBlur}
+                                onChange={handleFieldChange}
+                            />
+
+                            <div className="relative border-b border-white/20">
+                                <input type="hidden" name="timeSlot" value={timeSlot} />
+                                <button
+                                    type="button"
+                                    onClick={() => setTimeSlotOpen((v) => !v)}
+                                    className="flex w-full items-end justify-between text-left"
+                                    aria-haspopup="listbox"
+                                    aria-expanded={timeSlotOpen}
+                                >
+                                    <div className="">
+                                        <span className="block text-13 text-white/50">
+                                            Time slot <span className="text-primary">*</span>
+                                        </span>
+                                        <span className="mt-6 block truncate text-15 text-white">
+                                            {timeSlot || "\u00A0"}
+                                        </span>
+                                    </div>
+                                    <ChevronDown
+                                        size={18}
+                                        className={`shrink-0 text-white/60 transition-transform ${timeSlotOpen ? "rotate-180" : ""
+                                            }`}
+                                    />
+                                </button>
+
+                                {timeSlotOpen && (
+                                    <ul
+                                        role="listbox"
+                                        className="absolute left-0 top-full z-10 mt-2 max-h-56 w-full overflow-y-auto rounded-lg border border-white/10 bg-neutral-900 shadow-lg"
+                                    >
+                                        {timeSlots.map((t) => (
+                                            <li key={t}>
+                                                <button
+                                                    type="button"
+                                                    role="option"
+                                                    aria-selected={timeSlot === t}
+                                                    onClick={() => handleTimeSlotSelect(t)}
+                                                    className="w-full px-4 py-2.5 text-left text-14 text-white/80 hover:bg-white/10"
+                                                >
+                                                    {t}
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                                {errors.timeSlot && (
+                                    <p className="mt-1.5 text-[11px] text-primary">{errors.timeSlot}</p>
+                                )}
+                            </div>
                         </div>
 
                         <div className="mt-10 lg:mt-[60px] mb-10 lg:mb-0  flex flex-wrap gap-4">

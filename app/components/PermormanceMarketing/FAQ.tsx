@@ -22,6 +22,7 @@ type PartnerListProps = {
   subp?: string;
   bgcolor?: string;
   title?: string;
+  py?: string;
   defActive?: string;
   initialCount?: number;
   fullSpace?: boolean;
@@ -49,7 +50,8 @@ const FAQ: React.FC<PartnerListProps> = ({
   defActive,
   initialCount,
   fullSpace,
-  page
+  page,
+  py
 }) => {
   const items = data ?? sections ?? [];
   const getDefaultOpenIndex = (value?: string) => {
@@ -106,7 +108,7 @@ const FAQ: React.FC<PartnerListProps> = ({
           }}
         >
           <div
-            className={`grid grid-cols-1 py-8 md:py-[50px] lg:py-[120px] xl:grid-cols-8  `}
+            className={`grid grid-cols-1 py-8 md:py-[50px] ${py === "90" ? "lg:py-[90px]" : "lg:py-[120px]"} xl:grid-cols-8  `}
           >
             <div className="col-span-2  mb-5 xl:mb-0">
               <h2 className={`text-60 text-[length:var(--text-60-sm)]`}>

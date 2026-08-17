@@ -16,7 +16,7 @@ type Props = {
 
 const ExecutionRoadmap = ({ data }: { data: Props }) => {
     return (
-        <section className="pb-16 md:pb-20 xl:pb-[120px] bg-white text-black overflow-hidden">
+        <section className="pb-16 md:pb-20 xl:pb-[90px] bg-white text-black overflow-hidden">
             <div className="container">
                 <motion.h2
                     initial="hidden"

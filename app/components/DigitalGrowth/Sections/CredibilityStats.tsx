@@ -48,7 +48,7 @@ const ArrowIcon = ({ clipId }: { clipId: string }) => (
 );
 const CredibilityStats = ({ data }: { data: Props }) => {
     return (
-        <section className="py-16 md:py-20 xl:py-[120px] bg-black text-white overflow-hidden">
+        <section className="py-16 md:py-20 xl:py-[90px] bg-black text-white overflow-hidden">
             <div className="container">
                 <div className="grid grid-cols-1 gap-10 lg:grid-cols-6 lg:gap-20 xl:gap-32">
                     {/* Left */}
