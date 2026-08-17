@@ -14,8 +14,21 @@ type Lead = {
     company: string;
     phone: string;
     sector: string;
+    date?: string;
+    timeSlot?: string;
     createdAt?: string;
 }
+
+const formatDate = (value?: string) => {
+    if (!value) return "—";
+    const d = new Date(value);
+    if (isNaN(d.getTime())) return value;
+    return d.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+    });
+};
 
 const AdminLeads = () => {
 
@@ -185,6 +198,8 @@ const AdminLeads = () => {
                                     <th scope="col" className="px-4 py-3">Company</th>
                                     <th scope="col" className="px-4 py-3">Phone</th>
                                     <th scope="col" className="px-4 py-3">Sector</th>
+                                    <th scope="col" className="px-4 py-3">Date</th>
+                                    <th scope="col" className="px-4 py-3">Time Slot</th>
                                     <th scope="col" className="px-4 py-3 text-center">View</th>
                                 </tr>
                             </thead>
@@ -208,6 +223,8 @@ const AdminLeads = () => {
                                         <td className="px-4 py-3">{item.company}</td>
                                         <td className="px-4 py-3">{item.phone}</td>
                                         <td className="px-4 py-3">{item.sector}</td>
+                                        <td className="px-4 py-3 whitespace-nowrap">{formatDate(item.date)}</td>
+                                        <td className="px-4 py-3 whitespace-nowrap">{item.timeSlot || "—"}</td>
                                         <td className="px-4 py-3 text-center">
                                             <button onClick={() => setSelectedLead(item)}>
                                                 <LuMessageSquareShare className="mx-auto text-lg" />
@@ -249,6 +266,14 @@ const AdminLeads = () => {
                                         <div className="flex flex-col">
                                             <label className="font-semibold text-gray-600">Sector</label>
                                             <span className="text-gray-900">{selectedLead.sector}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Preferred Date</label>
+                                            <span className="text-gray-900">{formatDate(selectedLead.date)}</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <label className="font-semibold text-gray-600">Time Slot</label>
+                                            <span className="text-gray-900">{selectedLead.timeSlot || "—"}</span>
                                         </div>
                                     </div>
                                     <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
