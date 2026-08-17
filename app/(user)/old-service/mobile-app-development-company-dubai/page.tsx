@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 
 import {
   BannerSection,
@@ -14,7 +14,7 @@ import {
   Cta,
   Faq,
   relatedservices,
-} from "../../data/services/wdd-mobile-apps/data";
+} from "../../../data/services/wdd-mobile-apps/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";

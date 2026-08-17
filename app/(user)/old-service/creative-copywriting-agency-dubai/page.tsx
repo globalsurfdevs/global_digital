@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import LogoSwiper from "../../components/CopyWriting/LogoSwiper";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import LogoSwiper from "../../../components/CopyWriting/LogoSwiper";
 
 import {
   Matslogo,
@@ -14,7 +14,7 @@ import {
   Faq,
   relatedservices,
   Frameworkdata
-} from "../../components/CopyWriting/data";
+} from "../../../components/CopyWriting/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
