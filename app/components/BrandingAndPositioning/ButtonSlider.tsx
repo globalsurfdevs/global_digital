@@ -81,7 +81,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
           >
             {data.serviceIndustries.map((item, index) => {
               const content = (
-                <button className={`${item.page ? "cursor-pointer" : "cursor-default"} flex items-center gap-[14px] whitespace-nowrap rounded-full border border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px]`}>
+                <button className={`${item.page ? "cursor-pointer" : "cursor-default"} flex items-center gap-[14px] whitespace-nowrap rounded-full border border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px] hover:bg-primary/15`}>
                   <Image
                     src={item.image}
                     alt={item.imageAlt}
@@ -96,7 +96,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
               );
 
               return (
-                <SwiperSlide key={index} className="!w-auto">
+                <SwiperSlide key={index} className="!w-auto ">
                   {item.page ? (
                     <Link href={`/industry/${item.page}`}>{content}</Link>
                   ) : (

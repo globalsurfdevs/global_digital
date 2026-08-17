@@ -93,37 +93,52 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  className="-mb-px -mr-px rounded-[10px] border border-black/20 p-4 md:p-5 xl:p-8 xxl:p-10 xxl:pb-[70px]"
+                  className="-mb-px -mr-px rounded-[10px] border border-black/20 hover:bg-primary/15"
                 >
-                  <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-[30px] 3xl:gap-[26px]">
-                    <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px] p-3">
-                      <Image
-                        src={service.icon}
-                        alt={service.title}
-                        width={70}
-                        height={70}
-                        className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[70px] xxl:w-[70px]"
-                      />
-                    </div>
-                    {service.link ? (
-                      <Link href={service.link}>
-                        <h3
-                          className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-pointer"
-                        >
+                  {service.link ? (
+                    <Link
+                      href={service.link}
+                      className="block h-full w-full p-4 md:p-5 xl:p-8 xxl:p-10 xxl:pb-[70px] cursor-pointer"
+                    >
+                      <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-[30px] 3xl:gap-[26px]">
+                        <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px]">
+                          <Image
+                            src={service.icon}
+                            alt={service.title}
+                            width={70}
+                            height={70}
+                            className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[70px] xxl:w-[70px]"
+                          />
+                        </div>
+                        <h3 className="text-28 leading-[1.2142] tracking-[-0.025em]">
                           {service.title}
                         </h3>
-                      </Link>
-                    ) : (
-                      <h3
-                        className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-default"
-                      >
-                        {service.title}
-                      </h3>
-                    )}
-                  </div>
-                  <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
-                    {toSentenceCase(service.description)}
-                  </p>
+                      </div>
+                      <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                        {toSentenceCase(service.description)}
+                      </p>
+                    </Link>
+                  ) : (
+                    <div className="p-4 md:p-5 xl:p-8 xxl:p-10 xxl:pb-[70px]">
+                      <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-[30px] 3xl:gap-[26px]">
+                        <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px]">
+                          <Image
+                            src={service.icon}
+                            alt={service.title}
+                            width={70}
+                            height={70}
+                            className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[70px] xxl:w-[70px]"
+                          />
+                        </div>
+                        <h3 className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-default">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                        {toSentenceCase(service.description)}
+                      </p>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
