@@ -194,15 +194,15 @@ const page = async ({ params }: PageProps) => {
   //   },
   // ];
 
-  const Clientsformsdata = service.caseStudySection?.items.map((item, index) => (
-    {
-      id: index + 1,
-      image: item.image,
-      title: item.title,
-      btntext: item.project.section == "case study" || item.project.section == "case study new" ? "Read the Full Case Study" : "Check portfolio page",
-      btnurl: item.project.section == "case study" || item.project.section == "case study new" ? `https://www.globalsurf.ae/case-study/${item.project.slug}` : `https://www.globalsurf.ae/portfolio/${item.project.slug}`,
-    }
-  ))
+  // const Clientsformsdata = service.caseStudySection?.items.map((item, index) => (
+  //   {
+  //     id: index + 1,
+  //     image: item.image,
+  //     title: item.title,
+  //     btntext: item.project.section == "case study" || item.project.section == "case study new" ? "Read the Full Case Study" : "Check portfolio page",
+  //     btnurl: item.project.section == "case study" || item.project.section == "case study new" ? `https://www.globalsurf.ae/case-study/${item.project.slug}` : `https://www.globalsurf.ae/portfolio/${item.project.slug}`,
+  //   }
+  // ))
 
   const Cta = [
     {

@@ -12,44 +12,51 @@ import Link from "next/link";
 const images = [
 
   {
-    src: assets.realestate1,
+    // src: assets.realestate1,
+    src: "/assets/industry_icons/1.svg",
     title: "Construction",
     desc: "Digital credibility and qualified project enquiry generation for contractors, developers, and EPC firms. ",
     link: "/industry/construction",
   },
   {
-    src: assets.b2b1,
-    title: "Engineering and Infrastructure ",
+    // src: assets.b2b1,
+    src: "/assets/industry_icons/2.svg",
+    title: "Engineering and infrastructure",
     desc: "B2B SEO, thought leadership content, and LinkedIn presence for engineering consultancies that need to be visible and credible.",
     link: "/industry/b2b-digital-marketing-services",
   },
   {
-    src: assets.real1,
-    title: "Real Estate and Property Development ",
+    // src: assets.real1,
+    src: "/assets/industry_icons/3.svg",
+    title: "Real estate and property development",
     desc: "Full lifecycle digital marketing for UAE property developers, from project launch brand building through to buyer acquisition campaigns. ",
     link: "",
   },
 
   {
-    src: assets.profserv1,
+    // src: assets.profserv1,
+    src: "/assets/industry_icons/4.svg",
     title: "Industrial ",
     desc: "Supplier discovery SEO, LinkedIn Ads, and technical content for industrial equipment and services firms. ",
     link: "",
   },
   {
-    src: assets.ecommerce1,
+    // src: assets.ecommerce1,
+    src: "/assets/industry_icons/5.svg",
     title: "Manufacturing ",
     desc: "B2B lead generation, export market visibility, and direct-to-consumer channel support for UAE and GCC manufacturers. ",
     link: "/industry/ecommerce-digital-marketing",
   },
   {
-    src: assets.hospitality1,
-    title: "Lifestyle and Retail",
+    // src: assets.hospitality1,
+    src: "/assets/industry_icons/6.svg",
+    title: "Lifestyle and retail",
     desc: "Performance marketing, social media, and brand strategy for UAE consumer brands across fashion, retail, and lifestyle categories. ",
     link: "/industry/digital-marketing-agency-for-hospitality",
   },
   {
-    src: assets.education1,
+    // src: assets.education1,
+    src: "/assets/industry_icons/7.svg",
     title: "Education",
     desc: "Digital marketing for UAE universities, schools, and training providers, focused on brand visibility and student recruitment. ",
     link: "",
@@ -87,7 +94,7 @@ const IndustriesweWork = () => {
             }, // Slide up and fade in
           }}
         >
-          <h2 className="title-65 mb-5 md:mb-5">Industries We Work With</h2>
+          <h2 className="title-65 mb-5 md:mb-5">Industries we work with</h2>
           <p className="text-font25 leading-[1.4] max-w-[70ch] mb-5 lg:mb-[58px]">We partner with businesses across Dubai and the wider UAE to deliver digital solutions that align with real-world commercial challenges and growth goals. Our strategies are built around each sector's audience behaviour, competitive context, and market dynamics.</p>
         </motion.div>
         <motion.div

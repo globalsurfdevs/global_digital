@@ -27,7 +27,11 @@ const Tours = () => {
         if (response.ok) {
           const data = await response.json();
           // console.log(data.portfolio);
-          setPortfolios(data.portfolio.filter((item:{featured:boolean})=>item.featured));
+          setPortfolios(
+            data.portfolio.filter(
+              (item: { featured: boolean }) => item.featured,
+            ),
+          );
         } else {
           console.error("Failed to fetch portfolio data");
         }
@@ -54,7 +58,7 @@ const Tours = () => {
             }, // Slide up and fade in
           }}
         >
-          <h2 className="text-font65">Featured Projects</h2>
+          <h2 className="text-font65">Featured projects</h2>
         </motion.div>
         <motion.div
           initial="hidden"
@@ -76,10 +80,10 @@ const Tours = () => {
               modules={[Navigation, Autoplay]}
               speed={3000}
               loop
-            autoplay={{
-              delay: 1,
-              disableOnInteraction: true,
-            }}
+              autoplay={{
+                delay: 1,
+                disableOnInteraction: true,
+              }}
               breakpoints={{
                 768: {
                   slidesPerView: 2,
@@ -115,7 +119,7 @@ const Tours = () => {
                       <h3 className="text-font30 leading-lh1p66 text-black">
                         {item.companyName}
                       </h3>
-                      <div className="flex gap-1 flex-wrap text-[14px] md:text-[16px]">
+                      <div className="flex flex-wrap gap-1 text-[14px] md:text-[16px]">
                         {item.categories.length > 0 &&
                           item.categories.map((category, index) => (
                             <h4
@@ -140,7 +144,7 @@ const Tours = () => {
             <Link href={`/portfolio`}>
               {" "}
               <motion.button
-                className="text-30 rounded-full border px-8 py-3 font-medium leading-[1.67] lg:px-[195px] lg:py-4 "
+                className="text-25 rounded-full border px-8 py-3 font-medium leading-[1.67] lg:px-[100px] lg:py-4 "
                 initial={{ scale: 1 }}
                 whileHover={{
                   scale: 1.1,
