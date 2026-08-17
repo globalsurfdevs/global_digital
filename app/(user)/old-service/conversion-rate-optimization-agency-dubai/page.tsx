@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/conversion-rate-optimization/ServicesWithHoverbg";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/conversion-rate-optimization/ServicesWithHoverbg";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 
 import {
   BannerSection,
@@ -14,7 +14,7 @@ import {
   Faq,
   relatedservices,
   Frameworkdata,
-} from "../../components/conversion-rate-optimization/data";
+} from "../../../components/conversion-rate-optimization/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Framework from "@/app/components/PermormanceMarketing/Framework";

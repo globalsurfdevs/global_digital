@@ -1,8 +1,8 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 
 import { logosdatas,
   BannerSection,
@@ -13,7 +13,7 @@ import { logosdatas,
   Cta,
   Faq,
   relatedservices,
-} from "../../components/MiDataAnalytics/data";
+} from "../../../components/MiDataAnalytics/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PermormanceMarketing/Framework";

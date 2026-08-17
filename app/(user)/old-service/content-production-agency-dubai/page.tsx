@@ -1,8 +1,8 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 
 import {
   Clientsformsdata,
@@ -13,9 +13,9 @@ import {
   Cta,
   Faq,
   relatedservices,
-} from "../../components/ContentProduction/data";
+} from "../../../components/ContentProduction/data";
 
-import Expertise from "../../components/EcomIndustry/Expertise";
+import Expertise from "../../../components/EcomIndustry/Expertise";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import OurWorks from "@/app/components/Bc-logo/OurWorks";

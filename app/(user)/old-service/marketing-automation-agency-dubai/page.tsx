@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import LogoSwiper from "../../components/MarketingAutomation/AutomationSwiper";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import LogoSwiper from "../../../components/MarketingAutomation/AutomationSwiper";
 
 import {Matslogo,
   BannerSection,
@@ -14,7 +14,7 @@ import {Matslogo,
   Cta,
   Faq,
   relatedservices,
-} from "../../components/MarketingAutomation/data";
+} from "../../../components/MarketingAutomation/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PermormanceMarketing/Framework";
