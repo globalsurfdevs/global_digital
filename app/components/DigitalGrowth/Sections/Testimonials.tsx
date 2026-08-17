@@ -28,7 +28,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
       <div
         className={`container mx-auto px-4  ${bordertop ? " border-t" : ""}`}
       >
-        <div className="ptwhite py-16 md:py-20 xl:py-[120px]">
+        <div className="ptwhite py-16 md:py-20 xl:py-[90px]">
           {topTitle && (
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-[60px]">
               <div className="h-4 w-4 bg-primary"></div>

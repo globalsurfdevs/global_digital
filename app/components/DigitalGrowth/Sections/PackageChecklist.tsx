@@ -22,7 +22,7 @@ type Props = {
 
 const PackageChecklist = ({ data }: { data: Props }) => {
     return (
-        <section className="py-16 md:py-20 xl:py-[120px] bg-white">
+        <section className="py-16 md:py-20 xl:py-[90px] bg-white">
             <div className="container">
                 {/* Header */}
                 

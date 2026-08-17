@@ -20,7 +20,7 @@ type Props = {
 
 const IndustriesSec = ({ data }: { data:Props}) => {
   return (
-    <section className="py-120 bg-[#f6f6f6]">
+    <section className="py-[90px] bg-[#f6f6f6]">
       <div className="container">
         <div className="mb-4 xl:mb-8 xxl:mb-[42px]">
           <div className="mb-4 flex items-center gap-3 md:mb-3 xl:mb-4 xxl:mb-[28px]">

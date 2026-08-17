@@ -102,7 +102,7 @@ const FullFunnelChannels = ({ data }: { data: Props }) => {
     }, []);
 
     return (
-        <section className="py-16 md:py-20 xl:py-[120px] bg-[#f4f4f4] text-black overflow-hidden">
+        <section className="py-16 md:py-20 xl:py-[90px] bg-[#f4f4f4] text-black overflow-hidden">
             <div className="container">
                 <motion.h2
                     initial="hidden"

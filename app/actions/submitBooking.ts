@@ -15,9 +15,18 @@ export async function submitBooking(formData: FormData) {
             email: formData.get("email") as string,
             phone: formData.get("phone") as string,
             sector: formData.get("sector") as string,
+            date: formData.get("date") as string,
+            timeSlot: formData.get("timeSlot") as string,
         };
 
-        if (!data.name || !data.company || !data.email || !data.sector) {
+        if (
+            !data.name ||
+            !data.company ||
+            !data.email ||
+            !data.sector ||
+            !data.date ||
+            !data.timeSlot
+        ) {
             return { success: false, message: "Please complete the required fields." };
         }
 

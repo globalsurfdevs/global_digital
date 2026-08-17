@@ -82,7 +82,7 @@ type Props = {
 
 const PricingComparison = ({ data }: { data: Props }) => {
     return (
-        <section className="bg-white py-16 text-black md:py-20 xl:py-[120px]">
+        <section className="bg-white py-16 text-black md:py-20 xl:py-[90px]">
             <div className="container">
                 {/* Header */}
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-end md:justify-between">

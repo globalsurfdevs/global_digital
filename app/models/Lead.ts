@@ -7,6 +7,8 @@ const leadSchema = new mongoose.Schema(
     email: { type: String, required: true },
     phone: { type: String },
     sector: { type: String, required: true },
+    date: { type: String, required: true },
+    timeSlot: { type: String, required: true },
   },
   { timestamps: true }
 );
