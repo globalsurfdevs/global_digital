@@ -15,7 +15,7 @@ const HeroSection = () => {
                 poster="/assets/videos/home_poster.jpg"
                 id="hero-video"
             >
-                <source src="/assets/GS_Digital-banner.mp4" type="video/mp4" />
+                <source src="/assets/videos/home_banner_v2.mp4" type="video/mp4" />
             </video>
 
             {/* Scrim: fades in with the video, dark greyish-black */}

@@ -1,5 +1,5 @@
 const ACRONYMS = new Set([
-  "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae","crm"
+  "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae", "crm",
 ]);
 
 
@@ -22,9 +22,16 @@ export const toTitleCase = (text: string) => {
         .split("-")
         .map((part) => {
           const lower = part.toLowerCase();
+
           if (ACRONYMS.has(lower)) {
             return lower.toUpperCase();
           }
+
+          // Handle plural acronyms, e.g. "kpis" -> "KPIs", "ctas" -> "CTAs"
+          if (lower.endsWith("s") && ACRONYMS.has(lower.slice(0, -1))) {
+            return lower.slice(0, -1).toUpperCase() + "s";
+          }
+
           return lower.charAt(0).toUpperCase() + lower.slice(1);
         })
         .join("-");
@@ -35,7 +42,7 @@ export const toTitleCase = (text: string) => {
 };
 
 export const toSentenceCase = (text: string) => {
-  if(!text) return text;
+  if (!text) return text;
   // Capitalize the first letter after start-of-string or sentence-ending punctuation
   let result = text.replace(
     /(^\s*\w|[.!?]\s+\w)/g,
