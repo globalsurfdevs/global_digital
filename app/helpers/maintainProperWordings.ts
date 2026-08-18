@@ -77,7 +77,7 @@ const PROPER_NOUNS: Record<string, string> = {
 // Anchor segments are returned as-is by callers below — href and any
 // other attributes are never touched, only plain text outside <a> tags is.
 const splitByAnchors = (text: string) => {
-  return text.split(/(<a\b[^>]*>.*?<\/a>)/gis);
+  return text.split(/(<a\b[^>]*>[\s\S]*?<\/a>)/gi);
 };
 
 const isAnchorSegment = (segment: string) => /^<a\b/i.test(segment);
