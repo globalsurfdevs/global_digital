@@ -18,7 +18,7 @@ export const menuItems = [
           },
           {
             item: "AI Search Visibility (GEO)",
-            url: "/generative-engine-optimization",
+            url: "/generative-engine-optimization-dubai",
           },
           {
             item: "Performance Marketing",
@@ -34,7 +34,7 @@ export const menuItems = [
           },
           {
             item: "Marketing Strategy Consulting",
-            url: "/marketing-strategy-consulting",
+            url: "/marketing-strategy-consulting-dubai",
           },
         ],
       },
@@ -45,7 +45,7 @@ export const menuItems = [
         children: [
           {
             item: "Web Development",
-            url: "/web-development-agency-dubai",
+            url: "/web-design-development-agency-dubai",
           },
           {
             item: "Mobile App Development",
@@ -53,11 +53,11 @@ export const menuItems = [
           },
           {
             item: "Web App Development",
-            url: "/web-app-dev-agency",
+            url: "/web-app-development-agency-dubai",
           },
           {
             item: "E-Commerce Development",
-            url: "/e-commerce-web-development-company",
+            url: "/e-commerce-web-development-company-dubai",
           },
         ],
       },
@@ -73,6 +73,10 @@ export const menuItems = [
           {
             item: "Photography & Video Production",
             url: "/content-production-agency-dubai",
+          },
+                    {
+            item: "Branding and Positioning",
+            url: "/branding-and-positioning-agency-dubai",
           },
         ],
       },
