@@ -15,8 +15,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = () => {
                 </div>
                 <div className="lg:w-5/12">
                     <h3 className="text-28 text-black">
-                        Senior-Led Expertise. Sector-Specific Strategies. Trusted by
-                        140+ UAE Brands Since 2013.
+                        Senior-led expertise. Sector-specific strategies. Trusted by 140+ UAE brands since 2013
                     </h3>
 
                     <p className="text-19 fnt-lexend  text-muted py-6 lg:py-[30px] ">

@@ -12,16 +12,15 @@ import FAQ from "@/app/components/PermormanceMarketing/FAQ";
 import Cta from "@/app/components/HomePage/Cta";
 import IndustriesweWork from "@/app/components/HomePage/IndustriesweWork";
 import Script from "next/script";
-import {
-  Faq,
-} from "@/app/components/HomePage/data";
+import { Faq } from "@/app/components/HomePage/data";
 import type { Metadata } from "next";
 import { getHome } from "../lib/home.service";
 import { getTestimonials } from "../lib/testimonials";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Agency in Dubai | GS Digital",
-  description: "GS Digital is a digital marketing agency in Dubai covering a full-service digital marketing services including SEO, paid media, social media, and web development for 140+ UAE and GCC brands since 2013. Talk to us today.",
+  description:
+    "GS Digital is a digital marketing agency in Dubai covering a full-service digital marketing services including SEO, paid media, social media, and web development for 140+ UAE and GCC brands since 2013. Talk to us today.",
   alternates: {
     canonical: "https://www.globalsurf.ae",
   },
@@ -30,7 +29,8 @@ export const metadata: Metadata = {
     title: "Strategic Digital Marketing Solutions in Dubai | GS Digital",
     siteName: "GS Digital", // ✅ siteName not site_name
     url: "https://www.globalsurf.ae/",
-    description: "GS Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
+    description:
+      "GS Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
     images: [
       {
         url: "https://www.globalsurf.ae/gs-digital-logo.svg",
@@ -103,13 +103,7 @@ const localBusinessSchema = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-      ],
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "08:00",
       closes: "18:00",
     },
@@ -126,7 +120,7 @@ const localBusinessSchema = {
 
 export default async function Home() {
   const home = await getHome();
-  const testimonials = await getTestimonials()
+  const testimonials = await getTestimonials();
   return (
     <>
       {/* Website Schema */}
@@ -168,13 +162,21 @@ export default async function Home() {
       <Tours />
       <SuccessStories clientTitle={home.clientSection.title} />
       <Clients data={home.clientSection} />
-      <Testimonials data={testimonials.testimonialSection} reviews={false}
-        bottomText={false} />
-      <FAQ title={home.faqSection.title} initialCount={3}
-        data={home.faqSection.items.map((item:{question:string,answer:string}) => ({
-          title: item.question,
-          description: item.answer,
-        }))} />
+      <Testimonials
+        data={testimonials.testimonialSection}
+        reviews={false}
+        bottomText={false}
+      />
+      <FAQ
+        title={home.faqSection.title}
+        initialCount={3}
+        data={home.faqSection.items.map(
+          (item: { question: string; answer: string }) => ({
+            title: item.question,
+            description: item.answer,
+          }),
+        )}
+      />
       <Cta />
     </>
   );

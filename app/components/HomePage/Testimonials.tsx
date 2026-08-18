@@ -48,7 +48,8 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
             className="items-center justify-between gap-3 lg:flex"
           >
             <h2 className={`${page === "service" ? "text-60 text-[length:var(--text-60-sm)]" : "text-60"}`}>
-              {data?.title ? data.title : "Hear From Our Partners"}
+              {/* {data?.title ? data.title : "Hear From Our Partners"} */}
+              {" What our clients say across Dubai and the UAE "}
             </h2>
             {reviews && (
               <div className="lg-mt-0 mt-3 flex items-center gap-3">

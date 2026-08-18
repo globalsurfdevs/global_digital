@@ -30,7 +30,7 @@ type ServiceData = {
 
      "AI Search Visibility (GEO)": {
        text: 'Indexed For Search<span class="text-[#E43D30]">.</span><br> Context For Every AI<span class="text-[#E43D30]">.</span>',
-       url: "/generative-engine-optimization",
+       url: "/generative-engine-optimization-dubai",
      },
 
      "Performance Marketing": {
@@ -50,7 +50,7 @@ type ServiceData = {
 
      "Marketing Strategy Consulting": {
        text: 'Built on Data<span class="text-[#E43D30]">.</span><br>Driven by Strategy<span class="text-[#E43D30]">.</span>',
-       url: "/marketing-strategy-consulting",
+       url: "/marketing-strategy-consulting-dubai",
      },
    },
 
@@ -59,7 +59,7 @@ type ServiceData = {
      categoryText: 'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
      "Web Development": {
        text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
-       url: "/web-development-agency-dubai",
+       url: "/web-design-development-agency-dubai",
      },
      "Mobile App Development": {
        text: 'Tap-worthy<span class="text-[#E43D30]">.</span><br> Tech-ready<span class="text-[#E43D30]">.</span>',
@@ -68,12 +68,12 @@ type ServiceData = {
 
      "Web App Development": {
        text: 'Complex needs<span class="text-[#E43D30]">.</span><br> Clean solutions<span class="text-[#E43D30]">.</span>',
-       url: "/web-app-dev-agency",
+       url: "/web-app-development-agency-dubai",
      },
 
      "E-Commerce Development": {
        text: 'Seamless Carts<span class="text-[#E43D30]">.</span><br>Serious Results<span class="text-[#E43D30]">.</span>',
-       url: "/e-commerce-web-development-company",
+       url: "/e-commerce-web-development-company-dubai",
      },
    },
 
@@ -88,6 +88,11 @@ type ServiceData = {
      "Photography & Video Production": {
        text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
        url: "/content-production-agency-dubai",
+     },
+
+     "Branding and Positioning": {
+       text: 'Define your stand<span class="text-[#E43D30]">.</span><br>Design your brand<span class="text-[#E43D30]">.</span>',
+       url: "/branding-and-positioning-agency-dubai",
      },
    },
 

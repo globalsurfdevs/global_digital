@@ -133,17 +133,20 @@ const nextConfig: NextConfig = {
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
-        source: "/blogs/poor-sales-try-our-website-redesign-services-for-results",
+        source:
+          "/blogs/poor-sales-try-our-website-redesign-services-for-results",
         destination: "/web-development-agency-dubai",
         permanent: true,
       },
       {
-        source: "/blogs/the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
+        source:
+          "/blogs/the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
         destination: "/blogs",
         permanent: true,
       },
       {
-        source: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
+        source:
+          "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
         destination: "/blogs",
         permanent: true,
       },
@@ -175,6 +178,31 @@ const nextConfig: NextConfig = {
       {
         source: "/google-business-profile-dubai",
         destination: "/local-seo-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/generative-engine-optimization",
+        destination: "/generative-engine-optimization-dubai",
+        permanent: true,
+      },
+      {
+        source: "/marketing-strategy-consulting",
+        destination: "/marketing-strategy-consulting-dubai",
+        permanent: true,
+      },
+      {
+        source: "/web-development-agency-dubai",
+        destination: "/web-design-development-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/web-app-dev-agency",
+        destination: "/web-app-development-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/e-commerce-web-development-company",
+        destination: "/e-commerce-web-development-company",
         permanent: true,
       },
     ];
