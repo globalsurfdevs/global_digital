@@ -141,21 +141,43 @@ const Tours = () => {
             <div>No projects available</div>
           )}
           <div className="innerfnont mt-[30px] flex w-full justify-center lg:mt-[50px]">
-            <Link href={`/portfolio`}>
-              {" "}
-              <motion.button
-                className="text-25 rounded-full border px-8 py-3 font-medium leading-[1.67] lg:px-[100px] lg:py-4 "
-                initial={{ scale: 1 }}
-                whileHover={{
-                  scale: 1.1,
-                  backgroundColor: "#000000",
-                  color: "#ffffff",
-                  transition: { duration: 0.3 },
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                VIEW ALL
-              </motion.button>
+            <Link
+              href="/portfolio"
+              className="group flex h-fit w-fit items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:text-black hover:shadow-lg"
+            >
+              <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
+                View All
+              </span>
+              <div className="bg-primary p-1">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="group-hover:scale-105"
+                >
+                  <g clipPath="url(#clip0_65_39)">
+                    <path
+                      d="M8.88346 1.26172L1.13281 8.8624"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeMiterlimit="10"
+                    ></path>
+                    <path
+                      d="M1.13281 1.26172H8.88346V8.71245"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeMiterlimit="10"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_65_39">
+                      <rect width="10" height="10" fill="white"></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
             </Link>
           </div>
         </motion.div>
