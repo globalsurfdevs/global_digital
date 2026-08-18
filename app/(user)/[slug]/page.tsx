@@ -32,6 +32,7 @@ import { Metadata } from "next";
 import WorkIn from "@/app/components/common/WorkIn";
 import CaseStudyNew from "@/app/components/BrandingAndPositioning/CaseStudyNew";
 import { assets } from "@/public/assets/assets";
+import { notFound } from "next/navigation";
 
 
 
@@ -99,6 +100,8 @@ export async function generateMetadata({
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const service: ServiceItem = await getService(slug);
+
+  if(!service) notFound();
 
   const testimonials = await getTestimonials();
 
