@@ -69,12 +69,12 @@ export async function generateMetadata({
     title: seo?.metaTitle ?? service.name,
     description: seo?.metaDescription ?? "",
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       nocache: true,
       googleBot: {
-        index: false,
-        follow: false,
+        index: true,
+        follow: true,
       },
     },
     alternates: {
