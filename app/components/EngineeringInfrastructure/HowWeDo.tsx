@@ -158,9 +158,7 @@ const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
                     </span> */}
                     <Image src={item.image} alt={item.imageAlt} width={100} height={100} className="object-contain w-6 h-6 xl:h-10 xl:w-10 xxl:h-[60px] xxl:w-[60px]" />
                   </div>
-                  <h3 className="text-28 mb-4 max-w-[18ch] leading-[1.2142] tracking-[-0.025em]">
-                    {item.title}
-                  </h3>
+                  <h3 dangerouslySetInnerHTML={{ __html: item.title }} className="text-28 mb-4 max-w-[18ch] leading-[1.2142] tracking-[-0.025em]" />
                 </div>
 
                 <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
