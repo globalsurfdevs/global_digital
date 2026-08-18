@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
+import { toTitleCase } from "@/lib/toTitleCase";
+
 
 const TitleDesc = ({ data }: any) => {
   return (
@@ -22,7 +24,7 @@ const TitleDesc = ({ data }: any) => {
           >
             <h2
               className="title-60  text-[length:var(--text-60-sm)]"
-              dangerouslySetInnerHTML={{ __html: data.title }}
+              dangerouslySetInnerHTML={{ __html: toTitleCase(data.title) }}
             ></h2>
           </motion.div>
           <motion.div
