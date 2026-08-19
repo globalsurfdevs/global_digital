@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import { ServiceItem } from "@/app/(user)/[slug]/type";
@@ -28,8 +27,6 @@ function getSlidesPerView(width: number) {
   return value;
 }
 
-// Highest slidesPerView across all breakpoints is 3.4 — loop mode wants
-// roughly 2x that in real slides to build a stable clone buffer.
 const MIN_SLIDES_FOR_LOOP = 7;
 
 const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
@@ -102,7 +99,21 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
       </div>
 
       {/* Slider */}
-      <div className="overflow-hidden" style={{ marginLeft: `${containerLeft}px` }}>
+      {/* Real content — the ONLY place <h3> tags exist */}
+      <ul className="sr-only">
+        {items.map((item) => (
+          <li key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{toSentenceCase(item.description)}</p>
+          </li>
+        ))}
+      </ul>
+
+      <div
+        className="overflow-hidden"
+        style={{ marginLeft: `${containerLeft}px` }}
+        aria-hidden="true"
+      >
         <Swiper
           modules={[Autoplay, Pagination]}
           onSwiper={(swiper) => {
@@ -133,22 +144,21 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             const originalIndex = i % items.length;
             return (
               <SwiperSlide key={i} className="h-auto">
-                <div
-                  className={`h-full border-l border-black/20 pb-6 pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}
-                >
+                <div className="h-full border-l border-black/20 pb-6 pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]">
                   <div className="flex gap-3 xl:gap-[20px]">
-                    <div className="mb-6 inline-flex shrink-0 h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
+                    <div className="mb-6 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
                       <span className="text-28 font-normal text-primary">
-                           {originalIndex < 9 ? `0${originalIndex + 1}` : originalIndex + 1}
+                        {originalIndex < 9
+                          ? `0${originalIndex + 1}`
+                          : originalIndex + 1}
                       </span>
                     </div>
-
-                    <h3 className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
+                    {/* was <h3> — now <p>, same classes, no longer a heading */}
+                    <p className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
                       {item.title}
-                    </h3>
+                    </p>
                   </div>
-
-                  <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                  <p className="text-14 md:text-16 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
                     {toSentenceCase(item.description)}
                   </p>
                 </div>
@@ -157,7 +167,6 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           })}
         </Swiper>
       </div>
-
       {/* Pagination */}
       <div className="container">
         <div className="process-pagination mt-10 flex gap-2 md:hidden [&_.swiper-pagination-bullet-active]:bg-primary [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-black/15" />
