@@ -1,5 +1,4 @@
 "use client";
-import { toTitleCase } from "@/app/helpers/maintainProperWordings";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";

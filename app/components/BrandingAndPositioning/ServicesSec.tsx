@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import Link from "next/link";
-import { toTitleCase } from "@/lib/toTitleCase"; 
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,7 +80,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               viewport={{ once: true }}
               className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em]"
             >
-              {toTitleCase(description)}
+              {description}
             </motion.h2>
           </div>
 
