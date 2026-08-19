@@ -30,9 +30,9 @@ const ImgDesc = ({ data }: any) => {
             viewport={{ once: true }}
           >
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-              <h2 className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
+              <p className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
                 {data.title}
-              </h2>
+              </p>
               <div className="h-4 w-4 bg-primary"></div>
             </div>
             <h2 className="title-60 mb-4 text-[length:var(--text-60-sm)] tracking-[-0.025em] md:mb-5 xl:mb-[40px]">

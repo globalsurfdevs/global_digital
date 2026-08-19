@@ -52,7 +52,7 @@ const WhoWeWork = ({ data }: { data: WhoWeWorkData }) => {
     <section className="py-120">
       <div className="container">
         <div className="mb-8 flex items-center gap-3 md:mb-10 xl:mb-12">
-          <motion.h3
+          <motion.p
             initial="hidden"
             whileInView="show"
             variants={moveUp(0)}
@@ -60,7 +60,7 @@ const WhoWeWork = ({ data }: { data: WhoWeWorkData }) => {
             className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
           >
             {data.tag}
-          </motion.h3>
+          </motion.p>
           <div className="h-4 w-4 bg-primary"></div>
         </div>
 

@@ -61,9 +61,9 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
       <div className="container mx-auto py-4">
         <div className="pd-cus flex flex-col pb-4 pt-8 xl:pb-6 xl:pt-12 xxl:pb-60 xxl:pt-[120px]">
           <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-            <h2 className={`text-18 uppercase leading-[1.5] text-[#A3A3A3]`}>
+            <p className={`text-18 uppercase leading-[1.5] text-[#A3A3A3]`}>
               {title}
-            </h2>
+            </p>
             <div className={`h-4 w-4 bg-primary`}></div>
           </div>
           <div
