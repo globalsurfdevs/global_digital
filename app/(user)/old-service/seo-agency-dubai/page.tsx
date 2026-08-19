@@ -41,42 +41,42 @@ const faqSchema = {
       name: "How long does it take to see results from SEO?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Search engine optimization is a long-term strategy, and results typically begin to show within 3 to 6 months. However, the timeline depends on factors such as the competitiveness of your industry, the quality of your website, and the strategies implemented."
-      }
+        text: "Search engine optimization is a long-term strategy, and results typically begin to show within 3 to 6 months. However, the timeline depends on factors such as the competitiveness of your industry, the quality of your website, and the strategies implemented.",
+      },
     },
     {
       "@type": "Question",
       name: "What's the difference between on-page and off-page SEO?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "On-page SEO focuses on optimizing elements within your website, such as content, metadata, and site structure. Off-page SEO, on the other hand, involves external factors like backlinks, social media presence, and other activities that increase your site's authority."
-      }
+        text: "On-page SEO focuses on optimizing elements within your website, such as content, metadata, and site structure. Off-page SEO, on the other hand, involves external factors like backlinks, social media presence, and other activities that increase your site's authority.",
+      },
     },
     {
       "@type": "Question",
       name: "How does Google's algorithm update affect SEO?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Google's algorithm updates can impact rankings, as they continuously improve how websites are evaluated. Keeping your search engine optimization strategy up-to-date with these changes ensures your website stays competitive and continues to rank well in search results."
-      }
+        text: "Google's algorithm updates can impact rankings, as they continuously improve how websites are evaluated. Keeping your search engine optimization strategy up-to-date with these changes ensures your website stays competitive and continues to rank well in search results.",
+      },
     },
     {
       "@type": "Question",
       name: "What role does mobile optimization play in Search engine optimization?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mobile optimization is crucial for SEO because Google uses mobile-first indexing, meaning it evaluates your website based on the mobile version. If your site isn't mobile-friendly, it could impact your rankings, especially with the growing use of mobile devices for search."
-      }
+        text: "Mobile optimization is crucial for SEO because Google uses mobile-first indexing, meaning it evaluates your website based on the mobile version. If your site isn't mobile-friendly, it could impact your rankings, especially with the growing use of mobile devices for search.",
+      },
     },
     {
       "@type": "Question",
       name: "Is local SEO important for my business?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, local SEO is vital for businesses that rely on local customers. By optimizing your website for local search terms and listing your business on Google My Business, you can increase visibility among potential customers in your area and drive foot traffic to your store."
-      }
-    }
-  ]
+        text: "Yes, local SEO is vital for businesses that rely on local customers. By optimizing your website for local search terms and listing your business on Google My Business, you can increase visibility among potential customers in your area and drive foot traffic to your store.",
+      },
+    },
+  ],
 };
 
 const serviceSchema = {
@@ -270,7 +270,7 @@ const page = () => {
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
         }}
       />
-     <main>
+      <main>
         <HeroSection Bannerdata={BannerSection} order={"02"} maxchwidth={40} />
         <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
         <Boost title={boostEngage.title} data={boostEngage.data} />
@@ -283,7 +283,7 @@ const page = () => {
         <Testimonials />
         <GetInTouch data={Cta} ctabbutton={"LET'S TALK GROWTH"} />
         <FAQ data={Faq} />
-     </main>
+      </main>
     </>
   );
 };

@@ -1,17 +1,16 @@
-import React from 'react'
-import PortfolioDetails from '@/app/components/Portfolio-details'
-import apiService from '@/app/lib/apiService'
-import { formatLinkForPortfolio } from '@/app/helpers/formatLink'
-import { Metadata } from 'next'
-import { Portfolio } from '@/app/types/Portfolio'
+import React from "react";
+import PortfolioDetails from "@/app/components/Portfolio-details";
+import apiService from "@/app/lib/apiService";
+import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
+import { Metadata } from "next";
+import { Portfolio } from "@/app/types/Portfolio";
 
 type Data = {
   portfolio: {
     metaTitle: string;
     metaDescription: string;
-
-  }
-}
+  };
+};
 
 // export async function generateMetadata(
 //   props: {
@@ -38,13 +37,17 @@ type Data = {
 //   };
 // }
 
-
 import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
 
-
-const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
-
-  const data = await getCaseStudyOrPortfolio((await params).companyName, "portfolio");
+const page = async ({
+  params,
+}: {
+  params: Promise<{ companyName: string }>;
+}) => {
+  const data = await getCaseStudyOrPortfolio(
+    (await params).companyName,
+    "portfolio",
+  );
 
   if (!data) {
     return <div>Portfolio not found</div>;
@@ -53,7 +56,7 @@ const page = async ({ params }: { params: Promise<{ companyName: string }> }) =>
     <>
       <PortfolioDetails data={data} />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;

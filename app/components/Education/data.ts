@@ -5,14 +5,14 @@ export const BannerSection = [
     id: 1,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Industry", url:"/industry" },
+      { label: "Industry", url: "/industry" },
       { label: "Education" },
-
     ],
     image: assets.edbanner,
     heroAlt: "Digital Marketing for the Construction Companies",
 
-    title: "Strengthen Your Institution’s Online Impact with Digital Marketing for the Education Industry",
+    title:
+      "Strengthen Your Institution’s Online Impact with Digital Marketing for the Education Industry",
     subtitle:
       "From increasing student enrollments to establishing thought leadership, we help educational institutions build a powerful online presence. ",
     buttontitle: "Get a Free Strategy Session",
@@ -32,17 +32,17 @@ export const Frameworkdata = {
       id: 1,
       title: "Attracting & Converting Prospective Students & Parents",
       dec: "Students and parents rely on digital research before making enrollment decisions. Without a strong online presence, institutions miss out on valuable inquiries and applications.",
-    } ,
+    },
     {
       id: 2,
       title: "Establishing Thought Leadership & Credibility",
       dec: "With a crowded education sector, institutions need authoritative content, faculty showcases, and alumni success stories to stand out and build trust.",
-    } ,
+    },
     {
       id: 3,
       title: "Leveraging Digital Advertising for Maximum ROI",
       dec: "Traditional marketing no longer delivers optimal results. Educational institutions need precise digital strategies like PPC and social media ads to target the right audience.",
-    } ,
+    },
     {
       id: 4,
       title: "Managing Online Reputation & Student Reviews",
@@ -57,7 +57,7 @@ export const Frameworkdata = {
       id: 6,
       title: "The Need for a Comprehensive Digital Strategy",
       dec: "A strong digital presence requires an optimized website, SEO, content marketing, and targeted outreach. Institutions that invest in digital marketing gain a competitive edge.",
-    }
+    },
   ],
 };
 export const AreaExpertise = {
@@ -230,5 +230,3 @@ export const Faq = [
       "Absolutely! We offer detailed insights on lead generation, engagement rates, and conversion tracking to help you optimize your digital marketing efforts for better results. ",
   },
 ];
-
-

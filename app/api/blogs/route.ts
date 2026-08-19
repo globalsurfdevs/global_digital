@@ -160,12 +160,11 @@
 //   }
 // }
 
-
 import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import connectDB from "@/lib/mongodb";
 import Blog from "@/app/models/Blog";
-import '@/app/models/Author'
+import "@/app/models/Author";
 
 export async function GET(req: NextRequest) {
   await connectDB();
@@ -179,7 +178,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ blog });
   }
 
-  const blogs = await Blog.find({}).sort({ createdAt: -1 }).populate("author").lean();
+  const blogs = await Blog.find({})
+    .sort({ createdAt: -1 })
+    .populate("author")
+    .lean();
   return NextResponse.json({ blogs });
 }
 

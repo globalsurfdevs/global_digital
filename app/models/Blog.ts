@@ -35,7 +35,7 @@ export interface IBlog extends Document {
   ctaDescription: string;
   ctaButtonText: string;
   ctaButtonLink: string;
-  author:mongoose.Types.ObjectId;
+  author: mongoose.Types.ObjectId;
 }
 
 const BlogItemSchema = new Schema<IBlogItem>({
@@ -72,7 +72,7 @@ const BlogSchema = new Schema<IBlog>(
     ctaButtonLink: { type: String, default: "" },
     author: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Blog: Model<IBlog> =

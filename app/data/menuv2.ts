@@ -74,7 +74,7 @@ export const menuItems = [
             item: "Photography & Video Production",
             url: "/content-production-agency-dubai",
           },
-                    {
+          {
             item: "Branding and Positioning",
             url: "/branding-and-positioning-agency-dubai",
           },

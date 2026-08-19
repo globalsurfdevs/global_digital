@@ -1,5 +1,5 @@
 import Label from "@/app/components/Label/Label";
-import { assets } from "@/public/assets/assets"; 
+import { assets } from "@/public/assets/assets";
 import { url } from "inspector";
 export const BannerSection = [
   {
@@ -68,7 +68,7 @@ export const Wecanhelp = {
       icon: assets.mschelp4,
       title: "Verified\nSources",
       dec: "Fact-based information supported by consistent and traceable references.",
-    }, 
+    },
   ],
 };
 export const boostEngage = {
@@ -104,42 +104,42 @@ export const Frameworkdata = {
       title: " Appear in AI Answers",
       dec: "Your brand shows up inside the single response AI tools generate.  ",
       icn: assets.bnf1,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 2,
       title: "Stay Visible as Search Changes ",
       dec: "You remain relevant even as traditional search declines. ",
       icn: assets.bnf2,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 3,
       title: "Correct Brand Interpretation",
       dec: "AI understands what you do - and describes it correctly. ",
       icn: assets.bnf3,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 4,
       title: "Stronger Trust",
       dec: "Good structure and verification make your brand more credible.",
       icn: assets.bnf4,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 5,
       title: "Better Voice Search Results ",
       dec: "Siri, Google Assistant, and other tools respond more accurately. ",
       icn: assets.bnf5,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 6,
       title: "Long-Term Advantage",
       dec: "Early adopters gain authority before the space gets crowded. ",
       icn: assets.bnf6,
-      urllink: '',
+      urllink: "",
     },
   ],
 };
@@ -172,12 +172,12 @@ export const OurServices = {
       id: 5,
       title: "Authority Building",
       desc: "Publishing verifiable first-party insights and expert commentary. ",
-    }, 
+    },
     {
       id: 6,
       title: "Continuous LLM Monitoring",
       desc: "Real-time optimization based on generative search behavior. ",
-    }, 
+    },
   ],
 };
 export const Wehelp = {
@@ -186,50 +186,51 @@ export const Wehelp = {
     {
       id: 1,
       title: "Restructuring your content for AI interpretation ",
-      
+
       icn: assets.wecanhelp1,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 2,
       title: "Strengthening entity clarity and brand definitions  ",
-     
+
       icn: assets.wecanhelp2,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 3,
       title: "Applying advanced structured data (Schema+) ",
-     
+
       icn: assets.wecanhelp3,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 4,
       title: "Publishing verified first-party assets ",
-     
+
       icn: assets.wecanhelp4,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 5,
       title: "Improving trust, authority, and factual alignment  ",
-     
+
       icn: assets.wecanhelp5,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 6,
       title: "Monitoring how AI engines reference your brand ",
-      
+
       icn: assets.wecanhelp6,
-      urllink: '',
+      urllink: "",
     },
   ],
 };
 export const AreaExpertise = {
   title: "Why These Requirements Demand <br>Specialized GEO Expertise ",
-  subttle:"Meeting AI engine standards requires more than publishing content. Generative engines rely on entities, structured data, semantic clarity, and verified sources - areas most brands are not equipped to optimize internally.",
+  subttle:
+    "Meeting AI engine standards requires more than publishing content. Generative engines rely on entities, structured data, semantic clarity, and verified sources - areas most brands are not equipped to optimize internally.",
   data: [
     {
       id: 1,
@@ -281,7 +282,7 @@ export const IndustriesWeServe = {
   data: [
     {
       id: 1,
-      
+
       title: "Entity & Brand Optimization ",
       hoverImg: assets.hvrimg1,
       desc: "Clarifying your brand as a distinct, authoritative entity across AI systems. ",
@@ -289,7 +290,7 @@ export const IndustriesWeServe = {
     },
     {
       id: 2,
-      
+
       title: "AI-Ready Content Structure",
       hoverImg: assets.hvrimg2,
       desc: "Reorganizing your information for accurate AI interpretation and contextual reuse.  ",
@@ -297,7 +298,7 @@ export const IndustriesWeServe = {
     },
     {
       id: 3,
-      
+
       title: "Schema+ (Advanced Structured Data)",
       hoverImg: assets.hvrimg3,
       desc: "Advanced schema covering organization details, services, products, authorship, FAQs, and more. ",
@@ -305,7 +306,7 @@ export const IndustriesWeServe = {
     },
     {
       id: 4,
-     
+
       title: "First-Party Data Publishing",
       hoverImg: assets.hvrimg4,
       desc: "Transforming internal insights, results, and project data into verifiable content.  ",
@@ -313,13 +314,12 @@ export const IndustriesWeServe = {
     },
     {
       id: 5,
-      
+
       title: "AI & LLM Monitoring",
       hoverImg: assets.hvrimg5,
       desc: "Tracking brand mentions and answer placements across AI engines. ",
       url: "",
     },
-  
   ],
 };
 export const WhyBrands = {
@@ -402,6 +402,3 @@ export const Faq = [
       "AI platforms are constantly evolving, so specific placements cannot be guaranteed. However, our approach significantly improves the likelihood of being referenced.",
   },
 ];
-
-
-

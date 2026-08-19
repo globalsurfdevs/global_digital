@@ -76,7 +76,7 @@ const page = () => {
         bgtt3="text-white"
         hrcontent={true}
       />
-<BecomePartner Becomebrand={Becomebrand} />
+      <BecomePartner Becomebrand={Becomebrand} />
 
       <section className="pb-[50px] lg:pb-[150px]">
         <Platformserver

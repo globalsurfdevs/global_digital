@@ -18,7 +18,7 @@ interface Author {
   imageBig: string;
   description: string;
   about: string;
-  slug:string;
+  slug: string;
 }
 
 const AdminPortfolioAuthor = () => {
@@ -58,10 +58,10 @@ const AdminPortfolioAuthor = () => {
 
   return (
     <div className="pb-5">
-      <div className="flex justify-end my-5">
+      <div className="my-5 flex justify-end">
         <button
           type="button"
-          className="bg-blue-950 text-white px-5 py-2 rounded-xl"
+          className="rounded-xl bg-blue-950 px-5 py-2 text-white"
           onClick={() => router.push("/admin/authors/add")}
         >
           Add Author
@@ -72,33 +72,37 @@ const AdminPortfolioAuthor = () => {
         {authors.map((author, index) => (
           <div
             key={index}
-            className="relative flex items-center gap-4 w-full border p-4 border-dashed rounded-xl"
+            className="relative flex w-full items-center gap-4 rounded-xl border border-dashed p-4"
           >
             {author.imageSmall ? (
               <img
                 src={author.imageSmall}
                 alt={author.name}
-                className="w-12 h-12 rounded-full object-cover border flex-shrink-0"
+                className="h-12 w-12 flex-shrink-0 rounded-full border object-cover"
               />
             ) : (
-              <div className="w-12 h-12 rounded-full bg-gray-200 flex-shrink-0" />
+              <div className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-200" />
             )}
 
             <div className="flex flex-col">
               <span className="font-semibold">{author.name}</span>
-              <span className="text-sm text-gray-500">{author.designation}</span>
+              <span className="text-sm text-gray-500">
+                {author.designation}
+              </span>
             </div>
 
-            <div className="ml-auto flex gap-5 items-center">
-              <Link href={`/author/${author.slug}`} target="_blank"><FaRegEye className="text-xl cursor-pointer"/></Link>
+            <div className="ml-auto flex items-center gap-5">
+              <Link href={`/author/${author.slug}`} target="_blank">
+                <FaRegEye className="cursor-pointer text-xl" />
+              </Link>
               <MdEdit
-                className="text-black cursor-pointer text-xl"
+                className="cursor-pointer text-xl text-black"
                 onClick={() =>
                   router.push(`/admin/authors/edit/${author.id || author._id}`)
                 }
               />
               <IoMdTrash
-                className="text-red-500 cursor-pointer text-xl"
+                className="cursor-pointer text-xl text-red-500"
                 onClick={() => handleDeleteAuthor(author._id || "")}
               />
             </div>

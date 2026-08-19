@@ -1,40 +1,38 @@
 import { assets } from "@/public/assets/assets";
 
-
-
 export const Frameworkdata = {
   title: "What’s Included in the Audit? ",
   data: [
     {
       id: 1,
       title: "SEO Review",
-         icn:assets.insic1,
+      icn: assets.insic1,
       dec: "Eliminate visibility gaps that cost you revenue ",
-    } ,
+    },
     {
       id: 2,
       title: "Google Ads Analysis",
-         icn:assets.insic2,
+      icn: assets.insic2,
       dec: "Maximize returns from every dirham you invest ",
-    } ,
+    },
     {
       id: 3,
       title: "Social Media Insights",
-         icn:assets.insic3,
+      icn: assets.insic3,
       dec: "Unlock high-value engagement and buyer intent ",
-    } ,
+    },
     {
       id: 4,
       title: "UX/UI Feedback",
-         icn:assets.insic4,
+      icn: assets.insic4,
       dec: "Optimize the experience for serious buyers ",
     },
     {
       id: 5,
       title: "Report PDF with Key Action Items",
-         icn:assets.insic5,
+      icn: assets.insic5,
       dec: "Strategic insights, ready in 48 hours",
-    }
+    },
   ],
 };
 
@@ -89,84 +87,79 @@ export const IndustriesWeServe = {
       hoverImg: assets.cprhr6,
       desc: "We act as partners, not vendors—aligned with your business vision and success. ",
       url: "",
-    }, 
+    },
   ],
 };
 export const Trustedbrands = {
   title: "Trusted by Brands Across Industries and Borders.",
   subttle: "From scale-ups to global leaders.",
   data: [
-       { 
-      icon: '/assets/digital-marketing-audit/ics3.svg', 
+    {
+      icon: "/assets/digital-marketing-audit/ics3.svg",
     },
-     { 
-      icon: '/assets/digital-marketing-audit/ics6.svg', 
+    {
+      icon: "/assets/digital-marketing-audit/ics6.svg",
     },
-     { 
-      icon: '/assets/digital-marketing-audit/ics11.svg', 
+    {
+      icon: "/assets/digital-marketing-audit/ics11.svg",
     },
-     { 
-      icon: '/assets/digital-marketing-audit/ics18.svg', 
+    {
+      icon: "/assets/digital-marketing-audit/ics18.svg",
     },
-     { 
-      icon: '/assets/digital-marketing-audit/ics15.svg', 
-    },
-    
-    { 
-      icon: '/assets/digital-marketing-audit/ics7.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics1.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics2.svg', 
-    },
- 
-    { 
-      icon: '/assets/digital-marketing-audit/ics4.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics5.svg', 
-    },
-   
-    { 
-      icon: '/assets/digital-marketing-audit/ics8.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics9.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics10.svg', 
-    },
-   
-    { 
-      icon: '/assets/digital-marketing-audit/ics12.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics13.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics14.svg', 
-    },
-   
-    { 
-      icon: '/assets/digital-marketing-audit/ics16.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics17.svg', 
-    },
-   
-    { 
-      icon: '/assets/digital-marketing-audit/ics19.svg', 
-    },
-    { 
-      icon: '/assets/digital-marketing-audit/ics20.svg', 
+    {
+      icon: "/assets/digital-marketing-audit/ics15.svg",
     },
 
+    {
+      icon: "/assets/digital-marketing-audit/ics7.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics1.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics2.svg",
+    },
 
+    {
+      icon: "/assets/digital-marketing-audit/ics4.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics5.svg",
+    },
 
-    
-    
+    {
+      icon: "/assets/digital-marketing-audit/ics8.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics9.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics10.svg",
+    },
+
+    {
+      icon: "/assets/digital-marketing-audit/ics12.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics13.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics14.svg",
+    },
+
+    {
+      icon: "/assets/digital-marketing-audit/ics16.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics17.svg",
+    },
+
+    {
+      icon: "/assets/digital-marketing-audit/ics19.svg",
+    },
+    {
+      icon: "/assets/digital-marketing-audit/ics20.svg",
+    },
   ],
 };
 export const tpcontent = {
@@ -182,20 +175,20 @@ export const tpcontent = {
       id: 2,
       title: " Marketing leaders under pressure to deliver ROI ",
       hoverImg: assets.sts2,
-       url: "",
+      url: "",
     },
 
     {
       id: 3,
       title: "  Premium brands seeking scale ",
       hoverImg: assets.sts3,
-       url: "",
+      url: "",
     },
     {
       id: 4,
       title: "Agencies or in-house teams stuck in a performance plateau  ",
       hoverImg: assets.sts4,
-       url: "",
-    }, 
+      url: "",
+    },
   ],
 };

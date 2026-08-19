@@ -28,7 +28,7 @@ export interface BlogFormInputs {
   ctaButtonText: string;
   ctaButtonLink: string;
   schemaScript?: string;
-  author:string;
+  author: string;
 }
 
 export interface BlogListItem {

@@ -37,19 +37,17 @@ const imageSection = {
     opacity: 1,
     transition: {
       y: { stiffness: 1000, velocity: -100 },
-      delay: 0
-    }
+      delay: 0,
+    },
   },
   closed: {
     x: 20,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 }
-    }
-  }
-}
-
-
+      y: { stiffness: 1000 },
+    },
+  },
+};
 
 export const Example = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
@@ -57,17 +55,16 @@ export const Example = () => {
   const { height } = useDimensions(containerRef);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  React.useEffect(()=>{
-    console.log(isOpen)
+  React.useEffect(() => {
+    console.log(isOpen);
     if (isOpen == true) {
       document.body.style.overflow = "hidden";
       document.body.style.height = "100vh";
-    }
-    else {
+    } else {
       document.body.style.overflow = "";
       document.body.style.height = "100vh";
     }
-  },[isOpen])
+  }, [isOpen]);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -82,13 +79,13 @@ export const Example = () => {
       }
     };
 
-    document.addEventListener("click", handleClickOutside,{passive:false});
+    document.addEventListener("click", handleClickOutside, { passive: false });
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isOpen]);
 
   const hideButton = () => {
-    setHideIcon((prev)=>!prev)
-  }
+    setHideIcon((prev) => !prev);
+  };
 
   const debouncedToggle = React.useCallback(() => {
     let timeoutId: string | number | NodeJS.Timeout | undefined;
@@ -105,46 +102,88 @@ export const Example = () => {
       custom={height}
       ref={containerRef}
     >
-<div className={isOpen ? "overlay-nav" : ""}></div>
-      {<motion.div className={"menusi backgroundv2 shadow-lg w-full h-screen flex flex-col"} variants={sidebar} ref={menuRef}>
-
-        <motion.div className="">
-          <div className="fixed w-full min-h-[60px] bg-white z-[99999] py-5 px-6">
-            <Link href="/">
-              <Image src={assets.logo} alt="logo" className="w-32" />
+      <div className={isOpen ? "overlay-nav" : ""}></div>
+      {
+        <motion.div
+          className={
+            "menusi backgroundv2 flex h-screen w-full flex-col shadow-lg"
+          }
+          variants={sidebar}
+          ref={menuRef}
+        >
+          <motion.div className="">
+            <div className="fixed z-[99999] min-h-[60px] w-full bg-white px-6 py-5">
+              <Link href="/">
+                <Image src={assets.logo} alt="logo" className="w-32" />
               </Link>
+            </div>
+          </motion.div>
+
+          <div className="flex-1 overflow-y-auto">
+            <Navigation toggle={() => toggleOpen()} onHide={hideButton} />
+          </div>
+
+          <div className="w-full px-6 pb-6 text-white">
+            <div className="flex flex-col gap-4 border-t pb-5 pt-5  ">
+              <motion.div>
+                <p className="text-primary">Follow us on</p>
+              </motion.div>
+              <motion.div>
+                <div className="flex w-full gap-5 text-2xl text-black">
+                  <a
+                    href="https://www.facebook.com/globalsurf.digital"
+                    target="_blank"
+                    rel="nofollow"
+                    className="hover:text-primary"
+                  >
+                    <FaFacebookF />
+                  </a>
+                  <a
+                    href="https://x.com/GlobalSurf_D"
+                    target="_blank"
+                    rel="nofollow"
+                    className="hover:text-primary"
+                  >
+                    {" "}
+                    <FaXTwitter />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/globalsurf.digital/"
+                    target="_blank"
+                    rel="nofollow"
+                    className="hover:text-primary"
+                  >
+                    {" "}
+                    <FaInstagram />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/globalsurfdigital"
+                    target="_blank"
+                    rel="nofollow"
+                    className="hover:text-primary"
+                  >
+                    {" "}
+                    <FaLinkedin />
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@globalsurf.digital"
+                    target="_blank"
+                    rel="nofollow"
+                    className="hover:text-primary"
+                  >
+                    {" "}
+                    <FaTiktok />
+                  </a>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
+      }
 
-       <div className="flex-1 overflow-y-auto">
-  <Navigation toggle={() => toggleOpen()} onHide={hideButton} />
-</div>
-
-       <div className="text-white px-6 w-full pb-6">
-
-          <div className="border-t pb-5 pt-5 flex flex-col gap-4  ">
-
-
-
-            <motion.div><p className="text-primary">Follow us on</p></motion.div>
-        <motion.div>
-          <div className="flex w-full text-black text-2xl gap-5">
-          <a href="https://www.facebook.com/globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"><FaFacebookF /></a>
-          <a href="https://x.com/GlobalSurf_D" target="_blank" rel="nofollow" className="hover:text-primary"> <FaXTwitter/></a>
-          <a href="https://www.instagram.com/globalsurf.digital/" target="_blank" rel="nofollow" className="hover:text-primary">  <FaInstagram /></a>
-          <a href="https://www.linkedin.com/company/globalsurfdigital" target="_blank" rel="nofollow" className="hover:text-primary"> <FaLinkedin/></a>
-          <a href="https://www.tiktok.com/@globalsurf.digital" target="_blank" rel="nofollow" className="hover:text-primary"> <FaTiktok/></a>
-            </div>
-        </motion.div>
-        </div>
-        </div>
-
-        </motion.div>}
-
-<div className="bg-white w-8">
-<MenuToggle toggle={() => toggleOpen()} hidden={hideIcon}/>
-
-</div>
+      <div className="w-8 bg-white">
+        <MenuToggle toggle={() => toggleOpen()} hidden={hideIcon} />
+      </div>
     </motion.nav>
   );
 };

@@ -167,16 +167,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                               </li>
                               {index <
                                 (herosection.navigation?.length || 0) - 1 && (
-                                  <li>
-                                    <Image
-                                      src="/assets/bc-arrow.png"
-                                      alt="Arrow"
-                                      width={7} // Adjust width as needed
-                                      height={12} // Adjust height as needed
-                                      className="w-100 h-100"
-                                    />
-                                  </li>
-                                )}
+                                <li>
+                                  <Image
+                                    src="/assets/bc-arrow.png"
+                                    alt="Arrow"
+                                    width={7} // Adjust width as needed
+                                    height={12} // Adjust height as needed
+                                    className="w-100 h-100"
+                                  />
+                                </li>
+                              )}
                             </React.Fragment>
                           ))}
                         </ul>
@@ -185,7 +185,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
                     <h1 className="title-80"> {herosection.title}</h1>
                     {herosection.subtitle && (
-                      <h2 className="my-3 text-[20px] text-gray1 lg:mt-6 lg:mb-2  lg:text-font30" style={{ maxWidth: `${maxtextwidth}ch` }}>
+                      <h2
+                        className="my-3 text-[20px] text-gray1 lg:mb-2 lg:mt-6  lg:text-font30"
+                        style={{ maxWidth: `${maxtextwidth}ch` }}
+                      >
                         {" "}
                         {herosection.subtitle}
                       </h2>
@@ -244,19 +247,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                           </div>
                         </div>
                         <div className="ms-0 text-[19px] text-gray1 ">
-                          <p className={`text-font19 ${lexend.className}`} dangerouslySetInnerHTML={{ __html: su.desc }}>
-
-                          </p>
+                          <p
+                            className={`text-font19 ${lexend.className}`}
+                            dangerouslySetInnerHTML={{ __html: su.desc }}
+                          ></p>
                           {su.buttonTitle && (
                             <button
                               onClick={() => setModalOpen(true)}
-                              className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
-                before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
-                after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px] mt-3"
+                              className="z-2 z-1 group relative  mt-3 flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
+                pb-3 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out
+                after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px]"
                             >
                               <div className="relative">
                                 <p
-                                  className={`duration-200 text-sm font-medium text-black uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                                  className={`text-sm font-medium uppercase text-black duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                                 >
                                   {su.buttonTitle}
                                 </p>
@@ -322,8 +326,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <div
           style={{ width: isSmallScreen ? "" : divWidth }}
-          className={`${isSmallScreen ? "container mx-auto py-2" : ""
-            } custom-class`}
+          className={`${
+            isSmallScreen ? "container mx-auto py-2" : ""
+          } custom-class`}
         >
           {!hideslider && (
             <div className="flex gap-5 bg-bglight  py-[17px]">

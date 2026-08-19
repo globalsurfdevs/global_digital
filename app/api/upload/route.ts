@@ -20,17 +20,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    const filePath = `/uploads/${fileType}/${Date.now()}${file.name.replace(/\s+/g, "-").replace(/[()]/g, "").replace(/[^a-z0-9.-]/g, "")}`;
+    const filePath = `/uploads/${fileType}/${Date.now()}${file.name
+      .replace(/\s+/g, "-")
+      .replace(/[()]/g, "")
+      .replace(/[^a-z0-9.-]/g, "")}`;
     const uploadResult = await uploadToDropbox(file, filePath);
 
     return NextResponse.json(
       {
         url: uploadResult,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error uploading file:", error);
-    return NextResponse.json({ error: "Failed to upload file" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to upload file" },
+      { status: 500 },
+    );
   }
 }

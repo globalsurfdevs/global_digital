@@ -21,7 +21,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
   topTitle,
   bottomText = false,
   reviews = true,
-  page
+  page,
 }) => {
   return (
     <div className={` ${bgcolor === "white" ? "bg-white" : "bg-bglight"}`}>
@@ -32,11 +32,12 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
           {topTitle && (
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-[60px]">
               <div className="h-4 w-4 bg-primary"></div>
-              <h3 className="text-28
-               uppercase leading-[1] tracking-[-0.025em]  text-muted">
+              <h3
+                className="text-28
+               uppercase leading-[1] tracking-[-0.025em]  text-muted"
+              >
                 {topTitle}
               </h3>
-
             </div>
           )}
           <motion.div
@@ -54,7 +55,6 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
             </h2>
             {reviews && (
               <div className="lg-mt-0 mt-3 flex items-center gap-3">
-
                 <p className="text-19 fnt-lexend font-400 text-[#77787B] lg:w-[700px]">
                   {" "}
                   {data?.starText ? data.starText : "4.9 on Google Reviews"}

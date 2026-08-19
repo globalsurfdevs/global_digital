@@ -4,11 +4,8 @@ import AdminBlogForm from "@/app/components/AdminBlog/AdminBlogForm";
 import AdminPortfolioAuthor from "@/app/components/AdminAuthor/AdminAuthor";
 import AdminAuthorForm from "@/app/components/AdminAuthor/AddAuthor";
 
-
 const EditBlogPage = () => {
-  return (
-      <AdminAuthorForm/>
-  );
+  return <AdminAuthorForm />;
 };
 
 export default EditBlogPage;

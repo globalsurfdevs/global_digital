@@ -18,7 +18,7 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
             whileInView="show"
             variants={moveUp(0)}
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)] mb-6 xl:mb-8 xxl:mb-[50px]"
+            className="title-60 mb-6 text-[length:var(--text-60-sm)] xl:mb-8 xxl:mb-[50px]"
           >
             {data.title}
           </motion.h2>
@@ -85,7 +85,7 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
                   variants={moveUp(idx * 0.1)}
                   viewport={{ once: true }}
                   key={idx}
-                  className="fnt-lexend text-[length:var(--text-18-sm)] max-w-[35ch] text-left font-normal leading-[1.444444444444444] text-muted"
+                  className="fnt-lexend max-w-[35ch] text-left text-[length:var(--text-18-sm)] font-normal leading-[1.444444444444444] text-muted"
                 >
                   {item.description}
                 </motion.p>

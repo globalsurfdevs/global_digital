@@ -10,7 +10,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { HomeType } from "@/app/types/home";
 
-const Clients = ({data}:{data:HomeType['clientSection']}) => {
+const Clients = ({ data }: { data: HomeType["clientSection"] }) => {
   return (
     <div className="container mx-auto px-4">
       <div className="flex flex-col  gap-6 pb-[50px]    lg:gap-[50px] lg:pb-[150px]  ">

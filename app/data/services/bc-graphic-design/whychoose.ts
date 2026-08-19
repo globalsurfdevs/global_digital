@@ -20,7 +20,7 @@ export const Whychoosedata = {
 };
 export const Platformimgmdata = {
   title: "Why Choose Our Graphic Design Company in UAE?",
-  desc:"With a team of passionate graphic design experts, we bring years of experience in creating visuals that elevate brands. Our approach is creative and strategy-driven, ensuring every design delivers impact.",
+  desc: "With a team of passionate graphic design experts, we bring years of experience in creating visuals that elevate brands. Our approach is creative and strategy-driven, ensuring every design delivers impact.",
   data: [
     {
       id: 1,

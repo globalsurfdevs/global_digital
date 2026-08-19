@@ -41,6 +41,7 @@ const itemVariants = {
   hidden: { y: 20 },
   visible: { y: 0 },
 };
+
 const FAQ: React.FC<PartnerListProps> = ({
   data,
   sections,
@@ -51,7 +52,7 @@ const FAQ: React.FC<PartnerListProps> = ({
   initialCount,
   fullSpace,
   page,
-  py
+  py,
 }) => {
   const items = data ?? sections ?? [];
   const getDefaultOpenIndex = (value?: string) => {
@@ -108,10 +109,12 @@ const FAQ: React.FC<PartnerListProps> = ({
           }}
         >
           <div
-            className={`grid grid-cols-1 py-8 md:py-[50px] ${py === "90" ? "lg:py-[90px]" : "lg:py-[120px]"} xl:grid-cols-8  ${page=="service" ? "gap-10" : ""}`}
+            className={`grid grid-cols-1 py-8 md:py-[50px] ${py === "90" ? "lg:py-[90px]" : "lg:py-[120px]"} xl:grid-cols-8  ${page == "service" ? "gap-10" : ""}`}
           >
             <div className="col-span-2  mb-5 xl:mb-0">
-              <h2 className={`text-60 ${page=="service" ? "leading-[1.083333333333333] tracking-[-0.025em]" : ""} text-[length:var(--text-60-sm)]`}>
+              <h2
+                className={`text-60 ${page == "service" ? "leading-[1.083333333333333] tracking-[-0.025em]" : ""} text-[length:var(--text-60-sm)]`}
+              >
                 {!title && "FAQ"}
                 {title}
               </h2>
@@ -122,7 +125,9 @@ const FAQ: React.FC<PartnerListProps> = ({
               )}
             </div>
 
-            <div className={` ${fullSpace ? "col-span-6" : "col-span-5"} w-full overflow-hidden`}>
+            <div
+              className={` ${fullSpace ? "col-span-6" : "col-span-5"} w-full overflow-hidden`}
+            >
               <motion.div
                 layout
                 variants={containerVariants}
@@ -130,59 +135,79 @@ const FAQ: React.FC<PartnerListProps> = ({
                 animate="visible"
               >
                 <AnimatePresence mode="popLayout">
-                  {visibleItems.map((item, index) => (
-                    <motion.div
-                      key={item.title} // ⚠️ Important: never use index
-                      layout
-                      variants={itemVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="flex w-full items-center justify-between gap-6 overflow-hidden border-b py-6 first:border-t lg:pb-[50px] lg:pt-[50px]"
-                    >
-                      <div
-                        className="flex cursor-pointer  flex-col"
-                        onClick={() => toggle(index)}
+                  {items.map((item, index) => {
+                    const isInitiallyHidden =
+                      hasLimit && !showAll && index >= initialCount;
+                    return (
+                      <motion.div
+                        key={item.title} // ⚠️ Important: never use index
+                        layout
+                        variants={itemVariants}
+                        initial={false}
+                        // animate="visible"
+                        exit={{ opacity: 0, y: -10 }}
+                        animate={{
+                          opacity: isInitiallyHidden ? 0 : 1,
+                          height: isInitiallyHidden ? 0 : "auto",
+                        }}
+                        transition={{
+                          duration: 0.4,
+                          ease: "easeInOut",
+                        }}
+                        className={`duration-400 flex w-full items-center justify-between gap-6 overflow-hidden
+    border-b transition-all ease-in-out
+    ${
+      isInitiallyHidden
+        ? "border-transparent p-0 opacity-0"
+        : "py-6 opacity-100 lg:pb-[50px] lg:pt-[50px]"
+    }
+  `}
                       >
-                        <h3
-                          className={` ${open === index ? "text-30 cursor-pointer text-black" : "text-30 text-gray1"}`}
+                        <div
+                          className="flex cursor-pointer  flex-col"
+                          onClick={() => toggle(index)}
                         >
-                          {index + 1}. {item.title}
-                        </h3>
-                        <Collapse isOpened={open === index}>
-                          <div className="collapse-item pt-3 lg:pt-[22px]">
-                            <p className={`${page == "service" ? "text-[length:var(--text-18-sm)]" : "text-19"} fnt-lexend text-gray1`}>
-                              {item.description}
-                            </p>
+                          <h3
+                            className={` ${open === index ? "text-30 cursor-pointer text-black" : "text-30 text-gray1"}`}
+                          >
+                            {index + 1}. {item.title}
+                          </h3>
+                          <Collapse isOpened={open === index}>
+                            <div className="collapse-item pt-3 lg:pt-[22px]">
+                              <p
+                                className={`${page == "service" ? "text-[length:var(--text-18-sm)]" : "text-19"} fnt-lexend text-gray1`}
+                              >
+                                {item.description}
+                              </p>
+                            </div>
+                          </Collapse>
+                        </div>
+                        {open === index ? (
+                          <div className="text-5xl text-primary">
+                            <Image
+                              src={arrowactive}
+                              alt="image"
+                              width={25}
+                              height={25}
+                              className="min-h-[35px] min-w-[35px] lg:min-h-[45px] lg:min-w-[45px] "
+                              loading="lazy"
+                            ></Image>
                           </div>
-                        </Collapse>
-                      </div>
-                      {open === index ? (
-                        <div className="text-5xl text-primary">
-                          <Image
-                            src={arrowactive}
-                            alt="image"
-                            width={25}
-                            height={25}
-                            className="min-h-[35px] min-w-[35px] lg:min-h-[45px] lg:min-w-[45px] "
-                            loading="lazy"
-                          ></Image>
-                        </div>
-                      ) : (
-                        <div className="text-xl">
-                          <Image
-                            src={arrowdown}
-                            alt="image"
-                            height={25}
-                            width={25}
-                            className="min-h-[20px] min-w-[20px]  "
-                            loading="lazy"
-                          ></Image>
-                        </div>
-                      )}
-                    </motion.div>
-                  ))}
+                        ) : (
+                          <div className="text-xl">
+                            <Image
+                              src={arrowdown}
+                              alt="image"
+                              height={25}
+                              width={25}
+                              className="min-h-[20px] min-w-[20px]  "
+                              loading="lazy"
+                            ></Image>
+                          </div>
+                        )}
+                      </motion.div>
+                    );
+                  })}
                 </AnimatePresence>
               </motion.div>
 

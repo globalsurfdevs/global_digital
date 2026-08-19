@@ -47,7 +47,7 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        bannerlogp={false} 
+        bannerlogp={false}
         maxchwidth={28}
       />
       <KeyDigital
@@ -60,10 +60,7 @@ const page = () => {
         data={AreaExpertise.data}
         subtitle="How We Help Construction Companies Grow"
       />
-      <HowWeHelp
-        title={howwehelp.title}
-        data={howwehelp.data} 
-      />
+      <HowWeHelp title={howwehelp.title} data={howwehelp.data} />
       <SuccessStories
         Clientsformsdata={Clientsformsdata}
         title1="Success Stories <br>That Speak for Themselves"
@@ -78,12 +75,7 @@ const page = () => {
 
       <Testimonials bgcolor={"#F2F2F2"} />
       <FAQ data={Faq} />
-      <GetInTouch
-        data={Cta}
-        redlast={true}
-        ctabbutton={"Lets talk growth"}
-        
-      />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"Lets talk growth"} />
       <Expertise
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}

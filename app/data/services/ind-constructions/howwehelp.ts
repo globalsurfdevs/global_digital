@@ -1,9 +1,8 @@
-
 import { assets } from "@/public/assets/assets";
 
 export const howwehelp = {
   title: "How We Help Construction Solutions to Go Digital",
-  desc:"With a team of certified experts in social media strategy, content creation, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our Social Media Marketing services in Dubai.",
+  desc: "With a team of certified experts in social media strategy, content creation, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our Social Media Marketing services in Dubai.",
   data: [
     {
       id: 1,
@@ -22,6 +21,6 @@ export const howwehelp = {
       icon: assets.twitterx,
       title: "Real Estate Developers",
       dec: "For real estate developers, we create digital strategies that convert vision into demand. From investor-focused websites to immersive video walkthroughs and social media campaigns, we ensure your projects gain maximum exposure and engagement. By combining branding with lead-generation strategies, we help developers attract investors, buyers, and partners, while building a long-lasting reputation for delivering world-class developments in Dubai, Abu Dhabi, and beyond.",
-    }, 
+    },
   ],
 };

@@ -35,10 +35,10 @@ const ImgDesc = ({ data }: any) => {
               </h2>
               <div className="h-4 w-4 bg-primary"></div>
             </div>
-            <h2 className="title-60 text-[length:var(--text-60-sm)] mb-4 tracking-[-0.025em] md:mb-5 xl:mb-[40px]">
+            <h2 className="title-60 mb-4 text-[length:var(--text-60-sm)] tracking-[-0.025em] md:mb-5 xl:mb-[40px]">
               {data.subTitle}
             </h2>
-            <p className="text-[length:var(--text-18-sm)] text-77787B fnt-lexend leading-[1.444444444444444]">
+            <p className="text-77787B fnt-lexend text-[length:var(--text-18-sm)] leading-[1.444444444444444]">
               {toSentenceCase(data.description)}
             </p>
           </motion.div>

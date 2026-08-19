@@ -8,9 +8,7 @@ export const metadata: Metadata = {
 };
 
 const AddBlogPage = () => {
-  return (
-      <AdminBlogForm />
-  );
+  return <AdminBlogForm />;
 };
 
 export default AddBlogPage;

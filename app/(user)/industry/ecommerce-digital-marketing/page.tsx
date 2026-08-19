@@ -83,7 +83,6 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"GET A FREE CONSULTATION"}
-       
       />
       <Expertise
         title={IndustriesWeServe.title}

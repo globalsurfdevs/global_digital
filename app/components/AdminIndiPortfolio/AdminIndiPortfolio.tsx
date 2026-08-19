@@ -920,7 +920,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
                 <div className="mt-1 flex w-full flex-col gap-1">
                   <Label content="Channels Used" />
-                  <div className="flex h-[300px] flex-wrap gap-2 border p-5 overflow-y-auto">
+                  <div className="flex h-[300px] flex-wrap gap-2 overflow-y-auto border p-5">
                     {channelsAvailable.map((channel, index) => (
                       <div key={index} className="relative">
                         <div
@@ -2072,7 +2072,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               </div>
             </div>
           </div>
-          <div className="mt-10 h-36 w-1/3 flex flex-col gap-2">
+          <div className="mt-10 flex h-36 w-1/3 flex-col gap-2">
             <Label content="Logo" />
             <div
               className="flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
@@ -2172,19 +2172,15 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </div>
           </div>
 
-          <div className="flex w-full flex-col gap-2 mt-2">
+          <div className="mt-2 flex w-full flex-col gap-2">
             <Label content="Featured Project" />
             <select
               {...register("featured")}
               className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-3 text-black focus:outline-none"
             >
               <option value="">Select Featured</option>
-              <option value={"true"}>
-                Yes
-              </option>
-              <option value={"false"}>
-                No
-              </option>
+              <option value={"true"}>Yes</option>
+              <option value={"false"}>No</option>
             </select>
           </div>
 

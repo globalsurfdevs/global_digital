@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import Link from "next/link";
-import { toTitleCase } from "@/lib/toTitleCase"; 
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,7 +66,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="text-18 leading-[1.5] text-muted uppercase flex items-center"
+                className="text-18 flex items-center uppercase leading-[1.5] text-muted"
               >
                 {title}
                 <span className="ml-2 inline-block h-4 w-4  bg-primary" />
@@ -80,7 +79,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               viewport={{ once: true }}
               className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em]"
             >
-              {toTitleCase(description)}
+              {description}
             </motion.h2>
           </div>
 
@@ -99,7 +98,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                   {service.link ? (
                     <Link
                       href={service.link}
-                      className="block h-full w-full p-4 md:p-5 xl:p-8 xxl:p-10 xxl:pb-[70px] cursor-pointer"
+                      className="block h-full w-full cursor-pointer p-4 md:p-5 xl:p-8 xxl:p-10 xxl:pb-[70px]"
                     >
                       <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-[30px] 3xl:gap-[26px]">
                         <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px]">
@@ -115,7 +114,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                           {service.title}
                         </h3>
                       </div>
-                      <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                      <p className="text-14 md:text-16 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
                         {toSentenceCase(service.description)}
                       </p>
                     </Link>
@@ -131,11 +130,11 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                             className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[70px] xxl:w-[70px]"
                           />
                         </div>
-                        <h3 className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-default">
+                        <h3 className="text-28 cursor-default leading-[1.2142] tracking-[-0.025em]">
                           {service.title}
                         </h3>
                       </div>
-                      <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                      <p className="text-14 md:text-16 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
                         {toSentenceCase(service.description)}
                       </p>
                     </div>

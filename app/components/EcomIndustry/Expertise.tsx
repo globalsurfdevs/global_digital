@@ -82,23 +82,35 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                     <Link href={`${expertise.url}`}>
                       <div
                         key={expertise.id}
-                        className="group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                        className="group relative flex h-[300px] flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
                       >
                         {" "}
                         {expertise.hoverImg && (
-                          <Image src={expertise.hoverImg} alt="Hover Background" fill className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                          <Image
+                            src={expertise.hoverImg}
+                            alt="Hover Background"
+                            fill
+                            className="absolute left-0 top-0 -z-10 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                          />
                         )}
                         {/* Default background color */}
                         <div className="absolute left-0 top-0 -z-20 h-full w-full bg-white transition-colors duration-500 group-hover:bg-transparent"></div>
                         {/* Image Wrapper */}
                         <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary   p-2 transition-colors duration-500 group-hover:bg-white   md:h-[50px] md:w-[50px]">
-                        {expertise.icon ? (<Image
-                            src={expertise.icon}
-                            alt={expertise.title}
-                            className="fltrcls transition duration-500 group-hover:invert-0"
-                          />) : ( <div className="align-center flex flex-col items-center    h-[30px] w-[30px] justify-center bg-primary group-hover:bg-white   p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]  ">
-                            <p className="text-font19  text-white group-hover:text-primary transition-transform duration-500">0{index+1}</p></div>) }
-                      </div>
+                          {expertise.icon ? (
+                            <Image
+                              src={expertise.icon}
+                              alt={expertise.title}
+                              className="fltrcls transition duration-500 group-hover:invert-0"
+                            />
+                          ) : (
+                            <div className="align-center flex h-[30px] w-[30px]    flex-col items-center justify-center bg-primary p-2   transition-colors duration-500 group-hover:bg-white  md:h-[50px] md:w-[50px]  ">
+                              <p className="text-font19  text-white transition-transform duration-500 group-hover:text-primary">
+                                0{index + 1}
+                              </p>
+                            </div>
+                          )}
+                        </div>
                         {/* Content */}
                         <div>
                           {/* Title */}
@@ -122,7 +134,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                   <div key={expertise.id}>
                     <div
                       key={expertise.id}
-                      className="group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 h-[200px] md:h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
+                      className="group relative flex h-[200px] flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 md:h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
                     >
                       {" "}
                       {expertise.hoverImg && (
@@ -136,15 +148,21 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                       {/* Default background color */}
                       <div className="absolute left-0 top-0 -z-20 h-full w-full bg-white transition-colors duration-500 group-hover:bg-transparent"></div>
                       {/* Image Wrapper */}
-                     
-                      {expertise.icon ? ( <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary   p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]">
-                        <Image
+                      {expertise.icon ? (
+                        <div className="align-center flex h-[30px] w-[30px] justify-center bg-primary   p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]">
+                          <Image
                             src={expertise.icon}
                             alt={expertise.title}
                             className="fltrcls transition duration-500 group-hover:invert-0"
-                          /></div>) : (<div className="align-center flex flex-col items-center    h-[30px] w-[30px] justify-center bg-primary group-hover:bg-white   p-2 transition-colors duration-500  md:h-[50px] md:w-[50px]  ">
-                            <p className="text-font19  text-white group-hover:text-primary transition-transform duration-500">0{index+1}</p></div>) }
-                      
+                          />
+                        </div>
+                      ) : (
+                        <div className="align-center flex h-[30px] w-[30px]    flex-col items-center justify-center bg-primary p-2   transition-colors duration-500 group-hover:bg-white  md:h-[50px] md:w-[50px]  ">
+                          <p className="text-font19  text-white transition-transform duration-500 group-hover:text-primary">
+                            0{index + 1}
+                          </p>
+                        </div>
+                      )}
                       {/* Content */}
                       <div>
                         {/* Title */}

@@ -11,11 +11,7 @@ const BLOCKED_COUNTRIES: string[] = [];
 const BLOCKED_IPS: string[] = [];
 
 const ROLE_ALLOWED_PREFIXES: Record<string, string[]> = {
-  hr: [
-    "/admin/career",
-    "/admin/career/linkedin",
-    "/admin/jobs",
-  ],
+  hr: ["/admin/career", "/admin/career/linkedin", "/admin/jobs"],
 };
 
 // Paths every logged-in role can land on exactly, regardless of their
@@ -41,7 +37,8 @@ function isAllowedForRole(role: string, path: string): boolean {
 
 function isBlocked(request: NextRequest): boolean {
   const city = request.headers.get("x-vercel-ip-city")?.toLowerCase() ?? "";
-  const country = request.headers.get("x-vercel-ip-country")?.toLowerCase() ?? "";
+  const country =
+    request.headers.get("x-vercel-ip-country")?.toLowerCase() ?? "";
   const ip =
     request.headers.get("x-vercel-ip") ??
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
@@ -89,7 +86,7 @@ export default auth(async (request: NextRequest) => {
     if (!result.success) {
       return NextResponse.json(
         { message: "Too many requests. Please try again later." },
-        { status: 429 }
+        { status: 429 },
       );
     }
 
@@ -97,7 +94,7 @@ export default auth(async (request: NextRequest) => {
 
     if (!isAllowedForRole(role, nextUrl.pathname)) {
       return NextResponse.redirect(
-        new URL(ROLE_HOME[role] || "/auth/signin", request.url)
+        new URL(ROLE_HOME[role] || "/auth/signin", request.url),
       );
     }
   }

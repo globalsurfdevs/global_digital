@@ -66,7 +66,6 @@ const page = () => {
           property="og:description"
           content="Maximize your brand’s reach with our expert PPC advertising services. Drive targeted traffic, increase conversions, and achieve measurable ROI with data-driven paid search and display campaigns. Get results with Google Ads, bing ads, and more."
         />
-        
       </Head>
       <FaqSchema faq={Faq} />
       <HeroSection

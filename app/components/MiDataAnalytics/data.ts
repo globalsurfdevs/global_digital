@@ -3,18 +3,21 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.dabanner,
-    title:
-      "Professional Data Analytics Consulting Services in Dubai",
-      subtitle:"Unlock Right Data-Driven Decisions with Advanced Data Analytics, BI Tools, and Predictive Analytics",
+    title: "Professional Data Analytics Consulting Services in Dubai",
+    subtitle:
+      "Unlock Right Data-Driven Decisions with Advanced Data Analytics, BI Tools, and Predictive Analytics",
     navigation: [
-      { label: "Home", url: "/" },   
-      { label: "Marketing Intelligence",url: "/marketing-intelligence-agency-dubai" }, 
-      { label: "Data Analytics",url: "" }, 
-    ],  
+      { label: "Home", url: "/" },
+      {
+        label: "Marketing Intelligence",
+        url: "/marketing-intelligence-agency-dubai",
+      },
+      { label: "Data Analytics", url: "" },
+    ],
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "We help businesses make sense of their data. With advanced analytics, AI-driven insights, and predictive modeling, we turn raw numbers into clear, actionable intelligence. Our data analytics consulting services are designed to support informed decision-making, streamline operations, and fuel long-term growth. By combining big data expertise with intuitive visualization tools, we make complex data easy to understand so you can focus on what matters most.",
       },
     ],
@@ -111,7 +114,7 @@ export const OurServices = {
     },
     {
       id: 5,
-      title: "Implementation & Optimization" ,
+      title: "Implementation & Optimization",
       desc: "Deploying data analytics solutions that continuously evolve with business needs.  ",
     },
   ],
@@ -174,7 +177,8 @@ export const Cta = [
 ];
 export const Faq = [
   {
-    title: "What are data analytics services, and how do they benefit my business? ",
+    title:
+      "What are data analytics services, and how do they benefit my business? ",
     description:
       " Data analytics services help businesses collect, process, and analyze data to extract actionable insights, optimize operations, and improve decision-making. ",
   },
@@ -191,7 +195,7 @@ export const Faq = [
   {
     title: "How long does it take to implement a data analytics solution? ",
     description:
-      "Implementation varies based on complexity but typically ranges from 6-12 weeks." ,
+      "Implementation varies based on complexity but typically ranges from 6-12 weeks.",
   },
   {
     title: "Can data analytics improve customer engagement? ",
@@ -208,7 +212,6 @@ export const Faq = [
     description:
       "Yes! We provide end-to-end consulting to help businesses develop a tailored data strategy. ",
   },
-
 ];
 export const relatedservices = {
   title: "Related Services",
@@ -217,43 +220,42 @@ export const relatedservices = {
       id: 1,
       title: " Performance Marketing",
       dec: "Data-driven strategies to enhance online visibility and drive traffic. ",
-      icon:assets.dare1,
-      url:'/performance-marketing-agency-dubai'
-    } ,
+      icon: assets.dare1,
+      url: "/performance-marketing-agency-dubai",
+    },
     {
       id: 2,
       title: "Marketing Automation ",
       dec: "Leverage automation to streamline customer engagement and optimize marketing efforts.",
-      icon:assets.dare2,
-      url:'/marketing-automation-agency-dubai'
-    } ,
+      icon: assets.dare2,
+      url: "/marketing-automation-agency-dubai",
+    },
     {
       id: 3,
       title: "Social Media Analytics ",
       dec: "Monitor performance, track engagement, and refine social strategies using analytics.",
-      icon:assets.dare3,
-      url:'/social-media-agency-dubai'
-    } ,
+      icon: assets.dare3,
+      url: "/social-media-agency-dubai",
+    },
     {
       id: 4,
       title: "Business Intelligence Consulting",
       dec: "Develop customized BI solutions for smarter, faster decision-making.",
-      icon:assets.dare4,
-      url:'/marketing-strategy-consulting'
-    } ,
+      icon: assets.dare4,
+      url: "/marketing-strategy-consulting",
+    },
     {
       id: 5,
       title: "Data Engineering & Integration",
       dec: "Design and implement scalable data infrastructures to support analytics needs.",
-      icon:assets.dare5 
-    } ,
+      icon: assets.dare5,
+    },
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO)",
       dec: " Utilize data insights to enhance website performance and increase conversions.",
-      icon:assets.dare6,
-      url:'/conversion-rate-optimization-agency-dubai'
-    }
+      icon: assets.dare6,
+      url: "/conversion-rate-optimization-agency-dubai",
+    },
   ],
 };
-

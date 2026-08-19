@@ -23,8 +23,7 @@ const HeroSectionDetails = ({
   if (!data) return null;
 
   return (
-    <div> 
-
+    <div>
       <div className="">
         <div className="      py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px] ">
           <div className="container  flex w-full flex-col gap-5   lg:p-0">
@@ -41,59 +40,63 @@ const HeroSectionDetails = ({
                 }, // Slide up and fade in
               }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-[auto_270px] justify-between lg:items-center gap-5">
-                <div> 
-                  <div className="text-30 fnt-lexend text-black lastptag max-w-[60ch]">
+              <div className="grid grid-cols-1 justify-between gap-5 lg:grid-cols-[auto_270px] lg:items-center">
+                <div>
+                  <div className="text-30 fnt-lexend lastptag max-w-[60ch] text-black">
                     {/* {parse(data.portfolio.story)} */}
-                    <p>Innovo Group is a UK-headquartered construction and real estate developer with operations across the UAE, Africa, and Canada</p>
+                    <p>
+                      Innovo Group is a UK-headquartered construction and real
+                      estate developer with operations across the UAE, Africa,
+                      and Canada
+                    </p>
                   </div>
                 </div>
                 <div>
-
                   <div>
                     <Link
-                    href={data.portfolio.websiteLink} target="_blank"
-                    className="z-2 z-1 group relative  mt-8   "
-                  > 
-                    <button className="btn-outline-primary-text-black flex items-center gap-3 xl:px-[43px] xl:py-[22px] xl:rounded-[100px]">Visit live website
-                       <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className=" w-3 h-3 lg:w-[20px] lg:h-[20px] duration-200 ease-in-out group-hover:scale-105"
+                      href={data.portfolio.websiteLink}
+                      target="_blank"
+                      className="z-2 z-1 group relative  mt-8   "
                     >
-                      <g clipPath="url(#clip0_65_58)">
-                        <path
-                          d="M18.7892 1.2749L0.699219 19.0149"
-                          stroke="#E53F30"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          className="group-hover:white"
-                        />
-                        <path
-                          d="M0.699219 1.2749H18.7892V18.6649"
-                          stroke="#E53F30"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          className="group-hover:white"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_65_58">
-                          <rect
-                            width="19.79"
-                            height="19.45"
-                            fill="white"
-                            transform="translate(0 0.274902)"
-                          />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                    </button>
-                   
-                  </Link>
+                      <button className="btn-outline-primary-text-black flex items-center gap-3 xl:rounded-[100px] xl:px-[43px] xl:py-[22px]">
+                        Visit live website
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className=" h-3 w-3 duration-200 ease-in-out group-hover:scale-105 lg:h-[20px] lg:w-[20px]"
+                        >
+                          <g clipPath="url(#clip0_65_58)">
+                            <path
+                              d="M18.7892 1.2749L0.699219 19.0149"
+                              stroke="#E53F30"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                              className="group-hover:white"
+                            />
+                            <path
+                              d="M0.699219 1.2749H18.7892V18.6649"
+                              stroke="#E53F30"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                              className="group-hover:white"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_65_58">
+                              <rect
+                                width="19.79"
+                                height="19.45"
+                                fill="white"
+                                transform="translate(0 0.274902)"
+                              />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -101,7 +104,7 @@ const HeroSectionDetails = ({
           </div>
           <div>
             {data.portfolioHighlights.length !== 0 ? (
-              <div  >
+              <div>
                 <div className="container mx-auto">
                   <motion.div
                     initial="hidden"
@@ -122,13 +125,13 @@ const HeroSectionDetails = ({
                     <div className="flex flex-col gap-5  lg:grid lg:grid-cols-3 lg:gap-5 lg:gap-x-[50px] ">
                       {data.portfolioHighlights.map((item) => (
                         <div
-                          className="group border-b border-black/10   last:border-b-0 last:border-r-0 lg:border-b-0 lg:border-r pb-3 lg:pb-0 "
+                          className="group border-b border-black/10   pb-3 last:border-b-0 last:border-r-0 lg:border-b-0 lg:border-r lg:pb-0 "
                           key={item.customId}
                         >
                           <p className="title-65 font-400 text-primary duration-500 group-hover:-translate-y-1">
                             {item.number}
                           </p>
-                          <p className="text-[25px] pt-[10px] text-77787B duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
+                          <p className="text-77787B pt-[10px] text-[25px] duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
                             {item.text}
                           </p>
                         </div>
@@ -140,8 +143,6 @@ const HeroSectionDetails = ({
             ) : null}
           </div>
         </div>
-
-
       </div>
     </div>
   );

@@ -8,8 +8,7 @@ export const BannerSection = [
       { label: "Digital Marketing", url: "/digital-marketing-services" },
       { label: "Content Marketing", url: "" },
     ],
-    title:
-      "Content Marketing Agency in Dubai",
+    title: "Content Marketing Agency in Dubai",
     subtitle: "Storytelling That Connects",
     sub: [
       {
@@ -208,7 +207,8 @@ export const Faq = [
       "Absolutely! Consistently providing valuable and relevant content builds trust with your audience, strengthens your brand’s authority, and positions you as an expert in your field. This can lead to a positive brand reputation and customer loyalty. ",
   },
   {
-    title: "How do I know what type of content will resonate with my audience? ",
+    title:
+      "How do I know what type of content will resonate with my audience? ",
     description:
       " Audience research is key. Analyze your target audience’s interests, challenges, and preferences through surveys, social media interactions, and website analytics. This helps you tailor your content to their specific needs and increase its impact. ",
   },
@@ -227,7 +227,6 @@ export const Faq = [
     description:
       "Consistency is key. Depending on your resources, publishing 1-4 times a week is ideal. Regular posting keeps your audience engaged and improves your SEO ranking. Quality should always take precedence over quantity. ",
   },
-
 ];
 export const relatedservices = {
   title: "Related Services",
@@ -236,38 +235,38 @@ export const relatedservices = {
       id: 1,
       title: " Performance Marketing",
       dec: "Data-driven strategies to enhance online visibility and drive traffic. ",
-      icon: assets.dare1
+      icon: assets.dare1,
     },
     {
       id: 2,
       title: "Marketing Automation ",
       dec: "Leverage automation to streamline customer engagement and optimize marketing efforts.",
-      icon: assets.dare2
+      icon: assets.dare2,
     },
     {
       id: 3,
       title: "Social Media Analytics ",
       dec: "Monitor performance, track engagement, and refine social strategies using analytics.",
-      icon: assets.dare3
+      icon: assets.dare3,
     },
     {
       id: 4,
       title: "Business Intelligence Consulting",
       dec: "Develop customized BI solutions for smarter, faster decision-making.",
-      icon: assets.dare4
+      icon: assets.dare4,
     },
     {
       id: 5,
       title: "Data Engineering & Integration",
       dec: "Design and implement scalable data infrastructures to support analytics needs.",
-      icon: assets.dare5
+      icon: assets.dare5,
     },
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO)",
       dec: " Utilize data insights to enhance website performance and increase conversions.",
-      icon: assets.dare6
-    }
+      icon: assets.dare6,
+    },
   ],
 };
 export const Becomebrand = [
@@ -278,8 +277,7 @@ export const Becomebrand = [
     paragraph: [
       "Every industry has its leaders—the names people quote, follow, and rely on. With the right content, that name can be yours.",
       "We create strategic, insight-driven content that doesn’t just talk at your audience—it speaks to them. Content that answers questions they haven’t even asked yet. That earns trust, builds credibility, and turns your brand into the authority in your field.",
-      "No fluff. No filler. Just smart, valuable content—designed to get you noticed, remembered, and respected. "
-    ]
-
+      "No fluff. No filler. Just smart, valuable content—designed to get you noticed, remembered, and respected. ",
+    ],
   },
 ];

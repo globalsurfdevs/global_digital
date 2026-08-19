@@ -33,7 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "B2B digital marketing in Dubai: LinkedIn, content, SEO and ABM to attract procurement and enterprise buyers. Get a consultation.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/industry/b2b-digital-marketing-services",
+      canonical:
+        "https://www.globalsurf.ae/industry/b2b-digital-marketing-services",
     },
     robots: "index, follow",
   };
@@ -41,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-       <Head>
+      <Head>
         <meta
           property="og:title"
           content="B2B Digital Marketing Services | Drive Growth & Maximize ROI"
@@ -81,7 +82,6 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"GET A FREE CONSULTATION"}
-        
       />
       <Expertise
         title={IndustriesWeServe.title}

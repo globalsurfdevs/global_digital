@@ -7,7 +7,7 @@ const serviceIndustrySchema = new mongoose.Schema(
     title: { type: String, required: true },
     page: { type: mongoose.Schema.Types.ObjectId, ref: "Industry_new" },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.models.ServiceIndustry ||

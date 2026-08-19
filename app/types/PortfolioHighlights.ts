@@ -1,7 +1,7 @@
 export type PortfolioHighlight = {
-    number: string;
-    text: string;
-    customId: string;
-    showInHome?: boolean;
-    companyId: number;
-} 
+  number: string;
+  text: string;
+  customId: string;
+  showInHome?: boolean;
+  companyId: number;
+};

@@ -1,4 +1,3 @@
-
 import { assets } from "@/public/assets/assets";
 
 export const boostEngage = {
@@ -23,6 +22,6 @@ export const boostEngage = {
       id: 4,
       icon: assets.boostweb4,
       title: "Generate more leads and sales online ",
-    }
+    },
   ],
 };

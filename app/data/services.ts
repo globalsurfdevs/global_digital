@@ -81,7 +81,7 @@ export const services = [
     id: "4",
     image: "/assets/services/Web-development.jpg",
     // title: "Web Design & Development",
-    title:"Web and app development",
+    title: "Web and app development",
     url: "/web-design-and-development",
     description:
       "We design and develop conversion-focused websites, e-commerce platforms, and mobile apps engineered to support acquisition and long B2B decision cycles. Every build is senior-led and delivered against an agreed scope and timeline.",
@@ -105,7 +105,6 @@ export const services = [
       {
         title: "Web App Development",
         url: "/web-app-dev-agency",
-
       },
     ],
   },
@@ -136,7 +135,7 @@ export const services = [
       // {
       //   title: "Content Production",
       //   url: "/content-production-agency-dubai",
-      // }, 
+      // },
       {
         title: "Photo & Video Production",
         url: "/content-production-agency-dubai",

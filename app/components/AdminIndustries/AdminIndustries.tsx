@@ -33,12 +33,12 @@ type IndustryListItem = {
 };
 
 const slugify = (value: string) =>
-    value
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-");
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
 
 // Sortable row wrapper - drag handle lives in the first cell,
 // rest of the row (name/slug/edit cells) is passed in as children.
@@ -109,17 +109,17 @@ const AdminIndustryList = () => {
     const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
     const [updating, setUpdating] = useState(false);
 
-    const handleNameChange = (value: string) => {
-        setNewIndustryName(value);
-        if (!slugManuallyEdited) {
-            setNewIndustrySlug(slugify(value));
-        }
-    };
+  const handleNameChange = (value: string) => {
+    setNewIndustryName(value);
+    if (!slugManuallyEdited) {
+      setNewIndustrySlug(slugify(value));
+    }
+  };
 
-    const handleSlugChange = (value: string) => {
-        setSlugManuallyEdited(true);
-        setNewIndustrySlug(slugify(value));
-    };
+  const handleSlugChange = (value: string) => {
+    setSlugManuallyEdited(true);
+    setNewIndustrySlug(slugify(value));
+  };
 
     const resetCreateForm = () => {
         setNewIndustryName("");
@@ -130,17 +130,17 @@ const AdminIndustryList = () => {
         setSlugManuallyEdited(false);
     };
 
-    const handleEditNameChange = (value: string) => {
-        setEditName(value);
-        if (!editSlugManuallyEdited) {
-            setEditSlug(slugify(value));
-        }
-    };
+  const handleEditNameChange = (value: string) => {
+    setEditName(value);
+    if (!editSlugManuallyEdited) {
+      setEditSlug(slugify(value));
+    }
+  };
 
-    const handleEditSlugChange = (value: string) => {
-        setEditSlugManuallyEdited(true);
-        setEditSlug(slugify(value));
-    };
+  const handleEditSlugChange = (value: string) => {
+    setEditSlugManuallyEdited(true);
+    setEditSlug(slugify(value));
+  };
 
     const openEditModal = (industry: IndustryListItem) => {
         setEditingIndustry(industry);
@@ -403,6 +403,14 @@ const confirmReorder = async () => {
                             )}
                         </div>
 
+            <button
+              onClick={() => setShowCreateModal(true)}
+              className="rounded bg-black px-4 py-2 text-white"
+            >
+              + Create Industry
+            </button>
+          </div>
+        </div>
                         <button
                             className="rounded-full bg-primary px-6 py-2 text-white"
                             onClick={reorderMode ? confirmReorder : startReorder}
@@ -421,6 +429,62 @@ const confirmReorder = async () => {
                     </div>
                 </div>
 
+        {industries && industries.length > 0 ? (
+          <div className="min-h-[600px] overflow-x-auto  rounded-lg">
+            <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
+              <thead className="border border-gray-200 bg-gray-100 text-xs uppercase text-gray-700  shadow dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                <tr>
+                  <th scope="col" className="px-4 py-3">
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.length === industries.length}
+                      onChange={toggleSelectAll}
+                    />
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Slug
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-center">
+                    Edit
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {industries.map((item, i) => (
+                  <tr
+                    key={item._id ?? i}
+                    className="border border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                  >
+                    <td className="px-4 py-3">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.includes(item._id)}
+                        onChange={() => toggleSelect(item._id)}
+                      />
+                    </td>
+                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                      {item.name}
+                    </td>
+                    <td className="px-4 py-3">{item.slug}</td>
+                    <td className="flex justify-center gap-5 py-3 text-center">
+                      <button onClick={() => openEditModal(item)}>
+                        <MdEdit className="mx-auto text-lg" />
+                      </button>
+                      <button onClick={() => handleOpenIndustryPage(item.slug)}>
+                        <FaBookOpen className="mx-auto text-lg" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div>No industries available</div>
+        )}
                 {industries && industries.length > 0 ? (
                     <div className="min-h-[600px] overflow-x-auto rounded-lg">
                         <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
@@ -509,45 +573,64 @@ const confirmReorder = async () => {
                     <div>No industries available</div>
                 )}
 
-                {showCreateModal && (
-                    <div
-                        className="relative z-10"
-                        aria-labelledby="modal-title"
-                        role="dialog"
-                        aria-modal="true"
-                    >
-                        <div
-                            className="fixed inset-0 bg-gray-500/75 transition-opacity"
-                            aria-hidden="true"
-                        ></div>
+        {showCreateModal && (
+          <div
+            className="relative z-10"
+            aria-labelledby="modal-title"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div
+              className="fixed inset-0 bg-gray-500/75 transition-opacity"
+              aria-hidden="true"
+            ></div>
 
-                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                                <div className="relative flex transform flex-col gap-5 overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                    <div className="flex items-center justify-between">
-                                        <h2 className="text-lg font-semibold">Create New Industry</h2>
-                                        <IoIosClose
-                                            className="cursor-pointer text-2xl"
-                                            onClick={() => {
-                                                setShowCreateModal(false);
-                                                resetCreateForm();
-                                            }}
-                                        />
-                                    </div>
+            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+              <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div className="relative flex transform flex-col gap-5 overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-semibold">
+                      Create New Industry
+                    </h2>
+                    <IoIosClose
+                      className="cursor-pointer text-2xl"
+                      onClick={() => {
+                        setShowCreateModal(false);
+                        resetCreateForm();
+                      }}
+                    />
+                  </div>
 
-                                    <div className="flex flex-col gap-2 text-left">
-                                        <label className="text-sm font-semibold text-gray-600">
-                                            Industry Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={newIndustryName}
-                                            onChange={(e) => handleNameChange(e.target.value)}
-                                            placeholder="e.g. Healthcare"
-                                            className="rounded border px-3 py-2"
-                                        />
-                                    </div>
+                  <div className="flex flex-col gap-2 text-left">
+                    <label className="text-sm font-semibold text-gray-600">
+                      Industry Name
+                    </label>
+                    <input
+                      type="text"
+                      value={newIndustryName}
+                      onChange={(e) => handleNameChange(e.target.value)}
+                      placeholder="e.g. Healthcare"
+                      className="rounded border px-3 py-2"
+                    />
+                  </div>
 
+                  <div className="flex flex-col gap-2 text-left">
+                    <label className="text-sm font-semibold text-gray-600">
+                      Slug
+                    </label>
+                    <input
+                      type="text"
+                      value={newIndustrySlug}
+                      onChange={(e) => handleSlugChange(e.target.value)}
+                      placeholder="e.g. healthcare"
+                      className="rounded border px-3 py-2 font-mono text-sm"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Auto-filled from the name, but you can edit it directly.
+                      This becomes part of the page URL, e.g. /industries/
+                      {newIndustrySlug || "your-slug"}
+                    </p>
+                  </div>
                                     <div className="flex flex-col gap-2 text-left">
                                         <label className="text-sm font-semibold text-gray-600">
                                             Slug
@@ -603,71 +686,87 @@ const confirmReorder = async () => {
                                         />
                                     </div>
 
-                                    <div className="gap-2 sm:flex sm:flex-row-reverse">
-                                        <button
-                                            type="button"
-                                            disabled={creating}
-                                            className="shadow-xs inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
-                                            onClick={handleCreateIndustry}
-                                        >
-                                            {creating ? "Creating..." : "Create"}
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="shadow-xs mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                            onClick={() => {
-                                                setShowCreateModal(false);
-                                                resetCreateForm();
-                                            }}
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {showEditModal && (
-                    <div
-                        className="relative z-10"
-                        aria-labelledby="edit-modal-title"
-                        role="dialog"
-                        aria-modal="true"
+                  <div className="gap-2 sm:flex sm:flex-row-reverse">
+                    <button
+                      type="button"
+                      disabled={creating}
+                      className="shadow-xs inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
+                      onClick={handleCreateIndustry}
                     >
-                        <div
-                            className="fixed inset-0 bg-gray-500/75 transition-opacity"
-                            aria-hidden="true"
-                        ></div>
+                      {creating ? "Creating..." : "Create"}
+                    </button>
+                    <button
+                      type="button"
+                      className="shadow-xs mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                      onClick={() => {
+                        setShowCreateModal(false);
+                        resetCreateForm();
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
-                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                                <div className="relative flex transform flex-col gap-5 overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                    <div className="flex items-center justify-between">
-                                        <h2 className="text-lg font-semibold">Edit Industry</h2>
-                                        <IoIosClose
-                                            className="cursor-pointer text-2xl"
-                                            onClick={() => {
-                                                setShowEditModal(false);
-                                                resetEditForm();
-                                            }}
-                                        />
-                                    </div>
+        {showEditModal && (
+          <div
+            className="relative z-10"
+            aria-labelledby="edit-modal-title"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div
+              className="fixed inset-0 bg-gray-500/75 transition-opacity"
+              aria-hidden="true"
+            ></div>
 
-                                    <div className="flex flex-col gap-2 text-left">
-                                        <label className="text-sm font-semibold text-gray-600">
-                                            Industry Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={editName}
-                                            onChange={(e) => handleEditNameChange(e.target.value)}
-                                            placeholder="e.g. Healthcare"
-                                            className="rounded border px-3 py-2"
-                                        />
-                                    </div>
+            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+              <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div className="relative flex transform flex-col gap-5 overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-semibold">Edit Industry</h2>
+                    <IoIosClose
+                      className="cursor-pointer text-2xl"
+                      onClick={() => {
+                        setShowEditModal(false);
+                        resetEditForm();
+                      }}
+                    />
+                  </div>
 
+                  <div className="flex flex-col gap-2 text-left">
+                    <label className="text-sm font-semibold text-gray-600">
+                      Industry Name
+                    </label>
+                    <input
+                      type="text"
+                      value={editName}
+                      onChange={(e) => handleEditNameChange(e.target.value)}
+                      placeholder="e.g. Healthcare"
+                      className="rounded border px-3 py-2"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-2 text-left">
+                    <label className="text-sm font-semibold text-gray-600">
+                      Slug
+                    </label>
+                    <input
+                      type="text"
+                      value={editSlug}
+                      onChange={(e) => handleEditSlugChange(e.target.value)}
+                      placeholder="e.g. healthcare"
+                      className="rounded border px-3 py-2 font-mono text-sm"
+                    />
+                    <p className="text-xs text-gray-500">
+                      This becomes part of the page URL, e.g. /industries/
+                      {editSlug || "your-slug"}
+                    </p>
+                  </div>
                                     <div className="flex flex-col gap-2 text-left">
                                         <label className="text-sm font-semibold text-gray-600">
                                             Slug
@@ -722,32 +821,44 @@ const confirmReorder = async () => {
                                         />
                                     </div>
 
-                                    <div className="gap-2 sm:flex sm:flex-row-reverse">
-                                        <button
-                                            type="button"
-                                            disabled={updating}
-                                            className="shadow-xs inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
-                                            onClick={handleUpdateIndustry}
-                                        >
-                                            {updating ? "Saving..." : "Save Changes"}
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="shadow-xs mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                            onClick={() => {
-                                                setShowEditModal(false);
-                                                resetEditForm();
-                                            }}
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
+                  <div className="gap-2 sm:flex sm:flex-row-reverse">
+                    <button
+                      type="button"
+                      disabled={updating}
+                      className="shadow-xs inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
+                      onClick={handleUpdateIndustry}
+                    >
+                      {updating ? "Saving..." : "Save Changes"}
+                    </button>
+                    <button
+                      type="button"
+                      className="shadow-xs mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                      onClick={() => {
+                        setShowEditModal(false);
+                        resetEditForm();
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
+        {industries && industries.length > 0 && (
+          <div className="mb-10">
+            <SmartPagination
+              page={page}
+              totalPages={totalPages}
+              setPage={changePage}
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
                 {!reorderMode && industries && industries.length > 0 && (
                     <div className="mb-10">
                         <SmartPagination page={page} totalPages={totalPages} setPage={changePage} />

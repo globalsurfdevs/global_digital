@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import Headerv2 from "@/app/components/HomePage/Headerv2";
@@ -6,13 +5,10 @@ import { Space_Grotesk } from "next/font/google";
 import Footer from "@/app/components/HomePage/Footer";
 import Script from "next/script";
 
-
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
-
-
 
 export const dynamic = "force-dynamic";
 
@@ -28,18 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Google Tag Manager Script */}
-       
-      </head>
+      <head>{/* Google Tag Manager Script */}</head>
       <body>
-        
         <Headerv2 />
         {children}
         <Footer />
-
-    
-
       </body>
     </html>
   );

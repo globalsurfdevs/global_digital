@@ -91,11 +91,6 @@
 
 // export default IndustryManager
 
-
-
-
-
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -167,7 +162,9 @@ const IndustryManager = () => {
   };
 
   const handleDeleteCategory = async (categoryId: string) => {
-    const res = await fetch(`/api/industries?categoryId=${categoryId}`, { method: "DELETE" });
+    const res = await fetch(`/api/industries?categoryId=${categoryId}`, {
+      method: "DELETE",
+    });
     const data = await res.json();
     if (data.error) toast.error(data.error);
     else {
@@ -177,7 +174,10 @@ const IndustryManager = () => {
   };
 
   const handleDeleteSub = async (categoryId: string, subId: string) => {
-    const res = await fetch(`/api/industries?categoryId=${categoryId}&subId=${subId}`, { method: "DELETE" });
+    const res = await fetch(
+      `/api/industries?categoryId=${categoryId}&subId=${subId}`,
+      { method: "DELETE" },
+    );
     const data = await res.json();
     if (data.error) toast.error(data.error);
     else {
@@ -187,7 +187,7 @@ const IndustryManager = () => {
   };
 
   return (
-    <div className="border rounded-xl p-5 flex flex-col gap-5">
+    <div className="flex flex-col gap-5 rounded-xl border p-5">
       <h2 className="text-xl font-semibold">Manage Porfolio Industries</h2>
 
       <div className="flex gap-2">
@@ -197,12 +197,12 @@ const IndustryManager = () => {
           onChange={(e) => setNewCategory(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleAddCategory()}
           placeholder="e.g. Healthcare"
-          className="rounded-md pl-4 border border-gray-300 py-1.5 flex-1 text-black bg-transparent focus:outline-none text-sm"
+          className="flex-1 rounded-md border border-gray-300 bg-transparent py-1.5 pl-4 text-sm text-black focus:outline-none"
         />
         <button
           onClick={handleAddCategory}
           disabled={loading}
-          className="bg-black text-white px-5 py-1.5 rounded-full text-sm"
+          className="rounded-full bg-black px-5 py-1.5 text-sm text-white"
         >
           {loading ? "Adding..." : "Add Category"}
         </button>
@@ -213,13 +213,13 @@ const IndustryManager = () => {
           <p className="text-sm text-gray-400">No categories yet.</p>
         )}
         {categories.map((cat) => (
-          <div key={cat._id} className="border rounded-xl overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-3 bg-gray-50">
+          <div key={cat._id} className="overflow-hidden rounded-xl border">
+            <div className="flex items-center justify-between bg-gray-50 px-4 py-3">
               <button
-                className="flex items-center gap-2 flex-1 text-left"
+                className="flex flex-1 items-center gap-2 text-left"
                 onClick={() => toggleExpand(cat._id)}
               >
-                <span className="font-medium text-sm">{cat.name}</span>
+                <span className="text-sm font-medium">{cat.name}</span>
                 <span className="text-xs text-gray-400">
                   ({cat.subCategories?.length ?? 0})
                 </span>
@@ -238,15 +238,17 @@ const IndustryManager = () => {
             </div>
 
             {expanded[cat._id] && (
-              <div className="px-4 py-3 flex flex-col gap-3 bg-white">
+              <div className="flex flex-col gap-3 bg-white px-4 py-3">
                 <div className="flex flex-wrap gap-2">
                   {(cat.subCategories?.length ?? 0) === 0 && (
-                    <p className="text-xs text-gray-400">No sub-categories yet.</p>
+                    <p className="text-xs text-gray-400">
+                      No sub-categories yet.
+                    </p>
                   )}
                   {cat.subCategories?.map((sub) => (
                     <div
                       key={sub._id}
-                      className="flex items-center gap-1 border rounded-full px-3 py-1 text-xs bg-gray-100"
+                      className="flex items-center gap-1 rounded-full border bg-gray-100 px-3 py-1 text-xs"
                     >
                       <span>{sub.name}</span>
                       <button onClick={() => handleDeleteSub(cat._id, sub._id)}>
@@ -260,15 +262,20 @@ const IndustryManager = () => {
                     type="text"
                     value={newSub[cat._id] ?? ""}
                     onChange={(e) =>
-                      setNewSub((prev) => ({ ...prev, [cat._id]: e.target.value }))
+                      setNewSub((prev) => ({
+                        ...prev,
+                        [cat._id]: e.target.value,
+                      }))
                     }
-                    onKeyDown={(e) => e.key === "Enter" && handleAddSub(cat._id)}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" && handleAddSub(cat._id)
+                    }
                     placeholder="Add sub-category..."
-                    className="rounded-md pl-3 border border-gray-300 py-1 flex-1 text-black bg-transparent focus:outline-none text-xs"
+                    className="flex-1 rounded-md border border-gray-300 bg-transparent py-1 pl-3 text-xs text-black focus:outline-none"
                   />
                   <button
                     onClick={() => handleAddSub(cat._id)}
-                    className="bg-black text-white px-4 py-1 rounded-full text-xs"
+                    className="rounded-full bg-black px-4 py-1 text-xs text-white"
                   >
                     Add
                   </button>

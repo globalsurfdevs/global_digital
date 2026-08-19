@@ -27,7 +27,8 @@ import { Faq } from "../../../data/services/performance-marketing/faq";
 import FaqSchema from "../../../components/Schema/FaqSchemad";
 import {
   PerformanceMarketingSchema,
-  PerformanceMarketingBreadcrumb  } from "../../../components/Schema/ServiceSchema";
+  PerformanceMarketingBreadcrumb,
+} from "../../../components/Schema/ServiceSchema";
 
 interface Canonicals {
   canonical: string;

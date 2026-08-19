@@ -7,9 +7,9 @@ import TechnicalSeoEssentials from "../../../components/BlogSocialMedia/Technica
 import { getAuthorById } from "@/lib/authors";
 
 import {
-  BannerSection, contentSectionsData,
+  BannerSection,
+  contentSectionsData,
   videoProductionsocialData,
-
 } from "../../../data/blogdatas/TechnicalSeo";
 
 import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
@@ -22,7 +22,6 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
-
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,10 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "A practical technical SEO guide for architecture, engineering, & construction websites. Fix crawl issues, improve speed, and optimize for AI. Checklist included.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/technical-seo-for-built-environment-websites-2026",
+      canonical:
+        "https://www.globalsurf.ae/blogs/technical-seo-for-built-environment-websites-2026",
     },
     robots: "index, follow",
-
   };
 }
 
@@ -52,7 +51,7 @@ const page = async () => {
       <ContentSectionrefOne sections={contentSectionsData} />
       <TechnicalSeoEssentials />
       <div className="pt-[50px] lg:pt-[100px]">
-      {author && <AuthorBioCard data={author} />}
+        {author && <AuthorBioCard data={author} />}
       </div>
     </div>
   );

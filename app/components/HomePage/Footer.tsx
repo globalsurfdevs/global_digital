@@ -30,7 +30,10 @@ const SOCIAL_LINKS = [
   { label: "Facebook", href: "https://www.facebook.com/globalsurf.digital" },
   { label: "Instagram", href: "https://www.instagram.com/globalsurf.digital/" },
   { label: "X", href: "https://x.com/GlobalSurf_D" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/globalsurfdigital" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/globalsurfdigital",
+  },
   { label: "TikTok", href: "https://www.tiktok.com/@globalsurf.digital" },
 ];
 
@@ -59,11 +62,9 @@ const Footer = () => {
     <>
       <div className="bg-black py-[50px] xs:py-10 lg:py-14 xl:pb-[131px] xl:pt-[109px]">
         <div className="container mx-auto px-4 text-white">
-
           {/* Wrap ONLY the animated section in motion — not the whole footer */}
           <div className="flex flex-col">
             <div className="grid md:grid-cols-5">
-
               <div className="col-span-2 flex h-full flex-col justify-between">
                 <Image
                   src={assets.footerLogo}
@@ -92,21 +93,33 @@ const Footer = () => {
             </div>
 
             <div className="grid gap-5 pt-8 md:grid-cols-5 md:gap-0 lg:pt-[121px]">
-              <div className={`col-span-2 flex h-full flex-col justify-between ${lexend.className}`}>
+              <div
+                className={`col-span-2 flex h-full flex-col justify-between ${lexend.className}`}
+              >
                 {/* ✅ FIX 9: Use address tag — semantic HTML, good for LocalBusiness SEO */}
-                
-                <address className="not-italic text-font19 text-gray-500 hover:text-white transition-colors duration-300">
-                  <Link href="https://maps.app.goo.gl/eYWH3VR2zco7dZJC9" target="_blank" rel="noopener noreferrer">
-                    Global Surf Digital Media L.L.C<br />
-                    P.O.Box 13653, 901 - SIT Tower<br />
-                    Dubai Silicon Oasis<br />
+
+                <address className="text-font19 not-italic text-gray-500 transition-colors duration-300 hover:text-white">
+                  <Link
+                    href="https://maps.app.goo.gl/eYWH3VR2zco7dZJC9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Global Surf Digital Media L.L.C
+                    <br />
+                    P.O.Box 13653, 901 - SIT Tower
+                    <br />
+                    Dubai Silicon Oasis
+                    <br />
                     Dubai, UAE
                   </Link>
                 </address>
               </div>
 
               <div className="col-span-3 flex flex-col gap-8">
-                <nav aria-label="Social media links" className="flex flex-col text-font19">
+                <nav
+                  aria-label="Social media links"
+                  className="flex flex-col text-font19"
+                >
                   {/* ✅ FIX 10: Map from static array — DRY, easier to maintain */}
                   {SOCIAL_LINKS.map(({ label, href }) => (
                     <a
@@ -126,19 +139,42 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div >
+      </div>
 
       <div className="container">
         <div className="flex flex-wrap items-center justify-center gap-5 py-5 md:justify-between">
-
           <div className="flex w-1/3 justify-center gap-10 md:justify-start">
             {/* ✅ FIX 12: Added explicit width/height + lazy + meaningful alt */}
-            <Image src={assets.footer1} alt="Clutch verified agency" width={60} height={30} className="object-contain" loading="lazy" />
-            <Image src={assets.footer2} alt="Google Partner" width={46} height={30} className="object-contain" loading="lazy" />
-            <Image src={assets.footer3} alt="Microsoft Advertising Partner" width={117} height={30} className="object-contain" loading="lazy" />
+            <Image
+              src={assets.footer1}
+              alt="Clutch verified agency"
+              width={60}
+              height={30}
+              className="object-contain"
+              loading="lazy"
+            />
+            <Image
+              src={assets.footer2}
+              alt="Google Partner"
+              width={46}
+              height={30}
+              className="object-contain"
+              loading="lazy"
+            />
+            <Image
+              src={assets.footer3}
+              alt="Microsoft Advertising Partner"
+              width={117}
+              height={30}
+              className="object-contain"
+              loading="lazy"
+            />
           </div>
 
-          <nav aria-label="Legal links" className="flex flex-wrap justify-center gap-2 text-sm text-gray1 md:gap-5">
+          <nav
+            aria-label="Legal links"
+            className="flex flex-wrap justify-center gap-2 text-sm text-gray1 md:gap-5"
+          >
             {/* ✅ FIX 13: Removed wrapping <p> around <Link> — invalid HTML (block in inline) */}
             {LEGAL_LINKS.map(({ label, href }) => (
               <Link
@@ -149,12 +185,13 @@ const Footer = () => {
                 {label}
               </Link>
             ))}
-            <span className="text-font14" aria-hidden="true">|</span>
+            <span className="text-font14" aria-hidden="true">
+              |
+            </span>
             <span className="fw-[400] text-font14 leading-lh1p78">
               ©2026 GS Digital. All rights reserved
             </span>
           </nav>
-
         </div>
       </div>
     </>

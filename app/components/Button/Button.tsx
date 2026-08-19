@@ -1,15 +1,26 @@
 import React from "react";
 
-const Button = ({ text, className, textcolor,onClick,disabled }: { text: string; className?: string; textcolor?: string; onClick?: () => void; disabled?:boolean}) => {
+const Button = ({
+  text,
+  className,
+  textcolor,
+  onClick,
+  disabled,
+}: {
+  text: string;
+  className?: string;
+  textcolor?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+}) => {
   return (
     <button
-    disabled={disabled}
-      className={`font-medium ${textcolor === 'black' ? "text-black hover:text-primary" : "text-white hover:text-primary"}
+      disabled={disabled}
+      className={`font-medium ${textcolor === "black" ? "text-black hover:text-primary" : "text-white hover:text-primary"}
       ${className ? className : "text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 transition-all duration-300 ease-in hover:bg-primary hover:text-white  hover:shadow-lg lg:px-24"}`}
       onClick={onClick}
     >
       {text}
-      
     </button>
   );
 };

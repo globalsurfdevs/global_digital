@@ -6,7 +6,9 @@ const APP_SECRET = process.env.NEXT_PUBLIC_DROPBOX_APP_SECRET;
 const REFRESH_TOKEN = process.env.NEXT_PUBLIC_DROPBOX_REFRESH_TOKEN;
 
 if (!APP_KEY || !APP_SECRET || !REFRESH_TOKEN) {
-  throw new Error("DROPBOX_APP_KEY or DROPBOX_APP_SECRET is not set in environment variables");
+  throw new Error(
+    "DROPBOX_APP_KEY or DROPBOX_APP_SECRET is not set in environment variables",
+  );
 }
 
 interface TokenInfo {
@@ -81,7 +83,10 @@ async function getDropboxInstance(): Promise<Dropbox> {
   return dropboxInstance;
 }
 
-export async function uploadToDropbox(file: File, filePath: string): Promise<string> {
+export async function uploadToDropbox(
+  file: File,
+  filePath: string,
+): Promise<string> {
   try {
     const dropbox = await getDropboxInstance();
     const fileContent = await file.arrayBuffer();
@@ -94,19 +99,23 @@ export async function uploadToDropbox(file: File, filePath: string): Promise<str
     if (!response.result.path_display) {
       throw new Error("Failed to retrieve uploaded file path");
     }
-    const sharedLinkResponse = await dropbox.sharingCreateSharedLinkWithSettings({
-      path: response.result.path_display,
-      settings: {
-        requested_visibility: { ".tag": "public" },
-      },
-    });
+    const sharedLinkResponse =
+      await dropbox.sharingCreateSharedLinkWithSettings({
+        path: response.result.path_display,
+        settings: {
+          requested_visibility: { ".tag": "public" },
+        },
+      });
     console.log("Uploaded file path:", sharedLinkResponse);
     if (!sharedLinkResponse.result.url) {
       throw new Error("Failed to create shared link");
     }
 
     // Convert the shared link to a direct download link
-    const directLink = sharedLinkResponse.result.url.replace("www.dropbox.com", "dl.dropboxusercontent.com");
+    const directLink = sharedLinkResponse.result.url.replace(
+      "www.dropbox.com",
+      "dl.dropboxusercontent.com",
+    );
 
     console.log("Direct download link:", directLink);
     return directLink;

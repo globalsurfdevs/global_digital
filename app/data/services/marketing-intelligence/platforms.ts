@@ -1,4 +1,3 @@
-
 import { assets } from "@/public/assets/assets";
 
 export const Platformsdata = {
@@ -21,6 +20,6 @@ export const Platformsdata = {
       icon: assets.twitterx,
       title: "X Ads",
       dec: "Reach over 500 million users and tap into the power of real-time marketing with Twitter Advertising.",
-    }
+    },
   ],
 };

@@ -10,7 +10,7 @@ import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 import OurWorks from "../../components/Branding/OurworksB";
 import Expertise from "../../components/PermormanceMarketing/Expertise";
-import {CreativeOfferSchema} from "../../components/Schema/OfferCatalog";
+import { CreativeOfferSchema } from "../../components/Schema/OfferCatalog";
 
 import { BannerSection } from "../../data/services/branding-creative/herosection";
 import { AreaExpertise } from "../../data/services/branding-creative/area-of-expertise";
@@ -32,8 +32,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title:
-      "Creative Agency in Dubai | Creative Marketing Solutions",
+    title: "Creative Agency in Dubai | Creative Marketing Solutions",
     description:
       "We are a leading creative design agency in Dubai, delivering innovative branding, graphic design, and visual content that captivates and drives business growth.",
     alternates: {
@@ -45,7 +44,7 @@ const page = () => {
   return (
     <div>
       <CreativeOfferSchema />
-      <HeroSection Bannerdata={BannerSection} order={"05"} maxchwidth={22}  />
+      <HeroSection Bannerdata={BannerSection} order={"05"} maxchwidth={22} />
       <Expertise title={AreaExpertise.title} data={AreaExpertise.data} />
       <Boost title={boostEngage.title} data={boostEngage.data} />
       <Services title={OurServices.title} data={OurServices.data} />

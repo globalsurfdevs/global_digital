@@ -18,19 +18,19 @@ export async function POST(req: NextRequest) {
       const updatedChannel = await Channel.findByIdAndUpdate(
         new mongoose.Types.ObjectId(id),
         { channelName, channelLink },
-        { new: true }
+        { new: true },
       );
 
       if (!updatedChannel) {
         return NextResponse.json(
           { error: "Channel not found" },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
       return NextResponse.json(
         { message: "Channel updated successfully" },
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -39,19 +39,17 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       { message: "Channel added successfully", channel },
-      { status: 200 }
+      { status: 200 },
     );
-
   } catch (error) {
     console.error("Unexpected error:", error);
 
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-
 
 export async function GET() {
   try {
@@ -63,18 +61,24 @@ export async function GET() {
     //     return NextResponse.json({ error: error.message }, { status: 500 })
     // }
 
-    await connectDB()
+    await connectDB();
 
-    const data = await Channel.find({})
+    const data = await Channel.find({});
 
     if (!data) {
-      return NextResponse.json({ error: "Channels not found" }, { status: 500 })
+      return NextResponse.json(
+        { error: "Channels not found" },
+        { status: 500 },
+      );
     }
 
-    return NextResponse.json({ data }, { status: 200 })
+    return NextResponse.json({ data }, { status: 200 });
   } catch (error) {
-    console.log(error)
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 })
+    console.log(error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }
 
@@ -93,31 +97,25 @@ export async function DELETE(req: NextRequest) {
     const deletedChannel = await Channel.findByIdAndDelete(objectId);
 
     if (!deletedChannel) {
-      return NextResponse.json(
-        { error: "Channel not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Channel not found" }, { status: 404 });
     }
 
     // Step 2: Remove channel from all portfolios
     await Portfolio.updateMany(
       { channels: objectId },
-      { $pull: { channels: objectId } }
+      { $pull: { channels: objectId } },
     );
 
     return NextResponse.json(
       { message: "Channel deleted and portfolios updated" },
-      { status: 200 }
+      { status: 200 },
     );
-
   } catch (error) {
     console.error("Unexpected error:", error);
 
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-
-

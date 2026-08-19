@@ -1,14 +1,14 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
-import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne"; 
+import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne";
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
-import {OneClickSchema} from "../../../components/Schema/OfferCatalog";
+import { OneClickSchema } from "../../../components/Schema/OfferCatalog";
 import ClicksGoogle from "../../../components/BlogSocialMedia/NoClicksGoogle";
 
-
-import { BannerSection ,contentSectionsData,
+import {
+  BannerSection,
+  contentSectionsData,
   videoProductionsocialData,
-
 } from "../../../data/blogdatas/NoClicksGoogleBlogData";
 import { getAuthorById } from "@/lib/authors";
 import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
@@ -21,28 +21,24 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
-
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "No Clicks from Google? How Built Environment Brands Win AI Search Visibility",
+    title:
+      "No Clicks from Google? How Built Environment Brands Win AI Search Visibility",
     description:
       "Google AI Overviews are stealing clicks. Learn how built environment brands can stay visible, earn AI citations, and generate leads in zero-click search.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/no-clicks-google-ai-search-built-environment",
+      canonical:
+        "https://www.globalsurf.ae/blogs/no-clicks-google-ai-search-built-environment",
     },
     robots: "index, follow",
-
   };
 }
 
-
-
 const page = async () => {
-const author = await getAuthorById("6a4ca154c0f7cb5455693c77");
-
-
+  const author = await getAuthorById("6a4ca154c0f7cb5455693c77");
 
   return (
     <div className="relative">
@@ -51,12 +47,12 @@ const author = await getAuthorById("6a4ca154c0f7cb5455693c77");
         Bannerdata={BannerSection}
         hideslider={true}
         maxchwidth={27}
-      /> 
-     <ContentSectionrefOne sections={contentSectionsData} />  
-<ClicksGoogle />
+      />
+      <ContentSectionrefOne sections={contentSectionsData} />
+      <ClicksGoogle />
       <div className="mt-[50px] lg:mt-[100px]">
-{author && <AuthorBioCard data={author} />}
-</div>
+        {author && <AuthorBioCard data={author} />}
+      </div>
     </div>
   );
 };

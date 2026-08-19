@@ -31,8 +31,12 @@ interface MenuItemType {
 
 export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>({});
-  const [openSubSubmenus, setOpenSubSubmenus] = useState<{ [key: string]: boolean }>({});
+  const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>(
+    {},
+  );
+  const [openSubSubmenus, setOpenSubSubmenus] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   const handleSubmenuToggle = (submenuKey: string) => {
     setOpenSubmenus((prev) => ({
@@ -62,40 +66,45 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
       document.documentElement.style.overflow = "";
     };
   }, [modalOpen]);
-const dropdownVariants = {
-  hidden: {
-    opacity: 0,
-    height: 0,
-    overflow: "hidden",
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
+  const dropdownVariants = {
+    hidden: {
+      opacity: 0,
+      height: 0,
+      overflow: "hidden",
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
     },
-  },
-  visible: {
-    opacity: 1,
-    height: "fit-content",
-    overflow: "hidden",
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
+    visible: {
+      opacity: 1,
+      height: "fit-content",
+      overflow: "hidden",
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
     },
-  },
-  exit: {
-    opacity: 0,
-    height: 0,
-    overflow: "hidden",
-    transition: {
-      duration: 0.3,
-      ease: "easeIn",
+    exit: {
+      opacity: 0,
+      height: 0,
+      overflow: "hidden",
+      transition: {
+        duration: 0.3,
+        ease: "easeIn",
+      },
     },
-  },
-};
+  };
   return (
     <div className="">
       {modalOpen && (
-        <div className="fixed left-0 top-13 lg:top-0  z-[1000] w-screen overflow-y-auto bg-white ">
-          <LetsTalk onClose={() => { setModalOpen(false); onHide(); }} />
+        <div className="top-13 fixed left-0 z-[1000]  w-screen overflow-y-auto bg-white lg:top-0 ">
+          <LetsTalk
+            onClose={() => {
+              setModalOpen(false);
+              onHide();
+            }}
+          />
         </div>
       )}
 
@@ -106,15 +115,16 @@ const dropdownVariants = {
               {menuItem.children &&
                 menuItem.children.map((child, childIndex) => {
                   const submenuKey = `${index}-${childIndex}`;
-                  const hasSubmenu = child.children && child.children.length > 0;
+                  const hasSubmenu =
+                    child.children && child.children.length > 0;
 
                   return (
                     <li
                       key={childIndex}
-                      className="flex flex-col items-start border-b last:border-none w-full"
+                      className="flex w-full flex-col items-start border-b last:border-none"
                     >
                       <div
-                        className="flex items-center w-full cursor-pointer py-4"
+                        className="flex w-full cursor-pointer items-center py-4"
                         onClick={(e) => {
                           if (hasSubmenu) {
                             e.stopPropagation();
@@ -124,15 +134,14 @@ const dropdownVariants = {
                       >
                         <Link
                           href={child.url}
-                          className="flex items-center gap-2 flex-1 uppercase text-sm"
+                          className="flex flex-1 items-center gap-2 text-sm uppercase"
                           onClick={(e) => {
-    if (hasSubmenu) {
-      e.preventDefault();
-    } else {
-      toggle(); // ✅ Close menu
-    }
-  }}
-                          
+                            if (hasSubmenu) {
+                              e.preventDefault();
+                            } else {
+                              toggle(); // ✅ Close menu
+                            }
+                          }}
                         >
                           {child.item}
                         </Link>
@@ -146,7 +155,12 @@ const dropdownVariants = {
                               xmlns="http://www.w3.org/2000/svg"
                               className={`transition-transform duration-200 ${openSubmenus[submenuKey] ? "rotate-180" : ""}`}
                             >
-                              <path d="M6 8L10 12L14 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                              <path
+                                d="M6 8L10 12L14 8"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                              />
                             </svg>
                           </span>
                         )}
@@ -154,21 +168,23 @@ const dropdownVariants = {
 
                       {hasSubmenu && (
                         <motion.ul
-  className="ml-2 space-y-1"
-  variants={dropdownVariants}
-  initial="hidden"
-  animate={openSubmenus[submenuKey] ? "visible" : "hidden"}
-  exit="exit"
->
-
+                          className="ml-2 space-y-1"
+                          variants={dropdownVariants}
+                          initial="hidden"
+                          animate={
+                            openSubmenus[submenuKey] ? "visible" : "hidden"
+                          }
+                          exit="exit"
+                        >
                           {child.children?.map((subChild, subChildIndex) => {
                             const subSubmenuKey = `${submenuKey}-${subChildIndex}`;
-                            const hasSubSubmenu = subChild.children && subChild.children.length > 0;
+                            const hasSubSubmenu =
+                              subChild.children && subChild.children.length > 0;
 
                             return (
                               <li key={subChildIndex} className="flex flex-col">
                                 <div
-                                  className="flex items-center w-full cursor-pointer py-1 px-2"
+                                  className="flex w-full cursor-pointer items-center px-2 py-1"
                                   onClick={(e) => {
                                     if (hasSubSubmenu) {
                                       e.stopPropagation();
@@ -178,16 +194,16 @@ const dropdownVariants = {
                                 >
                                   <Link
                                     href={subChild.url}
-                                    className={`flex items-center gap-2 flex-1 text-sm no-underline uppercase ${subChildIndex === (child.children?.length ?? 0) - 1 ? "pb-4" : ""}`}
-                                   onClick={(e) => {
-    if (hasSubSubmenu) {
-      e.preventDefault();
-    } else {
-      toggle(); // ✅ Close menu
-    }
-  }}
+                                    className={`flex flex-1 items-center gap-2 text-sm uppercase no-underline ${subChildIndex === (child.children?.length ?? 0) - 1 ? "pb-4" : ""}`}
+                                    onClick={(e) => {
+                                      if (hasSubSubmenu) {
+                                        e.preventDefault();
+                                      } else {
+                                        toggle(); // ✅ Close menu
+                                      }
+                                    }}
                                   >
-                                    <div className="bg-primary size-[6px]"></div>
+                                    <div className="size-[6px] bg-primary"></div>
                                     {subChild.svg && (
                                       <Image
                                         src={subChild.svg}
@@ -209,7 +225,12 @@ const dropdownVariants = {
                                         xmlns="http://www.w3.org/2000/svg"
                                         className={`transition-transform duration-200 ${openSubSubmenus[subSubmenuKey] ? "rotate-180" : ""}`}
                                       >
-                                        <path d="M6 8L10 12L14 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                        <path
+                                          d="M6 8L10 12L14 8"
+                                          stroke="currentColor"
+                                          strokeWidth="2"
+                                          strokeLinecap="round"
+                                        />
                                       </svg>
                                     </span>
                                   )}
@@ -217,30 +238,37 @@ const dropdownVariants = {
 
                                 {hasSubSubmenu && (
                                   <motion.ul
-  className="ml-2 space-y-1"
-  variants={dropdownVariants}
-  initial="hidden"
-  animate={openSubSubmenus[subSubmenuKey] ? "visible" : "hidden"}
-  exit="exit"
->
-
-
-                                    {subChild.children?.map((subSubChild, subSubChildIndex) => (
-                                      <li key={subSubChildIndex}>
-                                        <Link href={subSubChild.url} className="py-1 px-2 flex items-center gap-2 text-xs hover:underline">
-                                          {subSubChild.svg && (
-                                            <Image
-                                              src={subSubChild.svg}
-                                              alt={subSubChild.item}
-                                              className="h-3 w-3"
-                                              width={12}
-                                              height={12}
-                                            />
-                                          )}
-                                          {subSubChild.item}
-                                        </Link>
-                                      </li>
-                                    ))}
+                                    className="ml-2 space-y-1"
+                                    variants={dropdownVariants}
+                                    initial="hidden"
+                                    animate={
+                                      openSubSubmenus[subSubmenuKey]
+                                        ? "visible"
+                                        : "hidden"
+                                    }
+                                    exit="exit"
+                                  >
+                                    {subChild.children?.map(
+                                      (subSubChild, subSubChildIndex) => (
+                                        <li key={subSubChildIndex}>
+                                          <Link
+                                            href={subSubChild.url}
+                                            className="flex items-center gap-2 px-2 py-1 text-xs hover:underline"
+                                          >
+                                            {subSubChild.svg && (
+                                              <Image
+                                                src={subSubChild.svg}
+                                                alt={subSubChild.item}
+                                                className="h-3 w-3"
+                                                width={12}
+                                                height={12}
+                                              />
+                                            )}
+                                            {subSubChild.item}
+                                          </Link>
+                                        </li>
+                                      ),
+                                    )}
                                   </motion.ul>
                                 )}
                               </li>
@@ -256,7 +284,7 @@ const dropdownVariants = {
         ))}
       </motion.ul>
 
-      <div className="w-fit px-6 mb-6 ">
+      <div className="mb-6 w-fit px-6 ">
         <button
           onClick={() => {
             setModalOpen(true);
@@ -264,7 +292,9 @@ const dropdownVariants = {
           }}
           className="hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-primary transition duration-300 ease-in hover:text-black hover:shadow-lg"
         >
-          <span className="duration-300 ease-in group-hover:text-black">LET’S TALK</span>
+          <span className="duration-300 ease-in group-hover:text-black">
+            LET’S TALK
+          </span>
           <div className="bg-primary p-1">
             <svg
               width="10"

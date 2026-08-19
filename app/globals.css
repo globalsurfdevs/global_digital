@@ -411,9 +411,11 @@ body {
 }
 
 .bg-bl-gradient {
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0) 67.58%,
-      rgba(0, 0, 0, 0.75) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 67.58%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
 }
 
 .perf-slide .swiper-wrapper {
@@ -437,7 +439,8 @@ body {
 }
 
 .sevsr:hover img {
-  filter: brightness(0) saturate(100%) invert(32%) sepia(100%) saturate(736%) hue-rotate(316deg);
+  filter: brightness(0) saturate(100%) invert(32%) sepia(100%) saturate(736%)
+    hue-rotate(316deg);
 }
 
 .maintalk {
@@ -507,7 +510,6 @@ body {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1399px) {
-
   /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
   .macst {
     font-size: 55px;
@@ -533,7 +535,6 @@ body {
 }
 
 @media screen and (min-width: 1400px) and (max-width: 1500px) {
-
   /* .cntntblc .srvbt {margin-bottom: 0px !important; } */
   .macst {
     font-size: 58px;
@@ -631,7 +632,6 @@ body {
     @apply text-60 leading-[1.083333333333333] tracking-[-0.025em];
   }
 
-
   .text-30 {
     @apply text-font30 leading-lh1p33;
   }
@@ -661,7 +661,7 @@ body {
   }
 
   .btn-outline-black {
-    @apply border border-black text-black w-fit rounded-3xl px-4 py-2 lg:px-[25px] lg:py-[15px] text-font16 font-semibold leading-lh1 transition-all duration-200 uppercase;
+    @apply w-fit rounded-3xl border border-black px-4 py-2 text-font16 font-semibold uppercase leading-lh1 text-black transition-all duration-200 lg:px-[25px] lg:py-[15px];
   }
 
   .btn-outline-black:hover {
@@ -669,7 +669,7 @@ body {
   }
 
   .btn-outline-primary {
-    @apply border border-primary text-primary w-fit rounded-3xl px-4 py-2 lg:px-[25px] lg:py-[15px] text-font16 font-semibold leading-lh1 transition-all duration-200 uppercase;
+    @apply w-fit rounded-3xl border border-primary px-4 py-2 text-font16 font-semibold uppercase leading-lh1 text-primary transition-all duration-200 lg:px-[25px] lg:py-[15px];
   }
 
   .btn-outline-primary:hover {
@@ -677,7 +677,7 @@ body {
   }
 
   .btn-outline-primary-text-black {
-    @apply border border-primary text-black w-fit rounded-3xl px-4 py-2 lg:px-[25px] lg:py-[15px] text-font16 font-semibold leading-lh1 transition-all duration-200 uppercase;
+    @apply w-fit rounded-3xl border border-primary px-4 py-2 text-font16 font-semibold uppercase leading-lh1 text-black transition-all duration-200 lg:px-[25px] lg:py-[15px];
   }
 
   .btn-outline-primary-text-black:hover {
@@ -714,7 +714,6 @@ body {
 
 .ollist ol {
   list-style: disc;
-
 }
 
 .ollist li {
@@ -1346,14 +1345,14 @@ input[type="number"] {
 }
 
 .bgafter::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   width: 200%;
   height: 100%;
   right: 0;
   z-index: -1;
-  background: #F2F2F2;
+  background: #f2f2f2;
 }
 
 @layer base {
@@ -1424,7 +1423,7 @@ input[type="number"] {
 }
 
 .bredcbs li:nth-last-child(1) {
-  @apply truncate overflow-hidden whitespace-nowrap;
+  @apply overflow-hidden truncate whitespace-nowrap;
 }
 
 @media (min-width: 1400px) and (max-width: 1500px) {
@@ -1454,18 +1453,16 @@ input[type="number"] {
 }
 
 .lastptag p:nth-child(2) {
-  @apply text-gray1 text-19 mt-4 xl:mt-5;
-
+  @apply text-19 mt-4 text-gray1 xl:mt-5;
 }
 
 .strategy-approach span {
-  @apply text-[#03A6E2]
+  @apply text-[#03A6E2];
 }
 
 .strategy-approach a {
-  @apply underline text-black
+  @apply text-black underline;
 }
-
 
 @keyframes heroReveal {
   from {
@@ -1482,7 +1479,6 @@ input[type="number"] {
 .hero-heading-wrapper {
   animation: heroReveal 700ms ease-in-out both;
 }
-
 
 .blog-content {
   color: #77787b;
@@ -1501,7 +1497,6 @@ input[type="number"] {
   color: #000;
   margin-top: 40px;
   margin-bottom: 16px;
-
 }
 
 .blog-content h3 {

@@ -5,29 +5,29 @@ export const BannerSection = [
     image: assets.hospbanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Industry",url: "/industry" },
+      { label: "Industry", url: "/industry" },
       { label: "Hospitality " },
     ],
     heroAlt: "Digital Marketing for the Construction Companies",
     title1: "Outrank, Outperform & Outgrow ",
     title:
       "Reach More Guests & Boost Bookings with Hospitality Digital Marketing. ",
-    subtitle:
-      "Outshine, Outbook & Outperform ",
+    subtitle: "Outshine, Outbook & Outperform ",
     buttontitle: "Get a Free Strategy Session",
     // buttonurl: "",
     sub: [
-       {
+      {
         stitle: "OUR APPROACH",
         desc: "We approach hospitality with a simple belief: digital should make the guest journey feel easier, not more complicated.We start by understanding how your property actually works — not just what you offer, but how guests discover you, evaluate options, compare pricing, and convert. Then we design digital systems that support each stage with clarity and intention.",
-      buttonTitle: "Start Your Project",
+        buttonTitle: "Start Your Project",
       },
     ],
   },
 ];
 export const Frameworkdata = {
   title: "Navigating the New Age of Guest Engagement  ",
- subtitle:"Why Hotels & Tourism Brands Need a Leading Marketing Agency for Hospitality ",
+  subtitle:
+    "Why Hotels & Tourism Brands Need a Leading Marketing Agency for Hospitality ",
   data: [
     {
       id: 1,
@@ -62,10 +62,8 @@ export const Frameworkdata = {
   ],
 };
 export const AreaExpertise = {
-  title:
-    "Digital Marketing Services from a Top Hotel Marketing Agency ",
-   
-    
+  title: "Digital Marketing Services from a Top Hotel Marketing Agency ",
+
   data: [
     {
       id: 1,
@@ -158,18 +156,16 @@ export const Clientsformsdata = [
     btntext: "Check portfolio page",
     btnurl: "https://www.globalsurf.ae/portfolio/bafco",
   },
-
- 
 ];
 export const Faq = [
   {
-    title:
-      "Why invest in digital marketing for tourism and hospitality?",
+    title: "Why invest in digital marketing for tourism and hospitality?",
     description:
       " Today’s travelers research and book online. A strong digital strategy increases visibility, direct bookings, and guest loyalty without heavy OTA commissions. ",
   },
   {
-    title: "Can a marketing agency for hospitality improve seasonal performance? ",
+    title:
+      "Can a marketing agency for hospitality improve seasonal performance? ",
     description:
       "Absolutely. We help hospitality brands capitalize on seasonal trends with time-sensitive campaigns and geo-targeted strategies that drive traffic and bookings when it matters most. ",
   },
@@ -178,13 +174,13 @@ export const Faq = [
     description:
       " Visual storytelling wins. Professional photos, guest testimonials, room tours, destination guides, and behind-the-scenes content all engage potential guests. ",
   },
-  
+
   {
     title: "Is email marketing still effective for hospitality?  ",
     description:
       "Yes! Email campaigns are one of the best ways to stay connected. From pre-arrival messages to rebooking reminders, it builds loyalty and repeat stays.",
   },
-   {
+  {
     title: "Do you offer detailed reporting and analytics? ",
     description:
       "Of course. We track every booking, bounce, and click. Transparent reporting helps you understand performance and continuously optimize your strategy. ",

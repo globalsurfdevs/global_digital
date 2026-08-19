@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const page = async() => {
+const page = async () => {
   return (
     <div>
       <HeroSection

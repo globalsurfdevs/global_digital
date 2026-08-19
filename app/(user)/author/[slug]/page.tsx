@@ -7,15 +7,15 @@ type Props = {
 };
 
 export default async function Page({ params }: Props) {
-    const { slug } = await params;
-    const dbBlogs = await getAllBlogs();
-    const author = await getAuthorBySlug(slug);
+  const { slug } = await params;
+  const dbBlogs = await getAllBlogs();
+  const author = await getAuthorBySlug(slug);
 
-    console.log(author)
+  console.log(author);
 
-    return (
-        <>
-            <Index dbBlogs={dbBlogs} author={author}/>
-        </>
-    );
+  return (
+    <>
+      <Index dbBlogs={dbBlogs} author={author} />
+    </>
+  );
 }

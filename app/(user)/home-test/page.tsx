@@ -1,17 +1,15 @@
 import React from "react";
 import Home from "@/app/components/HomeTest/Index";
 
-
-
 type Metadata = {
-    title: string;
-    description: string;
-    robots: string;
+  title: string;
+  description: string;
+  robots: string;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-      title: "Digital Marketing Agency in Dubai ",
+    title: "Digital Marketing Agency in Dubai ",
     description:
       "GS Digital is a digital marketing agency in Dubai covering a full-service digital marketing services including SEO, paid media, social media, and web development for 140+ UAE and GCC brands since 2013. Talk to us today. ",
 
@@ -20,11 +18,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const page = async () => {
-    return (
-        <>
-            <Home />
-        </>
-    );
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
 
 export default page;

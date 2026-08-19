@@ -30,7 +30,6 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
   bgcolor,
   colcount,
   maxchwidth,
-
 }) => {
   return (
     <div className="">
@@ -50,11 +49,10 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-
               {title1 && (
                 <Link href="">
-                <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
-                  {title1}
+                  <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                    {title1}
                   </p>
                 </Link>
               )}
@@ -63,15 +61,13 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
-                  </div>
+                </div>
               )}
               {!description && (
                 <>
-                   <div
-                    style={{ maxWidth: `${maxchwidth}ch` }}
-                  >
+                  <div style={{ maxWidth: `${maxchwidth}ch` }}>
                     <h2 className="title-65 pb-6 lg:pb-[40px]">{title}</h2>
-                    </div>
+                  </div>
                 </>
               )}
             </motion.div>
@@ -90,32 +86,37 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 gap-4  lg:flex justify-between  xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
+              className={`grid grid-cols-1 justify-between gap-4  md:grid-cols-2 lg:flex  xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
             >
               {data.map((framework) => (
                 <div
                   key={framework.id}
-                  className="group relative  gap-3 md:gap-0  flex flex-row md:flex-col overflow-hidden"
+                  className="group relative  flex flex-row  gap-3 overflow-hidden md:flex-col md:gap-0"
                 >
                   {/* Animated Red Border */}
-                
-                  <div className="align-center flex h-[30px] w-[30px] mb-3 lg:mb-[30px] justify-center bg-primary p-2 transition-colors duration-500   md:h-[50px] md:w-[50px]">
-                    <Image
-                                             src={framework.icn || ""}
-                                             alt={"Default alt text"}
-                                             className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500   "
-                                           />   </div>
- 
-                  <div className="text-2xl relative w-fit">
 
+                  <div className="align-center mb-3 flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px]   md:w-[50px] lg:mb-[30px]">
+                    <Image
+                      src={framework.icn || ""}
+                      alt={"Default alt text"}
+                      className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500   "
+                    />{" "}
+                  </div>
+
+                  <div className="relative w-fit text-2xl">
                     <h3
                       className="text-30 text-black "
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
-                        { framework.urllink && (   <Link href={framework.urllink} className="absolute top-0 w-full h-full"> </Link>
-                        )}
+                    {framework.urllink && (
+                      <Link
+                        href={framework.urllink}
+                        className="absolute top-0 h-full w-full"
+                      >
+                        {" "}
+                      </Link>
+                    )}
                   </div>
-                    
                 </div>
               ))}
             </div>

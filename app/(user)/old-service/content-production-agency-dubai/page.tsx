@@ -28,7 +28,7 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
-    openGraph: {
+  openGraph: {
     title: string;
     siteName: string;
     url: string;
@@ -45,9 +45,8 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: "https://www.globalsurf.ae/content-production-agency-dubai",
     },
     robots: "index, follow",
-     openGraph: {
-      title:
-        "Dubai's Trusted Content Production Agency | GS Digital",
+    openGraph: {
+      title: "Dubai's Trusted Content Production Agency | GS Digital",
       siteName: "GS Digital",
       url: "https://www.globalsurf.ae/content-production-agency-dubai",
       description:
@@ -65,8 +64,6 @@ const page = () => {
         maxchwidth={28}
       />
 
-
-
       <Services
         title={OurServices.title}
         data={OurServices.data}
@@ -80,7 +77,6 @@ const page = () => {
         data={IndustriesWeServe.data}
       />
 
-
       <section className="pb-[50px] lg:pb-[150px]">
         <Platformserver
           title={Platformsecomdata.title}
@@ -89,7 +85,11 @@ const page = () => {
         />
       </section>
       <section className="pb-[50px] lg:pb-[140px]">
-        <OurWorks Clientsformsdata={Clientsformsdata} maintitle="Our Works" desc="Want to see what we’ve created for brands like yours? <br>Explore our content production highlights and visual storytelling projects." />
+        <OurWorks
+          Clientsformsdata={Clientsformsdata}
+          maintitle="Our Works"
+          desc="Want to see what we’ve created for brands like yours? <br>Explore our content production highlights and visual storytelling projects."
+        />
       </section>
       <GetInTouch data={Cta} redlast={true} ctabbutton={"CONTACT US"} />
       <RelatedServices
@@ -98,7 +98,6 @@ const page = () => {
         colcount={3}
       />
       <FAQ data={Faq} />
-
     </div>
   );
 };

@@ -1,6 +1,6 @@
 // import { assets } from "@/public/assets/assets";
 
-export const Clientsdata = [  
+export const Clientsdata = [
   {
     id: 1,
     image: "/assets/clients/ASGC.svg",
@@ -246,7 +246,8 @@ export const Clientsdata = [
     image: "/assets/clients/bafco.svg",
     title: "Bafco",
     alt: "Bafco Logo",
-  },{
+  },
+  {
     id: 42,
     image: "/assets/clients/quaddream.svg",
     title: "Quaddream",

@@ -30,7 +30,11 @@ const page = async () => {
 
   return (
     <>
-      <Portfolio data={portfolio} industries={industries ?? []} categories={categories ?? []} />
+      <Portfolio
+        data={portfolio}
+        industries={industries ?? []}
+        categories={categories ?? []}
+      />
     </>
   );
 };

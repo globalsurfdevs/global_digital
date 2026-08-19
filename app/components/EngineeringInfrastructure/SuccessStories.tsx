@@ -53,16 +53,15 @@ const SuccessStories = ({ data }: SuccessStoriesProps) => {
             >
               {/* Top */}
               <div
-                className={`p-7 xl:p-8 ${item.accent === "primary" ? "bg-primary" : "bg-[#4A4A4A]"
-                  }`}
+                className={`p-7 xl:p-8 ${
+                  item.accent === "primary" ? "bg-primary" : "bg-[#4A4A4A]"
+                }`}
               >
-                <p
-                  className={`mb-3 text-18 ${lexend.className}`}
-                >
+                <p className={`text-18 mb-3 ${lexend.className}`}>
                   {item.topTitle}
                 </p>
 
-                <h3 className="mb-2 text-[56px] leading-none font-light">
+                <h3 className="mb-2 text-[56px] font-light leading-none">
                   {item.stat}
                 </h3>
 
@@ -73,9 +72,7 @@ const SuccessStories = ({ data }: SuccessStoriesProps) => {
 
               {/* Bottom */}
               <div className="flex min-h-[220px] flex-col p-7 xl:p-8">
-                <h3 className="mb-6 text-32 leading-tight">
-                  {item.title}
-                </h3>
+                <h3 className="text-32 mb-6 leading-tight">{item.title}</h3>
 
                 <p
                   className={`text-17 leading-[1.6] text-[#B7B7B7] ${lexend.className}`}

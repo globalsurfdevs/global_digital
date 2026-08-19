@@ -34,9 +34,7 @@ import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
 import { log } from "console";
 import FaqSchema from "@/app/components/Schema/FaqSchemad";
 
-import {
-  LocalSEOServiceSchema
-} from "@/app/components/Schema/ServiceSchema";
+import { LocalSEOServiceSchema } from "@/app/components/Schema/ServiceSchema";
 import Script from "next/dist/client/script";
 interface Canonicals {
   canonical: string;

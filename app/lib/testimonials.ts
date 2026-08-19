@@ -6,8 +6,7 @@ export const getTestimonials = unstable_cache(
   async () => {
     await connectDB();
 
-    const testimonials = await Testimonials.findOne({})
-      .lean();
+    const testimonials = await Testimonials.findOne({}).lean();
 
     return JSON.parse(JSON.stringify(testimonials));
   },
@@ -15,5 +14,5 @@ export const getTestimonials = unstable_cache(
   {
     tags: ["testimonials"],
     revalidate: 60, // same as your fetch
-  }
+  },
 );

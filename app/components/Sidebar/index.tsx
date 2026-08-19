@@ -10,7 +10,11 @@ import useLocalStorage from "@/app/hooks/useLocalStorage";
 import { BsPerson, BsPersonVcard } from "react-icons/bs";
 import { assets } from "@/public/assets/assets";
 import { GiLeadPipe, GiNotebook } from "react-icons/gi";
-import { MdManageHistory, MdOutlinePanTool, MdOutlineWork } from "react-icons/md";
+import {
+  MdManageHistory,
+  MdOutlinePanTool,
+  MdOutlineWork,
+} from "react-icons/md";
 import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
 import { CreativeCommons, Settings2 } from "lucide-react";
 import { FaIndustry, FaServicestack } from "react-icons/fa";
@@ -18,7 +22,7 @@ import { FaIndustry, FaServicestack } from "react-icons/fa";
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
-  role: string | null
+  role: string | null;
 }
 
 const menuGroups = [
@@ -69,10 +73,20 @@ const menuGroups = [
       // },
       {
         icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+            />
           </svg>
-
         ),
         label: "Enquiries",
         route: "/admin/enquiry",
@@ -87,14 +101,26 @@ const menuGroups = [
       },
       {
         icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
+            />
           </svg>
         ),
         label: "Careers",
         route: "#",
-        children: [{ label: "Enquiries", route: "/admin/career" },
-        { label: "Linkedin", route: "/admin/career/linkedin" }
+        children: [
+          { label: "Enquiries", route: "/admin/career" },
+          { label: "Linkedin", route: "/admin/career/linkedin" },
         ],
       },
       // {
@@ -132,51 +158,37 @@ const menuGroups = [
       //   route: "/admin/news",
       // },
       {
-        icon: (
-          <BsPersonVcard />
-        ),
+        icon: <BsPersonVcard />,
         label: "Portfolio / Case Study",
         route: "/admin/portfolio",
       },
       {
-        icon: (
-          <GiNotebook />
-        ),
+        icon: <GiNotebook />,
         label: "Blogs",
         route: "/admin/blogs",
       },
       {
-        icon: (
-          <MdOutlineWork />
-        ),
+        icon: <MdOutlineWork />,
         label: "Jobs",
         route: "/admin/jobs",
       },
       {
-        icon: (
-          <MdOutlinePanTool />
-        ),
+        icon: <MdOutlinePanTool />,
         label: "Channels Used (Portfolio)",
         route: "/admin/portfolio/channels",
       },
       {
-        icon: (
-          <BsPerson />
-        ),
+        icon: <BsPerson />,
         label: "Authors",
         route: "/admin/authors",
       },
       {
-        icon: (
-          <IoAccessibilityOutline />
-        ),
+        icon: <IoAccessibilityOutline />,
         label: "About",
         route: "/admin/about",
       },
       {
-        icon: (
-          <FaIndustry />
-        ),
+        icon: <FaIndustry />,
         label: "Industries",
         route: "#",
         children: [{ label: "Landing Page", route: "/admin/industries/landing" },
@@ -184,24 +196,18 @@ const menuGroups = [
         ],
       },
       {
-        icon: (
-          <FaServicestack />
-        ),
+        icon: <FaServicestack />,
         label: "Services",
         route: "/admin/services",
       },
       {
-        icon: (
-          <Settings2 />
-        ),
+        icon: <Settings2 />,
         label: "Settings",
         route: "#",
         children: [{ label: "Sitemap", route: "/admin/sitemap" }],
       },
       {
-        icon: (
-          <CreativeCommons />
-        ),
+        icon: <CreativeCommons />,
         label: "Common",
         route: "#",
         children: [{ label: "Testimonials", route: "/admin/testimonials" }],
@@ -380,23 +386,25 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
   const pathname = usePathname();
   const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
 
-
   const visibleMenuGroups = menuGroups.map((group) => ({
     ...group,
     menuItems:
       role === "hr"
-        ? group.menuItems.filter((item) => HR_ALLOWED_LABELS.includes(item.label))
+        ? group.menuItems.filter((item) =>
+            HR_ALLOWED_LABELS.includes(item.label),
+          )
         : group.menuItems,
   }));
 
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
       <aside
-        className={`fixed left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-[#000] duration-300 ease-linear dark:bg-boxdark lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+        className={`z-9999 w-72.5 dark:bg-boxdark fixed left-0 top-0 flex h-screen flex-col overflow-y-hidden bg-[#000] duration-300 ease-linear lg:translate-x-0 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         {/* <!-- SIDEBAR HEADER --> */}
-        <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
+        <div className="py-5.5 lg:py-6.5 flex items-center justify-between gap-2 px-6">
           <Link href="/">
             <Image
               width={160}
@@ -434,7 +442,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
           <nav className="px-4 lg:px-6">
             {visibleMenuGroups.map((group, groupIndex) => (
               <div key={groupIndex}>
-                <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
+                <h3 className="text-bodydark2 mb-4 ml-4 text-sm font-semibold">
                   {group.name}
                 </h3>
                 <ul className="mb-6 flex flex-col gap-1.5">

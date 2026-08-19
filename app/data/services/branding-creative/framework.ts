@@ -1,6 +1,3 @@
-
-
-
 export const Frameworkdata = {
   title: "Our Process",
   data: [
@@ -8,17 +5,17 @@ export const Frameworkdata = {
       id: 1,
       title: "Discovery",
       dec: "We begin by understanding your business, its values, and goals. ",
-    } ,
+    },
     {
       id: 2,
       title: "Strategy",
       dec: "We craft a tailored brand strategy that supports your business objectives. ",
-    } ,
+    },
     {
       id: 3,
       title: "Design",
       dec: "We design a striking brand identity that captures your brand’s essence. ",
-    } ,
+    },
     {
       id: 4,
       title: "Development",
@@ -28,6 +25,6 @@ export const Frameworkdata = {
       id: 5,
       title: "Launch",
       dec: "We launch your brand with a bang, and we continue to support you as your business grows. ",
-    }
+    },
   ],
 };

@@ -13,8 +13,6 @@ import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
-
-
 // -----------------------------------------------------------------------------
 // Slides-per-view helper
 // -----------------------------------------------------------------------------
@@ -94,10 +92,10 @@ const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)] max-w-[33ch] mb-4 md:mb-6 xl:mb-8 xxl:mb-10"
+            className="title-60 mb-4 max-w-[33ch] text-[length:var(--text-60-sm)] md:mb-6 xl:mb-8 xxl:mb-10"
             dangerouslySetInnerHTML={{ __html: subTitle }}
           ></motion.h2>
-          <p className="text-[length:var(--text-18-sm)] fnt-lexend leading-[1.444444444444444] text-muted mb-4 lg:mb-5 xl:mb-6 xxl:mb-60 max-w-[110ch]">
+          <p className="fnt-lexend mb-4 max-w-[110ch] text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-muted lg:mb-5 xl:mb-6 xxl:mb-60">
             {data.description}
           </p>
         </div>
@@ -150,18 +148,29 @@ const HowWeDo = ({ data }: { data: ServiceItem["howWeDo"] }) => {
         >
           {[...items, ...items].map((item, i) => (
             <SwiperSlide key={i} className="h-auto">
-              <div className={`h-full ${i === leftIndex ? "" : ""} border border-black/20 rounded-[10px] p-4 xl:p-8 xxl:p-10 -mr-px`} >
+              <div
+                className={`h-full ${i === leftIndex ? "" : ""} -mr-px rounded-[10px] border border-black/20 p-4 xl:p-8 xxl:p-10`}
+              >
                 <div className="flex gap-3 xl:gap-[20px]">
-                  <div className="mb-6 xl:mb-[30px] inline-flex shrink-0 h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20 xxl:h-25 xxl:w-25">
+                  <div className="xxl:h-25 xxl:w-25 mb-6 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:mb-[30px] xl:h-20 xl:w-20">
                     {/* <span className="text-28 font-normal text-primary">
                       {i < 10 ? `0${i + 1}` : i + 1}
                     </span> */}
-                    <Image src={item.image} alt={item.imageAlt} width={100} height={100} className="object-contain w-6 h-6 xl:h-10 xl:w-10 xxl:h-[60px] xxl:w-[60px]" />
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      width={100}
+                      height={100}
+                      className="h-6 w-6 object-contain xl:h-10 xl:w-10 xxl:h-[60px] xxl:w-[60px]"
+                    />
                   </div>
-                  <h3 dangerouslySetInnerHTML={{ __html: item.title }} className="text-28 mb-4 max-w-[18ch] leading-[1.2142] tracking-[-0.025em]" />
+                  <h3
+                    dangerouslySetInnerHTML={{ __html: item.title }}
+                    className="text-28 mb-4 max-w-[18ch] leading-[1.2142] tracking-[-0.025em]"
+                  />
                 </div>
 
-                <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+                <p className="text-14 md:text-16 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
                   {toSentenceCase(item.description)}
                 </p>
               </div>

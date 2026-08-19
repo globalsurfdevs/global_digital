@@ -4,7 +4,14 @@ import DigitalMarketing from "../../../components/IndConstruction/DigitalConstru
 import FAQ from "../../../components/PermormanceMarketing/FAQ";
 import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
-import { BannerSection,Frameworkdata,AreaExpertise,IndustriesWeServe,Clientsformsdata ,Faq} from "../../../components/Education/data";
+import {
+  BannerSection,
+  Frameworkdata,
+  AreaExpertise,
+  IndustriesWeServe,
+  Clientsformsdata,
+  Faq,
+} from "../../../components/Education/data";
 import Framework from "@/app/components/PermormanceMarketing/Framework";
 import Expertise from "@/app/components/EcomIndustry/Expertise";
 
@@ -40,19 +47,26 @@ const page = () => {
         maxchwidth={89}
       />
 
-      <Framework title={Frameworkdata.title} data={Frameworkdata.data} colcount={3} bgcolor="white"/>
-
-      <DigitalMarketing
-        title={AreaExpertise.title}
-        data={AreaExpertise.data}
+      <Framework
+        title={Frameworkdata.title}
+        data={Frameworkdata.data}
+        colcount={3}
+        bgcolor="white"
       />
+
+      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} />
       <SuccessStories
         Clientsformsdata={Clientsformsdata}
         title1="Success Stories <br>That Speak for Themselves"
       />
 
       <section className="pt-[50px] lg:pt-[140px] ">
-      <FAQ data={Faq} title="Frequently Asked Questions"subp="Got Questions? We’ve Got Answers!" bgcolor="#F2F2F2"/>
+        <FAQ
+          data={Faq}
+          title="Frequently Asked Questions"
+          subp="Got Questions? We’ve Got Answers!"
+          bgcolor="#F2F2F2"
+        />
       </section>
 
       <Expertise

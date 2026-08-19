@@ -13,7 +13,7 @@ async function setAdminRole() {
 
     const result = await User.updateOne(
       { username },
-      { $set: { role: "admin" } }
+      { $set: { role: "admin" } },
     );
 
     if (result.matchedCount === 0) {
