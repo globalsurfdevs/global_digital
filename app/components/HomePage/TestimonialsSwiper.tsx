@@ -14,7 +14,13 @@ const lexend = Lexend({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const TestimonialsSwiper = ({ data,page }: { data?: TestimonialItemType[]; page?: string }) => {
+const TestimonialsSwiper = ({
+  data,
+  page,
+}: {
+  data?: TestimonialItemType[];
+  page?: string;
+}) => {
   const testimonialsFromApi = data && [
     ...data.map((item) => ({
       company: item.companyName,
@@ -75,7 +81,11 @@ const TestimonialsSwiper = ({ data,page }: { data?: TestimonialItemType[]; page?
                 ></Image>
               </div>
               <div className=" flex items-center justify-center">
-                <p className={`${page == "service" ? "text-[length:var(--text-18-sm)]" : "text-19"} text-[#77787B]`}>{item.message}</p>
+                <p
+                  className={`${page == "service" ? "text-[length:var(--text-18-sm)]" : "text-19"} text-[#77787B]`}
+                >
+                  {item.message}
+                </p>
               </div>
             </div>
           </SwiperSlide>

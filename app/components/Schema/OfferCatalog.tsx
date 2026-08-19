@@ -111,7 +111,7 @@ export const MarketingIntelligenceSchema = () => {
       }
     }
   ]
-}`
+}`,
       }}
     />
   );
@@ -165,7 +165,7 @@ export const DigitalMarketingServicesSchema = () => {
       }
     }
   ]
-}`
+}`,
       }}
     />
   );
@@ -228,7 +228,7 @@ export const WebDesignDevelopmentSchema = () => {
       }
     }
   ]
-}`
+}`,
       }}
     />
   );
@@ -259,7 +259,7 @@ export const B2BMarketingTrendsSchema = () => {
       "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
     }
   }
-}`
+}`,
       }}
     />
   );
@@ -290,7 +290,7 @@ export const SocialMediaShowdownSchema = () => {
       "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
     }
   }
-}`
+}`,
       }}
     />
   );
@@ -321,7 +321,7 @@ export const PoorSalesSchema = () => {
       "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
     }
   }
-}`
+}`,
       }}
     />
   );
@@ -354,7 +354,7 @@ export const OneBillionFollowersSchema = () => {
       "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
     }
   }
-}`
+}`,
       }}
     />
   );
@@ -411,7 +411,7 @@ export const OneClickSchema = () => {
       }
     }
   ]
-}`
+}`,
         }}
       />
 
@@ -441,7 +441,7 @@ export const OneClickSchema = () => {
     "@type": "WebPage",
     "@id": "https://www.globalsurf.ae/blog/no-clicks-google-ai-search-built-environment"
   }
-}`
+}`,
         }}
       />
     </>
@@ -518,7 +518,7 @@ export const TechnicalSEOSchema = () => {
   }
 }
 
-`
+`,
       }}
     />
   );
@@ -528,7 +528,8 @@ export const GoogleAdsVsMetaAdsSchema = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins?",
+    headline:
+      "Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins?",
     description:
       "Compare Google Ads and Meta Ads for UAE lead generation. Learn cost per lead benchmarks, targeting differences, and how to split your ad budget for better ROI.",
     image: "https://www.globalsurf.ae/images/google-vs-meta-ads-uae.jpg",
@@ -608,118 +609,121 @@ export const BuiltEnvironmentSchema = () => {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "What Does the Built Environment Really Mean in the UAE?",
-    "description": "A practical guide to the built environment in the UAE — covering definitions, key sectors, regulations, smart city development, and what it means for construction businesses.",
-    "image": "https://www.globalsurf.ae/_next/static/media/envblog1.22e3bfb5.jpg",
-    "datePublished": "2026-04-23T09:00:00+04:00",
-    "dateModified": "2026-04-23T09:00:00+04:00",
-    "inLanguage": "en-AE",
-    "keywords": "built environment UAE, construction industry Dubai, UAE smart cities, built environment companies Dubai, contractor digital marketing UAE",
-    "author": {
+    headline: "What Does the Built Environment Really Mean in the UAE?",
+    description:
+      "A practical guide to the built environment in the UAE — covering definitions, key sectors, regulations, smart city development, and what it means for construction businesses.",
+    image: "https://www.globalsurf.ae/_next/static/media/envblog1.22e3bfb5.jpg",
+    datePublished: "2026-04-23T09:00:00+04:00",
+    dateModified: "2026-04-23T09:00:00+04:00",
+    inLanguage: "en-AE",
+    keywords:
+      "built environment UAE, construction industry Dubai, UAE smart cities, built environment companies Dubai, contractor digital marketing UAE",
+    author: {
       "@type": "Organization",
-      "name": "GS Digital",
-      "url": "https://www.globalsurf.ae"
+      name: "GS Digital",
+      url: "https://www.globalsurf.ae",
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "GS Digital",
-      "logo": {
+      name: "GS Digital",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
-      }
+        url: "https://www.globalsurf.ae/gs-digital-logo.svg",
+      },
     },
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://www.globalsurf.ae/blogs/what-does-built-environment-really-mean-in-the-uae"
-    }
+      "@id":
+        "https://www.globalsurf.ae/blogs/what-does-built-environment-really-mean-in-the-uae",
+    },
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
+    mainEntity: [
       {
         "@type": "Question",
-        "name": "What is the built environment in simple terms?",
-        "acceptedAnswer": {
+        name: "What is the built environment in simple terms?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "The built environment includes all human-made structures and spaces, from buildings and roads to parks and utilities. It represents everything constructed to support how people live, work, and move through cities."
-        }
+          text: "The built environment includes all human-made structures and spaces, from buildings and roads to parks and utilities. It represents everything constructed to support how people live, work, and move through cities.",
+        },
       },
       {
         "@type": "Question",
-        "name": "How is the UAE's built environment different from other countries?",
-        "acceptedAnswer": {
+        name: "How is the UAE's built environment different from other countries?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "The UAE’s built environment stands out due to its rapid transformation since 1971, extreme climate considerations, and large-scale developments combining advanced infrastructure and smart city technologies."
-        }
+          text: "The UAE’s built environment stands out due to its rapid transformation since 1971, extreme climate considerations, and large-scale developments combining advanced infrastructure and smart city technologies.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What sectors are part of the built environment industry?",
-        "acceptedAnswer": {
+        name: "What sectors are part of the built environment industry?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "The built environment industry includes residential and commercial construction, infrastructure such as roads and utilities, industrial facilities, public buildings like schools and hospitals, and energy systems."
-        }
+          text: "The built environment industry includes residential and commercial construction, infrastructure such as roads and utilities, industrial facilities, public buildings like schools and hospitals, and energy systems.",
+        },
       },
       {
         "@type": "Question",
-        "name": "Why should construction companies care about digital marketing?",
-        "acceptedAnswer": {
+        name: "Why should construction companies care about digital marketing?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Decision-makers in the UAE construction sector often research companies online before shortlisting them. A strong digital presence builds credibility and helps differentiate from competitors."
-        }
+          text: "Decision-makers in the UAE construction sector often research companies online before shortlisting them. A strong digital presence builds credibility and helps differentiate from competitors.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What regulations govern the built environment in UAE?",
-        "acceptedAnswer": {
+        name: "What regulations govern the built environment in UAE?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "The built environment in the UAE is regulated by authorities such as Dubai Municipality and Abu Dhabi Department of Municipalities and Transport. Regulations cover building codes, safety standards, sustainability requirements, and environmental approvals."
-        }
+          text: "The built environment in the UAE is regulated by authorities such as Dubai Municipality and Abu Dhabi Department of Municipalities and Transport. Regulations cover building codes, safety standards, sustainability requirements, and environmental approvals.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What trends are shaping the UAE's built environment?",
-        "acceptedAnswer": {
+        name: "What trends are shaping the UAE's built environment?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Key trends include sustainability initiatives, smart building technologies, modular construction, wellness-focused design, mixed-use developments, BIM integration, and AI-driven infrastructure."
-        }
+          text: "Key trends include sustainability initiatives, smart building technologies, modular construction, wellness-focused design, mixed-use developments, BIM integration, and AI-driven infrastructure.",
+        },
       },
       {
         "@type": "Question",
-        "name": "How can my construction company improve its online presence?",
-        "acceptedAnswer": {
+        name: "How can my construction company improve its online presence?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Start with an SEO-optimised website showcasing projects and expertise. Publish industry-focused content and maintain a strong LinkedIn presence to build credibility and visibility."
-        }
-      }
-    ]
+          text: "Start with an SEO-optimised website showcasing projects and expertise. Publish industry-focused content and maintain a strong LinkedIn presence to build credibility and visibility.",
+        },
+      },
+    ],
   };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
+    itemListElement: [
       {
         "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.globalsurf.ae/"
+        position: 1,
+        name: "Home",
+        item: "https://www.globalsurf.ae/",
       },
       {
         "@type": "ListItem",
-        "position": 2,
-        "name": "Blogs",
-        "item": "https://www.globalsurf.ae/blogs"
+        position: 2,
+        name: "Blogs",
+        item: "https://www.globalsurf.ae/blogs",
       },
       {
         "@type": "ListItem",
-        "position": 3,
-        "name": "What Does the Built Environment Really Mean in the UAE?",
-        "item": "https://www.globalsurf.ae/blogs/what-does-built-environment-really-mean-in-the-uae"
-      }
-    ]
+        position: 3,
+        name: "What Does the Built Environment Really Mean in the UAE?",
+        item: "https://www.globalsurf.ae/blogs/what-does-built-environment-really-mean-in-the-uae",
+      },
+    ],
   };
 
   return (
@@ -742,67 +746,60 @@ export const BuiltEnvironmentSchema = () => {
 
 export const HowDigitalMarketingWinsSchema = () => {
   const schema = {
-
     "@context": "https://schema.org",
 
     "@type": "Article",
 
-    "headline": "How Digital Marketing Wins Projects for Construction Companies in the UAE",
+    headline:
+      "How Digital Marketing Wins Projects for Construction Companies in the UAE",
 
-    "description": "A practical guide to digital visibility for UAE construction and built environment companies — covering SEO, LinkedIn, Google Business Profile, content marketing, and website CRO.",
+    description:
+      "A practical guide to digital visibility for UAE construction and built environment companies — covering SEO, LinkedIn, Google Business Profile, content marketing, and website CRO.",
 
-    "image": "https://www.globalsurf.ae/images/blog-new/construction-digital-marketing-uae/hero.jpg",
+    image:
+      "https://www.globalsurf.ae/images/blog-new/construction-digital-marketing-uae/hero.jpg",
 
-    "datePublished": "2026-04-25T09:00:00+04:00",
+    datePublished: "2026-04-25T09:00:00+04:00",
 
-    "dateModified": "2026-04-25T09:00:00+04:00",
+    dateModified: "2026-04-25T09:00:00+04:00",
 
-    "inLanguage": "en-AE",
+    inLanguage: "en-AE",
 
-    "keywords": "digital marketing construction companies UAE, contractor SEO Dubai, construction company website UAE, built environment digital marketing, contractor LinkedIn UAE",
+    keywords:
+      "digital marketing construction companies UAE, contractor SEO Dubai, construction company website UAE, built environment digital marketing, contractor LinkedIn UAE",
 
-    "author": {
-
+    author: {
       "@type": "Organization",
 
-      "name": "GS Digital",
+      name: "GS Digital",
 
-      "url": "https://www.globalsurf.ae"
-
+      url: "https://www.globalsurf.ae",
     },
 
-    "publisher": {
-
+    publisher: {
       "@type": "Organization",
 
-      "name": "GS Digital",
+      name: "GS Digital",
 
-      "logo": {
-
+      logo: {
         "@type": "ImageObject",
 
-        "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
-
-      }
-
+        url: "https://www.globalsurf.ae/gs-digital-logo.svg",
+      },
     },
 
-    "mainEntityOfPage": {
-
+    mainEntityOfPage: {
       "@type": "WebPage",
 
-      "@id": "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/"
-
+      "@id":
+        "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/",
     },
 
-    "mentions": [
+    mentions: [
+      { "@type": "Organization", name: "ASGC Group" },
 
-      { "@type": "Organization", "name": "ASGC Group" },
-
-      { "@type": "Organization", "name": "Assent Steel" }
-
-    ]
-
+      { "@type": "Organization", name: "Assent Steel" },
+    ],
   };
 
   return (
@@ -818,66 +815,64 @@ export const HowDigitalMarketingWinsFaqSchema = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
+    mainEntity: [
       {
         "@type": "Question",
-        "name": "Does digital marketing actually work for construction companies in the UAE?",
-        "acceptedAnswer": {
+        name: "Does digital marketing actually work for construction companies in the UAE?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Yes. Digital marketing is measurably effective for construction and contracting companies in the UAE when the strategy is aligned with how clients actually search and procure services. Built environment clients including developers, government entities, and real estate firms now use Google and LinkedIn to research and shortlist contractors before making contact. Companies that rank for relevant service and location keywords, maintain a credible online presence, and produce authoritative project content consistently generate more project enquiries than those that rely solely on referrals."
-        }
+          text: "Yes. Digital marketing is measurably effective for construction and contracting companies in the UAE when the strategy is aligned with how clients actually search and procure services. Built environment clients including developers, government entities, and real estate firms now use Google and LinkedIn to research and shortlist contractors before making contact. Companies that rank for relevant service and location keywords, maintain a credible online presence, and produce authoritative project content consistently generate more project enquiries than those that rely solely on referrals.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What is digital visibility and why does it matter for built environment companies?",
-        "acceptedAnswer": {
+        name: "What is digital visibility and why does it matter for built environment companies?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Digital visibility is the ability of a company to be found, assessed, and shortlisted through online channels during a client's procurement process. For built environment companies including contractors, developers, architecture firms, and MEP consultancies, it matters because procurement decisions in the UAE now begin with online research. If a company cannot be found for its core services on Google, or its website does not demonstrate clear capability and credibility, it is effectively excluded from the early procurement conversation before it ever begins."
-        }
+          text: "Digital visibility is the ability of a company to be found, assessed, and shortlisted through online channels during a client's procurement process. For built environment companies including contractors, developers, architecture firms, and MEP consultancies, it matters because procurement decisions in the UAE now begin with online research. If a company cannot be found for its core services on Google, or its website does not demonstrate clear capability and credibility, it is effectively excluded from the early procurement conversation before it ever begins.",
+        },
       },
       {
         "@type": "Question",
-        "name": "How long does SEO take to show results for a construction company?",
-        "acceptedAnswer": {
+        name: "How long does SEO take to show results for a construction company?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "SEO typically delivers visible ranking improvements within three to six months for most construction and contracting companies, depending on the competitiveness of target keywords and the current state of the website. Technical fixes and on-page optimisation produce the fastest initial gains. For highly competitive terms like 'general contractor Dubai,' the timeline is typically six to nine months to reach page one. GS Digital's built environment clients have seen meaningful traffic improvement within 90 days of programme launch."
-        }
+          text: "SEO typically delivers visible ranking improvements within three to six months for most construction and contracting companies, depending on the competitiveness of target keywords and the current state of the website. Technical fixes and on-page optimisation produce the fastest initial gains. For highly competitive terms like 'general contractor Dubai,' the timeline is typically six to nine months to reach page one. GS Digital's built environment clients have seen meaningful traffic improvement within 90 days of programme launch.",
+        },
       },
       {
         "@type": "Question",
-        "name": "Which digital channels work best for B2B construction companies?",
-        "acceptedAnswer": {
+        name: "Which digital channels work best for B2B construction companies?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "For B2B construction companies in the UAE, the highest-performing channels are organic search, LinkedIn, Google Business Profile, and content marketing anchored to project case studies and service expertise. Organic search delivers the highest-quality inbound intent - clients actively seeking specific services. LinkedIn is the most effective paid channel for targeting procurement managers, developers, and government entities by role, company, and geography. The right channel mix depends on your target client type and current digital baseline."
-        }
+          text: "For B2B construction companies in the UAE, the highest-performing channels are organic search, LinkedIn, Google Business Profile, and content marketing anchored to project case studies and service expertise. Organic search delivers the highest-quality inbound intent - clients actively seeking specific services. LinkedIn is the most effective paid channel for targeting procurement managers, developers, and government entities by role, company, and geography. The right channel mix depends on your target client type and current digital baseline.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What should a construction company website include to generate project enquiries?",
-        "acceptedAnswer": {
+        name: "What should a construction company website include to generate project enquiries?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "A construction company website that generates project enquiries should include clear service scope pages with location targeting, a project portfolio with scope, scale, client type, and outcome descriptions rather than just photographs, visible accreditations such as ISO, CIOB, RICS, or RERA registration, a frictionless enquiry pathway including phone, WhatsApp, and email on every page, and an About section that communicates leadership credibility and track record."
-        }
+          text: "A construction company website that generates project enquiries should include clear service scope pages with location targeting, a project portfolio with scope, scale, client type, and outcome descriptions rather than just photographs, visible accreditations such as ISO, CIOB, RICS, or RERA registration, a frictionless enquiry pathway including phone, WhatsApp, and email on every page, and an About section that communicates leadership credibility and track record.",
+        },
       },
       {
         "@type": "Question",
-        "name": "How does GS Digital help construction and built environment companies?",
-        "acceptedAnswer": {
+        name: "How does GS Digital help construction and built environment companies?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "GS Digital works with UAE-based construction companies, fit-out contractors, developers, and real estate firms to build digital presence strategies that generate project-ready enquiries. Our work spans website redevelopment, SEO implementation, LinkedIn strategy, content marketing, and conversion optimisation - all delivered within the context of how built environment clients actually research and procure services. Clients include ASGC Group, where GS Digital delivered a 926% increase in weekly active users following website redevelopment and SEO implementation."
-        }
+          text: "GS Digital works with UAE-based construction companies, fit-out contractors, developers, and real estate firms to build digital presence strategies that generate project-ready enquiries. Our work spans website redevelopment, SEO implementation, LinkedIn strategy, content marketing, and conversion optimisation - all delivered within the context of how built environment clients actually research and procure services. Clients include ASGC Group, where GS Digital delivered a 926% increase in weekly active users following website redevelopment and SEO implementation.",
+        },
       },
       {
         "@type": "Question",
-        "name": "Is digital marketing relevant for companies that mostly win work through relationships and tenders?",
-        "acceptedAnswer": {
+        name: "Is digital marketing relevant for companies that mostly win work through relationships and tenders?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Yes. Digital visibility strengthens relationship-driven and tender-based business development - it does not replace it. Procurement teams reviewing a tender submission now routinely check the submitting company's website, LinkedIn, and Google presence before progressing. A weak or absent digital presence can undermine an otherwise strong tender submission. In the UAE's increasingly transparent procurement environment, digital credibility has become part of the pre-qualification standard."
-        }
-      }
-    ]
-
-
+          text: "Yes. Digital visibility strengthens relationship-driven and tender-based business development - it does not replace it. Procurement teams reviewing a tender submission now routinely check the submitting company's website, LinkedIn, and Google presence before progressing. A weak or absent digital presence can undermine an otherwise strong tender submission. In the UAE's increasingly transparent procurement environment, digital credibility has become part of the pre-qualification standard.",
+        },
+      },
+    ],
   };
 
   return (
@@ -890,32 +885,31 @@ export const HowDigitalMarketingWinsFaqSchema = () => {
   );
 };
 
-
 export const HowDigitalMarketingWinsBreadcrumbSchema = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
+    itemListElement: [
       {
         "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.globalsurf.ae/"
+        position: 1,
+        name: "Home",
+        item: "https://www.globalsurf.ae/",
       },
       {
         "@type": "ListItem",
-        "position": 2,
-        "name": "Blogs",
-        "item": "https://www.globalsurf.ae/blogs"
+        position: 2,
+        name: "Blogs",
+        item: "https://www.globalsurf.ae/blogs",
       },
 
       {
         "@type": "ListItem",
-        "position": 3,
-        "name": "Digital Marketing for Construction Companies in UAE",
-        "item": "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/ "
-      }
-    ]
+        position: 3,
+        name: "Digital Marketing for Construction Companies in UAE",
+        item: "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/ ",
+      },
+    ],
   };
 
   return (
@@ -932,42 +926,43 @@ export const HowDigitalMarketingWinsHowToSchema = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "How to Audit Your Construction Company's Digital Presence in the UAE",
-    "description": "A 5-question audit any business development director at a UAE construction company can complete in under 10 minutes.",
-    "totalTime": "PT10M",
-    "step": [
+    name: "How to Audit Your Construction Company's Digital Presence in the UAE",
+    description:
+      "A 5-question audit any business development director at a UAE construction company can complete in under 10 minutes.",
+    totalTime: "PT10M",
+    step: [
       {
         "@type": "HowToStep",
-        "position": 1,
-        "name": "Check search visibility",
-        "text": "Search Google for your core service and location — for example 'general contractor Dubai' or 'MEP contractor Abu Dhabi'. If you do not appear on page one, every potential client running that search is being directed to a competitor."
+        position: 1,
+        name: "Check search visibility",
+        text: "Search Google for your core service and location — for example 'general contractor Dubai' or 'MEP contractor Abu Dhabi'. If you do not appear on page one, every potential client running that search is being directed to a competitor.",
       },
       {
         "@type": "HowToStep",
-        "position": 2,
-        "name": "Test homepage clarity",
-        "text": "When a client lands on your homepage, can they identify your services, locations served, and sector specialisations within ten seconds? If not, most visitors will leave without exploring further."
+        position: 2,
+        name: "Test homepage clarity",
+        text: "When a client lands on your homepage, can they identify your services, locations served, and sector specialisations within ten seconds? If not, most visitors will leave without exploring further.",
       },
       {
         "@type": "HowToStep",
-        "position": 3,
-        "name": "Review portfolio depth",
-        "text": "Does your project portfolio include scope, scale, client type, and outcome descriptions — or just photographs? Photographs without context do not build procurement confidence."
+        position: 3,
+        name: "Review portfolio depth",
+        text: "Does your project portfolio include scope, scale, client type, and outcome descriptions — or just photographs? Photographs without context do not build procurement confidence.",
       },
       {
         "@type": "HowToStep",
-        "position": 4,
-        "name": "Verify accreditation visibility",
-        "text": "Are your accreditations and certifications — including ISO, CIOB, RICS, and RERA registration — visible on your website? These are procurement trust signals, not just credentials."
+        position: 4,
+        name: "Verify accreditation visibility",
+        text: "Are your accreditations and certifications — including ISO, CIOB, RICS, and RERA registration — visible on your website? These are procurement trust signals, not just credentials.",
       },
 
       {
         "@type": "HowToStep",
-        "position": 5,
-        "name": "Test your enquiry pathway",
-        "text": "Is there a clear, frictionless enquiry pathway — phone, WhatsApp, email, and an RFQ form on every key page? If a developer has to hunt for contact information, most will not bother."
-      }
-    ]
+        position: 5,
+        name: "Test your enquiry pathway",
+        text: "Is there a clear, frictionless enquiry pathway — phone, WhatsApp, email, and an RFQ form on every key page? If a developer has to hunt for contact information, most will not bother.",
+      },
+    ],
   };
 
   return (
@@ -984,135 +979,125 @@ export const BafcoCaseStudySchema = () => {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital",
-    "description":
+    headline:
+      "BAFCO Case Study: 2X Leads at Half the Cost with Performance Marketing | GS Digital",
+    description:
       "How GS Digital's 16-month performance marketing programme delivered double the leads at significantly lower cost per lead for BAFCO, one of the UAE's leading furniture and fitout companies — through Meta, Google Ads, and sustained strategic optimisation.",
-    "image":
+    image:
       "https://www.globalsurf.ae/images/blog-new/bafco-performance-marketing/og-cover.jpg",
-    "datePublished": "2026-03-25T09:00:00+04:00",
-    "dateModified": "2026-03-25T09:00:00+04:00",
-    "inLanguage": "en-AE",
-    "keywords":
+    datePublished: "2026-03-25T09:00:00+04:00",
+    dateModified: "2026-03-25T09:00:00+04:00",
+    inLanguage: "en-AE",
+    keywords:
       "performance marketing UAE, performance marketing agency Dubai, digital marketing agency Dubai, digital marketing service UAE, meta ads UAE, Google Ads Dubai, lead generation UAE, BAFCO, furniture marketing UAE",
-    "author": {
+    author: {
       "@type": "Organization",
-      "name": "GS Digital",
-      "url": "https://www.globalsurf.ae"
+      name: "GS Digital",
+      url: "https://www.globalsurf.ae",
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "GS Digital",
-      "logo": {
+      name: "GS Digital",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
-      }
+        url: "https://www.globalsurf.ae/gs-digital-logo.svg",
+      },
     },
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
       "@id":
-        "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai/"
+        "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai/",
     },
-    "about": {
+    about: {
       "@type": "Thing",
-      "name": "Performance Marketing",
-      "description":
-        "Results-driven digital advertising optimised for measurable outcomes"
+      name: "Performance Marketing",
+      description:
+        "Results-driven digital advertising optimised for measurable outcomes",
     },
-    "mentions": [
+    mentions: [
       {
         "@type": "Organization",
-        "name": "BAFCO",
-        "url": "https://www.bafco.com"
+        name: "BAFCO",
+        url: "https://www.bafco.com",
       },
       {
         "@type": "Organization",
-        "name": "GS Digital",
-        "url": "https://www.globalsurf.ae"
-      }
-    ]
+        name: "GS Digital",
+        url: "https://www.globalsurf.ae",
+      },
+    ],
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
+    mainEntity: [
       {
         "@type": "Question",
-        "name":
-          "What is performance marketing and how does it differ from standard digital advertising?",
-        "acceptedAnswer": {
+        name: "What is performance marketing and how does it differ from standard digital advertising?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text":
-            "Performance marketing is a results-driven approach to digital advertising where every budget and targeting decision is grounded in measurable outcomes such as leads generated, cost per lead, and return on spend. GS Digital manages Meta and Google campaigns with continuous optimisation rather than a set-and-forget structure."
-        }
+          text: "Performance marketing is a results-driven approach to digital advertising where every budget and targeting decision is grounded in measurable outcomes such as leads generated, cost per lead, and return on spend. GS Digital manages Meta and Google campaigns with continuous optimisation rather than a set-and-forget structure.",
+        },
       },
       {
         "@type": "Question",
-        "name":
-          "How long does it take to see compounding results from performance marketing in the UAE?",
-        "acceptedAnswer": {
+        name: "How long does it take to see compounding results from performance marketing in the UAE?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text":
-            "Initial improvements typically appear within 4 to 8 weeks as campaigns gather data. Strong compounding efficiency builds over 6 to 12 months as audience insights and creative learnings accumulate through sustained optimisation."
-        }
+          text: "Initial improvements typically appear within 4 to 8 weeks as campaigns gather data. Strong compounding efficiency builds over 6 to 12 months as audience insights and creative learnings accumulate through sustained optimisation.",
+        },
       },
       {
         "@type": "Question",
-        "name":
-          "How did lead volume double without increasing the budget?",
-        "acceptedAnswer": {
+        name: "How did lead volume double without increasing the budget?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text":
-            "Through systematic optimisation over 12 months. Audience targeting was refined based on performance data, creative assets were continuously tested, and budget was dynamically reallocated to the highest-performing segments."
-        }
+          text: "Through systematic optimisation over 12 months. Audience targeting was refined based on performance data, creative assets were continuously tested, and budget was dynamically reallocated to the highest-performing segments.",
+        },
       },
       {
         "@type": "Question",
-        "name":
-          "What digital marketing services does GS Digital provide for UAE businesses?",
-        "acceptedAnswer": {
+        name: "What digital marketing services does GS Digital provide for UAE businesses?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text":
-            "GS Digital provides performance marketing across Meta and Google, SEO, web development, social media management, branding, UI/UX design, and conversion rate optimisation — delivered as an integrated system."
-        }
+          text: "GS Digital provides performance marketing across Meta and Google, SEO, web development, social media management, branding, UI/UX design, and conversion rate optimisation — delivered as an integrated system.",
+        },
       },
       {
         "@type": "Question",
-        "name":
-          "Is GS Digital suited for B2B companies with longer sales cycles?",
-        "acceptedAnswer": {
+        name: "Is GS Digital suited for B2B companies with longer sales cycles?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text":
-            "Yes. GS Digital maintains consistent audience visibility and structured optimisation throughout the year, which is particularly effective for B2B companies with extended consideration and project-based purchasing cycles."
-        }
-      }
-    ]
+          text: "Yes. GS Digital maintains consistent audience visibility and structured optimisation throughout the year, which is particularly effective for B2B companies with extended consideration and project-based purchasing cycles.",
+        },
+      },
+    ],
   };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
+    itemListElement: [
       {
         "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.globalsurf.ae/"
+        position: 1,
+        name: "Home",
+        item: "https://www.globalsurf.ae/",
       },
       {
         "@type": "ListItem",
-        "position": 2,
-        "name": "Blogs",
-        "item": "https://www.globalsurf.ae/blogs"
+        position: 2,
+        name: "Blogs",
+        item: "https://www.globalsurf.ae/blogs",
       },
       {
         "@type": "ListItem",
-        "position": 3,
-        "name": "Same Peak Month. 2X the Leads. 56% Lower Cost.",
-        "item":
-          "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai/"
-      }
-    ]
+        position: 3,
+        name: "Same Peak Month. 2X the Leads. 56% Lower Cost.",
+        item: "https://www.globalsurf.ae/blogs/bafco-performance-marketing-case-study-dubai/",
+      },
+    ],
   };
 
   return (
@@ -1134,98 +1119,106 @@ export const BafcoCaseStudySchema = () => {
 };
 export const DigitalStudySchema = () => {
   const articleSchema = {
-      "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How UAE Construction Contractors Win More Tenders with Digital Credibility",
-  "description": "UAE construction contractors lose tenders before evaluation begins. This article explains how digital credibility — website, LinkedIn, project portfolio, and thought leadership — directly influences pre-qualification and tender outcomes in the UAE market.",
-  "image": "https://www.globalsurf.ae/_next/static/media/uae-construction-contractor-digital-credibility-hero.41a7a760.webp",
-  "author": {
-    "@type": "Organization",
-    "name": "Global Surf Digital",
-    "url": "https://www.globalsurf.ae"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Surf Digital",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalsurf.ae/gs-digital-logo.svg"
-    }
-  },
-  "datePublished": "2026-05-19",
-  "dateModified": "2026-05-19",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success"
-  },
-  "keywords": ["digital credibility UAE construction", "UAE construction tender digital marketing", "digital presence construction contractors UAE", "pre-qualification UAE contractors", "construction company digital marketing UAE"],
-  "articleSection": "Built Environment",
-  "inLanguage": "en"
-
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline:
+      "How UAE Construction Contractors Win More Tenders with Digital Credibility",
+    description:
+      "UAE construction contractors lose tenders before evaluation begins. This article explains how digital credibility — website, LinkedIn, project portfolio, and thought leadership — directly influences pre-qualification and tender outcomes in the UAE market.",
+    image:
+      "https://www.globalsurf.ae/_next/static/media/uae-construction-contractor-digital-credibility-hero.41a7a760.webp",
+    author: {
+      "@type": "Organization",
+      name: "Global Surf Digital",
+      url: "https://www.globalsurf.ae",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Global Surf Digital",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.globalsurf.ae/gs-digital-logo.svg",
+      },
+    },
+    datePublished: "2026-05-19",
+    dateModified: "2026-05-19",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id":
+        "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
+    },
+    keywords: [
+      "digital credibility UAE construction",
+      "UAE construction tender digital marketing",
+      "digital presence construction contractors UAE",
+      "pre-qualification UAE contractors",
+      "construction company digital marketing UAE",
+    ],
+    articleSection: "Built Environment",
+    inLanguage: "en",
   };
 
   const faqSchema = {
-      "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How long does it take to see results from digital marketing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Initial search visibility improvements typically appear within 3 to 6 months. Measurable tender success improvements generally follow at 6 to 12 months. Results compound over time as your content library, backlinks, and industry reputation develop. This is a medium-term investment that builds durable commercial value, not a short-term fix."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if we are already winning tenders without digital marketing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Consider what opportunities you are not being invited to, and what happens as competitors invest in digital credibility. The next generation of procurement decision-makers expects digital professionalism as standard. A strong online presence protects your current pipeline and opens doors to project opportunities that never reach the formal tender stage."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is LinkedIn important for UAE construction contractors?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. LinkedIn is where UAE developers, consultants, and government procurement teams conduct professional research. It is the primary platform for thought leadership and business development in the UAE construction sector. Contractors with an active, well-maintained LinkedIn presence are more visible during the informal research phase that precedes formal tender invitations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can we do digital marketing in-house?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is possible, but digital marketing requires current expertise in SEO, content strategy, web development, and analytics that most construction companies do not maintain internally. Most successful contractors partner with a specialist agency for strategy and execution while retaining internal oversight on project information and brand direction. A hybrid model typically delivers the strongest results."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the first step to improving our digital presence?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Start with an honest audit. Search your company name and review what appears. Assess your website as a tender evaluator would. Review the top three competitors for comparison. Prioritise quick wins first - updating your website and adding recent projects - then move to content marketing and SEO. A free agency consultation can accelerate this process."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What digital platforms matter most for UAE construction contractors?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For UAE contractors, the highest-priority platforms are a well-structured company website, LinkedIn for professional visibility and thought leadership, and Google Business Profile for local search credibility. Secondary channels include industry directories such as Zawya and Construction Week, and targeted content on YouTube for project documentation and capability showcase."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does digital presence affect government tender pre-qualification in the UAE?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Government procurement teams in the UAE, including those at ADNOC, RTA, DEWA, and Abu Dhabi's GPG, routinely conduct background research on contractors during pre-qualification. A credible website, verifiable project portfolio, and visible credentials reduce the information gap that evaluators fill with doubt. A strong digital presence directly supports pre-qualification progression. "
-      }
-    }
-  ]
-
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How long does it take to see results from digital marketing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Initial search visibility improvements typically appear within 3 to 6 months. Measurable tender success improvements generally follow at 6 to 12 months. Results compound over time as your content library, backlinks, and industry reputation develop. This is a medium-term investment that builds durable commercial value, not a short-term fix.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What if we are already winning tenders without digital marketing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Consider what opportunities you are not being invited to, and what happens as competitors invest in digital credibility. The next generation of procurement decision-makers expects digital professionalism as standard. A strong online presence protects your current pipeline and opens doors to project opportunities that never reach the formal tender stage.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is LinkedIn important for UAE construction contractors?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. LinkedIn is where UAE developers, consultants, and government procurement teams conduct professional research. It is the primary platform for thought leadership and business development in the UAE construction sector. Contractors with an active, well-maintained LinkedIn presence are more visible during the informal research phase that precedes formal tender invitations.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can we do digital marketing in-house?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "It is possible, but digital marketing requires current expertise in SEO, content strategy, web development, and analytics that most construction companies do not maintain internally. Most successful contractors partner with a specialist agency for strategy and execution while retaining internal oversight on project information and brand direction. A hybrid model typically delivers the strongest results.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the first step to improving our digital presence?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start with an honest audit. Search your company name and review what appears. Assess your website as a tender evaluator would. Review the top three competitors for comparison. Prioritise quick wins first - updating your website and adding recent projects - then move to content marketing and SEO. A free agency consultation can accelerate this process.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What digital platforms matter most for UAE construction contractors?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "For UAE contractors, the highest-priority platforms are a well-structured company website, LinkedIn for professional visibility and thought leadership, and Google Business Profile for local search credibility. Secondary channels include industry directories such as Zawya and Construction Week, and targeted content on YouTube for project documentation and capability showcase.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does digital presence affect government tender pre-qualification in the UAE?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Government procurement teams in the UAE, including those at ADNOC, RTA, DEWA, and Abu Dhabi's GPG, routinely conduct background research on contractors during pre-qualification. A credible website, verifiable project portfolio, and visible credentials reduce the information gap that evaluators fill with doubt. A strong digital presence directly supports pre-qualification progression. ",
+        },
+      },
+    ],
   };
 
   return (
@@ -1238,7 +1231,6 @@ export const DigitalStudySchema = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-       
     </>
   );
 };
@@ -1296,7 +1288,7 @@ export const GoogleAiOverviewSchema = () => {
       "name": "United Arab Emirates"
     }
   ]
-}`
+}`,
       }}
     />
   );
@@ -1354,7 +1346,7 @@ export const PerformanceMarketingSchema = () => {
     "@type": "BusinessAudience",
     "audienceType": "UAE Business Owners and Marketing Decision-Makers"
   }
-}`
+}`,
       }}
     />
   );
@@ -1411,7 +1403,7 @@ export const DigitalMarketingCompanyDubaiSchema = () => {
     "@type": "BusinessAudience",
     "audienceType": "Dubai and UAE Business Owners and Marketing Decision-Makers"
   }
-}`
+}`,
       }}
     />
   );

@@ -1,14 +1,13 @@
-"use client"
+"use client";
 
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "@/app/components/Breadcrumbs/Breadcrumb";
 import { Metadata } from "next";
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler } from "react-hook-form";
 import { signInWithCredentials } from "@/app/actions/authActions";
 import { useRouter } from "next/navigation";
-
 
 // export const metadata: Metadata = {
 //   title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
@@ -16,9 +15,9 @@ import { useRouter } from "next/navigation";
 // };
 
 type Inputs = {
-  username: string
-  password: string
-}
+  username: string;
+  password: string;
+};
 
 const ROLE_HOME: Record<string, string> = {
   hr: "/admin",
@@ -26,41 +25,40 @@ const ROLE_HOME: Record<string, string> = {
 };
 
 const SignIn: React.FC = () => {
-
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const response = await signInWithCredentials(data)
+    const response = await signInWithCredentials(data);
 
     if (response.success) {
       try {
         const meRes = await fetch("/api/me"); // add this
         const meData = await meRes.json();
-        alert("Successfully signed in") // add this
+        alert("Successfully signed in"); // add this
         router.push(ROLE_HOME[meData.role] || "/admin");
       } catch (e) {
-        alert("Sign in failed")
+        alert("Sign in failed");
         console.log("fetch /api/me failed:", e); // add this
         router.push("/admin");
       }
     } else {
-      alert(response.message)
+      alert(response.message);
     }
-  }
+  };
 
   return (
     <>
       {/* <div className="flex justify-between w-full items-center p-5">
       <Breadcrumb pageName="Sign In"/>
       </div> */}
-      <div className="rounded-sm border-stroke dark:border-strokedark dark:bg-boxdark justify-center flex flex-col h-screen bg-[#000]">
+      <div className="border-stroke dark:border-strokedark dark:bg-boxdark flex h-screen flex-col justify-center rounded-sm bg-[#000]">
         <div className="flex flex-wrap items-center justify-center">
           {/* <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">
@@ -212,11 +210,16 @@ const SignIn: React.FC = () => {
           </div> */}
 
           <div className="border-stroke dark:border-strokedark min-w-[350px] border bg-white">
-            <div className="w-full p-4 sm:p-12.5 xl:p-17.5 flex justify-center flex-col">
+            <div className="sm:p-12.5 xl:p-17.5 flex w-full flex-col justify-center p-4">
               <div className="mb-1.5 flex justify-center">
-                <Image src={"/gs-digital-logo.svg"} alt="" width={200} height={100} />
+                <Image
+                  src={"/gs-digital-logo.svg"}
+                  alt=""
+                  width={200}
+                  height={100}
+                />
               </div>
-              <h2 className="mb-9 text-lg font-bold text-black dark:text-white text-center">
+              <h2 className="mb-9 text-center text-lg font-bold text-black dark:text-white">
                 Backend Console
               </h2>
 
@@ -230,7 +233,7 @@ const SignIn: React.FC = () => {
                       type="text"
                       {...register("username")}
 
-                      className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      className="border-stroke dark:border-form-strokedark dark:bg-form-input w-full rounded-lg border bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:text-white dark:focus:border-primary"
                     />
 
                     {/* <span className="absolute right-4 top-4">
@@ -262,7 +265,7 @@ const SignIn: React.FC = () => {
                       type="password"
                       {...register("password")}
 
-                      className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      className="border-stroke dark:border-form-strokedark dark:bg-form-input w-full rounded-lg border bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:text-white dark:focus:border-primary"
                     />
 
                     {/* <span className="absolute right-4 top-4">

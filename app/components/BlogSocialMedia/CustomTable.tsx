@@ -37,7 +37,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
   return (
     <section className={className}>
       <div
-        className={`border border-gray-200 overflow-x-auto ${tableWrapperClassName}`.trim()}
+        className={`overflow-x-auto border border-gray-200 ${tableWrapperClassName}`.trim()}
       >
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-[#F2F2F2]">
@@ -45,21 +45,21 @@ const CustomTable: React.FC<CustomTableProps> = ({
               {resolvedColumns.map((column) => (
                 <th
                   key={column.key}
-                  className={`px-6 py-3 text-left text-font19 font-medium text-dark tracking-wider border-r last:border-r-0 border-gray-200 ${column.headerClassName ?? ""}`.trim()}
+                  className={`text-dark border-r border-gray-200 px-6 py-3 text-left text-font19 font-medium tracking-wider last:border-r-0 ${column.headerClassName ?? ""}`.trim()}
                 >
                   {column.title}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 bg-white">
             {data.length > 0 ? (
               data.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {resolvedColumns.map((column) => (
                     <td
                       key={`${rowIndex}-${column.key}`}
-                      className={`px-6 py-4 align-top border-r last:border-r-0 border-gray-200 ${column.cellClassName ?? ""}`.trim()}
+                      className={`border-r border-gray-200 px-6 py-4 align-top last:border-r-0 ${column.cellClassName ?? ""}`.trim()}
                     >
                       <div className="text-font19 text-[#77787B]">
                         {row[column.key] ?? ""}

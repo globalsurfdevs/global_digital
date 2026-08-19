@@ -13,7 +13,8 @@ import alissar from "@/public/assets/testimonials/alissar.jpeg";
 export const firstSection = {
   image: "images/end-to-end-digitalmarketing/banner.jpg",
   imageAlt: "Engineering and Infrastructure",
-  title: "End-to-end digital marketing built specifically for the built industry",
+  title:
+    "End-to-end digital marketing built specifically for the built industry",
   description:
     "A complete digital growth package designed for built environment teams to drive your growth and convert quality prospects.",
   items: [
@@ -50,14 +51,28 @@ export const featureStrip = {
   ],
 };
 
-
 export const trustedBy = {
   label: "Trusted by Built Environment leaders",
   logos: [
     { _id: "1", name: "Innovo", image: assets.innovodg, alt: "Innovo" },
-    { _id: "2", name: "Sobha Constructions", image: assets.sobha, alt: "Sobha Constructions" },
-    { _id: "3", name: "Shapoorji Pallonji", image: assets.sp, alt: "Shapoorji Pallonji" },
-    { _id: "4", name: "Imtiaz Developments", image: assets.imtiaz, alt: "Imtiaz Developments" },
+    {
+      _id: "2",
+      name: "Sobha Constructions",
+      image: assets.sobha,
+      alt: "Sobha Constructions",
+    },
+    {
+      _id: "3",
+      name: "Shapoorji Pallonji",
+      image: assets.sp,
+      alt: "Shapoorji Pallonji",
+    },
+    {
+      _id: "4",
+      name: "Imtiaz Developments",
+      image: assets.imtiaz,
+      alt: "Imtiaz Developments",
+    },
     { _id: "5", name: "u", image: assets.ulogo, alt: "Emblem" },
     { _id: "6", name: "Sobha", image: assets.sobha, alt: "Sobha" },
   ],
@@ -65,11 +80,13 @@ export const trustedBy = {
 
 export const whatWeHearData = {
   title: "What we usually hear in the first meeting.",
-  description: "From Google rankings and AI search visibility to high-performing websites, social media & paid campaigns, content, and brand strategy, we help built environment businesses attract the right audience and turn digital attention into real business.",
+  description:
+    "From Google rankings and AI search visibility to high-performing websites, social media & paid campaigns, content, and brand strategy, we help built environment businesses attract the right audience and turn digital attention into real business.",
   data: [
     {
       id: 1,
-      title: "“Why aren't we getting shortlisted for tenders we're clearly qualified for?”",
+      title:
+        "“Why aren't we getting shortlisted for tenders we're clearly qualified for?”",
       desc: "Main contractor",
     },
     {
@@ -79,22 +96,26 @@ export const whatWeHearData = {
     },
     {
       id: 3,
-      title: "“I don't know what a bank or JV partner sees when they check us out.”",
+      title:
+        "“I don't know what a bank or JV partner sees when they check us out.”",
       desc: "Developer",
     },
     {
       id: 4,
-      title: "“We're invisible when someone asks ChatGPT who to call in our industry.” ",
+      title:
+        "“We're invisible when someone asks ChatGPT who to call in our industry.” ",
       desc: "Manufacturer",
     },
     {
       id: 5,
-      title: "“Our website doesn't reflect the scale of what we actually build.” ",
+      title:
+        "“Our website doesn't reflect the scale of what we actually build.” ",
       desc: "Industrial group",
     },
     {
       id: 6,
-      title: "“We were burned by an agency before and have nothing to show for it.”",
+      title:
+        "“We were burned by an agency before and have nothing to show for it.”",
       desc: "Heard in every sector ",
     },
   ],
@@ -139,10 +160,8 @@ export const industriesData = {
       iconAlt: "Manufacturing",
       slug: "",
     },
-    
   ],
 };
-
 
 export const credibilityStats = {
   title: "The Numbers Behind Our Credibility",
@@ -166,7 +185,11 @@ export const packageChecklist = {
       _id: "1",
       heading: "Foundations",
       items: [
-        { _id: "1", title: "A written plan", subText: "Reviewed every 3 months" },
+        {
+          _id: "1",
+          title: "A written plan",
+          subText: "Reviewed every 3 months",
+        },
         { _id: "2", title: "Website upkeep", subText: "Safe, fast, online" },
       ],
     },
@@ -185,19 +208,39 @@ export const packageChecklist = {
       _id: "3",
       heading: "Proof it works",
       items: [
-        { _id: "1", title: "Monthly report", subText: "One page, five minutes" },
-        { _id: "2", title: "Tracking set up properly", subText: "Named sources" },
+        {
+          _id: "1",
+          title: "Monthly report",
+          subText: "One page, five minutes",
+        },
+        {
+          _id: "2",
+          title: "Tracking set up properly",
+          subText: "Named sources",
+        },
         { _id: "3", title: "Monthly call", subText: "With a senior person" },
         { _id: "4", title: "Website improvements", subText: "Every 3 months" },
-        { _id: "5", title: "Technical checks", subText: "Problems caught early" },
+        {
+          _id: "5",
+          title: "Technical checks",
+          subText: "Problems caught early",
+        },
       ],
     },
     {
       _id: "4",
       heading: "Extra edge",
       items: [
-        { _id: "1", title: "Competitor comparison", subText: "3 rivals, every 3 months" },
-        { _id: "2", title: "Posts for your boss", subText: "4 a month, in their voice" },
+        {
+          _id: "1",
+          title: "Competitor comparison",
+          subText: "3 rivals, every 3 months",
+        },
+        {
+          _id: "2",
+          title: "Posts for your boss",
+          subText: "4 a month, in their voice",
+        },
       ],
     },
   ],
@@ -206,9 +249,11 @@ export const packageChecklist = {
 export const Testimonials = {
   title: "12 Years. 140 Clients. Zero unverified claims.",
   topTitle: "Testimonials",
-  starText: "We hold our reporting to the same engineering standards as your projects, 100% documented, tested, and client-verified.",
+  starText:
+    "We hold our reporting to the same engineering standards as your projects, 100% documented, tested, and client-verified.",
   bottomText: "",
-  description: "Don't just take our word for it. Here's what some of our clients have to say about working with us.",
+  description:
+    "Don't just take our word for it. Here's what some of our clients have to say about working with us.",
   items: [
     {
       image: karim,
@@ -286,7 +331,8 @@ export const faqSection = {
     },
     {
       _id: "3",
-      question: "We get most of our work through referrals. Why do we need this?",
+      question:
+        "We get most of our work through referrals. Why do we need this?",
       answer:
         "Referrals may open the door, but your digital presence helps you win the opportunity. When prospects or procurement teams research your company, your website should reinforce their confidence. This package ensures your online presence supports the reputation you have already built.",
     },
@@ -322,7 +368,6 @@ export const faqSection = {
     },
   ],
 };
-
 
 export const serviceData = {
   _id: "",

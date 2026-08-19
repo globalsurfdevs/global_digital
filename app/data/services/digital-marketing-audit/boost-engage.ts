@@ -1,4 +1,3 @@
-
 import { assets } from "@/public/assets/assets";
 
 export const boostEngage = {
@@ -18,6 +17,6 @@ export const boostEngage = {
       id: 3,
       icon: assets.boost3,
       title: "No commitments, ever ",
-    } 
+    },
   ],
 };

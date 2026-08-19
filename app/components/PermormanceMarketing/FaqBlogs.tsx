@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 type PartnerDataType = {
   title: string;
   description: string | string[]; // ✅ support single or multiple paragraphs
-  bullets?: string[];             // ✅ optional bullet list
+  bullets?: string[]; // ✅ optional bullet list
 };
 
 type PartnerListProps = {
@@ -24,11 +24,11 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => {
   const [open, setOpen] = useState<number | null>(null);
 
   const toggle = (itemIndex: number) => {
-    setOpen(prev => (prev === itemIndex ? null : itemIndex));
+    setOpen((prev) => (prev === itemIndex ? null : itemIndex));
   };
 
   return (
-  <div className={` ${bgcolor  ? `bg-[${bgcolor }]` : 'bg-white'}` }>
+    <div className={` ${bgcolor ? `bg-[${bgcolor}]` : "bg-white"}`}>
       <div className="container mx-auto py-4">
         <motion.div
           initial="hidden"
@@ -77,7 +77,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => {
                           item.description.map((para, i) => (
                             <p
                               key={i}
-                              className="text-19 fnt-lexend text-gray1 mb-3 last:mb-0"
+                              className="text-19 fnt-lexend mb-3 text-gray1 last:mb-0"
                             >
                               {para}
                             </p>
@@ -90,7 +90,7 @@ const FAQ: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => {
 
                         {/* ✅ optional bullets */}
                         {item.bullets && item.bullets.length > 0 && (
-                          <ul className="mt-3 list-disc list-inside space-y-1 text-19 fnt-lexend text-gray1">
+                          <ul className="text-19 fnt-lexend mt-3 list-inside list-disc space-y-1 text-gray1">
                             {item.bullets.map((bullet, idx) => (
                               <li key={idx}>{bullet}</li>
                             ))}

@@ -82,8 +82,6 @@
 //   );
 // }
 
-
-
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getBlogBySlug } from "@/app/lib/blog.service";

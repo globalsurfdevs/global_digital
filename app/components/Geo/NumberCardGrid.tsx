@@ -24,7 +24,7 @@ const NumberCardGrid: React.FC<NumberCardGridProps> = ({
 }) => {
   return (
     <div className={`container mx-auto py-4 ${leftzero ? "relative" : ""}`}>
-      <div className={`secps flex flex-col ${ leftzero ? "left0w" : "" } `} >
+      <div className={`secps flex flex-col ${leftzero ? "left0w" : ""} `}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -39,7 +39,7 @@ const NumberCardGrid: React.FC<NumberCardGridProps> = ({
           }}
         >
           {title && (
-            <h2 className="title-65 text-white mb-10 xl:mb-60" >{title}</h2>
+            <h2 className="title-65 mb-10 text-white xl:mb-60">{title}</h2>
           )}
         </motion.div>
 
@@ -62,19 +62,20 @@ const NumberCardGrid: React.FC<NumberCardGridProps> = ({
             }`}
           >
             {data.map((item, index) => (
-              <div
-                key={item.id}
-                className="group flex flex-col"
-              >
+              <div key={item.id} className="group flex flex-col">
                 <div className="mb-10 h-[1px] bg-white">
                   <div className="h-full w-0 bg-primary transition-all duration-500 group-hover:w-full"></div>
                 </div>
-                <span className="mb-4 md:mb-10 inline-flex w-fit items-center justify-center bg-primary px-[11px] py-[8px] text-28 
-                font-normal leading-none text-white lg:text-30">
+                <span
+                  className="text-28 lg:text-30 mb-4 inline-flex w-fit items-center justify-center bg-primary px-[11px] py-[8px] 
+                font-normal leading-none text-white md:mb-10"
+                >
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-30 leading-[1.2] text-white whitespace-pre-line">{item.title} </h3>
-                <p className="fnt-lexend  max-w-[360px] text-19 leading-[1.35] text-[#8E8E93] mt-4 md:mt-8 lg:mt-10">
+                <h3 className="text-30 whitespace-pre-line leading-[1.2] text-white">
+                  {item.title}{" "}
+                </h3>
+                <p className="fnt-lexend  text-19 mt-4 max-w-[360px] leading-[1.35] text-[#8E8E93] md:mt-8 lg:mt-10">
                   {item.dec}
                 </p>
               </div>

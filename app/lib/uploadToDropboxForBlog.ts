@@ -8,16 +8,13 @@ if (!APP_KEY) {
   throw new Error("DROPBOX_APP_KEY not in env");
 }
 
-if(!REFRESH_TOKEN){
-  throw new Error("DROPBOX_REFRESH_TOKEN not in env")
+if (!REFRESH_TOKEN) {
+  throw new Error("DROPBOX_REFRESH_TOKEN not in env");
 }
 
-if(!APP_SECRET){
-  throw new Error("DROPBOX_APP_SECRET not in env")
+if (!APP_SECRET) {
+  throw new Error("DROPBOX_APP_SECRET not in env");
 }
-
-
-
 
 interface TokenInfo {
   accessToken: string;
@@ -36,7 +33,6 @@ async function getAccessToken(): Promise<string> {
     return tokenInfo.accessToken;
   }
 
-  
   try {
     const response = await fetch("https://api.dropboxapi.com/oauth2/token", {
       method: "POST",
@@ -92,7 +88,10 @@ async function getDropboxInstance(): Promise<Dropbox> {
   return dropboxInstance;
 }
 
-export async function uploadToDropboxForBlog(file: File, filePath: string): Promise<{ path: string; url: string; }> {
+export async function uploadToDropboxForBlog(
+  file: File,
+  filePath: string,
+): Promise<{ path: string; url: string }> {
   try {
     const dropbox = await getDropboxInstance();
     const fileContent = await file.arrayBuffer();
@@ -105,35 +104,40 @@ export async function uploadToDropboxForBlog(file: File, filePath: string): Prom
     if (!response.result.path_display) {
       throw new Error("Failed to retrieve uploaded file path");
     }
-    const sharedLinkResponse = await dropbox.sharingCreateSharedLinkWithSettings({
-      path: response.result.path_display,
-      settings: {
-        requested_visibility: { ".tag": "public" },
-      },
-    });
+    const sharedLinkResponse =
+      await dropbox.sharingCreateSharedLinkWithSettings({
+        path: response.result.path_display,
+        settings: {
+          requested_visibility: { ".tag": "public" },
+        },
+      });
     console.log("Uploaded file path:", sharedLinkResponse);
     if (!sharedLinkResponse.result.url) {
       throw new Error("Failed to create shared link");
     }
 
     // Convert the shared link to a direct download link
-    const directLink = sharedLinkResponse.result.url.replace("www.dropbox.com", "dl.dropboxusercontent.com");
+    const directLink = sharedLinkResponse.result.url.replace(
+      "www.dropbox.com",
+      "dl.dropboxusercontent.com",
+    );
 
     console.log("Direct download link:", directLink);
-    return { path: response.result.path_display, url: directLink }
-
+    return { path: response.result.path_display, url: directLink };
   } catch (error) {
     console.error("Error uploading file to Dropbox:", error);
     throw error;
   }
 }
 
-export async function removeFromDropboxForBlog(filePath: string): Promise<boolean> {
+export async function removeFromDropboxForBlog(
+  filePath: string,
+): Promise<boolean> {
   try {
-    console.log("path",filePath)
+    console.log("path", filePath);
     const dropbox = await getDropboxInstance();
     const response = await dropbox.filesDeleteV2({ path: filePath });
-    console.log(response)
+    console.log(response);
     console.log("File deleted successfully:", response);
     return true;
   } catch (error) {

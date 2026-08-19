@@ -7,8 +7,7 @@ export const getHome = unstable_cache(
   async () => {
     await connectDB();
 
-    const home = await Home.findOne({})
-      .lean();
+    const home = await Home.findOne({}).lean();
 
     return JSON.parse(JSON.stringify(home));
   },
@@ -16,5 +15,5 @@ export const getHome = unstable_cache(
   {
     tags: ["home"],
     revalidate: 60, // same as your fetch
-  }
+  },
 );

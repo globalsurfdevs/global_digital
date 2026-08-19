@@ -5,7 +5,8 @@ import FAQ from "../../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 import LogoSwiper from "../../../components/MarketingAutomation/AutomationSwiper";
 
-import {Matslogo,
+import {
+  Matslogo,
   BannerSection,
   Wecanhelp,
   OurServices,
@@ -29,13 +30,12 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
-    openGraph: {
+  openGraph: {
     title: string;
     siteName: string;
     url: string;
     description: string;
     type: string;
-   
   };
 };
 
@@ -55,7 +55,6 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Nurture leads, segment audiences, and refine touchpoints effortlessly. GS Digital offers top-tier marketing automation services in Dubai. Get a quote today!",
       type: "website",
-      
     },
   };
 }
@@ -95,7 +94,7 @@ const page = () => {
         hrcontent={true}
       />
       <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-      <LogoSwiper mtslogo={Matslogo[0]} slideBg={true} />
+        <LogoSwiper mtslogo={Matslogo[0]} slideBg={true} />
       </div>
 
       <section className="pb-[50px] lg:pb-[150px]">
@@ -106,7 +105,7 @@ const page = () => {
         />
       </section>
 
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET'S CONNECT!" } />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET'S CONNECT!"} />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

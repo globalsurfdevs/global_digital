@@ -10,7 +10,7 @@ const leadSchema = new mongoose.Schema(
     date: { type: String, required: true },
     timeSlot: { type: String, required: true },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.models.Lead || mongoose.model("Lead", leadSchema);

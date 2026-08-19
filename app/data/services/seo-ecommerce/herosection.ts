@@ -3,16 +3,16 @@ import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
-    image: assets.bannerec, 
+    image: assets.bannerec,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Digital Marketing",url: "/digital-marketing-services" },
-      { label: "SEO",url: "/seo-agency-dubai" },
-      { label: "Ecommerce SEO",url: "" },
+      { label: "Digital Marketing", url: "/digital-marketing-services" },
+      { label: "SEO", url: "/seo-agency-dubai" },
+      { label: "Ecommerce SEO", url: "" },
     ],
-    title:
-      "Ecommerce SEO Services in Dubai",
-    subtitle:"Driving Online Sales With Tailored Ecommerce SEO Strategies and Product Page Optimization",
+    title: "Ecommerce SEO Services in Dubai",
+    subtitle:
+      "Driving Online Sales With Tailored Ecommerce SEO Strategies and Product Page Optimization",
     sub: [
       {
         stitle: "OUR APPROACH",

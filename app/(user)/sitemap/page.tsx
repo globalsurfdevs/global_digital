@@ -1,4 +1,4 @@
-import SitemapList  from "@/app/components/Sitemap/SitemapList";
+import SitemapList from "@/app/components/Sitemap/SitemapList";
 interface Canonicals {
   canonical: string;
 }

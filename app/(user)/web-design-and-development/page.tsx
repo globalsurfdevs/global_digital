@@ -10,7 +10,7 @@ import Partner from "../../components/PermormanceMarketing/Partner";
 import Testimonials from "../../components/HomePage/Testimonials";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import {WebDesignDevelopmentSchema} from "../../components/Schema/OfferCatalog";
+import { WebDesignDevelopmentSchema } from "../../components/Schema/OfferCatalog";
 
 import { BannerSection } from "../../data/services/web-design-development/herosection";
 import { AreaExpertise } from "../../data/services/web-design-development/area-of-expertise";
@@ -33,8 +33,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title:
-      "Custom Website Design & Development Dubai | Web Solutions",
+    title: "Custom Website Design & Development Dubai | Web Solutions",
     description:
       "Top web design & development agency in Dubai. We build fast, responsive, SEO-friendly websites that look stunning & convert. Request your free consultation.",
     alternates: {

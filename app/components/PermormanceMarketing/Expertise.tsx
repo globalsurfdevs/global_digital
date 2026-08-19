@@ -30,7 +30,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
 }) => {
   return (
     <div className="container mx-auto py-4">
-      <div className="flex flex-col pb-8 pt-8 md:pb-[50px] md:pt-[50px] lg:pb-[150px] lg:pt-[136px] padding0">
+      <div className="padding0 flex flex-col pb-8 pt-8 md:pb-[50px] md:pt-[50px] lg:pb-[150px] lg:pt-[136px]">
         <div className="mb-5 lg:mb-[56px]">
           <motion.div
             initial="hidden"
@@ -59,7 +59,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
 
         <div>
           <motion.div
-            className={`grid grid-cols-1 gap-5  md:grid-cols-2 xl:grid-cols-3 xl:gap-0  ${colnum ? `xxl:grid-cols-${colnum}` : 'xxl:grid-cols-4'} `}
+            className={`grid grid-cols-1 gap-5  md:grid-cols-2 xl:grid-cols-3 xl:gap-0  ${colnum ? `xxl:grid-cols-${colnum}` : "xxl:grid-cols-4"} `}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -133,8 +133,7 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                         </h3>
 
                         <div className=" overflow-hidden">
-                          <p className="text-19 fnt-lexend cntsmd hided-content max-h-0 w-[102%] overflow-hidden pt-2 text-white opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100"
-                          >
+                          <p className="text-19 fnt-lexend cntsmd hided-content max-h-0 w-[102%] overflow-hidden pt-2 text-white opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100">
                             {expertise.desc}
                           </p>
                         </div>

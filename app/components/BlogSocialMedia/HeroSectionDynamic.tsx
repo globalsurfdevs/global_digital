@@ -121,7 +121,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       )}
       <div className="container mx-auto py-2" ref={nextContainerRef}>
-
         {Bannerdata.map((herosection: BannerSection) => (
           <div key={herosection.id}>
             <motion.div
@@ -139,96 +138,78 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               }}
             >
               <div
-                className={` ptcs0 border-b lg:pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] mb-[20px] sm:mb-[40px] lg:mb-[60px]  `}
+                className={` ptcs0 mb-[20px] border-b pt-[20px] sm:mb-[40px] sm:pt-[50px] lg:mb-[60px] lg:pb-10 lg:pt-[130px]  `}
               >
                 <div
-                  className={`flex  justify-between flex-col lg:flex-row  ${bannerlogp ? "items-start" : "items-end"}`}
+                  className={`flex  flex-col justify-between lg:flex-row  ${bannerlogp ? "items-start" : "items-end"}`}
                 >
-                  <div
-
-                  >
+                  <div>
                     <div>
                       {herosection.navigation && (
                         <nav className="mb-6 text-[20px]  text-[#77787B] lg:mb-8">
-                          <ul className="flex items-center space-x-2 bredcbs">
+                          <ul className="bredcbs flex items-center space-x-2">
                             {herosection.navigation.map((navItem, index) => (
                               <React.Fragment key={index}>
-                                <li  >
+                                <li>
                                   {navItem.url ? (
                                     <Link
                                       href={navItem.url}
-                                      className="hover:underline text-[10px] sm:text-font14 lg:text-font19 "
+                                      className="text-[10px] hover:underline sm:text-font14 lg:text-font19 "
                                     >
                                       {navItem.label}
                                     </Link>
                                   ) : (
-                                    <span className="text-[#77787B] text-[10px] sm:text-font14 lg:text-font19">
+                                    <span className="text-[10px] text-[#77787B] sm:text-font14 lg:text-font19">
                                       {navItem.label}
                                     </span>
                                   )}
                                 </li>
                                 {index <
-                                  (herosection.navigation?.length || 0) -
-                                  1 && (
-                                    <li>
-
-                                      <div className="h-[14px] w-[14px] bg-primary"></div>
-
-                                    </li>
-                                  )}
+                                  (herosection.navigation?.length || 0) - 1 && (
+                                  <li>
+                                    <div className="h-[14px] w-[14px] bg-primary"></div>
+                                  </li>
+                                )}
                               </React.Fragment>
                             ))}
                           </ul>
                         </nav>
                       )}
                     </div>
-
-
                   </div>
                   <div>
-                    <p className="hover:underline text-[10px] sm:text-font14 lg:text-font19 text-[#77787B]">Published on {herosection.publishedon}  |  Updated on {herosection.updatedon}
+                    <p className="text-[10px] text-[#77787B] hover:underline sm:text-font14 lg:text-font19">
+                      Published on {herosection.publishedon} | Updated on{" "}
+                      {herosection.updatedon}
                     </p>
-
                   </div>
-
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
                 <div className="grid grid-cols-1 pb-[50px] pt-[20px] lg:py-[150px]  ">
-                  <div className="col-span-2  mb-5 xl:mb-0">
-
-                  </div>
+                  <div className="col-span-2  mb-5 xl:mb-0"></div>
                   <div className="col-span-5 w-full  ">
-                    <h1 className="title-80 ">
-                      {herosection.title}
-                    </h1>
+                    <h1 className="title-80 ">{herosection.title}</h1>
                     <SocialShare />
-                    <div className="gap-[16px] mt-[40px] hidden ">
-
-                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                    <div className="mt-[40px] hidden gap-[16px] ">
+                      <div className="rounded-[14px] bg-[#C1C1C1]/30 p-2">
                         <Image src={assets.shareicon} alt="share" />
                       </div>
-                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                      <div className="rounded-[14px] bg-[#C1C1C1]/30 p-2">
                         <Image src={assets.linkedinicon} alt="linkedin" />
                       </div>
-                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                      <div className="rounded-[14px] bg-[#C1C1C1]/30 p-2">
                         <Image src={assets.facebbokicon} alt="facebook" />
                       </div>
-                      <div className="p-2 bg-[#C1C1C1]/30 rounded-[14px]">
+                      <div className="rounded-[14px] bg-[#C1C1C1]/30 p-2">
                         <Image src={assets.twittericon} alt="twitter" />
                       </div>
-
-
                     </div>
-
-
                   </div>
                 </div>
               </div>
             </motion.div>
-
           </div>
         ))}
-
       </div>
       <motion.div
         initial="hidden"
@@ -245,8 +226,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <div
           style={{ width: isSmallScreen ? "" : divWidth }}
-          className={`${isSmallScreen ? "container mx-auto py-2" : ""
-            } custom-class`}
+          className={`${
+            isSmallScreen ? "container mx-auto py-2" : ""
+          } custom-class`}
         >
           {!hideslider && (
             <div className="flex gap-5 bg-bglight  py-[17px]">
@@ -259,7 +241,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           )}
           {Bannerdata.map((herosection: BannerSection, index: number) => (
             <div className=" w-full bg-black " key={index}>
-              <Image src={herosection.image} className="w-full" alt={herosection.heroAlt || herosection.title || "Banner image"} width={1500} height={700} />
+              <Image
+                src={herosection.image}
+                className="w-full"
+                alt={herosection.heroAlt || herosection.title || "Banner image"}
+                width={1500}
+                height={700}
+              />
             </div>
           ))}
         </div>

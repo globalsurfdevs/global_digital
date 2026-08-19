@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 type PartnerDataType = {
   title: string;
   description: string | string[]; // ✅ support single or multiple paragraphs
-  bullets?: string[];             // ✅ optional bullet list
+  bullets?: string[]; // ✅ optional bullet list
 };
 
 type PartnerListProps = {
@@ -20,15 +20,20 @@ type PartnerListProps = {
   title?: string;
 };
 
-const BlogFaq: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => {
+const BlogFaq: React.FC<PartnerListProps> = ({
+  data,
+  subp,
+  bgcolor,
+  title,
+}) => {
   const [open, setOpen] = useState<number | null>(null);
 
   const toggle = (itemIndex: number) => {
-    setOpen(prev => (prev === itemIndex ? null : itemIndex));
+    setOpen((prev) => (prev === itemIndex ? null : itemIndex));
   };
 
   return (
-  <div className="">
+    <div className="">
       <div className="container mx-auto py-4">
         <motion.div
           initial="hidden"
@@ -44,8 +49,7 @@ const BlogFaq: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => 
           }}
         >
           <div className="grid pb-[50px] lg:pb-[100px] ">
-            <div className="col-span-2 mb-5 xl:mb-0">
-            </div>
+            <div className="col-span-2 mb-5 xl:mb-0"></div>
 
             <div className=" w-full">
               <h2 className="title-65">
@@ -77,18 +81,23 @@ const BlogFaq: React.FC<PartnerListProps> = ({ data, subp, bgcolor, title }) => 
                           item.description.map((para, i) => (
                             <p
                               key={i}
-                              className="text-19 fnt-lexend text-gray1 mb-3 last:mb-0"
+                              className="text-19 fnt-lexend mb-3 text-gray1 last:mb-0"
                             >
                               {para}
                             </p>
                           ))
                         ) : (
-                          <p className="text-19 fnt-lexend text-gray1" dangerouslySetInnerHTML={{ __html: item.description }} />
+                          <p
+                            className="text-19 fnt-lexend text-gray1"
+                            dangerouslySetInnerHTML={{
+                              __html: item.description,
+                            }}
+                          />
                         )}
 
                         {/* ✅ optional bullets */}
                         {item.bullets && item.bullets.length > 0 && (
-                          <ul className="mt-3 list-disc list-inside space-y-1 text-19 fnt-lexend text-gray1">
+                          <ul className="text-19 fnt-lexend mt-3 list-inside list-disc space-y-1 text-gray1">
                             {item.bullets.map((bullet, idx) => (
                               <li key={idx}>{bullet}</li>
                             ))}

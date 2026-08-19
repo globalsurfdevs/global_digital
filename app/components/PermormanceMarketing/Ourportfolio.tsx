@@ -94,7 +94,7 @@ const Ourportfolio = () => {
                         <Link href={itm.link} className="linkabs"></Link>
                       </div>
 
-                      <div className="p-5 relative w-fit">
+                      <div className="relative w-fit p-5">
                         <Image
                           src={itm.iconsimage}
                           alt={itm.title}
@@ -158,7 +158,7 @@ const Ourportfolio = () => {
                         <Link href={itm.link} className="linkabs"></Link>
                       </div>
 
-                      <div className="p-5 relative w-fit">
+                      <div className="relative w-fit p-5">
                         {/* <h3>{itm.title} </h3> */}
                         {/* <p className="mb-0">{itm.title}</p> */}
                         <Image

@@ -14,9 +14,7 @@ import {
   Frameworkdata,
   Cta,
   Faq,
-
 } from "../../../data/hospitality/datas";
-
 
 interface Canonicals {
   canonical: string;
@@ -27,7 +25,7 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
-   openGraph: {
+  openGraph: {
     title: string;
     siteName: string;
     url: string;
@@ -45,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
         "https://www.globalsurf.ae/industry/digital-marketing-agency-for-hospitality",
     },
     robots: "index, follow",
-     openGraph: {
+    openGraph: {
       title:
         "Hospitality Digital Marketing Agency | GS Digital | 25+ Experts, 11+ Years",
       siteName: "GS Digital",
@@ -58,7 +56,6 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
-     
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
@@ -68,13 +65,13 @@ const page = () => {
 
       <Framework
         title={Frameworkdata.title}
-      subtitle={Frameworkdata.subtitle}
+        subtitle={Frameworkdata.subtitle}
         data={Frameworkdata.data}
         bgcolor={"white"}
         colcount={2}
         maxchwidth={52}
       />
-      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data}  />
+      <DigitalMarketing title={AreaExpertise.title} data={AreaExpertise.data} />
       {/* <SuccessStories
         Clientsformsdata={Clientsformsdata}
         title1="Success Stories <br>That Speak for Themselves"
@@ -85,7 +82,6 @@ const page = () => {
         data={Cta}
         redlast={true}
         ctabbutton={"GET A FREE CONSULTATION"}
-        
       />
       <Expertise
         title={IndustriesWeServe.title}

@@ -23,7 +23,6 @@ export async function sendMailWithAttachments({
   fields: any;
   attachments?: Attachment[];
 }) {
-
   if (type == "career") {
     const { error } = await resend.emails.send({
       from: "Enquiry <enquiry@globalsurf.ae>",

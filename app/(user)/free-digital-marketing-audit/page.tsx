@@ -9,12 +9,16 @@ import TrustedByBrands from "../../components/DigitalMarketingAudit/TrustedByBra
 import { BannerSection } from "../../data/services/digital-marketing-audit/herosection";
 import { boostEngage } from "../../data/services/digital-marketing-audit/boost-engage";
 import { OurServices } from "../../data/services/digital-marketing-audit/our-services";
-import { Frameworkdata,Trustedbrands, IndustriesWeServe,tpcontent } from "../../data/services/digital-marketing-audit/framework";
+import {
+  Frameworkdata,
+  Trustedbrands,
+  IndustriesWeServe,
+  tpcontent,
+} from "../../data/services/digital-marketing-audit/framework";
 
 import AuditSecTwo from "@/app/components/DigitalMarketingAudit/AuditSecTwo";
 import Expertiseheimg from "@/app/components/EcomIndustry/Expertise";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
-
 
 interface Canonicals {
   canonical: string;
@@ -107,7 +111,13 @@ header nav div:nth-child(6) {
         />
       </section>
       <AuditSecTwo title={boostEngage.title} data={boostEngage.data} />
-      <Services bgcolor ="bg-dgray" title={OurServices.title} hrcontent={true} description={OurServices.desc} data={OurServices.data} />
+      <Services
+        bgcolor="bg-dgray"
+        title={OurServices.title}
+        hrcontent={true}
+        description={OurServices.desc}
+        data={OurServices.data}
+      />
       <div className="mnstsaq bg-black text-white">
         <Framework
           title={Frameworkdata.title}
@@ -116,15 +126,12 @@ header nav div:nth-child(6) {
           colcount={3}
         />
       </div>
-      <Expertiseheimg
-        title={tpcontent.title}
-        data={tpcontent.data}
-      />
+      <Expertiseheimg title={tpcontent.title} data={tpcontent.data} />
       <Testimonials />
-      
+
       <TrustedByBrands
         title={Trustedbrands.title}
-        data={Trustedbrands.data} 
+        data={Trustedbrands.data}
         maxchwidth={20}
         subttle={Trustedbrands.subttle}
       />
@@ -133,7 +140,7 @@ header nav div:nth-child(6) {
         data={IndustriesWeServe.data}
         colnum={3}
       />
-      <RequestFreeAudit  />
+      <RequestFreeAudit />
     </div>
   );
 };

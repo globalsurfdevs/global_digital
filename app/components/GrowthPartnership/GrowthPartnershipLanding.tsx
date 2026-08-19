@@ -44,8 +44,6 @@ import { submitBooking } from "@/app/actions/submitBooking";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 
-
-
 /* ============================================================
    Shared design tokens (Tailwind arbitrary values reference these)
    red        #E63E31   red-dk   #C9332A
@@ -68,7 +66,7 @@ function useReveal<T extends HTMLElement>(delayMs = 0) {
     if (!el) return;
 
     const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     if (prefersReduced) {
       setRevealed(true);
@@ -84,15 +82,16 @@ function useReveal<T extends HTMLElement>(delayMs = 0) {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -60px" }
+      { threshold: 0.12, rootMargin: "0px 0px -60px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   const style = { transitionDelay: `${delayMs}ms` };
-  const className = `transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-    }`;
+  const className = `transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${
+    revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+  }`;
 
   return { ref, className, style };
 }
@@ -114,7 +113,11 @@ function Reveal({
   const { ref, className: revealClass, style } = useReveal<HTMLElement>(delay);
   const Component = Tag as any;
   return (
-    <Component ref={ref} style={style} className={`${revealClass} ${className}`}>
+    <Component
+      ref={ref}
+      style={style}
+      className={`${revealClass} ${className}`}
+    >
       {children}
     </Component>
   );
@@ -157,7 +160,7 @@ function ScrollProgress() {
   return (
     <div
       aria-hidden
-      className="fixed top-0 left-0 h-[2px] bg-[#E63E31] z-[100] pointer-events-none transition-[width] duration-100 linear"
+      className="linear pointer-events-none fixed left-0 top-0 z-[100] h-[2px] bg-[#E63E31] transition-[width] duration-100"
       style={{ width: `${width}%` }}
     />
   );
@@ -177,13 +180,15 @@ function Kick({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-2.5 mb-5 ${center ? "mx-auto" : ""
-        }`}
+      className={`mb-5 inline-flex items-center gap-2.5 ${
+        center ? "mx-auto" : ""
+      }`}
     >
-      <i className="w-2 h-2 bg-[#E63E31] block flex-none" />
+      <i className="block h-2 w-2 flex-none bg-[#E63E31]" />
       <span
-        className={`font-medium text-[11px] tracking-[0.12em] uppercase ${dark ? "text-white/50" : "text-[#77787B]"
-          }`}
+        className={`text-[11px] font-medium uppercase tracking-[0.12em] ${
+          dark ? "text-white/50" : "text-[#77787B]"
+        }`}
       >
         {label}
       </span>
@@ -245,7 +250,6 @@ function Btn({
   );
 }
 
-
 function Marquee({
   children,
   durationSec = 42,
@@ -261,7 +265,7 @@ function Marquee({
   const [dragging, setDragging] = useState(false);
   const [hovered, setHovered] = useState(false);
   const dragState = useRef<{ startX: number; startOffset: number } | null>(
-    null
+    null,
   );
   const [manualOffset, setManualOffset] = useState(0);
 
@@ -296,7 +300,7 @@ function Marquee({
       onPointerCancel={endDrag}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-    // style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
+      // style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
     >
       <style jsx>{`
         @keyframes marqueeScroll {
@@ -315,7 +319,7 @@ function Marquee({
       `}</style>
       <div
         ref={trackRef}
-        className="marquee-track flex gap-3.5 w-max"
+        className="marquee-track flex w-max gap-3.5"
         style={{
           animationDuration: `${durationSec}s`,
           animationDirection: reverse ? "reverse" : "normal",
@@ -356,38 +360,39 @@ function Hero() {
   ];
 
   return (
-    <section className="bg-black text-white relative overflow-hidden pt-16 md:pt-20 lg:pt-[92px] pb-8 md:pb-10 lg:pb-11">
+    <section className="relative overflow-hidden bg-black pb-8 pt-16 text-white md:pb-10 md:pt-20 lg:pb-11 lg:pt-[92px]">
       {/* ambient glows */}
-      <div className="pointer-events-none absolute -top-80 -right-56 w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.18)_0%,rgba(230,62,49,0)_63%)]" />
-      <div className="pointer-events-none absolute -left-64 -bottom-80 w-[720px] h-[720px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.08)_0%,rgba(230,62,49,0)_66%)]" />
+      <div className="pointer-events-none absolute -right-56 -top-80 h-[900px] w-[900px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.18)_0%,rgba(230,62,49,0)_63%)]" />
+      <div className="pointer-events-none absolute -bottom-80 -left-64 h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.08)_0%,rgba(230,62,49,0)_66%)]" />
 
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.04fr_0.96fr] gap-9 lg:gap-16 items-stretch min-h-[520px]">
+      <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
+        <div className="grid min-h-[520px] grid-cols-1 items-stretch gap-9 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
           <Reveal className="flex flex-col justify-center">
             <Kick label="Growth Partnership" dark />
-            <h1 className="max-w-[17ch] text-white font-normal text-[34px] sm:text-5xl lg:text-[62px] leading-[1.16]">
+            <h1 className="max-w-[17ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[62px]">
               Everything your digital marketing needs,{" "}
               <span className="text-[#E63E31]">in one package</span>
             </h1>
-            <p className="mt-6 max-w-[46ch] text-white/60 text-base lg:text-lg leading-normal">
-              Fourteen coordinated services under one senior team. Built for
-              the UAE companies that build, make, supply and develop.
+            <p className="mt-6 max-w-[46ch] text-base leading-normal text-white/60 lg:text-lg">
+              Fourteen coordinated services under one senior team. Built for the
+              UAE companies that build, make, supply and develop.
             </p>
-            <div className="mt-8 flex items-center gap-6 flex-wrap">
+            <div className="mt-8 flex flex-wrap items-center gap-6">
               <Btn href="#book">Get Started</Btn>
             </div>
 
-            <div className="grid grid-cols-4 mt-11 border-t border-white/[0.16]">
+            <div className="mt-11 grid grid-cols-4 border-t border-white/[0.16]">
               {offers.map((o, i) => (
                 <div
                   key={o.n}
-                  className={`pt-5 px-4 first:pl-0 first:border-l-0 ${i > 0 ? "border-l border-white/[0.16]" : ""
-                    }`}
+                  className={`px-4 pt-5 first:border-l-0 first:pl-0 ${
+                    i > 0 ? "border-l border-white/[0.16]" : ""
+                  }`}
                 >
-                  <b className="block mb-2.5 font-semibold text-[9px] tracking-[0.12em] text-[#E63E31]">
+                  <b className="mb-2.5 block text-[9px] font-semibold tracking-[0.12em] text-[#E63E31]">
                     {o.n}
                   </b>
-                  <strong className="block font-medium text-base text-white leading-tight">
+                  <strong className="block text-base font-medium leading-tight text-white">
                     {o.label}
                   </strong>
                 </div>
@@ -395,20 +400,26 @@ function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={140} className="relative flex items-stretch justify-start lg:justify-end">
-            <div className="relative h-auto lg:h-full w-full max-w-[430px] lg:max-w-none aspect-[4/5] rounded-[18px] overflow-hidden border border-white/10 bg-[#0A0A0C]">
+          <Reveal
+            delay={140}
+            className="relative flex items-stretch justify-start lg:justify-end"
+          >
+            <div className="relative aspect-[4/5] h-auto w-full max-w-[430px] overflow-hidden rounded-[18px] border border-white/10 bg-[#0A0A0C] lg:h-full lg:max-w-none">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/hero-team.jpg"
                 alt="Engineers and designers reviewing drawings, material samples and site plans"
-                className="w-full h-full object-contain block"
+                className="block h-full w-full object-contain"
               />
             </div>
-            <div className="static lg:absolute lg:-left-6 lg:bottom-6 mt-3.5 lg:mt-0 max-w-none lg:max-w-[196px] bg-[#101012] border border-white/[0.14] text-white rounded-[13px] px-[18px] py-3.5 shadow-none lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
-              <b className="block font-normal text-[23px]">
-                12<em className="not-italic text-[#E63E31] text-xs align-super">+</em>
+            <div className="static mt-3.5 max-w-none rounded-[13px] border border-white/[0.14] bg-[#101012] px-[18px] py-3.5 text-white shadow-none lg:absolute lg:-left-6 lg:bottom-6 lg:mt-0 lg:max-w-[196px] lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
+              <b className="block text-[23px] font-normal">
+                12
+                <em className="align-super text-xs not-italic text-[#E63E31]">
+                  +
+                </em>
               </b>
-              <span className="block mt-1 text-[10.5px] leading-normal text-white/[0.56]">
+              <span className="mt-1 block text-[10.5px] leading-normal text-white/[0.56]">
                 years in the UAE. 250+ projects delivered.
               </span>
             </div>
@@ -416,18 +427,21 @@ function Hero() {
         </div>
       </div>
 
-      <Reveal delay={210} className="mt-11 md:mt-14 lg:mt-[74px] border-t border-white/[0.14] pt-7 w-full">
-        <div className="text-center text-[10px] tracking-[0.14em] uppercase text-white/[0.36] mb-5">
+      <Reveal
+        delay={210}
+        className="mt-11 w-full border-t border-white/[0.14] pt-7 md:mt-14 lg:mt-[74px]"
+      >
+        <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-white/[0.36]">
           Trusted by Built Environment leaders
         </div>
-        <div className="relative overflow-hidden group">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-[150px] z-[2] bg-gradient-to-r from-black to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-[150px] z-[2] bg-gradient-to-l from-black to-transparent" />
+        <div className="group relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-24 bg-gradient-to-r from-black to-transparent sm:w-[150px]" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-24 bg-gradient-to-l from-black to-transparent sm:w-[150px]" />
           <Marquee durationSec={42}>
             {loop.map((name, i) => (
               <div
                 key={`${name}-${i}`}
-                className="w-[170px] h-14 rounded-[10px] bg-white/[0.035] border border-dashed border-white/[0.15] flex items-center justify-center font-medium text-[10px] tracking-[0.1em] text-white/40 flex-none transition-colors duration-300 hover:border-[#E63E31] hover:text-[#E63E31] hover:bg-[#E63E31]/[0.07]"
+                className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-white/[0.15] bg-white/[0.035] text-[10px] font-medium tracking-[0.1em] text-white/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
               >
                 {name}
               </div>
@@ -496,21 +510,21 @@ function WhoItsFor() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="py-16 md:py-24 lg:py-[124px] relative bg-[#EFEAE0]">
+    <section className="relative bg-[#EFEAE0] py-16 md:py-24 lg:py-[124px]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_400px_at_85%_-10%,rgba(230,62,49,.09),transparent_70%)]" />
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.82fr_1.18fr] gap-8 lg:gap-16 items-stretch mt-7">
+      <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
+        <div className="mt-7 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
           <Reveal className="flex flex-col justify-between gap-8">
             <div>
               <Kick label="02 · Who it is for" />
-              <h2 className="max-w-[18ch] font-normal text-[30px] sm:text-4xl lg:text-[52px] leading-[1.12]">
+              <h2 className="max-w-[18ch] text-[30px] font-normal leading-[1.12] sm:text-4xl lg:text-[52px]">
                 Built for the sectors we know the best.
               </h2>
             </div>
-            <div className="relative overflow-hidden isolate bg-[#0A0A0A] text-white rounded-[18px] p-6 max-w-[440px] lg:max-w-none">
-              <div className="pointer-events-none absolute -right-[70px] -top-[90px] w-[230px] h-[230px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.3),transparent_68%)]" />
+            <div className="relative isolate max-w-[440px] overflow-hidden rounded-[18px] bg-[#0A0A0A] p-6 text-white lg:max-w-none">
+              <div className="pointer-events-none absolute -right-[70px] -top-[90px] h-[230px] w-[230px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.3),transparent_68%)]" />
               <div className="relative z-[1]">
-                <p className="font-normal text-lg sm:text-xl max-w-[20ch] leading-[1.24]">
+                <p className="max-w-[20ch] text-lg font-normal leading-[1.24] sm:text-xl">
                   See what the package would do for your name.
                 </p>
                 <Btn href="#book" variant="pale" className="mt-5 w-full">
@@ -521,23 +535,23 @@ function WhoItsFor() {
           </Reveal>
 
           <Reveal delay={70}>
-            <div className="flex flex-col border-t border-black/[0.16] isolate">
+            <div className="isolate flex flex-col border-t border-black/[0.16]">
               {SECTORS.map((s, i) => (
                 <div
                   key={s.name}
                   onMouseEnter={() => setHovered(i)}
                   onMouseLeave={() => setHovered((h) => (h === i ? null : h))}
-                  className="flex-1 flex relative isolate overflow-hidden border-b border-black/[0.11] transition-[background,box-shadow] duration-300 hover:bg-white hover:z-[3] hover:shadow-[0_14px_30px_-22px_rgba(10,10,10,.3)]"
+                  className="relative isolate flex flex-1 overflow-hidden border-b border-black/[0.11] transition-[background,box-shadow] duration-300 hover:z-[3] hover:bg-white hover:shadow-[0_14px_30px_-22px_rgba(10,10,10,.3)]"
                 >
-                  <div className="flex-1 grid grid-cols-[24px_minmax(0,1fr)] gap-5 content-center py-2.5 pr-6 transition-[padding] duration-300 group">
-                    <span className="font-semibold text-[10px] tracking-[0.14em] text-[#E63E31] self-start pt-1.5">
+                  <div className="group grid flex-1 grid-cols-[24px_minmax(0,1fr)] content-center gap-5 py-2.5 pr-6 transition-[padding] duration-300">
+                    <span className="self-start pt-1.5 text-[10px] font-semibold tracking-[0.14em] text-[#E63E31]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="min-w-0">
-                      <span className="block font-medium text-lg sm:text-xl lg:text-[22px] leading-[1.2]">
+                      <span className="block text-lg font-medium leading-[1.2] sm:text-xl lg:text-[22px]">
                         {s.name}
                       </span>
-                      <span className="block text-[13.5px] text-[#77787B] leading-snug mt-1.5 whitespace-normal sm:whitespace-nowrap">
+                      <span className="mt-1.5 block whitespace-normal text-[13.5px] leading-snug text-[#77787B] sm:whitespace-nowrap">
                         {s.sub}
                       </span>
                     </span>
@@ -549,31 +563,37 @@ function WhoItsFor() {
         </div>
 
         <div className="mt-10 md:mt-12 lg:mt-[60px]">
-          <Reveal className="flex items-center gap-3 mb-5">
-            <i className="w-2 h-2 bg-[#E63E31] block flex-none" />
-            <span className="font-normal text-[15px] sm:text-lg">
+          <Reveal className="mb-5 flex items-center gap-3">
+            <i className="block h-2 w-2 flex-none bg-[#E63E31]" />
+            <span className="text-[15px] font-normal sm:text-lg">
               What we usually hear in the first meeting.
             </span>
           </Reveal>
-          <Reveal delay={70} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <Reveal
+            delay={70}
+            className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {QUOTES.map(([quote, tag], i) => {
               const isUniversal = i === QUOTES.length - 1;
               const isHighlighted = hovered === i;
               return (
                 <div
                   key={tag}
-                  className={`rounded-[18px] p-6 text-[15px] leading-[1.42] transition-all duration-300 border ${isUniversal
-                    ? "bg-[#0A0A0A] text-white border-transparent"
-                    : "bg-white border-black/[0.11] shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)]"
-                    } ${isHighlighted
-                      ? "border-[#E63E31] -translate-y-1 shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)]"
+                  className={`rounded-[18px] border p-6 text-[15px] leading-[1.42] transition-all duration-300 ${
+                    isUniversal
+                      ? "border-transparent bg-[#0A0A0A] text-white"
+                      : "border-black/[0.11] bg-white shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)]"
+                  } ${
+                    isHighlighted
+                      ? "-translate-y-1 border-[#E63E31] shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)]"
                       : ""
-                    }`}
+                  }`}
                 >
                   {quote}
                   <em
-                    className={`not-italic block mt-3 font-semibold text-[9px] tracking-[0.12em] uppercase ${isUniversal ? "text-white/40" : "text-[#A0A1A4]"
-                      }`}
+                    className={`mt-3 block text-[9px] font-semibold uppercase not-italic tracking-[0.12em] ${
+                      isUniversal ? "text-white/40" : "text-[#A0A1A4]"
+                    }`}
                   >
                     {tag}
                   </em>
@@ -648,27 +668,27 @@ const WHY = [
 function WhatYouGet() {
   return (
     <section className="py-16 md:py-24 lg:py-[124px]">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-        <Reveal className="text-center max-w-none mx-auto">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+        <Reveal className="mx-auto max-w-none text-center">
           <Kick label="03 · What you get" center />
-          <h2 className="text-[27px] sm:text-4xl lg:text-[45px] leading-[1.15] mb-4">
+          <h2 className="mb-4 text-[27px] leading-[1.15] sm:text-4xl lg:text-[45px]">
             Everything in the package.
           </h2>
-          <p className="max-w-[64ch] mx-auto text-[#77787B] text-base lg:text-lg">
-            Fourteen services, every month, with one senior person in charge
-            of all of them.
+          <p className="mx-auto max-w-[64ch] text-base text-[#77787B] lg:text-lg">
+            Fourteen services, every month, with one senior person in charge of
+            all of them.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-10 lg:mt-13 items-stretch">
+        <div className="lg:mt-13 mt-10 grid grid-cols-1 items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {GROUPS.map((g, i) => (
             <Reveal
               key={g.title}
               delay={i * 70}
-              className="bg-white border border-black/[0.11] rounded-[18px] p-6 shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)] hover:border-black/[0.24]"
+              className="flex flex-col rounded-[18px] border border-black/[0.11] bg-white p-6 shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] transition-all duration-300 hover:-translate-y-1 hover:border-black/[0.24] hover:shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)]"
             >
-              <div className="pb-4 mb-1 border-b border-black/[0.11]">
-                <h3 className="font-semibold text-[11px] tracking-[0.12em] uppercase text-[#E63E31]">
+              <div className="mb-1 border-b border-black/[0.11] pb-4">
+                <h3 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#E63E31]">
                   {g.title}
                 </h3>
               </div>
@@ -676,15 +696,16 @@ function WhatYouGet() {
                 {g.items.map((item, idx) => (
                   <li
                     key={item.name}
-                    className={`text-[15px] py-3 flex gap-2.5 items-start ${idx !== g.items.length - 1
-                      ? "border-b border-black/[0.065]"
-                      : ""
-                      }`}
+                    className={`flex items-start gap-2.5 py-3 text-[15px] ${
+                      idx !== g.items.length - 1
+                        ? "border-b border-black/[0.065]"
+                        : ""
+                    }`}
                   >
-                    <span className="w-1.5 h-1.5 rounded-sm bg-[#E63E31] flex-none mt-1.5" />
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-sm bg-[#E63E31]" />
                     <span>
                       {item.name}
-                      <em className="not-italic block text-xs text-[#77787B] mt-1">
+                      <em className="mt-1 block text-xs not-italic text-[#77787B]">
                         {item.note}
                       </em>
                     </span>
@@ -695,30 +716,30 @@ function WhatYouGet() {
           ))}
         </div>
 
-        <Reveal className="flex justify-center my-14 md:my-16 lg:my-[76px]">
-          <span className="relative isolate overflow-hidden inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full bg-[#0A0A0A]">
+        <Reveal className="my-14 flex justify-center md:my-16 lg:my-[76px]">
+          <span className="relative isolate inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-[#0A0A0A] px-6 py-3 sm:px-7">
             <span className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-[radial-gradient(120%_180%_at_12%_0%,rgba(230,62,49,.34),transparent_62%)]" />
-            <i className="w-2 h-2 bg-[#E63E31] block flex-none" />
-            <span className="font-medium text-[10px] sm:text-[11px] tracking-[0.12em] uppercase text-[#FCFBF9] whitespace-normal sm:whitespace-nowrap text-center">
+            <i className="block h-2 w-2 flex-none bg-[#E63E31]" />
+            <span className="whitespace-normal text-center text-[10px] font-medium uppercase tracking-[0.12em] text-[#FCFBF9] sm:whitespace-nowrap sm:text-[11px]">
               Why this team? Not another agency
             </span>
           </span>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 text-left">
+        <div className="grid grid-cols-1 gap-3 text-left lg:grid-cols-3">
           {WHY.map((w, i) => (
             <Reveal
               key={w.tag}
               delay={i * 70}
-              className="bg-[#F6F3EC] border border-transparent rounded-[18px] p-7 transition-all duration-300 hover:bg-[#0A0A0A] hover:shadow-[0_20px_44px_-26px_rgba(10,10,10,.5)] hover:-translate-y-1 group"
+              className="group rounded-[18px] border border-transparent bg-[#F6F3EC] p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-[#0A0A0A] hover:shadow-[0_20px_44px_-26px_rgba(10,10,10,.5)]"
             >
-              <b className="block mb-3 font-semibold text-[9.5px] tracking-[0.12em] uppercase text-[#E63E31]">
+              <b className="mb-3 block text-[9.5px] font-semibold uppercase tracking-[0.12em] text-[#E63E31]">
                 {w.tag}
               </b>
-              <strong className="block font-medium text-[17px] transition-colors duration-300 group-hover:text-[#FCFBF9]">
+              <strong className="block text-[17px] font-medium transition-colors duration-300 group-hover:text-[#FCFBF9]">
                 {w.title}
               </strong>
-              <p className="mt-2.5 text-sm text-[#77787B] leading-[1.45] transition-colors duration-300 group-hover:text-[#FCFBF9]/70">
+              <p className="mt-2.5 text-sm leading-[1.45] text-[#77787B] transition-colors duration-300 group-hover:text-[#FCFBF9]/70">
                 {w.body}
               </p>
             </Reveal>
@@ -727,13 +748,17 @@ function WhatYouGet() {
 
         <Reveal
           delay={210}
-          className="mt-3 relative isolate overflow-hidden bg-[#0A0A0A] text-[#FCFBF9] rounded-[18px] px-6 sm:px-8 lg:px-11 py-6 sm:py-7 lg:py-9 flex items-center justify-between gap-6 flex-wrap flex-col sm:flex-row"
+          className="relative isolate mt-3 flex flex-col flex-wrap items-center justify-between gap-6 overflow-hidden rounded-[18px] bg-[#0A0A0A] px-6 py-6 text-[#FCFBF9] sm:flex-row sm:px-8 sm:py-7 lg:px-11 lg:py-9"
         >
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(80%_150%_at_6%_0%,rgba(230,62,49,.26),transparent_62%)]" />
-          <h3 className="font-normal text-[19px] sm:text-2xl lg:text-[26px] leading-tight text-white text-center sm:text-left">
+          <h3 className="text-center text-[19px] font-normal leading-tight text-white sm:text-left sm:text-2xl lg:text-[26px]">
             See how this would look for your name.
           </h3>
-          <Btn href="#book" variant="pale" className="w-full sm:w-auto flex-none">
+          <Btn
+            href="#book"
+            variant="pale"
+            className="w-full flex-none sm:w-auto"
+          >
             Book a 30 Minute Call
           </Btn>
         </Reveal>
@@ -833,34 +858,37 @@ function Results() {
   const active = PROOF[tab];
 
   return (
-    <section className="py-16 md:py-24 lg:py-[124px] relative bg-[#EFEAE0]" id="proof">
+    <section
+      className="relative bg-[#EFEAE0] py-16 md:py-24 lg:py-[124px]"
+      id="proof"
+    >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_400px_at_85%_-10%,rgba(230,62,49,.09),transparent_70%)]" />
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 text-center relative">
+      <div className="relative mx-auto max-w-[1200px] px-6 text-center md:px-10">
         <Reveal>
           <Kick label="04 · Results you can expect" center />
-          <h2 className="text-[30px] sm:text-4xl lg:text-[52px] leading-[1.12]">
+          <h2 className="text-[30px] leading-[1.12] sm:text-4xl lg:text-[52px]">
             What changes in six months.
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-10 lg:mt-13 text-left items-stretch">
+        <div className="lg:mt-13 mt-10 grid grid-cols-1 items-stretch gap-3 text-left sm:grid-cols-2 lg:grid-cols-3">
           {OUTCOMES.map((o, i) => (
             <Reveal
               key={o.num}
               delay={i * 70}
-              className="bg-white border border-black/[0.11] rounded-[18px] p-7 relative overflow-hidden shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] transition-all duration-300 hover:-translate-y-1 hover:border-black/[0.24] hover:shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)] group"
+              className="group relative overflow-hidden rounded-[18px] border border-black/[0.11] bg-white p-7 shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] transition-all duration-300 hover:-translate-y-1 hover:border-black/[0.24] hover:shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)]"
             >
-              <b className="block mb-3.5 font-normal text-[44px] leading-none tracking-[-0.02em] text-[#E63E31]/[0.16] transition-colors duration-300 group-hover:text-[#E63E31]/30">
+              <b className="mb-3.5 block text-[44px] font-normal leading-none tracking-[-0.02em] text-[#E63E31]/[0.16] transition-colors duration-300 group-hover:text-[#E63E31]/30">
                 {o.num}
               </b>
-              <strong className="block font-medium text-lg sm:text-xl">
+              <strong className="block text-lg font-medium sm:text-xl">
                 {o.title}
               </strong>
-              <p className="mt-2.5 text-[14.5px] text-[#77787B] leading-normal">
+              <p className="mt-2.5 text-[14.5px] leading-normal text-[#77787B]">
                 {o.body}
               </p>
               {o.disclaimer && (
-                <span className="block mt-3 text-[11px] text-[#E63E31] font-medium">
+                <span className="mt-3 block text-[11px] font-medium text-[#E63E31]">
                   {o.disclaimer}
                 </span>
               )}
@@ -868,7 +896,7 @@ function Results() {
           ))}
         </div>
 
-        <Reveal className="max-w-[64ch] mx-auto mt-8 md:mt-10 lg:mt-11 text-base lg:text-lg text-[#77787B]">
+        <Reveal className="mx-auto mt-8 max-w-[64ch] text-base text-[#77787B] md:mt-10 lg:mt-11 lg:text-lg">
           “Pick a moment and see what happens once all fourteen services are
           running together.”
         </Reveal>
@@ -876,7 +904,7 @@ function Results() {
         <Reveal delay={70}>
           <div
             role="tablist"
-            className="inline-flex bg-white border border-black/[0.11] rounded-full p-1.5 gap-0.5 mt-10 md:mt-12 lg:mt-[58px] shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] max-w-full overflow-x-auto"
+            className="mt-10 inline-flex max-w-full gap-0.5 overflow-x-auto rounded-full border border-black/[0.11] bg-white p-1.5 shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] md:mt-12 lg:mt-[58px]"
           >
             {["A Google search", "Asking an AI", "Your monthly report"].map(
               (label, i) => (
@@ -885,73 +913,75 @@ function Results() {
                   role="tab"
                   aria-selected={tab === i}
                   onClick={() => setTab(i)}
-                  className={`font-medium text-[12.5px] px-5 py-2.5 rounded-full whitespace-nowrap transition-colors duration-200 ${tab === i
-                    ? "bg-[#0A0A0A] text-white"
-                    : "text-[#77787B] hover:text-[#0A0A0A]"
-                    }`}
+                  className={`whitespace-nowrap rounded-full px-5 py-2.5 text-[12.5px] font-medium transition-colors duration-200 ${
+                    tab === i
+                      ? "bg-[#0A0A0A] text-white"
+                      : "text-[#77787B] hover:text-[#0A0A0A]"
+                  }`}
                 >
                   {label}
                 </button>
-              )
+              ),
             )}
           </div>
         </Reveal>
 
-        <Reveal delay={140} className="mt-8 rounded-[18px] overflow-hidden bg-white border border-black/[0.11] shadow-[0_34px_76px_-46px_rgba(10,10,10,.32)] text-left">
-          <div className="flex items-center gap-2.5 px-5 sm:px-6 py-3.5 bg-[#F6F4EF] border-b border-black/[0.065]">
-            <i className="w-[7px] h-[7px] bg-[#E63E31] block flex-none" />
-            <span className="text-[11.5px] text-[#77787B] overflow-hidden text-ellipsis whitespace-nowrap">
+        <Reveal
+          delay={140}
+          className="mt-8 overflow-hidden rounded-[18px] border border-black/[0.11] bg-white text-left shadow-[0_34px_76px_-46px_rgba(10,10,10,.32)]"
+        >
+          <div className="flex items-center gap-2.5 border-b border-black/[0.065] bg-[#F6F4EF] px-5 py-3.5 sm:px-6">
+            <i className="block h-[7px] w-[7px] flex-none bg-[#E63E31]" />
+            <span className="overflow-hidden text-ellipsis whitespace-nowrap text-[11.5px] text-[#77787B]">
               {active.url}
             </span>
-            <em className="ml-auto not-italic text-[9px] tracking-[0.12em] uppercase text-[#E63E31] border border-[#E63E31]/30 rounded-full px-2.5 py-1 flex-none">
+            <em className="ml-auto flex-none rounded-full border border-[#E63E31]/30 px-2.5 py-1 text-[9px] uppercase not-italic tracking-[0.12em] text-[#E63E31]">
               Illustrative
             </em>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2" key={tab}>
             <div className="p-6 sm:p-8">
-              <b className="flex items-center gap-2 mb-5 font-semibold text-[10px] tracking-[0.12em] uppercase text-[#77787B]">
-                <span className="w-[7px] h-[7px] bg-current flex-none" />
+              <b className="mb-5 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#77787B]">
+                <span className="h-[7px] w-[7px] flex-none bg-current" />
                 What they find today
               </b>
               {active.before.map((line, i) => (
                 <div
                   key={line}
                   style={{ animationDelay: `${i * 55}ms` }}
-                  className="py-3.5 border-b border-black/[0.065] last:border-0 flex gap-3 items-start opacity-0 animate-rowIn"
+                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 opacity-0 last:border-0"
                 >
-                  <i className="w-1.5 h-1.5 rounded-sm bg-[#D5D6D6] flex-none mt-2" />
+                  <i className="mt-2 h-1.5 w-1.5 flex-none rounded-sm bg-[#D5D6D6]" />
                   <p className="text-base leading-normal">{line}</p>
                 </div>
               ))}
             </div>
-            <div className="p-6 sm:p-8 border-t md:border-t-0 md:border-l border-black/[0.065] bg-gradient-to-b from-[#E63E31]/[0.028] to-transparent">
-              <b className="flex items-center gap-2 mb-5 font-semibold text-[10px] tracking-[0.12em] uppercase text-[#E63E31]">
-                <span className="w-[7px] h-[7px] bg-current flex-none" />
+            <div className="border-t border-black/[0.065] bg-gradient-to-b from-[#E63E31]/[0.028] to-transparent p-6 sm:p-8 md:border-l md:border-t-0">
+              <b className="mb-5 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#E63E31]">
+                <span className="h-[7px] w-[7px] flex-none bg-current" />
                 After six months with us
               </b>
               {active.after.map((line, i) => (
                 <div
                   key={line}
                   style={{ animationDelay: `${i * 55}ms` }}
-                  className="py-3.5 border-b border-black/[0.065] last:border-0 flex gap-3 items-start opacity-0 animate-rowIn"
+                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 opacity-0 last:border-0"
                 >
-                  <i className="w-1.5 h-1.5 rounded-sm bg-[#E63E31] flex-none mt-2" />
+                  <i className="mt-2 h-1.5 w-1.5 flex-none rounded-sm bg-[#E63E31]" />
                   <p className="text-base leading-normal">{line}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="flex gap-2.5 p-5 bg-[#F6F4EF] border-t border-black/[0.065] flex-wrap">
+          <div className="flex flex-wrap gap-2.5 border-t border-black/[0.065] bg-[#F6F4EF] p-5">
             {active.metrics.map(([label, source]) => (
               <span
                 key={label}
-                className="bg-white border border-black/[0.11] rounded-full px-4 py-2 text-xs text-[#77787B]"
+                className="rounded-full border border-black/[0.11] bg-white px-4 py-2 text-xs text-[#77787B]"
               >
-                <b className="font-semibold text-[#0A0A0A] text-xs">
-                  {label}
-                </b>{" "}
+                <b className="text-xs font-semibold text-[#0A0A0A]">{label}</b>{" "}
                 · {source}
               </span>
             ))}
@@ -1003,9 +1033,9 @@ function ToolRow({
 }) {
   const loop = [...toolSet, ...toolSet, ...toolSet];
   return (
-    <div className="overflow-hidden py-2 group">
+    <div className="group overflow-hidden py-2">
       <div
-        className="flex gap-2.5 w-max animate-marquee group-hover:[animation-play-state:paused]"
+        className="animate-marquee flex w-max gap-2.5 group-hover:[animation-play-state:paused]"
         style={{
           animationDuration: `${durationSec}s`,
           animationDirection: reverse ? "reverse" : "normal",
@@ -1015,9 +1045,9 @@ function ToolRow({
           {loop.map((name, i) => (
             <span
               key={`${name}-${i}`}
-              className="inline-flex items-center gap-2.5 bg-white/[0.045] border border-white/[0.12] rounded-full pl-3.5 pr-5 py-3 text-[15px] text-white/[0.82] flex-none transition-all duration-200 hover:border-[#E63E31] hover:text-white hover:bg-[#E63E31]/10 hover:-translate-y-0.5"
+              className="inline-flex flex-none items-center gap-2.5 rounded-full border border-white/[0.12] bg-white/[0.045] py-3 pl-3.5 pr-5 text-[15px] text-white/[0.82] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#E63E31] hover:bg-[#E63E31]/10 hover:text-white"
             >
-              <i className="w-[22px] h-[22px] rounded-md bg-white/[0.06] border border-dashed border-white/[0.18] block flex-none" />
+              <i className="block h-[22px] w-[22px] flex-none rounded-md border border-dashed border-white/[0.18] bg-white/[0.06]" />
               {name}
             </span>
           ))}
@@ -1029,20 +1059,20 @@ function ToolRow({
 
 function Tools() {
   return (
-    <section className="py-16 md:py-24 lg:py-[124px] bg-[#131317] text-white relative overflow-hidden">
+    <section className="relative overflow-hidden bg-[#131317] py-16 text-white md:py-24 lg:py-[124px]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_420px_at_12%_0%,rgba(230,62,49,.14),transparent_66%)]" />
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 text-center relative">
+      <div className="relative mx-auto max-w-[1200px] px-6 text-center md:px-10">
         <Reveal>
           <Kick label="05 · The tools we work in" dark center />
-          <h2 className="text-[30px] sm:text-4xl lg:text-[52px] leading-[1.12]">
+          <h2 className="text-[30px] leading-[1.12] sm:text-4xl lg:text-[52px]">
             The tools we work in on your behalf.
           </h2>
         </Reveal>
       </div>
 
       <Reveal delay={70} className="relative mt-10 md:mt-12 lg:mt-[60px]">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-[60px] sm:w-[170px] z-[3] bg-gradient-to-r from-[#131317] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-[60px] sm:w-[170px] z-[3] bg-gradient-to-l from-[#131317] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-[3] w-[60px] bg-gradient-to-r from-[#131317] to-transparent sm:w-[170px]" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-[3] w-[60px] bg-gradient-to-l from-[#131317] to-transparent sm:w-[170px]" />
         <ToolRow toolSet={TOOL_SETS.a} durationSec={38} />
         <ToolRow toolSet={TOOL_SETS.b} reverse durationSec={38} />
         <ToolRow toolSet={TOOL_SETS.c} durationSec={52} />
@@ -1059,20 +1089,47 @@ type PricingFeature = { title: string; note: string };
 const GROWTH_FEATURES: PricingFeature[] = [
   { title: "SEO", note: "Google ranking for the terms buyers actually search" },
   { title: "GEO", note: "Named correctly when a buyer asks an AI tool" },
-  { title: "Social Media", note: "Named correctly when a buyer asks an AI tool" },
+  {
+    title: "Social Media",
+    note: "Named correctly when a buyer asks an AI tool",
+  },
   { title: "Social Media", note: "LinkedIn, eight to ten posts a month" },
   { title: "Content Production", note: "One shoot day a month at your site" },
-  { title: "Executive Visibility", note: "Four posts a month for one senior leader" },
-  { title: "Website and Technical SEO", note: "Safe, fast, and checked every month" },
-  { title: "Analytics, CRO and Reporting", note: "Signed baseline, monthly report, quarterly audit" },
-  { title: "Strategy and Benchmarking", note: "One senior strategist, three competitors tracked" },
+  {
+    title: "Executive Visibility",
+    note: "Four posts a month for one senior leader",
+  },
+  {
+    title: "Website and Technical SEO",
+    note: "Safe, fast, and checked every month",
+  },
+  {
+    title: "Analytics, CRO and Reporting",
+    note: "Signed baseline, monthly report, quarterly audit",
+  },
+  {
+    title: "Strategy and Benchmarking",
+    note: "One senior strategist, three competitors tracked",
+  },
 ];
 
 const PLUS_FEATURES: PricingFeature[] = [
-  { title: "Multi entity coverage", note: "Several companies, brands or countries" },
-  { title: "Executive Visibility, expanded", note: "Posts for multiple leaders" },
-  { title: "Content Production, extended", note: "More shoot days and more social output" },
-  { title: "Competitive Intelligence, expanded", note: "A wider competitor set" },
+  {
+    title: "Multi entity coverage",
+    note: "Several companies, brands or countries",
+  },
+  {
+    title: "Executive Visibility, expanded",
+    note: "Posts for multiple leaders",
+  },
+  {
+    title: "Content Production, extended",
+    note: "More shoot days and more social output",
+  },
+  {
+    title: "Competitive Intelligence, expanded",
+    note: "A wider competitor set",
+  },
 ];
 
 const PRICING_INFO_CARDS = [
@@ -1091,8 +1148,9 @@ const PRICING_INFO_CARDS = [
 function CheckDot({ dark }: { dark: boolean }) {
   return (
     <span
-      className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] ${dark ? "bg-[#E63E31]" : "bg-[#77787B]/20"
-        }`}
+      className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] ${
+        dark ? "bg-[#E63E31]" : "bg-[#77787B]/20"
+      }`}
     >
       <svg
         width="9"
@@ -1115,7 +1173,13 @@ function CheckDot({ dark }: { dark: boolean }) {
 
 function PricingArrow({ dark }: { dark: boolean }) {
   return (
-    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M8.88346 1.26172L1.13281 8.8624"
         stroke={dark ? "#fff" : "#fff"}
@@ -1140,8 +1204,8 @@ function PricingCta({
   className?: string;
 }) {
   return (
-
-    <a href="#book"
+    <a
+      href="#book"
       className={`group flex w-full items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 ${className}`}
     >
       <span>{children}</span>
@@ -1155,17 +1219,16 @@ function PricingCta({
 function Pricing() {
   return (
     <section className="py-16 md:py-24 lg:py-[124px]" id="pricing">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <Reveal>
             <Kick label="06 · Pricing" />
-            <h2 className="text-[27px] sm:text-4xl lg:text-[45px] leading-[1.15] max-w-[20ch]">
+            <h2 className="max-w-[20ch] text-[27px] leading-[1.15] sm:text-4xl lg:text-[45px]">
               Find the structure that fits your roadmap.
             </h2>
-            <p className="mt-4 max-w-[58ch] text-[#77787B] text-base lg:text-lg">
-              Both senior-led. Both measured against a baseline signed in
-              week two. The difference is coverage, not who works on your
-              account.
+            <p className="mt-4 max-w-[58ch] text-base text-[#77787B] lg:text-lg">
+              Both senior-led. Both measured against a baseline signed in week
+              two. The difference is coverage, not who works on your account.
             </p>
           </Reveal>
 
@@ -1173,8 +1236,8 @@ function Pricing() {
             delay={70}
             className="flex flex-col gap-3 sm:flex-row sm:items-center lg:shrink-0"
           >
-
-            <a href="#book"
+            <a
+              href="#book"
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
               Book your 20-minute call
@@ -1183,7 +1246,8 @@ function Pricing() {
               </span>
             </a>
 
-            <a href="#book"
+            <a
+              href="#book"
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
               Talk to sales
@@ -1195,24 +1259,24 @@ function Pricing() {
         </div>
 
         {/* Cards */}
-        <div className="mt-10 lg:mt-13 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="lg:mt-13 mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {/* Growth card */}
           <Reveal
             delay={70}
-            className="relative rounded-[18px] bg-[#0A0A0A] p-6 text-white md:p-10 shadow-[0_26px_60px_-46px_rgba(10,10,10,.34)]"
+            className="relative rounded-[18px] bg-[#0A0A0A] p-6 text-white shadow-[0_26px_60px_-46px_rgba(10,10,10,.34)] md:p-10"
           >
             <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#E63E31] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-white">
               What most firms take
             </span>
 
-            <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-white/40">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-white/40">
               Growth
             </span>
-            <h3 className="mt-3 font-medium text-xl md:text-2xl">
+            <h3 className="mt-3 text-xl font-medium md:text-2xl">
               Growth Partnership
             </h3>
             <div className="mt-2 flex items-baseline gap-2">
-              <span className="font-normal text-[34px] md:text-[42px] leading-none">
+              <span className="text-[34px] font-normal leading-none md:text-[42px]">
                 AED 10,000
               </span>
               <span className="text-sm text-white/50">a month, from</span>
@@ -1221,12 +1285,12 @@ function Pricing() {
               Eight disciplines, one senior team, one monthly figure.
             </p>
 
-            <PricingCta className="mt-6 md:mt-8 bg-transparent text-white hover:bg-[#E63E31]">
+            <PricingCta className="mt-6 bg-transparent text-white hover:bg-[#E63E31] md:mt-8">
               Book your 20-minute call
             </PricingCta>
 
             <div className="mt-8 border-t border-white/10 pt-6 md:mt-10 md:pt-8">
-              <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-white/40">
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-white/40">
                 What runs every month
               </span>
               <ul className="mt-4 space-y-4 md:mt-5 md:space-y-5">
@@ -1255,31 +1319,30 @@ function Pricing() {
           {/* Plus card */}
           <Reveal
             delay={140}
-            className="rounded-[18px] bg-[#F6F3EC] p-6 md:p-10 border border-black/[0.11]"
+            className="rounded-[18px] border border-black/[0.11] bg-[#F6F3EC] p-6 md:p-10"
           >
-            <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-[#77787B]">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-[#77787B]">
               Plus
             </span>
-            <h3 className="mt-3 font-medium text-xl md:text-2xl text-[#0A0A0A]">
+            <h3 className="mt-3 text-xl font-medium text-[#0A0A0A] md:text-2xl">
               Plus
             </h3>
             <div className="mt-2 flex items-baseline gap-2">
-              <span className="font-normal text-[34px] md:text-[42px] leading-none text-[#0A0A0A]">
+              <span className="text-[34px] font-normal leading-none text-[#0A0A0A] md:text-[42px]">
                 Custom
               </span>
               <span className="text-sm text-[#77787B]">priced with you</span>
             </div>
             <p className="mt-2 text-sm text-[#77787B]">
-              For groups running several companies, brands or countries at
-              once
+              For groups running several companies, brands or countries at once
             </p>
 
-            <PricingCta className="mt-6 md:mt-8 bg-transparent text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white">
+            <PricingCta className="mt-6 bg-transparent text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white md:mt-8">
               Ask about Plus
             </PricingCta>
 
             <div className="mt-8 border-t border-black/[0.11] pt-6 md:mt-10 md:pt-8">
-              <span className="block font-semibold text-[10px] tracking-[0.12em] uppercase text-[#77787B]">
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-[#77787B]">
                 What runs every month
               </span>
               <ul className="mt-4 space-y-4 md:mt-5 md:space-y-5">
@@ -1311,17 +1374,18 @@ function Pricing() {
             <Reveal
               key={card.title}
               delay={210 + i * 70}
-              className={`rounded-[18px] border border-black/[0.11] p-6 md:p-8 ${i === 1 ? "bg-[#F6F3EC]" : "bg-white"
-                }`}
+              className={`rounded-[18px] border border-black/[0.11] p-6 md:p-8 ${
+                i === 1 ? "bg-[#F6F3EC]" : "bg-white"
+              }`}
             >
-              <span className="flex h-[60px] w-[60px] items-center justify-center rounded-[7px] border border-primary/12 bg-primary/5">
+              <span className="border-primary/12 flex h-[60px] w-[60px] items-center justify-center rounded-[7px] border bg-primary/5">
                 <Image
                   src={card.icon}
                   alt={card.title}
                   className="h-full w-full object-contain p-[10px]"
                 />
               </span>
-              <h3 className="mt-5 font-medium text-lg md:text-xl text-[#0A0A0A]">
+              <h3 className="mt-5 text-lg font-medium text-[#0A0A0A] md:text-xl">
                 {card.title}
               </h3>
               <p className="mt-2.5 text-sm leading-[1.5] text-[#77787B]">
@@ -1396,7 +1460,7 @@ function TestimonialNav({
         type="button"
         aria-label="Previous testimonial"
         onClick={onPrev}
-        className="w-12 h-12 rounded-full border border-black/[0.11] bg-white text-[#77787B] flex items-center justify-center flex-none transition-all duration-200 hover:bg-[#0A0A0A] hover:text-white hover:border-[#0A0A0A] hover:scale-105"
+        className="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-black/[0.11] bg-white text-[#77787B] transition-all duration-200 hover:scale-105 hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white"
       >
         ←
       </button>
@@ -1404,7 +1468,7 @@ function TestimonialNav({
         type="button"
         aria-label="Next testimonial"
         onClick={onNext}
-        className="w-12 h-12 rounded-full border border-black/[0.11] bg-white text-[#77787B] flex items-center justify-center flex-none transition-all duration-200 hover:bg-[#0A0A0A] hover:text-white hover:border-[#0A0A0A] hover:scale-105"
+        className="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-black/[0.11] bg-white text-[#77787B] transition-all duration-200 hover:scale-105 hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white"
       >
         →
       </button>
@@ -1427,52 +1491,57 @@ function Testimonials() {
   const t = TESTIMONIALS[index];
 
   return (
-    <section className="py-16 md:py-24 lg:py-[124px] relative bg-[#EFEAE0]">
+    <section className="relative bg-[#EFEAE0] py-16 md:py-24 lg:py-[124px]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_400px_at_85%_-10%,rgba(230,62,49,.09),transparent_70%)]" />
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 text-center relative">
+      <div className="relative mx-auto max-w-[1200px] px-6 text-center md:px-10">
         <Reveal>
           <Kick label="07 · Testimonials" center />
-          <h2 className="text-[30px] sm:text-4xl lg:text-[52px] leading-[1.12]">
+          <h2 className="text-[30px] leading-[1.12] sm:text-4xl lg:text-[52px]">
             See what our clients have to say about us.
           </h2>
         </Reveal>
 
-        <Reveal delay={70} className="hidden sm:grid grid-cols-[auto_minmax(0,760px)_auto] gap-[18px] items-center justify-center mt-10 lg:mt-13 mx-auto w-fit max-w-full">
-          <TestimonialNav onPrev={() => go(index - 1)} onNext={() => go(index + 1)} />
+        <Reveal
+          delay={70}
+          className="lg:mt-13 mx-auto mt-10 hidden w-fit max-w-full grid-cols-[auto_minmax(0,760px)_auto] items-center justify-center gap-[18px] sm:grid"
+        >
+          <TestimonialNav
+            onPrev={() => go(index - 1)}
+            onNext={() => go(index + 1)}
+          />
         </Reveal>
 
-        <Reveal delay={70} className="mt-10 lg:mt-13">
+        <Reveal delay={70} className="lg:mt-13 mt-10">
           <div className="flex items-center justify-center gap-[18px]">
             <div className="hidden sm:block">
               <button
                 type="button"
                 aria-label="Previous testimonial"
                 onClick={() => go(index - 1)}
-                className="w-12 h-12 rounded-full border border-black/[0.11] bg-white text-[#77787B] flex items-center justify-center transition-all duration-200 hover:bg-[#0A0A0A] hover:text-white hover:border-[#0A0A0A] hover:scale-105"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-black/[0.11] bg-white text-[#77787B] transition-all duration-200 hover:scale-105 hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white"
               >
                 ←
               </button>
             </div>
 
-            <figure className="bg-white border border-black/[0.11] rounded-[18px] p-7 sm:p-9 lg:p-11 text-left shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] max-w-[760px] w-full">
-              <div className="text-[#E63E31] tracking-[5px] text-xs mb-[18px]">
+            <figure className="w-full max-w-[760px] rounded-[18px] border border-black/[0.11] bg-white p-7 text-left shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)] sm:p-9 lg:p-11">
+              <div className="mb-[18px] text-xs tracking-[5px] text-[#E63E31]">
                 ★★★★★
               </div>
               <blockquote
-                className={`font-normal text-lg sm:text-xl lg:text-2xl leading-[1.45] min-h-[112px] transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"
-                  }`}
+                className={`min-h-[112px] text-lg font-normal leading-[1.45] transition-opacity duration-300 sm:text-xl lg:text-2xl ${
+                  visible ? "opacity-100" : "opacity-0"
+                }`}
               >
                 “{t.quote}”
               </blockquote>
-              <figcaption className="flex items-center gap-3.5 mt-[26px] pt-[22px] border-t border-black/[0.065]">
-                <span className="w-[46px] h-[46px] rounded-full bg-[#EFEAE0] border border-dashed border-black/[0.18] flex-none flex items-center justify-center font-medium text-sm text-[#B4B3AF]">
+              <figcaption className="mt-[26px] flex items-center gap-3.5 border-t border-black/[0.065] pt-[22px]">
+                <span className="flex h-[46px] w-[46px] flex-none items-center justify-center rounded-full border border-dashed border-black/[0.18] bg-[#EFEAE0] text-sm font-medium text-[#B4B3AF]">
                   {t.initials}
                 </span>
                 <span>
-                  <b className="block font-medium text-[14.5px]">
-                    {t.name}
-                  </b>
-                  <span className="block text-xs text-[#77787B] mt-0.5">
+                  <b className="block text-[14.5px] font-medium">{t.name}</b>
+                  <span className="mt-0.5 block text-xs text-[#77787B]">
                     {t.role}
                   </span>
                 </span>
@@ -1484,19 +1553,19 @@ function Testimonials() {
                 type="button"
                 aria-label="Next testimonial"
                 onClick={() => go(index + 1)}
-                className="w-12 h-12 rounded-full border border-black/[0.11] bg-white text-[#77787B] flex items-center justify-center transition-all duration-200 hover:bg-[#0A0A0A] hover:text-white hover:border-[#0A0A0A] hover:scale-105"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-black/[0.11] bg-white text-[#77787B] transition-all duration-200 hover:scale-105 hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white"
               >
                 →
               </button>
             </div>
           </div>
 
-          <div className="sm:hidden flex justify-center gap-3.5 mt-[22px]">
+          <div className="mt-[22px] flex justify-center gap-3.5 sm:hidden">
             <button
               type="button"
               aria-label="Previous testimonial"
               onClick={() => go(index - 1)}
-              className="w-12 h-12 rounded-full border border-black/[0.11] bg-white text-[#77787B] flex items-center justify-center"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-black/[0.11] bg-white text-[#77787B]"
             >
               ←
             </button>
@@ -1504,29 +1573,30 @@ function Testimonials() {
               type="button"
               aria-label="Next testimonial"
               onClick={() => go(index + 1)}
-              className="w-12 h-12 rounded-full border border-black/[0.11] bg-white text-[#77787B] flex items-center justify-center"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-black/[0.11] bg-white text-[#77787B]"
             >
               →
             </button>
           </div>
         </Reveal>
 
-        <Reveal delay={140} className="flex gap-1.5 justify-center mt-6">
+        <Reveal delay={140} className="mt-6 flex justify-center gap-1.5">
           {TESTIMONIALS.map((item, i) => (
             <button
               key={item.name}
               type="button"
               aria-label={`Testimonial ${i + 1}`}
               onClick={() => go(i)}
-              className={`h-[7px] rounded-full transition-all duration-200 ${i === index ? "w-5 bg-[#E63E31]" : "w-[7px] bg-[#D3D4D5]"
-                }`}
+              className={`h-[7px] rounded-full transition-all duration-200 ${
+                i === index ? "w-5 bg-[#E63E31]" : "w-[7px] bg-[#D3D4D5]"
+              }`}
             />
           ))}
         </Reveal>
 
         <Reveal delay={140} className="mt-6">
-          <span className="inline-flex items-center gap-2.5 bg-white border border-black/[0.11] rounded-full px-[18px] py-2.5 text-[12.5px] text-[#77787B]">
-            <b className="font-semibold text-[#0A0A0A] text-[13px]">4.9</b> on
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-black/[0.11] bg-white px-[18px] py-2.5 text-[12.5px] text-[#77787B]">
+            <b className="text-[13px] font-semibold text-[#0A0A0A]">4.9</b> on
             Google Reviews · Trusted by 125+ brands across the UAE
           </span>
         </Reveal>
@@ -1578,7 +1648,7 @@ function FaqColumn({
   defaultOpenIndex?: number;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(
-    defaultOpenIndex ?? null
+    defaultOpenIndex ?? null,
   );
 
   return (
@@ -1590,20 +1660,22 @@ function FaqColumn({
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
-              className="w-full text-left cursor-pointer py-6 pr-11 font-medium text-[17px] sm:text-xl relative transition-colors duration-200 hover:text-[#E63E31]"
+              className="relative w-full cursor-pointer py-6 pr-11 text-left text-[17px] font-medium transition-colors duration-200 hover:text-[#E63E31] sm:text-xl"
             >
               {item.q}
               <span
-                className={`absolute right-1.5 top-1/2 -translate-y-1/2 w-[13px] h-[1.5px] bg-[#E63E31] transition-transform duration-300 ${isOpen ? "rotate-0" : ""
-                  }`}
+                className={`absolute right-1.5 top-1/2 h-[1.5px] w-[13px] -translate-y-1/2 bg-[#E63E31] transition-transform duration-300 ${
+                  isOpen ? "rotate-0" : ""
+                }`}
               />
               <span
-                className={`absolute right-[11.7px] top-1/2 -translate-y-1/2 w-[1.5px] h-[13px] bg-[#E63E31] transition-all duration-300 ${isOpen ? "opacity-0 rotate-90" : "opacity-100"
-                  }`}
+                className={`absolute right-[11.7px] top-1/2 h-[13px] w-[1.5px] -translate-y-1/2 bg-[#E63E31] transition-all duration-300 ${
+                  isOpen ? "rotate-90 opacity-0" : "opacity-100"
+                }`}
               />
             </button>
             {isOpen && (
-              <p className="text-base leading-[1.55] text-[#77787B] pr-10 pb-6 animate-[fadeIn_.35s_ease]">
+              <p className="animate-[fadeIn_.35s_ease] pb-6 pr-10 text-base leading-[1.55] text-[#77787B]">
                 {item.a}
               </p>
             )}
@@ -1617,15 +1689,15 @@ function FaqColumn({
 function Faq() {
   return (
     <section className="py-16 md:py-24 lg:py-[124px]">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-        <Reveal className="text-center max-w-none mx-auto">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+        <Reveal className="mx-auto max-w-none text-center">
           <Kick label="08 · Questions" center />
-          <h2 className="text-[27px] sm:text-4xl lg:text-[45px] leading-[1.15]">
+          <h2 className="text-[27px] leading-[1.15] sm:text-4xl lg:text-[45px]">
             Everything you need to know before we begin.
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-x-14 mt-10 lg:mt-13">
+        <div className="lg:mt-13 mt-10 grid grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-x-14">
           <Reveal>
             <FaqColumn items={FAQ_COL_1} defaultOpenIndex={0} />
           </Reveal>
@@ -1666,8 +1738,12 @@ const TIME_SLOT_OPTIONS = [
   "5:00 PM – 5:30 PM",
 ];
 
-type FormErrors = Partial<Record<"name" | "company" | "email" | "phone" | "sector" | "date" | "timeSlot", string>>;
-
+type FormErrors = Partial<
+  Record<
+    "name" | "company" | "email" | "phone" | "sector" | "date" | "timeSlot",
+    string
+  >
+>;
 
 const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -1759,7 +1835,7 @@ function FinalCta() {
   };
 
   const handleFieldBlur = (
-    e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     const error = validateField(name, value);
@@ -1767,7 +1843,7 @@ function FinalCta() {
   };
 
   const handleFieldChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name } = e.target;
     // clear the error for this field as soon as the user starts fixing it
@@ -1795,7 +1871,10 @@ function FinalCta() {
 
     startTransition(async () => {
       const result = await submitBooking(formData);
-      setNote(result.message ?? (result.success ? "Thank you." : "Something went wrong."));
+      setNote(
+        result.message ??
+          (result.success ? "Thank you." : "Something went wrong."),
+      );
       if (result.success) {
         form.reset();
         setErrors({});
@@ -1804,16 +1883,16 @@ function FinalCta() {
   };
 
   return (
-    <section className="bg-black text-white relative overflow-hidden" id="book">
-      <div className="pointer-events-none absolute -left-40 -top-52 w-[760px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.17),transparent_66%)]" />
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-9 lg:gap-[72px] items-center py-16 md:py-24 lg:py-[110px]">
+    <section className="relative overflow-hidden bg-black text-white" id="book">
+      <div className="pointer-events-none absolute -left-40 -top-52 h-[700px] w-[760px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.17),transparent_66%)]" />
+      <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
+        <div className="grid grid-cols-1 items-center gap-9 py-16 md:py-24 lg:grid-cols-2 lg:gap-[72px] lg:py-[110px]">
           <Reveal>
             <Kick label="09 · Next step" dark />
-            <h2 className="text-white max-w-[16ch] text-[30px] sm:text-4xl lg:text-[52px] leading-[1.12]">
+            <h2 className="max-w-[16ch] text-[30px] leading-[1.12] text-white sm:text-4xl lg:text-[52px]">
               Start with a 30 minute call.
             </h2>
-            <p className="mt-[18px] text-white/60 text-base lg:text-lg max-w-[46ch]">
+            <p className="mt-[18px] max-w-[46ch] text-base text-white/60 lg:text-lg">
               Tell us what you build. We will tell you whether this package
               fits, and what we would do first.
             </p>
@@ -1824,9 +1903,9 @@ function FinalCta() {
               ref={formRef}
               onSubmit={handleSubmit}
               noValidate
-              className="bg-white/[0.035] border border-white/[0.13] rounded-[18px] p-7 backdrop-blur-[6px]"
+              className="rounded-[18px] border border-white/[0.13] bg-white/[0.035] p-7 backdrop-blur-[6px]"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <Field
                   label="Name"
                   id="n"
@@ -1850,7 +1929,7 @@ function FinalCta() {
                   onChange={handleFieldChange}
                 />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <Field
                   label="Work email"
                   id="e"
@@ -1877,7 +1956,7 @@ function FinalCta() {
               <div className="mb-3 mt-3">
                 <label
                   htmlFor="s"
-                  className="block font-medium text-[9.5px] tracking-[0.12em] uppercase text-white/[0.42] mb-2"
+                  className="mb-2 block text-[9.5px] font-medium uppercase tracking-[0.12em] text-white/[0.42]"
                 >
                   Which sector are you in?
                 </label>
@@ -1888,7 +1967,7 @@ function FinalCta() {
                   defaultValue=""
                   onBlur={handleFieldBlur}
                   onChange={handleFieldChange}
-                  className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${
+                  className={`w-full appearance-none rounded-[10px] border bg-black/40 bg-[right_19px_center] bg-no-repeat px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
                     errors.sector
                       ? "border-[#E63E31]"
                       : "border-white/[0.13] focus:border-[#E63E31]"
@@ -1907,15 +1986,17 @@ function FinalCta() {
                   ))}
                 </select>
                 {errors.sector && (
-                  <p className="text-[11px] text-[#E63E31] mt-1.5">{errors.sector}</p>
+                  <p className="mt-1.5 text-[11px] text-[#E63E31]">
+                    {errors.sector}
+                  </p>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="d"
-                    className="block font-medium text-[9.5px] tracking-[0.12em] uppercase text-white/[0.42] mb-2"
+                    className="mb-2 block text-[9.5px] font-medium uppercase tracking-[0.12em] text-white/[0.42]"
                   >
                     Preferred date <span className="text-[#E63E31]">*</span>
                   </label>
@@ -1928,21 +2009,23 @@ function FinalCta() {
                     onBlur={handleFieldBlur}
                     onChange={handleFieldChange}
                     aria-invalid={!!errors.date}
-                    className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] [color-scheme:dark] ${
+                    className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 [color-scheme:dark] focus:bg-black/[0.62] ${
                       errors.date
                         ? "border-[#E63E31]"
                         : "border-white/[0.13] focus:border-[#E63E31]"
                     }`}
                   />
                   {errors.date && (
-                    <p className="text-[11px] text-[#E63E31] mt-1.5">{errors.date}</p>
+                    <p className="mt-1.5 text-[11px] text-[#E63E31]">
+                      {errors.date}
+                    </p>
                   )}
                 </div>
 
                 <div>
                   <label
                     htmlFor="ts"
-                    className="block font-medium text-[9.5px] tracking-[0.12em] uppercase text-white/[0.42] mb-2"
+                    className="mb-2 block text-[9.5px] font-medium uppercase tracking-[0.12em] text-white/[0.42]"
                   >
                     Time slot <span className="text-[#E63E31]">*</span>
                   </label>
@@ -1953,7 +2036,7 @@ function FinalCta() {
                     defaultValue=""
                     onBlur={handleFieldBlur}
                     onChange={handleFieldChange}
-                    className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] appearance-none bg-[right_19px_center] bg-no-repeat ${
+                    className={`w-full appearance-none rounded-[10px] border bg-black/40 bg-[right_19px_center] bg-no-repeat px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
                       errors.timeSlot
                         ? "border-[#E63E31]"
                         : "border-white/[0.13] focus:border-[#E63E31]"
@@ -1972,15 +2055,17 @@ function FinalCta() {
                     ))}
                   </select>
                   {errors.timeSlot && (
-                    <p className="text-[11px] text-[#E63E31] mt-1.5">{errors.timeSlot}</p>
+                    <p className="mt-1.5 text-[11px] text-[#E63E31]">
+                      {errors.timeSlot}
+                    </p>
                   )}
                 </div>
               </div>
 
-              <Btn type="submit" className="w-full mt-2" disabled={isPending}>
+              <Btn type="submit" className="mt-2 w-full" disabled={isPending}>
                 {isPending ? "Sending..." : "Book a 30 Minute Call"}
               </Btn>
-              <p className="text-[11.5px] text-[#E63E31] mt-3.5 text-center min-h-[16px]">
+              <p className="mt-3.5 min-h-[16px] text-center text-[11.5px] text-[#E63E31]">
                 {note}
               </p>
             </form>
@@ -2016,7 +2101,7 @@ function Field({
     <div>
       <label
         htmlFor={id}
-        className="block font-medium text-[9.5px] tracking-[0.12em] uppercase text-white/[0.42] mb-2"
+        className="mb-2 block text-[9.5px] font-medium uppercase tracking-[0.12em] text-white/[0.42]"
       >
         {label} {required && <span className="text-[#E63E31]">*</span>}
       </label>
@@ -2029,11 +2114,13 @@ function Field({
         onBlur={onBlur}
         onChange={onChange}
         aria-invalid={!!error}
-        className={`w-full bg-black/40 border text-white text-base py-3.5 px-4 rounded-[10px] outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
-          error ? "border-[#E63E31]" : "border-white/[0.13] focus:border-[#E63E31]"
+        className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
+          error
+            ? "border-[#E63E31]"
+            : "border-white/[0.13] focus:border-[#E63E31]"
         }`}
       />
-      {error && <p className="text-[11px] text-[#E63E31] mt-1.5">{error}</p>}
+      {error && <p className="mt-1.5 text-[11px] text-[#E63E31]">{error}</p>}
     </div>
   );
 }
@@ -2043,7 +2130,7 @@ function Field({
    ============================================================ */
 export default function GrowthPartnershipLanding() {
   return (
-    <main className="bg-[#FCFBF9] text-[#0A0A0A] font-sans antialiased selection:bg-[#E63E31] selection:text-white overflow-x-hidden">
+    <main className="overflow-x-hidden bg-[#FCFBF9] font-sans text-[#0A0A0A] antialiased selection:bg-[#E63E31] selection:text-white">
       <ScrollProgress />
       <Hero />
       <WhoItsFor />

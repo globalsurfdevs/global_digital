@@ -7,13 +7,13 @@ export const BannerSection = [
     heroAlt: "Local SEO Agency in Dubai",
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Digital Marketing",url: "/digital-marketing-services" },
-      { label: "SEO",url: "/seo-agency-dubai" },
-      { label: "Local SEO",url: "" },
+      { label: "Digital Marketing", url: "/digital-marketing-services" },
+      { label: "SEO", url: "/seo-agency-dubai" },
+      { label: "Local SEO", url: "" },
     ],
-    title:
-      "Expert Local SEO Agency in Dubai",
-      subtitle:"Helping Businesses Dominate Local Search and Connect With Nearby Customers",
+    title: "Expert Local SEO Agency in Dubai",
+    subtitle:
+      "Helping Businesses Dominate Local Search and Connect With Nearby Customers",
     sub: [
       {
         stitle: "OUR APPROACH",

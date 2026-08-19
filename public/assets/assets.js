@@ -103,7 +103,6 @@ import microicon7 from "../assets/icons/micro-em-ic7.svg";
 import microicon8 from "../assets/icons/micro-em-ic8.svg";
 import microicon9 from "../assets/icons/micro-em-ic9.svg";
 
-
 import b2b_seo from "../assets/icons/b2b_seo.svg";
 import ecom_seo from "../assets/icons/ecom_seo.svg";
 import local_seo from "../assets/icons/local_seo.svg";
@@ -163,8 +162,8 @@ import Diya from "../assets/employee/Diya.png";
 import Gayathri from "../assets/employee/Gayathri.png";
 import Sneha from "../assets/employee/Sneha.png";
 
-import Ashik from '../assets/employee/Ashik.png'
-import Hamna from '../assets/employee/Hamna.png'
+import Ashik from "../assets/employee/Ashik.png";
+import Hamna from "../assets/employee/Hamna.png";
 
 import seo_banner from "../assets/banner/SEO.jpg";
 import branding_bnr from "../assets/banner/Branding-&-Creatives-01.jpg";
@@ -679,8 +678,8 @@ import hels2 from "../assets/services/marketing-automation/hel2.svg";
 import hels3 from "../assets/services/marketing-automation/hel3.svg";
 import hels4 from "../assets/services/marketing-automation/hel4.svg";
 import hels5 from "../assets/services/marketing-automation/hel5.svg";
-import hospbanner from "../assets/services/hosp-banner.png"
-import hospSeoicon from "../assets/services/hospitality-seo.svg"
+import hospbanner from "../assets/services/hosp-banner.png";
+import hospSeoicon from "../assets/services/hospitality-seo.svg";
 import inbanner from "../assets/industry/inbanner.jpg";
 import dabanner from "../assets/data-analytics/dabanner.jpg";
 import dahel1 from "../assets/data-analytics/dahep1.svg";
@@ -1089,7 +1088,6 @@ import ulogo from "../images/end-to-end-digitalmarketing/logos/u.png";
 import sobha from "../images/end-to-end-digitalmarketing/logos/sobha.png";
 import sp from "../images/end-to-end-digitalmarketing/logos/sp.png";
 
-
 import claude from "../images/end-to-end-digitalmarketing/claude.svg";
 
 import hubspot from "../images/end-to-end-digitalmarketing/hubspot.svg";
@@ -1120,8 +1118,6 @@ import gurantee from "../images/end-to-end-digitalmarketing/gurantee.svg";
 import capacity2 from "../images/end-to-end-digitalmarketing/capacity.svg";
 
 import digitalbanner from "../images/end-to-end-digitalmarketing/banner.jpg";
-
-
 
 export const assets = {
   futureproofwebsites,
@@ -1168,13 +1164,16 @@ export const assets = {
   p5,
   dblog1,
   dblog2,
-  dblog3,dblog4,
+  dblog3,
+  dblog4,
   keyw1,
   keyw2,
   keyw3,
   keyw4,
-  ai5, ai2,
-  ai3,ai6,
+  ai5,
+  ai2,
+  ai3,
+  ai6,
   ai4,
   realestate1,
   real1,
@@ -1228,15 +1227,55 @@ export const assets = {
   morg,
   newblog01bnr,
   Vidhu,
-  newblog23bnr, bloggs2, bloggs3, bloggs4, bloggs5, blogg6,
+  newblog23bnr,
+  bloggs2,
+  bloggs3,
+  bloggs4,
+  bloggs5,
+  blogg6,
   Anjanaseo,
   Diya,
   Gayathri,
   Sneha,
-  geolg1, geolg2, geolg3, geolg4, geolg5, geolg6, geolg7, geolg8, geolg9, geolg10, geolg11, geolg12, geolg13, geolg14, geolg15,
-  hvrimg1, hvrimg2, hvrimg3, hvrimg4, hvrimg5,
-  bnf1, bnf2, bnf3, bnf4, bnf5, bnf6, wecanhelp1, wecanhelp2, wecanhelp3, wecanhelp4, wecanhelp5, wecanhelp6,
-  expg1, expg2, expg3, expg4, expg5, expg6, geobanner,
+  geolg1,
+  geolg2,
+  geolg3,
+  geolg4,
+  geolg5,
+  geolg6,
+  geolg7,
+  geolg8,
+  geolg9,
+  geolg10,
+  geolg11,
+  geolg12,
+  geolg13,
+  geolg14,
+  geolg15,
+  hvrimg1,
+  hvrimg2,
+  hvrimg3,
+  hvrimg4,
+  hvrimg5,
+  bnf1,
+  bnf2,
+  bnf3,
+  bnf4,
+  bnf5,
+  bnf6,
+  wecanhelp1,
+  wecanhelp2,
+  wecanhelp3,
+  wecanhelp4,
+  wecanhelp5,
+  wecanhelp6,
+  expg1,
+  expg2,
+  expg3,
+  expg4,
+  expg5,
+  expg6,
+  geobanner,
   bgimg1,
   bgimg2,
   bgimg3,
@@ -2153,10 +2192,8 @@ export const assets = {
   microsoftAdvertising,
   adobCreativeCloud,
   Ashik,
-  Hamna
+  Hamna,
 };
-
-
 
 export const logos = [
   { src: "../assets/logos/002.png", alt: "Clutch logo" },

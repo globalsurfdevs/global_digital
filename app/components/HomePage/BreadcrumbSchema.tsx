@@ -8,13 +8,9 @@ const BreadcrumbSchema = () => {
   const pathname = usePathname();
 
   // Skip home page + performance marketing page
-  const excludedPaths = [
-    "/",
-    "/performance-marketing-agency-dubai"
-  ];
+  const excludedPaths = ["/", "/performance-marketing-agency-dubai"];
 
   if (excludedPaths.includes(pathname)) return null;
-
 
   const baseUrl = "https://www.globalsurf.ae";
 
@@ -33,11 +29,10 @@ const BreadcrumbSchema = () => {
       },
     },
     ...segments.map((segment, index) => {
-      const name =
-        segment
-          .split("-")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" "); // e.g. "web-development" -> "Web Development"
+      const name = segment
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" "); // e.g. "web-development" -> "Web Development"
 
       const url = `${baseUrl}/${segments.slice(0, index + 1).join("/")}`;
 

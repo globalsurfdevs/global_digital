@@ -48,13 +48,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-
-
 const page = async ({ params }: PageProps) => {
-
-
-
-
   const servicesData = {
     title: serviceData.fifthSection.title,
     subtitle: serviceData.fifthSection.subTitle,
@@ -112,7 +106,7 @@ const page = async ({ params }: PageProps) => {
       accent: item.accent as "primary" | "dark",
     })),
   };
-  
+
   const industriesData = {
     title: serviceData.industries.title,
     subTitle: serviceData.industries.subTitle,
@@ -219,7 +213,7 @@ const page = async ({ params }: PageProps) => {
         bottomText={false}
         reviews={false}
         /> */}
-        <HowWeDo data={serviceData.howWeDo} />
+      <HowWeDo data={serviceData.howWeDo} />
       <GetInTouch
         data={Cta}
         ctabbutton={serviceData.ctaSection.buttonText}

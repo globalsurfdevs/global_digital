@@ -1,308 +1,356 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from 'react'
-import { toast } from 'sonner'
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { LuMessageSquareShare } from "react-icons/lu";
 import SmartPagination from "../AdminEnquiry/Pagination";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { MdDelete } from "react-icons/md";
 
 type Lead = {
-    _id: string;
-    name: string;
-    email: string;
-    company: string;
-    phone: string;
-    sector: string;
-    date?: string;
-    timeSlot?: string;
-    createdAt?: string;
-}
+  _id: string;
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  sector: string;
+  date?: string;
+  timeSlot?: string;
+  createdAt?: string;
+};
 
 const formatDate = (value?: string) => {
-    if (!value) return "—";
-    const d = new Date(value);
-    if (isNaN(d.getTime())) return value;
-    return d.toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-    });
+  if (!value) return "—";
+  const d = new Date(value);
+  if (isNaN(d.getTime())) return value;
+  return d.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 };
 
 const AdminLeads = () => {
+  const searchParams = useSearchParams();
+  const pageFromUrl = Number(searchParams.get("page")) || 1;
+  const [leads, setLeads] = useState<Lead[] | []>([]);
+  const [refetch, setRefetch] = useState(false);
+  const [page, setPage] = useState(pageFromUrl);
+  const [totalPages, setTotalPages] = useState(1);
+  const router = useRouter();
+  const pathname = usePathname();
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
 
-    const searchParams = useSearchParams();
-    const pageFromUrl = Number(searchParams.get("page")) || 1;
-    const [leads, setLeads] = useState<Lead[] | []>([])
-    const [refetch, setRefetch] = useState(false)
-    const [page, setPage] = useState(pageFromUrl);
-    const [totalPages, setTotalPages] = useState(1);
-    const router = useRouter();
-    const pathname = usePathname();
-    const [selectedIds, setSelectedIds] = useState<string[]>([]);
-    const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
+  const [fromDate, setFromDate] = useState<string>("");
+  const [toDate, setToDate] = useState<string>("");
 
-    const [fromDate, setFromDate] = useState<string>("");
-    const [toDate, setToDate] = useState<string>("");
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    );
+  };
 
-    const toggleSelect = (id: string) => {
-        setSelectedIds((prev) =>
-            prev.includes(id)
-                ? prev.filter((item) => item !== id)
-                : [...prev, id]
-        );
-    };
+  const changePage = (newPage: number) => {
+    setPage(newPage);
+    router.push(`${pathname}?page=${newPage}`);
+  };
 
-    const changePage = (newPage: number) => {
-        setPage(newPage);
-        router.push(`${pathname}?page=${newPage}`);
-    };
+  useEffect(() => {
+    const fetchLeadsData = async () => {
+      try {
+        const query = new URLSearchParams({
+          page: String(page),
+          limit: "10",
+          ...(fromDate && { from: fromDate }),
+          ...(toDate && { to: toDate }),
+        });
 
-    useEffect(() => {
-        const fetchLeadsData = async () => {
-            try {
-                const query = new URLSearchParams({
-                    page: String(page),
-                    limit: "10",
-                    ...(fromDate && { from: fromDate }),
-                    ...(toDate && { to: toDate }),
-                });
+        const response = await fetch(`/api/lead?${query.toString()}`);
 
-                const response = await fetch(`/api/lead?${query.toString()}`);
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setLeads(data.data);
-                    setTotalPages(data.totalPages);
-                }
-            } catch (error) {
-                console.error("Error fetching leads:", error);
-            }
-        };
-
-        fetchLeadsData()
-    }, [page, refetch])
-
-    const toggleSelectAll = () => {
-        if (selectedIds.length === leads.length) {
-            setSelectedIds([]);
-        } else {
-            setSelectedIds(leads.map((item) => item._id));
+        if (response.ok) {
+          const data = await response.json();
+          setLeads(data.data);
+          setTotalPages(data.totalPages);
         }
+      } catch (error) {
+        console.error("Error fetching leads:", error);
+      }
     };
 
-    const handleBulkDelete = async () => {
-        if (selectedIds.length === 0) {
-            toast.error("No leads selected");
-            return;
-        }
+    fetchLeadsData();
+  }, [page, refetch]);
 
-        try {
-            const response = await fetch(`/api/lead/bulk-delete`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ ids: selectedIds }),
-            });
+  const toggleSelectAll = () => {
+    if (selectedIds.length === leads.length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(leads.map((item) => item._id));
+    }
+  };
 
-            const data = await response.json();
+  const handleBulkDelete = async () => {
+    if (selectedIds.length === 0) {
+      toast.error("No leads selected");
+      return;
+    }
 
-            if (response.ok) {
-                toast.success(data.message);
-                setSelectedIds([]);
-                setRefetch((prev) => !prev);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    try {
+      const response = await fetch(`/api/lead/bulk-delete`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ids: selectedIds }),
+      });
 
-    return (
-        <div className='flex flex-col gap-5'>
+      const data = await response.json();
 
+      if (response.ok) {
+        toast.success(data.message);
+        setSelectedIds([]);
+        setRefetch((prev) => !prev);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-            <div className='flex flex-col gap-3 min-h-[calc(100vh-200px)]'>
-                <div className="flex items-center gap-10 justify-between px-1">
-                    <div className='flex justify-between items-center'>
-                        <h1 className='text-xl'>Leads</h1>
-                    </div>
-                    <div className='flex gap-5 items-center'>
-                    <div>
-                        {selectedIds.length > 0 && (
-                            <div className="relative inline-flex">
-                                <MdDelete
-                                    className="text-red-600 cursor-pointer text-2xl"
-                                    onClick={handleBulkDelete}
-                                />
-                                <span className="absolute -top-2 -right-2 bg-red-600 text-white flex items-center justify-center text-[10px] rounded-full h-[15px] w-[15px]">
-                                    {selectedIds.length}
-                                </span>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="flex gap-3 items-center">
-                        <input
-                            type="date"
-                            value={fromDate}
-                            onChange={(e) => setFromDate(e.target.value)}
-                            className="border px-2 py-1 rounded"
-                        />
-                        <input
-                            type="date"
-                            value={toDate}
-                            onChange={(e) => setToDate(e.target.value)}
-                            className="border px-2 py-1 rounded"
-                        />
-                        <button
-                            onClick={() => {
-                                setPage(1);
-                                setRefetch(prev => !prev);
-                            }}
-                            className="px-3 py-1 bg-black text-white rounded"
-                        >
-                            Apply
-                        </button>
-                        <button
-                            onClick={() => {
-                                setFromDate("");
-                                setToDate("");
-                                setPage(1);
-                                setRefetch(prev => !prev);
-                            }}
-                            className="px-3 py-1 border rounded"
-                        >
-                            Reset
-                        </button>
-                    </div>
-
-                    </div>
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="flex min-h-[calc(100vh-200px)] flex-col gap-3">
+        <div className="flex items-center justify-between gap-10 px-1">
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl">Leads</h1>
+          </div>
+          <div className="flex items-center gap-5">
+            <div>
+              {selectedIds.length > 0 && (
+                <div className="relative inline-flex">
+                  <MdDelete
+                    className="cursor-pointer text-2xl text-red-600"
+                    onClick={handleBulkDelete}
+                  />
+                  <span className="absolute -right-2 -top-2 flex h-[15px] w-[15px] items-center justify-center rounded-full bg-red-600 text-[10px] text-white">
+                    {selectedIds.length}
+                  </span>
                 </div>
-
-                {leads && leads.length > 0 ? (
-                    <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
-                        <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
-                            <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
-                                <tr>
-                                    <th scope="col" className="px-4 py-3">
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedIds.length === leads.length}
-                                            onChange={toggleSelectAll}
-                                        />
-                                    </th>
-                                    <th scope="col" className="px-4 py-3">Name</th>
-                                    <th scope="col" className="px-4 py-3">Email</th>
-                                    <th scope="col" className="px-4 py-3">Company</th>
-                                    <th scope="col" className="px-4 py-3">Phone</th>
-                                    <th scope="col" className="px-4 py-3">Sector</th>
-                                    <th scope="col" className="px-4 py-3">Date</th>
-                                    <th scope="col" className="px-4 py-3">Time Slot</th>
-                                    <th scope="col" className="px-4 py-3 text-center">View</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {leads.map((item, i) => (
-                                    <tr
-                                        key={item._id ?? i}
-                                        className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                                    >
-                                        <td className="px-4 py-3">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedIds.includes(item._id)}
-                                                onChange={() => toggleSelect(item._id)}
-                                            />
-                                        </td>
-                                        <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
-                                            {item.name}
-                                        </td>
-                                        <td className="px-4 py-3">{item.email}</td>
-                                        <td className="px-4 py-3">{item.company}</td>
-                                        <td className="px-4 py-3">{item.phone}</td>
-                                        <td className="px-4 py-3">{item.sector}</td>
-                                        <td className="px-4 py-3 whitespace-nowrap">{formatDate(item.date)}</td>
-                                        <td className="px-4 py-3 whitespace-nowrap">{item.timeSlot || "—"}</td>
-                                        <td className="px-4 py-3 text-center">
-                                            <button onClick={() => setSelectedLead(item)}>
-                                                <LuMessageSquareShare className="mx-auto text-lg" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                ) : (
-                    <div>No leads available</div>
-                )}
-
-                {selectedLead && (
-                    <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                        <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
-
-                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                                <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                    <div className="grid grid-cols-1 gap-4 text-sm">
-                                        <div className="flex flex-col">
-                                            <label className="font-semibold text-gray-600">Full Name</label>
-                                            <span className="text-gray-900">{selectedLead.name}</span>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <label className="font-semibold text-gray-600">Email</label>
-                                            <span className="text-gray-900">{selectedLead.email}</span>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <label className="font-semibold text-gray-600">Company</label>
-                                            <span className="text-gray-900">{selectedLead.company}</span>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <label className="font-semibold text-gray-600">Phone</label>
-                                            <span className="text-gray-900">{selectedLead.phone}</span>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <label className="font-semibold text-gray-600">Sector</label>
-                                            <span className="text-gray-900">{selectedLead.sector}</span>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <label className="font-semibold text-gray-600">Preferred Date</label>
-                                            <span className="text-gray-900">{formatDate(selectedLead.date)}</span>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <label className="font-semibold text-gray-600">Time Slot</label>
-                                            <span className="text-gray-900">{selectedLead.timeSlot || "—"}</span>
-                                        </div>
-                                    </div>
-                                    <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                        <button
-                                            type="button"
-                                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                            onClick={() => setSelectedLead(null)}
-                                        >
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
+              )}
             </div>
 
-            {leads && leads.length > 0 && (
-                <div className='mb-10'>
-                    <SmartPagination
-                        page={page}
-                        totalPages={totalPages}
-                        setPage={changePage}
-                    />
-                </div>
-            )}
+            <div className="flex items-center gap-3">
+              <input
+                type="date"
+                value={fromDate}
+                onChange={(e) => setFromDate(e.target.value)}
+                className="rounded border px-2 py-1"
+              />
+              <input
+                type="date"
+                value={toDate}
+                onChange={(e) => setToDate(e.target.value)}
+                className="rounded border px-2 py-1"
+              />
+              <button
+                onClick={() => {
+                  setPage(1);
+                  setRefetch((prev) => !prev);
+                }}
+                className="rounded bg-black px-3 py-1 text-white"
+              >
+                Apply
+              </button>
+              <button
+                onClick={() => {
+                  setFromDate("");
+                  setToDate("");
+                  setPage(1);
+                  setRefetch((prev) => !prev);
+                }}
+                className="rounded border px-3 py-1"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
         </div>
-    )
-}
 
-export default AdminLeads
+        {leads && leads.length > 0 ? (
+          <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
+            <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
+              <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                <tr>
+                  <th scope="col" className="px-4 py-3">
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.length === leads.length}
+                      onChange={toggleSelectAll}
+                    />
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Email
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Company
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Phone
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Sector
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Date
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Time Slot
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-center">
+                    View
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {leads.map((item, i) => (
+                  <tr
+                    key={item._id ?? i}
+                    className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                  >
+                    <td className="px-4 py-3">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.includes(item._id)}
+                        onChange={() => toggleSelect(item._id)}
+                      />
+                    </td>
+                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                      {item.name}
+                    </td>
+                    <td className="px-4 py-3">{item.email}</td>
+                    <td className="px-4 py-3">{item.company}</td>
+                    <td className="px-4 py-3">{item.phone}</td>
+                    <td className="px-4 py-3">{item.sector}</td>
+                    <td className="whitespace-nowrap px-4 py-3">
+                      {formatDate(item.date)}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-3">
+                      {item.timeSlot || "—"}
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <button onClick={() => setSelectedLead(item)}>
+                        <LuMessageSquareShare className="mx-auto text-lg" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div>No leads available</div>
+        )}
+
+        {selectedLead && (
+          <div
+            className="relative z-10"
+            aria-labelledby="modal-title"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div
+              className="fixed inset-0 bg-gray-500/75 transition-opacity"
+              aria-hidden="true"
+            ></div>
+
+            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+              <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div className="relative flex transform flex-col gap-5 overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                  <div className="grid grid-cols-1 gap-4 text-sm">
+                    <div className="flex flex-col">
+                      <label className="font-semibold text-gray-600">
+                        Full Name
+                      </label>
+                      <span className="text-gray-900">{selectedLead.name}</span>
+                    </div>
+                    <div className="flex flex-col">
+                      <label className="font-semibold text-gray-600">
+                        Email
+                      </label>
+                      <span className="text-gray-900">
+                        {selectedLead.email}
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <label className="font-semibold text-gray-600">
+                        Company
+                      </label>
+                      <span className="text-gray-900">
+                        {selectedLead.company}
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <label className="font-semibold text-gray-600">
+                        Phone
+                      </label>
+                      <span className="text-gray-900">
+                        {selectedLead.phone}
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <label className="font-semibold text-gray-600">
+                        Sector
+                      </label>
+                      <span className="text-gray-900">
+                        {selectedLead.sector}
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <label className="font-semibold text-gray-600">
+                        Preferred Date
+                      </label>
+                      <span className="text-gray-900">
+                        {formatDate(selectedLead.date)}
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <label className="font-semibold text-gray-600">
+                        Time Slot
+                      </label>
+                      <span className="text-gray-900">
+                        {selectedLead.timeSlot || "—"}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button
+                      type="button"
+                      className="shadow-xs mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                      onClick={() => setSelectedLead(null)}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {leads && leads.length > 0 && (
+        <div className="mb-10">
+          <SmartPagination
+            page={page}
+            totalPages={totalPages}
+            setPage={changePage}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AdminLeads;

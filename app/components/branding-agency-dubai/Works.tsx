@@ -107,7 +107,7 @@ const Works: React.FC<ServicesSectionProps> = ({ title }) => {
                   </div>
                   <div className="relative ">
                     <div className="mt-4 border-b pb-6 transition-all duration-300   ease-in group-hover:border-primary lg:mt-7">
-                      <div className="flex justify-between items-center">
+                      <div className="flex items-center justify-between">
                         <div>
                           <h3 className="text-font30 leading-[1.3] text-black">
                             {item.companyName}
@@ -127,7 +127,7 @@ const Works: React.FC<ServicesSectionProps> = ({ title }) => {
                             viewBox="0 0 36 35"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="transition-transform duration-300 group-hover:scale-110 brightness-0 group-hover:brightness-[1]"
+                            className="brightness-0 transition-transform duration-300 group-hover:scale-110 group-hover:brightness-[1]"
                           >
                             <path
                               d="M33.8105 1.7998L1.25781 33.7227"

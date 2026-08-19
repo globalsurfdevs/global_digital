@@ -12,7 +12,6 @@ interface BlogContentSectionProps {
 
 const createId = (id: string) => id.toLowerCase().replace(/\s+/g, "-");
 
-
 const BlogContentSection = ({ items }: BlogContentSectionProps) => {
   return (
     <section className="container mx-auto py-[50px] lg:py-[100px]">

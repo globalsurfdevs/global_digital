@@ -45,18 +45,16 @@ const WorkSwiper = () => {
               </div>
               <h3 className="textslide-30 ">{item.text}</h3>
             </div>
-          )
+          );
           return (
             <SwiperSlide key={index}>
               {item.urlpath ? (
-                <Link href={item.urlpath} >
-                  {content}
-                </Link>
+                <Link href={item.urlpath}>{content}</Link>
               ) : (
                 content
               )}
             </SwiperSlide>
-          )
+          );
         })}
       </Swiper>
     </div>

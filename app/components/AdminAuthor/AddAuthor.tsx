@@ -29,14 +29,10 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
   const [detailImagePreview, setDetailImagePreview] = useState<string | null>(
     null,
   );
-  const [detailImageError, setDetailImageError] = useState<string | null>(
-    null,
-  );
+  const [detailImageError, setDetailImageError] = useState<string | null>(null);
 
   const [blogImage, setBlogImage] = useState<File | null>(null);
-  const [blogImagePreview, setBlogImagePreview] = useState<string | null>(
-    null,
-  );
+  const [blogImagePreview, setBlogImagePreview] = useState<string | null>(null);
   const [blogImageError, setBlogImageError] = useState<string | null>(null);
 
   const {
@@ -112,9 +108,7 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
         // imageSmall: blogImageUrl,
       };
 
-      const url = editMode
-        ? `/api/authors?id=${authorId}`
-        : `/api/authors`;
+      const url = editMode ? `/api/authors?id=${authorId}` : `/api/authors`;
       const method = editMode ? "PATCH" : "POST";
 
       const res = await fetch(url, {
@@ -239,9 +233,7 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
             className={inputClass}
           />
           {errors.designation && (
-            <p className="text-sm text-red-500">
-              {errors.designation.message}
-            </p>
+            <p className="text-sm text-red-500">{errors.designation.message}</p>
           )}
         </div>
         <div className="flex flex-col gap-2">

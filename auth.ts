@@ -5,12 +5,7 @@ import { authConfig } from "./auth.config";
 import User from "./app/models/User";
 import connectDB from "./lib/mongodb";
 
-export const {
-  handlers,
-  auth,
-  signIn,
-  signOut,
-} = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     CredentialsProvider({
@@ -21,10 +16,13 @@ export const {
       },
       async authorize(credentials) {
         await connectDB();
-        const user: any = await User.findOne({ username: credentials.username });
+        const user: any = await User.findOne({
+          username: credentials.username,
+        });
 
         if (!user) throw new Error("Invalid Credentials");
-        if (user.password !== credentials.password) throw new Error("Invalid Credentials");
+        if (user.password !== credentials.password)
+          throw new Error("Invalid Credentials");
 
         return {
           id: user._id.toString(),

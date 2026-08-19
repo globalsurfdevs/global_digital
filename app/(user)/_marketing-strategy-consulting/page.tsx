@@ -2,13 +2,13 @@ import React from "react";
 import HeroSection from "../../components/PermormanceMarketing/HeroSection";
 import Services from "../../components/PermormanceMarketing/Services";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";  
+import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
 import LogoSwiper from "../../components/DigitalMarketingService/LogoSwiper";
 import Platforms from "@/app/components/PermormanceMarketing/Platforms";
 import Head from "next/head";
 
 import {
-  BannerSection, 
+  BannerSection,
   OurServices,
   Frameworkdata,
   Wecanhelp,
@@ -17,12 +17,12 @@ import {
   Faq,
   relatedservices,
   logosdata,
-  logosdatas, 
+  logosdatas,
 } from "../../data/services/marketing-strategy-consulting/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
 import Framework from "@/app/components/PermormanceMarketing/Framework";
-import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices"; 
+import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
 interface Canonicals {
   canonical: string;
@@ -67,33 +67,32 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        maxchwidth={24} 
+        maxchwidth={24}
       />
       <div className="innerwhite">
-      <Platforms
-        title={Wecanhelp.title}
-        data={Wecanhelp.data}
-        icontitle={true}
-        hiddentitle={true}
-        leftzero={true}
-        colcount={3}
-      />
-      </div> 
+        <Platforms
+          title={Wecanhelp.title}
+          data={Wecanhelp.data}
+          icontitle={true}
+          hiddentitle={true}
+          leftzero={true}
+          colcount={3}
+        />
+      </div>
       <div className="mnstsaq bg-black text-white">
         <Framework
           title={Frameworkdata.title}
           data={Frameworkdata.data}
           bgcolor="bg-black"
           colcount={3}
-        /> 
-      </div>       
-     
-     
+        />
+      </div>
+
       <Services
         title={OurServices.title}
         data={OurServices.data}
         colcount={5}
-         bgcolor="bg-dgray"
+        bgcolor="bg-dgray"
         // bgtt1="text-white"
         // bgtt3="text-white"
         hrcontent={true}
@@ -114,9 +113,13 @@ const page = () => {
           desc={Platformsecomdata.desc}
         />
       </section>
-     
-     <div className="  pt-[50px]   lg:pt-[130px]">
-      <GetInTouch data={Cta} redlast={false} ctabbutton={"CONTACT US TODAY!"} />
+
+      <div className="  pt-[50px]   lg:pt-[130px]">
+        <GetInTouch
+          data={Cta}
+          redlast={false}
+          ctabbutton={"CONTACT US TODAY!"}
+        />
       </div>
       <FAQ data={Faq} />
       <RelatedServices

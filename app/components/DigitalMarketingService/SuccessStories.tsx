@@ -103,7 +103,7 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
       before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300
       after:ease-in-out hover:border-b-white hover:after:w-0"
                   >
-                    <p className="text-sm  uppercase   font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
+                    <p className="text-sm  font-medium   uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
                       {item.linkText}
                     </p>
                     <svg

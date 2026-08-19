@@ -215,11 +215,11 @@ const Header = () => {
 
             {/* ── Nav ── */}
             <nav
-              className={`${isMenuOpen ? "block" : "hidden"
-                } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
+              className={`${
+                isMenuOpen ? "block" : "hidden"
+              } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
               lg:static lg:flex lg:w-auto lg:space-x-5 lg:bg-transparent xl:space-x-8`}
             >
-              
               {/* CONTACT US */}
               <Link
                 href="/contact-us"
@@ -228,7 +228,7 @@ const Header = () => {
                   hover:text-black hover:shadow-lg lg:flex"
               >
                 <span className="uppercase duration-300 ease-in group-hover:text-black">
-                   Let’s Talk
+                  Let’s Talk
                 </span>
                 <div className="bg-primary p-1">
                   <svg
@@ -260,8 +260,6 @@ const Header = () => {
                   </svg>
                 </div>
               </Link>
-
-             
             </nav>
           </div>
 
@@ -283,16 +281,15 @@ const Header = () => {
           </AnimatePresence>
         </div>
 
-
         {/* SEO: static service links for crawlers */}
         <nav aria-label="Services sitemap" className="sr-only">
           {allServiceLinks
             .filter(({ url }) => url && url !== "#")
             .map(({ url }) => {
               const label = url
-                .replace(/^\//, "")           // strip leading slash
-                .replace(/-/g, " ")           // hyphens to spaces
-                .replace(/[<>]/g, "")         // ← strip any stray angle brackets
+                .replace(/^\//, "") // strip leading slash
+                .replace(/-/g, " ") // hyphens to spaces
+                .replace(/[<>]/g, "") // ← strip any stray angle brackets
                 .trim();
               return label ? (
                 <Link key={url} href={url}>

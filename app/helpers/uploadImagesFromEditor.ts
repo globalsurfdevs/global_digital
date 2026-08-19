@@ -29,9 +29,9 @@ export const uploadImagesFromEditor = async (content: string) => {
     // const file = new File([blob], `image_${Date.now()}.png`, { type: blob.type });
     // const filename = `${Date.now()}-${file.name || "image"}`;
     // AFTER
-const blob = await fetch(blobUrl).then((res) => res.blob());
-const webpBlob = await convertToWebp(blob);
-const filename = `${Date.now()}-image.webp`;
+    const blob = await fetch(blobUrl).then((res) => res.blob());
+    const webpBlob = await convertToWebp(blob);
+    const filename = `${Date.now()}-image.webp`;
     const file = new File([webpBlob], filename, { type: "image/webp" });
     const dropboxPath = `/blog-content/${filename}`;
     // await new Promise(resolve => setTimeout(resolve, 500));

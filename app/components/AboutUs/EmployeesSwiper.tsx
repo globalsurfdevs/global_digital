@@ -1,14 +1,22 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 // import { Employees } from "../../data/employees";
 import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 
-
-const EmployeesSwiper = ({data}:{data:{name:string,designation:string,image:string,imageAlt:string}[]}) => {
+const EmployeesSwiper = ({
+  data,
+}: {
+  data: {
+    name: string;
+    designation: string;
+    image: string;
+    imageAlt: string;
+  }[];
+}) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   // Ref for the next container (HTMLDivElement type)
   const nextContainerRef = useRef<HTMLDivElement | null>(null);
@@ -24,7 +32,7 @@ const EmployeesSwiper = ({data}:{data:{name:string,designation:string,image:stri
 
         // Calculate the total width including margins (left + width + right)
         const marginLeft = parseFloat(computedStyle.marginLeft);
-        const totalWidth = containerRect.width + marginLeft - 15
+        const totalWidth = containerRect.width + marginLeft - 15;
 
         setDivWidth(`${totalWidth}px`);
       }
@@ -58,8 +66,11 @@ const EmployeesSwiper = ({data}:{data:{name:string,designation:string,image:stri
   }, []);
   return (
     <>
-      <div className='container ' ref={nextContainerRef}></div>
-      <div style={{ width: isSmallScreen ? '' : divWidth }} className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto`} >
+      <div className="container " ref={nextContainerRef}></div>
+      <div
+        style={{ width: isSmallScreen ? "" : divWidth }}
+        className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto`}
+      >
         <div className=" testimonialswiper">
           <Swiper
             spaceBetween={5}
@@ -92,20 +103,25 @@ const EmployeesSwiper = ({data}:{data:{name:string,designation:string,image:stri
           >
             {data.map((item, index) => (
               <SwiperSlide key={index} className=" ">
-
                 <div>
-                  <div className="bg-dgray w-fit group hover:bg-primary ease-in-out duration-300">
-                    <div className="mb-3 p-4 md:px-[40px] md:py-[22px] absolute">
-                      <p className="text-black text-30 group-hover:text-white  ease-in-out duration-300">
+                  <div className="group w-fit bg-dgray duration-300 ease-in-out hover:bg-primary">
+                    <div className="absolute mb-3 p-4 md:px-[40px] md:py-[22px]">
+                      <p className="text-30 text-black duration-300  ease-in-out group-hover:text-white">
                         {item.name}
                       </p>
-                      <p className="text-19 text-gray1 group-hover:text-white  ease-in-out duration-300">
+                      <p className="text-19 text-gray1 duration-300  ease-in-out group-hover:text-white">
                         {item.designation}
                       </p>
                     </div>
                     <div className="">
-                      <div className="relative lg:top-7 top-9" >
-                        <Image src={item.image} alt="image" width={600} height={928} className="w-100 h-100" />
+                      <div className="relative top-9 lg:top-7">
+                        <Image
+                          src={item.image}
+                          alt="image"
+                          width={600}
+                          height={928}
+                          className="w-100 h-100"
+                        />
                       </div>
                     </div>
                   </div>

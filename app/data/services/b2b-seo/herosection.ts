@@ -4,16 +4,16 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.b2banner,
-    heroAlt:"B2B SEO Services in Dubai",
+    heroAlt: "B2B SEO Services in Dubai",
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Digital Marketing",url: "/digital-marketing-services" },
-      { label: "SEO",url: "/seo-agency-dubai" },
-      { label: "B2B SEO",url: "" },
+      { label: "Digital Marketing", url: "/digital-marketing-services" },
+      { label: "SEO", url: "/seo-agency-dubai" },
+      { label: "B2B SEO", url: "" },
     ],
-    title:
-      "B2B SEO Solutions in Dubai ",
-    subtitle:"Optimizing B2B Websites for Higher Rankings and Lead Generation Success",
+    title: "B2B SEO Solutions in Dubai ",
+    subtitle:
+      "Optimizing B2B Websites for Higher Rankings and Lead Generation Success",
     sub: [
       {
         stitle: "OUR APPROACH",

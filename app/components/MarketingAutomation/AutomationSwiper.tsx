@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Image, { StaticImageData } from "next/image";
@@ -20,10 +20,7 @@ interface HeroSectionProps {
   mtslogo: LogoSection;
   slideBg?: boolean;
 }
-const AutomationSwiper: React.FC<HeroSectionProps> = ({
-  mtslogo,
-  slideBg
-}) => {
+const AutomationSwiper: React.FC<HeroSectionProps> = ({ mtslogo, slideBg }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   // Ref for the next container (HTMLDivElement type)
   const nextContainerRef = useRef<HTMLDivElement | null>(null);
@@ -39,7 +36,7 @@ const AutomationSwiper: React.FC<HeroSectionProps> = ({
 
         // Calculate the total width including margins (left + width + right)
         const marginLeft = parseFloat(computedStyle.marginLeft);
-        const totalWidth = containerRect.width + marginLeft - 15
+        const totalWidth = containerRect.width + marginLeft - 15;
 
         setDivWidth(`${totalWidth}px`);
       }
@@ -73,12 +70,18 @@ const AutomationSwiper: React.FC<HeroSectionProps> = ({
   }, []);
   return (
     <>
-      <div className='container ' ref={nextContainerRef}>
-        <div className="mb-6 mt-6 grid lg:mb-[75px] lg:mt-0"><h2 className="title-65">{mtslogo.title}</h2></div></div>
-      <div style={{ width: isSmallScreen ? '' : divWidth }} className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto overflow-hidden`} >
+      <div className="container " ref={nextContainerRef}>
+        <div className="mb-6 mt-6 grid lg:mb-[75px] lg:mt-0">
+          <h2 className="title-65">{mtslogo.title}</h2>
+        </div>
+      </div>
+      <div
+        style={{ width: isSmallScreen ? "" : divWidth }}
+        className={`${isSmallScreen ? "container mx-auto py-2" : ""} custom-class ml-auto overflow-hidden`}
+      >
         <div className="swpcs testimonialswiper">
           <Swiper
-            className="!overflow-visible logo-swiper"
+            className="logo-swiper !overflow-visible"
             loop={true}
             freeMode={true}
             autoplay={{
@@ -97,32 +100,41 @@ const AutomationSwiper: React.FC<HeroSectionProps> = ({
             breakpoints={{
               320: {
                 slidesPerView: 3,
-                spaceBetween: 10
+                spaceBetween: 10,
               },
               640: {
                 slidesPerView: 4,
-                spaceBetween: 20
+                spaceBetween: 20,
               },
               992: {
                 slidesPerView: 2.6,
-                spaceBetween: 30
+                spaceBetween: 30,
               },
               1200: {
                 slidesPerView: 3.4,
-                spaceBetween: 80
+                spaceBetween: 80,
               },
               1400: {
                 slidesPerView: 6.5,
-                spaceBetween: 80
+                spaceBetween: 80,
               },
             }}
           >
             {mtslogo.data.map((item, index) => (
-              <SwiperSlide key={index} >
-                <div className={slideBg ? " bg-dgray rounded-md w-fit lg:w-full" : ""}>
-                  <Image src={item.src} alt="image" className="object-contain" width={200} height={80}  />
+              <SwiperSlide key={index}>
+                <div
+                  className={
+                    slideBg ? " w-fit rounded-md bg-dgray lg:w-full" : ""
+                  }
+                >
+                  <Image
+                    src={item.src}
+                    alt="image"
+                    className="object-contain"
+                    width={200}
+                    height={80}
+                  />
                 </div>
-
               </SwiperSlide>
             ))}
           </Swiper>
@@ -133,5 +145,3 @@ const AutomationSwiper: React.FC<HeroSectionProps> = ({
 };
 
 export default AutomationSwiper;
-
-

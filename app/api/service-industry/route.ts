@@ -10,7 +10,7 @@ export async function GET() {
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to fetch service industries" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -24,19 +24,19 @@ export async function POST(req: Request) {
     if (!image || !imageAlt || !title) {
       return NextResponse.json(
         { message: "image, imageAlt and title are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const created = await ServiceIndustry.create({ image, imageAlt, title });
     return NextResponse.json(
       { message: "Service industry created", data: created },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to create service industry" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

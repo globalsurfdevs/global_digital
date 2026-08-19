@@ -1,5 +1,4 @@
-
-import React  from "react";
+import React from "react";
 import Index from "@/app/components/Careers";
 
 interface Canonicals {
@@ -23,14 +22,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 const page = () => {
-
-
   return (
     <>
-    <Index/>
+      <Index />
     </>
-
-
   );
 };
 

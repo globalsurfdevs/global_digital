@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { assets } from '@/public/assets/assets';
+import { assets } from "@/public/assets/assets";
 
 const navmenuSection = {
   open: {
@@ -28,32 +28,32 @@ const dropdownVariants = {
     height: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut"
-    }
+      ease: "easeOut",
+    },
   },
   visible: {
     opacity: 1,
     height: "auto",
     transition: {
       duration: 0.5,
-      ease: "easeInOut"
-    }
+      ease: "easeInOut",
+    },
   },
   exit: {
     opacity: 0,
     height: 0,
     transition: {
       duration: 0.5,
-      ease: "easeIn"
-    }
-  }
+      ease: "easeIn",
+    },
+  },
 };
 
 export const MenuItem = ({
   item,
   Links,
   children,
-  toggle
+  toggle,
 }: {
   item: string;
   Links: string;
@@ -68,11 +68,13 @@ export const MenuItem = ({
 
   return (
     <motion.li
-      className="items-center relative cursor-pointer w-full flex-col"
+      className="relative w-full cursor-pointer flex-col items-center"
       onClick={children ? toggleSubmenu : toggle}
     >
-      <div className="flex justify-between items-center border-b font-bold w-full">
-        <Link href={Links} className="py-4 w-full">{item}</Link>
+      <div className="flex w-full items-center justify-between border-b font-bold">
+        <Link href={Links} className="w-full py-4">
+          {item}
+        </Link>
         {children && (
           <span className="ml-2">
             <Image
@@ -81,7 +83,10 @@ export const MenuItem = ({
               alt="Arrow Icon"
               width={32}
               height={32}
-              style={{ filter: "invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)" }}
+              style={{
+                filter:
+                  "invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)",
+              }}
             />
           </span>
         )}

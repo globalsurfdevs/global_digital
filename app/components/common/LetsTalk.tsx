@@ -1,5 +1,5 @@
 "use client";
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface LetsTalkProps {
@@ -82,14 +82,14 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
     }
   };
 
-  useEffect(()=>{
-    console.log(window.location.href)
-    setFormData((prev)=>({...prev,SingleLine2:window.location.href}))
-  },[window.location.href])
+  useEffect(() => {
+    console.log(window.location.href);
+    setFormData((prev) => ({ ...prev, SingleLine2: window.location.href }));
+  }, [window.location.href]);
 
-  useEffect(()=>{
-    console.log(formData)
-  },[formData])
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   return (
     <div>

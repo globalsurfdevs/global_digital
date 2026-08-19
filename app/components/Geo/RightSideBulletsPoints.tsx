@@ -18,48 +18,41 @@ const AiToolsPreferenceSection: React.FC = () => {
           </div>
 
           {/* Right side columns */}
-          <div className="lg:w-6/12 flex-col lg:justify-end">
-          <div className="flex flex-col gap-3 md:gap-10 xl:gap-[80px] lg:flex-row ">
-            {/* What They Avoid */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-[30px]">
-                <span className="h-[14px] w-[14px] bg-[#F04B37]" />
-                <h3 className="text-font30 text-black">
-                  What They Avoid
-                </h3>
+          <div className="flex-col lg:w-6/12 lg:justify-end">
+            <div className="flex flex-col gap-3 md:gap-10 lg:flex-row xl:gap-[80px] ">
+              {/* What They Avoid */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-[30px]">
+                  <span className="h-[14px] w-[14px] bg-[#F04B37]" />
+                  <h3 className="text-font30 text-black">What They Avoid</h3>
+                </div>
+                <ul className="text-19 list-disc pl-[65px] text-[#77787B]">
+                  <li>keyword stuffing</li>
+                  <li>generic articles</li>
+                  <li>surface-level information</li>
+                  <li>unverified claims</li>
+                </ul>
               </div>
-              <ul className="list-disc pl-[65px] text-19 text-[#77787B]">
-                <li>keyword stuffing</li>
-                <li>generic articles</li>
-                <li>surface-level information</li>
-                <li>unverified claims</li>
-              </ul>
-            </div>
 
-            {/* What They Prefer */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-[30px]">
-                <span className="h-[14px] w-[14px] bg-[#F04B37]" />
-                <h3 className="text-font30 text-black">
-                  What They Prefer
-                </h3>
+              {/* What They Prefer */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-[30px]">
+                  <span className="h-[14px] w-[14px] bg-[#F04B37]" />
+                  <h3 className="text-font30 text-black">What They Prefer</h3>
+                </div>
+                <ul className="text-19 list-disc pl-[65px] text-[#77787B]">
+                  <li>clarity</li>
+                  <li>genuine expertise</li>
+                  <li>clear structure</li>
+                  <li>reliable, well-supported facts</li>
+                </ul>
               </div>
-              <ul className="list-disc pl-[65px] text-19 text-[#77787B]">
-                <li>clarity</li>
-                <li>genuine expertise</li>
-                <li>clear structure</li>
-                <li>reliable, well-supported facts</li>
-              </ul>
             </div>
-            </div>
-            <p className="mt-10 text-font30  text-left text-black">
-          GEO makes sure your content fits these expectations.
-        </p>
+            <p className="mt-10 text-left  text-font30 text-black">
+              GEO makes sure your content fits these expectations.
+            </p>
           </div>
         </div>
-
-  
-        
       </div>
     </section>
   );

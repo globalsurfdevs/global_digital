@@ -5,17 +5,17 @@ export const BannerSection = [
     id: 1,
     image: assets.bannersr,
     navigation: [
-      { label: "Home", url: "/" },  
-      { label: "Web Solutions",url: "/web-design-and-development" }, 
-      { label: "E-commerce Development",url: "" },
+      { label: "Home", url: "/" },
+      { label: "Web Solutions", url: "/web-design-and-development" },
+      { label: "E-commerce Development", url: "" },
     ],
-    title:
-      "Ecommerce Development Company in Dubai",
-    subtitle:"Building Scalable Online Stores Designed to Maximize Sales and Enhance Customer Experience",
+    title: "Ecommerce Development Company in Dubai",
+    subtitle:
+      "Building Scalable Online Stores Designed to Maximize Sales and Enhance Customer Experience",
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "We build e-commerce websites that do more than just look good, they work effortlessly, grow with your business, and keep your data secure. As a trusted e-commerce development company in Dubai, we create online stores that enhance user experience, drive conversions, and simplify operations. Whether you need a Shopify or WooCommerce store, our team ensures a smooth, high-performance platform curated to meet your goals. ",
       },
     ],
@@ -57,64 +57,64 @@ export const OurServices = {
   data: [
     {
       id: 1,
-        title: "User Research",
-        desc:" Understanding your audience to create experiences that truly connect. "
+      title: "User Research",
+      desc: " Understanding your audience to create experiences that truly connect. ",
     },
     {
       id: 2,
       title: "Platform Assessment & Recommendation",
-      desc:"Helping you choose the right platform to meet your needs. "
+      desc: "Helping you choose the right platform to meet your needs. ",
     },
     {
       id: 3,
       title: "Information Architecture, Design & Copywriting",
-      desc:"Organizing content and visuals to make every interaction seamless. "
+      desc: "Organizing content and visuals to make every interaction seamless. ",
     },
     {
       id: 4,
       title: "Application Architecture, Frontend & Backend Development ",
-      desc:"Bringing your ideas to life with smooth, reliable technology. "
+      desc: "Bringing your ideas to life with smooth, reliable technology. ",
     },
     {
       id: 5,
       title: "Quality Assurance ",
-      desc:" Testing every detail to make sure everything works perfectly. "
+      desc: " Testing every detail to make sure everything works perfectly. ",
     },
     {
       id: 6,
       title: "SCMS Training & Deployment",
-      desc:"Giving you the confidence to manage your platform with ease. "
+      desc: "Giving you the confidence to manage your platform with ease. ",
     },
     {
       id: 7,
       title: "Support & Maintenance",
-      desc:"Staying by your side to keep everything running effortlessly. "
-    }
+      desc: "Staying by your side to keep everything running effortlessly. ",
+    },
   ],
 };
 export const Platformsecomdata = {
   title: "Why Choose GS Digital as Your E-Commerce Development Partner? ",
-  desc:"With a team of expert e-commerce web developers, we deliver innovative solutions tailored to your business goals. ",
+  desc: "With a team of expert e-commerce web developers, we deliver innovative solutions tailored to your business goals. ",
   data: [
     {
       id: 1,
       icon: assets.google,
       title: "50",
-      rttitel:"Successful E-Commerce Projects ",
+      rttitel: "Successful E-Commerce Projects ",
       dec: "Across industries, delivering custom web solutions tailored to unique business needs.  ",
     },
     {
       id: 2,
       icon: assets.linkedin,
       title: "12",
-      rttitel:"Years of Expertise",
+      rttitel: "Years of Expertise",
       dec: "Blending creativity with strategy while leveraging leading platforms like Shopify, WooCommerce, Magento, and custom e-commerce frameworks. ",
     },
     {
       id: 3,
       icon: assets.twitterx,
       title: "50",
-      rttitel:"Dedicated Professionals  ",
+      rttitel: "Dedicated Professionals  ",
       dec: "Committed to building and optimizing high-performance e-commerce websites. ",
     },
   ],
@@ -122,55 +122,47 @@ export const Platformsecomdata = {
 export const Cta = [
   {
     textred: "a smart & future-ready! ",
-    text: "What to build your dream online store? Let’s connect, to make it build  "
-  }
+    text: "What to build your dream online store? Let’s connect, to make it build  ",
+  },
 ];
 export const Faq = [
   {
-    title:
-      "What is e-commerce web development, and why is it important?",
+    title: "What is e-commerce web development, and why is it important?",
     description:
       "E-commerce web development involves creating online stores that provide seamless shopping experiences. A well-designed e-commerce website enhances user engagement, increases conversions, and drives revenue. ",
   },
   {
-    title:
-      "What is the cost of e-commerce development?",
+    title: "What is the cost of e-commerce development?",
     description:
       "E-commerce website development costs vary based on design complexity, features, and integrations. We provide transparent pricing and tailored packages to suit your budget. ",
   },
   {
-    title:
-      "How long does it take to develop an e-commerce website? ",
+    title: "How long does it take to develop an e-commerce website? ",
     description:
       "Timelines depend on project scope and complexity, typically ranging from 4-12 weeks. ",
   },
   {
-    title:
-      "Will my e-commerce store be mobile-friendly?",
+    title: "Will my e-commerce store be mobile-friendly?",
     description:
       "Yes! We ensure your online store is fully responsive and optimized for mobile users. ",
   },
   {
-    title:
-      " Do you offer post-launch support?",
+    title: " Do you offer post-launch support?",
     description:
       "Absolutely! We provide ongoing maintenance, updates, and performance optimizations. ",
   },
   {
-    title:
-      "What platforms do you use for e-commerce web development? ",
+    title: "What platforms do you use for e-commerce web development? ",
     description:
       "We specialize in Shopify, WooCommerce, Magento, and custom-built solutions. ",
   },
   {
-    title:
-      "Can you help with existing e-commerce website improvements? ",
+    title: "Can you help with existing e-commerce website improvements? ",
     description:
       "Yes! Our e-commerce website developers optimize design, performance, and functionality for better results. ",
   },
   {
-    title:
-      "How do you ensure e-commerce website security? ",
+    title: "How do you ensure e-commerce website security? ",
     description:
       "We implement SSL encryption, secure payment gateways, and cybersecurity best practices to protect your online store. ",
   },
@@ -188,45 +180,44 @@ export const relatedservices = {
       id: 1,
       title: "E-commerce SEO",
       dec: "Helping your online store get found and turn visitors into customers.",
-      icon:assets.rse1,
-      url:'/e-commerce-web-development-company'
-    } ,
+      icon: assets.rse1,
+      url: "/e-commerce-web-development-company",
+    },
     {
       id: 2,
       title: "Logo Design",
       dec: "Creating a logo that truly represents who you are. ",
-      icon:assets.rse2,
-      url:'/logo-design-agency-dubai'
-    } ,
+      icon: assets.rse2,
+      url: "/logo-design-agency-dubai",
+    },
     {
       id: 3,
       title: "Website Design",
       dec: "Designing websites that look great and feel effortless to use. ",
-      icon:assets.rse3,
-      url:'/web-design-agency-dubai'
-    } ,
+      icon: assets.rse3,
+      url: "/web-design-agency-dubai",
+    },
     {
       id: 4,
       title: "Custom Web Development",
       dec: "Building a website that fits your needs, not the other way around. ",
-      icon:assets.rse4,
-      url:'/web-development-agency-dubai'
-    } ,
+      icon: assets.rse4,
+      url: "/web-development-agency-dubai",
+    },
     {
       id: 5,
       title: "Branding",
       dec: "Build a memorable identity that resonates with your audience and sets you apart from the competition. ",
-      icon:assets.rst2,
-      url:'/branding-agency-dubai'
-    } ,
+      icon: assets.rst2,
+      url: "/branding-agency-dubai",
+    },
     {
       id: 6,
       title: "Web Apps",
       dec: "Dynamic web applications that are as engaging as they are efficiently built to scale with your business. ",
-      icon:assets.rse6,
-      url:'/web-app-dev-agency'
-    }
-
+      icon: assets.rse6,
+      url: "/web-app-dev-agency",
+    },
   ],
 };
 
@@ -237,17 +228,17 @@ export const Frameworkdata = {
       id: 1,
       title: "E-commerce Consulting  ",
       dec: "Get expert guidance to build a high-performing online store that delivers a great shopping experience. ",
-    } ,
+    },
     {
       id: 2,
       title: "Hosting & Infrastructure Management  ",
       dec: "Keep your store secure, fast, and always running at its best. ",
-    } ,
+    },
     {
       id: 3,
       title: "Application Management & Maintenance",
       dec: "We handle updates and maintenance, so your e-commerce platform runs smoothly across all channels. ",
-    } ,
+    },
     {
       id: 4,
       title: "E-commerce Audit  ",
@@ -267,12 +258,13 @@ export const Frameworkdata = {
       id: 7,
       title: "Support & Maintenance    ",
       dec: "MoveStaying by your side to keep everything running effortlessly. ",
-    }
+    },
   ],
 };
 export const AreaExpertise = {
   title: "Ecommerce Development Solutions We Offer ",
-  subttle:"We provide next-generation ecommerce development solutions designed to optimize sales, increase conversions, and boost revenue. ",
+  subttle:
+    "We provide next-generation ecommerce development solutions designed to optimize sales, increase conversions, and boost revenue. ",
   data: [
     {
       id: 1,
@@ -310,7 +302,7 @@ export const AreaExpertise = {
       url: "",
     },
     {
-      id:6,
+      id: 6,
       icon: assets.microicon6,
       title: "B2C Ecommerce   ",
       desc: "Empower your business to sell directly to consumers without intermediaries. Our B2C ecommerce solutions focus on personalized shopping experiences, customer engagement, and streamlined sales processes. ",
@@ -342,29 +334,29 @@ export const AreaExpertise = {
 
 export const ResultsData = {
   title: "Results",
-  description: "Take a look at our case study to see how our social media marketing services have helped businesses like yours grow and connect with their audience in meaningful ways.",
+  description:
+    "Take a look at our case study to see how our social media marketing services have helped businesses like yours grow and connect with their audience in meaningful ways.",
   data: [
     {
       id: 1,
       growth: "$200K",
       traffic: "Budget Spent  ",
-      title:"Based on our case in Q4 2024 ",
-       url: "",
+      title: "Based on our case in Q4 2024 ",
+      url: "",
     },
     {
       id: 2,
       growth: "$0.5",
       traffic: "Per Active Follower ",
-      title:"Based on our case in Q4 2024 ",
+      title: "Based on our case in Q4 2024 ",
       url: "",
     },
     {
       id: 3,
       growth: "10% ",
       traffic: "ERR ",
-      title:"Based on our case in Q4 2024 ",
+      title: "Based on our case in Q4 2024 ",
       url: "",
     },
-
   ],
 };

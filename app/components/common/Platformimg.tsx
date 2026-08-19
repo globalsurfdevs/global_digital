@@ -76,7 +76,9 @@ const Platformimg: React.FC<PlatformsSectionProps> = ({
             }, // Slide up and fade in
           }}
         >
-          <div className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  lg:gap-x-10 ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-4"}`}>
+          <div
+            className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-x-10  lg:gap-y-[95px] ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-4"}`}
+          >
             {data.map((platform) => (
               <div
                 key={platform.id}
@@ -85,8 +87,11 @@ const Platformimg: React.FC<PlatformsSectionProps> = ({
                 <div
                   className={`flex items-end justify-between gap-7 ${icontitle ? "flex-col items-baseline " : ""}`}
                 >
-                 <Image src={platform.icon}  alt="" className={`${bgblack ? "text-white" : ""}`} />
-
+                  <Image
+                    src={platform.icon}
+                    alt=""
+                    className={`${bgblack ? "text-white" : ""}`}
+                  />
                 </div>
 
                 <div
@@ -96,7 +101,7 @@ const Platformimg: React.FC<PlatformsSectionProps> = ({
                 </div>
                 {platform.title && (
                   <p
-                    className={`text-30 font-[400] mb-5 lg:mb-8 transition-colors duration-300 group-hover:text-primary  ${bgblack ? "text-white" : ""}`}
+                    className={`text-30 mb-5 font-[400] transition-colors duration-300 group-hover:text-primary lg:mb-8  ${bgblack ? "text-white" : ""}`}
                   >
                     {platform.title}
                   </p>

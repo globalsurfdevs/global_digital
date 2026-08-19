@@ -1,9 +1,17 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
 import ContentSectionrefOne from "../../../components/BlogSocialMedia/ContentSectionrefOne";
-import { HowDigitalMarketingWinsSchema, HowDigitalMarketingWinsFaqSchema, HowDigitalMarketingWinsHowToSchema } from "../../../components/Schema/OfferCatalog";
+import {
+  HowDigitalMarketingWinsSchema,
+  HowDigitalMarketingWinsFaqSchema,
+  HowDigitalMarketingWinsHowToSchema,
+} from "../../../components/Schema/OfferCatalog";
 
-import { BannerSection, contentSectionsData, Faq} from "../../../data/blogdatas/how-digital-marketing-wins-projects-for-construction-companies-in-uae";
+import {
+  BannerSection,
+  contentSectionsData,
+  Faq,
+} from "../../../data/blogdatas/how-digital-marketing-wins-projects-for-construction-companies-in-uae";
 import HowDigitalMarketingWinsContent from "../../../components/Blog-details/HowDigitalMarketingWinsContent";
 import BlogFaq from "@/app/components/common/BlogFaq";
 
@@ -24,42 +32,50 @@ type Metadata = {
     url: string;
     description: string;
     type?: string; // keep it optional
-  }; 
+  };
   images?: { url: string; alt: string }[];
   authors?: { name: string; url?: string }[];
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "How Digital Marketing Wins Projects for Construction Companies in the UAE | Global Surf",
-    description: "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
-    alternates: { canonical: "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae", },
+    title:
+      "How Digital Marketing Wins Projects for Construction Companies in the UAE | Global Surf",
+    description:
+      "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
+    alternates: {
+      canonical:
+        "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae",
+    },
     robots: "index, follow",
     openGraph: {
-      title: "How Digital Marketing Wins Projects for Construction Companies in the UAE | Global Surf",
+      title:
+        "How Digital Marketing Wins Projects for Construction Companies in the UAE | Global Surf",
       site_name: "Global Surf",
       url: "https://www.globalsurf.ae/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae",
-      description: "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
+      description:
+        "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
     },
   };
 }
 
-
-
 const page = async () => {
   const author = await getAuthorById("6a4ca2d7c0f7cb5455693c84");
-
 
   return (
     <div className="relative">
       <HowDigitalMarketingWinsSchema />
       <HowDigitalMarketingWinsFaqSchema />
       <HowDigitalMarketingWinsHowToSchema />
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={27}
+      />
       <ContentSectionrefOne sections={contentSectionsData} />
       <HowDigitalMarketingWinsContent />
-      <BlogFaq data={Faq}  />
-       {author && <AuthorBioCard data={author} />}
+      <BlogFaq data={Faq} />
+      {author && <AuthorBioCard data={author} />}
     </div>
   );
 };

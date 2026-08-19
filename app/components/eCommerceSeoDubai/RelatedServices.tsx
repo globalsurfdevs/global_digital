@@ -77,7 +77,7 @@ const RelatedServices: React.FC<FrameworkSectionProps> = ({
                   }, // Slide up and fade in
                 }}
               >
-                 {data.map((framework) => (
+                {data.map((framework) => (
                   <div
                     key={framework.id}
                     className="sevsr group gap-4 border-b  border-t border-[#dadada] px-0 py-6 transition-all duration-300 ease-in-out  hover:bg-[#dadada] md:gap-7   md:px-4  md:py-[10px] lg:gap-10 lg:py-[28px]"

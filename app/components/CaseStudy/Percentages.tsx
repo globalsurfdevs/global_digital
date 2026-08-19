@@ -1,59 +1,73 @@
-"use client"
-import { CaseStudy } from '@/app/types/CaseStudy';
-import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights';
-import { motion } from 'framer-motion';
-import React from 'react'
+"use client";
+import { CaseStudy } from "@/app/types/CaseStudy";
+import { CaseStudyHighlights } from "@/app/types/CaseStudyHighlights";
+import { motion } from "framer-motion";
+import React from "react";
 
-const Percentages = ({ data }: {
-    data: {
-        caseStudyHighlights: CaseStudyHighlights[]
-    } | null
+const Percentages = ({
+  data,
+}: {
+  data: {
+    caseStudyHighlights: CaseStudyHighlights[];
+  } | null;
 }) => {
-    const uniqueHighlights = data?.caseStudyHighlights.filter(
-        (item, index, arr) =>
-            arr.findIndex((i) => i.customId === item.customId) === index
-    );
-    return (
-        uniqueHighlights && uniqueHighlights.length > 0 && <motion.div className='bg-black'
+  const uniqueHighlights = data?.caseStudyHighlights.filter(
+    (item, index, arr) =>
+      arr.findIndex((i) => i.customId === item.customId) === index,
+  );
+  return (
+    uniqueHighlights &&
+    uniqueHighlights.length > 0 && (
+      <motion.div
+        className="bg-black"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        variants={{
+          hidden: { opacity: 0, y: 50 }, // Start below and invisible
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 1, ease: "easeOut" },
+          }, // Slide up and fade in
+        }}
+      >
+        <div className="container mx-auto py-4">
+          <motion.div
+            className="grid  gap-[45px] py-[50px] lg:grid-cols-1 lg:gap-[300px] lg:pb-[141px] lg:pt-[110px]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
             variants={{
-                hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
+              hidden: { opacity: 0, y: 50 }, // Start below and invisible
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 1, ease: "easeOut" },
+              }, // Slide up and fade in
             }}
-        >
-            <div className='container mx-auto py-4'>
+          >
+            <div className="flex grid-cols-2 flex-col justify-between gap-[45px] lg:grid lg:gap-14 lg:gap-[100px]">
+              {uniqueHighlights.map((item) => (
+                <div className="group flex flex-col" key={item.customId}>
+                  <h3 className="title-65 pb-[15px] text-primary duration-500 group-hover:-translate-y-1 lg:pb-[19px]">
+                    {item.number}
+                  </h3>
+                  <div className="mb-[15px] h-[1px] w-full rounded-xl bg-gray1 duration-300 group-hover:-translate-y-1 lg:mb-[33px]"></div>
+                  <h3 className="text-30 text-white duration-500 group-hover:-translate-y-2">
+                    {item.text}
+                  </h3>
+                </div>
+              ))}
 
-
-                <motion.div className='lg:pt-[110px]  lg:pb-[141px] py-[50px] grid lg:grid-cols-1 lg:gap-[300px] gap-[45px]'
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                    variants={{
-                        hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                        visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
-                    }}
-                >
-                    <div className='flex flex-col lg:grid grid-cols-2 justify-between lg:gap-14 lg:gap-[100px] gap-[45px]'>
-                        {uniqueHighlights.map((item) => (
-                            <div className='flex flex-col group' key={item.customId}>
-                                <h3 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>{item.number}</h3>
-                                <div className='w-full bg-gray1 rounded-xl h-[1px] mb-[15px] lg:mb-[33px] duration-300 group-hover:-translate-y-1'></div>
-                                <h3 className='text-white text-30 duration-500 group-hover:-translate-y-2'>{item.text}</h3>
-                            </div>
-                        ))}
-
-
-                        {/* <div className='flex flex-col group'>
+              {/* <div className='flex flex-col group'>
                     <h3 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>2X</h3>
                     <div className='w-full bg-gray1 rounded-xl h-[1px] mb-[15px] lg:mb-[33px] duration-300 group-hover:-translate-y-1'></div>
                     <h3 className='text-white text-30 duration-500 group-hover:-translate-y-2'>Increase in Session Duration</h3>
                 </div> */}
+            </div>
 
-                    </div>
-
-                    {/* <div className='flex flex-col justify-between lg:gap-24 lg:gap-[100px] gap-[45px]'>
+            {/* <div className='flex flex-col justify-between lg:gap-24 lg:gap-[100px] gap-[45px]'>
                 {data?.caseStudyHighlights.slice(2).map((item)=>(
                     <div className='flex flex-col group' key={item.customId}>
                     <h3 className='text-primary title-65 pb-[15px] lg:pb-[19px] duration-500 group-hover:-translate-y-1'>{item.number}</h3>
@@ -71,14 +85,11 @@ const Percentages = ({ data }: {
                 </div>
 
             </div> */}
-
-                </motion.div>
-
-
-            </div>
-
-        </motion.div>
+          </motion.div>
+        </div>
+      </motion.div>
     )
-}
+  );
+};
 
-export default Percentages
+export default Percentages;

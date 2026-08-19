@@ -6,26 +6,25 @@ import "@/app/models/Category";
 import "@/app/models/Channel";
 
 export async function getCaseStudyOrPortfolio(slug: string, type: string) {
-    await connectDb();
+  await connectDb();
 
-    const caseStudy = await Portfolio
-        .findOne({ slug })
-        .populate("categories")
-        .populate("channels")
-        .lean() as any;
+  const caseStudy = (await Portfolio.findOne({ slug })
+    .populate("categories")
+    .populate("channels")
+    .lean()) as any;
 
-    if (!caseStudy) return null;
+  if (!caseStudy) return null;
 
-    const caseStudyHighlights = await PortfolioHighlight.find({
-        companyId: new mongoose.Types.ObjectId(caseStudy._id)
-    }).lean();
+  const caseStudyHighlights = await PortfolioHighlight.find({
+    companyId: new mongoose.Types.ObjectId(caseStudy._id),
+  }).lean();
 
-    let data;
-    if (type == "portfolio" || slug == "quad-dream") {
-        data = { portfolio: caseStudy, portfolioHighlights: caseStudyHighlights };
-    } else {
-        data = { caseStudy, caseStudyHighlights };
-    }
+  let data;
+  if (type == "portfolio" || slug == "quad-dream") {
+    data = { portfolio: caseStudy, portfolioHighlights: caseStudyHighlights };
+  } else {
+    data = { caseStudy, caseStudyHighlights };
+  }
 
-    return JSON.parse(JSON.stringify(data));
+  return JSON.parse(JSON.stringify(data));
 }

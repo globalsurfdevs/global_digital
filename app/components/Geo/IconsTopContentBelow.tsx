@@ -30,7 +30,6 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
   bgcolor,
   colcount,
   maxchwidth,
-
 }) => {
   return (
     <div className="">
@@ -50,11 +49,10 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-
               {title1 && (
                 <Link href="">
-                  <p className=" border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] mb-2 md:mb-6 xl:mb-[79px]">
-                  {title1}
+                  <p className=" mb-2 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] md:mb-6 xl:mb-[79px]">
+                    {title1}
                   </p>
                 </Link>
               )}
@@ -63,15 +61,13 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
-                  </div>
+                </div>
               )}
               {!description && (
                 <>
-                   <div
-                    style={{ maxWidth: `${maxchwidth}ch` }}
-                  >
+                  <div style={{ maxWidth: `${maxchwidth}ch` }}>
                     <h2 className="title-65 pb-6 lg:pb-[58px]">{title}</h2>
-                    </div>
+                  </div>
                 </>
               )}
             </motion.div>
@@ -98,7 +94,7 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
                   className="group relative    flex flex-col overflow-hidden"
                 >
                   {/* Animated Red Border */}
-                
+
                   {!framework.icn && (
                     <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary   transition-transform duration-500  lg:mb-8 lg:mt-10">
                       <p className="text-30  text-black transition-transform duration-500">
@@ -107,7 +103,7 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
                     </div>
                   )}
                   {framework.icn && (
-                    <div className="mb-4 mt-4 first:mt-0 md:mt-6 first:md:mt-6 lg:mb-8 lg:mt-10 h-[50px] w-[50px]">
+                    <div className="mb-4 mt-4 h-[50px] w-[50px] first:mt-0 md:mt-6 first:md:mt-6 lg:mb-8 lg:mt-10">
                       <Image
                         src={framework.icn}
                         alt="icon"
@@ -115,18 +111,23 @@ const IconsTopContentBelow: React.FC<FrameworkSectionProps> = ({
                       />
                     </div>
                   )}
- 
-                  <div className="text-2xl relative w-fit">
 
+                  <div className="relative w-fit text-2xl">
                     <h3
                       className="text-30 text-black "
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
-                        { framework.urllink && (   <Link href={framework.urllink} className="absolute top-0 w-full h-full"> </Link>
-                        )}
+                    {framework.urllink && (
+                      <Link
+                        href={framework.urllink}
+                        className="absolute top-0 h-full w-full"
+                      >
+                        {" "}
+                      </Link>
+                    )}
                   </div>
-                   <div
-                    className={`relative h-[1px] my-4 md:my-[30px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
+                  <div
+                    className={`relative my-4 h-[1px] overflow-hidden rounded-xl md:my-[30px] ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
                   >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>

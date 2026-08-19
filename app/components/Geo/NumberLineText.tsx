@@ -23,8 +23,8 @@ interface PlatformsSectionProps {
   colcount?: number;
   hiddentitle?: boolean;
   data: PlatformsItem[];
-  hideIcon?: boolean;     // 👈 NEW: hide icon completely
-  showNumbers?: boolean;  // 👈 NEW: show numbers instead of icon
+  hideIcon?: boolean; // 👈 NEW: hide icon completely
+  showNumbers?: boolean; // 👈 NEW: show numbers instead of icon
 }
 
 const NumberLineText: React.FC<PlatformsSectionProps> = ({
@@ -43,8 +43,9 @@ const NumberLineText: React.FC<PlatformsSectionProps> = ({
   return (
     <div className={`container mx-auto py-4 ${leftzero ? "relative" : ""}`}>
       <div
-        className={`secps flex flex-col gap-7 ${bgblack ? "bg-black" : "bg-dgray"
-          } ${leftzero ? "left0w" : ""} p-[25px] lg:gap-12 lg:p-[100px]`}
+        className={`secps flex flex-col gap-7 ${
+          bgblack ? "bg-black" : "bg-dgray"
+        } ${leftzero ? "left0w" : ""} p-[25px] lg:gap-12 lg:p-[100px]`}
       >
         <div>
           <motion.div
@@ -89,8 +90,9 @@ const NumberLineText: React.FC<PlatformsSectionProps> = ({
           }}
         >
           <div
-            className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px] ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-3"
-              }`}
+            className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px] ${
+              colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-3"
+            }`}
           >
             {data.map((platform, index) => (
               <div
@@ -98,14 +100,13 @@ const NumberLineText: React.FC<PlatformsSectionProps> = ({
                 className="group flex flex-col transition-all duration-300"
               >
                 <div
-                  className={`flex items-center gap-7 ${icontitle ? "flex-col items-baseline" : ""
-                    }`}
+                  className={`flex items-center gap-7 ${
+                    icontitle ? "flex-col items-baseline" : ""
+                  }`}
                 >
                   {/* ICON or NUMBER BLOCK */}
                   {showNumbers ? (
-                    <span
-                      className="text-30 lg:text-40 font-semibold leading-none bg-[#E43D30] text-white p-[8px] "
-                    >
+                    <span className="text-30 lg:text-40 bg-[#E43D30] p-[8px] font-semibold leading-none text-white ">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   ) : (
@@ -121,8 +122,9 @@ const NumberLineText: React.FC<PlatformsSectionProps> = ({
                   {/* MAIN TITLE (can be hidden via hiddentitle) */}
                   {!hiddentitle && (
                     <h3
-                      className={`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? "text-white" : ""
-                        }`}
+                      className={`text-30 transition-colors duration-300 group-hover:text-primary ${
+                        bgblack ? "text-white" : ""
+                      }`}
                       dangerouslySetInnerHTML={{
                         __html: platform.title ?? "",
                       }}
@@ -132,8 +134,9 @@ const NumberLineText: React.FC<PlatformsSectionProps> = ({
 
                 {/* LINE ANIMATION */}
                 <div
-                  className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? "bg-white" : ""
-                    }`}
+                  className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${
+                    bgblack ? "bg-white" : ""
+                  }`}
                 >
                   <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                 </div>
@@ -142,19 +145,20 @@ const NumberLineText: React.FC<PlatformsSectionProps> = ({
                 <div>
                   {!hiddentitle && platform.title2 && (
                     <h3
-                      className={`text-30 transition-colors duration-300 group-hover:text-primary lg:mt-[20px] ${bgblack ? "text-white" : ""
-                        }`}
+                      className={`text-30 transition-colors duration-300 group-hover:text-primary lg:mt-[20px] ${
+                        bgblack ? "text-white" : ""
+                      }`}
                       dangerouslySetInnerHTML={{
                         __html: platform.title2,
                       }}
                     />
                   )}
                   <p
-                    className={`${bgblack ? "group-hover:text-gray-300" : ""
-                      } ${hiddentitle
+                    className={`${bgblack ? "group-hover:text-gray-300" : ""} ${
+                      hiddentitle
                         ? "text-30 transition-colors"
                         : "text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700"
-                      }`}
+                    }`}
                     dangerouslySetInnerHTML={{ __html: platform.dec }}
                   ></p>
                 </div>

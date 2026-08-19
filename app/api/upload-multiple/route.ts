@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { uploadToDropbox } from "@/lib/connectDropbox";
 
 export async function POST(request: NextRequest) {
-
-
   try {
     const formData = await request.formData();
     const files = formData.getAll("files") as File[];
@@ -21,12 +19,15 @@ export async function POST(request: NextRequest) {
       files.map(async (file) => {
         const filePath = `/uploads/${fileType}/${Date.now()}-${file.name}`;
         return await uploadToDropbox(file, filePath); // assuming it returns URL
-      })
+      }),
     );
 
     return NextResponse.json({ urls: uploadResults }, { status: 200 });
   } catch (error) {
     console.error("Error uploading files:", error);
-    return NextResponse.json({ error: "Failed to upload files" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to upload files" },
+      { status: 500 },
+    );
   }
 }

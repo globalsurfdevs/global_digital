@@ -10,7 +10,7 @@ import Partner from "../../components/PermormanceMarketing/Partner";
 import Testimonials from "../../components/HomePage/Testimonials";
 import FAQ from "../../components/PermormanceMarketing/FAQ";
 import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import {MarketingIntelligenceSchema} from "../../components/Schema/OfferCatalog";
+import { MarketingIntelligenceSchema } from "../../components/Schema/OfferCatalog";
 
 import { BannerSection } from "../../data/services/marketing-intelligence/herosection";
 import { AreaExpertise } from "../../data/services/marketing-intelligence/area-of-expertise";
@@ -34,8 +34,7 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title:
-      "Marketing Intelligence Services in Dubai | GS Digital",
+    title: "Marketing Intelligence Services in Dubai | GS Digital",
     description:
       "Accelerate your business growth with our data-driven growth strategies. Leverage market insights, competitor analysis, and data-driven strategies to stay ahead in the market.",
     alternates: {

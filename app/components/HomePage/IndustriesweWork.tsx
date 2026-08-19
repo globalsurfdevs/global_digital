@@ -10,7 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const images = [
-
   {
     // src: assets.realestate1,
     src: "/assets/industry_icons/1.svg",
@@ -79,7 +78,7 @@ const IndustriesweWork = () => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <div className="flex flex-col  py-[50px] lg:pb-[140px] lg:pt-[140px] bg-gray-100">
+    <div className="flex flex-col  bg-gray-100 py-[50px] lg:pb-[140px] lg:pt-[140px]">
       <div className="  ">
         <motion.div
           className="container  mx-auto"
@@ -95,10 +94,15 @@ const IndustriesweWork = () => {
           }}
         >
           <h2 className="title-65 mb-5 md:mb-5">Industries we work with</h2>
-          <p className="text-font25 leading-[1.4] max-w-[70ch] mb-5 lg:mb-[58px]">We partner with businesses across Dubai and the wider UAE to deliver digital solutions that align with real-world commercial challenges and growth goals. Our strategies are built around each sector's audience behaviour, competitive context, and market dynamics.</p>
+          <p className="mb-5 max-w-[70ch] text-font25 leading-[1.4] lg:mb-[58px]">
+            We partner with businesses across Dubai and the wider UAE to deliver
+            digital solutions that align with real-world commercial challenges
+            and growth goals. Our strategies are built around each sector's
+            audience behaviour, competitive context, and market dynamics.
+          </p>
         </motion.div>
         <motion.div
-          className="ps-4 pe-4 lg:pe-0 container lg:!max-w-full"
+          className="container pe-4 ps-4 lg:!max-w-full lg:pe-0"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -155,9 +159,7 @@ const IndustriesweWork = () => {
             >
               {images.map((image, index) => {
                 const card = (
-                  <div
-                    className="group flex h-[300px] flex-col justify-between gap-3 border p-5 transition-all duration-500 hover:bg-primary lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]"
-                  >
+                  <div className="group flex h-[300px] flex-col justify-between gap-3 border p-5 transition-all duration-500 hover:bg-primary lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]">
                     {/* Image Wrapper */}
                     <div className="align-center flex h-[30px] w-[30px] justify-center bg-white p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
                       <Image

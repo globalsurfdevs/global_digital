@@ -18,8 +18,6 @@ import { Metadata } from "next";
 import { serviceData } from "@/app/components/DigitalGrowth/data";
 import PricingComparison from "@/app/components/DigitalGrowth/Sections/PricingComparison";
 
-
-
 interface Canonicals {
   canonical: string;
 }
@@ -28,10 +26,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-
-
 const page = async ({ params }: PageProps) => {
-
   return (
     <div>
       <HeroSection data={serviceData.firstSection} />
@@ -45,27 +40,42 @@ const page = async ({ params }: PageProps) => {
         colcount={6}
       />
       <Whattheyfind />
-      <IndustriesSec
-        data={serviceData.industriesData}
-      />
+      <IndustriesSec data={serviceData.industriesData} />
       <CredibilityStats data={serviceData.credibilityStats} />
       <PackageChecklist data={serviceData.packageChecklist} />
       <ExecutionRoadmap
         data={{
           title: "The execution roadmap",
           items: [
-            { _id: "1", badge: "Weeks 1–2", description: "Written Baseline, Signed" },
-            { _id: "2", badge: "Day 7", description: "First Deliverable Live"},
-            { _id: "3", badge: "Monthly", description: "Executive Report & Senior Call" },
-            { _id: "4", badge: "Quarterly", description: "Strategic Roadmap & Three Audits" },
-            { _id: "5", badge: "Month 3", description: "Accountability Checkpoint" },
+            {
+              _id: "1",
+              badge: "Weeks 1–2",
+              description: "Written Baseline, Signed",
+            },
+            { _id: "2", badge: "Day 7", description: "First Deliverable Live" },
+            {
+              _id: "3",
+              badge: "Monthly",
+              description: "Executive Report & Senior Call",
+            },
+            {
+              _id: "4",
+              badge: "Quarterly",
+              description: "Strategic Roadmap & Three Audits",
+            },
+            {
+              _id: "5",
+              badge: "Month 3",
+              description: "Accountability Checkpoint",
+            },
           ],
         }}
       />
       <FullFunnelChannels
         data={{
           title: "Eliminate reporting guesswork across every channel",
-          description: "Full-Funnel visibility, 100% Client-Owned data architecture",
+          description:
+            "Full-Funnel visibility, 100% Client-Owned data architecture",
         }}
       />
       <PricingComparison
@@ -82,20 +92,27 @@ const page = async ({ params }: PageProps) => {
             ...serviceData.Testimonials,
             items: serviceData.Testimonials.items.map((item) => ({
               ...item,
-              image: typeof item.image === "string" ? item.image : item.image.src,
+              image:
+                typeof item.image === "string" ? item.image : item.image.src,
             })),
           } as typeof serviceData.Testimonials & {
-            items: Array<(typeof serviceData.Testimonials.items)[number] & { image: string }>
+            items: Array<
+              (typeof serviceData.Testimonials.items)[number] & {
+                image: string;
+              }
+            >;
           }
         }
         page="service"
       />
       <FAQ data={Faq} defActive="2" fullSpace={false} py="90" />
-      <CheckItem data={{
-        title: "Make Sure they like\nwhat they find.",
-        description:
-          "20 minutes with someone senior. No deck, no pitch. Q3 onboarding is capped — if this isn't the right fit, we'll tell you on the call, not after three follow-up emails.",
-      }} />
+      <CheckItem
+        data={{
+          title: "Make Sure they like\nwhat they find.",
+          description:
+            "20 minutes with someone senior. No deck, no pitch. Q3 onboarding is capped — if this isn't the right fit, we'll tell you on the call, not after three follow-up emails.",
+        }}
+      />
     </div>
   );
 };

@@ -6,7 +6,10 @@ const SECTIONS = [
   { id: "silent-shift", label: "The Silent Shift Happening Right Now" },
   { id: "how-llms-work", label: "How LLMs Work (In Simple Terms)" },
   { id: "invisible-llms", label: "Why You Might Be Invisible in LLMs" },
-  { id: "ai-visibility-framework", label: "The 5-Step AI Visibility Framework" },
+  {
+    id: "ai-visibility-framework",
+    label: "The 5-Step AI Visibility Framework",
+  },
   { id: "content-llms-read", label: "Content That LLMs Actually Read" },
   { id: "rules-visibility", label: "The New Rules of Visibility" },
   { id: "impact-b2b-b2c", label: "How This Impacts B2B and B2C" },
@@ -17,7 +20,7 @@ const SECTIONS = [
 const LeftSideScrollBar = () => {
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(
-    SECTIONS[0].id
+    SECTIONS[0].id,
   );
 
   useEffect(() => {
@@ -38,7 +41,6 @@ const LeftSideScrollBar = () => {
         }
       }
 
-   
       if (brandVisibility) {
         const brandBottom =
           brandVisibility.offsetTop + brandVisibility.offsetHeight;
@@ -66,8 +68,7 @@ const LeftSideScrollBar = () => {
       });
 
       const isBottom =
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 2;
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
 
       if (isBottom) {
         currentId = SECTIONS[SECTIONS.length - 1].id;
@@ -97,8 +98,8 @@ const LeftSideScrollBar = () => {
     <div
       className={`fixed left-[60px] top-[15%] z-[1000]
       transition-all duration-300
-      ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}
-      hidden xl:flex flex-col items-start gap-10 max-w-[364px]`}
+      ${visible ? "opacity-100" : "pointer-events-none opacity-0"}
+      hidden max-w-[364px] flex-col items-start gap-10 xl:flex`}
     >
       <h3 className="text-[30px] font-semibold">Table of Contents</h3>
 
@@ -111,7 +112,7 @@ const LeftSideScrollBar = () => {
               key={sec.id}
               onClick={() => scrollToSection(sec.id)}
               className={`
-                text-font19 cursor-pointer transition-all duration-200
+                cursor-pointer text-font19 transition-all duration-200
                 ${
                   isActive
                     ? "border-b-[1px] border-[#E63E31] pb-1"

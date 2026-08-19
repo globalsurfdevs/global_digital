@@ -90,117 +90,117 @@ export async function GET(req: NextRequest) {
 // Creates a new service item inside the single Service document's items array.
 // If no Service document exists yet, one is created.
 export async function POST(req: NextRequest) {
-    try {
-        const isAdmin = await verifyAdmin(req);
-        if (!isAdmin) {
-            return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-        }
-        await dbConnect();
- 
-        const body = await req.json();
-        const id = body?._id;
-        const name = body?.name?.trim();
-        const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
- 
-        if (!name) {
-            return NextResponse.json(
-                { message: "Service name is required" },
-                { status: 400 }
-            );
-        }
- 
-        if (!slug) {
-            return NextResponse.json(
-                { message: "Slug is required" },
-                { status: 400 }
-            );
-        }
- 
-        // Ensure the single Service document exists
-        let serviceDoc = await Service.findOne({});
-        if (!serviceDoc) {
-            serviceDoc = await Service.create({ items: [] });
-        }
- 
-        // ---- EDIT branch: _id present means update an existing item ----
-        if (id) {
-            const item = serviceDoc.items.id(id);
-            if (!item) {
-                return NextResponse.json(
-                    { message: "Service item not found" },
-                    { status: 404 }
-                );
-            }
- 
-            // Slug must remain unique across all OTHER items
-            const slugTaken = serviceDoc.items.some(
-                (i: any) => i.slug === slug && String(i._id) !== String(id)
-            );
-            if (slugTaken) {
-                return NextResponse.json(
-                    { message: "A service with this slug already exists" },
-                    { status: 409 }
-                );
-            }
- 
-            item.name = name;
-            item.slug = slug;
-            await serviceDoc.save();
- 
-            revalidateTag("service")
-            return NextResponse.json(
-                {
-                    message: "Service updated successfully",
-                    data: {
-                        _id: item._id,
-                        name: item.name,
-                        slug: item.slug,
-                    },
-                },
-                { status: 200 }
-            );
-        }
- 
-        // ---- CREATE branch: no _id means create a new item ----
-        const slugTaken = serviceDoc.items.some((item: any) => item.slug === slug);
-        if (slugTaken) {
-            return NextResponse.json(
-                { message: "A service with this slug already exists" },
-                { status: 409 }
-            );
-        }
- 
-        serviceDoc.items.push({ name, slug });
-        await serviceDoc.save();
- 
-        const createdItem = serviceDoc.items[serviceDoc.items.length - 1];
- 
-        revalidateTag("service")
-        return NextResponse.json(
-            {
-                message: "Service created successfully",
-                data: {
-                    _id: createdItem._id,
-                    name: createdItem.name,
-                    slug: createdItem.slug,
-                },
-            },
-            { status: 201 }
-        );
-    } catch (error) {
-        console.error("Error saving service:", error);
-        return NextResponse.json(
-            { message: "Failed to save service" },
-            { status: 500 }
-        );
+  try {
+    const isAdmin = await verifyAdmin(req);
+    if (!isAdmin) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
+    await dbConnect();
+
+    const body = await req.json();
+    const id = body?._id;
+    const name = body?.name?.trim();
+    const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
+
+    if (!name) {
+      return NextResponse.json(
+        { message: "Service name is required" },
+        { status: 400 },
+      );
+    }
+
+    if (!slug) {
+      return NextResponse.json(
+        { message: "Slug is required" },
+        { status: 400 },
+      );
+    }
+
+    // Ensure the single Service document exists
+    let serviceDoc = await Service.findOne({});
+    if (!serviceDoc) {
+      serviceDoc = await Service.create({ items: [] });
+    }
+
+    // ---- EDIT branch: _id present means update an existing item ----
+    if (id) {
+      const item = serviceDoc.items.id(id);
+      if (!item) {
+        return NextResponse.json(
+          { message: "Service item not found" },
+          { status: 404 },
+        );
+      }
+
+      // Slug must remain unique across all OTHER items
+      const slugTaken = serviceDoc.items.some(
+        (i: any) => i.slug === slug && String(i._id) !== String(id),
+      );
+      if (slugTaken) {
+        return NextResponse.json(
+          { message: "A service with this slug already exists" },
+          { status: 409 },
+        );
+      }
+
+      item.name = name;
+      item.slug = slug;
+      await serviceDoc.save();
+
+      revalidateTag("service");
+      return NextResponse.json(
+        {
+          message: "Service updated successfully",
+          data: {
+            _id: item._id,
+            name: item.name,
+            slug: item.slug,
+          },
+        },
+        { status: 200 },
+      );
+    }
+
+    // ---- CREATE branch: no _id means create a new item ----
+    const slugTaken = serviceDoc.items.some((item: any) => item.slug === slug);
+    if (slugTaken) {
+      return NextResponse.json(
+        { message: "A service with this slug already exists" },
+        { status: 409 },
+      );
+    }
+
+    serviceDoc.items.push({ name, slug });
+    await serviceDoc.save();
+
+    const createdItem = serviceDoc.items[serviceDoc.items.length - 1];
+
+    revalidateTag("service");
+    return NextResponse.json(
+      {
+        message: "Service created successfully",
+        data: {
+          _id: createdItem._id,
+          name: createdItem.name,
+          slug: createdItem.slug,
+        },
+      },
+      { status: 201 },
+    );
+  } catch (error) {
+    console.error("Error saving service:", error);
+    return NextResponse.json(
+      { message: "Failed to save service" },
+      { status: 500 },
+    );
+  }
 }
 
 export async function PATCH(req: NextRequest) {
   try {
     const isAdmin = await verifyAdmin(req);
     if (!isAdmin) {
-        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
     await dbConnect();
     const { searchParams } = new URL(req.url);

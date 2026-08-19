@@ -49,9 +49,14 @@ const Cta = () => {
             >
               <div className="flex h-1/2 flex-col justify-center border-b border-gray-400">
                 <h2 className="text-font65 leading-lh1p07">
-                  <span className="text-primary">Ready to see </span>what your marketing spend can actually deliver?
+                  <span className="text-primary">Ready to see </span>what your
+                  marketing spend can actually deliver?
                 </h2>
-                <p className="text-font25 leading-[35px] text-[#A3A3A3] lg:mt-10">Talk to our digital marketing agency in Dubai about what a strategy built around your commercial objectives could achieve for your business across the UAE.</p>
+                <p className="text-font25 leading-[35px] text-[#A3A3A3] lg:mt-10">
+                  Talk to our digital marketing agency in Dubai about what a
+                  strategy built around your commercial objectives could achieve
+                  for your business across the UAE.
+                </p>
 
                 <div className="innerfnont mb-10 mt-10 lg:mb-[120px] lg:mt-[57px]">
                   <Link

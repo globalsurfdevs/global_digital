@@ -6,12 +6,12 @@ export const BannerSection = [
     image: assets.smmbanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Social Media",url: "/social-media-agency-dubai" },
-      { label: "Social Media Management",url: "" },
+      { label: "Social Media", url: "/social-media-agency-dubai" },
+      { label: "Social Media Management", url: "" },
     ],
-    title:
-      "Professional Social Media Management in Dubai",
-      subtitle:"Managing and Monitoring Your Online Presence for Maximum Impact & Engagement",
+    title: "Professional Social Media Management in Dubai",
+    subtitle:
+      "Managing and Monitoring Your Online Presence for Maximum Impact & Engagement",
     sub: [
       {
         stitle: "OUR APPROACH",

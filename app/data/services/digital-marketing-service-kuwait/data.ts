@@ -123,8 +123,6 @@ export const OurServices = {
   ],
 };
 
-
-
 export const relatedServicesData = {
   title: "Related Services",
   data: [
@@ -362,8 +360,7 @@ export const Platformsecomdata = {
 };
 export const Cta = [
   {
-    textred:
-      "digital potential to life.",
+    textred: "digital potential to life.",
     text: "Let’s build a strategy that brings your brand’s  ",
   },
 ];

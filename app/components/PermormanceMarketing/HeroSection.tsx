@@ -137,30 +137,47 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <div
                 className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
               >
-                <div className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`} >
-                  <div >
-
+                <div
+                  className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
+                >
+                  <div>
                     <div>
                       {herosection.navigation && (
                         <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-8">
-                          <ul className="flex items-center space-x-2 bredcbs">
+                          <ul className="bredcbs flex items-center space-x-2">
                             {herosection.navigation.map((navItem, index) => (
-                              <React.Fragment key={`hero-nav-${herosection.id ?? heroIndex}-${navItem.label}-${index}`} >
+                              <React.Fragment
+                                key={`hero-nav-${herosection.id ?? heroIndex}-${navItem.label}-${index}`}
+                              >
                                 <li>
                                   {navItem.url ? (
-                                    <Link href={navItem.url} className="hover:underline text-[10px] sm:text-font14 lg:text-font19" > {navItem.label} </Link>
+                                    <Link
+                                      href={navItem.url}
+                                      className="text-[10px] hover:underline sm:text-font14 lg:text-font19"
+                                    >
+                                      {" "}
+                                      {navItem.label}{" "}
+                                    </Link>
                                   ) : (
-                                    <span className="text-[#77787B] text-[10px] sm:text-font14 lg:text-font19"> {navItem.label} </span>
+                                    <span className="text-[10px] text-[#77787B] sm:text-font14 lg:text-font19">
+                                      {" "}
+                                      {navItem.label}{" "}
+                                    </span>
                                   )}
                                 </li>
                                 {index <
-                                  (herosection.navigation?.length || 0) -
-                                  1 && (
-                                    <li>
-                                      <Image src="/assets/bc-arrow.png" alt="Arrow" width={7} height={12}
-                                        className="relative top-[3px] lg:top-0" loading="lazy" />
-                                    </li>
-                                  )}
+                                  (herosection.navigation?.length || 0) - 1 && (
+                                  <li>
+                                    <Image
+                                      src="/assets/bc-arrow.png"
+                                      alt="Arrow"
+                                      width={7}
+                                      height={12}
+                                      className="relative top-[3px] lg:top-0"
+                                      loading="lazy"
+                                    />
+                                  </li>
+                                )}
                               </React.Fragment>
                             ))}
                           </ul>
@@ -173,11 +190,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       </p>
                     )}
 
-                    <div className={` xxl:max-w-[1000px]`} style={{ maxWidth: `${maxchwidth}ch` }}>
+                    <div
+                      className={` xxl:max-w-[1000px]`}
+                      style={{ maxWidth: `${maxchwidth}ch` }}
+                    >
                       <h1 className="title-80"> {herosection.title}</h1>
                     </div>
                     {herosection.subtitle && (
-                      <p className="my-3 text-[20px] text-black lg:mt-6 lg:mb-2  lg:text-font30">
+                      <p className="my-3 text-[20px] text-black lg:mb-2 lg:mt-6  lg:text-font30">
                         {" "}
                         {herosection.subtitle}
                       </p>
@@ -191,7 +211,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       >
                         <div className="relative">
                           <p
-                            className={`text-sm uppercase font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                            className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                           >
                             {herosection.buttontitle}
                           </p>
@@ -292,19 +312,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                           </div>
                         </div>
                         <div className=" ">
-                          <p className={`ms-0 text-gray1 text-font19 ${lexend.className}`}>
+                          <p
+                            className={`ms-0 text-font19 text-gray1 ${lexend.className}`}
+                          >
                             {su.desc}
                           </p>
                           {su.buttonTitle && (
                             <button
                               onClick={() => setModalOpen(true)}
-                              className="z-2 z-1 group relative  flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
-                before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
-                after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px] mt-3"
+                              className="z-2 z-1 group relative  mt-3 flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
+                pb-3 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out
+                after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px]"
                             >
                               <div className="relative">
                                 <p
-                                  className={`duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                                  className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                                 >
                                   {su.buttonTitle}
                                 </p>
@@ -347,8 +369,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                             </button>
                           )}
                         </div>
-
-
                       </div>
                     ),
                 )}
@@ -372,8 +392,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <div
           style={{ width: isSmallScreen ? "" : divWidth }}
-          className={`${isSmallScreen ? "container mx-auto py-2" : ""
-            } custom-class`}
+          className={`${
+            isSmallScreen ? "container mx-auto py-2" : ""
+          } custom-class`}
         >
           {!hideslider && (
             <div className="flex gap-5 bg-bglight  py-[17px]">

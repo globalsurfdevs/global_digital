@@ -1,9 +1,9 @@
-'use client'
-import React from 'react';
-import Image, { StaticImageData } from 'next/image';
+"use client";
+import React from "react";
+import Image, { StaticImageData } from "next/image";
 
 export interface ScrollSectionCta {
-  label?: string;       // <-- made optional
+  label?: string; // <-- made optional
   href?: string;
   onClick?: () => void;
 }
@@ -20,10 +20,10 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
   title,
   paragraphs = [],
   image,
-  imageAlt = '',
+  imageAlt = "",
   cta,
 }) => {
-  const showButton = cta?.label && cta.label.trim() !== '';
+  const showButton = cta?.label && cta.label.trim() !== "";
 
   return (
     <section>
@@ -31,26 +31,30 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
         <div className="grid ">
           <div className="col-span-2 mb-5 xl:mb-0" />
           <div className="col-span-5 w-full">
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-start lg:items-center">
+            <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-12">
               <div className="flex-1">
                 <h2 className="title-65 mb-[40px]">{title}</h2>
 
                 {paragraphs.map((p, idx) => (
-                  <p key={idx} className="text-[#77787B] mb-2 text-font19" dangerouslySetInnerHTML={{ __html: p }} />
+                  <p
+                    key={idx}
+                    className="mb-2 text-font19 text-[#77787B]"
+                    dangerouslySetInnerHTML={{ __html: p }}
+                  />
                 ))}
 
                 {showButton && (
                   <button
                     onClick={cta?.onClick}
-                    className="z-2 z-1 group relative flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3 
-                               before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all 
-                               before:duration-300 before:ease-in-out 
-                               after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all 
-                               after:duration-300 after:ease-in-out 
-                               hover:border-b-white hover:after:w-0 lg:mt-[30px] mt-3"
+                    className="z-2 z-1 group relative mt-3 flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 
+                               pb-3 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black 
+                               before:transition-all before:duration-300 
+                               before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 
+                               after:transition-all after:duration-300 
+                               after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-[30px]"
                   >
                     <div className="relative">
-                      <p className="duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px]">
+                      <p className="text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px]">
                         {cta.label}
                       </p>
                     </div>
@@ -99,7 +103,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
                   <Image
                     src={image}
                     alt={imageAlt}
-                    className="w-full h-[300px] md:h-[500px] lg:h-full object-cover"
+                    className="h-[300px] w-full object-cover md:h-[500px] lg:h-full"
                   />
                 </div>
               )}
