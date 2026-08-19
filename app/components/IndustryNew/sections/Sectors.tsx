@@ -6,10 +6,11 @@ import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
 
 type Sector = {
-    title: string;
-    description: string;
+    name: string;
+    shortDescription: string;
     image: string;
-    link: string;
+    imageAlt:string;
+    slug: string;
 };
 
 const ArrowIcon = ({ active }: { active: boolean }) => (
@@ -47,11 +48,11 @@ function SectorCard({
             onMouseLeave={onLeave}
             className="h-full overflow-hidden rounded-[10px]"
         >
-            <Link href={sector.link} className="group flex h-full flex-col bg-[#F6F6F6]">
+            <Link href={`/industry/${sector.slug}`} className="group flex h-full flex-col bg-[#F6F6F6]">
                 <div className="relative h-[268px] w-full shrink-0 overflow-hidden rounded-b-[10px]">
                     <Image
                         src={sector.image}
-                        alt={sector.title}
+                        alt={sector.imageAlt}
                         fill
                         className={`object-cover transition-all duration-500 ${
                             active ? "" : "grayscale"
@@ -68,10 +69,10 @@ function SectorCard({
                             active ? "text-primary" : "text-black group-hover:text-primary"
                         }`}
                     >
-                        {sector.title}
+                        {sector.name}
                     </h3>
                     <p className="fnt-lexend text-18 leading-[1.5] text-muted">
-                        {sector.description}
+                        {sector.shortDescription}
                     </p>
                     <span className="mt-[30px] inline-block">
                         <ArrowIcon active={active} />
@@ -82,9 +83,9 @@ function SectorCard({
     );
 }
 
-const SectorsWeWorkWith = ({ data }: any) => {
+const SectorsWeWorkWith = ({ data,allIndustry }: any) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
-
+    
     return (
         <section className="container">
             <hr className="border-black/10" />
@@ -124,9 +125,9 @@ const SectorsWeWorkWith = ({ data }: any) => {
             </motion.p>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
-                {data?.items?.slice(0, data?.items.length-1).map((sector: any, i: number) => (
+                {allIndustry?.slice(0, allIndustry.length-1).map((sector: any, i: number) => (
                     <SectorCard
-                        key={sector.title}
+                        key={sector.name}
                         sector={sector}
                         delay={0.05 * i}
                         active={hoveredIndex === i}
@@ -136,10 +137,10 @@ const SectorsWeWorkWith = ({ data }: any) => {
                 ))}
 
                 <SectorCard
-                    sector={data?.items[data?.items.length - 1]}
-                    delay={0.05 * (data?.items.length - 1)}
-                    active={hoveredIndex === data?.items.length - 1}
-                    onHover={() => setHoveredIndex(data?.items.length - 1)}
+                    sector={allIndustry[allIndustry.length - 1]}
+                    delay={0.05 * (allIndustry.length - 1)}
+                    active={hoveredIndex === allIndustry.length - 1}
+                    onHover={() => setHoveredIndex(allIndustry.length - 1)}
                     onLeave={() => setHoveredIndex(null)}
                 />
 
@@ -151,12 +152,14 @@ const SectorsWeWorkWith = ({ data }: any) => {
                     className="flex h-full flex-col rounded-[10px] border border-black/10 p-8 sm:col-span-2 md:py-[63px] md:px-[60px] space-y-[50px] md:space-y-[100px]"
                 >
                     <h3 className="title-60 text-[length:var(--text-60-sm)]">
-                        Seven Sectors One Agency
+                        {/* Seven Sectors One Agency */}
+                        {data.lastCardTitle}
                     </h3>
                     <p className="max-w-[42ch] text-28 leading-[1.214285714285714]">
-                        We combine strategy, creativity, technology, and
+                        {/* We combine strategy, creativity, technology, and
                         performance-driven marketing to build brands that
-                        grow with clarity and consistency.
+                        grow with clarity and consistency. */}
+                        {data.lastCardDescription}
                     </p>
                 </motion.div>
             </div>

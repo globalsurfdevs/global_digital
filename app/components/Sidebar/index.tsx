@@ -79,7 +79,7 @@ const menuGroups = [
       },
       {
         icon: (
-          <GiLeadPipe/>
+          <GiLeadPipe />
 
         ),
         label: "Leads",
@@ -178,7 +178,10 @@ const menuGroups = [
           <FaIndustry />
         ),
         label: "Industries",
-        route: "/admin/industries",
+        route: "#",
+        children: [{ label: "Landing Page", route: "/admin/industries/landing" },
+        { label: "Items", route: "/admin/industries" }
+        ],
       },
       {
         icon: (

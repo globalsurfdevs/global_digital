@@ -55,7 +55,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
   }, []);
 
   return (
-    <section className="py-120" ref={sectionRef}>
+    <section className="py-120 border-t" ref={sectionRef}>
       <div className="container">
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_2fr] 3xl:grid-cols-[520px_auto] 3xl:gap-[30px]">
           {/* LEFT — pinned via GSAP */}

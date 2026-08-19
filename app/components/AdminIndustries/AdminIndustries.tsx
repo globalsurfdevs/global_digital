@@ -7,11 +7,15 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 import { FaBookOpen } from "react-icons/fa";
+import { ImageUploader } from "@/components/ui/image-uploader";
 
 type IndustryListItem = {
     _id: string;
     name: string;
     slug: string;
+    image?: string;
+    imageAlt?: string;
+    shortDescription?: string;
     createdAt?: string;
 };
 
@@ -38,6 +42,9 @@ const AdminIndustryList = () => {
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [newIndustryName, setNewIndustryName] = useState("");
     const [newIndustrySlug, setNewIndustrySlug] = useState("");
+    const [newIndustryImage, setNewIndustryImage] = useState("");
+    const [newIndustryImageAlt, setNewIndustryImageAlt] = useState("");
+    const [newIndustryShortDescription, setNewIndustryShortDescription] = useState("");
     const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
     const [creating, setCreating] = useState(false);
 
@@ -46,6 +53,9 @@ const AdminIndustryList = () => {
     const [editingIndustry, setEditingIndustry] = useState<IndustryListItem | null>(null);
     const [editName, setEditName] = useState("");
     const [editSlug, setEditSlug] = useState("");
+    const [editImage, setEditImage] = useState("");
+    const [editImageAlt, setEditImageAlt] = useState("");
+    const [editShortDescription, setEditShortDescription] = useState("");
     const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
     const [updating, setUpdating] = useState(false);
 
@@ -64,6 +74,9 @@ const AdminIndustryList = () => {
     const resetCreateForm = () => {
         setNewIndustryName("");
         setNewIndustrySlug("");
+        setNewIndustryImage("");
+        setNewIndustryImageAlt("");
+        setNewIndustryShortDescription("");
         setSlugManuallyEdited(false);
     };
 
@@ -83,6 +96,9 @@ const AdminIndustryList = () => {
         setEditingIndustry(industry);
         setEditName(industry.name);
         setEditSlug(industry.slug);
+        setEditImage(industry.image ?? "");
+        setEditImageAlt(industry.imageAlt ?? "");
+        setEditShortDescription(industry.shortDescription ?? "");
         setEditSlugManuallyEdited(false);
         setShowEditModal(true);
     };
@@ -91,6 +107,9 @@ const AdminIndustryList = () => {
         setEditingIndustry(null);
         setEditName("");
         setEditSlug("");
+        setEditImage("");
+        setEditImageAlt("");
+        setEditShortDescription("");
         setEditSlugManuallyEdited(false);
     };
 
@@ -186,6 +205,9 @@ const AdminIndustryList = () => {
                 body: JSON.stringify({
                     name: newIndustryName.trim(),
                     slug: newIndustrySlug.trim(),
+                    image: newIndustryImage,
+                    imageAlt: newIndustryImageAlt.trim(),
+                    shortDescription: newIndustryShortDescription.trim(),
                 }),
             });
 
@@ -231,6 +253,9 @@ const AdminIndustryList = () => {
                     _id: editingIndustry._id,
                     name: editName.trim(),
                     slug: editSlug.trim(),
+                    image: editImage,
+                    imageAlt: editImageAlt.trim(),
+                    shortDescription: editShortDescription.trim(),
                 }),
             });
 
@@ -407,6 +432,43 @@ const AdminIndustryList = () => {
                                         </p>
                                     </div>
 
+                                    <div className="flex flex-col gap-2 text-left">
+                                        <label className="text-sm font-semibold text-gray-600">
+                                            Image
+                                        </label>
+                                        <ImageUploader
+                                            value={newIndustryImage}
+                                            onChange={setNewIndustryImage}
+                                            className="h-fit w-[200px]"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 text-left">
+                                        <label className="text-sm font-semibold text-gray-600">
+                                            Image Alt Tag
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={newIndustryImageAlt}
+                                            onChange={(e) => setNewIndustryImageAlt(e.target.value)}
+                                            placeholder="e.g. Engineers reviewing construction plans"
+                                            className="rounded border px-3 py-2"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 text-left">
+                                        <label className="text-sm font-semibold text-gray-600">
+                                            Short Description
+                                        </label>
+                                        <textarea
+                                            value={newIndustryShortDescription}
+                                            onChange={(e) => setNewIndustryShortDescription(e.target.value)}
+                                            placeholder="One or two sentences shown on the industry landing page"
+                                            rows={3}
+                                            className="rounded border px-3 py-2"
+                                        />
+                                    </div>
+
                                     <div className="gap-2 sm:flex sm:flex-row-reverse">
                                         <button
                                             type="button"
@@ -487,6 +549,43 @@ const AdminIndustryList = () => {
                                             This becomes part of the page URL, e.g. /industries/
                                             {editSlug || "your-slug"}
                                         </p>
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 text-left">
+                                        <label className="text-sm font-semibold text-gray-600">
+                                            Image
+                                        </label>
+                                        <ImageUploader
+                                            value={editImage}
+                                            onChange={setEditImage}
+                                            className="h-fit w-[200px]"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 text-left">
+                                        <label className="text-sm font-semibold text-gray-600">
+                                            Image Alt Tag
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={editImageAlt}
+                                            onChange={(e) => setEditImageAlt(e.target.value)}
+                                            placeholder="e.g. Engineers reviewing construction plans"
+                                            className="rounded border px-3 py-2"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 text-left">
+                                        <label className="text-sm font-semibold text-gray-600">
+                                            Short Description
+                                        </label>
+                                        <textarea
+                                            value={editShortDescription}
+                                            onChange={(e) => setEditShortDescription(e.target.value)}
+                                            placeholder="One or two sentences shown on the industry landing page"
+                                            rows={3}
+                                            className="rounded border px-3 py-2"
+                                        />
                                     </div>
 
                                     <div className="gap-2 sm:flex sm:flex-row-reverse">

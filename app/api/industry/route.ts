@@ -47,6 +47,9 @@ export async function GET(req: NextRequest) {
             _id: item._id,
             name: item.name,
             slug: item.slug,
+            image: item.image,
+            imageAlt: item.imageAlt,
+            shortDescription: item.shortDescription,
             createdAt: item.createdAt,
         }));
 
@@ -96,6 +99,9 @@ export async function POST(req: NextRequest) {
         const id = body?._id;
         const name = body?.name?.trim();
         const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
+        const image = body?.image;
+        const imageAlt = body?.imageAlt?.trim();
+        const shortDescription = body?.shortDescription?.trim();
 
         if (!name) {
             return NextResponse.json(
@@ -140,6 +146,9 @@ export async function POST(req: NextRequest) {
 
             item.name = name;
             item.slug = slug;
+            item.image = image;
+            item.imageAlt = imageAlt;
+            item.shortDescription = shortDescription;
             await industryDoc.save();
 
             revalidateTag("industry")
@@ -150,6 +159,9 @@ export async function POST(req: NextRequest) {
                         _id: item._id,
                         name: item.name,
                         slug: item.slug,
+                        image: item.image,
+                        imageAlt: item.imageAlt,
+                        shortDescription: item.shortDescription,
                     },
                 },
                 { status: 200 }
@@ -165,7 +177,7 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        industryDoc.items.push({ name, slug });
+        industryDoc.items.push({ name, slug, image, imageAlt, shortDescription });
         await industryDoc.save();
 
         const createdItem = industryDoc.items[industryDoc.items.length - 1];
@@ -178,6 +190,9 @@ export async function POST(req: NextRequest) {
                     _id: createdItem._id,
                     name: createdItem.name,
                     slug: createdItem.slug,
+                    image: createdItem.image,
+                    imageAlt: createdItem.imageAlt,
+                    shortDescription: createdItem.shortDescription,
                 },
             },
             { status: 201 }
