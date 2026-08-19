@@ -6,16 +6,19 @@ export const BannerSection = [
     image: assets.bannerse,
     title:
       "What If a Free Audit Revealed the One Move to Outsmart Your Rivals?",
-      sub: [
-        {
-          stitle: "OUR APPROACH",
-          desc: "Let our experts analyze your digital presence and uncover growth opportunities.",
+    sub: [
+      {
+        stitle: "OUR APPROACH",
+        desc: "Let our experts analyze your digital presence and uncover growth opportunities.",
         buttonTitle: "Get My Free Audit",
-        },
-      ], points: [ 
-          'Pinpoint the SEO gap that’s costing you customers','Expose the blind spots in your social strategy','Discover ad inefficiencies silently draining your budget','Benchmark your brand—clearly, ruthlessly, profitably  '
-        
-      ],
+      },
+    ],
+    points: [
+      "Pinpoint the SEO gap that’s costing you customers",
+      "Expose the blind spots in your social strategy",
+      "Discover ad inefficiencies silently draining your budget",
+      "Benchmark your brand—clearly, ruthlessly, profitably  ",
+    ],
   },
 ];
 export const logoSwipper = [
@@ -53,5 +56,5 @@ export const logoSwipper = [
     text: "Technology",
     width: "100",
     height: "76",
-  } 
+  },
 ];

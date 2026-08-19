@@ -20,7 +20,11 @@ import {
   Cta,
   Faq,
   logosdata,
-  logosdatas, AreaExpertise, Wehelp, IndustriesWeServe, WhyBrands,
+  logosdatas,
+  AreaExpertise,
+  Wehelp,
+  IndustriesWeServe,
+  WhyBrands,
 } from "../../data/services/generative-engine-optimization/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
@@ -53,7 +57,8 @@ const page = () => {
   return (
     <div>
       <Head>
-        <meta property="og:title"
+        <meta
+          property="og:title"
           content="Comprehensive Digital Marketing Services in Dubai | Maximize Impact"
         />
         <meta property="og:site_name" content="GS Digital Media" />
@@ -66,10 +71,23 @@ const page = () => {
           content="From SEO to analytics, our digital marketing services in Dubai are designed to enhance your brand’s impact, engagement, and conversions. Partner with Global Surf today."
         />
       </Head>
-      <HeroSectionType2 Bannerdata={BannerSection} hideslider={true} maxchwidth={24} />
+      <HeroSectionType2
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={24}
+      />
       <div className="py-10 md:py-24 xl:py-140">
-        <GeoLogoSwiper logosdata={logosdata} slidesPerView={5.6} title1="Platforms We Optimize For " subcontent="Ensure your brand appears across all major AI search engines " />
-        <GeoLogoSwiper logosdata={logosdatas} slidesPerView={5.6} direction="reverse" />
+        <GeoLogoSwiper
+          logosdata={logosdata}
+          slidesPerView={5.6}
+          title1="Platforms We Optimize For "
+          subcontent="Ensure your brand appears across all major AI search engines "
+        />
+        <GeoLogoSwiper
+          logosdata={logosdatas}
+          slidesPerView={5.6}
+          direction="reverse"
+        />
       </div>
       <div className="bg-black py-140">
         <NumberCardGrid
@@ -88,14 +106,21 @@ const page = () => {
         />
       </div>
       <Services />
-      <Expertise title={AreaExpertise.title} subttle={AreaExpertise.subttle} data={AreaExpertise.data} colnum={3} />
-      <IconlineTitle title={Wehelp.title}
+      <Expertise
+        title={AreaExpertise.title}
+        subttle={AreaExpertise.subttle}
+        data={AreaExpertise.data}
+        colnum={3}
+      />
+      <IconlineTitle
+        title={Wehelp.title}
         data={Wehelp.data}
         bgcolor="bg-black"
         colcount={3}
       />
 
-      <Expertises colnum={3}
+      <Expertises
+        colnum={3}
         title={IndustriesWeServe.title}
         data={IndustriesWeServe.data}
       />
@@ -108,19 +133,18 @@ const page = () => {
         hrcontent={true}
       />
 
-      <BottomLine title={WhyBrands.title}
+      <BottomLine
+        title={WhyBrands.title}
         titlemb="mb-5 xl:mb-10"
         data={WhyBrands.data}
         subtitle="We position your brand within AI-generated answers, not just traditional search results."
-        colcount={3} />
-
+        colcount={3}
+      />
 
       <GetInTouch data={Cta} redlast={true} ctabbutton={"Book Now"} />
       <FAQ data={Faq} defActive="2" />
-
     </div>
   );
 };
 
 export default page;
-

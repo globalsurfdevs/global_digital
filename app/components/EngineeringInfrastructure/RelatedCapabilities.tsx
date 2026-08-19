@@ -31,7 +31,11 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
             whileInView="show"
             variants={moveUp(0.1)}
             viewport={{ once: true }}
-            className="title-60 max-w-[25ch]"> {data.title}</motion.h2>
+            className="title-60 max-w-[25ch]"
+          >
+            {" "}
+            {data.title}
+          </motion.h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {data.items.map((item, index) => (
@@ -41,7 +45,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
               variants={moveUp(index * 0.1)}
               viewport={{ once: true }}
               key={item.id}
-              className="rounded-[10px] border border-black/20 p-2 p-6 md:p-3 xl:p-5 xxl:p-10 -mr-px"
+              className="-mr-px rounded-[10px] border border-black/20 p-2 p-6 md:p-3 xl:p-5 xxl:p-10"
             >
               <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-[30px] 3xl:gap-[26px]">
                 <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px] xl:p-5">

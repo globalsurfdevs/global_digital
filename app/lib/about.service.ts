@@ -7,8 +7,7 @@ export const getAbout = unstable_cache(
   async () => {
     await connectDB();
 
-    const about = await About.findOne({})
-      .lean();
+    const about = await About.findOne({}).lean();
 
     return JSON.parse(JSON.stringify(about));
   },
@@ -16,5 +15,5 @@ export const getAbout = unstable_cache(
   {
     tags: ["about"],
     revalidate: 60, // same as your fetch
-  }
+  },
 );

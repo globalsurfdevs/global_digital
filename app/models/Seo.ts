@@ -15,7 +15,7 @@ const seoSchema = new mongoose.Schema(
     twitterImage: { type: String },
     schema: { type: String },
   },
-  { _id: false } // prevents Mongoose from generating a useless _id for this subdocument
+  { _id: false }, // prevents Mongoose from generating a useless _id for this subdocument
 );
 
 export default seoSchema;

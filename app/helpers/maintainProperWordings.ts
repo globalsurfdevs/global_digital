@@ -2,7 +2,6 @@
 //   "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae", "crm",
 // ]);
 
-
 // const PROPER_NOUNS: Record<string, string> = {
 //   linkedin: "LinkedIn",
 //   uae: "UAE",
@@ -58,11 +57,21 @@
 //   return result;
 // };
 
-
-
-
 const ACRONYMS = new Set([
-  "seo", "geo", "ppc", "roi", "b2b", "b2c", "cro", "smm", "kpi", "ai", "ux", "ui", "uae", "crm",
+  "seo",
+  "geo",
+  "ppc",
+  "roi",
+  "b2b",
+  "b2c",
+  "cro",
+  "smm",
+  "kpi",
+  "ai",
+  "ux",
+  "ui",
+  "uae",
+  "crm",
 ]);
 
 const PROPER_NOUNS: Record<string, string> = {
@@ -128,9 +137,8 @@ export const toSentenceCase = (text: string) => {
     .map((segment) => {
       if (isAnchorSegment(segment)) return segment;
 
-      let result = segment.replace(
-        /(^\s*\w|[.!?]\s+\w)/g,
-        (match) => match.toUpperCase()
+      let result = segment.replace(/(^\s*\w|[.!?]\s+\w)/g, (match) =>
+        match.toUpperCase(),
       );
 
       Object.entries(PROPER_NOUNS).forEach(([lower, correct]) => {

@@ -195,7 +195,7 @@ type DbBlogPost = {
     content: string;
     _id: string;
   }[];
-  author:string;
+  author: string;
 };
 
 type Props = {
@@ -225,7 +225,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
       description: f.answer,
     })) ?? [];
 
-    console.log(dbBlog)
+  console.log(dbBlog);
 
   return (
     <>
@@ -268,7 +268,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
         />
       )}
 
-      {dbBlog?.author && <AuthorBioCard data={dbBlog.author}/>}
+      {dbBlog?.author && <AuthorBioCard data={dbBlog.author} />}
     </>
   );
 };

@@ -1,7 +1,6 @@
 export const Faq = [
   {
-    title:
-      "What is eCommerce SEO, and how does it work?",
+    title: "What is eCommerce SEO, and how does it work?",
     description:
       "eCommerce SEO involves optimizing your online store to rank higher in search engine results, attracting potential customers who are ready to buy. It includes keyword research, on-page optimization, technical SEO, and link building, all designed to enhance your store’s visibility and drive targeted traffic. As a leading eCommerce SEO agency in Dubai, we craft customized strategies that help you reach your target audience and maximize online sales. ",
   },
@@ -26,7 +25,7 @@ export const Faq = [
       "SEO is a long-term strategy, and it typically takes 3 to 6 months to see significant improvements in rankings and organic traffic. However, this depends on your industry, competition, and the current state of your website. Our ongoing eCommerce SEO optimization ensures that your site continues to grow and maintain its competitive edge. ",
   },
   {
-    title: "Do you offer customizable eCommerce SEO packages?" ,
+    title: "Do you offer customizable eCommerce SEO packages?",
     description:
       "Yes! We understand that every online store is unique, which is why we offer flexible eCommerce SEO packages tailored to your specific needs and goals. Whether you’re a startup or an established brand, we customize our services to fit your budget and objectives, helping you achieve sustainable growth. ",
   },

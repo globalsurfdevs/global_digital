@@ -12,7 +12,6 @@ import { ServiceItem } from "@/app/(user)/[slug]/type";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 
-
 const BREAKPOINTS: [number, number][] = [
   [0, 1.15],
   [640, 1.8],

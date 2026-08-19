@@ -34,65 +34,82 @@ const Services: React.FC<ServicesSectionProps> = ({
   colcount,
   hrcontent,
   description,
-  leftzero
+  leftzero,
 }) => {
   return (
-    <section className={` ${bgcolor ? `${bgcolor}` : "bg-white"} ` }>
-      <div className=  {`container mx-auto py-4  `}>
+    <section className={` ${bgcolor ? `${bgcolor}` : "bg-white"} `}>
+      <div className={`container mx-auto py-4  `}>
         <div className={`  ${leftzero ? "bgafter relative" : ""}`}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-          variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1, ease: "easeOut" },
-            }, // Slide up and fade in
-          }}
-        >
-          <div className={`gap-xl-0 grid grid-cols-1 gap-0 md:gap-5 pb-8 pt-8  md:pb-[60px]  md:pt-[50px]  lg:gap-10 lg:pb-[150px] lg:pt-[140px] pas  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}>
-            <div className="col-span-2 text-5xl">
-              <h2 className={`title-65 pb-2 ${bgcolor =="bg-black"? "text-white" : "text-black"}`} >
-                {title}
-              </h2>
-              {
-                description && (
-              <p className={`text-19 fnt-lexend max-w-[40ch] pt-4 md:pt-6 xl:pt-14 ${bgcolor =="bg-black"? "text-white" : "text-gray1"}`}>
-                {description}
-              </p>
-                )
-              }
-            </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+            variants={{
+              hidden: { opacity: 0, y: 50 }, // Start below and invisible
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 1, ease: "easeOut" },
+              }, // Slide up and fade in
+            }}
+          >
+            <div
+              className={`gap-xl-0 pas grid grid-cols-1 gap-0 pb-8 pt-8  md:gap-5  md:pb-[60px]  md:pt-[50px] lg:gap-10 lg:pb-[150px] lg:pt-[140px]  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-6"}`}
+            >
+              <div className="col-span-2 text-5xl">
+                <h2
+                  className={`title-65 pb-2 ${bgcolor == "bg-black" ? "text-white" : "text-black"}`}
+                >
+                  {title}
+                </h2>
+                {description && (
+                  <p
+                    className={`text-19 fnt-lexend max-w-[40ch] pt-4 md:pt-6 xl:pt-14 ${bgcolor == "bg-black" ? "text-white" : "text-gray1"}`}
+                  >
+                    {description}
+                  </p>
+                )}
+              </div>
 
-            <div  className={`serv-mn  w-full ps-0 text-font30 xl:ps-12 ${colcount ? `col-span-${colcount - 2}` : "col-span-4"}`} >
-              {data.map((service) => (
-                <div key={service.id} className={`${hrcontent1 ? "border-t last:border-b" : ""}`} >
-                  <div className="group border-b relative flex gap-4 py-[15px] transition-all duration-300  ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[34px]">
-                    <p className={` transition-all duration-300 group-hover:text-primary ${bgtt2 ? bgtt2 : "text-gray1"}`} >
-                      {String(service.id).padStart(2, "0")}
-                    </p>
-                    <div className="consu relative">
-                      <h3 className={`text-30 transition-all duration-300 group-hover:text-primary ${bgcolor=="bg-black" ? "text-white" : "text-black"}`} >
-                        {service.title}
-                      </h3>
-                      {/* Hover Description */}
-                      {hrcontent && (
-                        <div  className={`mt-2 overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out group-hover:max-h-[150px] group-hover:opacity-100 delay-100`}>
-                          <p className={` mt-2 text-font19 leading-[1.2] opacity-0  transition-opacity duration-300 group-hover:opacity-100  ${bgtt4 ? `${bgtt4}` : "text-77787B"}`} >
-                            {service.desc}
-                          </p>
-                        </div>
-                      )}
+              <div
+                className={`serv-mn  w-full ps-0 text-font30 xl:ps-12 ${colcount ? `col-span-${colcount - 2}` : "col-span-4"}`}
+              >
+                {data.map((service) => (
+                  <div
+                    key={service.id}
+                    className={`${hrcontent1 ? "border-t last:border-b" : ""}`}
+                  >
+                    <div className="group relative flex gap-4 border-b py-[15px] transition-all duration-300  ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[34px]">
+                      <p
+                        className={` transition-all duration-300 group-hover:text-primary ${bgtt2 ? bgtt2 : "text-gray1"}`}
+                      >
+                        {String(service.id).padStart(2, "0")}
+                      </p>
+                      <div className="consu relative">
+                        <h3
+                          className={`text-30 transition-all duration-300 group-hover:text-primary ${bgcolor == "bg-black" ? "text-white" : "text-black"}`}
+                        >
+                          {service.title}
+                        </h3>
+                        {/* Hover Description */}
+                        {hrcontent && (
+                          <div
+                            className={`mt-2 max-h-0 overflow-hidden opacity-0 transition-all delay-100 duration-500 ease-in-out group-hover:max-h-[150px] group-hover:opacity-100`}
+                          >
+                            <p
+                              className={` mt-2 text-font19 leading-[1.2] opacity-0  transition-opacity duration-300 group-hover:opacity-100  ${bgtt4 ? `${bgtt4}` : "text-77787B"}`}
+                            >
+                              {service.desc}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

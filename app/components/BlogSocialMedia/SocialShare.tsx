@@ -46,13 +46,13 @@
 
 //       {/* Facebook */}
 //       <Link href={shareLinks.facebook} target="_blank" rel="noopener noreferrer">
-//         <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
+//         <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center
 //                   transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
 //           <Image
 //             src={assets.facebbokicon}
 //             alt="Facebook"
-//             className="w-full h-full object-cover 
-//                  transition-transform transition-filter duration-500 ease-in-out 
+//             className="w-full h-full object-cover
+//                  transition-transform transition-filter duration-500 ease-in-out
 //                  group-hover:invert group-hover:scale-110"
 //           />
 //         </div>
@@ -60,13 +60,13 @@
 
 //       {/* Twitter */}
 //       <Link href={shareLinks.twitter} target="_blank" rel="noopener noreferrer">
-//         <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
+//         <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center
 //                   transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
 //           <Image
 //             src={assets.twittericon}
 //             alt="Twitter"
-//             className="w-full h-full object-cover 
-//                  transition-transform transition-filter duration-500 ease-in-out 
+//             className="w-full h-full object-cover
+//                  transition-transform transition-filter duration-500 ease-in-out
 //                  group-hover:invert group-hover:scale-110"
 //           />
 //         </div>
@@ -74,29 +74,23 @@
 
 //       {/* LinkedIn */}
 //       <Link href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer">
-//         <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center 
+//         <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center
 //                   transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
 //           <Image
 //             src={assets.linkedinicon}
 //             alt="LinkedIn"
-//             className="w-full h-full object-cover 
-//                  transition-transform transition-filter duration-500 ease-in-out 
+//             className="w-full h-full object-cover
+//                  transition-transform transition-filter duration-500 ease-in-out
 //                  group-hover:invert group-hover:scale-110"
 //           />
 //         </div>
 //       </Link>
-
 
 //     </div>
 //   );
 // };
 
 // export default SocialShare;
-
-
-
-
-
 
 "use client";
 import React, { useState, useEffect } from "react";
@@ -131,13 +125,12 @@ const SocialShare = () => {
   };
 
   return (
-    <div className="flex items-start gap-4 mt-4">
-
+    <div className="mt-4 flex items-start gap-4">
       {/* Copy Link */}
-      <div className="flex items-center gap-[10px] group">
+      <div className="group flex items-center gap-[10px]">
         <div
           onClick={handleCopy}
-          className="cursor-pointer p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]"
+          className="group flex h-[50px] w-[50px] cursor-pointer items-center justify-center rounded-[14px] bg-[#C1C1C1]/30 p-[16px] transition-colors duration-500 ease-in-out hover:bg-[#e63e31]"
           title="Copy Blog Link"
         >
           <Image
@@ -145,53 +138,58 @@ const SocialShare = () => {
             alt="Copy Link"
             width={18}
             height={18}
-            className="w-full h-full object-cover transition-transform transition-filter duration-500 ease-in-out group-hover:invert group-hover:scale-110"
+            className="transition-filter h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:invert"
           />
         </div>
-        {copied && (
-          <p className="text-dark text-[12px]">Link Copied!</p>
-        )}
+        {copied && <p className="text-dark text-[12px]">Link Copied!</p>}
       </div>
 
       {/* Facebook */}
-      <Link href={shareLinks.facebook} target="_blank" rel="noopener noreferrer">
-        <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
+      <Link
+        href={shareLinks.facebook}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className="group flex h-[50px] w-[50px] items-center justify-center rounded-[14px] bg-[#C1C1C1]/30 p-[16px] transition-colors duration-500 ease-in-out hover:bg-[#e63e31]">
           <Image
             src={assets.facebbokicon}
             alt="Facebook"
             width={18}
             height={18}
-            className="w-full h-full object-cover transition-transform transition-filter duration-500 ease-in-out group-hover:invert group-hover:scale-110"
+            className="transition-filter h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:invert"
           />
         </div>
       </Link>
 
       {/* Twitter */}
       <Link href={shareLinks.twitter} target="_blank" rel="noopener noreferrer">
-        <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
+        <div className="group flex h-[50px] w-[50px] items-center justify-center rounded-[14px] bg-[#C1C1C1]/30 p-[16px] transition-colors duration-500 ease-in-out hover:bg-[#e63e31]">
           <Image
             src={assets.twittericon}
             alt="Twitter"
             width={18}
             height={18}
-            className="w-full h-full object-cover transition-transform transition-filter duration-500 ease-in-out group-hover:invert group-hover:scale-110"
+            className="transition-filter h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:invert"
           />
         </div>
       </Link>
 
       {/* LinkedIn */}
-      <Link href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer">
-        <div className="p-[16px] bg-[#C1C1C1]/30 rounded-[14px] w-[50px] h-[50px] flex items-center justify-center transition-colors duration-500 ease-in-out group hover:bg-[#e63e31]">
+      <Link
+        href={shareLinks.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className="group flex h-[50px] w-[50px] items-center justify-center rounded-[14px] bg-[#C1C1C1]/30 p-[16px] transition-colors duration-500 ease-in-out hover:bg-[#e63e31]">
           <Image
             src={assets.linkedinicon}
             alt="LinkedIn"
             width={18}
             height={18}
-            className="w-full h-full object-cover transition-transform transition-filter duration-500 ease-in-out group-hover:invert group-hover:scale-110"
+            className="transition-filter h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:invert"
           />
         </div>
       </Link>
-
     </div>
   );
 };

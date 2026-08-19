@@ -27,7 +27,7 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)] mb-4 max-w-[30ch] md:mb-6 xl:mb-8 xxl:mb-12"
+            className="title-60 mb-4 max-w-[30ch] text-[length:var(--text-60-sm)] md:mb-6 xl:mb-8 xxl:mb-12"
           >
             {data.subTitle}
           </motion.h2>
@@ -38,7 +38,7 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="text-[length:var(--text-18-sm)] fnt-lexend mb-4 xxl:mb-6 text-muted last:mb-0"
+              className="fnt-lexend mb-4 text-[length:var(--text-18-sm)] text-muted last:mb-0 xxl:mb-6"
               dangerouslySetInnerHTML={{ __html: toSentenceCase(item) }}
             >
               {/* {toSentenceCase(item)} */}

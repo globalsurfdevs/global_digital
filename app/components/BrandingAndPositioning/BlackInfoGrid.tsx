@@ -66,69 +66,70 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
             </h2>
             <div className={`h-4 w-4 bg-primary`}></div>
           </div>
-          <div className={`grid grid-cols-1 xl:justify-between ${page == "service" ? "xl:grid-cols-1" : "xl:grid-cols-2"}`}>
-          <div className="text-4xl">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-              variants={{
-                hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1, ease: "easeOut" },
-                }, // Slide up and fade in
-              }}
-            >
-              {title1 && (
-                <Link href="">
-                  <h2 className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
-                    {title1}
-                  </h2>
-                </Link>
-              )}
-              {/* {description && (
+          <div
+            className={`grid grid-cols-1 xl:justify-between ${page == "service" ? "xl:grid-cols-1" : "xl:grid-cols-2"}`}
+          >
+            <div className="text-4xl">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1, ease: "easeOut" },
+                  }, // Slide up and fade in
+                }}
+              >
+                {title1 && (
+                  <Link href="">
+                    <h2 className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                      {title1}
+                    </h2>
+                  </Link>
+                )}
+                {/* {description && (
                 <div>
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
                 </div>
               )} */}
-              
+
                 <div style={{ maxWidth: `${maxchwidth}ch` }} className="">
                   <h2
-                    className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 text-[length:var(--text-60-sm)] pb-6 lg:pb-[58px]`}
+                    className={`${bgcolor === "bg-black" ? "text-white" : "text-black"} title-60 pb-6 text-[length:var(--text-60-sm)] lg:pb-[58px]`}
                   >
                     {subTitle}
                   </h2>
                 </div>
-              
-            </motion.div>
-          </div>
-          {description && <div className="">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-              variants={{
-                hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 1, ease: "easeOut" },
-                }, // Slide up and fade in
-              }}
-            >
-              
-                <div className="flex xl:justify-end">
-                  <p className="pb-6 text-[length:var(--text-18-sm)] leading-[26px] text-[#A3A3A3] lg:pb-[58px] font-normal fnt-lexend  xl:max-w-[50ch] 2xl:max-w-[60ch]">
-                    {description}
-                  </p>
-                </div>
-              
-            </motion.div>
-          </div>}
+              </motion.div>
+            </div>
+            {description && (
+              <div className="">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                  variants={{
+                    hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 1, ease: "easeOut" },
+                    }, // Slide up and fade in
+                  }}
+                >
+                  <div className="flex xl:justify-end">
+                    <p className="fnt-lexend pb-6 text-[length:var(--text-18-sm)] font-normal leading-[26px] text-[#A3A3A3] lg:pb-[58px]  xl:max-w-[50ch] 2xl:max-w-[60ch]">
+                      {description}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            )}
           </div>
           <motion.div
             initial="hidden"
@@ -147,12 +148,14 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
               {rows.map((row, rowIndex) => (
                 <div
                   key={rowIndex}
-                  className={`border-t ${bgcolor === "bg-black" ? "border-[#77787B]" : "border-black"
-                    }`}
+                  className={`border-t ${
+                    bgcolor === "bg-black" ? "border-[#77787B]" : "border-black"
+                  }`}
                 >
                   <div
-                    className={`grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-${colcount || 4
-                      }`}
+                    className={`grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-${
+                      colcount || 4
+                    }`}
                   >
                     {row.map((framework) => (
                       <div
@@ -160,7 +163,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                         className="group relative flex flex-col overflow-hidden pb-4 xl:pb-8 xxl:pb-60"
                       >
                         {!framework.icn && (
-                          <div className="mb-4 mt-6 flex h-[50px] w-[50px] xxl:h-[60px] xxl:w-[60px] items-center justify-center rounded-[7px] bg-[#2E0C0A] transition-transform duration-500 lg:mb-[30px] lg:mt-10">
+                          <div className="mb-4 mt-6 flex h-[50px] w-[50px] items-center justify-center rounded-[7px] bg-[#2E0C0A] transition-transform duration-500 lg:mb-[30px] lg:mt-10 xxl:h-[60px] xxl:w-[60px]">
                             <p className="text-28 text-[#E63E31] transition-transform duration-500">
                               {String(framework.id).padStart(2, "0")}
                             </p>
@@ -180,10 +183,11 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                         <div className="pr-6 xl:pr-60">
                           <div className="relative w-fit text-2xl">
                             <h3
-                              className={`${bgcolor === "bg-black"
+                              className={`${
+                                bgcolor === "bg-black"
                                   ? "text-white"
                                   : "text-black"
-                                } text-28 pb-3 leading-[1.214285714285714] lg:pb-5`}
+                              } text-28 pb-3 leading-[1.214285714285714] lg:pb-5`}
                               dangerouslySetInnerHTML={{
                                 __html: framework.title,
                               }}

@@ -17,7 +17,11 @@ interface ResultsSectionProps {
   data: ResultsItem[];
 }
 
-const Results: React.FC<ResultsSectionProps> = ({ title, data,description ,}) => {
+const Results: React.FC<ResultsSectionProps> = ({
+  title,
+  data,
+  description,
+}) => {
   return (
     <div className="">
       <div className="container mx-auto py-4">
@@ -37,7 +41,11 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data,description ,}) =>
               }}
             >
               <h2 className="title-65">{title}</h2>
-              {description && <p className="text-19 fnt-lexend text-gray1 pt-6 pb-2 md:pb-6 max-w-[70ch]">{description}</p>}
+              {description && (
+                <p className="text-19 fnt-lexend max-w-[70ch] pb-2 pt-6 text-gray1 md:pb-6">
+                  {description}
+                </p>
+              )}
             </motion.div>
           </div>
           <motion.div
@@ -61,7 +69,6 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data,description ,}) =>
                 >
                   <div className="flex flex-col bg-gray2 px-6 pb-6 pt-5  duration-300 ease-in-out group-hover:bg-primary  md:px-[50px] md:pb-8   md:pt-8 lg:pb-[50px] lg:pt-[60px]">
                     <div className="relative  flex flex-col  ">
-
                       <p className="title-65 mb-[15px] leading-lh0p76 text-white lg:mb-[28px] ">
                         {result.growth}
                       </p>
@@ -93,10 +100,7 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data,description ,}) =>
                     </div>
                   </div>
                   <div className="flex flex-col px-6 pb-8 pt-6 text-white md:px-[50px] md:pt-8  ">
-                    <p className="text-30">
-                      {result.title}
-                    </p>
-
+                    <p className="text-30">{result.title}</p>
                   </div>
 
                   <Link

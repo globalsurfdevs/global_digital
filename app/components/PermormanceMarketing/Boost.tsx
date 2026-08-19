@@ -16,8 +16,8 @@ interface BoostSectionProps {
 const Boost: React.FC<BoostSectionProps> = ({ title, data }) => {
   return (
     <div className="bg-dgray">
-      <div className="container max-auto py-4">
-        <div className="pb-[50px] lg:pb-[157px] pt-[50px] lg:pt-[111px]">
+      <div className="max-auto container py-4">
+        <div className="pb-[50px] pt-[50px] lg:pb-[157px] lg:pt-[111px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -46,14 +46,14 @@ const Boost: React.FC<BoostSectionProps> = ({ title, data }) => {
               }, // Slide up and fade in
             }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8  pt-8 lg:pt-[58px]">
+            <div className="grid grid-cols-1 gap-8 pt-8 md:grid-cols-2  lg:pt-[58px] xl:grid-cols-4">
               {data.map((boost) => (
                 <div className="flex flex-col  " key={boost.id}>
-                  <div className="pb-[20px] md:pb-[65px] border-gray-500 imsr">
+                  <div className="imsr border-gray-500 pb-[20px] md:pb-[65px]">
                     <Image src={boost.icon} alt="image" />
                   </div>
 
-                  <div className="h-[1px] w-full bg-gray-500 rounded-xl"></div>
+                  <div className="h-[1px] w-full rounded-xl bg-gray-500"></div>
 
                   <div className="pt-[17px] md:pt-[53px] ">
                     <h3 className="text-30">{boost.title}</h3>

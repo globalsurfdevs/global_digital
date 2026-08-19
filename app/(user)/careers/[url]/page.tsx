@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { career } from "../../../data/career";
 import Link from "next/link";
 import Button from "@/app/components/Button/Button";
-import { notFound } from 'next/navigation';
+import { notFound } from "next/navigation";
 import { ClientPageRoot } from "next/dist/client/components/client-page";
-import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from "react-google-recaptcha";
 import { submitCareer } from "@/app/actions/career";
 
 export default function CareerDetailsPage() {
@@ -21,23 +21,20 @@ export default function CareerDetailsPage() {
     const fetchJobsData = async () => {
       try {
         const response = await fetch(`/api/jobs?slug=${url}`);
-        console.log(response)
+        console.log(response);
         if (response.ok) {
-
           const data = await response.json();
           // console.log("data",data)
-          setJobs(data.job)
-
+          setJobs(data.job);
         } else {
           console.error("Failed to fetch job data");
         }
       } catch (error) {
         console.error("Error fetching job data:", error);
       }
-    }
+    };
 
-    fetchJobsData()
-
+    fetchJobsData();
   }, []); // Runs when 'item' changes
 
   // useEffect(() => {
@@ -49,10 +46,10 @@ export default function CareerDetailsPage() {
   // }, []);
 
   const [file, setFile] = useState<File | null>(null);
-  const [error, setError] = useState('');
-  const [fileName, setFileName] = useState('');
-  const recaptcha = useRef<ReCAPTCHA>(null) // This will hold the file name if you're using a file input.
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("");
+  const [fileName, setFileName] = useState("");
+  const recaptcha = useRef<ReCAPTCHA>(null); // This will hold the file name if you're using a file input.
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files ? e.target.files[0] : null; // Safely access files
@@ -81,7 +78,7 @@ export default function CareerDetailsPage() {
     }
 
     try {
-      setIsSubmitting(true)
+      setIsSubmitting(true);
       const formDataObj = new FormData(form);
 
       const result = await submitCareer(formDataObj);
@@ -102,20 +99,29 @@ export default function CareerDetailsPage() {
       console.error(err);
       alert("Submission failed.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   };
-
 
   return (
     <div className="container mx-auto py-4">
       <div className="pt-[30px] lg:pt-[100px] ">
         <h1 className="title-65 mb-5 border-b pb-5 md:mb-[50px] md:pb-[25px] ">
-          Looking for <br></br>{jobs && jobs?.jobTitle}
+          Looking for <br></br>
+          {jobs && jobs?.jobTitle}
         </h1>
-        <p className="text-19 text-gray1">Our Team will get in touch with you.</p>
-        <div className="  pt-[15px] lg:pt-[50px] pb-[40px] lg:pb-[50px]">
-          <form onSubmit={handleSubmit} name='form' id='form' method='POST' acceptCharset='UTF-8' encType='multipart/form-data'>
+        <p className="text-19 text-gray1">
+          Our Team will get in touch with you.
+        </p>
+        <div className="  pb-[40px] pt-[15px] lg:pb-[50px] lg:pt-[50px]">
+          <form
+            onSubmit={handleSubmit}
+            name="form"
+            id="form"
+            method="POST"
+            acceptCharset="UTF-8"
+            encType="multipart/form-data"
+          >
             <input type="hidden" name="zf_referrer_name" value="" />
             <input type="hidden" name="zf_redirect_url" value="" />
             <input type="hidden" name="zc_gad" value="" />
@@ -127,7 +133,7 @@ export default function CareerDetailsPage() {
                 maxLength={255}
                 className="w-full rounded-lg border border-gray-300 p-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                 placeholder=""
-                defaultValue={jobs && jobs?.jobTitle || ""}
+                defaultValue={(jobs && jobs?.jobTitle) || ""}
                 readOnly
               />
             </div>
@@ -220,16 +226,18 @@ export default function CareerDetailsPage() {
               </div>
             </div>
 
-
-            <div >
-              <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
-              {error !== "" && <div className='text-red-500'>{error}</div>}
+            <div>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                ref={recaptcha}
+              />
+              {error !== "" && <div className="text-red-500">{error}</div>}
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-fit rounded-[55px] bg-primary md:px-[40px] md:py-[10px]  px-[40px] py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray  hover:text-primary mt-5"
+              className="mt-5 w-fit rounded-[55px] bg-primary px-[40px]  py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray hover:text-primary  md:px-[40px] md:py-[10px]"
             >
               Submit
             </button>

@@ -14,7 +14,6 @@
 // import { handleImageChange } from '@/app/helpers/handleImageChange'
 // import { v4 as uuidv4 } from 'uuid';
 
-
 // type Inputs = {
 //     companyName: string
 //     industry: string
@@ -55,7 +54,6 @@
 //     const [highlightNumber, setHighlightNumber] = useState('')
 //     const [highlightText, setHighlightText] = useState('')
 
-
 //     const [modalOpen, setModalOpen] = useState(false)
 //     const [refetch, setRefetch] = useState(false)
 //     const [section2Image1, setSection2Image1] = useState<null | File>(null)
@@ -76,7 +74,6 @@
 //     const [resultImage1Error, setResultImage1Error] = useState<null | string>(null)
 //     const [resultImage2Error, setResultImage2Error] = useState<null | string>(null)
 
-
 //     const {
 //         register,
 //         handleSubmit,
@@ -84,7 +81,6 @@
 //         control,
 //         formState: { errors },
 //     } = useForm<Inputs>()
-
 
 //     const onSubmit: SubmitHandler<Inputs> = async (data) => {
 //         setIsSubmitting(true);
@@ -110,9 +106,9 @@
 //                 formData.append(`highlightId${highlight.customId}`, highlight.customId.toString());
 //                 formData.append(`highlightNumber${highlight.customId}`, data[`highlightNumber${highlight.customId}`]);
 //                 formData.append(`highlightText${highlight.customId}`, data[`highlightText${highlight.customId}`]);
-    
+
 //                 hightLightIds.push(highlight.customId)
-    
+
 //             });
 //         }else{
 //             addedHighlights.forEach((highlight: addingHighlights) => {
@@ -120,12 +116,11 @@
 //                 formData.append(`highlightId${highlight.customId}`, highlight.customId.toString());
 //                 formData.append(`highlightNumber${highlight.customId}`, highlight.highlightNumber);
 //                 formData.append(`highlightText${highlight.customId}`, highlight.highlightText);
-    
+
 //                 hightLightIds.push(highlight.customId)
-    
+
 //             });
 //         }
-        
 
 //         formData.append("highlightIds", JSON.stringify(hightLightIds))
 
@@ -179,7 +174,6 @@
 //         }
 //     }
 
-
 //     useEffect(() => {
 //         const fetchPortfolioData = async () => {
 //             try {
@@ -223,7 +217,6 @@
 //                             setResultImage2Preview(data.portfolio[0].resultImage2 as string);
 //                         }
 
-
 //                     }
 
 //                     if (data.portfolioHighlights) {
@@ -248,7 +241,6 @@
 
 //     }, [refetch])
 
-
 //     const handleAddHighlight = async () => {
 //         try {
 //             if (editMode) {
@@ -261,7 +253,6 @@
 //                     method: "POST",
 //                     body: formData
 //                 });
-
 
 //                 if (response.ok) {
 //                     const data = await response.json();
@@ -296,28 +287,26 @@
 //                 const response = await fetch(`/api/portfolio/highlight?id=${id}`, {
 //                     method: "DELETE",
 //                 });
-    
-    
+
 //                 if (response.ok) {
 //                     const data = await response.json();
 //                     if (data.message) {
 //                         toast.success(data.message)
 //                         setRefetch((prev) => !prev)
 //                     }
-    
+
 //                 } else {
 //                     console.error("Failed to remove highlight data");
 //                 }
 //             }else{
 //                 setAddedHighlights(addedHighlights.filter((item)=>item.customId!==id))
-                
+
 //             }
-            
+
 //         } catch (error) {
 //             console.error("Error removing highlight data:", error);
 //         }
 //     }
-
 
 //     return (
 //         <div>
@@ -434,7 +423,6 @@
 //                         <div className='overflow-y-scroll h-64 p-1 gap-2 flex flex-col'>
 //                             {editMode ? (
 
-
 //                                 highlights.length > 0 ?
 
 //                                     (
@@ -463,7 +451,6 @@
 
 //                                             </div>
 //                                         ))
-
 
 //                                     ) : (
 
@@ -501,12 +488,8 @@
 //                                 )
 //                             )}
 
-
-
-
 //                         </div>
 //                     </div>
-
 
 //                     {modalOpen && <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
@@ -550,7 +533,6 @@
 //                             </div>
 //                         </div>
 //                     </div>}
-
 
 //                 </div>
 
@@ -614,7 +596,6 @@
 //                             </div>
 //                             {section2Image1Error && <p className="mt-1 text-sm text-red-600">{imageError}</p>}
 //                         </div>
-
 
 //                         <div>
 //                             <div>Section 2 - Image 2</div>
@@ -690,7 +671,6 @@
 //                             </div>
 //                             {errors.goals && <p className="mt-1 text-sm text-red-600">{errors.goals.message}</p>}
 //                         </div>
-
 
 //                         <div>
 //                             <Label content='Objectives' />

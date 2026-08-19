@@ -3,12 +3,8 @@ import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
 import About from "@/app/components/About/About";
 import SitemapPage from "@/app/components/AdminSitemap/AdminSitemap";
 
-
-
 const AboutPage = () => {
-  return (
-        <SitemapPage/>
-  );
+  return <SitemapPage />;
 };
 
 export default AboutPage;

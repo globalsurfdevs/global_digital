@@ -7,7 +7,7 @@ interface FrameworkItem {
   id: number;
   title: string;
   title1?: string;
-  
+
   icn?: string | StaticImageData;
   dec: string;
   urllink?: string;
@@ -16,8 +16,8 @@ interface FrameworkItem {
 interface FrameworkSectionProps {
   title1?: string;
   title: string;
-  bgcolor?: string; 
-  subtitle?: string; 
+  bgcolor?: string;
+  subtitle?: string;
   description?: string;
   colcount?: number;
   maxchwidth?: number;
@@ -28,14 +28,13 @@ interface FrameworkSectionProps {
 const BottomLine: React.FC<FrameworkSectionProps> = ({
   title,
   title1,
-   subtitle,  
+  subtitle,
   data,
   description,
   bgcolor,
   colcount,
   maxchwidth,
   titlemb,
-
 }) => {
   return (
     <div className="bg-[#F2F2F2]">
@@ -55,11 +54,10 @@ const BottomLine: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-
               {title1 && (
                 <Link href="">
-                <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
-                  {title1}
+                  <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                    {title1}
                   </p>
                 </Link>
               )}
@@ -68,16 +66,16 @@ const BottomLine: React.FC<FrameworkSectionProps> = ({
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
-                  </div>
+                </div>
               )}
               {!description && (
                 <>
                   <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                    <h2 className={`title-65 ${ titlemb ?? "mb-3 lg:mb-4" }`} >
+                    <h2 className={`title-65 ${titlemb ?? "mb-3 lg:mb-4"}`}>
                       {title}
                     </h2>
                     {subtitle && (
-                      <p className="text-font19 text-gray1 font-medium pb-6 lg:pb-[58px] leading-[1.4]">
+                      <p className="pb-6 text-font19 font-medium leading-[1.4] text-gray1 lg:pb-[58px]">
                         {subtitle}
                       </p>
                     )}
@@ -100,25 +98,37 @@ const BottomLine: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 gap-5 md:gap-10 xl:gap-[75px]  md:grid-cols-2 lg:gap-10 xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
+              className={`grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10  lg:gap-10 xl:gap-[75px] xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
             >
               {data.map((framework) => (
-                <div key={framework.id} className="group relative flex h-full flex-col overflow-hidden" >
+                <div
+                  key={framework.id}
+                  className="group relative flex h-full flex-col overflow-hidden"
+                >
                   <div className="flex flex-1 flex-col ">
-                    <div className="text-2xl relative w-fit">
-                    <h3 className="text-30 mb-3 md:mb-[30px] text-black transition-colors duration-300 group-hover:text-primary" dangerouslySetInnerHTML={{ __html: framework.title }} ></h3>
-                        { framework.urllink && (   <Link href={framework.urllink} className="absolute top-0 w-full h-full"> </Link>
-                        )}
+                    <div className="relative w-fit text-2xl">
+                      <h3
+                        className="text-30 mb-3 text-black transition-colors duration-300 group-hover:text-primary md:mb-[30px]"
+                        dangerouslySetInnerHTML={{ __html: framework.title }}
+                      ></h3>
+                      {framework.urllink && (
+                        <Link
+                          href={framework.urllink}
+                          className="absolute top-0 h-full w-full"
+                        >
+                          {" "}
+                        </Link>
+                      )}
                     </div>
-                    
-                  <div className="flex-1">
-                    <p className="fnt-lexend text-19 font-medium text-[#77787B] group-last:mb-0 sm:group-last:mb-[30px] mb-[30px]">
-                      {framework.dec}
-                    </p>
-                  </div>
+
+                    <div className="flex-1">
+                      <p className="fnt-lexend text-19 mb-[30px] font-medium text-[#77787B] group-last:mb-0 sm:group-last:mb-[30px]">
+                        {framework.dec}
+                      </p>
+                    </div>
                   </div>
                   <div
-                    className={`relative h-[1px] group-last:h-0 sm:group-last:h-[1px] overflow-hidden rounded-xl ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
+                    className={`relative h-[1px] overflow-hidden rounded-xl group-last:h-0 sm:group-last:h-[1px] ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
                   >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>

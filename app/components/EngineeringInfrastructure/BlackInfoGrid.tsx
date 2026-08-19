@@ -134,7 +134,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                         className="group relative flex flex-col overflow-hidden pb-4 xl:pb-8 xxl:pb-60"
                       >
                         {!framework.icn && (
-                          <div className="mb-4 mt-6 flex h-[50px] w-[50px] xxl:h-[60px] xxl:w-[60px] items-center justify-center rounded-[7px] bg-[#2E0C0A] transition-transform duration-500 lg:mb-[30px] lg:mt-10">
+                          <div className="mb-4 mt-6 flex h-[50px] w-[50px] items-center justify-center rounded-[7px] bg-[#2E0C0A] transition-transform duration-500 lg:mb-[30px] lg:mt-10 xxl:h-[60px] xxl:w-[60px]">
                             <p className="text-28 text-[#E63E31] transition-transform duration-500">
                               {String(framework.id).padStart(2, "0")}
                             </p>

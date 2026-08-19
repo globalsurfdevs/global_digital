@@ -24,7 +24,7 @@ const AboutGlobal = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
         variants={{
-          hidden: {  y: 50 }, // Start below and invisible
+          hidden: { y: 50 }, // Start below and invisible
           visible: {
             y: 0,
             transition: { duration: 1, ease: "easeOut" },
@@ -39,10 +39,9 @@ const AboutGlobal = () => {
             ref={ref}
           >
             <motion.h1
-              className="title-65 leading-tight hover:text-primary transition-all duration-300"
+              className="title-65 leading-tight transition-all duration-300 hover:text-primary"
               aria-label={heading}
             >
-              
               {heading.split(" ").map((word, wordIndex) => (
                 <span
                   key={`${word}-${wordIndex}`}
@@ -69,10 +68,21 @@ const AboutGlobal = () => {
                 </span>
               ))}
             </motion.h1>
-            <h3 className="font-35 mt-3">Senior-Led Expertise. Sector-Specific Strategies. Trusted by 140+ UAE Brands Since 2013. </h3>
+            <h3 className="font-35 mt-3">
+              Senior-Led Expertise. Sector-Specific Strategies. Trusted by 140+
+              UAE Brands Since 2013.{" "}
+            </h3>
           </motion.div>
           <p className="text-font25 ">
-            We’re GS Digital, a full service digital marketing agency in Dubai delivering digital marketing services to brands across the UAE. With extensive experience across construction, real estate, B2B, education, retail, and other key industries, we work with organisations where long sales cycles, tender processes, and technical buyers demand a different digital approach. By combining data driven strategy, creative thinking, and business focused execution, we turn digital investment into measurable business results.
+            We’re GS Digital, a full service digital marketing agency in Dubai
+            delivering digital marketing services to brands across the UAE. With
+            extensive experience across construction, real estate, B2B,
+            education, retail, and other key industries, we work with
+            organisations where long sales cycles, tender processes, and
+            technical buyers demand a different digital approach. By combining
+            data driven strategy, creative thinking, and business focused
+            execution, we turn digital investment into measurable business
+            results.
           </p>
           <button
             className="z-2 z-1 group relative flex w-fit items-center gap-1 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3

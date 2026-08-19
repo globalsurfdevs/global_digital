@@ -35,7 +35,7 @@ interface HeroSectionProps {
   hideslider?: boolean;
   bannerlogp?: boolean;
   Bannerdata: BannerSection[];
-  points: string[]
+  points: string[];
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -44,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   hideslider,
   bannerlogp,
   maxchwidth,
-  points
+  points,
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -67,8 +67,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const nextContainerRef = useRef<HTMLDivElement | null>(null);
   const [divWidth, setDivWidth] = useState("100%");
   const scrollToSection = () => {
-    const section = document.getElementById('requestst');
-    section?.scrollIntoView({ behavior: 'smooth' });
+    const section = document.getElementById("requestst");
+    section?.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(() => {
     const updateDivWidth = () => {
@@ -141,7 +141,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               }}
             >
               <div
-                className={` ptcs0 md:border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
+                className={` ptcs0 pb-10 pt-[20px] sm:pt-[50px] md:border-b lg:pt-[130px] `}
               >
                 <div
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
@@ -150,7 +150,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     className={` xxl:max-w-[1000px]`}
                     style={{ maxWidth: `${maxchwidth}ch` }}
                   >
-
                     <div>
                       {herosection.navigation && (
                         <nav className="mb-6 text-[20px] uppercase text-[#77787B] lg:mb-[40px] xl:mb-[60px]">
@@ -172,18 +171,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                                   )}
                                 </li>
                                 {index <
-                                  (herosection.navigation?.length || 0) -
-                                  1 && (
-                                    <li>
-                                      <Image
-                                        src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
-                                        alt="Arrow"
-                                        width={7} // Adjust width as needed
-                                        height={12} // Adjust height as needed
-                                        className=""
-                                      />
-                                    </li>
-                                  )}
+                                  (herosection.navigation?.length || 0) - 1 && (
+                                  <li>
+                                    <Image
+                                      src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
+                                      alt="Arrow"
+                                      width={7} // Adjust width as needed
+                                      height={12} // Adjust height as needed
+                                      className=""
+                                    />
+                                  </li>
+                                )}
                               </React.Fragment>
                             ))}
                           </ul>
@@ -194,41 +192,33 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px] ">
                         {herosection.title1}
                       </p>
-                    )} 
-                      <nav className="mb-6 text-[10px] sm:text-font14 lg:text-font19 uppercase text-[#77787B] lg:mb-8">
-                        <ul className="flex items-center space-x-2"> 
-                            <React.Fragment >
-                              <li>
-                                
-                                  <Link
-                                    href="/"
-                                    className="hover:underline"
-                                  >
-                                    HOME
-                                  </Link>
-                                  </li> 
-                                  <li>
-                                    <Image
-                                      src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
-                                      alt="Arrow"
-                                      width={7} // Adjust width as needed
-                                      height={12} // Adjust height as needed
-                                      className=""
-                                    />
-                                  </li> 
-                                  <li>
-                               
-                                  <span className="text-[#77787B]">
-                                   Free Digital Marketing Audit
-                                  </span>
-                             
-                              </li> 
-                                
-                            </React.Fragment>
-                         
-                        </ul>
-                      </nav>
-                  
+                    )}
+                    <nav className="mb-6 text-[10px] uppercase text-[#77787B] sm:text-font14 lg:mb-8 lg:text-font19">
+                      <ul className="flex items-center space-x-2">
+                        <React.Fragment>
+                          <li>
+                            <Link href="/" className="hover:underline">
+                              HOME
+                            </Link>
+                          </li>
+                          <li>
+                            <Image
+                              src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
+                              alt="Arrow"
+                              width={7} // Adjust width as needed
+                              height={12} // Adjust height as needed
+                              className=""
+                            />
+                          </li>
+                          <li>
+                            <span className="text-[#77787B]">
+                              Free Digital Marketing Audit
+                            </span>
+                          </li>
+                        </React.Fragment>
+                      </ul>
+                    </nav>
+
                     <h1 className="title-80"> {herosection.title}</h1>
 
                     {herosection.subtitle && (
@@ -246,7 +236,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       >
                         <div className="relative">
                           <p
-                            className={`text-sm uppercase font-medium duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                            className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                           >
                             {herosection.buttontitle}
                           </p>
@@ -314,66 +304,65 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
                 <div className="text-right text-font19 text-gray1">{order}</div>
               </div>
-                {herosection.sub.map(
-                  (su, index) =>
-                    su.stitle &&
-                    su.desc && (
-                        <div key={index}>
-                          {su.buttonTitle && (
-                            <button onClick={scrollToSection}
-                              className="md:hidden flex z-2 z-1 group relative   w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3
-                                   before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute
-                                        after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 "
+              {herosection.sub.map(
+                (su, index) =>
+                  su.stitle &&
+                  su.desc && (
+                    <div key={index}>
+                      {su.buttonTitle && (
+                        <button
+                          onClick={scrollToSection}
+                          className="z-2 z-1 group relative flex w-fit   items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-3 before:absolute
+                                   before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0
+                                        after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 md:hidden "
+                        >
+                          <div className="relative">
+                            <p
+                              className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
                             >
-                              <div className="relative">
-                                <p
-                                  className={`duration-200 text-sm font-medium uppercase ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
-                                >
-                                  {su.buttonTitle}
-                                </p>
-                              </div>
-                              <svg
-                                width="10"
-                                height="10"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="duration-200 ease-in-out group-hover:scale-125"
-                              >
-                                <g clipPath="url(#clip0_65_58)">
-                                  <path
-                                    d="M18.7892 1.2749L0.699219 19.0149"
-                                    stroke="#E53F30"
-                                    strokeWidth="3"
-                                    strokeMiterlimit="10"
-                                    className="group-hover:stroke-black"
-                                  />
-                                  <path
-                                    d="M0.699219 1.2749H18.7892V18.6649"
-                                    stroke="#E53F30"
-                                    strokeWidth="3"
-                                    strokeMiterlimit="10"
-                                    className="group-hover:stroke-black"
-                                  />
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_65_58">
-                                    <rect
-                                      width="19.79"
-                                      height="19.45"
-                                      fill="white"
-                                      transform="translate(0 0.274902)"
-                                    />
-                                  </clipPath>
-                                </defs>
-                              </svg>
-                            </button>
-                          )}
-                        </div>
-                        )
-                      )
-                  }
-
+                              {su.buttonTitle}
+                            </p>
+                          </div>
+                          <svg
+                            width="10"
+                            height="10"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="duration-200 ease-in-out group-hover:scale-125"
+                          >
+                            <g clipPath="url(#clip0_65_58)">
+                              <path
+                                d="M18.7892 1.2749L0.699219 19.0149"
+                                stroke="#E53F30"
+                                strokeWidth="3"
+                                strokeMiterlimit="10"
+                                className="group-hover:stroke-black"
+                              />
+                              <path
+                                d="M0.699219 1.2749H18.7892V18.6649"
+                                stroke="#E53F30"
+                                strokeWidth="3"
+                                strokeMiterlimit="10"
+                                className="group-hover:stroke-black"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_65_58">
+                                <rect
+                                  width="19.79"
+                                  height="19.45"
+                                  fill="white"
+                                  transform="translate(0 0.274902)"
+                                />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  ),
+              )}
             </motion.div>
             <motion.div
               initial="hidden"
@@ -397,29 +386,34 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                         key={index}
                         className="grid grid-cols-1 py-8 lg:py-[75px] "
                       >
-
                         <div className=" ">
-                          <p className={`ms-0 text-gray1 text-font30 font-normal max-w-[48ch] `}>
+                          <p
+                            className={`ms-0 max-w-[48ch] text-font30 font-normal text-gray1 `}
+                          >
                             {su.desc}
                           </p>
-                          <div className={`grid grid-cols-1 md:grid-cols-2 mb-2 lg:mb-0 max-w-fit gap-8 mt-6 lg:mt-14 ${lexend.className}`}>
-
+                          <div
+                            className={`mb-2 mt-6 grid max-w-fit grid-cols-1 gap-8 md:grid-cols-2 lg:mb-0 lg:mt-14 ${lexend.className}`}
+                          >
                             {points.map((point, index) => (
-                              <div className="flex items-center gap-2 max-w-fit" key={index}>
+                              <div
+                                className="flex max-w-fit items-center gap-2"
+                                key={index}
+                              >
                                 <div className="h-5 w-5 bg-primary"></div>
                                 <p className="text-gray1">{point}</p>
                               </div>
                             ))}
-
                           </div>
                           {su.buttonTitle && (
-                            <button onClick={scrollToSection}
-                              className="hidden z-2 z-1 group relative  md:flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-3 bg-primary
-                                    lg:mt-10 mt-8 rounded-[5px]"
+                            <button
+                              onClick={scrollToSection}
+                              className="z-2 z-1 group relative mt-8  hidden w-fit items-center gap-3 rounded-[5px] border border-l-0 border-r-0 border-t-0 border-transparent bg-primary
+                                    p-3 md:flex lg:mt-10"
                             >
                               <div className="relative">
                                 <p
-                                  className={`duration-200 text-sm font-medium uppercase ease-in-out text-white md:text-[16px] ${lexend.className}`}
+                                  className={`text-sm font-medium uppercase text-white duration-200 ease-in-out md:text-[16px] ${lexend.className}`}
                                 >
                                   {su.buttonTitle}
                                 </p>
@@ -461,10 +455,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                               </svg>
                             </button>
                           )}
-                          <p className="mt-4 text-gray1">Limited free slots available this month</p>
+                          <p className="mt-4 text-gray1">
+                            Limited free slots available this month
+                          </p>
                         </div>
-
-
                       </div>
                     ),
                 )}
@@ -488,8 +482,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <div
           style={{ width: isSmallScreen ? "" : divWidth }}
-          className={`${isSmallScreen ? "container mx-auto py-2" : ""
-            } custom-class`}
+          className={`${
+            isSmallScreen ? "container mx-auto py-2" : ""
+          } custom-class`}
         >
           {!hideslider && (
             <div className="flex gap-5 bg-bglight  py-[17px]">

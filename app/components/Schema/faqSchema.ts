@@ -1,20 +1,20 @@
 export const buildFaqSchema = (
-    faq: { title: string; description: string }[]
+  faq: { title: string; description: string }[],
 ) => {
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
 
-        mainEntity: faq.map((item) => ({
-            "@type": "Question",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
 
-            name: item.title,
+      name: item.title,
 
-            acceptedAnswer: {
-                "@type": "Answer",
+      acceptedAnswer: {
+        "@type": "Answer",
 
-                text: item.description
-            }
-        }))
-    };
+        text: item.description,
+      },
+    })),
+  };
 };

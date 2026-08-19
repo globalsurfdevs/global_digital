@@ -5,8 +5,8 @@ import Portfolio from "@/app/models/Portfolio";
 import PortfolioHighlight from "@/app/models/PortfolioHighlight";
 import mongoose from "mongoose";
 import { unstable_cache } from "next/cache";
-import '@/app/models/Category'
-import '@/app/models/Channel'
+import "@/app/models/Category";
+import "@/app/models/Channel";
 
 // ✅ Get all case studies
 export const getCaseStudies = unstable_cache(
@@ -26,5 +26,5 @@ export const getCaseStudies = unstable_cache(
   {
     tags: ["caseStudies"],
     revalidate: 60,
-  }
+  },
 );

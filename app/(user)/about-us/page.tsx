@@ -12,14 +12,13 @@ interface Canonicals {
   canonical: string;
 }
 
-
 type Metadata = {
   title: string;
   description: string;
   alternates: Canonicals;
 };
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -32,8 +31,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const page = async() => {
-    const about = await getAbout();
+const page = async () => {
+  const about = await getAbout();
   return (
     <>
       <Script
@@ -44,34 +43,38 @@ const page = async() => {
           __html: JSON.stringify({
             "@context": "http://schema.org",
             "@type": "BreadcrumbList",
-            "itemListElement": [
+            itemListElement: [
               {
                 "@type": "ListItem",
-                "position": 1,
-                "item": {
+                position: 1,
+                item: {
                   "@type": "WebSite",
                   "@id": "https://www.globalsurf.ae/",
-                  "name": "Home",
+                  name: "Home",
                 },
               },
               {
                 "@type": "ListItem",
-                "position": 2,
-                "item": {
+                position: 2,
+                item: {
                   "@type": "WebPage",
                   "@id": "https://www.globalsurf.ae/about-us",
-                  "name": "About Us",
+                  name: "About Us",
                 },
               },
             ],
           }),
         }}
       />
-      <HeroSection data={about.firstSection}/>
-      <SectionTwo video={about.firstSection.video} title={about.secondSection.title} description={about.secondSection.description}/>
-      <SectionThree data={about.thirdSection}/>
-      <SectionFour data={about.fourthSection}/>
-      <SectionFive data={about.teamSection} lastSection={about.lastSection}/>
+      <HeroSection data={about.firstSection} />
+      <SectionTwo
+        video={about.firstSection.video}
+        title={about.secondSection.title}
+        description={about.secondSection.description}
+      />
+      <SectionThree data={about.thirdSection} />
+      <SectionFour data={about.fourthSection} />
+      <SectionFive data={about.teamSection} lastSection={about.lastSection} />
     </>
   );
 };

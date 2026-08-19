@@ -21,7 +21,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
   topTitle,
   bottomText = true,
   reviews = true,
-  page
+  page,
 }) => {
   return (
     <div className={` ${bgcolor === "white" ? "bg-white" : "bg-bglight"}`}>
@@ -31,7 +31,9 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
         <div className="ptwhite pb-[30px] pt-[50px] md:py-10 lg:py-12 xl:pb-[110px] xl:pt-[138px]">
           {topTitle && (
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-              <h3 className={`${page === "service" ? "text-18" : "text-30"} uppercase leading-[1] tracking-[-0.025em]  text-muted`}>
+              <h3
+                className={`${page === "service" ? "text-18" : "text-30"} uppercase leading-[1] tracking-[-0.025em]  text-muted`}
+              >
                 {topTitle}
               </h3>
               <div className="h-4 w-4 bg-primary"></div>
@@ -47,7 +49,9 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
             }}
             className="items-center justify-between gap-3 lg:flex"
           >
-            <h2 className={`${page === "service" ? "text-60 text-[length:var(--text-60-sm)]" : "text-60"}`}>
+            <h2
+              className={`${page === "service" ? "text-60 text-[length:var(--text-60-sm)]" : "text-60"}`}
+            >
               {/* {data?.title ? data.title : "Hear From Our Partners"} */}
               {" What our clients say across Dubai and the UAE "}
             </h2>
@@ -165,7 +169,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-              <TestimonialsSwiper data={data?.items} page={page}/>
+              <TestimonialsSwiper data={data?.items} page={page} />
               {bottomText && (
                 <div>
                   {!data?.bottomText ? (

@@ -16,7 +16,11 @@ const Portfolio = ({
   return (
     <>
       <HeroSection />
-      <PortfolioList data={filtered} industries={industries} categories={categories} />
+      <PortfolioList
+        data={filtered}
+        industries={industries}
+        categories={categories}
+      />
     </>
   );
 };

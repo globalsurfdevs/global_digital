@@ -13,7 +13,7 @@ import {
   Cta,
   Faq,
   relatedservices,
-  Frameworkdata
+  Frameworkdata,
 } from "../../../components/CopyWriting/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";

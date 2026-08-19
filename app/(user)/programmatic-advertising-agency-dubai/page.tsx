@@ -37,7 +37,8 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Programmatic Advertising Agency in Dubai |  Targeted Display & Video | GS Digital",
+    title:
+      "Programmatic Advertising Agency in Dubai |  Targeted Display & Video | GS Digital",
     description:
       "Programmatic advertising in Dubai: audience planning, DSP activation and optimisation for brand and performance campaigns. Request a programmatic demo.",
     alternates: {

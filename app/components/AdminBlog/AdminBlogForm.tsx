@@ -390,10 +390,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         </div>
         <div className="flex flex-col gap-2">
           <Label content="Category" />
-          <input
-            {...register("category")}
-            className={inputClass}
-          />
+          <input {...register("category")} className={inputClass} />
         </div>
       </section>
 

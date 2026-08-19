@@ -1,148 +1,163 @@
-import { supabase } from "@/app/lib/initSupabase"
-import Job from "@/app/models/Job"
-import { NextRequest, NextResponse } from "next/server"
-import connectDB from "@/lib/mongodb"
+import { supabase } from "@/app/lib/initSupabase";
+import Job from "@/app/models/Job";
+import { NextRequest, NextResponse } from "next/server";
+import connectDB from "@/lib/mongodb";
 
 export async function GET(req: NextRequest) {
-    try {
+  try {
+    await connectDB();
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    const slug = searchParams.get("slug");
 
-        await connectDB()
-        const { searchParams } = new URL(req.url)
-        const id = searchParams.get("id")
-        const slug = searchParams.get("slug")
+    if (id) {
+      // let { data: jobs, error } = await supabase
+      //     .from('jobs')
+      //     .select('*')
 
-        if (id) {
+      const jobs = await Job.findById(id);
 
-            // let { data: jobs, error } = await supabase
-            //     .from('jobs')
-            //     .select('*')
+      if (!jobs) {
+        return NextResponse.json({ error: "Jobs not found" }, { status: 404 });
+      }
 
-            const jobs = await Job.findById(id)
+      return NextResponse.json({ jobs });
+    } else if (slug) {
+      // let { data: job, error } = await supabase
+      //     .from('jobs')
+      //     .select('*')
+      //     .eq('slug', slug)
 
+      const job = await Job.findOne({ slug });
 
-            if (!jobs) {
-                return NextResponse.json({ error: "Jobs not found" }, { status: 404 });
-            }
+      if (!job) {
+        return NextResponse.json({ error: "Job not found" }, { status: 404 });
+      } else {
+        return NextResponse.json({ job });
+      }
+    } else {
+      // let { data: jobs, error } = await supabase
+      //     .from('jobs')
+      //     .select("*")
 
-            return NextResponse.json({ jobs });
-        }
+      const jobs = await Job.find();
 
-        else if (slug) {
-            // let { data: job, error } = await supabase
-            //     .from('jobs')
-            //     .select('*')
-            //     .eq('slug', slug)
+      if (!jobs) {
+        return NextResponse.json({ error: "Job not found" }, { status: 404 });
+      }
 
-            const job = await Job.findOne({ slug })
-
-            if (!job) {
-                return NextResponse.json({ error: "Job not found" }, { status: 404 });
-            } else {
-                return NextResponse.json({ job });
-            }
-
-
-        } else {
-
-
-            // let { data: jobs, error } = await supabase
-            //     .from('jobs')
-            //     .select("*")
-
-            const jobs = await Job.find()
-
-            if (!jobs) {
-                return NextResponse.json({ error: "Job not found" }, { status: 404 });
-            }
-
-            return NextResponse.json({ jobs });
-        }
-
-    } catch (error) {
-        console.log("error getting team members:", error);
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+      return NextResponse.json({ jobs });
     }
+  } catch (error) {
+    console.log("error getting team members:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
+  }
 }
-
 
 export async function POST(req: NextRequest) {
-    await connectDB()
-    const { searchParams } = new URL(req.url)
-    const id = searchParams.get("id")
+  await connectDB();
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
 
-    const formData = await req.formData()
-    const jobTitle = formData.get("jobTitle") as string
-    const team = formData.get("team") as string
-    const description = formData.get("description") as string
-    const slug = formData.get("slug") as string
+  const formData = await req.formData();
+  const jobTitle = formData.get("jobTitle") as string;
+  const team = formData.get("team") as string;
+  const description = formData.get("description") as string;
+  const slug = formData.get("slug") as string;
 
-    try {
+  try {
+    if (!id) {
+      // const { data, error } = await supabase
+      //     .from('jobs')
+      //     .insert([
+      //         { jobTitle, team, description, slug },
+      //     ])
+      //     .select()
 
-        if (!id) {
-            // const { data, error } = await supabase
-            //     .from('jobs')
-            //     .insert([
-            //         { jobTitle, team, description, slug },
-            //     ])
-            //     .select()
+      const job = await Job.create({ jobTitle, team, description, slug });
 
-            const job = await Job.create({ jobTitle, team, description, slug })
+      if (job) {
+        return NextResponse.json(
+          { message: "Job added successfully" },
+          { status: 200 },
+        );
+      } else {
+        return NextResponse.json(
+          { error: "Adding job failed" },
+          { status: 400 },
+        );
+      }
+    } else {
+      // const { data, error } = await supabase
+      //     .from('jobs')
+      //     .update({ jobTitle, team, description, slug })
+      //     .eq('id', id)
+      //     .select()
 
-            if (job) {
-                return NextResponse.json({ message: "Job added successfully" }, { status: 200 })
-            } else {
-                return NextResponse.json({ error: "Adding job failed" }, { status: 400 })
-            }
-        } else {
+      const job = await Job.findByIdAndUpdate(id, {
+        jobTitle,
+        team,
+        description,
+        slug,
+      });
 
-            // const { data, error } = await supabase
-            //     .from('jobs')
-            //     .update({ jobTitle, team, description, slug })
-            //     .eq('id', id)
-            //     .select()
-
-            const job = await Job.findByIdAndUpdate(id, { jobTitle, team, description, slug })
-
-            if (job) {
-                return NextResponse.json({ message: "Job updated successfully" }, { status: 200 })
-            } else {
-                return NextResponse.json({ error: "Updating job failed" }, { status: 400 })
-            }
-        }
-
-    } catch (error) {
-        console.log("Adding/Updating job failed", error)
-        return NextResponse.json({ error: "Something went wrong" }, { status: 400 })
+      if (job) {
+        return NextResponse.json(
+          { message: "Job updated successfully" },
+          { status: 200 },
+        );
+      } else {
+        return NextResponse.json(
+          { error: "Updating job failed" },
+          { status: 400 },
+        );
+      }
     }
+  } catch (error) {
+    console.log("Adding/Updating job failed", error);
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 400 },
+    );
+  }
 }
 
-
 export async function DELETE(req: NextRequest) {
-    try {
-        await connectDB()
-        const { searchParams } = new URL(req.url)
-        const id = searchParams.get("id")
+  try {
+    await connectDB();
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-        if (!id) {
-            return NextResponse.json({ error: "Job not found" }, { status: 400 })
-        }
-
-
-        // const { error } = await supabase
-        //     .from('jobs')
-        //     .delete()
-        //     .eq('id', id)
-
-        const job = await Job.findByIdAndDelete(id)
-
-        if (!job) {
-            return NextResponse.json({ error: "Deleting job failed" }, { status: 400 })
-        }
-
-        return NextResponse.json({ message: "job deleted successfully" }, { status: 200 })
-
-    } catch (error) {
-        console.log("error getting news:", error);
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    if (!id) {
+      return NextResponse.json({ error: "Job not found" }, { status: 400 });
     }
+
+    // const { error } = await supabase
+    //     .from('jobs')
+    //     .delete()
+    //     .eq('id', id)
+
+    const job = await Job.findByIdAndDelete(id);
+
+    if (!job) {
+      return NextResponse.json(
+        { error: "Deleting job failed" },
+        { status: 400 },
+      );
+    }
+
+    return NextResponse.json(
+      { message: "job deleted successfully" },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.log("error getting news:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
+  }
 }

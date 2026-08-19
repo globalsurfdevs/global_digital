@@ -1,4 +1,3 @@
-
 const minorWords = new Set([
   "a",
   "an",
@@ -24,11 +23,7 @@ export function toTitleCase(title: string) {
   return words
     .map((word, index) => {
       // Always capitalize first and last words
-      if (
-        index === 0 ||
-        index === words.length - 1 ||
-        !minorWords.has(word)
-      ) {
+      if (index === 0 || index === words.length - 1 || !minorWords.has(word)) {
         return word.charAt(0).toUpperCase() + word.slice(1);
       }
 

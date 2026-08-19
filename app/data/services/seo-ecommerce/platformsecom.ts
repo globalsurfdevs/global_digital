@@ -1,9 +1,8 @@
-
 import { assets } from "@/public/assets/assets";
 
 export const Platformsecomdata = {
   title: "Why Choose GS Digital as Your eCommerce SEO Agency in Dubai?",
-  desc:"With a team of certified experts in social media strategy, content creation, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our Social Media Marketing services in Dubai.",
+  desc: "With a team of certified experts in social media strategy, content creation, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our Social Media Marketing services in Dubai.",
   data: [
     {
       id: 1,

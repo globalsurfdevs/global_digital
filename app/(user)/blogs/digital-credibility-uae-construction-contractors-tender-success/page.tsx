@@ -1,7 +1,7 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
-import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3"; 
-import TextUi from "../../../components/BlogDigitalCredibilityUae/TextUi"; 
+import Contentone from "../../../components/BlogSocialMedia/ContentSecBlog3";
+import TextUi from "../../../components/BlogDigitalCredibilityUae/TextUi";
 import TitleImagecontent from "../../../components/BlogDigitalCredibilityUae/TitleImagecontent";
 import SectionTwo from "../../../components/BlogDigitalCredibilityUae/SectionTwo";
 import SectionThree from "../../../components/BlogDigitalCredibilityUae/SectionThree";
@@ -12,11 +12,11 @@ import SectionSeven from "../../../components/BlogDigitalCredibilityUae/SectionS
 import SectionEight from "../../../components/BlogDigitalCredibilityUae/SectionEight";
 import { DigitalStudySchema } from "../../../components/Schema/OfferCatalog";
 
-
 import {
-  BannerSection, Faq, contentSectionsData,
-   builtEnvironmentData,
-
+  BannerSection,
+  Faq,
+  contentSectionsData,
+  builtEnvironmentData,
 } from "../../../data/blogdatas/DigitalCredibilityUaeData";
 
 import Blogfaq from "../../../components/common/BlogFaq";
@@ -44,15 +44,18 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "How UAE Construction Contractors Win More Tenders with Digital Credibility | Global Surf Digital",
+    title:
+      "How UAE Construction Contractors Win More Tenders with Digital Credibility | Global Surf Digital",
     description:
       "UAE construction contractors are losing tenders before evaluation begins. Learn how digital credibility directly influences pre-qualification and tender outcomes.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
+      canonical:
+        "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
     },
     robots: "index, follow",
     openGraph: {
-      title: "How UAE Construction Contractors Win More Tenders with Digital Credibility",
+      title:
+        "How UAE Construction Contractors Win More Tenders with Digital Credibility",
       site_name: "GS Digital",
       url: "https://www.globalsurf.ae/blogs/digital-credibility-uae-construction-contractors-tender-success",
       description:
@@ -62,59 +65,61 @@ export async function generateMetadata(): Promise<Metadata> {
     images: [
       {
         url: "https://www.globalsurf.ae/_next/static/media/uae-construction-contractor-digital-credibility-hero.41a7a760.webp",
-        alt: 'How UAE Construction Contractors Win More Tenders with Digital Credibility',
+        alt: "How UAE Construction Contractors Win More Tenders with Digital Credibility",
       },
     ],
-
   };
 }
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const page = async () => {
-  const videoProductionTitles = ['Authority', 'Scope'];
+  const videoProductionTitles = ["Authority", "Scope"];
   const author = await getAuthorById("6a4ca154c0f7cb5455693c77");
 
   return (
     <div className="relative">
-
       <DigitalStudySchema />
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27}  />
-     
-      <Contentone sections={contentSectionsData}  />
-    <div id="section1">
-      <Contentone sections={builtEnvironmentData}  />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={27}
+      />
+
+      <Contentone sections={contentSectionsData} />
+      <div id="section1">
+        <Contentone sections={builtEnvironmentData} />
       </div>
       <TextUi />
       <div id="section2">
-        <TitleImagecontent /> 
+        <TitleImagecontent />
       </div>
       <div id="section3">
-      <SectionTwo  />
+        <SectionTwo />
       </div>
       <div id="section4">
-      <SectionThree />
+        <SectionThree />
       </div>
-      
+
       <div id="section5">
-      <SectionFour />
+        <SectionFour />
       </div>
       <div id="section6">
         <SectionFive />
       </div>
       <div id="section7">
-      <SectionSix />
+        <SectionSix />
       </div>
       <div id="section8">
-      <SectionSeven />
-     </div>
+        <SectionSeven />
+      </div>
       <div id="section9">
-      <SectionEight />
-     </div>
-<div id="section11">
-      <section>
-        {/* <Contentone sections={contractorMarketingData} /> */}
-        <Blogfaq data={Faq}  />
-      </section>
+        <SectionEight />
+      </div>
+      <div id="section11">
+        <section>
+          {/* <Contentone sections={contractorMarketingData} /> */}
+          <Blogfaq data={Faq} />
+        </section>
       </div>
       {author && <AuthorBioCard data={author} />}
     </div>

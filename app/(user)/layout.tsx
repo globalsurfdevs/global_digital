@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import HeaderSwitcher from "@/app/components/HomePage/HeaderSwitcher";
@@ -9,13 +8,10 @@ import Footer from "@/app/components/HomePage/Footer";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 
-
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
-
-
 
 // export const dynamic = "force-dynamic";
 
@@ -30,92 +26,99 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "GS Digital",
-  "url": "https://www.globalsurf.ae/",
-  "logo": "https://www.globalsurf.ae/gs-digital-logo.svg",
-  "description": "GS Digital Media is a premium full-service digital marketing agency in Dubai, specializing in SEO, performance marketing, social media marketing, and web design and development.",
-  "slogan": "Master Every Pixel of Your Digital Presence",
-  "foundingDate": "2013",
-  "address": {
+  name: "GS Digital",
+  url: "https://www.globalsurf.ae/",
+  logo: "https://www.globalsurf.ae/gs-digital-logo.svg",
+  description:
+    "GS Digital Media is a premium full-service digital marketing agency in Dubai, specializing in SEO, performance marketing, social media marketing, and web design and development.",
+  slogan: "Master Every Pixel of Your Digital Presence",
+  foundingDate: "2013",
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "P.O.Box 13653, 901 - SIT Tower, DSO",
-    "addressLocality": "DSO",
-    "addressRegion": "Dubai",
-    "postalCode": "13653",
-    "addressCountry": "AE"
+    streetAddress: "P.O.Box 13653, 901 - SIT Tower, DSO",
+    addressLocality: "DSO",
+    addressRegion: "Dubai",
+    postalCode: "13653",
+    addressCountry: "AE",
   },
-  "areaServed": [
+  areaServed: [
     {
       "@type": "Country",
-      "name": "AE",
-      "openingHoursSpecification": ["Monday – Friday, 8:00 – 18:00", "Saturday,Sunday - Closed"],
-      "hasmap": "https://www.google.com/maps/place/Global+Surf+Digital/@25.1177885,55.3880998,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f5cde96bd7e5f:0x8632d41bbf01c71!8m2!3d25.1177885!4d55.3906747!16s%2Fg%2F12qf96jrm?entry=ttu&g_ep=EgoyMDI1MDEyOS4xIKXMDSoASAFQAw%3D%3D",
-      "geo": {
+      name: "AE",
+      openingHoursSpecification: [
+        "Monday – Friday, 8:00 – 18:00",
+        "Saturday,Sunday - Closed",
+      ],
+      hasmap:
+        "https://www.google.com/maps/place/Global+Surf+Digital/@25.1177885,55.3880998,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f5cde96bd7e5f:0x8632d41bbf01c71!8m2!3d25.1177885!4d55.3906747!16s%2Fg%2F12qf96jrm?entry=ttu&g_ep=EgoyMDI1MDEyOS4xIKXMDSoASAFQAw%3D%3D",
+      geo: {
         "@type": "GeoCoordinates",
-        "latitude": "25.1177885",
-        "longitude": "55.3880998"
-      }
-    }
+        latitude: "25.1177885",
+        longitude: "55.3880998",
+      },
+    },
   ],
-  "contactPoint": {
+  contactPoint: {
     "@type": "ContactPoint",
-    "telephone": "+971-45821133",
-    "contactType": "customer service",
-    "areaServed": "AE",
-    "availableLanguage": ["English"]
+    telephone: "+971-45821133",
+    contactType: "customer service",
+    areaServed: "AE",
+    availableLanguage: ["English"],
   },
-  "aggregateRating": {
+  aggregateRating: {
     "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "6",
-    "ratingCount": "6"
+    ratingValue: "5",
+    reviewCount: "6",
+    ratingCount: "6",
   },
-  "review": [
+  review: [
     {
       "@type": "Review",
-      "author": {
+      author: {
         "@type": "Person",
-        "name": "Karim El Shennawy"
+        name: "Karim El Shennawy",
       },
-      "description": "Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities."
+      description:
+        "Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.",
     },
     {
       "@type": "Review",
-      "author": {
+      author: {
         "@type": "Person",
-        "name": "Alissar Nasrallah"
+        name: "Alissar Nasrallah",
       },
-      "description": "Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you will find them next to you in critical moments."
+      description:
+        "Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you will find them next to you in critical moments.",
     },
     {
       "@type": "Review",
-      "author": {
+      author: {
         "@type": "Person",
-        "name": "Hesham Abdeen"
+        name: "Hesham Abdeen",
       },
-      "description": "Because of the way that Global Surf encourages collaboration, working with the team has been a pleasure. Their staff welcomes our input and fosters open communication, which has led to a website that reflects our brand and serves our particular demands. Global Surf offers a plethora of knowledge and creativity."
+      description:
+        "Because of the way that Global Surf encourages collaboration, working with the team has been a pleasure. Their staff welcomes our input and fosters open communication, which has led to a website that reflects our brand and serves our particular demands. Global Surf offers a plethora of knowledge and creativity.",
     },
     {
       "@type": "Review",
-      "author": {
+      author: {
         "@type": "Person",
-        "name": "Omar M. Bin Dhaher Almheiri"
+        name: "Omar M. Bin Dhaher Almheiri",
       },
-      "description": "We have vary good relation and experience with your professional company Not to mention the extra care we get from your team We like this relationship to continue for the success of both of us"
-    }
+      description:
+        "We have vary good relation and experience with your professional company Not to mention the extra care we get from your team We like this relationship to continue for the success of both of us",
+    },
   ],
-  "sameAs": [
+  sameAs: [
     "https://www.facebook.com/globalsurf.digital",
     "https://www.instagram.com/globalsurf.digital/",
     "https://x.com/GlobalSurf_D",
     "https://www.linkedin.com/company/globalsurfdigital",
-    "https://www.tiktok.com/@globalsurf.digital"
-  ]
+    "https://www.tiktok.com/@globalsurf.digital",
+  ],
 };
 
 export default function RootLayout({
@@ -123,7 +126,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body className={spaceGrotesk.className}>
@@ -160,12 +162,12 @@ export default function RootLayout({
         <script
           id="organization-schema"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
         <HeaderSwitcher />
-        <div className="mbcs-63">
-          {children}
-        </div>
+        <div className="mbcs-63">{children}</div>
         <Footer />
         <Breadcrumb />
         <Script
@@ -181,8 +183,12 @@ export default function RootLayout({
           }}
         />
 
-        <Script id="zsiqscript" strategy="lazyOnload" src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5" defer ></Script>
-
+        <Script
+          id="zsiqscript"
+          strategy="lazyOnload"
+          src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5"
+          defer
+        ></Script>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 
@@ -7,12 +7,12 @@ import Image, { StaticImageData } from "next/image";
 
 export interface ContentSectionData {
   title: string;
-    subdesc?: string;
+  subdesc?: string;
   image?: StaticImageData;
-  paragraphs?: string[];        // supports HTML including <br /> and <strong>
+  paragraphs?: string[]; // supports HTML including <br /> and <strong>
   listItems?: { label: string; description?: string }[]; // label & description support HTML
-  paragraphs2?: string[];  
-       // supports HTML
+  paragraphs2?: string[];
+  // supports HTML
 }
 
 type ContentSectionProps = {
@@ -30,29 +30,35 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
               <div className="col-span-5 w-full">
                 <h2 className="title-65 mb-[40px]">{data.title}</h2>
                 {data.subdesc && (
-                    <p className="text-font19 text-[#77787B] mb-[40px]">{data.subdesc}</p>
+                  <p className="mb-[40px] text-font19 text-[#77787B]">
+                    {data.subdesc}
+                  </p>
                 )}
 
                 {data.image && (
-                  <Image src={data.image} alt={data.title} className="my-[40px]" />
+                  <Image
+                    src={data.image}
+                    alt={data.title}
+                    className="my-[40px]"
+                  />
                 )}
 
                 {/* Render paragraphs with HTML support */}
                 {data.paragraphs?.map((p, index) => (
                   <p
                     key={index}
-                    className="text-font19 text-[#77787B] mb-[16px]"
+                    className="mb-[16px] text-font19 text-[#77787B]"
                     dangerouslySetInnerHTML={{ __html: p }}
                   />
                 ))}
 
                 {/* List items with HTML support */}
                 {data.listItems?.length ? (
-                  <ul className="list-disc pl-10 mt-3">
+                  <ul className="mt-3 list-disc pl-10">
                     {data.listItems.map((item, index) => (
                       <li
                         key={index}
-                        className="text-font19 mb-2 text-[#77787B]"
+                        className="mb-2 text-font19 text-[#77787B]"
                       >
                         <span
                           dangerouslySetInnerHTML={{ __html: item.label }}
@@ -60,7 +66,9 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                         {item.description && (
                           <span
                             className="text-[#77787B]"
-                            dangerouslySetInnerHTML={{ __html: item.description }}
+                            dangerouslySetInnerHTML={{
+                              __html: item.description,
+                            }}
                           />
                         )}
                       </li>
@@ -72,7 +80,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                 {data.paragraphs2?.map((p, index) => (
                   <p
                     key={index}
-                    className="text-font19 text-[#77787B] mt-4 "
+                    className="mt-4 text-font19 text-[#77787B] "
                     dangerouslySetInnerHTML={{ __html: p }}
                   />
                 ))}

@@ -55,7 +55,11 @@ const page = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={28}/>
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={28}
+      />
       <Platforms
         title={Platformsdata.title}
         data={Platformsdata.data}

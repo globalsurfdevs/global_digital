@@ -118,8 +118,6 @@
 
 // export default HeroSection;
 
-
-
 // "use client";
 // import React, { useCallback, useRef, useState } from "react";
 
@@ -226,8 +224,6 @@
 
 // export default HeroSection;
 
-
-
 // import HeroInteractive from "./HeroInteractive";
 
 // const HeroSection = () => {
@@ -260,10 +256,6 @@
 // };
 
 // export default HeroSection;
-
-
-
-
 
 import HeroInteractive from "../HomePage/HeroInteractiveNew";
 

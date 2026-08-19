@@ -8,16 +8,13 @@ if (!APP_KEY) {
   throw new Error("DROPBOX_APP_KEY not in env");
 }
 
-if(!REFRESH_TOKEN){
-  throw new Error("DROPBOX_REFRESH_TOKEN not in env")
+if (!REFRESH_TOKEN) {
+  throw new Error("DROPBOX_REFRESH_TOKEN not in env");
 }
 
-if(!APP_SECRET){
-  throw new Error("DROPBOX_APP_SECRET not in env")
+if (!APP_SECRET) {
+  throw new Error("DROPBOX_APP_SECRET not in env");
 }
-
-
-
 
 interface TokenInfo {
   accessToken: string;
@@ -36,7 +33,6 @@ async function getAccessToken(): Promise<string> {
     return tokenInfo.accessToken;
   }
 
-  
   try {
     const response = await fetch("https://api.dropboxapi.com/oauth2/token", {
       method: "POST",
@@ -63,7 +59,6 @@ async function getAccessToken(): Promise<string> {
       expiresAt: Date.now() + (data.expires_in || 3600) * 1000,
     };
 
-    
     return tokenInfo.accessToken;
   } catch (error) {
     console.error("Error getting access token:", error);
@@ -77,7 +72,7 @@ let currentAccessToken: string | null = null;
 async function getDropboxInstance(): Promise<Dropbox> {
   const accessToken = await getAccessToken();
   // console.log("Access Token:", accessToken);
-  
+
   if (!dropboxInstance || currentAccessToken !== accessToken) {
     dropboxInstance = new Dropbox({
       accessToken,
@@ -92,14 +87,17 @@ async function getDropboxInstance(): Promise<Dropbox> {
   return dropboxInstance;
 }
 
-
-export async function uploadToDropbox(file: File, filePath: string,retries=5,delay=2000): Promise<string> {
+export async function uploadToDropbox(
+  file: File,
+  filePath: string,
+  retries = 5,
+  delay = 2000,
+): Promise<string> {
   try {
-    
     const dropbox = await getDropboxInstance();
-    
+
     const fileContent = await file.arrayBuffer();
-    
+
     const response = await dropbox.filesUpload({
       path: filePath,
       contents: fileContent,
@@ -109,27 +107,32 @@ export async function uploadToDropbox(file: File, filePath: string,retries=5,del
     if (!response.result.path_display) {
       throw new Error("Failed to retrieve uploaded file path");
     }
-    const sharedLinkResponse = await dropbox.sharingCreateSharedLinkWithSettings({
-      path: response.result.path_display,
-      settings: {
-        requested_visibility: { ".tag": "public" },
-      },
-    });
+    const sharedLinkResponse =
+      await dropbox.sharingCreateSharedLinkWithSettings({
+        path: response.result.path_display,
+        settings: {
+          requested_visibility: { ".tag": "public" },
+        },
+      });
     console.log("Uploaded file path:", sharedLinkResponse);
     if (!sharedLinkResponse.result.url) {
       throw new Error("Failed to create shared link");
     }
 
     // Convert the shared link to a direct download link
-    const directLink = sharedLinkResponse.result.url.replace("www.dropbox.com", "dl.dropboxusercontent.com");
+    const directLink = sharedLinkResponse.result.url.replace(
+      "www.dropbox.com",
+      "dl.dropboxusercontent.com",
+    );
 
     console.log("Direct download link:", directLink);
     return directLink;
-  } catch (error:any) {
-    if(error.status==429 && retries > 0){
-      const retryAfter = error.response?.headers.get("Retry-After") || delay / 1000;
+  } catch (error: any) {
+    if (error.status == 429 && retries > 0) {
+      const retryAfter =
+        error.response?.headers.get("Retry-After") || delay / 1000;
       console.warn(`Rate limit hit, retrying in ${retryAfter} seconds...`);
-      await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+      await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
       return uploadToDropbox(file, filePath, retries - 1, delay * 2);
     }
     console.error("Error uploading file to Dropbox:", error);
@@ -139,10 +142,10 @@ export async function uploadToDropbox(file: File, filePath: string,retries=5,del
 
 export async function removeFromDropbox(filePath: string): Promise<boolean> {
   try {
-    console.log("path",filePath)
+    console.log("path", filePath);
     const dropbox = await getDropboxInstance();
     const response = await dropbox.filesDeleteV2({ path: filePath });
-    console.log(response)
+    console.log(response);
     console.log("File deleted successfully:", response);
     return true;
   } catch (error) {

@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from "react-google-recaptcha";
 import { submitContact } from "@/app/actions/contact";
-
-
 
 const ContactUs = () => {
   const [formData, setFormData] = useState<{
@@ -22,13 +20,11 @@ const ContactUs = () => {
   // const [isBudgetOpen, setIsBudgetOpen] = useState(false);
   // const [isServiceOpen, setIsServiceOpen] = useState(false);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const recaptcha = useRef<ReCAPTCHA>(null)
-  const [error, setError] = useState("")
+  const recaptcha = useRef<ReCAPTCHA>(null);
+  const [error, setError] = useState("");
   console.log("Entered email:", formData.Email);
 
-  const [isSubmitting,setIsSubmitting] = useState(false)
-
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -63,58 +59,55 @@ const ContactUs = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (isSubmitting) return;
+    if (isSubmitting) return;
 
-  // validations...
-  if (
-    formData.PhoneNumber_countrycode &&
-    formData.PhoneNumber_countrycode.length < 5
-  ) {
-    setPhoneError("Phone number must be at least 5 digits.");
-    return;
-  }
-
-  if (
-    !formData.Email ||
-    !emailRegex.test(formData.Email)
-  ) {
-    setEmailError("Please enter a valid email address.");
-    return;
-  }
-
-  if (!formData.SingleLine || formData.SingleLine.trim().length < 3) {
-    setNameError("Name must be at least 3 characters.");
-    return;
-  }
-
-  const captchaValue = recaptcha?.current?.getValue();
-  if (!captchaValue) {
-    setError("Please verify yourself to continue");
-    return;
-  }
-
-  try {
-    setIsSubmitting(true);
-
-    const form = document.getElementById("form") as HTMLFormElement;
-    const formDataObj = new FormData(form);
-
-    const result = await submitContact(formDataObj);
-
-    if (result.success) {
-      window.location.replace("/thank-you");
-    } else {
-      alert("Something went wrong, try again later");
+    // validations...
+    if (
+      formData.PhoneNumber_countrycode &&
+      formData.PhoneNumber_countrycode.length < 5
+    ) {
+      setPhoneError("Phone number must be at least 5 digits.");
+      return;
     }
-  } catch (err) {
-    console.error(err);
-    alert("Submission failed");
-  } finally {
-    setIsSubmitting(false); // ✅ always reset
-  }
-};
+
+    if (!formData.Email || !emailRegex.test(formData.Email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!formData.SingleLine || formData.SingleLine.trim().length < 3) {
+      setNameError("Name must be at least 3 characters.");
+      return;
+    }
+
+    const captchaValue = recaptcha?.current?.getValue();
+    if (!captchaValue) {
+      setError("Please verify yourself to continue");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+
+      const form = document.getElementById("form") as HTMLFormElement;
+      const formDataObj = new FormData(form);
+
+      const result = await submitContact(formDataObj);
+
+      if (result.success) {
+        window.location.replace("/thank-you");
+      } else {
+        alert("Something went wrong, try again later");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Submission failed");
+    } finally {
+      setIsSubmitting(false); // ✅ always reset
+    }
+  };
 
   // useEffect(() => {
   //   console.log(window.location.href);
@@ -122,20 +115,20 @@ const ContactUs = () => {
   // }, [window.location.href]);
 
   useEffect(() => {
-  const url = window.location.href;
- 
-  console.log(url);
+    const url = window.location.href;
 
-  setFormData((prev) => ({
-    ...prev,
-    SingleLine2: url,
-  }));
-}, []);
+    console.log(url);
+
+    setFormData((prev) => ({
+      ...prev,
+      SingleLine2: url,
+    }));
+  }, []);
 
   return (
     <>
-      <div className="mainconnect !h-auto container">
-        <div className="   pb-[20px] pe-[20px] pt-10 md:pt-[75px] md:pb-0 xl:pe-[80px]   xxl:pe-[80px]  ">
+      <div className="mainconnect container !h-auto">
+        <div className="   pb-[20px] pe-[20px] pt-10 md:pb-0 md:pt-[75px] xl:pe-[80px]   xxl:pe-[80px]  ">
           <h1 className="title-65">
             Contact Us<span className="text-primary">!</span>
           </h1>
@@ -144,7 +137,7 @@ const ContactUs = () => {
           </p> */}
           <div className="mt-[30px] flex flex-col gap-8 md:col-span-3 lg:mt-[50px] 2xl:mt-[80px]">
             <div className="flex flex-col gap-3">
-              <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:gap-[50px] lg:pb-[25px] w-fit">
+              <div className="mb-3 flex w-fit items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:gap-[50px] lg:pb-[25px]">
                 <p className="text-[20px] md:text-[22px] md:text-[25px] xl:text-font35">
                   <a href="mailto:hello@globalsurf.ae" className="break-words">
                     hello<span className="text-primary">@</span>globalsurf.ae
@@ -172,8 +165,8 @@ const ContactUs = () => {
                   ></path>
                 </svg>
               </div>
-              <div className="mb-3 flex items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px] lg:pb-[25px]  xxl:gap-[120px] w-fit ">
-                <p className="text-[20px] md:text-[22px] md:text-[25px] xl:text-font35 min-w-fit">
+              <div className="mb-3 flex w-fit items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px]  lg:pb-[25px] xxl:gap-[120px] ">
+                <p className="min-w-fit text-[20px] md:text-[22px] md:text-[25px] xl:text-font35">
                   <a href="tel:+97145821133">+971 4 582 1133</a>
                 </p>
                 <svg
@@ -202,19 +195,20 @@ const ContactUs = () => {
           </div>
           <div className="mb-3 mt-[30px] lg:mb-0 lg:mt-[50px] 2xl:mt-[70px]">
             {/* <img src="/images/location.svg" alt="location" className="" /> */}
-            <h2 className="text-font25 mt-2">Visit or reach our Dubai office</h2>
-            <p className="text-19 mt-2 md:mt-[10px] text-gray1">
-              Global Surf Digital Media L.L.C, 
-              P.O. Box 13653, 901 - SIT Tower,
-              Dubai Silicon Oasis,
-              Dubai, UAE
+            <h2 className="mt-2 text-font25">
+              Visit or reach our Dubai office
+            </h2>
+            <p className="text-19 mt-2 text-gray1 md:mt-[10px]">
+              Global Surf Digital Media L.L.C, P.O. Box 13653, 901 - SIT Tower,
+              Dubai Silicon Oasis, Dubai, UAE
             </p>
           </div>
         </div>
-        <div className="psty bg-dgray  px-[20px] pt-[20px] pb-[30px] lg:pb-0 lg:pt-[75px] xl:px-[80px]  xxl:px-[80px] ">
-
-          <div className="lg:mb-[100px] mb-[20px] flex items-center gap-2">
-            <p className="text-font30 uppercase">Send us your details and our team will reach out.</p>
+        <div className="psty bg-dgray  px-[20px] pb-[30px] pt-[20px] lg:pb-0 lg:pt-[75px] xl:px-[80px]  xxl:px-[80px] ">
+          <div className="mb-[20px] flex items-center gap-2 lg:mb-[100px]">
+            <p className="text-font30 uppercase">
+              Send us your details and our team will reach out.
+            </p>
             <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
           </div>
 
@@ -415,15 +409,23 @@ const ContactUs = () => {
                     <select
                       name="Dropdown"
                       onChange={handleChange}
-                      className="bg-transparent  w-full border-t-0 border-x-0 border-b border-gray-300 outline-none pr-3 pl-0 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                      className="w-full  border-x-0 border-b border-t-0 border-gray-300 bg-transparent pl-0 pr-3 outline-none focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                     >
                       <option value="-Select-">Select Your Budget</option>
                       <option value="AED < 5000">AED &lt; 5000</option>
                       <option value="AED 5000 - 10000">AED 5000 - 10000</option>
-                      <option value="AED 10000 - 20000">AED 10000 - 20000</option>
-                      <option value="AED 20000 - 30000">AED 20000 - 30000</option>
-                      <option value="AED 30000 - 40000">AED 30000 - 40000</option>
-                      <option value="AED 50000 - 100000">AED 50000 - 100000</option>
+                      <option value="AED 10000 - 20000">
+                        AED 10000 - 20000
+                      </option>
+                      <option value="AED 20000 - 30000">
+                        AED 20000 - 30000
+                      </option>
+                      <option value="AED 30000 - 40000">
+                        AED 30000 - 40000
+                      </option>
+                      <option value="AED 50000 - 100000">
+                        AED 50000 - 100000
+                      </option>
                       <option value="AED > 100000">AED &gt; 100000</option>
                     </select>
                   </div>
@@ -509,7 +511,7 @@ const ContactUs = () => {
                     <select
                       name="Dropdown1"
                       onChange={handleChange}
-                      className="bg-transparent w-full  border-t-0 border-x-0 border-b border-gray-300  pl-0 pr-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                      className="w-full border-x-0  border-b border-t-0 border-gray-300 bg-transparent  pl-0 pr-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                     >
                       <option value="-Select-">Service Looking for</option>
                       <option value="Performance Marketing">
@@ -549,10 +551,12 @@ const ContactUs = () => {
                 />
               </div>
 
-              <div className="flex flex-wrap gap-4 flex-col md:flex-nowrap items-end justify-between">
-
-                <div >
-                  <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
+              <div className="flex flex-col flex-wrap items-end justify-between gap-4 md:flex-nowrap">
+                <div>
+                  <ReCAPTCHA
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    ref={recaptcha}
+                  />
 
                   {/* <div>
               <p className="font-19 fnt-lexend mb-5 font-[500] text-gray1 md:mb-[30px]">
@@ -566,10 +570,10 @@ const ContactUs = () => {
               >
                 Submit
               </button> */}
-                  {error !== "" && <div className='text-red-500'>{error}</div>}
+                  {error !== "" && <div className="text-red-500">{error}</div>}
                 </div>
                 <button
-                  className={`h-fit md:my-0 mt-4 lg:mb-[75px] xl:mb-[100px] hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+                  className={`hover:bg-prtext-primary group mt-4 flex h-fit items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in hover:shadow-lg md:my-0 md:mb-0  lg:mb-[75px] xl:mb-[100px] ${isSubmitting ? "cursor-not-allowed opacity-50" : ""}`}
                   type="submit"
                   disabled={isSubmitting}
                 >
@@ -607,22 +611,19 @@ const ContactUs = () => {
                     </svg>
                   </div>
                 </button>
-
               </div>
             </form>
           </div>
-          <div>
-
-          </div>
+          <div></div>
         </div>
       </div>
       <div className="pt-[0px] md:pt-[30px] lg:pt-[75px] ">
-        <div className="relative w-full h-[400px]   overflow-hidden shadow-xl ">
+        <div className="relative h-[400px] w-full   overflow-hidden shadow-xl ">
           <iframe
-            className="absolute inset-0 w-full h-full border-0"
+            className="absolute inset-0 h-full w-full border-0"
             loading="lazy"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5293502271115!2d55.3906747!3d25.1177885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5cde96bd7e5f%3A0x8632d41bbf01c71!2sGlobal%20Surf%20Digital!5e0!3m2!1sen!2sin!4v1769506669019!5m2!1sen!2sin">
-          </iframe>
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5293502271115!2d55.3906747!3d25.1177885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5cde96bd7e5f%3A0x8632d41bbf01c71!2sGlobal%20Surf%20Digital!5e0!3m2!1sen!2sin!4v1769506669019!5m2!1sen!2sin"
+          ></iframe>
         </div>
       </div>
     </>

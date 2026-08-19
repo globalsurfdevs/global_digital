@@ -15,7 +15,7 @@ const Result = ({
     portfolio: Portfolio;
   } | null;
 }) => {
-  console.log("ResultData", data)
+  console.log("ResultData", data);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -43,8 +43,36 @@ const Result = ({
       )}
 
       <div className="container mx-auto py-4">
-        {data?.portfolio.result == "<p><br></p>" || data?.portfolio.result == "<p>undefined</p>" || data?.portfolio.result == "undefined" ? null : <div className="flex flex-col gap-4 lg:gap-[30px] ">
+        {data?.portfolio.result == "<p><br></p>" ||
+        data?.portfolio.result == "<p>undefined</p>" ||
+        data?.portfolio.result == "undefined" ? null : (
+          <div className="flex flex-col gap-4 lg:gap-[30px] ">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
+            >
+              <div>
+                <h2 className="title-65 mb-3 lg:mb-5">Result</h2>
+              </div>
+              <div className="text-19 fnt-lexend ollist pl-5 text-gray1">
+                {parse(data?.portfolio.result || "")}
+              </div>
+            </motion.div>
+          </div>
+        )}
+
+        {data?.portfolio.resultImage1 || data?.portfolio.resultImage2 ? (
           <motion.div
+            className="mx-auto grid  grid-cols-2   gap-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -53,46 +81,36 @@ const Result = ({
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 1, ease: "easeOut" },
+                transition: { duration: 1.3, ease: "easeOut" },
               }, // Slide up and fade in
             }}
           >
-            <div>
-              <h2 className="title-65 mb-3 lg:mb-5">Result</h2>
-            </div>
-            <div className="text-19 fnt-lexend text-gray1 ollist pl-5">
-              {parse(data?.portfolio.result || "")}
-            </div>
+            {data.portfolio.resultImage1 && (
+              <div>
+                <Image
+                  src={data?.portfolio.resultImage1 || ""}
+                  alt="image"
+                  width={900}
+                  height={900}
+                />
+              </div>
+            )}
+
+            {data.portfolio.resultImage2 && (
+              <div>
+                <Image
+                  src={data?.portfolio.resultImage2 || ""}
+                  alt="image"
+                  width={900}
+                  height={900}
+                />
+              </div>
+            )}
           </motion.div>
-        </div>}
-
-        {data?.portfolio.resultImage1 || data?.portfolio.resultImage2 ? (<motion.div
-          className="mx-auto grid  grid-cols-2   gap-5"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-          variants={{
-            hidden: { opacity: 0, y: 50 }, // Start below and invisible
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1.3, ease: "easeOut" },
-            }, // Slide up and fade in
-          }}
-        >
-          {data.portfolio.resultImage1 && <div>
-            <Image src={data?.portfolio.resultImage1 || ""} alt="image" width={900} height={900} />
-          </div>}
-
-          {data.portfolio.resultImage2 && <div>
-            <Image src={data?.portfolio.resultImage2 || ""} alt="image" width={900} height={900} />
-          </div>}
-
-        </motion.div>) : null}
-
+        ) : null}
       </div>
 
-      <div className="bg-black mt-10  lg:mt-[80px] xl:mt-[100px]  2xl:mt-[140px]">
+      <div className="mt-10 bg-black  lg:mt-[80px] xl:mt-[100px]  2xl:mt-[140px]">
         <motion.div
           className="container mx-auto py-4"
           initial="hidden"
@@ -106,19 +124,24 @@ const Result = ({
               transition: { duration: 1.3, ease: "easeOut" },
             }, // Slide up and fade in
           }}
-
         >
           <div className="flex flex-col  py-[50px] lg:py-[140px]  ">
-            <h2 className="title-65 pb-3 lg:pb-[30px] text-white">Lets Create Something Iconic Together</h2>
+            <h2 className="title-65 pb-3 text-white lg:pb-[30px]">
+              Lets Create Something Iconic Together
+            </h2>
             <p className="text-19 lg-mb-[64px] fnt-lexend mb-0 text-gray1">
-              Every great brand has a story. See how we’ve turned challenges into
-              triumphs for our clients. Your brand could be next.{" "}
+              Every great brand has a story. See how we’ve turned challenges
+              into triumphs for our clients. Your brand could be next.{" "}
             </p>
-            <div className="innerfnont mt-[20px] lg:mt-[64px] relative w-fit">
-              <Button text="LET'S COLLABORATE" textcolor={'white'} onClick={() => {
-                setModalOpen(true);
-                document.body.style.overflow = "hidden";
-              }} />
+            <div className="innerfnont relative mt-[20px] w-fit lg:mt-[64px]">
+              <Button
+                text="LET'S COLLABORATE"
+                textcolor={"white"}
+                onClick={() => {
+                  setModalOpen(true);
+                  document.body.style.overflow = "hidden";
+                }}
+              />
               {/* <Link href="/lets-talk" className="absolute left-0 top-0 w-full h-full"></Link> */}
             </div>
           </div>

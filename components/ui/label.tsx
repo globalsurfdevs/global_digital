@@ -1,29 +1,32 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import * as LabelPrimitive from "@radix-ui/react-label";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const labelVariants = cva(
-  "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70  font-semibold"
-)
+  "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70  font-semibold",
+);
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
-  VariantProps<typeof labelVariants>
-  & { main?: boolean }
-  & { oneInput?: boolean }
-  & {isOpen?:string}
->(({ className, main, oneInput,isOpen, ...props }, ref) => (
+    VariantProps<typeof labelVariants> & { main?: boolean } & {
+      oneInput?: boolean;
+    } & { isOpen?: string }
+>(({ className, main, oneInput, isOpen, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
-    className={cn(labelVariants(), className, `${main ? `pl-5 ${isOpen == "open" ? "border-b" : ""} border-black/20 py-5 text-lg font-semibold` : "text-[16px] font-light"} ${oneInput ? "font-semibold text-md" : ""}`)}
+    className={cn(
+      labelVariants(),
+      className,
+      `${main ? `pl-5 ${isOpen == "open" ? "border-b" : ""} border-black/20 py-5 text-lg font-semibold` : "text-[16px] font-light"} ${oneInput ? "text-md font-semibold" : ""}`,
+    )}
     {...props}
   />
-))
-Label.displayName = LabelPrimitive.Root.displayName
+));
+Label.displayName = LabelPrimitive.Root.displayName;
 
-export { Label }
+export { Label };

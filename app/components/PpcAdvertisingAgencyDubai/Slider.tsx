@@ -11,9 +11,9 @@ interface PlatformsSectionProps {
   Platformsdata: PlatformsItem[];
 }
 
-const Slider: React.FC<PlatformsSectionProps> = ({ Platformsdata}) => {
+const Slider: React.FC<PlatformsSectionProps> = ({ Platformsdata }) => {
   return (
-    <div >
+    <div>
       <div className="container mx-auto py-4">
         <div className="pt-[50px] lg:pt-[140px]  ">
           <motion.div
@@ -29,7 +29,7 @@ const Slider: React.FC<PlatformsSectionProps> = ({ Platformsdata}) => {
               }, // Slide up and fade in
             }}
           >
-            <div className="grid  mb-4 lg:mb-[47px]">
+            <div className="mb-4  grid lg:mb-[47px]">
               <h2 className="title-65 ">Tools and Platforms</h2>
             </div>
           </motion.div>
@@ -50,7 +50,6 @@ const Slider: React.FC<PlatformsSectionProps> = ({ Platformsdata}) => {
       >
         <PlatformSwiper Platformsdata={Platformsdata} />
       </motion.div>
-
     </div>
   );
 };

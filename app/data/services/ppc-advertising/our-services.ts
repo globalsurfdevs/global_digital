@@ -1,5 +1,3 @@
-
-
 export const OurServices = {
   title: "Our PPC Advertising Services Include",
   data: [
@@ -34,6 +32,6 @@ export const OurServices = {
     {
       id: 8,
       title: "Detailed reporting and analytics ",
-    }
+    },
   ],
 };

@@ -1,27 +1,19 @@
-
-
 export const BlogData = [
   {
     id: 19,
     slug: "digital-marketing-company-dubai-costs-services-guide",
-    titles:
-      "Digital Marketing Company in Dubai: Costs and Services",
-    title:
-      "Digital Marketing Company in Dubai: Costs and Services ",
-    list_heading:
-      "Digital Marketing Company in Dubai: Costs and Services ",
+    titles: "Digital Marketing Company in Dubai: Costs and Services",
+    title: "Digital Marketing Company in Dubai: Costs and Services ",
+    list_heading: "Digital Marketing Company in Dubai: Costs and Services ",
     meta_title:
       "Digital Marketing Company in Dubai Costs, Services, and How to Choose the Right Agency",
     description:
       "Compare digital marketing agency costs in Dubai, freelancer vs agency options, key services, pricing models, and contract lengths to choose the right partner for growth",
     post_date: "",
     read_time: "",
-    feature_thumb:
-      "/images/blogs/digital/dblogthumb.jpg",
-    thumb:
-      "/images/blogs/digital/dblogthumb.jpg",
-    large_thumb:
-      "/images/blogs/digital/dblogthumb.jpg",
+    feature_thumb: "/images/blogs/digital/dblogthumb.jpg",
+    thumb: "/images/blogs/digital/dblogthumb.jpg",
+    large_thumb: "/images/blogs/digital/dblogthumb.jpg",
     category: "SEO",
     format: "standard",
     views: "",
@@ -59,12 +51,9 @@ export const BlogData = [
       "Understand performance marketing for UAE businesses — channels, costs in AED, what results to expect, and how to choose the right agency.",
     post_date: "",
     read_time: "",
-    feature_thumb:
-      "/images/blogs/digital/howblogthumb.jpg",
-    thumb:
-      "/images/blogs/digital/howblogthumb.jpg",
-    large_thumb:
-      "/images/blogs/digital/howblogthumb.jpg",
+    feature_thumb: "/images/blogs/digital/howblogthumb.jpg",
+    thumb: "/images/blogs/digital/howblogthumb.jpg",
+    large_thumb: "/images/blogs/digital/howblogthumb.jpg",
     category: "SEO",
     format: "standard",
     views: "",
@@ -96,18 +85,14 @@ export const BlogData = [
       "How Construction Brands in the UAE Can Rank for High-Intent B2B Keywords",
     list_heading:
       "How Construction Brands in the UAE Can Rank for High-Intent B2B Keywords",
-    meta_title:
-      "How UAE Construction Brands Rank for High-Intent Keywords",
+    meta_title: "How UAE Construction Brands Rank for High-Intent Keywords",
     description:
       "Which searches actually win construction work in the UAE? The specific, high-intent ones. Here is how to rank for them, step by step. Read the guide.",
     post_date: "",
     read_time: "",
-    feature_thumb:
-      "/images/blogs/keywords/blogimg4.png",
-    thumb:
-      "/images/blogs/keywords/blogimg4.png",
-    large_thumb:
-      "/images/blogs/keywords/blogimg4.png",
+    feature_thumb: "/images/blogs/keywords/blogimg4.png",
+    thumb: "/images/blogs/keywords/blogimg4.png",
+    large_thumb: "/images/blogs/keywords/blogimg4.png",
     category: "SEO",
     format: "standard",
     views: "",
@@ -145,12 +130,9 @@ export const BlogData = [
       "UAE construction contractors are losing tenders before evaluation begins. Learn how digital credibility directly influences pre-qualification and tender outcomes.",
     post_date: "",
     read_time: "",
-    feature_thumb:
-      "/images/blogs/ai/ai2.jpg",
-    thumb:
-      "/images/blogs/ai/ai2.jpg",
-    large_thumb:
-      "/images/blogs/ai/ai2.jpg",
+    feature_thumb: "/images/blogs/ai/ai2.jpg",
+    thumb: "/images/blogs/ai/ai2.jpg",
+    large_thumb: "/images/blogs/ai/ai2.jpg",
     category: "SEO",
     format: "standard",
     views: "",
@@ -274,12 +256,9 @@ export const BlogData = [
       "Why do many contractor websites fail to generate enquiries? Explore how SEO, LinkedIn, and content marketing impact project acquisition in the UAE.",
     post_date: "",
     read_time: "",
-    feature_thumb:
-      "/images/blogs/llm/blog-nw-thumb.jpg",
-    thumb:
-      "/images/blogs/llm/blog-nw-thumb.jpg",
-    large_thumb:
-      "/images/blogs/llm/blog-nw-thumb.jpg",
+    feature_thumb: "/images/blogs/llm/blog-nw-thumb.jpg",
+    thumb: "/images/blogs/llm/blog-nw-thumb.jpg",
+    large_thumb: "/images/blogs/llm/blog-nw-thumb.jpg",
     category: "Performance Marketing",
     format: "standard",
     views: "",
@@ -691,5 +670,4 @@ export const BlogData = [
       },
     ],
   },
-  
 ];

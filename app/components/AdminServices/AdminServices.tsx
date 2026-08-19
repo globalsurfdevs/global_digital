@@ -821,73 +821,86 @@ const AdminServiceList = () => {
             )}
 
             {showEditModal && (
-                    <div className="relative z-10" aria-labelledby="edit-modal-title" role="dialog" aria-modal="true">
-                        <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
- 
-                        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                                <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                    <div className='flex justify-between items-center'>
-                                        <h2 className='text-lg font-semibold'>Edit Service</h2>
-                                        <IoIosClose
-                                            className='text-2xl cursor-pointer'
-                                            onClick={() => {
-                                                setShowEditModal(false);
-                                                resetEditForm();
-                                            }}
-                                        />
-                                    </div>
- 
-                                    <div className='flex flex-col gap-2 text-left'>
-                                        <label className='font-semibold text-gray-600 text-sm'>Service Name</label>
-                                        <input
-                                            type='text'
-                                            value={editName}
-                                            onChange={(e) => handleEditNameChange(e.target.value)}
-                                            placeholder='e.g. Web Development'
-                                            className='border px-3 py-2 rounded'
-                                        />
-                                    </div>
- 
-                                    <div className='flex flex-col gap-2 text-left'>
-                                        <label className='font-semibold text-gray-600 text-sm'>Slug</label>
-                                        <input
-                                            type='text'
-                                            value={editSlug}
-                                            onChange={(e) => handleEditSlugChange(e.target.value)}
-                                            placeholder='e.g. web-development'
-                                            className='border px-3 py-2 rounded font-mono text-sm'
-                                        />
-                                        <p className='text-xs text-gray-500'>
-                                            This becomes part of the page URL, e.g. /services/{editSlug || "your-slug"}
-                                        </p>
-                                    </div>
- 
-                                    <div className="sm:flex sm:flex-row-reverse gap-2">
-                                        <button
-                                            type="button"
-                                            disabled={updating}
-                                            className="inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
-                                            onClick={handleUpdateService}
-                                        >
-                                            {updating ? "Saving..." : "Save Changes"}
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                                            onClick={() => {
-                                                setShowEditModal(false);
-                                                resetEditForm();
-                                            }}
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+              <div
+                className="relative z-10"
+                aria-labelledby="edit-modal-title"
+                role="dialog"
+                aria-modal="true"
+              >
+                <div
+                  className="fixed inset-0 bg-gray-500/75 transition-opacity"
+                  aria-hidden="true"
+                ></div>
+
+                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                  <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div className="relative flex transform flex-col gap-5 overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-lg font-semibold">Edit Service</h2>
+                        <IoIosClose
+                          className="cursor-pointer text-2xl"
+                          onClick={() => {
+                            setShowEditModal(false);
+                            resetEditForm();
+                          }}
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Service Name
+                        </label>
+                        <input
+                          type="text"
+                          value={editName}
+                          onChange={(e) => handleEditNameChange(e.target.value)}
+                          placeholder="e.g. Web Development"
+                          className="rounded border px-3 py-2"
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Slug
+                        </label>
+                        <input
+                          type="text"
+                          value={editSlug}
+                          onChange={(e) => handleEditSlugChange(e.target.value)}
+                          placeholder="e.g. web-development"
+                          className="rounded border px-3 py-2 font-mono text-sm"
+                        />
+                        <p className="text-xs text-gray-500">
+                          This becomes part of the page URL, e.g. /services/
+                          {editSlug || "your-slug"}
+                        </p>
+                      </div>
+
+                      <div className="gap-2 sm:flex sm:flex-row-reverse">
+                        <button
+                          type="button"
+                          disabled={updating}
+                          className="shadow-xs inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
+                          onClick={handleUpdateService}
+                        >
+                          {updating ? "Saving..." : "Save Changes"}
+                        </button>
+                        <button
+                          type="button"
+                          className="shadow-xs mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                          onClick={() => {
+                            setShowEditModal(false);
+                            resetEditForm();
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      </div>
                     </div>
-                )}
+                  </div>
+                </div>
+              </div>
+            )}
 
             {services && services.length > 0 && (
               <div className="mb-10">

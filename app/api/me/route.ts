@@ -12,7 +12,7 @@ export async function GET() {
 
     return NextResponse.json(
       { success: true, role: (session.user as any).role || "user" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error fetching session:", error);

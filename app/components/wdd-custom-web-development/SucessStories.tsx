@@ -20,7 +20,6 @@ interface ClientsformsSectionProps {
 const Slider: React.FC<ClientsformsSectionProps> = ({
   Clientsformsdata,
   subdesc,
-
 }) => {
   return (
     <div className=" ">

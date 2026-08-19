@@ -73,35 +73,40 @@ const HeroSection = ({ data }: HeroSectionProps) => {
         />
       </div>
       <div className="container" ref={containerRef}></div>
-      <div className="relative z-10 flex h-full flex-col justify-center md:w-[55%] 2xl:w-[50%] 3xl:w-[40%]" style={{ marginLeft: `${containerLeft}px` }}>
+      <div
+        className="relative z-10 flex h-full flex-col justify-center md:w-[55%] 2xl:w-[50%] 3xl:w-[40%]"
+        style={{ marginLeft: `${containerLeft}px` }}
+      >
         <div>
-          <h1 className="title-70 text-[length:var(--text-70-sm)] mb-3 max-w-[23ch] tracking-[-0.025em] xl:mb-5  leading-[1.142857142857143]">
+          <h1 className="title-70 mb-3 max-w-[23ch] text-[length:var(--text-70-sm)] leading-[1.142857142857143] tracking-[-0.025em]  xl:mb-5">
             {data.title}
           </h1>
-          <p className="text-[length:var(--text-23)] text-muted fnt-lexend max-w-[35ch] leading-[1.4] 3xl:max-w-[55ch] font-normal ">
+          <p className="fnt-lexend max-w-[35ch] text-[length:var(--text-23)] font-normal leading-[1.4] text-muted 3xl:max-w-[55ch] ">
             {data.description}
           </p>
-          {data?.items[0]?.title && <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[60px]">
-            <Button
-              className="max-h-[50px]"
-              variant="outline"
-              // href={data.items[0].link}
-              onClick={() => setModalOpen(true)}
-            >
-              {data.items[0].title}
-            </Button>
-
-            {data.items[1] && (
+          {data?.items[0]?.title && (
+            <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[60px]">
               <Button
                 className="max-h-[50px]"
-                variant="whatsapp"
-                href={data.items[1].link || "https://wa.me/97145821133"}
-                external
+                variant="outline"
+                // href={data.items[0].link}
+                onClick={() => setModalOpen(true)}
               >
-                {data.items[1].title}
+                {data.items[0].title}
               </Button>
-            )}
-          </div>}
+
+              {data.items[1] && (
+                <Button
+                  className="max-h-[50px]"
+                  variant="whatsapp"
+                  href={data.items[1].link || "https://wa.me/97145821133"}
+                  external
+                >
+                  {data.items[1].title}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>

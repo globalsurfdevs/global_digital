@@ -50,7 +50,9 @@ const AdminBlogList = () => {
     fetchPageConfig();
   }, []);
 
-  const onPageConfigSubmit: SubmitHandler<BlogPageFormInputs> = async (data) => {
+  const onPageConfigSubmit: SubmitHandler<BlogPageFormInputs> = async (
+    data,
+  ) => {
     setIsSubmitting(true);
     try {
       const res = await fetch("/api/blogs/page-config", {
@@ -137,11 +139,19 @@ const AdminBlogList = () => {
           </div>
           <div className="flex flex-col gap-2">
             <Label content="Meta Description" />
-            <textarea {...register("metaDescription")} rows={3} className={textareaClass} />
+            <textarea
+              {...register("metaDescription")}
+              rows={3}
+              className={textareaClass}
+            />
           </div>
           <div className="flex flex-col gap-2">
             <Label content="Page Description" />
-            <textarea {...register("pageDescription")} rows={3} className={textareaClass} />
+            <textarea
+              {...register("pageDescription")}
+              rows={3}
+              className={textareaClass}
+            />
           </div>
         </div>
         <div>
@@ -191,7 +201,10 @@ const AdminBlogList = () => {
                   </span>
                   <span className="text-xs text-gray-400">{blog.slug}</span>
                   <div className="flex gap-4 text-xs text-gray-400">
-                    <span>Published: {formatDate(blog.publishedAt ?? blog.createdAt)}</span>
+                    <span>
+                      Published:{" "}
+                      {formatDate(blog.publishedAt ?? blog.createdAt)}
+                    </span>
                     <span>Updated: {formatDate(blog.updatedAt)}</span>
                   </div>
                 </div>
@@ -206,7 +219,10 @@ const AdminBlogList = () => {
                   {blog.isHidden ? <FiEyeOff size={18} /> : <FiEye size={18} />}
                 </button>
                 <Link href={`/admin/blogs/${blog._id}`} title="Edit">
-                  <FiEdit2 size={18} className="text-gray-500 hover:text-green-600" />
+                  <FiEdit2
+                    size={18}
+                    className="text-gray-500 hover:text-green-600"
+                  />
                 </Link>
                 <button
                   onClick={() => handleDelete(blog._id)}

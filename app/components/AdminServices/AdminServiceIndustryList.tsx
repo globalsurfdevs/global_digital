@@ -11,8 +11,8 @@ type ServiceIndustryItem = {
   image: string;
   imageAlt: string;
   title: string;
-  page?: string;      // linked page's _id
-  pageLink?: string;  // linked page's slug, saved for convenience
+  page?: string; // linked page's _id
+  pageLink?: string; // linked page's slug, saved for convenience
 };
 
 // Adjust the shape here if your /api/page response differs
@@ -20,7 +20,7 @@ type PageListItem = {
   _id: string;
   title: string; // change to `name` if that's what your Page model uses
   slug: string;
-  name:string;
+  name: string;
 };
 
 const AdminServiceIndustryList = () => {

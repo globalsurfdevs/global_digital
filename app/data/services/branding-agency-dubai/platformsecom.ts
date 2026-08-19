@@ -1,29 +1,28 @@
-
 import { assets } from "@/public/assets/assets";
 
 export const Platformsecomdata = {
   title: "Why Choose GS Digital for Branding?",
-  desc:"With a team of certified experts in <a href='/social-media-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>social media strategy</a>, <a href='/content-production-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>content creation</a>, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our creative branding agency in Dubai.",
+  desc: "With a team of certified experts in <a href='/social-media-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>social media strategy</a>, <a href='/content-production-agency-dubai' class='text-primary opacity-[.8] hover:opacity-[1]'>content creation</a>, and audience engagement, we help you build a strong online presence, drive brand awareness, and foster meaningful connections through our creative branding agency in Dubai.",
   data: [
     {
       id: 1,
       icon: assets.google,
       title: "100+",
-      rttitel:"Projects ",
+      rttitel: "Projects ",
       dec: "<a href='/portfolio' class='text-primary opacity-[.8] hover:opacity-[1]'>100+ Projects across various industries</a>, providing customized solutions for every brand’s needs.",
     },
     {
       id: 2,
       icon: assets.linkedin,
       title: "35+",
-      rttitel:"Social platforms and analytics tools  ",
+      rttitel: "Social platforms and analytics tools  ",
       dec: "35+ Social platforms and analytics tools empowering our strategies to ensure maximum impact, from Facebook and Instagram to LinkedIn and Twitter.",
     },
     {
       id: 3,
       icon: assets.twitterx,
       title: "50+",
-      rttitel:"Experts ",
+      rttitel: "Experts ",
       dec: "50+ Experts committed to delivering consistent, positive results through personalized social media marketing services that grow your brand.",
     },
   ],

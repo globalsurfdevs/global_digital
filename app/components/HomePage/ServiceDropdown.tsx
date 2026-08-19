@@ -6,7 +6,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-
 type ServiceItem = { text: string; url?: string };
 type ServiceCategory = {
   titleurl?: string;
@@ -17,103 +16,106 @@ type ServiceData = {
   [category: string]: ServiceCategory;
 };
 
+export const serviceData: ServiceData = {
+  "Digital Marketing": {
+    titleurl: "digital-marketing-services",
+    categoryText:
+      'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
 
- export const serviceData: ServiceData = {
-   "Digital Marketing": {
-     titleurl: "digital-marketing-services",
-     categoryText: 'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
+    SEO: {
+      text: 'Rank with Purpose<span class="text-[#E43D30]">.</span><br> Stay with Relevance<span class="text-[#E43D30]">.</span>',
+      url: "/seo-agency-dubai",
+    },
 
-     "SEO": {
-       text: 'Rank with Purpose<span class="text-[#E43D30]">.</span><br> Stay with Relevance<span class="text-[#E43D30]">.</span>',
-       url: "/seo-agency-dubai",
-     },
+    "AI Search Visibility (GEO)": {
+      text: 'Indexed For Search<span class="text-[#E43D30]">.</span><br> Context For Every AI<span class="text-[#E43D30]">.</span>',
+      url: "/generative-engine-optimization-dubai",
+    },
 
-     "AI Search Visibility (GEO)": {
-       text: 'Indexed For Search<span class="text-[#E43D30]">.</span><br> Context For Every AI<span class="text-[#E43D30]">.</span>',
-       url: "/generative-engine-optimization-dubai",
-     },
+    "Performance Marketing": {
+      text: 'Built to Scale<span class="text-[#E43D30]">.</span><br> Measured to Win<span class="text-[#E43D30]">.</span>',
+      url: "/performance-marketing-agency-dubai",
+    },
 
-     "Performance Marketing": {
-       text: 'Built to Scale<span class="text-[#E43D30]">.</span><br> Measured to Win<span class="text-[#E43D30]">.</span>',
-       url: "/performance-marketing-agency-dubai",
-     },
+    "Social Media": {
+      text: 'Real Voices<span class="text-[#E43D30]">.</span><br> Real Impact<span class="text-[#E43D30]">.</span>',
+      url: "/social-media-agency-dubai",
+    },
 
-     "Social Media": {
-       text: 'Real Voices<span class="text-[#E43D30]">.</span><br> Real Impact<span class="text-[#E43D30]">.</span>',
-       url: "/social-media-agency-dubai",
-     },
+    "Content Marketing": {
+      text: 'Words that Move<span class="text-[#E43D30]">.</span><br> Stories that Stay<span class="text-[#E43D30]">.</span>',
+      url: "/content-marketing-agency-dubai",
+    },
 
-     "Content Marketing": {
-       text: 'Words that Move<span class="text-[#E43D30]">.</span><br> Stories that Stay<span class="text-[#E43D30]">.</span>',
-       url: "/content-marketing-agency-dubai",
-     },
+    "Marketing Strategy Consulting": {
+      text: 'Built on Data<span class="text-[#E43D30]">.</span><br>Driven by Strategy<span class="text-[#E43D30]">.</span>',
+      url: "/marketing-strategy-consulting-dubai",
+    },
+  },
 
-     "Marketing Strategy Consulting": {
-       text: 'Built on Data<span class="text-[#E43D30]">.</span><br>Driven by Strategy<span class="text-[#E43D30]">.</span>',
-       url: "/marketing-strategy-consulting-dubai",
-     },
-   },
+  "Web & App Development": {
+    titleurl: "",
+    categoryText:
+      'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
+    "Web Development": {
+      text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
+      url: "/web-design-development-agency-dubai",
+    },
+    "Mobile App Development": {
+      text: 'Tap-worthy<span class="text-[#E43D30]">.</span><br> Tech-ready<span class="text-[#E43D30]">.</span>',
+      url: "/mobile-app-development-company-dubai",
+    },
 
-   "Web & App Development": {
-     titleurl: "",
-     categoryText: 'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
-     "Web Development": {
-       text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
-       url: "/web-design-development-agency-dubai",
-     },
-     "Mobile App Development": {
-       text: 'Tap-worthy<span class="text-[#E43D30]">.</span><br> Tech-ready<span class="text-[#E43D30]">.</span>',
-       url: "/mobile-app-development-company-dubai",
-     },
+    "Web App Development": {
+      text: 'Complex needs<span class="text-[#E43D30]">.</span><br> Clean solutions<span class="text-[#E43D30]">.</span>',
+      url: "/web-app-development-agency-dubai",
+    },
 
-     "Web App Development": {
-       text: 'Complex needs<span class="text-[#E43D30]">.</span><br> Clean solutions<span class="text-[#E43D30]">.</span>',
-       url: "/web-app-development-agency-dubai",
-     },
+    "E-Commerce Development": {
+      text: 'Seamless Carts<span class="text-[#E43D30]">.</span><br>Serious Results<span class="text-[#E43D30]">.</span>',
+      url: "/e-commerce-web-development-company-dubai",
+    },
+  },
 
-     "E-Commerce Development": {
-       text: 'Seamless Carts<span class="text-[#E43D30]">.</span><br>Serious Results<span class="text-[#E43D30]">.</span>',
-       url: "/e-commerce-web-development-company-dubai",
-     },
-   },
+  "Branding & Content Production": {
+    titleurl: "/creative-agency-dubai",
+    categoryText:
+      'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',
+    "Copywriting & Messaging": {
+      text: 'Words that Win<span class="text-[#E43D30]">.</span><br>Stories that Stick<span class="text-[#E43D30]">.</span>',
+      url: "/creative-copywriting-agency-dubai",
+    },
 
-   "Branding & Content Production": {
-     titleurl: "/creative-agency-dubai",
-     categoryText: 'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',
-     "Copywriting & Messaging": {
-       text: 'Words that Win<span class="text-[#E43D30]">.</span><br>Stories that Stick<span class="text-[#E43D30]">.</span>',
-       url: "/creative-copywriting-agency-dubai",
-     },
+    "Photography & Video Production": {
+      text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
+      url: "/content-production-agency-dubai",
+    },
 
-     "Photography & Video Production": {
-       text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
-       url: "/content-production-agency-dubai",
-     },
+    "Branding and Positioning": {
+      text: 'Define your stand<span class="text-[#E43D30]">.</span><br>Design your brand<span class="text-[#E43D30]">.</span>',
+      url: "/branding-and-positioning-agency-dubai",
+    },
+  },
 
-     "Branding and Positioning": {
-       text: 'Define your stand<span class="text-[#E43D30]">.</span><br>Design your brand<span class="text-[#E43D30]">.</span>',
-       url: "/branding-and-positioning-agency-dubai",
-     },
-   },
+  "AI, Data & Intelligence": {
+    titleurl: "/marketing-intelligence-agency-dubai",
+    categoryText:
+      'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
+    "Conversion Rate Optimization": {
+      text: 'Optimized Paths<span class="text-[#E43D30]">.</span><br> Maximized Results<span class="text-[#E43D30]">.</span>',
+      url: "/conversion-rate-optimization-agency-dubai",
+    },
 
-   "AI, Data & Intelligence": {
-     titleurl: "/marketing-intelligence-agency-dubai",
-     categoryText: 'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
-     "Conversion Rate Optimization": {
-       text: 'Optimized Paths<span class="text-[#E43D30]">.</span><br> Maximized Results<span class="text-[#E43D30]">.</span>',
-       url: "/conversion-rate-optimization-agency-dubai",
-     },
+    "Data, Analytics & Performance Dashboards": {
+      text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
+      url: "/data-analytics-services-dubai",
+    },
 
-     "Data, Analytics & Performance Dashboards": {
-       text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
-       url: "/data-analytics-services-dubai",
-     },
-
-     "Marketing Automation & MarTech Consulting": {
-       text: 'Automated to Convert<span class="text-[#E43D30]">.</span><br> Designed to Engage<span class="text-[#E43D30]">.</span>',
-       url: "/marketing-automation-agency-dubai",
-     },
-   },
+    "Marketing Automation & MarTech Consulting": {
+      text: 'Automated to Convert<span class="text-[#E43D30]">.</span><br> Designed to Engage<span class="text-[#E43D30]">.</span>',
+      url: "/marketing-automation-agency-dubai",
+    },
+  },
 };
 
 const ServicesMegaMenu = () => {
@@ -145,10 +147,10 @@ const ServicesMegaMenu = () => {
   };
 
   return (
-    <div className="relative group inline-block">
+    <div className="group relative inline-block">
       {/* Mega Menu Dropdown */}
-      <div className="absolute left-0 right-0 z-50 w-screen  xxl:h-[699px] h-full ">
-        <div className="w-full mx-auto px-8 xxl:pt-[80px] xxl:pb-[130px] py-[30px] flex justify-between items-center xxl:pl-[150px] lg:pl-[50px] bg-black text-white">
+      <div className="absolute left-0 right-0 z-50 h-full  w-screen xxl:h-[699px] ">
+        <div className="mx-auto flex w-full items-center justify-between bg-black px-8 py-[30px] text-white lg:pl-[50px] xxl:pb-[130px] xxl:pl-[150px] xxl:pt-[80px]">
           {/* Header Section */}
           <div className="w-1/3">
             <motion.h2
@@ -163,21 +165,22 @@ const ServicesMegaMenu = () => {
                   transition: { duration: 1, ease: "easeOut" },
                 }, // Slide up and fade in
               }}
-              className="xxl:text-[48px] lg:text-[35px] xxl:leading-[60px] lg:leading-[50px] mb-4 capitalize "
+              className="mb-4 capitalize lg:text-[35px] lg:leading-[50px] xxl:text-[48px] xxl:leading-[60px] "
               dangerouslySetInnerHTML={{
                 __html: getActiveText(),
               }}
             />
           </div>
           {/* Services Grid */}
-          <div className="grid grid-cols-3 xxl:gap-10 gap-6 w-full pl-[130px]">
+          <div className="grid w-full grid-cols-3 gap-6 pl-[130px] xxl:gap-10">
             {Object.entries(serviceData).map(([category, items]) => {
               const { titleurl, categoryText, ...services } = items;
               return (
                 <div key={category} className="group w-full">
-
-
-                  <Link href={titleurl || "#"} className="flex items-center xxl:mb-[30px] mb-[20px]">
+                  <Link
+                    href={titleurl || "#"}
+                    className="mb-[20px] flex items-center xxl:mb-[30px]"
+                  >
                     <motion.h4
                       initial="hidden"
                       whileInView="visible"
@@ -191,8 +194,11 @@ const ServicesMegaMenu = () => {
                         },
                       }}
                       onMouseEnter={() => handleHover(category)}
-                      className={`font-[400] uppercase xxl:text-font19 text-[15px] pr-[16px] ${activeItem[0] === category ? "text-[#E43D30]" : "text-white"
-                        }`}
+                      className={`pr-[16px] text-[15px] font-[400] uppercase xxl:text-font19 ${
+                        activeItem[0] === category
+                          ? "text-[#E43D30]"
+                          : "text-white"
+                      }`}
                     >
                       {category}
                     </motion.h4>
@@ -224,8 +230,9 @@ const ServicesMegaMenu = () => {
                     </motion.div>
                   </Link>
 
-
-                  <motion.ul className="space-y-2" initial="hidden"
+                  <motion.ul
+                    className="space-y-2"
+                    initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
                     variants={{
@@ -235,23 +242,28 @@ const ServicesMegaMenu = () => {
                         y: 0,
                         transition: { duration: 1, ease: "easeOut" },
                       }, // Slide up and fade in
-                    }}>
-
+                    }}
+                  >
                     {Object.entries(services).map(([title, data]) => {
                       const item = data as ServiceItem;
                       const isActive =
                         activeItem[0] === category && activeItem[1] === title;
                       return (
                         <li
-
                           key={title}
                           onMouseEnter={() => handleHover(category, title)}
-                          className={` xxl:text-font19 text-[14px] transition-opacity duration-200 ${isActive
-                            ? "text-white opacity-100"
-                            : "text-white opacity-60 hover:opacity-100"
-                            }`}
+                          className={` text-[14px] transition-opacity duration-200 xxl:text-font19 ${
+                            isActive
+                              ? "text-white opacity-100"
+                              : "text-white opacity-60 hover:opacity-100"
+                          }`}
                         >
-                          <Link className="cursor-pointer" href={item.url ?? "#"}>{title}</Link>
+                          <Link
+                            className="cursor-pointer"
+                            href={item.url ?? "#"}
+                          >
+                            {title}
+                          </Link>
                         </li>
                       );
                     })}

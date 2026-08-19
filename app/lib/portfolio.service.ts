@@ -2,8 +2,8 @@
 import connectDB from "@/lib/mongodb";
 import Portfolio from "@/app/models/Portfolio";
 import { unstable_cache } from "next/cache";
-import '@/app/models/Category'
-import '@/app/models/Channel'
+import "@/app/models/Category";
+import "@/app/models/Channel";
 
 export const getPortfolio = unstable_cache(
   async () => {
@@ -21,5 +21,5 @@ export const getPortfolio = unstable_cache(
   {
     tags: ["portfolio"],
     revalidate: 60, // same as your fetch
-  }
+  },
 );

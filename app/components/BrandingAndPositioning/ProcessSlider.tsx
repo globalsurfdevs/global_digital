@@ -125,7 +125,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           spaceBetween={32}
           slidesPerView={1.15}
           loop={true}
-        
+
           speed={1000}
           autoplay={{
             delay: 3500,

@@ -24,7 +24,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
   ctabbutton,
   bgcolor,
   redlast,
-  page
+  page,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
