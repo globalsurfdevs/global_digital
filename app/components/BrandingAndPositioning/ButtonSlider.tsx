@@ -38,7 +38,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
         {/* Heading */}
         <div className="w-full shrink-0 sm:w-auto">
           <div className="flex items-center gap-3">
-            <motion.h3
+            <motion.p
               initial="hidden"
               whileInView="show"
               variants={moveUp(0)}
@@ -46,7 +46,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
               className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
             >
               {data.title}
-            </motion.h3>
+            </motion.p>
             {data.title && <div className="h-4 w-4 bg-primary"></div>}
           </div>
         </div>

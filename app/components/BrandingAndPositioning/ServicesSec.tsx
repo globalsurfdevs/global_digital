@@ -61,7 +61,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
           {/* LEFT — pinned via GSAP */}
           <div ref={leftRef}>
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-              <motion.h3
+              <motion.p
                 variants={moveUp(0)}
                 initial="hidden"
                 whileInView="show"
@@ -70,7 +70,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               >
                 {title}
                 <span className="ml-2 inline-block h-4 w-4  bg-primary" />
-              </motion.h3>
+              </motion.p>
             </div>
             <motion.h2
               variants={moveUp(0.1)}

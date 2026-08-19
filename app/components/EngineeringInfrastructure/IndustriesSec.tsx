@@ -24,7 +24,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
       <div className="container">
         <div className="mb-4 xl:mb-8 xxl:mb-[42px]">
           <div className="mb-4 flex items-center gap-3 md:mb-3 xl:mb-4 xxl:mb-[28px]">
-            <motion.h3
+            <motion.p
               initial="hidden"
               whileInView="show"
               variants={moveUp(0)}
@@ -32,7 +32,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
               className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
             >
               {data.title}
-            </motion.h3>
+            </motion.p>
             <div className="h-4 w-4 bg-primary"></div>
           </div>
           <motion.h2

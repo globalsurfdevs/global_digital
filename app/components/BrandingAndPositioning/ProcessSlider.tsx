@@ -76,7 +76,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
       <div className="container" ref={containerRef}>
         <div className="mb-4 xl:mb-8 xxl:mb-[50px]">
           <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-            <motion.h3
+            <motion.p
               variants={moveUp(0)}
               initial="hidden"
               whileInView="show"
@@ -84,7 +84,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
               className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
             >
               {title}
-            </motion.h3>
+            </motion.p>
             <div className="h-4 w-4 bg-primary"></div>
           </div>
           <motion.h2
