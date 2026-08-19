@@ -1,4 +1,5 @@
 import Industry from "@/app/models/Industries"; // adjust path/name to match your actual model file
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -38,6 +39,8 @@ export async function POST(req: NextRequest) {
         doc.items = reordered;
 
         await doc.save();
+
+        revalidateTag("industry")
 
         return NextResponse.json(
             { message: "Industries reordered successfully" },
