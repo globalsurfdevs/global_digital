@@ -87,7 +87,7 @@ const page = async () => {
         items: industry.servicesSection.items.map((item, index) => ({
             id: (index + 1).toString(),
             icon: item.image,
-            link: item.service.slug,
+            link: item?.service?.slug,
             ...item
         }))
     };

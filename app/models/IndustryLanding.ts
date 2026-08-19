@@ -67,6 +67,7 @@ const industryLandingSchema = new mongoose.Schema(
           project: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "portfolio",
+            set: (v: any) => (v === "" ? null : v),
           },
           description: { type: String },
           image: { type: String },
@@ -86,6 +87,7 @@ const industryLandingSchema = new mongoose.Schema(
           service: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Service",
+            set: (v: any) => (v === "" ? null : v),
           },
           title: { type: String },
           description: { type: String },

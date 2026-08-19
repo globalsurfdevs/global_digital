@@ -4,10 +4,22 @@ import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
 import SmartPagination from "./Pagination";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit, MdDragIndicator } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 import { FaBookOpen } from "react-icons/fa";
 import { ImageUploader } from "@/components/ui/image-uploader";
+import {
+    closestCorners,
+    DndContext,
+    DragEndEvent,
+} from "@dnd-kit/core";
+import {
+    arrayMove,
+    SortableContext,
+    useSortable,
+    verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 type IndustryListItem = {
     _id: string;
@@ -17,6 +29,7 @@ type IndustryListItem = {
     imageAlt?: string;
     shortDescription?: string;
     createdAt?: string;
+    order?: number;
 };
 
 const slugify = (value: string) =>
@@ -26,6 +39,42 @@ const slugify = (value: string) =>
         .replace(/[^a-z0-9\s-]/g, "")
         .replace(/\s+/g, "-")
         .replace(/-+/g, "-");
+
+// Sortable row wrapper - drag handle lives in the first cell,
+// rest of the row (name/slug/edit cells) is passed in as children.
+const SortableIndustryRow = ({
+    item,
+    children,
+}: {
+    item: IndustryListItem;
+    children: React.ReactNode;
+}) => {
+    const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+        useSortable({ id: item._id });
+
+    const style: React.CSSProperties = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.6 : 1,
+    };
+
+    return (
+        <tr
+            ref={setNodeRef}
+            style={style}
+            className="border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
+        >
+            <td
+                className="cursor-grab px-4 py-3 active:cursor-grabbing"
+                {...attributes}
+                {...listeners}
+            >
+                <MdDragIndicator className="text-lg text-gray-400" />
+            </td>
+            {children}
+        </tr>
+    );
+};
 
 const AdminIndustryList = () => {
     const searchParams = useSearchParams();
@@ -37,6 +86,7 @@ const AdminIndustryList = () => {
     const router = useRouter();
     const pathname = usePathname();
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
+    const [reorderMode, setReorderMode] = useState(false);
 
     // Create modal state
     const [showCreateModal, setShowCreateModal] = useState(false);
@@ -282,21 +332,65 @@ const AdminIndustryList = () => {
         router.push(`/admin/industries/${slug}`);
     };
 
+    // --- Reorder logic ---
+    const getIndustryPos = (id: string) =>
+        industries.findIndex((item) => item._id === id);
+
+    const handleDragEnd = (event: DragEndEvent) => {
+        const { active, over } = event;
+        if (!over || active.id === over.id) return;
+
+        setIndustries((industries) => {
+            const originalPos = getIndustryPos(active.id as string);
+            const newPos = getIndustryPos(over.id as string);
+            return arrayMove(industries, originalPos, newPos);
+        });
+    };
+
+    const startReorder = () => {
+        setSelectedIds([]);
+        setReorderMode(true);
+    };
+
+const confirmReorder = async () => {
+    setReorderMode(false);
+
+    try {
+        const response = await fetch("/api/industry/reorder", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                industries: industries.map((industry) => ({ _id: industry._id })),
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            toast.success(data.message ?? "Order updated");
+        } else {
+            toast.error(data.message ?? "Failed to update order");
+            setRefetch((prev) => !prev);
+        }
+    } catch (error) {
+        console.error(error);
+        toast.error("Failed to update order");
+        setRefetch((prev) => !prev);
+    }
+};
+
     return (
         <div className="flex flex-col gap-5">
             <div className="flex min-h-[calc(100vh-200px)] flex-col gap-3">
                 <div className="flex items-center justify-between gap-10">
                     <div className="flex items-center gap-10">
-                        <div
-                            className={`text-xl`}
-                        >
-                            Industries
-                        </div>
+                        <div className={`text-xl`}>Industries</div>
                     </div>
                     <div className="flex items-center gap-10">
-
                         <div>
-                            {selectedIds.length > 0 && (
+                            {!reorderMode && selectedIds.length > 0 && (
                                 <div className="relative inline-flex">
                                     <MdDelete
                                         className="cursor-pointer text-2xl text-red-600"
@@ -310,25 +404,38 @@ const AdminIndustryList = () => {
                         </div>
 
                         <button
-                            onClick={() => setShowCreateModal(true)}
-                            className="rounded bg-black px-4 py-2 text-white"
+                            className="rounded-full bg-primary px-6 py-2 text-white"
+                            onClick={reorderMode ? confirmReorder : startReorder}
                         >
-                            + Create Industry
+                            {!reorderMode ? "Reorder" : "Confirm"}
                         </button>
+
+                        {!reorderMode && (
+                            <button
+                                onClick={() => setShowCreateModal(true)}
+                                className="rounded bg-black px-4 py-2 text-white"
+                            >
+                                + Create Industry
+                            </button>
+                        )}
                     </div>
                 </div>
 
                 {industries && industries.length > 0 ? (
-                    <div className="overflow-x-auto rounded-lg  min-h-[600px]">
+                    <div className="min-h-[600px] overflow-x-auto rounded-lg">
                         <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
-                            <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300  border border-gray-200 shadow dark:border-gray-700">
+                            <thead className="border border-gray-200 bg-gray-100 text-xs uppercase text-gray-700 shadow dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
                                 <tr>
                                     <th scope="col" className="px-4 py-3">
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedIds.length === industries.length}
-                                            onChange={toggleSelectAll}
-                                        />
+                                        {reorderMode ? (
+                                            ""
+                                        ) : (
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedIds.length === industries.length}
+                                                onChange={toggleSelectAll}
+                                            />
+                                        )}
                                     </th>
                                     <th scope="col" className="px-4 py-3">
                                         Name
@@ -341,34 +448,61 @@ const AdminIndustryList = () => {
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {industries.map((item, i) => (
-                                    <tr
-                                        key={item._id ?? i}
-                                        className="border border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+
+                            {reorderMode ? (
+                                <DndContext
+                                    collisionDetection={closestCorners}
+                                    onDragEnd={handleDragEnd}
+                                >
+                                    <SortableContext
+                                        items={industries.map((item) => item._id)}
+                                        strategy={verticalListSortingStrategy}
                                     >
-                                        <td className="px-4 py-3">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedIds.includes(item._id)}
-                                                onChange={() => toggleSelect(item._id)}
-                                            />
-                                        </td>
-                                        <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
-                                            {item.name}
-                                        </td>
-                                        <td className="px-4 py-3">{item.slug}</td>
-                                        <td className="flex justify-center gap-5 py-3 text-center">
-                                            <button onClick={() => openEditModal(item)}>
-                                                <MdEdit className="mx-auto text-lg" />
-                                            </button>
-                                            <button onClick={() => handleOpenIndustryPage(item.slug)}>
-                                                <FaBookOpen className="mx-auto text-lg" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
+                                        <tbody>
+                                            {industries.map((item) => (
+                                                <SortableIndustryRow item={item} key={item._id}>
+                                                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                                                        {item.name}
+                                                    </td>
+                                                    <td className="px-4 py-3">{item.slug}</td>
+                                                    <td className="px-4 py-3 text-center text-gray-400">
+                                                        —
+                                                    </td>
+                                                </SortableIndustryRow>
+                                            ))}
+                                        </tbody>
+                                    </SortableContext>
+                                </DndContext>
+                            ) : (
+                                <tbody>
+                                    {industries.map((item, i) => (
+                                        <tr
+                                            key={item._id ?? i}
+                                            className="border border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                        >
+                                            <td className="px-4 py-3">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={selectedIds.includes(item._id)}
+                                                    onChange={() => toggleSelect(item._id)}
+                                                />
+                                            </td>
+                                            <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                                                {item.name}
+                                            </td>
+                                            <td className="px-4 py-3">{item.slug}</td>
+                                            <td className="flex justify-center gap-5 py-3 text-center">
+                                                <button onClick={() => openEditModal(item)}>
+                                                    <MdEdit className="mx-auto text-lg" />
+                                                </button>
+                                                <button onClick={() => handleOpenIndustryPage(item.slug)}>
+                                                    <FaBookOpen className="mx-auto text-lg" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            )}
                         </table>
                     </div>
                 ) : (
@@ -614,7 +748,7 @@ const AdminIndustryList = () => {
                     </div>
                 )}
 
-                {industries && industries.length > 0 && (
+                {!reorderMode && industries && industries.length > 0 && (
                     <div className="mb-10">
                         <SmartPagination page={page} totalPages={totalPages} setPage={changePage} />
                     </div>
