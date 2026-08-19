@@ -114,6 +114,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
           spaceBetween={32}
           slidesPerView={1.15}
           loop={true}
+        
           speed={1000}
           autoplay={{
             delay: 3500,
@@ -138,7 +139,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
                   <div className="flex gap-3 xl:gap-[20px]">
                     <div className="mb-6 inline-flex shrink-0 h-14 w-14 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
                       <span className="text-28 font-normal text-primary">
-                        {originalIndex < 9 ? `0${originalIndex + 1}` : originalIndex + 1}
+                           {originalIndex < 9 ? `0${originalIndex + 1}` : originalIndex + 1}
                       </span>
                     </div>
 
