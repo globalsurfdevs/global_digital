@@ -42,9 +42,9 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
                     height={42}
                     className="h-7 w-7"
                   />
-                  <h3 className="text-28 font-normal leading-[1.214285714285714] tracking-[-0.025em]">
+                  <p className="text-28 font-normal leading-[1.214285714285714] tracking-[-0.025em]">
                     {item.title}
-                  </h3>
+                  </p>
                 </div>
                 <p className="fnt-lexend text-[length:var(--text-18-sm)] font-normal leading-[1.444444444444444] text-muted">
                   {toSentenceCase(item.description)}
