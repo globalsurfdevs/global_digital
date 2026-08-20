@@ -358,7 +358,7 @@ const page = async ({ params }: PageProps) => {
         description={servicesData.subtitle}
         items={servicesData.items}
       />
-      {slug === "web-design-and-development-v2" && (
+      {slug === "web-design-development-agency-dubai" && (
         <section className="bg-black  pb-[50px]   pt-[50px] text-white lg:pb-[200px] lg:pt-[140px]">
           <WorkIn workSvgsData={workSvgsData} page="service" />
         </section>
