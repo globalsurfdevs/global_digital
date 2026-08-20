@@ -148,5 +148,17 @@ export const data = {
                 description: "We rigorously test every build to meet performance, security, and usability standards. "
             }
         ]
+    },
+    ninethSection:{
+        title:"Industries we serve",
+        serviceIndustries:[
+            {
+                _id:"1",
+                image:"assets/images/branding-positioning/icons/construction.svg",
+                imageAlt:"",
+                title:"Construction",
+                page:""
+            }
+        ]
     }
 }

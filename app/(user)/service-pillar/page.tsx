@@ -327,6 +327,7 @@ const page = async () => {
                 items={data.seventhSection.items}
             />
             <ProcessSlider data={data.eighthSection} variant="dark"/>
+            <ButtonSlider data={data.ninethSection} />
             {/*<GrayParaSec data={service.fourthSection} />
       
       {slug === "web-design-and-development-v2" && (
@@ -351,7 +352,7 @@ const page = async () => {
       <section
         className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}
       >
-        <ButtonSlider data={service.tenthSection} />
+        
       </section>
       <WhyChoose data={whyChooseData} page="service" /> */}
             {/* {caseStudiesData.items.length > 0 && (
