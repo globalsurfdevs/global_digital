@@ -29,7 +29,7 @@ function getSlidesPerView(width: number) {
 
 const MIN_SLIDES_FOR_LOOP = 7;
 
-const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
+const ProcessSlider = ({ data,variant }: { data: ServiceItem["sixthSection"],variant?:"dark"|"light" }) => {
   const { items, subTitle, title } = data;
 
   // Pad short lists by repeating the real items so Swiper has enough
@@ -71,7 +71,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
   };
 
   return (
-    <section className="py-120 bg-[#F6F6F6]">
+    <section className={`py-120 ${variant == "dark" ? "bg-black" : "bg-[#F6F6F6]"}`}>
       {/* Header */}
       <div className="container" ref={containerRef}>
         <div className="mb-4 xl:mb-8 xxl:mb-[50px]">
@@ -92,7 +92,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)]"
+            className={`title-60 text-[length:var(--text-60-sm)] ${variant == "dark" && "text-white"}`}
             dangerouslySetInnerHTML={{ __html: subTitle }}
           ></motion.h2>
         </div>
@@ -144,7 +144,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
             const originalIndex = i % items.length;
             return (
               <SwiperSlide key={i} className="h-auto">
-                <div className="h-full border-l border-black/20 pb-6 pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]">
+                <div className={`h-full border-l ${variant == "dark" ? "border-white/20" : "border-black/20"}  pb-6 pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]`}>
                   <div className="flex gap-3 xl:gap-[20px]">
                     <div className="mb-6 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
                       <span className="text-28 font-normal text-primary">
@@ -154,7 +154,7 @@ const ProcessSlider = ({ data }: { data: ServiceItem["sixthSection"] }) => {
                       </span>
                     </div>
                     {/* was <h3> — now <p>, same classes, no longer a heading */}
-                    <p className="text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em]">
+                    <p className={`text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em] ${variant == "dark" && "text-white"}`}>
                       {item.title}
                     </p>
                   </div>

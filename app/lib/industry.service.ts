@@ -14,8 +14,6 @@ export const getIndustry = unstable_cache(
 
     const item = doc?.items?.[0];
 
-    console.log(item);
-
     if (!item) {
       return null;
     }
