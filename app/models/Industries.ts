@@ -12,6 +12,15 @@ const industriesItemSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    image: {
+      type: String,
+    },
+    imageAlt: {
+      type: String,
+    },
+    shortDescription: {
+      type: String,
+    },
     seo: {
       type: seoSchema,
     },

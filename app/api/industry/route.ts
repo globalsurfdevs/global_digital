@@ -42,12 +42,15 @@ export async function GET(req: NextRequest) {
     const doc = await Industries.findOne({}, { items: 1 });
     const allItems = doc?.items ?? [];
 
-    const mappedItems = allItems.map((item: any) => ({
-      _id: item._id,
-      name: item.name,
-      slug: item.slug,
-      createdAt: item.createdAt,
-    }));
+        const mappedItems = allItems.map((item: any) => ({
+            _id: item._id,
+            name: item.name,
+            slug: item.slug,
+            image: item.image,
+            imageAlt: item.imageAlt,
+            shortDescription: item.shortDescription,
+            createdAt: item.createdAt,
+        }));
 
     // --- No page param: return everything, unpaginated ---
     const pageParam = searchParams.get("page");
@@ -91,10 +94,13 @@ export async function POST(req: NextRequest) {
     }
     await dbConnect();
 
-    const body = await req.json();
-    const id = body?._id;
-    const name = body?.name?.trim();
-    const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
+        const body = await req.json();
+        const id = body?._id;
+        const name = body?.name?.trim();
+        const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
+        const image = body?.image;
+        const imageAlt = body?.imageAlt?.trim();
+        const shortDescription = body?.shortDescription?.trim();
 
     if (!name) {
       return NextResponse.json(
@@ -137,23 +143,29 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      item.name = name;
-      item.slug = slug;
-      await industryDoc.save();
+            item.name = name;
+            item.slug = slug;
+            item.image = image;
+            item.imageAlt = imageAlt;
+            item.shortDescription = shortDescription;
+            await industryDoc.save();
 
-      revalidateTag("industry");
-      return NextResponse.json(
-        {
-          message: "Industry updated successfully",
-          data: {
-            _id: item._id,
-            name: item.name,
-            slug: item.slug,
-          },
-        },
-        { status: 200 },
-      );
-    }
+            revalidateTag("industry")
+            return NextResponse.json(
+                {
+                    message: "Industry updated successfully",
+                    data: {
+                        _id: item._id,
+                        name: item.name,
+                        slug: item.slug,
+                        image: item.image,
+                        imageAlt: item.imageAlt,
+                        shortDescription: item.shortDescription,
+                    },
+                },
+                { status: 200 }
+            );
+        }
 
     // ---- CREATE branch: no _id means create a new item ----
     const slugTaken = industryDoc.items.some((item: any) => item.slug === slug);
@@ -164,30 +176,33 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    industryDoc.items.push({ name, slug });
-    await industryDoc.save();
+        industryDoc.items.push({ name, slug, image, imageAlt, shortDescription });
+        await industryDoc.save();
 
     const createdItem = industryDoc.items[industryDoc.items.length - 1];
 
-    revalidateTag("industry");
-    return NextResponse.json(
-      {
-        message: "Industry created successfully",
-        data: {
-          _id: createdItem._id,
-          name: createdItem.name,
-          slug: createdItem.slug,
-        },
-      },
-      { status: 201 },
-    );
-  } catch (error) {
-    console.error("Error saving industry:", error);
-    return NextResponse.json(
-      { message: "Failed to save industry" },
-      { status: 500 },
-    );
-  }
+        revalidateTag("industry")
+        return NextResponse.json(
+            {
+                message: "Industry created successfully",
+                data: {
+                    _id: createdItem._id,
+                    name: createdItem.name,
+                    slug: createdItem.slug,
+                    image: createdItem.image,
+                    imageAlt: createdItem.imageAlt,
+                    shortDescription: createdItem.shortDescription,
+                },
+            },
+            { status: 201 }
+        );
+    } catch (error) {
+        console.error("Error saving industry:", error);
+        return NextResponse.json(
+            { message: "Failed to save industry" },
+            { status: 500 }
+        );
+    }
 }
 
 export async function PATCH(req: NextRequest) {
