@@ -31,11 +31,11 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
         <div className="ptwhite pb-[30px] pt-[50px] md:py-10 lg:py-12 xl:pb-[110px] xl:pt-[138px]">
           {topTitle && (
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-              <h3
+              <p
                 className={`${page === "service" ? "text-18" : "text-30"} uppercase leading-[1] tracking-[-0.025em]  text-muted`}
               >
                 {topTitle}
-              </h3>
+              </p>
               <div className="h-4 w-4 bg-primary"></div>
             </div>
           )}

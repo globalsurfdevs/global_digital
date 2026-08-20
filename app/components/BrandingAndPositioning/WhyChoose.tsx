@@ -23,7 +23,7 @@ const WhyChoose = ({ data, page }: { data: WhyChooseData; page?: string }) => {
           <div>
             <div className="mb-4 xl:mb-8 xxl:mb-[70px]">
               <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-                <motion.h3
+                <motion.p
                   initial="hidden"
                   whileInView="show"
                   variants={moveUp(0)}
@@ -31,7 +31,7 @@ const WhyChoose = ({ data, page }: { data: WhyChooseData; page?: string }) => {
                   className={`text-18 uppercase leading-[1] tracking-[-0.025em] text-muted`}
                 >
                   {data.tag}
-                </motion.h3>
+                </motion.p>
                 <div className={`h-4 w-4 bg-primary`}></div>
               </div>
               <motion.h2

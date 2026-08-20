@@ -79,6 +79,7 @@ const PROPER_NOUNS: Record<string, string> = {
   uae: "UAE",
   dubai: "Dubai",
   "gs digital": "GS Digital",
+  "global surf digital": "GS Surf Digital",
 };
 
 // Splits text into segments, alternating between non-anchor text and
