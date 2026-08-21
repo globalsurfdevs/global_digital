@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
-const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
+const BECS = ({ data,page }: { data: ServiceItem["seventhSection"];page?:string }) => {
   return (
-    <section className="pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px]">
+    <section className={`pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px] ${page=="service-pillar" ? "bg-[#F6F6F6]" : ""}`}>
       <div className="container">
         <div className="row">
           <motion.h2
