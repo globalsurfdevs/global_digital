@@ -104,6 +104,7 @@ export interface IndustryFormProps {
       image: string;
       imageAlt: string;
       title: string;
+      description:string;
     }[];
     // NOTE: top-level `logo` / `logoAlt` in the old interface were never
     // actually registered anywhere in the JSX — removed as dead fields.
@@ -1341,6 +1342,18 @@ const IndiIndustryPage = () => {
                                 />
                                 {/* {errors.seventhSection?.items?.[index]?.title && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.title.message}</p>} */}
                               </div>
+
+                              <div className="flex flex-col gap-2">
+                                <Label className="font-bold">Description</Label>
+                                <Textarea
+                                  placeholder="Description"
+                                  {...register(
+                                    `seventhSection.items.${index}.description`,
+                                  )}
+                                />
+                                {/* {errors.seventhSection?.items?.[index]?.title && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.title.message}</p>} */}
+                              </div>
+
                             </div>
                           </>
                         )}
@@ -1354,7 +1367,7 @@ const IndiIndustryPage = () => {
                   type="button"
                   addItem
                   onClick={() =>
-                    seventhSectionAppend({ title: "", imageAlt: "", image: "" })
+                    seventhSectionAppend({ title: "", description:"", imageAlt: "", image: "" })
                   }
                 >
                   Add Item
