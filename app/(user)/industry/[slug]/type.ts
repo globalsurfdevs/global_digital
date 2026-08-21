@@ -80,6 +80,7 @@ export interface IndustryItem {
     subTitle: string;
     items: {
       title: string;
+      description: string;
       image: string;
       imageAlt: string;
     }[];

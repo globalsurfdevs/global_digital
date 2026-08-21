@@ -77,8 +77,9 @@ export async function generateMetadata({
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const industryData: IndustryItem = await getIndustry(slug);
+  // console.log("industryData", industryData.seventhSection);
   const allIndustryData: IndustryItem[] = (await getAllIndustry()) || [];
-  console.log("industry slug", industryData.ctaSection.buttonLink);
+  
 
   // Guard: if the primary data fetch failed/returned nothing, don't crash on the rest.
   if (!industryData) {
@@ -178,6 +179,7 @@ const page = async ({ params }: PageProps) => {
       id: index + 1,
       label: item?.title,
       icon: item?.image,
+      description: item?.description,
     })),
   };
 

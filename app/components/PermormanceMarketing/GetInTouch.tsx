@@ -29,7 +29,6 @@ const GetInTouch: React.FC<PartnerListProps> = ({
   buttonLink,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  console.log("page", page);
 
   useEffect(() => {
     if (modalOpen) {
