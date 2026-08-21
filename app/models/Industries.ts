@@ -131,6 +131,7 @@ const industriesItemSchema = new mongoose.Schema(
           image: { type: String },
           imageAlt: { type: String },
           title: { type: String },
+          description: { type: String },
         },
       ],
     },
