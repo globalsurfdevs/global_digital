@@ -131,9 +131,9 @@ const WhatsIncluded = ({ title, description, items }: ServicesSecProps) => {
                           {service.title}
                         </h3>
                       </div>
-                      <p className="text-14 md:text-16 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
+                      {/* <p className="text-14 md:text-16 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
                         {toSentenceCase(service.description)}
-                      </p>
+                      </p> */}
                     </div>
                   )}
                 </motion.div>
