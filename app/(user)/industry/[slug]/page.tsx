@@ -77,8 +77,8 @@ export async function generateMetadata({
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const industryData: IndustryItem = await getIndustry(slug);
-
   const allIndustryData: IndustryItem[] = (await getAllIndustry()) || [];
+  console.log("industry slug", industryData.ctaSection.buttonLink);
 
   // Guard: if the primary data fetch failed/returned nothing, don't crash on the rest.
   if (!industryData) {
@@ -321,6 +321,7 @@ const page = async ({ params }: PageProps) => {
           data={Cta}
           ctabbutton={industryData.ctaSection.buttonText}
           redlast
+          buttonLink={industryData.ctaSection.buttonLink}
         />
       )}
       {Faq.length > 0 && (

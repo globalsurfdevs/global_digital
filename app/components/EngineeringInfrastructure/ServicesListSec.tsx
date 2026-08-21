@@ -112,10 +112,10 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                   }
                   ${hoveredIndex === index || hoveredIndex === index + 1 ? "border-b border-b-transparent" : "border-b border-b-[#77787B]"} `}
               >
-                <Link
-                  href={service.link}
+                {/* <Link
+                  href="#"
                   className="absolute inset-0 h-full w-full"
-                />
+                /> */}
 
                 <div className="flex gap-x-4 gap-y-4 3xl:gap-x-[166px]">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-primary/5 p-3 xl:h-[60px] xl:w-[60px]">

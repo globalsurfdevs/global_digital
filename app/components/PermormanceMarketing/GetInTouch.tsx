@@ -17,6 +17,7 @@ type PartnerListProps = {
   redlast?: boolean;
   data: PartnerDataType[];
   page?: string;
+  buttonLink?: string;
 };
 
 const GetInTouch: React.FC<PartnerListProps> = ({
@@ -25,8 +26,10 @@ const GetInTouch: React.FC<PartnerListProps> = ({
   bgcolor,
   redlast,
   page,
+  buttonLink,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  console.log("page", page);
 
   useEffect(() => {
     if (modalOpen) {
@@ -111,13 +114,17 @@ const GetInTouch: React.FC<PartnerListProps> = ({
             >
               <div className="innerfnont mt-6 lg:mt-[60px]">
                 <button
-                  onClick={() => setModalOpen(true)}
+                  // onClick={() => setModalOpen(true)}
                   className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 ${
                     bgcolor ? "text-black" : "text-white"
                   } transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
                 >
                   <span className="uppercase duration-300 ease-in group-hover:text-black">
-                    {ctabbutton}
+                    {buttonLink ? (
+                      <Link href={buttonLink}>{ctabbutton}</Link>
+                    ) : (
+                      <span>{ctabbutton}</span>
+                    )}
                   </span>
                 </button>
               </div>
