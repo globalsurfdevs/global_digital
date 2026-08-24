@@ -15,7 +15,7 @@ const TitleDesc = ({ data }: any) => {
       >
         {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8"> */}
         <div className="mb-4 flex items-center gap-3 md:mb-3 xl:mb-4 xxl:mb-5 3xl:mb-[30px]">
-          <motion.h3
+          <motion.p
             variants={moveUp(0)}
             initial="hidden"
             whileInView="show"
@@ -23,7 +23,7 @@ const TitleDesc = ({ data }: any) => {
             className="text-18 uppercase leading-[1.5] text-muted"
           >
             {data.title}
-          </motion.h3>
+          </motion.p>
           <div className="h-4 w-4 bg-primary"></div>
         </div>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.2fr]  lg:gap-20 2xl:grid-cols-2 2xl:gap-8 3xl:grid-cols-[792px_auto] 3xl:gap-[139px]">

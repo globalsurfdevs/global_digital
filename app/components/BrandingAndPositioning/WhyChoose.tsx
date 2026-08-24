@@ -4,7 +4,7 @@ import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { moveUp } from "../animations/motionVariants";
 import { motion } from "framer-motion";
 
-interface WhyChooseData {
+export interface WhyChooseData {
   tag: string;
   title: string;
   description: string;

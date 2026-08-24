@@ -59,7 +59,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
         <div className="">
           <div className="pb-4 md:pb-6 xl:pb-8 xxl:pb-12">
             <div className="mb-4 flex items-center gap-3 md:mb-3 xl:mb-4 xxl:mb-[30px]">
-              <motion.h3
+              <motion.p
                 variants={moveUp(0)}
                 initial="hidden"
                 whileInView="show"
@@ -67,7 +67,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                 className="text-18 leading-[1.5] text-muted"
               >
                 {title}
-              </motion.h3>
+              </motion.p>
               <div className="h-4 w-4 bg-primary"></div>
             </div>
             <motion.h2
