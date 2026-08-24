@@ -1,4 +1,4 @@
-export const Cta = [
+export const  Cta = [
   {
     textred: " how your brand  shows up in the market? ",
     text: "Ready to define",

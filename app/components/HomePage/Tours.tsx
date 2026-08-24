@@ -17,7 +17,11 @@ import {
 } from "@/app/helpers/formatLink";
 import Image from "next/image";
 
-const Tours = () => {
+interface ToursProps {
+  title: string;
+  showViewAll?: boolean;
+}
+const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
 
   useEffect(() => {
@@ -58,7 +62,7 @@ const Tours = () => {
             }, // Slide up and fade in
           }}
         >
-          <h2 className="text-font65">Featured projects</h2>
+          <h2 className="text-font65">{title}</h2>
         </motion.div>
         <motion.div
           initial="hidden"
@@ -140,6 +144,8 @@ const Tours = () => {
           ) : (
             <div>No projects available</div>
           )}
+          {showViewAll&&(
+
           <div className="innerfnont mt-[30px] flex w-full justify-center lg:mt-[50px]">
             <Link
               href="/portfolio"
@@ -180,6 +186,7 @@ const Tours = () => {
               </div>
             </Link>
           </div>
+          )}
         </motion.div>
       </div>
     </div>

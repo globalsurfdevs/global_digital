@@ -142,10 +142,10 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
     return () => window.removeEventListener("resize", updateContainerLeft);
   }, []);
 
-  const REPEAT = 2;
-  const items = data.serviceIndustries;
-  const loopItems = Array.from({ length: REPEAT }, () => items).flat();
-  const resetThreshold = items.length * (REPEAT - 1);
+    const REPEAT = 2;
+    const items = data.serviceIndustries;
+    const loopItems = Array.from({ length: REPEAT }, () => items).flat();
+    const resetThreshold = items.length * (REPEAT - 1);
   return (
     <div>
       <div className="container" ref={containerRef}></div>
@@ -186,7 +186,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
             roundLengths
             loop={false}
             autoplay={{
-              delay: 3000,
+              delay: 3500,
               disableOnInteraction: false,
               stopOnLastSlide: false, // don't let Swiper's default "stop at end" kick in
             }}
