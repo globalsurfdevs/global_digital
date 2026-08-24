@@ -18,7 +18,7 @@ import {
 import Image from "next/image";
 
 interface ToursProps {
-  title: string;
+  title?: string;
   showViewAll?: boolean;
 }
 const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) => {
