@@ -36,7 +36,7 @@ const Approach = ({ data }: any) => {
                             </p>
                             <div className="h-4 w-4 bg-primary"></div>
                         </div>
-                        <h2 className="title-60 mb-4 text-[length:var(--text-60-sm)] tracking-[-0.025em] md:mb-5 xl:mb-[40px]">
+                        <h2 className="title-60 mb-4 tracking-[-0.025em] md:mb-5 xl:mb-[40px] ">
                             {data.subTitle}
                         </h2>
                         {data.description.split("\n").map((item:string,index:number) => (
