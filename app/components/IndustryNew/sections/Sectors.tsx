@@ -97,9 +97,9 @@ const SectorsWeWorkWith = ({ data,allIndustry }: any) => {
                 viewport={{ once: true }}
                 className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12"
             >
-                <h3 className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
+                <p className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
                     {data?.title ?? "Sectors we work with"}
-                </h3>
+                </p>
                 <div className="h-4 w-4 bg-primary" />
             </motion.div>
 
