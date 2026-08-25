@@ -13,10 +13,11 @@ interface HeroSectionProps {
     image: string;
     imageAlt: string;
   };
+  maxWidth?: string;
 }
 
 
-const HeroSection = ({ data }: HeroSectionProps) => {
+const HeroSection = ({ data, maxWidth }: HeroSectionProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerLeft, setContainerLeft] = useState(0);
@@ -67,7 +68,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
       <div className="container" ref={containerRef}></div>
       <div className="relative z-10 flex h-full flex-col justify-center md:w-[50%] 2xl:w-[50%] 3xl:w-[40%]" style={{ marginLeft: `${containerLeft}px` }}>
         <div>
-          <h1 className="title-70 text-[length:var(--text-70-sm)] mb-3 tracking-[-0.025em] xl:mb-5">
+          <h1 className={`title-70 text-[length:var(--text-70-sm)] mb-3 tracking-[-0.025em] xl:mb-5 ${maxWidth ? `max-w-[${maxWidth}]` : ""}`}>
             {toTitleCase(data.title)}
           </h1>
           <p className="text-[length:var(--text-23)] text-77787B max-w-[40ch] leading-[1.4] 3xl:max-w-[55ch]">

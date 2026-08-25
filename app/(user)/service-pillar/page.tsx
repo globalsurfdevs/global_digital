@@ -125,165 +125,165 @@ const page = async () => {
   //     })),
   //   };
 
-  //   const whatYouGetData = {
-  //     title: service?.eighthSection?.title,
-  //     subTitle: service?.eighthSection?.subTitle,
-  //     data: service?.eighthSection?.items.map((item, index) => ({
-  //       id: index + 1,
-  //       dec: item.description,
-  //       ...item,
-  //     })),
-  //   };
+    // const whatYouGetData = {
+    //   title: service?.eighthSection?.title,
+    //   subTitle: service?.eighthSection?.subTitle,
+    //   data: service?.eighthSection?.items.map((item, index) => ({
+    //     id: index + 1,
+    //     dec: item.description,
+    //     ...item,
+    //   })),
+    // };
 
-  //   const capabilitiesData = {
-  //     tag: service?.ninethSection?.title,
-  //     title: service?.ninethSection?.subTitle,
+    // const capabilitiesData = {
+    //   tag: service?.ninethSection?.title,
+    //   title: service?.ninethSection?.subTitle,
 
-  //     items: service?.ninethSection?.items.map((item, index) => ({
-  //       id: index + 1,
-  //       icon: item.image,
-  //       ...item,
-  //     })),
-  //   };
+    //   items: service?.ninethSection?.items.map((item, index) => ({
+    //     id: index + 1,
+    //     icon: item.image,
+    //     ...item,
+    //   })),
+    // };
 
-  //   const whyChooseData = {
-  //     tag: service?.eleventhSection?.title,
-  //     title: service?.eleventhSection?.subTitle,
-  //     description: service?.eleventhSection?.description,
-  //     items: service?.eleventhSection?.items.map((item, index) => ({
-  //       id: index + 1,
-  //       value: item.number,
-  //       label: item.value,
-  //     })),
-  //   };
+    // const whyChooseData = {
+    //   tag: service?.eleventhSection?.title,
+    //   title: service?.eleventhSection?.subTitle,
+    //   description: service?.eleventhSection?.description,
+    //   items: service?.eleventhSection?.items.map((item, index) => ({
+    //     id: index + 1,
+    //     value: item.number,
+    //     label: item.value,
+    //   })),
+    // };
 
-  //   const caseStudiesData = {
-  //     tag: service?.caseStudySection?.title,
-  //     title: service?.caseStudySection?.subTitle,
-  //     items: service?.caseStudySection?.items.map((item, index) => ({
-  //       id: index + 1,
-  //       client: item.project.companyName,
-  //       logo: item.project.logo,
-  //       href: `/case-study/${item.project.slug}`,
-  //       ...item,
-  //     })),
-  //   };
+    // const caseStudiesData = {
+    //   tag: service?.caseStudySection?.title,
+    //   title: service?.caseStudySection?.subTitle,
+    //   items: service?.caseStudySection?.items.map((item, index) => ({
+    //     id: index + 1,
+    //     client: item.project.companyName,
+    //     logo: item.project.logo,
+    //     href: `/case-study/${item.project.slug}`,
+    //     ...item,
+    //   })),
+    // };
 
-  //   const Cta = [
-  //     {
-  //       textred: service?.ctaSection?.titleRed,
-  //       text: service?.ctaSection?.title,
-  //       subhead: service?.ctaSection?.description,
-  //     },
-  //   ];
+    // const Cta = [
+    //   {
+    //     textred: service?.ctaSection?.titleRed,
+    //     text: service?.ctaSection?.title,
+    //     subhead: service?.ctaSection?.description,
+    //   },
+    // ];
 
-  //   const Faq = [
-  //     ...service?.faqSection?.items.map((item) => ({
-  //       title: item.question,
-  //       description: item.answer,
-  //     })),
-  //   ];
+    // const Faq = [
+    //   ...service?.faqSection?.items.map((item) => ({
+    //     title: item.question,
+    //     description: item.answer,
+    //   })),
+    // ];
 
-  //   const workSvgsData = [
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech1.svg",
-  //       alt: "React js",
-  //       text: "React js",
-  //       width: "26",
-  //       height: "26",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech2.svg",
-  //       alt: "icNext.json",
-  //       text: "Next.js",
-  //       width: "21",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech3.svg",
-  //       alt: "Angular.js",
-  //       text: "Angular.js",
-  //       width: "36",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech4.svg",
-  //       alt: "vue.js",
-  //       text: "vue.js",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech5.svg",
-  //       alt: "Python",
-  //       text: "Python",
-  //       width: "27",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech6.svg",
-  //       alt: "node.js",
-  //       text: "node.js",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech7.svg",
-  //       alt: "icon",
-  //       text: "php",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech8.svg",
-  //       alt: "icon",
-  //       text: "Laravel",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech9.svg",
-  //       alt: "icon",
-  //       text: "Mongo db",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech10.svg",
-  //       alt: "icon",
-  //       text: "mysql",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech11.svg",
-  //       alt: "icon",
-  //       text: "Strapi",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech12.svg",
-  //       alt: "icon",
-  //       text: "WordPress",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech13.svg",
-  //       alt: "icon",
-  //       text: "Drupal",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //     {
-  //       icon: "../assets/services/wdd-custom-web-development/tech14.svg",
-  //       alt: "icon",
-  //       text: "Joomla",
-  //       width: "28",
-  //       height: "28",
-  //     },
-  //   ];
+    // const workSvgsData = [
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech1.svg",
+    //     alt: "React js",
+    //     text: "React js",
+    //     width: "26",
+    //     height: "26",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech2.svg",
+    //     alt: "icNext.json",
+    //     text: "Next.js",
+    //     width: "21",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech3.svg",
+    //     alt: "Angular.js",
+    //     text: "Angular.js",
+    //     width: "36",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech4.svg",
+    //     alt: "vue.js",
+    //     text: "vue.js",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech5.svg",
+    //     alt: "Python",
+    //     text: "Python",
+    //     width: "27",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech6.svg",
+    //     alt: "node.js",
+    //     text: "node.js",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech7.svg",
+    //     alt: "icon",
+    //     text: "php",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech8.svg",
+    //     alt: "icon",
+    //     text: "Laravel",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech9.svg",
+    //     alt: "icon",
+    //     text: "Mongo db",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech10.svg",
+    //     alt: "icon",
+    //     text: "mysql",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech11.svg",
+    //     alt: "icon",
+    //     text: "Strapi",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech12.svg",
+    //     alt: "icon",
+    //     text: "WordPress",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech13.svg",
+    //     alt: "icon",
+    //     text: "Drupal",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    //   {
+    //     icon: "../assets/services/wdd-custom-web-development/tech14.svg",
+    //     alt: "icon",
+    //     text: "Joomla",
+    //     width: "28",
+    //     height: "28",
+    //   },
+    // ];
 
   return (
     <div>
@@ -293,7 +293,7 @@ const page = async () => {
           dangerouslySetInnerHTML={{ __html: service.seo.schema }}
         />
       )} */}
-      <HeroSection data={data.firstSection} />
+      <HeroSection data={data.firstSection}  />
       <TitleDesc data={data.secondSection} />
       <Approach data={data.thirdSection} />
       <WhyMatters data={data.fourthSection} />
