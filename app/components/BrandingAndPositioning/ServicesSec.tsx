@@ -79,7 +79,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               viewport={{ once: true }}
               className="title-60   text-[length:var(--text-60-sm)] text-[60px] tracking-[-0.025em]"
             >
-              {description}
+              {toSentenceCase(description)}
             </motion.h2>
           </div>
 
@@ -111,7 +111,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                           />
                         </div>
                         <h3 className="text-28 leading-[1.2142] tracking-[-0.025em]">
-                          {service.title}
+                          {toSentenceCase(service.title)}
                         </h3>
                       </div>
                       <p className="text-14 md:text-16 xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
