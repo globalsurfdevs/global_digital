@@ -92,7 +92,10 @@ const menuGroups = [
         route: "/admin/enquiry",
       },
       {
-        icon: <GiLeadPipe />,
+        icon: (
+          <GiLeadPipe />
+
+        ),
         label: "Leads",
         route: "/admin/lead",
       },
@@ -187,7 +190,10 @@ const menuGroups = [
       {
         icon: <FaIndustry />,
         label: "Industries",
-        route: "/admin/industries",
+        route: "#",
+        children: [{ label: "Landing Page", route: "/admin/industries/landing" },
+        { label: "Items", route: "/admin/industries" }
+        ],
       },
       {
         icon: <FaServicestack />,
