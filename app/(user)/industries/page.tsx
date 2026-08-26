@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     const seo = industry.seo;
-    const canonicalUrl = `https://www.globalsurf.ae/industry`;
+    const canonicalUrl = `https://www.globalsurf.ae/industries`;
 
     return {
         title: seo?.metaTitle ?? industry.firstSection.title,

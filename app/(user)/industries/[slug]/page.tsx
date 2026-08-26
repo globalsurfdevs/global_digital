@@ -41,7 +41,7 @@ export async function generateMetadata({
   }
 
   const seo = industry.seo;
-  const canonicalUrl = `https://www.globalsurf.ae/industry/${industry.slug}`;
+  const canonicalUrl = `https://www.globalsurf.ae/industries/${industry.slug}`;
 
   return {
     title: seo?.metaTitle ?? industry.name,
@@ -77,7 +77,7 @@ export async function generateMetadata({
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const industryData: IndustryItem = await getIndustry(slug);
-  console.log("industryData", industryData);
+  // console.log("industryData", industryData);
   const allIndustryData: IndustryItem[] = (await getAllIndustry()) || [];
 
   // Guard: if the primary data fetch failed/returned nothing, don't crash on the rest.
