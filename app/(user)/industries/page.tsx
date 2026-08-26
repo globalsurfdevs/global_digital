@@ -68,7 +68,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 const page = async () => {
     const industry: IndustryLandingPageType = await getIndustryLandingPage();
-
+  
     const allIndustry = await getAllIndustry()
 
     // const Clientsformsdata = industry.caseStudySection?.items.map((item, index) => (
@@ -106,7 +106,8 @@ const page = async () => {
             subhead: industry?.ctaSection?.description,
         },
     ];
-
+    
+    
     return (
         <div>
             <HeroSection data={industry.firstSection} />
@@ -117,6 +118,7 @@ const page = async () => {
             <GetInTouch
                 data={Cta}
                 ctabbutton={industry?.ctaSection.buttonText}
+                buttonLink={industry?.ctaSection.buttonLink}
                 redfirst
                 page="service"
             />

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 type Sector = {
     name: string;
@@ -153,7 +154,7 @@ const SectorsWeWorkWith = ({ data,allIndustry }: any) => {
                 >
                     <h3 className="title-60 text-[length:var(--text-60-sm)]">
                         {/* Seven Sectors One Agency */}
-                        {data.lastCardTitle}
+                        {totitleSentenceCase(data.lastCardTitle)}
                     </h3>
                     <p className="max-w-[42ch] text-28 leading-[1.214285714285714]">
                         {/* We combine strategy, creativity, technology, and
