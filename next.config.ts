@@ -118,6 +118,11 @@ const nextConfig: NextConfig = {
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
+        source: "/industry", // The old URL path
+        destination: "/industries", // The new URL path
+        permanent: true, // Set to true for 301 (permanent) redirect
+      },
+      {
         source: "/industry/ecommerce", // The old URL path
         destination: "/industry/ecommerce-digital-marketing", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
