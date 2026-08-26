@@ -48,7 +48,7 @@ function SectorCard({
             onMouseLeave={onLeave}
             className="h-full overflow-hidden rounded-[10px]"
         >
-            <Link href={`/industry/${sector.slug}`} className="group flex h-full flex-col bg-[#F6F6F6]">
+            <Link href={`/industries/${sector.slug}`} className="group flex h-full flex-col bg-[#F6F6F6]">
                 <div className="relative h-[268px] w-full shrink-0 overflow-hidden rounded-b-[10px]">
                     <Image
                         src={sector.image}
