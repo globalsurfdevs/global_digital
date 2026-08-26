@@ -77,9 +77,8 @@ export async function generateMetadata({
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const industryData: IndustryItem = await getIndustry(slug);
-  // console.log("industryData", industryData.seventhSection);
+  console.log("industryData", industryData);
   const allIndustryData: IndustryItem[] = (await getAllIndustry()) || [];
-  
 
   // Guard: if the primary data fetch failed/returned nothing, don't crash on the rest.
   if (!industryData) {
@@ -268,47 +267,55 @@ const page = async ({ params }: PageProps) => {
           dangerouslySetInnerHTML={{ __html: industryData.seo.schema }}
         />
       )}
-      {industryData?.firstSection && (
-        <HeroSection data={industryData.firstSection} />
-      )}
-      {industryData?.secondSection && (
-        <TitleDesc data={industryData.secondSection} />
-      )}
+      {industryData?.firstSection &&
+        industryData.firstSection.showSection !== false && (
+          <HeroSection data={industryData.firstSection} />
+        )}
+      {industryData?.secondSection &&
+        industryData.secondSection.showSection !== false && (
+          <TitleDesc data={industryData.secondSection} />
+        )}
       {/* <ImgDesc data={industryData.thirdSection} /> */}
       {/* <GrayParaSec data={industryData.fourthSection} /> */}
-      {servicesData.items.length > 0 && (
-        <ServicesListSec
-          title={servicesData.title}
-          description={servicesData.subtitle}
-          items={servicesData.items}
-        />
-      )}
+      {industryData?.thirdSection?.showSection !== false &&
+        servicesData.items.length > 0 && (
+          <ServicesListSec
+            title={servicesData.title}
+            description={servicesData.subtitle}
+            items={servicesData.items}
+          />
+        )}
       {/* <ProcessSlider data={industryData.sixthSection} />
       <BECS data={industryData.seventhSection} /> */}
-      {whatYouGetData.data.length > 0 && (
-        <BlackInfoGrid
-          title={whatYouGetData.title}
-          subTitle={whatYouGetData.subTitle}
-          description={whatYouGetData.description}
-          data={whatYouGetData.data}
-          bgcolor="bg-black"
-          maxchwidth={50}
-          colcount={3}
-        />
-      )}
+      {industryData?.fourthSection?.showSection !== false &&
+        whatYouGetData.data.length > 0 && (
+          <BlackInfoGrid
+            title={whatYouGetData.title}
+            subTitle={whatYouGetData.subTitle}
+            description={whatYouGetData.description}
+            data={whatYouGetData.data}
+            bgcolor="bg-black"
+            maxchwidth={50}
+            colcount={3}
+          />
+        )}
       {/* {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
       <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
         <ButtonSlider data={industryData.tenthSection} />
       </section> */}
-      {howWeDo.items.length > 0 && <HowWeDo data={howWeDo} />}
-      {whyChooseData.items.length > 0 && <WhyChoose data={whyChooseData} />}
-      {whoWeWorkData.items.length > 0 && <WhoWeWork data={whoWeWorkData} />}
+      {industryData?.fifthSection?.showSection !== false &&
+        howWeDo.items.length > 0 && <HowWeDo data={howWeDo} />}
+      {industryData?.sixthSection?.showSection !== false &&
+        whyChooseData.items.length > 0 && <WhyChoose data={whyChooseData} />}
+      {industryData?.seventhSection?.showSection !== false &&
+        whoWeWorkData.items.length > 0 && <WhoWeWork data={whoWeWorkData} />}
       {/* {industryExperienceResultsData.items.length > 0 && (
                 <ExperienceResult data={industryExperienceResultsData} />
             )} */}
-      {industriesData.items.length > 0 && (
-        <IndustriesSec data={industriesData} />
-      )}
+      {industryData?.ninethSection?.showSection !== false &&
+        industriesData.items.length > 0 && (
+          <IndustriesSec data={industriesData} />
+        )}
       {/* {caseStudiesData.items.length > 0 && (
         <CaseSudiesSec data={caseStudiesData} />
       )} */}
@@ -318,15 +325,16 @@ const page = async ({ params }: PageProps) => {
         bottomText={false}
         reviews={false}
       /> */}
-      {industryData?.ctaSection && (
-        <GetInTouch
-          data={Cta}
-          ctabbutton={industryData.ctaSection.buttonText}
-          redlast
-          buttonLink={industryData.ctaSection.buttonLink}
-        />
-      )}
-      {Faq.length > 0 && (
+      {industryData?.ctaSection &&
+        industryData.ctaSection.showSection !== false && (
+          <GetInTouch
+            data={Cta}
+            ctabbutton={industryData.ctaSection.buttonText}
+            redlast
+            buttonLink={industryData.ctaSection.buttonLink}
+          />
+        )}
+      {industryData?.faqSection?.showSection !== false && Faq.length > 0 && (
         <FAQ
           data={Faq}
           initialCount={3}
