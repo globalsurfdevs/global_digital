@@ -180,12 +180,16 @@ const AccordionSection = ({
   children: React.ReactNode;
 }) => {
   const isOpen = openSection === sectionKey;
-
+//
   return (
-    <AdminItemContainer>
-      <Label main isOpen={isOpen ? "open" : ""}>
-        <div className="flex w-full justify-between">
+     <AdminItemContainer>
+      <div
+        className="cursor-pointer"
+        onClick={() => setOpenSection(isOpen ? null : sectionKey)}
+      >
+        <div className="flex w-full items-center justify-between">
           <div>{title}</div>
+
           <div className="flex items-center gap-4 pr-5">
             <button
               type="button"
@@ -201,19 +205,15 @@ const AccordionSection = ({
             >
               {showSection ? "Shown" : "Hidden"}
             </button>
-            <button
-              type="button"
-              onClick={() => setOpenSection(isOpen ? null : sectionKey)}
-              className="flex items-center justify-between"
-              aria-label={`${isOpen ? "Collapse" : "Expand"} ${title}`}
-            >
-              <FiChevronDown
-                className={`text-xl transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-              />
-            </button>
+
+            <FiChevronDown
+              className={`text-xl transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
           </div>
         </div>
-      </Label>
+      </div>
 
       {isOpen && <div className="pt-3">{children}</div>}
     </AdminItemContainer>
