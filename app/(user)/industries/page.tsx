@@ -68,7 +68,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 const page = async () => {
     const industry: IndustryLandingPageType = await getIndustryLandingPage();
-    console.log('industry landing',industry)
+  
     const allIndustry = await getAllIndustry()
 
     // const Clientsformsdata = industry.caseStudySection?.items.map((item, index) => (
