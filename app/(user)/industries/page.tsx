@@ -40,12 +40,12 @@ export async function generateMetadata(): Promise<Metadata> {
         title: seo?.metaTitle ?? industry.firstSection.title,
         description: seo?.metaDescription ?? "",
         robots: {
-            index: false,
-            follow: false,
-            nocache: false,
+            index: true,
+            follow: true,
+            nocache: true,
             googleBot: {
-                index: false,
-                follow: false,
+                index: true,
+                follow: true,
             },
         },
         alternates: {
