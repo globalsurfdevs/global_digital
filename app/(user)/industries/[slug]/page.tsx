@@ -47,12 +47,12 @@ export async function generateMetadata({
     title: seo?.metaTitle ?? industry.name,
     description: seo?.metaDescription ?? "",
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       nocache: true,
       googleBot: {
-        index: false,
-        follow: false,
+        index: true,
+        follow: true,
       },
     },
     alternates: {

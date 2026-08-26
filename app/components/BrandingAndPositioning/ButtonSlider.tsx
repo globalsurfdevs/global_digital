@@ -127,6 +127,7 @@ import Image from "next/image";
 import { ServiceItem } from "@/app/(user)/[slug]/type";
 import { moveUp } from "../animations/motionVariants";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -141,11 +142,11 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
     window.addEventListener("resize", updateContainerLeft);
     return () => window.removeEventListener("resize", updateContainerLeft);
   }, []);
-
-    const REPEAT = 2;
-    const items = data.serviceIndustries;
-    const loopItems = Array.from({ length: REPEAT }, () => items).flat();
-    const resetThreshold = items.length * (REPEAT - 1);
+  console.log("data.serviceIndustries", data.serviceIndustries);
+  const REPEAT = 2;
+  const items = data.serviceIndustries;
+  const loopItems = Array.from({ length: REPEAT }, () => items).flat();
+  const resetThreshold = items.length * (REPEAT - 1);
   return (
     <div>
       <div className="container" ref={containerRef}></div>
@@ -178,6 +179,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
           className="flex-1 cursor-grab overflow-hidden"
         >
           <Swiper
+          
             modules={[Autoplay]}
             slidesPerView="auto"
             slidesPerGroup={1}
@@ -203,8 +205,8 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
           >
             {loopItems.map((item, index) => {
               const content = (
-                <button
-                  type="button"
+                <Link
+                  href={item.page ? `/industries/${item.page}` : "#"}
                   className={`${
                     item.page ? "cursor-pointer" : "cursor-default"
                   } flex items-center gap-[14px] whitespace-nowrap rounded-full border border-black/10 px-4 py-2 hover:bg-primary/15 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px]`}
@@ -216,12 +218,12 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
                     height={36}
                     className="h-auto w-5 object-contain xl:w-[36px]"
                   />
+
                   <span className="text-28 leading-[1.214285714285714]">
                     {item.title}
                   </span>
-                </button>
+                </Link>
               );
-
               return (
                 <SwiperSlide key={index} className="!w-auto">
                   {content}

@@ -8,6 +8,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
+import { getAllIndustry } from "@/app/lib/industry.service";
 
 const images = [
   {
@@ -15,21 +16,21 @@ const images = [
     src: "/assets/industry_icons/1.svg",
     title: "Construction",
     desc: "Digital credibility and qualified project enquiry generation for contractors, developers, and EPC firms. ",
-    link: "/industry/construction",
+    link: "/industries/construction-digital-marketing",
   },
   {
     // src: assets.b2b1,
     src: "/assets/industry_icons/2.svg",
     title: "Engineering and infrastructure",
     desc: "B2B SEO, thought leadership content, and LinkedIn presence for engineering consultancies that need to be visible and credible.",
-    link: "/industry/b2b-digital-marketing-services",
+    link: "/industries/engineering-infrastructure-digital-marketing",
   },
   {
     // src: assets.real1,
     src: "/assets/industry_icons/3.svg",
     title: "Real estate and property development",
     desc: "Full lifecycle digital marketing for UAE property developers, from project launch brand building through to buyer acquisition campaigns. ",
-    link: "",
+    link: "/industries/real-estate-property-developers-digital-marketing",
   },
 
   {
@@ -37,28 +38,28 @@ const images = [
     src: "/assets/industry_icons/4.svg",
     title: "Industrial ",
     desc: "Supplier discovery SEO, LinkedIn Ads, and technical content for industrial equipment and services firms. ",
-    link: "",
+    link: "/industries/industrial-digital-marketing",
   },
   {
     // src: assets.ecommerce1,
     src: "/assets/industry_icons/5.svg",
     title: "Manufacturing ",
     desc: "B2B lead generation, export market visibility, and direct-to-consumer channel support for UAE and GCC manufacturers. ",
-    link: "/industry/ecommerce-digital-marketing",
+    link: "/industries/manufacturing-digital-marketing",
   },
   {
     // src: assets.hospitality1,
     src: "/assets/industry_icons/6.svg",
     title: "Lifestyle and retail",
     desc: "Performance marketing, social media, and brand strategy for UAE consumer brands across fashion, retail, and lifestyle categories. ",
-    link: "/industry/digital-marketing-agency-for-hospitality",
+    link: "/industries/lifestyle-retail-digital-marketing",
   },
   {
     // src: assets.education1,
     src: "/assets/industry_icons/7.svg",
     title: "Education",
     desc: "Digital marketing for UAE universities, schools, and training providers, focused on brand visibility and student recruitment. ",
-    link: "",
+    link: "/industries/education-digital-marketing",
   },
   // {
   //   src: assets.hospitality1,
