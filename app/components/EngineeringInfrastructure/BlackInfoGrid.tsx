@@ -1,4 +1,5 @@
 "use client";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -80,7 +81,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
               {title1 && (
                 <Link href="">
                   <h2 className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
-                    {title1}
+                    {totitleSentenceCase(title1)}
                   </h2>
                 </Link>
               )}

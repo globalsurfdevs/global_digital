@@ -18,6 +18,8 @@ type PartnerListProps = {
   data: PartnerDataType[];
   page?: string;
   buttonLink?: string;
+  redfirst?:boolean;
+
 };
 
 const GetInTouch: React.FC<PartnerListProps> = ({
@@ -25,8 +27,9 @@ const GetInTouch: React.FC<PartnerListProps> = ({
   ctabbutton,
   bgcolor,
   redlast,
-  page,
   buttonLink,
+  redfirst,
+  page
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -73,10 +76,18 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                 {data.map((item, index) =>
                   redlast ? (
                     <h2
-                      className={`text-60 text-[length:var(--text-60-sm)] leading-[1.083]`}
+                      className="text-60 text-[length:var(--text-60-sm)] leading-[1.083]"
                       key={index}
                       dangerouslySetInnerHTML={{
-                        __html: `<span class='${bgcolor ? `text-black` : ""}'>${item.text}</span> <span class="text-primary">${item.textred}</span>`,
+                        __html: `<span class='${bgcolor ? "text-black" : ""}'>${item.text}</span> <span class="text-primary">${item.textred}</span>`,
+                      }}
+                    />
+                  ) : redfirst ? (
+                    <h2
+                      className="text-60 text-[length:var(--text-60-sm)] leading-[1.083]"
+                      key={index}
+                      dangerouslySetInnerHTML={{
+                        __html: `<span class="text-primary">${item.textred}</span> <span class='${bgcolor ? "text-black" : ""}'>${item.text}</span>`,
                       }}
                     />
                   ) : (
@@ -84,7 +95,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                       className="title-65 capitalize leading-[1.15]"
                       key={index}
                       dangerouslySetInnerHTML={{
-                        __html: `<span class="text-primary">${item.textred}</span><span class='${bgcolor ? `text-black` : ""}'>${item.text}</span>`,
+                        __html: `<span class="text-primary">${item.textred}</span><span class='${bgcolor ? "text-black" : ""}'>${item.text}</span>`,
                       }}
                     />
                   ),
@@ -117,6 +128,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                   className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 ${
                     bgcolor ? "text-black" : "text-white"
                   } transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
+ 
                 >
                   <span className="uppercase duration-300 ease-in group-hover:text-black">
                     {buttonLink ? (

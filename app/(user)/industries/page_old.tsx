@@ -86,17 +86,8 @@ const page = () => {
         maxchwidth={28}
         maxtextwidth={61}
       />
-      <Industydetail
-        title={IndustriesWeServe.title}
-        data={IndustriesWeServe.data}
-        subttle={IndustriesWeServe.subttle}
-      />
-      <GetInTouch
-        data={Cta}
-        redlast={false}
-        bgcolor="#F2F2F2"
-        ctabbutton={"Start the conversation"}
-      />
+      <Industydetail title={IndustriesWeServe.title} data={IndustriesWeServe.data} subttle={IndustriesWeServe.subttle}/>
+      <GetInTouch data={Cta} redlast={false} bgcolor="#F2F2F2" ctabbutton={"Start the conversation"} />
     </div>
   );
 };

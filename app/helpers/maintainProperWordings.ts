@@ -80,8 +80,10 @@ const PROPER_NOUNS: Record<string, string> = {
   dubai: "Dubai",
   "gs digital": "GS Digital",
   "global surf digital": "Global Surf Digital",
+  ios: "iOS",
+  "app store": "App Store",
+  "google play": "Google Play",
 };
- 
 
 // Splits text into segments, alternating between non-anchor text and
 // full <a ...>...</a> blocks (tag + attributes + inner text, as one piece).

@@ -13,7 +13,7 @@ import AdminItemContainer from "@/app/components/common/AdminItemContainer";
 import SeoFields from "@/app/components/common/SeoFields";
 import { SeoFormValues } from "@/app/types/seo";
 import { GiConfirmed } from "react-icons/gi";
-import { TbReorder } from "react-icons/tb";
+import { TbClockHour11, TbReorder } from "react-icons/tb";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import { closestCorners, DndContext, DragEndEvent } from "@dnd-kit/core";
 import {
@@ -40,12 +40,14 @@ export interface IndustryFormProps {
       title: string;
       link: string;
     }[];
+    showSection?: boolean;
   };
 
   secondSection: {
     title: string;
     subTitle: string;
     description: string;
+    showSection?: boolean;
   };
 
   thirdSection: {
@@ -58,6 +60,7 @@ export interface IndustryFormProps {
       imageAlt: string;
       description: string;
     }[];
+    showSection?: boolean;
   };
 
   fourthSection: {
@@ -68,6 +71,7 @@ export interface IndustryFormProps {
       title: string;
       description: string;
     }[];
+    showSection?: boolean;
   };
 
   fifthSection: {
@@ -81,6 +85,7 @@ export interface IndustryFormProps {
       title: string;
       description: string;
     }[];
+    showSection?: boolean;
   };
 
   sixthSection: {
@@ -93,6 +98,7 @@ export interface IndustryFormProps {
       number: string;
       value: string;
     }[];
+    showSection?: boolean;
   };
 
   seventhSection: {
@@ -104,8 +110,9 @@ export interface IndustryFormProps {
       image: string;
       imageAlt: string;
       title: string;
-      description:string;
+      description: string;
     }[];
+    showSection?: boolean;
     // NOTE: top-level `logo` / `logoAlt` in the old interface were never
     // actually registered anywhere in the JSX — removed as dead fields.
     // Re-add them here if the API/schema still expects them at this level.
@@ -123,6 +130,7 @@ export interface IndustryFormProps {
       description: string;
       isPrimary: boolean;
     }[];
+    showSection?: boolean;
   };
 
   ninethSection: {
@@ -131,6 +139,7 @@ export interface IndustryFormProps {
     logo: string;
     logoAlt: string;
     // no items array — Ninth Section has no useFieldArray in the JSX
+    showSection?: boolean;
   };
 
   ctaSection: {
@@ -139,6 +148,7 @@ export interface IndustryFormProps {
     description: string;
     buttonText: string;
     buttonLink: string;
+    showSection?: boolean;
   };
 
   faqSection: {
@@ -147,6 +157,7 @@ export interface IndustryFormProps {
       question: string;
       answer: string;
     }[];
+    showSection?: boolean;
   };
 }
 
@@ -156,12 +167,16 @@ const AccordionSection = ({
   sectionKey,
   openSection,
   setOpenSection,
+  showSection,
+  onToggle,
   children,
 }: {
   title: string;
   sectionKey: string;
   openSection: string | null;
   setOpenSection: (key: string | null) => void;
+  showSection: boolean;
+  onToggle: () => void;
   children: React.ReactNode;
 }) => {
   const isOpen = openSection === sectionKey;
@@ -171,15 +186,32 @@ const AccordionSection = ({
       <Label main isOpen={isOpen ? "open" : ""}>
         <div className="flex w-full justify-between">
           <div>{title}</div>
-          <button
-            type="button"
-            onClick={() => setOpenSection(isOpen ? null : sectionKey)}
-            className="flex items-center justify-between pr-5"
-          >
-            <FiChevronDown
-              className={`text-xl transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-            />
-          </button>
+          <div className="flex items-center gap-4 pr-5">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                onToggle();
+              }}
+              className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                showSection
+                  ? "bg-green-100 text-green-500"
+                  : "bg-gray-200 text-red-500"
+              }`}
+            >
+              {showSection ? "Shown" : "Hidden"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpenSection(isOpen ? null : sectionKey)}
+              className="flex items-center justify-between"
+              aria-label={`${isOpen ? "Collapse" : "Expand"} ${title}`}
+            >
+              <FiChevronDown
+                className={`text-xl transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+          </div>
         </div>
       </Label>
 
@@ -347,11 +379,38 @@ const IndiIndustryPage = () => {
     }
   };
 
+  const handleToggleSection = async (sectionKey: keyof IndustryFormProps) => {
+    const currentValue = watch(`${sectionKey}.showSection` as any);
+    const nextValue = currentValue !== false;
+
+    try {
+      const response = await fetch(`/api/industry?slug=${slug}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          [`${sectionKey}.showSection`]: !nextValue,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.message ?? "Failed to update section visibility");
+        return;
+      }
+
+      setValue(`${sectionKey}.showSection` as any, !nextValue);
+    } catch (error) {
+      console.error("Error updating section visibility", error);
+      alert("Failed to update section visibility");
+    }
+  };
+
   const fetchIndustryData = async () => {
     try {
       const response = await fetch(`/api/industry?slug=${slug}`);
       if (response.ok) {
         const data = await response.json();
+        console.log("Fetched industry data:", data);
         setValue("seo", data.data?.seo);
 
         setValue("firstSection", data.data?.firstSection);
@@ -425,6 +484,8 @@ const IndiIndustryPage = () => {
           sectionKey="firstSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("firstSection.showSection") !== false}
+          onToggle={() => handleToggleSection("firstSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -604,6 +665,8 @@ const IndiIndustryPage = () => {
           sectionKey="secondSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("secondSection.showSection") !== false}
+          onToggle={() => handleToggleSection("secondSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -645,6 +708,8 @@ const IndiIndustryPage = () => {
           sectionKey="thirdSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("thirdSection.showSection") !== false}
+          onToggle={() => handleToggleSection("thirdSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -817,6 +882,8 @@ const IndiIndustryPage = () => {
           sectionKey="fourthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("fourthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("fourthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -943,6 +1010,8 @@ const IndiIndustryPage = () => {
           sectionKey="fifthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("fifthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("fifthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1102,6 +1171,8 @@ const IndiIndustryPage = () => {
           sectionKey="sixthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("sixthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("sixthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1228,6 +1299,8 @@ const IndiIndustryPage = () => {
           sectionKey="seventhSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("seventhSection.showSection") !== false}
+          onToggle={() => handleToggleSection("seventhSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1353,7 +1426,6 @@ const IndiIndustryPage = () => {
                                 />
                                 {/* {errors.seventhSection?.items?.[index]?.title && <p className='text-red-500'>{errors.seventhSection?.items?.[index]?.title.message}</p>} */}
                               </div>
-
                             </div>
                           </>
                         )}
@@ -1367,7 +1439,12 @@ const IndiIndustryPage = () => {
                   type="button"
                   addItem
                   onClick={() =>
-                    seventhSectionAppend({ title: "", description:"", imageAlt: "", image: "" })
+                    seventhSectionAppend({
+                      title: "",
+                      description: "",
+                      imageAlt: "",
+                      image: "",
+                    })
                   }
                 >
                   Add Item
@@ -1383,6 +1460,8 @@ const IndiIndustryPage = () => {
           sectionKey="eighthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("eighthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("eighthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1553,6 +1632,8 @@ const IndiIndustryPage = () => {
           sectionKey="ninethSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("ninethSection.showSection") !== false}
+          onToggle={() => handleToggleSection("ninethSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1616,6 +1697,8 @@ const IndiIndustryPage = () => {
           sectionKey="ctaSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("ctaSection.showSection") !== false}
+          onToggle={() => handleToggleSection("ctaSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1677,6 +1760,8 @@ const IndiIndustryPage = () => {
           sectionKey="faqSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("faqSection.showSection") !== false}
+          onToggle={() => handleToggleSection("faqSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">

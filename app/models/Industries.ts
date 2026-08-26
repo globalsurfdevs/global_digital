@@ -12,6 +12,15 @@ const industriesItemSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    image: {
+      type: String,
+    },
+    imageAlt: {
+      type: String,
+    },
+    shortDescription: {
+      type: String,
+    },
     seo: {
       type: seoSchema,
     },
@@ -40,6 +49,10 @@ const industriesItemSchema = new mongoose.Schema(
           link: { type: String },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     secondSection: {
       title: {
@@ -50,6 +63,10 @@ const industriesItemSchema = new mongoose.Schema(
       },
       description: {
         type: String,
+      },
+      showSection: {
+        type: Boolean,
+        default: true,
       },
     },
     thirdSection: {
@@ -68,6 +85,10 @@ const industriesItemSchema = new mongoose.Schema(
           link: { type: String },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     fourthSection: {
       title: {
@@ -85,6 +106,10 @@ const industriesItemSchema = new mongoose.Schema(
           description: { type: String },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     fifthSection: {
       title: {
@@ -101,6 +126,10 @@ const industriesItemSchema = new mongoose.Schema(
           description: { type: String },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     sixthSection: {
       title: {
@@ -118,6 +147,10 @@ const industriesItemSchema = new mongoose.Schema(
           value: { type: String },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     seventhSection: {
       title: {
@@ -134,6 +167,10 @@ const industriesItemSchema = new mongoose.Schema(
           description: { type: String },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     eighthSection: {
       title: {
@@ -149,6 +186,10 @@ const industriesItemSchema = new mongoose.Schema(
           isPrimary: { type: Boolean, default: false },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     ninethSection: {
       title: {
@@ -162,6 +203,10 @@ const industriesItemSchema = new mongoose.Schema(
       },
       logoAlt: {
         type: String,
+      },
+      showSection: {
+        type: Boolean,
+        default: true,
       },
     },
     ctaSection: {
@@ -180,6 +225,10 @@ const industriesItemSchema = new mongoose.Schema(
       buttonLink: {
         type: String,
       },
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
     faqSection: {
       title: {
@@ -191,6 +240,10 @@ const industriesItemSchema = new mongoose.Schema(
           answer: { type: String },
         },
       ],
+      showSection: {
+        type: Boolean,
+        default: true,
+      },
     },
   },
   { timestamps: true },

@@ -32,6 +32,7 @@ import { Metadata } from "next";
 import WorkIn from "@/app/components/common/WorkIn";
 import CaseStudyNew from "@/app/components/BrandingAndPositioning/CaseStudyNew";
 import { assets } from "@/public/assets/assets";
+import { notFound } from "next/navigation";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -98,6 +99,8 @@ const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const service: ServiceItem = await getService(slug);
 
+  if(!service) notFound();
+
   const testimonials = await getTestimonials();
 
   const servicesData = {
@@ -153,54 +156,6 @@ const page = async ({ params }: PageProps) => {
       ...item,
     })),
   };
-
-  // const Clientsformsdata = [
-  //   {
-  //     id: 1,
-  //     image: assets.slider1,
-  //     title: "How Assent steel achieved 2X traffic growth ",
-  //     btntext: "Read the Full Case Study",
-  //     btnurl: "https://www.globalsurf.ae/case-study/assent-steel",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: assets.slider2,
-  //     title: "Strategic Website Revamp for Innovo group",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/innovo-group",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: assets.slider3,
-  //     title: "Digital Launchpad: New Website for Shoba Construction",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/sobha-constructions",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: assets.slider4,
-  //     title: "Full-Funnel Growth: Digital Marketing for ASGC Group",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/asgc",
-  //   },
-  //   {
-  //     id: 5,
-  //     image: assets.slider5,
-  //     title: "SEO-Driven Growth: 90% Organic Traffic Boost for BEC Arabia",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/bec-arabia",
-  //   },
-  // ];
-
-  // const Clientsformsdata = service.caseStudySection?.items.map((item, index) => (
-  //   {
-  //     id: index + 1,
-  //     image: item.image,
-  //     title: item.title,
-  //     btntext: item.project.section == "case study" || item.project.section == "case study new" ? "Read the Full Case Study" : "Check portfolio page",
-  //     btnurl: item.project.section == "case study" || item.project.section == "case study new" ? `https://www.globalsurf.ae/case-study/${item.project.slug}` : `https://www.globalsurf.ae/portfolio/${item.project.slug}`,
-  //   }
-  // ))
 
   const Cta = [
     {
