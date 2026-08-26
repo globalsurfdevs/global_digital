@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
-import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
+import { toSentenceCase, totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -79,7 +79,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
               viewport={{ once: true }}
               className="title-60 text-[length:var(--text-60-sm)] tracking-[-0.025em]"
             >
-              {description}
+              {totitleSentenceCase(description)}
             </motion.h2>
           </div>
 
@@ -111,7 +111,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                           />
                         </div>
                         <h3 className="text-28 leading-[1.2142] tracking-[-0.025em]">
-                          {service.title}
+                          {totitleSentenceCase(service.title)}
                         </h3>
                       </div>
                       <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
@@ -130,9 +130,7 @@ const ServicesSec = ({ title, description, items }: ServicesSecProps) => {
                             className="h-10 w-10 object-contain xl:h-auto xl:w-auto xxl:h-[70px] xxl:w-[70px]"
                           />
                         </div>
-                        <h3 className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-default">
-                          {service.title}
-                        </h3>
+                        <h3 className="text-28 leading-[1.2142] tracking-[-0.025em] cursor-default"  dangerouslySetInnerHTML={{ __html: totitleSentenceCase(service.title) }} />
                       </div>
                       <p className="text-14 md:text-16 xl:text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
                         {toSentenceCase(service.description)}
