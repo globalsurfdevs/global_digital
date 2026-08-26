@@ -187,7 +187,7 @@ const AccordionSection = ({
         className="cursor-pointer"
         onClick={() => setOpenSection(isOpen ? null : sectionKey)}
       >
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full p-5 items-center justify-between">
           <div>{title}</div>
 
           <div className="flex items-center gap-4 pr-5">
