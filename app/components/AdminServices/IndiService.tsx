@@ -343,8 +343,11 @@ const IndiServicePage = () => {
 
   const handleAddService = async (data: ServiceFormProps) => {
     try {
-      const response = await fetch(`/api/service?slug=${slug}`, {
+      const response = await fetch(`/api/service-pillar/${slug}`, {
         method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
       if (response.ok) {

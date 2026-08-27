@@ -392,8 +392,6 @@ const AdminServicePillarList = () => {
   const pathname = usePathname();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
-  const [view, setView] = useState<"services" | "industries">("services");
-
   // Create modal state
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newServiceName, setNewServiceName] = useState("");
@@ -403,9 +401,9 @@ const AdminServicePillarList = () => {
 
   // Edit modal state
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editingService, setEditingService] = useState<ServiceListItem | null>(
-    null,
-  );
+  const [editingService, setEditingService] =
+    useState<ServicePillarListItem | null>(null);
+
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
   const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
@@ -449,7 +447,7 @@ const AdminServicePillarList = () => {
     setEditSlug(slugify(value));
   };
 
-  const openEditModal = (service: ServiceListItem) => {
+  const openEditModal = (service: ServicePillarListItem) => {
     setEditingService(service);
     setEditName(service.name);
     setEditSlug(service.slug);
@@ -487,6 +485,7 @@ const AdminServicePillarList = () => {
 
         if (response.ok) {
           const data = await response.json();
+
           setServicePillars(data.data);
           setTotalPages(data.totalPages);
         }
@@ -513,7 +512,7 @@ const AdminServicePillarList = () => {
     }
 
     try {
-      const response = await fetch(`/api/service/bulk-delete`, {
+      const response = await fetch(`/api/service-pillar/bulk-delete`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

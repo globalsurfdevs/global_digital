@@ -4,24 +4,23 @@ import seoSchema from "./Seo";
 
 const servicePillarSchema = new mongoose.Schema(
   {
-
     name: {
       type: String,
-    //   required: true,
+      //   required: true,
     },
 
     slug: {
       type: String,
-    //   required: true,
+      //   required: true,
       unique: true,
     },
 
     seo: {
       type: seoSchema,
-    //   required: true,
+      //   required: true,
     },
 
-    heroSection: {
+    firstSection: {
       image: {
         type: String,
       },
@@ -37,7 +36,7 @@ const servicePillarSchema = new mongoose.Schema(
       },
     },
 
-    titleDescSection: {
+    secondSection: {
       title: {
         type: String,
         // required: true,
@@ -47,7 +46,7 @@ const servicePillarSchema = new mongoose.Schema(
       },
     },
 
-    ourApproachSection: {
+    thirdSection: {
       title: {
         type: String,
         // required: true,
@@ -72,7 +71,7 @@ const servicePillarSchema = new mongoose.Schema(
       },
     },
 
-    whyMatterSection: {
+    fourthSection: {
       title: {
         type: String,
         // required: true,
@@ -85,7 +84,7 @@ const servicePillarSchema = new mongoose.Schema(
       },
     },
 
-    expertiseSection: {
+    fifthSection: {
       title: {
         type: String,
         // required: true,
@@ -101,7 +100,7 @@ const servicePillarSchema = new mongoose.Schema(
       ],
     },
 
-    BECSsection: {
+    sixthSection: {
       title: {
         type: String,
         // required: true,
@@ -120,7 +119,7 @@ const servicePillarSchema = new mongoose.Schema(
       ],
     },
 
-    whatIncludeSection: {
+    seventhSection: {
       title: {
         type: String,
         // required: true,
@@ -137,7 +136,7 @@ const servicePillarSchema = new mongoose.Schema(
       ],
     },
 
-    processSection: {
+    eighthSection: {
       title: {
         type: String,
         // required: true,
@@ -154,7 +153,7 @@ const servicePillarSchema = new mongoose.Schema(
       ],
     },
 
-    IndustriesSection: {
+    ninthSection: {
       title: {
         type: String,
         // required: true,
@@ -170,7 +169,7 @@ const servicePillarSchema = new mongoose.Schema(
       ],
     },
 
-    whyChooseSection: {
+    tenthSection: {
       title: {
         type: String,
         // required: true,
@@ -190,7 +189,7 @@ const servicePillarSchema = new mongoose.Schema(
       ],
     },
 
-    relatedServiceSections: {
+    eleventhSection: {
       title: {
         type: String,
         // required: true,
@@ -243,7 +242,7 @@ const servicePillarSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const ServicePillar =

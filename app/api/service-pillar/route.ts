@@ -142,13 +142,14 @@ export async function PUT(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const currentSlug = searchParams.get("slug");
     const body = await req.json();
-
-    if (!currentSlug) {
-      return NextResponse.json(
-        { message: "Current slug is required" },
-        { status: 400 },
-      );
-    }
+    // console.log("PUT request body:", body);
+    // console.log("PUT request body:", currentSlug);
+    // if (!currentSlug) {
+    //   return NextResponse.json(
+    //     { message: "Current slug is required" },
+    //     { status: 400 },
+    //   );
+    // }
 
     const name = body?.name?.trim();
     const newSlug = body?.slug?.trim()
@@ -175,7 +176,7 @@ export async function PUT(req: NextRequest) {
     }
 
     const updated = await ServicePillar.findOneAndUpdate(
-      { slug: currentSlug },
+      { _id: body._id }, // Use the _id from the request body to find the document
       { name, slug: newSlug },
       { new: true, runValidators: true },
     ).lean();
