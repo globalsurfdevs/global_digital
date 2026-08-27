@@ -1185,7 +1185,7 @@ const ServicePillarPage = () => {
               <Input
                 type="text"
                 placeholder="Title"
-                {...register("tenthSection.title")}
+                {...register("tenthSection.tag")}
               />
             </div>
 
@@ -1194,7 +1194,7 @@ const ServicePillarPage = () => {
               <Input
                 type="text"
                 placeholder="Sub Title"
-                {...register("tenthSection.subTitle")}
+                {...register("tenthSection.title")}
               />
             </div>
 
