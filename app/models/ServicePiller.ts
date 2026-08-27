@@ -170,11 +170,11 @@ const servicePillarSchema = new mongoose.Schema(
     },
 
     tenthSection: {
-      title: {
+      tag: {
         type: String,
         // required: true,
       },
-      subTitle: {
+      title: {
         type: String,
       },
       description: {

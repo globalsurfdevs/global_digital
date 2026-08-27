@@ -90,8 +90,8 @@ export type ServicePillarData = {
   },
 
   tenthSection: {
+    tag: string;
     title: string;
-    subTitle: string;
     description: string;
     items: {
       id: number;
