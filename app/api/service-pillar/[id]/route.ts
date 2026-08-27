@@ -45,13 +45,10 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
 
     const { id } = await params;
 
-    console.log("Received Service Pillar PATCH request for slug:", id);
+   
     const currentSlug = decodeURIComponent(id);
     const body = await request.json();
-    console.log("Received Service Pillar PATCH:", {
-      urlSlug: currentSlug,
-      bodyId: body?._id,
-    });
+  
 
     const current =
       (await ServicePillar.findOne({ slug: currentSlug })) ||
