@@ -210,6 +210,16 @@ const nextConfig: NextConfig = {
         destination: "/e-commerce-web-development-company",
         permanent: true,
       },
+      {
+        source: "/industry/b2b-digital-marketing-services",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/industry/digital-marketing-agency-for-hospitality",
+        destination: "/industries",
+        permanent: true,
+      },
     ];
   },
 };
