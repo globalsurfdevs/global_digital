@@ -14,7 +14,7 @@ export async function PATCH(
     const updated = await ServiceIndustry.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
-    });
+    });   
 
     if (!updated) {
       return NextResponse.json(

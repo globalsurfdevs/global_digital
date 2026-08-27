@@ -5,8 +5,8 @@ import { moveUp } from "../animations/motionVariants";
 import { motion } from "framer-motion";
 
 export interface WhyChooseData {
-  tag: string;
   title: string;
+  subTitle: string;
   description: string;
   items: {
     id: number;
@@ -30,7 +30,7 @@ const WhyChoose = ({ data, page }: { data: WhyChooseData; page?: string }) => {
                   viewport={{ once: true }}
                   className={`text-18 uppercase leading-[1] tracking-[-0.025em] text-muted`}
                 >
-                  {data.tag}
+                  {data.title}
                 </motion.p>
                 <div className={`h-4 w-4 bg-primary`}></div>
               </div>
@@ -40,7 +40,7 @@ const WhyChoose = ({ data, page }: { data: WhyChooseData; page?: string }) => {
                 variants={moveUp(0)}
                 viewport={{ once: true }}
                 className="title-60 max-w-[22ch] text-[length:var(--text-60-sm)] tracking-[-0.025em]"
-                dangerouslySetInnerHTML={{ __html: totitleSentenceCase(data.title) }}
+                dangerouslySetInnerHTML={{ __html: totitleSentenceCase(data.subTitle) }}
               />
             </div>
             <motion.p

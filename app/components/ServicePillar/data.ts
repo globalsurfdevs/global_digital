@@ -210,8 +210,8 @@ export const data = {
     ],
   },
   tenthSection: {
-    tag: "Why Choose GS Digital",
-    title: "GS Digital as your web & app development agency in Dubai ",
+    title: "Why Choose GS Digital",
+    subTitle: "GS Digital as your web & app development agency in Dubai ",
     description:
       "GS Digital has delivered 125+ web and app projects for UAE and GCC brands, from corporate websites to custom mobile and web applications. Our in-house team handles design, development, and ongoing support end-to-end, so the people who build your project are the same people who maintain it. ",
     items: [
