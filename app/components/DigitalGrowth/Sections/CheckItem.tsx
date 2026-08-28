@@ -144,7 +144,7 @@ const CheckItem = ({ label, index }: { label: string; index: number }) => (
     <span className="flex h-[15px] w-[15px] shrink-0 items-center justify-center  bg-primary">
       <Check size={13} strokeWidth={3} className="text-white" />
     </span>
-    <span className="text-18 fnt-lexend text-[#A3A3A3]">{label}</span>
+    <span className="text-[length:var(--text-18-sm)] fnt-lexend text-[#A3A3A3]">{label}</span>
   </motion.div>
 );
 
@@ -283,12 +283,13 @@ const GetInTouch = ({
         setSector("");
         setTimeSlot("");
         setErrors({});
+        window.location.replace("/thank-you")
       }
     });
   };
 
   return (
-    <section className="xl:pt-120 bg-black pt-[16px] text-white md:pt-20">
+    <section id="get-in-touch" className="xl:pt-120 bg-black pt-[16px] text-white md:pt-20">
       <div className="container border-b border-[#77787B] pb-[16px] md:pb-20 xl:pb-[120px]">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-10 xl:gap-16">
           <div>
@@ -297,7 +298,7 @@ const GetInTouch = ({
               whileInView="show"
               variants={moveUp(0)}
               viewport={{ once: true }}
-              className="text-60 lg:max-w-[658px] lg:leading-[65px] "
+              className="text-60 text-[length:var(--text-60-sm)] lg:max-w-[658px] lg:leading-[65px] "
             >
               {data.title}
             </motion.h2>
@@ -307,7 +308,7 @@ const GetInTouch = ({
               whileInView="show"
               variants={moveUp(0.05)}
               viewport={{ once: true }}
-              className="text-18 mt-[40px] max-w-[520px] leading-[26px] text-[#A3A3A3]"
+              className="text-[length:var(--text-18-sm)] mt-[40px] max-w-[520px] leading-[26px] text-[#A3A3A3]"
             >
               {data.description}
             </motion.p>

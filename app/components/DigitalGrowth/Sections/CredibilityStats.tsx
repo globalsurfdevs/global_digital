@@ -16,6 +16,13 @@ type Props = {
   buttonLink: string;
   stats: StatItem[];
 };
+
+const scrollToContact = () => {
+  document
+    .getElementById("get-in-touch")
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 const ArrowIcon = ({ clipId }: { clipId: string }) => (
   <svg
     width="10"
@@ -58,7 +65,7 @@ const CredibilityStats = ({ data }: { data: Props }) => {
               whileInView="show"
               variants={moveUp(0)}
               viewport={{ once: true }}
-              className="title-60"
+              className="title-60 text-[length:var(--text-60-sm)]"
             >
               {data.title}
             </motion.h2>
@@ -67,12 +74,13 @@ const CredibilityStats = ({ data }: { data: Props }) => {
               whileInView="show"
               variants={moveUp(0.1)}
               viewport={{ once: true }}
-              className="text-28 mt-10 text-white md:mt-[30px] xl:mt-[60px]"
+              className="text-25 mt-10 text-white md:mt-[30px] xl:mt-[60px]"
             >
               {data.description}
             </motion.p>
             <button
               type="button"
+              onClick={scrollToContact}
               className="group mt-[40px] flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-white transition duration-300 ease-in hover:shadow-lg"
             >
               <span className="fnt-lexend uppercase duration-300 ease-in">
@@ -100,10 +108,10 @@ const CredibilityStats = ({ data }: { data: Props }) => {
                       : ""
                   }`}
                 >
-                  <span className="text-60 block text-primary">
+                  <span className="text-60 text-[length:var(--text-60-sm)] block text-primary">
                     {stat.value}
                   </span>
-                  <p className="text-18 fnt-lexend mt-2 uppercase text-white">
+                  <p className="text-18 text-[length:var(--text-18-sm)] fnt-lexend mt-2 uppercase text-white max-w-[20ch]">
                     {stat.label}
                   </p>
                 </motion.div>
