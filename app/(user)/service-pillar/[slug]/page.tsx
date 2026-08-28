@@ -234,6 +234,58 @@ export type ServicePillarData = {
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+    const data: ServicePillarData | null = await getServicePillar(slug);
+
+
+  if (!data) {
+    return {
+      title: "Not Found",
+      description: "",
+      alternates: { canonical: "https://www.globalsurf.ae/" },
+    };
+  }
+
+  const seo = data.seo;
+  const canonicalUrl = `https://www.globalsurf.ae/${data.slug}`;
+
+  return {
+    title: seo?.metaTitle ?? data.name,
+    description: seo?.metaDescription ?? "",
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+      googleBot: {
+        index: false,
+        follow: false,
+      },
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: seo?.ogTitle ?? seo?.metaTitle ?? data.name,
+      description: seo?.ogDescription ?? seo?.metaDescription ?? "",
+      url: canonicalUrl,
+      images: seo?.ogImage ? [{ url: seo.ogImage }] : undefined,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.twitterTitle ?? seo?.metaTitle ?? data.name,
+      description: seo?.twitterDescription ?? seo?.metaDescription ?? "",
+      images: seo?.twitterImage ? [seo.twitterImage] : undefined,
+    },
+  };
+}
+
+
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const testimonials = await getTestimonials();
