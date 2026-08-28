@@ -194,14 +194,16 @@ const servicePillarSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-      items: {
+      items:[
+        {
         id: String,
         title: String,
         description: String,
         image: String,
         imageAlt: String,
         link: String,
-      },
+      }
+      ] 
     },
 
     ctaSection: {

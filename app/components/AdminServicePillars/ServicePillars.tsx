@@ -179,6 +179,16 @@ const ServicePillarPage = () => {
   });
 
   const {
+    fields: eleventhSection,
+    append: elevenSectionAppend,
+    remove: elevenSectionRemove,
+    move: eleventhSectionMove,
+  } = useFieldArray({
+    control,
+    name: "eleventhSection.items",
+  });
+
+  const {
     fields: faqSectionItems,
     append: faqSectionAppend,
     remove: faqSectionRemove,
@@ -251,9 +261,8 @@ const ServicePillarPage = () => {
         setValue("ninthSection", data.data?.ninthSection);
         setValue(
           "ninthSection.serviceIndustries",
-          (data.data?.ninthSection?.serviceIndustries ?? []).map(
-            (item: any) =>
-              typeof item === "object" && item !== null ? item._id : item,
+          (data.data?.ninthSection?.serviceIndustries ?? []).map((item: any) =>
+            typeof item === "object" && item !== null ? item._id : item,
           ),
         );
         setValue("tenthSection", data.data?.tenthSection);
@@ -261,15 +270,9 @@ const ServicePillarPage = () => {
         setValue("eleventhSection", data.data?.eleventhSection);
         setValue(
           "eleventhSection.items",
-          data.data?.eleventhSection?.items ?? {
-            id: "",
-            title: "",
-            description: "",
-            image: "",
-            imageAlt: "",
-            link: "",
-          },
+          data.data?.eleventhSection?.items ?? [],
         );
+
         setValue("ctaSection", data.data?.ctaSection);
         setValue("faqSection", data.data?.faqSection);
         setValue("faqSection.data", data.data?.faqSection?.data ?? []);
@@ -1254,13 +1257,15 @@ const ServicePillarPage = () => {
         </AccordionSection>
 
         {/* ---------------- Eleventh Section ---------------- */}
+
+        {/* ---------------- Eleventh Section ---------------- */}
         <AccordionSection
           title="Eleventh Section"
           sectionKey="eleventhSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
         >
-          <div className="flex flex-col gap-5 rounded-md p-5">
+          <div className="flex flex-col gap-2 rounded-md p-5">
             {/* Section Title */}
             <div className="flex flex-col gap-2">
               <Label className="font-bold">Title</Label>
@@ -1272,7 +1277,7 @@ const ServicePillarPage = () => {
             </div>
 
             {/* Section Description */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <Label className="font-bold">Description</Label>
               <Textarea
                 placeholder="Description"
@@ -1280,65 +1285,133 @@ const ServicePillarPage = () => {
               />
             </div>
 
-            {/* Item */}
-            <div className="rounded-md border border-black/20 p-4">
-              <div className="flex flex-col gap-5">
-                {/* Item Title */}
-                <div className="flex flex-col gap-2">
-                  <Label className="font-bold">Item Title</Label>
-                  <Input
-                    type="text"
-                    placeholder="Item Title"
-                    {...register("eleventhSection.items.title")}
-                  />
-                </div>
+            <div>
+              <div className="mb-3 flex justify-between">
+                <Label className="font-bold">Items</Label>
+                <Button
+                  className="bg-green-600 text-white"
+                  type="button"
+                  onClick={() => setReorderMode(!reorderMode)}
+                >
+                  {reorderMode ? <GiConfirmed /> : <TbReorder />}
+                </Button>
+              </div>
+              <div className="flex flex-col gap-5 rounded-md border border-black/20 p-2">
+                <DndContext
+                  collisionDetection={closestCorners}
+                  onDragEnd={createDragEndHandler(
+                    eleventhSection,
+                    eleventhSectionMove,
+                  )}
+                >
+                  <SortableContext
+                    items={eleventhSection.map((field) => field.id)}
+                    strategy={verticalListSortingStrategy}
+                  >
+                    {eleventhSection.map((field, index) => (
+                      <SortableItem
+                        key={field.id}
+                        id={field.id}
+                        reorderMode={reorderMode}
+                      >
+                        {reorderMode ? (
+                          <span className="font-medium">
+                            {watch(`eleventhSection.items.${index}.title`) ||
+                              `Item ${index + 1}`}
+                          </span>
+                        ) : (
+                          <>
+                            <div className="absolute right-2 top-2">
+                              <RiDeleteBinLine
+                                onClick={() => elevenSectionRemove(index)}
+                                className="cursor-pointer text-red-600"
+                              />
+                            </div>
 
-                {/* Item Description */}
-                <div className="flex flex-col gap-2">
-                  <Label className="font-bold">Item Description</Label>
-                  <Textarea
-                    placeholder="Item Description"
-                    {...register("eleventhSection.items.description")}
-                  />
-                </div>
+                            <div className="col-span-2 flex flex-col gap-2">
+                              <Label className="font-bold">Item Title</Label>
+                              <Input
+                                type="text"
+                                placeholder="Item Title"
+                                {...register(
+                                  `eleventhSection.items.${index}.title`,
+                                )}
+                              />
+                            </div>
 
-                {/* Image */}
-                <div className="flex flex-col gap-2">
-                  <Label className="font-bold">Image</Label>
+                            <div className="col-span-2 flex flex-col gap-2">
+                              <Label className="font-bold">
+                                Item Description
+                              </Label>
+                              <Textarea
+                                placeholder="Item Description"
+                                {...register(
+                                  `eleventhSection.items.${index}.description`,
+                                )}
+                              />
+                            </div>
 
-                  <Controller
-                    name="eleventhSection.items.image"
-                    control={control}
-                    render={({ field }) => (
-                      <ImageUploader
-                        value={field.value}
-                        onChange={field.onChange}
-                        className=""
-                        isLogo
-                      />
-                    )}
-                  />
-                </div>
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Image</Label>
+                              <Controller
+                                name={`eleventhSection.items.${index}.image`}
+                                control={control}
+                                render={({ field }) => (
+                                  <ImageUploader
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    className=""
+                                    isLogo
+                                  />
+                                )}
+                              />
+                            </div>
 
-                {/* Alt Tag */}
-                <div className="flex flex-col gap-2">
-                  <Label className="font-bold">Alt Tag</Label>
-                  <Input
-                    type="text"
-                    placeholder="Alt Tag"
-                    {...register("eleventhSection.items.imageAlt")}
-                  />
-                </div>
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Alt Tag</Label>
+                              <Input
+                                type="text"
+                                placeholder="Alt Tag"
+                                {...register(
+                                  `eleventhSection.items.${index}.imageAlt`,
+                                )}
+                              />
+                            </div>
 
-                {/* Link */}
-                <div className="flex flex-col gap-2">
-                  <Label className="font-bold">Link</Label>
-                  <Input
-                    type="text"
-                    placeholder="Link"
-                    {...register("eleventhSection.items.link")}
-                  />
-                </div>
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Link</Label>
+                              <Input
+                                type="text"
+                                placeholder="Link"
+                                {...register(
+                                  `eleventhSection.items.${index}.link`,
+                                )}
+                              />
+                            </div>
+                          </>
+                        )}
+                      </SortableItem>
+                    ))}
+                  </SortableContext>
+                </DndContext>
+              </div>
+              <div className="mt-2 flex justify-end">
+                <Button
+                  type="button"
+                  addItem
+                  onClick={() =>
+                    elevenSectionAppend({
+                      id: "",
+                      title: "",
+                      description: "",
+                      image: "",
+                      imageAlt: "",
+                      link: "",
+                    })
+                  }
+                >
+                  Add Item
+                </Button>
               </div>
             </div>
           </div>
