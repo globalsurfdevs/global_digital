@@ -22,8 +22,9 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
         { status: 404 },
       );
     }
-
-    return NextResponse.json({ data }, { status: 200 });
+    
+    
+    return NextResponse.json({data}, { status: 200 });
   } catch (error) {
     console.error("Failed to fetch Service Pillar:", error);
     return NextResponse.json(
