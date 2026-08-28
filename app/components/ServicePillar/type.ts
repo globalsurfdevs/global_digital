@@ -105,7 +105,7 @@ export type ServicePillarData = {
       image: string;
       imageAlt: string;
       link: string;
-    };
+    }[];
   };
 
   ctaSection: {

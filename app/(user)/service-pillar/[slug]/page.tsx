@@ -495,7 +495,7 @@ const page = async ({ params }: PageProps) => {
       dec: item.description,
     }),
   );
-
+console.log( "related ",data.eleventhSection)
   const relatedServiceData = data.eleventhSection.items.map((data) => {
     return {
       title: data.title,
@@ -534,11 +534,11 @@ const page = async ({ params }: PageProps) => {
       />
       <ProcessSlider data={data.eighthSection} variant="dark" />
 
-      <section className="py-120">
+      {/* <section className="py-120">
         <ButtonSlider
           data={data.ninthSection}
         />
-      </section>
+      </section> */}
 
       <WhyChoose data={data.tenthSection} page="service-pillar" />
       {/*<GrayParaSec data={service.fourthSection} />
