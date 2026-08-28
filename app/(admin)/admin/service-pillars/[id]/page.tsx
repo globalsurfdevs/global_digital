@@ -1,4 +1,5 @@
  
+import ServicePillarPage from "@/app/components/AdminServicePillars/ServicePillars";
 import { useParams } from "next/navigation";
 import { Suspense } from "react";
 
@@ -7,7 +8,7 @@ const ServicePage = () => {
 //   const slug = params?.id;
   return (
     <Suspense fallback={"Loading"}>
-     
+     <ServicePillarPage/>
     </Suspense>
   );
 };

@@ -89,6 +89,12 @@ const servicePillarSchema = new mongoose.Schema(
         type: String,
         // required: true,
       },
+      subTitle: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
       items: [
         {
           _id: String,
@@ -105,16 +111,15 @@ const servicePillarSchema = new mongoose.Schema(
         type: String,
         // required: true,
       },
-      subTitle: {
-        type: String,
-      },
+   
       items: [
         {
-          id: String,
+          _id: String,
           title: String,
           image: String,
           imageAlt: String,
           link: String,
+          description: String
         },
       ],
     },
@@ -131,7 +136,9 @@ const servicePillarSchema = new mongoose.Schema(
         {
           _id: String,
           title: String,
-          description: String,
+          image: String,
+          imageAlt: String,
+          link: String,
         },
       ],
     },
@@ -202,7 +209,8 @@ const servicePillarSchema = new mongoose.Schema(
           id: String,
           title: String,
           description: String,
-          icon: String,
+          image: String,
+          imageAlt: String,
           link: String,
         },
       ],

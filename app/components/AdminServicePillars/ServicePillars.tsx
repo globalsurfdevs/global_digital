@@ -217,6 +217,7 @@ const ServicePillarPage = () => {
   const [openSection, setOpenSection] = useState<string | null>("");
 
   const handleSave = async (data: ServicePillarData) => {
+    // console.log('service pillar',data)
     try {
       const response = await fetch(
         `/api/service-pillar/${encodeURIComponent(slug)}`,
@@ -540,7 +541,21 @@ const ServicePillarPage = () => {
                 {...register("fifthSection.title")}
               />
             </div>
-
+            <div className="flex flex-col gap-2">
+              <Label className="font-bold">Sub Title</Label>
+              <Input
+                type="text"
+                placeholder="Sub Title"
+                {...register("fifthSection.subTitle")}
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <Label className="font-bold">Description</Label>
+              <Textarea
+                placeholder="Description"
+                {...register("fifthSection.description")}
+              />
+            </div>
             <div>
               <div className="mb-3 flex justify-between">
                 <Label className="font-bold">Items</Label>
@@ -676,15 +691,6 @@ const ServicePillarPage = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-2">
-              <Label className="font-bold">Sub Title</Label>
-              <Input
-                type="text"
-                placeholder="Sub Title"
-                {...register("sixthSection.subTitle")}
-              />
-            </div>
-
             <div>
               <div className="mb-3 flex justify-between">
                 <Label className="font-bold">Items</Label>
@@ -767,12 +773,11 @@ const ServicePillarPage = () => {
                             </div>
 
                             <div className="flex flex-col gap-2">
-                              <Label className="font-bold">Link</Label>
-                              <Input
-                                type="text"
-                                placeholder="Link"
+                              <Label className="font-bold">Description</Label>
+                              <Textarea
+                                placeholder="Description"
                                 {...register(
-                                  `sixthSection.items.${index}.link`,
+                                  `sixthSection.items.${index}.description`,
                                 )}
                               />
                             </div>
@@ -793,7 +798,7 @@ const ServicePillarPage = () => {
                       title: "",
                       image: "",
                       imageAlt: "",
-                      link: "",
+                      description: "",
                     })
                   }
                 >
@@ -884,12 +889,40 @@ const ServicePillarPage = () => {
                               />
                             </div>
 
-                            <div className="col-span-2 flex flex-col gap-2">
-                              <Label className="font-bold">Description</Label>
-                              <Textarea
-                                placeholder="Description"
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Image</Label>
+                              <Controller
+                                name={`seventhSection.items.${index}.image`}
+                                control={control}
+                                render={({ field }) => (
+                                  <ImageUploader
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    className=""
+                                    isLogo
+                                  />
+                                )}
+                              />
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Alt Tag</Label>
+                              <Input
+                                type="text"
+                                placeholder="Alt Tag"
                                 {...register(
-                                  `seventhSection.items.${index}.description`,
+                                  `seventhSection.items.${index}.imageAlt`,
+                                )}
+                              />
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Link</Label>
+                              <Input
+                                type="text"
+                                placeholder="Alt Tag"
+                                {...register(
+                                  `seventhSection.items.${index}.link`,
                                 )}
                               />
                             </div>
@@ -908,7 +941,9 @@ const ServicePillarPage = () => {
                     seventhSectionAppend({
                       _id: "",
                       title: "",
-                      description: "",
+                      image: "",
+                      imageAlt: "",
+                      link: "",
                     })
                   }
                 >
@@ -1374,24 +1409,40 @@ const ServicePillarPage = () => {
                                 )}
                               />
                             </div>
-
-                            <div className="flex flex-col gap-2">
-                              <Label className="font-bold">Icon</Label>
+                            <div className="col-span-2 flex flex-col gap-2">
+                              <Label className="font-bold">Description</Label>
                               <Input
                                 type="text"
-                                placeholder="Icon name"
+                                placeholder="Description"
                                 {...register(
-                                  `eleventhSection.items.${index}.icon`,
+                                  `eleventhSection.items.${index}.description`,
                                 )}
                               />
                             </div>
 
-                            <div className="col-span-2 flex flex-col gap-2">
-                              <Label className="font-bold">Description</Label>
-                              <Textarea
-                                placeholder="Description"
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Image</Label>
+                              <Controller
+                                name={`eleventhSection.items.${index}.image`}
+                                control={control}
+                                render={({ field }) => (
+                                  <ImageUploader
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    className=""
+                                    isLogo
+                                  />
+                                )}
+                              />
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                              <Label className="font-bold">Alt Tag</Label>
+                              <Input
+                                type="text"
+                                placeholder="Alt Tag"
                                 {...register(
-                                  `eleventhSection.items.${index}.description`,
+                                  `eleventhSection.items.${index}.imageAlt`,
                                 )}
                               />
                             </div>
@@ -1422,7 +1473,8 @@ const ServicePillarPage = () => {
                       id: "",
                       title: "",
                       description: "",
-                      icon: "",
+                      image: "",
+                      imageAlt: "",
                       link: "",
                     })
                   }

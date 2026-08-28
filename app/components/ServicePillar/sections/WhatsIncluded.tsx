@@ -17,8 +17,8 @@ interface ServicesSecProps {
   title: string;
   description: string;
   items: {
+    _id: string;
     title: string;
-    id: string;
     image: string | StaticImageData;
     imageAlt: string;
     link: string;
