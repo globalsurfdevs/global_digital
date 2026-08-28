@@ -39,7 +39,7 @@ export const getAllIndustry = unstable_cache(
     if (!item) {
       return null;
     }
-
+    
     return JSON.parse(JSON.stringify(item));
   },
   ["industry"],

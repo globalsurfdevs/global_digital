@@ -11,7 +11,7 @@ type IconComponent = React.ComponentType<{
   className?: string;
 }>;
 
-interface FrameworkItem {
+export interface FrameworkItem {
   id: number;
   title: string;
   icon: string;

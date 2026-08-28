@@ -36,6 +36,8 @@ export type ServicePillarData = {
 
   fifthSection: {
     title: string;
+    subTitle: string;
+    description: string;
     items: {
       _id: string;
       image: string;
@@ -47,13 +49,12 @@ export type ServicePillarData = {
 
   sixthSection: {
     title: string;
-    subTitle: string;
     items: {
       id: string;
       title: string;
       image: string;
       imageAlt: string;
-      link: string;
+      description: string;
     }[];
   };
 
@@ -63,31 +64,32 @@ export type ServicePillarData = {
     items: {
       _id: string;
       title: string;
-      description: string;
+      image: string;
+      imageAlt: string;
+      link: string;
     }[];
   };
 
   eighthSection: {
     title: string;
     subTitle: string;
-    items:{
-        _id: string;
-        title: string;
-        description: string;
-    }[];    
+    items: {
+      _id: string;
+      title: string;
+      description: string;
+    }[];
   };
 
-   ninthSection: {
+  ninthSection: {
     title: string;
-    serviceIndustries: 
-      {
-        _id: string;
-        image: string;
-        imageAlt: string;
-        title: string;
-        page: string;
-      }[];
-  },
+    serviceIndustries: {
+      _id: string;
+      image: string;
+      imageAlt: string;
+      title: string;
+      page: string;
+    }[];
+  };
 
   tenthSection: {
     tag: string;
@@ -107,7 +109,8 @@ export type ServicePillarData = {
       id: string;
       title: string;
       description: string;
-      icon: string;
+      image: string;
+      imageAlt: string;
       link: string;
     }[];
   };

@@ -8,7 +8,19 @@ import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 
-const BECS = ({ data,page }: { data: ServiceItem["seventhSection"];page?:string }) => {
+
+export type BECSData = {
+  title: string;
+  items: {
+    image: string;
+    imageAlt: string;
+    title: string;
+    description: string;
+  }[];
+};
+
+const BECS = ({ data,page }: { data: BECSData;page?:string }) => {
+
   return (
     <section className={`pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px] ${page=="service-pillar" ? "bg-[#F6F6F6]" : ""}`}>
       <div className="container">
