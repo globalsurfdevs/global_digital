@@ -43,6 +43,7 @@ import {
 import { submitBooking } from "@/app/actions/submitBooking";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
+import { Clientsdata } from "@/app/data/Clientsdata";
 
 /* ============================================================
    Shared design tokens (Tailwind arbitrary values reference these)
@@ -89,9 +90,8 @@ function useReveal<T extends HTMLElement>(delayMs = 0) {
   }, []);
 
   const style = { transitionDelay: `${delayMs}ms` };
-  const className = `transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${
-    revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-  }`;
+  const className = `transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+    }`;
 
   return { ref, className, style };
 }
@@ -180,15 +180,13 @@ function Kick({
 }) {
   return (
     <span
-      className={`mb-5 inline-flex items-center gap-2.5 ${
-        center ? "mx-auto" : ""
-      }`}
+      className={`mb-5 inline-flex items-center gap-2.5 ${center ? "mx-auto" : ""
+        }`}
     >
       <i className="block h-2 w-2 flex-none bg-[#E63E31]" />
       <span
-        className={`text-[11px] font-medium uppercase tracking-[0.12em] ${
-          dark ? "text-white/50" : "text-[#77787B]"
-        }`}
+        className={`text-[11px] font-medium uppercase tracking-[0.12em] ${dark ? "text-white/50" : "text-[#77787B]"
+          }`}
       >
         {label}
       </span>
@@ -300,7 +298,7 @@ function Marquee({
       onPointerCancel={endDrag}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      // style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
+    // style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "pan-y" }}
     >
       <style jsx>{`
         @keyframes marqueeScroll {
@@ -338,19 +336,20 @@ function Marquee({
    01 · HERO
    ============================================================ */
 function Hero() {
-  const clientNames = [
-    "ASGC",
-    "SOBHA",
-    "GULF CRYO",
-    "BAFCO",
-    "BUKHATIR",
-    "CONMIX",
-    "INNOVO",
-    "ASSENT STEEL",
-    "BEC ARABIA",
-    "PRESTIGE",
-  ];
-  const loop = [...clientNames, ...clientNames];
+  // const clientNames = [
+  //   "ASGC",
+  //   "SOBHA",
+  //   "GULF CRYO",
+  //   "BAFCO",
+  //   "BUKHATIR",
+  //   "CONMIX",
+  //   "INNOVO",
+  //   "ASSENT STEEL",
+  //   "BEC ARABIA",
+  //   "PRESTIGE",
+  // ];
+
+  const loop = [...Clientsdata, ...Clientsdata];
 
   const offers = [
     { n: "01", label: "Get Found" },
@@ -360,7 +359,7 @@ function Hero() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-black pb-8 pt-16 text-white md:pb-10 md:pt-20 lg:pb-11 lg:pt-[92px]">
+    <section className="relative overflow-hidden bg-black  pt-16 text-white  md:pt-20  lg:pt-[92px]">
       {/* ambient glows */}
       <div className="pointer-events-none absolute -right-56 -top-80 h-[900px] w-[900px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.18)_0%,rgba(230,62,49,0)_63%)]" />
       <div className="pointer-events-none absolute -bottom-80 -left-64 h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.08)_0%,rgba(230,62,49,0)_66%)]" />
@@ -385,9 +384,8 @@ function Hero() {
               {offers.map((o, i) => (
                 <div
                   key={o.n}
-                  className={`px-4 pt-5 first:border-l-0 first:pl-0 ${
-                    i > 0 ? "border-l border-white/[0.16]" : ""
-                  }`}
+                  className={`px-4 pt-5 first:border-l-0 first:pl-0 ${i > 0 ? "border-l border-white/[0.16]" : ""
+                    }`}
                 >
                   <b className="mb-2.5 block text-[9px] font-semibold tracking-[0.12em] text-[#E63E31]">
                     {o.n}
@@ -427,28 +425,35 @@ function Hero() {
         </div>
       </div>
 
-      <Reveal
-        delay={210}
-        className="mt-11 w-full border-t border-white/[0.14] pt-7 md:mt-14 lg:mt-[74px]"
+      <div
+        className="mt-11 w-full border-t pt-7 md:mt-14 lg:mt-[74px] bg-white pb-7"
       >
-        <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-white/[0.36]">
+        <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-black">
           Trusted by Built Environment leaders
         </div>
         <div className="group relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-24 bg-gradient-to-r from-black to-transparent sm:w-[150px]" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-24 bg-gradient-to-l from-black to-transparent sm:w-[150px]" />
+          {/* `<div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-24 bg-gradient-to-r from-black to-transparent sm:w-[150px]" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-24 bg-gradient-to-l from-black to-transparent sm:w-[150px]" />` */}
           <Marquee durationSec={42}>
             {loop.map((name, i) => (
               <div
                 key={`${name}-${i}`}
-                className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-white/[0.15] bg-white/[0.035] text-[10px] font-medium tracking-[0.1em] text-white/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
+                className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-white/[0.15] bg-white/[0.035] px-4 text-[10px] font-medium tracking-[0.1em] text-white/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
               >
-                {name}
+                <div className="relative h-16 w-full">
+                  <Image
+                    src={name.image}
+                    alt={name.alt}
+                    fill
+                    sizes="270px"
+                    className="object-contain"
+                  />
+                </div>
               </div>
             ))}
           </Marquee>
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }
@@ -579,21 +584,18 @@ function WhoItsFor() {
               return (
                 <div
                   key={tag}
-                  className={`rounded-[18px] border p-6 text-[15px] leading-[1.42] transition-all duration-300 ${
-                    isUniversal
-                      ? "border-transparent bg-[#0A0A0A] text-white"
-                      : "border-black/[0.11] bg-white shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)]"
-                  } ${
-                    isHighlighted
+                  className={`rounded-[18px] border p-6 text-[15px] leading-[1.42] transition-all duration-300 ${isUniversal
+                    ? "border-transparent bg-[#0A0A0A] text-white"
+                    : "border-black/[0.11] bg-white shadow-[0_1px_2px_rgba(10,10,10,.03),0_8px_24px_-18px_rgba(10,10,10,.10)]"
+                    } ${isHighlighted
                       ? "-translate-y-1 border-[#E63E31] shadow-[0_2px_4px_rgba(10,10,10,.04),0_22px_44px_-26px_rgba(10,10,10,.24)]"
                       : ""
-                  }`}
+                    }`}
                 >
                   {quote}
                   <em
-                    className={`mt-3 block text-[9px] font-semibold uppercase not-italic tracking-[0.12em] ${
-                      isUniversal ? "text-white/40" : "text-[#A0A1A4]"
-                    }`}
+                    className={`mt-3 block text-[9px] font-semibold uppercase not-italic tracking-[0.12em] ${isUniversal ? "text-white/40" : "text-[#A0A1A4]"
+                      }`}
                   >
                     {tag}
                   </em>
@@ -696,11 +698,10 @@ function WhatYouGet() {
                 {g.items.map((item, idx) => (
                   <li
                     key={item.name}
-                    className={`flex items-start gap-2.5 py-3 text-[15px] ${
-                      idx !== g.items.length - 1
-                        ? "border-b border-black/[0.065]"
-                        : ""
-                    }`}
+                    className={`flex items-start gap-2.5 py-3 text-[15px] ${idx !== g.items.length - 1
+                      ? "border-b border-black/[0.065]"
+                      : ""
+                      }`}
                   >
                     <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-sm bg-[#E63E31]" />
                     <span>
@@ -913,11 +914,10 @@ function Results() {
                   role="tab"
                   aria-selected={tab === i}
                   onClick={() => setTab(i)}
-                  className={`whitespace-nowrap rounded-full px-5 py-2.5 text-[12.5px] font-medium transition-colors duration-200 ${
-                    tab === i
-                      ? "bg-[#0A0A0A] text-white"
-                      : "text-[#77787B] hover:text-[#0A0A0A]"
-                  }`}
+                  className={`whitespace-nowrap rounded-full px-5 py-2.5 text-[12.5px] font-medium transition-colors duration-200 ${tab === i
+                    ? "bg-[#0A0A0A] text-white"
+                    : "text-[#77787B] hover:text-[#0A0A0A]"
+                    }`}
                 >
                   {label}
                 </button>
@@ -950,7 +950,7 @@ function Results() {
                 <div
                   key={line}
                   style={{ animationDelay: `${i * 55}ms` }}
-                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 opacity-0 last:border-0"
+                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 last:border-0"
                 >
                   <i className="mt-2 h-1.5 w-1.5 flex-none rounded-sm bg-[#D5D6D6]" />
                   <p className="text-base leading-normal">{line}</p>
@@ -966,7 +966,7 @@ function Results() {
                 <div
                   key={line}
                   style={{ animationDelay: `${i * 55}ms` }}
-                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 opacity-0 last:border-0"
+                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5  last:border-0"
                 >
                   <i className="mt-2 h-1.5 w-1.5 flex-none rounded-sm bg-[#E63E31]" />
                   <p className="text-base leading-normal">{line}</p>
@@ -975,7 +975,7 @@ function Results() {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2.5 border-t border-black/[0.065] bg-[#F6F4EF] p-5">
+          {/* <div className="flex flex-wrap gap-2.5 border-t border-black/[0.065] bg-[#F6F4EF] p-5">
             {active.metrics.map(([label, source]) => (
               <span
                 key={label}
@@ -985,7 +985,7 @@ function Results() {
                 · {source}
               </span>
             ))}
-          </div>
+          </div> */}
         </Reveal>
       </div>
     </section>
@@ -993,41 +993,100 @@ function Results() {
 }
 
 /* ============================================================
-   05 · THE TOOLS
+   05 · THE TOOLS  (CDN attempt → local /public/logos → placeholder)
    ============================================================ */
-const TOOL_SETS: Record<string, string[]> = {
+
+// Turns a tool name into a filename-safe slug for its local logo file,
+// e.g. "Schema.org" -> "schema-org", "Google Tag Manager" -> "google-tag-manager".
+function toFileSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+type Tool = {
+  name: string;
+  // Simple Icons CDN slug to try if the local file is missing.
+  slug: string;
+  // Optional explicit path under /public if the auto-derived filename
+  // doesn't match what you saved, e.g. "/logos/gpt.svg".
+  localFallback?: string;
+};
+
+const TOOL_SETS: Record<string, Tool[]> = {
   a: [
-    "Google Analytics 4",
-    "Google Search Console",
-    "Looker Studio",
-    "LinkedIn Analytics",
-    "Zoho CRM",
-    "Google Business Profile",
+    { name: "Google Analytics 4", slug: "googleanalytics" },
+    { name: "Google Search Console", slug: "googlesearchconsole" },
+    { name: "Looker Studio", slug: "looker" },
+    { name: "LinkedIn Analytics", slug: "linkedin" },
+    { name: "Zoho CRM", slug: "zoho" },
+    { name: "Google Business Profile", slug: "google" },
   ],
   b: [
-    "Ahrefs",
-    "Semrush",
-    "Screaming Frog",
-    "Schema.org",
-    "PageSpeed Insights",
-    "Google Tag Manager",
+    { name: "Ahrefs", slug: "ahrefs" },
+    { name: "Semrush", slug: "semrush" },
+    { name: "Screaming Frog", slug: "screamingfrog" },
+    { name: "Schema.org", slug: "schemadotorg" },
+    { name: "PageSpeed Insights", slug: "googlechrome" },
+    { name: "Google Tag Manager", slug: "googletagmanager" },
   ],
   c: [
-    "ChatGPT",
-    "Google AI Overviews",
-    "Perplexity",
-    "Gemini",
-    "Claude",
-    "Microsoft Copilot",
+    { name: "ChatGPT", slug: "" },
+    { name: "Google AI Overviews", slug: "google" },
+    { name: "Perplexity", slug: "perplexity" },
+    { name: "Gemini", slug: "googlegemini" },
+    { name: "Claude", slug: "claude" },
+    { name: "Microsoft Copilot", slug: "" },
   ],
 };
+
+// Renders a tool's brand mark: try the local file under /public/logos
+// first (either `localFallback` if given, or an auto-derived path
+// `/logos/{tool-name-as-slug}.svg`). If that file is missing, fall back to
+// the Simple Icons CDN. If that also fails, show the dashed placeholder.
+function ToolIcon({ tool }: { tool: Tool }) {
+  const sources = useMemo(() => {
+    const cdnSource = tool.slug
+      ? `https://cdn.simpleicons.org/${tool.slug}/ffffff`
+      : undefined;
+    const localSource = cdnSource ?? `/logos/${toFileSlug(tool.name)}.svg`
+    
+    // CDN first, local as fallback. If a tool has no slug (e.g. ChatGPT),
+    // there's no CDN entry to try — .filter(Boolean) drops the `undefined`
+    // so it goes straight to local instead of rendering a src-less <img>
+    // that would never fire onError and never fall through.
+    return [cdnSource, localSource].filter(Boolean) as string[];
+  }, [tool]);
+
+  const [sourceIndex, setSourceIndex] = useState(0);
+
+  if (sourceIndex >= sources.length) {
+    return (
+      <i className="block h-[22px] w-[22px] flex-none rounded-md border border-dashed border-white/[0.18] bg-white/[0.06]" />
+    );
+  }
+
+  return (
+    <img
+      key={sources[sourceIndex]}
+      src={sources[sourceIndex]}
+      alt={`${tool.name} logo`}
+      width={18}
+      height={18}
+      loading="lazy"
+      className="block h-[18px] w-[18px] flex-none object-contain opacity-90"
+      onError={() => setSourceIndex((i) => i + 1)}
+    />
+  );
+}
 
 function ToolRow({
   toolSet,
   reverse = false,
   durationSec = 38,
 }: {
-  toolSet: string[];
+  toolSet: Tool[];
   reverse?: boolean;
   durationSec?: number;
 }) {
@@ -1042,13 +1101,13 @@ function ToolRow({
         }}
       >
         <Marquee durationSec={durationSec} reverse={reverse}>
-          {loop.map((name, i) => (
+          {loop.map((tool, i) => (
             <span
-              key={`${name}-${i}`}
+              key={`${tool.name}-${i}`}
               className="inline-flex flex-none items-center gap-2.5 rounded-full border border-white/[0.12] bg-white/[0.045] py-3 pl-3.5 pr-5 text-[15px] text-white/[0.82] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#E63E31] hover:bg-[#E63E31]/10 hover:text-white"
             >
-              <i className="block h-[22px] w-[22px] flex-none rounded-md border border-dashed border-white/[0.18] bg-white/[0.06]" />
-              {name}
+              <ToolIcon tool={tool} />
+              {tool.name}
             </span>
           ))}
         </Marquee>
@@ -1148,9 +1207,8 @@ const PRICING_INFO_CARDS = [
 function CheckDot({ dark }: { dark: boolean }) {
   return (
     <span
-      className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] ${
-        dark ? "bg-[#E63E31]" : "bg-[#77787B]/20"
-      }`}
+      className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] ${dark ? "bg-[#E63E31]" : "bg-[#77787B]/20"
+        }`}
     >
       <svg
         width="9"
@@ -1240,7 +1298,7 @@ function Pricing() {
               href="#book"
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
-              Book your 20-minute call
+              Book your 30-minute call
               <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31]">
                 <PricingArrow dark />
               </span>
@@ -1286,7 +1344,7 @@ function Pricing() {
             </p>
 
             <PricingCta className="mt-6 bg-transparent text-white hover:bg-[#E63E31] md:mt-8">
-              Book your 20-minute call
+              Book your 30-minute call
             </PricingCta>
 
             <div className="mt-8 border-t border-white/10 pt-6 md:mt-10 md:pt-8">
@@ -1374,9 +1432,8 @@ function Pricing() {
             <Reveal
               key={card.title}
               delay={210 + i * 70}
-              className={`rounded-[18px] border border-black/[0.11] p-6 md:p-8 ${
-                i === 1 ? "bg-[#F6F3EC]" : "bg-white"
-              }`}
+              className={`rounded-[18px] border border-black/[0.11] p-6 md:p-8 ${i === 1 ? "bg-[#F6F3EC]" : "bg-white"
+                }`}
             >
               <span className="border-primary/12 flex h-[60px] w-[60px] items-center justify-center rounded-[7px] border bg-primary/5">
                 <Image
@@ -1407,6 +1464,7 @@ type Testimonial = {
   name: string;
   role: string;
   initials: string;
+  image:string;
 };
 
 const TESTIMONIALS: Testimonial[] = [
@@ -1416,6 +1474,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Karim El Shennawy",
     role: "Business Development Director · ASGC",
     initials: "KE",
+    image:"/assets/testimonials/karim.jpeg"
   },
   {
     quote:
@@ -1423,6 +1482,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Alissar Nasrallah",
     role: "Regional Marcomms Manager · Gulf Cryo",
     initials: "AN",
+    image:"/assets/testimonials/alissar.jpeg"
   },
   {
     quote:
@@ -1430,6 +1490,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Jad Farah",
     role: "Group Marketing Manager · ECC LLC",
     initials: "JF",
+    image:"/assets/testimonials/jadfarah.jpeg"
   },
   {
     quote:
@@ -1437,6 +1498,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Hesham Abdeen",
     role: "Head of Accreditation and Evaluations · Educap",
     initials: "HA",
+    image:"/assets/testimonials/heshamabdeen.png"
   },
   {
     quote:
@@ -1444,6 +1506,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Omar M. Bin Dhaher Almheiri",
     role: "President · Prestige",
     initials: "OA",
+    image:"/assets/testimonials/dummy-user.png"
   },
 ];
 
@@ -1529,15 +1592,14 @@ function Testimonials() {
                 ★★★★★
               </div>
               <blockquote
-                className={`min-h-[112px] text-lg font-normal leading-[1.45] transition-opacity duration-300 sm:text-xl lg:text-2xl ${
-                  visible ? "opacity-100" : "opacity-0"
-                }`}
+                className={`min-h-[112px] text-lg font-normal leading-[1.45] transition-opacity duration-300 sm:text-xl lg:text-2xl ${visible ? "opacity-100" : "opacity-0"
+                  }`}
               >
                 “{t.quote}”
               </blockquote>
               <figcaption className="mt-[26px] flex items-center gap-3.5 border-t border-black/[0.065] pt-[22px]">
-                <span className="flex h-[46px] w-[46px] flex-none items-center justify-center rounded-full border border-dashed border-black/[0.18] bg-[#EFEAE0] text-sm font-medium text-[#B4B3AF]">
-                  {t.initials}
+                <span className="flex h-[46px] w-[46px] flex-none items-center justify-center rounded-full border border-dashed border-black/[0.18] bg-[#EFEAE0] text-sm font-medium text-[#B4B3AF] relative overflow-hidden">
+                  <Image src={t.image} alt={t.name} className="object-cover absolute" fill/>
                 </span>
                 <span>
                   <b className="block text-[14.5px] font-medium">{t.name}</b>
@@ -1587,9 +1649,8 @@ function Testimonials() {
               type="button"
               aria-label={`Testimonial ${i + 1}`}
               onClick={() => go(i)}
-              className={`h-[7px] rounded-full transition-all duration-200 ${
-                i === index ? "w-5 bg-[#E63E31]" : "w-[7px] bg-[#D3D4D5]"
-              }`}
+              className={`h-[7px] rounded-full transition-all duration-200 ${i === index ? "w-5 bg-[#E63E31]" : "w-[7px] bg-[#D3D4D5]"
+                }`}
             />
           ))}
         </Reveal>
@@ -1664,14 +1725,12 @@ function FaqColumn({
             >
               {item.q}
               <span
-                className={`absolute right-1.5 top-1/2 h-[1.5px] w-[13px] -translate-y-1/2 bg-[#E63E31] transition-transform duration-300 ${
-                  isOpen ? "rotate-0" : ""
-                }`}
+                className={`absolute right-1.5 top-1/2 h-[1.5px] w-[13px] -translate-y-1/2 bg-[#E63E31] transition-transform duration-300 ${isOpen ? "rotate-0" : ""
+                  }`}
               />
               <span
-                className={`absolute right-[11.7px] top-1/2 h-[13px] w-[1.5px] -translate-y-1/2 bg-[#E63E31] transition-all duration-300 ${
-                  isOpen ? "rotate-90 opacity-0" : "opacity-100"
-                }`}
+                className={`absolute right-[11.7px] top-1/2 h-[13px] w-[1.5px] -translate-y-1/2 bg-[#E63E31] transition-all duration-300 ${isOpen ? "rotate-90 opacity-0" : "opacity-100"
+                  }`}
               />
             </button>
             {isOpen && (
@@ -1873,10 +1932,11 @@ function FinalCta() {
       const result = await submitBooking(formData);
       setNote(
         result.message ??
-          (result.success ? "Thank you." : "Something went wrong."),
+        (result.success ? "Thank you." : "Something went wrong."),
       );
       if (result.success) {
         form.reset();
+        window.location.replace("/thank-you")
         setErrors({});
       }
     });
@@ -1967,11 +2027,10 @@ function FinalCta() {
                   defaultValue=""
                   onBlur={handleFieldBlur}
                   onChange={handleFieldChange}
-                  className={`w-full appearance-none rounded-[10px] border bg-black/40 bg-[right_19px_center] bg-no-repeat px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
-                    errors.sector
-                      ? "border-[#E63E31]"
-                      : "border-white/[0.13] focus:border-[#E63E31]"
-                  }`}
+                  className={`w-full appearance-none rounded-[10px] border bg-black/40 bg-[right_19px_center] bg-no-repeat px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${errors.sector
+                    ? "border-[#E63E31]"
+                    : "border-white/[0.13] focus:border-[#E63E31]"
+                    }`}
                   style={{
                     backgroundImage:
                       "linear-gradient(45deg,transparent 50%,rgba(255,255,255,.4) 50%),linear-gradient(135deg,rgba(255,255,255,.4) 50%,transparent 50%)",
@@ -2009,11 +2068,10 @@ function FinalCta() {
                     onBlur={handleFieldBlur}
                     onChange={handleFieldChange}
                     aria-invalid={!!errors.date}
-                    className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 [color-scheme:dark] focus:bg-black/[0.62] ${
-                      errors.date
-                        ? "border-[#E63E31]"
-                        : "border-white/[0.13] focus:border-[#E63E31]"
-                    }`}
+                    className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 [color-scheme:dark] focus:bg-black/[0.62] ${errors.date
+                      ? "border-[#E63E31]"
+                      : "border-white/[0.13] focus:border-[#E63E31]"
+                      }`}
                   />
                   {errors.date && (
                     <p className="mt-1.5 text-[11px] text-[#E63E31]">
@@ -2036,11 +2094,10 @@ function FinalCta() {
                     defaultValue=""
                     onBlur={handleFieldBlur}
                     onChange={handleFieldChange}
-                    className={`w-full appearance-none rounded-[10px] border bg-black/40 bg-[right_19px_center] bg-no-repeat px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
-                      errors.timeSlot
-                        ? "border-[#E63E31]"
-                        : "border-white/[0.13] focus:border-[#E63E31]"
-                    }`}
+                    className={`w-full appearance-none rounded-[10px] border bg-black/40 bg-[right_19px_center] bg-no-repeat px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${errors.timeSlot
+                      ? "border-[#E63E31]"
+                      : "border-white/[0.13] focus:border-[#E63E31]"
+                      }`}
                     style={{
                       backgroundImage:
                         "linear-gradient(45deg,transparent 50%,rgba(255,255,255,.4) 50%),linear-gradient(135deg,rgba(255,255,255,.4) 50%,transparent 50%)",
@@ -2114,11 +2171,10 @@ function Field({
         onBlur={onBlur}
         onChange={onChange}
         aria-invalid={!!error}
-        className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
-          error
-            ? "border-[#E63E31]"
-            : "border-white/[0.13] focus:border-[#E63E31]"
-        }`}
+        className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${error
+          ? "border-[#E63E31]"
+          : "border-white/[0.13] focus:border-[#E63E31]"
+          }`}
       />
       {error && <p className="mt-1.5 text-[11px] text-[#E63E31]">{error}</p>}
     </div>

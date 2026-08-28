@@ -24,13 +24,13 @@ const IndustriesSec = ({ data }: { data: Props }) => {
       <div className="container">
         <div className="mb-4 xl:mb-8 xxl:mb-[42px]">
           <div className="mb-4 flex items-center gap-3 md:mb-3 xl:mb-4 xxl:mb-[28px]">
-            <div className="h-5 w-5 bg-primary"></div>
+            <div className="h-4 w-4 bg-primary"></div>
             <motion.h3
               initial="hidden"
               whileInView="show"
               variants={moveUp(0)}
               viewport={{ once: true }}
-              className="text-28 uppercase leading-[1] tracking-[-0.025em] text-muted"
+              className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted"
             >
               {data.title}
             </motion.h3>
@@ -40,7 +40,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
             whileInView="show"
             variants={moveUp(0)}
             viewport={{ once: true }}
-            className="title-60 max-w-[25ch] tracking-[-0.025em]"
+            className="title-60 text-[length:var(--text-60-sm)] max-w-[25ch] tracking-[-0.025em]"
             dangerouslySetInnerHTML={{ __html: data.subTitle }}
           />
         </div>
@@ -72,7 +72,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
                 className={`flex flex-1 items-center justify-between rounded-[7px] border border-primary/10 bg-transparent px-3 py-[10px] hover:bg-primary/15 3xl:pl-[26px] 3xl:pr-[35px]`}
               >
                 <h3
-                  className="text-28 leading-[1.214285714285714] tracking-[-0.025em]"
+                  className="text-25 leading-[1.214285714285714] tracking-[-0.025em]"
                   dangerouslySetInnerHTML={{ __html: item.title }}
                 ></h3>
                 {/* <Image

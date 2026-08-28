@@ -90,7 +90,7 @@ const Pill = ({ item }: { item: ChannelItem }) => (
         className="h-7 w-7 object-contain"
       />
     </span>
-    <span className="text-28 whitespace-nowrap text-black">{item.label}</span>
+    <span className="text-25 whitespace-nowrap text-black">{item.label}</span>
   </div>
 );
 
@@ -156,7 +156,7 @@ const FullFunnelChannels = ({ data }: { data: Props }) => {
           whileInView="show"
           variants={moveUp(0)}
           viewport={{ once: true }}
-          className="title-60 lg:max-w-[1100px]"
+          className="title-60 text-[length:var(--text-60-sm)] lg:max-w-[1100px]"
         >
           {data.title}
         </motion.h2>
@@ -166,7 +166,7 @@ const FullFunnelChannels = ({ data }: { data: Props }) => {
           whileInView="show"
           variants={moveUp(0.1)}
           viewport={{ once: true }}
-          className="text-28 mb-6 mt-6 text-black lg:mb-[60px] lg:mt-[80px] "
+          className="text-25 mb-6 mt-6 text-black lg:mb-[60px] lg:mt-[80px] "
         >
           {data.description}
         </motion.p>

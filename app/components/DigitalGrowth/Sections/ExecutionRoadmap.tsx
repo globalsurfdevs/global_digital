@@ -23,7 +23,7 @@ const ExecutionRoadmap = ({ data }: { data: Props }) => {
           whileInView="show"
           variants={moveUp(0)}
           viewport={{ once: true }}
-          className="title-60"
+          className="title-60 text-[length:var(--text-60-sm)]"
         >
           {data.title}
         </motion.h2>
@@ -38,10 +38,10 @@ const ExecutionRoadmap = ({ data }: { data: Props }) => {
               viewport={{ once: true }}
               className="group flex flex-col gap-4 rounded-[15px] border border-black/10 bg-white px-[26px] pb-[40px] pt-[20px] transition-colors duration-300 hover:bg-[#E53E31]/15 lg:border lg:border-black/10"
             >
-              <span className="text-18 inline-flex w-fit items-center rounded-full border border-primary px-[15px] py-[10px] uppercase text-muted transition-colors duration-300 group-hover:bg-primary group-hover:!text-white">
+              <span className="text-18 text-[length:var(--text-18-sm)] inline-flex w-fit items-center rounded-full border border-primary px-[15px] py-[10px] uppercase text-muted transition-colors duration-300 group-hover:bg-primary group-hover:!text-white">
                 {item.badge}
               </span>
-              <h4 className="text-28 mt-[68px] leading-snug text-black">
+              <h4 className="text-25 mt-[68px] leading-snug text-black">
                 {item.description}
               </h4>
             </motion.div>
