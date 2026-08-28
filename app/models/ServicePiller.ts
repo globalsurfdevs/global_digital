@@ -102,6 +102,7 @@ const servicePillarSchema = new mongoose.Schema(
           imageAlt: String,
           title: String,
           description: String,
+          link: String,
         },
       ],
     },
@@ -111,7 +112,7 @@ const servicePillarSchema = new mongoose.Schema(
         type: String,
         // required: true,
       },
-   
+
       items: [
         {
           _id: String,
@@ -119,7 +120,7 @@ const servicePillarSchema = new mongoose.Schema(
           image: String,
           imageAlt: String,
           link: String,
-          description: String
+          description: String,
         },
       ],
     },
@@ -159,23 +160,12 @@ const servicePillarSchema = new mongoose.Schema(
         },
       ],
     },
-
     ninthSection: {
-      title: {
-        type: String,
-        // required: true,
-      },
+      title: String,
       serviceIndustries: [
-        {
-          _id: String,
-          image: String,
-          imageAlt: String,
-          title: String,
-          page: String,
-        },
+        { type: mongoose.Schema.Types.ObjectId, ref: "ServiceIndustry" },
       ],
     },
-
     tenthSection: {
       tag: {
         type: String,
@@ -204,16 +194,14 @@ const servicePillarSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-      items: [
-        {
-          id: String,
-          title: String,
-          description: String,
-          image: String,
-          imageAlt: String,
-          link: String,
-        },
-      ],
+      items: {
+        id: String,
+        title: String,
+        description: String,
+        image: String,
+        imageAlt: String,
+        link: String,
+      },
     },
 
     ctaSection: {

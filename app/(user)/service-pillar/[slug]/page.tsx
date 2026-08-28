@@ -42,7 +42,10 @@ import InfoGrid, {
 import WhatsIncluded from "@/app/components/ServicePillar/sections/WhatsIncluded";
 import Tours from "@/app/components/HomePage/Tours";
 import { getIndustries } from "@/app/lib/industries.service";
-import { getServicePillar } from "@/app/lib/servicePillar.service";
+import {
+  getIndustriesData,
+  getServicePillar,
+} from "@/app/lib/servicePillar.service";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -151,6 +154,7 @@ export type ServicePillarData = {
       imageAlt: string;
       title: string;
       description: string;
+      link?: string;
     }[];
   };
 
@@ -177,7 +181,6 @@ export type ServicePillarData = {
       description: string;
     }[];
   };
-
   ninthSection: {
     title: string;
     serviceIndustries: {
@@ -185,10 +188,9 @@ export type ServicePillarData = {
       image: string;
       imageAlt: string;
       title: string;
-      page: string;
+      page: string | null;
     }[];
   };
-
   tenthSection: {
     tag: string;
     title: string;
@@ -235,13 +237,11 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-    const data: ServicePillarData | null = await getServicePillar(slug);
-
+  const data: ServicePillarData | null = await getServicePillar(slug);
 
   if (!data) {
     return {
@@ -285,12 +285,12 @@ export async function generateMetadata({
   };
 }
 
-
 const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const testimonials = await getTestimonials();
   const data: ServicePillarData | null = await getServicePillar(slug);
-  const industries = await getAllIndustry();
+  const industries = await getIndustriesData();
+
   console.log(industries);
   if (!data) {
     notFound();
@@ -303,6 +303,8 @@ const page = async ({ params }: PageProps) => {
       subhead: data.ctaSection.description,
     },
   ];
+
+
   //   const Cta = [
   //   {
   //     textred: data.ctaSection.titleRed,
@@ -504,7 +506,6 @@ const page = async ({ params }: PageProps) => {
     };
   });
 
-  console.log('related:',relatedServiceData)
   return (
     <div>
       {/* {service.seo?.schema && (
@@ -533,10 +534,11 @@ const page = async ({ params }: PageProps) => {
       />
       <ProcessSlider data={data.eighthSection} variant="dark" />
 
-      {/*       
       <section className="py-120">
-        <ButtonSlider data={industries} />
-      </section> */}
+        <ButtonSlider
+          data={data.ninthSection}
+        />
+      </section>
 
       <WhyChoose data={data.tenthSection} page="service-pillar" />
       {/*<GrayParaSec data={service.fourthSection} />

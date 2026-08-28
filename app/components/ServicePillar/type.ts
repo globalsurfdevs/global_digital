@@ -44,6 +44,7 @@ export type ServicePillarData = {
       imageAlt: string;
       title: string;
       description: string;
+      link?:string
     }[];
   };
 
@@ -79,18 +80,10 @@ export type ServicePillarData = {
       description: string;
     }[];
   };
-
   ninthSection: {
     title: string;
-    serviceIndustries: {
-      _id: string;
-      image: string;
-      imageAlt: string;
-      title: string;
-      page: string;
-    }[];
+    serviceIndustries: string[];
   };
-
   tenthSection: {
     tag: string;
     title: string;
@@ -112,7 +105,7 @@ export type ServicePillarData = {
       image: string;
       imageAlt: string;
       link: string;
-    }[];
+    };
   };
 
   ctaSection: {
