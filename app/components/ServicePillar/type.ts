@@ -1,10 +1,6 @@
-// types/Service.ts
-
 import { SeoFormValues } from "@/app/types/seo";
-import { Portfolio } from "@/app/types/Portfolio";
-import { BECSData } from "@/app/components/BrandingAndPositioning/BECS";
 
-export interface ServiceItem {
+export type ServicePillarData = {
   _id: string;
   name: string;
   slug: string;
@@ -15,11 +11,6 @@ export interface ServiceItem {
     imageAlt: string;
     title: string;
     description: string;
-    items: {
-      _id: string;
-      title: string;
-      link: string;
-    }[];
   };
 
   secondSection: {
@@ -33,6 +24,8 @@ export interface ServiceItem {
     description: string;
     image: string;
     imageAlt: string;
+    buttonText: string;
+    buttonLink: string;
   };
 
   fourthSection: {
@@ -44,28 +37,38 @@ export interface ServiceItem {
   fifthSection: {
     title: string;
     subTitle: string;
+    description: string;
     items: {
       _id: string;
-      title: string;
       image: string;
       imageAlt: string;
+      title: string;
       description: string;
-      link: string;
     }[];
   };
 
   sixthSection: {
     title: string;
-    subTitle: string;
     items: {
-      _id: string;
+      id: string;
       title: string;
+      image: string;
+      imageAlt: string;
       description: string;
     }[];
   };
 
-  seventhSection: BECSData
-  
+  seventhSection: {
+    title: string;
+    subTitle: string;
+    items: {
+      _id: string;
+      title: string;
+      image: string;
+      imageAlt: string;
+      link: string;
+    }[];
+  };
 
   eighthSection: {
     title: string;
@@ -77,38 +80,38 @@ export interface ServiceItem {
     }[];
   };
 
-  ninethSection: {
-    title: string;
-    subTitle: string;
-    items: {
-      _id: string;
-      title: string;
-      description: string;
-      image: string;
-      imageAlt: string;
-      link: string;
-    }[];
-  };
-
-  tenthSection: {
+  ninthSection: {
     title: string;
     serviceIndustries: {
       _id: string;
       image: string;
       imageAlt: string;
       title: string;
-      page: string | null;
+      page: string;
+    }[];
+  };
+
+  tenthSection: {
+    tag: string;
+    title: string;
+    description: string;
+    items: {
+      id: number;
+      value: string;
+      label: string;
     }[];
   };
 
   eleventhSection: {
     title: string;
-    subTitle: string;
     description: string;
     items: {
-      _id: string;
-      number: string;
-      value: string;
+      id: string;
+      title: string;
+      description: string;
+      image: string;
+      imageAlt: string;
+      link: string;
     }[];
   };
 
@@ -120,40 +123,12 @@ export interface ServiceItem {
     buttonLink: string;
   };
 
-  caseStudySection: {
+  faqSection: {
     title: string;
-    subTitle: string;
-    items: {
-      _id: string;
+    data: {
+      id: string;
       title: string;
-      image: string;
-      // Unpopulated: string (ObjectId). Populated: full Portfolio object.
-      project: {
-        companyName: string;
-        logo: string;
-        slug: string;
-        image: string;
-        imageAlt: string;
-        section: string;
-      };
       description: string;
     }[];
   };
-
-  faqSection: {
-    title: string;
-    items: {
-      _id: string;
-      question: string;
-      answer: string;
-    }[];
-  };
-
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface Service {
-  _id: string;
-  items: ServiceItem[];
-}
+};

@@ -201,6 +201,11 @@ const menuGroups = [
         route: "/admin/services",
       },
       {
+        icon: <FaServicestack />,
+        label: "Services Pillars",
+        route: "/admin/service-pillars",
+      },
+      {
         icon: <Settings2 />,
         label: "Settings",
         route: "#",

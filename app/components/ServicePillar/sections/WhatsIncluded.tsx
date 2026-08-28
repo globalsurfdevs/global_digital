@@ -17,8 +17,8 @@ interface ServicesSecProps {
   title: string;
   description: string;
   items: {
+    _id: string;
     title: string;
-    id: string;
     image: string | StaticImageData;
     imageAlt: string;
     link: string;
@@ -88,7 +88,7 @@ const WhatsIncluded = ({ title, description, items }: ServicesSecProps) => {
             <div className="grid grid-cols-1 sm:grid-cols-2">
               {items.map((service, index) => (
                 <motion.div
-                  key={service.id}
+                  key={service._id}
                   variants={moveUp(index * 0.11)}
                   initial="hidden"
                   whileInView="show"
