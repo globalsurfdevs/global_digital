@@ -1411,8 +1411,7 @@ const ServicePillarPage = () => {
                             </div>
                             <div className="col-span-2 flex flex-col gap-2">
                               <Label className="font-bold">Description</Label>
-                              <Input
-                                type="text"
+                              <Textarea
                                 placeholder="Description"
                                 {...register(
                                   `eleventhSection.items.${index}.description`,

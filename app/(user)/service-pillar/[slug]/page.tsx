@@ -503,6 +503,8 @@ const page = async ({ params }: PageProps) => {
       link: data.link,
     };
   });
+
+  console.log('related:',relatedServiceData)
   return (
     <div>
       {/* {service.seo?.schema && (
