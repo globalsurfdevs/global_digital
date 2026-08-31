@@ -20,10 +20,10 @@ const growthFeatures: Feature[] = [
     title: "Social Media",
     description: "Named correctly when a buyer asks an AI tool",
   },
-  {
-    title: "Social Media",
-    description: "LinkedIn, eight to ten posts a month",
-  },
+  // {
+  //   title: "Social Media",
+  //   description: "LinkedIn, eight to ten posts a month",
+  // },
   {
     title: "Content Production",
     description: "One shoot day a month at your site",
@@ -196,9 +196,9 @@ const PricingComparison = ({ data }: { data: Props }) => {
               What most firms take
             </span>
 
-            <span className="text-12 fnt-lexend uppercase leading-[1.444444444444444] text-white/50">
+            {/* <span className="text-12 fnt-lexend uppercase leading-[1.444444444444444] text-white/50">
               Growth
-            </span>
+            </span> */}
             <h3 className="text-25 mt-[40px] leading-[1.214285714285714]">
               Growth Partnership
             </h3>
@@ -271,9 +271,9 @@ const PricingComparison = ({ data }: { data: Props }) => {
             viewport={{ once: true }}
             className="rounded-2xl bg-[#F6F6F6] p-6 md:px-[40px] md:pt-[50px]"
           >
-            <span className="text-[length:var(--text-18-sm)] fnt-lexend uppercase leading-[1.444444444444444] text-muted">
+            {/* <span className="text-[length:var(--text-18-sm)] fnt-lexend uppercase leading-[1.444444444444444] text-muted">
               Plus
-            </span>
+            </span> */}
             <h3 className="text-25 mt-[40px] leading-[1.214285714285714]">
               Plus
             </h3>
