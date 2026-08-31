@@ -142,7 +142,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
     window.addEventListener("resize", updateContainerLeft);
     return () => window.removeEventListener("resize", updateContainerLeft);
   }, []);
-  console.log("data.serviceIndustries", data.serviceIndustries);
+
   const REPEAT = 2;
   const items = data.serviceIndustries;
   const loopItems = Array.from({ length: REPEAT }, () => items).flat();

@@ -252,7 +252,7 @@ export async function generateMetadata({
   }
 
   const seo = data.seo;
-  const canonicalUrl = `https://www.globalsurf.ae/${data.slug}`;
+  const canonicalUrl = `https://www.globalsurf.ae/service-pillar${data.slug}`;
 
   return {
     title: seo?.metaTitle ?? data.name,
@@ -289,9 +289,9 @@ const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const testimonials = await getTestimonials();
   const data: ServicePillarData | null = await getServicePillar(slug);
-  const industries = await getIndustriesData();
+  
 
-  console.log(industries);
+  // console.log('industires :',data);
   if (!data) {
     notFound();
   }
@@ -495,7 +495,7 @@ const page = async ({ params }: PageProps) => {
       dec: item.description,
     }),
   );
-console.log( "related ",data.eleventhSection)
+
   const relatedServiceData = data.eleventhSection.items.map((data) => {
     return {
       title: data.title,
@@ -508,12 +508,12 @@ console.log( "related ",data.eleventhSection)
 
   return (
     <div>
-      {/* {service.seo?.schema && (
+      {data.seo?.schema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: service.seo.schema }}
+          dangerouslySetInnerHTML={{ __html: data.seo.schema }}
         />
-      )} */}
+      )}
       <HeroSection data={data.firstSection} />
       <TitleDesc data={data.secondSection} />
       <Approach data={data.thirdSection} />
@@ -534,11 +534,11 @@ console.log( "related ",data.eleventhSection)
       />
       <ProcessSlider data={data.eighthSection} variant="dark" />
 
-      {/* <section className="py-120">
+      <section className="py-120">
         <ButtonSlider
           data={data.ninthSection}
         />
-      </section> */}
+      </section>
 
       <WhyChoose data={data.tenthSection} page="service-pillar" />
       {/*<GrayParaSec data={service.fourthSection} />
