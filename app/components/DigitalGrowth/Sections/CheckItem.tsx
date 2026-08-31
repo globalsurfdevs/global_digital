@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useRef, useState, useTransition } from "react";
+import { useRef, useState, useTransition, useLayoutEffect } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { moveUp } from "../../animations/motionVariants";
 import { submitBooking } from "@/app/actions/submitBooking";
@@ -45,7 +45,6 @@ type FormErrors = Partial<
   >
 >;
 
-const disabledDays = [{ before: new Date() }, { dayOfWeek: [0, 6] }];
 
 const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -227,6 +226,9 @@ const GetInTouch = ({
   const [isPending, startTransition] = useTransition();
   const [date, setDate] = useState("");
   const [datePickerOpen, setDatePickerOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const [placement, setPlacement] = useState<"bottom" | "top">("bottom");
 
   const runValidation = (form: HTMLFormElement): FormErrors => {
     const data = new FormData(form);
@@ -258,8 +260,12 @@ const GetInTouch = ({
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
+
     if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
     }
   };
 
@@ -298,9 +304,12 @@ const GetInTouch = ({
     // sector and timeSlot aren't native inputs, so append them manually
     formData.set("sector", sector);
     formData.set("timeSlot", timeSlot);
+    formData.set("date", date);
 
     startTransition(async () => {
+     
       const result = await submitBooking(formData);
+
       setNote(
         result.message ??
           (result.success ? "Thank you." : "Something went wrong."),
@@ -315,19 +324,47 @@ const GetInTouch = ({
     });
   };
 
-  function getMinBookingDate() {
-    const date = new Date();
-    date.setDate(date.getDate() + 1);
-
-    return date.toISOString().split("T")[0];
+  function getTomorrow(): Date {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + 1);
+    return d;
   }
   function formatDate(date: Date): string {
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, "0");
     const dd = String(date.getDate()).padStart(2, "0");
 
-    return `${yyyy}-${mm}-${dd}`;
+    return `${yyyy}-${mm}-${dd}`; // "2026-09-04"
   }
+
+  useLayoutEffect(() => {
+    if (!datePickerOpen || !triggerRef.current) return;
+
+    const updatePlacement = () => {
+      const triggerRect = triggerRef.current!.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - triggerRect.bottom;
+      const spaceAbove = triggerRect.top;
+
+      // Calendar is roughly 340-360px tall with padding - adjust if yours differs
+      const estimatedHeight = popoverRef.current?.offsetHeight ?? 360;
+
+      if (spaceBelow < estimatedHeight && spaceAbove > spaceBelow) {
+        setPlacement("top");
+      } else {
+        setPlacement("bottom");
+      }
+    };
+
+    updatePlacement();
+    window.addEventListener("resize", updatePlacement);
+    window.addEventListener("scroll", updatePlacement, true);
+
+    return () => {
+      window.removeEventListener("resize", updatePlacement);
+      window.removeEventListener("scroll", updatePlacement, true);
+    };
+  }, [datePickerOpen]);
   return (
     <section
       id="book"
@@ -402,7 +439,7 @@ const GetInTouch = ({
               <FormField
                 label="Phone"
                 name="phone"
-                type="tel"
+                type="number"
                 error={errors.phone}
                 onBlur={handleFieldBlur}
                 onChange={handleFieldChange}
@@ -462,16 +499,64 @@ const GetInTouch = ({
             </div>
 
             <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-              <FormField
-                label="Preferred date"
-                name="date"
-                type="date"
-                required
-                min={getMinBookingDate()}
-                error={errors.date}
-                onBlur={handleFieldBlur}
-                onChange={handleFieldChange}
-              />
+              <div className="relative">
+                <input type="hidden" name="date" value={date} />
+                <label className="text-13 block text-white/50">
+                  Preferred date <span className="text-primary">*</span>
+                </label>
+
+                <button
+                  ref={triggerRef}
+                  type="button"
+                  onClick={() => setDatePickerOpen((prev) => !prev)}
+                  className="flex w-full items-end justify-between border-b border-white/20 pb-3 pt-6 text-left"
+                  aria-haspopup="dialog"
+                  aria-expanded={datePickerOpen}
+                >
+                  <span className="text-15 text-white">
+                    {date ? date.split("-").reverse().join("-") : "Select date"}
+                  </span>
+                  <ChevronDown
+                    size={18}
+                    className={`shrink-0 text-white/60 transition-transform ${
+                      datePickerOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {datePickerOpen && (
+                  <div
+                    ref={popoverRef}
+                    className={`absolute left-0 z-20 max-h-[80vh] overflow-y-auto rounded-lg border border-white/10 bg-neutral-900
+        p-3 shadow-xl
+        ${placement === "top" ? "bottom-full " : "top-full mt-2"}`}
+                  >
+                    <DayPicker
+                      mode="single"
+                      selected={date ? new Date(`${date}T00:00:00`) : undefined}
+                      defaultMonth={getTomorrow()}
+                      disabled={[
+                        { before: getTomorrow() },
+                        { dayOfWeek: [0, 6] },
+                      ]}
+                      onSelect={(selectedDate) => {
+                        if (!selectedDate) return;
+                        const formattedDate = formatDate(selectedDate);
+                        setDate(formattedDate);
+                        const error = validateField("date", formattedDate);
+                        setErrors((prev) => ({ ...prev, date: error }));
+                        setDatePickerOpen(false);
+                      }}
+                    />
+                  </div>
+                )}
+
+                {errors.date && (
+                  <p className="mt-1.5 text-[11px] text-primary">
+                    {errors.date}
+                  </p>
+                )}
+              </div>
 
               <div className="relative border-b border-white/20">
                 <input type="hidden" name="timeSlot" value={timeSlot} />
