@@ -303,8 +303,8 @@ const page = async ({ params }: PageProps) => {
   const testimonials = await getTestimonials();
   const data: ServicePillarData | null = await getServicePillar(slug);
 
-  console.log("industires :", data);
-  
+  // console.log("industires :", data);
+
   if (!data) {
     notFound();
   }

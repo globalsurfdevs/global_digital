@@ -45,7 +45,7 @@ const nextConfig: NextConfig = {
       {
         source: "/performance-marketing", // The old URL path
         destination: "/performance-marketing-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        permanent: true, 
       },
       {
         source: "/seo", // The old URL path
@@ -104,12 +104,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/portfolio/telal-engineering-&-contracting", // The old URL path
-        destination: "/portfolio/telal-engineering-and-contracting", // The new URL path
+        destination: "/portfolio", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/lets-talk", // The old URL path
-        destination: "https://www.globalsurf.ae", // The new URL path
+        destination: "/contact-us", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -120,24 +120,34 @@ const nextConfig: NextConfig = {
 
       // ================================== Industries ==============================================
       {
-        source: "/industry", // The old URL path
-        destination: "/industries", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/industry", 
+        destination: "/industries",
+        permanent: true, 
       },
       {
-        source: "/industry/ecommerce", // The old URL path
-        destination: "/industries/lifestyle-retail-digital-marketing", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/industry/ecommerce", 
+        destination: "/industries/lifestyle-retail-digital-marketing",
+        permanent: true, 
       },
       {
-        source: "/industry/b2b", // The old URL path
-        destination: "/industries", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/industry/ecommerce-digital-marketing", 
+        destination: "/industries/lifestyle-retail-digital-marketing",
+        permanent: true, 
       },
       {
-        source: "/industry/digital-marketing-services", // The old URL path
-        destination: "/digital-marketing-services", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/industry/construction", 
+        destination: "/industries/construction-digital-marketing",
+        permanent: true, 
+      },
+      {
+        source: "/industry/b2b", 
+        destination: "/industries",
+        permanent: true, 
+      },
+      {
+        source: "/industry/digital-marketing-services", 
+        destination: "/digital-marketing-services",
+        permanent: true, 
       },
        {
         source: "/industry/b2b-digital-marketing-services",
@@ -153,7 +163,7 @@ const nextConfig: NextConfig = {
       {
         source:
           "/blogs/poor-sales-try-our-website-redesign-services-for-results",
-        destination: "/web-development-agency-dubai",
+        destination: "/blogs",
         permanent: true,
       },
       {
@@ -175,7 +185,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/digital-development",
-        destination: "/web-development-agency-dubai",
+        destination: "/web-design-development-agency-dubai",
         permanent: true,
       },
       {
@@ -205,7 +215,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/marketing-strategy-consulting",
-        destination: "/marketing-strategy-consulting-dubai",
+        destination: "/marketing-automation-agency-dubai",
         permanent: true,
       },
       {
@@ -220,7 +230,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/e-commerce-web-development-company",
-        destination: "/e-commerce-web-development-company",
+        destination: "/e-commerce-web-development-company-dubai",
         permanent: true,
       },
      
