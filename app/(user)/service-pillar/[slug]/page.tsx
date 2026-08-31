@@ -109,6 +109,7 @@ interface PageProps {
 // }
 import { SeoFormValues } from "@/app/types/seo";
 import { getAllIndustry } from "@/app/lib/industry.service";
+import { userRoutes } from "@/app/const/routes/user.routes";
 
 export type ServicePillarData = {
   _id: string;
@@ -252,7 +253,7 @@ export async function generateMetadata({
   }
 
   const seo = data.seo;
-  const canonicalUrl = `https://www.globalsurf.ae/service-pillar${data.slug}`;
+  const canonicalUrl = `https://www.globalsurf.ae${userRoutes.servicePillar.detail(data.slug)}`;
 
   return {
     title: seo?.metaTitle ?? data.name,
@@ -289,7 +290,6 @@ const page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const testimonials = await getTestimonials();
   const data: ServicePillarData | null = await getServicePillar(slug);
-  
 
   // console.log('industires :',data);
   if (!data) {
@@ -303,7 +303,6 @@ const page = async ({ params }: PageProps) => {
       subhead: data.ctaSection.description,
     },
   ];
-
 
   //   const Cta = [
   //   {
@@ -502,10 +501,10 @@ const page = async ({ params }: PageProps) => {
       description: data.description,
       id: data.id,
       icon: data.image,
-      link: data.link,
+      link: userRoutes.servicePillar.detail(data.link),
     };
   });
-
+// console.log("related service :",relatedServiceData)
   return (
     <div>
       {data.seo?.schema && (
@@ -526,18 +525,20 @@ const page = async ({ params }: PageProps) => {
         data={infoGridData}
       />
       <BECS data={data.sixthSection} page="service-pillar" />
+      {data.seventhSection.items.length&&(
 
       <WhatsIncluded
         title={data.seventhSection.title}
         description={data.seventhSection.subTitle}
         items={data.seventhSection.items}
       />
-      <ProcessSlider data={data.eighthSection} variant="dark" />
+      )}
+      {data.eighthSection.items.length > 0 && (
+        <ProcessSlider data={data.eighthSection} variant="dark" />
+      )}
 
       <section className="py-120">
-        <ButtonSlider
-          data={data.ninthSection}
-        />
+        <ButtonSlider data={data.ninthSection} />
       </section>
 
       <WhyChoose data={data.tenthSection} page="service-pillar" />

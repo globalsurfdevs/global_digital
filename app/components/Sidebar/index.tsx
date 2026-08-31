@@ -18,6 +18,7 @@ import {
 import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
 import { CreativeCommons, Layers3, Settings2 } from "lucide-react";
 import { FaIndustry, FaServicestack } from "react-icons/fa";
+import { adminRoutes } from "@/app/const/routes/admin.routes";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -200,8 +201,8 @@ const menuGroups = [
       },
       {
         icon: <Layers3 />,
-        label: "Service Pillars",
-        route: "/admin/service-pillars",
+        label: adminRoutes.servicePillars.name,
+        route: adminRoutes.servicePillars.index,
       },
       {
         icon: <Settings2 />,

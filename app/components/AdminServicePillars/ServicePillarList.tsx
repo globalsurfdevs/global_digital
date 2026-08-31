@@ -371,6 +371,7 @@ import { IoIosClose } from "react-icons/io";
 import { useEffect } from "react";
 // import AdminServiceIndustryList from "./AdminServiceIndustryList";
 import { FaAddressBook, FaBookOpen, FaPage4 } from "react-icons/fa";
+import { ImageUploader } from "@/components/ui/image-uploader";
 
 type ServicePillarListItem = {
   _id: string;
@@ -406,6 +407,8 @@ const AdminServicePillarList = () => {
 
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
+  const [image, setImage] = useState("");
+  const [imageAlt, setImageAlt] = useState("");
   const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
   const [updating, setUpdating] = useState(false);
 
@@ -858,6 +861,31 @@ const AdminServicePillarList = () => {
                         This becomes part of the page URL, e.g. /services/
                         {editSlug || "your-slug"}
                       </p>
+                    </div>
+
+                    {/* page icon */}
+                    <div className="flex flex-col gap-2 text-left">
+                      <label className="text-sm font-semibold text-gray-600">
+                        Add Icon
+                      </label>
+                      <ImageUploader
+                        value={image}
+                        onChange={setImage}
+                        className="h-fit w-[200px]"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2 text-left">
+                      <label className="text-sm font-semibold text-gray-600">
+                        Image Alt Tag
+                      </label>
+                      <input
+                        type="text"
+                        value={imageAlt}
+                        onChange={(e) => setImageAlt(e.target.value)}
+                        placeholder="Alt tag"
+                        className="rounded border px-3 py-2"
+                      />
                     </div>
 
                     <div className="gap-2 sm:flex sm:flex-row-reverse">
