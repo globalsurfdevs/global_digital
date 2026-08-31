@@ -41,7 +41,7 @@ export const getServicePillar = async (slug: string) => {
           });
       }
 
-      console.log("service pillar:", item);
+    //   console.log("service pillar:", item);
 
       return JSON.parse(JSON.stringify(item));
     },
