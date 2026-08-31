@@ -34,6 +34,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -44,7 +45,10 @@ import { submitBooking } from "@/app/actions/submitBooking";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import { Clientsdata } from "@/app/data/Clientsdata";
-
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/style.css";
+import { ChevronDown } from "lucide-react";
+import { createPortal } from "react-dom";
 /* ============================================================
    Shared design tokens (Tailwind arbitrary values reference these)
    red        #E63E31   red-dk   #C9332A
@@ -1159,7 +1163,7 @@ const GROWTH_FEATURES: PricingFeature[] = [
     title: "Social Media",
     note: "Named correctly when a buyer asks an AI tool",
   },
-  { title: "Social Media", note: "LinkedIn, eight to ten posts a month" },
+  // { title: "Social Media", note: "LinkedIn, eight to ten posts a month" },
   { title: "Content Production", note: "One shoot day a month at your site" },
   {
     title: "Executive Visibility",
@@ -1869,10 +1873,29 @@ function validateField(name: string, value: string): string | undefined {
 
     case "date": {
       if (!v) return "Please pick a date.";
-      const picked = new Date(v);
-      const today = new Date(todayISO());
-      if (isNaN(picked.getTime())) return "Enter a valid date.";
-      if (picked < today) return "Pick a date from today onward.";
+
+      const picked = new Date(`${v}T00:00:00`);
+
+      if (isNaN(picked.getTime())) {
+        return "Enter a valid date.";
+      }
+
+      // Cannot book today or any past date
+      const tomorrow = new Date();
+      tomorrow.setHours(0, 0, 0, 0);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      if (picked < tomorrow) {
+        return "Please select a date from tomorrow onward.";
+      }
+
+      // Saturday = 6, Sunday = 0
+      const day = picked.getDay();
+
+      if (day === 0 || day === 6) {
+        return "Bookings are not available on Saturdays and Sundays.";
+      }
+
       return undefined;
     }
 
@@ -1890,7 +1913,16 @@ function FinalCta() {
   const [errors, setErrors] = useState<FormErrors>({});
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
-
+  const [date, setDate] = useState("");
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const [placement, setPlacement] = useState<"bottom" | "top">("bottom");
+  const [coords, setCoords] = useState<{
+    top: number;
+    left: number;
+    placement: "top" | "bottom";
+  } | null>(null);
   const runValidation = (form: HTMLFormElement): FormErrors => {
     const data = new FormData(form);
     const fields: (keyof FormErrors)[] = [
@@ -1947,9 +1979,10 @@ function FinalCta() {
 
     setNote("");
     const formData = new FormData(form);
-
+    formData.set("date", date);
     startTransition(async () => {
       const result = await submitBooking(formData);
+   
       setNote(
         result.message ??
           (result.success ? "Thank you." : "Something went wrong."),
@@ -1962,6 +1995,49 @@ function FinalCta() {
     });
   };
 
+  function getTomorrow(): Date {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + 1);
+    return d;
+  }
+  function formatDate(date: Date): string {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const dd = String(date.getDate()).padStart(2, "0");
+
+    return `${yyyy}-${mm}-${dd}`; // "2026-09-04"
+  }
+
+  useLayoutEffect(() => {
+    if (!datePickerOpen || !triggerRef.current) return;
+
+    const updatePosition = () => {
+      const rect = triggerRef.current!.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      const estimatedHeight = popoverRef.current?.offsetHeight ?? 360;
+
+      const placement =
+        spaceBelow < estimatedHeight && spaceAbove > spaceBelow
+          ? "top"
+          : "bottom";
+
+      setCoords({
+        left: rect.left,
+        top: placement === "top" ? rect.top - 8 : rect.bottom + 8,
+        placement,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [datePickerOpen]);
   return (
     <section className="relative overflow-hidden bg-black text-white" id="book">
       <div className="pointer-events-none absolute -left-40 -top-52 h-[700px] w-[760px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.17),transparent_66%)]" />
@@ -2092,35 +2168,86 @@ function FinalCta() {
               </div>
 
               <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div>
+                <div className="relative">
+                  <input type="hidden" name="date" value={date} />
                   <label
-                    htmlFor="d"
+                    htmlFor="preferred-date"
                     className="mb-2 block text-[9.5px] font-medium uppercase tracking-[0.12em] text-white/[0.42]"
                   >
                     Preferred date <span className="text-[#E63E31]">*</span>
                   </label>
-                  <input
-                    id="d"
-                    name="date"
-                    type="date"
-                    required
-                    min={todayISO()}
-                    onBlur={handleFieldBlur}
-                    onChange={handleFieldChange}
-                    aria-invalid={!!errors.date}
-                    className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 [color-scheme:dark] focus:bg-black/[0.62] ${
+
+                  <button
+                    id="preferred-date"
+                    ref={triggerRef}
+                    type="button"
+                    onClick={() => setDatePickerOpen((prev) => !prev)}
+                    aria-haspopup="dialog"
+                    aria-expanded={datePickerOpen}
+                    className={`flex w-full items-center justify-between rounded-[10px] border bg-black/40 px-4 py-3.5 text-left text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
                       errors.date
                         ? "border-[#E63E31]"
                         : "border-white/[0.13] focus:border-[#E63E31]"
                     }`}
-                  />
+                  >
+                    <span className={date ? "text-white" : "text-white/40"}>
+                      {date
+                        ? date.split("-").reverse().join("-")
+                        : "Select date"}
+                    </span>
+                    <ChevronDown
+                      size={18}
+                      className={`shrink-0 text-white/60 transition-transform ${
+                        datePickerOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {datePickerOpen &&
+                    coords &&
+                    createPortal(
+                      <div
+                        ref={popoverRef}
+                        style={{
+                          position: "fixed",
+                          top: coords.top,
+                          left: coords.left,
+                          transform:
+                            coords.placement === "top"
+                              ? "translateY(-100%)"
+                              : undefined,
+                        }}
+                        className="dark z-[9999] max-h-[80vh] overflow-y-auto rounded-lg border border-white/10 bg-neutral-900 p-3 text-white shadow-xl"
+                      >
+                        <DayPicker
+                          mode="single"
+                          selected={
+                            date ? new Date(`${date}T00:00:00`) : undefined
+                          }
+                          defaultMonth={getTomorrow()}
+                          disabled={[
+                            { before: getTomorrow() },
+                            { dayOfWeek: [0, 6] },
+                          ]}
+                          onSelect={(selectedDate) => {
+                            if (!selectedDate) return;
+                            const formattedDate = formatDate(selectedDate);
+                            setDate(formattedDate);
+                            const error = validateField("date", formattedDate);
+                            setErrors((prev) => ({ ...prev, date: error }));
+                            setDatePickerOpen(false);
+                          }}
+                        />
+                      </div>,
+                      document.body,
+                    )}
+
                   {errors.date && (
                     <p className="mt-1.5 text-[11px] text-[#E63E31]">
                       {errors.date}
                     </p>
                   )}
                 </div>
-
                 <div>
                   <label
                     htmlFor="ts"
