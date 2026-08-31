@@ -122,11 +122,13 @@ export type ServicePillarData = {
     imageAlt: string;
     title: string;
     description: string;
+    showSection: boolean;
   };
 
   secondSection: {
     title: string;
     description: string;
+    showSection: boolean;
   };
 
   thirdSection: {
@@ -137,12 +139,14 @@ export type ServicePillarData = {
     imageAlt: string;
     buttonText: string;
     buttonLink: string;
+    showSection: boolean;
   };
 
   fourthSection: {
     title: string;
     subTitle: string;
     description: string;
+    showSection: boolean;
   };
 
   fifthSection: {
@@ -157,6 +161,7 @@ export type ServicePillarData = {
       description: string;
       link?: string;
     }[];
+    showSection: boolean;
   };
 
   sixthSection: BECSData;
@@ -171,6 +176,7 @@ export type ServicePillarData = {
       imageAlt: string;
       link: string;
     }[];
+    showSection: boolean;
   };
 
   eighthSection: {
@@ -181,6 +187,7 @@ export type ServicePillarData = {
       title: string;
       description: string;
     }[];
+    showSection: boolean;
   };
   ninthSection: {
     title: string;
@@ -191,6 +198,7 @@ export type ServicePillarData = {
       title: string;
       page: string | null;
     }[];
+    showSection: boolean;
   };
   tenthSection: {
     tag: string;
@@ -201,6 +209,7 @@ export type ServicePillarData = {
       value: string;
       label: string;
     }[];
+    showSection: boolean;
   };
 
   eleventhSection: {
@@ -214,6 +223,7 @@ export type ServicePillarData = {
       imageAlt: string;
       link: string;
     }[];
+    showSection: boolean;
   };
 
   ctaSection: {
@@ -222,6 +232,7 @@ export type ServicePillarData = {
     description: string;
     buttonText: string;
     buttonLink: string;
+    showSection: boolean;
   };
 
   faqSection: {
@@ -231,6 +242,7 @@ export type ServicePillarData = {
       title: string;
       description: string;
     }[];
+    showSection: boolean;
   };
 };
 
@@ -291,7 +303,8 @@ const page = async ({ params }: PageProps) => {
   const testimonials = await getTestimonials();
   const data: ServicePillarData | null = await getServicePillar(slug);
 
-  // console.log('industires :',data);
+  // console.log("industires :", data);
+
   if (!data) {
     notFound();
   }
@@ -504,7 +517,7 @@ const page = async ({ params }: PageProps) => {
       link: userRoutes.servicePillar.detail(data.link),
     };
   });
-// console.log("related service :",relatedServiceData)
+  // console.log("related service :",relatedServiceData)
   return (
     <div>
       {data.seo?.schema && (
@@ -513,35 +526,60 @@ const page = async ({ params }: PageProps) => {
           dangerouslySetInnerHTML={{ __html: data.seo.schema }}
         />
       )}
-      <HeroSection data={data.firstSection} />
-      <TitleDesc data={data.secondSection} />
-      <Approach data={data.thirdSection} />
-      <WhyMatters data={data.fourthSection} />
-      <InfoGrid
-        title={data.fifthSection.title}
-        subTitle={data.fifthSection.subTitle}
-        description={data.fifthSection.description}
-        colcount={4}
-        data={infoGridData}
-      />
-      <BECS data={data.sixthSection} page="service-pillar" />
-      {data.seventhSection.items.length&&(
-
-      <WhatsIncluded
-        title={data.seventhSection.title}
-        description={data.seventhSection.subTitle}
-        items={data.seventhSection.items}
-      />
-      )}
-      {data.eighthSection.items.length > 0 && (
-        <ProcessSlider data={data.eighthSection} variant="dark" />
+      {data.firstSection.showSection !== false && (
+        <HeroSection data={data.firstSection} />
       )}
 
-      <section className="py-120">
-        <ButtonSlider data={data.ninthSection} />
-      </section>
+      {data.secondSection.showSection !== false && (
+        <TitleDesc data={data.secondSection} />
+      )}
 
-      <WhyChoose data={data.tenthSection} page="service-pillar" />
+      {data.thirdSection.showSection !== false && (
+        <Approach data={data.thirdSection} />
+      )}
+
+      {data.fourthSection.showSection !== false && (
+        <WhyMatters data={data.fourthSection} />
+      )}
+
+      {data.fifthSection.showSection !== false && (
+        <InfoGrid
+          title={data.fifthSection.title}
+          subTitle={data.fifthSection.subTitle}
+          description={data.fifthSection.description}
+          colcount={4}
+          data={infoGridData}
+        />
+      )}
+
+      {data.sixthSection.showSection !== false && (
+        <BECS data={data.sixthSection} page="service-pillar" />
+      )}
+
+      {data.seventhSection.showSection !== false &&
+        data.seventhSection.items.length > 0 && (
+          <WhatsIncluded
+            title={data.seventhSection.title}
+            description={data.seventhSection.subTitle}
+            items={data.seventhSection.items}
+          />
+        )}
+
+      {data.eighthSection.showSection !== false &&
+        data.eighthSection.items.length > 0 && (
+          <ProcessSlider data={data.eighthSection} variant="dark" />
+        )}
+
+      {data.ninthSection.showSection !== false && (
+        <section className="py-120">
+          <ButtonSlider data={data.ninthSection} />
+        </section>
+      )}
+
+      {data.tenthSection.showSection !== false && (
+        <WhyChoose data={data.tenthSection} page="service-pillar" />
+      )}
+
       {/*<GrayParaSec data={service.fourthSection} />
       
       {slug === "web-design-and-development-v2" && (
@@ -581,24 +619,32 @@ const page = async ({ params }: PageProps) => {
         reviews={false}
         page="service"
       />
-      <ServicesSec
-        description={data.eleventhSection.description}
-        title={data.eleventhSection.title}
-        items={relatedServiceData}
-      />
-      <GetInTouch
-        data={Cta}
-        ctabbutton={data.ctaSection.buttonText}
-        redlast
-        buttonLink={data.ctaSection.buttonLink}
-        page="service"
-      />
-      <FAQ
-        data={data.faqSection.data}
-        initialCount={data.faqSection.data.length}
-        page="service"
-        title={data.faqSection.title}
-      />
+      {data.eleventhSection.showSection !== false && (
+        <ServicesSec
+          description={data.eleventhSection.description}
+          title={data.eleventhSection.title}
+          items={relatedServiceData}
+        />
+      )}
+
+      {data.ctaSection.showSection !== false && (
+        <GetInTouch
+          data={Cta}
+          ctabbutton={data.ctaSection.buttonText}
+          redlast
+          buttonLink={data.ctaSection.buttonLink}
+          page="service"
+        />
+      )}
+
+      {data.faqSection.showSection !== false && (
+        <FAQ
+          data={data.faqSection.data}
+          initialCount={data.faqSection.data.length}
+          page="service"
+          title={data.faqSection.title}
+        />
+      )}
     </div>
   );
 };

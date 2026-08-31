@@ -26,6 +26,7 @@ import { useParams } from "next/navigation";
 
 // NOTE: adjust this import path to wherever ServicePillarData actually lives
 import { ServicePillarData } from "../ServicePillar/type";
+import { Eye, EyeClosed, EyeOff } from "lucide-react";
 
 type ServiceIndustryOption = {
   _id: string;
@@ -40,6 +41,8 @@ const AccordionSection = ({
   sectionKey,
   openSection,
   setOpenSection,
+  showSection,
+  onToggle,
   children,
 }: {
   title: string;
@@ -47,31 +50,66 @@ const AccordionSection = ({
   openSection: string | null;
   setOpenSection: (key: string | null) => void;
   children: React.ReactNode;
+  showSection: boolean;
+  onToggle: () => void;
 }) => {
   const isOpen = openSection === sectionKey;
 
+  const handleAccordionClick = () => {
+    setOpenSection(isOpen ? null : sectionKey);
+  };
+
+  const handleVisibilityClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    onToggle();
+  };
+
   return (
     <AdminItemContainer>
-      <Label main isOpen={isOpen ? "open" : ""}>
-        <div className="flex w-full justify-between">
+      {/* Accordion Header */}
+      <div
+        onClick={handleAccordionClick}
+        className={`cursor-pointer p-4 ${isOpen ? "open" : ""}`}
+      >
+        <div className="flex w-full items-center justify-between">
           <div>{title}</div>
-          <button
-            type="button"
-            onClick={() => setOpenSection(isOpen ? null : sectionKey)}
-            className="flex items-center justify-between pr-5"
-          >
-            <FiChevronDown
-              className={`text-xl transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-            />
-          </button>
-        </div>
-      </Label>
 
-      {isOpen && <div className="pt-3">{children}</div>}
+          <div className="flex items-center gap-2">
+            {/* Show / Hide */}
+            <button
+              type="button"
+              onClick={handleVisibilityClick}
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                showSection
+                  ? "bg-green-100 text-green-500"
+                  : "bg-gray-200 text-red-500"
+              }`}
+              aria-label={showSection ? "Hide section" : "Show section"}
+            >
+              {showSection ? <Eye size={16} /> : <EyeOff size={16} />}
+            </button>
+
+            {/* Accordion Arrow */}
+            <div className="flex items-center justify-center pr-5">
+              <FiChevronDown
+                className={`text-xl transition-transform duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Accordion Content */}
+      {isOpen && <div>{children}</div>}
     </AdminItemContainer>
   );
 };
-
 const SortableItem = ({
   id,
   reorderMode,
@@ -236,7 +274,7 @@ const ServicePillarPage = () => {
       );
     }
   };
-
+  // fetch saved data
   const fetchServicePillarData = async () => {
     try {
       const response = await fetch(`/api/service-pillar?slug=${slug}`);
@@ -318,15 +356,51 @@ const ServicePillarPage = () => {
     fetchServiceIndustries().then(() => fetchServicePillarData());
   }, []);
 
+  // list and unlist section
+  const handleToggleSection = async (sectionKey: keyof ServicePillarData) => {
+    const currentValue = watch(`${sectionKey}.showSection` as any);
+    const nextValue = currentValue !== false;
+
+    try {
+      const response = await fetch(
+        `/api/service-pillar/${encodeURIComponent(slug)}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            [`${sectionKey}.showSection`]: !nextValue,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+
+        alert(errorData.message ?? "Failed to update section visibility");
+        return;
+      }
+
+      alert(`${sectionKey} section visibility updated successfully`);
+
+      setValue(`${sectionKey}.showSection` as any, !nextValue);
+    } catch (error) {
+      console.error("Error updating section visibility", error);
+      alert("Failed to update section visibility");
+    }
+  };
+
   return (
     <div className="flex flex-col gap-5 pb-5">
       <form className="flex flex-col gap-5" onSubmit={handleSubmit(handleSave)}>
         {/* ---------------- First Section ---------------- */}
+        
         <AccordionSection
           title="First Section"
           sectionKey="firstSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("firstSection.showSection") !== false}
+          onToggle={() => handleToggleSection("firstSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -383,6 +457,8 @@ const ServicePillarPage = () => {
           sectionKey="secondSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("secondSection.showSection") !== false}
+          onToggle={() => handleToggleSection("secondSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -410,6 +486,8 @@ const ServicePillarPage = () => {
           sectionKey="thirdSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("thirdSection.showSection") !== false}
+          onToggle={() => handleToggleSection("thirdSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -488,6 +566,8 @@ const ServicePillarPage = () => {
           sectionKey="fourthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("fourthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("fourthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -524,6 +604,8 @@ const ServicePillarPage = () => {
           sectionKey="fifthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("fifthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("fifthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -683,6 +765,8 @@ const ServicePillarPage = () => {
           sectionKey="sixthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("sixthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("sixthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -818,6 +902,8 @@ const ServicePillarPage = () => {
           sectionKey="seventhSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("seventhSection.showSection") !== false}
+          onToggle={() => handleToggleSection("seventhSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -963,6 +1049,8 @@ const ServicePillarPage = () => {
           sectionKey="eighthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("eighthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("eighthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1077,6 +1165,8 @@ const ServicePillarPage = () => {
           sectionKey="ninthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("ninthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("ninthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1138,6 +1228,8 @@ const ServicePillarPage = () => {
           sectionKey="tenthSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("tenthSection.showSection") !== false}
+          onToggle={() => handleToggleSection("tenthSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1257,13 +1349,13 @@ const ServicePillarPage = () => {
         </AccordionSection>
 
         {/* ---------------- Eleventh Section ---------------- */}
-
-        {/* ---------------- Eleventh Section ---------------- */}
         <AccordionSection
           title="Eleventh Section"
           sectionKey="eleventhSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("eleventhSection.showSection") !== false}
+          onToggle={() => handleToggleSection("eleventhSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             {/* Section Title */}
@@ -1423,6 +1515,8 @@ const ServicePillarPage = () => {
           sectionKey="ctaSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("ctaSection.showSection") !== false}
+          onToggle={() => handleToggleSection("ctaSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">
@@ -1477,6 +1571,8 @@ const ServicePillarPage = () => {
           sectionKey="faqSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
+          showSection={watch("faqSection.showSection") !== false}
+          onToggle={() => handleToggleSection("faqSection")}
         >
           <div className="flex flex-col gap-2 rounded-md p-5">
             <div className="flex flex-col gap-2">

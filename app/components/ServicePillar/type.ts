@@ -11,11 +11,13 @@ export type ServicePillarData = {
     imageAlt: string;
     title: string;
     description: string;
+    showSection:boolean
   };
 
   secondSection: {
     title: string;
     description: string;
+    showSection:boolean
   };
 
   thirdSection: {
@@ -26,12 +28,14 @@ export type ServicePillarData = {
     imageAlt: string;
     buttonText: string;
     buttonLink: string;
+    showSection:boolean
   };
 
   fourthSection: {
     title: string;
     subTitle: string;
     description: string;
+    showSection:boolean
   };
 
   fifthSection: {
@@ -44,8 +48,9 @@ export type ServicePillarData = {
       imageAlt: string;
       title: string;
       description: string;
-      link?:string
+      link?: string;
     }[];
+    showSection:boolean
   };
 
   sixthSection: {
@@ -57,6 +62,7 @@ export type ServicePillarData = {
       imageAlt: string;
       description: string;
     }[];
+    showSection:boolean
   };
 
   seventhSection: {
@@ -69,6 +75,7 @@ export type ServicePillarData = {
       imageAlt: string;
       link: string;
     }[];
+    showSection:boolean
   };
 
   eighthSection: {
@@ -79,10 +86,12 @@ export type ServicePillarData = {
       title: string;
       description: string;
     }[];
+    showSection:boolean
   };
   ninthSection: {
     title: string;
     serviceIndustries: string[];
+    showSection:boolean
   };
   tenthSection: {
     tag: string;
@@ -93,6 +102,7 @@ export type ServicePillarData = {
       value: string;
       label: string;
     }[];
+    showSection:boolean
   };
 
   eleventhSection: {
@@ -106,6 +116,7 @@ export type ServicePillarData = {
       imageAlt: string;
       link: string;
     }[];
+    showSection:boolean
   };
 
   ctaSection: {
@@ -114,6 +125,7 @@ export type ServicePillarData = {
     description: string;
     buttonText: string;
     buttonLink: string;
+    showSection:boolean
   };
 
   faqSection: {
@@ -123,5 +135,6 @@ export type ServicePillarData = {
       title: string;
       description: string;
     }[];
+    showSection:boolean
   };
 };
