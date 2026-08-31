@@ -21,7 +21,7 @@ export const firstSection = {
     {
       _id: "1",
       title: "Book a 30-Minute Call",
-      link: "/contact",
+      link: "#book",
     },
   ],
 };

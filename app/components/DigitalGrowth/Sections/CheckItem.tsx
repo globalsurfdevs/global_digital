@@ -4,6 +4,8 @@ import { useRef, useState, useTransition } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { moveUp } from "../../animations/motionVariants";
 import { submitBooking } from "@/app/actions/submitBooking";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/style.css";
 
 const trustPoints: string[] = [
   "A senior strategist, not a salesperson",
@@ -42,6 +44,8 @@ type FormErrors = Partial<
     string
   >
 >;
+
+const disabledDays = [{ before: new Date() }, { dayOfWeek: [0, 6] }];
 
 const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -86,10 +90,29 @@ function validateField(name: string, value: string): string | undefined {
 
     case "date": {
       if (!v) return "Please pick a date.";
-      const picked = new Date(v);
-      const today = new Date(todayISO());
-      if (isNaN(picked.getTime())) return "Enter a valid date.";
-      if (picked < today) return "Pick a date from today onward.";
+
+      const picked = new Date(`${v}T00:00:00`);
+
+      if (isNaN(picked.getTime())) {
+        return "Enter a valid date.";
+      }
+
+      // Cannot book today or any past date
+      const tomorrow = new Date();
+      tomorrow.setHours(0, 0, 0, 0);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      if (picked < tomorrow) {
+        return "Please select a date from tomorrow onward.";
+      }
+
+      // Saturday = 6, Sunday = 0
+      const day = picked.getDay();
+
+      if (day === 0 || day === 6) {
+        return "Bookings are not available on Saturdays and Sundays.";
+      }
+
       return undefined;
     }
 
@@ -144,7 +167,9 @@ const CheckItem = ({ label, index }: { label: string; index: number }) => (
     <span className="flex h-[15px] w-[15px] shrink-0 items-center justify-center  bg-primary">
       <Check size={13} strokeWidth={3} className="text-white" />
     </span>
-    <span className="text-[length:var(--text-18-sm)] fnt-lexend text-[#A3A3A3]">{label}</span>
+    <span className="fnt-lexend text-[length:var(--text-18-sm)] text-[#A3A3A3]">
+      {label}
+    </span>
   </motion.div>
 );
 
@@ -200,6 +225,8 @@ const GetInTouch = ({
   const [note, setNote] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
+  const [date, setDate] = useState("");
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
 
   const runValidation = (form: HTMLFormElement): FormErrors => {
     const data = new FormData(form);
@@ -283,13 +310,29 @@ const GetInTouch = ({
         setSector("");
         setTimeSlot("");
         setErrors({});
-        window.location.replace("/thank-you")
+        window.location.replace("/thank-you");
       }
     });
   };
 
+  function getMinBookingDate() {
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+
+    return date.toISOString().split("T")[0];
+  }
+  function formatDate(date: Date): string {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const dd = String(date.getDate()).padStart(2, "0");
+
+    return `${yyyy}-${mm}-${dd}`;
+  }
   return (
-    <section id="get-in-touch" className="xl:pt-120 bg-black pt-[16px] text-white md:pt-20">
+    <section
+      id="book"
+      className="xl:pt-120 bg-black pt-[16px] text-white md:pt-20"
+    >
       <div className="container border-b border-[#77787B] pb-[16px] md:pb-20 xl:pb-[120px]">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-10 xl:gap-16">
           <div>
@@ -308,7 +351,7 @@ const GetInTouch = ({
               whileInView="show"
               variants={moveUp(0.05)}
               viewport={{ once: true }}
-              className="text-[length:var(--text-18-sm)] mt-[40px] max-w-[520px] leading-[26px] text-[#A3A3A3]"
+              className="mt-[40px] max-w-[520px] text-[length:var(--text-18-sm)] leading-[26px] text-[#A3A3A3]"
             >
               {data.description}
             </motion.p>
@@ -424,7 +467,7 @@ const GetInTouch = ({
                 name="date"
                 type="date"
                 required
-                min={todayISO()}
+                min={getMinBookingDate()}
                 error={errors.date}
                 onBlur={handleFieldBlur}
                 onChange={handleFieldChange}

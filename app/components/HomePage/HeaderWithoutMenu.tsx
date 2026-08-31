@@ -222,7 +222,7 @@ const Header = () => {
             >
               {/* CONTACT US */}
               <Link
-                href="/contact-us"
+                href="#book"
                 className="hover:bg-prtext-primary group hidden items-center space-x-2 rounded-full
                   border border-primary px-6 py-2 text-primary transition duration-300 ease-in
                   hover:text-black hover:shadow-lg lg:flex"
