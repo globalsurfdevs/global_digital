@@ -17,6 +17,7 @@ export type BECSData = {
     title: string;
     description: string;
   }[];
+  showSection?:boolean
 };
 
 const BECS = ({ data,page }: { data: BECSData;page?:string }) => {

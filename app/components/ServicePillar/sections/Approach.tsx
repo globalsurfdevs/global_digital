@@ -6,6 +6,7 @@ import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import Link from "next/link";
 
 const Approach = ({ data }: any) => {
+    console.log("approach:",data)
     return (
         <section className="py-8 xl:py-20 3xl:py-[100px]">
             <div className="container">
@@ -17,7 +18,7 @@ const Approach = ({ data }: any) => {
                         viewport={{ once: true }}
                     >
                         <Image
-                            src={data.image}
+                            src={data.image||""}
                             alt={data.imageAlt}
                             width={1500}
                             height={1500}

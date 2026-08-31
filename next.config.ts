@@ -117,6 +117,8 @@ const nextConfig: NextConfig = {
         destination: "/branding-agency-dubai", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+
+      // ================================== Industries ==============================================
       {
         source: "/industry", // The old URL path
         destination: "/industries", // The new URL path
@@ -124,12 +126,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/industry/ecommerce", // The old URL path
-        destination: "/industry/ecommerce-digital-marketing", // The new URL path
+        destination: "/industries/lifestyle-retail-digital-marketing", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
         source: "/industry/b2b", // The old URL path
-        destination: "/industry/b2b-digital-marketing-services", // The new URL path
+        destination: "/industries", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
       {
@@ -137,6 +139,17 @@ const nextConfig: NextConfig = {
         destination: "/digital-marketing-services", // The new URL path
         permanent: true, // Set to true for 301 (permanent) redirect
       },
+       {
+        source: "/industry/b2b-digital-marketing-services",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/industry/digital-marketing-agency-for-hospitality",
+        destination: "/industries",
+        permanent: true,
+      },
+      // ===============================================================================================
       {
         source:
           "/blogs/poor-sales-try-our-website-redesign-services-for-results",
@@ -210,16 +223,7 @@ const nextConfig: NextConfig = {
         destination: "/e-commerce-web-development-company",
         permanent: true,
       },
-      {
-        source: "/industry/b2b-digital-marketing-services",
-        destination: "/industries",
-        permanent: true,
-      },
-      {
-        source: "/industry/digital-marketing-agency-for-hospitality",
-        destination: "/industries",
-        permanent: true,
-      },
+     
     ];
   },
 };
