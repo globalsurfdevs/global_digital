@@ -378,6 +378,7 @@ type ServicePillarListItem = {
   _id: string;
   name: string;
   slug: string;
+  icon:string
   createdAt?: string;
 };
 
@@ -408,8 +409,7 @@ const AdminServicePillarList = () => {
 
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
-  const [image, setImage] = useState("");
-  const [imageAlt, setImageAlt] = useState("");
+  const [icon, setIcon] = useState("");
   const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
   const [updating, setUpdating] = useState(false);
 
@@ -452,9 +452,11 @@ const AdminServicePillarList = () => {
   };
 
   const openEditModal = (service: ServicePillarListItem) => {
+    console.log('service:',service)
     setEditingService(service);
     setEditName(service.name);
     setEditSlug(service.slug);
+    setIcon(service.icon);
     setEditSlugManuallyEdited(false);
     setShowEditModal(true);
   };
@@ -604,11 +606,12 @@ const AdminServicePillarList = () => {
           _id: editingService._id,
           name: editName.trim(),
           slug: editSlug.trim(),
+          icon: icon
         }),
       });
 
       const data = await response.json();
-
+    //   console.log('data',data)
       if (response.ok) {
         toast.success(data.message ?? "Service updated");
         resetEditForm();
@@ -870,24 +873,12 @@ const AdminServicePillarList = () => {
                         Add Icon
                       </label>
                       <ImageUploader
-                        value={image}
-                        onChange={setImage}
+                        value={icon}
+                        onChange={setIcon}
                         className="h-fit w-[200px]"
                       />
                     </div>
 
-                    <div className="flex flex-col gap-2 text-left">
-                      <label className="text-sm font-semibold text-gray-600">
-                        Image Alt Tag
-                      </label>
-                      <input
-                        type="text"
-                        value={imageAlt}
-                        onChange={(e) => setImageAlt(e.target.value)}
-                        placeholder="Alt tag"
-                        className="rounded border px-3 py-2"
-                      />
-                    </div>
 
                     <div className="gap-2 sm:flex sm:flex-row-reverse">
                       <button

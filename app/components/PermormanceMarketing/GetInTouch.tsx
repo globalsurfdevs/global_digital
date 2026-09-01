@@ -5,6 +5,7 @@ import Button from "../Button/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import LetsTalk from "../../components/common/LetsConnect";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 type PartnerDataType = {
   text: string;
   textred: string;

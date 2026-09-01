@@ -110,6 +110,7 @@ interface PageProps {
 import { SeoFormValues } from "@/app/types/seo";
 import { getAllIndustry } from "@/app/lib/industry.service";
 import { userRoutes } from "@/app/const/routes/user.routes";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 export type ServicePillarData = {
   _id: string;
@@ -630,7 +631,7 @@ const page = async ({ params }: PageProps) => {
       {data.ctaSection.showSection !== false && (
         <GetInTouch
           data={Cta}
-          ctabbutton={data.ctaSection.buttonText}
+          ctabbutton={totitleSentenceCase(data.ctaSection.buttonText)}
           redlast
           buttonLink={data.ctaSection.buttonLink}
           page="service"

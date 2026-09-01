@@ -6,8 +6,10 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
-import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
-
+import {
+  toSentenceCase,
+  totitleSentenceCase,
+} from "@/app/helpers/maintainProperWordings";
 
 export type BECSData = {
   title: string;
@@ -17,13 +19,14 @@ export type BECSData = {
     title: string;
     description: string;
   }[];
-  showSection?:boolean
+  showSection?: boolean;
 };
 
-const BECS = ({ data,page }: { data: BECSData;page?:string }) => {
-
+const BECS = ({ data, page }: { data: BECSData; page?: string }) => {
   return (
-    <section className={`pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px] ${page=="service-pillar" ? "bg-[#F6F6F6]" : ""}`}>
+    <section
+      className={`pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px] ${page == "service-pillar" ? "bg-[#F6F6F6]" : ""}`}
+    >
       <div className="container">
         <div className="row">
           <motion.h2
@@ -33,7 +36,7 @@ const BECS = ({ data,page }: { data: BECSData;page?:string }) => {
             viewport={{ once: true }}
             className="title-60 mb-6 text-[length:var(--text-60-sm)] xl:mb-8 xxl:mb-[50px]"
           >
-            {data.title}
+            {totitleSentenceCase(data.title)}
           </motion.h2>
 
           {/* Mobile: stacked cards, no connecting line */}
