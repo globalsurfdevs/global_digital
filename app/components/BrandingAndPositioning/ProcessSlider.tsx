@@ -154,7 +154,7 @@ const ProcessSlider = ({ data,variant }: { data: ServiceItem["sixthSection"],var
                       </span>
                     </div>
                     {/* was <h3> — now <p>, same classes, no longer a heading */}
-                    <p className={`text-28 mb-4 max-w-[14ch] leading-[1.2142] tracking-[-0.025em] ${variant == "dark" && "text-white"}`}>
+                    <p className={`text-28 mb-4 flex max-w-[14ch] leading-[1.2142] items-center tracking-[-0.025em] ${variant == "dark" && "text-white"}`}>
                       {toSentenceCase(item.title)}
                     </p>
                   </div>

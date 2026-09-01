@@ -4,6 +4,7 @@ export type ServicePillarData = {
   _id: string;
   name: string;
   slug: string;
+  icon: string;
   seo: SeoFormValues;
 
   firstSection: {

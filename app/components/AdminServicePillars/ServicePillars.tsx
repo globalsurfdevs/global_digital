@@ -351,6 +351,19 @@ const ServicePillarPage = () => {
       console.error("Error fetching service industries:", error);
     }
   };
+  const fetchOtherPillar = async () => {
+    try {
+      const response = await fetch(`/api/service-pillar`);
+      if (response.ok) {
+        const data = await response.json();
+        setServiceIndustries(data.data);
+      } else {
+        console.error("Failed to fetch service industries");
+      }
+    } catch (error) {
+      console.error("Error fetching service industries:", error);
+    }
+  };
 
   useEffect(() => {
     fetchServiceIndustries().then(() => fetchServicePillarData());
