@@ -10,6 +10,27 @@ import LetsTalk from "@/app/components/common/LetsConnect";
 import { usePathname } from "next/navigation";
 import { serviceData } from "./ServiceDropdown";
 
+export const scrollToContact = () => {
+  const section = document.getElementById("book");
+  const header = document.querySelector("header");
+
+  if (!section) return;
+
+  const headerHeight = header?.getBoundingClientRect().height ?? 0;
+  const extraGap = 20;
+
+  const targetPosition =
+    section.getBoundingClientRect().top +
+    window.scrollY -
+    headerHeight -
+    extraGap;
+
+  window.scrollTo({
+    top: targetPosition,
+    behavior: "smooth",
+  });
+};
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -51,6 +72,7 @@ const Header = () => {
     if (headerRef.current) ro.observe(headerRef.current);
     return () => ro.disconnect();
   }, []);
+
 
   // ─── Scroll handler with rAF throttle + passive listener ─────────────────
   useEffect(() => {
@@ -161,13 +183,17 @@ const Header = () => {
         </div>
       )}
 
-      <header ref={parentRef}>
+      {/* <header ref={parentRef} > */}
+      <header
+        ref={headerRef}
+        className={`header fixed left-0 right-0 top-0 z-[999] py-4 pb-4 lg:py-[22px] `}
+      >
+          {/* ${isSticky ? "translate-y-0" : "-translate-y-full"}
+            ${isShadow ? "shado" : "shadowss"} */}
         <div
-          ref={headerRef}
           className={`header relative z-[999] py-4 pb-4 transition-transform
             duration-300 ease-in-out lg:py-[22px]
-            ${isSticky ? "translate-y-0" : "-translate-y-full"}
-            ${isShadow ? "shado" : "shadowss"}`}
+           shadow-md`}
         >
           <div className="container relative z-20 flex items-center justify-between">
             {/* ── Logo ── */}
@@ -221,8 +247,8 @@ const Header = () => {
               lg:static lg:flex lg:w-auto lg:space-x-5 lg:bg-transparent xl:space-x-8`}
             >
               {/* CONTACT US */}
-              <Link
-                href="#book"
+              <button
+                onClick={scrollToContact}
                 className="hover:bg-prtext-primary group hidden items-center space-x-2 rounded-full
                   border border-primary px-6 py-2 text-primary transition duration-300 ease-in
                   hover:text-black hover:shadow-lg lg:flex"
@@ -259,7 +285,7 @@ const Header = () => {
                     </defs>
                   </svg>
                 </div>
-              </Link>
+              </button>
             </nav>
           </div>
 

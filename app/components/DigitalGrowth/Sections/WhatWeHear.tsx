@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
 import Button from "../../common/buttons/PrimaryButton";
+import { scrollToContact } from "../../HomePage/HeaderWithoutMenu";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,11 +25,6 @@ interface ServicesSectionProps {
   data: FrameworkItem[];
 }
 
-const scrollToContact = () => {
-  document
-    .getElementById("get-in-touch")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
 
 const ArrowIcon = ({ clipId }: { clipId: string }) => (
   <svg

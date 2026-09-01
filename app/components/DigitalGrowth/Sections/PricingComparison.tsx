@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
 import { Check } from "lucide-react";
 import { assets } from "@/public/assets/assets";
+import { scrollToContact } from "../../HomePage/HeaderWithoutMenu"; 
 
 type Feature = {
   title: string;
@@ -64,12 +65,6 @@ const plusFeatures: Feature[] = [
     description: "A wider competitor set",
   },
 ];
-
-const scrollToContact = () => {
-  document
-    .getElementById("get-in-touch")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
 
 const ArrowIcon = ({
   clipId,
@@ -166,8 +161,8 @@ const PricingComparison = ({ data }: { data: Props }) => {
                 <ArrowIcon clipId="clip-book-call" />
               </div>
             </button>
-
-            <button
+            {/* TALK TO SALE */}
+            {/* <button
               type="button"
               onClick={scrollToContact}
               className="group flex items-center justify-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in hover:shadow-lg"
@@ -178,7 +173,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
               <div className="bg-primary p-1">
                 <ArrowIcon clipId="clip-talk-sales" />
               </div>
-            </button>
+            </button> */}
           </motion.div>
         </div>
 

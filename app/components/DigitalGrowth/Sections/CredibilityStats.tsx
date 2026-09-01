@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
 import Image from "next/image";
+import { scrollToContact } from "../../HomePage/HeaderWithoutMenu";
 
 type StatItem = {
   _id: string;
@@ -15,12 +16,6 @@ type Props = {
   buttonText: string;
   buttonLink: string;
   stats: StatItem[];
-};
-
-const scrollToContact = () => {
-  document
-    .getElementById("get-in-touch")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 const ArrowIcon = ({ clipId }: { clipId: string }) => (

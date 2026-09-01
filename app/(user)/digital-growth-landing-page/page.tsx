@@ -105,14 +105,29 @@ const page = async ({ params }: PageProps) => {
         }
         page="service"
       />
-      <FAQ data={Faq} defActive="2" fullSpace={false} py="90" page="service"/>
+      <FAQ data={Faq} defActive="2" fullSpace={false} py="90" page="service" />
       <CheckItem
         data={{
           title: "Make Sure they like\nwhat they find.",
           description:
-            "20 minutes with someone senior. No deck, no pitch. Q3 onboarding is capped — if this isn't the right fit, we'll tell you on the call, not after three follow-up emails.",
+            "30 minutes with someone senior. No deck, no pitch. Q3 onboarding is capped — if this isn't the right fit, we'll tell you on the call, not after three follow-up emails.",
         }}
       />
+
+      {/* Whatsapp Contact */}
+      <a
+        href="https://wa.me/message/SZ6OPV5N2KURK1"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed bottom-7 right-7 z-[9999] flex  items-center justify-center rounded-full  shadow-lg bg-white transition-transform duration-300 hover:scale-110"
+      >
+        <img
+          src="/assets/images/branding-positioning/whatsapp-icon.svg"
+          alt="WhatsApp"
+          className="relative z-10 h-8 w-8"
+        />
+      </a>
     </div>
   );
 };
