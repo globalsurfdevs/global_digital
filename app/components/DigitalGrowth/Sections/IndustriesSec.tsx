@@ -48,7 +48,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
           {data.items.map((item, index) => (
             <motion.a
               key={item._id}
-              href={`/industry/${item.slug}`}
+              // href={`/industry/${item.slug}`}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}

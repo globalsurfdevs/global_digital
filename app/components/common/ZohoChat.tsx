@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 
 // Add any path you want the chat widget hidden on.
-const EXCLUDED_PATHS = ["/digital-growth-landing-page"];
+const EXCLUDED_PATHS = ["/digital-growth-landing-page","/growth-partnership"];
 
 export default function ZohoChat() {
   const pathname = usePathname();

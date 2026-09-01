@@ -49,6 +49,7 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 import { ChevronDown } from "lucide-react";
 import { createPortal } from "react-dom";
+import { scrollToContact } from "../HomePage/HeaderWithoutMenu";
 /* ============================================================
    Shared design tokens (Tailwind arbitrary values reference these)
    red        #E63E31   red-dk   #C9332A
@@ -384,7 +385,7 @@ function Hero() {
               UAE companies that build, make, supply and develop.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-6">
-              <Btn href="#book">Get Started</Btn>
+              <Btn onClick={scrollToContact} >Get Started</Btn>
             </div>
 
             <div className="mt-11 grid grid-cols-4 border-t border-white/[0.16]">
@@ -426,7 +427,7 @@ function Hero() {
                 </em>
               </b>
               <span className="mt-1 block text-[10.5px] leading-normal text-white/[0.56]">
-                years in the UAE. 250+ projects delivered.
+                years in the UAE<br/> 50+ Passionate Professionals<br/> 140+ Successful Client Partnerships
               </span>
             </div>
           </Reveal>
@@ -538,7 +539,7 @@ function WhoItsFor() {
                 <p className="max-w-[20ch] text-lg font-normal leading-[1.24] sm:text-xl">
                   See what the package would do for your name.
                 </p>
-                <Btn href="#book" variant="pale" className="mt-5 w-full">
+                <Btn onClick={scrollToContact}  variant="pale" className="mt-5 w-full">
                   Find out in 30 minutes
                 </Btn>
               </div>
@@ -766,7 +767,8 @@ function WhatYouGet() {
             See how this would look for your name.
           </h3>
           <Btn
-            href="#book"
+            // href="#book"
+            onClick={scrollToContact}
             variant="pale"
             className="w-full flex-none sm:w-auto"
           >
@@ -1275,7 +1277,8 @@ function PricingCta({
 }) {
   return (
     <a
-      href="#book"
+      // href="#book"
+      onClick={scrollToContact}
       className={`group flex w-full items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 ${className}`}
     >
       <span>{children}</span>
@@ -1307,7 +1310,8 @@ function Pricing() {
             className="flex flex-col gap-3 sm:flex-row sm:items-center lg:shrink-0"
           >
             <a
-              href="#book"
+              // href="#book"
+              onClick={scrollToContact}
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
               Book your 30-minute call
@@ -1316,7 +1320,7 @@ function Pricing() {
               </span>
             </a>
 
-            <a
+            {/* <a
               href="#book"
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
@@ -1324,7 +1328,7 @@ function Pricing() {
               <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31]">
                 <PricingArrow dark />
               </span>
-            </a>
+            </a> */}
           </Reveal>
         </div>
 
@@ -1677,12 +1681,12 @@ function Testimonials() {
           ))}
         </Reveal>
 
-        <Reveal delay={140} className="mt-6">
+        {/* <Reveal delay={140} className="mt-6">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-black/[0.11] bg-white px-[18px] py-2.5 text-[12.5px] text-[#77787B]">
             <b className="text-[13px] font-semibold text-[#0A0A0A]">4.9</b> on
             Google Reviews · Trusted by 125+ brands across the UAE
           </span>
-        </Reveal>
+        </Reveal> */}
       </div>
     </section>
   );

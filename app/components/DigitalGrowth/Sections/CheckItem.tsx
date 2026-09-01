@@ -627,7 +627,7 @@ const GetInTouch = ({
                 </div>
               </button>
 
-              <button
+              {/* <button
                 type="submit"
                 className="group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-white transition duration-300 ease-in hover:shadow-lg"
               >
@@ -637,7 +637,7 @@ const GetInTouch = ({
                 <div className="bg-primary p-1">
                   <ArrowIcon clipId="clip-book-call" />
                 </div>
-              </button>
+              </button> */}
             </div>
 
             <p className="min-h-[16px] text-start text-[11.5px] text-primary">

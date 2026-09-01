@@ -9,6 +9,7 @@ import karim from "@/public/assets/testimonials/karim.jpeg";
 import dummy from "@/public/assets/testimonials/dummy-user.png";
 import educap from "@/public/assets/testimonials/educap.svg";
 import alissar from "@/public/assets/testimonials/alissar.jpeg";
+import { Clientsdata } from "@/app/data/Clientsdata";
 
 export const firstSection = {
   image: "images/end-to-end-digitalmarketing/banner.jpg",
@@ -53,31 +54,33 @@ export const featureStrip = {
 
 export const trustedBy = {
   label: "Trusted by Built Environment leaders",
-  logos: [
-    { _id: "1", name: "Innovo", image: assets.innovodg, alt: "Innovo" },
-    {
-      _id: "2",
-      name: "Sobha Constructions",
-      image: assets.sobha,
-      alt: "Sobha Constructions",
-    },
-    {
-      _id: "3",
-      name: "Shapoorji Pallonji",
-      image: assets.sp,
-      alt: "Shapoorji Pallonji",
-    },
-    {
-      _id: "4",
-      name: "Imtiaz Developments",
-      image: assets.imtiaz,
-      alt: "Imtiaz Developments",
-    },
-    { _id: "5", name: "u", image: assets.ulogo, alt: "Emblem" },
-    { _id: "6", name: "Sobha", image: assets.sobha, alt: "Sobha" },
-  ],
+  // logos: [
+  //   { _id: "1", name: "Innovo", image: assets.innovodg, alt: "Innovo" },
+  //   {
+  //     _id: "2",
+  //     name: "Sobha Constructions",
+  //     image: assets.sobha,
+  //     alt: "Sobha Constructions",
+  //   },
+  //   {
+  //     _id: "3",
+  //     name: "Shapoorji Pallonji",
+  //     image: assets.sp,
+  //     alt: "Shapoorji Pallonji",
+  //   },
+  //   {
+  //     _id: "4",
+  //     name: "Imtiaz Developments",
+  //     image: assets.imtiaz,
+  //     alt: "Imtiaz Developments",
+  //   },
+  //   { _id: "5", name: "u", image: assets.ulogo, alt: "Emblem" },
+  //   { _id: "6", name: "Sobha", image: assets.sobha, alt: "Sobha" },
+  // ],
+  logos:Clientsdata
 };
 
+// export const trustedBy= Clientsdata
 export const whatWeHearData = {
   title: "What we usually hear in the first meeting.",
   description:
@@ -247,7 +250,7 @@ export const packageChecklist = {
 };
 
 export const Testimonials = {
-  title: "12 Years. 140 Clients. Zero unverified claims.",
+  title: "12+ Years. 140+ Clients. Zero unverified claims.",
   topTitle: "Testimonials",
   starText:
     "We hold our reporting to the same engineering standards as your projects, 100% documented, tested, and client-verified.",
