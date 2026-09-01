@@ -372,6 +372,7 @@ import { useEffect } from "react";
 // import AdminServiceIndustryList from "./AdminServiceIndustryList";
 import { FaAddressBook, FaBookOpen, FaPage4 } from "react-icons/fa";
 import { ImageUploader } from "@/components/ui/image-uploader";
+import { adminRoutes } from "@/app/const/routes/admin.routes";
 
 type ServicePillarListItem = {
   _id: string;
@@ -626,7 +627,7 @@ const AdminServicePillarList = () => {
 
   // Retained for its existing purpose elsewhere in the app
   const handleEdit = (slug: string) => {
-    router.push(`/admin/service-pillars/${slug}`);
+    router.push(adminRoutes.servicePillars.edit(slug));
   };
 
   return (
