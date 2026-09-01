@@ -19,12 +19,12 @@ const growthFeatures: Feature[] = [
   { title: "GEO", description: "Named correctly when a buyer asks an AI tool" },
   {
     title: "Social Media",
-    description: "Named correctly when a buyer asks an AI tool",
+    description: "Active, on-brand presence across key channels",
   },
-  // {
-  //   title: "Social Media",
-  //   description: "LinkedIn, eight to ten posts a month",
-  // },
+  {
+    title: "LinkedIn",
+    description: "LinkedIn, eight to ten posts a month",
+  },
   {
     title: "Content Production",
     description: "One shoot day a month at your site",
