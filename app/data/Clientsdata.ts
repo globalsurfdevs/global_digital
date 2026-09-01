@@ -22,12 +22,12 @@ export const Clientsdata = [
   //   alt: "Bukhatir Group Logo",
   // },
 
-  {
-    id: 4,
-    image: "/assets/clients/Fresco.svg",
-    title: "Fresco",
-    alt: "FRESCO Logo",
-  },
+  // {
+  //   id: 4,
+  //   image: "/assets/clients/Fresco.svg",
+  //   title: "Fresco",
+  //   alt: "FRESCO Logo",
+  // },
 
   // {
   //   id: 5,
@@ -64,12 +64,12 @@ export const Clientsdata = [
   //   alt: "Simple Solutions Logo",
   // },
 
-  {
-    id: 11,
-    image: "/assets/clients/gulf-cryo.svg",
-    title: "Gulf Cryo",
-    alt: "Gulf Cryo Logo",
-  },
+  // {
+  //   id: 11,
+  //   image: "/assets/clients/gulf-cryo.svg",
+  //   title: "Gulf Cryo",
+  //   alt: "Gulf Cryo Logo",
+  // },
 
   // {
   //   id: 12,

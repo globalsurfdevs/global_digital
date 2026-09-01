@@ -536,7 +536,7 @@ function WhoItsFor() {
           <Reveal className="flex flex-col justify-between gap-8">
             <div>
               <Kick label="02 · Who it is for" />
-              <h2 className="max-w-[18ch] text-[30px] font-normal leading-[1.12] sm:text-4xl lg:text-[52px]">
+              <h2 className="max-w-[18ch] text-[30px] font-normal  !leading-[1.02]  sm:text-4xl lg:text-[52px] ">
                 Built for the sectors we know the best.
               </h2>
             </div>
@@ -1307,7 +1307,7 @@ function Pricing() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <Reveal>
             <Kick label="06 · Pricing" />
-            <h2 className="max-w-[20ch] text-[27px] leading-[1.15] sm:text-4xl lg:text-[45px]">
+            <h2 className="max-w-[20ch] text-[27px] leading-[1.08] sm:text-4xl sm:leading-[1.08] lg:text-[45px] lg:leading-[1.08]">
               Find the structure that fits your roadmap.
             </h2>
             <p className="mt-4 max-w-[58ch] text-base text-[#77787B] lg:text-lg">
