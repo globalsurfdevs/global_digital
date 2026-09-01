@@ -385,7 +385,7 @@ function Hero() {
               UAE companies that build, make, supply and develop.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-6">
-              <Btn onClick={scrollToContact} >Get Started</Btn>
+              <Btn onClick={scrollToContact}>Get Started</Btn>
             </div>
 
             <div className="mt-11 grid grid-cols-4 border-t border-white/[0.16]">
@@ -419,15 +419,22 @@ function Hero() {
                 className="block h-full w-full object-contain"
               />
             </div>
-            <div className="static mt-3.5 max-w-none rounded-[13px] border border-white/[0.14] bg-[#101012] px-[18px] py-3.5 text-white shadow-none lg:absolute lg:-left-6 lg:bottom-6 lg:mt-0 lg:max-w-[196px] lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
-              <b className="block text-[23px] font-normal">
-                12
-                <em className="align-super text-xs not-italic text-[#E63E31]">
-                  +
-                </em>
-              </b>
-              <span className="mt-1 block text-[10.5px] leading-normal text-white/[0.56]">
-                years in the UAE<br/> 50+ Passionate Professionals<br/> 140+ Successful Client Partnerships
+            <div className="static mt-3.5 max-w-none rounded-[13px] border border-white/[0.14] bg-[#101012] px-[14px] py-3.5 text-white shadow-none lg:absolute lg:-left-6 lg:bottom-6 lg:mt-0 lg:max-w-[196px] lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
+              <div className="flex items-baseline gap-1">
+                <b className="text-[23px] font-normal">
+                  12
+                  <em className="align-super text-lg not-italic text-[#E63E31]">
+                    +
+                  </em>
+                </b>
+
+                <span className="text-[16px]">years in the UAE</span>
+              </div>
+
+              <span className="mt-1 block text-[12px] leading-normal text-white/[0.60]">
+                50+ Passionate Professionals
+                <br />
+                140+ Successful Client Partnerships
               </span>
             </div>
           </Reveal>
@@ -539,7 +546,11 @@ function WhoItsFor() {
                 <p className="max-w-[20ch] text-lg font-normal leading-[1.24] sm:text-xl">
                   See what the package would do for your name.
                 </p>
-                <Btn onClick={scrollToContact}  variant="pale" className="mt-5 w-full">
+                <Btn
+                  onClick={scrollToContact}
+                  variant="pale"
+                  className="mt-5 w-full"
+                >
                   Find out in 30 minutes
                 </Btn>
               </div>
@@ -1986,7 +1997,7 @@ function FinalCta() {
     formData.set("date", date);
     startTransition(async () => {
       const result = await submitBooking(formData);
-   
+
       setNote(
         result.message ??
           (result.success ? "Thank you." : "Something went wrong."),
