@@ -319,7 +319,7 @@ const GetInTouch = ({
         setSector("");
         setTimeSlot("");
         setErrors({});
-        window.location.replace("/thank-you");
+        window.location.replace("/growth-thank-you");
       }
     });
   };

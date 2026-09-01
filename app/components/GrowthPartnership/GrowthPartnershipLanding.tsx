@@ -2004,7 +2004,7 @@ function FinalCta() {
       );
       if (result.success) {
         form.reset();
-        window.location.replace("/thank-you");
+        window.location.replace("/growth-thank-you");
         setErrors({});
       }
     });
