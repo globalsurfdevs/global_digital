@@ -14,7 +14,9 @@ const servicePillarSchema = new mongoose.Schema(
       //   required: true,
       unique: true,
     },
-
+    icon: {
+      type: String,
+    },
     seo: {
       type: seoSchema,
       //   required: true,
@@ -34,7 +36,7 @@ const servicePillarSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -48,7 +50,7 @@ const servicePillarSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -77,7 +79,7 @@ const servicePillarSchema = new mongoose.Schema(
       buttonLink: {
         type: String,
       },
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -94,7 +96,7 @@ const servicePillarSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -121,7 +123,7 @@ const servicePillarSchema = new mongoose.Schema(
           link: String,
         },
       ],
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -143,7 +145,7 @@ const servicePillarSchema = new mongoose.Schema(
           description: String,
         },
       ],
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -166,7 +168,7 @@ const servicePillarSchema = new mongoose.Schema(
           link: String,
         },
       ],
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -187,7 +189,7 @@ const servicePillarSchema = new mongoose.Schema(
           description: String,
         },
       ],
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -197,7 +199,7 @@ const servicePillarSchema = new mongoose.Schema(
       serviceIndustries: [
         { type: mongoose.Schema.Types.ObjectId, ref: "ServiceIndustry" },
       ],
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -220,7 +222,7 @@ const servicePillarSchema = new mongoose.Schema(
           label: String,
         },
       ],
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -234,17 +236,17 @@ const servicePillarSchema = new mongoose.Schema(
       description: {
         type: String,
       },
-      items:[
+      items: [
         {
-        id: String,
-        title: String,
-        description: String,
-        image: String,
-        imageAlt: String,
-        link: String,
-      }
-      ] ,
-       showSection: {
+          id: String,
+          title: String,
+          description: String,
+          image: String,
+          imageAlt: String,
+          link: String,
+        },
+      ],
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -266,7 +268,7 @@ const servicePillarSchema = new mongoose.Schema(
       buttonLink: {
         type: String,
       },
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },
@@ -284,7 +286,7 @@ const servicePillarSchema = new mongoose.Schema(
           description: String,
         },
       ],
-       showSection: {
+      showSection: {
         type: Boolean,
         default: true,
       },

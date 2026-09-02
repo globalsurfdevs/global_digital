@@ -50,7 +50,7 @@ export interface IndustryLandingPageType {
         _id: string;
         name: string;
         slug: string;
-        image: string;
+        icon: string;
         imageAlt: string;
       };
       title: string;
