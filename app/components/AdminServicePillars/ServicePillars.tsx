@@ -27,6 +27,7 @@ import { useParams } from "next/navigation";
 // NOTE: adjust this import path to wherever ServicePillarData actually lives
 import { ServicePillarData } from "../ServicePillar/type";
 import { Eye, EyeClosed, EyeOff } from "lucide-react";
+import { ServicePillarListItem } from "./ServicePillarList";
 
 type ServiceIndustryOption = {
   _id: string;
@@ -240,12 +241,16 @@ const ServicePillarPage = () => {
   const [serviceIndustries, setServiceIndustries] = useState<
     ServiceIndustryOption[]
   >([]);
+  const [allPilarsPage, setAllPillarPage] = useState<ServicePillarListItem[]>(
+    [],
+  );
 
   // Which top-level section accordion is open.
   const [openSection, setOpenSection] = useState<string | null>("");
 
   const handleSave = async (data: ServicePillarData) => {
-    // console.log('service pillar',data)
+    // console.log("service pillar", data);
+
     try {
       const response = await fetch(
         `/api/service-pillar/${encodeURIComponent(slug)}`,
@@ -307,9 +312,7 @@ const ServicePillarPage = () => {
         setValue("tenthSection.items", data.data?.tenthSection?.items ?? []);
         setValue("eleventhSection", data.data?.eleventhSection);
         setValue(
-          "eleventhSection.items",
-          data.data?.eleventhSection?.items ?? [],
-        );
+          "eleventhSection.items",data.data?.eleventhSection?.items ?? []);
 
         setValue("ctaSection", data.data?.ctaSection);
         setValue("faqSection", data.data?.faqSection);
@@ -356,7 +359,11 @@ const ServicePillarPage = () => {
       const response = await fetch(`/api/service-pillar`);
       if (response.ok) {
         const data = await response.json();
-        setServiceIndustries(data.data);
+
+        const filtered = data.data.filter(
+          (item: ServicePillarListItem) => item.slug !== slug,
+        );
+        setAllPillarPage(filtered);
       } else {
         console.error("Failed to fetch service industries");
       }
@@ -366,6 +373,7 @@ const ServicePillarPage = () => {
   };
 
   useEffect(() => {
+    fetchOtherPillar();
     fetchServiceIndustries().then(() => fetchServicePillarData());
   }, []);
 
@@ -406,7 +414,7 @@ const ServicePillarPage = () => {
     <div className="flex flex-col gap-5 pb-5">
       <form className="flex flex-col gap-5" onSubmit={handleSubmit(handleSave)}>
         {/* ---------------- First Section ---------------- */}
-        
+
         <AccordionSection
           title="First Section"
           sectionKey="firstSection"
@@ -1389,6 +1397,7 @@ const ServicePillarPage = () => {
                 {...register("eleventhSection.description")}
               />
             </div>
+            {/* =============================================================== */}
 
             <div>
               <div className="mb-3 flex justify-between">
@@ -1519,6 +1528,7 @@ const ServicePillarPage = () => {
                 </Button>
               </div>
             </div>
+            {/* ======================= */}
           </div>
         </AccordionSection>
 

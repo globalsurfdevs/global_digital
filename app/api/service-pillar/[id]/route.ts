@@ -22,9 +22,8 @@ export async function GET(_request: NextRequest, { params }: RouteContext) {
         { status: 404 },
       );
     }
-    
-    
-    return NextResponse.json({data}, { status: 200 });
+
+    return NextResponse.json({ data }, { status: 200 });
   } catch (error) {
     console.error("Failed to fetch Service Pillar:", error);
     return NextResponse.json(
@@ -46,10 +45,14 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
 
     const { id } = await params;
 
-   
     const currentSlug = decodeURIComponent(id);
     const body = await request.json();
+
   
+
+    console.log("request body:", JSON.stringify(body, null, 2));
+    console.log("eleventhSection:", body?.eleventhSection);
+    console.log("eleventhSection.items:", body?.eleventhSection?.items);
 
     const current =
       (await ServicePillar.findOne({ slug: currentSlug })) ||
