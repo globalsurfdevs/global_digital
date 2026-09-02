@@ -13,13 +13,22 @@ const trustPoints: string[] = [
   "A reply within one business day",
 ];
 
+// const sectors = [
+//   "E-commerce",
+//   "SaaS",
+//   "Healthcare",
+//   "Real Estate",
+//   "Manufacturing",
+//   "Other",
+// ];
+
 const sectors = [
-  "E-commerce",
-  "SaaS",
-  "Healthcare",
-  "Real Estate",
+  "Construction",
+  "Engineering & Infrastructure",
+  "Real Estate & Property Developers",
   "Manufacturing",
-  "Other",
+  "Industrial",
+  "Something else",
 ];
 
 const timeSlots = [
@@ -44,7 +53,6 @@ type FormErrors = Partial<
     string
   >
 >;
-
 
 const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -78,10 +86,46 @@ function validateField(name: string, value: string): string | undefined {
       if (!EMAIL_REGEX.test(v)) return "Enter a valid email address.";
       return undefined;
 
-    case "phone":
-      if (!v) return undefined; // optional
-      if (!PHONE_REGEX.test(v)) return "Enter a valid phone number.";
+    case "phone": {
+      if (!v) {
+        return "Please enter your phone number.";
+      }
+
+      // Keep only digits for validation.
+      // This allows:
+      // +971 50 123 4567
+      // +1 (202) 555-0123
+      // +44 20 7946 0958
+      // etc.
+      const digitsOnly = v.replace(/\D/g, "");
+
+      // International phone numbers generally won't need fewer than 7
+      // digits or more than 15 digits.
+      if (digitsOnly.length < 7 || digitsOnly.length > 20) {
+        return "Enter a valid phone number.";
+      }
+
+      // Reject numbers made entirely of zeros.
+      if (/^0+$/.test(digitsOnly)) {
+        return "Enter a valid phone number.";
+      }
+
+      // Reject obvious fake numbers such as:
+      // 1111111111
+      // 2222222222
+      // 9999999999
+      if (/^(\d)\1+$/.test(digitsOnly)) {
+        return "Enter a valid phone number.";
+      }
+
+      // Validate the characters the user is allowed to enter.
+      // Allows digits, spaces, +, -, (, and ).
+      if (!/^[+\d\s().-]+$/.test(v)) {
+        return "Enter a valid phone number.";
+      }
+
       return undefined;
+    }
 
     case "sector":
       if (!v) return "Please select a sector.";
@@ -307,7 +351,6 @@ const GetInTouch = ({
     formData.set("date", date);
 
     startTransition(async () => {
-     
       const result = await submitBooking(formData);
 
       setNote(
@@ -439,7 +482,8 @@ const GetInTouch = ({
               <FormField
                 label="Phone"
                 name="phone"
-                type="number"
+                type="tel"
+                required
                 error={errors.phone}
                 onBlur={handleFieldBlur}
                 onChange={handleFieldChange}
