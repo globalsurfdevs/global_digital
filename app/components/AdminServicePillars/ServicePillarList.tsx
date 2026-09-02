@@ -378,6 +378,7 @@ export type ServicePillarListItem = {
   _id: string;
   name: string;
   slug: string;
+  icon?: string;
   createdAt?: string;
 };
 
@@ -398,8 +399,10 @@ const AdminServicePillarList = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newServiceName, setNewServiceName] = useState("");
   const [newServiceSlug, setNewServiceSlug] = useState("");
+  const [autoSlug, setAutoSlug] = useState(true);
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
   const [creating, setCreating] = useState(false);
+  const [editAutoSlug, setEditAutoSlug] = useState(false);
 
   // Edit modal state
   const [showEditModal, setShowEditModal] = useState(false);
@@ -408,7 +411,8 @@ const AdminServicePillarList = () => {
 
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
-  const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
+  //   const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
+  const [editIcon, setEditIcon] = useState("");
   const [updating, setUpdating] = useState(false);
 
   const slugify = (value: string) =>
@@ -421,39 +425,55 @@ const AdminServicePillarList = () => {
 
   const handleNameChange = (value: string) => {
     setNewServiceName(value);
-    if (!slugManuallyEdited) {
+
+    if (autoSlug && !slugManuallyEdited) {
       setNewServiceSlug(slugify(value));
     }
   };
 
   const handleSlugChange = (value: string) => {
     setSlugManuallyEdited(true);
+    setAutoSlug(false);
     setNewServiceSlug(slugify(value));
+  };
+
+  const handleEditNameChange = (value: string) => {
+    setEditName(value);
+
+    if (editAutoSlug) {
+      setEditSlug(slugify(value));
+    }
+  };
+
+  const handleEditSlugChange = (value: string) => {
+    setEditSlug(slugify(value));
   };
 
   const resetCreateForm = () => {
     setNewServiceName("");
     setNewServiceSlug("");
     setSlugManuallyEdited(false);
+    setAutoSlug(true);
   };
 
-  const handleEditNameChange = (value: string) => {
-    setEditName(value);
-    if (!editSlugManuallyEdited) {
-      setEditSlug(slugify(value));
-    }
-  };
+  //   const handleEditNameChange = (value: string) => {
+  //     setEditName(value);
+  //     if (!editSlugManuallyEdited) {
+  //       setEditSlug(slugify(value));
+  //     }
+  //   };
 
-  const handleEditSlugChange = (value: string) => {
-    setEditSlugManuallyEdited(true);
-    setEditSlug(slugify(value));
-  };
+  //   const handleEditSlugChange = (value: string) => {
+  //     setEditSlugManuallyEdited(true);
+  //     setEditSlug(slugify(value));
+  //   };
 
   const openEditModal = (service: ServicePillarListItem) => {
     setEditingService(service);
     setEditName(service.name);
     setEditSlug(service.slug);
-    setEditSlugManuallyEdited(false);
+    setEditIcon(service.icon || "");
+    setEditAutoSlug(false);
     setShowEditModal(true);
   };
 
@@ -461,7 +481,8 @@ const AdminServicePillarList = () => {
     setEditingService(null);
     setEditName("");
     setEditSlug("");
-    setEditSlugManuallyEdited(false);
+    setEditIcon("");
+    setEditAutoSlug(false);
   };
 
   const toggleSelect = (id: string) => {
@@ -487,7 +508,7 @@ const AdminServicePillarList = () => {
 
         if (response.ok) {
           const data = await response.json();
-           
+
           setServicePillars(data.data);
           setTotalPages(data.totalPages);
         }
@@ -602,6 +623,7 @@ const AdminServicePillarList = () => {
           _id: editingService._id,
           name: editName.trim(),
           slug: editSlug.trim(),
+          icon: editIcon,
         }),
       });
 
@@ -627,7 +649,15 @@ const AdminServicePillarList = () => {
   const handleEdit = (slug: string) => {
     router.push(adminRoutes.servicePillars.edit(slug));
   };
+  const handleEditAutoSlugToggle = (enabled: boolean) => {
+    console.log("Edit Auto Slug:", enabled);
 
+    setEditAutoSlug(enabled);
+
+    if (enabled) {
+      setEditSlug(slugify(editName));
+    }
+  };
   return (
     <div className="flex flex-col gap-5">
       <div className="flex min-h-[calc(100vh-200px)] flex-col gap-3">
@@ -833,9 +863,44 @@ const AdminServicePillarList = () => {
                     </div>
 
                     <div className="flex flex-col gap-2 text-left">
-                      <label className="text-sm font-semibold text-gray-600">
-                        Service Name
-                      </label>
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Service Name
+                        </label>
+
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-gray-500">
+                            Auto Slug :
+                          </span>
+
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleEditAutoSlugToggle(!editAutoSlug)
+                            }
+                            className={`relative h-6 w-14 overflow-hidden rounded-full transition-colors duration-300 ${
+                              editAutoSlug ? "bg-green-500" : "bg-gray-300"
+                            }`}
+                          >
+                            <span
+                              className={`absolute inset-0 flex items-center text-[10px] font-semibold text-white transition-all duration-300 ${
+                                editAutoSlug
+                                  ? "justify-start pl-3"
+                                  : "justify-end pr-3"
+                              }`}
+                            >
+                              {editAutoSlug ? "ON" : "OFF"}
+                            </span>
+
+                            <span
+                              className={`absolute left-1 top-1 h-4 w-4 rounded-full bg-white shadow-md transition-transform duration-300 ease-in-out ${
+                                editAutoSlug ? "translate-x-8" : "translate-x-0"
+                              }`}
+                            />
+                          </button>
+                        </div>
+                      </div>
+
                       <input
                         type="text"
                         value={editName}
@@ -849,6 +914,7 @@ const AdminServicePillarList = () => {
                       <label className="text-sm font-semibold text-gray-600">
                         Slug
                       </label>
+
                       <input
                         type="text"
                         value={editSlug}
@@ -856,10 +922,23 @@ const AdminServicePillarList = () => {
                         placeholder="e.g. web-development"
                         className="rounded border px-3 py-2 font-mono text-sm"
                       />
+
                       <p className="text-xs text-gray-500">
                         This becomes part of the page URL, e.g. /services/
                         {editSlug || "your-slug"}
                       </p>
+                    </div>
+
+                    <div className="flex flex-col gap-2 text-left">
+                      <label className="text-sm font-semibold text-gray-600">
+                        Add Icon
+                      </label>
+                      <ImageUploader
+                        value={editIcon}
+                        onChange={setEditIcon}
+                        className=""
+                        isLogo
+                      />
                     </div>
 
                     <div className="gap-2 sm:flex sm:flex-row-reverse">

@@ -86,13 +86,13 @@ const industryLandingSchema = new mongoose.Schema(
         {
           service: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Service",
+            ref: "ServicePillar",
             set: (v: any) => (v === "" ? null : v),
           },
-          title: { type: String },
+          // title: { type: String },
           description: { type: String },
-          image: { type: String },
-          imageAlt: { type: String },
+          // image: { type: String },
+          // imageAlt: { type: String },
         },
       ],
     },
