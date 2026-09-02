@@ -158,7 +158,6 @@ export async function PUT(req: NextRequest) {
       ? slugify(body.slug)
       : slugify(name || "");
 
-    const icon = body?.icon
 
     if (!name || !newSlug) {
       return NextResponse.json(
@@ -172,16 +171,16 @@ export async function PUT(req: NextRequest) {
       _id: { $ne: (await ServicePillar.findOne({ slug: currentSlug }))?._id },
     });
 
-    // if (slugTaken) {
-    //   return NextResponse.json(
-    //     { message: "This slug is already in use" },
-    //     { status: 409 },
-    //   );
-    // }
+    if (slugTaken) {
+      return NextResponse.json(
+        { message: "This slug is already in use" },
+        { status: 409 },
+      );
+    }
 
     const updated = await ServicePillar.findOneAndUpdate(
       { _id: body._id }, 
-      { name, slug: newSlug,icon },
+      { name, slug: newSlug },
       { new: true, runValidators: true },
     ).lean();
 
