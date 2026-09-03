@@ -238,12 +238,15 @@ const servicePillarSchema = new mongoose.Schema(
       },
       items: [
         {
-          id: String,
-          title: String,
-          description: String,
-          image: String,
-          imageAlt: String,
-          link: String,
+          pillarId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "ServicePillar",
+            set: (v: any) => (v === "" ? null : v),
+          },
+
+          description: {
+            type: String,
+          },
         },
       ],
       showSection: {

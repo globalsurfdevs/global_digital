@@ -220,8 +220,7 @@ export type ServicePillarData = {
       id: string;
       title: string;
       description: string;
-      image: string;
-      imageAlt: string;
+      icon: string;
       link: string;
     }[];
     showSection: boolean;
@@ -509,15 +508,15 @@ const page = async ({ params }: PageProps) => {
     }),
   );
 
-  const relatedServiceData = data.eleventhSection.items.map((data) => {
-    return {
-      title: data.title,
-      description: data.description,
-      id: data.id,
-      icon: data.image,
-      link: userRoutes.servicePillar.detail(data.link),
-    };
-  });
+  const relatedServiceData = data.eleventhSection.items.map((item: any) => ({
+    id: item._id,
+    title: item.pillarId?.name || "",
+    description: item.description || "",
+    icon: item.pillarId?.icon || "",
+    link: item.pillarId?.slug
+      ? userRoutes.servicePillar.detail(item.pillarId.slug)
+      : "#",
+  }));
   // console.log("related service :",relatedServiceData)
   return (
     <div>

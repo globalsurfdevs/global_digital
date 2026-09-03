@@ -42,18 +42,13 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     }
 
     await connectDB();
-
+   
     const { id } = await params;
 
     const currentSlug = decodeURIComponent(id);
     const body = await request.json();
 
-  
-
-    console.log("request body:", JSON.stringify(body, null, 2));
-    console.log("eleventhSection:", body?.eleventhSection);
-    console.log("eleventhSection.items:", body?.eleventhSection?.items);
-
+    // console.log("pillar body:", JSON.stringify(body.eleventhSection));
     const current =
       (await ServicePillar.findOne({ slug: currentSlug })) ||
       (body?._id ? await ServicePillar.findById(body._id) : null);
