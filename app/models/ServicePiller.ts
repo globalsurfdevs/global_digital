@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 import seoSchema from "./Seo";
+import { MODEL_NAMES } from "../const/model-name/modelName";
 
 const servicePillarSchema = new mongoose.Schema(
   {
@@ -197,7 +198,7 @@ const servicePillarSchema = new mongoose.Schema(
     ninthSection: {
       title: String,
       serviceIndustries: [
-        { type: mongoose.Schema.Types.ObjectId, ref: "ServiceIndustry" },
+        { type: mongoose.Schema.Types.ObjectId, ref: MODEL_NAMES.SERVICE_INDUSTRY },
       ],
       showSection: {
         type: Boolean,
@@ -240,7 +241,7 @@ const servicePillarSchema = new mongoose.Schema(
         {
           pillarId: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "ServicePillar",
+            ref: MODEL_NAMES.SERVICE_PILLAR,
             set: (v: any) => (v === "" ? null : v),
           },
 
@@ -301,7 +302,7 @@ const servicePillarSchema = new mongoose.Schema(
 );
 
 const ServicePillar =
-  mongoose.models.ServicePillar ||
-  mongoose.model("ServicePillar", servicePillarSchema);
+  mongoose.models[MODEL_NAMES.SERVICE_PILLAR] ||
+  mongoose.model(MODEL_NAMES.SERVICE_PILLAR, servicePillarSchema);
 
 export default ServicePillar;
