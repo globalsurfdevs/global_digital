@@ -167,6 +167,10 @@ const ServicePillarPage = () => {
     formState: { errors },
   } = useForm<ServicePillarData>();
 
+  const [servicesPillars, setServicesPillars] = useState<
+    ServicePillarListItem[]
+  >([]);
+
   const {
     fields: fifthSectionItems,
     append: fifthSectionAppend,
@@ -241,16 +245,26 @@ const ServicePillarPage = () => {
   const [serviceIndustries, setServiceIndustries] = useState<
     ServiceIndustryOption[]
   >([]);
-  const [allPilarsPage, setAllPillarPage] = useState<ServicePillarListItem[]>(
-    [],
-  );
 
   // Which top-level section accordion is open.
   const [openSection, setOpenSection] = useState<string | null>("");
 
   const handleSave = async (data: ServicePillarData) => {
-    // console.log("service pillar", data);
+    // console.log("service pillar", data.eleventhSection);
+    const payload = {
+      ...data,
 
+      eleventhSection: {
+        ...data.eleventhSection,
+
+        items: data.eleventhSection.items.map((item) => ({
+          pillarId: item.pillarId,
+          description: item.description,
+        })),
+      },
+    };
+
+    console.log("PAYLOAD BEFORE PATCH:", payload.eleventhSection);
     try {
       const response = await fetch(
         `/api/service-pillar/${encodeURIComponent(slug)}`,
@@ -311,8 +325,23 @@ const ServicePillarPage = () => {
         setValue("tenthSection", data.data?.tenthSection);
         setValue("tenthSection.items", data.data?.tenthSection?.items ?? []);
         setValue("eleventhSection", data.data?.eleventhSection);
-        setValue(
-          "eleventhSection.items",data.data?.eleventhSection?.items ?? []);
+        setValue("eleventhSection.items", data.data?.eleventhSection?.items ?? []);
+        // const eleventhSection = data.data?.eleventhSection;
+
+        // setValue("eleventhSection", {
+        //   title: eleventhSection?.title || "",
+        //   description: eleventhSection?.description || "",
+        //   showSection: eleventhSection?.showSection ?? true,
+
+        //   items: (eleventhSection?.items ?? []).map((item: any) => ({
+        //     pillarId:
+        //       typeof item.pillarId === "object" && item.pillarId !== null
+        //         ? item.pillarId._id
+        //         : item.pillarId || "",
+
+        //     description: item.description || "",
+        //   })),
+        // });
 
         setValue("ctaSection", data.data?.ctaSection);
         setValue("faqSection", data.data?.faqSection);
@@ -326,6 +355,22 @@ const ServicePillarPage = () => {
     }
   };
 
+  const fetchServices = async () => {
+    try {
+      const response = await fetch(`/api/service-pillar`);
+      if (response.ok) {
+        const data = await response.json();
+        const filtered = data.data.filter(
+          (item: ServicePillarListItem) => item.slug !== slug,
+        );
+        setServicesPillars(filtered);
+      } else {
+        console.error("Failed to fetch services");
+      }
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    }
+  };
   // Factory for drag end handlers, reused across all field arrays
   const createDragEndHandler =
     (fields: { id: string }[], move: (from: number, to: number) => void) =>
@@ -354,26 +399,9 @@ const ServicePillarPage = () => {
       console.error("Error fetching service industries:", error);
     }
   };
-  const fetchOtherPillar = async () => {
-    try {
-      const response = await fetch(`/api/service-pillar`);
-      if (response.ok) {
-        const data = await response.json();
-
-        const filtered = data.data.filter(
-          (item: ServicePillarListItem) => item.slug !== slug,
-        );
-        setAllPillarPage(filtered);
-      } else {
-        console.error("Failed to fetch service industries");
-      }
-    } catch (error) {
-      console.error("Error fetching service industries:", error);
-    }
-  };
 
   useEffect(() => {
-    fetchOtherPillar();
+    fetchServices();
     fetchServiceIndustries().then(() => fetchServicePillarData());
   }, []);
 
@@ -1399,7 +1427,7 @@ const ServicePillarPage = () => {
             </div>
             {/* =============================================================== */}
 
-            <div>
+            {/* <div>
               <div className="mb-3 flex justify-between">
                 <Label className="font-bold">Items</Label>
                 <Button
@@ -1521,6 +1549,150 @@ const ServicePillarPage = () => {
                       image: "",
                       imageAlt: "",
                       link: "",
+                    })
+                  }
+                >
+                  Add Item
+                </Button>
+              </div>
+            </div> */}
+            <div>
+              <div className="mb-3 flex justify-between">
+                <Label className="font-bold">Items</Label>
+                {
+                  <Button
+                    className="bg-green-600 text-white"
+                    type="button"
+                    onClick={() => setReorderMode(!reorderMode)}
+                  >
+                    {reorderMode ? <GiConfirmed /> : <TbReorder />}
+                  </Button>
+                }
+              </div>
+              <div className="flex flex-col gap-5 rounded-md border border-black/20 p-2">
+                <DndContext
+                  collisionDetection={closestCorners}
+                  onDragEnd={createDragEndHandler(
+                    eleventhSection,
+                    eleventhSectionMove,
+                  )}
+                >
+                  <SortableContext
+                    items={eleventhSection.map((field) => field.id)}
+                    strategy={verticalListSortingStrategy}
+                  >
+                    {eleventhSection.map((field, index) => {
+                      const selectedServiceId = watch(
+                        `eleventhSection.items.${index}.pillarId`,
+                      );
+
+                      const selectedService = servicesPillars.find(
+                        (service) => service._id === selectedServiceId,
+                      );
+
+                      return (
+                        <SortableItem
+                          key={field.id}
+                          id={field.id}
+                          reorderMode={reorderMode}
+                        >
+                          {reorderMode ? (
+                            <span className="font-medium">
+                              {selectedService?.name || `Item ${index + 1}`}
+                            </span>
+                          ) : (
+                            <>
+                              <div className="absolute right-2 top-2">
+                                <RiDeleteBinLine
+                                  onClick={() => elevenSectionRemove(index)}
+                                  className="cursor-pointer text-red-600"
+                                />
+                              </div>
+
+                              {/* Service */}
+                              <div className="flex flex-col gap-2">
+                                <Label className="font-bold">Service</Label>
+
+                                <Controller
+                                  control={control}
+                                  name={`eleventhSection.items.${index}.pillarId`}
+                                  defaultValue=""
+                                  render={({ field }) => (
+                                    <select
+                                      className="rounded-md border p-2"
+                                      value={field.value ?? ""}
+                                      onChange={(e) => {
+                                        const value = e.target.value;
+
+                            
+                                        field.onChange(value);
+
+                                        setValue(
+                                          `eleventhSection.items.${index}.pillarId`,
+                                          value,
+                                          {
+                                            shouldDirty: true,
+                                            shouldTouch: true,
+                                            shouldValidate: true,
+                                          },
+                                        );
+                                      }}
+                                    >
+                                      <option value="">Select a service</option>
+
+                                      {servicesPillars.map((service) => (
+                                        <option
+                                          key={service._id}
+                                          value={service._id}
+                                        >
+                                          {service.name}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  )}
+                                />
+                              </div>
+
+                              {/* Title */}
+                              {/* <div className="flex flex-col gap-2">
+                                <Label className="font-bold">Title</Label>
+
+                                <Input
+                                  type="text"
+                                  value={selectedService?.name || ""}
+                                  disabled
+                                  placeholder="Title"
+                                  className="bg-gray-100"
+                                />
+                              </div> */}
+
+                              {/* Description */}
+                              <div className="flex flex-col gap-2">
+                                <Label className="font-bold">Description</Label>
+
+                                <Textarea
+                                  placeholder="Description"
+                                  {...register(
+                                    `eleventhSection.items.${index}.description`,
+                                  )}
+                                />
+                              </div>
+                            </>
+                          )}
+                        </SortableItem>
+                      );
+                    })}
+                  </SortableContext>
+                </DndContext>
+              </div>
+              <div className="mt-2 flex justify-end">
+                <Button
+                  type="button"
+                  addItem
+                  onClick={() =>
+                    elevenSectionAppend({
+                      pillarId: "",
+                      description: "",
                     })
                   }
                 >

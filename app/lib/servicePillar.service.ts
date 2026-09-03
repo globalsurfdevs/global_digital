@@ -4,34 +4,30 @@ import ServicePillar from "../models/ServicePiller";
 import ServiceIndustry from "../models/ServiceIndustry";
 import Industries from "../models/Industries";
 
-
 export const getServicePillar = async (slug: string) => {
   return unstable_cache(
     async () => {
       await connectDB();
 
-      const item = await ServicePillar.findOne({ slug })
-        .populate(
-          "ninthSection.serviceIndustries",
-          "image imageAlt title page"
-        )
-        .lean() as any;
+      const item = (await ServicePillar.findOne({ slug })
+        .populate("ninthSection.serviceIndustries", "image imageAlt title page")
+        .populate("eleventhSection.items.pillarId", "name slug icon")
+        .lean()) as any;
 
       if (!item) return null;
 
-   
-      const industriesData = await Industries.find().lean() as any;
+      const industriesData = (await Industries.find().lean()) as any;
 
-    
-      const industries = industriesData.flatMap((industry:any) => industry.items);
+      const industries = industriesData.flatMap(
+        (industry: any) => industry.items,
+      );
 
-     
       if (item.ninthSection?.serviceIndustries) {
         item.ninthSection.serviceIndustries =
           item.ninthSection.serviceIndustries.map((serviceIndustry: any) => {
             const industry = industries.find(
               (industry: any) =>
-                industry._id.toString() === serviceIndustry.page?.toString()
+                industry._id.toString() === serviceIndustry.page?.toString(),
             );
 
             return {
@@ -41,14 +37,14 @@ export const getServicePillar = async (slug: string) => {
           });
       }
 
-    //   console.log("service pillar:", item);
+      //   console.log("service pillar:", item);
 
       return JSON.parse(JSON.stringify(item));
     },
     [`service-pillar-${slug}`],
     {
       tags: ["service-pillar"],
-    }
+    },
   )();
 };
 

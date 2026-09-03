@@ -650,8 +650,7 @@ const AdminServicePillarList = () => {
     router.push(adminRoutes.servicePillars.edit(slug));
   };
   const handleEditAutoSlugToggle = (enabled: boolean) => {
-    console.log("Edit Auto Slug:", enabled);
-
+  
     setEditAutoSlug(enabled);
 
     if (enabled) {

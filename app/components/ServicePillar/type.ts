@@ -12,13 +12,13 @@ export type ServicePillarData = {
     imageAlt: string;
     title: string;
     description: string;
-    showSection:boolean
+    showSection: boolean;
   };
 
   secondSection: {
     title: string;
     description: string;
-    showSection:boolean
+    showSection: boolean;
   };
 
   thirdSection: {
@@ -29,14 +29,14 @@ export type ServicePillarData = {
     imageAlt: string;
     buttonText: string;
     buttonLink: string;
-    showSection:boolean
+    showSection: boolean;
   };
 
   fourthSection: {
     title: string;
     subTitle: string;
     description: string;
-    showSection:boolean
+    showSection: boolean;
   };
 
   fifthSection: {
@@ -51,7 +51,7 @@ export type ServicePillarData = {
       description: string;
       link?: string;
     }[];
-    showSection:boolean
+    showSection: boolean;
   };
 
   sixthSection: {
@@ -63,7 +63,7 @@ export type ServicePillarData = {
       imageAlt: string;
       description: string;
     }[];
-    showSection:boolean
+    showSection: boolean;
   };
 
   seventhSection: {
@@ -76,7 +76,7 @@ export type ServicePillarData = {
       imageAlt: string;
       link: string;
     }[];
-    showSection:boolean
+    showSection: boolean;
   };
 
   eighthSection: {
@@ -87,12 +87,12 @@ export type ServicePillarData = {
       title: string;
       description: string;
     }[];
-    showSection:boolean
+    showSection: boolean;
   };
   ninthSection: {
     title: string;
     serviceIndustries: string[];
-    showSection:boolean
+    showSection: boolean;
   };
   tenthSection: {
     tag: string;
@@ -103,21 +103,17 @@ export type ServicePillarData = {
       value: string;
       label: string;
     }[];
-    showSection:boolean
+    showSection: boolean;
   };
 
   eleventhSection: {
     title: string;
     description: string;
     items: {
-      id: string;
-      title: string;
+      pillarId: string;
       description: string;
-      image: string;
-      imageAlt: string;
-      link: string;
     }[];
-    showSection:boolean
+    showSection: boolean;
   };
 
   ctaSection: {
@@ -126,7 +122,7 @@ export type ServicePillarData = {
     description: string;
     buttonText: string;
     buttonLink: string;
-    showSection:boolean
+    showSection: boolean;
   };
 
   faqSection: {
@@ -136,6 +132,6 @@ export type ServicePillarData = {
       title: string;
       description: string;
     }[];
-    showSection:boolean
+    showSection: boolean;
   };
 };
