@@ -548,6 +548,7 @@ function WhoItsFor() {
                 </p>
                 <Btn
                   onClick={scrollToContact}
+                  // href={"#book"}
                   variant="pale"
                   className="mt-5 w-full"
                 >
@@ -778,7 +779,6 @@ function WhatYouGet() {
             See how this would look for your name.
           </h3>
           <Btn
-            // href="#book"
             onClick={scrollToContact}
             variant="pale"
             className="w-full flex-none sm:w-auto"
@@ -1320,8 +1320,8 @@ function Pricing() {
             delay={70}
             className="flex flex-col gap-3 sm:flex-row sm:items-center lg:shrink-0"
           >
-            <a
-              // href="#book"
+            <button
+              type="button"
               onClick={scrollToContact}
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
@@ -1329,7 +1329,7 @@ function Pricing() {
               <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31]">
                 <PricingArrow dark />
               </span>
-            </a>
+            </button>
 
             {/* <a
               href="#book"

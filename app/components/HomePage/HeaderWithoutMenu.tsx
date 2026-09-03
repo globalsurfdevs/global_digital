@@ -11,26 +11,41 @@ import { usePathname } from "next/navigation";
 import { serviceData } from "./ServiceDropdown";
 
 export const scrollToContact = () => {
-  const section = document.getElementById("book");
-  const header = document.querySelector("header");
-
-  if (!section) return;
-
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
   const headerHeight = header?.getBoundingClientRect().height ?? 0;
-  const extraGap = 20;
+  const scrollToSection = () => {
+    const section = document.getElementById("book");
 
-  const targetPosition =
-    section.getBoundingClientRect().top +
-    window.scrollY -
-    headerHeight -
-    extraGap;
+    if (!section) return false;
 
-  window.scrollTo({
-    top: targetPosition,
-    behavior: "smooth",
-  });
+    const extraGap = window.innerWidth < 1024 ? 3 : 20;
+
+    section.style.scrollMarginTop = `${headerHeight + extraGap}px`;
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+    return true;
+  };
+
+  if (scrollToSection()) return;
+
+  let attempts = 0;
+  const retry = () => {
+    attempts += 1;
+    if (scrollToSection() || attempts >= 10) return;
+    window.setTimeout(retry, 50);
+  };
+
+  window.setTimeout(retry, 0);
 };
+// export const scrollToContact = () => {
+//   const section = document.getElementById("book");
 
+//   if (!section) return;
+
+//   section.scrollIntoView({
+//     behavior: "smooth",
+//     block: "start",
+//   });
+// };
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -72,7 +87,6 @@ const Header = () => {
     if (headerRef.current) ro.observe(headerRef.current);
     return () => ro.disconnect();
   }, []);
-
 
   // ─── Scroll handler with rAF throttle + passive listener ─────────────────
   useEffect(() => {
@@ -138,41 +152,44 @@ const Header = () => {
   });
 
   // ─── Mobile layout ────────────────────────────────────────────────────────
-  if (mobileMenu) {
-    if (modalOpen) return null;
-    return (
-      <div className="fixed left-0 right-0 top-0 z-20 flex animate-[headerSlideDown_0.8s_forwards] items-center bg-white p-4 align-middle shadow-[0_2px_10px_0_rgba(0,0,0,0.1)] transition-all duration-500 ease-in-out">
-        {/*
-          Logo: width/height match the actual rendered size (100px on mobile).
-          No `unoptimized` — let Next.js optimise the SVG.
-        */}
-        <Link href="/">
-          <Image
-            src="/gs-digital-logo.svg"
-            alt="GS Digital"
-            width={100}
-            height={32}
-            priority
-          />
-        </Link>
-        <div className="flex w-full items-center justify-end gap-3">
-          <a
-            href="tel:+97145821133"
-            className="flex items-center text-black hover:text-primary"
-          >
-            <Image
-              className="mt-2"
-              src={assets.menuphoneicon}
-              alt="Call us"
-              width={23}
-              height={23}
-            />
-          </a>
-          <Example />
-        </div>
-      </div>
-    );
-  }
+  // if (mobileMenu) {
+  //   if (modalOpen) return null;
+  //   return (
+  //     <div
+  //       data-site-header
+  //       className="fixed left-0 right-0 top-0 z-20 flex animate-[headerSlideDown_0.8s_forwards] items-center bg-white p-4 align-middle shadow-[0_2px_10px_0_rgba(0,0,0,0.1)] transition-all duration-500 ease-in-out"
+  //     >
+  //       {/*
+  //         Logo: width/height match the actual rendered size (100px on mobile).
+  //         No `unoptimized` — let Next.js optimise the SVG.
+  //       */}
+  //       <Link href="/">
+  //         <Image
+  //           src="/gs-digital-logo.svg"
+  //           alt="GS Digital"
+  //           width={100}
+  //           height={32}
+  //           priority
+  //         />
+  //       </Link>
+  //       <div className="flex w-full items-center justify-end gap-3">
+  //         <a
+  //           href="tel:+97145821133"
+  //           className="flex items-center text-black hover:text-primary"
+  //         >
+  //           <Image
+  //             className="mt-2"
+  //             src={assets.menuphoneicon}
+  //             alt="Call us"
+  //             width={23}
+  //             height={23}
+  //           />
+  //         </a>
+  //         <Example />
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   // ─── Desktop layout ───────────────────────────────────────────────────────
   return (
@@ -186,14 +203,15 @@ const Header = () => {
       {/* <header ref={parentRef} > */}
       <header
         ref={headerRef}
+        data-site-header
         className={`header fixed left-0 right-0 top-0 z-[999] py-4 pb-4 lg:py-[22px] `}
       >
-          {/* ${isSticky ? "translate-y-0" : "-translate-y-full"}
+        {/* ${isSticky ? "translate-y-0" : "-translate-y-full"}
             ${isShadow ? "shado" : "shadowss"} */}
         <div
-          className={`header relative z-[999] py-4 pb-4 transition-transform
-            duration-300 ease-in-out lg:py-[22px]
-           shadow-md`}
+          className={`header relative z-[999] py-4 pb-4 shadow-md
+            transition-transform duration-300 ease-in-out
+           lg:py-[22px]`}
         >
           <div className="container relative z-20 flex items-center justify-between">
             {/* ── Logo ── */}
@@ -207,7 +225,7 @@ const Header = () => {
               */}
               <Image
                 src="/gs-digital-logo.svg"
-                className="w-[200px]"
+                className="w-[130px] sm:w-[170px] lg:w-[200px]"
                 alt="GS Digital Logo"
                 width={200}
                 height={50}
@@ -219,7 +237,7 @@ const Header = () => {
 
             {/* ── Mobile hamburger ── */}
             <button
-              className="text-black lg:hidden"
+              className="hidden"
               onClick={() => setIsMenuOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -240,18 +258,14 @@ const Header = () => {
             </button>
 
             {/* ── Nav ── */}
-            <nav
-              className={`${
-                isMenuOpen ? "block" : "hidden"
-              } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
-              lg:static lg:flex lg:w-auto lg:space-x-5 lg:bg-transparent xl:space-x-8`}
-            >
+            <nav className="flex w-auto items-center text-sm font-medium lg:space-x-5 xl:space-x-8">
               {/* CONTACT US */}
               <button
+                type="button"
                 onClick={scrollToContact}
-                className="hover:bg-prtext-primary group hidden items-center space-x-2 rounded-full
-                  border border-primary px-6 py-2 text-primary transition duration-300 ease-in
-                  hover:text-black hover:shadow-lg lg:flex"
+                className="hover:bg-prtext-primary group flex items-center space-x-2 rounded-full
+                  border border-primary px-3 py-2 text-xs text-primary transition duration-300
+                  ease-in hover:text-black hover:shadow-lg sm:px-4 lg:px-6 lg:text-sm"
               >
                 <span className="uppercase duration-300 ease-in group-hover:text-black">
                   Let’s Talk

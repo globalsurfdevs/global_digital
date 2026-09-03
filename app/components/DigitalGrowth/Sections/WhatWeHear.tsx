@@ -25,7 +25,6 @@ interface ServicesSectionProps {
   data: FrameworkItem[];
 }
 
-
 const ArrowIcon = ({ clipId }: { clipId: string }) => (
   <svg
     width="10"
@@ -108,7 +107,7 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="title-60 text-[length:var(--text-60-sm)] pb-2"
+              className="title-60 pb-2 text-[length:var(--text-60-sm)]"
             >
               {title}
             </motion.h2>
@@ -118,7 +117,7 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="text-[length:var(--text-18-sm)] fnt-lexend mb-10 pt-4 text-[#77787B] md:pt-6 lg:mb-[60px] xl:pt-14"
+                className="fnt-lexend mb-10 pt-4 text-[length:var(--text-18-sm)] text-[#77787B] md:pt-6 lg:mb-[60px] xl:pt-14"
               >
                 {description}
               </motion.p>

@@ -103,10 +103,10 @@ const CredibilityStats = ({ data }: { data: Props }) => {
                       : ""
                   }`}
                 >
-                  <span className="text-60 text-[length:var(--text-60-sm)] block text-primary">
+                  <span className="text-60 block text-[length:var(--text-60-sm)] text-primary">
                     {stat.value}
                   </span>
-                  <p className="text-18 text-[length:var(--text-18-sm)] fnt-lexend mt-2 uppercase text-white max-w-[20ch]">
+                  <p className="text-18 fnt-lexend mt-2 max-w-[20ch] text-[length:var(--text-18-sm)] uppercase text-white">
                     {stat.label}
                   </p>
                 </motion.div>
