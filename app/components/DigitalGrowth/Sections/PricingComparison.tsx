@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
 import { Check } from "lucide-react";
 import { assets } from "@/public/assets/assets";
-import { scrollToContact } from "../../HomePage/HeaderWithoutMenu"; 
+import { scrollToContact } from "../../HomePage/HeaderWithoutMenu";
+import Link from "next/link";
 
 type Feature = {
   title: string;
@@ -136,8 +137,10 @@ const PricingComparison = ({ data }: { data: Props }) => {
             viewport={{ once: true }}
             className="md:max-w-[831px]"
           >
-            <h2 className="title-60 text-[length:var(--text-60-sm)]">{data.title}</h2>
-            <p className="text-[length:var(--text-18-sm)] mt-6 leading-[1.6] text-muted md:mt-[40px]">
+            <h2 className="title-60 text-[length:var(--text-60-sm)]">
+              {data.title}
+            </h2>
+            <p className="mt-6 text-[length:var(--text-18-sm)] leading-[1.6] text-muted md:mt-[40px]">
               {data.description}
             </p>
           </motion.div>
@@ -187,7 +190,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
             viewport={{ once: true }}
             className="relative  rounded-2xl bg-black p-6 text-white md:px-[40px] md:pt-[50px]"
           >
-            <span className="fnt-lexend text-[length:var(--text-18-sm)] absolute left-1/2 top-[-14px] w-fit -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-[15px] py-[10px] uppercase tracking-wide text-white">
+            <span className="fnt-lexend absolute left-1/2 top-[-14px] w-fit -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-[15px] py-[10px] text-[length:var(--text-18-sm)] uppercase tracking-wide text-white">
               What most firms take
             </span>
 
@@ -201,17 +204,18 @@ const PricingComparison = ({ data }: { data: Props }) => {
               <span className="text-60 text-[length:var(--text-60-sm)] leading-[1.083333333333333]">
                 AED 10,000
               </span>
-              <span className="text-[length:var(--text-18-sm)] md:text-16 text-white/50">
+              <span className="md:text-16 text-[length:var(--text-18-sm)] text-white/50">
                 a month, from
               </span>
             </div>
-            <p className="text-[length:var(--text-18-sm)] mt-[20px] leading-[1.444444444444444] text-white/50">
+            <p className="mt-[20px] text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-white/50">
               Eight disciplines, one senior team, one monthly figure.
             </p>
 
             <button
               type="button"
               onClick={scrollToContact}
+              // href={"#book"}
               className="group mt-6 flex w-full items-center justify-center space-x-[12px] rounded-full border border-primary px-6 py-[15px] text-white transition duration-300 ease-in hover:shadow-lg md:mt-[30px]"
             >
               <span className="fnt-lexend text-16 uppercase duration-300 ease-in">
@@ -223,7 +227,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
             </button>
 
             <div className="mt-8 border-t border-white/10 pt-6 md:mt-[40px] md:pt-[40px]">
-              <span className="text-[length:var(--text-18-sm)]  fnt-lexend leading-[1.444444444444444] text-white/50">
+              <span className="fnt-lexend  text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-white/50">
                 What runs every month
               </span>
 
@@ -243,7 +247,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
                       </p>
                     </div>
                     <div>
-                      <p className="fnt-lexend text-[length:var(--text-18-sm)] ml-[35px] mt-[5px] text-white/50">
+                      <p className="fnt-lexend ml-[35px] mt-[5px] text-[length:var(--text-18-sm)] text-white/50">
                         {item.description}
                       </p>
                     </div>
@@ -252,7 +256,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
               </ul>
             </div>
 
-            <p className="fnt-lexend text-[length:var(--text-18-sm)] mt-8 pt-6 leading-[1.444444444444444] text-white/50 md:mb-[85px] md:mt-[70px]">
+            <p className="fnt-lexend mt-8 pt-6 text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-white/50 md:mb-[85px] md:mt-[70px]">
               12 months. Google ranking work has a 6 month minimum. VAT not
               included.
             </p>
@@ -280,13 +284,14 @@ const PricingComparison = ({ data }: { data: Props }) => {
                 priced with you
               </span>
             </div>
-            <p className="text-[length:var(--text-18-sm)] mt-[20px] leading-[1.444444444444444] text-muted">
+            <p className="mt-[20px] text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-muted">
               For groups running several companies, brands or countries at once
             </p>
 
             <button
               type="button"
               onClick={scrollToContact}
+              // href={"#book"}
               className="group mt-6 flex w-full items-center justify-center space-x-[12px] rounded-full border border-primary px-6 py-[15px] text-black transition duration-300 ease-in hover:shadow-lg md:mt-[30px]"
             >
               <span className="fnt-lexend text-16 uppercase duration-300 ease-in">
@@ -298,7 +303,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
             </button>
 
             <div className="mt-8 border-t border-black/10 pt-6 md:mt-[40px] md:pt-[40px]">
-              <span className="text-[length:var(--text-18-sm)] fnt-lexend leading-[1.444444444444444] text-muted">
+              <span className="fnt-lexend text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-muted">
                 What runs every month
               </span>
 
@@ -318,7 +323,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
                       </p>
                     </div>
                     <div>
-                      <p className="fnt-lexend text-[length:var(--text-18-sm)] ml-[35px] mt-[5px] text-muted">
+                      <p className="fnt-lexend ml-[35px] mt-[5px] text-[length:var(--text-18-sm)] text-muted">
                         {item.description}
                       </p>
                     </div>
@@ -327,7 +332,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
               </ul>
             </div>
 
-            <p className="fnt-lexend text-[length:var(--text-18-sm)] mt-8  border-t border-[#00000033]/20 pt-6 leading-[1.444444444444444] text-[#77787B] md:mb-[85px] md:mt-[70px]">
+            <p className="fnt-lexend mt-8 border-t  border-[#00000033]/20 pt-6 text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-[#77787B] md:mb-[85px] md:mt-[70px]">
               12 months. Google ranking work has a 6 month minimum. VAT not
               included.
             </p>
@@ -359,7 +364,7 @@ const PricingComparison = ({ data }: { data: Props }) => {
                 <h3 className="text-22 md:text-25 mt-6 text-black md:mt-[30px]">
                   {card.title}
                 </h3>
-                <p className="text-16 fnt-lexend md:text-[length:var(--text-18-sm)] mt-4 leading-[1.5] text-muted md:mt-[20px] md:leading-[26px]">
+                <p className="text-16 fnt-lexend mt-4 leading-[1.5] text-muted md:mt-[20px] md:text-[length:var(--text-18-sm)] md:leading-[26px]">
                   {card.description}
                 </p>
               </motion.div>

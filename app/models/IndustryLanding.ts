@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import seoSchema from "./Seo";
+import { MODEL_NAMES } from "../const/model-name/modelName";
 
 const industryLandingSchema = new mongoose.Schema(
   {
@@ -66,7 +67,7 @@ const industryLandingSchema = new mongoose.Schema(
           title: { type: String },
           project: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "portfolio",
+            ref: MODEL_NAMES.PORTFOLIO,
             set: (v: any) => (v === "" ? null : v),
           },
           description: { type: String },
@@ -86,7 +87,7 @@ const industryLandingSchema = new mongoose.Schema(
         {
           service: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "ServicePillar",
+            ref: MODEL_NAMES.SERVICE_PILLAR,
             set: (v: any) => (v === "" ? null : v),
           },
           // title: { type: String },
