@@ -192,7 +192,7 @@ function Kick({
     >
       <i className="block h-2 w-2 flex-none bg-[#E63E31]" />
       <span
-        className={`text-[11px] font-medium uppercase tracking-[0.12em] ${
+        className={`text-[12px] font-medium uppercase tracking-[0.12em] ${
           dark ? "text-white/50" : "text-[#77787B]"
         }`}
       >
@@ -365,94 +365,194 @@ function Hero() {
     { n: "03", label: "Stay Ahead" },
     { n: "04", label: "Keep Improving" },
   ];
-
+  const stats = [
+    {
+      value: "12+",
+      description: "years in the UAE",
+    },
+    {
+      value: "50+",
+      description: "Passionate Professionals",
+    },
+    {
+      value: "140+",
+      description: "Successful Client Partnerships",
+    },
+  ];
   return (
-    <section className="relative overflow-hidden bg-black  pt-16 text-white  md:pt-20  lg:pt-[92px]">
-      {/* ambient glows */}
-      <div className="pointer-events-none absolute -right-56 -top-80 h-[900px] w-[900px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.18)_0%,rgba(230,62,49,0)_63%)]" />
-      <div className="pointer-events-none absolute -bottom-80 -left-64 h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.08)_0%,rgba(230,62,49,0)_66%)]" />
+    // <section className="relative overflow-hidden bg-black  pt-16 text-white  md:pt-20  lg:pt-[92px]">
+    //   {/* ambient glows */}
+    //   <div className="pointer-events-none absolute -right-56 -top-80 h-[900px] w-[900px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.18)_0%,rgba(230,62,49,0)_63%)]" />
+    //   <div className="pointer-events-none absolute -bottom-80 -left-64 h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.08)_0%,rgba(230,62,49,0)_66%)]" />
 
-      <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
-        <div className="grid min-h-[520px] grid-cols-1 items-stretch gap-9 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
-          <Reveal className="flex flex-col justify-center">
+    //   <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
+    //     <div className="grid min-h-[520px] grid-cols-1 items-stretch gap-9 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
+    //       <Reveal className="flex flex-col justify-center">
+    //         <Kick label="Growth Partnership" dark />
+    //         <h1 className="max-w-[17ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[62px]">
+    //           Everything your digital marketing needs,{" "}
+    //           <span className="text-[#E63E31]">in one package</span>
+    //         </h1>
+    //         <p className="mt-6 max-w-[46ch] text-base leading-normal text-white/60 lg:text-lg">
+    //           Fourteen coordinated services under one senior team. Built for the
+    //           UAE companies that build, make, supply and develop.
+    //         </p>
+    //         <div className="mt-8 flex flex-wrap items-center gap-6">
+    //           <Btn onClick={scrollToContact}>Get Started</Btn>
+    //         </div>
+    //         {/* Offers */}
+    //         <div className="mt-11 grid grid-cols-4 border-t border-white/[0.16]">
+    //           {offers.map((o, i) => (
+    //             <div
+    //               key={o.n}
+    //               className={`px-4 pt-5 first:border-l-0 first:pl-0 ${
+    //                 i > 0 ? "border-l border-white/[0.16]" : ""
+    //               }`}
+    //             >
+    //               <b className="mb-2.5 block text-[9px] font-semibold tracking-[0.12em] text-[#E63E31]">
+    //                 {o.n}
+    //               </b>
+    //               <strong className="block text-base font-medium leading-tight text-white">
+    //                 {o.label}
+    //               </strong>
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </Reveal>
+
+    //       <Reveal
+    //         delay={140}
+    //         className="relative flex items-stretch justify-start lg:justify-end"
+    //       >
+    //         <div className="relative aspect-[4/5] h-auto w-full max-w-[430px] overflow-hidden rounded-[18px] border border-white/10 bg-[#0A0A0C] lg:h-full lg:max-w-none">
+    //           {/* eslint-disable-next-line @next/next/no-img-element */}
+    //           <img
+    //             src="/images/hero-team.jpg"
+    //             alt="Engineers and designers reviewing drawings, material samples and site plans"
+    //             className="block h-full w-full object-contain"
+    //           />
+    //         </div>
+    //         <div className="static mt-3.5 max-w-none rounded-[13px] border border-white/[0.14] bg-[#101012] px-[14px] py-3.5 text-white shadow-none lg:absolute lg:-left-6 lg:bottom-6 lg:mt-0 lg:max-w-[196px] lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
+    //           <div className="flex items-baseline gap-1">
+    //             <b className="text-[23px] font-normal">
+    //               12
+    //               <em className="align-super text-lg not-italic text-[#E63E31]">
+    //                 +
+    //               </em>
+    //             </b>
+
+    //             <span className="text-[16px]">years in the UAE</span>
+    //           </div>
+
+    //           <span className="mt-1 block text-[12px] leading-normal text-white/[0.60]">
+    //             50+ Passionate Professionals
+    //             <br />
+    //             140+ Successful Client Partnerships
+    //           </span>
+    //         </div>
+    //       </Reveal>
+    //     </div>
+    //   </div>
+
+    //   <div className="mt-11 w-full border-t bg-white pb-7 pt-7 md:mt-14 lg:mt-[74px]">
+    //     <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-black">
+    //       Trusted by Built Environment leaders
+    //     </div>
+    //     <div className="group relative overflow-hidden">
+    //       {/* `<div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-24 bg-gradient-to-r from-black to-transparent sm:w-[150px]" />
+    //       <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-24 bg-gradient-to-l from-black to-transparent sm:w-[150px]" />` */}
+    //       <Marquee durationSec={42}>
+    //         {loop.map((name, i) => (
+    //           <div
+    //             key={`${name}-${i}`}
+    //             className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-white/[0.15] bg-white/[0.035] px-4 text-[10px] font-medium tracking-[0.1em] text-white/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
+    //           >
+    //             <div className="relative h-16 w-full">
+    //               <Image
+    //                 src={name.image}
+    //                 alt={name.alt}
+    //                 fill
+    //                 sizes="270px"
+    //                 className="object-contain"
+    //               />
+    //             </div>
+    //           </div>
+    //         ))}
+    //       </Marquee>
+    //     </div>
+    //   </div>
+    // </section>
+    // old method ^
+
+    <section className="bg-black text-white">
+      {/* HERO */}
+      <div className="relative isolate min-h-[calc(100vh-63px)] overflow-hidden">
+        {/* Video */}
+        <video
+          src="/assets/videos/home_banner.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 z-10 bg-black/50" />
+
+        {/* Content */}
+        <div className="relative z-20 mx-auto flex min-h-screen max-w-[1200px] items-center px-6 md:px-10">
+          <Reveal className="flex flex-col justify-center lg:mt-10">
             <Kick label="Growth Partnership" dark />
-            <h1 className="max-w-[17ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[62px]">
+
+            <h1 className="max-w-[20ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[65px]">
               Everything your digital marketing needs,{" "}
               <span className="text-[#E63E31]">in one package</span>
             </h1>
+
             <p className="mt-6 max-w-[46ch] text-base leading-normal text-white/60 lg:text-lg">
               Fourteen coordinated services under one senior team. Built for the
               UAE companies that build, make, supply and develop.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-6">
+
+            <div className="mt-4 md:mt-8 flex flex-wrap items-center gap-6">
               <Btn onClick={scrollToContact}>Get Started</Btn>
             </div>
-
-            <div className="mt-11 grid grid-cols-4 border-t border-white/[0.16]">
-              {offers.map((o, i) => (
+            <div className="mt-5 md:mt-10 flex w-full max-w-[700px] gap-3">
+              {stats.map((stat) => (
+                // bg-white/[0.04] backdrop-blur-sm 
                 <div
-                  key={o.n}
-                  className={`px-4 pt-5 first:border-l-0 first:pl-0 ${
-                    i > 0 ? "border-l border-white/[0.16]" : ""
-                  }`}
+                  key={stat.value}
+
+                  className="min-w-0 flex-1 rounded-md border border-white/25 bg-white/[0.04] backdrop-blur-sm px-1 py-2  md:!px-5"
                 >
-                  <b className="mb-2.5 block text-[9px] font-semibold tracking-[0.12em] text-[#E63E31]">
-                    {o.n}
-                  </b>
-                  <strong className="block text-base font-medium leading-tight text-white">
-                    {o.label}
-                  </strong>
+                  <div className="text-xl font-normal leading-none text-[#E63E31] sm:text-2xl lg:text-3xl">
+                    {stat.value}
+                  </div>
+
+                  <p className="mt-[2px] md:mt-2 break-words text-xs leading-snug text-white/80 sm:text-sm lg:text-base">
+                    {stat.description}
+                  </p>
                 </div>
               ))}
-            </div>
-          </Reveal>
-
-          <Reveal
-            delay={140}
-            className="relative flex items-stretch justify-start lg:justify-end"
-          >
-            <div className="relative aspect-[4/5] h-auto w-full max-w-[430px] overflow-hidden rounded-[18px] border border-white/10 bg-[#0A0A0C] lg:h-full lg:max-w-none">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/hero-team.jpg"
-                alt="Engineers and designers reviewing drawings, material samples and site plans"
-                className="block h-full w-full object-contain"
-              />
-            </div>
-            <div className="static mt-3.5 max-w-none rounded-[13px] border border-white/[0.14] bg-[#101012] px-[14px] py-3.5 text-white shadow-none lg:absolute lg:-left-6 lg:bottom-6 lg:mt-0 lg:max-w-[196px] lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
-              <div className="flex items-baseline gap-1">
-                <b className="text-[23px] font-normal">
-                  12
-                  <em className="align-super text-lg not-italic text-[#E63E31]">
-                    +
-                  </em>
-                </b>
-
-                <span className="text-[16px]">years in the UAE</span>
-              </div>
-
-              <span className="mt-1 block text-[12px] leading-normal text-white/[0.60]">
-                50+ Passionate Professionals
-                <br />
-                140+ Successful Client Partnerships
-              </span>
             </div>
           </Reveal>
         </div>
       </div>
 
-      <div className="mt-11 w-full border-t bg-white pb-7 pt-7 md:mt-14 lg:mt-[74px]">
+      {/* TRUSTED LOGOS */}
+      <div className="relative z-30 w-full border-t bg-white pb-7 pt-7">
         <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-black">
           Trusted by Built Environment leaders
         </div>
+
         <div className="group relative overflow-hidden">
-          {/* `<div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-24 bg-gradient-to-r from-black to-transparent sm:w-[150px]" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-24 bg-gradient-to-l from-black to-transparent sm:w-[150px]" />` */}
           <Marquee durationSec={42}>
             {loop.map((name, i) => (
               <div
                 key={`${name}-${i}`}
-                className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-white/[0.15] bg-white/[0.035] px-4 text-[10px] font-medium tracking-[0.1em] text-white/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
+                className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-black/[0.15] bg-black/[0.035] px-4 text-[10px] font-medium tracking-[0.1em] text-black/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
               >
                 <div className="relative h-16 w-full">
                   <Image
