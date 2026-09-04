@@ -103,6 +103,10 @@ export const menuItems = [
     url: "#",
   },
   {
+    item: "INDUSTRIES",
+    url: "/industries",
+  },
+  {
     item: "PORTFOLIO",
     url: "/portfolio",
   },
