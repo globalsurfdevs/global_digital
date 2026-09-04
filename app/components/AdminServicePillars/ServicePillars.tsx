@@ -264,7 +264,7 @@ const ServicePillarPage = () => {
       },
     };
 
-    console.log("PAYLOAD BEFORE PATCH:", payload.eleventhSection);
+    
     try {
       const response = await fetch(
         `/api/service-pillar/${encodeURIComponent(slug)}`,
