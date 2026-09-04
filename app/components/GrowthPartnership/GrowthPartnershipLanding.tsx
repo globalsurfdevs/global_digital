@@ -486,7 +486,7 @@ function Hero() {
 
     <section className="bg-black text-white">
       {/* HERO */}
-      <div className="relative isolate min-h-[calc(100vh-63px)] overflow-hidden">
+      <div className="relative isolate min-h-[calc(100dvh-63px)] overflow-hidden">
         {/* Video */}
         <video
           src="/assets/videos/home_banner.mp4"
@@ -502,8 +502,8 @@ function Hero() {
         <div className="absolute inset-0 z-10 bg-black/50" />
 
         {/* Content */}
-        <div className="relative z-20 mx-auto flex min-h-screen max-w-[1200px] items-center px-6 md:px-10">
-          <Reveal className="flex flex-col justify-center lg:mt-10">
+        <div className="relative z-20 mx-auto flex min-h-[calc(100dvh-63px)] max-w-[1200px] items-center px-6 md:min-h-screen md:px-10">
+          <Reveal className="flex flex-col  md:justify-center lg:mt-10">
             <Kick label="Growth Partnership" dark />
 
             <h1 className="max-w-[20ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[65px]">
