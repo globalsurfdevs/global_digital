@@ -498,13 +498,14 @@ const page = async ({ params }: PageProps) => {
   //     height: "28",
   //   },
   // ];
-
+  
   const infoGridData: FrameworkItem[] = data.fifthSection.items.map(
     (item, index) => ({
       id: index,
       icon: item.image,
       title: item.title,
       dec: item.description,
+      urllink:item.link,
     }),
   );
 
