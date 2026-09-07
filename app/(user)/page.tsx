@@ -16,6 +16,7 @@ import { Faq } from "@/app/components/HomePage/data";
 import type { Metadata } from "next";
 import { getHome } from "../lib/home.service";
 import { getTestimonials } from "../lib/testimonials";
+import { getAllIndustry } from "../lib/industry.service";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Agency in Dubai | GS Digital",
@@ -118,9 +119,28 @@ const localBusinessSchema = {
   ],
 };
 
+export interface IndustriesProps {
+  name: string;
+  link: string;
+  image: string;
+  imageAlt: string;
+  description: string;
+}
+
 export default async function Home() {
   const home = await getHome();
   const testimonials = await getTestimonials();
+   const allIndustry = await getAllIndustry();
+
+
+
+ const industries:IndustriesProps[] = allIndustry.map((industry:any) => ({
+    name: industry.name,
+    link: industry.slug,
+    image: industry.image,
+    imageAlt: industry.imageAlt,
+    description: industry.shortDescription,
+  }));
   return (
     <>
       {/* Website Schema */}
@@ -157,7 +177,7 @@ export default async function Home() {
       <AboutGlobal />
       <OurServices />
       <OurAchievements />
-      <IndustriesweWork />
+      <IndustriesweWork industries={industries} />
       {/* <WorkIn /> */}
       <Tours />
       <SuccessStories clientTitle={home.clientSection.title} />

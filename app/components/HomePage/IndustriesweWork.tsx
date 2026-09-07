@@ -9,6 +9,7 @@ import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllIndustry } from "@/app/lib/industry.service";
+import { IndustriesProps } from "@/app/(user)/page";
 
 const images = [
   {
@@ -75,7 +76,11 @@ const images = [
   // }
 ];
 
-const IndustriesweWork = () => {
+const IndustriesweWork = async ({
+  industries,
+}: {
+  industries: IndustriesProps[];
+}) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
@@ -158,10 +163,60 @@ const IndustriesweWork = () => {
               modules={[Autoplay, Navigation]}
               className="custom-swiper"
             >
-              {images.map((image, index) => {
+              {industries.map((industry, index) => {
+                const card = (
+                  <div className="ease-[cubic-bezier(0.25,0.8,0.25,1)] group relative flex h-[300px] flex-col justify-between gap-3 overflow-hidden rounded-sm border border-transparent p-5 transition-all duration-500 hover:-translate-y-1 hover:border-[#E63e31]/40 hover:shadow-2xl hover:shadow-black/20 lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]">
+                    {/* Background Image */}
+                    <Image
+                      src={industry.image}
+                      alt={industry.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={95}
+                      loading="lazy"
+                      className="duration-[1200ms] ease-[cubic-bezier(0.25,0.8,0.25,1)] object-cover grayscale transition-[filter,transform] group-hover:scale-110 group-hover:grayscale-0"
+                    />
+
+                    {/* Permanent bottom gradient — text legibility */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-[1200ms] ease-out group-hover:opacity-90" />
+
+                    {/* Hover darken layer, on top of the gradient */}
+                    <div className="ease-[cubic-bezier(0.25,0.8,0.25,1)] pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-[1200ms] group-hover:bg-black/20" />
+
+                    {/* Content */}
+                    <div className="relative z-10 flex h-full flex-col justify-end">
+                      <div className="ease-[cubic-bezier(0.25,0.8,0.25,1)] p-0 transition-transform duration-700 group-hover:-translate-y-1 md:pt-[30px]">
+                        <h3 className="text-30 titlesp text-[#E63e31] transition-colors duration-500 group-hover:text-white">
+                          {industry.name}
+                        </h3>
+
+                        <div className="overflow-hidden">
+                          <p className="text-19 fnt-lexend hided-content ease-[cubic-bezier(0.25,0.8,0.25,1)] max-h-0 w-[102%] overflow-hidden pt-2 text-white opacity-0 transition-all duration-500 group-hover:max-h-[15rem] group-hover:opacity-100">
+                            {industry.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+                return (
+                  <SwiperSlide key={index} className={`custom-swiper-slide `}>
+                    <div className="custom-slide">
+                      {industry.link ? (
+                        <Link href={industry.link} className="block">
+                          {card}
+                        </Link>
+                      ) : (
+                        card
+                      )}
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+              {/* {images.map((image, index) => {
                 const card = (
                   <div className="group flex h-[300px] flex-col justify-between gap-3 border p-5 transition-all duration-500 hover:bg-primary lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px]">
-                    {/* Image Wrapper */}
+                   
                     <div className="align-center flex h-[30px] w-[30px] justify-center bg-white p-2 transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
                       <Image
                         src={image.src}
@@ -173,9 +228,9 @@ const IndustriesweWork = () => {
                       />
                     </div>
 
-                    {/* Content */}
+                   
                     <div>
-                      {/* Title */}
+                    
                       <h3 className="text-30 titlesp transition-colors duration-300 group-hover:text-white">
                         {image.title}
                       </h3>
@@ -202,7 +257,7 @@ const IndustriesweWork = () => {
                     </div>
                   </SwiperSlide>
                 );
-              })}
+              })} */}
             </Swiper>
           </div>
         </motion.div>
