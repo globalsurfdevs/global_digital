@@ -2,6 +2,7 @@
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 // Accepts both lucide-react icons and the custom BrowserCodeIcon below —
 // both accept size/className, which is all this component uses.
@@ -87,7 +88,7 @@ const InfoGrid: React.FC<InfoGridProps> = ({
   colcount,
 }) => {
   const xlColClass = XL_COL_CLASS[colcount || 4] || XL_COL_CLASS[4];
-
+  // console.log("InfoGrid data:", data);
   return (
     <div className="bg-white py-120">
       <div className="container mx-auto">
@@ -207,13 +208,13 @@ const InfoGrid: React.FC<InfoGridProps> = ({
                     className={`mt-auto transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5`}
                   />
 
-                  {/* {item.urllink && (
+                  {item.urllink && (
                     <Link
                       href={item.urllink}
                       className="absolute inset-0"
                       aria-label={item.title}
                     />
-                  )} */}
+                  )}
                 </motion.div>
               );
             })}
