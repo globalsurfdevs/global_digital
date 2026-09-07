@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase, toTitleCase, totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
+
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);

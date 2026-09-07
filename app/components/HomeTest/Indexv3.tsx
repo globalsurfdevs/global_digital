@@ -44,7 +44,7 @@ export default async function Home() {
       <AboutGlobal />
       <OurServices />
       <OurAchievements />
-      <IndustriesweWork />
+      {/* <IndustriesweWork /> */}
       {/* <WorkIn /> */}
       <Tours />
       <SuccessStories clientTitle={home.clientSection.title} />
