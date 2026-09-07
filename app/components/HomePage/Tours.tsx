@@ -127,7 +127,7 @@ const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) =>
                         {item.categories.length > 0 &&
                           item.categories.map((category, index) => (
                             <h4
-                              className={`text-primary ${lexend.className}`}
+                              className={`text-[#6b7280] ${lexend.className}`}
                               key={category.name}
                             >
                               {index == item.categories.length - 1
