@@ -104,7 +104,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               </div>
 
               <div>
-                <p className="text-font25 leading-[35px] text-[#A3A3A3] lg:mt-10">
+                <p className="text-font25 leading-[28px] lg:leading-[35px] text-[#A3A3A3] lg:mt-10">
                   {data[0].subhead}
                 </p>
               </div>
