@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { About } from "@/app/types/about";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 const SectionThree = ({ data }: { data: About["thirdSection"] }) => {
   const items = [
@@ -60,7 +61,7 @@ const SectionThree = ({ data }: { data: About["thirdSection"] }) => {
       >
         <div className=" gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px] lg:gap-10 lg:pb-[150px] lg:pt-[140px] xl:grid-cols-7">
           <div className="col-span-2 text-5xl">
-            <h2 className="title-65 pb-2">{data.title}</h2>
+            <h2 className="title-65 pb-2">{totitleSentenceCase(data.title)}</h2>
           </div>
 
           <div className="serv-mn col-span-5 w-full ps-0 text-font30 xl:ps-12 ">
@@ -69,7 +70,7 @@ const SectionThree = ({ data }: { data: About["thirdSection"] }) => {
                 <div className="sevsr group flex items-center items-center justify-between gap-4 py-[10px] pe-[10px] ps-[10px] transition-all duration-300 ease-in-out hover:translate-x-2 md:gap-7 lg:gap-10 lg:py-[28px] lg:pe-[20px] xl:ps-[60px]">
                   <div className="consu">
                     <p className="text-small-30 transition-all duration-300 group-hover:text-primary">
-                      {item.text}
+                      {totitleSentenceCase(item.text)}
                     </p>
                   </div>
                   <div className="min-w-auto md:min-w-[50px]">

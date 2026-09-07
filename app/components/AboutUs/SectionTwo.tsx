@@ -1,4 +1,5 @@
 "use client";
+import { toSentenceCase, totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { motion } from "framer-motion";
 
 const SectionTwo = ({
@@ -56,7 +57,7 @@ const SectionTwo = ({
           >
             <div className="pb-[50px] pt-[50px]  lg:pb-[150px] lg:pt-[139px]">
               <div>
-                <h2 className="title-65 mb-3 lg:mb-5 ">{title}</h2>
+                <h2 className="title-65 mb-3 lg:mb-5 ">{totitleSentenceCase(title)}</h2>
               </div>
               <div>
                 <p className="fnt-lexend text-19 max-w-[87ch] text-gray1">

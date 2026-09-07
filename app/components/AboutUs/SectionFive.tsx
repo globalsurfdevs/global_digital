@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 import React, { useEffect, useState } from "react";
 import LetsTalk from "@/app/components/common/LetsConnect";
 import { About } from "@/app/types/about";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 const SectionFive = ({
   data,
@@ -53,7 +54,7 @@ const SectionFive = ({
             }}
           >
             <div className="mb-4  grid lg:mb-[47px]">
-              <h2 className="title-65 ">{data.title}</h2>
+              <h2 className="title-65 ">{totitleSentenceCase(data.title)}</h2>
             </div>
           </motion.div>
         </div>
@@ -90,7 +91,7 @@ const SectionFive = ({
           <div className="flex flex-col pb-[50px] pt-[50px]  lg:pb-[150px] lg:pt-[138px]   ">
             <h2 className="title-65 mb-4 lg:mb-7">
               {/* Ready to Create the Extraordinary? Let’s Go! */}
-              {lastSection.title}
+              {totitleSentenceCase(lastSection.title)}
             </h2>
             <p className="text-19 fnt-lexend max-w-[113ch] text-gray1">
               {/* Every great brand has a story. See how we’ve turned challenges

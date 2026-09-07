@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { About } from "@/app/types/about";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 const SectionFour = ({ data }: { data: About["fourthSection"] }) => {
   return (
     <div className="bg-dgray">
@@ -21,7 +22,7 @@ const SectionFour = ({ data }: { data: About["fourthSection"] }) => {
         >
           <div className=" gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px] lg:gap-10 lg:pb-[150px] lg:pt-[140px] xl:grid-cols-7">
             <div className="col-span-2 text-5xl">
-              <h2 className="title-65 pb-2">{data.title}</h2>
+              <h2 className="title-65 pb-2">{totitleSentenceCase(data.title)}</h2>
             </div>
 
             <div className="serv-mn col-span-5 w-full ps-0 text-font30 xl:ps-12">
@@ -76,7 +77,7 @@ const SectionFour = ({ data }: { data: About["fourthSection"] }) => {
                   >
                     <div className="flex gap-3 ">
                       <div className="relative top-1 h-[29px] min-w-[29px] bg-primary"></div>
-                      <p className="text-30 text-black">{item.title}</p>
+                      <p className="text-30 text-black">{totitleSentenceCase(item.title)}</p>
                     </div>
                     <div>
                       <p className="text-19 fnt-lexend pt-5 text-gray1">
