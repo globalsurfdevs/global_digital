@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAllIndustry } from "@/app/lib/industry.service";
 import { IndustriesProps } from "@/app/(user)/page";
+import { userRoutes } from "@/app/const/routes/user.routes";
 
 const images = [
   {
@@ -280,7 +281,7 @@ const IndustriesweWork = async ({
                   <SwiperSlide key={index} className={`custom-swiper-slide `}>
                     <div className="custom-slide">
                       {industry.link ? (
-                        <Link href={industry.link} className="block">
+                        <Link href={userRoutes.industries.detail(industry.link)} className="block">
                           {card}
                         </Link>
                       ) : (
