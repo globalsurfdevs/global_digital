@@ -367,25 +367,22 @@ import { assets } from "@/public/assets/assets";
 
 // export default page;
 
-
-
-
-
-
 // Redirection centre
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { resolveSlug } from "@/app/lib/resolveSlug";
 import { getTestimonials } from "@/app/lib/testimonials";
-import { buildMetadata } from "@/app/lib/metadata/buildServiceMetadata"; 
-import ServiceDetail from "@/app/components/ServicePages/ServiceDetails/page"; 
-import ServicePillarDetail from "@/app/components/ServicePages/ServicePillar/page"; 
+import { buildMetadata } from "@/app/lib/metadata/buildServiceMetadata";
+import ServiceDetail from "@/app/components/ServicePages/ServiceDetails/ServiceDetail";
+import ServicePillarDetail from "@/app/components/ServicePages/ServicePillar/ServicePillar";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const resolved = await resolveSlug(slug);
 
