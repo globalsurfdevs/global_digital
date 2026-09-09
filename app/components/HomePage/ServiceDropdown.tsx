@@ -18,7 +18,7 @@ type ServiceData = {
 
 export const serviceData: ServiceData = {
   "Digital Marketing": {
-    titleurl: "digital-marketing-services",
+    titleurl: "/digital-marketing-services-dubai",
     categoryText:
       'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
 
@@ -54,7 +54,7 @@ export const serviceData: ServiceData = {
   },
 
   "Web & App Development": {
-    titleurl: "",
+    titleurl: "/web-design-and-development-agency",
     categoryText:
       'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
     "Web Development": {
@@ -78,7 +78,7 @@ export const serviceData: ServiceData = {
   },
 
   "Branding & Content Production": {
-    titleurl: "/creative-agency-dubai",
+    titleurl: "/branding-content-production-agency-dubai",
     categoryText:
       'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',
     "Copywriting & Messaging": {
@@ -98,7 +98,7 @@ export const serviceData: ServiceData = {
   },
 
   "AI, Data & Intelligence": {
-    titleurl: "/marketing-intelligence-agency-dubai",
+    titleurl: "/ai-data-intelligence-agency-dubai",
     categoryText:
       'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
     "Conversion Rate Optimization": {
