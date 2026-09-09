@@ -4,8 +4,8 @@ export const userRoutes = {
   services: "/services",
 
   servicePillar: {
-    index: "/service-pillar",
-    detail: (slug: string) => `/service-pillar/${slug}`,
+    index: "/",
+    detail: (slug: string) => `/${slug}`,
   },
 
   industries: {
