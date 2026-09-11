@@ -20,9 +20,10 @@ import WhyChoose from "../../BrandingAndPositioning/WhyChoose";
 
 import type { ServiceItem } from "./serviceDetails.type";
 import WorkIn from "../../common/WorkIn";
+import { SubServiceData } from "@/app/(user)/[slug]/type";
 
 interface Props {
-  service: ServiceItem;
+  service: ServiceItem|SubServiceData;
   slug: string;
 }
 

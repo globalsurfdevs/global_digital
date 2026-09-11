@@ -5,6 +5,11 @@ export const adminRoutes = {
 
   services: "/admin/services",
 
+  subServices: {
+    name:"Service Pillars",
+    index: "/admin/sub-services",
+    edit: (slug: string) => `/admin/sub-services/${slug}`,
+  },
   servicePillars: {
     name:"Service Pillars",
     index: "/admin/service-pillar",

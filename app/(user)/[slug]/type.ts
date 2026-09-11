@@ -9,6 +9,7 @@ export interface ServiceItem {
   name: string;
   slug: string;
   seo: SeoFormValues;
+  icon: string;
 
   firstSection: {
     image: string;
@@ -157,3 +158,7 @@ export interface Service {
   _id: string;
   items: ServiceItem[];
 }
+
+
+
+export interface SubServiceData extends ServiceItem {}
