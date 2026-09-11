@@ -2,12 +2,14 @@
 
 import { SeoFormValues } from "@/app/types/seo";
 import { Portfolio } from "@/app/types/Portfolio";
+import { BECSData } from "@/app/components/BrandingAndPositioning/BECS";
 
 export interface ServiceItem {
   _id: string;
   name: string;
   slug: string;
   seo: SeoFormValues;
+  icon: string;
 
   firstSection: {
     image: string;
@@ -63,16 +65,8 @@ export interface ServiceItem {
     }[];
   };
 
-  seventhSection: {
-    title: string;
-    items: {
-      _id: string;
-      title: string;
-      image: string;
-      imageAlt: string;
-      description: string;
-    }[];
-  };
+  seventhSection: BECSData
+  
 
   eighthSection: {
     title: string;
@@ -164,3 +158,7 @@ export interface Service {
   _id: string;
   items: ServiceItem[];
 }
+
+
+
+export interface SubServiceData extends ServiceItem {}

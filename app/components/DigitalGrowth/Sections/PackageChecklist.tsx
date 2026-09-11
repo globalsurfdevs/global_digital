@@ -31,7 +31,7 @@ const PackageChecklist = ({ data }: { data: Props }) => {
           whileInView="show"
           variants={moveUp(0)}
           viewport={{ once: true }}
-          className="title-65 md:max-w-[666px] "
+          className="title-65 text-[length:var(--text-60-sm)] md:max-w-[666px] "
         >
           {data.title}
         </motion.h2>
@@ -40,7 +40,7 @@ const PackageChecklist = ({ data }: { data: Props }) => {
           whileInView="show"
           variants={moveUp(0.1)}
           viewport={{ once: true }}
-          className="text-18 fnt-lexend pb-[60px] pt-[40px] leading-[1.6] text-muted md:max-w-[340px] xl:max-w-[657px] "
+          className="text-18 text-[length:var(--text-18-sm)] fnt-lexend pb-[60px] pt-[40px] leading-[1.6] text-muted md:max-w-[340px] xl:max-w-[657px] "
         >
           {data.description}
         </motion.p>
@@ -58,7 +58,7 @@ const PackageChecklist = ({ data }: { data: Props }) => {
             >
               {/* Column header */}
               <div className="mb-3 rounded-[8px] border border-primary/10 bg-gradient-to-r from-[#e63e310f] to-transparent px-4 py-4 xl:mb-4 xl:px-6 xl:py-[22px]">
-                <h3 className="text-28 tracking-[-0.02em] text-black">
+                <h3 className="text-25 tracking-[-0.02em] text-black">
                   {col.heading}
                 </h3>
               </div>
@@ -92,10 +92,10 @@ const PackageChecklist = ({ data }: { data: Props }) => {
                       </svg>
                     </span>
                     <div>
-                      <p className="text-18 leading-[26px] text-black">
+                      <p className="text-18 text-[length:var(--text-18-sm)] leading-[26px] text-black">
                         {item.title}
                       </p>
-                      <p className="text-18 mt-0.5 leading-[26px] text-muted">
+                      <p className="text-18 text-[length:var(--text-18-sm)] mt-0.5 leading-[26px] text-muted">
                         {item.subText}
                       </p>
                     </div>

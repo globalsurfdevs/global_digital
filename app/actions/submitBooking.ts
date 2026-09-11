@@ -34,7 +34,7 @@ export async function submitBooking(formData: FormData) {
     }
 
     const lead = await Lead.create(data);
-
+    console.log('lead:',lead)
     // const toEmail = await getToEmail("booking");
     // const emails = toEmail.split(",").map((e: string) => e.trim());
 

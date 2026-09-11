@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 type Sector = {
     name: string;
@@ -48,7 +49,7 @@ function SectorCard({
             onMouseLeave={onLeave}
             className="h-full overflow-hidden rounded-[10px]"
         >
-            <Link href={`/industry/${sector.slug}`} className="group flex h-full flex-col bg-[#F6F6F6]">
+            <Link href={`/industries/${sector.slug}`} className="group flex h-full flex-col bg-[#F6F6F6]">
                 <div className="relative h-[268px] w-full shrink-0 overflow-hidden rounded-b-[10px]">
                     <Image
                         src={sector.image}
@@ -97,9 +98,9 @@ const SectorsWeWorkWith = ({ data,allIndustry }: any) => {
                 viewport={{ once: true }}
                 className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12"
             >
-                <h3 className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
+                <p className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
                     {data?.title ?? "Sectors we work with"}
-                </h3>
+                </p>
                 <div className="h-4 w-4 bg-primary" />
             </motion.div>
 
@@ -153,7 +154,7 @@ const SectorsWeWorkWith = ({ data,allIndustry }: any) => {
                 >
                     <h3 className="title-60 text-[length:var(--text-60-sm)]">
                         {/* Seven Sectors One Agency */}
-                        {data.lastCardTitle}
+                        {totitleSentenceCase(data.lastCardTitle)}
                     </h3>
                     <p className="max-w-[42ch] text-28 leading-[1.214285714285714]">
                         {/* We combine strategy, creativity, technology, and

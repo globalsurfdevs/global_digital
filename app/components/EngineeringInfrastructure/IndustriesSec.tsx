@@ -4,7 +4,7 @@ import { moveUp } from "../animations/motionVariants";
 
 import { ServiceItem } from "@/app/(user)/engineering-and-infrastructure/type";
 import Image from "next/image";
-import { IndustryItem } from "@/app/(user)/industry/[slug]/type";
+import { IndustryItem } from "@/app/(user)/industries/[slug]/type";
 
 type Props = {
   title: string;
@@ -48,7 +48,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
           {data.items.map((item, index) => (
             <motion.a
               key={item._id}
-              href={`/industry/${item.slug}`}
+              href={`/industries/${item.slug}`}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}

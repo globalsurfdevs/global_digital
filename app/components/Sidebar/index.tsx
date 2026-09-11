@@ -16,8 +16,9 @@ import {
   MdOutlineWork,
 } from "react-icons/md";
 import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
-import { CreativeCommons, Settings2 } from "lucide-react";
+import { CreativeCommons, Layers3, Settings2 } from "lucide-react";
 import { FaIndustry, FaServicestack } from "react-icons/fa";
+import { adminRoutes } from "@/app/const/routes/admin.routes";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -92,10 +93,7 @@ const menuGroups = [
         route: "/admin/enquiry",
       },
       {
-        icon: (
-          <GiLeadPipe />
-
-        ),
+        icon: <GiLeadPipe />,
         label: "Leads",
         route: "/admin/lead",
       },
@@ -191,14 +189,24 @@ const menuGroups = [
         icon: <FaIndustry />,
         label: "Industries",
         route: "#",
-        children: [{ label: "Landing Page", route: "/admin/industries/landing" },
-        { label: "Items", route: "/admin/industries" }
+        children: [
+          { label: "Landing Page", route: "/admin/industries/landing" },
+          { label: "Items", route: "/admin/industries" },
         ],
       },
       {
         icon: <FaServicestack />,
         label: "Services",
-        route: "/admin/services",
+        route: "#",
+        children: [
+          { label: "Services Page", route: "/admin/services" },
+          { label: "Sub Services", route: "/admin/sub-services" },
+        ],
+      },
+      {
+        icon: <Layers3 />,
+        label: adminRoutes.servicePillars.name,
+        route: adminRoutes.servicePillars.index,
       },
       {
         icon: <Settings2 />,

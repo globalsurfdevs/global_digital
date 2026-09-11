@@ -6,6 +6,7 @@ import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import Link from "next/link";
 
 const Approach = ({ data }: any) => {
+ 
     return (
         <section className="py-8 xl:py-20 3xl:py-[100px]">
             <div className="container">
@@ -17,7 +18,7 @@ const Approach = ({ data }: any) => {
                         viewport={{ once: true }}
                     >
                         <Image
-                            src={data.image}
+                            src={data.image||""}
                             alt={data.imageAlt}
                             width={1500}
                             height={1500}
@@ -36,10 +37,10 @@ const Approach = ({ data }: any) => {
                             </p>
                             <div className="h-4 w-4 bg-primary"></div>
                         </div>
-                        <h2 className="title-60 mb-4 text-[length:var(--text-60-sm)] tracking-[-0.025em] md:mb-5 xl:mb-[40px]">
+                        <h2 className="title-60 mb-4 tracking-[-0.025em] md:mb-5 xl:mb-[40px] ">
                             {data.subTitle}
                         </h2>
-                        {data.description.split("\n").map((item,index) => (
+                        {data.description.split("\n").map((item:string,index:number) => (
                             <p key={index} className="text-77787B fnt-lexend text-[length:var(--text-18-sm)] leading-[1.444444444444444]">
                                 {toSentenceCase(item)}
                             </p>

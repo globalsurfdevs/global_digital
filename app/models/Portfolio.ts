@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { MODEL_NAMES } from "../const/model-name/modelName";
 
 const PortfolioSchema = new mongoose.Schema({
   companyName: {
@@ -114,5 +115,5 @@ const PortfolioSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.portfolio ||
-  mongoose.model("portfolio", PortfolioSchema);
+export default mongoose.models[MODEL_NAMES.PORTFOLIO] ||
+  mongoose.model(MODEL_NAMES.PORTFOLIO, PortfolioSchema);

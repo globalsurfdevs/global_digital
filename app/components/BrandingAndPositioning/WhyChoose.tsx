@@ -1,10 +1,10 @@
 "use client";
 
-import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
+import { toSentenceCase, totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { moveUp } from "../animations/motionVariants";
 import { motion } from "framer-motion";
 
-interface WhyChooseData {
+export interface WhyChooseData {
   tag: string;
   title: string;
   description: string;
@@ -40,7 +40,7 @@ const WhyChoose = ({ data, page }: { data: WhyChooseData; page?: string }) => {
                 variants={moveUp(0)}
                 viewport={{ once: true }}
                 className="title-60 max-w-[22ch] text-[length:var(--text-60-sm)] tracking-[-0.025em]"
-                dangerouslySetInnerHTML={{ __html: data.title }}
+                dangerouslySetInnerHTML={{ __html: totitleSentenceCase(data.title) }}
               />
             </div>
             <motion.p

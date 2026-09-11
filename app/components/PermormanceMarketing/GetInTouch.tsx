@@ -5,6 +5,7 @@ import Button from "../Button/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import LetsTalk from "../../components/common/LetsConnect";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 type PartnerDataType = {
   text: string;
   textred: string;
@@ -17,7 +18,9 @@ type PartnerListProps = {
   redlast?: boolean;
   data: PartnerDataType[];
   page?: string;
+  buttonLink?: string;
   redfirst?:boolean;
+
 };
 
 const GetInTouch: React.FC<PartnerListProps> = ({
@@ -25,6 +28,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
   ctabbutton,
   bgcolor,
   redlast,
+  buttonLink,
   redfirst,
   page
 }) => {
@@ -100,7 +104,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               </div>
 
               <div>
-                <p className="text-font25 leading-[35px] text-[#A3A3A3] lg:mt-10">
+                <p className="text-font25 leading-[28px] lg:leading-[35px] text-[#A3A3A3] lg:mt-10">
                   {data[0].subhead}
                 </p>
               </div>
@@ -121,12 +125,18 @@ const GetInTouch: React.FC<PartnerListProps> = ({
             >
               <div className="innerfnont mt-6 lg:mt-[60px]">
                 <button
-                  onClick={() => setModalOpen(true)}
-                  className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 ${bgcolor ? "text-black" : "text-white"
-                    } transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
+                  // onClick={() => setModalOpen(true)}
+                  className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 ${
+                    bgcolor ? "text-black" : "text-white"
+                  } transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
+ 
                 >
                   <span className="uppercase duration-300 ease-in group-hover:text-black">
-                    {ctabbutton}
+                    {buttonLink ? (
+                      <Link href={buttonLink}>{ctabbutton}</Link>
+                    ) : (
+                      <span>{ctabbutton}</span>
+                    )}
                   </span>
                 </button>
               </div>

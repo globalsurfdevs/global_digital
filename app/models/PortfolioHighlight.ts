@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { MODEL_NAMES } from "../const/model-name/modelName";
 
 const PortfolioHighlightsSchema = new mongoose.Schema({
   createdAt: {
@@ -13,7 +14,7 @@ const PortfolioHighlightsSchema = new mongoose.Schema({
   },
   companyId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "portfolio",
+    ref: MODEL_NAMES.PORTFOLIO,
   },
   customId: {
     type: String,

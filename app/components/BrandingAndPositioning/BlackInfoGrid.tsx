@@ -189,7 +189,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                                   : "text-black"
                               } text-28 pb-3 leading-[1.214285714285714] lg:pb-5`}
                               dangerouslySetInnerHTML={{
-                                __html: framework.title,
+                                __html: toSentenceCase(framework.title),
                               }}
                             />
 

@@ -91,13 +91,13 @@ export default function WhatTheyFind() {
           {/* Heading row */}
           <div className="flex flex-col gap-8 lg:flex-row ">
             <div className="lg:w-3/5">
-              <h2 className="title-60 ">
-                What they find today. what<br></br> they see after.
+              <h2 className="title-60 text-[length:var(--text-60-sm)]">
+                What they find today.<br></br> what they see after.
               </h2>
 
               <div className="mt-[40px] flex items-baseline gap-[15px]">
                 <div className="h-[15px] w-[15px] bg-primary"></div>
-                <p className="fnt-lexend text-18 text-muted lg:max-w-[657px]">
+                <p className="fnt-lexend text-[length:var(--text-18-sm)] text-muted lg:max-w-[657px]">
                   Pick a moment and see what happens once all fourteen services
                   are running together.
                 </p>
@@ -115,7 +115,7 @@ export default function WhatTheyFind() {
                   type="button"
                   onClick={() => setActive(tab.id)}
                   className={[
-                    " text-28 flex items-center gap-2 rounded-full border px-[25px] py-[15px] transition-colors duration-300",
+                    " text-25 flex items-center gap-2 rounded-full border px-[25px] py-[15px] transition-colors duration-300",
                     isActive
                       ? "border-black bg-black text-white"
                       : "border-[#E2E2E2] bg-white text-black hover:border-black/40",
@@ -140,7 +140,7 @@ export default function WhatTheyFind() {
             {/* Before */}
             <div className="rounded-[10px] bg-[#F1F1F1] px-[30px] pb-[80px] pt-[30px]">
               <div className="rounded-[8px] bg-[#000000]/10 p-[30px]">
-                <h3 className="text-28 text-black">What they find today</h3>
+                <h3 className="text-25 text-black">What they find today</h3>
               </div>
               <AnimatePresence mode="wait">
                 <motion.ul
@@ -162,7 +162,7 @@ export default function WhatTheyFind() {
                       <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[4px] bg-[#C7C7C7]">
                         <X className="h-3 w-3 text-white" strokeWidth={3} />
                       </span>
-                      <span className="fnt-lexend text-18 text-muted  ">
+                      <span className="fnt-lexend text-[length:var(--text-18-sm)] text-muted  ">
                         {row.before}
                       </span>
                     </li>
@@ -174,7 +174,7 @@ export default function WhatTheyFind() {
             {/* After */}
             <div className="rounded-[10px] bg-black p-[30px]">
               <div className="rounded-[8px] bg-[#FFFFFF]/20 p-[30px]">
-                <h3 className="text-28 text-white">After six months with us</h3>
+                <h3 className="text-25 text-white">After six months with us</h3>
               </div>
               <AnimatePresence mode="wait">
                 <motion.ul
@@ -196,7 +196,7 @@ export default function WhatTheyFind() {
                       <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[4px] bg-primary">
                         <Check className="h-3 w-3 text-white" strokeWidth={3} />
                       </span>
-                      <span className="fnt-lexend text-18 text-[#A3A3A3]">
+                      <span className="fnt-lexend text-[length:var(--text-18-sm)] text-[#A3A3A3]">
                         {row.after}
                       </span>
                     </li>

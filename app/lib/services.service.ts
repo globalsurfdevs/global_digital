@@ -22,10 +22,7 @@ export const getService = unstable_cache(
     if (!item) {
       return null;
     }
-
-    // `page` on ServiceIndustry only stores the industry item's ObjectId
-    // (single source of truth lives in Industry_new). Resolve slugs here
-    // at read time so they can never drift out of sync.
+    
     const serviceIndustries = item.tenthSection?.serviceIndustries;
     if (serviceIndustries?.length) {
       const pageIds = serviceIndustries

@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
 import Button from "../../common/buttons/PrimaryButton";
+import { scrollToContact } from "../../HomePage/HeaderWithoutMenu";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ interface ServicesSectionProps {
   hrcontent?: boolean;
   data: FrameworkItem[];
 }
+
 const ArrowIcon = ({ clipId }: { clipId: string }) => (
   <svg
     width="10"
@@ -105,7 +107,7 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="title-60 pb-2"
+              className="title-60 pb-2 text-[length:var(--text-60-sm)]"
             >
               {title}
             </motion.h2>
@@ -115,7 +117,7 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="text-19 fnt-lexend mb-10 pt-4 text-[#77787B] md:pt-6 lg:mb-[60px] xl:pt-14"
+                className="fnt-lexend mb-10 pt-4 text-[length:var(--text-18-sm)] text-[#77787B] md:pt-6 lg:mb-[60px] xl:pt-14"
               >
                 {description}
               </motion.p>
@@ -123,6 +125,7 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
 
             <button
               type="button"
+              onClick={scrollToContact}
               className="group mt-[40px] flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in hover:shadow-lg"
             >
               <span className="fnt-lexend text-[14px] uppercase duration-300 ease-in md:text-[16px]">
@@ -156,12 +159,12 @@ const WhatWeHear: React.FC<ServicesSectionProps> = ({
                         className="group relative flex flex-col overflow-hidden rounded-[10px] border border-black/10 pb-[60px] pl-[36px] pr-[36px] pt-[40px]"
                       >
                         <div className="">
-                          <h3 className="text-28 pb-3 leading-[34px] text-black lg:pb-[40px]">
+                          <h3 className="text-25 pb-3 leading-[34px] text-black lg:pb-[40px]">
                             {framework.title}
                           </h3>
                         </div>
                         <div>
-                          <p className="fnt-lexend text-18 font-medium text-gray1">
+                          <p className="fnt-lexend text-[length:var(--text-18-sm)] font-medium text-gray1">
                             {framework.desc}
                           </p>
                         </div>

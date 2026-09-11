@@ -10,7 +10,7 @@ export const menuItems = [
     children: [
       {
         item: "DIGITAL MARKETING",
-        url: "/digital-marketing-services",
+        url: "/digital-marketing-services-dubai",
         children: [
           {
             item: "SEO",
@@ -18,7 +18,7 @@ export const menuItems = [
           },
           {
             item: "AI Search Visibility (GEO)",
-            url: "/generative-engine-optimization-dubai",
+            url: "/ai-data-intelligence-agency-dubai",
           },
           {
             item: "Performance Marketing",
@@ -41,7 +41,7 @@ export const menuItems = [
 
       {
         item: "WEB & APP DEVELOPMENT",
-        url: "",
+        url: "/web-design-and-development-agency",
         children: [
           {
             item: "Web Development",
@@ -64,7 +64,7 @@ export const menuItems = [
 
       {
         item: "BRANDING & CONTENT PRODUCTION",
-        url: "/creative-agency-dubai",
+        url: "/branding-content-production-agency-dubai",
         children: [
           {
             item: "Copywriting & Messaging",
@@ -101,6 +101,10 @@ export const menuItems = [
       },
     ],
     url: "#",
+  },
+  {
+    item: "INDUSTRIES",
+    url: "/industries",
   },
   {
     item: "PORTFOLIO",

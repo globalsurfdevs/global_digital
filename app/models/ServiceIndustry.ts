@@ -6,6 +6,7 @@ const serviceIndustrySchema = new mongoose.Schema(
     imageAlt: { type: String, required: true },
     title: { type: String, required: true },
     page: { type: mongoose.Schema.Types.ObjectId, ref: "Industry_new" },
+    slug:{type:String}
   },
   { timestamps: true },
 );

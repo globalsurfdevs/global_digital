@@ -34,6 +34,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -43,7 +44,12 @@ import {
 import { submitBooking } from "@/app/actions/submitBooking";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
-
+import { Clientsdata } from "@/app/data/Clientsdata";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/style.css";
+import { ChevronDown } from "lucide-react";
+import { createPortal } from "react-dom";
+import { scrollToContact } from "../HomePage/HeaderWithoutMenu";
 /* ============================================================
    Shared design tokens (Tailwind arbitrary values reference these)
    red        #E63E31   red-dk   #C9332A
@@ -186,7 +192,7 @@ function Kick({
     >
       <i className="block h-2 w-2 flex-none bg-[#E63E31]" />
       <span
-        className={`text-[11px] font-medium uppercase tracking-[0.12em] ${
+        className={`text-[12px] font-medium uppercase tracking-[0.12em] ${
           dark ? "text-white/50" : "text-[#77787B]"
         }`}
       >
@@ -338,19 +344,20 @@ function Marquee({
    01 · HERO
    ============================================================ */
 function Hero() {
-  const clientNames = [
-    "ASGC",
-    "SOBHA",
-    "GULF CRYO",
-    "BAFCO",
-    "BUKHATIR",
-    "CONMIX",
-    "INNOVO",
-    "ASSENT STEEL",
-    "BEC ARABIA",
-    "PRESTIGE",
-  ];
-  const loop = [...clientNames, ...clientNames];
+  // const clientNames = [
+  //   "ASGC",
+  //   "SOBHA",
+  //   "GULF CRYO",
+  //   "BAFCO",
+  //   "BUKHATIR",
+  //   "CONMIX",
+  //   "INNOVO",
+  //   "ASSENT STEEL",
+  //   "BEC ARABIA",
+  //   "PRESTIGE",
+  // ];
+
+  const loop = [...Clientsdata, ...Clientsdata];
 
   const offers = [
     { n: "01", label: "Get Found" },
@@ -358,97 +365,209 @@ function Hero() {
     { n: "03", label: "Stay Ahead" },
     { n: "04", label: "Keep Improving" },
   ];
-
+  const stats = [
+    {
+      value: "12+",
+      description: "years in the UAE",
+    },
+    {
+      value: "50+",
+      description: "Passionate Professionals",
+    },
+    {
+      value: "140+",
+      description: "Successful Client Partnerships",
+    },
+  ];
   return (
-    <section className="relative overflow-hidden bg-black pb-8 pt-16 text-white md:pb-10 md:pt-20 lg:pb-11 lg:pt-[92px]">
-      {/* ambient glows */}
-      <div className="pointer-events-none absolute -right-56 -top-80 h-[900px] w-[900px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.18)_0%,rgba(230,62,49,0)_63%)]" />
-      <div className="pointer-events-none absolute -bottom-80 -left-64 h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.08)_0%,rgba(230,62,49,0)_66%)]" />
+    // <section className="relative overflow-hidden bg-black  pt-16 text-white  md:pt-20  lg:pt-[92px]">
+    //   {/* ambient glows */}
+    //   <div className="pointer-events-none absolute -right-56 -top-80 h-[900px] w-[900px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.18)_0%,rgba(230,62,49,0)_63%)]" />
+    //   <div className="pointer-events-none absolute -bottom-80 -left-64 h-[720px] w-[720px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.08)_0%,rgba(230,62,49,0)_66%)]" />
 
-      <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
-        <div className="grid min-h-[520px] grid-cols-1 items-stretch gap-9 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
-          <Reveal className="flex flex-col justify-center">
+    //   <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
+    //     <div className="grid min-h-[520px] grid-cols-1 items-stretch gap-9 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
+    //       <Reveal className="flex flex-col justify-center">
+    //         <Kick label="Growth Partnership" dark />
+    //         <h1 className="max-w-[17ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[62px]">
+    //           Everything your digital marketing needs,{" "}
+    //           <span className="text-[#E63E31]">in one package</span>
+    //         </h1>
+    //         <p className="mt-6 max-w-[46ch] text-base leading-normal text-white/60 lg:text-lg">
+    //           Fourteen coordinated services under one senior team. Built for the
+    //           UAE companies that build, make, supply and develop.
+    //         </p>
+    //         <div className="mt-8 flex flex-wrap items-center gap-6">
+    //           <Btn onClick={scrollToContact}>Get Started</Btn>
+    //         </div>
+    //         {/* Offers */}
+    //         <div className="mt-11 grid grid-cols-4 border-t border-white/[0.16]">
+    //           {offers.map((o, i) => (
+    //             <div
+    //               key={o.n}
+    //               className={`px-4 pt-5 first:border-l-0 first:pl-0 ${
+    //                 i > 0 ? "border-l border-white/[0.16]" : ""
+    //               }`}
+    //             >
+    //               <b className="mb-2.5 block text-[9px] font-semibold tracking-[0.12em] text-[#E63E31]">
+    //                 {o.n}
+    //               </b>
+    //               <strong className="block text-base font-medium leading-tight text-white">
+    //                 {o.label}
+    //               </strong>
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </Reveal>
+
+    //       <Reveal
+    //         delay={140}
+    //         className="relative flex items-stretch justify-start lg:justify-end"
+    //       >
+    //         <div className="relative aspect-[4/5] h-auto w-full max-w-[430px] overflow-hidden rounded-[18px] border border-white/10 bg-[#0A0A0C] lg:h-full lg:max-w-none">
+    //           {/* eslint-disable-next-line @next/next/no-img-element */}
+    //           <img
+    //             src="/images/hero-team.jpg"
+    //             alt="Engineers and designers reviewing drawings, material samples and site plans"
+    //             className="block h-full w-full object-contain"
+    //           />
+    //         </div>
+    //         <div className="static mt-3.5 max-w-none rounded-[13px] border border-white/[0.14] bg-[#101012] px-[14px] py-3.5 text-white shadow-none lg:absolute lg:-left-6 lg:bottom-6 lg:mt-0 lg:max-w-[196px] lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
+    //           <div className="flex items-baseline gap-1">
+    //             <b className="text-[23px] font-normal">
+    //               12
+    //               <em className="align-super text-lg not-italic text-[#E63E31]">
+    //                 +
+    //               </em>
+    //             </b>
+
+    //             <span className="text-[16px]">years in the UAE</span>
+    //           </div>
+
+    //           <span className="mt-1 block text-[12px] leading-normal text-white/[0.60]">
+    //             50+ Passionate Professionals
+    //             <br />
+    //             140+ Successful Client Partnerships
+    //           </span>
+    //         </div>
+    //       </Reveal>
+    //     </div>
+    //   </div>
+
+    //   <div className="mt-11 w-full border-t bg-white pb-7 pt-7 md:mt-14 lg:mt-[74px]">
+    //     <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-black">
+    //       Trusted by Built Environment leaders
+    //     </div>
+    //     <div className="group relative overflow-hidden">
+    //       {/* `<div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-24 bg-gradient-to-r from-black to-transparent sm:w-[150px]" />
+    //       <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-24 bg-gradient-to-l from-black to-transparent sm:w-[150px]" />` */}
+    //       <Marquee durationSec={42}>
+    //         {loop.map((name, i) => (
+    //           <div
+    //             key={`${name}-${i}`}
+    //             className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-white/[0.15] bg-white/[0.035] px-4 text-[10px] font-medium tracking-[0.1em] text-white/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
+    //           >
+    //             <div className="relative h-16 w-full">
+    //               <Image
+    //                 src={name.image}
+    //                 alt={name.alt}
+    //                 fill
+    //                 sizes="270px"
+    //                 className="object-contain"
+    //               />
+    //             </div>
+    //           </div>
+    //         ))}
+    //       </Marquee>
+    //     </div>
+    //   </div>
+    // </section>
+    // old method ^
+
+    <section className="bg-black text-white">
+      {/* HERO */}
+      <div className="relative isolate min-h-[calc(100dvh-63px)] overflow-hidden">
+        {/* Video */}
+        <video
+          src="/assets/videos/home_banner.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 z-10 bg-black/50" />
+
+        {/* Content */}
+        <div className="relative z-20 mx-auto flex min-h-[calc(100dvh-63px)] max-w-[1200px] items-center px-6 md:min-h-screen md:px-10">
+          <Reveal className="flex flex-col  md:justify-center lg:mt-10">
             <Kick label="Growth Partnership" dark />
-            <h1 className="max-w-[17ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[62px]">
+
+            <h1 className="max-w-[20ch] text-[34px] font-normal leading-[1.16] text-white sm:text-5xl lg:text-[65px]">
               Everything your digital marketing needs,{" "}
               <span className="text-[#E63E31]">in one package</span>
             </h1>
+
             <p className="mt-6 max-w-[46ch] text-base leading-normal text-white/60 lg:text-lg">
               Fourteen coordinated services under one senior team. Built for the
               UAE companies that build, make, supply and develop.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-6">
-              <Btn href="#book">Get Started</Btn>
-            </div>
 
-            <div className="mt-11 grid grid-cols-4 border-t border-white/[0.16]">
-              {offers.map((o, i) => (
+            <div className="mt-4 md:mt-8 flex flex-wrap items-center gap-6">
+              <Btn onClick={scrollToContact}>Get Started</Btn>
+            </div>
+            <div className="mt-5 md:mt-10 flex w-full max-w-[700px] gap-3">
+              {stats.map((stat) => (
+                // bg-white/[0.04] backdrop-blur-sm 
                 <div
-                  key={o.n}
-                  className={`px-4 pt-5 first:border-l-0 first:pl-0 ${
-                    i > 0 ? "border-l border-white/[0.16]" : ""
-                  }`}
+                  key={stat.value}
+
+                  className="min-w-0 flex-1 rounded-md border border-white/25 bg-white/[0.04] backdrop-blur-sm px-1 py-2  md:!px-5"
                 >
-                  <b className="mb-2.5 block text-[9px] font-semibold tracking-[0.12em] text-[#E63E31]">
-                    {o.n}
-                  </b>
-                  <strong className="block text-base font-medium leading-tight text-white">
-                    {o.label}
-                  </strong>
+                  <div className="text-xl font-normal leading-none text-[#E63E31] sm:text-2xl lg:text-3xl">
+                    {stat.value}
+                  </div>
+
+                  <p className="mt-[2px] md:mt-2 break-words text-xs leading-snug text-white/80 sm:text-sm lg:text-base">
+                    {stat.description}
+                  </p>
                 </div>
               ))}
-            </div>
-          </Reveal>
-
-          <Reveal
-            delay={140}
-            className="relative flex items-stretch justify-start lg:justify-end"
-          >
-            <div className="relative aspect-[4/5] h-auto w-full max-w-[430px] overflow-hidden rounded-[18px] border border-white/10 bg-[#0A0A0C] lg:h-full lg:max-w-none">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/hero-team.jpg"
-                alt="Engineers and designers reviewing drawings, material samples and site plans"
-                className="block h-full w-full object-contain"
-              />
-            </div>
-            <div className="static mt-3.5 max-w-none rounded-[13px] border border-white/[0.14] bg-[#101012] px-[18px] py-3.5 text-white shadow-none lg:absolute lg:-left-6 lg:bottom-6 lg:mt-0 lg:max-w-[196px] lg:shadow-[0_24px_58px_rgba(0,0,0,.68)]">
-              <b className="block text-[23px] font-normal">
-                12
-                <em className="align-super text-xs not-italic text-[#E63E31]">
-                  +
-                </em>
-              </b>
-              <span className="mt-1 block text-[10.5px] leading-normal text-white/[0.56]">
-                years in the UAE. 250+ projects delivered.
-              </span>
             </div>
           </Reveal>
         </div>
       </div>
 
-      <Reveal
-        delay={210}
-        className="mt-11 w-full border-t border-white/[0.14] pt-7 md:mt-14 lg:mt-[74px]"
-      >
-        <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-white/[0.36]">
+      {/* TRUSTED LOGOS */}
+      <div className="relative z-30 w-full border-t bg-white pb-7 pt-7">
+        <div className="mb-5 text-center text-[10px] uppercase tracking-[0.14em] text-black">
           Trusted by Built Environment leaders
         </div>
+
         <div className="group relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-24 bg-gradient-to-r from-black to-transparent sm:w-[150px]" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-24 bg-gradient-to-l from-black to-transparent sm:w-[150px]" />
           <Marquee durationSec={42}>
             {loop.map((name, i) => (
               <div
                 key={`${name}-${i}`}
-                className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-white/[0.15] bg-white/[0.035] text-[10px] font-medium tracking-[0.1em] text-white/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
+                className="flex h-14 w-[170px] flex-none items-center justify-center rounded-[10px] border border-dashed border-black/[0.15] bg-black/[0.035] px-4 text-[10px] font-medium tracking-[0.1em] text-black/40 transition-colors duration-300 hover:border-[#E63E31] hover:bg-[#E63E31]/[0.07] hover:text-[#E63E31]"
               >
-                {name}
+                <div className="relative h-16 w-full">
+                  <Image
+                    src={name.image}
+                    alt={name.alt}
+                    fill
+                    sizes="270px"
+                    className="object-contain"
+                  />
+                </div>
               </div>
             ))}
           </Marquee>
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }
@@ -517,7 +636,7 @@ function WhoItsFor() {
           <Reveal className="flex flex-col justify-between gap-8">
             <div>
               <Kick label="02 · Who it is for" />
-              <h2 className="max-w-[18ch] text-[30px] font-normal leading-[1.12] sm:text-4xl lg:text-[52px]">
+              <h2 className="max-w-[18ch] text-[30px] font-normal  !leading-[1.02]  sm:text-4xl lg:text-[52px] ">
                 Built for the sectors we know the best.
               </h2>
             </div>
@@ -527,7 +646,12 @@ function WhoItsFor() {
                 <p className="max-w-[20ch] text-lg font-normal leading-[1.24] sm:text-xl">
                   See what the package would do for your name.
                 </p>
-                <Btn href="#book" variant="pale" className="mt-5 w-full">
+                <Btn
+                  onClick={scrollToContact}
+                  // href={"#book"}
+                  variant="pale"
+                  className="mt-5 w-full"
+                >
                   Find out in 30 minutes
                 </Btn>
               </div>
@@ -755,7 +879,7 @@ function WhatYouGet() {
             See how this would look for your name.
           </h3>
           <Btn
-            href="#book"
+            onClick={scrollToContact}
             variant="pale"
             className="w-full flex-none sm:w-auto"
           >
@@ -950,7 +1074,7 @@ function Results() {
                 <div
                   key={line}
                   style={{ animationDelay: `${i * 55}ms` }}
-                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 opacity-0 last:border-0"
+                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 last:border-0"
                 >
                   <i className="mt-2 h-1.5 w-1.5 flex-none rounded-sm bg-[#D5D6D6]" />
                   <p className="text-base leading-normal">{line}</p>
@@ -966,7 +1090,7 @@ function Results() {
                 <div
                   key={line}
                   style={{ animationDelay: `${i * 55}ms` }}
-                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5 opacity-0 last:border-0"
+                  className="animate-rowIn flex items-start gap-3 border-b border-black/[0.065] py-3.5  last:border-0"
                 >
                   <i className="mt-2 h-1.5 w-1.5 flex-none rounded-sm bg-[#E63E31]" />
                   <p className="text-base leading-normal">{line}</p>
@@ -975,7 +1099,7 @@ function Results() {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2.5 border-t border-black/[0.065] bg-[#F6F4EF] p-5">
+          {/* <div className="flex flex-wrap gap-2.5 border-t border-black/[0.065] bg-[#F6F4EF] p-5">
             {active.metrics.map(([label, source]) => (
               <span
                 key={label}
@@ -985,7 +1109,7 @@ function Results() {
                 · {source}
               </span>
             ))}
-          </div>
+          </div> */}
         </Reveal>
       </div>
     </section>
@@ -993,41 +1117,100 @@ function Results() {
 }
 
 /* ============================================================
-   05 · THE TOOLS
+   05 · THE TOOLS  (CDN attempt → local /public/logos → placeholder)
    ============================================================ */
-const TOOL_SETS: Record<string, string[]> = {
+
+// Turns a tool name into a filename-safe slug for its local logo file,
+// e.g. "Schema.org" -> "schema-org", "Google Tag Manager" -> "google-tag-manager".
+function toFileSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+type Tool = {
+  name: string;
+  // Simple Icons CDN slug to try if the local file is missing.
+  slug: string;
+  // Optional explicit path under /public if the auto-derived filename
+  // doesn't match what you saved, e.g. "/logos/gpt.svg".
+  localFallback?: string;
+};
+
+const TOOL_SETS: Record<string, Tool[]> = {
   a: [
-    "Google Analytics 4",
-    "Google Search Console",
-    "Looker Studio",
-    "LinkedIn Analytics",
-    "Zoho CRM",
-    "Google Business Profile",
+    { name: "Google Analytics 4", slug: "googleanalytics" },
+    { name: "Google Search Console", slug: "googlesearchconsole" },
+    { name: "Looker Studio", slug: "looker" },
+    { name: "LinkedIn Analytics", slug: "" },
+    { name: "Zoho CRM", slug: "zoho" },
+    { name: "Google Business Profile", slug: "google" },
   ],
   b: [
-    "Ahrefs",
-    "Semrush",
-    "Screaming Frog",
-    "Schema.org",
-    "PageSpeed Insights",
-    "Google Tag Manager",
+    { name: "Ahrefs", slug: "" },
+    { name: "Semrush", slug: "semrush" },
+    { name: "Screaming Frog", slug: "" },
+    { name: "Schema.org", slug: "" },
+    { name: "PageSpeed Insights", slug: "googlechrome" },
+    { name: "Google Tag Manager", slug: "googletagmanager" },
   ],
   c: [
-    "ChatGPT",
-    "Google AI Overviews",
-    "Perplexity",
-    "Gemini",
-    "Claude",
-    "Microsoft Copilot",
+    { name: "ChatGPT", slug: "" },
+    { name: "Google AI Overviews", slug: "google" },
+    { name: "Perplexity", slug: "perplexity" },
+    { name: "Gemini", slug: "googlegemini" },
+    { name: "Claude", slug: "claude" },
+    { name: "Microsoft Copilot", slug: "" },
   ],
 };
+
+// Renders a tool's brand mark: try the local file under /public/logos
+// first (either `localFallback` if given, or an auto-derived path
+// `/logos/{tool-name-as-slug}.svg`). If that file is missing, fall back to
+// the Simple Icons CDN. If that also fails, show the dashed placeholder.
+function ToolIcon({ tool }: { tool: Tool }) {
+  const sources = useMemo(() => {
+    const cdnSource = tool.slug
+      ? `https://cdn.simpleicons.org/${tool.slug}/ffffff`
+      : undefined;
+    const localSource = cdnSource ?? `/logos/${toFileSlug(tool.name)}.svg`;
+
+    // CDN first, local as fallback. If a tool has no slug (e.g. ChatGPT),
+    // there's no CDN entry to try — .filter(Boolean) drops the `undefined`
+    // so it goes straight to local instead of rendering a src-less <img>
+    // that would never fire onError and never fall through.
+    return [cdnSource, localSource].filter(Boolean) as string[];
+  }, [tool]);
+
+  const [sourceIndex, setSourceIndex] = useState(0);
+
+  if (sourceIndex >= sources.length) {
+    return (
+      <i className="block h-[22px] w-[22px] flex-none rounded-md border border-dashed border-white/[0.18] bg-white/[0.06]" />
+    );
+  }
+
+  return (
+    <img
+      key={sources[sourceIndex]}
+      src={sources[sourceIndex]}
+      alt={`${tool.name} logo`}
+      width={18}
+      height={18}
+      loading="lazy"
+      className="block h-[18px] w-[18px] flex-none object-contain opacity-90"
+      onError={() => setSourceIndex((i) => i + 1)}
+    />
+  );
+}
 
 function ToolRow({
   toolSet,
   reverse = false,
   durationSec = 38,
 }: {
-  toolSet: string[];
+  toolSet: Tool[];
   reverse?: boolean;
   durationSec?: number;
 }) {
@@ -1042,13 +1225,13 @@ function ToolRow({
         }}
       >
         <Marquee durationSec={durationSec} reverse={reverse}>
-          {loop.map((name, i) => (
+          {loop.map((tool, i) => (
             <span
-              key={`${name}-${i}`}
+              key={`${tool.name}-${i}`}
               className="inline-flex flex-none items-center gap-2.5 rounded-full border border-white/[0.12] bg-white/[0.045] py-3 pl-3.5 pr-5 text-[15px] text-white/[0.82] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#E63E31] hover:bg-[#E63E31]/10 hover:text-white"
             >
-              <i className="block h-[22px] w-[22px] flex-none rounded-md border border-dashed border-white/[0.18] bg-white/[0.06]" />
-              {name}
+              <ToolIcon tool={tool} />
+              {tool.name}
             </span>
           ))}
         </Marquee>
@@ -1093,7 +1276,7 @@ const GROWTH_FEATURES: PricingFeature[] = [
     title: "Social Media",
     note: "Named correctly when a buyer asks an AI tool",
   },
-  { title: "Social Media", note: "LinkedIn, eight to ten posts a month" },
+  // { title: "Social Media", note: "LinkedIn, eight to ten posts a month" },
   { title: "Content Production", note: "One shoot day a month at your site" },
   {
     title: "Executive Visibility",
@@ -1205,7 +1388,8 @@ function PricingCta({
 }) {
   return (
     <a
-      href="#book"
+      // href="#book"
+      onClick={scrollToContact}
       className={`group flex w-full items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 ${className}`}
     >
       <span>{children}</span>
@@ -1223,7 +1407,7 @@ function Pricing() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <Reveal>
             <Kick label="06 · Pricing" />
-            <h2 className="max-w-[20ch] text-[27px] leading-[1.15] sm:text-4xl lg:text-[45px]">
+            <h2 className="max-w-[20ch] text-[27px] leading-[1.08] sm:text-4xl sm:leading-[1.08] lg:text-[45px] lg:leading-[1.08]">
               Find the structure that fits your roadmap.
             </h2>
             <p className="mt-4 max-w-[58ch] text-base text-[#77787B] lg:text-lg">
@@ -1236,17 +1420,18 @@ function Pricing() {
             delay={70}
             className="flex flex-col gap-3 sm:flex-row sm:items-center lg:shrink-0"
           >
-            <a
-              href="#book"
+            <button
+              type="button"
+              onClick={scrollToContact}
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
-              Book your 20-minute call
+              Book your 30-minute call
               <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31]">
                 <PricingArrow dark />
               </span>
-            </a>
+            </button>
 
-            <a
+            {/* <a
               href="#book"
               className="group flex items-center justify-center gap-2.5 rounded-full border border-[#E63E31] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.08em] text-[#0A0A0A] transition-colors duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
@@ -1254,7 +1439,7 @@ function Pricing() {
               <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#E63E31]">
                 <PricingArrow dark />
               </span>
-            </a>
+            </a> */}
           </Reveal>
         </div>
 
@@ -1269,9 +1454,10 @@ function Pricing() {
               What most firms take
             </span>
 
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-white/40">
+            {/* <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-white/40">
               Growth
-            </span>
+            </span> */}
+
             <h3 className="mt-3 text-xl font-medium md:text-2xl">
               Growth Partnership
             </h3>
@@ -1286,7 +1472,7 @@ function Pricing() {
             </p>
 
             <PricingCta className="mt-6 bg-transparent text-white hover:bg-[#E63E31] md:mt-8">
-              Book your 20-minute call
+              Book your 30-minute call
             </PricingCta>
 
             <div className="mt-8 border-t border-white/10 pt-6 md:mt-10 md:pt-8">
@@ -1321,9 +1507,10 @@ function Pricing() {
             delay={140}
             className="rounded-[18px] border border-black/[0.11] bg-[#F6F3EC] p-6 md:p-10"
           >
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-[#77787B]">
+            {/* <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-[#77787B]">
               Plus
-            </span>
+            </span> */}
+
             <h3 className="mt-3 text-xl font-medium text-[#0A0A0A] md:text-2xl">
               Plus
             </h3>
@@ -1407,6 +1594,7 @@ type Testimonial = {
   name: string;
   role: string;
   initials: string;
+  image: string;
 };
 
 const TESTIMONIALS: Testimonial[] = [
@@ -1416,6 +1604,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Karim El Shennawy",
     role: "Business Development Director · ASGC",
     initials: "KE",
+    image: "/assets/testimonials/karim.jpeg",
   },
   {
     quote:
@@ -1423,6 +1612,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Alissar Nasrallah",
     role: "Regional Marcomms Manager · Gulf Cryo",
     initials: "AN",
+    image: "/assets/testimonials/alissar.jpeg",
   },
   {
     quote:
@@ -1430,6 +1620,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Jad Farah",
     role: "Group Marketing Manager · ECC LLC",
     initials: "JF",
+    image: "/assets/testimonials/jadfarah.jpeg",
   },
   {
     quote:
@@ -1437,6 +1628,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Hesham Abdeen",
     role: "Head of Accreditation and Evaluations · Educap",
     initials: "HA",
+    image: "/assets/testimonials/heshamabdeen.png",
   },
   {
     quote:
@@ -1444,6 +1636,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Omar M. Bin Dhaher Almheiri",
     role: "President · Prestige",
     initials: "OA",
+    image: "/assets/testimonials/dummy-user.png",
   },
 ];
 
@@ -1536,8 +1729,13 @@ function Testimonials() {
                 “{t.quote}”
               </blockquote>
               <figcaption className="mt-[26px] flex items-center gap-3.5 border-t border-black/[0.065] pt-[22px]">
-                <span className="flex h-[46px] w-[46px] flex-none items-center justify-center rounded-full border border-dashed border-black/[0.18] bg-[#EFEAE0] text-sm font-medium text-[#B4B3AF]">
-                  {t.initials}
+                <span className="relative flex h-[46px] w-[46px] flex-none items-center justify-center overflow-hidden rounded-full border border-dashed border-black/[0.18] bg-[#EFEAE0] text-sm font-medium text-[#B4B3AF]">
+                  <Image
+                    src={t.image}
+                    alt={t.name}
+                    className="absolute object-cover"
+                    fill
+                  />
                 </span>
                 <span>
                   <b className="block text-[14.5px] font-medium">{t.name}</b>
@@ -1594,12 +1792,12 @@ function Testimonials() {
           ))}
         </Reveal>
 
-        <Reveal delay={140} className="mt-6">
+        {/* <Reveal delay={140} className="mt-6">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-black/[0.11] bg-white px-[18px] py-2.5 text-[12.5px] text-[#77787B]">
             <b className="text-[13px] font-semibold text-[#0A0A0A]">4.9</b> on
             Google Reviews · Trusted by 125+ brands across the UAE
           </span>
-        </Reveal>
+        </Reveal> */}
       </div>
     </section>
   );
@@ -1778,11 +1976,46 @@ function validateField(name: string, value: string): string | undefined {
       if (!EMAIL_REGEX.test(v)) return "Enter a valid email address.";
       return undefined;
 
-    case "phone":
-      // optional field — only validate format if something was typed
-      if (!v) return undefined;
-      if (!PHONE_REGEX.test(v)) return "Enter a valid phone number.";
+    case "phone": {
+      if (!v) {
+        return "Please enter your phone number.";
+      }
+
+      // Keep only digits for validation.
+      // This allows:
+      // +971 50 123 4567
+      // +1 (202) 555-0123
+      // +44 20 7946 0958
+      // etc.
+      const digitsOnly = v.replace(/\D/g, "");
+
+      // International phone numbers generally won't need fewer than 7
+      // digits or more than 15 digits.
+      if (digitsOnly.length < 7 || digitsOnly.length > 15) {
+        return "Enter a valid phone number.";
+      }
+
+      // Reject numbers made entirely of zeros.
+      if (/^0+$/.test(digitsOnly)) {
+        return "Enter a valid phone number.";
+      }
+
+      // Reject obvious fake numbers such as:
+      // 1111111111
+      // 2222222222
+      // 9999999999
+      if (/^(\d)\1+$/.test(digitsOnly)) {
+        return "Enter a valid phone number.";
+      }
+
+      // Validate the characters the user is allowed to enter.
+      // Allows digits, spaces, +, -, (, and ).
+      if (!/^[+\d\s().-]+$/.test(v)) {
+        return "Enter a valid phone number.";
+      }
+
       return undefined;
+    }
 
     case "sector":
       if (!v) return "Please select a sector.";
@@ -1790,10 +2023,29 @@ function validateField(name: string, value: string): string | undefined {
 
     case "date": {
       if (!v) return "Please pick a date.";
-      const picked = new Date(v);
-      const today = new Date(todayISO());
-      if (isNaN(picked.getTime())) return "Enter a valid date.";
-      if (picked < today) return "Pick a date from today onward.";
+
+      const picked = new Date(`${v}T00:00:00`);
+
+      if (isNaN(picked.getTime())) {
+        return "Enter a valid date.";
+      }
+
+      // Cannot book today or any past date
+      const tomorrow = new Date();
+      tomorrow.setHours(0, 0, 0, 0);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      if (picked < tomorrow) {
+        return "Please select a date from tomorrow onward.";
+      }
+
+      // Saturday = 6, Sunday = 0
+      const day = picked.getDay();
+
+      if (day === 0 || day === 6) {
+        return "Bookings are not available on Saturdays and Sundays.";
+      }
+
       return undefined;
     }
 
@@ -1811,7 +2063,16 @@ function FinalCta() {
   const [errors, setErrors] = useState<FormErrors>({});
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
-
+  const [date, setDate] = useState("");
+  const [datePickerOpen, setDatePickerOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const [placement, setPlacement] = useState<"bottom" | "top">("bottom");
+  const [coords, setCoords] = useState<{
+    top: number;
+    left: number;
+    placement: "top" | "bottom";
+  } | null>(null);
   const runValidation = (form: HTMLFormElement): FormErrors => {
     const data = new FormData(form);
     const fields: (keyof FormErrors)[] = [
@@ -1868,36 +2129,100 @@ function FinalCta() {
 
     setNote("");
     const formData = new FormData(form);
-
+    formData.set("date", date);
     startTransition(async () => {
       const result = await submitBooking(formData);
+
       setNote(
         result.message ??
           (result.success ? "Thank you." : "Something went wrong."),
       );
       if (result.success) {
         form.reset();
+        window.location.replace("/growth-thank-you");
         setErrors({});
       }
     });
   };
 
+  function getTomorrow(): Date {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + 1);
+    return d;
+  }
+  function formatDate(date: Date): string {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const dd = String(date.getDate()).padStart(2, "0");
+
+    return `${yyyy}-${mm}-${dd}`; // "2026-09-04"
+  }
+
+  useLayoutEffect(() => {
+    if (!datePickerOpen || !triggerRef.current) return;
+
+    const updatePosition = () => {
+      const rect = triggerRef.current!.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      const estimatedHeight = popoverRef.current?.offsetHeight ?? 360;
+
+      const placement =
+        spaceBelow < estimatedHeight && spaceAbove > spaceBelow
+          ? "top"
+          : "bottom";
+
+      setCoords({
+        left: rect.left,
+        top: placement === "top" ? rect.top - 8 : rect.bottom + 8,
+        placement,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [datePickerOpen]);
   return (
     <section className="relative overflow-hidden bg-black text-white" id="book">
       <div className="pointer-events-none absolute -left-40 -top-52 h-[700px] w-[760px] rounded-full bg-[radial-gradient(circle,rgba(230,62,49,.17),transparent_66%)]" />
       <div className="relative mx-auto max-w-[1200px] px-6 md:px-10">
         <div className="grid grid-cols-1 items-center gap-9 py-16 md:py-24 lg:grid-cols-2 lg:gap-[72px] lg:py-[110px]">
-          <Reveal>
-            <Kick label="09 · Next step" dark />
-            <h2 className="max-w-[16ch] text-[30px] leading-[1.12] text-white sm:text-4xl lg:text-[52px]">
-              Start with a 30 minute call.
+          {/* <Reveal>
+            <Kick label="09 · Next step" dark /> */}
+          {/* <h2 className="max-w-[16ch] text-[30px] leading-[1.12] text-white sm:text-4xl lg:text-[52px] overflow: visible !important;"> */}
+          {/* Start with a 30 minute call. */}
+          {/* Get Your Free Brand & Digital Audit
+            </h2> */}
+          {/* <h2
+              className="max-w-[16ch] text-[30px] leading-[1.2] text-white sm:text-4xl lg:text-[52px] lg:leading-[1.18]"
+              style={{ overflow: "visible" }}
+            >
+              Get Your Free Brand &amp; Digital Audit
             </h2>
             <p className="mt-[18px] max-w-[46ch] text-base text-white/60 lg:text-lg">
               Tell us what you build. We will tell you whether this package
               fits, and what we would do first.
             </p>
-          </Reveal>
-
+          </Reveal> */}
+          <div className="overflow-hidden">
+            <Reveal delay={0}>
+              <Kick label="09 · Next step" dark />
+              <h2 className="max-w-[16ch] pb-1 text-[30px] leading-[1.2] text-white sm:text-4xl lg:text-[52px] lg:leading-[1.18]">
+                {/* Get Your Free Brand  Digital Audit */}
+                Get Your Free Brand Visibility Audit
+              </h2>
+              <p className="mt-[18px] max-w-[46ch] text-base text-white/60 lg:text-lg">
+                Tell us what you build. We will tell you whether this package
+                fits, and what we would do first.
+              </p>
+            </Reveal>
+          </div>
           <Reveal delay={70}>
             <form
               ref={formRef}
@@ -1947,6 +2272,7 @@ function FinalCta() {
                   name="phone"
                   type="tel"
                   autoComplete="tel"
+                  required
                   error={errors.phone}
                   onBlur={handleFieldBlur}
                   onChange={handleFieldChange}
@@ -1993,35 +2319,86 @@ function FinalCta() {
               </div>
 
               <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div>
+                <div className="relative">
+                  <input type="hidden" name="date" value={date} />
                   <label
-                    htmlFor="d"
+                    htmlFor="preferred-date"
                     className="mb-2 block text-[9.5px] font-medium uppercase tracking-[0.12em] text-white/[0.42]"
                   >
                     Preferred date <span className="text-[#E63E31]">*</span>
                   </label>
-                  <input
-                    id="d"
-                    name="date"
-                    type="date"
-                    required
-                    min={todayISO()}
-                    onBlur={handleFieldBlur}
-                    onChange={handleFieldChange}
-                    aria-invalid={!!errors.date}
-                    className={`w-full rounded-[10px] border bg-black/40 px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 [color-scheme:dark] focus:bg-black/[0.62] ${
+
+                  <button
+                    id="preferred-date"
+                    ref={triggerRef}
+                    type="button"
+                    onClick={() => setDatePickerOpen((prev) => !prev)}
+                    aria-haspopup="dialog"
+                    aria-expanded={datePickerOpen}
+                    className={`flex w-full items-center justify-between rounded-[10px] border bg-black/40 px-4 py-3.5 text-left text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
                       errors.date
                         ? "border-[#E63E31]"
                         : "border-white/[0.13] focus:border-[#E63E31]"
                     }`}
-                  />
+                  >
+                    <span className={date ? "text-white" : "text-white/40"}>
+                      {date
+                        ? date.split("-").reverse().join("-")
+                        : "Select date"}
+                    </span>
+                    <ChevronDown
+                      size={18}
+                      className={`shrink-0 text-white/60 transition-transform ${
+                        datePickerOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {datePickerOpen &&
+                    coords &&
+                    createPortal(
+                      <div
+                        ref={popoverRef}
+                        style={{
+                          position: "fixed",
+                          top: coords.top,
+                          left: coords.left,
+                          transform:
+                            coords.placement === "top"
+                              ? "translateY(-100%)"
+                              : undefined,
+                        }}
+                        className="dark z-[9999] max-h-[80vh] overflow-y-auto rounded-lg border border-white/10 bg-neutral-900 p-3 text-white shadow-xl"
+                      >
+                        <DayPicker
+                          mode="single"
+                          selected={
+                            date ? new Date(`${date}T00:00:00`) : undefined
+                          }
+                          defaultMonth={getTomorrow()}
+                          disabled={[
+                            { before: getTomorrow() },
+                            { dayOfWeek: [0, 6] },
+                          ]}
+                          onSelect={(selectedDate) => {
+                            if (!selectedDate) return;
+                            const formattedDate = formatDate(selectedDate);
+                            setDate(formattedDate);
+                            const error = validateField("date", formattedDate);
+                            setErrors((prev) => ({ ...prev, date: error }));
+                            setDatePickerOpen(false);
+                          }}
+                        />
+                      </div>,
+                      document.body,
+                    )}
+
                   {errors.date && (
                     <p className="mt-1.5 text-[11px] text-[#E63E31]">
                       {errors.date}
                     </p>
                   )}
                 </div>
-
                 <div>
                   <label
                     htmlFor="ts"
@@ -2063,7 +2440,9 @@ function FinalCta() {
               </div>
 
               <Btn type="submit" className="mt-2 w-full" disabled={isPending}>
-                {isPending ? "Sending..." : "Book a 30 Minute Call"}
+                {isPending
+                  ? "Sending..."
+                  : "Book a 30-minute growth strategy call"}
               </Btn>
               <p className="mt-3.5 min-h-[16px] text-center text-[11.5px] text-[#E63E31]">
                 {note}
@@ -2130,7 +2509,7 @@ function Field({
    ============================================================ */
 export default function GrowthPartnershipLanding() {
   return (
-    <main className="overflow-x-hidden bg-[#FCFBF9] font-sans text-[#0A0A0A] antialiased selection:bg-[#E63E31] selection:text-white">
+    <main className="overflow-x-hidden bg-[#FCFBF9] text-[#0A0A0A] antialiased selection:bg-[#E63E31] selection:text-white">
       <ScrollProgress />
       <Hero />
       <WhoItsFor />

@@ -393,6 +393,7 @@ const AdminServiceList = () => {
   const [view, setView] = useState<"services" | "industries">("services");
 
   // Create modal state
+
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newServiceName, setNewServiceName] = useState("");
   const [newServiceSlug, setNewServiceSlug] = useState("");
@@ -406,8 +407,9 @@ const AdminServiceList = () => {
   );
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
-  const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
+  // const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
   const [updating, setUpdating] = useState(false);
+  const [editAutoSlug, setEditAutoSlug] = useState(false);
 
   const slugify = (value: string) =>
     value
@@ -419,6 +421,7 @@ const AdminServiceList = () => {
 
   const handleNameChange = (value: string) => {
     setNewServiceName(value);
+
     if (!slugManuallyEdited) {
       setNewServiceSlug(slugify(value));
     }
@@ -428,7 +431,6 @@ const AdminServiceList = () => {
     setSlugManuallyEdited(true);
     setNewServiceSlug(slugify(value));
   };
-
   const resetCreateForm = () => {
     setNewServiceName("");
     setNewServiceSlug("");
@@ -437,21 +439,32 @@ const AdminServiceList = () => {
 
   const handleEditNameChange = (value: string) => {
     setEditName(value);
-    if (!editSlugManuallyEdited) {
+
+    if (editAutoSlug) {
       setEditSlug(slugify(value));
     }
   };
 
   const handleEditSlugChange = (value: string) => {
-    setEditSlugManuallyEdited(true);
     setEditSlug(slugify(value));
+  };
+
+  const handleEditAutoSlugToggle = (enabled: boolean) => {
+    setEditAutoSlug(enabled);
+
+    if (enabled) {
+      setEditSlug(slugify(editName));
+    }
   };
 
   const openEditModal = (service: ServiceListItem) => {
     setEditingService(service);
     setEditName(service.name);
     setEditSlug(service.slug);
-    setEditSlugManuallyEdited(false);
+
+    // Existing service: Auto Slug OFF by default
+    setEditAutoSlug(false);
+
     setShowEditModal(true);
   };
 
@@ -459,9 +472,8 @@ const AdminServiceList = () => {
     setEditingService(null);
     setEditName("");
     setEditSlug("");
-    setEditSlugManuallyEdited(false);
+    setEditAutoSlug(false);
   };
-
   const toggleSelect = (id: string) => {
     setSelectedIds((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
@@ -847,9 +859,46 @@ const AdminServiceList = () => {
                       </div>
 
                       <div className="flex flex-col gap-2 text-left">
-                        <label className="text-sm font-semibold text-gray-600">
-                          Service Name
-                        </label>
+                        <div className="flex items-center justify-between">
+                          <label className="text-sm font-semibold text-gray-600">
+                            Service Name
+                          </label>
+
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-gray-500">
+                              Auto Slug :
+                            </span>
+
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handleEditAutoSlugToggle(!editAutoSlug)
+                              }
+                              className={`relative h-6 w-14 overflow-hidden rounded-full transition-colors duration-300 ${
+                                editAutoSlug ? "bg-green-500" : "bg-gray-300"
+                              }`}
+                            >
+                              <span
+                                className={`absolute inset-0 flex items-center text-[10px] font-semibold text-white transition-all duration-300 ${
+                                  editAutoSlug
+                                    ? "justify-start pl-3"
+                                    : "justify-end pr-3"
+                                }`}
+                              >
+                                {editAutoSlug ? "ON" : "OFF"}
+                              </span>
+
+                              <span
+                                className={`absolute left-1 top-1 h-4 w-4 rounded-full bg-white shadow-md transition-transform duration-300 ease-in-out ${
+                                  editAutoSlug
+                                    ? "translate-x-8"
+                                    : "translate-x-0"
+                                }`}
+                              />
+                            </button>
+                          </div>
+                        </div>
+
                         <input
                           type="text"
                           value={editName}

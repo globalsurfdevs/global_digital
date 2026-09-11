@@ -2,6 +2,7 @@
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 // Accepts both lucide-react icons and the custom BrowserCodeIcon below —
 // both accept size/className, which is all this component uses.
@@ -11,7 +12,7 @@ type IconComponent = React.ComponentType<{
   className?: string;
 }>;
 
-interface FrameworkItem {
+export interface FrameworkItem {
   id: number;
   title: string;
   icon: string;
@@ -87,7 +88,7 @@ const InfoGrid: React.FC<InfoGridProps> = ({
   colcount,
 }) => {
   const xlColClass = XL_COL_CLASS[colcount || 4] || XL_COL_CLASS[4];
-
+  // console.log("InfoGrid data:", data);
   return (
     <div className="bg-white py-120">
       <div className="container mx-auto">
@@ -155,7 +156,7 @@ const InfoGrid: React.FC<InfoGridProps> = ({
               hidden: {},
               visible: { transition: { staggerChildren: 0.08 } },
             }}
-            className={`mt-10 grid grid-cols-1 gap-y-10 md:grid-cols-2 gap-x-[68px] xl:mt-[60px] border-b ${xlColClass}`}
+            className={`mt-10 grid grid-cols-1 gap-y-6 md:grid-cols-2 gap-x-[68px] xl:mt-[60px] border-b ${xlColClass}`}
           >
             {data.map((item, index) => {
               return (
@@ -180,7 +181,7 @@ const InfoGrid: React.FC<InfoGridProps> = ({
                   <span
                     className={`pointer-events-none absolute bottom-[-1px] left-0 right-0  h-px bg-[#E63E31] transition-all duration-300 opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 origin-left`}
                   />
-                  <div className="border-[#E63E31]/12 relative mb-[40px] h-[80px] w-[80px] rounded-lg border bg-[#E63E31]/5 px-[12px] py-[15px]">
+                  <div className="border-[#E63E31]/12 relative mb-[20px] lg:mb-[40px] h-[80px] w-[80px] rounded-lg border bg-[#E63E31]/5 px-[12px] py-[15px]">
                     <div className="relative h-full w-full">
                       <Image
                         src={item.icon}
@@ -191,29 +192,29 @@ const InfoGrid: React.FC<InfoGridProps> = ({
                     </div>
                   </div>
 
-                  <h3 className="mb-6 text-28 leading-[1.214285714285714] text-black min-h-[68px] max-w-[14ch]">
+                  <h3 className="lg:mb-6 text-28 leading-[1.214285714285714] text-black min-h-[68px] max-w-[14ch]">
                     {item.title}
                   </h3> 
 
-                  <p className="fnt-lexend text-[length:var(--text-18-sm)] leading-[1.6] text-[#8C8C8C] mb-[50px]">
+                  <p className="fnt-lexend text-[length:var(--text-18-sm)] leading-[1.6] text-[#8C8C8C] mb-[30px] lg:mb-[50px]">
                     {toSentenceCase(item.dec)}
                   </p>
 
                   <Image
-                    src="/images/industry_new/arrow.svg"
+                    src="/images/service-pillar/arrow.svg"
                     alt=""
                     width={20}
                     height={20}
                     className={`mt-auto transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5`}
                   />
 
-                  {/* {item.urllink && (
+                  {item.urllink && (
                     <Link
                       href={item.urllink}
                       className="absolute inset-0"
                       aria-label={item.title}
                     />
-                  )} */}
+                  )}
                 </motion.div>
               );
             })}

@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import Link from "next/link";
+import { toSentenceCase, totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,7 +60,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
         <div className="">
           <div className="pb-4 md:pb-6 xl:pb-8 xxl:pb-12">
             <div className="mb-4 flex items-center gap-3 md:mb-3 xl:mb-4 xxl:mb-[30px]">
-              <motion.h3
+              <motion.p
                 variants={moveUp(0)}
                 initial="hidden"
                 whileInView="show"
@@ -67,7 +68,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                 className="text-18 leading-[1.5] text-muted"
               >
                 {title}
-              </motion.h3>
+              </motion.p>
               <div className="h-4 w-4 bg-primary"></div>
             </div>
             <motion.h2
@@ -77,7 +78,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
               viewport={{ once: true }}
               className="title-60 max-w-[20ch] text-[length:var(--text-60-sm)] tracking-[-0.025em]"
             >
-              {description}
+              {totitleSentenceCase(description)}
             </motion.h2>
           </div>
 
@@ -112,10 +113,10 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                   }
                   ${hoveredIndex === index || hoveredIndex === index + 1 ? "border-b border-b-transparent" : "border-b border-b-[#77787B]"} `}
               >
-                <Link
-                  href={service.link}
+                {/* <Link
+                  href="#"
                   className="absolute inset-0 h-full w-full"
-                />
+                /> */}
 
                 <div className="flex gap-x-4 gap-y-4 3xl:gap-x-[166px]">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-primary/5 p-3 xl:h-[60px] xl:w-[60px]">
@@ -128,7 +129,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                     />
                   </div>
                   <h3 className="text-28 leading-[1.2142] tracking-[-0.025em]">
-                    {service.title}
+                    {totitleSentenceCase(service.title)}
                   </h3>
                 </div>
                 <div className="flex justify-between gap-x-10">

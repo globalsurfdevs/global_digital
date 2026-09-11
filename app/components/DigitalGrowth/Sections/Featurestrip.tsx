@@ -31,7 +31,7 @@ const FeatureStrip = ({ data }: any) => {
                 />
               </span>
 
-              <p className="text-18 uppercase leading-[26px] text-white">
+              <p className="text-[length:var(--text-18-sm)] uppercase leading-[26px] text-white">
                 {item.text}
               </p>
             </motion.div>

@@ -20,12 +20,14 @@ export interface IndustryItem {
       title: string;
       link: string;
     }[];
+    showSection: boolean;
   };
 
   secondSection: {
     title: string;
     subTitle: string;
     description: string;
+    showSection: boolean;
   };
 
   thirdSection: {
@@ -39,6 +41,7 @@ export interface IndustryItem {
       description: string;
       link: string;
     }[];
+    showSection: boolean;
   };
 
   fourthSection: {
@@ -50,6 +53,7 @@ export interface IndustryItem {
       title: string;
       description: string;
     }[];
+    showSection: boolean;
   };
 
   fifthSection: {
@@ -63,6 +67,7 @@ export interface IndustryItem {
       image: string;
       imageAlt: string;
     }[];
+    showSection: boolean;
   };
 
   sixthSection: {
@@ -73,6 +78,7 @@ export interface IndustryItem {
       number: string;
       value: string;
     }[];
+    showSection: boolean;
   };
 
   seventhSection: {
@@ -80,9 +86,11 @@ export interface IndustryItem {
     subTitle: string;
     items: {
       title: string;
+      description: string;
       image: string;
       imageAlt: string;
     }[];
+    showSection: boolean;
   };
 
   eighthSection: {
@@ -96,6 +104,7 @@ export interface IndustryItem {
       description: string;
       isPrimary: boolean;
     }[];
+    showSection: boolean;
   };
 
   ninethSection: {
@@ -103,6 +112,7 @@ export interface IndustryItem {
     subTitle: string;
     logo: string;
     logoAlt: string;
+    showSection: boolean;
   };
 
   ctaSection: {
@@ -111,6 +121,7 @@ export interface IndustryItem {
     description: string;
     buttonText: string;
     buttonLink: string;
+    showSection: boolean;
   };
 
   faqSection: {
@@ -120,6 +131,7 @@ export interface IndustryItem {
       question: string;
       answer: string;
     }[];
+    showSection: boolean;
   };
 
   createdAt: string;

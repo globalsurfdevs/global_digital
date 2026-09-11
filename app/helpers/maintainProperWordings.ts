@@ -79,7 +79,10 @@ const PROPER_NOUNS: Record<string, string> = {
   uae: "UAE",
   dubai: "Dubai",
   "gs digital": "GS Digital",
-  "global surf digital": "GS Surf Digital",
+  "global surf digital": "Global Surf Digital",
+  ios: "iOS",
+  "app store": "App Store",
+  "google play": "Google Play",
 };
 
 // Splits text into segments, alternating between non-anchor text and
@@ -140,6 +143,32 @@ export const toSentenceCase = (text: string) => {
 
       let result = segment.replace(/(^\s*\w|[.!?]\s+\w)/g, (match) =>
         match.toUpperCase(),
+      );
+
+      Object.entries(PROPER_NOUNS).forEach(([lower, correct]) => {
+        const regex = new RegExp(`\\b${lower}\\b`, "gi");
+        result = result.replace(regex, correct);
+      });
+      // console.log("result", result);
+      return result;
+    })
+    .join("");
+};
+
+
+
+export const totitleSentenceCase = (text: string) => {
+  if (!text) return text;
+
+  return splitByAnchors(text)
+    .map((segment) => {
+      if (isAnchorSegment(segment)) return segment;
+
+      let result = segment.toLowerCase();
+
+      result = result.replace(
+        /(^\s*\w|[.!?]\s+\w)/g,
+        (match) => match.toUpperCase(),
       );
 
       Object.entries(PROPER_NOUNS).forEach(([lower, correct]) => {

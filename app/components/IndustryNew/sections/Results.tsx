@@ -44,9 +44,9 @@ const Results: React.FC<ClientsformsSectionProps> = ({
                         viewport={{ once: true }}
                         className="mb-4 flex items-center gap-3 md:mb-[60px]"
                     >
-                        <h3 className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
+                        <p className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
                             {title ?? "Sectors we work with"}
-                        </h3>
+                        </p>
                         <div className="h-4 w-4 bg-primary" />
                     </motion.div>
                     <motion.div

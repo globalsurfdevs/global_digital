@@ -252,7 +252,7 @@ const Header = () => {
               {/* INDUSTRIES */}
               <div className="flex flex-col justify-center">
                 <Link
-                  href="/industry"
+                  href="/industries"
                   className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
                     after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
                     after:duration-300 hover:text-primary hover:after:w-full lg:px-0"

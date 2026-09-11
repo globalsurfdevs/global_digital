@@ -37,8 +37,8 @@ const LogoSlider = ({ data }: any) => {
         <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[auto_1fr] lg:gap-12 xl:gap-16">
           {/* Label */}
           <div className="flex items-center gap-2">
-            <div className="h-5 w-5 bg-primary"></div>
-            <p className="text-28 uppercase text-muted">{data?.label}</p>
+            <div className="h-4 w-4 bg-primary"></div>
+            <p className="text-18 uppercase text-muted">{data?.label}</p>
           </div>
 
           {/* Slider - bleeds to the right edge of the viewport, left stays put */}

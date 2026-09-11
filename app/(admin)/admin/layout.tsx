@@ -2,7 +2,7 @@ import "jsvectormap/dist/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "@/app/components/css/satoshi.css";
 import "../../components/css/style.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Loader from "@/app/components/common/Loader";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "sonner";
