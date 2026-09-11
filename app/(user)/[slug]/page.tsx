@@ -375,6 +375,7 @@ import { getTestimonials } from "@/app/lib/testimonials";
 import { buildMetadata } from "@/app/lib/metadata/buildServiceMetadata";
 import ServiceDetail from "@/app/components/ServicePages/ServiceDetails/ServiceDetail";
 import ServicePillarDetail from "@/app/components/ServicePages/ServicePillar/ServicePillar";
+import { SubServiceData } from "./type";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -398,7 +399,7 @@ export async function generateMetadata({
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { slug } = await params;
+  const { slug } = await params; 
   const resolved = await resolveSlug(slug);
 
   if (!resolved) notFound();
@@ -408,6 +409,8 @@ const Page = async ({ params }: PageProps) => {
       return <ServiceDetail service={resolved.data} slug={slug} />;
     case "service-pillar":
       return <ServicePillarDetail data={resolved.data} />;
+    case "sub-service":
+      return <ServiceDetail service={resolved.data as SubServiceData} slug={slug} />;
   }
 };
 
