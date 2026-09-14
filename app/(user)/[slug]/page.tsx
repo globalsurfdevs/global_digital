@@ -381,6 +381,14 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const noIndexSlugs = [
+  "ecommerce-seo-services-dubai",
+  "influencer-marketing-agency-dubai",
+  "local-seo-services-dubai",
+  "ppc-advertising-agency-dubai",
+  "social-media-management-agency"
+]
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -391,11 +399,19 @@ export async function generateMetadata({
     return {
       title: "Not Found",
       description: "",
-      alternates: { canonical: "https://www.globalsurf.ae/" },
+      robots: {
+        index: false,
+        follow: false,
+      },
+      alternates: {
+        canonical: "https://www.globalsurf.ae/",
+      },
     };
   }
 
-  return buildMetadata(resolved.data);
+  return buildMetadata(resolved.data, {
+    noIndex: noIndexSlugs.includes(slug),
+  });
 }
 
 const Page = async ({ params }: PageProps) => {
