@@ -382,7 +382,11 @@ interface PageProps {
 }
 
 const noIndexSlugs = [
+  "b2b-seo-agency-dubai",
   "ecommerce-seo-services-dubai",
+  "programmatic-advertising-agency-dubai",
+  "social-media-strategy-agency-dubai",
+  "social-media-marketing-dubai",  
   "influencer-marketing-agency-dubai",
   "local-seo-services-dubai",
   "ppc-advertising-agency-dubai",
