@@ -247,6 +247,7 @@ const ServiceDetail = async ({ service, slug }: Props) => {
       )}
       <ProcessSlider data={service.sixthSection} />
       <BECS data={service.seventhSection} />
+      {whatYouGetData.data.length > 0 && (
       <BlackInfoGrid
         title={whatYouGetData.title}
         subTitle={whatYouGetData.subTitle}
@@ -255,7 +256,7 @@ const ServiceDetail = async ({ service, slug }: Props) => {
         maxchwidth={50}
         colcount={4}
         page="service"
-      />
+      />)}
       {/* {capabilitiesData.items.length > 0 && (
         <RelatedCapabilities data={capabilitiesData} />
       )} */}

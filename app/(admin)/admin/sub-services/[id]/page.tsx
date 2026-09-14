@@ -1,4 +1,5 @@
  
+import IndiServicePage from "@/app/components/AdminSubService/AdminSubServiceDetails";
 import AdminSubServiceDetails from "@/app/components/AdminSubService/AdminSubServiceDetails";
 import { Suspense } from "react";
 
@@ -7,7 +8,8 @@ const ServicePage = () => {
 //   const slug = params?.id;
   return (
     <Suspense fallback={"Loading"}>
-     <AdminSubServiceDetails/>
+     {/* <AdminSubServiceDetails/> */}
+     <IndiServicePage/>
     </Suspense>
   );
 };
