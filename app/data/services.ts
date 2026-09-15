@@ -82,7 +82,7 @@ export const services = [
     image: "/assets/services/Web-development.jpg",
     // title: "Web Design & Development",
     title: "Web and app development",
-    url: "/web-design-and-development",
+    url: "/web-design-and-development-agency",
     description:
       "We design and develop conversion-focused websites, e-commerce platforms, and mobile apps engineered to support acquisition and long B2B decision cycles. Every build is senior-led and delivered against an agreed scope and timeline.",
     buttonTexts: [
@@ -112,13 +112,13 @@ export const services = [
     id: "5",
     image: "/assets/services/Branding-creatives.jpg",
     title: "Branding and content production",
-    url: "/creative-agency-dubai",
+    url: "/branding-content-production-agency-dubai",
     description:
       "Our branding work centres on positioning and differentiation before design. Every creative asset is built to support a commercial objective, not just to look good at launch.",
     buttonTexts: [
       {
         title: "Branding & Positioning",
-        url: "/branding-agency-dubai",
+        url: "/branding-and-positioning-agency-dubai",
       },
       // {
       //   title: "Logo Design",
@@ -147,7 +147,7 @@ export const services = [
     image: "/assets/services/Marketing.jpg",
     // title: "Marketing Intelligence",
     title: "AI, Data and intelligence",
-    url: "/marketing-intelligence-agency-dubai",
+    url: "/ai-data-intelligence-agency-dubai",
     description:
       "We build marketing performance dashboards and cross-channel reporting for UAE brands using GA4 and Looker Studio. Clear data connects every channel to the business outcomes your leadership team needs to see. ",
     buttonTexts: [
