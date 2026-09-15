@@ -423,7 +423,7 @@ const Page = async ({ params }: PageProps) => {
   const resolved = await resolveSlug(slug);
 
   if (!resolved) notFound();
-
+  
   switch (resolved.type) {
     case "service":
       return <ServiceDetail service={resolved.data} slug={slug} />;
