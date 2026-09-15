@@ -281,6 +281,7 @@ const ServiceDetail = async ({ service, slug }: Props) => {
       <GetInTouch
         data={Cta}
         ctabbutton={service.ctaSection.buttonText}
+        buttonLink={service.ctaSection.buttonLink}
         redlast
         page="service"
       />
