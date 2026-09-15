@@ -39,11 +39,11 @@ export const services = [
       },
       {
         title: "E-commerce SEO",
-        url: "/ecommerce-seo-dubai",
+        url: "/ecommerce-seo-services-dubai",
       },
       {
         title: "Local SEO",
-        url: "/local-seo-agency-dubai",
+        url: "/local-seo-services-dubai",
       },
       {
         title: "AI Search Visibility (GEO)",
@@ -65,7 +65,7 @@ export const services = [
       },
       {
         title: "Social Media Management",
-        url: "/social-media-management-services",
+        url: "/social-media-management-agency",
       },
       {
         title: "Social Media Marketing",
@@ -73,7 +73,7 @@ export const services = [
       },
       {
         title: "Influencer Marketing",
-        url: "/influencer-marketing-agency",
+        url: "/influencer-marketing-agency-dubai",
       },
     ],
   },
