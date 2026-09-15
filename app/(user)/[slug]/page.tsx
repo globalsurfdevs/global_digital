@@ -413,9 +413,7 @@ export async function generateMetadata({
     };
   }
 
-  return buildMetadata(resolved.data, {
-    noIndex: noIndexSlugs.includes(slug),
-  });
+  return buildMetadata(resolved.data);
 }
 
 const Page = async ({ params }: PageProps) => {

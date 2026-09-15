@@ -195,18 +195,14 @@ const menuGroups = [
         ],
       },
       {
-        icon: <FaServicestack />,
+        icon: <Layers3 />,
         label: "Services",
         route: "#",
         children: [
-          { label: "Services Page", route: "/admin/services" },
+          { label: "Services Pillars", route: adminRoutes.servicePillars.index },
+          { label: "Services", route: "/admin/services" },
           { label: "Sub Services", route: "/admin/sub-services" },
         ],
-      },
-      {
-        icon: <Layers3 />,
-        label: adminRoutes.servicePillars.name,
-        route: adminRoutes.servicePillars.index,
       },
       {
         icon: <Settings2 />,

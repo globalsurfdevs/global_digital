@@ -18,18 +18,18 @@ export function buildMetadata(
   const seo = source.seo;
   const canonicalUrl = `https://www.globalsurf.ae/${source.slug}`;
 
-  const noIndex = options.noIndex ?? false;
+  const noIndex = true
 
   return {
     title: seo?.metaTitle ?? source.name,
     description: seo?.metaDescription ?? "",
 
     robots: {
-      index: !noIndex,
+      index: noIndex,
       follow: true,
       nocache: noIndex,
       googleBot: {
-        index: !noIndex,
+        index: noIndex,
         follow: true,
       },
     },
