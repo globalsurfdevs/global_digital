@@ -382,14 +382,14 @@ interface PageProps {
 }
 
 const noIndexSlugs = [
-  "b2b-seo-agency-dubai",
-  "ecommerce-seo-services-dubai",
+  // "b2b-seo-agency-dubai",
+  // "ecommerce-seo-services-dubai",
   "programmatic-advertising-agency-dubai",
   "social-media-strategy-agency-dubai",
   "social-media-marketing-dubai",  
-  "influencer-marketing-agency-dubai",
-  "local-seo-services-dubai",
-  "ppc-advertising-agency-dubai",
+  // "influencer-marketing-agency-dubai",
+  // "local-seo-services-dubai",
+  // "ppc-advertising-agency-dubai",
   "social-media-management-agency"
 ]
 
@@ -423,7 +423,7 @@ const Page = async ({ params }: PageProps) => {
   const resolved = await resolveSlug(slug);
 
   if (!resolved) notFound();
-  
+
   switch (resolved.type) {
     case "service":
       return <ServiceDetail service={resolved.data} slug={slug} />;
