@@ -45,7 +45,7 @@ const nextConfig: NextConfig = {
       {
         source: "/performance-marketing", // The old URL path
         destination: "/performance-marketing-agency-dubai", // The new URL path
-        permanent: true, 
+        permanent: true,
       },
       {
         source: "/seo", // The old URL path
@@ -120,36 +120,36 @@ const nextConfig: NextConfig = {
 
       // ================================== Industries ==============================================
       {
-        source: "/industry", 
+        source: "/industry",
         destination: "/industries",
-        permanent: true, 
+        permanent: true,
       },
       {
-        source: "/industry/ecommerce", 
+        source: "/industry/ecommerce",
         destination: "/industries/lifestyle-retail-digital-marketing",
-        permanent: true, 
+        permanent: true,
       },
       {
-        source: "/industry/ecommerce-digital-marketing", 
+        source: "/industry/ecommerce-digital-marketing",
         destination: "/industries/lifestyle-retail-digital-marketing",
-        permanent: true, 
+        permanent: true,
       },
       {
-        source: "/industry/construction", 
+        source: "/industry/construction",
         destination: "/industries/construction-digital-marketing",
-        permanent: true, 
+        permanent: true,
       },
       {
-        source: "/industry/b2b", 
+        source: "/industry/b2b",
         destination: "/industries",
-        permanent: true, 
+        permanent: true,
       },
       {
-        source: "/industry/digital-marketing-services", 
+        source: "/industry/digital-marketing-services",
         destination: "/digital-marketing-services",
-        permanent: true, 
+        permanent: true,
       },
-       {
+      {
         source: "/industry/b2b-digital-marketing-services",
         destination: "/industries",
         permanent: true,
@@ -233,7 +233,44 @@ const nextConfig: NextConfig = {
         destination: "/e-commerce-web-development-company-dubai",
         permanent: true,
       },
-     
+      // =================================== Service Pillar =============================================================================
+
+      {
+        source: "/digital-marketing-services",
+        destination: "/digital-marketing-services-dubai",
+        permanent: true,
+      },
+      {
+        source: "/web-design-and-development",
+        destination: "/web-design-and-development-agency",
+        permanent: true,
+      },
+      {
+        source: "/creative-agency-dubai",
+        destination: "/branding-content-production-agency-dubai",
+        permanent: true,
+      },
+      // =================================== Sub Services =============================================================================
+      {
+        source: "/ecommerce-seo-dubai",
+        destination: "/ecommerce-seo-services-dubai",
+        permanent: true,
+      },
+      {
+        source: "/influencer-marketing-agency",
+        destination: "/influencer-marketing-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/local-seo-agency-dubai",
+        destination: "/local-seo-services-dubai",
+        permanent: true,
+      },
+      {
+        source: "/social-media-management-services",
+        destination: "/social-media-management-agency",
+        permanent: true,
+      },
     ];
   },
 };
