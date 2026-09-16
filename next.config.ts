@@ -250,6 +250,11 @@ const nextConfig: NextConfig = {
         destination: "/branding-content-production-agency-dubai",
         permanent: true,
       },
+      {
+        source: "/marketing-intelligence-agency-dubai",
+        destination: "/ai-data-intelligence-agency-dubai",
+        permanent: true,
+      },
       // =================================== Sub Services =============================================================================
       {
         source: "/ecommerce-seo-dubai",
