@@ -34,6 +34,7 @@ export async function PATCH(request: NextRequest) {
       {
         toEmailCareer: body.toEmailCareer,
         toEmailContact: body.toEmailContact,
+        toEmailBooking: body.toEmailBooking,
       },
       { upsert: true, new: true },
     );

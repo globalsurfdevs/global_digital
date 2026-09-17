@@ -15,6 +15,8 @@ export async function getToEmail(type: string) {
 
     case "career":
       return emails.toEmailCareer;
+    case "booking":
+      return emails.toEmailBooking;
 
     default:
       return null;
