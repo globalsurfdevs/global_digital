@@ -1,4 +1,4 @@
-import HeroSection from "./HeroSectionv3";
+import HeroSection from "./HeroSectionv2";
 import LogoSwiper from "@/app/components/HomePage/LogoSwiper";
 import AboutGlobal from "@/app/components/HomePage/AboutGlobal";
 import OurAchievements from "@/app/components/HomePage/OurAchievements";
@@ -44,7 +44,7 @@ export default async function Home() {
       <AboutGlobal />
       <OurServices />
       <OurAchievements />
-      <IndustriesweWork />
+      {/* <IndustriesweWork /> */}
       {/* <WorkIn /> */}
       <Tours />
       <SuccessStories clientTitle={home.clientSection.title} />
