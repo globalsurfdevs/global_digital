@@ -29,11 +29,13 @@ export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
     await connectDB();
+
     const emails = await Email.findOneAndUpdate(
       {},
       {
         toEmailCareer: body.toEmailCareer,
         toEmailContact: body.toEmailContact,
+        toEmailBooking: body.toEmailBooking,
       },
       { upsert: true, new: true },
     );

@@ -32,7 +32,7 @@ const AdminSettings = () => {
   const [error, setError] = useState("");
   const [toEmailCareer, setToEmailCareer] = useState("");
   const [toEmailContact, setToEmailContact] = useState("");
-
+  const [toEmailBooking, setToEmailBooking] = useState(""); // New state for booking email
   // HR password reset state
   const [hrNewPass, setHrNewPass] = useState("");
   const [hrCPass, setHrCPass] = useState("");
@@ -58,6 +58,7 @@ const AdminSettings = () => {
         const data = await response.json();
         setToEmailCareer(data.data.toEmailCareer);
         setToEmailContact(data.data.toEmailContact);
+        setToEmailBooking(data.data.toEmailBooking);
       } else {
         const data = await response.json();
         alert(data.message);
@@ -149,7 +150,7 @@ const AdminSettings = () => {
     try {
       const response = await fetch("/api/emails", {
         method: "PATCH",
-        body: JSON.stringify({ toEmailCareer, toEmailContact }),
+        body: JSON.stringify({ toEmailCareer, toEmailContact, toEmailBooking }),
       });
       if (response.ok) {
         const data = await response.json();
@@ -297,6 +298,17 @@ const AdminSettings = () => {
                     className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
                   />
                 </div>
+                <div className="w-full min-w-[200px] max-w-sm">
+                  <label className="mb-2 block text-sm text-slate-600">
+                    To Email Booking
+                  </label>
+                  <input
+                    type="text"
+                    value={toEmailBooking}
+                    onChange={(e) => setToEmailBooking(e.target.value)}
+                    className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
+                  />
+                </div>
               </div>
               <button
                 className="mt-4 w-full rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -307,7 +319,7 @@ const AdminSettings = () => {
               </button>
             </form>
           </div>
-
+      
           {/* HR password reset — admin only */}
           {role === "admin" && (
             <div className="relative flex flex-col rounded-xl bg-transparent">
