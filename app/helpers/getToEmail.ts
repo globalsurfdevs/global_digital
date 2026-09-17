@@ -6,7 +6,7 @@ export async function getToEmail(type: string) {
 
   const emails = await Email.findOne({});
 
-  console.log("emails:", emails);
+  // console.log("emails:", emails);
   if (!emails) {
     throw new Error("Email configuration not found");
   }
