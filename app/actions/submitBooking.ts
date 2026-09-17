@@ -2,6 +2,8 @@
 
 import connectDb from "@/lib/mongodb";
 import Lead from "../models/Lead";
+import { getToEmail } from "../helpers/getToEmail";
+import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
 // import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
 // import { getToEmail } from "../helpers/getToEmail";
 
@@ -35,17 +37,17 @@ export async function submitBooking(formData: FormData) {
 
     const lead = await Lead.create(data);
     console.log('lead:',lead)
-    // const toEmail = await getToEmail("booking");
-    // const emails = toEmail.split(",").map((e: string) => e.trim());
+    const toEmail = await getToEmail("booking");
+    const emails = toEmail.split(",").map((e: string) => e.trim());
 
-    // await sendMailWithAttachments({
-    //     type: "booking",
-    //     to: emails[0],
-    //     cc: emails.slice(1),
-    //     subject: `New Call Booking: ${data.name}`,
-    //     fields: data,
-    //     attachments: [],
-    // });
+    await sendMailWithAttachments({
+        type: "booking",
+        to: emails[0],
+        cc: emails.slice(1),
+        subject: `New Call Booking: ${data.name}`,
+        fields: data,
+        attachments: [],
+    });
 
     if (!lead) {
       console.error("Booking submission failed");
