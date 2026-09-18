@@ -3,7 +3,7 @@
 import { ServiceItem } from "@/app/(user)/[slug]/type";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
-import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 const WhyMatters = ({ data }: { data: ServiceItem["fourthSection"] }) => {
     return (
@@ -30,7 +30,7 @@ const WhyMatters = ({ data }: { data: ServiceItem["fourthSection"] }) => {
                         viewport={{ once: true }}
                         className="title-60 mb-4 max-w-[19ch] text-[length:var(--text-60-sm)] md:mb-6 xl:mb-8 xxl:mb-12"
                     >
-                        {data.subTitle}
+                        {totitleSentenceCase(data.subTitle)}
                     </motion.h2>
 
                     <div>
@@ -42,7 +42,7 @@ const WhyMatters = ({ data }: { data: ServiceItem["fourthSection"] }) => {
                                 whileInView="show"
                                 viewport={{ once: true }}
                                 className="fnt-lexend mb-4 text-[length:var(--text-18-sm)] text-muted last:mb-0 xxl:mb-6"
-                                dangerouslySetInnerHTML={{ __html: toSentenceCase(item) }}
+                                dangerouslySetInnerHTML={{ __html: totitleSentenceCase(item) }}
                             >
                                 {/* {toSentenceCase(item)} */}
                             </motion.p>
