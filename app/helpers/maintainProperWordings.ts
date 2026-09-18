@@ -166,14 +166,22 @@ export const totitleSentenceCase = (text: string) => {
 
       let result = segment.toLowerCase();
 
+      // Sentence case
       result = result.replace(
         /(^\s*\w|[.!?]\s+\w)/g,
         (match) => match.toUpperCase(),
       );
 
+      // Proper nouns
       Object.entries(PROPER_NOUNS).forEach(([lower, correct]) => {
         const regex = new RegExp(`\\b${lower}\\b`, "gi");
         result = result.replace(regex, correct);
+      });
+
+      // Acronyms
+      ACRONYMS.forEach((acronym) => {
+        const regex = new RegExp(`\\b${acronym}\\b`, "gi");
+        result = result.replace(regex, acronym.toUpperCase());
       });
 
       return result;
