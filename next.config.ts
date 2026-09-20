@@ -242,7 +242,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/web-design-and-development",
-        destination: "/web-design-and-development-agency",
+        destination: "/web-and-app-development-dubai",
+        permanent: true,
+      },
+      {
+        source: "/web-design-and-development-agency",
+        destination: "/web-and-app-development-dubai",
         permanent: true,
       },
       {

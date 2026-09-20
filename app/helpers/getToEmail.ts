@@ -5,6 +5,8 @@ export async function getToEmail(type: string) {
   await connectDB();
 
   const emails = await Email.findOne({});
+
+  // console.log("emails:", emails);
   if (!emails) {
     throw new Error("Email configuration not found");
   }

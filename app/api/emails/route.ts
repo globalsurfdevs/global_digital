@@ -29,6 +29,7 @@ export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
     await connectDB();
+
     const emails = await Email.findOneAndUpdate(
       {},
       {

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
-import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 import Link from "next/link";
 
 const Approach = ({ data }: any) => {
@@ -38,11 +38,11 @@ const Approach = ({ data }: any) => {
                             <div className="h-4 w-4 bg-primary"></div>
                         </div>
                         <h2 className="title-60 mb-4 tracking-[-0.025em] md:mb-5 xl:mb-[40px] ">
-                            {data.subTitle}
+                            {totitleSentenceCase(data.subTitle)}
                         </h2>
                         {data.description.split("\n").map((item:string,index:number) => (
                             <p key={index} className="text-77787B fnt-lexend text-[length:var(--text-18-sm)] leading-[1.444444444444444]">
-                                {toSentenceCase(item)}
+                                {totitleSentenceCase(item)}
                             </p>
                         ))}
 
