@@ -495,6 +495,7 @@ export async function POST(req: NextRequest) {
       await serviceDoc.save();
 
       revalidateTag("service");
+      revalidateTag("header-navigation-services");
 
       return NextResponse.json(
         {
@@ -530,6 +531,7 @@ export async function POST(req: NextRequest) {
     const createdItem = serviceDoc.items[serviceDoc.items.length - 1];
 
     revalidateTag("service");
+    revalidateTag("header-navigation-services");
 
     return NextResponse.json(
       {
@@ -622,6 +624,7 @@ export async function PATCH(req: NextRequest) {
     }
 
     revalidateTag("service");
+    revalidateTag("header-navigation-services");
 
     return NextResponse.json({
       message: "Service updated successfully",

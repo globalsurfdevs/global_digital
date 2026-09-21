@@ -6,24 +6,10 @@ import LetsTalk from "@/app/components/common/LetsConnect";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { serviceData } from "@/app/components/HomePage/ServiceDropdown";
+import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
 
-const serviceMenuItems: MenuChild[] = Object.entries(serviceData).map(
-  ([item, category]) => ({
-    item,
-    url: category.titleurl ?? "#",
-    children: Object.entries(category)
-      .filter(([, value]) => typeof value === "object" && value !== null)
-      .map(([item, value]) => ({
-        item,
-        url: (value as { url?: string }).url ?? "#",
-      })),
-  }),
-);
-
-const menuItems: MenuItemType[] = [
+const baseMenuItems: MenuItemType[] = [
   { item: "ABOUT", url: "/about-us" },
-  { item: "SERVICES", url: "#", children: serviceMenuItems },
   { item: "INDUSTRIES", url: "/industries" },
   { item: "PORTFOLIO", url: "/portfolio" },
   {
@@ -38,6 +24,7 @@ const menuItems: MenuItemType[] = [
 ];
 
 interface MenuToggleProps {
+  navigation: HeaderNavigationPillar[];
   onHide: () => void;
   toggle: () => void;
 }
@@ -56,7 +43,30 @@ interface MenuItemType {
   children?: MenuChild[];
 }
 
-export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
+const createMenuItems = (
+  navigation: HeaderNavigationPillar[],
+): MenuItemType[] => [
+  baseMenuItems[0],
+  {
+    item: "SERVICES",
+    url: "#",
+    children: navigation.map((pillar) => ({
+      item: pillar.title,
+      url: pillar.url,
+      children: pillar.services.map((service) => ({
+        item: service.title,
+        url: service.url,
+      })),
+    })),
+  },
+  ...baseMenuItems.slice(1),
+];
+
+export const Navigation: React.FC<MenuToggleProps> = ({
+  navigation,
+  toggle,
+  onHide,
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>(
     {},
@@ -122,6 +132,9 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
       },
     },
   };
+
+  const menuItems = createMenuItems(navigation);
+
   return (
     <div className="">
       {modalOpen && (

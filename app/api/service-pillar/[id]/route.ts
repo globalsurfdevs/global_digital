@@ -42,7 +42,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     }
 
     await connectDB();
-   
+
     const { id } = await params;
 
     const currentSlug = decodeURIComponent(id);
@@ -84,6 +84,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     ).lean();
 
     revalidateTag("service-pillar");
+    revalidateTag("header-navigation-services");
     revalidateTag(`service-pillar:${currentSlug}`);
     if (nextSlug !== currentSlug) {
       revalidateTag(`service-pillar:${nextSlug}`);

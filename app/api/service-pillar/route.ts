@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import ServicePillar from "@/app/models/ServicePiller";
+import { revalidateTag } from "next/cache";
 
 export async function GET(req: NextRequest) {
   try {
@@ -31,10 +32,10 @@ export async function GET(req: NextRequest) {
     const data = await ServicePillar.find(
       {},
       {
-        _id:1,
+        _id: 1,
         name: 1,
         slug: 1,
-        icon:1,
+        icon: 1,
         createdAt: 1,
       },
     )
@@ -61,7 +62,6 @@ export async function GET(req: NextRequest) {
   }
 }
 
-
 const slugify = (value: string) =>
   value
     .toLowerCase()
@@ -85,9 +85,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
     const name = body?.name?.trim();
-    const slug = body?.slug?.trim()
-      ? slugify(body.slug)
-      : slugify(name || "");
+    const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name || "");
 
     if (!name || !slug) {
       return NextResponse.json(
@@ -127,7 +125,6 @@ export async function POST(req: NextRequest) {
   }
 }
 
-
 export async function PUT(req: NextRequest) {
   try {
     // const isAdmin = await verifyAdmin(req);
@@ -157,7 +154,7 @@ export async function PUT(req: NextRequest) {
     const newSlug = body?.slug?.trim()
       ? slugify(body.slug)
       : slugify(name || "");
-    const icon = body?.icon
+    const icon = body?.icon;
 
     if (!name || !newSlug) {
       return NextResponse.json(
@@ -179,8 +176,8 @@ export async function PUT(req: NextRequest) {
     // }
 
     const updated = await ServicePillar.findOneAndUpdate(
-      { _id: body._id }, 
-      { name, slug: newSlug,icon },
+      { _id: body._id },
+      { name, slug: newSlug, icon },
       { new: true, runValidators: true },
     ).lean();
 
@@ -190,6 +187,8 @@ export async function PUT(req: NextRequest) {
         { status: 404 },
       );
     }
+
+    revalidateTag("header-navigation-services");
 
     return NextResponse.json(
       {
