@@ -38,7 +38,6 @@
 // }) => {
 //   const { items, subTitle, title } = data;
 
-
 //   const n = items.length;
 //   const slides = [...items, ...items].map((it, i) => ({
 //     ...it,
@@ -111,7 +110,6 @@
 //         </div>
 //       </div>
 
-     
 //       <ul className="sr-only">
 //         {items.map((item) => (
 //           <li key={item.title}>
@@ -181,7 +179,7 @@
 //                           : originalIndex + 1}
 //                       </span>
 //                     </div>
-                   
+
 //                     {isClone ? (
 //                       <p
 //                         data-text={title}
@@ -223,7 +221,6 @@
 // };
 
 // export default ProcessSlider;
-
 
 "use client";
 
@@ -343,10 +340,8 @@ const ProcessSlider = ({
         >
           {slides.map(({ key, title: stepTitle, description, num, clone }) => (
             <SwiperSlide key={key}>
-              {({ isDuplicate }) => {
-                // clone = our manual padding copies
-                // isDuplicate = Swiper's own loop clones
-                const shell = clone || isDuplicate;
+              {() => {
+                const shell = clone;
 
                 return (
                   <div
