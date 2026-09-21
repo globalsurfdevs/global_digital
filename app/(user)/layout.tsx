@@ -128,8 +128,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={spaceGrotesk.className}>
+    // <html lang="en">
+      <div className={spaceGrotesk.className}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
@@ -191,7 +191,7 @@ export default function RootLayout({
           defer
         ></Script> */}
         <ZohoChat/>
-      </body>
-    </html>
+      </div>
+    // </html>
   );
 }

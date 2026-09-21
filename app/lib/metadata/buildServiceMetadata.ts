@@ -27,7 +27,7 @@ export function buildMetadata(
     robots: {
       index: noIndex,
       follow: true,
-      nocache: noIndex,
+      // nocache: noIndex,
       googleBot: {
         index: noIndex,
         follow: true,
