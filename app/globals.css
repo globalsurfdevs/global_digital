@@ -1547,4 +1547,4 @@ input[type="number"] {
   border-left: 4px solid #e43d30;
 }
 
-
+.clone-text::before, [data-text]:empty::before { content: attr(data-text); }
