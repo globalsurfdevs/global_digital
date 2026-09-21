@@ -260,6 +260,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 
 import Service from "@/app/models/Service";
+import ServicePillar from "@/app/models/ServicePiller";
 
 import "@/app/models/Portfolio";
 
@@ -342,6 +343,21 @@ export async function GET(req: NextRequest) {
 
     const allItems = doc?.items ?? [];
 
+    const servicePillars = await ServicePillar.find(
+      {
+        _id: {
+          $in: allItems
+            .map((item: any) => item.servicePillarId)
+            .filter(Boolean),
+        },
+      },
+      { name: 1, slug: 1 },
+    ).lean();
+
+    const pillarById = new Map(
+      servicePillars.map((pillar: any) => [String(pillar._id), pillar]),
+    );
+
     const totalItems = allItems.length;
 
     const totalPages = Math.max(Math.ceil(totalItems / limit), 1);
@@ -356,6 +372,12 @@ export async function GET(req: NextRequest) {
         name: item.name,
 
         slug: item.slug,
+
+        servicePillarId: item.servicePillarId ?? null,
+
+        servicePillar: item.servicePillarId
+          ? (pillarById.get(String(item.servicePillarId)) ?? null)
+          : null,
 
         createdAt: item.createdAt,
       }));
@@ -404,6 +426,8 @@ export async function POST(req: NextRequest) {
 
     const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
 
+    const servicePillarId = body?.servicePillarId || null;
+
     if (!name) {
       return NextResponse.json(
         { message: "Service name is required" },
@@ -419,6 +443,19 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
     } // Ensure the single Service document exists
+
+    if (servicePillarId) {
+      const servicePillar = await ServicePillar.exists({
+        _id: servicePillarId,
+      });
+
+      if (!servicePillar) {
+        return NextResponse.json(
+          { message: "Selected service pillar was not found" },
+          { status: 400 },
+        );
+      }
+    }
 
     let serviceDoc = await Service.findOne({});
 
@@ -453,6 +490,8 @@ export async function POST(req: NextRequest) {
 
       item.slug = slug;
 
+      item.servicePillarId = servicePillarId;
+
       await serviceDoc.save();
 
       revalidateTag("service");
@@ -484,7 +523,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    serviceDoc.items.push({ name, slug });
+    serviceDoc.items.push({ name, slug, servicePillarId });
 
     await serviceDoc.save();
 
@@ -536,6 +575,19 @@ export async function PATCH(req: NextRequest) {
     // slug changes should go through a dedicated rename flow, not a general PATCH.
 
     const { slug: _ignoredSlug, ...updateData } = body ?? {}; // Build a $set payload like { "items.$.seo": ..., "items.$.firstSection": ..., ... }
+
+    if (updateData.servicePillarId) {
+      const servicePillar = await ServicePillar.exists({
+        _id: updateData.servicePillarId,
+      });
+
+      if (!servicePillar) {
+        return NextResponse.json(
+          { message: "Selected service pillar was not found" },
+          { status: 400 },
+        );
+      }
+    }
 
     const setPayload: Record<string, unknown> = {};
 

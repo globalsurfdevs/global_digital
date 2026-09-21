@@ -6,9 +6,36 @@ import LetsTalk from "@/app/components/common/LetsConnect";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { menuItems as rawMenuItems } from "@/app/data/menuv2";
+import { serviceData } from "@/app/components/HomePage/ServiceDropdown";
 
-const menuItems: MenuItemType[] = rawMenuItems;
+const serviceMenuItems: MenuChild[] = Object.entries(serviceData).map(
+  ([item, category]) => ({
+    item,
+    url: category.titleurl ?? "#",
+    children: Object.entries(category)
+      .filter(([, value]) => typeof value === "object" && value !== null)
+      .map(([item, value]) => ({
+        item,
+        url: (value as { url?: string }).url ?? "#",
+      })),
+  }),
+);
+
+const menuItems: MenuItemType[] = [
+  { item: "ABOUT", url: "/about-us" },
+  { item: "SERVICES", url: "#", children: serviceMenuItems },
+  { item: "INDUSTRIES", url: "/industries" },
+  { item: "PORTFOLIO", url: "/portfolio" },
+  {
+    item: "INSIGHT",
+    url: "#",
+    children: [
+      { item: "Blogs", url: "/blogs" },
+      { item: "Case Studies", url: "/case-study" },
+    ],
+  },
+  { item: "CAREERS", url: "/careers" },
+];
 
 interface MenuToggleProps {
   onHide: () => void;

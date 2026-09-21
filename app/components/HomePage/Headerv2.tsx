@@ -368,8 +368,8 @@ const Header = () => {
                 </div>
               </Link>
 
-              {/* GET AUDIT — only on audit landing page */}
-              {pathname === "free-digital-marketing-audit" && (
+             
+              {pathname === "/free-digital-marketing-audit" && (
                 <Link
                   href="#requestst"
                   scroll={true}
