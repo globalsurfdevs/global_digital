@@ -131,8 +131,8 @@ export default async function RootLayout({
   const navigation = await getNavServices();
 
   return (
-    <html lang="en">
-      <body className={spaceGrotesk.className}>
+    // <html lang="en">
+      <div className={spaceGrotesk.className}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
@@ -193,8 +193,10 @@ export default async function RootLayout({
           src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5"
           defer
         ></Script> */}
-        <ZohoChat />
-      </body>
-    </html>
+
+        <ZohoChat/>
+      </div>
+    // </html>
+
   );
 }
