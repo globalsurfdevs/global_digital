@@ -54,7 +54,7 @@ export const serviceData: ServiceData = {
   },
 
   "Web & App Development": {
-    titleurl: "/web-design-and-development-agency",
+    titleurl: "/web-and-app-development-dubai",
     categoryText:
       'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
     "Web Development": {
