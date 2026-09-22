@@ -131,7 +131,7 @@ export default async function RootLayout({
   const navigation = await getNavServices();
 
   return (
-    // <html lang="en">
+    
       <div className={spaceGrotesk.className}>
         <noscript>
           <iframe
@@ -196,7 +196,7 @@ export default async function RootLayout({
 
         <ZohoChat/>
       </div>
-    // </html>
+  
 
   );
 }

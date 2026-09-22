@@ -65,7 +65,7 @@ export const getNavServices = unstable_cache(
         ),
       }))
       .sort((firstPillar, secondPillar) => {
-        return secondPillar.services.length - firstPillar.services.length;
+        return secondPillar.services.length-firstPillar.services.length ;
       });
   },
   ["header-navigation-services"],
