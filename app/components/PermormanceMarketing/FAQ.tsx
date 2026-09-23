@@ -176,8 +176,9 @@ const FAQ: React.FC<PartnerListProps> = ({
                             <div className="collapse-item pt-3 lg:pt-[22px]">
                               <p
                                 className={`${page == "service" ? "text-[length:var(--text-18-sm)]" : "text-19"} fnt-lexend text-gray1`}
+                                dangerouslySetInnerHTML={{ __html: item.description }}
                               >
-                                {item.description}
+                                {/* {item.description} */}
                               </p>
                             </div>
                           </Collapse>

@@ -115,7 +115,7 @@ const ServicePillarDetail = async ({ data }: Props) => {
           data={Cta}
           ctabbutton={totitleSentenceCase(data.ctaSection.buttonText)}
           redlast
-          buttonLink={data.ctaSection.buttonLink}
+          buttonLink={data.ctaSection.buttonLink??"/contact-us"}
           page="service"
         />
       )}
