@@ -394,9 +394,13 @@ const AdminServiceList = () => {
   const searchParams = useSearchParams();
   const pageFromUrl = Number(searchParams.get("page")) || 1;
   const [services, setServices] = useState<ServiceListItem[] | []>([]);
+
   const [servicePillars, setServicePillars] = useState<ServicePillarListItem[]>(
     [],
   );
+
+  const [loadServices, setLoadServices] = useState(false);
+
   const [refetch, setRefetch] = useState(false);
   const [page, setPage] = useState(pageFromUrl);
   const [totalPages, setTotalPages] = useState(1);
@@ -519,6 +523,8 @@ const AdminServiceList = () => {
     };
 
     const fetchServicesData = async () => {
+      setLoadServices(true);
+
       try {
         const query = new URLSearchParams({
           page: String(page),
@@ -527,13 +533,19 @@ const AdminServiceList = () => {
 
         const response = await fetch(`/api/service?${query.toString()}`);
 
-        if (response.ok) {
-          const data = await response.json();
-          setServices(data.data);
-          setTotalPages(data.totalPages);
+        if (!response.ok) {
+          throw new Error("Failed to fetch services");
         }
+
+        const data = await response.json();
+
+        setServices(data.data);
+        setTotalPages(data.totalPages);
       } catch (error) {
         console.error("Error fetching services:", error);
+        setServices([]);
+      } finally {
+        setLoadServices(false);
       }
     };
 
@@ -719,7 +731,9 @@ const AdminServiceList = () => {
 
         {view === "services" ? (
           <>
-            {services && services.length > 0 ? (
+            {loadServices ? (
+              <div className="py-10 text-center">Loading services...</div>
+            ) : services.length > 0 ? (
               <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
                 <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
                   <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
