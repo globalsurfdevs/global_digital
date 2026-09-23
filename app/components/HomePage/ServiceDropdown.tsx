@@ -124,6 +124,7 @@ const ServicesMegaMenu = ({
 }: {
   navigation: HeaderNavigationPillar[];
 }) => {
+  // const defaultCategory = navigation[0]?.title ?? "";
   const defaultCategory = navigation[0]?.title ?? "";
 
   const [activeItem, setActiveItem] = useState<[string, string]>([
