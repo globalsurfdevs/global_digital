@@ -53,6 +53,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
   }, [modalOpen]);
 
   return (
+
     // 2xl:h-[90vh]
     <section className="relative mt-[20px] overflow-hidden py-[110px] md:h-[90vh] ">
       {/* Modal section */}

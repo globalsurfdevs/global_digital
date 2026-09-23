@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import HeaderSwitcher from "@/app/components/HomePage/HeaderSwitcher";
+import { getNavServices } from "@/app/lib/services/get-nav-services";
 
 import Breadcrumb from "../components/HomePage/BreadcrumbSchema";
 import { Space_Grotesk } from "next/font/google";
@@ -151,13 +152,15 @@ const organizationSchema={
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navigation = await getNavServices();
+
   return (
-    // <html lang="en">
+    
       <div className={spaceGrotesk.className}>
         <noscript>
           <iframe
@@ -196,7 +199,7 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
-        <HeaderSwitcher />
+        <HeaderSwitcher navigation={navigation} />
         <div className="mbcs-63">{children}</div>
         <Footer />
         <Breadcrumb />
@@ -219,8 +222,10 @@ export default function RootLayout({
           src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5"
           defer
         ></Script> */}
+
         <ZohoChat/>
       </div>
-    // </html>
+  
+
   );
 }

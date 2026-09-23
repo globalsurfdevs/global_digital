@@ -376,14 +376,31 @@ type ServiceListItem = {
   _id: string;
   name: string;
   slug: string;
+  servicePillarId?: string | null;
+  servicePillar?: {
+    name: string;
+    slug: string;
+  } | null;
   createdAt?: string;
+};
+
+type ServicePillarListItem = {
+  _id: string;
+  name: string;
+  slug: string;
 };
 
 const AdminServiceList = () => {
   const searchParams = useSearchParams();
   const pageFromUrl = Number(searchParams.get("page")) || 1;
   const [services, setServices] = useState<ServiceListItem[] | []>([]);
+
+  const [servicePillars, setServicePillars] = useState<ServicePillarListItem[]>(
+    [],
+  );
+
   const [loadServices, setLoadServices] = useState(false);
+
   const [refetch, setRefetch] = useState(false);
   const [page, setPage] = useState(pageFromUrl);
   const [totalPages, setTotalPages] = useState(1);
@@ -398,6 +415,7 @@ const AdminServiceList = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newServiceName, setNewServiceName] = useState("");
   const [newServiceSlug, setNewServiceSlug] = useState("");
+  const [newServicePillarId, setNewServicePillarId] = useState("");
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
   const [creating, setCreating] = useState(false);
 
@@ -408,6 +426,7 @@ const AdminServiceList = () => {
   );
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
+  const [editServicePillarId, setEditServicePillarId] = useState("");
   // const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
   const [updating, setUpdating] = useState(false);
   const [editAutoSlug, setEditAutoSlug] = useState(false);
@@ -435,6 +454,7 @@ const AdminServiceList = () => {
   const resetCreateForm = () => {
     setNewServiceName("");
     setNewServiceSlug("");
+    setNewServicePillarId("");
     setSlugManuallyEdited(false);
   };
 
@@ -462,6 +482,7 @@ const AdminServiceList = () => {
     setEditingService(service);
     setEditName(service.name);
     setEditSlug(service.slug);
+    setEditServicePillarId(service.servicePillarId ?? "");
 
     // Existing service: Auto Slug OFF by default
     setEditAutoSlug(false);
@@ -473,6 +494,7 @@ const AdminServiceList = () => {
     setEditingService(null);
     setEditName("");
     setEditSlug("");
+    setEditServicePillarId("");
     setEditAutoSlug(false);
   };
   const toggleSelect = (id: string) => {
@@ -487,6 +509,19 @@ const AdminServiceList = () => {
   };
 
   useEffect(() => {
+    const fetchServicePillars = async () => {
+      try {
+        const response = await fetch(`/api/service-pillar?limit=100`);
+
+        if (response.ok) {
+          const data = await response.json();
+          setServicePillars(data.data ?? []);
+        }
+      } catch (error) {
+        console.error("Error fetching service pillars:", error);
+      }
+    };
+
     const fetchServicesData = async () => {
       setLoadServices(true);
 
@@ -514,6 +549,7 @@ const AdminServiceList = () => {
       }
     };
 
+    fetchServicePillars();
     fetchServicesData();
   }, [page, refetch]);
 
@@ -575,6 +611,7 @@ const AdminServiceList = () => {
         body: JSON.stringify({
           name: newServiceName.trim(),
           slug: newServiceSlug.trim(),
+          servicePillarId: newServicePillarId || null,
         }),
       });
 
@@ -620,6 +657,7 @@ const AdminServiceList = () => {
           _id: editingService._id,
           name: editName.trim(),
           slug: editSlug.trim(),
+          servicePillarId: editServicePillarId || null,
         }),
       });
 
@@ -817,6 +855,27 @@ const AdminServiceList = () => {
                         </p>
                       </div>
 
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Service Pillar
+                        </label>
+                        <select
+                          value={newServicePillarId}
+                          onChange={(e) =>
+                            setNewServicePillarId(e.target.value)
+                          }
+                          className="rounded border px-3 py-2"
+                          required
+                        >
+                          <option value="">Select a service pillar</option>
+                          {servicePillars.map((pillar) => (
+                            <option key={pillar._id} value={pillar._id}>
+                              {pillar.name} ({pillar.slug})
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
                       <div className="gap-2 sm:flex sm:flex-row-reverse">
                         <button
                           type="button"
@@ -934,6 +993,27 @@ const AdminServiceList = () => {
                           This becomes part of the page URL, e.g. /services/
                           {editSlug || "your-slug"}
                         </p>
+                      </div>
+
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Service Pillar
+                        </label>
+                        <select
+                          value={editServicePillarId}
+                          onChange={(e) =>
+                            setEditServicePillarId(e.target.value)
+                          }
+                          className="rounded border px-3 py-2"
+                          required
+                        >
+                          <option value="">Select a service pillar</option>
+                          {servicePillars.map((pillar) => (
+                            <option key={pillar._id} value={pillar._id}>
+                              {pillar.name} ({pillar.slug})
+                            </option>
+                          ))}
+                        </select>
                       </div>
 
                       <div className="gap-2 sm:flex sm:flex-row-reverse">

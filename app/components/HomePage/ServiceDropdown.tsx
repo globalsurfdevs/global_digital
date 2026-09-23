@@ -5,6 +5,7 @@ import menuright from "@/public/assets/menurightarrow.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
 
 type ServiceItem = { text: string; url?: string };
 type ServiceCategory = {
@@ -118,8 +119,12 @@ export const serviceData: ServiceData = {
   },
 };
 
-const ServicesMegaMenu = () => {
-  const defaultCategory = "Digital Marketing";
+const ServicesMegaMenu = ({
+  navigation,
+}: {
+  navigation: HeaderNavigationPillar[];
+}) => {
+  const defaultCategory = navigation[0]?.title ?? "";
 
   const [activeItem, setActiveItem] = useState<[string, string]>([
     defaultCategory,
@@ -136,10 +141,12 @@ const ServicesMegaMenu = () => {
 
   const getActiveText = () => {
     const [category, title] = activeItem;
-    const categoryData = serviceData[category];
-    const item = categoryData?.[title] as ServiceItem | undefined;
+    const categoryData = navigation.find((item) => item.title === category);
+    const item = categoryData?.services.find(
+      (service) => service.title === title,
+    );
 
-    if (!item?.text && typeof categoryData?.categoryText === "string") {
+    if (!item?.text && categoryData?.categoryText) {
       return categoryData.categoryText;
     }
 
@@ -173,12 +180,12 @@ const ServicesMegaMenu = () => {
           </div>
           {/* Services Grid */}
           <div className="grid w-full grid-cols-3 gap-6 pl-[130px] xxl:gap-10">
-            {Object.entries(serviceData).map(([category, items]) => {
-              const { titleurl, categoryText, ...services } = items;
+            {navigation.map((categoryData) => {
+              const category = categoryData.title;
               return (
                 <div key={category} className="group w-full">
                   <Link
-                    href={titleurl || "#"}
+                    href={categoryData.url}
                     className="mb-[20px] flex items-center xxl:mb-[30px]"
                   >
                     <motion.h4
@@ -244,8 +251,8 @@ const ServicesMegaMenu = () => {
                       }, // Slide up and fade in
                     }}
                   >
-                    {Object.entries(services).map(([title, data]) => {
-                      const item = data as ServiceItem;
+                    {categoryData.services.map((item) => {
+                      const title = item.title;
                       const isActive =
                         activeItem[0] === category && activeItem[1] === title;
                       return (
@@ -258,10 +265,7 @@ const ServicesMegaMenu = () => {
                               : "text-white opacity-60 hover:opacity-100"
                           }`}
                         >
-                          <Link
-                            className="cursor-pointer"
-                            href={item.url ?? "#"}
-                          >
+                          <Link className="cursor-pointer" href={item.url}>
                             {title}
                           </Link>
                         </li>
