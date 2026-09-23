@@ -2,6 +2,7 @@ import { unstable_cache } from "next/cache";
 import connectDB from "@/lib/mongodb";
 import Service from "@/app/models/Service";
 import ServicePillar from "@/app/models/ServicePiller";
+import { staticHeaderNavigation } from "@/app/data/header-navigation-static";
 
 export type HeaderNavigationService = {
   id: string;
@@ -22,6 +23,10 @@ export type HeaderNavigationPillar = {
 
 export const getNavServices = unstable_cache(
   async (): Promise<HeaderNavigationPillar[]> => {
+    if (process.env.HEADER_NAV_SOURCE === "static") {
+      return staticHeaderNavigation;
+    }
+
     await connectDB();
 
     const [pillars, serviceDocument] = await Promise.all([
@@ -43,7 +48,7 @@ export const getNavServices = unstable_cache(
       servicesByPillar.set(pillarId, pillarServices);
     }
 
-    return pillars
+    const databaseNavigation = pillars
       .map((pillar) => ({
         id: String(pillar._id),
         title: pillar.name,
@@ -65,8 +70,17 @@ export const getNavServices = unstable_cache(
         ),
       }))
       .sort((firstPillar, secondPillar) => {
-        return secondPillar.services.length-firstPillar.services.length ;
+        return secondPillar.services.length - firstPillar.services.length;
       });
+
+    // const databaseNavigationIsComplete =
+    //   databaseNavigation.length > 0 &&
+    //   databaseNavigation.every((pillar) => pillar.services.length > 0);
+
+    // return databaseNavigationIsComplete
+    //   ? databaseNavigation
+    //   : staticHeaderNavigation;
+    return  staticHeaderNavigation;
   },
   ["header-navigation-services"],
   {
