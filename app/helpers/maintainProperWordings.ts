@@ -83,6 +83,9 @@ const PROPER_NOUNS: Record<string, string> = {
   ios: "iOS",
   "app store": "App Store",
   "google play": "Google Play",
+  woocommerce: "WooCommerce",
+  arabic : "Arabic",
+  english : "English",
 };
 
 // Splits text into segments, alternating between non-anchor text and

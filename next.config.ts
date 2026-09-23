@@ -215,7 +215,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/marketing-strategy-consulting",
-        destination: "/marketing-automation-agency-dubai",
+        destination: "/marketing-strategy-consulting-dubai",
         permanent: true,
       },
       {
