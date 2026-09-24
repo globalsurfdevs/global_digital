@@ -1,10 +1,10 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platformsecom";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 
 import {
   BannerSection,
@@ -15,7 +15,7 @@ import {
   Faq,
   relatedservices,
   Frameworkdata,
-} from "../../components/programmatic-advertising/data";
+} from "../../../components/programmatic-advertising/data";
 
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
 import Testimonials from "@/app/components/HomePage/Testimonials";

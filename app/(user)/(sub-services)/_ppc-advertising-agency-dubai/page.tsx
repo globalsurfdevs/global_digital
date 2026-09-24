@@ -1,31 +1,31 @@
 import React from "react";
 import Head from "next/head";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Framework from "../../components/PermormanceMarketing/Framework";
-import Results from "../../components/PermormanceMarketing/Results";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import Paidsearch from "../../components/PpcAdvertisingAgencyDubai/Paidsearch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Framework from "../../../components/PermormanceMarketing/Framework";
+import Results from "../../../components/PermormanceMarketing/Results";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platformsecom";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import Paidsearch from "../../../components/PpcAdvertisingAgencyDubai/Paidsearch";
 
-import { ResultsData } from "../../data/services/ppc-advertising/results";
-import { BannerSection } from "../../data/services/ppc-advertising/herosection";
-import { OurServices } from "../../data/services/ppc-advertising/our-services";
-import { Frameworkdata } from "../../data/services/ppc-advertising/framework";
-import { relatedservices } from "../../data/services/ppc-advertising/relatedservices";
-import { Paidsearchdata } from "../../data/services/ppc-advertising/Paidsearchdata";
-import { Wecanhelp } from "../../data/services/ppc-advertising/wecanhelp";
-import { Platformsecomdata } from "../../data/services/ppc-advertising/platformsecom";
-import { Cta } from "../../data/services/ppc-advertising/cta";
-import { Faq } from "../../data/services/ppc-advertising/faq";
+import { ResultsData } from "../../../data/services/ppc-advertising/results";
+import { BannerSection } from "../../../data/services/ppc-advertising/herosection";
+import { OurServices } from "../../../data/services/ppc-advertising/our-services";
+import { Frameworkdata } from "../../../data/services/ppc-advertising/framework";
+import { relatedservices } from "../../../data/services/ppc-advertising/relatedservices";
+import { Paidsearchdata } from "../../../data/services/ppc-advertising/Paidsearchdata";
+import { Wecanhelp } from "../../../data/services/ppc-advertising/wecanhelp";
+import { Platformsecomdata } from "../../../data/services/ppc-advertising/platformsecom";
+import { Cta } from "../../../data/services/ppc-advertising/cta";
+import { Faq } from "../../../data/services/ppc-advertising/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
-import { Platformsdata } from "../../data/services/ppc-advertising/platforms";
+import { Platformsdata } from "../../../data/services/ppc-advertising/platforms";
 
-import FaqSchema from "../../components/Schema/FaqSchemad";
+import FaqSchema from "../../../components/Schema/FaqSchemad";
 
 interface Canonicals {
   canonical: string;

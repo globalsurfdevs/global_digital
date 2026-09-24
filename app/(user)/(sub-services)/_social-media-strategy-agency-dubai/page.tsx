@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 
 import {
   BannerSection,
@@ -16,10 +16,10 @@ import {
   relatedservices,
   ResultsData,
   Specializedin,
-} from "../../data/services/social-media-strategy/data";
+} from "../../../data/services/social-media-strategy/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import Results from "../../components/SocialMediaMarketingDubai/Results";
+import Results from "../../../components/SocialMediaMarketingDubai/Results";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PermormanceMarketing/Framework";
 import Testimonials from "@/app/components/HomePage/Testimonials";
