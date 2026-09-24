@@ -1,0 +1,328 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import { assets } from "@/public/assets/assets";
+import menuright from "@/public/assets/menurightarrow.svg";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
+
+type ServiceItem = { text: string; url?: string };
+type ServiceCategory = {
+  titleurl?: string;
+  categoryText?: string;
+  [serviceName: string]: ServiceItem | string | undefined;
+};
+type ServiceData = {
+  [category: string]: ServiceCategory;
+};
+
+export const serviceData: ServiceData = {
+  "Digital Marketing": {
+    titleurl: "/digital-marketing-services-dubai",
+    categoryText:
+      'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
+
+    SEO: {
+      text: 'Rank with Purpose<span class="text-[#E43D30]">.</span><br> Stay with Relevance<span class="text-[#E43D30]">.</span>',
+      url: "/seo-agency-dubai",
+    },
+
+    "AI Search Visibility (GEO)": {
+      text: 'Indexed For Search<span class="text-[#E43D30]">.</span><br> Context For Every AI<span class="text-[#E43D30]">.</span>',
+      url: "/generative-engine-optimization-dubai",
+    },
+
+    "Performance Marketing": {
+      text: 'Built to Scale<span class="text-[#E43D30]">.</span><br> Measured to Win<span class="text-[#E43D30]">.</span>',
+      url: "/performance-marketing-agency-dubai",
+    },
+
+    "Social Media": {
+      text: 'Real Voices<span class="text-[#E43D30]">.</span><br> Real Impact<span class="text-[#E43D30]">.</span>',
+      url: "/social-media-agency-dubai",
+    },
+
+    "Content Marketing": {
+      text: 'Words that Move<span class="text-[#E43D30]">.</span><br> Stories that Stay<span class="text-[#E43D30]">.</span>',
+      url: "/content-marketing-agency-dubai",
+    },
+
+    "Marketing Strategy Consulting": {
+      text: 'Built on Data<span class="text-[#E43D30]">.</span><br>Driven by Strategy<span class="text-[#E43D30]">.</span>',
+      url: "/marketing-strategy-consulting-dubai",
+    },
+  },
+
+  "Web & App Development": {
+    titleurl: "/web-and-app-development-dubai",
+    categoryText:
+      'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
+    "Web Development": {
+      text: 'Solid foundations<span class="text-[#E43D30]">.</span><br> Scalable futures<span class="text-[#E43D30]">.</span>',
+      url: "/web-design-development-agency-dubai",
+    },
+    "Mobile App Development": {
+      text: 'Tap-worthy<span class="text-[#E43D30]">.</span><br> Tech-ready<span class="text-[#E43D30]">.</span>',
+      url: "/mobile-app-development-company-dubai",
+    },
+
+    "Web App Development": {
+      text: 'Complex needs<span class="text-[#E43D30]">.</span><br> Clean solutions<span class="text-[#E43D30]">.</span>',
+      url: "/web-app-development-agency-dubai",
+    },
+
+    "E-Commerce Development": {
+      text: 'Seamless Carts<span class="text-[#E43D30]">.</span><br>Serious Results<span class="text-[#E43D30]">.</span>',
+      url: "/e-commerce-web-development-company-dubai",
+    },
+  },
+
+  "Branding & Content Production": {
+    titleurl: "/branding-content-production-agency-dubai",
+    categoryText:
+      'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',
+    "Copywriting & Messaging": {
+      text: 'Words that Win<span class="text-[#E43D30]">.</span><br>Stories that Stick<span class="text-[#E43D30]">.</span>',
+      url: "/creative-copywriting-agency-dubai",
+    },
+
+    "Photography & Video Production": {
+      text: 'Create Once<span class="text-[#E43D30]">.</span><br>Echo Everywhere<span class="text-[#E43D30]">.</span>',
+      url: "/content-production-agency-dubai",
+    },
+
+    "Branding and Positioning": {
+      text: 'Define your stand<span class="text-[#E43D30]">.</span><br>Design your brand<span class="text-[#E43D30]">.</span>',
+      url: "/branding-and-positioning-agency-dubai",
+    },
+  },
+
+  "AI, Data & Intelligence": {
+    titleurl: "/ai-data-intelligence-agency-dubai",
+    categoryText:
+      'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
+    "Conversion Rate Optimization": {
+      text: 'Optimized Paths<span class="text-[#E43D30]">.</span><br> Maximized Results<span class="text-[#E43D30]">.</span>',
+      url: "/conversion-rate-optimization-agency-dubai",
+    },
+
+    "Data, Analytics & Performance Dashboards": {
+      text: 'Numbers that speak<span class="text-[#E43D30]">.</span><br> Insights that act<span class="text-[#E43D30]">.</span>',
+      url: "/data-analytics-services-dubai",
+    },
+
+    "Marketing Automation & MarTech Consulting": {
+      text: 'Automated to Convert<span class="text-[#E43D30]">.</span><br> Designed to Engage<span class="text-[#E43D30]">.</span>',
+      url: "/marketing-automation-agency-dubai",
+    },
+  },
+};
+
+// The menu now stays mounted (hidden via CSS when closed), so the inner
+// reveal animations are driven by `isOpen` instead of whileInView, and reset
+// to hidden instantly once the panel's 0.2s fade-out has finished — so every
+// open replays them exactly like the old mount-on-hover behaviour.
+const HIDE_AFTER_PANEL_FADE = { delay: 0.2, duration: 0 };
+
+const ServicesMegaMenu = ({
+  navigation,
+  isOpen,
+}: {
+  navigation: HeaderNavigationPillar[];
+  isOpen: boolean;
+}) => {
+  // const defaultCategory = navigation[0]?.title ?? "";
+  const defaultCategory = navigation[0]?.title ?? "";
+
+  const [activeItem, setActiveItem] = useState<[string, string]>([
+    defaultCategory,
+    "",
+  ]);
+
+  // Previously the menu remounted on every open, which reset the highlighted
+  // item; keep that behaviour now that it stays mounted. Wait for the panel's
+  // 0.2s fade-out so the tagline doesn't change while it is still visible.
+  useEffect(() => {
+    if (isOpen) return;
+    const timeoutId = setTimeout(
+      () => setActiveItem([defaultCategory, ""]),
+      200,
+    );
+    return () => clearTimeout(timeoutId);
+  }, [isOpen, defaultCategory]);
+
+  // The closed menu stays in the viewport (visibility: hidden), which Next.js
+  // would treat as visible and prefetch all its routes on every page view.
+  // Only prefetch once the menu is open, like the old mount-on-hover menu.
+  const linkPrefetch = isOpen ? null : false;
+
+  const handleHover = (category: string, title?: string) => {
+    if (title) {
+      setActiveItem([category, title]);
+    } else {
+      setActiveItem([category, ""]);
+    }
+  };
+
+  const getActiveText = () => {
+    const [category, title] = activeItem;
+    const categoryData = navigation.find((item) => item.title === category);
+    const item = categoryData?.services.find(
+      (service) => service.title === title,
+    );
+
+    if (!item?.text && categoryData?.categoryText) {
+      return categoryData.categoryText;
+    }
+
+    return item?.text ?? "";
+  };
+
+  return (
+    <div className="group relative inline-block">
+      {/* Mega Menu Dropdown */}
+      <div className="absolute left-0 right-0 z-50 h-full  w-screen xxl:h-[699px] ">
+        <div className="mx-auto flex w-full items-center justify-between bg-black px-8 py-[30px] text-white lg:pl-[50px] xxl:pb-[130px] xxl:pl-[150px] xxl:pt-[80px]">
+          {/* Header Section */}
+          <div className="w-1/3">
+            <motion.h2
+              initial="hidden"
+              animate={isOpen ? "visible" : "hidden"}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 50,
+                  transition: HIDE_AFTER_PANEL_FADE,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
+              className="mb-4 capitalize lg:text-[35px] lg:leading-[50px] xxl:text-[48px] xxl:leading-[60px] "
+              dangerouslySetInnerHTML={{
+                __html: getActiveText(),
+              }}
+            />
+          </div>
+          {/* Services Grid */}
+          <div className="grid w-full grid-cols-3 gap-6 pl-[130px] xxl:gap-10">
+            {navigation.map((categoryData) => {
+              const category = categoryData.title;
+              return (
+                <div key={category} className="group w-full">
+                  <Link
+                    href={categoryData.url}
+                    prefetch={linkPrefetch}
+                    className="mb-[20px] flex items-center xxl:mb-[30px]"
+                  >
+                    <motion.h4
+                      initial="hidden"
+                      animate={isOpen ? "visible" : "hidden"}
+                      variants={{
+                        hidden: {
+                          opacity: 0,
+                          y: 50,
+                          transition: HIDE_AFTER_PANEL_FADE,
+                        },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1, ease: "easeOut" },
+                        },
+                      }}
+                      onMouseEnter={() => handleHover(category)}
+                      className={`pr-[16px] text-[15px] font-[400] uppercase xxl:text-font19 ${
+                        activeItem[0] === category
+                          ? "text-[#E43D30]"
+                          : "text-white"
+                      }`}
+                    >
+                      {category}
+                    </motion.h4>
+
+                    <motion.div
+                      initial="hidden"
+                      animate={isOpen ? "visible" : "hidden"}
+                      variants={{
+                        hidden: {
+                          opacity: 0,
+                          y: 50,
+                          transition: HIDE_AFTER_PANEL_FADE,
+                        },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 1, ease: "easeOut" },
+                        },
+                      }}
+                    >
+                      <Image
+                        src={menuright}
+                        alt="arrow"
+                        className="m-0 p-0"
+                        style={{
+                          filter:
+                            activeItem[0] === category
+                              ? "invert(36%) sepia(92%) saturate(7492%) hue-rotate(349deg) brightness(97%) contrast(97%)"
+                              : "",
+                        }}
+                      />
+                    </motion.div>
+                  </Link>
+
+                  <motion.ul
+                    className="space-y-2"
+                    initial="hidden"
+                    animate={isOpen ? "visible" : "hidden"}
+                    variants={{
+                      hidden: {
+                        opacity: 0,
+                        y: 50,
+                        transition: HIDE_AFTER_PANEL_FADE,
+                      },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 1, ease: "easeOut" },
+                      }, // Slide up and fade in
+                    }}
+                  >
+                    {categoryData.services.map((item) => {
+                      const title = item.title;
+                      const isActive =
+                        activeItem[0] === category && activeItem[1] === title;
+                      return (
+                        <li
+                          key={title}
+                          onMouseEnter={() => handleHover(category, title)}
+                          className={` text-[14px] transition-opacity duration-200 xxl:text-font19 ${
+                            isActive
+                              ? "text-white opacity-100"
+                              : "text-white opacity-60 hover:opacity-100"
+                          }`}
+                        >
+                          <Link
+                            className="cursor-pointer"
+                            href={item.url}
+                            prefetch={linkPrefetch}
+                          >
+                            {title}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </motion.ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ServicesMegaMenu;

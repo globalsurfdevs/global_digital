@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Header from "@/app/components/HomePage/Headerv2";
+import Header from "@/app/components/HomePage/Headerv2-opt";
 import HeaderWithoutMenu from "@/app/components/HomePage/HeaderWithoutMenu";
 import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
 

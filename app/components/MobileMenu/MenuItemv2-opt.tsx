@@ -1,0 +1,126 @@
+import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { assets } from "@/public/assets/assets";
+
+const navmenuSection = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 },
+    },
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 },
+    },
+  },
+};
+
+const dropdownVariants = {
+  hidden: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+  visible: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeIn",
+    },
+  },
+};
+
+export const MenuItem = ({
+  item,
+  Links,
+  children,
+  toggle,
+}: {
+  item: string;
+  Links: string;
+  children?: React.ReactNode;
+  toggle: () => void;
+}) => {
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+
+  const toggleSubmenu = () => {
+    setIsSubmenuOpen(!isSubmenuOpen);
+  };
+
+  return (
+    // Items with a submenu toggle only from their own row (not the whole <li>),
+    // so taps inside the open submenu never collapse it, and use a button
+    // instead of <Link href="#"> which scrolled the page to the top.
+    <motion.li
+      className="relative w-full cursor-pointer flex-col items-center"
+      onClick={children ? undefined : toggle}
+    >
+      <div
+        className="flex w-full items-center justify-between border-b font-bold"
+        onClick={children ? toggleSubmenu : undefined}
+      >
+        {children ? (
+          <button
+            type="button"
+            className="w-full py-4 text-left"
+            aria-expanded={isSubmenuOpen}
+          >
+            {item}
+          </button>
+        ) : (
+          <Link href={Links} className="w-full py-4">
+            {item}
+          </Link>
+        )}
+        {children && (
+          <span className="ml-2">
+            <Image
+              className="dark:block"
+              src={isSubmenuOpen ? assets.up_arrow : assets.down_arrow}
+              alt="Arrow Icon"
+              width={32}
+              height={32}
+              style={{
+                filter:
+                  "invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)",
+              }}
+            />
+          </span>
+        )}
+      </div>
+
+      <AnimatePresence initial={false}>
+        {children && isSubmenuOpen && (
+          <motion.ul
+            className="left-0 top-full w-full overflow-hidden"
+            variants={dropdownVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            {children}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </motion.li>
+  );
+};

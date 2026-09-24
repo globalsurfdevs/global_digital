@@ -1,5 +1,6 @@
 // app/api/sitemap/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import connectDB from "@/lib/mongodb";
 import Sitemap from "@/app/models/Sitemap";
 
@@ -66,6 +67,9 @@ export async function POST(req: NextRequest) {
       { upsert: true, new: true },
     );
 
+    // Publish the new sitemap now instead of waiting for the hourly refresh.
+    revalidatePath("/sitemap.xml");
+
     return NextResponse.json({ message: "Sitemap updated successfully" });
   } catch (error) {
     console.error("Sitemap upload error:", error);
@@ -77,6 +81,8 @@ export async function DELETE() {
   try {
     await connectDB();
     await Sitemap.deleteMany({});
+
+    revalidatePath("/sitemap.xml");
 
     return NextResponse.json({ message: "Sitemap removed successfully" });
   } catch (error) {

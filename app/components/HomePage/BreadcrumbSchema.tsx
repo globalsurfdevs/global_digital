@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Script from "next/script";
 import React from "react";
 
 const BreadcrumbSchema = () => {
@@ -10,7 +9,15 @@ const BreadcrumbSchema = () => {
   // Skip home page + performance marketing page
   const excludedPaths = ["/", "/performance-marketing-agency-dubai"];
 
-  if (excludedPaths.includes(pathname)) return null;
+  // Obsolete /old-service/* copies canonicalise to the real service pages, and
+  // /old-service itself is a 404, so an auto trail there would link to a 404.
+  const excludedPrefixes = ["/old-service/"];
+
+  if (
+    excludedPaths.includes(pathname) ||
+    excludedPrefixes.some((prefix) => pathname.startsWith(prefix))
+  )
+    return null;
 
   const baseUrl = "https://www.globalsurf.ae";
 
@@ -54,13 +61,15 @@ const BreadcrumbSchema = () => {
     itemListElement,
   };
 
+  // Plain <script> so the JSON-LD is in the server-rendered HTML for every
+  // crawler; next/script "afterInteractive" only injected it after hydration.
+  // "<" is escaped so a crafted URL can't close the script tag.
   return (
-    <Script
+    <script
       id="breadcrumb-schema"
       type="application/ld+json"
-      strategy="afterInteractive"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(schemaData),
+        __html: JSON.stringify(schemaData).replace(/</g, "\\u003c"),
       }}
     />
   );
