@@ -43,79 +43,79 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/performance-marketing", // The old URL path
-        destination: "/performance-marketing-agency-dubai", // The new URL path
+        source: "/performance-marketing", 
+        destination: "/performance-marketing-agency-dubai", 
         permanent: true,
       },
       {
-        source: "/seo", // The old URL path
-        destination: "/seo-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/seo", 
+        destination: "/seo-agency-dubai", 
+        permanent: true, 
       },
       {
-        source: "/social-media", // The old URL path
-        destination: "/social-media-marketing-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/social-media", 
+        destination: "/social-media-marketing-agency-dubai", 
+        permanent: true, 
       },
       {
-        source: "/branding-creative", // The old URL path
-        destination: "/creative-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/branding-creative", 
+        destination: "/creative-agency-dubai", 
+        permanent: true, 
       },
       {
-        source: "/marketing-intelligence", // The old URL path
-        destination: "/marketing-intelligence-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/marketing-intelligence", 
+        destination: "/marketing-intelligence-agency-dubai", 
+        permanent: true, 
       },
       {
-        source: "/portfolio/telal", // The old URL path
-        destination: "/portfolio/telal-engineering-&-contracting", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/portfolio/telal", 
+        destination: "/portfolio/telal-engineering-&-contracting", 
+        permanent: true, 
       },
       {
-        source: "/portfolio/icatch", // The old URL path
-        destination: "/portfolio/icatch-graphics", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/portfolio/icatch", 
+        destination: "/portfolio/icatch-graphics", 
+        permanent: true, 
       },
       {
-        source: "/portfolio/qieco", // The old URL path
-        destination: "/portfolio/qiecosmart", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/portfolio/qieco", 
+        destination: "/portfolio/qiecosmart", 
+        permanent: true, 
       },
       // {
-      //   source: "/social-media-marketing-agency-dubai", // The old URL path
-      //   destination: "/social-media-agency-dubai", // The new URL path
-      //   permanent: true, // Set to true for 301 (permanent) redirect
+      //   source: "/social-media-marketing-agency-dubai", 
+      //   destination: "/social-media-agency-dubai", 
+      //   permanent: true, 
       // },
       // {
-      //   source: "/contact-us", // The old URL path
-      //   destination: "/lets-talk", // The new URL path
-      //   permanent: true, // Set to true for 301 (permanent) redirect
+      //   source: "/contact-us", 
+      //   destination: "/lets-talk", 
+      //   permanent: true, 
       // },
       // {
-      //   source: "/web-design-development", // The old URL path
-      //   destination: "/web-design-and-development", // The new URL path
-      //   permanent: true, // Set to true for 301 (permanent) redirect
+      //   source: "/web-design-development", 
+      //   destination: "/web-design-and-development", 
+      //   permanent: true, 
       // },
       {
-        source: "/portfolio/ayka-property-&-facility-management", // The old URL path
-        destination: "/portfolio/ayka-property-and-facility-management", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/portfolio/ayka-property-&-facility-management", 
+        destination: "/portfolio/ayka-property-and-facility-management", 
+        permanent: true, 
       },
       {
-        source: "/portfolio/telal-engineering-&-contracting", // The old URL path
-        destination: "/portfolio", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/portfolio/telal-engineering-&-contracting", 
+        destination: "/portfolio", 
+        permanent: true, 
       },
       {
-        source: "/lets-talk", // The old URL path
-        destination: "/contact-us", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/lets-talk", 
+        destination: "/contact-us", 
+        permanent: true, 
       },
       {
-        source: "/branding", // The old URL path
-        destination: "/branding-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
+        source: "/branding", 
+        destination: "/branding-agency-dubai", 
+        permanent: true, 
       },
 
       // ================================== Industries ==============================================
