@@ -1,20 +1,20 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Framework from "../../components/PermormanceMarketing/Framework";
-import Results from "../../components/SocialMediaMarketingDubai/Results";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Framework from "../../../components/PermormanceMarketing/Framework";
+import Results from "../../../components/SocialMediaMarketingDubai/Results";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
 
-import { ResultsData } from "../../data/services/influencer-marketing/results";
-import { BannerSection } from "../../data/services/influencer-marketing/herosection";
-import { OurServices } from "../../data/services/influencer-marketing/our-services";
-import { Frameworkdata } from "../../data/services/influencer-marketing/framework";
-import { relatedservices } from "../../data/services/influencer-marketing/relatedservices";
-import { Wecanhelp } from "../../data/services/influencer-marketing/wecanhelp";
-import { Platformsdata } from "../../data/services/influencer-marketing/platforms";
-import { Cta } from "../../data/services/influencer-marketing/cta";
-import { Faq } from "../../data/services/influencer-marketing/faq";
+import { ResultsData } from "../../../data/services/influencer-marketing/results";
+import { BannerSection } from "../../../data/services/influencer-marketing/herosection";
+import { OurServices } from "../../../data/services/influencer-marketing/our-services";
+import { Frameworkdata } from "../../../data/services/influencer-marketing/framework";
+import { relatedservices } from "../../../data/services/influencer-marketing/relatedservices";
+import { Wecanhelp } from "../../../data/services/influencer-marketing/wecanhelp";
+import { Platformsdata } from "../../../data/services/influencer-marketing/platforms";
+import { Cta } from "../../../data/services/influencer-marketing/cta";
+import { Faq } from "../../../data/services/influencer-marketing/faq";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import CtaBox from "@/app/components/PermormanceMarketing/CtaBox";
 

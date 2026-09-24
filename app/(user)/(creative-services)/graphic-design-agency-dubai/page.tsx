@@ -1,27 +1,27 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import OurWorks from "../../components/Bc-logo/OurWorks";
-import Typeslogo from "../../components/Bc-logo/TypesLogo";
-import WhyChoose from "../../components/BcGraphicDesign/WhyChoose";
-import OurServices from "../../components/BcGraphicDesign/OurServices";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import OurWorks from "../../../components/Bc-logo/OurWorks";
+import Typeslogo from "../../../components/Bc-logo/TypesLogo";
+import WhyChoose from "../../../components/BcGraphicDesign/WhyChoose";
+import OurServices from "../../../components/BcGraphicDesign/OurServices";
 
 import {
   BannerSection,
   AreaExpertise,
-} from "../../data/services/bc-graphic-design/herosection";
-import { Clientsformsdata } from "../../data/services/bc-logo-design/ourworks";
+} from "../../../data/services/bc-graphic-design/herosection";
+import { Clientsformsdata } from "../../../data/services/bc-logo-design/ourworks";
 import {
   Whychoosedata,
   Platformimgmdata,
-} from "../../data/services/bc-graphic-design/whychoose";
-import { Typelogodata } from "../../data/services/bc-graphic-design/typesdesign";
-import { relatedservices } from "../../data/services/bc-graphic-design/relatedservices";
-import { Wecanhelp } from "../../data/services/bc-graphic-design/wecanhelp";
-import { Cta } from "../../data/services/bc-graphic-design/cta";
-import { Faq } from "../../data/services/bc-graphic-design/faq";
+} from "../../../data/services/bc-graphic-design/whychoose";
+import { Typelogodata } from "../../../data/services/bc-graphic-design/typesdesign";
+import { relatedservices } from "../../../data/services/bc-graphic-design/relatedservices";
+import { Wecanhelp } from "../../../data/services/bc-graphic-design/wecanhelp";
+import { Cta } from "../../../data/services/bc-graphic-design/cta";
+import { Faq } from "../../../data/services/bc-graphic-design/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Expertise from "@/app/components/PermormanceMarketing/Expertise";
