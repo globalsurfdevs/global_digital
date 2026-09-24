@@ -7,7 +7,7 @@ const BreadcrumbSchema = () => {
   const pathname = usePathname();
 
   // Skip home page + performance marketing page
-  const excludedPaths = ["/", "/performance-marketing-agency-dubai"];
+  const excludedPaths = ["/"];
 
   // Obsolete /old-service/* copies canonicalise to the real service pages, and
   // /old-service itself is a 404, so an auto trail there would link to a 404.

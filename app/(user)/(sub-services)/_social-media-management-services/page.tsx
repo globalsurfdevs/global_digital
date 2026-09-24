@@ -1,21 +1,21 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Framework from "../../components/PermormanceMarketing/Framework";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
-import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import CtaBox from "../../components/PermormanceMarketing/CtaBox";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import Framework from "../../../components/PermormanceMarketing/Framework";
+import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platformsecom";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import CtaBox from "../../../components/PermormanceMarketing/CtaBox";
 
-import { BannerSection } from "../../data/services/social-media-management/herosection";
-import { OurServices } from "../../data/services/social-media-management/our-services";
-import { Frameworkdata } from "../../data/services/social-media-management/framework";
-import { relatedservices } from "../../data/services/social-media-management/relatedservices";
-import { Wecanhelp } from "../../data/services/social-media-management/wecanhelp";
-import { Platformsdata } from "../../data/services/social-media-management/platforms";
-import { Platformsecomdata } from "../../data/services/social-media-management/platformsecom";
-import { Cta } from "../../data/services/social-media-management/cta";
-import { Faq } from "../../data/services/social-media-management/faq";
+import { BannerSection } from "../../../data/services/social-media-management/herosection";
+import { OurServices } from "../../../data/services/social-media-management/our-services";
+import { Frameworkdata } from "../../../data/services/social-media-management/framework";
+import { relatedservices } from "../../../data/services/social-media-management/relatedservices";
+import { Wecanhelp } from "../../../data/services/social-media-management/wecanhelp";
+import { Platformsdata } from "../../../data/services/social-media-management/platforms";
+import { Platformsecomdata } from "../../../data/services/social-media-management/platformsecom";
+import { Cta } from "../../../data/services/social-media-management/cta";
+import { Faq } from "../../../data/services/social-media-management/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
