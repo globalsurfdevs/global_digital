@@ -1,4 +1,3 @@
-import styles from "../css/campaign.module.css";
 import Reveal from "./Reveal";
 
 const chips = [
@@ -52,20 +51,24 @@ const chips = [
 export default function WhoForChips() {
   return (
     <section>
-      <div className={styles.wrap}>
+      <div className="mx-auto w-full max-w-[1100px] px-8">
         <Reveal as="h2" delay={1}>
           This is for you if…
         </Reveal>
-        <div className={styles.whoFor}>
+        <div className="mt-10 grid grid-cols-1 gap-[18px] min-[821px]:grid-cols-3">
           {chips.map((chip) => (
             <Reveal
               as="div"
               delay={chip.delay}
-              className={styles.chip}
+              className="flex flex-col items-start gap-4 rounded-2xl border border-black/10 bg-white p-[26px_24px] shadow-[0_10px_30px_-22px_rgba(0,0,0,0.35)] transition duration-200 hover:-translate-y-1 hover:border-[#E63E31] hover:shadow-[0_20px_44px_-24px_rgba(230,62,49,0.5)]"
               key={chip.text}
             >
-              <span className={styles.ci}>{chip.icon}</span>
-              <span className={styles.tx}>{chip.text}</span>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[11px] bg-[#E63E31] [&_svg]:h-[21px] [&_svg]:w-[21px] [&_svg]:fill-none [&_svg]:stroke-white">
+                {chip.icon}
+              </span>
+              <span className="text-base leading-[1.5] text-[#2b2b2f]">
+                {chip.text}
+              </span>
             </Reveal>
           ))}
         </div>

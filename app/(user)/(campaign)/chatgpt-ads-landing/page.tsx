@@ -3,8 +3,6 @@ import { Space_Grotesk } from 'next/font/google';
 import ChatGptAdsCampaign from '@/app/components/gpt-campaign/ChatGptAdsCampaign';
 // import { faqItems } from '@/app/components/gpt-campaign/faqData';
 
-// next/font self-hosts and inlines the font — no render-blocking
-// fonts.googleapis.com <link> tags, better CLS/LCP than the original <head>.
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -12,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-const PAGE_URL = 'https://www.globalsurf.ae/chatgpt-ads'; // update to the real published path
+const PAGE_URL = 'https://www.globalsurf.ae/chatgpt-ads'; 
 
 export const metadata: Metadata = {
   title: 'ChatGPT Ads for Your Business | GS Digital',
@@ -49,13 +47,13 @@ export default function ChatGptAdsPage() {
   };
 
   return (
-    <div className={spaceGrotesk.variable}>
-      <script
-        type="application/ld+json"
+    // <div className={spaceGrotesk.variable}>
+    //   <script
+    //     type="application/ld+json"
    
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+    //     dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+    //   />
       <ChatGptAdsCampaign />
-    </div>
+    // </div>
   );
 }

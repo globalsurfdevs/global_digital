@@ -1,4 +1,3 @@
-import styles from "../css/campaign.module.css";
 import Topbar from "./Topbar";
 import Hero from "./Hero";
 import IntroSplit from "./IntroSplit";
@@ -20,9 +19,9 @@ import SmoothAnchorScroll from "./SmoothAnchorScroll";
  */
 export default function ChatGptAdsCampaign() {
   return (
-    <div className={styles.root}>
+    <div className="isolate overflow-x-hidden bg-white font-sans text-base leading-[1.6] text-[#0a0a0a] antialiased [&_h2]:max-w-[20ch] [&_h2]:text-[clamp(28px,4vw,44px)] [&_h2]:font-medium [&_h2]:leading-[1.08] [&_h2]:tracking-[-0.025em] [&_section]:relative [&_section]:py-[104px] max-[640px]:[&_section]:py-[72px] [&_strong]:font-semibold">
       <SmoothAnchorScroll />
-      <Topbar />
+      {/* <Topbar /> */}
       <Hero />
       <IntroSplit />
       <WhyItMatters />

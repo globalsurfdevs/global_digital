@@ -1,4 +1,3 @@
-import styles from "../css/campaign.module.css";
 import Reveal from "./Reveal";
 
 const cards = [
@@ -51,27 +50,35 @@ const cards = [
 
 export default function WalkAwayCards() {
   return (
-    <section className={styles.secCream}>
-      <div className={styles.wrap}>
+    <section className="bg-[#f6f3ec]">
+      <div className="mx-auto w-full max-w-[1100px] px-8">
         <Reveal as="h2" delay={1}>
           Book a call, and here&apos;s what you&apos;ll{" "}
-          <span className={styles.accent}>walk away with.</span>
+          <span className="text-[#E63E31]">walk away with.</span>
         </Reveal>
-        <div className={styles.cards}>
+        <div className="mt-11 grid grid-cols-1 gap-5 min-[821px]:grid-cols-3">
           {cards.map((card, i) => (
             <Reveal
               as="div"
               delay={(i + 1) as 1 | 2 | 3}
-              className={styles.card}
+              className="relative overflow-hidden rounded-[18px] border border-black/10 bg-[#fcfaf6] p-[34px_28px_30px] transition duration-300 hover:-translate-y-1.5 hover:border-[#E63E31]/40 hover:shadow-[0_24px_50px_-20px_rgba(0,0,0,0.18)]"
               key={card.title}
             >
-              <span className={styles.cnum}>{card.icon}</span>
-              <h3>{card.title}</h3>
-              <p>{card.body}</p>
+              <span className="mb-[22px] inline-flex h-[46px] w-[46px] items-center justify-center rounded-xl border border-black/10 bg-white [&_svg]:h-[23px] [&_svg]:w-[23px] [&_svg]:fill-none [&_svg]:stroke-[#0a0a0a]">
+                {card.icon}
+              </span>
+              <h3 className="mb-2 text-[18.5px] font-semibold">{card.title}</h3>
+              <p className="text-[14.5px] leading-[1.55] text-[#77787B]">
+                {card.body}
+              </p>
             </Reveal>
           ))}
         </div>
-        <Reveal as="p" delay={0} className={`${styles.note} ${styles.noteRed}`}>
+        <Reveal
+          as="p"
+          delay={0}
+          className="mt-[26px] max-w-[60ch] text-[15px] italic text-[#E63E31]"
+        >
           No commitment, no hard sell. If it&apos;s not right for you,
           we&apos;ll say so, and you&apos;ll still leave with something useful.
         </Reveal>

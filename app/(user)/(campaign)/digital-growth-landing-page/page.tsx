@@ -1,9 +1,9 @@
 import React from "react";
 // import Script from "next/script";
-import HeroSection from "../../components/EngineeringInfrastructure/HeroSection";
-import FeatureStrip from "../../components/DigitalGrowth/Sections/Featurestrip";
-import LogoSlider from "../../components/DigitalGrowth/Sections/LogoSlider";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
+import HeroSection from "../../../components/EngineeringInfrastructure/HeroSection";
+import FeatureStrip from "../../../components/DigitalGrowth/Sections/Featurestrip";
+import LogoSlider from "../../../components/DigitalGrowth/Sections/LogoSlider";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
 import WhatWeHear from "@/app/components/DigitalGrowth/Sections/WhatWeHear";
 import Whattheyfind from "@/app/components/DigitalGrowth/Sections/Whattheyfind";
 import IndustriesSec from "@/app/components/DigitalGrowth/Sections/IndustriesSec";
@@ -13,7 +13,7 @@ import ExecutionRoadmap from "@/app/components/DigitalGrowth/Sections/ExecutionR
 import FullFunnelChannels from "@/app/components/DigitalGrowth/Sections/Fullfunnelchannels";
 import CheckItem from "@/app/components/DigitalGrowth/Sections/CheckItem";
 import Testimonials from "@/app/components/DigitalGrowth/Sections/Testimonials";
-import { Faq } from "../../data/services/performance-marketing/faq";
+import { Faq } from "../../../data/services/performance-marketing/faq";
 import { Metadata } from "next";
 import { serviceData } from "@/app/components/DigitalGrowth/data";
 import PricingComparison from "@/app/components/DigitalGrowth/Sections/PricingComparison";
@@ -120,7 +120,7 @@ const page = async ({ params }: PageProps) => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className="fixed bottom-7 right-7 z-[9999] flex  items-center justify-center rounded-full  shadow-lg bg-white transition-transform duration-300 hover:scale-110"
+        className="fixed bottom-7 right-7 z-[9999] flex  items-center justify-center rounded-full  bg-white shadow-lg transition-transform duration-300 hover:scale-110"
       >
         <img
           src="/assets/images/branding-positioning/whatsapp-icon.svg"

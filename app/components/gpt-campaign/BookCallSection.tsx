@@ -1,20 +1,25 @@
-import styles from "../css/campaign.module.css";
 import Reveal from "./Reveal";
 import BookCallPanel from "./BookCallPanel";
 
 export default function BookCallSection() {
   return (
-    <section className={styles.secDark} id="book">
-      <div className={styles.wrap}>
-        <Reveal as="div" className={styles.bookPanel}>
-          <div className={styles.bookLeft}>
-            <h2>
+    <section
+      className="relative overflow-hidden bg-[#0a0a0a] text-white"
+      id="book"
+    >
+      <div className="relative z-[1] mx-auto w-full max-w-[1100px] px-8">
+        <Reveal
+          as="div"
+          className="grid overflow-hidden rounded-3xl border border-white/[0.14] bg-white/[0.04] shadow-[0_40px_90px_-40px_rgba(0,0,0,0.6)] min-[821px]:grid-cols-[0.9fr_1.1fr]"
+        >
+          <div className="relative flex flex-col justify-center p-[48px_44px] max-[520px]:p-[38px_28px]">
+            <h2 className="relative z-[1] mb-[30px] max-w-[16ch] text-[clamp(28px,4vw,44px)] font-medium leading-[1.08] tracking-[-0.025em]">
               Book a call and find out if this channel is{" "}
-              <span className={styles.accent}>worth your while.</span>
+              <span className="text-[#E63E31]">worth your while.</span>
             </h2>
-            <ul className={styles.bookPoints}>
-              <li>
-                <span className={styles.bpIc}>
+            <ul className="relative z-[1] grid list-none gap-4">
+              <li className="flex items-center gap-[13px] text-[15.5px] text-white/[0.82]">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-[#E63E31]/[0.16] [&_svg]:h-4 [&_svg]:w-4 [&_svg]:fill-none [&_svg]:stroke-[#E63E31]">
                   <svg
                     viewBox="0 0 24 24"
                     strokeWidth={1.7}
@@ -27,8 +32,8 @@ export default function BookCallSection() {
                 </span>
                 <span>Thirty minutes, no pressure.</span>
               </li>
-              <li>
-                <span className={styles.bpIc}>
+              <li className="flex items-center gap-[13px] text-[15.5px] text-white/[0.82]">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-[#E63E31]/[0.16] [&_svg]:h-4 [&_svg]:w-4 [&_svg]:fill-none [&_svg]:stroke-[#E63E31]">
                   <svg
                     viewBox="0 0 24 24"
                     strokeWidth={1.7}
@@ -40,8 +45,8 @@ export default function BookCallSection() {
                 </span>
                 <span>A clear read on whether it fits your business.</span>
               </li>
-              <li>
-                <span className={styles.bpIc}>
+              <li className="flex items-center gap-[13px] text-[15.5px] text-white/[0.82]">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-[#E63E31]/[0.16] [&_svg]:h-4 [&_svg]:w-4 [&_svg]:fill-none [&_svg]:stroke-[#E63E31]">
                   <svg
                     viewBox="0 0 24 24"
                     strokeWidth={1.7}

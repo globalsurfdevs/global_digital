@@ -7,7 +7,6 @@ import {
   type ElementType,
   type ReactNode,
 } from "react";
-import styles from "../css/campaign.module.css";
 
 type RevealProps = {
   /** Host element to render — defaults to 'div', use 'li' inside lists, 'h2' for headings, etc. */
@@ -51,10 +50,17 @@ export default function Reveal({
     return () => observer.disconnect();
   }, [node]);
 
-  const delayClass = delay ? styles[`d${delay}`] : "";
+  const delayClass =
+    delay === 1
+      ? "delay-[50ms]"
+      : delay === 2
+        ? "delay-[100ms]"
+        : delay === 3
+          ? "delay-[150ms]"
+          : "";
   const classes = [
-    styles.reveal,
-    visible ? styles.in : "",
+    "transform-gpu transition-[opacity,transform] duration-[600ms] ease-[cubic-bezier(.2,.7,.2,1)]",
+    visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
     delayClass,
     className,
   ]

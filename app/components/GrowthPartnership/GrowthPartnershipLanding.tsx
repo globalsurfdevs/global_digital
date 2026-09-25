@@ -50,6 +50,14 @@ import "react-day-picker/style.css";
 import { ChevronDown } from "lucide-react";
 import { createPortal } from "react-dom";
 import { scrollToContact } from "../HomePage/HeaderWithoutMenu";
+import {
+  addCampaignToFormData,
+  CAMPAIGN_IDS,
+  CAMPAIGN_TIME_SLOTS,
+  validateBookingField,
+  validateBookingForm,
+  type BookingErrors,
+} from "../campaign/booking";
 /* ============================================================
    Shared design tokens (Tailwind arbitrary values reference these)
    red        #E63E31   red-dk   #C9332A
@@ -516,22 +524,22 @@ function Hero() {
               UAE companies that build, make, supply and develop.
             </p>
 
-            <div className="mt-4 md:mt-8 flex flex-wrap items-center gap-6">
+            <div className="mt-4 flex flex-wrap items-center gap-6 md:mt-8">
               <Btn onClick={scrollToContact}>Get Started</Btn>
             </div>
-            <div className="mt-5 md:mt-10 flex w-full max-w-[700px] gap-3">
+            <div className="mt-5 flex w-full max-w-[700px] gap-3 md:mt-10">
               {stats.map((stat) => (
-                // bg-white/[0.04] backdrop-blur-sm 
+                // bg-white/[0.04] backdrop-blur-sm
                 <div
                   key={stat.value}
 
-                  className="min-w-0 flex-1 rounded-md border border-white/25 bg-white/[0.04] backdrop-blur-sm px-1 py-2  md:!px-5"
+                  className="min-w-0 flex-1 rounded-md border border-white/25 bg-white/[0.04] px-1 py-2 backdrop-blur-sm  md:!px-5"
                 >
                   <div className="text-xl font-normal leading-none text-[#E63E31] sm:text-2xl lg:text-3xl">
                     {stat.value}
                   </div>
 
-                  <p className="mt-[2px] md:mt-2 break-words text-xs leading-snug text-white/80 sm:text-sm lg:text-base">
+                  <p className="mt-[2px] break-words text-xs leading-snug text-white/80 sm:text-sm md:mt-2 lg:text-base">
                     {stat.description}
                   </p>
                 </div>
@@ -1920,143 +1928,9 @@ const SECTOR_OPTIONS = [
   "Something else",
 ];
 
-const TIME_SLOT_OPTIONS = [
-  "9:00 AM – 9:30 AM",
-  "9:30 AM – 10:00 AM",
-  "10:00 AM – 10:30 AM",
-  "10:30 AM – 11:00 AM",
-  "11:00 AM – 11:30 AM",
-  "11:30 AM – 12:00 PM",
-  "2:00 PM – 2:30 PM",
-  "2:30 PM – 3:00 PM",
-  "3:00 PM – 3:30 PM",
-  "3:30 PM – 4:00 PM",
-  "4:00 PM – 4:30 PM",
-  "4:30 PM – 5:00 PM",
-  "5:00 PM – 5:30 PM",
-];
-
-type FormErrors = Partial<
-  Record<
-    "name" | "company" | "email" | "phone" | "sector" | "date" | "timeSlot",
-    string
-  >
->;
-
-const NAME_REGEX = /^[A-Za-z][A-Za-z\s.'-]{1,49}$/;
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-// Accepts optional leading +, then 7–15 digits, allowing spaces/dashes/parens in between
-const PHONE_REGEX = /^\+?[0-9\s().-]{7,20}$/;
-
-function todayISO(): string {
-  const d = new Date();
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  return `${yyyy}-${mm}-${dd}`;
-}
-
-function validateField(name: string, value: string): string | undefined {
-  const v = value.trim();
-
-  switch (name) {
-    case "name":
-      if (!v) return "Please enter your name.";
-      if (v.length < 2) return "Name looks too short.";
-      if (!NAME_REGEX.test(v)) return "Name can only contain letters.";
-      return undefined;
-
-    case "company":
-      if (!v) return "Please enter your company name.";
-      if (v.length < 2) return "Company name looks too short.";
-      return undefined;
-
-    case "email":
-      if (!v) return "Please enter your work email.";
-      if (!EMAIL_REGEX.test(v)) return "Enter a valid email address.";
-      return undefined;
-
-    case "phone": {
-      if (!v) {
-        return "Please enter your phone number.";
-      }
-
-      // Keep only digits for validation.
-      // This allows:
-      // +971 50 123 4567
-      // +1 (202) 555-0123
-      // +44 20 7946 0958
-      // etc.
-      const digitsOnly = v.replace(/\D/g, "");
-
-      // International phone numbers generally won't need fewer than 7
-      // digits or more than 15 digits.
-      if (digitsOnly.length < 7 || digitsOnly.length > 15) {
-        return "Enter a valid phone number.";
-      }
-
-      // Reject numbers made entirely of zeros.
-      if (/^0+$/.test(digitsOnly)) {
-        return "Enter a valid phone number.";
-      }
-
-      // Reject obvious fake numbers such as:
-      // 1111111111
-      // 2222222222
-      // 9999999999
-      if (/^(\d)\1+$/.test(digitsOnly)) {
-        return "Enter a valid phone number.";
-      }
-
-      // Validate the characters the user is allowed to enter.
-      // Allows digits, spaces, +, -, (, and ).
-      if (!/^[+\d\s().-]+$/.test(v)) {
-        return "Enter a valid phone number.";
-      }
-
-      return undefined;
-    }
-
-    case "sector":
-      if (!v) return "Please select a sector.";
-      return undefined;
-
-    case "date": {
-      if (!v) return "Please pick a date.";
-
-      const picked = new Date(`${v}T00:00:00`);
-
-      if (isNaN(picked.getTime())) {
-        return "Enter a valid date.";
-      }
-
-      // Cannot book today or any past date
-      const tomorrow = new Date();
-      tomorrow.setHours(0, 0, 0, 0);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-
-      if (picked < tomorrow) {
-        return "Please select a date from tomorrow onward.";
-      }
-
-      // Saturday = 6, Sunday = 0
-      const day = picked.getDay();
-
-      if (day === 0 || day === 6) {
-        return "Bookings are not available on Saturdays and Sundays.";
-      }
-
-      return undefined;
-    }
-
-    case "timeSlot":
-      if (!v) return "Please pick a time slot.";
-      return undefined;
-
-    default:
-      return undefined;
-  }
-}
+const TIME_SLOT_OPTIONS = CAMPAIGN_TIME_SLOTS;
+type FormErrors = BookingErrors;
+const validateField = validateBookingField;
 
 function FinalCta() {
   const [note, setNote] = useState("");
@@ -2074,32 +1948,17 @@ function FinalCta() {
     placement: "top" | "bottom";
   } | null>(null);
   const runValidation = (form: HTMLFormElement): FormErrors => {
-    const data = new FormData(form);
-    const fields: (keyof FormErrors)[] = [
-      "name",
-      "company",
-      "email",
-      "phone",
-      "sector",
-      "date",
-      "timeSlot",
-    ];
-    const nextErrors: FormErrors = {};
-
-    for (const field of fields) {
-      const value = (data.get(field) as string) ?? "";
-      const error = validateField(field, value);
-      if (error) nextErrors[field] = error;
-    }
-
-    return nextErrors;
+    return validateBookingForm(new FormData(form));
   };
 
   const handleFieldBlur = (
     e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
-    const error = validateField(name, value);
+    const error = validateBookingField(
+      name as Parameters<typeof validateBookingField>[0],
+      value,
+    );
     setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
@@ -2128,10 +1987,13 @@ function FinalCta() {
     }
 
     setNote("");
-    const formData = new FormData(form);
+    const formData = addCampaignToFormData(
+      new FormData(form),
+      "growthPartnership",
+    );
     formData.set("date", date);
     startTransition(async () => {
-      const result = await submitBooking(formData);
+      const result = await submitBooking(formData,CAMPAIGN_IDS.growthPartnership);
 
       setNote(
         result.message ??
@@ -2278,7 +2140,7 @@ function FinalCta() {
                   onChange={handleFieldChange}
                 />
               </div>
-
+              {/* sectr */}
               <div className="mb-3 mt-3">
                 <label
                   htmlFor="s"
@@ -2289,7 +2151,6 @@ function FinalCta() {
                 <select
                   id="s"
                   name="sector"
-                  required
                   defaultValue=""
                   onBlur={handleFieldBlur}
                   onChange={handleFieldChange}

@@ -4,10 +4,11 @@ import connectDb from "@/lib/mongodb";
 import Lead from "../models/Lead";
 import { getToEmail } from "../helpers/getToEmail";
 import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
+import { CAMPAIGN_IDS } from "../components/campaign/booking";
 // import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
 // import { getToEmail } from "../helpers/getToEmail";
 
-export async function submitBooking(formData: FormData) {
+export async function submitBooking(formData: FormData, campaignName: CAMPAIGN_IDS) {
   try {
     await connectDb();
 
@@ -19,6 +20,7 @@ export async function submitBooking(formData: FormData) {
       sector: formData.get("sector") as string,
       date: formData.get("date") as string,
       timeSlot: formData.get("timeSlot") as string,
+      campaignName:campaignName,
     };
 
     if (
@@ -34,7 +36,8 @@ export async function submitBooking(formData: FormData) {
         message: "Please complete the required fields.",
       };
     }
-
+    // console.log("Booking data:", data);
+    // return ;
     const lead = await Lead.create(data);
 
     // console.log("lead:", lead);
