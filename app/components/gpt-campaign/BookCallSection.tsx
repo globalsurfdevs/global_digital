@@ -4,7 +4,7 @@ import BookCallPanel from "./BookCallPanel";
 export default function BookCallSection() {
   return (
     <section
-      className="relative overflow-hidden bg-[#0a0a0a] text-white"
+      className="relative overflow-hidden bg-black text-white"
       id="book"
     >
       <div className="relative z-[1] mx-auto w-full max-w-[1100px] px-8">

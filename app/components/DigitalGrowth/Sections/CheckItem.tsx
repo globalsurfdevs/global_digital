@@ -659,7 +659,7 @@ const GetInTouch = ({
                 {timeSlotOpen && (
                   <ul
                     role="listbox"
-                    className="absolute left-0 top-full z-10 mt-2 max-h-56 w-full overflow-y-auto rounded-lg border border-white/10 bg-neutral-900 shadow-lg"
+                    className="absolute left-0 top-full z-10 mt-2 max-h-48 w-full max-w-full overflow-y-auto overscroll-contain rounded-lg border border-white/10 bg-neutral-900 shadow-lg"
                   >
                     {timeSlots.map((t) => (
                       <li key={t}>

@@ -136,12 +136,20 @@ export default function BookCallPanel() {
   const [errors, setErrors] = useState<BookingErrors>({});
   const [isPending, startTransition] = useTransition();
   const [date, setDate] = useState("");
+  const [timeSlot, setTimeSlot] = useState("");
+  const [timeSlotOpen, setTimeSlotOpen] = useState(false);
   const [datePickerOpen, setDatePickerOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const timeSlotTriggerRef = useRef<HTMLButtonElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState<{ top: number; left: number } | null>(
     null,
   );
+  const [timeSlotCoords, setTimeSlotCoords] = useState<{
+    top: number;
+    left: number;
+    width: number;
+  } | null>(null);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -161,7 +169,7 @@ export default function BookCallPanel() {
 
       if (result.success) {
         setSubmitted(true);
-         window.location.replace("/growth-thank-you");
+        window.location.replace("/chatgpt-ads-thank-you");
         return;
       }
 
@@ -227,6 +235,28 @@ export default function BookCallPanel() {
       window.removeEventListener("scroll", updatePlacement, true);
     };
   }, [datePickerOpen]);
+
+  useLayoutEffect(() => {
+    if (!timeSlotOpen || !timeSlotTriggerRef.current) return;
+
+    const updateTimeSlotPosition = () => {
+      const rect = timeSlotTriggerRef.current!.getBoundingClientRect();
+      setTimeSlotCoords({
+        top: rect.bottom + 8,
+        left: rect.left,
+        width: rect.width,
+      });
+    };
+
+    updateTimeSlotPosition();
+    window.addEventListener("resize", updateTimeSlotPosition);
+    window.addEventListener("scroll", updateTimeSlotPosition, true);
+
+    return () => {
+      window.removeEventListener("resize", updateTimeSlotPosition);
+      window.removeEventListener("scroll", updateTimeSlotPosition, true);
+    };
+  }, [timeSlotOpen]);
 
   return (
     <div className="bg-white p-[40px_40px_36px] max-[520px]:p-[32px_26px]">
@@ -479,7 +509,8 @@ export default function BookCallPanel() {
             </div>
 
             {/* Time Slot */}
-            <div>
+            <div className="relative">
+              <input type="hidden" name="timeSlot" value={timeSlot} />
               <label
                 htmlFor="ts"
                 className="mb-2 block text-[13.5px] font-medium text-[#0a0a0a]"
@@ -487,35 +518,65 @@ export default function BookCallPanel() {
                 Time slot <span className="text-[#E63E31]">*</span>
               </label>
 
-              <select
+              <button
                 id="ts"
-                name="timeSlot"
-                required
-                defaultValue=""
-                onBlur={handleFieldBlur}
-                onChange={handleFieldChange}
-                className={`!h-[50px] !w-full appearance-none rounded-[11px] border bg-[#f6f3ec] !px-[15px] text-[15px] text-[#0a0a0a] outline-none transition-colors duration-150 ${
+                ref={timeSlotTriggerRef}
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={timeSlotOpen}
+                onClick={() => setTimeSlotOpen((open) => !open)}
+                className={`flex !h-[50px] !w-full items-center justify-between rounded-[11px] border bg-[#f6f3ec] !px-[15px] text-left text-[15px] text-[#0a0a0a] outline-none transition-colors duration-150 ${
                   errors.timeSlot
                     ? "border-[#E63E31]"
                     : "border-[rgba(10,10,10,0.1)] hover:border-[rgba(10,10,10,0.2)] focus:border-[#E63E31]"
                 }`}
-                style={{
-                  backgroundImage:
-                    "linear-gradient(45deg,transparent 50%,#77787b 50%),linear-gradient(135deg,#77787b 50%,transparent 50%)",
-                  backgroundPosition:
-                    "calc(100% - 19px) 50%, calc(100% - 14px) 50%",
-                  backgroundSize: "5px 5px, 5px 5px",
-                  backgroundRepeat: "no-repeat",
-                }}
               >
-                <option value="">Select one</option>
-
-                {TIME_SLOT_OPTIONS.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </select>
+                <span
+                  className={timeSlot ? "text-[#0a0a0a]" : "text-[#77787b]"}
+                >
+                  {timeSlot || "Select one"}
+                </span>
+                <ChevronDown
+                  size={18}
+                  className={`shrink-0 text-[#77787b] transition-transform ${timeSlotOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {timeSlotOpen &&
+                timeSlotCoords &&
+                createPortal(
+                  <ul
+                    role="listbox"
+                    style={{
+                      position: "fixed",
+                      top: timeSlotCoords.top,
+                      left: timeSlotCoords.left,
+                      width: timeSlotCoords.width,
+                    }}
+                    className="z-[9999] max-h-48 overflow-y-auto rounded-lg border border-black/10 bg-white p-1 shadow-xl"
+                  >
+                    {TIME_SLOT_OPTIONS.map((option) => (
+                      <li key={option}>
+                        <button
+                          type="button"
+                          role="option"
+                          aria-selected={timeSlot === option}
+                          onClick={() => {
+                            setTimeSlot(option);
+                            setTimeSlotOpen(false);
+                            setErrors((previous) => ({
+                              ...previous,
+                              timeSlot: undefined,
+                            }));
+                          }}
+                          className="w-full rounded-md px-3 py-2 text-left text-sm text-[#0a0a0a] hover:bg-[#f6f3ec]"
+                        >
+                          {option}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>,
+                  document.body,
+                )}
 
               {errors.timeSlot && (
                 <p className="mt-1.5 text-[11px] text-[#E63E31]">
@@ -529,7 +590,13 @@ export default function BookCallPanel() {
             type="submit"
             disabled={isPending}
           >
-            Book my call
+            {!isPending && "Book my call"}
+            {isPending && (
+              <span className="flex items-center gap-2">
+                <span className="animate-spin">↻</span>
+                Booking...
+              </span>
+            )}
             {/* <svg
               viewBox="0 0 24 24"
               fill="none"

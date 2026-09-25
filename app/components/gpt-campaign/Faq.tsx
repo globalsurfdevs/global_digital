@@ -59,7 +59,7 @@ export default function Faq() {
         <Reveal
           as="h2"
           delay={1}
-          className="max-w-[20ch] text-[clamp(28px,4vw,44px)] font-medium leading-[1.08] tracking-[-0.025em]"
+          className="max-w-[20ch] text-[clamp(28px,4vw,44px)] font-medium leading-[1.08] tracking-[-0.025em] mb-10"
         >
           Questions you might <span className="text-[#E63E31]">be asking.</span>
         </Reveal>

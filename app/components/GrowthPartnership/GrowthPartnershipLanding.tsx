@@ -1938,6 +1938,8 @@ function FinalCta() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
   const [date, setDate] = useState("");
+  const [timeSlot, setTimeSlot] = useState("");
+  const [timeSlotOpen, setTimeSlotOpen] = useState(false);
   const [datePickerOpen, setDatePickerOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -1992,6 +1994,7 @@ function FinalCta() {
       "growthPartnership",
     );
     formData.set("date", date);
+    formData.set("timeSlot", timeSlot);
     startTransition(async () => {
       const result = await submitBooking(
         formData,
@@ -2263,38 +2266,61 @@ function FinalCta() {
                     </p>
                   )}
                 </div>
-                <div>
+                <div className="relative">
                   <label
                     htmlFor="ts"
                     className="mb-2 block text-[9.5px] font-medium uppercase tracking-[0.12em] text-white/[0.42]"
                   >
                     Time slot <span className="text-[#E63E31]">*</span>
                   </label>
-                  <select
+                  <input type="hidden" name="timeSlot" value={timeSlot} />
+                  <button
                     id="ts"
-                    name="timeSlot"
-                    required
-                    defaultValue=""
-                    onBlur={handleFieldBlur}
-                    onChange={handleFieldChange}
-                    className={`w-full appearance-none rounded-[10px] border bg-black/40 bg-[right_19px_center] bg-no-repeat px-4 py-3.5 text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
+                    type="button"
+                    aria-haspopup="listbox"
+                    aria-expanded={timeSlotOpen}
+                    onClick={() => setTimeSlotOpen((open) => !open)}
+                    className={`flex w-full items-center justify-between rounded-[10px] border bg-black/40 px-4 py-3.5 text-left text-base text-white outline-none transition-colors duration-200 focus:bg-black/[0.62] ${
                       errors.timeSlot
                         ? "border-[#E63E31]"
                         : "border-white/[0.13] focus:border-[#E63E31]"
                     }`}
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(45deg,transparent 50%,rgba(255,255,255,.4) 50%),linear-gradient(135deg,rgba(255,255,255,.4) 50%,transparent 50%)",
-                      backgroundPosition:
-                        "calc(100% - 19px) 50%, calc(100% - 14px) 50%",
-                      backgroundSize: "5px 5px, 5px 5px",
-                    }}
                   >
-                    <option value="">Select one</option>
-                    {TIME_SLOT_OPTIONS.map((opt) => (
-                      <option key={opt}>{opt}</option>
-                    ))}
-                  </select>
+                    <span className={timeSlot ? "text-white" : "text-white/40"}>
+                      {timeSlot || "Select one"}
+                    </span>
+                    <ChevronDown
+                      size={18}
+                      className={`shrink-0 text-white/60 transition-transform ${timeSlotOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {timeSlotOpen && (
+                    <ul
+                      role="listbox"
+                      className="absolute left-0 top-full z-20 mt-2 max-h-48 w-full overflow-y-auto rounded-lg border border-white/10 bg-neutral-900 p-1 shadow-xl"
+                    >
+                      {TIME_SLOT_OPTIONS.map((option) => (
+                        <li key={option}>
+                          <button
+                            type="button"
+                            role="option"
+                            aria-selected={timeSlot === option}
+                            onClick={() => {
+                              setTimeSlot(option);
+                              setTimeSlotOpen(false);
+                              setErrors((previous) => ({
+                                ...previous,
+                                timeSlot: undefined,
+                              }));
+                            }}
+                            className="w-full rounded-md px-3 py-2 text-left text-sm text-white/80 hover:bg-white/10"
+                          >
+                            {option}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   {errors.timeSlot && (
                     <p className="mt-1.5 text-[11px] text-[#E63E31]">
                       {errors.timeSlot}
