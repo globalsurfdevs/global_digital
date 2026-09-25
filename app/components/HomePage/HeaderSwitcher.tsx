@@ -12,7 +12,7 @@ export default function HeaderSwitcher({
 }) {
   const pathname = usePathname();
 
-  const noMenuRoutes = ["/digital-growth-landing-page", "/growth-partnership"];
+  const noMenuRoutes = ["/digital-growth-landing-page", "/growth-partnership","/gs-chatgpt"];
 
   const useMinimalHeader = noMenuRoutes.some(
     (route) => pathname === route || pathname.startsWith(`${route}/`),
