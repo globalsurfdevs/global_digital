@@ -161,6 +161,7 @@ export default function BookCallPanel() {
 
       if (result.success) {
         setSubmitted(true);
+         window.location.replace("/growth-thank-you");
         return;
       }
 

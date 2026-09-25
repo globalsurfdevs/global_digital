@@ -279,7 +279,7 @@ const GetInTouch = ({
   const [placement, setPlacement] = useState<"bottom" | "top">("bottom");
 
   const runValidation = (form: HTMLFormElement): FormErrors => {
-    return validateBookingForm(new FormData(form));
+    return validateBookingForm(new FormData(form), { sectorRequired: true });
   };
 
   const handleFieldBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -330,17 +330,14 @@ const GetInTouch = ({
     }
 
     setNote("");
-    const formData = addCampaignToFormData(
-      new FormData(form),
-      "digitalGrowth",
-    );
+    const formData = addCampaignToFormData(new FormData(form), "digitalGrowth");
     // sector and timeSlot aren't native inputs, so append them manually
     formData.set("sector", sector);
     formData.set("timeSlot", timeSlot);
     formData.set("date", date);
 
     startTransition(async () => {
-      const result = await submitBooking(formData,CAMPAIGN_IDS.digitalGrowth);
+      const result = await submitBooking(formData, CAMPAIGN_IDS.digitalGrowth);
 
       setNote(
         result.message ??

@@ -1948,7 +1948,7 @@ function FinalCta() {
     placement: "top" | "bottom";
   } | null>(null);
   const runValidation = (form: HTMLFormElement): FormErrors => {
-    return validateBookingForm(new FormData(form));
+    return validateBookingForm(new FormData(form), { sectorRequired: true });
   };
 
   const handleFieldBlur = (
@@ -1993,7 +1993,10 @@ function FinalCta() {
     );
     formData.set("date", date);
     startTransition(async () => {
-      const result = await submitBooking(formData,CAMPAIGN_IDS.growthPartnership);
+      const result = await submitBooking(
+        formData,
+        CAMPAIGN_IDS.growthPartnership,
+      );
 
       setNote(
         result.message ??

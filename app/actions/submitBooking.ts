@@ -8,9 +8,16 @@ import { CAMPAIGN_IDS } from "../components/campaign/booking";
 // import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
 // import { getToEmail } from "../helpers/getToEmail";
 
-export async function submitBooking(formData: FormData, campaignName: CAMPAIGN_IDS) {
+export async function submitBooking(
+  formData: FormData,
+  campaignName: CAMPAIGN_IDS,
+) {
   try {
     await connectDb();
+
+    const requiresSector =
+      campaignName === CAMPAIGN_IDS.growthPartnership ||
+      campaignName === CAMPAIGN_IDS.digitalGrowth;
 
     const data = {
       name: formData.get("name") as string,
@@ -20,14 +27,14 @@ export async function submitBooking(formData: FormData, campaignName: CAMPAIGN_I
       sector: formData.get("sector") as string,
       date: formData.get("date") as string,
       timeSlot: formData.get("timeSlot") as string,
-      campaignName:campaignName,
+      campaignName: campaignName,
     };
 
     if (
       !data.name ||
       !data.company ||
       !data.email ||
-      !data.sector ||
+      (requiresSector && !data.sector) ||
       !data.date ||
       !data.timeSlot
     ) {
@@ -37,7 +44,7 @@ export async function submitBooking(formData: FormData, campaignName: CAMPAIGN_I
       };
     }
     // console.log("Booking data:", data);
-    // return ;
+    // return;
     const lead = await Lead.create(data);
 
     // console.log("lead:", lead);
