@@ -188,7 +188,7 @@ const AdminLeads = () => {
                       onChange={toggleSelectAll}
                     />
                   </th>
-                   <th scope="col" className="px-4 py-3">
+                  <th scope="col" className="px-4 py-3">
                     Campaign Name
                   </th>
                   <th scope="col" className="px-4 py-3">
