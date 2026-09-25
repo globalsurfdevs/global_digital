@@ -4,6 +4,11 @@ import { useRef, useState, useTransition, useLayoutEffect } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { moveUp } from "../../animations/motionVariants";
 import { submitBooking } from "@/app/actions/submitBooking";
+import {
+  addCampaignToFormData,
+  CAMPAIGN_IDS,
+  validateBookingForm,
+} from "@/app/components/campaign/booking";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 
@@ -128,7 +133,6 @@ function validateField(name: string, value: string): string | undefined {
     }
 
     case "sector":
-      if (!v) return "Please select a sector.";
       return undefined;
 
     case "date": {
@@ -275,25 +279,7 @@ const GetInTouch = ({
   const [placement, setPlacement] = useState<"bottom" | "top">("bottom");
 
   const runValidation = (form: HTMLFormElement): FormErrors => {
-    const data = new FormData(form);
-    const fields: (keyof FormErrors)[] = [
-      "name",
-      "company",
-      "email",
-      "phone",
-      "sector",
-      "date",
-      "timeSlot",
-    ];
-    const nextErrors: FormErrors = {};
-
-    for (const field of fields) {
-      const value = (data.get(field) as string) ?? "";
-      const error = validateField(field, value);
-      if (error) nextErrors[field] = error;
-    }
-
-    return nextErrors;
+    return validateBookingForm(new FormData(form), { sectorRequired: true });
   };
 
   const handleFieldBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -344,14 +330,14 @@ const GetInTouch = ({
     }
 
     setNote("");
-    const formData = new FormData(form);
+    const formData = addCampaignToFormData(new FormData(form), "digitalGrowth");
     // sector and timeSlot aren't native inputs, so append them manually
     formData.set("sector", sector);
     formData.set("timeSlot", timeSlot);
     formData.set("date", date);
 
     startTransition(async () => {
-      const result = await submitBooking(formData);
+      const result = await submitBooking(formData, CAMPAIGN_IDS.digitalGrowth);
 
       setNote(
         result.message ??
@@ -590,6 +576,49 @@ const GetInTouch = ({
                         const error = validateField("date", formattedDate);
                         setErrors((prev) => ({ ...prev, date: error }));
                         setDatePickerOpen(false);
+                      }}
+                      classNames={{
+                        root: "text-white",
+
+                        months: "flex",
+
+                        month: "space-y-3",
+
+                        // caption: "flex items-center justify-between px-1 mb-2",
+
+                        caption_label: "text-sm font-medium text-white",
+
+                        nav: "flex items-center gap-1",
+
+                        button_previous:
+                          "!inline-flex !h-8 !w-8 !items-center !justify-center !rounded-md !text-[#E63E31] hover:!bg-white/10 [&_svg]:!text-[#E63E31] [&_svg]:!stroke-[#E63E31]",
+
+                        button_next:
+                          "!inline-flex !h-8 !w-8 !items-center !justify-center !rounded-md !text-[#E63E31] hover:!bg-white/10 [&_svg]:!text-[#E63E31] [&_svg]:!stroke-[#E63E31]",
+
+                        month_grid: "w-full border-collapse",
+
+                        weekdays: "flex",
+
+                        weekday:
+                          "w-9 text-center text-[13px] font-medium text-white/70",
+
+                        week: "flex w-full mt-1",
+
+                        day: "relative h-9 w-9 p-0 text-center",
+
+                        day_button:
+                          "h-9 w-9 rounded-md text-sm !text-white/60 hover:bg-white/10 hover:!text-white",
+
+                        selected:
+                          "rounded-md bg-transparent !text-[#E63E31] [&>button]:!text-[#E63E31]",
+
+                        today:
+                          "font-semibold !text-[#E63E31] [&>button]:!text-[#E63E31]",
+
+                        disabled: "text-white/30 opacity-50",
+
+                        outside: "text-white/20",
                       }}
                     />
                   </div>

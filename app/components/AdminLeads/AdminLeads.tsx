@@ -9,6 +9,7 @@ import { MdDelete } from "react-icons/md";
 
 type Lead = {
   _id: string;
+  campaignName: string;
   name: string;
   email: string;
   company: string;
@@ -188,6 +189,9 @@ const AdminLeads = () => {
                     />
                   </th>
                   <th scope="col" className="px-4 py-3">
+                    Campaign Name
+                  </th>
+                  <th scope="col" className="px-4 py-3">
                     Name
                   </th>
                   <th scope="col" className="px-4 py-3">
@@ -225,6 +229,9 @@ const AdminLeads = () => {
                         checked={selectedIds.includes(item._id)}
                         onChange={() => toggleSelect(item._id)}
                       />
+                    </td>
+                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                      {item.campaignName || "—"}
                     </td>
                     <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
                       {item.name}
