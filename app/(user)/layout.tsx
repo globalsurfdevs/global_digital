@@ -47,54 +47,57 @@ export const metadata: Metadata = {
 //     postalCode: "13653",
 //     addressCountry: "AE",
 //   },
-//   areaServed: [
-//     {
 //       "@type": "Country",
-//       name: "AE",
 //       openingHoursSpecification: [
 //         "Monday – Friday, 8:00 – 18:00",
-//         "Saturday,Sunday - Closed",
 //       ],
 //       hasmap:
-//         "https://www.google.com/maps/place/Global+Surf+Digital/@25.1177885,55.3880998,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f5cde96bd7e5f:0x8632d41bbf01c71!8m2!3d25.1177885!4d55.3906747!16s%2Fg%2F12qf96jrm?entry=ttu&g_ep=EgoyMDI1MDEyOS4xIKXMDSoASAFQAw%3D%3D",
 //       geo: {
 //         "@type": "GeoCoordinates",
 //         latitude: "25.1177885",
-//         longitude: "55.3880998",
 //       },
 //     },
-//   ],
 //   contactPoint: {
 //     "@type": "ContactPoint",
-//     telephone: "+971-45821133",
 //     contactType: "customer service",
 //     areaServed: "AE",
-//     availableLanguage: ["English"],
 //   },
 //   aggregateRating: {
-//     "@type": "AggregateRating",
 //     ratingValue: "5",
 //     reviewCount: "6",
-//     ratingCount: "6",
 //   },
 //   review: [
-//     {
 //       "@type": "Review",
 //       author: {
-//         "@type": "Person",
 //         name: "Karim El Shennawy",
 //       },
-//       description:
 //         "Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.",
-//     },
-//     {
 //       "@type": "Review",
-//       author: {
 //         "@type": "Person",
 //         name: "Alissar Nasrallah",
-//       },
 //       description:
-//         "Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you will find them next to you in critical moments.",
+{
+  process.env.NEXT_PUBLIC_OPENAI_PIXEL_ID && (
+    <Script
+      id="openai-pixel"
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `(function (w, d, s, u) {
+  if (w.oaiq) return;
+  var q = function () { q.q.push(arguments); };
+  q.q = [];
+  w.oaiq = q;
+  var js = d.createElement(s);
+  js.async = true;
+  js.src = u;
+  var f = d.getElementsByTagName(s)[0];
+  f.parentNode.insertBefore(js, f);
+})(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init", { pixelId: "${process.env.NEXT_PUBLIC_OPENAI_PIXEL_ID}" });`,
+      }}
+    />
+  );
+}
 //     },
 //     {
 //       "@type": "Review",
@@ -124,33 +127,34 @@ export const metadata: Metadata = {
 //   ],
 // };
 
-const organizationSchema={
+const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "GS Digital",
-  "legalName": "Global Surf Digital Media L.L.C",
-  "url": "https://www.globalsurf.ae/",
-  "logo": "https://www.globalsurf.ae/gs-digital-logo.svg",
-  "description": "GS Digital Media is a premium full-service digital marketing agency in Dubai, specializing in SEO, performance marketing, social media marketing, and web design and development.",
-  "telephone": "+971-4-582-1133",
-  "email": "hello@globalsurf.ae",
-  "sameAs": [
+  name: "GS Digital",
+  legalName: "Global Surf Digital Media L.L.C",
+  url: "https://www.globalsurf.ae/",
+  logo: "https://www.globalsurf.ae/gs-digital-logo.svg",
+  description:
+    "GS Digital Media is a premium full-service digital marketing agency in Dubai, specializing in SEO, performance marketing, social media marketing, and web design and development.",
+  telephone: "+971-4-582-1133",
+  email: "hello@globalsurf.ae",
+  sameAs: [
     "https://www.facebook.com/globalsurf.digital/",
     "https://www.instagram.com/globalsurf.digital/",
     "https://x.com/GlobalSurf_D",
     "https://www.linkedin.com/company/globalsurfdigital",
-    "https://www.tiktok.com/@globalsurf.digital"
+    "https://www.tiktok.com/@globalsurf.digital",
   ],
-  "address": {
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "P.O. Box 13653, 901 - SIT Tower, Dubai Silicon Oasis",
-    "addressLocality": "Dubai",
-    "addressCountry": {
+    streetAddress: "P.O. Box 13653, 901 - SIT Tower, Dubai Silicon Oasis",
+    addressLocality: "Dubai",
+    addressCountry: {
       "@type": "Country",
-      "name": "AE"
-    }
-  }
-}
+      name: "AE",
+    },
+  },
+};
 
 export default async function RootLayout({
   children,
@@ -160,31 +164,68 @@ export default async function RootLayout({
   const navigation = await getNavServices();
 
   return (
-    
-      <div className={spaceGrotesk.className}>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
-        {/* Google Tag Manager Script */}
+    <div className={spaceGrotesk.className}>
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
+      {/* Google Tag Manager Script */}
+      <Script
+        id="gtm-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TVWCC3XC');`,
+        }}
+      />
+      {/* <Script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: ,
+  });
+ </Script> */}
+      {process.env.NEXT_PUBLIC_OPENAI_PIXEL_ID && (
         <Script
-          id="gtm-script"
+          id="openai-pixel"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TVWCC3XC');`,
+            __html: `(function (w, d, s, u) {
+  if (w.oaiq) return;
+  var q = function () { q.q.push(arguments); };
+  q.q = [];
+  w.oaiq = q;
+  var js = d.createElement(s);
+  js.async = true;
+  js.src = u;
+  var f = d.getElementsByTagName(s)[0];
+  f.parentNode.insertBefore(js, f);
+})(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init", { pixelId: "8WbMm1MBuRkNWvVvEV8toy" });`,
           }}
         />
-
-        {/* <script
+      )}
+      {/* <script
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         /> */}
-        {/* <Script
+      {/* <Script
           id="organization-schema"
           type="application/ld+json"
           strategy="afterInteractive"
@@ -192,18 +233,18 @@ export default async function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         /> */}
-        <script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
-        <HeaderSwitcher navigation={navigation} />
-        <div className="mbcs-63">{children}</div>
-        <Footer />
-        <Breadcrumb />
-        {/* <Script
+      <script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+      <HeaderSwitcher navigation={navigation} />
+      <div className="mbcs-63">{children}</div>
+      <Footer />
+      <Breadcrumb />
+      {/* <Script
           id="zoho-salesiq"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -223,9 +264,7 @@ export default async function RootLayout({
           defer
         ></Script> */}
 
-        <ZohoChat/>
-      </div>
-  
-
+      <ZohoChat />
+    </div>
   );
 }
