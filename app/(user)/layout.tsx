@@ -76,28 +76,6 @@ export const metadata: Metadata = {
 //         "@type": "Person",
 //         name: "Alissar Nasrallah",
 //       description:
-{
-  process.env.NEXT_PUBLIC_OPENAI_PIXEL_ID && (
-    <Script
-      id="openai-pixel"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `(function (w, d, s, u) {
-  if (w.oaiq) return;
-  var q = function () { q.q.push(arguments); };
-  q.q = [];
-  w.oaiq = q;
-  var js = d.createElement(s);
-  js.async = true;
-  js.src = u;
-  var f = d.getElementsByTagName(s)[0];
-  f.parentNode.insertBefore(js, f);
-})(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
-oaiq("init", { pixelId: "${process.env.NEXT_PUBLIC_OPENAI_PIXEL_ID}" });`,
-      }}
-    />
-  );
-}
 //     },
 //     {
 //       "@type": "Review",
@@ -162,7 +140,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const navigation = await getNavServices();
-
+  const OPENAI_PIXEL_ID = "8WbMm1MBuRkNWvVvEV8toy";
   return (
     <div className={spaceGrotesk.className}>
       <noscript>
@@ -200,7 +178,7 @@ export default async function RootLayout({
     pixelId: ,
   });
  </Script> */}
-      {process.env.NEXT_PUBLIC_OPENAI_PIXEL_ID && (
+      {OPENAI_PIXEL_ID && (
         <Script
           id="openai-pixel"
           strategy="afterInteractive"
@@ -216,7 +194,7 @@ export default async function RootLayout({
   var f = d.getElementsByTagName(s)[0];
   f.parentNode.insertBefore(js, f);
 })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
-oaiq("init", { pixelId: "8WbMm1MBuRkNWvVvEV8toy" });`,
+oaiq("init", { pixelId: "${OPENAI_PIXEL_ID}" });`,
           }}
         />
       )}

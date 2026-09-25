@@ -10,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-const PAGE_URL = 'https://www.globalsurf.ae/chatgpt-ads'; 
+const PAGE_URL = 'https://www.globalsurf.ae/chatgpt-ads-landing'; 
 
 export const metadata: Metadata = {
   title: 'ChatGPT Ads for Your Business | GS Digital',
