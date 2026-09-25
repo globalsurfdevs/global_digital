@@ -5,6 +5,7 @@ console.log(process.env.NODE_ENV);
 const nextConfig: NextConfig = {
   // htmlLimitedBots: /.*/,
   /* config options here */
+  allowedDevOrigins: ["172.16.16.132:3000"],
   images: {
     remotePatterns: [
       {

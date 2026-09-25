@@ -9,8 +9,8 @@ export default function Hero() {
       </div>
       <div className="absolute inset-0 z-[1] bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <ChatMotif />
-      <div className="relative z-[2] mx-auto w-full max-w-[1100px] px-8">
-        <span className="mb-[30px] inline-flex items-center gap-2.5 text-[12.5px] font-medium uppercase tracking-[0.14em] text-white/70 before:inline-block before:h-[9px] before:w-[9px] before:bg-[#E63E31] before:content-['']">
+      <div className="relative z-[2] md:mt-[20px] mx-auto w-full max-w-[1100px] px-8">
+        <span className="mb-[15px] md:mt-[15px] inline-flex items-center gap-2.5 text-[12.5px] font-medium uppercase tracking-[0.14em] text-white/70 before:inline-block before:h-[9px] before:w-[9px] before:bg-[#E63E31] before:content-['']">
           A new advertising channel
         </span>
         <h1 className="mb-9 max-w-[15ch] text-[clamp(38px,6.6vw,74px)] font-medium leading-[1.02] tracking-[-0.03em]">
