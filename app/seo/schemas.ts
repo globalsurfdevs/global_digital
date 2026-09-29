@@ -21,6 +21,7 @@ export const organizationSchema = {
     "@type": "PostalAddress",
     streetAddress: "P.O. Box 13653, 901 - SIT Tower, Dubai Silicon Oasis",
     addressLocality: "Dubai",
+    // postalCode: "13653",
     addressCountry: {
       "@type": "Country",
       name: "AE",
