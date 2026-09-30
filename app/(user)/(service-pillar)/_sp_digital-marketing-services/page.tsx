@@ -1,10 +1,10 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Services from "../../../components/PerformanceMarketing/Services";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 import DigitalServ from "@/app/components/DigitalMarketingService/DigitalSer";
-import Boost from "../../../components/PermormanceMarketing/Boost";
+import Boost from "../../../components/PerformanceMarketing/Boost";
 import SuccessStories from "../../../components/DigitalMarketingService/SuccessStories";
 import Expertises from "../../../components/EcomIndustry/Expertise";
 import LogoSwiper from "../../../components/DigitalMarketingService/LogoSwiper";
@@ -27,7 +27,7 @@ import {
 } from "../../../data/services/digital-marketing-services/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import Framework from "../../../components/PermormanceMarketing/Framework";
+import Framework from "../../../components/PerformanceMarketing/Framework";
 
 interface Canonicals {
   canonical: string;

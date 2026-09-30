@@ -1,15 +1,15 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Boost from "../../../components/PermormanceMarketing/Boost";
-import Services from "../../../components/PermormanceMarketing/Services";
-import Framework from "../../../components/PermormanceMarketing/Framework";
-import Industries from "../../../components/PermormanceMarketing/Industries";
-import Partner from "../../../components/PermormanceMarketing/Partner";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Boost from "../../../components/PerformanceMarketing/Boost";
+import Services from "../../../components/PerformanceMarketing/Services";
+import Framework from "../../../components/PerformanceMarketing/Framework";
+import Industries from "../../../components/PerformanceMarketing/Industries";
+import Partner from "../../../components/PerformanceMarketing/Partner";
 import Testimonials from "../../../components/HomePage/Testimonials";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 import OurWorks from "../../../components/Branding/OurworksB";
-import Expertise from "../../../components/PermormanceMarketing/Expertise";
+import Expertise from "../../../components/PerformanceMarketing/Expertise";
 import { CreativeOfferSchema } from "../../../components/Schema/OfferCatalog";
 
 import { BannerSection } from "../../../data/services/branding-creative/herosection";

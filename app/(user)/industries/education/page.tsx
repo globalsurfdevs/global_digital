@@ -1,7 +1,7 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
 import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
 import {
@@ -12,7 +12,7 @@ import {
   Clientsformsdata,
   Faq,
 } from "../../../components/Education/data";
-import Framework from "@/app/components/PermormanceMarketing/Framework";
+import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Expertise from "@/app/components/EcomIndustry/Expertise";
 
 interface Canonicals {

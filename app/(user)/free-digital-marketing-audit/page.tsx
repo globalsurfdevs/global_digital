@@ -1,7 +1,7 @@
 import React from "react";
 import DmHeroSection from "../../components/DigitalMarketingAudit/DmHeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Framework from "../../components/PermormanceMarketing/Framework";
+import Services from "../../components/PerformanceMarketing/Services";
+import Framework from "../../components/PerformanceMarketing/Framework";
 import Testimonials from "../../components/HomePage/Testimonials";
 import RequestFreeAudit from "../../components/DigitalMarketingAudit/RequestFreeAudit";
 import TrustedByBrands from "../../components/DigitalMarketingAudit/TrustedByBrands";
@@ -18,7 +18,7 @@ import {
 
 import AuditSecTwo from "@/app/components/DigitalMarketingAudit/AuditSecTwo";
 import Expertiseheimg from "@/app/components/EcomIndustry/Expertise";
-import Expertise from "@/app/components/PermormanceMarketing/Expertise";
+import Expertise from "@/app/components/PerformanceMarketing/Expertise";
 
 interface Canonicals {
   canonical: string;

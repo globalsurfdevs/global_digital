@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import LetsTalk from "../../components/common/LetsConnect";
-import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
+import LetsTalk from "../common/LetsConnect";
+import PerformanceSwiper from "./PerformanceSwiper";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
@@ -36,7 +36,7 @@ interface HeroSectionProps {
   Bannerdata: BannerSection[];
 }
 
-const HeroSectionType2: React.FC<HeroSectionProps> = ({
+const HeroSection: React.FC<HeroSectionProps> = ({
   Bannerdata,
   order,
   hideslider,
@@ -135,7 +135,7 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
               }}
             >
               <div
-                className={` ptcs0 border-b pb-5 pt-[20px] sm:pt-[50px] md:pb-10 lg:pt-[130px] `}
+                className={` ptcs0 border-b pb-10 pt-[20px] sm:pt-[50px] lg:pt-[130px] `}
               >
                 <div
                   className={`flex  justify-between  ${bannerlogp ? "items-start" : "items-end"}`}
@@ -169,11 +169,12 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
                                   (herosection.navigation?.length || 0) - 1 && (
                                   <li>
                                     <Image
-                                      src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
+                                      src="/assets/bc-arrow.png"
                                       alt="Arrow"
-                                      width={7} // Adjust width as needed
-                                      height={12} // Adjust height as needed
+                                      width={7}
+                                      height={12}
                                       className="relative top-[3px] lg:top-0"
+                                      loading="lazy"
                                     />
                                   </li>
                                 )}
@@ -271,6 +272,7 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
                           className="w-20 md:w-48"
                           width={10}
                           height={10}
+                          loading="lazy"
                         />
                       </Link>
                     </div>
@@ -299,19 +301,19 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
                     su.desc && (
                       <div
                         key={`hero-sub-${herosection.id ?? heroIndex}-${su.stitle}-${index}`}
-                        className="pb-8 pt-5 xl:pb-140 xl:pt-10"
+                        className="grid grid-cols-1 py-[50px] lg:grid-cols-2 lg:py-[142px] "
                       >
-                        {/* <div className="col-span-1 mb-2 lg:mb-0">
+                        <div className="col-span-1 mb-2 lg:mb-0">
                           <div className="flex items-center gap-2">
                             <h2 className="text-30 leading-[1.5]">
                               {su.stitle}
                             </h2>
                             <div className="h-5 w-5 bg-primary"></div>
                           </div>
-                        </div> */}
+                        </div>
                         <div className=" ">
                           <p
-                            className={`ms-0 max-w-[120ch] text-font19 text-gray1 ${lexend.className}`}
+                            className={`ms-0 text-font19 text-gray1 ${lexend.className}`}
                           >
                             {su.desc}
                           </p>
@@ -423,4 +425,4 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
   );
 };
 
-export default HeroSectionType2;
+export default HeroSection;

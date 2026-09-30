@@ -2,9 +2,9 @@ import React from "react";
 import HeroSection from "../../../components/BannerSectionBC/HeroWithBc";
 import KeyDigital from "../../../components/IndConstruction/KeyDigital";
 import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/IndConstruction/GetInTouch";
-import Expertise from "../../../components/PermormanceMarketing/Expertise";
+import Expertise from "../../../components/PerformanceMarketing/Expertise";
 import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
 import { KeyDigitalData } from "../../../data/services/ind-constructions/keyDigital";

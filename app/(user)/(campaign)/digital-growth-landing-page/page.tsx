@@ -3,7 +3,7 @@ import React from "react";
 import HeroSection from "../../../components/EngineeringInfrastructure/HeroSection";
 import FeatureStrip from "../../../components/DigitalGrowth/Sections/Featurestrip";
 import LogoSlider from "../../../components/DigitalGrowth/Sections/LogoSlider";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import WhatWeHear from "@/app/components/DigitalGrowth/Sections/WhatWeHear";
 import Whattheyfind from "@/app/components/DigitalGrowth/Sections/Whattheyfind";
 import IndustriesSec from "@/app/components/DigitalGrowth/Sections/IndustriesSec";

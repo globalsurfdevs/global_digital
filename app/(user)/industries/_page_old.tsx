@@ -7,7 +7,7 @@ import {
   Cta,
   IndustriesWeServe,
 } from "../../components/industry/data";
-import GetInTouch from "@/app/components/PermormanceMarketing/GetInTouch";
+import GetInTouch from "@/app/components/PerformanceMarketing/GetInTouch";
 import Industydetail from "@/app/components/industry/Industydetail";
 
 interface Canonicals {
@@ -86,8 +86,17 @@ const page = () => {
         maxchwidth={28}
         maxtextwidth={61}
       />
-      <Industydetail title={IndustriesWeServe.title} data={IndustriesWeServe.data} subttle={IndustriesWeServe.subttle}/>
-      <GetInTouch data={Cta} redlast={false} bgcolor="#F2F2F2" ctabbutton={"Start the conversation"} />
+      <Industydetail
+        title={IndustriesWeServe.title}
+        data={IndustriesWeServe.data}
+        subttle={IndustriesWeServe.subttle}
+      />
+      <GetInTouch
+        data={Cta}
+        redlast={false}
+        bgcolor="#F2F2F2"
+        ctabbutton={"Start the conversation"}
+      />
     </div>
   );
 };

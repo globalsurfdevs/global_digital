@@ -1,12 +1,12 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import Framework from "../../../components/PermormanceMarketing/Framework";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Services from "../../../components/PerformanceMarketing/Services";
+import Framework from "../../../components/PerformanceMarketing/Framework";
 import Results from "../../../components/SocialMediaMarketingDubai/Results";
-import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import Platforms from "../../../components/PerformanceMarketing/Platforms";
 import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platformsecom";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 
 import { ResultsData } from "../../../data/services/social-media-marketing-dubai/results";
 import { BannerSection } from "../../../data/services/social-media-marketing-dubai/herosection";

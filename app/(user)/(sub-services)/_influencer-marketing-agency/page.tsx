@@ -1,10 +1,10 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import Framework from "../../../components/PermormanceMarketing/Framework";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Services from "../../../components/PerformanceMarketing/Services";
+import Framework from "../../../components/PerformanceMarketing/Framework";
 import Results from "../../../components/SocialMediaMarketingDubai/Results";
-import Platforms from "../../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import Platforms from "../../../components/PerformanceMarketing/Platforms";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
 
 import { ResultsData } from "../../../data/services/influencer-marketing/results";
 import { BannerSection } from "../../../data/services/influencer-marketing/herosection";
@@ -16,7 +16,7 @@ import { Platformsdata } from "../../../data/services/influencer-marketing/platf
 import { Cta } from "../../../data/services/influencer-marketing/cta";
 import { Faq } from "../../../data/services/influencer-marketing/faq";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import CtaBox from "@/app/components/PermormanceMarketing/CtaBox";
+import CtaBox from "@/app/components/PerformanceMarketing/CtaBox";
 
 interface Canonicals {
   canonical: string;

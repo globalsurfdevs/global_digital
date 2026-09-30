@@ -1,8 +1,8 @@
 import React from "react";
 // import Script from "next/script";
 import HeroSection from "../../../components/EngineeringInfrastructure/HeroSection";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 import TitleDesc from "../../../components/EngineeringInfrastructure/TitleDesc";
 import ServicesListSec from "../../../components/EngineeringInfrastructure/ServicesListSec";
 import BlackInfoGrid from "@/app/components/BrandingAndPositioning/BlackInfoGrid";

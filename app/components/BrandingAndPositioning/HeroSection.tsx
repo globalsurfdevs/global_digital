@@ -53,7 +53,6 @@ const HeroSection = ({ data }: HeroSectionProps) => {
   }, [modalOpen]);
 
   return (
-
     // 2xl:h-[90vh]
     <section className="relative mt-[20px] overflow-hidden py-[110px] md:h-[90vh] ">
       {/* Modal section */}
@@ -62,7 +61,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
-      <div className="absolute inset-0 z-0 h-full w-full">
+      {/* <div className="absolute inset-0 z-0 h-full w-full">
         <Image
           src={data.image}
           alt={data.imageAlt}
@@ -78,6 +77,24 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           height={1080}
           className="h-full w-full object-cover md:hidden"
         />
+      </div> */}
+      <div className="absolute inset-0 z-0 h-full w-full">
+        <picture>
+          {/* Mobile image */}
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/service-hero-bg-mobile.jpg"
+          />
+          {/* Desktop image */}
+          <img
+            src={data.image}
+            alt={data.imageAlt}
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+            className="h-full w-full object-cover"
+          />
+        </picture>
       </div>
       <div className="container" ref={containerRef}></div>
       <div
