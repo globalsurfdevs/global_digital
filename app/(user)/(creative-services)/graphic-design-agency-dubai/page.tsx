@@ -1,8 +1,8 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Platforms from "../../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Platforms from "../../../components/PerformanceMarketing/Platforms";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 import OurWorks from "../../../components/Bc-logo/OurWorks";
 import Typeslogo from "../../../components/Bc-logo/TypesLogo";
 import WhyChoose from "../../../components/BcGraphicDesign/WhyChoose";
@@ -24,7 +24,7 @@ import { Cta } from "../../../data/services/bc-graphic-design/cta";
 import { Faq } from "../../../data/services/bc-graphic-design/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import Expertise from "@/app/components/PermormanceMarketing/Expertise";
+import Expertise from "@/app/components/PerformanceMarketing/Expertise";
 import Platformimg from "@/app/components/common/Platformimg";
 
 interface Canonicals {

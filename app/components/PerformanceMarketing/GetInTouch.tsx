@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import LetsTalk from "../../components/common/LetsConnect";
+import LetsTalk from "../common/LetsConnect";
 import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 type PartnerDataType = {
   text: string;
@@ -19,8 +19,7 @@ type PartnerListProps = {
   data: PartnerDataType[];
   page?: string;
   buttonLink?: string;
-  redfirst?:boolean;
-
+  redfirst?: boolean;
 };
 
 const GetInTouch: React.FC<PartnerListProps> = ({
@@ -30,7 +29,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
   redlast,
   buttonLink,
   redfirst,
-  page
+  page,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -104,7 +103,7 @@ const GetInTouch: React.FC<PartnerListProps> = ({
               </div>
 
               <div>
-                <p className="text-font25 leading-[28px] lg:leading-[35px] text-[#A3A3A3] lg:mt-10">
+                <p className="text-font25 leading-[28px] text-[#A3A3A3] lg:mt-10 lg:leading-[35px]">
                   {data[0].subhead}
                 </p>
               </div>
@@ -129,7 +128,6 @@ const GetInTouch: React.FC<PartnerListProps> = ({
                   className={`text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 ${
                     bgcolor ? "text-black" : "text-white"
                   } transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg lg:px-24`}
- 
                 >
                   <span className="uppercase duration-300 ease-in group-hover:text-black">
                     {buttonLink ? (

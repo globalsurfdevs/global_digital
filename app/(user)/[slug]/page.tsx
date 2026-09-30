@@ -2,8 +2,8 @@ import React from "react";
 // import Script from "next/script";
 import HeroSection from "../../components/BrandingAndPositioning/HeroSection";
 import Testimonials from "../../components/HomePage/Testimonials";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
 import { Cta } from "../../data/services/performance-marketing/cta";
 import { Faq } from "../../data/services/performance-marketing/faq";
 import TitleDesc from "../../components/BrandingAndPositioning/TitleDesc";
@@ -386,12 +386,12 @@ const noIndexSlugs = [
   // "ecommerce-seo-services-dubai",
   "programmatic-advertising-agency-dubai",
   "social-media-strategy-agency-dubai",
-  "social-media-marketing-dubai",  
+  "social-media-marketing-dubai",
   // "influencer-marketing-agency-dubai",
   // "local-seo-services-dubai",
   // "ppc-advertising-agency-dubai",
-  "social-media-management-agency"
-]
+  "social-media-management-agency",
+];
 
 export async function generateMetadata({
   params,
@@ -417,7 +417,7 @@ export async function generateMetadata({
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { slug } = await params; 
+  const { slug } = await params;
   const resolved = await resolveSlug(slug);
 
   if (!resolved) notFound();
@@ -428,7 +428,9 @@ const Page = async ({ params }: PageProps) => {
     case "service-pillar":
       return <ServicePillarDetail data={resolved.data} />;
     case "sub-service":
-      return <ServiceDetail service={resolved.data as SubServiceData} slug={slug} />;
+      return (
+        <ServiceDetail service={resolved.data as SubServiceData} slug={slug} />
+      );
   }
 };
 

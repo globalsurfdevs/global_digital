@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
-import PerformanceSwiper from "../PermormanceMarketing/PerformanceSwiper";
+import PerformanceSwiper from "../PerformanceMarketing/PerformanceSwiper";
 import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";

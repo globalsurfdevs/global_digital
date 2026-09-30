@@ -1,12 +1,11 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
-import LogoSwiper from "../../../components/MarketingAutomation/AutomationSwiper";
+import HeroSection from "../../components/PerformanceMarketing/HeroSection";
+import Services from "../../components/PerformanceMarketing/Services";
+import FAQ from "../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
 
 import {
-  Matslogo,
+  logosdatas,
   BannerSection,
   Wecanhelp,
   OurServices,
@@ -15,12 +14,13 @@ import {
   Cta,
   Faq,
   relatedservices,
-} from "../../../components/MarketingAutomation/data";
+} from "../../components/MiDataAnalytics/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import Framework from "@/app/components/PermormanceMarketing/Framework";
-import Platforms from "@/app/components/PermormanceMarketing/Platforms";
+import Framework from "@/app/components/PerformanceMarketing/Framework";
+import Platforms from "@/app/components/PerformanceMarketing/Platforms";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
+import LogoSwiper from "@/app/components/DigitalMarketingService/LogoSwiper";
 
 interface Canonicals {
   canonical: string;
@@ -30,32 +30,17 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
-  openGraph: {
-    title: string;
-    siteName: string;
-    url: string;
-    description: string;
-    type: string;
-  };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Marketing Automation Agency in Dubai | GS Digital ",
+    title: "Data Analytics Consulting Services Company | GS Digital ",
     description:
-      "Partner with Dubai’s trusted marketing automation agency. With 10+ years of experience, we deliver customized solutions that drive real results. Contact now!",
+      "Unlock smarter decisions with expert data analytics consulting in Dubai. GS Digital delivers tailored data solutions to fuel business growth. Check now! ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/marketing-automation-agency-dubai",
+      canonical: "https://www.globalsurf.ae/data-analytics-services-dubai",
     },
     robots: "index, follow",
-    openGraph: {
-      title: "Dubai’s #1 Marketing Automation Agency | Streamline & Succeed",
-      siteName: "GS Digital ",
-      url: "https://www.globalsurf.ae/marketing-automation-agency-dubai",
-      description:
-        "Nurture leads, segment audiences, and refine touchpoints effortlessly. GS Digital offers top-tier marketing automation services in Dubai. Get a quote today!",
-      type: "website",
-    },
   };
 }
 
@@ -81,7 +66,7 @@ const page = () => {
         title={Frameworkdata.title}
         data={Frameworkdata.data}
         bgcolor="white"
-        colcount={4}
+        colcount={3}
       />
 
       <Services
@@ -94,7 +79,12 @@ const page = () => {
         hrcontent={true}
       />
       <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-        <LogoSwiper mtslogo={Matslogo[0]} slideBg={true} />
+        {/* <LogoSwiper mtslogo={Matslogo[0]} /> */}
+        <LogoSwiper
+          logosdata={logosdatas}
+          slidesPerView={7}
+          title1="Our Data Analytics Technology Stack"
+        />
       </div>
 
       <section className="pb-[50px] lg:pb-[150px]">
@@ -105,7 +95,7 @@ const page = () => {
         />
       </section>
 
-      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET'S CONNECT!"} />
+      <GetInTouch data={Cta} redlast={true} ctabbutton={"LET’S CHAT!"} />
       <FAQ data={Faq} />
       <RelatedServices
         title={relatedservices.title}

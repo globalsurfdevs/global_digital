@@ -1,10 +1,10 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import Platforms from "../../components/PermormanceMarketing/Platforms";
+import HeroSection from "../../components/PerformanceMarketing/HeroSection";
+import Services from "../../components/PerformanceMarketing/Services";
+import Platforms from "../../components/PerformanceMarketing/Platforms";
 import Platformsecom from "../../components/PpcAdvertisingAgencyDubai/Platformsecom";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
 
 import {
   BannerSection,
@@ -18,7 +18,7 @@ import {
   relatedservices,
 } from "../../components/wdd-web-design/data";
 
-import Expertise from "@/app/components/PermormanceMarketing/Expertise";
+import Expertise from "@/app/components/PerformanceMarketing/Expertise";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import ExpertServices from "@/app/components/wdd-web-design/ExpertServices";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";

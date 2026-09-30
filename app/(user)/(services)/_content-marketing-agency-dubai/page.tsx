@@ -1,11 +1,11 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Services from "../../../components/PerformanceMarketing/Services";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 
 import {
-  logosdatas,
+  Becomebrand,
   BannerSection,
   Wecanhelp,
   OurServices,
@@ -13,14 +13,12 @@ import {
   Platformsecomdata,
   Cta,
   Faq,
-  relatedservices,
-} from "../../../components/MiDataAnalytics/data";
+} from "../../../components/ContentMarketing/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import Framework from "@/app/components/PermormanceMarketing/Framework";
-import Platforms from "@/app/components/PermormanceMarketing/Platforms";
-import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import LogoSwiper from "@/app/components/DigitalMarketingService/LogoSwiper";
+import Framework from "@/app/components/PerformanceMarketing/Framework";
+import Platforms from "@/app/components/PerformanceMarketing/Platforms";
+import BecomePartner from "@/app/components/ContentMarketing/BecomePartner";
 
 interface Canonicals {
   canonical: string;
@@ -34,11 +32,11 @@ type Metadata = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Data Analytics Consulting Services Company | GS Digital ",
+    title: "Content Marketing Services Agency in Dubai | GS Digital",
     description:
-      "Unlock smarter decisions with expert data analytics consulting in Dubai. GS Digital delivers tailored data solutions to fuel business growth. Check now! ",
+      "Grow with our expert content marketing services in the UAE. GS Digital is a Dubai-based agency delivering tailored content solutions for modern businesses.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/data-analytics-services-dubai",
+      canonical: "https://www.globalsurf.ae/content-marketing-agency-dubai",
     },
     robots: "index, follow",
   };
@@ -50,7 +48,7 @@ const page = () => {
       <HeroSection
         Bannerdata={BannerSection}
         hideslider={true}
-        maxchwidth={34}
+        maxchwidth={22}
       />
 
       <Platforms
@@ -59,14 +57,14 @@ const page = () => {
         icontitle={true}
         hiddentitle={true}
         leftzero={true}
-        colcount={3}
+        colcount={4}
       />
 
       <Framework
         title={Frameworkdata.title}
         data={Frameworkdata.data}
         bgcolor="white"
-        colcount={3}
+        colcount={4}
       />
 
       <Services
@@ -78,14 +76,7 @@ const page = () => {
         bgtt3="text-white"
         hrcontent={true}
       />
-      <div className="pb-[50px] pt-[50px] lg:pb-[130px] lg:pt-[130px]">
-        {/* <LogoSwiper mtslogo={Matslogo[0]} /> */}
-        <LogoSwiper
-          logosdata={logosdatas}
-          slidesPerView={7}
-          title1="Our Data Analytics Technology Stack"
-        />
-      </div>
+      <BecomePartner Becomebrand={Becomebrand} />
 
       <section className="pb-[50px] lg:pb-[150px]">
         <Platformserver
@@ -97,11 +88,6 @@ const page = () => {
 
       <GetInTouch data={Cta} redlast={true} ctabbutton={"LET’S CHAT!"} />
       <FAQ data={Faq} />
-      <RelatedServices
-        title={relatedservices.title}
-        data={relatedservices.data}
-        colcount={3}
-      />
     </div>
   );
 };

@@ -8,7 +8,7 @@ import Clients from "@/app/components/HomePage/Clients";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import Tours from "@/app/components/HomePage/Tours";
 // import WorkIn from "@/app/components/HomePage/WorkIn";
-import FAQ from "@/app/components/PermormanceMarketing/FAQ";
+import FAQ from "@/app/components/PerformanceMarketing/FAQ";
 import Cta from "@/app/components/HomePage/Cta";
 import IndustriesweWork from "@/app/components/HomePage/IndustriesweWork";
 import Script from "next/script";

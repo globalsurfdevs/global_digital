@@ -1,11 +1,11 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import Framework from "../../../components/PermormanceMarketing/Framework";
-import Platforms from "../../../components/PermormanceMarketing/Platforms";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Services from "../../../components/PerformanceMarketing/Services";
+import Framework from "../../../components/PerformanceMarketing/Framework";
+import Platforms from "../../../components/PerformanceMarketing/Platforms";
 import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platformsecom";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import CtaBox from "../../../components/PermormanceMarketing/CtaBox";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import CtaBox from "../../../components/PerformanceMarketing/CtaBox";
 
 import { BannerSection } from "../../../data/services/social-media-management/herosection";
 import { OurServices } from "../../../data/services/social-media-management/our-services";

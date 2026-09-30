@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
-import Services from "../../../components/PermormanceMarketing/Services";
-import Platforms from "../../../components/PermormanceMarketing/Platforms";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Services from "../../../components/PerformanceMarketing/Services";
+import Platforms from "../../../components/PerformanceMarketing/Platforms";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 
 import {
   BannerSection,
@@ -21,7 +21,7 @@ import {
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Results from "../../../components/SocialMediaMarketingDubai/Results";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import Framework from "@/app/components/PermormanceMarketing/Framework";
+import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import Specialize from "@/app/components/common/Specialize";
 

@@ -2,8 +2,8 @@ import React from "react";
 // import Script from "next/script";
 import HeroSection from "../../../components/ServicePillar/sections/HeroSection";
 import Testimonials from "../../../components/HomePage/Testimonials";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 // import { Cta } from "../../data/services/performance-marketing/cta";
 import { Faq } from "../../../data/services/performance-marketing/faq";
 import TitleDesc from "../../../components/BrandingAndPositioning/TitleDesc";
@@ -498,14 +498,14 @@ const page = async ({ params }: PageProps) => {
   //     height: "28",
   //   },
   // ];
-  
+
   const infoGridData: FrameworkItem[] = data.fifthSection.items.map(
     (item, index) => ({
       id: index,
       icon: item.image,
       title: item.title,
       dec: item.description,
-      urllink:item.link,
+      urllink: item.link,
     }),
   );
 
