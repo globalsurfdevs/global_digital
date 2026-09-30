@@ -1,14 +1,14 @@
 import React from "react";
-import HeroSectionType2 from "../../components/PermormanceMarketing/HeroSectionType2";
-import Services from "../../components/Geo/RightSideBulletsPoints";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSectionType2 from "../../../components/PermormanceMarketing/HeroSectionType2";
+import Services from "../../../components/Geo/RightSideBulletsPoints";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 import GeoLogoSwiper from "@/app/components/Geo/GeoLogoSwiper";
 import NumberCardGrid from "@/app/components/Geo/NumberCardGrid";
-import Expertise from "../../components/PermormanceMarketing/Expertise";
+import Expertise from "../../../components/PermormanceMarketing/Expertise";
 import IconlineTitle from "@/app/components/Geo/IconlineTtitle";
-import Expertises from "../../components/Geo/NumberHovImg";
-import GeoProcess from "../../components/PermormanceMarketing/Services";
+import Expertises from "../../../components/Geo/NumberHovImg";
+import GeoProcess from "../../../components/PermormanceMarketing/Services";
 import BottomLine from "@/app/components/Geo/BottomLine";
 import Head from "next/head";
 
@@ -25,7 +25,7 @@ import {
   Wehelp,
   IndustriesWeServe,
   WhyBrands,
-} from "../../data/services/generative-engine-optimization/data";
+} from "../../../data/services/generative-engine-optimization/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
 import Framework from "@/app/components/Geo/IconsTopContentBelow";

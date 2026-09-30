@@ -68,6 +68,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           alt={data.imageAlt}
           width={1920}
           height={1080}
+          priority
           className="hidden h-full w-full object-cover md:block"
         />
         <Image

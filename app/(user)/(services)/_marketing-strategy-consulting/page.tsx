@@ -1,9 +1,9 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
-import LogoSwiper from "../../components/DigitalMarketingService/LogoSwiper";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
+import LogoSwiper from "../../../components/DigitalMarketingService/LogoSwiper";
 import Platforms from "@/app/components/PermormanceMarketing/Platforms";
 import Head from "next/head";
 
@@ -18,7 +18,7 @@ import {
   relatedservices,
   logosdata,
   logosdatas,
-} from "../../data/services/marketing-strategy-consulting/data";
+} from "../../../data/services/marketing-strategy-consulting/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
 import Framework from "@/app/components/PermormanceMarketing/Framework";

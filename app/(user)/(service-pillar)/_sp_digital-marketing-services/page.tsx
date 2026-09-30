@@ -1,14 +1,14 @@
 import React from "react";
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import HeroSection from "../../../components/PermormanceMarketing/HeroSection";
+import Services from "../../../components/PermormanceMarketing/Services";
+import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import GetInTouch from "../../../components/PermormanceMarketing/GetInTouch";
 import DigitalServ from "@/app/components/DigitalMarketingService/DigitalSer";
-import Boost from "../../components/PermormanceMarketing/Boost";
-import SuccessStories from "../../components/DigitalMarketingService/SuccessStories";
-import Expertises from "../../components/EcomIndustry/Expertise";
-import LogoSwiper from "../../components/DigitalMarketingService/LogoSwiper";
-import { DigitalMarketingServicesSchema } from "../../components/Schema/OfferCatalog";
+import Boost from "../../../components/PermormanceMarketing/Boost";
+import SuccessStories from "../../../components/DigitalMarketingService/SuccessStories";
+import Expertises from "../../../components/EcomIndustry/Expertise";
+import LogoSwiper from "../../../components/DigitalMarketingService/LogoSwiper";
+import { DigitalMarketingServicesSchema } from "../../../components/Schema/OfferCatalog";
 import Head from "next/head";
 
 import {
@@ -24,10 +24,10 @@ import {
   logosdata,
   logosdatas,
   Clientsformsdata,
-} from "../../data/services/digital-marketing-services/data";
+} from "../../../data/services/digital-marketing-services/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
-import Framework from "@/app/components/PermormanceMarketing/Framework";
+import Framework from "../../../components/PermormanceMarketing/Framework";
 
 interface Canonicals {
   canonical: string;

@@ -18,6 +18,7 @@ const ImgDesc = ({ data }: any) => {
             <Image
               src={data.image}
               alt={data.imageAlt}
+              priority
               width={1500}
               height={1500}
               className="h-full max-h-[600px] w-full object-cover"

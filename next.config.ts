@@ -234,6 +234,11 @@ const nextConfig: NextConfig = {
         destination: "/e-commerce-web-development-company-dubai",
         permanent: true,
       },
+      {
+        source: "/web-design-agency-dubai",
+        destination: "/web-design-development-agency-dubai",
+        permanent: true,
+      },
       // =================================== Service Pillar =============================================================================
 
       {

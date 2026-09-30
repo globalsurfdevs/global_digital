@@ -52,7 +52,7 @@ const ServicePillarDetail = async ({ data }: Props) => {
   }));
 
 //   console.log("relatedServiceData", data.eleventhSection);
-
+console.log("schema: ",data.seo.schema)
   return (
     <div>
       {data.seo?.schema && (
@@ -61,6 +61,7 @@ const ServicePillarDetail = async ({ data }: Props) => {
           dangerouslySetInnerHTML={{ __html: data.seo.schema }}
         />
       )}
+      
       {data.firstSection.showSection !== false && <HeroSection data={data.firstSection} />}
       {data.secondSection.showSection !== false && <TitleDesc data={data.secondSection} />}
       {data.thirdSection.showSection !== false && <Approach data={data.thirdSection} />}

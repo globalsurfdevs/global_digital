@@ -98,7 +98,7 @@ const ServiceDetail = async ({ service, slug }: Props) => {
       description: item.answer,
     })),
   ];
-
+  // for slug /web-design-development-agency-dubai
   const workSvgsData = [
     {
       icon: "../assets/services/wdd-custom-web-development/tech1.svg",
