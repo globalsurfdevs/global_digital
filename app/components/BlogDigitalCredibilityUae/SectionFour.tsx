@@ -70,7 +70,7 @@ const SectionFour = () => {
                 decoding="async"
                 data-nimg="1"
                 className="m-auto my-[40px]"
-                src="../../assets/blogs/uae-contractor-digital-presence-mistakes.webp"
+                src="/assets/blogs/uae-contractor-digital-presence-mistakes.webp"
               />
 
               <div className="  grid grid-cols-1 gap-5 lg:grid-cols-2">

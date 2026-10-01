@@ -21,7 +21,7 @@ const SectionFive = () => {
               decoding="async"
               data-nimg="1"
               className="m-auto my-[40px]"
-              src="../../assets/blogs/digital-presence-roadmap-uae-construction-contractors.webp"
+              src="/assets/blogs/digital-presence-roadmap-uae-construction-contractors.webp"
             />
 
             <p className="mb-8 text-font19 text-[#77787B]">
