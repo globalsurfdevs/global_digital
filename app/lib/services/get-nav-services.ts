@@ -17,7 +17,7 @@ export type HeaderNavigationPillar = {
   title: string;
   slug: string;
   url: string;
-  categoryText: string;
+  hoverText: string;
   services: HeaderNavigationService[];
 };
 
@@ -30,7 +30,10 @@ export const getNavServices = unstable_cache(
     await connectDB();
 
     const [pillars, serviceDocument] = await Promise.all([
-      ServicePillar.find({}, { name: 1, slug: 1, firstSection: 1 })
+      ServicePillar.find(
+        {},
+        { name: 1, slug: 1, hoverText: 1, firstSection: 1 },
+      )
         .sort({ createdAt: 1 })
         .lean(),
       Service.findOne({}, { items: 1 }).lean(),
@@ -54,18 +57,14 @@ export const getNavServices = unstable_cache(
         title: pillar.name,
         slug: pillar.slug,
         url: `/${pillar.slug}`,
-        categoryText:
-          pillar.firstSection?.title || pillar.firstSection?.description || "",
+        hoverText: pillar.hoverText || "",
         services: (servicesByPillar.get(String(pillar._id)) ?? []).map(
           (service) => ({
             id: String(service._id),
             title: service.name,
             slug: service.slug,
             url: `/${service.slug}`,
-            text:
-              service.firstSection?.title ||
-              service.firstSection?.description ||
-              "",
+            text: service.hoverText || "",
           }),
         ),
       }))
@@ -73,14 +72,14 @@ export const getNavServices = unstable_cache(
         return secondPillar.services.length - firstPillar.services.length;
       });
 
-    // const databaseNavigationIsComplete =
-    //   databaseNavigation.length > 0 &&
-    //   databaseNavigation.every((pillar) => pillar.services.length > 0);
+    const databaseNavigationIsComplete =
+      databaseNavigation.length > 0 &&
+      databaseNavigation.every((pillar) => pillar.services.length > 0);
 
-    // return databaseNavigationIsComplete
-    //   ? databaseNavigation
-    //   : staticHeaderNavigation;
-    return  staticHeaderNavigation;
+    return databaseNavigationIsComplete
+      ? databaseNavigation
+      : staticHeaderNavigation;
+    // return  databaseNavigationIsComplete;
   },
   ["header-navigation-services"],
   {

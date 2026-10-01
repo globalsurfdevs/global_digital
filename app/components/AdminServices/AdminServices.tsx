@@ -376,6 +376,7 @@ type ServiceListItem = {
   _id: string;
   name: string;
   slug: string;
+  hoverText?: string;
   servicePillarId?: string | null;
   servicePillar?: {
     name: string;
@@ -426,6 +427,7 @@ const AdminServiceList = () => {
   );
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
+  const [editHoverText, setEditHoverText] = useState("");
   const [editServicePillarId, setEditServicePillarId] = useState("");
   // const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
   const [updating, setUpdating] = useState(false);
@@ -482,6 +484,7 @@ const AdminServiceList = () => {
     setEditingService(service);
     setEditName(service.name);
     setEditSlug(service.slug);
+    setEditHoverText(service.hoverText ?? "");
     setEditServicePillarId(service.servicePillarId ?? "");
 
     // Existing service: Auto Slug OFF by default
@@ -495,6 +498,7 @@ const AdminServiceList = () => {
     setEditName("");
     setEditSlug("");
     setEditServicePillarId("");
+    setEditHoverText("");
     setEditAutoSlug(false);
   };
   const toggleSelect = (id: string) => {
@@ -645,7 +649,6 @@ const AdminServiceList = () => {
       toast.error("Slug is required");
       return;
     }
-
     setUpdating(true);
     try {
       const response = await fetch(`/api/service`, {
@@ -658,11 +661,11 @@ const AdminServiceList = () => {
           name: editName.trim(),
           slug: editSlug.trim(),
           servicePillarId: editServicePillarId || null,
+          hoverText: editHoverText || null,
         }),
       });
 
       const data = await response.json();
-
       if (response.ok) {
         toast.success(data.message ?? "Service updated");
         resetEditForm();
@@ -993,6 +996,18 @@ const AdminServiceList = () => {
                           This becomes part of the page URL, e.g. /services/
                           {editSlug || "your-slug"}
                         </p>
+                      </div>
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Hover Text
+                        </label>
+                        <input
+                          type="text"
+                          value={editHoverText}
+                          onChange={(e) => setEditHoverText(e.target.value)}
+                          placeholder="e.g. Hover text for the service"
+                          className="rounded border px-3 py-2"
+                        />
                       </div>
 
                       <div className="flex flex-col gap-2 text-left">

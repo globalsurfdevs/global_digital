@@ -15,6 +15,10 @@ const servicePillarSchema = new mongoose.Schema(
       //   required: true,
       unique: true,
     },
+    hoverText: {
+      type: String,
+    },
+
     icon: {
       type: String,
     },

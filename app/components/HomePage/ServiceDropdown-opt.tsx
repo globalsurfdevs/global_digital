@@ -172,8 +172,8 @@ const ServicesMegaMenu = ({
       (service) => service.title === title,
     );
 
-    if (!item?.text && categoryData?.categoryText) {
-      return categoryData.categoryText;
+    if (!item?.text && categoryData?.hoverText) {
+      return categoryData.hoverText;
     }
 
     return item?.text ?? "";
@@ -209,12 +209,12 @@ const ServicesMegaMenu = ({
           </div>
           {/* Services Grid */}
           <div className="grid w-full grid-cols-3 gap-6 pl-[130px] xxl:gap-10">
-            {navigation.map((categoryData) => {
-              const category = categoryData.title;
+            {navigation.map((nav) => {
+              const category = nav.title;
               return (
                 <div key={category} className="group w-full">
                   <Link
-                    href={categoryData.url}
+                    href={nav.url}
                     prefetch={linkPrefetch}
                     className="mb-[20px] flex items-center xxl:mb-[30px]"
                   >
@@ -290,7 +290,7 @@ const ServicesMegaMenu = ({
                       }, // Slide up and fade in
                     }}
                   >
-                    {categoryData.services.map((item) => {
+                    {nav.services.map((item) => {
                       const title = item.title;
                       const isActive =
                         activeItem[0] === category && activeItem[1] === title;

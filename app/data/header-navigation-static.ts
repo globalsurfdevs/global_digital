@@ -6,7 +6,7 @@ export const staticHeaderNavigation: HeaderNavigationPillar[] = [
     title: "Digital Marketing",
     slug: "digital-marketing-services-dubai",
     url: "/digital-marketing-services-dubai",
-    categoryText:
+    hoverText:
       'Crafted for Clarity<span class="text-[#E43D30]">.</span><br> Scaled for Success<span class="text-[#E43D30]">.</span>',
     services: [
       {
@@ -58,7 +58,7 @@ export const staticHeaderNavigation: HeaderNavigationPillar[] = [
     title: "Web & App Development",
     slug: "web-and-app-development-dubai",
     url: "/web-and-app-development-dubai",
-    categoryText:
+    hoverText:
       'Create the Experience<span class="text-[#E43D30]">.</span><br>Deliver the Result<span class="text-[#E43D30]">.</span>',
     services: [
       {
@@ -96,7 +96,7 @@ export const staticHeaderNavigation: HeaderNavigationPillar[] = [
     title: "Branding & Content Production",
     slug: "branding-content-production-agency-dubai",
     url: "/branding-content-production-agency-dubai",
-    categoryText:
+    hoverText:
       'Crafting Brands, Creating Impact<span class="text-[#E43D30]">.</span>',
     services: [
       {
@@ -127,7 +127,7 @@ export const staticHeaderNavigation: HeaderNavigationPillar[] = [
     title: "AI, Data & Intelligence",
     slug: "ai-data-intelligence-agency-dubai",
     url: "/ai-data-intelligence-agency-dubai",
-    categoryText:
+    hoverText:
       'Driven by Insight<span class="text-[#E43D30]">.</span><br> Focused on Growth<span class="text-[#E43D30]">.</span>',
     services: [
       {
