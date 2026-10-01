@@ -379,6 +379,7 @@ export type ServicePillarListItem = {
   name: string;
   slug: string;
   icon?: string;
+  hoverText?: string;
   createdAt?: string;
 };
 
@@ -411,6 +412,7 @@ const AdminServicePillarList = () => {
 
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
+  const [editHoverText, setEditHoverText] = useState("");
   //   const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
   const [editIcon, setEditIcon] = useState("");
   const [updating, setUpdating] = useState(false);
@@ -473,6 +475,7 @@ const AdminServicePillarList = () => {
     setEditName(service.name);
     setEditSlug(service.slug);
     setEditIcon(service.icon || "");
+    setEditHoverText(service.hoverText ?? "");
     setEditAutoSlug(false);
     setShowEditModal(true);
   };
@@ -482,6 +485,7 @@ const AdminServicePillarList = () => {
     setEditName("");
     setEditSlug("");
     setEditIcon("");
+    setEditHoverText("");
     setEditAutoSlug(false);
   };
 
@@ -624,6 +628,7 @@ const AdminServicePillarList = () => {
           name: editName.trim(),
           slug: editSlug.trim(),
           icon: editIcon,
+          hoverText: editHoverText || null,
         }),
       });
 
@@ -650,7 +655,6 @@ const AdminServicePillarList = () => {
     router.push(adminRoutes.servicePillars.edit(slug));
   };
   const handleEditAutoSlugToggle = (enabled: boolean) => {
-  
     setEditAutoSlug(enabled);
 
     if (enabled) {
@@ -937,6 +941,19 @@ const AdminServicePillarList = () => {
                         onChange={setEditIcon}
                         className=""
                         isLogo
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2 text-left">
+                      <label className="text-sm font-semibold text-gray-600">
+                        Hover Text
+                      </label>
+                      <input
+                        type="text"
+                        value={editHoverText}
+                        onChange={(e) => setEditHoverText(e.target.value)}
+                        placeholder="e.g. Crafting Brands, Creating Impact"
+                        className="rounded border px-3 py-2"
                       />
                     </div>
 

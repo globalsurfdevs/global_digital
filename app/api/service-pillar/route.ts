@@ -36,6 +36,7 @@ export async function GET(req: NextRequest) {
         name: 1,
         slug: 1,
         icon: 1,
+        hoverText: 1,
         createdAt: 1,
       },
     )
@@ -155,6 +156,7 @@ export async function PUT(req: NextRequest) {
       ? slugify(body.slug)
       : slugify(name || "");
     const icon = body?.icon;
+    const hoverText = body?.hoverText ?? null;
 
     if (!name || !newSlug) {
       return NextResponse.json(
@@ -177,7 +179,7 @@ export async function PUT(req: NextRequest) {
 
     const updated = await ServicePillar.findOneAndUpdate(
       { _id: body._id },
-      { name, slug: newSlug, icon },
+      { name, slug: newSlug, icon, hoverText },
       { new: true, runValidators: true },
     ).lean();
 

@@ -373,6 +373,8 @@ export async function GET(req: NextRequest) {
 
         slug: item.slug,
 
+        hoverText: item.hoverText,
+
         servicePillarId: item.servicePillarId ?? null,
 
         servicePillar: item.servicePillarId
@@ -427,6 +429,8 @@ export async function POST(req: NextRequest) {
     const slug = body?.slug?.trim() ? slugify(body.slug) : slugify(name ?? "");
 
     const servicePillarId = body?.servicePillarId || null;
+
+    const hoverText = body?.hoverText ?? null;
 
     if (!name) {
       return NextResponse.json(
@@ -492,6 +496,8 @@ export async function POST(req: NextRequest) {
 
       item.servicePillarId = servicePillarId;
 
+      item.hoverText = hoverText;
+
       await serviceDoc.save();
 
       revalidateTag("service");
@@ -507,6 +513,8 @@ export async function POST(req: NextRequest) {
             name: item.name,
 
             slug: item.slug,
+
+            hoverText: item.hoverText,
           },
         },
 

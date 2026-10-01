@@ -7,72 +7,72 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 const images = [
   {
-    src: "../../assets/social-media-marketing/clients/s-1.jpg",
+    src: "/assets/social-media-marketing/clients/s-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-2.jpg",
+    src: "/assets/social-media-marketing/clients/s-2.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-3.jpg",
+    src: "/assets/social-media-marketing/clients/s-3.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-4.jpg",
+    src: "/assets/social-media-marketing/clients/s-4.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-5.jpg",
+    src: "/assets/social-media-marketing/clients/s-5.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-6.jpg",
+    src: "/assets/social-media-marketing/clients/s-6.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-7.jpg",
+    src: "/assets/social-media-marketing/clients/s-7.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-8.jpg",
+    src: "/assets/social-media-marketing/clients/s-8.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-9.jpg",
+    src: "/assets/social-media-marketing/clients/s-9.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-10.jpg",
+    src: "/assets/social-media-marketing/clients/s-10.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-11.jpg",
+    src: "/assets/social-media-marketing/clients/s-11.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-12.jpg",
+    src: "/assets/social-media-marketing/clients/s-12.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-13.jpg",
+    src: "/assets/social-media-marketing/clients/s-13.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/social-media-marketing/clients/s-14.jpg",
+    src: "/assets/social-media-marketing/clients/s-14.jpg",
 
     subTxt: "Social Media Post",
   },

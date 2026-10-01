@@ -147,8 +147,8 @@ const ServicesMegaMenu = ({
       (service) => service.title === title,
     );
 
-    if (!item?.text && categoryData?.categoryText) {
-      return categoryData.categoryText;
+    if (!item?.text && categoryData?.hoverText) {
+      return categoryData.hoverText;
     }
 
     return item?.text ?? "";

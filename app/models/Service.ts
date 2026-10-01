@@ -263,7 +263,9 @@ const serviceItemSchema = new mongoose.Schema(
 
       default: null,
     },
-
+    hoverText: {
+      type: String,
+    },
     seo: {
       type: seoSchema,
     },

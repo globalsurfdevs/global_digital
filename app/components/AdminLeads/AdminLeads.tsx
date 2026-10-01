@@ -34,6 +34,7 @@ const formatDate = (value?: string) => {
 const AdminLeads = () => {
   const searchParams = useSearchParams();
   const pageFromUrl = Number(searchParams.get("page")) || 1;
+  const [isLoading, setLoad] = useState(false);
   const [leads, setLeads] = useState<Lead[] | []>([]);
   const [refetch, setRefetch] = useState(false);
   const [page, setPage] = useState(pageFromUrl);
@@ -59,6 +60,7 @@ const AdminLeads = () => {
 
   useEffect(() => {
     const fetchLeadsData = async () => {
+      setLoad(true);
       try {
         const query = new URLSearchParams({
           page: String(page),
@@ -76,6 +78,8 @@ const AdminLeads = () => {
         }
       } catch (error) {
         console.error("Error fetching leads:", error);
+      } finally {
+        setLoad(false);
       }
     };
 
@@ -176,7 +180,9 @@ const AdminLeads = () => {
           </div>
         </div>
 
-        {leads && leads.length > 0 ? (
+        {isLoading ? (
+          <div>available leads Loading....</div>
+        ) : leads && leads.length > 0 ? (
           <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
             <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
               <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
