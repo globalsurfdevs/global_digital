@@ -22,9 +22,6 @@ const Path = (
 );
 
 export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle, hidden }) => {
-  React.useEffect(() => {
-    console.log(hidden);
-  }, [hidden]);
 
   return (
     <>

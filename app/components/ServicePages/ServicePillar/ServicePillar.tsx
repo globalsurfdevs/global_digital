@@ -1,8 +1,8 @@
 // app/components/ServicePages/ServicePillar/ServicePillarDetail.tsx
 import HeroSection from "../../ServicePillar/sections/HeroSection";
 import Testimonials from "../../HomePage/Testimonials";
-import FAQ from "../../PermormanceMarketing/FAQ";
-import GetInTouch from "../../PermormanceMarketing/GetInTouch";
+import FAQ from "../../PerformanceMarketing/FAQ";
+import GetInTouch from "../../PerformanceMarketing/GetInTouch";
 import TitleDesc from "../../BrandingAndPositioning/TitleDesc";
 import ServicesSec from "../../BrandingAndPositioning/ServicesSec";
 import ProcessSlider from "@/app/components/BrandingAndPositioning/ProcessSlider";
@@ -11,7 +11,9 @@ import ButtonSlider from "@/app/components/BrandingAndPositioning/ButtonSlider";
 import WhyChoose from "@/app/components/BrandingAndPositioning/WhyChoose";
 import Approach from "@/app/components/ServicePillar/sections/Approach";
 import WhyMatters from "@/app/components/ServicePillar/sections/WhyMatters";
-import InfoGrid, { FrameworkItem } from "@/app/components/ServicePillar/sections/Expertise";
+import InfoGrid, {
+  FrameworkItem,
+} from "@/app/components/ServicePillar/sections/Expertise";
 import WhatsIncluded from "@/app/components/ServicePillar/sections/WhatsIncluded";
 import Tours from "@/app/components/HomePage/Tours";
 import { getTestimonials } from "@/app/lib/testimonials";
@@ -40,10 +42,10 @@ const ServicePillarDetail = async ({ data }: Props) => {
       title: item.title,
       dec: item.description,
       urllink: item.link,
-    })
+    }),
   );
 
-  const relatedServiceData = data.eleventhSection.items.map((item:any) => ({
+  const relatedServiceData = data.eleventhSection.items.map((item: any) => ({
     id: item.pillarId.id,
     title: item.pillarId.name,
     description: item.description,
@@ -51,8 +53,8 @@ const ServicePillarDetail = async ({ data }: Props) => {
     link: item.pillarId.slug ? `/${item.pillarId.slug}` : "#", // adjust once link shape is confirmed
   }));
 
-//   console.log("relatedServiceData", data.eleventhSection);
-
+  //   console.log("relatedServiceData", data.eleventhSection);
+  console.log("schema: ", data.seo.schema);
   return (
     <div>
       {data.seo?.schema && (
@@ -61,10 +63,19 @@ const ServicePillarDetail = async ({ data }: Props) => {
           dangerouslySetInnerHTML={{ __html: data.seo.schema }}
         />
       )}
-      {data.firstSection.showSection !== false && <HeroSection data={data.firstSection} />}
-      {data.secondSection.showSection !== false && <TitleDesc data={data.secondSection} />}
-      {data.thirdSection.showSection !== false && <Approach data={data.thirdSection} />}
-      {data.fourthSection.showSection !== false && <WhyMatters data={data.fourthSection} />}
+
+      {data.firstSection.showSection !== false && (
+        <HeroSection data={data.firstSection} />
+      )}
+      {data.secondSection.showSection !== false && (
+        <TitleDesc data={data.secondSection} />
+      )}
+      {data.thirdSection.showSection !== false && (
+        <Approach data={data.thirdSection} />
+      )}
+      {data.fourthSection.showSection !== false && (
+        <WhyMatters data={data.fourthSection} />
+      )}
       {data.fifthSection.showSection !== false && (
         <InfoGrid
           title={data.fifthSection.title}
@@ -77,16 +88,18 @@ const ServicePillarDetail = async ({ data }: Props) => {
       {data.sixthSection.showSection !== false && (
         <BECS data={data.sixthSection} page="service-pillar" />
       )}
-      {data.seventhSection.showSection !== false && data.seventhSection.items.length > 0 && (
-        <WhatsIncluded
-          title={data.seventhSection.title}
-          description={data.seventhSection.subTitle}
-          items={data.seventhSection.items}
-        />
-      )}
-      {data.eighthSection.showSection !== false && data.eighthSection.items.length > 0 && (
-        <ProcessSlider data={data.eighthSection} variant="dark" />
-      )}
+      {data.seventhSection.showSection !== false &&
+        data.seventhSection.items.length > 0 && (
+          <WhatsIncluded
+            title={data.seventhSection.title}
+            description={data.seventhSection.subTitle}
+            items={data.seventhSection.items}
+          />
+        )}
+      {data.eighthSection.showSection !== false &&
+        data.eighthSection.items.length > 0 && (
+          <ProcessSlider data={data.eighthSection} variant="dark" />
+        )}
       {data.ninthSection.showSection !== false && (
         <section className="py-120">
           <ButtonSlider data={data.ninthSection} />
@@ -115,7 +128,7 @@ const ServicePillarDetail = async ({ data }: Props) => {
           data={Cta}
           ctabbutton={totitleSentenceCase(data.ctaSection.buttonText)}
           redlast
-          buttonLink={data.ctaSection.buttonLink}
+          buttonLink={data.ctaSection.buttonLink ?? "/contact-us"}
           page="service"
         />
       )}

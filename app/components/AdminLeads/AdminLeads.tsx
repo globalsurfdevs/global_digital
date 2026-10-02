@@ -9,6 +9,7 @@ import { MdDelete } from "react-icons/md";
 
 type Lead = {
   _id: string;
+  campaignName: string;
   name: string;
   email: string;
   company: string;
@@ -33,6 +34,7 @@ const formatDate = (value?: string) => {
 const AdminLeads = () => {
   const searchParams = useSearchParams();
   const pageFromUrl = Number(searchParams.get("page")) || 1;
+  const [isLoading, setLoad] = useState(false);
   const [leads, setLeads] = useState<Lead[] | []>([]);
   const [refetch, setRefetch] = useState(false);
   const [page, setPage] = useState(pageFromUrl);
@@ -58,6 +60,7 @@ const AdminLeads = () => {
 
   useEffect(() => {
     const fetchLeadsData = async () => {
+      setLoad(true);
       try {
         const query = new URLSearchParams({
           page: String(page),
@@ -75,6 +78,8 @@ const AdminLeads = () => {
         }
       } catch (error) {
         console.error("Error fetching leads:", error);
+      } finally {
+        setLoad(false);
       }
     };
 
@@ -175,7 +180,9 @@ const AdminLeads = () => {
           </div>
         </div>
 
-        {leads && leads.length > 0 ? (
+        {isLoading ? (
+          <div>available leads Loading....</div>
+        ) : leads && leads.length > 0 ? (
           <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
             <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
               <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
@@ -186,6 +193,9 @@ const AdminLeads = () => {
                       checked={selectedIds.length === leads.length}
                       onChange={toggleSelectAll}
                     />
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Campaign Name
                   </th>
                   <th scope="col" className="px-4 py-3">
                     Name
@@ -225,6 +235,9 @@ const AdminLeads = () => {
                         checked={selectedIds.includes(item._id)}
                         onChange={() => toggleSelect(item._id)}
                       />
+                    </td>
+                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                      {item.campaignName || "—"}
                     </td>
                     <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
                       {item.name}

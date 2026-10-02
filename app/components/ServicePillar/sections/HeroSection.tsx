@@ -48,13 +48,14 @@ const HeroSection = ({ data, maxWidth }: HeroSectionProps) => {
   }, [modalOpen]);
 
   return (
-    <section className="relative py-[110px] overflow-hidden md:h-[70vh] 2xl:h-[90vh] mt-[20px]">
+    <section className="relative py-[110px] overflow-hidden md:h-[90vh] 2xl:h-[90vh] mt-[20px]">
       <div className="absolute inset-0 z-0 h-full w-full">
         <Image
           src={data.image}
           alt={data.imageAlt}
           width={1920}
           height={1080}
+          priority
           className="hidden h-full w-full object-cover md:block"
         />
         <Image

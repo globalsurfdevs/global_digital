@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import HeaderSwitcher from "@/app/components/HomePage/HeaderSwitcher";
+import { getNavServices } from "@/app/lib/services/get-nav-services";
 
 import Breadcrumb from "../components/HomePage/BreadcrumbSchema";
 import { Space_Grotesk } from "next/font/google";
@@ -8,6 +9,8 @@ import Footer from "@/app/components/HomePage/Footer";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import ZohoChat from "../components/common/ZohoChat";
+import { siteMetadata } from "../seo/metadata";
+import { organizationSchema } from "../seo/schemas";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -16,143 +19,78 @@ const spaceGrotesk = Space_Grotesk({
 
 // export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: {
-    default: "GS Digital",
-    template: "%s | GS Digital", // page title will be: "Page Title | Global Surf Digital"
-  },
-  description: "Full-service digital marketing agency in Dubai.",
-  other: {
-    "linkedin-domain-verification": "cd0771a6-efa9-4299-a6d6-35ba3450f6e0",
-  },
-};
+export const metadata = siteMetadata;
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "GS Digital",
-  url: "https://www.globalsurf.ae/",
-  logo: "https://www.globalsurf.ae/gs-digital-logo.svg",
-  description:
-    "GS Digital Media is a premium full-service digital marketing agency in Dubai, specializing in SEO, performance marketing, social media marketing, and web design and development.",
-  slogan: "Master Every Pixel of Your Digital Presence",
-  foundingDate: "2013",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "P.O.Box 13653, 901 - SIT Tower, DSO",
-    addressLocality: "DSO",
-    addressRegion: "Dubai",
-    postalCode: "13653",
-    addressCountry: "AE",
-  },
-  areaServed: [
-    {
-      "@type": "Country",
-      name: "AE",
-      openingHoursSpecification: [
-        "Monday – Friday, 8:00 – 18:00",
-        "Saturday,Sunday - Closed",
-      ],
-      hasmap:
-        "https://www.google.com/maps/place/Global+Surf+Digital/@25.1177885,55.3880998,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f5cde96bd7e5f:0x8632d41bbf01c71!8m2!3d25.1177885!4d55.3906747!16s%2Fg%2F12qf96jrm?entry=ttu&g_ep=EgoyMDI1MDEyOS4xIKXMDSoASAFQAw%3D%3D",
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: "25.1177885",
-        longitude: "55.3880998",
-      },
-    },
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+971-45821133",
-    contactType: "customer service",
-    areaServed: "AE",
-    availableLanguage: ["English"],
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "6",
-    ratingCount: "6",
-  },
-  review: [
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Karim El Shennawy",
-      },
-      description:
-        "Global Surf proved to be talented group that delivered their project in excellent manner. They are responsive, and we trusted them day by day with more tasks and they continue to prove their capabilities.",
-    },
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Alissar Nasrallah",
-      },
-      description:
-        "Caring team, looks out for what you want and makes sure to give you the outcome you want, quick, you will find them next to you in critical moments.",
-    },
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Hesham Abdeen",
-      },
-      description:
-        "Because of the way that Global Surf encourages collaboration, working with the team has been a pleasure. Their staff welcomes our input and fosters open communication, which has led to a website that reflects our brand and serves our particular demands. Global Surf offers a plethora of knowledge and creativity.",
-    },
-    {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Omar M. Bin Dhaher Almheiri",
-      },
-      description:
-        "We have vary good relation and experience with your professional company Not to mention the extra care we get from your team We like this relationship to continue for the success of both of us",
-    },
-  ],
-  sameAs: [
-    "https://www.facebook.com/globalsurf.digital",
-    "https://www.instagram.com/globalsurf.digital/",
-    "https://x.com/GlobalSurf_D",
-    "https://www.linkedin.com/company/globalsurfdigital",
-    "https://www.tiktok.com/@globalsurf.digital",
-  ],
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    // <html lang="en">
-      <div className={spaceGrotesk.className}>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
-        {/* Google Tag Manager Script */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TVWCC3XC');`,
-          }}
-        />
+  const navigation = await getNavServices();
+  const OPENAI_PIXEL_ID = "8WbMm1MBuRkNWvVvEV8toy";
 
-        {/* <script
+  return (
+    <div className={spaceGrotesk.className}>
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-TVWCC3XC"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
+      {/* Google Tag Manager Script */}
+      <Script
+        id="gtm-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TVWCC3XC');`,
+        }}
+      />
+      {/* OpenAi Pixel_Id */}
+      <Script
+        id="openai-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function (w, d, s, u) {
+  if (w.oaiq) return;
+  var q = function () { q.q.push(arguments); };
+  q.q = [];
+  w.oaiq = q;
+  var js = d.createElement(s);
+  js.async = true;
+  js.src = u;
+  var f = d.getElementsByTagName(s)[0];
+  f.parentNode.insertBefore(js, f);
+})(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init", { pixelId: "${OPENAI_PIXEL_ID}" });`,
+        }}
+      />
+      {/* <Script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: ,
+  });
+ </Script> */}
+      {/* <script
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         /> */}
-        {/* <Script
+      {/* <Script
           id="organization-schema"
           type="application/ld+json"
           strategy="afterInteractive"
@@ -160,18 +98,18 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         /> */}
-        <script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
-        <HeaderSwitcher />
-        <div className="mbcs-63">{children}</div>
-        <Footer />
-        <Breadcrumb />
-        {/* <Script
+      <script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+      <HeaderSwitcher navigation={navigation} />
+      <div className="mbcs-63">{children}</div>
+      <Footer />
+      <Breadcrumb />
+      {/* <Script
           id="zoho-salesiq"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -190,8 +128,8 @@ export default function RootLayout({
           src="https://salesiq.zohopublic.com/widget?wc=siqd36091b63288ec869166f3cf467a881309d2a521f748c31baf5dcb110565240345bcd627f6be5997ac154cc2af1056c5"
           defer
         ></Script> */}
-        <ZohoChat/>
-      </div>
-    // </html>
+
+      <ZohoChat />
+    </div>
   );
 }

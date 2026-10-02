@@ -13,6 +13,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 
 import Link from "next/link";
+import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
 
 const sidebar = {
   open: {
@@ -49,7 +50,11 @@ const imageSection = {
   },
 };
 
-export const Example = () => {
+export const Example = ({
+  navigation,
+}: {
+  navigation: HeaderNavigationPillar[];
+}) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -120,7 +125,11 @@ export const Example = () => {
           </motion.div>
 
           <div className="flex-1 overflow-y-auto">
-            <Navigation toggle={() => toggleOpen()} onHide={hideButton} />
+            <Navigation
+              navigation={navigation}
+              toggle={() => toggleOpen()}
+              onHide={hideButton}
+            />
           </div>
 
           <div className="w-full px-6 pb-6 text-white">

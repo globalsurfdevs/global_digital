@@ -2,10 +2,10 @@ import React from "react";
 import HeroSection from "../../../components/BannerSectionBC/HeroWithBc";
 import Head from "next/head";
 import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
-import FAQ from "../../../components/PermormanceMarketing/FAQ";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/BannerSectionBC/GetInTouch";
 import Expertise from "../../../components/EcomIndustry/Expertise";
-import Framework from "../../../components/PermormanceMarketing/Framework";
+import Framework from "../../../components/PerformanceMarketing/Framework";
 import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
 import { BannerSection } from "../../../data/services/ind-b2b/herosection";

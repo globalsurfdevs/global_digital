@@ -38,7 +38,7 @@ const TitleImagecontent = () => {
                 decoding="async"
                 data-nimg="1"
                 className="m-auto my-[40px]"
-                src="../../assets/blogs/contractor-website-comparison-strong-vs-weak-digital-presence.webp"
+                src="/assets/blogs/contractor-website-comparison-strong-vs-weak-digital-presence.webp"
               />
               <h3 className="mb-2 text-[30px]">
                 At the pre-qualification stage

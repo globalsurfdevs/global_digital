@@ -126,7 +126,7 @@ const Twosecblog: React.FC = ({}) => {
               decoding="async"
               data-nimg="1"
               className="m-auto my-[40px]"
-              src="../../assets/blogs/ai/ai6.png"
+              src="/assets/blogs/ai/ai6.png"
             />
 
             <p className="mb-[30px] text-font19 text-[#77787B]">
@@ -273,7 +273,7 @@ const Twosecblog: React.FC = ({}) => {
             decoding="async"
             data-nimg="1"
             className="m-auto my-[40px]"
-            src="../../assets/blogs/ai/ai12.webp"
+            src="/assets/blogs/ai/ai12.webp"
           />
 
           <p className="mb-[30px] text-font19 text-[#77787B]">

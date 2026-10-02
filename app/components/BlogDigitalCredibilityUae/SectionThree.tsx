@@ -32,7 +32,7 @@ const SectionThree = () => {
             decoding="async"
             data-nimg="1"
             className="m-auto my-[40px]"
-            src="../../assets/blogs/uae-construction-tender-process-stages.webp"
+            src="/assets/blogs/uae-construction-tender-process-stages.webp"
           />
 
           <p className="my-4 text-font19 text-[#77787B]">

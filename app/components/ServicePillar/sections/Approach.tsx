@@ -15,6 +15,7 @@ const Approach = ({ data }: any) => {
                         variants={moveUp(0)}
                         initial="hidden"
                         whileInView="show"
+
                         viewport={{ once: true }}
                     >
                         <Image
@@ -22,6 +23,7 @@ const Approach = ({ data }: any) => {
                             alt={data.imageAlt}
                             width={1500}
                             height={1500}
+                            priority
                             className="h-full max-h-[600px] w-full object-cover"
                         />
                     </motion.div>

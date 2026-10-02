@@ -256,6 +256,16 @@ const serviceItemSchema = new mongoose.Schema(
       unique: true,
     },
 
+    servicePillarId: {
+      type: mongoose.Schema.Types.ObjectId,
+
+      ref: MODEL_NAMES.SERVICE_PILLAR,
+
+      default: null,
+    },
+    hoverText: {
+      type: String,
+    },
     seo: {
       type: seoSchema,
     },

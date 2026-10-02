@@ -1,8 +1,8 @@
-import HeroSection from "../../components/PermormanceMarketing/HeroSection";
-import Services from "../../components/PermormanceMarketing/Services";
+import HeroSection from "../../components/PerformanceMarketing/HeroSection";
+import Services from "../../components/PerformanceMarketing/Services";
 import Typeslogo from "../../components/Bc-logo/TypesLogo";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
 import Link from "next/link";
 // import LetsTalk from "../../components/common/LetsConnect";
 import { Lexend } from "next/font/google";

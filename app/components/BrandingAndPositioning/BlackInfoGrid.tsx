@@ -48,7 +48,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  const columns = width >= 1280 ? colcount || 4 : width >= 768 ? 2 : 1;
+  const columns = width >= 1220 ? colcount || 4 : width >= 768 ? 2 : 1;
 
   const rows = [];
 

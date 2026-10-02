@@ -376,13 +376,32 @@ type ServiceListItem = {
   _id: string;
   name: string;
   slug: string;
+  hoverText?: string;
+  servicePillarId?: string | null;
+  servicePillar?: {
+    name: string;
+    slug: string;
+  } | null;
   createdAt?: string;
+};
+
+type ServicePillarListItem = {
+  _id: string;
+  name: string;
+  slug: string;
 };
 
 const AdminServiceList = () => {
   const searchParams = useSearchParams();
   const pageFromUrl = Number(searchParams.get("page")) || 1;
   const [services, setServices] = useState<ServiceListItem[] | []>([]);
+
+  const [servicePillars, setServicePillars] = useState<ServicePillarListItem[]>(
+    [],
+  );
+
+  const [loadServices, setLoadServices] = useState(false);
+
   const [refetch, setRefetch] = useState(false);
   const [page, setPage] = useState(pageFromUrl);
   const [totalPages, setTotalPages] = useState(1);
@@ -397,6 +416,7 @@ const AdminServiceList = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newServiceName, setNewServiceName] = useState("");
   const [newServiceSlug, setNewServiceSlug] = useState("");
+  const [newServicePillarId, setNewServicePillarId] = useState("");
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
   const [creating, setCreating] = useState(false);
 
@@ -407,6 +427,8 @@ const AdminServiceList = () => {
   );
   const [editName, setEditName] = useState("");
   const [editSlug, setEditSlug] = useState("");
+  const [editHoverText, setEditHoverText] = useState("");
+  const [editServicePillarId, setEditServicePillarId] = useState("");
   // const [editSlugManuallyEdited, setEditSlugManuallyEdited] = useState(false);
   const [updating, setUpdating] = useState(false);
   const [editAutoSlug, setEditAutoSlug] = useState(false);
@@ -434,6 +456,7 @@ const AdminServiceList = () => {
   const resetCreateForm = () => {
     setNewServiceName("");
     setNewServiceSlug("");
+    setNewServicePillarId("");
     setSlugManuallyEdited(false);
   };
 
@@ -461,6 +484,8 @@ const AdminServiceList = () => {
     setEditingService(service);
     setEditName(service.name);
     setEditSlug(service.slug);
+    setEditHoverText(service.hoverText ?? "");
+    setEditServicePillarId(service.servicePillarId ?? "");
 
     // Existing service: Auto Slug OFF by default
     setEditAutoSlug(false);
@@ -472,6 +497,8 @@ const AdminServiceList = () => {
     setEditingService(null);
     setEditName("");
     setEditSlug("");
+    setEditServicePillarId("");
+    setEditHoverText("");
     setEditAutoSlug(false);
   };
   const toggleSelect = (id: string) => {
@@ -486,7 +513,22 @@ const AdminServiceList = () => {
   };
 
   useEffect(() => {
+    const fetchServicePillars = async () => {
+      try {
+        const response = await fetch(`/api/service-pillar?limit=100`);
+
+        if (response.ok) {
+          const data = await response.json();
+          setServicePillars(data.data ?? []);
+        }
+      } catch (error) {
+        console.error("Error fetching service pillars:", error);
+      }
+    };
+
     const fetchServicesData = async () => {
+      setLoadServices(true);
+
       try {
         const query = new URLSearchParams({
           page: String(page),
@@ -495,16 +537,23 @@ const AdminServiceList = () => {
 
         const response = await fetch(`/api/service?${query.toString()}`);
 
-        if (response.ok) {
-          const data = await response.json();
-          setServices(data.data);
-          setTotalPages(data.totalPages);
+        if (!response.ok) {
+          throw new Error("Failed to fetch services");
         }
+
+        const data = await response.json();
+
+        setServices(data.data);
+        setTotalPages(data.totalPages);
       } catch (error) {
         console.error("Error fetching services:", error);
+        setServices([]);
+      } finally {
+        setLoadServices(false);
       }
     };
 
+    fetchServicePillars();
     fetchServicesData();
   }, [page, refetch]);
 
@@ -566,6 +615,7 @@ const AdminServiceList = () => {
         body: JSON.stringify({
           name: newServiceName.trim(),
           slug: newServiceSlug.trim(),
+          servicePillarId: newServicePillarId || null,
         }),
       });
 
@@ -599,7 +649,6 @@ const AdminServiceList = () => {
       toast.error("Slug is required");
       return;
     }
-
     setUpdating(true);
     try {
       const response = await fetch(`/api/service`, {
@@ -611,11 +660,12 @@ const AdminServiceList = () => {
           _id: editingService._id,
           name: editName.trim(),
           slug: editSlug.trim(),
+          servicePillarId: editServicePillarId || null,
+          hoverText: editHoverText || null,
         }),
       });
 
       const data = await response.json();
-
       if (response.ok) {
         toast.success(data.message ?? "Service updated");
         resetEditForm();
@@ -684,7 +734,9 @@ const AdminServiceList = () => {
 
         {view === "services" ? (
           <>
-            {services && services.length > 0 ? (
+            {loadServices ? (
+              <div className="py-10 text-center">Loading services...</div>
+            ) : services.length > 0 ? (
               <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
                 <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
                   <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
@@ -806,6 +858,27 @@ const AdminServiceList = () => {
                         </p>
                       </div>
 
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Service Pillar
+                        </label>
+                        <select
+                          value={newServicePillarId}
+                          onChange={(e) =>
+                            setNewServicePillarId(e.target.value)
+                          }
+                          className="rounded border px-3 py-2"
+                          required
+                        >
+                          <option value="">Select a service pillar</option>
+                          {servicePillars.map((pillar) => (
+                            <option key={pillar._id} value={pillar._id}>
+                              {pillar.name} ({pillar.slug})
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
                       <div className="gap-2 sm:flex sm:flex-row-reverse">
                         <button
                           type="button"
@@ -923,6 +996,39 @@ const AdminServiceList = () => {
                           This becomes part of the page URL, e.g. /services/
                           {editSlug || "your-slug"}
                         </p>
+                      </div>
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Hover Text
+                        </label>
+                        <input
+                          type="text"
+                          value={editHoverText}
+                          onChange={(e) => setEditHoverText(e.target.value)}
+                          placeholder="e.g. Hover text for the service"
+                          className="rounded border px-3 py-2"
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-2 text-left">
+                        <label className="text-sm font-semibold text-gray-600">
+                          Service Pillar
+                        </label>
+                        <select
+                          value={editServicePillarId}
+                          onChange={(e) =>
+                            setEditServicePillarId(e.target.value)
+                          }
+                          className="rounded border px-3 py-2"
+                          required
+                        >
+                          <option value="">Select a service pillar</option>
+                          {servicePillars.map((pillar) => (
+                            <option key={pillar._id} value={pillar._id}>
+                              {pillar.name} ({pillar.slug})
+                            </option>
+                          ))}
+                        </select>
                       </div>
 
                       <div className="gap-2 sm:flex sm:flex-row-reverse">

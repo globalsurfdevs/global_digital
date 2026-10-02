@@ -6,11 +6,25 @@ import LetsTalk from "@/app/components/common/LetsConnect";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { menuItems as rawMenuItems } from "@/app/data/menuv2";
+import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
 
-const menuItems: MenuItemType[] = rawMenuItems;
+const baseMenuItems: MenuItemType[] = [
+  { item: "ABOUT", url: "/about-us" },
+  { item: "INDUSTRIES", url: "/industries" },
+  { item: "PORTFOLIO", url: "/portfolio" },
+  {
+    item: "INSIGHT",
+    url: "#",
+    children: [
+      { item: "Blogs", url: "/blogs" },
+      { item: "Case Studies", url: "/case-study" },
+    ],
+  },
+  { item: "CAREERS", url: "/careers" },
+];
 
 interface MenuToggleProps {
+  navigation: HeaderNavigationPillar[];
   onHide: () => void;
   toggle: () => void;
 }
@@ -29,7 +43,30 @@ interface MenuItemType {
   children?: MenuChild[];
 }
 
-export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
+const createMenuItems = (
+  navigation: HeaderNavigationPillar[],
+): MenuItemType[] => [
+  baseMenuItems[0],
+  {
+    item: "SERVICES",
+    url: "#",
+    children: navigation.map((pillar) => ({
+      item: pillar.title,
+      url: pillar.url,
+      children: pillar.services.map((service) => ({
+        item: service.title,
+        url: service.url,
+      })),
+    })),
+  },
+  ...baseMenuItems.slice(1),
+];
+
+export const Navigation: React.FC<MenuToggleProps> = ({
+  navigation,
+  toggle,
+  onHide,
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>(
     {},
@@ -95,6 +132,9 @@ export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
       },
     },
   };
+
+  const menuItems = createMenuItems(navigation);
+
   return (
     <div className="">
       {modalOpen && (

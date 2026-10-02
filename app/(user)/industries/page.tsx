@@ -9,8 +9,8 @@ import SectorsWeWorkWith from "@/app/components/IndustryNew/sections/Sectors";
 import Results from "@/app/components/IndustryNew/sections/Results";
 import Service from "@/app/components/IndustryNew/sections/Services";
 import { assets } from "@/public/assets/assets";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
 import { getIndustryLandingPage } from "@/app/lib/industryLanding.service";
 import { getAllIndustry } from "@/app/lib/industry.service";
 import { IndustryLandingPageType } from "@/app/components/IndustryNew/type";
@@ -88,20 +88,20 @@ const page = async () => {
       id: (index + 1).toString(),
 
       icon: item.service?.icon,
-      link:userRoutes.servicePillar.detail(item.service?.slug),
+      link: userRoutes.servicePillar.detail(item.service?.slug),
 
       title: item.service?.name,
       description: item.description,
     })),
   };
-  
+
   const Faq = [
     ...industry?.faqSection?.items.map((item) => ({
       title: item.question,
       description: item.answer,
     })),
   ];
-//   console.log("servicesData:",servicesData)
+  //   console.log("servicesData:",servicesData)
   const Cta = [
     {
       textred: industry?.ctaSection?.titleRed,

@@ -8,15 +8,15 @@ import Clients from "@/app/components/HomePage/Clients";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import Tours from "@/app/components/HomePage/Tours";
 // import WorkIn from "@/app/components/HomePage/WorkIn";
-import FAQ from "@/app/components/PermormanceMarketing/FAQ";
+import FAQ from "@/app/components/PerformanceMarketing/FAQ";
 import Cta from "@/app/components/HomePage/Cta";
 import IndustriesweWork from "@/app/components/HomePage/IndustriesweWork";
 import Script from "next/script";
-import { Faq } from "@/app/components/HomePage/data";
+// import { Faq } from "@/app/components/HomePage/data";
 import type { Metadata } from "next";
 import { getHome } from "../lib/home.service";
 import { getTestimonials } from "../lib/testimonials";
-import { getAllIndustry, getIndustry } from "../lib/industry.service";
+import { getAllIndustry } from "../lib/industry.service";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Agency in Dubai | GS Digital",
@@ -120,10 +120,11 @@ const localBusinessSchema = {
 };
 
 export default async function Home() {
-  const home = await getHome();
-  const testimonials = await getTestimonials();
-
-  const industries= await getAllIndustry();
+  const [home, testimonials, industries] = await Promise.all([
+    getHome(),
+    getTestimonials(),
+    getAllIndustry(),
+  ]);
 
   return (
     <>

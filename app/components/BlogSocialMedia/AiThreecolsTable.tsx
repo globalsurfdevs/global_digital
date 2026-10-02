@@ -61,7 +61,7 @@ const ThreeColumnTable: React.FC = ({}) => {
               decoding="async"
               data-nimg="1"
               className="m-auto my-[40px]"
-              src="../../assets/blogs/ai/ai4.webp"
+              src="/assets/blogs/ai/ai4.webp"
             />
 
             <p className="mb-[30px] text-font19 text-[#77787B]">
