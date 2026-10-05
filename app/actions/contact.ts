@@ -1,7 +1,6 @@
 "use server";
 
 import connectDb from "@/lib/mongodb";
-// import { supabase } from "@/app/lib/initSupabase";
 import Contact from "../models/Contact";
 import { getToEmail } from "../helpers/getToEmail";
 import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
@@ -19,15 +18,6 @@ export async function submitContact(formData: FormData) {
       message: formData.get("MultiLine") as string,
       page_url: formData.get("SingleLine2") as string,
     };
-
-    // const { error } = await supabase
-    //     .from("contacts")
-    //     .insert([data]);
-
-    // if (error) {
-    //     console.error("Form submission failed", error);
-    //     return { success: false };
-    // }
 
     const contact = await Contact.create(data);
 

@@ -22,7 +22,7 @@ const ContactUs = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const recaptcha = useRef<ReCAPTCHA>(null);
   const [error, setError] = useState("");
-  console.log("Entered email:", formData.Email);
+  // console.log("Entered email:", formData.Email);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 

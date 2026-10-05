@@ -11,24 +11,13 @@ import connectDB from "@/lib/mongodb";
 
 export async function GET(req: NextRequest) {
   try {
-    console.log("This worlds");
     await connectDB();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     const slug = searchParams.get("slug");
 
-    console.log(id);
 
     if (id) {
-      // let { data: caseStudy, error } = await supabase
-      //     .from('portfolios')
-      //     .select("*")
-      //     .eq('id', id)
-
-      // let { data: caseStudyHighlights } = await supabase
-      //     .from('portfolioHighlights')
-      //     .select("*")
-      //     .eq('companyId', id)
 
       const caseStudy = await Portfolio.findById(id)
         .populate("categories")
@@ -41,18 +30,7 @@ export async function GET(req: NextRequest) {
 
       return NextResponse.json({ caseStudy, caseStudyHighlights });
     } else if (slug) {
-      // let { data: caseStudy, error } = await supabase
-      //     .from('portfolios')
-      //     .select("*")
-      //     .eq('slug', slug)
-
-      // console.log("case study", caseStudy)
-
-      // if (caseStudy && caseStudy.length > 0) {
-      //     let { data: caseStudyHighlights } = await supabase
-      //         .from('portfolioHighlights')
-      //         .select("*")
-      //         .eq('companyId', caseStudy[0].id)
+    
 
       const caseStudy = await Portfolio.findOne({ slug })
         .populate("categories")
@@ -68,10 +46,7 @@ export async function GET(req: NextRequest) {
 
       return NextResponse.json({ caseStudy, caseStudyHighlights });
     } else {
-      // const { data: caseStudy, error } = await supabase
-      //     .from('portfolios')
-      //     .select('*')
-      //     .in('section', ['case study', 'case study new']);
+  
 
       const caseStudy = await Portfolio.find({
         section: { $in: ["case study", "case study new"] },
@@ -99,7 +74,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  console.log("Here");
+  
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
   await connectDB();
@@ -256,7 +231,7 @@ export async function POST(req: NextRequest) {
           .eq("id", id)
           .select();
 
-        console.log("Data", data, "Error", error);
+       
 
         const highlights: { customId: string; number: string; text: string }[] =
           [];
