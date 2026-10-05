@@ -8,7 +8,7 @@ import ServicesMegaMenu from "./ServiceDropdown";
 import Link from "next/link";
 import LetsTalk from "@/app/components/common/LetsConnect";
 import { usePathname } from "next/navigation";
-import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
+import type { HeaderNavigationPillar } from "@/app/lib/helper/get-nav-services";
 
 const Header = ({ navigation }: { navigation: HeaderNavigationPillar[] }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

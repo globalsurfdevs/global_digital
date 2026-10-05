@@ -13,7 +13,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 
 import Link from "next/link";
-import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
+import type { HeaderNavigationPillar } from "@/app/lib/helper/get-nav-services";
 
 const sidebar = {
   open: {

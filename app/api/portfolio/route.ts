@@ -1,6 +1,6 @@
-import { supabase } from "@/app/lib/initSupabase";
-import redisClient from "@/app/lib/redisClient";
-import { uploadToDropbox } from "@/app/lib/uploadToDropbox";
+
+import redisClient from "@/app/lib/infrastructure/redisClient";
+import { uploadToDropbox } from "@/app/lib/integrations/dropbox/uploadToDropbox";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import connectDB from "@/lib/mongodb";
@@ -214,9 +214,9 @@ export async function POST(req: NextRequest) {
   let videoThumbnailPath;
 
   if (resultImage1) {
-    console.log(
-      "FPOIDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
-    );
+    // console.log(
+    //   "FPOIDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+    // );
 
     try {
       const filename = `${Date.now()}-${resultImage1.name || "image"}`;

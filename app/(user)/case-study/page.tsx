@@ -1,11 +1,11 @@
 import React from "react";
 import CaseStudyPage from "./[companyName]/page";
 import { Metadata } from "next";
-import apiService from "@/app/lib/apiService";
+import apiService from "@/app/lib/api/apiService";
 import { formatLinkForCaseStudy } from "@/app/helpers/formatLink";
 import LandingCaseStudy from "@/app/components/LandingCaseStudy";
-import { getCaseStudies } from "@/app/lib/case-study.service";
-import { getIndustries } from "@/app/lib/industries.service";
+import { getCaseStudies } from "@/app/lib/services/case-study.service";
+import { getIndustries } from "@/app/lib/services/industries.service";
 
 type Data = {
   caseStudy: {

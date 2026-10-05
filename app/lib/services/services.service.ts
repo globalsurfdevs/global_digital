@@ -70,8 +70,7 @@ import Industry from "@/app/models/Industries";
 import "@/app/models/Portfolio";
 
 import "@/app/models/ServiceIndustry";
-import Service from "../models/Service";
-
+import Service from "@/app/models/Service";
 export const getService = unstable_cache(
   async (slug) => {
     await connectDB();

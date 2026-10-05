@@ -1,4 +1,4 @@
-import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
+import type { HeaderNavigationPillar } from "../lib/helper/get-nav-services"; 
 
 export const staticHeaderNavigation: HeaderNavigationPillar[] = [
   {

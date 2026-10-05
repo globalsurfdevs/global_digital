@@ -1,5 +1,5 @@
 import { categories } from "@/app/data/categories";
-import { supabase } from "@/app/lib/initSupabase";
+import { supabase } from "@/app/lib/integrations/supabase/initSupabase";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import Portfolio from "@/app/models/Portfolio";

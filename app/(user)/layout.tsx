@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
 import HeaderSwitcher from "@/app/components/HomePage/HeaderSwitcher";
-import { getNavServices } from "@/app/lib/services/get-nav-services";
-
+import { getNavServices } from "@/app/lib/helper/get-nav-services";
 import Breadcrumb from "../components/HomePage/BreadcrumbSchema";
 import { Space_Grotesk } from "next/font/google";
 import Footer from "@/app/components/HomePage/Footer";

@@ -14,11 +14,11 @@ import htmlEditButton from "quill-html-edit-button";
 import BlotFormatter from "quill-blot-formatter";
 import { generateAndUploadImage } from "@/app/helpers/generateAndUploadImage";
 import { useRef } from "react";
-import { removeFromDropbox } from "@/app/lib/uploadToDropbox";
+import { removeFromDropbox } from "@/app/lib/integrations/dropbox/uploadToDropbox";
 import {
   removeFromDropboxForBlog,
   uploadToDropboxForBlog,
-} from "@/app/lib/uploadToDropboxForBlog";
+} from "@/app/lib/integrations/dropbox/uploadToDropboxForBlog";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { generateSlugForBlog } from "@/app/helpers/generateSlug";

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Header from "@/app/components/HomePage/Headerv2-opt";
 import HeaderWithoutMenu from "@/app/components/HomePage/HeaderWithoutMenu";
-import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
+import type { HeaderNavigationPillar } from "@/app/lib/helper/get-nav-services";
 
 export default function HeaderSwitcher({
   navigation,
@@ -12,7 +12,11 @@ export default function HeaderSwitcher({
 }) {
   const pathname = usePathname();
 
-  const noMenuRoutes = ["/digital-growth-landing-page", "/growth-partnership","/chatgpt-ads-landing"];
+  const noMenuRoutes = [
+    "/digital-growth-landing-page",
+    "/growth-partnership",
+    "/chatgpt-ads-landing",
+  ];
 
   const useMinimalHeader = noMenuRoutes.some(
     (route) => pathname === route || pathname.startsWith(`${route}/`),

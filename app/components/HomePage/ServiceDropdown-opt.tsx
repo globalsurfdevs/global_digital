@@ -5,7 +5,7 @@ import menuright from "@/public/assets/menurightarrow.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
+import type { HeaderNavigationPillar } from "@/app/lib/helper/get-nav-services";
 
 type ServiceItem = { text: string; url?: string };
 type ServiceCategory = {

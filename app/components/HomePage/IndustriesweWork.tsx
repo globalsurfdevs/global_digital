@@ -8,7 +8,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
-import { getAllIndustry } from "@/app/lib/industry.service";
+import { getAllIndustry } from "@/app/lib/services/industry.service";
 
 const images = [
   {

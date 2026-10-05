@@ -1,6 +1,6 @@
 import React from "react";
 import Blogs from "@/app/components/Blogs";
-import { getAllBlogs } from "@/app/lib/blog.service";
+import { getAllBlogs } from "@/app/lib/services/blog.service";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

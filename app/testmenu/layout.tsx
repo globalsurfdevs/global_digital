@@ -4,7 +4,7 @@ import Headerv2 from "@/app/components/HomePage/Headerv2";
 import { Space_Grotesk } from "next/font/google";
 import Footer from "@/app/components/HomePage/Footer";
 import Script from "next/script";
-import { getNavServices } from "@/app/lib/services/get-nav-services";
+import { getNavServices } from "@/app/lib/helper/get-nav-services";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
