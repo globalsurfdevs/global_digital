@@ -39,7 +39,7 @@ const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) =>
         } else {
           console.error("Failed to fetch portfolio data");
         }
-      } catch (error) {
+      } catch (error) {      
         console.error("Error fetching portfolio data:", error);
       }
     };

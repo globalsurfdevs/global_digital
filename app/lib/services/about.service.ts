@@ -1,7 +1,7 @@
 // lib/actions/getPortfolio.ts
 import connectDB from "@/lib/mongodb";
 import { unstable_cache } from "next/cache";
-import About from "../models/About";
+import About from "@/app/models/About";
 
 export const getAbout = unstable_cache(
   async () => {

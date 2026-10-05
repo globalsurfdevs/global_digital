@@ -1,9 +1,9 @@
 import connectDB from "@/lib/mongodb";
 import { unstable_cache } from "next/cache";
-import IndustryLandingPage from "../models/IndustryLanding";
-import Service from "../models/Service";
+import IndustryLandingPage from "@/app/models/IndustryLanding";
+import Service from "@/app/models/Service";
 import "@/app/models/Portfolio";
-import ServicePillar from "../models/ServicePiller";
+import ServicePillar from "@/app/models/ServicePiller";
 
 export const getIndustryLandingPage = unstable_cache(
   async () => {

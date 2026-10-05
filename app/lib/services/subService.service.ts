@@ -1,16 +1,16 @@
 import connectDB from "@/lib/mongodb";
 import { unstable_cache } from "next/cache";
-import ServicePillar from "../models/ServicePiller";
-import ServiceIndustry from "../models/ServiceIndustry";
-import Industries from "../models/Industries";
-import subService from "../models/SubService";
+import ServicePillar from "@/app/models/ServicePiller"; 
+import ServiceIndustry from "@/app/models/ServiceIndustry"; 
+import Industries from "@/app/models/Industries"; 
+import SubService from "@/app/models/SubService"; 
 
 export const getSubService = async (slug: string) => {
   return unstable_cache(
     async () => {
       await connectDB();
 
-      const item = (await subService.findOne({ slug })
+      const item = (await SubService.findOne({ slug })
         .populate("tenthSection.serviceIndustries", "image imageAlt title page")
         .lean()) as any;
   

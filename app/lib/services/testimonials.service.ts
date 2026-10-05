@@ -1,6 +1,6 @@
 import connectDB from "@/lib/mongodb";
 import { unstable_cache } from "next/cache";
-import Testimonials from "../models/Testimonials";
+import Testimonials from "@/app/models/Testimonials"; 
 
 export const getTestimonials = unstable_cache(
   async () => {

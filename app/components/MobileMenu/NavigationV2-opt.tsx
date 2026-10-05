@@ -6,7 +6,7 @@ import LetsTalk from "@/app/components/common/LetsConnect";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import type { HeaderNavigationPillar } from "@/app/lib/services/get-nav-services";
+import type { HeaderNavigationPillar } from "@/app/lib/helper/get-nav-services";
 
 const baseMenuItems: MenuItemType[] = [
   { item: "ABOUT", url: "/about-us" },

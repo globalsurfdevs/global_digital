@@ -14,9 +14,10 @@ import IndustriesweWork from "@/app/components/HomePage/IndustriesweWork";
 import Script from "next/script";
 // import { Faq } from "@/app/components/HomePage/data";
 import type { Metadata } from "next";
-import { getHome } from "../lib/home.service";
-import { getTestimonials } from "../lib/testimonials";
-import { getAllIndustry } from "../lib/industry.service";
+import { getHome } from "../lib/services/home.service";
+import { getTestimonials } from "../lib/services/testimonials.service";
+import { getAllIndustry } from "../lib/services/industry.service";
+import { getPortfolio } from "../lib/services/portfolio.service";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Agency in Dubai | GS Digital",
@@ -120,10 +121,11 @@ const localBusinessSchema = {
 };
 
 export default async function Home() {
-  const [home, testimonials, industries] = await Promise.all([
+  const [home, testimonials, industries,portfolios] = await Promise.all([
     getHome(),
     getTestimonials(),
     getAllIndustry(),
+    getPortfolio()
   ]);
 
   return (
