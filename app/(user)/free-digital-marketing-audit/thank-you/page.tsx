@@ -1,6 +1,7 @@
 import React from "react";
 import { MdOutlineArrowBack, MdOutlineDoneOutline } from "react-icons/md";
 import Link from "next/link";
+import ConversionTracker from "@/app/components/common/ConversionTracker";
 
 type Metadata = {
   robots: string;
@@ -13,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const page = () => {
   return (
     <div>
+      <ConversionTracker />
       <div className="py-[50px] text-center md:py-[100px]   ">
         <h2 className="mb-2 text-primary">
           {" "}
