@@ -121,11 +121,11 @@ const localBusinessSchema = {
 };
 
 export default async function Home() {
-  const [home, testimonials, industries,portfolios] = await Promise.all([
+  const [home, testimonials, industries, portfolios] = await Promise.all([
     getHome(),
     getTestimonials(),
     getAllIndustry(),
-    getPortfolio()
+    getPortfolio(),
   ]);
 
   return (

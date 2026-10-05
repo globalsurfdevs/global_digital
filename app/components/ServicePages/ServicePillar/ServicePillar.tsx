@@ -54,7 +54,7 @@ const ServicePillarDetail = async ({ data }: Props) => {
   }));
 
   //   console.log("relatedServiceData", data.eleventhSection);
-  console.log("schema: ", data.seo.schema);
+
   return (
     <div>
       {data.seo?.schema && (
