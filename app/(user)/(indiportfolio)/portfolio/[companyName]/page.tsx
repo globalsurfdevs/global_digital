@@ -1,6 +1,6 @@
 import React from "react";
 import PortfolioDetails from "@/app/components/Portfolio-details";
-import apiService from "@/app/lib/apiService";
+import apiService from "@/app/lib/api/apiService";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
 import { Metadata } from "next";
 import { Portfolio } from "@/app/types/Portfolio";

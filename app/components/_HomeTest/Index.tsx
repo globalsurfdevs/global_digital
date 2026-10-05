@@ -14,8 +14,8 @@ import IndustriesweWork from "@/app/components/HomePage/IndustriesweWork";
 import Script from "next/script";
 import { Faq } from "@/app/components/HomePage/data";
 import type { Metadata } from "next";
-import { getHome } from "../../lib/home.service";
-import { getTestimonials } from "../../lib/testimonials";
+import { getHome } from "../../lib/services/home.service";
+import { getTestimonials } from   "../../lib/services/testimonials.service";
 
 export default async function Home() {
   const home = await getHome();

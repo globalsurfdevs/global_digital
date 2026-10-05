@@ -1,4 +1,4 @@
-import { uploadToDropbox } from "../lib/uploadToDropbox";
+import { uploadToDropbox } from "../lib/integrations/dropbox/uploadToDropbox";
 
 export const generateAndUploadImage = async (image: File) => {
   try {

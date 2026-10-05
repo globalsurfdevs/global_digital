@@ -1,7 +1,7 @@
 import connectDB from "@/lib/mongodb";
 import { unstable_cache } from "next/cache";
-import Industry from "../models/Industry";
-import Industries from "../models/Industries";
+import Industry from "@/app/models/Industries";
+import Industries from  "@/app/models/Industries";
 
 export const getIndustry = unstable_cache(
   async (slug) => {

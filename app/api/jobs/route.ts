@@ -1,4 +1,4 @@
-import { supabase } from "@/app/lib/initSupabase";
+import { supabase } from "@/app/lib/integrations/supabase/initSupabase";
 import Job from "@/app/models/Job";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";

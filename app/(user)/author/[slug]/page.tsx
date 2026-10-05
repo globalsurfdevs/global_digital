@@ -1,6 +1,6 @@
 import Index from "@/app/components/Author-details/Index";
-import { getAuthorBySlug } from "@/app/lib/author.service";
-import { getAllBlogs } from "@/app/lib/blog.service";
+import { getAuthorBySlug } from "@/app/lib/services/author.service";
+import { getAllBlogs } from "@/app/lib/services/blog.service";
 
 type Props = {
   params: Promise<{ slug: string }>;

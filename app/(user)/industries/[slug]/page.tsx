@@ -10,7 +10,10 @@ import WhyChoose from "@/app/components/BrandingAndPositioning/WhyChoose";
 // import { industryData } from "@/app/components/EngineeringInfrastructure/data";
 import ExperienceResult from "@/app/components/EngineeringInfrastructure/ExperienceResult";
 import IndustriesSec from "@/app/components/EngineeringInfrastructure/IndustriesSec";
-import { getAllIndustry, getIndustry } from "@/app/lib/industry.service";
+import {
+  getAllIndustry,
+  getIndustry,
+} from "@/app/lib/services/industry.service";
 import { IndustryItem } from "./type";
 import { Metadata } from "next";
 import WhoWeWork from "@/app/components/BrandingAndPositioning/WhoWeWork";

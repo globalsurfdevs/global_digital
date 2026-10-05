@@ -2,7 +2,7 @@
 import { getService } from "@/app/lib/services/services.service";
 import { getServicePillar } from "@/app/lib/services/servicePillar.service";
 import { ServiceItem } from "@/app/(user)/[slug]/type";
-import { ServicePillarData } from "@/app/components/ServicePillar/type";
+import { ServicePillarData } from "@/app/components/ServicePages/ServicePillar/servicePillar.type";
 // import NotFound from "../not-found";
 import { SubServiceData } from "@/app/(user)/[slug]/type"; // Import SubServiceData
 import { getSubService } from "@/app/lib/services/subService.service"; // Import getSubService

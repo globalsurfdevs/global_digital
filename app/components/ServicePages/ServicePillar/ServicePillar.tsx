@@ -16,7 +16,7 @@ import InfoGrid, {
 } from "@/app/components/ServicePillar/sections/Expertise";
 import WhatsIncluded from "@/app/components/ServicePillar/sections/WhatsIncluded";
 import Tours from "@/app/components/HomePage/Tours";
-import { getTestimonials } from "@/app/lib/testimonials";
+import { getTestimonials } from "@/app/lib/services/testimonials.service";
 import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { ServicePillarData } from "./servicePillar.type";
 

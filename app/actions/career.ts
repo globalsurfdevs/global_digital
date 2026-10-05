@@ -1,7 +1,7 @@
 "use server";
 
 import connectDb from "@/lib/mongodb";
-import { uploadToDropbox } from "../lib/uploadToDropbox";
+import { uploadToDropbox } from "../lib/integrations/dropbox/uploadToDropbox";
 import Career from "../models/Career";
 import { sendMailWithAttachments } from "../helpers/sendMailWithAttatchments";
 import { getToEmail } from "../helpers/getToEmail";

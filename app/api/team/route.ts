@@ -1,5 +1,5 @@
-import { supabase } from "@/app/lib/initSupabase";
-import { uploadToDropbox } from "@/app/lib/uploadToDropbox";
+import { supabase } from "@/app/lib/integrations/supabase/initSupabase";
+import { uploadToDropbox } from "@/app/lib/integrations/dropbox/uploadToDropbox";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

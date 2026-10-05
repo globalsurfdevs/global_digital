@@ -26,8 +26,8 @@ import WhyChoose, {
 } from "@/app/components/BrandingAndPositioning/WhyChoose";
 import { whyChooseData } from "../../../data/services/branding-and-positioning-agency-in-dubai/data";
 import CaseSudiesSec from "@/app/components/BrandingAndPositioning/CaseSudiesSec";
-import { getService } from "@/app/lib/services.service";
-import { getTestimonials } from "@/app/lib/testimonials";
+import { getService } from "@/app/lib/services/services.service";
+import { getTestimonials } from "@/app/lib/services/testimonials.service"; 
 import { Metadata } from "next";
 import WorkIn from "@/app/components/common/WorkIn";
 import CaseStudyNew from "@/app/components/BrandingAndPositioning/CaseStudyNew";
@@ -41,11 +41,11 @@ import InfoGrid, {
 } from "@/app/components/ServicePillar/sections/Expertise";
 import WhatsIncluded from "@/app/components/ServicePillar/sections/WhatsIncluded";
 import Tours from "@/app/components/HomePage/Tours";
-import { getIndustries } from "@/app/lib/industries.service";
+import { getIndustries } from "@/app/lib/services/industries.service";
 import {
   getIndustriesData,
   getServicePillar,
-} from "@/app/lib/servicePillar.service";
+} from "@/app/lib/services/servicePillar.service";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
@@ -108,7 +108,7 @@ interface PageProps {
 //   };
 // }
 import { SeoFormValues } from "@/app/types/seo";
-import { getAllIndustry } from "@/app/lib/industry.service";
+import { getAllIndustry } from "@/app/lib/services/industry.service";
 import { userRoutes } from "@/app/const/routes/user.routes";
 import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 

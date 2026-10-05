@@ -1,4 +1,4 @@
-import { uploadToDropbox } from "../lib/uploadToDropbox";
+import { uploadToDropbox } from "../lib/integrations/dropbox/uploadToDropbox";
 
 const convertToWebp = (blob: Blob): Promise<Blob> =>
   new Promise((resolve) => {

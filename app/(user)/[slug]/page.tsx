@@ -369,8 +369,8 @@ import { assets } from "@/public/assets/assets";
 // Redirection centre
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { resolveSlug } from "@/app/lib/resolveSlug";
-import { getTestimonials } from "@/app/lib/testimonials";
+import { resolveSlug } from "@/app/lib/routing/resolveSlug";
+import { getTestimonials } from "@/app/lib/services/testimonials.service";
 import { buildMetadata } from "@/app/lib/metadata/buildServiceMetadata";
 import ServiceDetail from "@/app/components/ServicePages/ServiceDetails/ServiceDetail";
 import ServicePillarDetail from "@/app/components/ServicePages/ServicePillar/ServicePillar";

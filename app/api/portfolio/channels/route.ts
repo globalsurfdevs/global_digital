@@ -1,7 +1,6 @@
-// import { supabase } from "@/app/lib/initSupabase";
-// import { Portfolio } from "@/app/types/Portfolio";
+
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/app/lib/initSupabase";
+import { supabase } from  "@/app/lib/integrations/supabase/initSupabase";
 import Channel from "@/app/models/Channel";
 import connectDB from "@/lib/mongodb";
 import mongoose from "mongoose";

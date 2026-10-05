@@ -84,7 +84,7 @@
 
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { getBlogBySlug } from "@/app/lib/blog.service";
+import { getBlogBySlug } from "@/app/lib/services/blog.service";
 import BlogDetails from "@/app/components/Blog-details";
 
 type Props = {

@@ -4,7 +4,7 @@ import SectionTwo from "../../components/AboutUs/SectionTwo";
 import SectionThree from "../../components/AboutUs/SectionThree";
 import SectionFour from "../../components/AboutUs/SectionFour";
 import SectionFive from "../../components/AboutUs/SectionFive";
-import { getAbout } from "@/app/lib/about.service";
+import { getAbout } from "@/app/lib/services/about.service";
 import { data } from "@/app/data/llmWorksData";
 
 interface Canonicals {
