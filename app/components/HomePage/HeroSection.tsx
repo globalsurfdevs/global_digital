@@ -290,7 +290,20 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4">
         <div className="hero-heading-wrapper">
-          <HeroInteractive />
+          <HeroInteractive>
+            <h2
+              className="title-120 inline-block cursor-pointer font-[400] text-black transition-colors duration-300"
+              id="triggerSection"
+            >
+              Performance Focused <br />
+              <span
+                id="hero-span"
+                className="linbsx relative inline-block min-w-[320px] text-primary underline"
+              >
+                Digital Marketing
+              </span>
+            </h2>
+          </HeroInteractive>
         </div>
       </div>
     </section>
