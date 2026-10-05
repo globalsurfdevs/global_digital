@@ -15,8 +15,9 @@ import InfoGrid, {
   FrameworkItem,
 } from "@/app/components/ServicePillar/sections/Expertise";
 import WhatsIncluded from "@/app/components/ServicePillar/sections/WhatsIncluded";
-import Tours from "@/app/components/HomePage/Tours";
+import Portfolio from "@/app/components/HomePage/Portfolio";
 import { getTestimonials } from "@/app/lib/services/testimonials.service";
+import { getFeaturedPortfolios } from "@/app/lib/services/portfolio.service";
 import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 import { ServicePillarData } from "./servicePillar.type";
 
@@ -25,7 +26,10 @@ interface Props {
 }
 
 const ServicePillarDetail = async ({ data }: Props) => {
-  const testimonials = await getTestimonials();
+  const [testimonials, portfolios] = await Promise.all([
+    getTestimonials(),
+    getFeaturedPortfolios(),
+  ]);
 
   const Cta = [
     {
@@ -108,7 +112,11 @@ const ServicePillarDetail = async ({ data }: Props) => {
       {data.tenthSection.showSection !== false && (
         <WhyChoose data={data.tenthSection} page="service-pillar" />
       )}
-      <Tours title="Featured works" showViewAll={false} />
+      <Portfolio
+        title="Featured works"
+        showViewAll={false}
+        portfolios={portfolios}
+      />
       <Testimonials
         topTitle="Testimonials"
         data={testimonials}

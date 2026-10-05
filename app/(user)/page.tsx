@@ -6,7 +6,7 @@ import OurServices from "@/app/components/HomePage/OurServices";
 import SuccessStories from "@/app/components/HomePage/SuccessStories";
 import Clients from "@/app/components/HomePage/Clients";
 import Testimonials from "@/app/components/HomePage/Testimonials";
-import Tours from "@/app/components/HomePage/Tours";
+import Portfolio from "@/app/components/HomePage/Portfolio";
 // import WorkIn from "@/app/components/HomePage/WorkIn";
 import FAQ from "@/app/components/PerformanceMarketing/FAQ";
 import Cta from "@/app/components/HomePage/Cta";
@@ -17,7 +17,7 @@ import type { Metadata } from "next";
 import { getHome } from "../lib/services/home.service";
 import { getTestimonials } from "../lib/services/testimonials.service";
 import { getAllIndustry } from "../lib/services/industry.service";
-import { getPortfolio } from "../lib/services/portfolio.service";
+import { getFeaturedPortfolios } from "../lib/services/portfolio.service";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Agency in Dubai | GS Digital",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   robots: "index, follow",
   openGraph: {
     title: "Strategic Digital Marketing Solutions in Dubai | GS Digital",
-    siteName: "GS Digital", // ✅ siteName not site_name
+    siteName: "GS Digital",
     url: "https://www.globalsurf.ae/",
     description:
       "GS Digital helps brands thrive with powerful SEO, paid ads, content strategies, and more, crafted by a team of Dubai-based marketing professionals. Discover your growth potential today.",
@@ -125,7 +125,7 @@ export default async function Home() {
     getHome(),
     getTestimonials(),
     getAllIndustry(),
-    getPortfolio(),
+    getFeaturedPortfolios(),
   ]);
 
   return (
@@ -166,7 +166,7 @@ export default async function Home() {
       <OurAchievements />
       <IndustriesweWork industry={industries} />
       {/* <WorkIn /> */}
-      <Tours />
+      <Portfolio portfolios={portfolios} />
       <SuccessStories clientTitle={home.clientSection.title} />
       <Clients data={home.clientSection} />
       <Testimonials

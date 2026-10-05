@@ -1,10 +1,8 @@
 "use client";
-import React from "react";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Lexend } from "next/font/google";
 import { motion } from "framer-motion";
-import { Portfolio } from "@/app/types/Portfolio";
+import type { Portfolio } from "@/app/types/Portfolio";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 const lexend = Lexend({
@@ -17,36 +15,16 @@ import {
 } from "@/app/helpers/formatLink";
 import Image from "next/image";
 
-interface ToursProps {
+interface PortfolioProps {
   title?: string;
   showViewAll?: boolean;
+  portfolios: Portfolio[];
 }
-const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) => {
-  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
-
-  useEffect(() => {
-    const fetchPortfolios = async () => {
-      try {
-        const response = await fetch(`/api/portfolio`);
-        if (response.ok) {
-          const data = await response.json();
-          // console.log(data.portfolio);
-          setPortfolios(
-            data.portfolio.filter(
-              (item: { featured: boolean }) => item.featured,
-            ),
-          );
-        } else {
-          console.error("Failed to fetch portfolio data");
-        }
-      } catch (error) {      
-        console.error("Error fetching portfolio data:", error);
-      }
-    };
-
-    fetchPortfolios();
-  }, []);
-
+const Portfolio = ({
+  title = "Featured projects",
+  showViewAll = true,
+  portfolios,
+}: PortfolioProps) => {
   return (
     <div className="container mx-auto px-4">
       <div className="flex flex-col gap-4 border-b pb-[50px] pt-[50px] lg:gap-10 lg:pb-[150px] lg:pt-[110px]">
@@ -94,10 +72,10 @@ const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) =>
                   spaceBetween: 32,
                 },
               }}
-              className="toursSwpr"
+              className="PortfolioSwpr"
             >
               {portfolios.map((item) => (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide key={item._id}>
                   <div>
                     <div className="tour-card relative  min-h-[350px] lg:min-h-[400px] xl:min-h-[400px] 3xl:min-h-[605px]">
                       <Image
@@ -144,48 +122,47 @@ const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) =>
           ) : (
             <div>No projects available</div>
           )}
-          {showViewAll&&(
-
-          <div className="innerfnont mt-[30px] flex w-full justify-center lg:mt-[50px]">
-            <Link
-              href="/portfolio"
-              className="group flex h-fit w-fit items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:text-black hover:shadow-lg"
-            >
-              <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
-                View All
-              </span>
-              <div className="bg-primary p-1">
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="group-hover:scale-105"
-                >
-                  <g clipPath="url(#clip0_65_39)">
-                    <path
-                      d="M8.88346 1.26172L1.13281 8.8624"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                    ></path>
-                    <path
-                      d="M1.13281 1.26172H8.88346V8.71245"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_65_39">
-                      <rect width="10" height="10" fill="white"></rect>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-            </Link>
-          </div>
+          {showViewAll && (
+            <div className="innerfnont mt-[30px] flex w-full justify-center lg:mt-[50px]">
+              <Link
+                href="/portfolio"
+                className="group flex h-fit w-fit items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in  hover:text-black hover:shadow-lg"
+              >
+                <span className="fnt-lexend uppercase duration-300 ease-in group-hover:text-black">
+                  View All
+                </span>
+                <div className="bg-primary p-1">
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="group-hover:scale-105"
+                  >
+                    <g clipPath="url(#clip0_65_39)">
+                      <path
+                        d="M8.88346 1.26172L1.13281 8.8624"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                      ></path>
+                      <path
+                        d="M1.13281 1.26172H8.88346V8.71245"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_65_39">
+                        <rect width="10" height="10" fill="white"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+              </Link>
+            </div>
           )}
         </motion.div>
       </div>
@@ -193,4 +170,4 @@ const Tours = ({ title="Featured projects", showViewAll = true }: ToursProps) =>
   );
 };
 
-export default Tours;
+export default Portfolio;
