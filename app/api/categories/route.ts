@@ -1,13 +1,11 @@
-import { supabase } from "@/app/lib/integrations/supabase/initSupabase";
+
 import Category from "@/app/models/Category";
 import connectDB from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    // let { data: categories, error } = await supabase
-    //     .from('categories')
-    //     .select('*')
+  
 
     await connectDB();
     const categories = await Category.find({});
