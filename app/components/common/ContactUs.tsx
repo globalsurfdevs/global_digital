@@ -165,7 +165,7 @@ const ContactUs = () => {
                   ></path>
                 </svg>
               </div>
-              <div className="mb-3 flex w-fit items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[50px]  lg:pb-[25px] xxl:gap-[120px] ">
+              <div className="mb-3 flex w-fit items-center gap-6 border-b border-gray-300 pb-3 md:gap-3 lg:mb-[40px]  lg:pb-[25px] xxl:gap-[120px] ">
                 <p className="min-w-fit text-[20px] md:text-[22px] md:text-[25px] xl:text-font35">
                   <a href="tel:+97145821133">+971 4 582 1133</a>
                 </p>
@@ -204,8 +204,8 @@ const ContactUs = () => {
             </p>
           </div>
         </div>
-        <div className="psty bg-dgray  px-[20px] pb-[30px] pt-[20px] lg:pb-0 lg:pt-[75px] xl:px-[80px]  xxl:px-[80px] ">
-          <div className="mb-[20px] flex items-center gap-2 lg:mb-[100px]">
+        <div className="psty bg-dgray px-[20px] pb-[30px] pt-[20px] lg:py-[75px] xl:px-[80px] xxl:px-[80px]">
+          <div className="mb-[20px] flex items-center gap-2 lg:mb-[30px]">
             <p className="text-font30 uppercase">
               Send us your details and our team will reach out.
             </p>
@@ -534,7 +534,7 @@ const ContactUs = () => {
               </div>
 
               <div className="mb-[30px]">
-                <label className="mb-2 block text-sm font-medium text-gray-700 lg:mb-[40px]">
+                <label className="mb-2 block text-sm font-medium text-gray-700 lg:mb-[20px]">
                   Message
                 </label>
                 <textarea
@@ -551,7 +551,7 @@ const ContactUs = () => {
                 />
               </div>
 
-              <div className="flex flex-col flex-wrap items-end justify-between gap-4 md:flex-nowrap">
+              <div className="flex  flex-wrap  justify-between items-center gap-4">
                 <div>
                   <ReCAPTCHA
                     sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
@@ -559,21 +559,21 @@ const ContactUs = () => {
                   />
 
                   {/* <div>
-              <p className="font-19 fnt-lexend mb-5 font-[500] text-gray1 md:mb-[30px]">
-                In submitting this form, you are agreeing to{" "}
-                <Link href="/privacy-policy">Privacy Policy</Link>.
-              </p>
-            </div> */}
-                  {/* <button
-                type="submit"
-                className="w-fit rounded-[55px] bg-primary px-[40px] py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray hover:text-primary md:px-[50px] md:py-[20px]"
-              >
-                Submit
-              </button> */}
+                    <p className="font-19 fnt-lexend mb-5 font-[500] text-gray1 md:mb-[30px]">
+                      In submitting this form, you are agreeing to{" "}
+                      <Link href="/privacy-policy">Privacy Policy</Link>.
+                    </p>
+                  </div> */}
+                        {/* <button
+                      type="submit"
+                      className="w-fit rounded-[55px] bg-primary px-[40px] py-[10px] font-medium text-white transition duration-300 ease-in-out hover:bg-dgray hover:text-primary md:px-[50px] md:py-[20px]"
+                    >
+                      Submit
+                    </button> */}
                   {error !== "" && <div className="text-red-500">{error}</div>}
                 </div>
                 <button
-                  className={`hover:bg-prtext-primary group mt-4 flex h-fit items-center space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in hover:shadow-lg md:my-0 md:mb-0  lg:mb-[75px] xl:mb-[100px] ${isSubmitting ? "cursor-not-allowed opacity-50" : ""}`}
+                  className={`flex justify-center items-center hover:bg-prtext-primary group mt-4 h-fit  space-x-2 rounded-full border border-primary px-6 py-2 text-black transition duration-300 ease-in hover:shadow-lg md:my-0 md:mb-0   ${isSubmitting ? "cursor-not-allowed opacity-50" : ""}`}
                   type="submit"
                   disabled={isSubmitting}
                 >
