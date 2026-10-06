@@ -28,7 +28,7 @@ const CareerSchema = new mongoose.Schema({
   resume: {
     type: String,
   },
-});
+}, { timestamps: true },);
 
 export default mongoose.models?.career ||
   mongoose.model("career", CareerSchema);

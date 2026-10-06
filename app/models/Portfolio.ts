@@ -113,7 +113,7 @@ const PortfolioSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-});
+}, { timestamps: true },);
 
 export default mongoose.models[MODEL_NAMES.PORTFOLIO] ||
   mongoose.model(MODEL_NAMES.PORTFOLIO, PortfolioSchema);

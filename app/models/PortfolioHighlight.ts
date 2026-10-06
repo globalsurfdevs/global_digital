@@ -22,7 +22,7 @@ const PortfolioHighlightsSchema = new mongoose.Schema({
   showInHome: {
     type: Boolean,
   },
-});
+}, { timestamps: true },);
 
 export default mongoose.models?.portfoliohighlight ||
   mongoose.model("portfoliohighlight", PortfolioHighlightsSchema);

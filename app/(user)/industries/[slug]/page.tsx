@@ -1,5 +1,4 @@
 import React from "react";
-// import Script from "next/script";
 import HeroSection from "../../../components/EngineeringInfrastructure/HeroSection";
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
@@ -7,7 +6,6 @@ import TitleDesc from "../../../components/EngineeringInfrastructure/TitleDesc";
 import ServicesListSec from "../../../components/EngineeringInfrastructure/ServicesListSec";
 import BlackInfoGrid from "@/app/components/BrandingAndPositioning/BlackInfoGrid";
 import WhyChoose from "@/app/components/BrandingAndPositioning/WhyChoose";
-// import { industryData } from "@/app/components/EngineeringInfrastructure/data";
 import ExperienceResult from "@/app/components/EngineeringInfrastructure/ExperienceResult";
 import IndustriesSec from "@/app/components/EngineeringInfrastructure/IndustriesSec";
 import {
@@ -18,12 +16,6 @@ import { IndustryItem } from "./type";
 import { Metadata } from "next";
 import WhoWeWork from "@/app/components/BrandingAndPositioning/WhoWeWork";
 import HowWeDo from "@/app/components/EngineeringInfrastructure/HowWeDo";
-import { serviceData } from "@/app/components/EngineeringInfrastructure/data";
-
-// import FaqSchema from "../../components/Schema/FaqSchemad";
-// import {
-//   PerformanceMarketingSchema,
-//   PerformanceMarketingBreadcrumb  } from "../../components/Schema/ServiceSchema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

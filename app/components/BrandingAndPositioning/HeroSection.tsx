@@ -61,31 +61,14 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
-      {/* <div className="absolute inset-0 z-0 h-full w-full">
-        <Image
-          src={data.image}
-          alt={data.imageAlt}
-          width={1920}
-          height={1080}
-          priority
-          className="hidden h-full w-full object-cover md:block"
-        />
-        <Image
-          src={"/images/service-hero-bg-mobile.jpg"}
-          alt={data.imageAlt}
-          width={1920}
-          height={1080}
-          className="h-full w-full object-cover md:hidden"
-        />
-      </div> */}
+
       <div className="absolute inset-0 z-0 h-full w-full">
         <picture>
-          {/* Mobile image */}
           <source
             media="(max-width: 767px)"
             srcSet="/images/service-hero-bg-mobile.jpg"
           />
-          {/* Desktop image */}
+
           <img
             src={data.image}
             alt={data.imageAlt}
