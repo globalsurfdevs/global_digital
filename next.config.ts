@@ -45,32 +45,32 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/performance-marketing", 
-        destination: "/performance-marketing-agency-dubai", // updated
+        destination: "/performance-marketing-agency-dubai", 
         permanent: true,
       },
       {
         source: "/seo", 
-        destination: "/seo-agency-dubai", // updated
+        destination: "/seo-agency-dubai", 
         permanent: true, 
       },
       {
         source: "/social-media", 
-        destination: "/social-media-marketing-agency-dubai", // updated
+        destination: "/social-media-marketing-agency-dubai", 
         permanent: true, 
       },
       {
         source: "/branding-creative", 
-        destination: "/branding-content-production-agency-dubai", // updated
+        destination: "/branding-content-production-agency-dubai", 
         permanent: true, 
       },
       {
         source: "/marketing-intelligence", 
-        destination: "/ai-data-intelligence-agency-dubai", // updated
+        destination: "/ai-data-intelligence-agency-dubai", 
         permanent: true, 
       },
       {
         source: "/portfolio/telal", 
-        destination: "/portfolio", // updated
+        destination: "/portfolio", 
         permanent: true, 
       },
       {
@@ -80,7 +80,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/portfolio/qieco", 
-        destination: "/portfolio/qiecosmart", // updated
+        destination: "/portfolio/qiecosmart", 
         permanent: true, 
       },
       // {
@@ -100,12 +100,12 @@ const nextConfig: NextConfig = {
       // },
       {
         source: "/portfolio/ayka-property-&-facility-management", 
-        destination: "/portfolio/ayka-property-and-facility-management", // updated
+        destination: "/portfolio/ayka-property-and-facility-management", 
         permanent: true, 
       },
       {
         source: "/portfolio/telal-engineering-&-contracting", 
-        destination: "/portfolio", // updated
+        destination: "/portfolio", 
         permanent: true, 
       },
       {
@@ -122,42 +122,42 @@ const nextConfig: NextConfig = {
       // ================================== Industries ==============================================
       {
         source: "/industry",
-        destination: "/industries", // updated
+        destination: "/industries", 
         permanent: true,
       },
       {
         source: "/industry/ecommerce",
-        destination: "/industries/lifestyle-retail-digital-marketing", // updated
+        destination: "/industries/lifestyle-retail-digital-marketing", 
         permanent: true,
       },
       {
         source: "/industry/ecommerce-digital-marketing",
-        destination: "/industries/lifestyle-retail-digital-marketing", // updated
+        destination: "/industries/lifestyle-retail-digital-marketing", 
         permanent: true,
       },
       {
         source: "/industry/construction",
-        destination: "/industries/construction-digital-marketing", // updated
+        destination: "/industries/construction-digital-marketing", 
         permanent: true,
       },
       {
         source: "/industry/b2b",
-        destination: "/industries", // updated
+        destination: "/industries", 
         permanent: true,
       },
       {
         source: "/industry/digital-marketing-services",
-        destination: "/digital-marketing-services-dubai",// updated
+        destination: "/digital-marketing-services-dubai",
         permanent: true,
       },
       {
         source: "/industry/b2b-digital-marketing-services",
-        destination: "/industries", // updated
+        destination: "/industries", 
         permanent: true,
       },
       {
         source: "/industry/digital-marketing-agency-for-hospitality",
-        destination: "/industries", // updated
+        destination: "/industries", 
         permanent: true,
       },
       // ===============================================================================================
@@ -181,42 +181,42 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/digital-marketing",
-        destination: "/digital-marketing-services-dubai", // updated
+        destination: "/digital-marketing-services-dubai", 
         permanent: true,
       },
       {
         source: "/digital-development",
-        destination: "/web-design-development-agency-dubai", // updated
+        destination: "/web-design-development-agency-dubai", 
         permanent: true,
       },
       {
         source: "/content-and-branding",
-        destination: "/branding-content-production-agency-dubai", // updated
+        destination: "/branding-content-production-agency-dubai", 
         permanent: true,
       },
       {
         source: "/blogs/digital-marketing-services",
-        destination: "/digital-marketing-services-dubai", // updated
+        destination: "/digital-marketing-services-dubai", 
         permanent: true,
       },
       {
         source: "/instagram-marketing-dubai",
-        destination: "/social-media-marketing-dubai", // updated
+        destination: "/social-media-marketing-dubai", 
         permanent: true,
       },
       {
         source: "/google-business-profile-dubai",
-        destination: "/local-seo-services-dubai", // updated
+        destination: "/local-seo-services-dubai", 
         permanent: true,
       },
       {
         source: "/generative-engine-optimization",
-        destination: "/generative-engine-optimization-dubai", // updated
+        destination: "/generative-engine-optimization-dubai", 
         permanent: true,
       },
       {
         source: "/marketing-strategy-consulting",
-        destination: "/marketing-automation-agency-dubai", // updated
+        destination: "/marketing-automation-agency-dubai", 
         permanent: true,
       },
       {
@@ -226,17 +226,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/web-app-dev-agency",
-        destination: "/web-app-development-agency-dubai", // updated
+        destination: "/web-app-development-agency-dubai", 
         permanent: true,
       },
       {
         source: "/e-commerce-web-development-company",
-        destination: "/e-commerce-web-development-company-dubai", // updated
+        destination: "/e-commerce-web-development-company-dubai", 
         permanent: true,
       },
       {
         source: "/web-design-agency-dubai",
-        destination: "/web-design-development-agency-dubai",// updated
+        destination: "/web-design-development-agency-dubai",
         permanent: true,
       },
       // =================================== Service Pillar =============================================================================
@@ -263,23 +263,23 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/marketing-intelligence-agency-dubai",
-        destination: "/ai-data-intelligence-agency-dubai", // updated
+        destination: "/ai-data-intelligence-agency-dubai", 
         permanent: true,
       },
       // =================================== Sub Services =============================================================================
       {
         source: "/ecommerce-seo-dubai",
-        destination: "/ecommerce-seo-services-dubai", // updated
+        destination: "/ecommerce-seo-services-dubai", 
         permanent: true,
       },
       {
         source: "/influencer-marketing-agency",
-        destination: "/influencer-marketing-agency-dubai", // updated
+        destination: "/influencer-marketing-agency-dubai", 
         permanent: true,
       },
       {
         source: "/local-seo-agency-dubai",
-        destination: "/local-seo-services-dubai", // updated
+        destination: "/local-seo-services-dubai", 
         permanent: true,
       },
       {
@@ -289,32 +289,32 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/branding-agency-dubai",
-        destination: "/branding-and-positioning-agency-dubai", // updated
+        destination: "/branding-and-positioning-agency-dubai", 
         permanent: true,
       },
       {
         source: "/graphic-design-agency-dubai",
-        destination: "/branding-content-production-agency-dubai", // updated
+        destination: "/branding-content-production-agency-dubai", 
         permanent: true,
       },
       {
         source: "/digital-marketing-service-kuwait",
-        destination: "/digital-marketing-services-dubai", // updated
+        destination: "/digital-marketing-services-dubai", 
         permanent: true,
       },
       {
         source: "/engineering-and-infrastructure",
-        destination: "/industries/engineering-infrastructure-digital-marketing", // updated
+        destination: "/industries/engineering-infrastructure-digital-marketing", 
         permanent: true,
       },
       {
         source: "/free-digital-marketing-audit",
-        destination: "/", // updated
+        destination: "/", 
         permanent: true,
       },
       {
         source: "/logo-design-agency-dubai",
-        destination: "/branding-and-positioning-agency-dubai", // updated
+        destination: "/branding-and-positioning-agency-dubai", 
         permanent: true,
       },
     ];

@@ -13,6 +13,6 @@ const JobSchema = new mongoose.Schema({
   slug: {
     type: String,
   },
-});
+}, { timestamps: true },);
 
 export default mongoose.models?.job || mongoose.model("job", JobSchema);

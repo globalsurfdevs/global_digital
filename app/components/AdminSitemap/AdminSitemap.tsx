@@ -1,214 +1,181 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Label } from "@/components/ui/label";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  FiUploadCloud,
-  FiCheckCircle,
-  FiXCircle,
-  FiX,
-  FiFileText,
-} from "react-icons/fi";
+import { Label } from "@/components/ui/label";
 import AdminItemContainer from "@/app/components/common/AdminItemContainer";
 
-interface SitemapInfo {
-  updatedAt: string;
+interface SitemapBackupInfo {
+  fileName: string;
   urlCount: number;
-  content: string;
+  priorityCount: number;
+  updatedAt: string;
 }
 
 const SitemapPage = () => {
   const [file, setFile] = useState<File | null>(null);
-  const [uploading, setUploading] = useState(false);
-  const [removing, setRemoving] = useState(false);
-  const [status, setStatus] = useState<{
-    type: "success" | "error";
-    message: string;
-  } | null>(null);
+  const [backup, setBackup] = useState<SitemapBackupInfo | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
-  const [sitemapInfo, setSitemapInfo] = useState<SitemapInfo | null>(null);
-  const [loadingInfo, setLoadingInfo] = useState(true);
-
-  const fetchSitemapInfo = async () => {
-    setLoadingInfo(true);
+  const fetchBackup = async () => {
+    setLoading(true);
     try {
-      const response = await fetch(`/api/sitemap`);
-      if (response.ok) {
-        const data = await response.json();
-        setSitemapInfo(data.data ?? null);
-      } else {
-        setSitemapInfo(null);
-      }
-    } catch (error) {
-      console.log("Error in fetching sitemap info", error);
-      setSitemapInfo(null);
-    } finally {
-      setLoadingInfo(false);
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selected = e.target.files?.[0] ?? null;
-    setStatus(null);
-
-    if (selected && !selected.name.endsWith(".xml")) {
-      setStatus({ type: "error", message: "File must be a .xml file" });
-      setFile(null);
-      return;
-    }
-    setFile(selected);
-  };
-
-  const handleUpload = async () => {
-    if (!file) return;
-
-    setUploading(true);
-    setStatus(null);
-
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const response = await fetch(`/api/sitemap`, {
-        method: "POST",
-        body: formData,
+      const response = await fetch("/api/sitemap/backup", {
+        cache: "no-store",
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus({
-          type: "success",
-          message: data.message ?? "Sitemap uploaded successfully",
-        });
-        setFile(null);
-        fetchSitemapInfo();
-      } else {
-        setStatus({ type: "error", message: data.message ?? "Upload failed" });
-      }
-    } catch (error) {
-      console.log("Error in uploading sitemap", error);
-      setStatus({ type: "error", message: "Upload failed. Please try again." });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message);
+      setBackup(result.data ?? null);
+    } catch (fetchError) {
+      setError(
+        fetchError instanceof Error
+          ? fetchError.message
+          : "Failed to load sitemap backup",
+      );
     } finally {
-      setUploading(false);
-    }
-  };
-
-  const handleRemove = async () => {
-    setRemoving(true);
-    setStatus(null);
-
-    try {
-      const response = await fetch(`/api/sitemap`, {
-        method: "DELETE",
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSitemapInfo(null);
-        setStatus({
-          type: "success",
-          message: data.message ?? "Sitemap removed",
-        });
-      } else {
-        setStatus({
-          type: "error",
-          message: data.message ?? "Failed to remove sitemap",
-        });
-      }
-    } catch (error) {
-      console.log("Error in removing sitemap", error);
-      setStatus({
-        type: "error",
-        message: "Failed to remove sitemap. Please try again.",
-      });
-    } finally {
-      setRemoving(false);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchSitemapInfo();
+    void fetchBackup();
   }, []);
+
+  const uploadBackup = async () => {
+    if (!file) return;
+
+    setBusy(true);
+    setMessage("");
+    setError("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await fetch("/api/sitemap/backup", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message);
+      setMessage(result.message);
+      setFile(null);
+      await fetchBackup();
+    } catch (uploadError) {
+      setError(
+        uploadError instanceof Error
+          ? uploadError.message
+          : "Failed to upload sitemap backup",
+      );
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const removeBackup = async () => {
+    setBusy(true);
+    setMessage("");
+    setError("");
+    try {
+      const response = await fetch("/api/sitemap/backup", {
+        method: "DELETE",
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message);
+      setBackup(null);
+      setMessage(result.message);
+    } catch (deleteError) {
+      setError(
+        deleteError instanceof Error
+          ? deleteError.message
+          : "Failed to remove sitemap backup",
+      );
+    } finally {
+      setBusy(false);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-5 pb-5">
       <AdminItemContainer>
         <Label main>Sitemap</Label>
+        <div className="flex flex-col gap-4 p-5">
+          <p className="text-sm text-gray-600">
+            The generated sitemap remains primary. This uploaded XML is used
+            only if dynamic generation fails; any priority values in it are
+            preserved.
+          </p>
+          <a
+            href="/sitemap.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit text-sm text-blue-600 underline"
+          >
+            View live sitemap
+          </a>
 
-        <div className="flex flex-col gap-3 rounded-md p-5">
-          {loadingInfo ? (
-            <p className="text-sm text-gray-500">Loading...</p>
-          ) : sitemapInfo ? (
-            <div className="relative flex flex-col gap-3 rounded-md border border-black/20 p-4">
-              <button
-                type="button"
-                onClick={handleRemove}
-                disabled={removing}
-                className="absolute right-3 top-3 cursor-pointer text-gray-500 hover:text-red-600 disabled:opacity-50"
-                aria-label="Remove sitemap"
-              >
-                <FiX className="text-xl" />
-              </button>
-
-              <div className="flex items-center gap-3">
-                <FiFileText className="flex-shrink-0 text-2xl text-gray-500" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold">sitemap.xml</span>
-                  <span className="text-xs text-gray-500">
-                    {sitemapInfo.urlCount} URLs · Updated{" "}
-                    {new Date(sitemapInfo.updatedAt).toLocaleString()}
-                  </span>
-                </div>
+          {loading ? (
+            <p className="text-sm text-gray-500">Loading backup status...</p>
+          ) : backup ? (
+            <div className="flex flex-col gap-3 rounded-md border border-black/20 p-4">
+              <div className="text-sm">
+                <p className="font-semibold">{backup.fileName}</p>
+                <p className="text-gray-500">
+                  {backup.urlCount} URLs · {backup.priorityCount} priority
+                  values · Updated {new Date(backup.updatedAt).toLocaleString()}
+                </p>
               </div>
-
-              <a
-                href="/sitemap.xml"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-fit text-sm text-blue-600 underline"
-              >
-                View live sitemap
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="/api/sitemap/backup?download=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-blue-600 underline"
+                >
+                  View backup XML
+                </a>
+                <button
+                  type="button"
+                  onClick={removeBackup}
+                  disabled={busy}
+                  className="text-sm text-red-600 underline disabled:opacity-50"
+                >
+                  Remove backup
+                </button>
+              </div>
             </div>
           ) : (
-            <>
-              <div className="flex flex-col items-center justify-center gap-2 rounded-md border border-dashed border-black/20 p-6">
-                <FiUploadCloud className="text-3xl text-gray-400" />
-                <input
-                  type="file"
-                  accept=".xml"
-                  onChange={handleFileChange}
-                  className="text-sm"
-                />
-                {file && (
-                  <p className="text-sm text-gray-600">Selected: {file.name}</p>
-                )}
-              </div>
-
-              <div className="flex justify-end">
-                <Button
-                  type="button"
-                  className="text-white"
-                  disabled={!file || uploading}
-                  onClick={handleUpload}
-                >
-                  {uploading ? "Uploading..." : "Upload Sitemap"}
-                </Button>
-              </div>
-            </>
+            <p className="text-sm text-gray-600">No XML backup uploaded.</p>
           )}
 
-          {status && (
-            <div
-              className={`flex items-center gap-2 text-sm ${status.type === "success" ? "text-green-600" : "text-red-500"}`}
+          <div className="flex flex-col items-start gap-3 rounded-md border border-dashed border-black/20 p-4">
+            <input
+              type="file"
+              accept=".xml,application/xml,text/xml"
+              onChange={(event) => {
+                setFile(event.target.files?.[0] ?? null);
+                setMessage("");
+                setError("");
+              }}
+              className="text-sm"
+            />
+            <Button
+              type="button"
+              disabled={!file || busy}
+              onClick={uploadBackup}
+              className="w-fit text-white"
             >
-              {status.type === "success" ? <FiCheckCircle /> : <FiXCircle />}
-              <p>{status.message}</p>
-            </div>
-          )}
+              {busy
+                ? "Saving..."
+                : backup
+                  ? "Replace XML backup"
+                  : "Upload XML backup"}
+            </Button>
+          </div>
+
+          {message && <p className="text-sm text-green-700">{message}</p>}
+          {error && <p className="text-sm text-red-600">{error}</p>}
         </div>
       </AdminItemContainer>
     </div>
