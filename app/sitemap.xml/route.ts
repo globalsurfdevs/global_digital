@@ -8,6 +8,7 @@ import Portfolio from "@/app/models/Portfolio";
 import ServicePillar from "../models/ServicePiller";
 import SubService from "../models/SubService";
 import Service from "../models/Service";
+import SitemapBackup from "@/app/models/SitemapBackup";
 
 const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.globalsurf.ae"
@@ -42,8 +43,7 @@ const STATIC_PATHS = [
   "/blogs/global-surf-at-1billion-followers-summit",
   "/blogs/digital-marketing-company-dubai-costs-services-guide",
   "/blogs/digital-credibility-uae-construction-contractors-tender-success",
-  "/blogs/bafco-performance-marketing-case-study-dubai"
-
+  "/blogs/bafco-performance-marketing-case-study-dubai",
 ];
 
 const escapeXml = (value: string) =>
@@ -166,7 +166,26 @@ export async function GET() {
     });
   } catch (error) {
     console.error("Sitemap fetch error:", error);
-    if (process.env.NEXT_PHASE !== "phase-production-build") throw error;
+
+    // try {
+    //   await connectDB();
+    //   const backup = await SitemapBackup.findOne({}).lean();
+
+    //   if (backup?.content) {
+    //     return new NextResponse(backup.content, {
+    //       status: 200,
+    //       headers: {
+    //         "Content-Type": "application/xml",
+    //         "Cache-Control": "public, max-age=300",
+    //         "X-Sitemap-Source": "backup",
+    //       },
+    //     });
+    //   }
+    // } catch (backupError) {
+    //   console.error("Sitemap backup fallback error:", backupError);
+    // }
+
+    // if (process.env.NEXT_PHASE !== "phase-production-build") throw error;
     return new NextResponse("Error serving sitemap", { status: 500 });
   }
 }
