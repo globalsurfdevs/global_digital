@@ -1,6 +1,5 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from  "@/app/lib/integrations/supabase/initSupabase";
 import Channel from "@/app/models/Channel";
 import connectDB from "@/lib/mongodb";
 import mongoose from "mongoose";
@@ -52,13 +51,6 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   try {
-    // const { data, error } = await supabase
-    //     .from('channels')
-    //     .select()
-
-    // if (error) {
-    //     return NextResponse.json({ error: error.message }, { status: 500 })
-    // }
 
     await connectDB();
 

@@ -5,7 +5,6 @@ import { JobType } from "@/app/types/JobType";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
-import { IoIosClose } from "react-icons/io";
 import { toast } from "sonner";
 
 const AdminJobs = () => {

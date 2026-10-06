@@ -81,7 +81,7 @@ const PortfolioDetails = ({ data }: any) => {
   //         companyId: Number(item.companyId), // 🔥 force to number
   //     }));
 
-  // // ✅ Mimic Supabase `.select().eq()` (returns array)
+
   // const portfolio = portfolioList.filter(
   //     (item) => item.slug === companyName
   // )[0];

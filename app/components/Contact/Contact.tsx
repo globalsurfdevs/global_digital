@@ -20,139 +20,139 @@ type Inputs = {
 };
 
 const Contact = ({ editMode }: { editMode?: boolean }) => {
-  const editorModule = {
-    toolbar: editMode ? editMode : false,
-  };
+  // const editorModule = {
+  //   toolbar: editMode ? editMode : false,
+  // };
 
-  const [imageError, setImageError] = useState<null | string>(null);
-  const [imageFile, setImageFile] = useState<null | File>(null);
-  const [previewImage, setPreviewImage] = useState<null | string>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [metaTitle, setMetaTitle] = useState("");
-  const [metaDescription, setMetaDescription] = useState("");
+  // const [imageError, setImageError] = useState<null | string>(null);
+  // const [imageFile, setImageFile] = useState<null | File>(null);
+  // const [previewImage, setPreviewImage] = useState<null | string>(null);
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [metaTitle, setMetaTitle] = useState("");
+  // const [metaDescription, setMetaDescription] = useState("");
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    control,
-    formState: { errors },
-  } = useForm<Inputs>();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   setValue,
+  //   control,
+  //   formState: { errors },
+  // } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    setIsSubmitting(true);
-    const formData = new FormData();
-    formData.append("pageHeading", data.pageHeading);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    formData.append("address", data.address);
-    formData.append("metadataTitle", metaTitle);
-    formData.append("metadataDesc", metaDescription);
+  // const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  //   setIsSubmitting(true);
+  //   const formData = new FormData();
+  //   formData.append("pageHeading", data.pageHeading);
+  //   formData.append("email", data.email);
+  //   formData.append("phone", data.phone);
+  //   formData.append("address", data.address);
+  //   formData.append("metadataTitle", metaTitle);
+  //   formData.append("metadataDesc", metaDescription);
 
-    if (imageFile) {
-      formData.append("image", imageFile);
-    }
+  //   if (imageFile) {
+  //     formData.append("image", imageFile);
+  //   }
 
-    try {
-      const url = `/api/contact`;
-      const method = "POST";
-      const response = await fetch(url, {
-        method: method,
-        body: formData,
-      });
-      const data = await response.json();
-      console.log(data);
+  //   try {
+  //     const url = `/api/contact`;
+  //     const method = "POST";
+  //     const response = await fetch(url, {
+  //       method: method,
+  //       body: formData,
+  //     });
+  //     const data = await response.json();
+  //     console.log(data);
 
-      if (!data.error) {
-        toast.success(data.message);
-        router.push("/admin/contact");
-      } else {
-        toast.error(data.error);
-      }
-      // Redirect to news list page
-    } catch (error) {
-      console.error("Error updating contact:", error);
-      toast.error("Failed to updated contact. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  //     if (!data.error) {
+  //       toast.success(data.message);
+  //       router.push("/admin/contact");
+  //     } else {
+  //       toast.error(data.error);
+  //     }
+  //     // Redirect to news list page
+  //   } catch (error) {
+  //     console.error("Error updating contact:", error);
+  //     toast.error("Failed to updated contact. Please try again.");
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    const fetchContactData = async () => {
-      try {
-        const response = await fetch(`/api/contact`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data.contact[0]);
-          if (data.contact[0]) {
-            setValue("pageHeading", data.contact[0].pageHeading);
-            setValue("email", data.contact[0].email);
-            setValue("phone", data.contact[0].phone);
-            setValue("address", data.contact[0].address);
-            setMetaTitle(data.contact[0].metadataTitle);
-            setMetaDescription(data.contact[0].metadataDesc);
+  // useEffect(() => {
+  //   const fetchContactData = async () => {
+  //     try {
+  //       const response = await fetch(`/api/contact`);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log(data.contact[0]);
+  //         if (data.contact[0]) {
+  //           setValue("pageHeading", data.contact[0].pageHeading);
+  //           setValue("email", data.contact[0].email);
+  //           setValue("phone", data.contact[0].phone);
+  //           setValue("address", data.contact[0].address);
+  //           setMetaTitle(data.contact[0].metadataTitle);
+  //           setMetaDescription(data.contact[0].metadataDesc);
 
-            if (data.contact[0].image) {
-              setPreviewImage(data.contact[0].image as string);
-            }
-          }
-        } else {
-          console.error("Failed to fetch contact data");
-        }
-      } catch (error) {
-        console.error("Error fetching contact data:", error);
-      }
-    };
+  //           if (data.contact[0].image) {
+  //             setPreviewImage(data.contact[0].image as string);
+  //           }
+  //         }
+  //       } else {
+  //         console.error("Failed to fetch contact data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching contact data:", error);
+  //     }
+  //   };
 
-    fetchContactData();
-  }, []);
+  //   fetchContactData();
+  // }, []);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
 
-    if (file) {
-      // Validate the image file type
-      const validImageTypes = [
-        "image/jpeg",
-        "image/png",
-        "image/gif",
-        "image/webp",
-      ];
-      if (!validImageTypes.includes(file.type)) {
-        setImageError("Please select an image file (JPEG, PNG, or GIF)");
-        return;
-      }
+  //   if (file) {
+  //     // Validate the image file type
+  //     const validImageTypes = [
+  //       "image/jpeg",
+  //       "image/png",
+  //       "image/gif",
+  //       "image/webp",
+  //     ];
+  //     if (!validImageTypes.includes(file.type)) {
+  //       setImageError("Please select an image file (JPEG, PNG, or GIF)");
+  //       return;
+  //     }
 
-      // Validate the image file size
-      const maxSize = 10 * 1024 * 1024; // 10MB
-      if (file.size > maxSize) {
-        setImageError("Image file size must not exceed 10MB");
-        return;
-      }
+  //     // Validate the image file size
+  //     const maxSize = 10 * 1024 * 1024; // 10MB
+  //     if (file.size > maxSize) {
+  //       setImageError("Image file size must not exceed 10MB");
+  //       return;
+  //     }
 
-      setImageFile(file);
+  //     setImageFile(file);
 
-      setImageError(null); // Reset error message if there was one
+  //     setImageError(null); // Reset error message if there was one
 
-      // Generate the preview image
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setPreviewImage(null);
-      setImageFile(null);
-    }
-  };
+  //     // Generate the preview image
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setPreviewImage(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   } else {
+  //     setPreviewImage(null);
+  //     setImageFile(null);
+  //   }
+  // };
 
   return (
     <div className="py-5">
-      <div className="flex min-h-10 w-full justify-end">
+      {/* <div className="flex min-h-10 w-full justify-end">
         {!editMode && (
           <Link
             href={"/admin/contact/edit-contact"}
@@ -330,7 +330,7 @@ const Contact = ({ editMode }: { editMode?: boolean }) => {
         metaDescription={metaDescription}
         setMetaTitle={setMetaTitle}
         setMetaDescription={setMetaDescription}
-      />
+      /> */}
     </div>
   );
 };
