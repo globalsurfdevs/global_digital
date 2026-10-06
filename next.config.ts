@@ -317,6 +317,31 @@ const nextConfig: NextConfig = {
         destination: "/branding-and-positioning-agency-dubai", 
         permanent: true,
       },
+      {
+        source: "/industries/b2b-digital-marketing-services",
+        destination: "/industries", 
+        permanent: true,
+      },
+      {
+        source: "/industries/construction",
+        destination: "/industries/construction-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/industries/digital-marketing-agency-for-hospitality",
+        destination: "/industries/", 
+        permanent: true,
+      },
+      {
+        source: "/industries/ecommerce-digital-marketing",
+        destination: "/industries/lifestyle-retail-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/industries/education",
+        destination: "/industries/education-digital-marketing", 
+        permanent: true,
+      },
     ];
   },
 };

@@ -1,20 +1,20 @@
 import React from "react";
-import HeroSection from "../../../components/BannerSectionBC/HeroWithBc";
+import HeroSection from "../../../app/components/BannerSectionBC/HeroWithBc";
 import Head from "next/head";
-import DigitalMarketing from "../../../components/IndConstruction/DigitalConstruction";
-import FAQ from "../../../components/PerformanceMarketing/FAQ";
-import GetInTouch from "../../../components/BannerSectionBC/GetInTouch";
-import Expertise from "../../../components/EcomIndustry/Expertise";
-import Framework from "../../../components/PerformanceMarketing/Framework";
-import SuccessStories from "../../../components/IndConstruction/SucessStories";
+import DigitalMarketing from "../../../app/components/IndConstruction/DigitalConstruction";
+import FAQ from "../../../app/components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../app/components/BannerSectionBC/GetInTouch";
+import Expertise from "../../../app/components/EcomIndustry/Expertise";
+import Framework from "../../../app/components/PerformanceMarketing/Framework";
+import SuccessStories from "../../../app/components/IndConstruction/SucessStories";
 
-import { BannerSection } from "../../../data/services/ind-b2b/herosection";
-import { AreaExpertise } from "../../../data/services/ind-b2b/digitaconstructions";
-import { IndustriesWeServe } from "../../../data/services/ind-b2b/industries-we-serve";
-import { Clientsformsdata } from "../../../data/services/ind-b2b/clientsdetails";
-import { Frameworkdata } from "../../../data/services/ind-b2b/framework";
-import { Cta } from "../../../data/services/ind-b2b/cta";
-import { Faq } from "../../../data/services/ind-b2b/faq";
+import { BannerSection } from "../../../app/data/services/ind-b2b/herosection";
+import { AreaExpertise } from "../../../app/data/services/ind-b2b/digitaconstructions";
+import { IndustriesWeServe } from "../../../app/data/services/ind-b2b/industries-we-serve";
+import { Clientsformsdata } from "../../../app/data/services/ind-b2b/clientsdetails";
+import { Frameworkdata } from "../../../app/data/services/ind-b2b/framework";
+import { Cta } from "../../../app/data/services/ind-b2b/cta";
+import { Faq } from "../../../app/data/services/ind-b2b/faq";
 
 interface Canonicals {
   canonical: string;
