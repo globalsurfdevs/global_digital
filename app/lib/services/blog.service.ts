@@ -20,10 +20,12 @@ export const getBlogBySlug = (slug: string) =>
   unstable_cache(
     async () => {
       await connectDB();
-      const blog = await Blog.findOne({ slug, isHidden: false })
+      // const blog = await Blog.findOne({ slug, isHidden: false })
+      const blog = await Blog.findOne({ slug })
         .populate("author")
         .lean();
       if (!blog) return null;
+      // console.log('blogs : ',blog);
       return JSON.parse(JSON.stringify(blog));
     },
     [`blog-by-slug-${slug}`],
