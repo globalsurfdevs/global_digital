@@ -71,7 +71,7 @@ const BlogDetailHero = ({
           alt={heroAlt || title}
           width={1500}
           height={700}
-          className="w-full object-cover"
+          className="mx-auto w-full object-cover"
         />
       </motion.div>
     </>

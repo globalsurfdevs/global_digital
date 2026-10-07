@@ -6,7 +6,7 @@ import "@/app/models/Author";
 export const getAllBlogs = unstable_cache(
   async () => {
     await connectDB();
-    const blogs = await Blog.find({ isHidden: false })
+    const blogs = await Blog.find()
       .sort({ createdAt: -1 })
       .populate("author")
       .lean();
@@ -20,10 +20,12 @@ export const getBlogBySlug = (slug: string) =>
   unstable_cache(
     async () => {
       await connectDB();
-      const blog = await Blog.findOne({ slug, isHidden: false })
+      // const blog = await Blog.findOne({ slug, isHidden: false })
+      const blog = await Blog.findOne({ slug })
         .populate("author")
         .lean();
       if (!blog) return null;
+      // console.log('blogs : ',blog);
       return JSON.parse(JSON.stringify(blog));
     },
     [`blog-by-slug-${slug}`],

@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import "../../app/globals.css";
 
-import { MdOutlineArrowBack, MdOutlineDoneOutline } from "react-icons/md";
+import { MdOutlineArrowBack } from "react-icons/md";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";

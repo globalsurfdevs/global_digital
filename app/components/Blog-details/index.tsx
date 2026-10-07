@@ -225,7 +225,6 @@ const BlogDetails = ({ dbBlog }: Props) => {
       description: f.answer,
     })) ?? [];
 
-  console.log(dbBlog);
 
   return (
     <>
