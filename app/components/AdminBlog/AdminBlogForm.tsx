@@ -26,6 +26,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   const { blogId } = useParams();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [autoSlug, setAutoSlug] = useState(!editMode);
 
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null);
@@ -105,16 +106,6 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
     setPendingAuthorId(null);
   }, [authorsLoading, pendingAuthorId, setValue]);
 
-  // auto-slug from heading
-  useEffect(() => {
-    const subscription = watch((value, { name }) => {
-      if (name === "heading") {
-        setValue("slug", generateSlugForBlog(value.heading ?? ""));
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [watch, setValue]);
-
   // fetch existing blog in edit mode
   useEffect(() => {
     if (!editMode || !blogId) return;
@@ -179,14 +170,14 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   }, [editMode, blogId]);
 
   useEffect(() => {
-    if (editMode) return; // don't override slug in edit mode
+    if (!autoSlug) return;
     const subscription = watch((value, { name }) => {
       if (name === "heading") {
         setValue("slug", generateSlugForBlog(value.heading ?? ""));
       }
     });
     return () => subscription.unsubscribe();
-  }, [watch, setValue, editMode]);
+  }, [watch, setValue, autoSlug]);
 
   const onSubmit: SubmitHandler<BlogFormInputs> = async (data) => {
     if (data.schemaScript?.trim()) {
@@ -382,10 +373,32 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <Label content="Slug" />
+          <div className="flex items-center justify-between gap-4">
+            <Label content="Slug" />
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+              <input
+                type="checkbox"
+                role="switch"
+                checked={autoSlug}
+                onChange={(event) => {
+                  const enabled = event.target.checked;
+                  setAutoSlug(enabled);
+                  if (enabled) {
+                    setValue(
+                      "slug",
+                      generateSlugForBlog(watch("heading") ?? ""),
+                    );
+                  }
+                }}
+                className="accent-blue-600"
+              />
+              Auto-generate
+            </label>
+          </div>
           <input
             {...register("slug")}
-            className={`${inputClass} cursor-not-allowed bg-gray-50`}
+            readOnly={autoSlug}
+            className={`${inputClass} ${autoSlug ? "cursor-not-allowed bg-gray-50" : ""}`}
           />
         </div>
         <div className="flex flex-col gap-2">
