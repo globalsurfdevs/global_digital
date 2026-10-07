@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, ReactNode } from "react";
+import React, { useEffect, useState, ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Sidebar from "@/app/components/Sidebar";
 import Header from "@/app/components/Header";
 
@@ -11,6 +12,12 @@ export default function DefaultLayout({
   role: string | null;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [pathname]);
+
   return (
     <>
       {/* <!-- ===== Page Wrapper Start ===== --> */}
@@ -24,7 +31,7 @@ export default function DefaultLayout({
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
-        <div className="lg:ml-72.5 relative flex flex-1 flex-col">
+        <div className="relative flex flex-1 flex-col lg:ml-72">
           {/* <!-- ===== Header Start ===== --> */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           {/* <!-- ===== Header End ===== --> */}

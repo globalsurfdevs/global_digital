@@ -28,6 +28,7 @@ export interface IBlog extends Document {
   faqTitle: string;
   faqItems: IBlogFaqItem[];
   isHidden: boolean;
+  isPreview: boolean;
   createdAt: Date;
   updatedAt: Date;
   schemaScript: string;
@@ -65,6 +66,7 @@ const BlogSchema = new Schema<IBlog>(
     faqTitle: { type: String, default: "" },
     faqItems: { type: [BlogFaqItemSchema], default: [] },
     isHidden: { type: Boolean, default: false },
+    isPreview: { type: Boolean, default: false },
     schemaScript: { type: String, default: "" },
     ctaTitle: { type: String, default: "" },
     ctaDescription: { type: String, default: "" },

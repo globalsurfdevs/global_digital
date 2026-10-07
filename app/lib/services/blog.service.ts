@@ -6,7 +6,7 @@ import "@/app/models/Author";
 export const getAllBlogs = unstable_cache(
   async () => {
     await connectDB();
-    const blogs = await Blog.find({ isHidden: false })
+    const blogs = await Blog.find()
       .sort({ createdAt: -1 })
       .populate("author")
       .lean();

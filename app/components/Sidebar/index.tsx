@@ -199,7 +199,10 @@ const menuGroups = [
         label: "Services",
         route: "#",
         children: [
-          { label: "Services Pillars", route: adminRoutes.servicePillars.index },
+          {
+            label: "Services Pillars",
+            route: adminRoutes.servicePillars.index,
+          },
           { label: "Services", route: "/admin/services" },
           { label: "Sub Services", route: "/admin/sub-services" },
         ],
@@ -403,7 +406,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
       <aside
-        className={`z-9999 w-72.5 dark:bg-boxdark fixed left-0 top-0 flex h-screen flex-col overflow-y-hidden bg-[#000] duration-300 ease-linear lg:translate-x-0 ${
+        className={`z-9999 dark:bg-boxdark fixed left-0 top-0 flex h-screen w-72 flex-col overflow-y-hidden bg-[#000] duration-300 ease-linear lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
