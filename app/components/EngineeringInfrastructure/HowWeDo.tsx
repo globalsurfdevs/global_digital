@@ -7,7 +7,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
-import { ServiceItem } from "@/app/(user)/engineering-and-infrastructure/type";
+import { ServiceItem } from "@/app/(user)/_engineering-and-infrastructure/type";
 
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";

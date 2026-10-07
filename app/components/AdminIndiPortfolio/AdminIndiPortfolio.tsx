@@ -515,26 +515,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const handleDeleteHighlight = async (id?: number | string) => {
     try {
       console.log(id);
-      // if (editMode) {
-      //     const response = await fetch(`/api/portfolio/highlight?id=${id}`, {
-      //         method: "DELETE",
-      //     });
-
-      //     if (response.ok) {
-      //         const data = await response.json();
-      //         if (data.message) {
-      //             toast.success(data.message)
-      //             setRefetch((prev) => !prev)
-      //         }
-
-      //     } else {
-      //         console.error("Failed to remove highlight data");
-      //     }
-      // } else {
-      //     setHighlights(highlights.filter((item) => item.customId !== id))
-
-      // }
-
+     
       // setHighlights(highlights.filter((item) => item.customId !== id))
 
       setHighlights((highlights) =>

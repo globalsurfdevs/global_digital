@@ -95,8 +95,8 @@ const HeroSection = ({ data }: HeroSectionProps) => {
             <Button
               className="max-h-[50px]"
               variant="primary"
-              // href={data.items[0].link}
-              onClick={() => setModalOpen(true)}
+              href={data.items[0].link}
+              // onClick={() => setModalOpen(true)}
             >
               {data.items[0].title}
             </Button>

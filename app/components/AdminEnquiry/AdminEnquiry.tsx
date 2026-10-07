@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { IoIosClose } from "react-icons/io";
 import { toast } from "sonner";
 import { LuMessageSquareShare } from "react-icons/lu";
 import SmartPagination from "./Pagination";
@@ -18,20 +17,22 @@ type Enquiry = {
   service: string;
   message: string;
   page_url: string;
+  created_at: string;
 };
 
 const AdminEnquiry = () => {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const pageFromUrl = Number(searchParams.get("page")) || 1;
+
   const [enquiries, setEnquiries] = useState<Enquiry[] | []>([]);
   const [refetch, setRefetch] = useState(false);
   const [page, setPage] = useState(pageFromUrl);
   const [totalPages, setTotalPages] = useState(1);
-  const router = useRouter();
-  const pathname = usePathname();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [fromDate, setFromDate] = useState<string>("");
   const [toDate, setToDate] = useState<string>("");
 
@@ -48,6 +49,7 @@ const AdminEnquiry = () => {
 
   useEffect(() => {
     const fetchEnquiriesData = async () => {
+      setIsLoading(true);
       try {
         const query = new URLSearchParams({
           page: String(page),
@@ -65,6 +67,8 @@ const AdminEnquiry = () => {
         }
       } catch (error) {
         console.error("Error fetching enquiries:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -162,8 +166,11 @@ const AdminEnquiry = () => {
             </button>
           </div>
         </div>
-
-        {enquiries && enquiries.length > 0 ? (
+        {isLoading ? (
+          <div className="flex h-[calc(100vh-200px)] items-center justify-center">
+            <div className="loader">Enquires Loading...</div>
+          </div>
+        ) : enquiries && enquiries.length > 0 ? (
           <div className="overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
             <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
               <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
@@ -190,6 +197,9 @@ const AdminEnquiry = () => {
                   <th scope="col" className="px-4 py-3">
                     Service
                   </th>
+                  <th scope="col" className="px-4 py-3">
+                    Date
+                  </th>
                   <th scope="col" className="px-4 py-3 text-center">
                     View
                   </th>
@@ -215,6 +225,11 @@ const AdminEnquiry = () => {
                     <td className="px-4 py-3">{item.company}</td>
                     <td className="px-4 py-3">{item.phone}</td>
                     <td className="px-4 py-3">{item.service}</td>
+                    <td className="px-4 py-3">
+                      {item.created_at
+                        ? new Date(item.created_at).toLocaleDateString()
+                        : "—"}
+                    </td>
                     <td className="px-4 py-3 text-center">
                       <button onClick={() => setSelectedEnquiry(item)}>
                         <LuMessageSquareShare className="mx-auto text-lg" />

@@ -1,4 +1,3 @@
-import { supabase } from "@/app/lib/integrations/supabase/initSupabase";
 import Job from "@/app/models/Job";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
@@ -11,9 +10,6 @@ export async function GET(req: NextRequest) {
     const slug = searchParams.get("slug");
 
     if (id) {
-      // let { data: jobs, error } = await supabase
-      //     .from('jobs')
-      //     .select('*')
 
       const jobs = await Job.findById(id);
 
@@ -23,11 +19,7 @@ export async function GET(req: NextRequest) {
 
       return NextResponse.json({ jobs });
     } else if (slug) {
-      // let { data: job, error } = await supabase
-      //     .from('jobs')
-      //     .select('*')
-      //     .eq('slug', slug)
-
+     
       const job = await Job.findOne({ slug });
 
       if (!job) {
@@ -36,9 +28,6 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ job });
       }
     } else {
-      // let { data: jobs, error } = await supabase
-      //     .from('jobs')
-      //     .select("*")
 
       const jobs = await Job.find();
 
@@ -70,12 +59,7 @@ export async function POST(req: NextRequest) {
 
   try {
     if (!id) {
-      // const { data, error } = await supabase
-      //     .from('jobs')
-      //     .insert([
-      //         { jobTitle, team, description, slug },
-      //     ])
-      //     .select()
+    
 
       const job = await Job.create({ jobTitle, team, description, slug });
 
@@ -91,11 +75,6 @@ export async function POST(req: NextRequest) {
         );
       }
     } else {
-      // const { data, error } = await supabase
-      //     .from('jobs')
-      //     .update({ jobTitle, team, description, slug })
-      //     .eq('id', id)
-      //     .select()
 
       const job = await Job.findByIdAndUpdate(id, {
         jobTitle,
@@ -135,10 +114,6 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "Job not found" }, { status: 400 });
     }
 
-    // const { error } = await supabase
-    //     .from('jobs')
-    //     .delete()
-    //     .eq('id', id)
 
     const job = await Job.findByIdAndDelete(id);
 

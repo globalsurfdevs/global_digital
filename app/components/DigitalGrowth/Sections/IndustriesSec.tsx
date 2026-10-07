@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
 
-import { ServiceItem } from "@/app/(user)/engineering-and-infrastructure/type";
+import { ServiceItem } from "@/app/(user)/_engineering-and-infrastructure/type";
 import Image from "next/image";
 import { IndustryItem } from "@/app/(user)/industries/[slug]/type";
 
@@ -40,7 +40,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
             whileInView="show"
             variants={moveUp(0)}
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)] max-w-[25ch] tracking-[-0.025em]"
+            className="title-60 max-w-[25ch] text-[length:var(--text-60-sm)] tracking-[-0.025em]"
             dangerouslySetInnerHTML={{ __html: data.subTitle }}
           />
         </div>

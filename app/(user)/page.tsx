@@ -395,10 +395,10 @@ export default function Home() {
         }}
       />
 
-      {/* Critical / above-the-fold */}
+
       <HeroSection />
 
-      {/* Static sections */}
+      
       <LogoSwiper />
       <AboutGlobal />
       <OurServices />
