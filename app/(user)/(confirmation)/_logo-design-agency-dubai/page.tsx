@@ -1,26 +1,24 @@
 import React from "react";
-import HeroSection from "../../components/PerformanceMarketing/HeroSection";
-import Services from "../../components/PerformanceMarketing/Services";
-import Platforms from "../../components/PerformanceMarketing/Platforms";
-import FAQ from "../../components/PerformanceMarketing/FAQ";
-import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
-import OurWorks from "../../components/Bc-logo/OurWorks";
-import Typeslogo from "../../components/Bc-logo/TypesLogo";
-import WhyChoose from "../../components/Bc-logo/WhyChoose";
+import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
+import Services from "../../../components/PerformanceMarketing/Services";
+import Platforms from "../../../components/PerformanceMarketing/Platforms";
+import FAQ from "../../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
+import OurWorks from "../../../components/Bc-logo/OurWorks";
+import Typeslogo from "../../../components/Bc-logo/TypesLogo";
+import WhyChoose from "../../../components/Bc-logo/WhyChoose";
 
-import { BannerSection } from "../../data/services/bc-logo-design/herosection";
-import { Clientsformsdata } from "../../data/services/bc-logo-design/ourworks";
-import { OurServices } from "../../data/services/bc-logo-design/our-servies";
-import { Whychoosedata } from "../../data/services/bc-logo-design/whychoose";
-import { Typelogodata } from "../../data/services/bc-logo-design/typesdesign";
-import { relatedservices } from "../../data/services/bc-logo-design/relatedservices";
-import { Wecanhelp } from "../../data/services/bc-logo-design/wecanhelp";
-import { Cta } from "../../data/services/bc-logo-design/cta";
-import { Faq } from "../../data/services/bc-logo-design/faq";
+import { BannerSection } from "../../../data/services/bc-logo-design/herosection";
+import { Clientsformsdata } from "../../../data/services/bc-logo-design/ourworks";
+import { OurServices } from "../../../data/services/bc-logo-design/our-servies";
+import { Whychoosedata } from "../../../data/services/bc-logo-design/whychoose";
+import { Typelogodata } from "../../../data/services/bc-logo-design/typesdesign";
+import { relatedservices } from "../../../data/services/bc-logo-design/relatedservices";
+import { Wecanhelp } from "../../../data/services/bc-logo-design/wecanhelp";
+import { Cta } from "../../../data/services/bc-logo-design/cta";
+import { Faq } from "../../../data/services/bc-logo-design/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
-import { log } from "console";
 
 interface Canonicals {
   canonical: string;
