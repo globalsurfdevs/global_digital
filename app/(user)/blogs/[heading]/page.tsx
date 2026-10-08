@@ -101,11 +101,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const image = dbBlog?.thumbnail ?? "";
   const canonicalUrl = `https://www.globalsurf.ae/blogs/${heading}`;
 
+  const isV2 = heading.includes("-v2");
+
   return {
     title,
     description,
     alternates: { canonical: canonicalUrl },
-    robots: "index, follow",
+    robots: isV2 ? "noindex, nofollow" : "index, follow",
     openGraph: {
       title,
       description,
