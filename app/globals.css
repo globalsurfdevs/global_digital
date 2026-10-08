@@ -1548,3 +1548,7 @@ input[type="number"] {
 }
 
 .clone-text::before, [data-text]:empty::before { content: attr(data-text); }
+
+
+.blog-cta { transition: background 0.3s; }  
+.blog-cta:hover { background: #E43D30 !important; }
