@@ -35,11 +35,8 @@ export default function TinyEditor({
         onInit={(_evt, editor) => {
           editorRef.current = editor;
         }}
-        initialValue={
-          blogContent && typeof blogContent == "string"
-            ? blogContent
-            : "<p>This is the initial content of the editor.</p>"
-        }
+        value={typeof blogContent === "string" ? blogContent : ""}
+        onEditorChange={handleEditorChange}
         init={{
           height: 500,
           menubar: false,

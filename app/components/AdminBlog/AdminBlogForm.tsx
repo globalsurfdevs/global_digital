@@ -44,6 +44,8 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   const [itemContents, setItemContents] = useState<string[]>([]);
   const [faqAnswers, setFaqAnswers] = useState<string[]>([]);
   const [content, setContent] = useState("");
+  const [articleContent, setArticleContent] = useState("");
+  const [legacyMode, setLegacyMode] = useState(false);
   const [schemaError, setSchemaError] = useState<string | null>(null);
 
   // authors list + selection
@@ -129,6 +131,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         setValue("ctaButtonText", b.ctaButtonText ?? "");
         setValue("ctaButtonLink", b.ctaButtonLink ?? "");
         setValue("content", b.content ?? "");
+        setValue("articleContent", b.articleContent ?? "");
         setValue("schemaScript", b.schemaScript ?? "");
 
         // author may be a populated object ({ _id, ... }) or a raw id string
@@ -146,6 +149,8 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         }
 
         setContent(b.content ?? "");
+        setArticleContent(b.articleContent ?? "");
+        setLegacyMode(!b.articleContent && Boolean(b.items?.length));
 
         if (b.thumbnail) setThumbnailPreview(b.thumbnail);
         if (b.featuredImage) setFeaturedImagePreview(b.featuredImage);
@@ -219,7 +224,8 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
 
       const payload = {
         ...data,
-        content: await uploadImagesFromEditor(content),
+        content: legacyMode ? await uploadImagesFromEditor(content) : "",
+        articleContent: await uploadImagesFromEditor(articleContent),
         thumbnail: thumbnailUrl,
         featuredImage: featuredImageUrl,
         items: processedItems,
@@ -466,13 +472,20 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         </div>
       </section>
 
-      {/* ITEMS */}
+      {/* ARTICLE BODY */}
       <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <div className="flex flex-col gap-2">
-          <Label content="Content under Table of Contents" />
-          <TinyEditor setBlogContent={setContent} blogContent={content} />
-        </div>
-        <div className="flex items-center justify-between">
+        {!legacyMode && <div className="flex flex-col gap-2">
+          <Label content="Article content (use Heading 2 and Heading 3 for TOC entries)" />
+          <TinyEditor setBlogContent={setArticleContent} blogContent={articleContent} />
+        </div>}
+        {legacyMode && <>
+          <div className="flex flex-col gap-2">
+            <Label content="Introduction (shown under Table of Contents)" />
+            <TinyEditor setBlogContent={setContent} blogContent={content} />
+          </div>
+          <p className="text-sm text-gray-500">This blog uses the existing section format. Its sections remain editable and will continue to render with the current table of contents.</p>
+        </>}
+        {legacyMode && <div className="flex items-center justify-between">
           <h2 className="font-semibold text-gray-700 dark:text-gray-300">
             Content Items
           </h2>
@@ -486,9 +499,9 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
           >
             <FiPlus size={14} /> Add Item
           </button>
-        </div>
+        </div>}
 
-        {itemFields.map((field, i) => (
+        {legacyMode && itemFields.map((field, i) => (
           <div
             key={field.id}
             className="flex flex-col gap-3 rounded-md border border-gray-200 p-4 dark:border-gray-700"
