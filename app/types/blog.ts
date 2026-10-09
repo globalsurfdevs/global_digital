@@ -18,6 +18,7 @@ export interface BlogFormInputs {
   thumbnail: string;
   thumbnailAlt: string;
   content?: string;
+  articleContent?: string;
   featuredImage: string;
   featuredImageAlt: string;
   items: BlogItem[];

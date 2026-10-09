@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 
@@ -17,10 +17,19 @@ interface TableOfContentsProps {
 
 const FAQ_ANCHOR = "frequently-asked-questions";
 
+const scrollToAnchor = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  event.preventDefault();
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.history.replaceState(null, "", `#${id}`);
+};
+
 const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
   return (
-    <section className="container mx-auto pt-[50px] lg:pt-[100px]">
-      <div className={`${!content ? "border-b border-[#b1aaaab0]" : ""}`}>
+    <section className="blog-toc-section container mx-auto">
+      <div className={`${!content ? "blog-toc-bottom-border border-b border-[#b1aaaab0]" : ""}`}>
         <motion.h2
           variants={moveUp(0.12)}
           initial="hidden"
@@ -40,12 +49,13 @@ const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
               viewport={{ once: true }}
               key={item._id}
             >
-              <Link
-                href={`#${item._id.toLowerCase().replace(/\s+/g, "-")}`}
+              <a
+                href={`#${item._id}`}
+                onClick={(event) => scrollToAnchor(event, item._id)}
                 className="text-font19 text-[#77787B] transition-colors duration-200 hover:text-black"
               >
                 {index + 1}. {item.title}
-              </Link>
+              </a>
             </motion.div>
           ))}
 
@@ -57,12 +67,13 @@ const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
               whileInView="show"
               viewport={{ once: true }}
             >
-              <Link
+              <a
                 href={`#${FAQ_ANCHOR}`}
+                onClick={(event) => scrollToAnchor(event, FAQ_ANCHOR)}
                 className="text-font19 text-[#77787B] transition-colors duration-200 hover:text-black"
               >
                 {items.length + 1}. Frequently Asked Questions
-              </Link>
+              </a>
             </motion.div>
           )}
         </div>
@@ -74,7 +85,7 @@ const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="my-[25px] border-t border-[#b1aaaab0] lg:my-[50px]"
+              className="blog-toc-divider border-t border-[#b1aaaab0]"
             />
             <motion.div
               variants={moveUp(0.18)}
