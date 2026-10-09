@@ -108,7 +108,7 @@ const HowDigitalMarketingWinsContent = () => {
                 decoding="async"
                 data-nimg="1"
                 className="m-auto my-[40px]"
-                src="../../images/blogs/performance/blog-p3.png"
+                src="/images/blogs/performance/blog-p3.png"
               />
 
               <p className="mb-[16px] text-font19 text-[#77787B]">
@@ -239,7 +239,7 @@ const HowDigitalMarketingWinsContent = () => {
                 decoding="async"
                 data-nimg="1"
                 className="m-auto my-[40px]"
-                src="../../images/blogs/performance/blog-p4.png"
+                src="/images/blogs/performance/blog-p4.png"
               />
 
               <p className="mb-[16px] text-font19 text-[#77787B]">
@@ -445,7 +445,7 @@ const HowDigitalMarketingWinsContent = () => {
                 decoding="async"
                 data-nimg="1"
                 className="m-auto my-[40px]"
-                src="../../images/blogs/performance/blog-p5.png"
+                src="/images/blogs/performance/blog-p5.png"
               />
 
               <p className="mb-[16px] text-font19 text-[#77787B]">
@@ -633,7 +633,7 @@ const HowDigitalMarketingWinsContent = () => {
                 decoding="async"
                 data-nimg="1"
                 className="m-auto my-[40px]"
-                src="../../images/blogs/performance/blog-p2.png"
+                src="/images/blogs/performance/blog-p2.png"
               />
 
               <p className="mb-[16px] text-font19 text-[#77787B]">
