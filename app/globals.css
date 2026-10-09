@@ -1591,6 +1591,12 @@ input[type="number"] {
 }
 
 .blog-content a {
+  color: #e43d30;
+  text-decoration: none;
+}
+
+.blog-content a:hover,
+.blog-content a:focus-visible {
   text-decoration: underline;
 }
 
