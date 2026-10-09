@@ -164,6 +164,7 @@ import React, { useEffect } from "react";
 import BlogDetailHero from "./BlogDetailHero";
 import TableOfContents, { FAQ_ANCHOR } from "./TableOfContents";
 import BlogContentSection from "./BlogContentSection";
+import { prepareBlogArticle } from "@/app/helpers/blogArticle";
 import Cta from "../BlogSocialMedia/DynamicBlogCta";
 import { ctaData } from "@/app/data/blogdatas/DigitalMarketingData";
 import BlogFAQ from "./BlogFAQ";
@@ -180,6 +181,7 @@ type DbBlogPost = {
   publishedAt: string;
   updatedAt: string;
   content: string;
+  articleContent?: string;
   ctaTitle: string;
   ctaDescription: string;
   ctaButtonText: string;
@@ -224,6 +226,12 @@ const BlogDetails = ({ dbBlog }: Props) => {
       title: f.question,
       description: f.answer,
     })) ?? [];
+  const unifiedArticle =
+    dbBlog?.articleContent || (!dbBlog?.items?.length ? dbBlog?.content : "");
+  const preparedArticle = unifiedArticle
+    ? prepareBlogArticle(unifiedArticle)
+    : null;
+  const tocItems = preparedArticle?.headings ?? dbBlog?.items ?? [];
 
 
   return (
@@ -236,21 +244,23 @@ const BlogDetails = ({ dbBlog }: Props) => {
             heroAlt={dbBlog.featuredImageAlt}
             publishedon={formatDate(dbBlog.publishedAt)}
             updatedon={formatDate(dbBlog.updatedAt)}
-            readtime={dbBlog.items?.length}
+            readtime={dbBlog.items?.length || (dbBlog.articleContent ? 1 : undefined)}
             category={dbBlog.category}
           />
         )}
       </div>
 
-      {dbBlog?.items && (
+      {(preparedArticle || dbBlog?.items) && (
         <TableOfContents
-          content={dbBlog?.content}
-          items={dbBlog?.items}
+          content={preparedArticle ? "" : dbBlog?.content}
+          items={tocItems}
           hasFaq={faqData.length > 0}
         />
       )}
 
-      {dbBlog?.items && <BlogContentSection items={dbBlog.items} />}
+      {preparedArticle ? (
+        <BlogContentSection items={[]} articleHtml={preparedArticle.html} />
+      ) : dbBlog?.items ? <BlogContentSection items={dbBlog.items} /> : null}
 
       {faqData.length > 0 && (
         <div id={FAQ_ANCHOR}>

@@ -22,6 +22,7 @@ export interface IBlog extends Document {
   thumbnail: string;
   thumbnailAlt: string;
   content: string;
+  articleContent: string;
   featuredImage: string;
   featuredImageAlt: string;
   items: IBlogItem[];
@@ -62,6 +63,7 @@ const BlogSchema = new Schema<IBlog>(
     featuredImage: { type: String, default: "" },
     featuredImageAlt: { type: String, default: "" },
     content: { type: String, default: "" },
+    articleContent: { type: String, default: "" },
     items: { type: [BlogItemSchema], default: [] },
     faqTitle: { type: String, default: "" },
     faqItems: { type: [BlogFaqItemSchema], default: [] },
