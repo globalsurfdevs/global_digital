@@ -169,7 +169,7 @@ const HeroSectionType2: React.FC<HeroSectionProps> = ({
                                   (herosection.navigation?.length || 0) - 1 && (
                                   <li>
                                     <Image
-                                      src="../images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
+                                      src="/images/ecom-industry/bc-arrow.png" // Replace with the actual path to your arrow image
                                       alt="Arrow"
                                       width={7} // Adjust width as needed
                                       height={12} // Adjust height as needed
