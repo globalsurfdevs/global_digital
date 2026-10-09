@@ -233,7 +233,6 @@ const BlogDetails = ({ dbBlog }: Props) => {
     : null;
   const tocItems = preparedArticle?.headings ?? dbBlog?.items ?? [];
 
-
   return (
     <>
       <div>
@@ -244,7 +243,9 @@ const BlogDetails = ({ dbBlog }: Props) => {
             heroAlt={dbBlog.featuredImageAlt}
             publishedon={formatDate(dbBlog.publishedAt)}
             updatedon={formatDate(dbBlog.updatedAt)}
-            readtime={dbBlog.items?.length || (dbBlog.articleContent ? 1 : undefined)}
+            readtime={
+              dbBlog.items?.length || (dbBlog.articleContent ? 1 : undefined)
+            }
             category={dbBlog.category}
           />
         )}
@@ -252,7 +253,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
 
       {(preparedArticle || dbBlog?.items) && (
         <TableOfContents
-          content={preparedArticle ? "" : dbBlog?.content}
+          content={preparedArticle ? "" : (dbBlog?.content ?? "")}
           items={tocItems}
           hasFaq={faqData.length > 0}
         />
@@ -260,7 +261,9 @@ const BlogDetails = ({ dbBlog }: Props) => {
 
       {preparedArticle ? (
         <BlogContentSection items={[]} articleHtml={preparedArticle.html} />
-      ) : dbBlog?.items ? <BlogContentSection items={dbBlog.items} /> : null}
+      ) : dbBlog?.items ? (
+        <BlogContentSection items={dbBlog.items} />
+      ) : null}
 
       {faqData.length > 0 && (
         <div id={FAQ_ANCHOR}>
