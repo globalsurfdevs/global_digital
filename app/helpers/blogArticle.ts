@@ -27,7 +27,7 @@ export function prepareBlogArticle(html: string) {
   const usedIds = new Set<string>();
   const headings: ArticleHeading[] = [];
   const renderedHtml = html.replace(
-    /<(h[23])\b([^>]*)>([\s\S]*?)<\/\1>/gi,
+    /<(h2)\b([^>]*)>([\s\S]*?)<\/\1>/gi,
     (_match, tag: string, attributes: string, inner: string) => {
       const title = textFromHtml(inner);
       if (!title) return `<${tag}${attributes}>${inner}</${tag}>`;

@@ -226,8 +226,10 @@ const BlogDetails = ({ dbBlog }: Props) => {
       title: f.question,
       description: f.answer,
     })) ?? [];
-  const preparedArticle = dbBlog?.articleContent
-    ? prepareBlogArticle(dbBlog.articleContent)
+  const unifiedArticle =
+    dbBlog?.articleContent || (!dbBlog?.items?.length ? dbBlog?.content : "");
+  const preparedArticle = unifiedArticle
+    ? prepareBlogArticle(unifiedArticle)
     : null;
   const tocItems = preparedArticle?.headings ?? dbBlog?.items ?? [];
 
@@ -250,7 +252,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
 
       {(preparedArticle || dbBlog?.items) && (
         <TableOfContents
-          content={dbBlog?.content}
+          content={preparedArticle ? "" : dbBlog?.content}
           items={tocItems}
           hasFaq={faqData.length > 0}
         />

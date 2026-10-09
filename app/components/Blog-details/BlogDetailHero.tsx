@@ -33,7 +33,7 @@ const BlogDetailHero = ({
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <div className="border-b pt-[20px] sm:pt-[50px] lg:pt-[130px]">
+          <div className="mb-[20px] border-b pt-[20px] sm:mb-[40px] sm:pt-[50px] lg:mb-[60px] lg:pt-[130px]">
             <div className="flex justify-between">
               <div className="flex items-center gap-2">
                 <p className="text-[10px] text-[#77787B] sm:text-font14 lg:text-font19">

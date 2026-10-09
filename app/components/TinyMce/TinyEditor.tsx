@@ -5,9 +5,11 @@ import tinymce from "tinymce";
 export default function TinyEditor({
   setBlogContent,
   blogContent,
+  variant = "default",
 }: {
   blogContent?: string | boolean;
   setBlogContent: Dispatch<SetStateAction<string>>;
+  variant?: "default" | "blogArticle";
 }) {
   const editorRef = useRef<{
     editorUpload: any;
@@ -27,6 +29,21 @@ export default function TinyEditor({
     setBlogContent(content); // Update state as the editor content changes
     console.log(content); // Log the current content
   };
+
+  const contentStyle = `
+    @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+    body { padding: 10px; }
+    ${variant === "blogArticle" ? `
+      h2 {
+        font-size: clamp(30px, calc(30px + (100vw - 768px) * 0.1367), 65px);
+        line-height: 1.1;
+        font-weight: 500;
+        margin: 0 0 clamp(20px, calc(20px + (100vw - 768px) * 0.078), 40px) 0;
+        padding-top: clamp(28px, calc(28px + (100vw - 768px) * 0.0859), 50px);
+      }
+      h3 { font-size: 24px; line-height: 1.25; font-weight: 600; }
+    ` : ""}
+  `;
 
   return (
     <>
@@ -51,10 +68,7 @@ export default function TinyEditor({
 
           content_css:
             "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css",
-          content_style: `
-        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-        body { padding: 10px; }
-    `,
+          content_style: contentStyle,
           plugins: [
             "advlist",
             "autolink",

@@ -149,7 +149,9 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         }
 
         setContent(b.content ?? "");
-        setArticleContent(b.articleContent ?? "");
+        setArticleContent(
+          b.articleContent ?? (!b.items?.length ? b.content ?? "" : ""),
+        );
         setLegacyMode(!b.articleContent && Boolean(b.items?.length));
 
         if (b.thumbnail) setThumbnailPreview(b.thumbnail);
@@ -204,6 +206,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
           content: (await uploadImagesFromEditor(content)) ?? content,
         })),
       );
+      const processedArticleContent = await uploadImagesFromEditor(articleContent);
 
       const processedFaqItems = data.faqItems.map((faq) => ({
         question: faq.question ?? "",
@@ -224,8 +227,12 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
 
       const payload = {
         ...data,
-        content: legacyMode ? await uploadImagesFromEditor(content) : "",
-        articleContent: await uploadImagesFromEditor(articleContent),
+        // Keep the unified article in the established content field as well
+        // as the explicit field, so older readers/API consumers retain it.
+        content: legacyMode
+          ? await uploadImagesFromEditor(content)
+          : processedArticleContent,
+        articleContent: processedArticleContent,
         thumbnail: thumbnailUrl,
         featuredImage: featuredImageUrl,
         items: processedItems,
@@ -475,8 +482,8 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
       {/* ARTICLE BODY */}
       <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
         {!legacyMode && <div className="flex flex-col gap-2">
-          <Label content="Article content (use Heading 2 and Heading 3 for TOC entries)" />
-          <TinyEditor setBlogContent={setArticleContent} blogContent={articleContent} />
+          <Label content="Article content (Heading 2 creates TOC entries; Heading 3 is a subheading)" />
+          <TinyEditor setBlogContent={setArticleContent} blogContent={articleContent} variant="blogArticle" />
         </div>}
         {legacyMode && <>
           <div className="flex flex-col gap-2">
