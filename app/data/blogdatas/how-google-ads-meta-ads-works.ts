@@ -9,7 +9,7 @@ export const BannerSection = [
       { label: "5 Minutes Read", url: "" },
     ],
     title:
-      " Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins? ",
+      "Google Ads vs Meta Ads for UAE Lead Generation: Which Channel Wins? ",
     publishedon: "March 16, 2026",
     updatedon: "March 16, 2026",
     subtitle: "",

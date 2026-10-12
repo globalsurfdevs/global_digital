@@ -16,7 +16,7 @@ const createId = (id: string) => id.toLowerCase().replace(/\s+/g, "-");
 const BlogContentSection = ({ items, articleHtml }: BlogContentSectionProps) => {
   if (articleHtml) {
     return (
-      <section className="blog-article-body container mx-auto pb-[50px] lg:pb-[100px]">
+      <section className="blog-article-body container pb-[50px] lg:pb-[100px]">
         <div className="blog-content" dangerouslySetInnerHTML={{ __html: articleHtml }} />
       </section>
     );
