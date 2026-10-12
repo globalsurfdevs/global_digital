@@ -247,6 +247,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
               dbBlog.items?.length || (dbBlog.articleContent ? 1 : undefined)
             }
             category={dbBlog.category}
+            isArticleContent={!!dbBlog.articleContent}
           />
         )}
       </div>

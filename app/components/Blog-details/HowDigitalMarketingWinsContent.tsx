@@ -46,7 +46,7 @@ const cplComparisonByIndustryData = [
   },
 ];
 
-const HowDigitalMarketingWinsContent = () => {
+const   HowDigitalMarketingWinsContent = () => {
   return (
     <section>
       <div className="container mx-auto pt-[50px] lg:pt-[100px]">
@@ -293,7 +293,7 @@ const HowDigitalMarketingWinsContent = () => {
                     lost.
                   </p>
                 </div>
-
+{/* =================== */}
                 <div>
                   <h2
                     className="title-65 mb-5 pt-7 lg:mb-[40px] lg:pt-[50px] 2xl:pt-[110px]"

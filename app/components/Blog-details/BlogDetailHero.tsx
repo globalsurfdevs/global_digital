@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SocialShare from "../../components/BlogSocialMedia/SocialShare";
 import Image from "next/image";
 
@@ -13,6 +13,7 @@ interface BlogDetailHeroProps {
   updatedon?: string;
   readtime?: string | number;
   category?: string;
+  isArticleContent?: boolean;
 }
 
 const BlogDetailHero = ({
@@ -23,10 +24,33 @@ const BlogDetailHero = ({
   updatedon,
   readtime,
   category,
+  isArticleContent,
 }: BlogDetailHeroProps) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [divWidth, setDivWidth] = useState("100%");
+  const nextContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const update = () => {
+      setIsSmallScreen(window.innerWidth < 992);
+
+      if (nextContainerRef.current) {
+        const rect = nextContainerRef.current.getBoundingClientRect();
+        const marginLeft = parseFloat(
+          window.getComputedStyle(nextContainerRef.current).marginLeft,
+        );
+        setDivWidth(`${rect.width + marginLeft - 15}px`);
+      }
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto py-2" ref={nextContainerRef}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +75,6 @@ const BlogDetailHero = ({
 
             <div className="py-[50px] lg:py-[150px]">
               <h1 className="title-80">{title}</h1>
-
               <div className="mt-6">
                 <SocialShare />
               </div>
@@ -66,13 +89,32 @@ const BlogDetailHero = ({
         viewport={{ once: true }}
         transition={{ duration: 1.3, ease: "easeOut" }}
       >
-        <Image
-          src={image}
-          alt={heroAlt || title}
-          width={1500}
-          height={700}
-          className="mx-auto w-full object-cover"
-        />
+        {isArticleContent ? (
+          <div
+            style={{ width: isSmallScreen ? "" : divWidth }}
+            className={`${
+              isSmallScreen ? "container mx-auto py-2" : ""
+            } custom-class`}
+          >
+            <div className="w-full bg-black">
+              <Image
+                src={image}
+                className="w-full"
+                alt={heroAlt || title || "Banner image"}
+                width={1500}
+                height={700}
+              />
+            </div>
+          </div>
+        ) : (
+          <Image
+            src={image}
+            alt={heroAlt || title}
+            width={1500}
+            height={700}
+            className="mx-auto w-full object-cover"
+          />
+        )}
       </motion.div>
     </>
   );

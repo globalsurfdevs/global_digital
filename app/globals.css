@@ -1561,6 +1561,17 @@ input[type="number"] {
   font-size:clamp(24px, 24px, 30px);
 }
 
+.blog-article-body .blog-content h3 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+@media (min-width: 1024px) {
+  .blog-article-body .blog-content h3 {
+    font-size: 30px;
+  }
+}
+
 .blog-content ul,
 .blog-content ol {
   margin: 24px 0;
@@ -1616,3 +1627,20 @@ input[type="number"] {
 
 .blog-cta { transition: background 0.3s; }  
 .blog-cta:hover { background: #E43D30 !important; }
+
+
+.blog-article-body .blog-content img {
+width: 100% !important;
+max-width: 1200px !important;
+height: auto !important;
+max-height: none !important;
+display: block;
+margin: 20px 0;
+}
+
+@media (min-width: 1024px) {
+.blog-article-body .blog-content img {
+margin-top: 40px;
+margin-bottom: 40px;
+}
+}
