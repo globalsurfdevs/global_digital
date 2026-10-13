@@ -169,6 +169,7 @@ import Cta from "../BlogSocialMedia/DynamicBlogCta";
 import { ctaData } from "@/app/data/blogdatas/DigitalMarketingData";
 import BlogFAQ from "./BlogFAQ";
 import AuthorBioCard from "./AuthorBioCard";
+import HeroSection from "../BlogSocialMedia/HeroSectionDynamic";
 
 type DbBlogPost = {
   _id: string;
@@ -221,6 +222,13 @@ const BlogDetails = ({ dbBlog }: Props) => {
       timeZone: "UTC",
     });
 
+  const formatMonthYear = (date: string) =>
+    new Date(date).toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+
   const faqData =
     dbBlog?.faqItems?.map((f) => ({
       title: f.question,
@@ -232,24 +240,53 @@ const BlogDetails = ({ dbBlog }: Props) => {
     ? prepareBlogArticle(unifiedArticle)
     : null;
   const tocItems = preparedArticle?.headings ?? dbBlog?.items ?? [];
+  const estimatedReadMinutes = preparedArticle
+    ? Math.max(
+        1,
+        Math.ceil(
+          preparedArticle.html.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length /
+            200,
+        ),
+      )
+    : 1;
 
+  const articleHeroData = dbBlog?.articleContent
+    ? [
+        {
+          id: 1,
+          title: dbBlog.heading,
+          image: dbBlog.featuredImage,
+          heroAlt: dbBlog.featuredImageAlt,
+          publishedon: formatMonthYear(dbBlog.publishedAt),
+          updatedon: formatMonthYear(dbBlog.updatedAt),
+          navigation: [
+            { label: "Blog", url: "/blogs" },
+            {
+              label: `${estimatedReadMinutes} Minutes Read`,
+              url: "",
+            },
+          ],
+          sub: [],
+        },
+      ]
+    : null;
+console.log("articleHeroData", articleHeroData);
   return (
     <>
       <div>
-        {dbBlog && (
+        {dbBlog?.articleContent && articleHeroData ? (
+          <HeroSection Bannerdata={articleHeroData} hideslider />
+        ) : dbBlog ? (
           <BlogDetailHero
             title={dbBlog.heading}
             image={dbBlog.featuredImage}
             heroAlt={dbBlog.featuredImageAlt}
             publishedon={formatDate(dbBlog.publishedAt)}
             updatedon={formatDate(dbBlog.updatedAt)}
-            readtime={
-              dbBlog.items?.length || (dbBlog.articleContent ? 1 : undefined)
-            }
+            readtime={dbBlog.items?.length || undefined}
             category={dbBlog.category}
-            isArticleContent={!!dbBlog.articleContent}
           />
-        )}
+        ) : null}
       </div>
 
       {(preparedArticle || dbBlog?.items) && (
@@ -257,13 +294,21 @@ const BlogDetails = ({ dbBlog }: Props) => {
           content={preparedArticle ? "" : (dbBlog?.content ?? "")}
           items={tocItems}
           hasFaq={faqData.length > 0}
+          isArticleContent={Boolean(preparedArticle)}
         />
       )}
 
       {preparedArticle ? (
-        <BlogContentSection items={[]} articleHtml={preparedArticle.html} />
+        <BlogContentSection
+          items={[]}
+          articleHtml={preparedArticle.html}
+          hasShortDescription={preparedArticle.hasShortDescription}
+        />
       ) : dbBlog?.items ? (
-        <BlogContentSection items={dbBlog.items} />
+        <BlogContentSection
+          items={dbBlog.items}
+          hasShortDescription={Boolean(dbBlog.content)}
+        />
       ) : null}
 
       {faqData.length > 0 && (
@@ -272,7 +317,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
         </div>
       )}
 
-      {dbBlog?.ctaTitle && (
+      {(dbBlog?.ctaTitle || dbBlog?.ctaDescription) && (
         <Cta
           title={dbBlog?.ctaTitle}
           description={dbBlog?.ctaDescription}

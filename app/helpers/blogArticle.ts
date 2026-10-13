@@ -26,6 +26,11 @@ const textFromHtml = (html: string) =>
 export function prepareBlogArticle(html: string) {
   const usedIds = new Set<string>();
   const headings: ArticleHeading[] = [];
+  const firstHeadingIndex = html.search(/<h2\b/i);
+  const firstParagraphIndex = html.search(/<p\b/i);
+  const hasShortDescription =
+    firstParagraphIndex !== -1 &&
+    (firstHeadingIndex === -1 || firstParagraphIndex < firstHeadingIndex);
   const renderedHtml = html.replace(
     /<(h2)\b([^>]*)>([\s\S]*?)<\/\1>/gi,
     (_match, tag: string, attributes: string, inner: string) => {
@@ -45,5 +50,5 @@ export function prepareBlogArticle(html: string) {
     },
   );
 
-  return { html: renderedHtml, headings };
+  return { html: renderedHtml, headings, hasShortDescription };
 }

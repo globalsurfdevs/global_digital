@@ -36,7 +36,7 @@ const SectionCTA = ({
             <div className="w-full">
               <h2 className="title-65 mb-5 lg:mb-[40px]">{title}</h2>
 
-              <p className="mt-4 text-font19 text-[#77787B]">{description}</p>
+              <p className="mt-4 text-font19 text-[#77787B]" dangerouslySetInnerHTML={{ __html: description }} />
 
               <div className="mt-8">
                 <a href={buttonLink}>
