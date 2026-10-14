@@ -12,6 +12,7 @@ interface TableOfContentsItem {
 interface TableOfContentsProps {
   content: string;
   items: TableOfContentsItem[];
+  isArticleContent?: boolean;
   hasFaq?: boolean; // ✅ new prop — passed from BlogDetails when faqData.length > 0
 }
 
@@ -26,7 +27,8 @@ const scrollToAnchor = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
   window.history.replaceState(null, "", `#${id}`);
 };
 
-const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
+const TableOfContents = ({ content, items, hasFaq, isArticleContent = false }: TableOfContentsProps) => {
+  const linkHoverColor = isArticleContent ? "hover:text-primary" : "hover:text-black";
   return (
     <section className="blog-toc-section container mx-auto">
       <div className={`${!content ? "blog-toc-bottom-border border-b border-[#b1aaaab0]" : ""}`}>
@@ -35,12 +37,12 @@ const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="title-65 mb-[40px]"
+          className="title-65 mb-[40px] mt-4"
         >
           Table of Contents
         </motion.h2>
 
-        <div className="flex flex-col gap-[20px]">
+        <div className="flex flex-col gap-[16px]">
           {items.map((item, index) => (
             <motion.div
               variants={moveUp(index * 0.11)}
@@ -52,7 +54,7 @@ const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
               <a
                 href={`#${item._id}`}
                 onClick={(event) => scrollToAnchor(event, item._id)}
-                className="text-font19 text-[#77787B] transition-colors duration-200 hover:text-black"
+                className={`text-font19 text-[#77787B] transition-colors duration-200 ${linkHoverColor}`}
               >
                 {index + 1}. {item.title}
               </a>
@@ -70,7 +72,7 @@ const TableOfContents = ({ content, items, hasFaq }: TableOfContentsProps) => {
               <a
                 href={`#${FAQ_ANCHOR}`}
                 onClick={(event) => scrollToAnchor(event, FAQ_ANCHOR)}
-                className="text-font19 text-[#77787B] transition-colors duration-200 hover:text-black"
+                className={`text-font19 text-[#77787B] transition-colors duration-200 ${linkHoverColor}`}
               >
                 {items.length + 1}. Frequently Asked Questions
               </a>

@@ -9,20 +9,25 @@ interface BlogContentItem {
 interface BlogContentSectionProps {
   items: BlogContentItem[];
   articleHtml?: string;
+  hasShortDescription?: boolean;
 }
 
 const createId = (id: string) => id.toLowerCase().replace(/\s+/g, "-");
 
-const BlogContentSection = ({ items, articleHtml }: BlogContentSectionProps) => {
+const BlogContentSection = ({
+  items,
+  articleHtml,
+  hasShortDescription = false,
+}: BlogContentSectionProps) => {
   if (articleHtml) {
     return (
-      <section className="blog-article-body container pb-[50px] lg:pb-[100px]">
+      <section className={`blog-article-body container pb-[50px] lg:pb-[100px] ${hasShortDescription ? "has-short-description" : "no-short-description"}`}>
         <div className="blog-content" dangerouslySetInnerHTML={{ __html: articleHtml }} />
       </section>
     );
   }
   return (
-    <section className="container mx-auto py-[50px] lg:py-[100px]">
+    <section className={`blog-legacy-body container mx-auto py-[50px] lg:py-[100px] ${hasShortDescription ? "has-short-description" : "no-short-description"}`}>
       <div className="flex flex-col gap-[50px] lg:gap-[80px]">
         {items.map((item) => (
           <div
