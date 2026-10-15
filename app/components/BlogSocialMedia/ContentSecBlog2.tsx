@@ -20,7 +20,7 @@ type ContentSectionProps = {
 };
 
 const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
-  return (
+  return (  
     <>
       {sections.map((data, idx) => (
         <section key={idx}>

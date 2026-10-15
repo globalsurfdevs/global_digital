@@ -188,7 +188,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="grid grid-cols-1 pb-[50px] pt-[20px] lg:py-[150px]  ">
                   <div className="col-span-2  mb-5 xl:mb-0"></div>
                   <div className="col-span-5 w-full  ">
-                    <h1 className="title-80 ">{herosection.title}</h1>
+                    <h1 className="title-80 " dangerouslySetInnerHTML={{ __html: herosection.title }} />
                     <SocialShare />
                     <div className="mt-[40px] hidden gap-[16px] ">
                       <div className="rounded-[14px] bg-[#C1C1C1]/30 p-2">

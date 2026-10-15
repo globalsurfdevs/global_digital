@@ -270,7 +270,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
         },
       ]
     : null;
-console.log("articleHeroData", articleHeroData);
+
   return (
     <>
       <div>
