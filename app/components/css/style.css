@@ -262,3 +262,8 @@ input[type="search"]::-webkit-search-cancel-button {
   color: rgb(28 36 52);
   font-family: Satoshi, sans-serif;
 }
+
+/* TinyMCE's HTML dialog must stack above the fixed admin sidebar (z-index: 9999). */
+body .tox-dialog-wrap {
+  z-index: 10000 !important;
+}
