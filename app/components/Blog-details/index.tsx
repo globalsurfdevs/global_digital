@@ -225,6 +225,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
   const formatMonthYear = (date: string) =>
     new Date(date).toLocaleDateString("en-US", {
       month: "long",
+      day: "numeric",
       year: "numeric",
       timeZone: "UTC",
     });
@@ -244,8 +245,10 @@ const BlogDetails = ({ dbBlog }: Props) => {
     ? Math.max(
         1,
         Math.ceil(
-          preparedArticle.html.replace(/<[^>]*>/g, " ").trim().split(/\s+/).length /
-            200,
+          preparedArticle.html
+            .replace(/<[^>]*>/g, " ")
+            .trim()
+            .split(/\s+/).length / 200,
         ),
       )
     : 1;

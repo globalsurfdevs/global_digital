@@ -9,7 +9,7 @@ export const BannerSection = [
       { label: "5 Minutes Read", url: "" },
     ],
     title:
-      " Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
+      "Why Email Marketing Still Quietly Drives B2B Demand in the UAE in 2026",
     publishedon: "April 6, 2026",
     updatedon: "April 6, 2026",
     subtitle: "",
