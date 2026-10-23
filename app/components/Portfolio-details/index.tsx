@@ -54,6 +54,54 @@ const Frameworkdata = {
   ],
 };
 
+
+export const FrameworkdataShoba = {
+  title: "What We Delivered",
+  data: [
+    {
+      id: 1,
+      title: "Website design & development from ground up",
+      dec: "Custom end-to-end design and engineering built specifically to align with business objectives and scale seamless user experiences.",
+      icn: assets.icss1,
+      urllink: "",
+    },
+    {
+      id: 2,
+      title: "Information architecture & content structuring",
+      dec: "Logical page hierarchy and structured content layouts ensuring users find essential service details effortlessly.",
+      icn: assets.icss2,
+      urllink: "",
+    },
+    {
+      id: 3,
+      title: "User experience & navigation planning",
+      dec: "Intuitive user journeys and seamless navigation flows designed to reduce bounce rates and boost user engagement.",
+      icn: assets.icss3,
+      urllink: "",
+    },
+    {
+      id: 4,
+      title: "Mobile & cross-device compatibility",
+      dec: "Fully responsive designs tailored across all viewports to guarantee visual and functional consistency on every screen.",
+      icn: assets.icss4,
+      urllink: "",
+    },
+    {
+      id: 5,
+      title: "Site speed & performance optimisation",
+      dec: "Optimized asset delivery, light DOM structure, and clean code implementation for ultra-fast page load speeds.",
+      icn: "",
+      urllink: "",
+    },
+    {
+      id: 6,
+      title: "Secure & scalable platform setup",
+      dec: "Future-proof infrastructure and security standards ready to scale alongside growing business demands.",
+      icn: "",
+      urllink: "",
+    },
+  ],
+};
 const PortfolioDetails = ({ data }: any) => {
   // const { companyName } = useParams()
 
@@ -119,8 +167,19 @@ const PortfolioDetails = ({ data }: any) => {
   //     portfolio,
   //     portfolioHighlights,
   // };
+  // console.log("portfolio data :",data)
+  if (
+    data.portfolio?.slug === "innovo-group" ||
+    data.portfolio?.slug === "sobha-constructions"
+  ) {
+    const defaultDelivered =
+      data.portfolio.slug === "innovo-group" ? Frameworkdata : FrameworkdataShoba;
+    const deliveredData =
+      Array.isArray(data.portfolio.whatWeDeliveredData) &&
+      data.portfolio.whatWeDeliveredData.length > 0
+        ? data.portfolio.whatWeDeliveredData
+        : defaultDelivered.data;
 
-  if (data.portfolio?.slug == "innovo-group") {
     return (
       <>
         <MainSectionDetails data={data} />
@@ -128,9 +187,9 @@ const PortfolioDetails = ({ data }: any) => {
 
         <ResultDetails data={data} />
         <WhatWeDelivered
-          title={Frameworkdata.title}
-          data={Frameworkdata.data}
-          colcount={4}
+          title={data.portfolio.whatWeDeliveredTitle || defaultDelivered.title}
+          data={deliveredData}
+          colcount={data.portfolio.slug === "innovo-group" ? 4 : 6}
         />
         <CtaDetailsone data={data} />
         <CtaDetailsTwo data={data} />

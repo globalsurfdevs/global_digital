@@ -62,7 +62,8 @@ const CtaDetailsone = ({
         >
           <div className="flex flex-col  py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]  ">
             <h2 className="title-80   max-w-[25ch] text-white">
-              This project drove measurable business growth.
+              {data?.portfolio.detailsCtaOneTitle ||
+                "This project drove measurable business growth."}
             </h2>
 
             <div className="innerfnont relative mt-[20px] w-fit lg:mt-[60px]">
@@ -79,7 +80,8 @@ const CtaDetailsone = ({
                   <p
                     className={`text-sm font-medium uppercase text-white duration-200 ease-in-out  group-hover:text-primary md:text-[16px] ${lexend.className}`}
                   >
-                    Read the full case study
+                    {data?.portfolio.detailsCtaOneLinkText ||
+                      "Read the full case study"}
                   </p>
                 </div>
                 <svg

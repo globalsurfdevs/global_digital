@@ -42,6 +42,16 @@ type Inputs = {
   slug: string;
   metaTitle: string;
   metaDescription: string;
+  ogTitle: string;
+  ogDescription: string;
+  twitterTitle: string;
+  twitterDescription: string;
+  whatWeDeliveredTitle: string;
+  whatWeDeliveredData: string;
+  detailsCtaOneTitle: string;
+  detailsCtaOneLinkText: string;
+  detailsCtaTwoTitle: string;
+  detailsCtaTwoButtonText: string;
   websiteLink: string;
   bannerTitle: string;
   video: string;
@@ -185,6 +195,24 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    let whatWeDeliveredData: unknown[] = [];
+    if (data.whatWeDeliveredData?.trim()) {
+      try {
+        const parsedData: unknown = JSON.parse(data.whatWeDeliveredData);
+        if (!Array.isArray(parsedData)) {
+          throw new Error("What We Delivered data must be a JSON array.");
+        }
+        whatWeDeliveredData = parsedData;
+      } catch (error) {
+        toast.error(
+          error instanceof Error
+            ? error.message
+            : "What We Delivered data must be valid JSON.",
+        );
+        return;
+      }
+    }
+
     setIsSubmitting(true);
     const formData = new FormData();
     formData.append("companyName", data.companyName);
@@ -233,6 +261,25 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("tag", data.tag);
     formData.append("metaTitle", data.metaTitle);
     formData.append("metaDescription", data.metaDescription);
+    formData.append("ogTitle", data.ogTitle || "");
+    formData.append("ogDescription", data.ogDescription || "");
+    formData.append("twitterTitle", data.twitterTitle || "");
+    formData.append("twitterDescription", data.twitterDescription || "");
+    formData.append("whatWeDeliveredTitle", data.whatWeDeliveredTitle || "");
+    formData.append(
+      "whatWeDeliveredData",
+      JSON.stringify(whatWeDeliveredData),
+    );
+    formData.append("detailsCtaOneTitle", data.detailsCtaOneTitle || "");
+    formData.append(
+      "detailsCtaOneLinkText",
+      data.detailsCtaOneLinkText || "",
+    );
+    formData.append("detailsCtaTwoTitle", data.detailsCtaTwoTitle || "");
+    formData.append(
+      "detailsCtaTwoButtonText",
+      data.detailsCtaTwoButtonText || "",
+    );
     formData.append("section", selectedSection);
 
     if (!previewImage || !previewLogo) {
@@ -374,6 +421,39 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             setValue("slug", data.portfolio.slug);
             setValue("metaTitle", data.portfolio.metaTitle);
             setValue("metaDescription", data.portfolio.metaDescription);
+            setValue("ogTitle", data.portfolio.ogTitle || "");
+            setValue("ogDescription", data.portfolio.ogDescription || "");
+            setValue("twitterTitle", data.portfolio.twitterTitle || "");
+            setValue(
+              "twitterDescription",
+              data.portfolio.twitterDescription || "",
+            );
+            setValue(
+              "whatWeDeliveredTitle",
+              data.portfolio.whatWeDeliveredTitle || "",
+            );
+            setValue(
+              "whatWeDeliveredData",
+              data.portfolio.whatWeDeliveredData
+                ? JSON.stringify(data.portfolio.whatWeDeliveredData, null, 2)
+                : "",
+            );
+            setValue(
+              "detailsCtaOneTitle",
+              data.portfolio.detailsCtaOneTitle || "",
+            );
+            setValue(
+              "detailsCtaOneLinkText",
+              data.portfolio.detailsCtaOneLinkText || "",
+            );
+            setValue(
+              "detailsCtaTwoTitle",
+              data.portfolio.detailsCtaTwoTitle || "",
+            );
+            setValue(
+              "detailsCtaTwoButtonText",
+              data.portfolio.detailsCtaTwoButtonText || "",
+            );
             setValue("bannerTitle", data.portfolio.bannerTitle);
             setValue("websiteLink", data.portfolio.websiteLink);
             setValue("video", data.portfolio.video);
@@ -2188,6 +2268,102 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               />
             </div>
           </div>
+
+          <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
+            <h2 className="text-xl font-semibold">Social sharing metadata</h2>
+            <div className="grid grid-cols-2 gap-5">
+              <div className="flex flex-col gap-2">
+                <Label content="Open Graph title" />
+                <input
+                  type="text"
+                  {...register("ogTitle")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="Open Graph description" />
+                <textarea
+                  {...register("ogDescription")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="Twitter title" />
+                <input
+                  type="text"
+                  {...register("twitterTitle")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="Twitter description" />
+                <textarea
+                  {...register("twitterDescription")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
+            <h2 className="text-xl font-semibold">Portfolio detail sections</h2>
+            <p className="text-sm text-gray-600">
+              Leave these fields empty to keep the current page defaults. For
+              custom delivery items, enter a JSON array with id, title, dec,
+              icn (image URL), and urllink fields.
+            </p>
+            <div className="grid grid-cols-2 gap-5">
+              <div className="flex flex-col gap-2">
+                <Label content="What We Delivered title" />
+                <input
+                  type="text"
+                  {...register("whatWeDeliveredTitle")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="What We Delivered items (JSON)" />
+                <textarea
+                  rows={8}
+                  placeholder={'[{"id":1,"title":"Example","dec":"","icn":"","urllink":""}]'}
+                  {...register("whatWeDeliveredData")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 font-mono text-sm text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="First CTA heading" />
+                <input
+                  type="text"
+                  {...register("detailsCtaOneTitle")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="First CTA link label" />
+                <input
+                  type="text"
+                  {...register("detailsCtaOneLinkText")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="Second CTA heading" />
+                <input
+                  type="text"
+                  {...register("detailsCtaTwoTitle")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Label content="Second CTA button label" />
+                <input
+                  type="text"
+                  {...register("detailsCtaTwoButtonText")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                />
+              </div>
+            </div>
+          </section>
 
           <div className="mt-25 pb-5">
             <div className="inline-flex w-[15%] items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10">

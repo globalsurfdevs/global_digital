@@ -77,6 +77,36 @@ const PortfolioSchema = new mongoose.Schema({
   metaDescription: {
     type: String,
   },
+  ogTitle: {
+    type: String,
+  },
+  ogDescription: {
+    type: String,
+  },
+  twitterTitle: {
+    type: String,
+  },
+  twitterDescription: {
+    type: String,
+  },
+  whatWeDeliveredTitle: {
+    type: String,
+  },
+  whatWeDeliveredData: {
+    type: [mongoose.Schema.Types.Mixed],
+  },
+  detailsCtaOneTitle: {
+    type: String,
+  },
+  detailsCtaOneLinkText: {
+    type: String,
+  },
+  detailsCtaTwoTitle: {
+    type: String,
+  },
+  detailsCtaTwoButtonText: {
+    type: String,
+  },
   section: {
     type: String,
   },

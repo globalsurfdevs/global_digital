@@ -43,12 +43,10 @@ const HeroSectionDetails = ({
               <div className="grid grid-cols-1 justify-between gap-5 lg:grid-cols-[auto_270px] lg:items-center">
                 <div>
                   <div className="text-30 fnt-lexend lastptag max-w-[60ch] text-black">
-                    {/* {parse(data.portfolio.story)} */}
-                    <p>
-                      Innovo Group is a UK-headquartered construction and real
-                      estate developer with operations across the UAE, Africa,
-                      and Canada
-                    </p>
+                    {parse(
+                      data.portfolio.story ||
+                        "Innovo Group is a UK-headquartered construction and real estate developer with operations across the UAE, Africa, and Canada.",
+                    )}
                   </div>
                 </div>
                 <div>

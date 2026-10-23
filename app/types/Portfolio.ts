@@ -28,6 +28,24 @@ export type Portfolio = {
   tag: string;
   description: string;
   logo: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  whatWeDeliveredTitle?: string;
+  whatWeDeliveredData?: {
+    id: number;
+    title: string;
+    dec?: string;
+    icn?: string;
+    urllink?: string;
+  }[];
+  detailsCtaOneTitle?: string;
+  detailsCtaOneLinkText?: string;
+  detailsCtaTwoTitle?: string;
+  detailsCtaTwoButtonText?: string;
   coverImage: string;
   type?: string;
   index?: number;
