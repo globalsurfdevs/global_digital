@@ -59,12 +59,17 @@ const CtaDetailsTwo = ({
         >
           <div className="flex flex-col  py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]  ">
             <h2 className="title-65   max-w-[32ch] text-black">
-              Like what you see? Let's build something for your brand.
+              {data?.portfolio.detailsCtaTwoTitle ||
+                "Like what you see? Let's build something for your brand."}
             </h2>
 
             <div className="innerfnont relative mt-[20px] w-fit lg:mt-[60px]">
               <Button
-                text="Book a free consultation"
+                text={
+                  data?.portfolio.detailsCtaTwoButtonText ||
+                  "Book a free consultation"
+                }
+            
                 textcolor={"black"}
                 className="text-30 w-fit rounded-full border border-primary px-6 py-3 uppercase leading-lh1p66 transition-all duration-300 ease-in hover:bg-primary hover:text-white  hover:shadow-lg lg:px-[34px] "
                 onClick={() => {

@@ -31,6 +31,9 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
   colcount,
   maxchwidth,
 }) => {
+  const gridColumnsClass =
+    colcount === 6 ? "xl:grid-cols-6" : "xl:grid-cols-4";
+
   return (
     <div className="">
       <div className="container mx-auto py-4">
@@ -86,7 +89,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 justify-between gap-4  md:grid-cols-2 lg:flex  xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
+              className={`grid grid-cols-1 justify-between gap-4 md:grid-cols-2 ${gridColumnsClass}`}
             >
               {data.map((framework) => (
                 <div
@@ -96,11 +99,13 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                   {/* Animated Red Border */}
 
                   <div className="align-center mb-3 flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px]   md:w-[50px] lg:mb-[30px]">
-                    <Image
-                      src={framework.icn || ""}
-                      alt={"Default alt text"}
-                      className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500   "
-                    />{" "}
+                    {framework.icn && (
+                      <Image
+                        src={framework.icn}
+                        alt=""
+                        className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500"
+                      />
+                    )}
                   </div>
 
                   <div className="relative w-fit text-2xl">

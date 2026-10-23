@@ -138,7 +138,42 @@ export async function POST(req: NextRequest) {
   const slug = formData.get("slug") as string;
   const metaTitle = formData.get("metaTitle") as string;
   const metaDescription = formData.get("metaDescription") as string;
+  const ogTitle = formData.get("ogTitle") as string;
+  const ogDescription = formData.get("ogDescription") as string;
+  const twitterTitle = formData.get("twitterTitle") as string;
+  const twitterDescription = formData.get("twitterDescription") as string;
+  const whatWeDeliveredTitle = formData.get("whatWeDeliveredTitle") as string;
+  const whatWeDeliveredDataRaw = formData.get(
+    "whatWeDeliveredData",
+  ) as string;
+  const detailsCtaOneTitle = formData.get("detailsCtaOneTitle") as string;
+  const detailsCtaOneLinkText = formData.get(
+    "detailsCtaOneLinkText",
+  ) as string;
+  const detailsCtaTwoTitle = formData.get("detailsCtaTwoTitle") as string;
+  const detailsCtaTwoButtonText = formData.get(
+    "detailsCtaTwoButtonText",
+  ) as string;
   const section = formData.get("section") as string;
+
+  let whatWeDeliveredData: unknown[] = [];
+  if (whatWeDeliveredDataRaw) {
+    try {
+      const parsedData: unknown = JSON.parse(whatWeDeliveredDataRaw);
+      if (!Array.isArray(parsedData)) {
+        return NextResponse.json(
+          { error: "What We Delivered data must be a JSON array." },
+          { status: 400 },
+        );
+      }
+      whatWeDeliveredData = parsedData;
+    } catch {
+      return NextResponse.json(
+        { error: "What We Delivered data must be valid JSON." },
+        { status: 400 },
+      );
+    }
+  }
 
   const heading = formData.get("heading") as string;
   const sHeading = formData.get("sHeading") as string;
@@ -336,6 +371,16 @@ export async function POST(req: NextRequest) {
           slug,
           metaTitle,
           metaDescription,
+          ogTitle,
+          ogDescription,
+          twitterTitle,
+          twitterDescription,
+          whatWeDeliveredTitle,
+          whatWeDeliveredData,
+          detailsCtaOneTitle,
+          detailsCtaOneLinkText,
+          detailsCtaTwoTitle,
+          detailsCtaTwoButtonText,
           websiteLink,
           bannerTitle,
           videoThumbnail: videoThumbnailPath,
@@ -429,6 +474,16 @@ export async function POST(req: NextRequest) {
           slug,
           metaTitle,
           metaDescription,
+          ogTitle,
+          ogDescription,
+          twitterTitle,
+          twitterDescription,
+          whatWeDeliveredTitle,
+          whatWeDeliveredData,
+          detailsCtaOneTitle,
+          detailsCtaOneLinkText,
+          detailsCtaTwoTitle,
+          detailsCtaTwoButtonText,
           customId: uuidv4(),
           websiteLink,
           bannerTitle,

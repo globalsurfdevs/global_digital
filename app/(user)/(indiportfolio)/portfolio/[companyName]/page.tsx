@@ -1,43 +1,53 @@
 import React from "react";
 import PortfolioDetails from "@/app/components/Portfolio-details";
-import apiService from "@/app/lib/api/apiService";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
 import { Metadata } from "next";
-import { Portfolio } from "@/app/types/Portfolio";
-
-type Data = {
-  portfolio: {
-    metaTitle: string;
-    metaDescription: string;
-  };
-};
-
-// export async function generateMetadata(
-//   props: {
-//     params: Promise<{
-//       companyName: string
-//     }>
-//   }
-// ): Promise<Metadata> {
-//   const params = await props.params;
-//   const slug = formatLinkForPortfolio(params.companyName)
-
-//   const data: Data = await apiService.get(`/api/portfolio?slug=${slug}`)
-
-//   const metadataTitle = data.portfolio.metaTitle == "null" || !data.portfolio.metaTitle ? "Global Surf Digital" : data.portfolio.metaTitle;
-//   const metadataDescription = data.portfolio.metaDescription == "null" || !data.portfolio.metaTitle ? "Global Surf Digital" : data.portfolio.metaDescription;
-//   const canonicalUrl = `https://www.globalsurf.ae/portfolio/${slug}`
-
-//   return {
-//     title: metadataTitle,
-//     description: metadataDescription,
-//     alternates: {
-//       canonical: canonicalUrl,
-//     },
-//   };
-// }
-
 import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ companyName: string }>;
+}): Promise<Metadata> {
+  const { companyName } = await params;
+  const slug = formatLinkForPortfolio(companyName);
+  const data = await getCaseStudyOrPortfolio(companyName, "portfolio");
+  const portfolio = data?.portfolio;
+  const defaultTitle = "Global Surf Digital";
+  const title =
+    portfolio?.metaTitle && portfolio.metaTitle !== "null"
+      ? portfolio.metaTitle
+      : defaultTitle;
+  const description =
+    portfolio?.metaDescription && portfolio.metaDescription !== "null"
+      ? portfolio.metaDescription
+      : defaultTitle;
+  const ogTitle = portfolio?.ogTitle || title;
+  const ogDescription = portfolio?.ogDescription || description;
+  const twitterTitle = portfolio?.twitterTitle || ogTitle;
+  const twitterDescription = portfolio?.twitterDescription || ogDescription;
+  const url = `https://www.globalsurf.ae/portfolio/${slug}`;
+  const images = portfolio?.bannerImage ? [portfolio.bannerImage] : undefined;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      url,
+      type: "website",
+      images,
+    },
+    twitter: {
+      card: images ? "summary_large_image" : "summary",
+      title: twitterTitle,
+      description: twitterDescription,
+      images,
+    },
+  };
+}
 
 const page = async ({
   params,
