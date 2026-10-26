@@ -28,11 +28,22 @@ export async function generateMetadata({
   const twitterDescription = portfolio?.twitterDescription || ogDescription;
   const url = `https://www.globalsurf.ae/portfolio/${slug}`;
   const images = portfolio?.bannerImage ? [portfolio.bannerImage] : undefined;
-
+  const isV2Page = slug.toLowerCase().includes("v2");
   return {
     title,
     description,
     alternates: { canonical: url },
+
+    robots: isV2Page
+      ? {
+          index: false,
+          follow: false,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
+
     openGraph: {
       title: ogTitle,
       description: ogDescription,
@@ -40,6 +51,7 @@ export async function generateMetadata({
       type: "website",
       images,
     },
+
     twitter: {
       card: images ? "summary_large_image" : "summary",
       title: twitterTitle,
@@ -54,17 +66,21 @@ const page = async ({
 }: {
   params: Promise<{ companyName: string }>;
 }) => {
-  const data = await getCaseStudyOrPortfolio(
-    (await params).companyName,
-    "portfolio",
-  );
+  const { companyName } = await params;
+  const endpoint =
+    companyName === "sobha-constructions-v2"
+      ? "sobha-constructions"
+      : companyName;
 
+  const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
+  
+  console.log("Endpoint:", companyName);
   if (!data) {
     return <div>Portfolio not found</div>;
   }
   return (
     <>
-      <PortfolioDetails data={data} />
+      <PortfolioDetails data={data} endpoint={companyName} />
     </>
   );
 };

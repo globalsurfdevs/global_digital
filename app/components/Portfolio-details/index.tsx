@@ -20,6 +20,7 @@ import portfolioListRaw from "@/portfolios_rows_converted.json";
 import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 
 import { assets } from "@/public/assets/assets";
+import { Gauge, ShieldCheck } from "lucide-react";
 const Frameworkdata = {
   title: "What We Delivered",
   data: [
@@ -90,19 +91,19 @@ export const FrameworkdataShoba = {
       id: 5,
       title: "Site speed & performance optimisation",
       dec: "Optimized asset delivery, light DOM structure, and clean code implementation for ultra-fast page load speeds.",
-      icn: "",
+      icn:Gauge,
       urllink: "",
     },
     {
       id: 6,
       title: "Secure & scalable platform setup",
       dec: "Future-proof infrastructure and security standards ready to scale alongside growing business demands.",
-      icn: "",
+      icn: ShieldCheck,
       urllink: "",
     },
   ],
 };
-const PortfolioDetails = ({ data }: any) => {
+const   PortfolioDetails = ({ data,endpoint }: any) => {
   // const { companyName } = useParams()
 
   // const parseJSON = (value: any) => {
@@ -167,10 +168,10 @@ const PortfolioDetails = ({ data }: any) => {
   //     portfolio,
   //     portfolioHighlights,
   // };
-  // console.log("portfolio data :",data)
+  // console.log("portfolio data :",data.portfolio)
   if (
     data.portfolio?.slug === "innovo-group" ||
-    data.portfolio?.slug === "sobha-constructions"
+    endpoint === "sobha-constructions-v2"
   ) {
     const defaultDelivered =
       data.portfolio.slug === "innovo-group" ? Frameworkdata : FrameworkdataShoba;
@@ -184,14 +185,17 @@ const PortfolioDetails = ({ data }: any) => {
       <>
         <MainSectionDetails data={data} />
         <HeroSectionDetails data={data} />
+        {endpoint != "sobha-constructions-v2"&&(
 
         <ResultDetails data={data} />
+        )}
         <WhatWeDelivered
           title={data.portfolio.whatWeDeliveredTitle || defaultDelivered.title}
           data={deliveredData}
-          colcount={data.portfolio.slug === "innovo-group" ? 4 : 6}
+          endpoint={endpoint}
+          colcount={4}
         />
-        <CtaDetailsone data={data} />
+        <CtaDetailsone data={data} endpoint={endpoint} />
         <CtaDetailsTwo data={data} />
       </>
     );

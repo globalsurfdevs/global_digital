@@ -3,11 +3,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import { LucideIcon } from "lucide-react";
 interface FrameworkItem {
   id: number;
   title: string;
   title1?: string;
-  icn?: string | StaticImageData;
+  icn?: string | StaticImageData | LucideIcon;
   dec: string;
   urllink?: string;
 }
@@ -20,6 +21,7 @@ interface FrameworkSectionProps {
   colcount?: number;
   maxchwidth?: number;
   data: FrameworkItem[];
+  endpoint?: string;
 }
 
 const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
@@ -30,14 +32,16 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
   bgcolor,
   colcount,
   maxchwidth,
+  endpoint,
 }) => {
-  const gridColumnsClass =
-    colcount === 6 ? "xl:grid-cols-6" : "xl:grid-cols-4";
+  const gridColumnsClass = colcount === 6 ? "xl:grid-cols-6" : "xl:grid-cols-4";
 
   return (
     <div className="">
       <div className="container mx-auto py-4">
-        <div className="pd-cus flex flex-col pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]">
+        <div
+          className={`pd-cus flex flex-col ${endpoint === "sobha-constructions-v2" ? "pt-0" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
+        >
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -98,14 +102,22 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                 >
                   {/* Animated Red Border */}
 
-                  <div className="align-center mb-3 flex h-[30px] w-[30px] justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px]   md:w-[50px] lg:mb-[30px]">
-                    {framework.icn && (
-                      <Image
-                        src={framework.icn}
-                        alt=""
-                        className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500"
-                      />
-                    )}
+                  <div className="mb-3 flex h-[30px] w-[30px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
+                    {framework.icn &&
+                      (typeof framework.icn === "string" ||
+                      "src" in framework.icn ? (
+                        <Image
+                          src={framework.icn}
+                          alt=""
+                          className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500"
+                        />
+                      ) : (
+                        React.createElement(framework.icn, {
+                          size: 32,
+                          color: "#FFFFFF",
+                          strokeWidth: 1.5,
+                        })
+                      ))}
                   </div>
 
                   <div className="relative w-fit text-2xl">
