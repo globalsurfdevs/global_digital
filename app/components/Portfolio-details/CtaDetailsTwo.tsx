@@ -15,7 +15,7 @@ const CtaDetailsTwo = ({
     portfolio: Portfolio;
   } | null;
 }) => {
-  console.log("ResultData", data);
+
 
   const [modalOpen, setModalOpen] = useState(false);
 

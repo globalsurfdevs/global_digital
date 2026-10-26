@@ -12,9 +12,11 @@ import {
 export const SuccessStoriesPortfolio = ({
   companyId,
   colCount,
+  slug,
 }: {
   companyId: string | undefined;
   colCount?: number;
+  slug?: string;
 }) => {
   const [data, setData] = useState<Portfolio[] | null>(null);
 
@@ -31,16 +33,26 @@ export const SuccessStoriesPortfolio = ({
       const response = await fetch(`/api/portfolio`);
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
 
-        const allowedIds = [46, 49, 57, 85, 73, 83, 1, 43];
-
-        const filtered = data?.portfolio
-          ?.filter((item: Portfolio) => allowedIds.includes(item.id))
-          .sort(() => Math.random() - 0.5)
-          .slice(0, 3);
-
-        setData(filtered);
+        if (slug === "sobha-constructions-v2") {
+          const shobaFilter = data?.portfolio.filter((item: Portfolio) =>
+            ["innovo-group", "asgc", "general-construction-co-llc"].includes(
+              item.slug,
+            ),
+          );
+          setData(shobaFilter);
+        } else {
+          const allowedIds = [46, 49, 57, 85, 73, 83, 1, 43];
+            // console.log("companyId :",companyId)
+          const filtered = data?.portfolio
+            ?.filter(
+              (item: Portfolio) =>
+                allowedIds.includes(item.id) && item._id !== companyId,
+            )
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 3);
+          setData(filtered);
+        }
       }
     };
 
