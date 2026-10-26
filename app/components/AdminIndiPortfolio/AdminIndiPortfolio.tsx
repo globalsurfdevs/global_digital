@@ -72,7 +72,7 @@ type addingHighlights = {
 const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const { companyId } = useParams();
   const router = useRouter();
-
+  const [portfolioUi, setPortfolioUi] = useState<"new" | "old">("new");
   const [imageError, setImageError] = useState<null | string>(null);
   const [imageFile, setImageFile] = useState<null | File>(null);
   const [previewImage, setPreviewImage] = useState<null | string>(null);
@@ -266,15 +266,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("twitterTitle", data.twitterTitle || "");
     formData.append("twitterDescription", data.twitterDescription || "");
     formData.append("whatWeDeliveredTitle", data.whatWeDeliveredTitle || "");
-    formData.append(
-      "whatWeDeliveredData",
-      JSON.stringify(whatWeDeliveredData),
-    );
+    formData.append("whatWeDeliveredData", JSON.stringify(whatWeDeliveredData));
     formData.append("detailsCtaOneTitle", data.detailsCtaOneTitle || "");
-    formData.append(
-      "detailsCtaOneLinkText",
-      data.detailsCtaOneLinkText || "",
-    );
+    formData.append("detailsCtaOneLinkText", data.detailsCtaOneLinkText || "");
     formData.append("detailsCtaTwoTitle", data.detailsCtaTwoTitle || "");
     formData.append(
       "detailsCtaTwoButtonText",
@@ -595,7 +589,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const handleDeleteHighlight = async (id?: number | string) => {
     try {
       console.log(id);
-     
+
       // setHighlights(highlights.filter((item) => item.customId !== id))
 
       setHighlights((highlights) =>
@@ -2309,8 +2303,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             <h2 className="text-xl font-semibold">Portfolio detail sections</h2>
             <p className="text-sm text-gray-600">
               Leave these fields empty to keep the current page defaults. For
-              custom delivery items, enter a JSON array with id, title, dec,
-              icn (image URL), and urllink fields.
+              custom delivery items, enter a JSON array with id, title, dec, icn
+              (image URL), and urllink fields.
             </p>
             <div className="grid grid-cols-2 gap-5">
               <div className="flex flex-col gap-2">
@@ -2325,7 +2319,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 <Label content="What We Delivered items (JSON)" />
                 <textarea
                   rows={8}
-                  placeholder={'[{"id":1,"title":"Example","dec":"","icn":"","urllink":""}]'}
+                  placeholder={
+                    '[{"id":1,"title":"Example","dec":"","icn":"","urllink":""}]'
+                  }
                   {...register("whatWeDeliveredData")}
                   className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 font-mono text-sm text-black focus:outline-none"
                 />

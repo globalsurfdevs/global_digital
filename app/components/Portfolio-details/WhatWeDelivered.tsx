@@ -5,9 +5,8 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 interface FrameworkItem {
-  id: number;
+  _id: number;
   title: string;
-  title1?: string;
   icn?: string | StaticImageData | LucideIcon;
   dec: string;
   urllink?: string;
@@ -97,7 +96,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
             >
               {data.map((framework) => (
                 <div
-                  key={framework.id}
+                  key={framework._id}
                   className="group relative  flex flex-row  gap-3 overflow-hidden md:flex-col md:gap-0"
                 >
                   {/* Animated Red Border */}
@@ -109,7 +108,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                         <Image
                           src={framework.icn}
                           alt=""
-                          className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500"
+                          className="fltrcls h-auto w-[32px] max-w-[50px] object-contain transition duration-500"
                         />
                       ) : (
                         React.createElement(framework.icn, {
