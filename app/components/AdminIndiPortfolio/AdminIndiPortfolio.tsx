@@ -231,7 +231,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
 
-    console.log("data:",data)
+    // console.log("data:",data)
     let whatWeDeliveredData: unknown[] = [];
     if (data.portfolioType !== "modern" && data.whatWeDeliveredData?.trim()) {
       try {
@@ -2916,7 +2916,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </section>
           ) : null}
 
-          <div className="mt-25 pb-5">
+          <div className="mt-25 pb-5 sticky bottom-4">
             <div className="inline-flex w-[15%] items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10">
               <button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Saving" : "Save"}

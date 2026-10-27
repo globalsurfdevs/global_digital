@@ -123,7 +123,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
 
                   <div className="relative w-fit text-2xl">
                     <h3
-                      className="text-30 text-black w-full lg:max-w-[85%]"
+                      className="text-[20px]  lg:text-[26px] xl:text-30 text-black w-full lg:max-w-[85%]"
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
                     {framework.urllink && (
