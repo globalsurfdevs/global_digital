@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
-import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
+// import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
 import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import LetsTalk from "@/app/components/common/LetsConnect";
@@ -19,10 +19,15 @@ const ResultDetails = ({
     portfolio: Portfolio;
   } | null;
 }) => {
+  const previewImages =
+    data?.portfolio.previewImage?.images.filter(Boolean) ?? [];
+
   return (
     <>
       <div className="container mx-auto py-4">
-        {data?.portfolio.resultImage1 || data?.portfolio.resultImage2 ? (
+        {previewImages.length > 0 ||
+        data?.portfolio.resultImage1 ||
+        data?.portfolio.resultImage2 ? (
           <motion.div
             className="relative"
             initial="hidden"
@@ -54,59 +59,65 @@ const ResultDetails = ({
               }}
               className="portfolio-swiper"
             >
-              {data?.portfolio?.resultImage1 && (
-                <SwiperSlide>
-                  <div>
+              {previewImages.length > 0 ? (
+                previewImages.map((imageUrl, index) => (
+                  <SwiperSlide key={`preview-${index}`}>
                     <Image
-                      src={data.portfolio.resultImage1}
-                      alt="image"
+                      src={imageUrl}
+                      alt={`Portfolio work preview ${index + 1}`}
                       width={900}
                       height={746}
                       className="h-auto w-full"
                     />
-                  </div>
-                </SwiperSlide>
-              )}
-
-              {data?.portfolio?.resultImage2 && (
-                <SwiperSlide>
-                  <div>
-                    <Image
-                      src={data.portfolio.resultImage2}
-                      alt="image"
-                      width={900}
-                      height={746}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                </SwiperSlide>
-              )}
-
-              {data?.portfolio?.resultImage1 && (
-                <SwiperSlide>
-                  <div>
-                    <Image
-                      src={"/assets/portfolio/slide3.jpg"}
-                      alt="image"
-                      width={900}
-                      height={746}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                </SwiperSlide>
-              )}
-              {data?.portfolio?.resultImage2 && (
-                <SwiperSlide>
-                  <div>
-                    <Image
-                      src={"/assets/portfolio/slide4.jpg"}
-                      alt="image"
-                      width={900}
-                      height={746}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                </SwiperSlide>
+                  </SwiperSlide>
+                ))
+              ) : (
+                <>
+                  {data?.portfolio?.resultImage1 && (
+                    <SwiperSlide>
+                      <Image
+                        src={data.portfolio.resultImage1}
+                        alt="image"
+                        width={900}
+                        height={746}
+                        className="h-auto w-full"
+                      />
+                    </SwiperSlide>
+                  )}
+                  {data?.portfolio?.resultImage2 && (
+                    <SwiperSlide>
+                      <Image
+                        src={data.portfolio.resultImage2}
+                        alt="image"
+                        width={900}
+                        height={746}
+                        className="h-auto w-full"
+                      />
+                    </SwiperSlide>
+                  )}
+                  {data?.portfolio?.resultImage1 && (
+                    <SwiperSlide>
+                      <Image
+                        src="/assets/portfolio/slide3.jpg"
+                        alt="image"
+                        width={900}
+                        height={746}
+                        className="h-auto w-full"
+                      />
+                    </SwiperSlide>
+                  )}
+                  {data?.portfolio?.resultImage2 && (
+                    <SwiperSlide>
+                      <Image
+                        src="/assets/portfolio/slide4.jpg"
+                        alt="image"
+                        width={900}
+                        height={746}
+                        className="h-auto w-full"
+                      />
+                    </SwiperSlide>
+                  )}
+                </>
               )}
             </Swiper>
 

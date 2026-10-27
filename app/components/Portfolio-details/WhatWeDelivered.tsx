@@ -33,13 +33,13 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
   maxchwidth,
   endpoint,
 }) => {
-  const gridColumnsClass = colcount === 6 ? "xl:grid-cols-6" : "xl:grid-cols-4";
+  const gridColumnsClass = `xl:grid-cols-${colcount} `
 
   return (
     <div className="">
-      <div className="container mx-auto py-4">
+      <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]">
         <div
-          className={`pd-cus flex flex-col ${endpoint === "sobha-constructions-v2" ? "pt-0" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
+          className={`pd-cus flex flex-col ${endpoint === "sobha-constructions" ? "pt-5  lg:pt-[60px] xl:pt-[70px]  2xl:pt-[100px] border-t border-gray-400" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
         >
           <div className="text-4xl">
             <motion.div
@@ -72,7 +72,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
               {!description && (
                 <>
                   <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                    <h2 className="title-65 pb-6 lg:pb-[40px]">{title}</h2>
+                    <h2 className="title-65 pb-8 lg:pb-[60px]">{title}</h2>
                   </div>
                 </>
               )}
@@ -92,7 +92,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 justify-between gap-4 md:grid-cols-2 ${gridColumnsClass}`}
+              className={`grid grid-cols-1 justify-between gap-6 md:grid-cols-2 ${gridColumnsClass}`}
             >
               {data.map((framework) => (
                 <div
@@ -101,14 +101,16 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                 >
                   {/* Animated Red Border */}
 
-                  <div className="mb-3 flex h-[30px] w-[30px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
+                  <div className="mb-3 flex h-[36px] w-[36px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
                     {framework.icn &&
                       (typeof framework.icn === "string" ||
                       "src" in framework.icn ? (
                         <Image
                           src={framework.icn}
                           alt=""
-                          className="fltrcls h-auto w-[32px] max-w-[50px] object-contain transition duration-500"
+                          width={28}
+                          height={28}
+                          className="fltrcls h-auto w-[28px] lg:w-[50px] max-w-[50px] object-contain transition duration-500"
                         />
                       ) : (
                         React.createElement(framework.icn, {
@@ -121,7 +123,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
 
                   <div className="relative w-fit text-2xl">
                     <h3
-                      className="text-30 text-black "
+                      className="text-30 text-black w-full lg:max-w-[85%]"
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
                     {framework.urllink && (

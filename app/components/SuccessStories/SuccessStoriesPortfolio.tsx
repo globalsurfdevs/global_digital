@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Portfolio } from "@/app/types/Portfolio";
@@ -10,54 +10,12 @@ import {
 } from "@/app/helpers/formatLink";
 
 export const SuccessStoriesPortfolio = ({
-  companyId,
+  data,
   colCount,
-  slug,
 }: {
-  companyId: string | undefined;
+  data: Portfolio[];
   colCount?: number;
-  slug?: string;
 }) => {
-  const [data, setData] = useState<Portfolio[] | null>(null);
-
-  useEffect(() => {
-    // const fetchPortfolios = async () => {
-    //     const response = await fetch(`/api/portfolio`);
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         console.log(data)
-    //         setData(data?.portfolio.filter((item:Portfolio)=>item.id!==companyId).sort(() => Math.random() - 0.5).slice(0,3))
-    //     }
-    // }
-    const fetchPortfolios = async () => {
-      const response = await fetch(`/api/portfolio`);
-      if (response.ok) {
-        const data = await response.json();
-
-        if (slug === "sobha-constructions-v2") {
-          const shobaFilter = data?.portfolio.filter((item: Portfolio) =>
-            ["innovo-group", "asgc", "general-construction-co-llc"].includes(
-              item.slug,
-            ),
-          );
-          setData(shobaFilter);
-        } else {
-          const allowedIds = [46, 49, 57, 85, 73, 83, 1, 43];
-            // console.log("companyId :",companyId)
-          const filtered = data?.portfolio
-            ?.filter(
-              (item: Portfolio) =>
-                allowedIds.includes(item.id) && item._id !== companyId,
-            )
-            .sort(() => Math.random() - 0.5)
-            .slice(0, 3);
-          setData(filtered);
-        }
-      }
-    };
-
-    fetchPortfolios();
-  }, [companyId]);
 
   return (
     <div className="  flex flex-col py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]">
@@ -94,7 +52,7 @@ export const SuccessStoriesPortfolio = ({
         <div
           className={`${colCount ? `grid lg:grid-cols-${colCount}` : "grid lg:grid-cols-3"} gap-8`}
         >
-          {data && data.length > 0
+          {data.length > 0
             ? (colCount === 2 ? data.slice(0, 2) : data).map((item, index) => (
                 <div className="group relative flex flex-col" key={index}>
                   <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">

@@ -6,18 +6,15 @@ import seoSchema from "./Seo";
 const WhatWeDeliveredDataSchema = new Schema({
   _id: {
     type: Number,
-    required: true,
   },
   title: {
     type: String,
-    required: true,
   },
   icn: {
     type: String,
   },
   dec: {
     type: String,
-    required: true,
   },
   urllink: {
     type: [String],
@@ -98,8 +95,15 @@ const PortfolioSchema = new mongoose.Schema(
     seo: {
       type: seoSchema,
     },
-    previewImage:{
-      images:[String]
+    portfolioType: {
+      type: String,
+      enum: ["legacy", "modern"],
+    },
+    previewImage: {
+      images: {
+        type: [String],
+        default: [],
+      },
     },
     whatWeDeliveredSec: {
       title: String,

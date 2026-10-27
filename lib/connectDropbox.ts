@@ -106,7 +106,7 @@ export async function uploadToDropbox(
           requested_visibility: { ".tag": "public" },
         },
       });
-    console.log("Uploaded file path:", sharedLinkResponse);
+    // console.log("Uploaded file path:", sharedLinkResponse);
     if (!sharedLinkResponse.result.url) {
       throw new Error("Failed to create shared link");
     }

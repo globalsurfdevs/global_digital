@@ -2,7 +2,10 @@ import React from "react";
 import PortfolioDetails from "@/app/components/Portfolio-details";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
 import { Metadata } from "next";
-import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
+import {
+  getCaseStudyOrPortfolio,
+  getSuccessStoriesPortfolios,
+} from "@/app/actions/getCaseStudy";
 
 export async function generateMetadata({
   params,
@@ -13,21 +16,33 @@ export async function generateMetadata({
   const slug = formatLinkForPortfolio(companyName);
   const data = await getCaseStudyOrPortfolio(companyName, "portfolio");
   const portfolio = data?.portfolio;
+  const seo = portfolio?.seo;
   const defaultTitle = "Global Surf Digital";
   const title =
-    portfolio?.metaTitle && portfolio.metaTitle !== "null"
-      ? portfolio.metaTitle
+    (seo?.metaTitle || portfolio?.metaTitle) &&
+    (seo?.metaTitle || portfolio?.metaTitle) !== "null"
+      ? seo?.metaTitle || portfolio?.metaTitle
       : defaultTitle;
   const description =
-    portfolio?.metaDescription && portfolio.metaDescription !== "null"
-      ? portfolio.metaDescription
+    (seo?.metaDescription || portfolio?.metaDescription) &&
+    (seo?.metaDescription || portfolio?.metaDescription) !== "null"
+      ? seo?.metaDescription || portfolio?.metaDescription
       : defaultTitle;
-  const ogTitle = portfolio?.ogTitle || title;
-  const ogDescription = portfolio?.ogDescription || description;
-  const twitterTitle = portfolio?.twitterTitle || ogTitle;
-  const twitterDescription = portfolio?.twitterDescription || ogDescription;
+  const ogTitle = seo?.ogTitle || portfolio?.ogTitle || title;
+  const ogDescription =
+    seo?.ogDescription || portfolio?.ogDescription || description;
+  const twitterTitle = seo?.twitterTitle || portfolio?.twitterTitle || ogTitle;
+  const twitterDescription =
+    seo?.twitterDescription || portfolio?.twitterDescription || ogDescription;
   const url = `https://www.globalsurf.ae/portfolio/${slug}`;
-  const images = portfolio?.bannerImage ? [portfolio.bannerImage] : undefined;
+  const openGraphImages = seo?.ogImage
+    ? [seo.ogImage]
+    : portfolio?.bannerImage
+      ? [portfolio.bannerImage]
+      : undefined;
+  const twitterImages = seo?.twitterImage
+    ? [seo.twitterImage]
+    : openGraphImages;
   const isV2Page = slug.toLowerCase().includes("v2");
   return {
     title,
@@ -49,14 +64,14 @@ export async function generateMetadata({
       description: ogDescription,
       url,
       type: "website",
-      images,
+      images: openGraphImages,
     },
 
     twitter: {
-      card: images ? "summary_large_image" : "summary",
+      card: twitterImages ? "summary_large_image" : "summary",
       title: twitterTitle,
       description: twitterDescription,
-      images,
+      images: twitterImages,
     },
   };
 }
@@ -73,14 +88,24 @@ const page = async ({
       : companyName;
 
   const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
-  
+
   console.log("Endpoint:", companyName);
   if (!data) {
     return <div>Portfolio not found</div>;
   }
+  const successStories = await getSuccessStoriesPortfolios({
+    companyId: data.portfolio._id,
+    slug: companyName,
+    relatedPortfolioIds: data.portfolio.relatedPortfolios?.portfolio,
+  });
+
   return (
     <>
-      <PortfolioDetails data={data} endpoint={companyName} />
+      <PortfolioDetails
+        data={data}
+        endpoint={companyName}
+        successStories={successStories}
+      />
     </>
   );
 };

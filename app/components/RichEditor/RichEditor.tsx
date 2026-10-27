@@ -89,15 +89,21 @@ const RichEditor = <
 >({
   control,
   name,
+  required = true,
 }: {
   control: Control<T, any>;
   name: Path<T>;
+  required?: boolean;
 }) => {
   return (
     <Controller
       name={name}
       control={control}
-      rules={name == "story" ? { required: "Story is required" } : undefined}
+      rules={
+        name === "story" && required
+          ? { required: "Story is required" }
+          : undefined
+      }
       render={({ field }) => (
         <ReactQuill
           theme="snow"

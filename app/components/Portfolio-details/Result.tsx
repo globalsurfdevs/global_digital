@@ -10,10 +10,12 @@ import LetsTalk from "@/app/components/common/LetsConnect";
 
 const Result = ({
   data,
+  successStories,
 }: {
   data: {
     portfolio: Portfolio;
   } | null;
+  successStories: Portfolio[];
 }) => {
 
 
@@ -150,7 +152,7 @@ const Result = ({
 
       <div className="container mx-auto py-4">
         <div>
-          <SuccessStoriesPortfolio companyId={data?.portfolio._id} />
+          <SuccessStoriesPortfolio data={successStories} />
         </div>
       </div>
     </>
