@@ -13,17 +13,67 @@ const lexend = Lexend({
 });
 const CtaDetailsone = ({
   data,
-  endpoint
+ 
 }: {
   data: {
     portfolio: Portfolio;
   } | null;
-  endpoint?:string
 
 }) => {
 
 
   const [modalOpen, setModalOpen] = useState(false);
+  const ctaText =
+    data?.portfolio.detailsCtaOne?.ctaText ||
+    data?.portfolio.detailsCtaOneLinkText ||
+    "Read the full case study";
+  const ctaLink = data?.portfolio.detailsCtaOne?.ctaLink;
+  const ctaAction = (
+    <div className="z-2 z-1 group relative flex w-fit cursor-pointer items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0 pb-[24px] pt-[10px] before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0">
+      <div className="relative">
+        <p
+          className={`text-sm font-medium uppercase text-white duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+        >
+          {ctaText}
+        </p>
+      </div>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="duration-200 ease-in-out group-hover:scale-110"
+      >
+        <g clipPath="url(#clip0_65_58)">
+          <path
+            d="M18.7892 1.2749L0.699219 19.0149"
+            stroke="#E53F30"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            className="group-hover:stroke-white"
+          />
+          <path
+            d="M0.699219 1.2749H18.7892V18.6649"
+            stroke="#E53F30"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            className="group-hover:stroke-white"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_65_58">
+            <rect
+              width="19.79"
+              height="19.45"
+              fill="white"
+              transform="translate(0 0.274902)"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
 
   useEffect(() => {
     if (modalOpen) {
@@ -64,79 +114,25 @@ const CtaDetailsone = ({
           }}
         >
           <div className="flex flex-col  py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]  ">
-            <h2 className="title-80   max-w-[25ch] text-white">
+            <h2 className="text-[32px] lg:text-[40px]    text-white">
               {data?.portfolio.detailsCtaOneTitle ||
                 "This project drove measurable business growth."}
             </h2>
 
             <div className="innerfnont relative mt-[20px] w-fit lg:mt-[60px]">
-              <div
-                //      onClick={() => {
-                //   setModalOpen(true);
-                //   document.body.style.overflow = "hidden";
-                // }}
-                className="z-2 z-1 group relative flex    w-fit cursor-pointer items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
-                                   pb-[24px] pt-[10px] before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out
-                                        after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0  "
-              >
-                <div className="relative">
-                  <p
-                    className={`text-sm font-medium uppercase text-white duration-200 ease-in-out  group-hover:text-primary md:text-[16px] ${lexend.className}`}
-                  >
-                    {data?.portfolio.detailsCtaOneLinkText ||
-                      "Read the full case study"}
-                  </p>
-                </div>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="duration-200 ease-in-out group-hover:scale-110"
-                >
-                  <g clipPath="url(#clip0_65_58)">
-                    <path
-                      d="M18.7892 1.2749L0.699219 19.0149"
-                      stroke="#E53F30"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      className="group-hover:stroke-white"
-                    />
-                    <path
-                      d="M0.699219 1.2749H18.7892V18.6649"
-                      stroke="#E53F30"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      className="group-hover:stroke-white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_65_58">
-                      <rect
-                        width="19.79"
-                        height="19.45"
-                        fill="white"
-                        transform="translate(0 0.274902)"
-                      />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
+              {ctaLink ? (
+                <a href={ctaLink} target="_blank" rel="noreferrer">
+                  {ctaAction}
+                </a>
+              ) : (
+                ctaAction
+              )}
             </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="container mx-auto py-4">
-        <div>
-          <SuccessStoriesPortfolio
-            companyId={data?.portfolio._id}
-            colCount={2}
-            slug={endpoint}
-          />
-        </div>
-      </div>
+    
     </>
   );
 };

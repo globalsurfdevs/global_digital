@@ -23,8 +23,12 @@ import { RxCross2 } from "react-icons/rx";
 import { generateSlugForPortfolio } from "@/app/helpers/generateSlug";
 import AdminIndiCaseStudy from "../AdminIndiCaseStudy/AdminIndiCaseStudy";
 import { ImageUploader } from "@/components/ui/image-uploader";
+import SeoFields from "@/app/components/common/SeoFields";
+import { SeoFormValues } from "@/app/types/seo";
 
 type Inputs = {
+  portfolioType: "legacy" | "modern";
+  seo: SeoFormValues;
   companyName: string;
   industry: string;
   country: string;
@@ -52,6 +56,9 @@ type Inputs = {
   detailsCtaOneLinkText: string;
   detailsCtaTwoTitle: string;
   detailsCtaTwoButtonText: string;
+  modernDetailsCtaOneLink: string;
+  modernDetailsCtaTwoLink: string;
+  relatedPortfoliosTitle: string;
   websiteLink: string;
   bannerTitle: string;
   video: string;
@@ -63,6 +70,14 @@ type Inputs = {
   [key: `highlightText${string}`]: string;
 };
 
+type ModernDeliveredItem = {
+  _id: number;
+  title: string;
+  icn: string;
+  dec: string;
+  urllink: string[];
+};
+
 type addingHighlights = {
   highlightText: string;
   highlightNumber: string;
@@ -72,7 +87,6 @@ type addingHighlights = {
 const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const { companyId } = useParams();
   const router = useRouter();
-
   const [imageError, setImageError] = useState<null | string>(null);
   const [imageFile, setImageFile] = useState<null | File>(null);
   const [previewImage, setPreviewImage] = useState<null | string>(null);
@@ -161,6 +175,15 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const [industriesList, setIndustriesList] = useState<
     { _id: string; name: string }[]
   >([]);
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [modernDeliveredItems, setModernDeliveredItems] = useState<
+    ModernDeliveredItem[]
+  >([]);
+  const [relatedPortfolioIds, setRelatedPortfolioIds] = useState<string[]>([]);
+  const [relatedPortfolioSearch, setRelatedPortfolioSearch] = useState("");
+  const [portfolioOptions, setPortfolioOptions] = useState<
+    { _id: string; companyName: string; slug?: string }[]
+  >([]);
 
   useEffect(() => {
     const fetchIndustries = async () => {
@@ -191,12 +214,26 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   } = useForm<Inputs>({
     defaultValues: {
       channelsUsed: [{ channelName: "" }],
+      portfolioType: "legacy",
+      seo: {
+        metaTitle: "",
+        metaDescription: "",
+        ogTitle: "",
+        ogDescription: "",
+        ogImage: "",
+        twitterTitle: "",
+        twitterDescription: "",
+        twitterImage: "",
+        schema: "",
+      },
     },
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+
+    console.log("data:",data)
     let whatWeDeliveredData: unknown[] = [];
-    if (data.whatWeDeliveredData?.trim()) {
+    if (data.portfolioType !== "modern" && data.whatWeDeliveredData?.trim()) {
       try {
         const parsedData: unknown = JSON.parse(data.whatWeDeliveredData);
         if (!Array.isArray(parsedData)) {
@@ -216,8 +253,31 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     setIsSubmitting(true);
     const formData = new FormData();
     formData.append("companyName", data.companyName);
+    formData.append("portfolioType", data.portfolioType || "legacy");
+    formData.append("seo", JSON.stringify(data.seo || {}));
+    formData.append(
+      "previewImages",
+      JSON.stringify(previewImages.filter(Boolean)),
+    );
+    formData.append(
+      "whatWeDeliveredItems",
+      JSON.stringify(modernDeliveredItems),
+    );
+    formData.append("detailsCtaOneText", data.detailsCtaOneLinkText || "");
+    formData.append("detailsCtaOneLink", data.modernDetailsCtaOneLink || "");
+    formData.append("detailsCtaTwoText", data.detailsCtaTwoButtonText || "");
+    formData.append("detailsCtaTwoLink", data.modernDetailsCtaTwoLink || "");
+    formData.append("relatedPortfolioIds", JSON.stringify(relatedPortfolioIds));
+    formData.append(
+      "relatedPortfoliosTitle",
+      data.relatedPortfoliosTitle || "",
+    );
+    formData.append("channelsUsedList", JSON.stringify([]));
     formData.append("industry", data.industry);
-    formData.append("channels", JSON.stringify(data.channelsUsed));
+    formData.append(
+      "channels",
+      JSON.stringify(data.portfolioType === "modern" ? [] : data.channelsUsed),
+    );
     formData.append("country", data.country);
     formData.append("story", data.story);
     formData.append("metadataTitle", metaTitle);
@@ -240,10 +300,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("featured", data.featured);
 
     const hightLightIds: string[] = [];
-    console.log(highlights);
+  
 
     highlights.forEach((highlight: PortfolioHighlight) => {
-      console.log("id of highlight", highlight.customId);
+     
       formData.append(
         `highlightId${highlight.customId}`,
         highlight.customId.toString(),
@@ -259,22 +319,16 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("addedCategories", JSON.stringify(addedCategories));
     formData.append("description", data.description);
     formData.append("tag", data.tag);
-    formData.append("metaTitle", data.metaTitle);
-    formData.append("metaDescription", data.metaDescription);
+    formData.append("metaTitle", data.metaTitle || "");
+    formData.append("metaDescription", data.metaDescription || "");
     formData.append("ogTitle", data.ogTitle || "");
     formData.append("ogDescription", data.ogDescription || "");
     formData.append("twitterTitle", data.twitterTitle || "");
     formData.append("twitterDescription", data.twitterDescription || "");
     formData.append("whatWeDeliveredTitle", data.whatWeDeliveredTitle || "");
-    formData.append(
-      "whatWeDeliveredData",
-      JSON.stringify(whatWeDeliveredData),
-    );
+    formData.append("whatWeDeliveredData", JSON.stringify(whatWeDeliveredData));
     formData.append("detailsCtaOneTitle", data.detailsCtaOneTitle || "");
-    formData.append(
-      "detailsCtaOneLinkText",
-      data.detailsCtaOneLinkText || "",
-    );
+    formData.append("detailsCtaOneLinkText", data.detailsCtaOneLinkText || "");
     formData.append("detailsCtaTwoTitle", data.detailsCtaTwoTitle || "");
     formData.append(
       "detailsCtaTwoButtonText",
@@ -303,7 +357,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     }
 
     if (imageFile) {
-      console.log("Image", imageFile);
+      
 
       const image = await generateAndUploadImage(imageFile);
       if (image) {
@@ -333,12 +387,12 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     }
 
     if (resultImage1) {
-      console.log("Result Image 1", resultImage1);
+   
       formData.append("resultImage1", resultImage1);
     }
 
     if (resultImage2) {
-      console.log("Result Image 2", resultImage2);
+  
       formData.append("resultImage2", resultImage2);
     }
 
@@ -347,7 +401,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     }
 
     formData.forEach((value, key) => {
-      console.log(`${key}:`, value);
+      // console.log(`${key}:`, value);
     });
 
     try {
@@ -355,13 +409,13 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
         ? `/api/portfolio?id=${companyId}`
         : `/api/portfolio`;
       const method = "POST";
-      console.log("Here");
+    
       const response = await fetch(url, {
         method: method,
         body: formData,
       });
       const data = await response.json();
-      console.log(data);
+      
 
       if (!data.error) {
         toast.success(data.message);
@@ -383,7 +437,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
       try {
         const response = await fetch(`/api/portfolio/channels`);
         const data = await response.json();
-        console.log(data);
+       
+        
         setChannelsAvailable(data.data);
       } catch (error) {
         console.error("Error fetching channels:", error);
@@ -393,14 +448,113 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   }, []);
 
   useEffect(() => {
+    const fetchPortfolioOptions = async () => {
+      try {
+        const response = await fetch("/api/portfolio");
+        const data = await response.json();
+        if (!response.ok || data.error) {
+          throw new Error(data.error || "Failed to fetch portfolios.");
+        }
+        setPortfolioOptions(
+          (data.portfolio || []).map(
+            (portfolio: {
+              _id: string;
+              companyName: string;
+              slug?: string;
+            }) => ({
+              _id: portfolio._id,
+              companyName: portfolio.companyName,
+              slug: portfolio.slug,
+            }),
+          ),
+        );
+      } catch (error) {
+        console.error("Error fetching related portfolio options:", error);
+        toast.error("Failed to load portfolios for related portfolio selection.");
+      }
+    };
+
+    fetchPortfolioOptions();
+  }, []);
+
+  useEffect(() => {
     const fetchPortfolioData = async () => {
       try {
         const response = await fetch(`/api/portfolio?id=${companyId}`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
+        
           if (data.portfolio) {
             setValue("companyName", data.portfolio.companyName);
+            const inferredPortfolioType =
+              data.portfolio.portfolioType ||
+              (["innovo-group", "sobha-constructions-v2"].includes(
+                data.portfolio.slug,
+              )
+                ? "modern"
+                : "legacy");
+            setValue("portfolioType", inferredPortfolioType);
+            const seo = data.portfolio.seo || {};
+            setValue(
+              "seo.metaTitle",
+              seo.metaTitle || data.portfolio.metaTitle || "",
+            );
+            setValue(
+              "seo.metaDescription",
+              seo.metaDescription || data.portfolio.metaDescription || "",
+            );
+            setValue("seo.ogTitle", seo.ogTitle || data.portfolio.ogTitle || "");
+            setValue(
+              "seo.ogDescription",
+              seo.ogDescription || data.portfolio.ogDescription || "",
+            );
+            setValue("seo.ogImage", seo.ogImage || "");
+            setValue(
+              "seo.twitterTitle",
+              seo.twitterTitle || data.portfolio.twitterTitle || "",
+            );
+            setValue(
+              "seo.twitterDescription",
+              seo.twitterDescription || data.portfolio.twitterDescription || "",
+            );
+            setValue("seo.twitterImage", seo.twitterImage || "");
+            setValue("seo.schema", seo.schema || "");
+            setPreviewImages(data.portfolio.previewImage?.images || []);
+            const deliveredItems =
+              data.portfolio.whatWeDeliveredSec?.data?.length > 0
+                ? data.portfolio.whatWeDeliveredSec.data
+                : data.portfolio.whatWeDeliveredData || [];
+            setModernDeliveredItems(
+              Array.isArray(deliveredItems)
+                ? deliveredItems.map((item, index) => ({
+                    _id: Number(item._id ?? item.id ?? index + 1),
+                    title: item.title || "",
+                    icn: item.icn || "",
+                    dec: item.dec || "",
+                    urllink: Array.isArray(item.urllink)
+                      ? item.urllink
+                      : item.urllink
+                        ? [item.urllink]
+                        : [],
+                  }))
+                : [],
+            );
+            const relatedPortfolios =
+              data.portfolio.relatedPortfolios?.portfolio || [];
+            setRelatedPortfolioIds(
+              relatedPortfolios.map(
+                (portfolio: string | { _id?: string }) =>
+                  String(
+                    typeof portfolio === "string"
+                      ? portfolio
+                      : portfolio._id ?? portfolio,
+                  ),
+              ),
+            );
+            setValue(
+              "relatedPortfoliosTitle",
+              data.portfolio.relatedPortfolios?.title || "",
+            );
             setValue("industry", data.portfolio.industry);
             setValue("country", data.portfolio.country);
             if (data.portfolio.channels) {
@@ -430,7 +584,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             );
             setValue(
               "whatWeDeliveredTitle",
-              data.portfolio.whatWeDeliveredTitle || "",
+              data.portfolio.whatWeDeliveredSec?.title ||
+                data.portfolio.whatWeDeliveredTitle ||
+                "",
             );
             setValue(
               "whatWeDeliveredData",
@@ -440,19 +596,35 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             );
             setValue(
               "detailsCtaOneTitle",
-              data.portfolio.detailsCtaOneTitle || "",
+              data.portfolio.detailsCtaOne?.title ||
+                data.portfolio.detailsCtaOneTitle ||
+                "",
             );
             setValue(
               "detailsCtaOneLinkText",
-              data.portfolio.detailsCtaOneLinkText || "",
+              data.portfolio.detailsCtaOne?.ctaText ||
+                data.portfolio.detailsCtaOneLinkText ||
+                "",
+            );
+            setValue(
+              "modernDetailsCtaOneLink",
+              data.portfolio.detailsCtaOne?.ctaLink || "",
             );
             setValue(
               "detailsCtaTwoTitle",
-              data.portfolio.detailsCtaTwoTitle || "",
+              data.portfolio.detailsCtaTwo?.title ||
+                data.portfolio.detailsCtaTwoTitle ||
+                "",
             );
             setValue(
               "detailsCtaTwoButtonText",
-              data.portfolio.detailsCtaTwoButtonText || "",
+              data.portfolio.detailsCtaTwo?.ctaText ||
+                data.portfolio.detailsCtaTwoButtonText ||
+                "",
+            );
+            setValue(
+              "modernDetailsCtaTwoLink",
+              data.portfolio.detailsCtaTwo?.ctaLink || "",
             );
             setValue("bannerTitle", data.portfolio.bannerTitle);
             setValue("websiteLink", data.portfolio.websiteLink);
@@ -537,10 +709,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     const fetchCategories = async () => {
       try {
         const url = `/api/categories`;
-        console.log("Here");
+   
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+;
         if (!data.error) {
           setCategories(data.categories);
         } else {
@@ -594,8 +766,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
   const handleDeleteHighlight = async (id?: number | string) => {
     try {
-      console.log(id);
-     
+      
+
       // setHighlights(highlights.filter((item) => item.customId !== id))
 
       setHighlights((highlights) =>
@@ -798,6 +970,19 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </div>
           )}
 
+          {selectedSection === "portfolio" && (
+            <div className="mt-5 max-w-sm">
+              <Label content="Portfolio page design" />
+              <select
+                {...register("portfolioType")}
+                className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-2 pl-3 text-black focus:outline-none"
+              >
+                <option value="legacy">Legacy portfolio page</option>
+                <option value="modern">Modern portfolio page</option>
+              </select>
+            </div>
+          )}
+
           <div className="mt-5 grid grid-cols-2 gap-10">
             <div className="flex flex-col gap-2">
               <div
@@ -920,7 +1105,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                   <input
                     type="text"
                     {...register("companyName", {
-                      required: "Company name is required",
+                      required:
+                        watch("portfolioType") === "modern"
+                          ? false
+                          : "Company name is required",
                     })}
                     className={
                       "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
@@ -937,7 +1125,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                   <Label content="Industry" />
                   <select
                     {...register("industry", {
-                      required: "Industry is required",
+                      required:
+                        watch("portfolioType") === "modern"
+                          ? false
+                          : "Industry is required",
                     })}
                     className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
                   >
@@ -960,7 +1151,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                   <input
                     type="text"
                     {...register("country", {
-                      required: "Country is required",
+                      required:
+                        watch("portfolioType") === "modern"
+                          ? false
+                          : "Country is required",
                     })}
                     className={
                       "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
@@ -979,25 +1173,24 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                                     {errors.channelsUsed && <p className='mt-1 text-sm text-red'>{errors.channelsUsed.message}</p>}
                                 </div> */}
 
-                <div className="mt-1 flex w-full flex-col gap-1">
-                  <Label content="Channels Used" />
-                  <div className="flex h-[300px] flex-wrap gap-2 overflow-y-auto border p-5">
-                    {channelsAvailable.map((channel, index) => (
-                      <div key={index} className="relative">
-                        <div
-                          className={`absolute -top-2 right-1 h-4 w-4 cursor-pointer rounded-full border-2 ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`}
-                          onClick={() => handleChangeInChannel(index)}
-                        ></div>
-                        <span
-                          className="rounded-md border border-gray-300 px-6 py-3"
-                          key={index}
-                        >
-                          {channel.channelName}
-                        </span>
-                      </div>
-                    ))}
+                {watch("portfolioType") !== "modern" && (
+                  <div className="mt-1 flex w-full flex-col gap-1">
+                    <Label content="Channels Used" />
+                    <div className="flex h-[300px] flex-wrap gap-2 overflow-y-auto border p-5">
+                      {channelsAvailable.map((channel, index) => (
+                        <div key={index} className="relative">
+                          <div
+                            className={`absolute -top-2 right-1 h-4 w-4 cursor-pointer rounded-full border-2 ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`}
+                            onClick={() => handleChangeInChannel(index)}
+                          ></div>
+                          <span className="rounded-md border border-gray-300 px-6 py-3">
+                            {channel.channelName}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
@@ -1015,7 +1208,11 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                                             <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules}/>
                                         )}
                                     /> */}
-                  <RichEditor control={control} name="story" />
+                  <RichEditor
+                    control={control}
+                    name="story"
+                    required={watch("portfolioType") !== "modern"}
+                  />
                 </div>
                 {errors.story && (
                   <p className="mt-1 text-sm text-red-600">
@@ -2019,7 +2216,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 <input
                   type="text"
                   {...register("description", {
-                    required: "Description is required",
+                    required:
+                      watch("portfolioType") === "modern"
+                        ? false
+                        : "Description is required",
                   })}
                   className={
                     "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
@@ -2037,7 +2237,12 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               <Label content="Tag" />
               <input
                 type="text"
-                {...register("tag", { required: "Tag is required" })}
+                {...register("tag", {
+                  required:
+                    watch("portfolioType") === "modern"
+                      ? false
+                      : "Tag is required",
+                })}
                 className={
                   "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
                 }
@@ -2245,125 +2450,471 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </select>
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-5">
-            <div className="flex flex-col gap-2">
-              <Label content="meta-title" />
-              <input
-                type="text"
-                {...register("metaTitle")}
-                className={
-                  "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                }
-              />
-            </div>
+          {selectedSection !== "portfolio" ||
+          watch("portfolioType") !== "modern" ? (
+            <>
+              <div className="mt-5 grid grid-cols-2 gap-5">
+                <div className="flex flex-col gap-2">
+                  <Label content="meta-title" />
+                  <input
+                    type="text"
+                    {...register("metaTitle")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  />
+                </div>
 
-            <div className="flex flex-col gap-2">
-              <Label content="meta-description" />
-              <input
-                type="text"
-                {...register("metaDescription")}
-                className={
-                  "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                }
-              />
-            </div>
-          </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="meta-description" />
+                  <input
+                    type="text"
+                    {...register("metaDescription")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  />
+                </div>
+              </div>
 
-          <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
-            <h2 className="text-xl font-semibold">Social sharing metadata</h2>
-            <div className="grid grid-cols-2 gap-5">
-              <div className="flex flex-col gap-2">
-                <Label content="Open Graph title" />
-                <input
-                  type="text"
-                  {...register("ogTitle")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label content="Open Graph description" />
-                <textarea
-                  {...register("ogDescription")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label content="Twitter title" />
-                <input
-                  type="text"
-                  {...register("twitterTitle")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label content="Twitter description" />
-                <textarea
-                  {...register("twitterDescription")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-            </div>
-          </section>
+              <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
+                <h2 className="text-xl font-semibold">
+                  Social sharing metadata
+                </h2>
+                <div className="grid grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-2">
+                    <Label content="Open Graph title" />
+                    <input
+                      type="text"
+                      {...register("ogTitle")}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label content="Open Graph description" />
+                    <textarea
+                      {...register("ogDescription")}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label content="Twitter title" />
+                    <input
+                      type="text"
+                      {...register("twitterTitle")}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label content="Twitter description" />
+                    <textarea
+                      {...register("twitterDescription")}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    />
+                  </div>
+                </div>
+              </section>
+            </>
+          ) : null}
 
-          <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
-            <h2 className="text-xl font-semibold">Portfolio detail sections</h2>
-            <p className="text-sm text-gray-600">
-              Leave these fields empty to keep the current page defaults. For
-              custom delivery items, enter a JSON array with id, title, dec,
-              icn (image URL), and urllink fields.
-            </p>
-            <div className="grid grid-cols-2 gap-5">
-              <div className="flex flex-col gap-2">
-                <Label content="What We Delivered title" />
-                <input
-                  type="text"
-                  {...register("whatWeDeliveredTitle")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
+          {selectedSection === "portfolio" &&
+            watch("portfolioType") === "modern" && (
+              <section className="mt-8 space-y-6 rounded-md border border-gray-300 p-5">
+                <h2 className="text-xl font-semibold">
+                  Modern portfolio content
+                </h2>
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-medium">Preview images</h3>
+                    <button
+                      type="button"
+                      onClick={() => setPreviewImages((images) => [...images, ""])}
+                      className="rounded bg-black px-3 py-2 text-sm text-white"
+                    >
+                      Add preview image
+                    </button>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Add images showing the work or services delivered for this
+                    portfolio.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                    {previewImages.map((imageUrl, index) => (
+                      <div
+                        key={`preview-${index}`}
+                        className="w-full max-w-[220px] rounded-md border border-gray-200 p-2"
+                      >
+                        <ImageUploader
+                          value={imageUrl}
+                          onChange={(url) =>
+                            setPreviewImages((images) =>
+                              images.map((image, imageIndex) =>
+                                imageIndex === index ? url : image,
+                              ),
+                            )
+                          }
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setPreviewImages((images) =>
+                              images.filter((_, imageIndex) => imageIndex !== index),
+                            )
+                          }
+                          className="mt-2 text-sm text-red-600"
+                        >
+                          Remove image
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4 border-t border-gray-200 pt-5">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-medium">What We Delivered</h3>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setModernDeliveredItems((items) => [
+                          ...items,
+                          {
+                            _id:
+                              items.reduce(
+                                (highestId, item) => Math.max(highestId, item._id),
+                                0,
+                              ) + 1,
+                            title: "",
+                            icn: "",
+                            dec: "",
+                            urllink: [],
+                          },
+                        ])
+                      }
+                      className="rounded bg-black px-3 py-2 text-sm text-white"
+                    >
+                      Add delivery item
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label content="Section title" />
+                    <input
+                      type="text"
+                      {...register("whatWeDeliveredTitle")}
+                      className="w-full rounded-md border border-gray-300 bg-transparent py-2 pl-3 text-black focus:outline-none"
+                    />
+                  </div>
+                  {modernDeliveredItems.map((item, itemIndex) => (
+                    <div
+                      key={item._id}
+                      className="space-y-3 rounded-md border border-gray-200 p-4"
+                    >
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-medium">Delivery item {itemIndex + 1}</h4>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setModernDeliveredItems((items) =>
+                              items.filter((_, index) => index !== itemIndex),
+                            )
+                          }
+                          className="text-sm text-red-600"
+                        >
+                          Remove item
+                        </button>
+                      </div>
+                      <div className="grid gap-3 md:grid-cols-2">
+                        <label className="flex flex-col gap-1">
+                          <span>Title</span>
+                          <input
+                            value={item.title}
+                            onChange={(event) =>
+                              setModernDeliveredItems((items) =>
+                                items.map((entry, index) =>
+                                  index === itemIndex
+                                    ? { ...entry, title: event.target.value }
+                                    : entry,
+                                ),
+                              )
+                            }
+                            className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                          />
+                        </label>
+                        <label className="flex flex-col gap-1">
+                          <span>Description</span>
+                          <textarea
+                            value={item.dec}
+                            onChange={(event) =>
+                              setModernDeliveredItems((items) =>
+                                items.map((entry, index) =>
+                                  index === itemIndex
+                                    ? { ...entry, dec: event.target.value }
+                                    : entry,
+                                ),
+                              )
+                            }
+                            className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                          />
+                        </label>
+                      </div>
+                      <div>
+                        <Label content="Icon image" />
+                        <ImageUploader
+                          value={item.icn}
+                          className="max-w-[120px]"
+                          onChange={(url) =>
+                            setModernDeliveredItems((items) =>
+                              items.map((entry, index) =>
+                                index === itemIndex
+                                  ? { ...entry, icn: url }
+                                  : entry,
+                              ),
+                            )
+                          }
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span>Links</span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setModernDeliveredItems((items) =>
+                                items.map((entry, index) =>
+                                  index === itemIndex
+                                    ? { ...entry, urllink: [...entry.urllink, ""] }
+                                    : entry,
+                                ),
+                              )
+                            }
+                            className="text-sm text-blue-700"
+                          >
+                            Add link
+                          </button>
+                        </div>
+                        {item.urllink.map((url, linkIndex) => (
+                          <div key={linkIndex} className="flex gap-2">
+                            <input
+                              type="text"
+                              value={url}
+                              onChange={(event) =>
+                                setModernDeliveredItems((items) =>
+                                  items.map((entry, index) =>
+                                    index === itemIndex
+                                      ? {
+                                          ...entry,
+                                          urllink: entry.urllink.map(
+                                            (entryUrl, currentLinkIndex) =>
+                                              currentLinkIndex === linkIndex
+                                                ? event.target.value
+                                                : entryUrl,
+                                          ),
+                                        }
+                                      : entry,
+                                  ),
+                                )
+                              }
+                              className="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                              placeholder="https://"
+                            />
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setModernDeliveredItems((items) =>
+                                  items.map((entry, index) =>
+                                    index === itemIndex
+                                      ? {
+                                          ...entry,
+                                          urllink: entry.urllink.filter(
+                                            (_, currentLinkIndex) =>
+                                              currentLinkIndex !== linkIndex,
+                                          ),
+                                        }
+                                      : entry,
+                                  ),
+                                )
+                              }
+                              className="text-sm text-red-600"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-4 border-t border-gray-200 pt-5">
+                  <h3 className="text-lg font-medium">Calls to action</h3>
+                  <div className="grid gap-4 lg:grid-cols-2">
+                    <div className="space-y-3 rounded-md border border-gray-200 p-4">
+                      <h4 className="font-medium">First CTA</h4>
+                      <label className="flex flex-col gap-1">
+                        <span>Title</span>
+                        <input {...register("detailsCtaOneTitle")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                      </label>
+                      <label className="flex flex-col gap-1">
+                        <span>Button text</span>
+                        <input {...register("detailsCtaOneLinkText")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                      </label>
+                      <label className="flex flex-col gap-1">
+                        <span>Link</span>
+                        <input type="text" {...register("modernDetailsCtaOneLink")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" placeholder="https://" />
+                      </label>
+                    </div>
+                    <div className="space-y-3 rounded-md border border-gray-200 p-4">
+                      <h4 className="font-medium">Second CTA</h4>
+                      <label className="flex flex-col gap-1">
+                        <span>Title</span>
+                        <input {...register("detailsCtaTwoTitle")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                      </label>
+                      <label className="flex flex-col gap-1">
+                        <span>Button text</span>
+                        <input {...register("detailsCtaTwoButtonText")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                      </label>
+                      <label className="flex flex-col gap-1">
+                        <span>Link</span>
+                        <input type="text" {...register("modernDetailsCtaTwoLink")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" placeholder="https://" />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4 border-t border-gray-200 pt-5">
+                  <h3 className="text-lg font-medium">Related portfolios</h3>
+                  <label className="flex flex-col gap-1">
+                    <span>Section title</span>
+                    <input
+                      {...register("relatedPortfoliosTitle")}
+                      className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                    />
+                  </label>
+                  <input
+                    type="search"
+                    value={relatedPortfolioSearch}
+                    onChange={(event) =>
+                      setRelatedPortfolioSearch(event.target.value)
+                    }
+                    placeholder="Search portfolios by name or slug"
+                    className="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                  />
+                  <div className="max-h-64 space-y-2 overflow-y-auto rounded-md border border-gray-200 p-3">
+                    {portfolioOptions
+                      .filter(
+                        (portfolio) =>
+                          portfolio._id !== String(companyId) &&
+                          `${portfolio.companyName} ${portfolio.slug || ""}`
+                            .toLowerCase()
+                            .includes(relatedPortfolioSearch.toLowerCase()),
+                      )
+                      .map((portfolio) => (
+                        <label
+                          key={portfolio._id}
+                          className="flex items-center gap-2"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={relatedPortfolioIds.includes(portfolio._id)}
+                            onChange={(event) =>
+                              setRelatedPortfolioIds((selectedIds) =>
+                                event.target.checked
+                                  ? [...selectedIds, portfolio._id]
+                                  : selectedIds.filter(
+                                      (selectedId) =>
+                                        selectedId !== portfolio._id,
+                                    ),
+                              )
+                            }
+                          />
+                          <span>
+                            {portfolio.companyName}
+                            {portfolio.slug ? ` (${portfolio.slug})` : ""}
+                          </span>
+                        </label>
+                      ))}
+                    {portfolioOptions.length === 0 && (
+                      <p className="text-sm text-gray-600">
+                        No portfolios are available to select.
+                      </p>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    {relatedPortfolioIds.length} related portfolio(s) selected.
+                  </p>
+                </div>
+
+                <div className="border-t border-gray-200 pt-5">
+                  <SeoFields<Inputs>
+                    control={control}
+                    register={register}
+                    errors={errors}
+                  />
+                </div>
+              </section>
+            )}
+
+          {selectedSection !== "portfolio" ||
+          watch("portfolioType") !== "modern" ? (
+            <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
+              <h2 className="text-xl font-semibold">Portfolio detail sections</h2>
+              <p className="text-sm text-gray-600">
+                Leave these fields empty to keep the current page defaults. For
+                custom delivery items, enter a JSON array with id, title, dec,
+                icn (image URL), and urllink fields.
+              </p>
+              <div className="grid grid-cols-2 gap-5">
+                <div className="flex flex-col gap-2">
+                  <Label content="What We Delivered title" />
+                  <input
+                    type="text"
+                    {...register("whatWeDeliveredTitle")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="What We Delivered items (JSON)" />
+                  <textarea
+                    rows={8}
+                    placeholder={
+                      '[{"id":1,"title":"Example","dec":"","icn":"","urllink":""}]'
+                    }
+                    {...register("whatWeDeliveredData")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 font-mono text-sm text-black focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="First CTA heading" />
+                  <input
+                    type="text"
+                    {...register("detailsCtaOneTitle")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="First CTA link label" />
+                  <input
+                    type="text"
+                    {...register("detailsCtaOneLinkText")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="Second CTA heading" />
+                  <input
+                    type="text"
+                    {...register("detailsCtaTwoTitle")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="Second CTA button label" />
+                  <input
+                    type="text"
+                    {...register("detailsCtaTwoButtonText")}
+                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  />
+                </div>
               </div>
-              <div className="flex flex-col gap-2">
-                <Label content="What We Delivered items (JSON)" />
-                <textarea
-                  rows={8}
-                  placeholder={'[{"id":1,"title":"Example","dec":"","icn":"","urllink":""}]'}
-                  {...register("whatWeDeliveredData")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 font-mono text-sm text-black focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label content="First CTA heading" />
-                <input
-                  type="text"
-                  {...register("detailsCtaOneTitle")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label content="First CTA link label" />
-                <input
-                  type="text"
-                  {...register("detailsCtaOneLinkText")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label content="Second CTA heading" />
-                <input
-                  type="text"
-                  {...register("detailsCtaTwoTitle")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label content="Second CTA button label" />
-                <input
-                  type="text"
-                  {...register("detailsCtaTwoButtonText")}
-                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                />
-              </div>
-            </div>
-          </section>
+            </section>
+          ) : null}
 
           <div className="mt-25 pb-5">
             <div className="inline-flex w-[15%] items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10">

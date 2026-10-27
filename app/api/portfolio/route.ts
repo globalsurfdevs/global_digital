@@ -154,7 +154,132 @@ export async function POST(req: NextRequest) {
   const detailsCtaTwoButtonText = formData.get(
     "detailsCtaTwoButtonText",
   ) as string;
+  const portfolioTypeRaw = formData.get("portfolioType")?.toString();
+  if (portfolioTypeRaw && !["legacy", "modern"].includes(portfolioTypeRaw)) {
+    return NextResponse.json(
+      { error: "Portfolio type must be legacy or modern." },
+      { status: 400 },
+    );
+  }
+  const portfolioType = portfolioTypeRaw === "modern" ? "modern" : "legacy";
+  const seoRaw = formData.get("seo")?.toString();
+  const previewImagesRaw = formData.get("previewImages")?.toString();
+  const deliveredItemsRaw = formData.get("whatWeDeliveredItems")?.toString();
+  const relatedPortfolioIdsRaw = formData
+    .get("relatedPortfolioIds")
+    ?.toString();
+  const channelsUsedRaw = formData.get("channelsUsedList")?.toString();
+  const relatedPortfoliosTitle =
+    formData.get("relatedPortfoliosTitle")?.toString() || "";
+  const detailsCtaOneText = formData.get("detailsCtaOneText")?.toString() || "";
+  const detailsCtaOneLink = formData.get("detailsCtaOneLink")?.toString() || "";
+  const detailsCtaTwoText = formData.get("detailsCtaTwoText")?.toString() || "";
+  const detailsCtaTwoLink = formData.get("detailsCtaTwoLink")?.toString() || "";
   const section = formData.get("section") as string;
+  let seo: Record<string, string> = {};
+  let previewImages: string[] = [];
+  let modernDeliveredItems: {
+    _id: number;
+    title: string;
+    icn: string;
+    dec: string;
+    urllink: string[];
+  }[] = [];
+  let relatedPortfolioIds: string[] = [];
+  let channelsUsedList: string[] = [];
+
+  try {
+    if (seoRaw) {
+      const parsedSeo: unknown = JSON.parse(seoRaw);
+      if (
+        !parsedSeo ||
+        typeof parsedSeo !== "object" ||
+        Array.isArray(parsedSeo) ||
+        !Object.values(parsedSeo).every((value) => typeof value === "string")
+      ) {
+        throw new Error("SEO data must be an object.");
+      }
+      seo = parsedSeo as Record<string, string>;
+    }
+
+    if (previewImagesRaw) {
+      const parsedImages: unknown = JSON.parse(previewImagesRaw);
+      if (
+        !Array.isArray(parsedImages) ||
+        !parsedImages.every((imageUrl) => typeof imageUrl === "string")
+      ) {
+        throw new Error("Preview images must be an array of image URLs.");
+      }
+      previewImages = parsedImages;
+    }
+
+    if (deliveredItemsRaw) {
+      const parsedItems: unknown = JSON.parse(deliveredItemsRaw);
+      if (!Array.isArray(parsedItems)) {
+        throw new Error("What We Delivered items must be an array.");
+      }
+      modernDeliveredItems = parsedItems.map((item, index) => {
+        if (!item || typeof item !== "object" || Array.isArray(item)) {
+          throw new Error("Each delivery item must be an object.");
+        }
+        const itemData = item as Record<string, unknown>;
+        if (
+          (itemData.title !== undefined && typeof itemData.title !== "string") ||
+          (itemData.dec !== undefined && typeof itemData.dec !== "string") ||
+          (itemData._id !== undefined && !Number.isFinite(Number(itemData._id))) ||
+          !Array.isArray(itemData.urllink) ||
+          !itemData.urllink.every((url: unknown) => typeof url === "string")
+        ) {
+          throw new Error("Each delivery item must contain valid fields and links.");
+        }
+        return {
+          _id: Number(itemData._id ?? index + 1),
+          title: typeof itemData.title === "string" ? itemData.title : "",
+          icn: typeof itemData.icn === "string" ? itemData.icn : "",
+          dec: typeof itemData.dec === "string" ? itemData.dec : "",
+          urllink: itemData.urllink as string[],
+        };
+      });
+    }
+
+    if (relatedPortfolioIdsRaw) {
+      const parsedRelatedIds: unknown = JSON.parse(relatedPortfolioIdsRaw);
+      if (
+        !Array.isArray(parsedRelatedIds) ||
+        !parsedRelatedIds.every(
+          (portfolioId) =>
+            typeof portfolioId === "string" &&
+            mongoose.Types.ObjectId.isValid(portfolioId),
+        )
+      ) {
+        throw new Error("Related portfolios must be a list of valid portfolio IDs.");
+      }
+      relatedPortfolioIds = parsedRelatedIds.filter(
+        (portfolioId: string) => portfolioId !== id,
+      );
+    }
+
+    if (channelsUsedRaw) {
+      const parsedChannelsUsed: unknown = JSON.parse(channelsUsedRaw);
+      if (
+        !Array.isArray(parsedChannelsUsed) ||
+        !parsedChannelsUsed.every(
+          (channelName) => typeof channelName === "string",
+        )
+      ) {
+        throw new Error("Channels used must be an array of text values.");
+      }
+      channelsUsedList = parsedChannelsUsed;
+    }
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error ? error.message : "Invalid modern portfolio data.",
+      },
+      { status: 400 },
+    );
+  }
 
   let whatWeDeliveredData: unknown[] = [];
   if (whatWeDeliveredDataRaw) {
@@ -192,7 +317,87 @@ export async function POST(req: NextRequest) {
   const websiteLink = formData.get("websiteLink") as string;
   const bannerTitle = formData.get("bannerTitle") as string;
   const videoThumbnail = formData.get("videoThumbnail") as File | null;
-  const featured = formData.get("featured") as File | null;
+  const featured = formData.get("featured")?.toString() === "true";
+
+  const portfolioSeo = {
+    ...seo,
+    metaTitle: seo.metaTitle || metaTitle || "",
+    metaDescription: seo.metaDescription || metaDescription || "",
+    ogTitle: seo.ogTitle || ogTitle || "",
+    ogDescription: seo.ogDescription || ogDescription || "",
+    twitterTitle: seo.twitterTitle || twitterTitle || "",
+    twitterDescription: seo.twitterDescription || twitterDescription || "",
+  };
+  let deliveredItemsForPortfolio = modernDeliveredItems;
+  if (portfolioType !== "modern") {
+    try {
+      deliveredItemsForPortfolio = whatWeDeliveredData.map((item, index) => {
+        if (!item || typeof item !== "object" || Array.isArray(item)) {
+          throw new Error("Each What We Delivered item must be an object.");
+        }
+        const itemData = item as Record<string, unknown>;
+        const itemLinks = Array.isArray(itemData.urllink)
+          ? itemData.urllink
+          : typeof itemData.urllink === "string" && itemData.urllink
+            ? [itemData.urllink]
+            : [];
+        const itemId = itemData._id ?? itemData.id;
+        if (
+          typeof itemData.title !== "string" ||
+          !itemData.title.trim() ||
+          typeof itemData.dec !== "string" ||
+          (itemId !== undefined && !Number.isFinite(Number(itemId)))
+        ) {
+          throw new Error(
+            "Each What We Delivered item must have a title and description.",
+          );
+        }
+        return {
+          _id: Number(itemId ?? index + 1),
+          title: itemData.title,
+          icn: typeof itemData.icn === "string" ? itemData.icn : "",
+          dec: itemData.dec,
+          urllink: itemLinks.filter(
+            (link): link is string => typeof link === "string",
+          ),
+        };
+      });
+    } catch (error) {
+      return NextResponse.json(
+        {
+          error:
+            error instanceof Error
+              ? error.message
+              : "Invalid What We Delivered data.",
+        },
+        { status: 400 },
+      );
+    }
+  }
+  const portfolioFields = {
+    portfolioType,
+    seo: portfolioSeo,
+    previewImage: { images: previewImages },
+    whatWeDeliveredSec: {
+      title: whatWeDeliveredTitle || "",
+      data: deliveredItemsForPortfolio,
+    },
+    detailsCtaOne: {
+      title: detailsCtaOneTitle || "",
+      ctaText: detailsCtaOneText || detailsCtaOneLinkText || "",
+      ctaLink: detailsCtaOneLink,
+    },
+    detailsCtaTwo: {
+      title: detailsCtaTwoTitle || "",
+      ctaText: detailsCtaTwoText || detailsCtaTwoButtonText || "",
+      ctaLink: detailsCtaTwoLink,
+    },
+    relatedPortfolios: {
+      title: relatedPortfoliosTitle,
+      portfolio: relatedPortfolioIds,
+    },
+    channelsUsed: channelsUsedRaw ? channelsUsedList : [],
+  };
 
   let addedCategoriesRaw;
   let addedCategoriesIds;
@@ -369,24 +574,13 @@ export async function POST(req: NextRequest) {
           categories: addedCategoriesIds,
           logo: logo == null ? logoPath : logo,
           slug,
-          metaTitle,
-          metaDescription,
-          ogTitle,
-          ogDescription,
-          twitterTitle,
-          twitterDescription,
-          whatWeDeliveredTitle,
-          whatWeDeliveredData,
-          detailsCtaOneTitle,
-          detailsCtaOneLinkText,
-          detailsCtaTwoTitle,
-          detailsCtaTwoButtonText,
           websiteLink,
           bannerTitle,
           videoThumbnail: videoThumbnailPath,
           videoTitle,
           section,
           featured,
+          ...(section === "portfolio" ? portfolioFields : {}),
         });
 
         const highlights: { customId: string; number: string; text: string }[] =
@@ -472,18 +666,6 @@ export async function POST(req: NextRequest) {
           categories: addedCategoriesIds,
           logo: logoPath,
           slug,
-          metaTitle,
-          metaDescription,
-          ogTitle,
-          ogDescription,
-          twitterTitle,
-          twitterDescription,
-          whatWeDeliveredTitle,
-          whatWeDeliveredData,
-          detailsCtaOneTitle,
-          detailsCtaOneLinkText,
-          detailsCtaTwoTitle,
-          detailsCtaTwoButtonText,
           customId: uuidv4(),
           websiteLink,
           bannerTitle,
@@ -491,6 +673,7 @@ export async function POST(req: NextRequest) {
           videoTitle,
           section,
           featured,
+          ...(section === "portfolio" ? portfolioFields : {}),
         });
 
         let newId: number;

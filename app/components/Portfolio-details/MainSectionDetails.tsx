@@ -92,6 +92,23 @@ const MainSectionDetails = ({
                   </div>
                 </div>
               </div>
+              {data.portfolio.channelsUsed?.length ? (
+                <div>
+                  <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
+                    Channels used
+                  </p>
+                  <div className="flex max-w-md flex-wrap gap-2">
+                    {data.portfolio.channelsUsed.map((channel, index) => (
+                      <span
+                        key={`${channel}-${index}`}
+                        className="btn-outline-primary-text-black"
+                      >
+                        {channel}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

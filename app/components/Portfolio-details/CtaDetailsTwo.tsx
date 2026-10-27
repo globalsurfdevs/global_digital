@@ -15,8 +15,6 @@ const CtaDetailsTwo = ({
     portfolio: Portfolio;
   } | null;
 }) => {
-
-
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -63,20 +61,33 @@ const CtaDetailsTwo = ({
                 "Like what you see? Let's build something for your brand."}
             </h2>
 
-            <div className="innerfnont relative mt-[20px] w-fit lg:mt-[60px]">
-              <Button
-                text={
-                  data?.portfolio.detailsCtaTwoButtonText ||
-                  "Book a free consultation"
-                }
-            
-                textcolor={"black"}
-                className="text-30 w-fit rounded-full border border-primary px-6 py-3 uppercase leading-lh1p66 transition-all duration-300 ease-in hover:bg-primary hover:text-white  hover:shadow-lg lg:px-[34px] "
-                onClick={() => {
-                  setModalOpen(true);
-                  document.body.style.overflow = "hidden";
-                }}
-              />
+            <div className="innerfnont relative mt-5 w-fit lg:mt-[60px]">
+              {data?.portfolio.detailsCtaTwo?.ctaLink ? (
+                <a
+                  href={data.portfolio.detailsCtaTwo.ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit max-w-full items-center justify-center rounded-full border border-primary px-4 py-2 text-[16px] font-medium uppercase leading-[1.4] transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:text-[30px]"
+                >
+                  {data.portfolio.detailsCtaTwo.ctaText ||
+                    data.portfolio.detailsCtaTwoButtonText ||
+                    "Book a free consultation"}
+                </a>
+              ) : (
+                <Button
+                  text={
+                    data?.portfolio.detailsCtaTwo?.ctaText ||
+                    data?.portfolio.detailsCtaTwoButtonText ||
+                    "Book a free consultation"
+                  }
+                  textcolor={"black"}
+                  className="w-fit max-w-full rounded-full border border-primary px-4 py-2 text-[16px] font-medium uppercase leading-[1.4] sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:text-[30px]"
+                  onClick={() => {
+                    setModalOpen(true);
+                    document.body.style.overflow = "hidden";
+                  }}
+                />
+              )}
             </div>
           </div>
         </motion.div>

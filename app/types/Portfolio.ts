@@ -28,6 +28,45 @@ export type Portfolio = {
   tag: string;
   description: string;
   logo: string;
+  portfolioType?: "legacy" | "modern";
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: string;
+    twitterTitle?: string;
+    twitterDescription?: string;
+    twitterImage?: string;
+    schema?: string;
+  };
+  previewImage?: {
+    images: string[];
+  };
+  whatWeDeliveredSec?: {
+    title?: string;
+    data?: {
+      _id: number;
+      title: string;
+      dec: string;
+      icn?: string;
+      urllink?: string[];
+    }[];
+  };
+  detailsCtaOne?: {
+    title?: string;
+    ctaText?: string;
+    ctaLink?: string;
+  };
+  detailsCtaTwo?: {
+    title?: string;
+    ctaText?: string;
+    ctaLink?: string;
+  };
+  relatedPortfolios?: {
+    title?: string;
+    portfolio?: (string | { _id: string; companyName: string; slug?: string })[];
+  };
   metaTitle?: string;
   metaDescription?: string;
   ogTitle?: string;
@@ -40,7 +79,7 @@ export type Portfolio = {
     title: string;
     dec?: string;
     icn?: string;
-    urllink?: string;
+    urllink?: string | string[];
   }[];
   detailsCtaOneTitle?: string;
   detailsCtaOneLinkText?: string;
