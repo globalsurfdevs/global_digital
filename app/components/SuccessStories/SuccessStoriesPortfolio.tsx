@@ -81,7 +81,7 @@ export const SuccessStoriesPortfolio = ({
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div>
+                    <div className="pl-2">
                       <h4 className="text-font30">{item.companyName}</h4>
 
                       <div className="flex flex-wrap gap-2">
