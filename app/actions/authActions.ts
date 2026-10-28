@@ -1,7 +1,6 @@
 "use server";
 
 import { signIn, signOut } from "@/auth";
-import { redirect } from "next/navigation";
 
 type SignInType = {
   username: string;
@@ -31,18 +30,9 @@ export const signInWithCredentials = async ({
   }
 };
 
+// The UI signs out client-side via next-auth/react's signOut (POST to
+// /api/auth/signout, which middleware skips). Kept for server-side callers.
+// signOut() redirects by throwing, so it must not be wrapped in try/catch.
 export const signOutAdmin = async () => {
-  let redirectPath;
-  try {
-    await signOut();
-    redirectPath = "/admin/auth/signin";
-    return { success: true, message: "Successfully signed off" };
-  } catch (err) {
-    redirectPath = "/admin";
-    console.log("Error in signout action:", err);
-  } finally {
-    if (redirectPath) {
-      redirect(redirectPath);
-    }
-  }
+  await signOut({ redirectTo: "/auth/signin" });
 };

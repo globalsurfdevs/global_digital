@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@/app/components/ClickOutside";
-import { signOutAdmin } from "@/app/actions/authActions";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { assets } from "@/public/assets/assets";
 
@@ -14,7 +14,7 @@ const DropdownUser = () => {
 
   const handleSignOut = async () => {
     try {
-      await signOutAdmin();
+      await signOut({ redirectTo: "/auth/signin" });
       // if(response?.success){
       //   router.push(response.redirectPath)
       // }

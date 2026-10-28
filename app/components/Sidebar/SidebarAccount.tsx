@@ -4,14 +4,14 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOut, UserCog } from "lucide-react";
-import { signOutAdmin } from "@/app/actions/authActions";
+import { signOut } from "next-auth/react";
 
 /** Account actions pinned to the bottom of the sidebar (moved here from the header dropdown). */
 const SidebarAccount = () => {
   const pathname = usePathname();
   const handleSignOut = async () => {
     try {
-      await signOutAdmin();
+      await signOut({ redirectTo: "/auth/signin" });
     } catch (error) {
       console.log("Error in signout:", error);
     }
