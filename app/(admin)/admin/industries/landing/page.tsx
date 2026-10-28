@@ -26,6 +26,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Portfolio } from "@/app/types/Portfolio";
 import { ServicePillarData } from "@/app/components/ServicePillar/type";
 import { ServicePillarListItem } from "@/app/components/AdminServicePillars/ServicePillarList";
+import {
+  PageHeader,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 type Service = {
   _id: string;
@@ -339,9 +344,21 @@ const IndustryLandingPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="Industries Landing Page"
+        description="Expand a section to edit it. Changes are saved only when you click Submit."
+        actions={
+          // Public site links this page as /industries (app/components/HomePage/Headerv2.tsx:250)
+          <ViewLiveLink
+            showLabel
+            href="/industries"
+            className="h-10 border border-slate-300 px-4 text-sm"
+          />
+        }
+      />
       <form
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-6"
         onSubmit={handleSubmit(handleAddIndustryLanding)}
       >
         <AccordionSection
@@ -1089,13 +1106,16 @@ const IndustryLandingPage = () => {
           errors={errors}
         />
 
-        <div className="flex">
-          <Button
+        <div className="sticky bottom-4 z-10 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Submit.
+          </p>
+          <button
             type="submit"
-            className="w-full cursor-pointer text-[16px] text-white"
+            className={adminButtonClass("dark", "md", "min-w-28")}
           >
             Submit
-          </Button>
+          </button>
         </div>
       </form>
     </div>

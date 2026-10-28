@@ -16,9 +16,15 @@ import {
   MdOutlineWork,
 } from "react-icons/md";
 import { IoAccessibilityOutline, IoArrowBackOutline } from "react-icons/io5";
-import { CreativeCommons, Layers3, Settings2 } from "lucide-react";
+import {
+  CreativeCommons,
+  LayoutDashboard,
+  Layers3,
+  Settings2,
+} from "lucide-react";
 import { FaIndustry, FaServicestack } from "react-icons/fa";
 import { adminRoutes } from "@/app/const/routes/admin.routes";
+import SidebarAccount from "@/app/components/Sidebar/SidebarAccount";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -30,6 +36,11 @@ const menuGroups = [
   {
     name: "",
     menuItems: [
+      {
+        icon: <LayoutDashboard />,
+        label: "Dashboard",
+        route: "/admin",
+      },
       {
         icon: (
           <svg
@@ -58,7 +69,7 @@ const menuGroups = [
             />
           </svg>
         ),
-        label: "Home",
+        label: "Home Page",
         route: "/admin/home",
         // children: [{ label: "eCommerce", route: "/" }],
       },
@@ -387,7 +398,7 @@ const menuGroups = [
   // },
 ];
 
-const HR_ALLOWED_LABELS = ["Careers", "Jobs"];
+const HR_ALLOWED_LABELS = ["Dashboard", "Careers", "Jobs"];
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
   const pathname = usePathname();
@@ -403,6 +414,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
         : group.menuItems,
   }));
 
+  // The selected page is the longest menu route that the current URL starts with, so
+  // /admin/portfolio/123 selects "Portfolio" while /admin/portfolio/channels selects "Channels".
+  const activeRoute = visibleMenuGroups
+    .flatMap((group) => group.menuItems)
+    .flatMap((menuItem: any) => [menuItem, ...(menuItem.children ?? [])])
+    .map((menuItem: any) => menuItem.route as string)
+    .filter(
+      (route) =>
+        route &&
+        route !== "#" &&
+        // The dashboard (/admin) is a prefix of every page, so it only matches exactly.
+        (pathname === route ||
+          (route !== "/admin" && pathname.startsWith(`${route}/`))),
+    )
+    .sort((a, b) => b.length - a.length)[0];
+
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
       <aside
@@ -411,7 +438,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
         }`}
       >
         {/* <!-- SIDEBAR HEADER --> */}
-        <div className="py-5.5 lg:py-6.5 flex items-center justify-between gap-2 px-6">
+        <div className="flex h-[72px] shrink-0 items-center justify-between gap-2 border-b border-white/20 px-6">
           <Link href="/">
             <Image
               width={160}
@@ -444,21 +471,24 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
         </div>
         {/* <!-- SIDEBAR HEADER --> */}
 
-        <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
+        <div className="no-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto duration-300 ease-linear">
           {/* <!-- Sidebar Menu --> */}
-          <nav className="px-4 lg:px-6">
+          <nav className="px-3 py-4">
             {visibleMenuGroups.map((group, groupIndex) => (
               <div key={groupIndex}>
-                <h3 className="text-bodydark2 mb-4 ml-4 text-sm font-semibold">
-                  {group.name}
-                </h3>
-                <ul className="mb-6 flex flex-col gap-1.5">
+                {group.name && (
+                  <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    {group.name}
+                  </h3>
+                )}
+                <ul className="mb-6 flex flex-col gap-1">
                   {group.menuItems.map((menuItem, menuIndex) => (
                     <SidebarItem
                       key={menuIndex}
                       item={menuItem}
                       pageName={pageName}
                       setPageName={setPageName}
+                      activeRoute={activeRoute}
                     />
                   ))}
                 </ul>
@@ -467,6 +497,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) => {
           </nav>
           {/* <!-- Sidebar Menu --> */}
         </div>
+
+        <SidebarAccount />
       </aside>
     </ClickOutside>
   );

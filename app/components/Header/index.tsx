@@ -2,7 +2,7 @@ import Link from "next/link";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import DropdownMessage from "./DropdownMessage";
 import DropdownNotification from "./DropdownNotification";
-import DropdownUser from "./DropdownUser";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 const Header = (props: {
@@ -10,8 +10,8 @@ const Header = (props: {
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
   return (
-    <header className="z-999 drop-shadow-1 dark:bg-boxdark sticky top-0 flex w-full bg-white dark:drop-shadow-none">
-      <div className="shadow-2 flex flex-grow items-center justify-between px-4 py-4 md:px-6 2xl:px-11">
+    <header className="z-999 dark:bg-boxdark sticky top-0 flex w-full border-b border-slate-200 bg-white">
+      <div className="flex h-[71px] flex-grow items-center justify-between px-4 md:px-6 2xl:px-11">
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
@@ -117,9 +117,16 @@ const Header = (props: {
             {/* <!-- Chat Notification Area --> */}
           </ul>
 
-          {/* <!-- User Area --> */}
-          <DropdownUser />
-          {/* <!-- User Area --> */}
+          {/* Account Settings and Log Out now live at the bottom of the sidebar. */}
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-9 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
+          >
+            <ExternalLink className="size-4" aria-hidden />
+            View website
+          </a>
         </div>
       </div>
     </header>

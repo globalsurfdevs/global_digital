@@ -25,6 +25,13 @@ import { CSS } from "@dnd-kit/utilities";
 import { Textarea } from "@/components/ui/textarea";
 import { useParams } from "next/navigation";
 import { Portfolio } from "@/app/types/Portfolio";
+import { ArrowLeft } from "lucide-react";
+import {
+  AdminLinkButton,
+  PageHeader,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 export interface IndustryFormProps {
   seo: SeoFormValues;
@@ -180,15 +187,17 @@ const AccordionSection = ({
   children: React.ReactNode;
 }) => {
   const isOpen = openSection === sectionKey;
-//
+  //
   return (
-     <AdminItemContainer>
+    <AdminItemContainer>
       <div
         className="cursor-pointer"
         onClick={() => setOpenSection(isOpen ? null : sectionKey)}
       >
-        <div className="flex w-full p-5 items-center justify-between">
-          <div>{title}</div>
+        <div className="flex w-full items-center justify-between p-5">
+          <div className="text-base font-semibold text-slate-800 dark:text-white">
+            {title}
+          </div>
 
           <div className="flex items-center gap-4 pr-5">
             <button
@@ -360,6 +369,8 @@ const IndiIndustryPage = () => {
   });
 
   const [reorderMode, setReorderMode] = useState(false);
+  // Slug as last loaded from the database, so "View live" never points at an unsaved slug.
+  const [savedSlug, setSavedSlug] = useState("");
 
   // Which top-level section accordion is open.
   const [openSection, setOpenSection] = useState<string | null>("");
@@ -411,6 +422,7 @@ const IndiIndustryPage = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Fetched industry data:", data);
+        setSavedSlug(data.data?.slug || "");
         setValue("seo", data.data?.seo);
 
         setValue("firstSection", data.data?.firstSection);
@@ -473,9 +485,32 @@ const IndiIndustryPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
+    <div className="flex flex-col gap-6 pb-5">
+      <PageHeader
+        title="Edit Industry Page"
+        description="Edit each page section below. Use Shown / Hidden to toggle a section on the live page."
+        actions={
+          <>
+            <AdminLinkButton
+              href="/admin/industries"
+              variant="secondary"
+              icon={<ArrowLeft className="size-4" />}
+            >
+              Back to list
+            </AdminLinkButton>
+            {/* Public URL matches app/(user)/industries/[slug] and app/const/routes/user.routes.ts (`/industries/${slug}`). */}
+            {savedSlug && (
+              <ViewLiveLink
+                showLabel
+                href={`/industries/${encodeURIComponent(savedSlug)}`}
+                className="h-10 border border-slate-300 px-4 text-sm"
+              />
+            )}
+          </>
+        }
+      />
       <form
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-6"
         onSubmit={handleSubmit(handleAddIndustry)}
       >
         {/* ---------------- First Section ---------------- */}
@@ -1874,13 +1909,16 @@ const IndiIndustryPage = () => {
           errors={errors}
         />
 
-        <div className="flex">
-          <Button
+        <div className="sticky bottom-4 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Submit.
+          </p>
+          <button
             type="submit"
-            className="w-full cursor-pointer text-[16px] text-white"
+            className={adminButtonClass("dark", "md", "min-w-28")}
           >
             Submit
-          </Button>
+          </button>
         </div>
       </form>
     </div>

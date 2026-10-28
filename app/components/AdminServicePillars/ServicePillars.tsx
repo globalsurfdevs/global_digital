@@ -26,7 +26,13 @@ import { useParams } from "next/navigation";
 
 // NOTE: adjust this import path to wherever ServicePillarData actually lives
 import { ServicePillarData } from "../ServicePillar/type";
-import { Eye, EyeClosed, EyeOff } from "lucide-react";
+import { ArrowLeft, Eye, EyeClosed, EyeOff } from "lucide-react";
+import {
+  AdminLinkButton,
+  PageHeader,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 import { ServicePillarListItem } from "./ServicePillarList";
 
 type ServiceIndustryOption = {
@@ -77,7 +83,9 @@ const AccordionSection = ({
         className={`cursor-pointer p-4 ${isOpen ? "open" : ""}`}
       >
         <div className="flex w-full items-center justify-between">
-          <div>{title}</div>
+          <div className="font-semibold text-slate-800 dark:text-slate-100">
+            {title}
+          </div>
 
           <div className="flex items-center gap-2">
             {/* Show / Hide */}
@@ -248,6 +256,9 @@ const ServicePillarPage = () => {
 
   // Which top-level section accordion is open.
   const [openSection, setOpenSection] = useState<string | null>("");
+  // Slug/name as last loaded from the database, so "View live" never points at an unsaved slug.
+  const [savedSlug, setSavedSlug] = useState("");
+  const [savedName, setSavedName] = useState("");
 
   const handleSave = async (data: ServicePillarData) => {
     // console.log("service pillar", data.eleventhSection);
@@ -264,7 +275,6 @@ const ServicePillarPage = () => {
       },
     };
 
-    
     try {
       const response = await fetch(
         `/api/service-pillar/${encodeURIComponent(slug)}`,
@@ -299,6 +309,8 @@ const ServicePillarPage = () => {
       const response = await fetch(`/api/service-pillar?slug=${slug}`);
       if (response.ok) {
         const data = await response.json();
+        setSavedSlug(data.data?.slug || "");
+        setSavedName(data.data?.name || "");
         setValue("seo", data.data?.seo);
         setValue("firstSection", data.data?.firstSection);
         setValue("secondSection", data.data?.secondSection);
@@ -325,7 +337,10 @@ const ServicePillarPage = () => {
         setValue("tenthSection", data.data?.tenthSection);
         setValue("tenthSection.items", data.data?.tenthSection?.items ?? []);
         setValue("eleventhSection", data.data?.eleventhSection);
-        setValue("eleventhSection.items", data.data?.eleventhSection?.items ?? []);
+        setValue(
+          "eleventhSection.items",
+          data.data?.eleventhSection?.items ?? [],
+        );
         // const eleventhSection = data.data?.eleventhSection;
 
         // setValue("eleventhSection", {
@@ -439,8 +454,36 @@ const ServicePillarPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit(handleSave)}>
+    <div className="flex flex-col gap-6 pb-5">
+      <PageHeader
+        title="Edit Service Pillar"
+        description={
+          savedName ||
+          "Open a section below to edit it, then click Submit to save."
+        }
+        actions={
+          <>
+            <AdminLinkButton
+              href="/admin/service-pillar"
+              variant="secondary"
+              icon={<ArrowLeft className="size-4" />}
+            >
+              Back to list
+            </AdminLinkButton>
+            {/* Public URL is /{slug}: app/(user)/[slug]/page.tsx resolves it via
+                app/lib/routing/resolveSlug.ts (service pillar first); same pattern as
+                app/lib/helper/get-nav-services.ts (`/${pillar.slug}`) and app/sitemap.xml/route.ts. */}
+            {savedSlug && (
+              <ViewLiveLink
+                showLabel
+                href={`/${encodeURIComponent(savedSlug)}`}
+                className="h-10 border border-slate-300 px-4 text-sm"
+              />
+            )}
+          </>
+        }
+      />
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(handleSave)}>
         {/* ---------------- First Section ---------------- */}
 
         <AccordionSection
@@ -1624,7 +1667,6 @@ const ServicePillarPage = () => {
                                       onChange={(e) => {
                                         const value = e.target.value;
 
-                            
                                         field.onChange(value);
 
                                         setValue(
@@ -1868,13 +1910,17 @@ const ServicePillarPage = () => {
           errors={errors}
         />
 
-        <div className="flex">
-          <Button
+        <div className="sticky bottom-4 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Submit. Section visibility
+            (eye icon) saves immediately.
+          </p>
+          <button
             type="submit"
-            className="w-full cursor-pointer text-[16px] text-white"
+            className={adminButtonClass("dark", "md", "min-w-28")}
           >
             Submit
-          </Button>
+          </button>
         </div>
       </form>
     </div>

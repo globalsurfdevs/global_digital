@@ -9,6 +9,14 @@ import Label from "@/app/components/Label/Label";
 import { generateSlugForBlog } from "@/app/helpers/generateSlug";
 import { generateAndUploadImage } from "@/app/helpers/generateAndUploadImage";
 import { handleImageChange } from "@/app/helpers/handleImageChange";
+import { ArrowLeft } from "lucide-react";
+import {
+  AdminLinkButton,
+  PageHeader,
+  SectionCard,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 interface AuthorFormInputs {
   name: string;
@@ -24,6 +32,8 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
   const { authorId } = useParams();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Slug as last loaded from the database, so "View live" never points at an unsaved slug.
+  const [savedSlug, setSavedSlug] = useState("");
 
   const [detailImage, setDetailImage] = useState<File | null>(null);
   const [detailImagePreview, setDetailImagePreview] = useState<string | null>(
@@ -74,6 +84,7 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
 
         setValue("name", a.name ?? "");
         setValue("slug", a.slug ?? "");
+        setSavedSlug(a.slug ?? "");
         setValue("designation", a.designation ?? "");
         setValue("linkedin", a.linkedin ?? "");
         setValue("description", a.description ?? "");
@@ -195,102 +206,122 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
   );
 
   return (
-    <form
-      className="flex flex-col gap-6 pb-20"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
-        {editMode ? "Edit Author" : "Add Author"}
-      </h1>
-
-      {/* DETAILS */}
-      <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <h2 className="font-semibold text-gray-700 dark:text-gray-300">
-          Author Details
-        </h2>
-        <div className="flex flex-col gap-2">
-          <Label content="Name" />
-          <input
-            {...register("name", { required: "Required" })}
-            className={inputClass}
-          />
-          {errors.name && (
-            <p className="text-sm text-red-500">{errors.name.message}</p>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="Slug" />
-          <input
-            {...register("slug")}
-            className={`${inputClass} cursor-not-allowed bg-gray-50`}
-            readOnly
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="Designation" />
-          <input
-            {...register("designation", { required: "Required" })}
-            className={inputClass}
-          />
-          {errors.designation && (
-            <p className="text-sm text-red-500">{errors.designation.message}</p>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="LinkedIn URL" />
-          <input
-            {...register("linkedin")}
-            placeholder="https://www.linkedin.com/in/..."
-            className={inputClass}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="Description" />
-          <textarea
-            {...register("description")}
-            rows={3}
-            placeholder="Short description shown alongside the author's name"
-            className={textareaClass}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="About" />
-          <textarea
-            {...register("about")}
-            rows={6}
-            placeholder="Longer bio shown on the author's page"
-            className={textareaClass}
-          />
-        </div>
-      </section>
-
-      {/* IMAGES */}
-      <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <h2 className="font-semibold text-gray-700 dark:text-gray-300">
-          Images
-        </h2>
-        <div className="grid grid-cols-2 gap-6">
-          <div className="flex flex-col gap-2">
-            <Label content="Detail Page Image" />
-            <ImageUploadZone
-              preview={detailImagePreview}
-              onClear={() => {
-                setDetailImagePreview(null);
-                setDetailImage(null);
-              }}
-              inputId="detailImage"
-              onChange={(e) =>
-                handleImageChange({
-                  e,
-                  setImageError: setDetailImageError,
-                  setImageFile: setDetailImage,
-                  setPreviewImage: setDetailImagePreview,
-                })
-              }
-              error={detailImageError}
-            />
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title={editMode ? "Edit Author" : "Add Author"}
+        description={
+          editMode
+            ? watch("name")
+            : "Fill in the author details below, then click Save."
+        }
+        actions={
+          <>
+            <AdminLinkButton
+              href="/admin/authors"
+              variant="secondary"
+              icon={<ArrowLeft className="size-4" />}
+            >
+              Back to list
+            </AdminLinkButton>
+            {/* Public site links authors as /author/${data.slug} (app/components/BlogSocialMedia/AuthorComponent.tsx:33) */}
+            {editMode && savedSlug && (
+              <ViewLiveLink
+                showLabel
+                href={`/author/${savedSlug}`}
+                className="h-10 border border-slate-300 px-4 text-sm"
+              />
+            )}
+          </>
+        }
+      />
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+        {/* DETAILS */}
+        <SectionCard title="Author Details">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <Label content="Name" />
+              <input
+                {...register("name", { required: "Required" })}
+                className={inputClass}
+              />
+              {errors.name && (
+                <p className="text-sm text-red-500">{errors.name.message}</p>
+              )}
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label content="Slug" />
+              <input
+                {...register("slug")}
+                className={`${inputClass} cursor-not-allowed bg-gray-50`}
+                readOnly
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label content="Designation" />
+              <input
+                {...register("designation", { required: "Required" })}
+                className={inputClass}
+              />
+              {errors.designation && (
+                <p className="text-sm text-red-500">
+                  {errors.designation.message}
+                </p>
+              )}
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label content="LinkedIn URL" />
+              <input
+                {...register("linkedin")}
+                placeholder="https://www.linkedin.com/in/..."
+                className={inputClass}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label content="Description" />
+              <textarea
+                {...register("description")}
+                rows={3}
+                placeholder="Short description shown alongside the author's name"
+                className={textareaClass}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label content="About" />
+              <textarea
+                {...register("about")}
+                rows={6}
+                placeholder="Longer bio shown on the author's page"
+                className={textareaClass}
+              />
+            </div>
           </div>
-          {/* <div className="flex flex-col gap-2">
+        </SectionCard>
+
+        {/* IMAGES */}
+        <SectionCard title="Images">
+          <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <Label content="Detail Page Image" />
+                <ImageUploadZone
+                  preview={detailImagePreview}
+                  onClear={() => {
+                    setDetailImagePreview(null);
+                    setDetailImage(null);
+                  }}
+                  inputId="detailImage"
+                  onChange={(e) =>
+                    handleImageChange({
+                      e,
+                      setImageError: setDetailImageError,
+                      setImageFile: setDetailImage,
+                      setPreviewImage: setDetailImagePreview,
+                    })
+                  }
+                  error={detailImageError}
+                />
+              </div>
+              {/* <div className="flex flex-col gap-2">
             <Label content="Blog Page Image" />
             <ImageUploadZone
               preview={blogImagePreview}
@@ -310,20 +341,25 @@ const AdminAuthorForm = ({ editMode }: { editMode?: boolean }) => {
               error={blogImageError}
             />
           </div> */}
-        </div>
-      </section>
+            </div>
+          </div>
+        </SectionCard>
 
-      {/* SUBMIT */}
-      <div className="z-9999 fixed bottom-5 right-20">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="rounded-full bg-black px-10 py-2 text-sm text-white hover:bg-opacity-80 disabled:opacity-60"
-        >
-          {isSubmitting ? "Saving..." : "Save"}
-        </button>
-      </div>
-    </form>
+        {/* SUBMIT */}
+        <div className="sticky bottom-4 z-10 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Save.
+          </p>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={adminButtonClass("dark", "md", "min-w-28")}
+          >
+            {isSubmitting ? "Saving..." : "Save"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

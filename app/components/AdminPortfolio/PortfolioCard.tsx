@@ -1,10 +1,11 @@
 import { Portfolio } from "@/app/types/Portfolio";
 import Link from "next/link";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { toast } from "sonner";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { MdDragIndicator, MdDelete } from "react-icons/md";
+import { MdDragIndicator, MdDelete, MdEdit } from "react-icons/md";
+import { ConfirmDialog, ViewLiveLink, portfolioLiveUrl } from "../AdminUI";
 
 const PortfolioCard = ({
   item,
@@ -25,6 +26,7 @@ const PortfolioCard = ({
     transition,
     isDragging,
   } = useSortable({ id });
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   const style = {
     transition,
@@ -65,23 +67,26 @@ const PortfolioCard = ({
         : "#"
     : "#";
 
+  const liveUrl = portfolioLiveUrl(item);
+
   return (
     <div
       ref={setNodeRef}
       style={style}
-      className={`group relative w-full rounded-xl border border-gray-200 bg-white shadow-sm transition-all dark:border-gray-700 dark:bg-gray-800 ${
+      className={`group relative w-full rounded-xl border border-slate-200 bg-white transition-all dark:border-slate-700 dark:bg-slate-800 ${
         isDragging
           ? "z-10 scale-[1.02] opacity-90 shadow-lg"
-          : "hover:shadow-md"
+          : "hover:border-slate-300 hover:shadow-md"
       }`}
     >
-      <div className="flex h-32 items-stretch">
+      <div className="flex h-28 items-stretch">
         {reorderMode && (
           <button
             {...attributes}
             {...listeners}
             type="button"
-            className="flex w-10 shrink-0 cursor-grab items-center justify-center rounded-l-xl bg-gray-50 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 active:cursor-grabbing dark:bg-gray-700/50 dark:hover:bg-gray-700"
+            aria-label="Drag to reorder"
+            className="flex w-10 shrink-0 cursor-grab items-center justify-center rounded-l-xl border-r border-slate-200 bg-slate-50 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 active:cursor-grabbing dark:border-slate-700 dark:bg-slate-700/50 dark:hover:bg-slate-700"
           >
             <MdDragIndicator className="text-xl" />
           </button>
@@ -89,11 +94,11 @@ const PortfolioCard = ({
 
         <Link
           href={href}
-          className={`flex flex-1 items-center overflow-hidden rounded-xl ${reorderMode ? "rounded-l-none" : ""} ${
+          className={`flex min-w-0 flex-1 items-center overflow-hidden rounded-xl ${reorderMode ? "rounded-l-none" : ""} ${
             reorderMode ? "pointer-events-none" : ""
           }`}
         >
-          <div className="h-full w-32 shrink-0 overflow-hidden md:w-48">
+          <div className="h-full w-32 shrink-0 overflow-hidden bg-slate-100 dark:bg-slate-700 md:w-44">
             <img
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               src={item.bannerImage ?? item.coverImage}
@@ -102,25 +107,60 @@ const PortfolioCard = ({
           </div>
 
           <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-5 py-4">
-            <h5 className="truncate text-lg font-semibold text-gray-900 dark:text-white">
+            <h5 className="truncate text-base font-semibold text-slate-900 dark:text-white">
               {title}
             </h5>
-            <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium capitalize text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
-              {item.section}
-            </span>
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
+              <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium capitalize text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
+                {item.section}
+              </span>
+              {liveUrl && (
+                <span className="truncate text-xs text-slate-400">
+                  {liveUrl}
+                </span>
+              )}
+            </div>
           </div>
         </Link>
+
+        {!reorderMode && (
+          <div className="flex shrink-0 items-center gap-1 border-l border-slate-200 px-3 dark:border-slate-700">
+            <ViewLiveLink href={liveUrl} />
+            {href !== "#" && (
+              <Link
+                href={href}
+                title="Edit"
+                aria-label="Edit"
+                className="inline-flex size-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+              >
+                <MdEdit className="text-base" />
+              </Link>
+            )}
+            <span className="mx-1 h-5 w-px bg-slate-200 dark:bg-slate-700" />
+            <button
+              type="button"
+              title="Delete"
+              aria-label="Delete"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setConfirmOpen(true);
+              }}
+              className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-500/10"
+            >
+              <MdDelete className="text-base" />
+            </button>
+          </div>
+        )}
       </div>
 
-      {!reorderMode && (
-        <button
-          type="button"
-          onClick={(e) => handlePortfolioDelete(e, item._id)}
-          className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-white text-gray-400 opacity-0 shadow-sm ring-1 ring-gray-200 transition-all hover:bg-red-50 hover:text-red-600 hover:ring-red-200 group-hover:opacity-100 dark:bg-gray-800 dark:ring-gray-600"
-        >
-          <MdDelete className="text-sm" />
-        </button>
-      )}
+      <ConfirmDialog
+        open={confirmOpen}
+        onOpenChange={setConfirmOpen}
+        title={`Delete "${title || "this item"}"?`}
+        description="This permanently removes it from the CMS and the live website. This action cannot be undone."
+        onConfirm={(e) => handlePortfolioDelete(e, item._id)}
+      />
     </div>
   );
 };

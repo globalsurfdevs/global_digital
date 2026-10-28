@@ -8,7 +8,14 @@ const Label = ({
   className?: string;
 }) => {
   return (
-    <label htmlFor="" className={className ? className : ""}>
+    <label
+      htmlFor=""
+      className={
+        className
+          ? className
+          : "text-sm font-medium text-slate-700 dark:text-slate-300"
+      }
+    >
       {content}
     </label>
   );

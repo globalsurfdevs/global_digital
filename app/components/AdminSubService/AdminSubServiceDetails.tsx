@@ -25,6 +25,13 @@ import { CSS } from "@dnd-kit/utilities";
 import { Textarea } from "@/components/ui/textarea";
 import { useParams } from "next/navigation";
 import { Portfolio } from "@/app/types/Portfolio";
+import { ArrowLeft } from "lucide-react";
+import {
+  AdminLinkButton,
+  PageHeader,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 type ServiceIndustry = {
   _id: string;
@@ -340,18 +347,22 @@ const IndiServicePage = () => {
 
   // Which top-level section accordion is open.
   const [openSection, setOpenSection] = useState<string | null>("");
+  // Slug as last loaded from the database, so "View live page" never points at an unsaved slug.
+  const [savedSlug, setSavedSlug] = useState("");
 
   const handleSaveService = async (data: ServiceFormProps) => {
     try {
-
-      console.log("sub service data :",data)
-      const response = await fetch(`/api/sub-service/${encodeURIComponent(slug)}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
+      console.log("sub service data :", data);
+      const response = await fetch(
+        `/api/sub-service/${encodeURIComponent(slug)}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
       if (response.ok) {
         const data = await response.json();
         alert(data.message);
@@ -366,6 +377,7 @@ const IndiServicePage = () => {
       const response = await fetch(`/api/sub-service?slug=${slug}`);
       if (response.ok) {
         const data = await response.json();
+        setSavedSlug(data.data?.slug || "");
         setValue("seo", data.data?.seo);
         setValue("firstSection", data.data?.firstSection);
         setValue("firstSection.items", data.data?.firstSection?.items ?? []);
@@ -474,9 +486,33 @@ const IndiServicePage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="Edit Sub-Service"
+        description="Open a section to edit its content, then click Submit to save."
+        actions={
+          <>
+            <AdminLinkButton
+              href="/admin/sub-services"
+              variant="secondary"
+              icon={<ArrowLeft className="size-4" />}
+            >
+              Back to list
+            </AdminLinkButton>
+            {/* Public URL: app/(user)/[slug]/page.tsx resolves sub-services by slug at /{slug}
+                (app/lib/routing/resolveSlug.ts); sitemap uses the same pattern (app/sitemap.xml/route.ts). */}
+            {savedSlug && (
+              <ViewLiveLink
+                showLabel
+                href={`/${encodeURIComponent(savedSlug)}`}
+                className="h-10 border border-slate-300 px-4 text-sm"
+              />
+            )}
+          </>
+        }
+      />
       <form
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-6"
         onSubmit={handleSubmit(handleSaveService)}
       >
         {/* ---------------- First Section ---------------- */}
@@ -2144,13 +2180,16 @@ const IndiServicePage = () => {
           errors={errors}
         />
 
-        <div className="flex">
-          <Button
+        <div className="sticky bottom-4 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Submit.
+          </p>
+          <button
             type="submit"
-            className="w-full cursor-pointer text-[16px] text-white"
+            className={adminButtonClass("dark", "md", "min-w-28")}
           >
             Submit
-          </Button>
+          </button>
         </div>
       </form>
     </div>

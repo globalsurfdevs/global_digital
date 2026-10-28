@@ -1,5 +1,6 @@
 "use client";
 
+import { LoadingState } from "@/app/components/AdminUI";
 import { useEffect, useState } from "react";
 import {
   DndContext,
@@ -17,6 +18,12 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { toast } from "sonner";
+import { ArrowUpDown, Check } from "lucide-react";
+import {
+  EmptyState,
+  SectionCard,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 interface Category {
   _id: string;
@@ -39,7 +46,7 @@ function CategoryRow({ category }: { category: Category }) {
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition }}
-      className={`flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3 ${
+      className={`flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-800 ${
         isDragging ? "opacity-50 shadow-lg" : ""
       }`}
     >
@@ -47,7 +54,7 @@ function CategoryRow({ category }: { category: Category }) {
       <button
         {...attributes}
         {...listeners}
-        className="cursor-grab text-gray-400 hover:text-gray-600 active:cursor-grabbing"
+        className="cursor-grab text-slate-400 hover:text-slate-600 active:cursor-grabbing dark:hover:text-slate-200"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
           <circle cx="5" cy="4" r="1.5" />
@@ -59,10 +66,10 @@ function CategoryRow({ category }: { category: Category }) {
         </svg>
       </button>
 
-      <span className="flex-1 text-sm font-medium text-gray-800">
+      <span className="flex-1 text-sm font-medium text-slate-800 dark:text-slate-100">
         {category.name}
       </span>
-      <span className="text-xs text-gray-400">{category.link}</span>
+      <span className="text-xs text-slate-400">{category.link}</span>
     </div>
   );
 }
@@ -75,6 +82,8 @@ export default function CategoryManager() {
 
   const sensors = useSensors(useSensor(PointerSensor));
 
+  // True until the first load finishes, so the empty message never shows while data is loading.
+  const [listLoading, setListLoading] = useState(true);
   useEffect(() => {
     fetch("/api/categories")
       .then((r) => r.json())
@@ -84,7 +93,8 @@ export default function CategoryManager() {
         );
         setCategories(sorted);
         setOriginal(sorted);
-      });
+      })
+      .finally(() => setListLoading(false));
   }, []);
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -130,40 +140,55 @@ export default function CategoryManager() {
   };
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-gray-900">Categories</h2>
-
-        <div className="flex gap-2">
-          {reorderMode ? (
-            <>
-              <button
-                onClick={handleCancel}
-                className="rounded-full border border-gray-300 px-4 py-1.5 text-sm text-gray-600 hover:bg-gray-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleConfirm}
-                disabled={saving}
-                className="rounded-full bg-black px-4 py-1.5 text-sm text-white disabled:opacity-50"
-              >
-                {saving ? "Saving…" : "Confirm Order"}
-              </button>
-            </>
-          ) : (
+    <SectionCard
+      title={
+        <span className="flex items-center gap-3">
+          Categories
+          <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+            {categories.length}
+          </span>
+        </span>
+      }
+      description={
+        reorderMode
+          ? "Drag items using the handle, then click Confirm Order to save."
+          : "Portfolio categories, in display order."
+      }
+      actions={
+        reorderMode ? (
+          <>
             <button
-              onClick={() => setReorderMode(true)}
-              className="rounded-full bg-primary px-4 py-1.5 text-sm text-white"
+              onClick={handleCancel}
+              className={adminButtonClass("secondary")}
             >
-              Reorder
+              Cancel
             </button>
-          )}
-        </div>
-      </div>
-
+            <button
+              onClick={handleConfirm}
+              disabled={saving}
+              className={adminButtonClass("dark")}
+            >
+              <Check className="size-4" />
+              {saving ? "Saving…" : "Confirm Order"}
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => setReorderMode(true)}
+            className={adminButtonClass("secondary")}
+          >
+            <ArrowUpDown className="size-4" />
+            Reorder
+          </button>
+        )
+      }
+    >
       {categories.length === 0 ? (
-        <p className="text-sm text-gray-400">No categories found.</p>
+        listLoading ? (
+          <LoadingState />
+        ) : (
+          <EmptyState title="No categories found." />
+        )
       ) : reorderMode ? (
         <DndContext
           sensors={sensors}
@@ -186,19 +211,19 @@ export default function CategoryManager() {
           {categories.map((cat, i) => (
             <div
               key={cat._id}
-              className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3"
+              className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 transition-colors hover:border-slate-300 dark:border-slate-700 dark:bg-slate-800"
             >
-              <span className="w-5 text-center text-xs text-gray-400">
+              <span className="w-5 text-center text-xs text-slate-400">
                 {i + 1}
               </span>
-              <span className="flex-1 text-sm font-medium text-gray-800">
+              <span className="flex-1 text-sm font-medium text-slate-800 dark:text-slate-100">
                 {cat.name}
               </span>
-              <span className="text-xs text-gray-400">{cat.link}</span>
+              <span className="text-xs text-slate-400">{cat.link}</span>
             </div>
           ))}
         </div>
       )}
-    </div>
+    </SectionCard>
   );
 }

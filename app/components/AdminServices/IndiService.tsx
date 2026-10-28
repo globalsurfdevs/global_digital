@@ -25,6 +25,13 @@ import { CSS } from "@dnd-kit/utilities";
 import { Textarea } from "@/components/ui/textarea";
 import { useParams } from "next/navigation";
 import { Portfolio } from "@/app/types/Portfolio";
+import { ArrowLeft } from "lucide-react";
+import {
+  AdminLinkButton,
+  PageHeader,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 type ServiceIndustry = {
   _id: string;
@@ -340,6 +347,8 @@ const IndiServicePage = () => {
 
   // Which top-level section accordion is open.
   const [openSection, setOpenSection] = useState<string | null>("");
+  // Slug as last loaded from the database, so "View live" never points at an unsaved slug.
+  const [savedSlug, setSavedSlug] = useState("");
 
   const handleAddService = async (data: ServiceFormProps) => {
     try {
@@ -364,6 +373,7 @@ const IndiServicePage = () => {
       const response = await fetch(`/api/service?slug=${slug}`);
       if (response.ok) {
         const data = await response.json();
+        setSavedSlug(data.data?.slug || "");
         setValue("seo", data.data?.seo);
         setValue("firstSection", data.data?.firstSection);
         setValue("firstSection.items", data.data?.firstSection?.items ?? []);
@@ -472,9 +482,38 @@ const IndiServicePage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
+    <div className="flex flex-col gap-6 pb-5">
+      <PageHeader
+        title="Edit Service Page"
+        description={
+          savedSlug
+            ? `/${savedSlug} — open a section below to edit it, then click Submit.`
+            : "Open a section below to edit it, then click Submit."
+        }
+        actions={
+          <>
+            <AdminLinkButton
+              href="/admin/services"
+              variant="secondary"
+              icon={<ArrowLeft className="size-4" />}
+            >
+              Back to list
+            </AdminLinkButton>
+            {/* Public URL: app/(user)/[slug]/page.tsx resolves /{slug} via resolveSlug -> getService
+                ({"items.slug": slug}); canonical is built the same way in
+                app/lib/metadata/buildServiceMetadata.ts (`https://www.globalsurf.ae/${slug}`). */}
+            {savedSlug && (
+              <ViewLiveLink
+                showLabel
+                href={`/${savedSlug}`}
+                className="h-10 border border-slate-300 px-4 text-sm"
+              />
+            )}
+          </>
+        }
+      />
       <form
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-6"
         onSubmit={handleSubmit(handleAddService)}
       >
         {/* ---------------- First Section ---------------- */}
@@ -540,7 +579,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -798,7 +837,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -970,7 +1009,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -1078,7 +1117,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -1237,7 +1276,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -1323,7 +1362,7 @@ const IndiServicePage = () => {
 
         {/* ---------------- Nineth Section ---------------- */}
         <AccordionSection
-          title="Nineth Section"
+          title="Ninth Section"
           sectionKey="ninethSection"
           openSection={openSection}
           setOpenSection={setOpenSection}
@@ -1355,7 +1394,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -1692,7 +1731,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -1811,7 +1850,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -2048,7 +2087,7 @@ const IndiServicePage = () => {
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -2142,10 +2181,13 @@ const IndiServicePage = () => {
           errors={errors}
         />
 
-        <div className="flex">
+        <div className="sticky bottom-4 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Submit.
+          </p>
           <Button
             type="submit"
-            className="w-full cursor-pointer text-[16px] text-white"
+            className={adminButtonClass("dark", "md", "min-w-28")}
           >
             Submit
           </Button>

@@ -22,7 +22,8 @@ const Label = React.forwardRef<
     className={cn(
       labelVariants(),
       className,
-      `${main ? `pl-5 ${isOpen == "open" ? "border-b" : ""} border-black/20 py-5 text-lg font-semibold` : "text-[16px] font-light"} ${oneInput ? "text-md font-semibold" : ""}`,
+      // Section headers get a divider unless they are a collapsed accordion (isOpen === "").
+      `${main ? `px-5 ${isOpen === "open" || isOpen === undefined ? "border-b" : ""} border-slate-200 py-4 text-base font-semibold text-slate-900 dark:border-slate-700 dark:text-white` : "text-sm font-medium text-slate-700 dark:text-slate-300"} ${oneInput ? "text-md font-semibold" : ""}`,
     )}
     {...props}
   />

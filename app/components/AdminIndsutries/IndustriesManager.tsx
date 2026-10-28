@@ -93,10 +93,16 @@
 
 "use client";
 
+import { LoadingState } from "@/app/components/AdminUI";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { IoIosClose } from "react-icons/io";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import {
+  EmptyState,
+  SectionCard,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 type SubCategory = { _id: string; name: string };
 type Category = { _id: string; name: string; subCategories: SubCategory[] };
@@ -109,6 +115,8 @@ const IndustryManager = () => {
   const [loading, setLoading] = useState(false);
   const [refetch, setRefetch] = useState(false);
 
+  // True until the first load finishes, so the empty message never shows while data is loading.
+  const [listLoading, setListLoading] = useState(true);
   useEffect(() => {
     const load = async () => {
       try {
@@ -119,7 +127,7 @@ const IndustryManager = () => {
         console.error(e);
       }
     };
-    load();
+    load().finally(() => setListLoading(false));
   }, [refetch]);
 
   const refresh = () => setRefetch((p) => !p);
@@ -187,9 +195,11 @@ const IndustryManager = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 rounded-xl border p-5">
-      <h2 className="text-xl font-semibold">Manage Porfolio Industries</h2>
-
+    <SectionCard
+      title="Manage Portfolio Industries"
+      description="Industry categories and their sub-categories. Click a category to expand it."
+      bodyClassName="flex flex-col gap-5"
+    >
       <div className="flex gap-2">
         <input
           type="text"
@@ -197,58 +207,66 @@ const IndustryManager = () => {
           onChange={(e) => setNewCategory(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleAddCategory()}
           placeholder="e.g. Healthcare"
-          className="flex-1 rounded-md border border-gray-300 bg-transparent py-1.5 pl-4 text-sm text-black focus:outline-none"
+          className="h-10 flex-1 rounded-lg border border-slate-300 bg-transparent pl-4 text-sm text-black focus:border-slate-500 focus:outline-none dark:border-slate-600 dark:text-white"
         />
         <button
           onClick={handleAddCategory}
           disabled={loading}
-          className="rounded-full bg-black px-5 py-1.5 text-sm text-white"
+          className={adminButtonClass("dark")}
         >
-          {loading ? "Adding..." : "Add Category"}
+          {loading ? "Adding..." : "Add Industry"}
         </button>
       </div>
 
       <div className="flex flex-col gap-3">
-        {categories.length === 0 && (
-          <p className="text-sm text-gray-400">No categories yet.</p>
-        )}
+        {categories.length === 0 &&
+          (listLoading ? (
+            <LoadingState />
+          ) : (
+            <EmptyState title="No categories yet." />
+          ))}
         {categories.map((cat) => (
-          <div key={cat._id} className="overflow-hidden rounded-xl border">
-            <div className="flex items-center justify-between bg-gray-50 px-4 py-3">
+          <div
+            key={cat._id}
+            className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700"
+          >
+            <div className="flex items-center justify-between bg-slate-50 px-4 py-3 dark:bg-slate-900/40">
               <button
                 className="flex flex-1 items-center gap-2 text-left"
                 onClick={() => toggleExpand(cat._id)}
               >
-                <span className="text-sm font-medium">{cat.name}</span>
-                <span className="text-xs text-gray-400">
+                <span className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                  {cat.name}
+                </span>
+                <span className="text-xs text-slate-400">
                   ({cat.subCategories?.length ?? 0})
                 </span>
                 {expanded[cat._id] ? (
-                  <IoChevronUp className="ml-auto text-gray-400" />
+                  <IoChevronUp className="ml-auto text-slate-400" />
                 ) : (
-                  <IoChevronDown className="ml-auto text-gray-400" />
+                  <IoChevronDown className="ml-auto text-slate-400" />
                 )}
               </button>
               <button
                 onClick={() => handleDeleteCategory(cat._id)}
-                className="ml-3 text-red-500 hover:text-red-700"
+                className="ml-3 rounded-lg text-red-500 transition-colors hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-500/10"
               >
                 <IoIosClose className="text-2xl" />
               </button>
             </div>
 
             {expanded[cat._id] && (
-              <div className="flex flex-col gap-3 bg-white px-4 py-3">
+              <div className="flex flex-col gap-3 border-t border-slate-200 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-800">
                 <div className="flex flex-wrap gap-2">
                   {(cat.subCategories?.length ?? 0) === 0 && (
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-slate-400">
                       No sub-categories yet.
                     </p>
                   )}
                   {cat.subCategories?.map((sub) => (
                     <div
                       key={sub._id}
-                      className="flex items-center gap-1 rounded-full border bg-gray-100 px-3 py-1 text-xs"
+                      className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs text-slate-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
                     >
                       <span>{sub.name}</span>
                       <button onClick={() => handleDeleteSub(cat._id, sub._id)}>
@@ -271,11 +289,11 @@ const IndustryManager = () => {
                       e.key === "Enter" && handleAddSub(cat._id)
                     }
                     placeholder="Add sub-category..."
-                    className="flex-1 rounded-md border border-gray-300 bg-transparent py-1 pl-3 text-xs text-black focus:outline-none"
+                    className="h-8 flex-1 rounded-lg border border-slate-300 bg-transparent pl-3 text-xs text-black focus:border-slate-500 focus:outline-none dark:border-slate-600 dark:text-white"
                   />
                   <button
                     onClick={() => handleAddSub(cat._id)}
-                    className="rounded-full bg-black px-4 py-1 text-xs text-white"
+                    className={adminButtonClass("dark", "sm")}
                   >
                     Add
                   </button>
@@ -285,7 +303,7 @@ const IndustryManager = () => {
           </div>
         ))}
       </div>
-    </div>
+    </SectionCard>
   );
 };
 
