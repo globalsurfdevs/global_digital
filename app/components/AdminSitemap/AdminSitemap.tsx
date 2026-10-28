@@ -2,8 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import AdminItemContainer from "@/app/components/common/AdminItemContainer";
+import { ExternalLink } from "lucide-react";
+import {
+  PageHeader,
+  SectionCard,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 interface SitemapBackupInfo {
   fileName: string;
@@ -97,59 +101,72 @@ const SitemapPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
-      <AdminItemContainer>
-        <Label main>Sitemap</Label>
-        <div className="flex flex-col gap-4 p-5">
-          <p className="text-sm text-gray-600">
-            The generated sitemap remains primary. This uploaded XML is used
-            only if dynamic generation fails; any priority values in it are
-            preserved.
-          </p>
+    <div className="flex flex-col gap-6 pb-5">
+      <PageHeader
+        title="Sitemap"
+        description="The generated sitemap remains primary. This uploaded XML is used only if dynamic generation fails; any priority values in it are preserved."
+        actions={
           <a
             href="/sitemap.xml"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-fit text-sm text-blue-600 underline"
+            className={adminButtonClass("secondary")}
           >
+            <ExternalLink className="size-4" />
             View live sitemap
           </a>
+        }
+      />
 
-          {loading ? (
-            <p className="text-sm text-gray-500">Loading backup status...</p>
-          ) : backup ? (
-            <div className="flex flex-col gap-3 rounded-md border border-black/20 p-4">
-              <div className="text-sm">
-                <p className="font-semibold">{backup.fileName}</p>
-                <p className="text-gray-500">
-                  {backup.urlCount} URLs · {backup.priorityCount} priority
-                  values · Updated {new Date(backup.updatedAt).toLocaleString()}
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="/api/sitemap/backup?download=1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-blue-600 underline"
-                >
-                  View backup XML
-                </a>
-                <button
-                  type="button"
-                  onClick={removeBackup}
-                  disabled={busy}
-                  className="text-sm text-red-600 underline disabled:opacity-50"
-                >
-                  Remove backup
-                </button>
-              </div>
+      <SectionCard
+        title="Current XML backup"
+        description="Fallback file served when dynamic generation fails."
+      >
+        {loading ? (
+          <p className="text-sm text-slate-500">Loading backup status...</p>
+        ) : backup ? (
+          <div className="flex flex-col gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/40">
+            <div className="text-sm">
+              <p className="font-semibold text-slate-900 dark:text-white">
+                {backup.fileName}
+              </p>
+              <p className="text-slate-500 dark:text-slate-400">
+                {backup.urlCount} URLs · {backup.priorityCount} priority values
+                · Updated {new Date(backup.updatedAt).toLocaleString()}
+              </p>
             </div>
-          ) : (
-            <p className="text-sm text-gray-600">No XML backup uploaded.</p>
-          )}
+            <div className="flex flex-wrap gap-2">
+              <a
+                href="/api/sitemap/backup?download=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={adminButtonClass("secondary", "sm")}
+              >
+                View backup XML
+              </a>
+              <button
+                type="button"
+                onClick={removeBackup}
+                disabled={busy}
+                className={adminButtonClass("danger", "sm")}
+              >
+                Remove backup
+              </button>
+            </div>
+          </div>
+        ) : (
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            No XML backup uploaded.
+          </p>
+        )}
+      </SectionCard>
 
-          <div className="flex flex-col items-start gap-3 rounded-md border border-dashed border-black/20 p-4">
+      <SectionCard
+        title={backup ? "Replace XML backup" : "Upload XML backup"}
+        description="Choose a .xml sitemap file, then upload it."
+      >
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col items-start gap-3 rounded-lg border border-dashed border-slate-300 p-4 dark:border-slate-600">
             <input
               type="file"
               accept=".xml,application/xml,text/xml"
@@ -164,7 +181,7 @@ const SitemapPage = () => {
               type="button"
               disabled={!file || busy}
               onClick={uploadBackup}
-              className="w-fit text-white"
+              className={adminButtonClass("dark", "md", "w-fit")}
             >
               {busy
                 ? "Saving..."
@@ -177,7 +194,7 @@ const SitemapPage = () => {
           {message && <p className="text-sm text-green-700">{message}</p>}
           {error && <p className="text-sm text-red-600">{error}</p>}
         </div>
-      </AdminItemContainer>
+      </SectionCard>
     </div>
   );
 };

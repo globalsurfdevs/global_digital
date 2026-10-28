@@ -1,69 +1,99 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import SidebarDropdown from "@/app/components/Sidebar/SidebarDropdown";
-import { usePathname } from "next/navigation";
 
-const SidebarItem = ({ item, pageName, setPageName }: any) => {
+const SidebarItem = ({ item, pageName, setPageName, activeRoute }: any) => {
+  const key = item.label.toLowerCase();
+  const hasChildren = Boolean(item.children);
+  const isOpen = pageName === key;
+
   const handleClick = () => {
-    const updatedPageName =
-      pageName !== item.label.toLowerCase() ? item.label.toLowerCase() : "";
+    const updatedPageName = pageName !== key ? key : "";
     return setPageName(updatedPageName);
   };
 
-  const pathname = usePathname();
+  const isItemActive = hasChildren
+    ? item.children.some((child: any) => child.route === activeRoute)
+    : item.route === activeRoute;
 
-  const isActive = (item: any) => {
-    if (item.route === pathname) return true;
-    if (item.children) {
-      return item.children.some((child: any) => isActive(child));
-    }
-    return false;
-  };
+  // Open the group that contains the current page after navigating or reloading.
+  // Runs only when the route changes, so a group the user collapses stays collapsed.
+  useEffect(() => {
+    if (hasChildren && isItemActive && pageName !== key) setPageName(key);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeRoute]);
 
-  const isItemActive = isActive(item);
+  const rowClass = `group relative flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors duration-200 ${
+    isItemActive
+      ? hasChildren
+        ? "font-semibold text-white"
+        : "bg-white/10 font-semibold text-white"
+      : "font-medium text-slate-400 hover:bg-white/5 hover:text-white"
+  }`;
+
+  const content = (
+    <>
+      {isItemActive && !hasChildren && (
+        <span
+          className="absolute inset-y-2 left-0 w-1 rounded-r-full bg-primary"
+          aria-hidden
+        />
+      )}
+      <span
+        className={`flex size-5 shrink-0 items-center justify-center text-lg [&>svg]:size-[18px] ${
+          isItemActive ? "text-primary" : ""
+        }`}
+      >
+        {item.icon}
+      </span>
+      <span className="flex-1 truncate">{item.label}</span>
+      {hasChildren && (
+        <ChevronDown
+          className={`size-4 shrink-0 transition-transform duration-300 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+          aria-hidden
+        />
+      )}
+    </>
+  );
 
   return (
-    <>
-      <li>
+    <li>
+      {hasChildren ? (
+        <button
+          type="button"
+          onClick={handleClick}
+          aria-expanded={isOpen}
+          className={rowClass}
+        >
+          {content}
+        </button>
+      ) : (
         <Link
           href={item.route}
           onClick={handleClick}
-          className={`${isItemActive ? "font-extrabold" : "font-medium"} text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex  items-center  gap-2.5 rounded-sm py-2 duration-300 ease-in-out`}
+          aria-current={isItemActive ? "page" : undefined}
+          className={rowClass}
         >
-          {item.icon}
-          {item.label}
-          {item.children && (
-            <svg
-              className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
-                pageName === item.label.toLowerCase() && "rotate-180"
-              }`}
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
-                fill=""
-              />
-            </svg>
-          )}
+          {content}
         </Link>
+      )}
 
-        {item.children && (
-          <div
-            className={`translate transform overflow-hidden ${
-              pageName !== item.label.toLowerCase() && "hidden"
-            }`}
-          >
-            <SidebarDropdown item={item.children} />
+      {hasChildren && (
+        // Animates height smoothly by transitioning the grid row from 0fr to 1fr.
+        <div
+          className={`grid transition-[grid-template-rows,visibility] duration-300 ease-in-out ${
+            isOpen ? "visible grid-rows-[1fr]" : "invisible grid-rows-[0fr]"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <SidebarDropdown item={item.children} activeRoute={activeRoute} />
           </div>
-        )}
-      </li>
-    </>
+        </div>
+      )}
+    </li>
   );
 };
 

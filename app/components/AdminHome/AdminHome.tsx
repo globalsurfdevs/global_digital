@@ -28,6 +28,11 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  PageHeader,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 export interface HomeFormProps {
   seo: SeoFormValues;
@@ -247,9 +252,21 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="Home Page"
+        description="Expand a section to edit it. Changes are saved only when you click Submit."
+        actions={
+          // Public home page lives at / (app/(user)/page.tsx)
+          <ViewLiveLink
+            showLabel
+            href="/"
+            className="h-10 border border-slate-300 px-4 text-sm"
+          />
+        }
+      />
       <form
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-6"
         onSubmit={handleSubmit(handleAddHome)}
       >
         {/* ---------------- Client Section ---------------- */}
@@ -876,13 +893,16 @@ const HomePage = () => {
           errors={errors}
         />
 
-        <div className="flex">
-          <Button
+        <div className="sticky bottom-4 z-10 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Submit.
+          </p>
+          <button
             type="submit"
-            className="w-full cursor-pointer text-[16px] text-white"
+            className={adminButtonClass("dark", "md", "min-w-28")}
           >
             Submit
-          </Button>
+          </button>
         </div>
       </form>
     </div>

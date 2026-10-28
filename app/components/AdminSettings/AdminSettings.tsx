@@ -6,13 +6,79 @@ import {
   checkOtp,
 } from "@/app/actions/otpActions";
 import { updateHrPassword } from "@/app/actions/otpActions";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { signOutAdmin } from "@/app/actions/authActions";
+import { Check, Eye, EyeOff, KeyRound, Mail, ShieldCheck } from "lucide-react";
+import {
+  PageHeader,
+  SectionCard,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
-const items = ["Change password", "Trash", "Settings"];
 type OtpState = { [key: number]: string };
+
+const inputClass =
+  "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm transition placeholder:text-slate-400 hover:border-slate-400 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200";
+const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
+const hintClass = "mt-1.5 text-xs text-slate-500";
+
+/** Password input with a show/hide toggle. Passwords are masked by default. */
+const PasswordField = ({
+  label,
+  value,
+  onChange,
+  autoComplete,
+}: {
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  autoComplete: string;
+}) => {
+  const [visible, setVisible] = useState(false);
+  return (
+    <div>
+      <label className={labelClass}>{label}</label>
+      <div className="relative">
+        <input
+          type={visible ? "text" : "password"}
+          value={value}
+          onChange={onChange}
+          autoComplete={autoComplete}
+          className={`${inputClass} pr-10`}
+        />
+        <button
+          type="button"
+          onClick={() => setVisible((v) => !v)}
+          aria-label={visible ? "Hide password" : "Show password"}
+          className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-slate-400 hover:text-slate-700"
+        >
+          {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const Message = ({
+  text,
+  tone = "error",
+}: {
+  text: string;
+  tone?: "error" | "info";
+}) =>
+  text ? (
+    <p
+      className={`rounded-lg px-3 py-2 text-sm ${
+        tone === "error"
+          ? "bg-red-50 text-red-700"
+          : "bg-slate-100 text-slate-700"
+      }`}
+    >
+      {text}
+    </p>
+  ) : null;
 
 const AdminSettings = () => {
   const [otpSection, setOtpSection] = useState(false);
@@ -33,7 +99,8 @@ const AdminSettings = () => {
   const [toEmailCareer, setToEmailCareer] = useState("");
   const [toEmailContact, setToEmailContact] = useState("");
   const [toEmailBooking, setToEmailBooking] = useState("");
-
+  const [emailSaving, setEmailSaving] = useState(false);
+  const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   // HR password reset state
   const [hrNewPass, setHrNewPass] = useState("");
@@ -63,7 +130,7 @@ const AdminSettings = () => {
         setToEmailBooking(data.data.toEmailBooking);
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error fetching details", error);
@@ -149,6 +216,7 @@ const AdminSettings = () => {
   };
 
   const EmailSectionSubmit = async () => {
+    setEmailSaving(true);
     try {
       const response = await fetch("/api/emails", {
         method: "PATCH",
@@ -156,13 +224,15 @@ const AdminSettings = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        toast.success(data.message);
       } else {
         const data = await response.json();
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
       console.log("Error saving details", error);
+    } finally {
+      setEmailSaving(false);
     }
   };
 
@@ -170,241 +240,269 @@ const AdminSettings = () => {
     fetchEmails();
   }, []);
 
+  // Password change is a three-step flow: current password → emailed code → new password.
+  const step = newPassSection ? 3 : otpSection ? 2 : 1;
+  const steps = ["Current password", "Verification code", "New password"];
+
+  const submitStep = (e: React.FormEvent) => {
+    // Enter key runs the current step instead of reloading the page.
+    e.preventDefault();
+    if (step === 1) handleCurrentPassCheck();
+    else if (step === 2) handleOptCheckAndPass();
+    else handlePasswordChange();
+  };
+
   return (
-    <div>
-      <h1 className="text-2xl">Admin Settings</h1>
-      <div className="mt-10 grid grid-cols-1 gap-5">
-        <div className="grid grid-cols-2">
-          <div className="relative flex flex-col rounded-xl bg-transparent">
-            <h4 className="block text-xl font-medium text-slate-800">
-              Change Password
-            </h4>
-            <p className="font-light text-slate-500">
-              Change your password here. After saving, you'll be logged out.
-            </p>
-            <p className="text-red-600">{error}</p>
-            {!newPassSection ? (
-              <form className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96">
-                <div className="mb-1 flex flex-col gap-6">
-                  <div className="w-full min-w-[200px] max-w-sm">
-                    <label className="mb-2 block text-sm text-slate-600">
-                      Type in the current password
-                    </label>
-                    <input
-                      type="text"
-                      value={oldPass}
-                      onChange={(e) => setOldPass(e.target.value)}
-                      className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                    />
-                    <p className="text-red-600">{currentPassError}</p>
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="Account Settings"
+        description={
+          session?.user?.email
+            ? `Signed in as ${session.user.email}${role ? ` · ${role}` : ""}`
+            : "Account security and the inboxes that receive website form submissions."
+        }
+      />
+
+      {/* SECURITY */}
+      <SectionCard
+        title={
+          <span className="flex items-center gap-2">
+            <KeyRound className="size-4 text-slate-500" /> Change password
+          </span>
+        }
+        description="For security, we confirm your current password and send a code to your email. You will be signed out after saving."
+      >
+        <ol className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+          {steps.map((label, i) => {
+            const n = i + 1;
+            const done = n < step;
+            const current = n === step;
+            return (
+              <li key={label} className="flex items-center gap-3">
+                <span className="flex items-center gap-2">
+                  <span
+                    className={`flex size-6 items-center justify-center rounded-full text-xs font-semibold ${
+                      done
+                        ? "bg-emerald-600 text-white"
+                        : current
+                          ? "bg-slate-900 text-white"
+                          : "bg-slate-100 text-slate-500"
+                    }`}
+                  >
+                    {done ? <Check className="size-3.5" /> : n}
+                  </span>
+                  <span
+                    className={`text-sm ${
+                      current
+                        ? "font-semibold text-slate-900"
+                        : "text-slate-500"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                </span>
+                {n < steps.length && (
+                  <span className="h-px w-8 bg-slate-200" aria-hidden />
+                )}
+              </li>
+            );
+          })}
+        </ol>
+
+        <form onSubmit={submitStep} className="flex max-w-md flex-col gap-5">
+          <Message text={error} />
+          {!newPassSection ? (
+            <>
+              <div>
+                <PasswordField
+                  label="Current password"
+                  value={oldPass}
+                  onChange={(e) => setOldPass(e.target.value)}
+                  autoComplete="current-password"
+                />
+                {currentPassError && (
+                  <p className="mt-1.5 text-sm text-red-600">
+                    {currentPassError}
+                  </p>
+                )}
+              </div>
+              {otpSection && (
+                <div>
+                  <label className={labelClass}>
+                    Verification code sent to your email
+                  </label>
+                  <div className="flex gap-2">
+                    {Array.from({ length: 5 }).map((item, index) => (
+                      <input
+                        key={index}
+                        ref={(el) => {
+                          otpRefs.current[index] = el;
+                        }}
+                        type="text"
+                        inputMode="numeric"
+                        value={otp[index]}
+                        onChange={(e) => {
+                          handleChange(index, e.target.value);
+                          // Move to the next box once a digit is entered.
+                          if (/^\d$/.test(e.target.value))
+                            otpRefs.current[index + 1]?.focus();
+                        }}
+                        className="size-12 rounded-lg border border-slate-300 bg-white text-center text-lg font-semibold text-slate-900 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+                        pattern="\d*"
+                        maxLength={1}
+                        aria-label={`Digit ${index + 1}`}
+                      />
+                    ))}
                   </div>
-                  {otpSection && (
-                    <div className="w-full min-w-[200px] max-w-sm">
-                      <label className="mb-2 block text-sm text-slate-600">
-                        Enter the OTP send to the mail address
-                      </label>
-                      <div className="flex items-center justify-between gap-3 bg-slate-200 p-2 px-8">
-                        {Array.from({ length: 5 }).map((item, index) => (
-                          <input
-                            key={index}
-                            type="text"
-                            value={otp[index]}
-                            onChange={(e) =>
-                              handleChange(index, e.target.value)
-                            }
-                            className="h-10 w-full appearance-none rounded border border-transparent bg-slate-100 p-4 text-center text-sm font-extrabold text-slate-900 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                            pattern="\d*"
-                            maxLength={1}
-                          />
-                        ))}
-                      </div>
-                      <p>{otpError}</p>
+                  {otpError && (
+                    <div className="mt-3">
+                      <Message text={otpError} tone="info" />
                     </div>
                   )}
                 </div>
+              )}
+              <div>
                 <button
-                  className="mt-4 w-full rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                  type="button"
-                  onClick={
-                    otpSection ? handleOptCheckAndPass : handleCurrentPassCheck
-                  }
+                  className={adminButtonClass("dark", "md", "min-w-40")}
+                  type="submit"
                 >
-                  Enter new password -&gt;
+                  {otpSection ? "Verify code" : "Continue"}
                 </button>
-              </form>
-            ) : (
-              <form className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96">
-                <div className="mb-1 flex flex-col gap-6">
-                  <div className="w-full min-w-[200px] max-w-sm">
-                    <label className="mb-2 block text-sm text-slate-600">
-                      Type in the new password
-                    </label>
-                    <input
-                      type="text"
-                      value={newPass}
-                      onChange={(e) => setNewPass(e.target.value)}
-                      className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                    />
-                  </div>
-                  <div className="w-full min-w-[200px] max-w-sm">
-                    <label className="mb-2 block text-sm text-slate-600">
-                      Retype the password again
-                    </label>
-                    <input
-                      type="text"
-                      value={cPass}
-                      onChange={(e) => setCPass(e.target.value)}
-                      className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                    />
-                  </div>
-                </div>
-                <button
-                  className="mt-4 w-full rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                  type="button"
-                  onClick={handlePasswordChange}
-                >
-                  Save -&gt;
-                </button>
-              </form>
-            )}
-          </div>
-
-          <div className="relative flex flex-col rounded-xl bg-transparent">
-            <h4 className="block text-xl font-medium text-slate-800">
-              Email Section
-            </h4>
-            <p className="font-light text-slate-500">
-              Edit the emails to connect to the forms present in the website
-            </p>
-            <form className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96">
-              <div className="mb-1 flex flex-col gap-6">
-                <div className="w-full min-w-[200px] max-w-sm">
-                  <label className="mb-2 block text-sm text-slate-600">
-                    To Email Career
-                  </label>
-                  <input
-                    type="text"
-                    value={toEmailCareer}
-                    onChange={(e) => setToEmailCareer(e.target.value)}
-                    className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                  />
-                </div>
-                <div className="w-full min-w-[200px] max-w-sm">
-                  <label className="mb-2 block text-sm text-slate-600">
-                    To Email Contact
-                  </label>
-                  <input
-                    type="text"
-                    value={toEmailContact}
-                    onChange={(e) => setToEmailContact(e.target.value)}
-                    className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                  />
-                </div>
-                <div className="w-full min-w-[200px] max-w-sm">
-                  <label className="mb-2 block text-sm text-slate-600">
-                    To Email Booking
-                  </label>
-                  <input
-                    type="text"
-                    value={toEmailBooking}
-                    onChange={(e) => setToEmailBooking(e.target.value)}
-                    className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                  />
-                </div>
               </div>
-              <button
-                className="mt-4 w-full rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button"
-                onClick={EmailSectionSubmit}
-              >
-                Save -&gt;
-              </button>
-            </form>
-            {/* To Email Booking */}
-            <form className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96">
-              <div className="mb-1 flex flex-col gap-6">
-                <div className="w-full min-w-[200px] max-w-sm">
-                  <label className="mb-2 block text-sm text-slate-600">
-                    To Email Booking
-                  </label>
-                  <input
-                    type="text"
-                    value={toEmailBooking}
-                    onChange={(e) => setToEmailBooking(e.target.value)}
-                    className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                  />
-                </div>
-                <div className="w-full min-w-[200px] max-w-sm">
-                  <label className="mb-2 block text-sm text-slate-600">
-                    To Email Contact
-                  </label>
-                  <input
-                    type="text"
-                    value={toEmailContact}
-                    onChange={(e) => setToEmailContact(e.target.value)}
-                    className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                  />
-                </div>
-              </div>
-              <button
-                className="mt-4 w-full rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button"
-                onClick={EmailSectionSubmit}
-              >
-                Save -&gt;
-              </button>
-            </form>
-          </div>
-      
-          {/* HR password reset — admin only */}
-          {role === "admin" && (
-            <div className="relative flex flex-col rounded-xl bg-transparent">
-              <h4 className="block text-xl font-medium text-slate-800">
-                Update HR Password
-              </h4>
-              <p className="font-light text-slate-500">
-                Reset the HR account's password. This does not require the
-                current password.
-              </p>
-              <p className="text-red-600">{hrError}</p>
-              <form className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96">
-                <div className="mb-1 flex flex-col gap-6">
-                  <div className="w-full min-w-[200px] max-w-sm">
-                    <label className="mb-2 block text-sm text-slate-600">
-                      New password for HR
-                    </label>
-                    <input
-                      type="text"
-                      value={hrNewPass}
-                      onChange={(e) => setHrNewPass(e.target.value)}
-                      className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                    />
-                  </div>
-                  <div className="w-full min-w-[200px] max-w-sm">
-                    <label className="mb-2 block text-sm text-slate-600">
-                      Retype the password
-                    </label>
-                    <input
-                      type="text"
-                      value={hrCPass}
-                      onChange={(e) => setHrCPass(e.target.value)}
-                      className="ease w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:shadow focus:outline-none"
-                    />
-                  </div>
-                </div>
+            </>
+          ) : (
+            <>
+              <PasswordField
+                label="New password"
+                value={newPass}
+                onChange={(e) => setNewPass(e.target.value)}
+                autoComplete="new-password"
+              />
+              <PasswordField
+                label="Confirm new password"
+                value={cPass}
+                onChange={(e) => setCPass(e.target.value)}
+                autoComplete="new-password"
+              />
+              <div>
                 <button
-                  className="mt-4 w-full rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                  type="button"
-                  disabled={hrUpdating}
-                  onClick={handleHrPasswordChange}
+                  className={adminButtonClass("dark", "md", "min-w-40")}
+                  type="submit"
                 >
-                  {hrUpdating ? "Updating..." : "Save ->"}
+                  Save new password
                 </button>
-              </form>
-            </div>
+              </div>
+            </>
           )}
-        </div>
-      </div>
+        </form>
+      </SectionCard>
+
+      {/* FORM EMAIL ROUTING */}
+      <SectionCard
+        title={
+          <span className="flex items-center gap-2">
+            <Mail className="size-4 text-slate-500" /> Form notification emails
+          </span>
+        }
+        description="Where submissions from the website forms are delivered."
+      >
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            EmailSectionSubmit();
+          }}
+          className="flex flex-col gap-5"
+        >
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            <div>
+              <label className={labelClass}>Careers</label>
+              <input
+                type="text"
+                inputMode="email"
+                value={toEmailCareer}
+                onChange={(e) => setToEmailCareer(e.target.value)}
+                className={inputClass}
+              />
+              <p className={hintClass}>Receives job applications.</p>
+            </div>
+            <div>
+              <label className={labelClass}>Contact</label>
+              <input
+                type="text"
+                inputMode="email"
+                value={toEmailContact}
+                onChange={(e) => setToEmailContact(e.target.value)}
+                className={inputClass}
+              />
+              <p className={hintClass}>Receives contact form enquiries.</p>
+            </div>
+            <div>
+              <label className={labelClass}>Booking</label>
+              <input
+                type="text"
+                inputMode="email"
+                value={toEmailBooking}
+                onChange={(e) => setToEmailBooking(e.target.value)}
+                className={inputClass}
+              />
+              <p className={hintClass}>Receives booking requests.</p>
+            </div>
+          </div>
+          <div className="flex justify-end border-t border-slate-200 pt-4">
+            <button
+              className={adminButtonClass("dark", "md", "min-w-32")}
+              type="submit"
+              disabled={emailSaving}
+            >
+              {emailSaving ? "Saving..." : "Save emails"}
+            </button>
+          </div>
+        </form>
+      </SectionCard>
+
+      {/* HR password reset — admin only */}
+      {role === "admin" && (
+        <SectionCard
+          title={
+            <span className="flex items-center gap-2">
+              <ShieldCheck className="size-4 text-slate-500" /> HR account
+              password
+            </span>
+          }
+          description="Reset the HR account's password. The current HR password is not required."
+        >
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleHrPasswordChange();
+            }}
+            className="flex max-w-md flex-col gap-5"
+          >
+            <Message text={hrError} />
+            <PasswordField
+              label="New HR password"
+              value={hrNewPass}
+              onChange={(e) => setHrNewPass(e.target.value)}
+              autoComplete="new-password"
+            />
+            <PasswordField
+              label="Confirm new HR password"
+              value={hrCPass}
+              onChange={(e) => setHrCPass(e.target.value)}
+              autoComplete="new-password"
+            />
+            <div>
+              <button
+                className={adminButtonClass("dark", "md", "min-w-40")}
+                type="submit"
+                disabled={hrUpdating}
+              >
+                {hrUpdating ? "Updating..." : "Update HR password"}
+              </button>
+            </div>
+          </form>
+        </SectionCard>
+      )}
     </div>
   );
 };

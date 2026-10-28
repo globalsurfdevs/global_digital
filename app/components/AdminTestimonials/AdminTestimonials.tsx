@@ -26,6 +26,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Textarea } from "@/components/ui/textarea";
+import { PageHeader, adminButtonClass } from "@/app/components/AdminUI";
 
 export interface TestimonialsPageFormProps {
   testimonialSection: {
@@ -107,9 +108,9 @@ const SortableItem = ({
         style={style}
         {...attributes}
         {...listeners}
-        className="flex cursor-grab touch-none items-center gap-2 rounded-md border border-black/20 bg-white px-3 py-2"
+        className="flex cursor-grab touch-none items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 hover:border-slate-300 dark:border-slate-700 dark:bg-slate-800"
       >
-        <RxDragHandleDots2 className="flex-shrink-0 text-xl text-gray-500" />
+        <RxDragHandleDots2 className="flex-shrink-0 text-xl text-slate-400" />
         {children}
       </div>
     );
@@ -119,7 +120,7 @@ const SortableItem = ({
     <div
       ref={setNodeRef}
       style={style}
-      className="relative grid grid-cols-2 gap-2 border-b border-black/20 bg-white pb-5 last:border-b-0"
+      className="relative grid grid-cols-2 gap-4 rounded-lg border border-slate-200 bg-white p-4 pt-8 dark:border-slate-700 dark:bg-slate-800"
     >
       {children}
     </div>
@@ -212,9 +213,13 @@ const TestimonialsPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pb-5">
+    <div className="flex flex-col gap-6 pb-5">
+      <PageHeader
+        title="Testimonials"
+        description="Client testimonials shown on the website. Expand the section to edit, then click Submit."
+      />
       <form
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-6"
         onSubmit={handleSubmit(handleUpdateTestimonials)}
       >
         {/* ---------------- Testimonial Section ---------------- */}
@@ -280,11 +285,11 @@ const TestimonialsPage = () => {
             </div>
 
             <div>
-              <div className="mb-3 flex justify-between">
+              <div className="mb-3 flex items-center justify-between border-t border-slate-200 pt-5 dark:border-slate-700">
                 <Label className="font-bold">Items</Label>
                 {
                   <Button
-                    className="bg-green-600 text-white"
+                    className={adminButtonClass("secondary", "sm")}
                     type="button"
                     onClick={() => setReorderMode(!reorderMode)}
                   >
@@ -292,7 +297,7 @@ const TestimonialsPage = () => {
                   </Button>
                 }
               </div>
-              <div className="flex flex-col gap-5 rounded-md border border-black/20 p-2">
+              <div className="flex flex-col gap-4 rounded-xl bg-slate-50 p-3 dark:bg-slate-900/40">
                 <DndContext
                   collisionDetection={closestCorners}
                   onDragEnd={createDragEndHandler(
@@ -320,7 +325,7 @@ const TestimonialsPage = () => {
                             <div className="absolute right-2 top-2">
                               <RiDeleteBinLine
                                 onClick={() => testimonialSectionRemove(index)}
-                                className="cursor-pointer text-red-600"
+                                className="size-7 cursor-pointer rounded-md p-1.5 text-red-600 transition-colors hover:bg-red-50 dark:hover:bg-red-500/10"
                               />
                             </div>
 
@@ -564,10 +569,17 @@ const TestimonialsPage = () => {
                 </AccordionSection>
                 */}
 
-        <div className="flex">
+        <div className="sticky bottom-4 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Submit.
+          </p>
           <Button
             type="submit"
-            className="w-full cursor-pointer text-[16px] text-white"
+            className={adminButtonClass(
+              "dark",
+              "md",
+              "min-w-28 cursor-pointer",
+            )}
           >
             Submit
           </Button>

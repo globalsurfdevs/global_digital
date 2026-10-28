@@ -25,6 +25,15 @@ import AdminIndiCaseStudy from "../AdminIndiCaseStudy/AdminIndiCaseStudy";
 import { ImageUploader } from "@/components/ui/image-uploader";
 import SeoFields from "@/app/components/common/SeoFields";
 import { SeoFormValues } from "@/app/types/seo";
+import { ArrowLeft } from "lucide-react";
+import {
+  AdminLinkButton,
+  PageHeader,
+  SectionCard,
+  ViewLiveLink,
+  adminButtonClass,
+  portfolioLiveUrl,
+} from "@/app/components/AdminUI";
 
 type Inputs = {
   portfolioType: "legacy" | "modern";
@@ -91,6 +100,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const [imageFile, setImageFile] = useState<null | File>(null);
   const [previewImage, setPreviewImage] = useState<null | string>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Slug as last loaded from the database, so "View live" never points at an unsaved slug.
+  const [savedSlug, setSavedSlug] = useState("");
   const [metaTitle, setMetaTitle] = useState("");
   const [metaDescription, setMetaDescription] = useState("");
   const [highlights, setHighlights] = useState<PortfolioHighlight[] | []>([]);
@@ -230,7 +241,6 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-
     // console.log("data:",data)
     let whatWeDeliveredData: unknown[] = [];
     if (data.portfolioType !== "modern" && data.whatWeDeliveredData?.trim()) {
@@ -300,10 +310,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("featured", data.featured);
 
     const hightLightIds: string[] = [];
-  
 
     highlights.forEach((highlight: PortfolioHighlight) => {
-     
       formData.append(
         `highlightId${highlight.customId}`,
         highlight.customId.toString(),
@@ -357,8 +365,6 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     }
 
     if (imageFile) {
-      
-
       const image = await generateAndUploadImage(imageFile);
       if (image) {
         formData.append("image", image);
@@ -387,12 +393,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     }
 
     if (resultImage1) {
-   
       formData.append("resultImage1", resultImage1);
     }
 
     if (resultImage2) {
-  
       formData.append("resultImage2", resultImage2);
     }
 
@@ -409,13 +413,12 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
         ? `/api/portfolio?id=${companyId}`
         : `/api/portfolio`;
       const method = "POST";
-    
+
       const response = await fetch(url, {
         method: method,
         body: formData,
       });
       const data = await response.json();
-      
 
       if (!data.error) {
         toast.success(data.message);
@@ -437,8 +440,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
       try {
         const response = await fetch(`/api/portfolio/channels`);
         const data = await response.json();
-       
-        
+
         setChannelsAvailable(data.data);
       } catch (error) {
         console.error("Error fetching channels:", error);
@@ -470,7 +472,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
         );
       } catch (error) {
         console.error("Error fetching related portfolio options:", error);
-        toast.error("Failed to load portfolios for related portfolio selection.");
+        toast.error(
+          "Failed to load portfolios for related portfolio selection.",
+        );
       }
     };
 
@@ -483,7 +487,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
         const response = await fetch(`/api/portfolio?id=${companyId}`);
         if (response.ok) {
           const data = await response.json();
-        
+
           if (data.portfolio) {
             setValue("companyName", data.portfolio.companyName);
             const inferredPortfolioType =
@@ -503,7 +507,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               "seo.metaDescription",
               seo.metaDescription || data.portfolio.metaDescription || "",
             );
-            setValue("seo.ogTitle", seo.ogTitle || data.portfolio.ogTitle || "");
+            setValue(
+              "seo.ogTitle",
+              seo.ogTitle || data.portfolio.ogTitle || "",
+            );
             setValue(
               "seo.ogDescription",
               seo.ogDescription || data.portfolio.ogDescription || "",
@@ -542,13 +549,12 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             const relatedPortfolios =
               data.portfolio.relatedPortfolios?.portfolio || [];
             setRelatedPortfolioIds(
-              relatedPortfolios.map(
-                (portfolio: string | { _id?: string }) =>
-                  String(
-                    typeof portfolio === "string"
-                      ? portfolio
-                      : portfolio._id ?? portfolio,
-                  ),
+              relatedPortfolios.map((portfolio: string | { _id?: string }) =>
+                String(
+                  typeof portfolio === "string"
+                    ? portfolio
+                    : (portfolio._id ?? portfolio),
+                ),
               ),
             );
             setValue(
@@ -573,6 +579,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             setValue("description", data.portfolio.description);
             setValue("tag", data.portfolio.tag);
             setValue("slug", data.portfolio.slug);
+            setSavedSlug(data.portfolio.slug || "");
             setValue("metaTitle", data.portfolio.metaTitle);
             setValue("metaDescription", data.portfolio.metaDescription);
             setValue("ogTitle", data.portfolio.ogTitle || "");
@@ -709,10 +716,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     const fetchCategories = async () => {
       try {
         const url = `/api/categories`;
-   
+
         const response = await fetch(url);
         const data = await response.json();
-;
         if (!data.error) {
           setCategories(data.categories);
         } else {
@@ -766,8 +772,6 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
   const handleDeleteHighlight = async (id?: number | string) => {
     try {
-      
-
       // setHighlights(highlights.filter((item) => item.customId !== id))
 
       setHighlights((highlights) =>
@@ -935,78 +939,1498 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
   if (selectedSection == "portfolio" || selectedSection == "case study new") {
     return (
-      <div>
-        <h1 className="text-3xl">{`${editMode ? "Edit" : "Add"} Portfolio Content`}</h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="h-full">
-          {!editMode && (
-            <div className="mt-5">
-              <div className="w-full min-w-[200px] max-w-sm">
-                <div className="relative">
-                  <select
-                    value={selectedSection}
-                    onChange={(e) => setSelectedSection(e.target.value)}
-                    className="ease w-full cursor-pointer appearance-none rounded border border-slate-200 bg-transparent py-2 pl-3 pr-8 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-400 focus:border-slate-400 focus:shadow-md focus:outline-none"
-                  >
-                    <option value="portfolio">Portfolio</option>
-                    <option value="case study">Case Study</option>
-                    <option value="case study new">Case Study New</option>
-                  </select>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.2"
-                    stroke="currentColor"
-                    className="absolute right-2.5 top-2.5 ml-1 h-5 w-5 text-slate-700"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+      <div className="flex flex-col gap-6">
+        <PageHeader
+          title={`${editMode ? "Edit" : "Add"} ${selectedSection === "case study new" ? "Case Study" : "Portfolio"}`}
+          description={
+            editMode
+              ? watch("companyName")
+              : "Fill in the sections below, then click Save."
+          }
+          actions={
+            <>
+              <AdminLinkButton
+                href="/admin/portfolio"
+                variant="secondary"
+                icon={<ArrowLeft className="size-4" />}
+              >
+                Back to list
+              </AdminLinkButton>
+              {editMode && savedSlug && (
+                <ViewLiveLink
+                  showLabel
+                  href={portfolioLiveUrl({
+                    section: selectedSection,
+                    slug: savedSlug,
+                  })}
+                  className="h-10 border border-slate-300 px-4 text-sm"
+                />
+              )}
+            </>
+          }
+        />
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex h-full flex-col gap-6"
+        >
+          {(!editMode || selectedSection === "portfolio") && (
+            <SectionCard
+              title="Page setup"
+              description="Content type and page design."
+            >
+              <div className="flex flex-col gap-5 sm:flex-row">
+                {!editMode && (
+                  <div>
+                    <div className="w-full min-w-[200px] max-w-sm">
+                      <div className="relative">
+                        <select
+                          value={selectedSection}
+                          onChange={(e) => setSelectedSection(e.target.value)}
+                          className="ease w-full cursor-pointer appearance-none rounded border border-slate-200 bg-transparent py-2 pl-3 pr-8 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-400 focus:border-slate-400 focus:shadow-md focus:outline-none"
+                        >
+                          <option value="portfolio">Portfolio</option>
+                          <option value="case study">Case Study</option>
+                          <option value="case study new">Case Study New</option>
+                        </select>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.2"
+                          stroke="currentColor"
+                          className="absolute right-2.5 top-2.5 ml-1 h-5 w-5 text-slate-700"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {selectedSection === "portfolio" && (
+                  <div className="max-w-sm">
+                    <Label content="Portfolio page design" />
+                    <select
+                      {...register("portfolioType")}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-2 pl-3 text-black focus:outline-none"
+                    >
+                      <option value="legacy">Legacy portfolio page</option>
+                      <option value="modern">Modern portfolio page</option>
+                    </select>
+                  </div>
+                )}
+              </div>
+            </SectionCard>
+          )}
+
+          <SectionCard title="Banner & company details">
+            <div className="grid grid-cols-2 gap-10">
+              <div className="flex flex-col gap-2">
+                <div
+                  className="flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
+                  onDragOver={(e) => e.preventDefault()}
+                  onClick={() => document?.getElementById("image")?.click()}
+                >
+                  {previewImage ? (
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={previewImage}
+                        alt="Preview"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      {
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setPreviewImage(null); // Clear the preview image
+                            setImageFile(null);
+                            const inputElement = document.getElementById(
+                              "image",
+                            ) as HTMLInputElement;
+                            if (inputElement) {
+                              inputElement.value = ""; // Reset the input value
+                            }
+                          }}
+                          className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      }
+                    </div>
+                  ) : (
+                    <>
+                      <svg
+                        className="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Drag and drop an image here, or click to select a file
+                      </p>
+                    </>
+                  )}
+                  <input
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) =>
+                      handleImageChange({
+                        e,
+                        setImageError,
+                        setImageFile,
+                        setPreviewImage,
+                      })
+                    }
+                  />
+                  {imageError && (
+                    <p className="mt-1 text-sm text-red-600">{imageError}</p>
+                  )}
+                </div>
+
+                <div>
+                  <div className="flex w-full flex-col gap-2">
+                    <Label content="Banner Title" />
+                    <input
+                      type="text"
+                      {...register("bannerTitle")}
+                      className={
+                        "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                      }
                     />
-                  </svg>
+                    {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex w-full flex-col gap-2">
+                    <Label content="Webiste Link" />
+                    <input
+                      type="text"
+                      {...register("websiteLink")}
+                      className={
+                        "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                      }
+                    />
+                    {/* {errors.websiteLink && <p className='mt-1 text-sm text-red'>{errors.websiteLink.message}</p>} */}
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex w-full flex-col gap-2">
+                    <Label content="Company Name" />
+                    <input
+                      type="text"
+                      {...register("companyName", {
+                        required:
+                          watch("portfolioType") === "modern"
+                            ? false
+                            : "Company name is required",
+                      })}
+                      className={
+                        "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                      }
+                    />
+                    {errors.companyName && (
+                      <p className="text-red mt-1 text-sm">
+                        {errors.companyName.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex w-full flex-col gap-2">
+                    <Label content="Industry" />
+                    <select
+                      {...register("industry", {
+                        required:
+                          watch("portfolioType") === "modern"
+                            ? false
+                            : "Industry is required",
+                      })}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    >
+                      <option value="">Select Industry</option>
+                      {industriesList.map((item) => (
+                        <option key={item._id} value={item.name}>
+                          {item.name}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.industry && (
+                      <p className="text-red mt-1 text-sm">
+                        {errors.industry.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex w-full flex-col gap-2">
+                    <Label content="Country" />
+                    <input
+                      type="text"
+                      {...register("country", {
+                        required:
+                          watch("portfolioType") === "modern"
+                            ? false
+                            : "Country is required",
+                      })}
+                      className={
+                        "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                      }
+                    />
+                    {errors.country && (
+                      <p className="text-red mt-1 text-sm">
+                        {errors.country.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* <div className='w-full flex flex-col gap-2'>
+                                    <Label content='Channels Used' />
+                                    <input type="text" {...register("channelsUsed", { required: "Channels used is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
+                                    {errors.channelsUsed && <p className='mt-1 text-sm text-red'>{errors.channelsUsed.message}</p>}
+                                </div> */}
+
+                  {watch("portfolioType") !== "modern" && (
+                    <div className="mt-1 flex w-full flex-col gap-1">
+                      <Label content="Channels Used" />
+                      <div className="flex h-[300px] flex-wrap gap-2 overflow-y-auto border p-5">
+                        {channelsAvailable.map((channel, index) => (
+                          <div key={index} className="relative">
+                            <div
+                              className={`absolute -top-2 right-1 h-4 w-4 cursor-pointer rounded-full border-2 ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`}
+                              onClick={() => handleChangeInChannel(index)}
+                            ></div>
+                            <span className="rounded-md border border-gray-300 px-6 py-3">
+                              {channel.channelName}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-          )}
+          </SectionCard>
 
-          {selectedSection === "portfolio" && (
-            <div className="mt-5 max-w-sm">
-              <Label content="Portfolio page design" />
-              <select
-                {...register("portfolioType")}
-                className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-2 pl-3 text-black focus:outline-none"
-              >
-                <option value="legacy">Legacy portfolio page</option>
-                <option value="modern">Modern portfolio page</option>
-              </select>
+          <SectionCard title="Story & highlights">
+            <div className="grid grid-cols-2 gap-10">
+              <div className="h-full">
+                <div className="flex h-full w-full flex-col gap-2">
+                  <Label content="Story" />
+                  <div className="h-full">
+                    {/* <Controller
+                                        name="story"
+                                        control={control}
+                                        rules={{ required: "Story is required" }}
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules}/>
+                                        )}
+                                    /> */}
+                    <RichEditor
+                      control={control}
+                      name="story"
+                      required={watch("portfolioType") !== "modern"}
+                    />
+                  </div>
+                  {errors.story && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors.story.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="h-full">
+                <div className="flex items-center gap-2">
+                  <h3>Highlights</h3>
+                  <div className="flex size-5 items-center justify-center rounded-full bg-green-500">
+                    <FaPlus
+                      className="text-sm"
+                      onClick={() => setModalOpen(true)}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex h-64 flex-col gap-2 overflow-y-scroll p-1">
+                  {highlights.length > 0 ? (
+                    highlights.map((item: PortfolioHighlight) =>
+                      item.customId.length == 36 ? (
+                        <div
+                          className="relative grid grid-cols-2 gap-5 rounded-xl bg-gray-400 p-3 text-white"
+                          key={item.customId}
+                        >
+                          <div className="absolute right-2 top-1 flex gap-2">
+                            {/* <div className='w-5 h-5 bg-yellow-200 rounded-full text-black flex items-center justify-center'>
+                            <MdEdit />
+                        </div> */}
+                            <div
+                              className="flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-black"
+                              onClick={() =>
+                                handleDeleteHighlight(item.customId)
+                              }
+                            >
+                              <IoIosClose />
+                            </div>
+                          </div>
+
+                          <div className="w-full">
+                            <label>Number</label>
+                            <input
+                              type="text"
+                              value={item.number}
+                              onChange={(e) =>
+                                handleInputChange(
+                                  item.customId,
+                                  "number",
+                                  e.target.value,
+                                )
+                              }
+                              className={"w-full rounded-xl pl-2 text-black"}
+                            />
+                          </div>
+
+                          <div className="w-full">
+                            <label>Text</label>
+                            <input
+                              type="text"
+                              value={item.text}
+                              onChange={(e) =>
+                                handleInputChange(
+                                  item.customId,
+                                  "text",
+                                  e.target.value,
+                                )
+                              }
+                              className="w-full rounded-xl pl-2 text-black"
+                            ></input>
+                          </div>
+                        </div>
+                      ) : null,
+                    )
+                  ) : (
+                    <div>No highlights available</div>
+                  )}
+                </div>
+              </div>
+
+              {modalOpen && (
+                <div
+                  className="relative z-10"
+                  aria-labelledby="modal-title"
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <div
+                    className="fixed inset-0 bg-gray-500/75 transition-opacity"
+                    aria-hidden="true"
+                  ></div>
+
+                  <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                      <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                        <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                          {/* <div className="sm:flex sm:items-start">
+                                                <div className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:size-10">
+                                                    <svg className="size-6 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                                                    </svg>
+                                                </div>
+                                                <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                                    <h3 className="text-base font-semibold text-gray-900" id="modal-title">Deactivate account</h3>
+                                                    <div className="mt-2">
+                                                        <p className="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
+                                                    </div>
+                                                </div>
+                                            </div> */}
+
+                          <div className="w-full">
+                            <label>Number</label>
+                            <input
+                              type="text"
+                              value={highlightNumber}
+                              onChange={(e) =>
+                                setHighlightNumber(e.target.value)
+                              }
+                              className={"w-full rounded-xl pl-2 text-black"}
+                            />
+                          </div>
+
+                          <div className="w-full">
+                            <label>Text</label>
+                            <input
+                              type="text"
+                              value={highlightText}
+                              onChange={(e) => setHighlightText(e.target.value)}
+                              className="w-full rounded-xl pl-2 text-black"
+                            ></input>
+                          </div>
+                        </div>
+                        <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                          <button
+                            type="button"
+                            className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                            onClick={handleAddHighlight}
+                          >
+                            Submit
+                          </button>
+                          <button
+                            type="button"
+                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                            onClick={() => setModalOpen(false)}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {categoryModal && (
+                <div
+                  className="relative z-10"
+                  aria-labelledby="modal-title"
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <div
+                    className="fixed inset-0 bg-gray-500/75 transition-opacity"
+                    aria-hidden="true"
+                  ></div>
+
+                  <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                      <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                        <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                          <div className="w-full">
+                            <label>Category Name</label>
+                            <input
+                              type="text"
+                              value={category}
+                              onChange={(e) => setCategory(e.target.value)}
+                              className={
+                                "w-full rounded-xl border pl-2 text-black"
+                              }
+                            />
+                          </div>
+
+                          <div className="w-full">
+                            <label>Category Link</label>
+                            <input
+                              type="text"
+                              value={categoryLink}
+                              onChange={(e) => setCategoryLink(e.target.value)}
+                              className={
+                                "w-full rounded-xl border pl-2 text-black"
+                              }
+                            />
+                          </div>
+                        </div>
+                        <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                          <button
+                            type="button"
+                            className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                            onClick={handleAddCategory}
+                          >
+                            Submit
+                          </button>
+                          <button
+                            type="button"
+                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                            onClick={() => setCategoryModal(false)}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {editModal && editingCategory && (
+                <div
+                  className="relative z-10"
+                  aria-labelledby="modal-title"
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <div
+                    className="fixed inset-0 bg-gray-500/75 transition-opacity"
+                    aria-hidden="true"
+                  ></div>
+                  <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                      <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                        <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                          <div className="w-full">
+                            <label>Category Name</label>
+                            <input
+                              type="text"
+                              value={editingCategory.name}
+                              onChange={(e) =>
+                                setEditingCategory({
+                                  ...editingCategory,
+                                  name: e.target.value,
+                                })
+                              }
+                              className="w-full rounded-xl border pl-2 text-black"
+                            />
+                          </div>
+                          <div className="mt-3 w-full">
+                            <label>Category Link</label>
+                            <input
+                              type="text"
+                              value={editingCategory.link}
+                              onChange={(e) =>
+                                setEditingCategory({
+                                  ...editingCategory,
+                                  link: e.target.value,
+                                })
+                              }
+                              className="w-full rounded-xl border pl-2 text-black"
+                            />
+                          </div>
+                        </div>
+                        <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                          <button
+                            type="button"
+                            className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
+                            onClick={handleEditCategory}
+                          >
+                            Update
+                          </button>
+                          <button
+                            type="button"
+                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                            onClick={() => {
+                              setEditModal(false);
+                              setEditingCategory(null);
+                            }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {pendingDeleteId && (
+                <div className="relative z-10" role="dialog" aria-modal="true">
+                  <div
+                    className="fixed inset-0 bg-gray-500/75 transition-opacity"
+                    aria-hidden="true"
+                  ></div>
+                  <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4">
+                      <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-sm">
+                        <div className="bg-white px-6 py-5">
+                          <h3 className="text-base font-semibold text-gray-900">
+                            Delete Category
+                          </h3>
+                          <p className="mt-2 text-sm text-gray-500">
+                            Are you sure you want to delete this category? This
+                            action cannot be undone.
+                          </p>
+                        </div>
+                        <div className="flex justify-end gap-3 bg-gray-50 px-4 py-3">
+                          <button
+                            type="button"
+                            className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                            onClick={() => setPendingDeleteId(null)}
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="button"
+                            className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"
+                            onClick={confirmDeleteCategory}
+                          >
+                            Yes, Delete
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
+          </SectionCard>
+
+          <SectionCard
+            title="Section 2"
+            description="Images, goals, objectives and banner."
+          >
+            <div className="flex flex-col gap-6">
+              <div className="grid grid-cols-2 gap-5">
+                <div className="flex flex-col gap-2">
+                  <div>Section 2 - Image 1</div>
+                  <div
+                    className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
+                    onDragOver={(e) => e.preventDefault()}
+                    onClick={() => document?.getElementById("image1")?.click()}
+                  >
+                    {section2Image1Preview ? (
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={section2Image1Preview}
+                          alt="Preview"
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                        {
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSection2Image1Preview(null); // Clear the preview image
+                              setSection2Image1(null);
+                            }}
+                            className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        }
+                      </div>
+                    ) : (
+                      <>
+                        <svg
+                          className="mx-auto h-12 w-12 text-gray-400"
+                          stroke="currentColor"
+                          fill="none"
+                          viewBox="0 0 48 48"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <p className="mt-1 text-sm text-gray-600">
+                          Drag and drop an image here, or click to select a file
+                        </p>
+                      </>
+                    )}
+                    <input
+                      type="file"
+                      id="image1"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) =>
+                        handleImageChange({
+                          e,
+                          setImageError: setSection2Image1Error,
+                          setImageFile: setSection2Image1,
+                          setPreviewImage: setSection2Image1Preview,
+                        })
+                      }
+                    />
+                  </div>
+                  {section2Image1Error && (
+                    <p className="mt-1 text-sm text-red-600">{imageError}</p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div>Section 2 - Image 2</div>
+                  <div
+                    className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
+                    onDragOver={(e) => e.preventDefault()}
+                    onClick={() => document?.getElementById("image2")?.click()}
+                  >
+                    {section2Image2Preview ? (
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={section2Image2Preview}
+                          alt="Preview"
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                        {
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSection2Image2Preview(null); // Clear the preview image
+                              setSection2Image2(null);
+                            }}
+                            className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        }
+                      </div>
+                    ) : (
+                      <>
+                        <svg
+                          className="mx-auto h-12 w-12 text-gray-400"
+                          stroke="currentColor"
+                          fill="none"
+                          viewBox="0 0 48 48"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <p className="mt-1 text-sm text-gray-600">
+                          Drag and drop an image here, or click to select a file
+                        </p>
+                      </>
+                    )}
+                    <input
+                      type="file"
+                      id="image2"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) =>
+                        handleImageChange({
+                          e,
+                          setImageError: setSection2Image2Error,
+                          setImageFile: setSection2Image2,
+                          setPreviewImage: setSection2Image2Preview,
+                        })
+                      }
+                    />
+                  </div>
+                  {section2Image2Error && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {section2Image2Error}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-5">
+                <div className="flex flex-col gap-2">
+                  <Label content="Goals" />
+                  <div className="h-full">
+                    {/* <Controller
+                                        name="goals"
+                                        control={control}
+    
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} formats={['html']} className="h-full" />
+                                        )}
+                                    /> */}
+                    <RichEditor control={control} name="goals" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label content="Objectives" />
+                  <div className="h-full">
+                    {/* <Controller
+                                        name="objectives"
+                                        control={control}
+    
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                        )}
+                                    /> */}
+                    <RichEditor control={control} name="objectives" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <div className="flex flex-col gap-2">
+                  <div>Section 2 - Banner Image</div>
+                  <div
+                    className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
+                    onDragOver={(e) => e.preventDefault()}
+                    onClick={() => document?.getElementById("banner")?.click()}
+                  >
+                    {section2BannerImagePreview ? (
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={section2BannerImagePreview}
+                          alt="Preview"
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                        {
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSection2BannerImagePreview(null); // Clear the preview image
+                              setSection2BannerImage(null);
+                            }}
+                            className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        }
+                      </div>
+                    ) : (
+                      <>
+                        <svg
+                          className="mx-auto h-12 w-12 text-gray-400"
+                          stroke="currentColor"
+                          fill="none"
+                          viewBox="0 0 48 48"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <p className="mt-1 text-sm text-gray-600">
+                          Drag and drop an image here, or click to select a file
+                        </p>
+                      </>
+                    )}
+                    <input
+                      type="file"
+                      id="banner"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) =>
+                        handleImageChange({
+                          e,
+                          setImageError: setSection2BannerImageError,
+                          setImageFile: setSection2BannerImage,
+                          setPreviewImage: setSection2BannerImagePreview,
+                        })
+                      }
+                    />
+                  </div>
+                  {section2BannerImageError && (
+                    <p className="mt-1 text-sm text-red-600">
+                      {section2BannerImageError}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </SectionCard>
+
+          <SectionCard title="Challenge, solutions & strategy">
+            <div className="grid grid-cols-2 gap-5">
+              <div className="h-full">
+                <div className="flex h-full w-full flex-col gap-2">
+                  <Label content="Challenge" />
+                  <div className="h-full">
+                    {/* <Controller
+                                        name="challenge"
+                                        control={control}
+    
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                        )}
+                                    /> */}
+                    <RichEditor control={control} name="challenge" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-full">
+                <div className="flex h-full w-full flex-col gap-2">
+                  <Label content="Solutions" />
+                  <div className="h-full">
+                    {/* <Controller
+                                        name="solutions"
+                                        control={control}
+    
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                        )}
+                                    /> */}
+                    <RichEditor control={control} name="solutions" />
+                  </div>
+                </div>
+              </div>
+
+              {selectedSection === "case study new" && (
+                <div className="my-12 h-full">
+                  <div className="flex h-full w-full flex-col gap-2">
+                    <Label content="Strategy & Approach" />
+                    <div className="h-full">
+                      {/* <Controller
+                                        name="solutions"
+                                        control={control}
+    
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                        )}
+                                    /> */}
+                      <RichEditor control={control} name="strategyApproach" />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </SectionCard>
+
+          {selectedSection === "case study new" && (
+            <SectionCard title="Social media">
+              <div>
+                <div className="flex items-center justify-between">
+                  <Label content="Social Media" />
+                </div>
+                <div className="mt-2">
+                  <ImageUploader
+                    onChange={handleImageUpload}
+                    deleteAfterUpload={true}
+                    multiple={true}
+                  />
+                </div>
+
+                <div className="mt-4 grid grid-cols-3 gap-4">
+                  {imageUrls.map((url, index) => (
+                    <div key={index} className="relative h-40">
+                      <Image
+                        src={url}
+                        alt={`Uploaded image ${index + 1}`}
+                        className="h-full w-full rounded-lg object-cover"
+                        width={100}
+                        height={100}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveImage(index)}
+                        className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionCard>
           )}
 
-          <div className="mt-5 grid grid-cols-2 gap-10">
-            <div className="flex flex-col gap-2">
+          <SectionCard title="Video">
+            <div className="flex flex-col gap-3">
+              <div className="flex w-full flex-col gap-2">
+                <Label content="Video" />
+                <input
+                  type="text"
+                  {...register("video")}
+                  className={
+                    "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  }
+                />
+                {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
+              </div>
+              <div className="flex w-full flex-col gap-2">
+                <Label content="Video Title" />
+                <input
+                  type="text"
+                  {...register("videoTitle")}
+                  className={
+                    "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  }
+                />
+                {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
+              </div>
+              <div>
+                <Label content="Video Thumbnail" />
+                <div
+                  className="mt-2 flex h-[300px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
+                  onDragOver={(e) => e.preventDefault()}
+                  onClick={() =>
+                    document?.getElementById("videothumbnail")?.click()
+                  }
+                >
+                  {videoThumbnailPreview ? (
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={videoThumbnailPreview}
+                        alt="Preview"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      {
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setVideoThumbnailPreview(null); // Clear the preview image
+                            setVideoThumbnail(null);
+                          }}
+                          className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      }
+                    </div>
+                  ) : (
+                    <>
+                      <svg
+                        className="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Drag and drop an image here, or click to select a file
+                      </p>
+                    </>
+                  )}
+                  <input
+                    type="file"
+                    id="videothumbnail"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) =>
+                      handleImageChange({
+                        e,
+                        setImageError: setVideoThumbnailError,
+                        setImageFile: setVideoThumbnail,
+                        setPreviewImage: setVideoThumbnailPreview,
+                      })
+                    }
+                  />
+                </div>
+                {videoThumbnailError && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {videoThumbnailError}
+                  </p>
+                )}
+              </div>
+            </div>
+          </SectionCard>
+
+          <SectionCard title="Results">
+            <div className="grid h-96 grid-cols-3 gap-5">
+              <div className="">
+                <div className="flex h-full w-full flex-col gap-2">
+                  <Label content="Result" />
+                  <div className="h-full">
+                    {/* <Controller
+                                        name="result"
+                                        control={control}
+    
+                                        render={({ field }) => (
+                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
+                                        )}
+                                    /> */}
+                    <RichEditor control={control} name="result" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <Label content="Result-Image1" />
+                <div
+                  className="mt-2 flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
+                  onDragOver={(e) => e.preventDefault()}
+                  onClick={() =>
+                    document?.getElementById("resultimage1")?.click()
+                  }
+                >
+                  {resultImage1Preview ? (
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={resultImage1Preview}
+                        alt="Preview"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      {
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setResultImage1Preview(null); // Clear the preview image
+                            setResultImage1(null);
+                          }}
+                          className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      }
+                    </div>
+                  ) : (
+                    <>
+                      <svg
+                        className="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Drag and drop an image here, or click to select a file
+                      </p>
+                    </>
+                  )}
+                  <input
+                    type="file"
+                    id="resultimage1"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) =>
+                      handleImageChange({
+                        e,
+                        setImageError: setResultImage1Error,
+                        setImageFile: setResultImage1,
+                        setPreviewImage: setResultImage1Preview,
+                      })
+                    }
+                  />
+                </div>
+                {resultImage1Error && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {resultImage1Error}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <Label content="Result-Image2" />
+                <div
+                  className="mt-2 flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
+                  onDragOver={(e) => e.preventDefault()}
+                  onClick={() =>
+                    document?.getElementById("resultimage2")?.click()
+                  }
+                >
+                  {resultImage2Preview ? (
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={resultImage2Preview}
+                        alt="Preview"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      {
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setResultImage2Preview(null); // Clear the preview image
+                            setResultImage2(null);
+                          }}
+                          className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      }
+                    </div>
+                  ) : (
+                    <>
+                      <svg
+                        className="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Drag and drop an image here, or click to select a file
+                      </p>
+                    </>
+                  )}
+                  <input
+                    type="file"
+                    id="resultimage2"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) =>
+                      handleImageChange({
+                        e,
+                        setImageError: setResultImage2Error,
+                        setImageFile: setResultImage2,
+                        setPreviewImage: setResultImage2Preview,
+                      })
+                    }
+                  />
+                </div>
+                {resultImage2Error && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {resultImage2Error}
+                  </p>
+                )}
+              </div>
+            </div>
+          </SectionCard>
+
+          <SectionCard title="Description & tag">
+            <div className="grid grid-cols-2 gap-5">
+              <div className="flex w-full flex-col gap-2">
+                <div className="flex flex-col gap-2">
+                  <Label content="Description" />
+                  <input
+                    type="text"
+                    {...register("description", {
+                      required:
+                        watch("portfolioType") === "modern"
+                          ? false
+                          : "Description is required",
+                    })}
+                    className={
+                      "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    }
+                  />
+                  {errors.description && (
+                    <p className="text-red mt-1 text-sm">
+                      {errors.description.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex w-full flex-col gap-2">
+                <Label content="Tag" />
+                <input
+                  type="text"
+                  {...register("tag", {
+                    required:
+                      watch("portfolioType") === "modern"
+                        ? false
+                        : "Tag is required",
+                  })}
+                  className={
+                    "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                  }
+                />
+                {errors.tag && (
+                  <p className="text-red mt-1 text-sm">{errors.tag.message}</p>
+                )}
+              </div>
+            </div>
+          </SectionCard>
+
+          {/* <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
+                                <Droppable categories={categories}/>
+                    </DndContext> */}
+
+          <SectionCard title="Categories & logo">
+            <div className="grid grid-cols-2 gap-5">
+              <div className="flex flex-col gap-2">
+                <Label content="Added Categories" className="" />
+                <div className="flex h-full w-full flex-wrap items-start gap-1 rounded-md border p-4">
+                  {addedCategories.map((item) => (
+                    <>
+                      <div className="group relative h-fit w-fit cursor-pointer rounded-full border bg-blue-950 px-2 py-1 text-white">
+                        <span className="group-hover:opacity-50">
+                          {item.name}
+                        </span>
+                        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-2 rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
+                          <MdOutlineSwapHorizontalCircle
+                            onClick={() => handleSwapItem(item._id)}
+                          />
+                          <MdEdit
+                            className="text-yellow-400"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setEditingCategory({
+                                _id: item._id,
+                                name: item.name,
+                                link: item.link ?? "",
+                              });
+                              setEditModal(true);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-1">
+                  <Label content="Available Categories" className="" />
+                  <div className="flex size-5 items-center justify-center rounded-full bg-green-500">
+                    <FaPlus
+                      className="text-sm"
+                      onClick={() => setCategoryModal(true)}
+                    />
+                  </div>
+                </div>
+                <div className="flex h-full w-full flex-wrap items-start gap-1 rounded-md border p-4">
+                  {categories
+                    .filter(
+                      (item) =>
+                        !addedCategories.some(
+                          (addedItem) => addedItem._id === item._id,
+                        ),
+                    )
+                    .map((item) => (
+                      <div className="group relative flex h-fit w-fit min-w-20 cursor-pointer justify-center rounded-full border bg-blue-950 px-2 py-1 text-white">
+                        <span className="group-hover:opacity-50">
+                          {item.name}
+                        </span>
+                        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-2 rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
+                          <MdOutlineSwapHorizontalCircle
+                            onClick={() => handleSwapItem(item._id)}
+                          />
+                          <MdEdit
+                            className="text-yellow-400"
+                            onClick={() => {
+                              setEditingCategory({
+                                _id: item._id,
+                                name: item.name,
+                                link: item.link ?? "",
+                              });
+                              setEditModal(true);
+                            }}
+                          />
+                          <RxCross2
+                            className="text-red-400"
+                            onClick={() => handleDeleteCategory(item._id)}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 flex h-36 w-1/3 flex-col gap-2">
+              <Label content="Logo" />
               <div
                 className="flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
                 onDragOver={(e) => e.preventDefault()}
-                onClick={() => document?.getElementById("image")?.click()}
+                onClick={() => document?.getElementById("logo")?.click()}
               >
-                {previewImage ? (
+                {previewLogo ? (
                   <div className="relative h-full w-full">
-                    <Image
-                      src={previewImage}
+                    <img
+                      src={previewLogo}
                       alt="Preview"
-                      layout="fill"
-                      objectFit="cover"
+                      className="h-full w-full object-cover"
                     />
                     {
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          setPreviewImage(null); // Clear the preview image
-                          setImageFile(null);
+                          setPreviewLogo(null); // Clear the preview image
+                          setLogoFile(null);
                           const inputElement = document.getElementById(
-                            "image",
+                            "logo",
                           ) as HTMLInputElement;
                           if (inputElement) {
                             inputElement.value = ""; // Reset the input value
@@ -1052,1429 +2476,88 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 )}
                 <input
                   type="file"
-                  id="image"
+                  id="logo"
                   accept="image/*"
                   className="hidden"
                   onChange={(e) =>
                     handleImageChange({
                       e,
-                      setImageError,
-                      setImageFile,
-                      setPreviewImage,
+                      setImageError: setLogoError,
+                      setImageFile: setLogoFile,
+                      setPreviewImage: setPreviewLogo,
                     })
                   }
                 />
-                {imageError && (
-                  <p className="mt-1 text-sm text-red-600">{imageError}</p>
-                )}
               </div>
+              {logoError && (
+                <p className="mt-1 text-sm text-red-600">{logoError}</p>
+              )}
+            </div>
+          </SectionCard>
 
-              <div>
-                <div className="flex w-full flex-col gap-2">
-                  <Label content="Banner Title" />
+          <SectionCard
+            title="URL & visibility"
+            description="The slug sets the live page address. Featured controls highlighting on the site."
+          >
+            <div className="flex flex-col gap-4">
+              <div className="flex w-full flex-col gap-2">
+                <div className="flex flex-col gap-2">
+                  <Label content="slug" />
                   <input
                     type="text"
-                    {...register("bannerTitle")}
+                    {...register("slug")}
+                    readOnly
                     className={
                       "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
                     }
                   />
-                  {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
                 </div>
               </div>
 
-              <div>
-                <div className="flex w-full flex-col gap-2">
-                  <Label content="Webiste Link" />
-                  <input
-                    type="text"
-                    {...register("websiteLink")}
-                    className={
-                      "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                    }
-                  />
-                  {/* {errors.websiteLink && <p className='mt-1 text-sm text-red'>{errors.websiteLink.message}</p>} */}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex flex-col gap-2">
-                <div className="flex w-full flex-col gap-2">
-                  <Label content="Company Name" />
-                  <input
-                    type="text"
-                    {...register("companyName", {
-                      required:
-                        watch("portfolioType") === "modern"
-                          ? false
-                          : "Company name is required",
-                    })}
-                    className={
-                      "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                    }
-                  />
-                  {errors.companyName && (
-                    <p className="text-red mt-1 text-sm">
-                      {errors.companyName.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex w-full flex-col gap-2">
-                  <Label content="Industry" />
-                  <select
-                    {...register("industry", {
-                      required:
-                        watch("portfolioType") === "modern"
-                          ? false
-                          : "Industry is required",
-                    })}
-                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                  >
-                    <option value="">Select Industry</option>
-                    {industriesList.map((item) => (
-                      <option key={item._id} value={item.name}>
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.industry && (
-                    <p className="text-red mt-1 text-sm">
-                      {errors.industry.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex w-full flex-col gap-2">
-                  <Label content="Country" />
-                  <input
-                    type="text"
-                    {...register("country", {
-                      required:
-                        watch("portfolioType") === "modern"
-                          ? false
-                          : "Country is required",
-                    })}
-                    className={
-                      "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                    }
-                  />
-                  {errors.country && (
-                    <p className="text-red mt-1 text-sm">
-                      {errors.country.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* <div className='w-full flex flex-col gap-2'>
-                                    <Label content='Channels Used' />
-                                    <input type="text" {...register("channelsUsed", { required: "Channels used is required" })} className={'rounded-md pl-4 w-full border-gray-300 border-[1px] py-1 text-black bg-transparent focus:outline-none'} />
-                                    {errors.channelsUsed && <p className='mt-1 text-sm text-red'>{errors.channelsUsed.message}</p>}
-                                </div> */}
-
-                {watch("portfolioType") !== "modern" && (
-                  <div className="mt-1 flex w-full flex-col gap-1">
-                    <Label content="Channels Used" />
-                    <div className="flex h-[300px] flex-wrap gap-2 overflow-y-auto border p-5">
-                      {channelsAvailable.map((channel, index) => (
-                        <div key={index} className="relative">
-                          <div
-                            className={`absolute -top-2 right-1 h-4 w-4 cursor-pointer rounded-full border-2 ${channelsUsed.find((item) => item.channelName === channel.channelName) ? "bg-green-500" : "bg-gray-300"}`}
-                            onClick={() => handleChangeInChannel(index)}
-                          ></div>
-                          <span className="rounded-md border border-gray-300 px-6 py-3">
-                            {channel.channelName}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-5 grid grid-cols-2 gap-10">
-            <div className="h-full">
-              <div className="flex h-full w-full flex-col gap-2">
-                <Label content="Story" />
-                <div className="h-full">
-                  {/* <Controller
-                                        name="story"
-                                        control={control}
-                                        rules={{ required: "Story is required" }}
-                                        render={({ field }) => (
-                                            <ReactQuill theme="snow" value={field.value} onChange={field.onChange} className="h-full" modules={modules}/>
-                                        )}
-                                    /> */}
-                  <RichEditor
-                    control={control}
-                    name="story"
-                    required={watch("portfolioType") !== "modern"}
-                  />
-                </div>
-                {errors.story && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {errors.story.message}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="h-full">
-              <div className="flex items-center gap-2">
-                <h3>Highligths</h3>
-                <div className="flex size-5 items-center justify-center rounded-full bg-green-500">
-                  <FaPlus
-                    className="text-sm"
-                    onClick={() => setModalOpen(true)}
-                  />
-                </div>
-              </div>
-
-              <div className="flex h-64 flex-col gap-2 overflow-y-scroll p-1">
-                {highlights.length > 0 ? (
-                  highlights.map((item: PortfolioHighlight) =>
-                    item.customId.length == 36 ? (
-                      <div
-                        className="relative grid grid-cols-2 gap-5 rounded-xl bg-gray-400 p-3 text-white"
-                        key={item.customId}
-                      >
-                        <div className="absolute right-2 top-1 flex gap-2">
-                          {/* <div className='w-5 h-5 bg-yellow-200 rounded-full text-black flex items-center justify-center'>
-                            <MdEdit />
-                        </div> */}
-                          <div
-                            className="flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-black"
-                            onClick={() => handleDeleteHighlight(item.customId)}
-                          >
-                            <IoIosClose />
-                          </div>
-                        </div>
-
-                        <div className="w-full">
-                          <label>Number</label>
-                          <input
-                            type="text"
-                            value={item.number}
-                            onChange={(e) =>
-                              handleInputChange(
-                                item.customId,
-                                "number",
-                                e.target.value,
-                              )
-                            }
-                            className={"w-full rounded-xl pl-2 text-black"}
-                          />
-                        </div>
-
-                        <div className="w-full">
-                          <label>Text</label>
-                          <input
-                            type="text"
-                            value={item.text}
-                            onChange={(e) =>
-                              handleInputChange(
-                                item.customId,
-                                "text",
-                                e.target.value,
-                              )
-                            }
-                            className="w-full rounded-xl pl-2 text-black"
-                          ></input>
-                        </div>
-                      </div>
-                    ) : null,
-                  )
-                ) : (
-                  <div>No highlights available</div>
-                )}
-              </div>
-            </div>
-
-            {modalOpen && (
-              <div
-                className="relative z-10"
-                aria-labelledby="modal-title"
-                role="dialog"
-                aria-modal="true"
-              >
-                <div
-                  className="fixed inset-0 bg-gray-500/75 transition-opacity"
-                  aria-hidden="true"
-                ></div>
-
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                  <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                      <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        {/* <div className="sm:flex sm:items-start">
-                                                <div className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:size-10">
-                                                    <svg className="size-6 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-                                                    </svg>
-                                                </div>
-                                                <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                                    <h3 className="text-base font-semibold text-gray-900" id="modal-title">Deactivate account</h3>
-                                                    <div className="mt-2">
-                                                        <p className="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
-                                                    </div>
-                                                </div>
-                                            </div> */}
-
-                        <div className="w-full">
-                          <label>Number</label>
-                          <input
-                            type="text"
-                            value={highlightNumber}
-                            onChange={(e) => setHighlightNumber(e.target.value)}
-                            className={"w-full rounded-xl pl-2 text-black"}
-                          />
-                        </div>
-
-                        <div className="w-full">
-                          <label>Text</label>
-                          <input
-                            type="text"
-                            value={highlightText}
-                            onChange={(e) => setHighlightText(e.target.value)}
-                            className="w-full rounded-xl pl-2 text-black"
-                          ></input>
-                        </div>
-                      </div>
-                      <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <button
-                          type="button"
-                          className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                          onClick={handleAddHighlight}
-                        >
-                          Submit
-                        </button>
-                        <button
-                          type="button"
-                          className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                          onClick={() => setModalOpen(false)}
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {categoryModal && (
-              <div
-                className="relative z-10"
-                aria-labelledby="modal-title"
-                role="dialog"
-                aria-modal="true"
-              >
-                <div
-                  className="fixed inset-0 bg-gray-500/75 transition-opacity"
-                  aria-hidden="true"
-                ></div>
-
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                  <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                      <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <div className="w-full">
-                          <label>Category Name</label>
-                          <input
-                            type="text"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            className={
-                              "w-full rounded-xl border pl-2 text-black"
-                            }
-                          />
-                        </div>
-
-                        <div className="w-full">
-                          <label>Category Link</label>
-                          <input
-                            type="text"
-                            value={categoryLink}
-                            onChange={(e) => setCategoryLink(e.target.value)}
-                            className={
-                              "w-full rounded-xl border pl-2 text-black"
-                            }
-                          />
-                        </div>
-                      </div>
-                      <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <button
-                          type="button"
-                          className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                          onClick={handleAddCategory}
-                        >
-                          Submit
-                        </button>
-                        <button
-                          type="button"
-                          className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                          onClick={() => setCategoryModal(false)}
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {editModal && editingCategory && (
-              <div
-                className="relative z-10"
-                aria-labelledby="modal-title"
-                role="dialog"
-                aria-modal="true"
-              >
-                <div
-                  className="fixed inset-0 bg-gray-500/75 transition-opacity"
-                  aria-hidden="true"
-                ></div>
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                  <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                      <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <div className="w-full">
-                          <label>Category Name</label>
-                          <input
-                            type="text"
-                            value={editingCategory.name}
-                            onChange={(e) =>
-                              setEditingCategory({
-                                ...editingCategory,
-                                name: e.target.value,
-                              })
-                            }
-                            className="w-full rounded-xl border pl-2 text-black"
-                          />
-                        </div>
-                        <div className="mt-3 w-full">
-                          <label>Category Link</label>
-                          <input
-                            type="text"
-                            value={editingCategory.link}
-                            onChange={(e) =>
-                              setEditingCategory({
-                                ...editingCategory,
-                                link: e.target.value,
-                              })
-                            }
-                            className="w-full rounded-xl border pl-2 text-black"
-                          />
-                        </div>
-                      </div>
-                      <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <button
-                          type="button"
-                          className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
-                          onClick={handleEditCategory}
-                        >
-                          Update
-                        </button>
-                        <button
-                          type="button"
-                          className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                          onClick={() => {
-                            setEditModal(false);
-                            setEditingCategory(null);
-                          }}
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {pendingDeleteId && (
-              <div className="relative z-10" role="dialog" aria-modal="true">
-                <div
-                  className="fixed inset-0 bg-gray-500/75 transition-opacity"
-                  aria-hidden="true"
-                ></div>
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                  <div className="flex min-h-full items-center justify-center p-4">
-                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-sm">
-                      <div className="bg-white px-6 py-5">
-                        <h3 className="text-base font-semibold text-gray-900">
-                          Delete Category
-                        </h3>
-                        <p className="mt-2 text-sm text-gray-500">
-                          Are you sure you want to delete this category? This
-                          action cannot be undone.
-                        </p>
-                      </div>
-                      <div className="flex justify-end gap-3 bg-gray-50 px-4 py-3">
-                        <button
-                          type="button"
-                          className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                          onClick={() => setPendingDeleteId(null)}
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          type="button"
-                          className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"
-                          onClick={confirmDeleteCategory}
-                        >
-                          Yes, Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="mt-15 flex flex-col gap-6 border-t pt-5">
-            <h3 className="text-3xl">Section 2</h3>
-
-            <div className="grid grid-cols-2 gap-5">
-              <div className="flex flex-col gap-2">
-                <div>Section 2 - Image 1</div>
-                <div
-                  className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
-                  onDragOver={(e) => e.preventDefault()}
-                  onClick={() => document?.getElementById("image1")?.click()}
+              <div className="flex w-full flex-col gap-2">
+                <Label content="Featured Project" />
+                <select
+                  {...register("featured")}
+                  className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-3 text-black focus:outline-none"
                 >
-                  {section2Image1Preview ? (
-                    <div className="relative h-full w-full">
-                      <Image
-                        src={section2Image1Preview}
-                        alt="Preview"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                      {
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSection2Image1Preview(null); // Clear the preview image
-                            setSection2Image1(null);
-                          }}
-                          className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </button>
-                      }
-                    </div>
-                  ) : (
-                    <>
-                      <svg
-                        className="mx-auto h-12 w-12 text-gray-400"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 48 48"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <p className="mt-1 text-sm text-gray-600">
-                        Drag and drop an image here, or click to select a file
-                      </p>
-                    </>
-                  )}
-                  <input
-                    type="file"
-                    id="image1"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) =>
-                      handleImageChange({
-                        e,
-                        setImageError: setSection2Image1Error,
-                        setImageFile: setSection2Image1,
-                        setPreviewImage: setSection2Image1Preview,
-                      })
-                    }
-                  />
-                </div>
-                {section2Image1Error && (
-                  <p className="mt-1 text-sm text-red-600">{imageError}</p>
-                )}
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <div>Section 2 - Image 2</div>
-                <div
-                  className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
-                  onDragOver={(e) => e.preventDefault()}
-                  onClick={() => document?.getElementById("image2")?.click()}
-                >
-                  {section2Image2Preview ? (
-                    <div className="relative h-full w-full">
-                      <Image
-                        src={section2Image2Preview}
-                        alt="Preview"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                      {
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSection2Image2Preview(null); // Clear the preview image
-                            setSection2Image2(null);
-                          }}
-                          className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </button>
-                      }
-                    </div>
-                  ) : (
-                    <>
-                      <svg
-                        className="mx-auto h-12 w-12 text-gray-400"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 48 48"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <p className="mt-1 text-sm text-gray-600">
-                        Drag and drop an image here, or click to select a file
-                      </p>
-                    </>
-                  )}
-                  <input
-                    type="file"
-                    id="image2"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) =>
-                      handleImageChange({
-                        e,
-                        setImageError: setSection2Image2Error,
-                        setImageFile: setSection2Image2,
-                        setPreviewImage: setSection2Image2Preview,
-                      })
-                    }
-                  />
-                </div>
-                {section2Image2Error && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {section2Image2Error}
-                  </p>
-                )}
+                  <option value="">Select Featured</option>
+                  <option value={"true"}>Yes</option>
+                  <option value={"false"}>No</option>
+                </select>
               </div>
             </div>
-
-            <div className="grid grid-cols-2 gap-5">
-              <div className="flex flex-col gap-2">
-                <Label content="Goals" />
-                <div className="h-full">
-                  {/* <Controller
-                                        name="goals"
-                                        control={control}
-    
-                                        render={({ field }) => (
-                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} formats={['html']} className="h-full" />
-                                        )}
-                                    /> */}
-                  <RichEditor control={control} name="goals" />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <Label content="Objectives" />
-                <div className="h-full">
-                  {/* <Controller
-                                        name="objectives"
-                                        control={control}
-    
-                                        render={({ field }) => (
-                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
-                                        )}
-                                    /> */}
-                  <RichEditor control={control} name="objectives" />
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-15">
-              <div className="flex flex-col gap-2">
-                <div>Section 2 - Banner Image</div>
-                <div
-                  className="flex h-96 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
-                  onDragOver={(e) => e.preventDefault()}
-                  onClick={() => document?.getElementById("banner")?.click()}
-                >
-                  {section2BannerImagePreview ? (
-                    <div className="relative h-full w-full">
-                      <Image
-                        src={section2BannerImagePreview}
-                        alt="Preview"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                      {
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSection2BannerImagePreview(null); // Clear the preview image
-                            setSection2BannerImage(null);
-                          }}
-                          className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </button>
-                      }
-                    </div>
-                  ) : (
-                    <>
-                      <svg
-                        className="mx-auto h-12 w-12 text-gray-400"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 48 48"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <p className="mt-1 text-sm text-gray-600">
-                        Drag and drop an image here, or click to select a file
-                      </p>
-                    </>
-                  )}
-                  <input
-                    type="file"
-                    id="banner"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) =>
-                      handleImageChange({
-                        e,
-                        setImageError: setSection2BannerImageError,
-                        setImageFile: setSection2BannerImage,
-                        setPreviewImage: setSection2BannerImagePreview,
-                      })
-                    }
-                  />
-                </div>
-                {section2BannerImageError && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {section2BannerImageError}
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-5 grid grid-cols-2 gap-5">
-            <div className="h-full">
-              <div className="flex h-full w-full flex-col gap-2">
-                <Label content="Challenge" />
-                <div className="h-full">
-                  {/* <Controller
-                                        name="challenge"
-                                        control={control}
-    
-                                        render={({ field }) => (
-                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
-                                        )}
-                                    /> */}
-                  <RichEditor control={control} name="challenge" />
-                </div>
-              </div>
-            </div>
-
-            <div className="h-full">
-              <div className="flex h-full w-full flex-col gap-2">
-                <Label content="Solutions" />
-                <div className="h-full">
-                  {/* <Controller
-                                        name="solutions"
-                                        control={control}
-    
-                                        render={({ field }) => (
-                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
-                                        )}
-                                    /> */}
-                  <RichEditor control={control} name="solutions" />
-                </div>
-              </div>
-            </div>
-
-            {selectedSection === "case study new" && (
-              <div className="my-12 h-full">
-                <div className="flex h-full w-full flex-col gap-2">
-                  <Label content="Strategy & Approach" />
-                  <div className="h-full">
-                    {/* <Controller
-                                        name="solutions"
-                                        control={control}
-    
-                                        render={({ field }) => (
-                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
-                                        )}
-                                    /> */}
-                    <RichEditor control={control} name="strategyApproach" />
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {selectedSection === "case study new" && (
-            <div className="mt-28">
-              <div className="flex items-center justify-between">
-                <Label content="Social Media" />
-              </div>
-              <div className="mt-2">
-                <ImageUploader
-                  onChange={handleImageUpload}
-                  deleteAfterUpload={true}
-                  multiple={true}
-                />
-              </div>
-
-              <div className="mt-4 grid grid-cols-3 gap-4">
-                {imageUrls.map((url, index) => (
-                  <div key={index} className="relative h-40">
-                    <Image
-                      src={url}
-                      alt={`Uploaded image ${index + 1}`}
-                      className="h-full w-full rounded-lg object-cover"
-                      width={100}
-                      height={100}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveImage(index)}
-                      className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="mt-28 flex flex-col gap-3">
-            <div className="flex w-full flex-col gap-2">
-              <Label content="Video" />
-              <input
-                type="text"
-                {...register("video")}
-                className={
-                  "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                }
-              />
-              {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
-            </div>
-            <div className="flex w-full flex-col gap-2">
-              <Label content="Video Title" />
-              <input
-                type="text"
-                {...register("videoTitle")}
-                className={
-                  "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                }
-              />
-              {/* {errors.bannerTitle && <p className='mt-1 text-sm text-red'>{errors.bannerTitle.message}</p>} */}
-            </div>
-            <div>
-              <Label content="Video Thumbnail" />
-              <div
-                className="mt-2 flex h-[300px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
-                onDragOver={(e) => e.preventDefault()}
-                onClick={() =>
-                  document?.getElementById("videothumbnail")?.click()
-                }
-              >
-                {videoThumbnailPreview ? (
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={videoThumbnailPreview}
-                      alt="Preview"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                    {
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setVideoThumbnailPreview(null); // Clear the preview image
-                          setVideoThumbnail(null);
-                        }}
-                        className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    }
-                  </div>
-                ) : (
-                  <>
-                    <svg
-                      className="mx-auto h-12 w-12 text-gray-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <p className="mt-1 text-sm text-gray-600">
-                      Drag and drop an image here, or click to select a file
-                    </p>
-                  </>
-                )}
-                <input
-                  type="file"
-                  id="videothumbnail"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(e) =>
-                    handleImageChange({
-                      e,
-                      setImageError: setVideoThumbnailError,
-                      setImageFile: setVideoThumbnail,
-                      setPreviewImage: setVideoThumbnailPreview,
-                    })
-                  }
-                />
-              </div>
-              {videoThumbnailError && (
-                <p className="mt-1 text-sm text-red-600">
-                  {videoThumbnailError}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div className="mt-15 grid h-96 grid-cols-3 gap-5">
-            <div className="">
-              <div className="flex h-full w-full flex-col gap-2">
-                <Label content="Result" />
-                <div className="h-full">
-                  {/* <Controller
-                                        name="result"
-                                        control={control}
-    
-                                        render={({ field }) => (
-                                            <ReactQuill theme="snow" value={field.value == "<p>undefined</p>" ? "" : field.value} onChange={field.onChange} className="h-full" />
-                                        )}
-                                    /> */}
-                  <RichEditor control={control} name="result" />
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <Label content="Result-Image1" />
-              <div
-                className="mt-2 flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
-                onDragOver={(e) => e.preventDefault()}
-                onClick={() =>
-                  document?.getElementById("resultimage1")?.click()
-                }
-              >
-                {resultImage1Preview ? (
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={resultImage1Preview}
-                      alt="Preview"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                    {
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setResultImage1Preview(null); // Clear the preview image
-                          setResultImage1(null);
-                        }}
-                        className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    }
-                  </div>
-                ) : (
-                  <>
-                    <svg
-                      className="mx-auto h-12 w-12 text-gray-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <p className="mt-1 text-sm text-gray-600">
-                      Drag and drop an image here, or click to select a file
-                    </p>
-                  </>
-                )}
-                <input
-                  type="file"
-                  id="resultimage1"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(e) =>
-                    handleImageChange({
-                      e,
-                      setImageError: setResultImage1Error,
-                      setImageFile: setResultImage1,
-                      setPreviewImage: setResultImage1Preview,
-                    })
-                  }
-                />
-              </div>
-              {resultImage1Error && (
-                <p className="mt-1 text-sm text-red-600">{resultImage1Error}</p>
-              )}
-            </div>
-
-            <div>
-              <Label content="Result-Image2" />
-              <div
-                className="mt-2 flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
-                onDragOver={(e) => e.preventDefault()}
-                onClick={() =>
-                  document?.getElementById("resultimage2")?.click()
-                }
-              >
-                {resultImage2Preview ? (
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={resultImage2Preview}
-                      alt="Preview"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                    {
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setResultImage2Preview(null); // Clear the preview image
-                          setResultImage2(null);
-                        }}
-                        className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    }
-                  </div>
-                ) : (
-                  <>
-                    <svg
-                      className="mx-auto h-12 w-12 text-gray-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <p className="mt-1 text-sm text-gray-600">
-                      Drag and drop an image here, or click to select a file
-                    </p>
-                  </>
-                )}
-                <input
-                  type="file"
-                  id="resultimage2"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(e) =>
-                    handleImageChange({
-                      e,
-                      setImageError: setResultImage2Error,
-                      setImageFile: setResultImage2,
-                      setPreviewImage: setResultImage2Preview,
-                    })
-                  }
-                />
-              </div>
-              {resultImage2Error && (
-                <p className="mt-1 text-sm text-red-600">{resultImage2Error}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="mt-15 grid grid-cols-2 gap-5">
-            <div className="flex w-full flex-col gap-2">
-              <div className="flex flex-col gap-2">
-                <Label content="Description" />
-                <input
-                  type="text"
-                  {...register("description", {
-                    required:
-                      watch("portfolioType") === "modern"
-                        ? false
-                        : "Description is required",
-                  })}
-                  className={
-                    "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                  }
-                />
-                {errors.description && (
-                  <p className="text-red mt-1 text-sm">
-                    {errors.description.message}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="flex w-full flex-col gap-2">
-              <Label content="Tag" />
-              <input
-                type="text"
-                {...register("tag", {
-                  required:
-                    watch("portfolioType") === "modern"
-                      ? false
-                      : "Tag is required",
-                })}
-                className={
-                  "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                }
-              />
-              {errors.tag && (
-                <p className="text-red mt-1 text-sm">{errors.tag.message}</p>
-              )}
-            </div>
-          </div>
-
-          {/* <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
-                                <Droppable categories={categories}/>
-                    </DndContext> */}
-
-          <div className="mt-14 grid grid-cols-2 gap-5">
-            <div className="flex flex-col gap-2">
-              <Label content="Added Categories" className="" />
-              <div className="flex h-full w-full flex-wrap items-start gap-1 rounded-md border p-4">
-                {addedCategories.map((item) => (
-                  <>
-                    <div className="group relative h-fit w-fit cursor-pointer rounded-full border bg-blue-950 px-2 py-1 text-white">
-                      <span className="group-hover:opacity-50">
-                        {item.name}
-                      </span>
-                      <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-2 rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
-                        <MdOutlineSwapHorizontalCircle
-                          onClick={() => handleSwapItem(item._id)}
-                        />
-                        <MdEdit
-                          className="text-yellow-400"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setEditingCategory({
-                              _id: item._id,
-                              name: item.name,
-                              link: item.link ?? "",
-                            });
-                            setEditModal(true);
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-1">
-                <Label content="Available Categories" className="" />
-                <div className="flex size-5 items-center justify-center rounded-full bg-green-500">
-                  <FaPlus
-                    className="text-sm"
-                    onClick={() => setCategoryModal(true)}
-                  />
-                </div>
-              </div>
-              <div className="flex h-full w-full flex-wrap items-start gap-1 rounded-md border p-4">
-                {categories
-                  .filter(
-                    (item) =>
-                      !addedCategories.some(
-                        (addedItem) => addedItem._id === item._id,
-                      ),
-                  )
-                  .map((item) => (
-                    <div className="group relative flex h-fit w-fit min-w-20 cursor-pointer justify-center rounded-full border bg-blue-950 px-2 py-1 text-white">
-                      <span className="group-hover:opacity-50">
-                        {item.name}
-                      </span>
-                      <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-2 rounded-full bg-transparent text-xl opacity-0 group-hover:opacity-100">
-                        <MdOutlineSwapHorizontalCircle
-                          onClick={() => handleSwapItem(item._id)}
-                        />
-                        <MdEdit
-                          className="text-yellow-400"
-                          onClick={() => {
-                            setEditingCategory({
-                              _id: item._id,
-                              name: item.name,
-                              link: item.link ?? "",
-                            });
-                            setEditModal(true);
-                          }}
-                        />
-                        <RxCross2
-                          className="text-red-400"
-                          onClick={() => handleDeleteCategory(item._id)}
-                        />
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div>
-          <div className="mt-10 flex h-36 w-1/3 flex-col gap-2">
-            <Label content="Logo" />
-            <div
-              className="flex h-full w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-gray-300"
-              onDragOver={(e) => e.preventDefault()}
-              onClick={() => document?.getElementById("logo")?.click()}
-            >
-              {previewLogo ? (
-                <div className="relative h-full w-full">
-                  <img
-                    src={previewLogo}
-                    alt="Preview"
-                    className="h-full w-full object-cover"
-                  />
-                  {
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setPreviewLogo(null); // Clear the preview image
-                        setLogoFile(null);
-                        const inputElement = document.getElementById(
-                          "logo",
-                        ) as HTMLInputElement;
-                        if (inputElement) {
-                          inputElement.value = ""; // Reset the input value
-                        }
-                      }}
-                      className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  }
-                </div>
-              ) : (
-                <>
-                  <svg
-                    className="mx-auto h-12 w-12 text-gray-400"
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 48 48"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <p className="mt-1 text-sm text-gray-600">
-                    Drag and drop an image here, or click to select a file
-                  </p>
-                </>
-              )}
-              <input
-                type="file"
-                id="logo"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) =>
-                  handleImageChange({
-                    e,
-                    setImageError: setLogoError,
-                    setImageFile: setLogoFile,
-                    setPreviewImage: setPreviewLogo,
-                  })
-                }
-              />
-            </div>
-            {logoError && (
-              <p className="mt-1 text-sm text-red-600">{logoError}</p>
-            )}
-          </div>
-
-          <div className="mt-15 flex w-full flex-col gap-2">
-            <div className="flex flex-col gap-2">
-              <Label content="slug" />
-              <input
-                type="text"
-                {...register("slug")}
-                readOnly
-                className={
-                  "w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                }
-              />
-            </div>
-          </div>
-
-          <div className="mt-2 flex w-full flex-col gap-2">
-            <Label content="Featured Project" />
-            <select
-              {...register("featured")}
-              className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-3 text-black focus:outline-none"
-            >
-              <option value="">Select Featured</option>
-              <option value={"true"}>Yes</option>
-              <option value={"false"}>No</option>
-            </select>
-          </div>
+          </SectionCard>
 
           {selectedSection !== "portfolio" ||
           watch("portfolioType") !== "modern" ? (
             <>
-              <div className="mt-5 grid grid-cols-2 gap-5">
-                <div className="flex flex-col gap-2">
-                  <Label content="meta-title" />
-                  <input
-                    type="text"
-                    {...register("metaTitle")}
-                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                  />
-                </div>
+              <SectionCard
+                title="SEO metadata"
+                description="Search engine title and description for this page."
+              >
+                <div className="grid grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-2">
+                    <Label content="meta-title" />
+                    <input
+                      type="text"
+                      {...register("metaTitle")}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    />
+                  </div>
 
-                <div className="flex flex-col gap-2">
-                  <Label content="meta-description" />
-                  <input
-                    type="text"
-                    {...register("metaDescription")}
-                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                  />
+                  <div className="flex flex-col gap-2">
+                    <Label content="meta-description" />
+                    <input
+                      type="text"
+                      {...register("metaDescription")}
+                      className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+                    />
+                  </div>
                 </div>
-              </div>
+              </SectionCard>
 
-              <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
-                <h2 className="text-xl font-semibold">
+              <section className="space-y-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+                <h2 className="text-base font-semibold text-slate-900 dark:text-white">
                   Social sharing metadata
                 </h2>
                 <div className="grid grid-cols-2 gap-5">
@@ -2515,8 +2598,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
           {selectedSection === "portfolio" &&
             watch("portfolioType") === "modern" && (
-              <section className="mt-8 space-y-6 rounded-md border border-gray-300 p-5">
-                <h2 className="text-xl font-semibold">
+              <section className="space-y-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+                <h2 className="text-base font-semibold text-slate-900 dark:text-white">
                   Modern portfolio content
                 </h2>
 
@@ -2525,7 +2608,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                     <h3 className="text-lg font-medium">Preview images</h3>
                     <button
                       type="button"
-                      onClick={() => setPreviewImages((images) => [...images, ""])}
+                      onClick={() =>
+                        setPreviewImages((images) => [...images, ""])
+                      }
                       className="rounded bg-black px-3 py-2 text-sm text-white"
                     >
                       Add preview image
@@ -2555,7 +2640,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                           type="button"
                           onClick={() =>
                             setPreviewImages((images) =>
-                              images.filter((_, imageIndex) => imageIndex !== index),
+                              images.filter(
+                                (_, imageIndex) => imageIndex !== index,
+                              ),
                             )
                           }
                           className="mt-2 text-sm text-red-600"
@@ -2578,7 +2665,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                           {
                             _id:
                               items.reduce(
-                                (highestId, item) => Math.max(highestId, item._id),
+                                (highestId, item) =>
+                                  Math.max(highestId, item._id),
                                 0,
                               ) + 1,
                             title: "",
@@ -2607,7 +2695,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                       className="space-y-3 rounded-md border border-gray-200 p-4"
                     >
                       <div className="flex items-center justify-between">
-                        <h4 className="font-medium">Delivery item {itemIndex + 1}</h4>
+                        <h4 className="font-medium">
+                          Delivery item {itemIndex + 1}
+                        </h4>
                         <button
                           type="button"
                           onClick={() =>
@@ -2679,7 +2769,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                               setModernDeliveredItems((items) =>
                                 items.map((entry, index) =>
                                   index === itemIndex
-                                    ? { ...entry, urllink: [...entry.urllink, ""] }
+                                    ? {
+                                        ...entry,
+                                        urllink: [...entry.urllink, ""],
+                                      }
                                     : entry,
                                 ),
                               )
@@ -2749,30 +2842,52 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                       <h4 className="font-medium">First CTA</h4>
                       <label className="flex flex-col gap-1">
                         <span>Title</span>
-                        <input {...register("detailsCtaOneTitle")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                        <input
+                          {...register("detailsCtaOneTitle")}
+                          className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                        />
                       </label>
                       <label className="flex flex-col gap-1">
                         <span>Button text</span>
-                        <input {...register("detailsCtaOneLinkText")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                        <input
+                          {...register("detailsCtaOneLinkText")}
+                          className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                        />
                       </label>
                       <label className="flex flex-col gap-1">
                         <span>Link</span>
-                        <input type="text" {...register("modernDetailsCtaOneLink")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" placeholder="https://" />
+                        <input
+                          type="text"
+                          {...register("modernDetailsCtaOneLink")}
+                          className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                          placeholder="https://"
+                        />
                       </label>
                     </div>
                     <div className="space-y-3 rounded-md border border-gray-200 p-4">
                       <h4 className="font-medium">Second CTA</h4>
                       <label className="flex flex-col gap-1">
                         <span>Title</span>
-                        <input {...register("detailsCtaTwoTitle")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                        <input
+                          {...register("detailsCtaTwoTitle")}
+                          className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                        />
                       </label>
                       <label className="flex flex-col gap-1">
                         <span>Button text</span>
-                        <input {...register("detailsCtaTwoButtonText")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" />
+                        <input
+                          {...register("detailsCtaTwoButtonText")}
+                          className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                        />
                       </label>
                       <label className="flex flex-col gap-1">
                         <span>Link</span>
-                        <input type="text" {...register("modernDetailsCtaTwoLink")} className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black" placeholder="https://" />
+                        <input
+                          type="text"
+                          {...register("modernDetailsCtaTwoLink")}
+                          className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
+                          placeholder="https://"
+                        />
                       </label>
                     </div>
                   </div>
@@ -2812,7 +2927,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                         >
                           <input
                             type="checkbox"
-                            checked={relatedPortfolioIds.includes(portfolio._id)}
+                            checked={relatedPortfolioIds.includes(
+                              portfolio._id,
+                            )}
                             onChange={(event) =>
                               setRelatedPortfolioIds((selectedIds) =>
                                 event.target.checked
@@ -2853,9 +2970,11 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
           {selectedSection !== "portfolio" ||
           watch("portfolioType") !== "modern" ? (
-            <section className="mt-8 space-y-5 rounded-md border border-gray-300 p-5">
-              <h2 className="text-xl font-semibold">Portfolio detail sections</h2>
-              <p className="text-sm text-gray-600">
+            <section className="space-y-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <h2 className="text-base font-semibold text-slate-900 dark:text-white">
+                Portfolio detail sections
+              </h2>
+              <p className="text-sm text-slate-500">
                 Leave these fields empty to keep the current page defaults. For
                 custom delivery items, enter a JSON array with id, title, dec,
                 icn (image URL), and urllink fields.
@@ -2916,12 +3035,17 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             </section>
           ) : null}
 
-          <div className="mt-25 pb-5 sticky bottom-4">
-            <div className="inline-flex w-[15%] items-center justify-center rounded-full bg-black px-10 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10">
-              <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Saving" : "Save"}
-              </button>
-            </div>
+          <div className="sticky bottom-4 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Changes are saved only when you click Save.
+            </p>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={adminButtonClass("dark", "md", "min-w-28")}
+            >
+              {isSubmitting ? "Saving" : "Save"}
+            </button>
           </div>
         </form>
       </div>

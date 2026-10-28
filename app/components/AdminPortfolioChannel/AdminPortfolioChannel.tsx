@@ -1,11 +1,21 @@
 "use client";
 
+import { LoadingState } from "@/app/components/AdminUI";
 import { Input } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Label from "../Label/Label";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { Plus } from "lucide-react";
+import {
+  EmptyState,
+  SearchInput,
+  matchesQuery,
+  PageHeader,
+  SectionCard,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 interface Channels {
   _id: string;
@@ -30,10 +40,13 @@ const AdminPortfolioChannel = () => {
   });
 
   const [channels, setChannels] = useState<Channels[]>([]);
+  const [query, setQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [refetch, setRefetch] = useState(false);
 
+  // True until the first load finishes, so the empty message never shows while data is loading.
+  const [listLoading, setListLoading] = useState(true);
   useEffect(() => {
     const fetchChannels = async () => {
       try {
@@ -44,7 +57,7 @@ const AdminPortfolioChannel = () => {
         console.error("Error fetching channels:", error);
       }
     };
-    fetchChannels();
+    fetchChannels().finally(() => setListLoading(false));
   }, [refetch]);
 
   const handleAddChannel = async (id?: string) => {
@@ -103,17 +116,26 @@ const AdminPortfolioChannel = () => {
     setIsModalOpen(true);
   };
 
+  const visibleChannels = channels.filter((channel) =>
+    matchesQuery(query, channel.channelName, channel.channelLink),
+  );
   return (
-    <div>
-      <div className="mt-5 flex justify-end">
-        <button
-          type="button"
-          className="rounded-xl bg-blue-950 px-5 py-2 text-white"
-          onClick={openAddModal}
-        >
-          Add Channel
-        </button>
-      </div>
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="Portfolio Channels"
+        count={channels.length}
+        description="Marketing channels that can be linked from portfolio items."
+        actions={
+          <button
+            type="button"
+            className={adminButtonClass("dark")}
+            onClick={openAddModal}
+          >
+            <Plus className="size-4" />
+            Add Channel
+          </button>
+        }
+      />
 
       {isModalOpen && (
         <div
@@ -163,17 +185,17 @@ const AdminPortfolioChannel = () => {
                     </span>
                   )}
                 </div>
-                <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <div className="flex flex-col-reverse gap-2 border-t border-slate-200 pt-4 sm:flex-row sm:justify-end">
                   <button
                     type="button"
-                    className="shadow-xs inline-flex w-full justify-center rounded-md bg-blue-950 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-900 sm:ml-3 sm:w-auto"
+                    className={adminButtonClass("dark", "md", "sm:order-last")}
                     onClick={() => handleAddChannel(editId || "")}
                   >
                     Save
                   </button>
                   <button
                     type="button"
-                    className="shadow-xs mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className={adminButtonClass("secondary")}
                     onClick={() => setIsModalOpen(false)}
                   >
                     Cancel
@@ -185,54 +207,75 @@ const AdminPortfolioChannel = () => {
         </div>
       )}
 
-      {channels.length > 0 ? (
-        <div className="mt-6 overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
-          <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
-            <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
-              <tr>
-                <th scope="col" className="px-4 py-3">
-                  Channel Name
-                </th>
-                <th scope="col" className="px-4 py-3">
-                  Channel Link
-                </th>
-                <th scope="col" className="px-4 py-3 text-right">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {channels.map((channel) => (
-                <tr
-                  key={channel._id}
-                  className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                >
-                  <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
-                    {channel.channelName}
-                  </td>
-                  <td className="break-all px-4 py-3">{channel.channelLink}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center justify-end gap-4">
-                      <MdEdit
-                        className="cursor-pointer text-lg text-gray-600 hover:text-black"
-                        onClick={() => openEditModal(channel)}
-                      />
-                      <MdDelete
-                        className="cursor-pointer text-lg text-red-500 hover:text-red-700"
-                        onClick={() => handleDeleteChannel(channel._id || "")}
-                      />
-                    </div>
-                  </td>
+      <SectionCard
+        title="List of channels"
+        actions={
+          <SearchInput
+            value={query}
+            onChange={setQuery}
+            placeholder="Search channels"
+          />
+        }
+        bodyClassName={visibleChannels.length > 0 ? "p-0" : undefined}
+      >
+        {visibleChannels.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm text-slate-700 dark:text-slate-300">
+              <thead className="bg-slate-50 text-xs uppercase text-slate-500 dark:bg-slate-900/40 dark:text-slate-400">
+                <tr>
+                  <th scope="col" className="px-4 py-3">
+                    Channel Name
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Channel Link
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right">
+                    Actions
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className="mt-6 rounded-lg border border-dashed border-gray-300 py-12 text-center text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400">
-          No channels added yet.
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {visibleChannels.map((channel) => (
+                  <tr
+                    key={channel._id}
+                    className="border-b border-slate-100 bg-white last:border-b-0 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700/50"
+                  >
+                    <td className="px-4 py-3 font-medium text-slate-900 dark:text-white">
+                      {channel.channelName}
+                    </td>
+                    <td className="break-all px-4 py-3">
+                      {channel.channelLink}
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-1">
+                        <MdEdit
+                          title="Edit"
+                          className="size-8 cursor-pointer rounded-lg p-1.5 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700"
+                          onClick={() => openEditModal(channel)}
+                        />
+                        <MdDelete
+                          title="Delete"
+                          className="size-8 cursor-pointer rounded-lg p-1.5 text-red-500 transition-colors hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-500/10"
+                          onClick={() => handleDeleteChannel(channel._id || "")}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : listLoading ? (
+          <LoadingState />
+        ) : channels.length > 0 ? (
+          <EmptyState
+            title={`No results for "${query}"`}
+            description="Try a different name, or clear the search."
+          />
+        ) : (
+          <EmptyState title="No channels added yet." />
+        )}
+      </SectionCard>
     </div>
   );
 };
