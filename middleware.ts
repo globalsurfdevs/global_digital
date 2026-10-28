@@ -103,5 +103,7 @@ export default auth(async (request: NextRequest) => {
 });
 
 export const config = {
-  matcher: ["/admin/:path*", "/:path*"],
+  // Skip /api/auth: the auth() wrapper re-issues the session cookie on every
+  // request it handles, which would undo the cookie deletion on sign-out.
+  matcher: ["/((?!api/auth).*)"],
 };

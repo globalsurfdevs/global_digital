@@ -7,9 +7,8 @@ import {
 } from "@/app/actions/otpActions";
 import { updateHrPassword } from "@/app/actions/otpActions";
 import React, { useEffect, useRef, useState } from "react";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { toast } from "sonner";
-import { signOutAdmin } from "@/app/actions/authActions";
 import { Check, Eye, EyeOff, KeyRound, Mail, ShieldCheck } from "lucide-react";
 import {
   PageHeader,
@@ -182,7 +181,7 @@ const AdminSettings = () => {
     const result = await changePass(newPass, session.user.id);
     if (result.success) {
       toast.success(result.message);
-      await signOutAdmin();
+      await signOut({ redirectTo: "/auth/signin" });
     } else {
       toast.error(result.message);
     }
