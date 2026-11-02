@@ -5,17 +5,17 @@ export const BannerSection = [
     id: 1,
     image: assets.cybanner,
     navigation: [
-      { label: "Home", url: "/" }, 
-      { label: "Creative Services",url: "/creative-agency-dubai" }, 
-      { label: "Copy writing",url: "" },
+      { label: "Home", url: "/" },
+      { label: "Creative Services", url: "/creative-agency-dubai" },
+      { label: "Copy writing", url: "" },
     ],
-    title:
-      "Professional Copywriting Services in Dubai",
-      subtitle:"Crafting powerful brand messaging and content strategies to engage, inspire, and convert audience",
+    title: "Professional Copywriting Services in Dubai",
+    subtitle:
+      "Crafting powerful brand messaging and content strategies to engage, inspire, and convert audience",
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "Words have the power to shape perceptions, inspire action, and drive engagement. As a leading copywriting agency in Dubai, we craft compelling, results-driven content tailored to your brand’s voice. Whether you need website copy, social media content, or advertising copy, our expert copywriters ensure that your message is clear, persuasive, and aligned with your business goals. Explore our copywriting services and elevate your brand’s communication.",
       },
     ],
@@ -59,50 +59,50 @@ export const Frameworkdata = {
       id: 1,
       title: "SEO Copywriting Services",
       dec: "We write with Google in mind, so your audience finds you first. ",
-      icn:assets.cytp1,
-    } ,
+      icn: assets.cytp1,
+    },
     {
       id: 2,
       title: "Website Copywriting Service",
       dec: "Clear, compelling words that make your website work harder for you. ",
-      icn:assets.cytp2,
-    } ,
+      icn: assets.cytp2,
+    },
     {
       id: 3,
       title: "Email Copywriting Services",
       dec: "Emails that feel personal, speak clearly, and get results. ",
-      icn:assets.cytp3,
-    } ,
+      icn: assets.cytp3,
+    },
     {
       id: 4,
       title: "B2B Copywriting Services ",
       dec: "Smart, trustworthy content that helps you connect with other businesses.",
-      icn:assets.cytp4,
+      icn: assets.cytp4,
     },
     {
       id: 5,
       title: "Landing Page Copywriting Services",
       dec: "Focused, persuasive copy that turns visits into real action. ",
-      icn:assets.cytp5,
+      icn: assets.cytp5,
     },
     {
       id: 6,
       title: "Ecommerce Copywriting Services ",
       dec: "Words that sell your products and share your brand’s story. ",
-      icn:assets.cytp6,
+      icn: assets.cytp6,
     },
     {
       id: 7,
       title: "Social Media Copywriting Services",
       dec: "Scroll-stopping content that sounds just like you, and gets people talking.",
-      icn:assets.cytp7,
+      icn: assets.cytp7,
     },
     {
       id: 8,
       title: "Custom Copywriting Services",
       dec: "Whatever you need, we’ll craft the words to match your goals and voice.",
-      icn:assets.cytp8,
-    }
+      icn: assets.cytp8,
+    },
   ],
 };
 export const Matslogo = [
@@ -174,8 +174,8 @@ export const Matslogo = [
         src: assets.cylogo13,
         alt: "Logo",
       },
-    ]
-  }
+    ],
+  },
 ];
 export const Platformsecomdata = {
   title: "Why is GS Digital Your Trusted Copywriting Partner?  ",
@@ -260,38 +260,37 @@ export const relatedservices = {
       id: 1,
       title: "Branding ",
       dec: "We shape a clear, consistent brand identity that resonates and leaves a lasting impression.",
-      icon:assets.cyrs1
-    } ,
+      icon: assets.cyrs1,
+    },
     {
       id: 2,
       title: "Logo Design ",
       dec: "Memorable logos that reflect your brand’s personality and stand out in any space. ",
-      icon:assets.cyrs2
-    } ,
+      icon: assets.cyrs2,
+    },
     {
       id: 3,
       title: "Video Production   ",
       dec: "Engaging video content that brings your story to life and sparks real connection. ",
-      icon:assets.cyrs3
-    } ,
+      icon: assets.cyrs3,
+    },
     {
       id: 4,
       title: "Photography",
       dec: "Professional visuals that showcase your brand in its best light, frame by frame. ",
-      icon:assets.cyrs4
-    } ,
+      icon: assets.cyrs4,
+    },
     {
       id: 5,
       title: "Graphic Design   ",
       dec: "Eye-catching designs that communicate your message with style and clarity. ",
-      icon:assets.cyrs5
-    } ,
+      icon: assets.cyrs5,
+    },
     {
       id: 6,
       title: "Website Development  ",
       dec: " Custom websites that blend powerful storytelling with intuitive, modern design.",
-      icon:assets.cyrs6
-    }
+      icon: assets.cyrs6,
+    },
   ],
 };
-

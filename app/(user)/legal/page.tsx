@@ -13,8 +13,7 @@ type Metadata = {
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Legal | GS Digital",
-    description:
-      "Legal information and policies for GS Digital.",
+    description: "Legal information and policies for GS Digital.",
     alternates: {
       canonical: "https://www.globalsurf.ae/legal",
     },
@@ -61,7 +60,8 @@ const page = () => {
                 </li>
                 <li>
                   <strong>“Services”</strong> refers to the digital marketing,
-                  web development, and other offerings provided by GS Digital.{" "}
+                  web development, and other offerings provided by GS
+                  Digital.{" "}
                 </li>
               </ul>
             </div>
@@ -81,7 +81,8 @@ const page = () => {
                 <ul className="list-outside list-disc pl-[40px]">
                   <li>
                     {" "}
-                    Use the Website to distribute harmful or malicious content.{" "}
+                    Use the Website to distribute harmful or malicious
+                    content.{" "}
                   </li>
                   <li>Attempt to gain unauthorized access to our systems. </li>
                   <li>

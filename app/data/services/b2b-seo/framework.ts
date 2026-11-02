@@ -1,6 +1,3 @@
-
-
-
 export const Frameworkdata = {
   title: "The Framework for Achieving More",
   data: [
@@ -8,17 +5,17 @@ export const Frameworkdata = {
       id: 1,
       title: "Understand Your Market",
       dec: "We take the time to truly understand your market because effective SEO isn’t about guesswork, it’s about knowing your audience and what drives them.",
-    } ,
+    },
     {
       id: 2,
       title: "Craft a Personalized SEO Strategy",
       dec: "No cookie-cutter solutions here. We build a custom SEO strategy tailored to your business goals, ensuring every move makes an impact.",
-    } ,
+    },
     {
       id: 3,
       title: "Deep Dive into Your Site",
       dec: "We dig deep into your website to identify any obstacles to SEO success and provide clear, actionable solutions to overcome them.",
-    } ,
+    },
     {
       id: 4,
       title: "Source the Most Advantageous Keywords",
@@ -38,6 +35,6 @@ export const Frameworkdata = {
       id: 7,
       title: "Continue to Dominate the SERPs",
       dec: "Our goal is long-term success. We work relentlessly to keep you ahead of the competition and on top of the search results.",
-    }
+    },
   ],
 };

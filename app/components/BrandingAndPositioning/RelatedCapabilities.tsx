@@ -17,7 +17,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
       <div className="container">
         <div className="mb-4 xl:mb-8 xxl:mb-12">
           <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-            <motion.h3
+            <motion.p
               initial="hidden"
               whileInView="show"
               variants={moveUp(0)}
@@ -25,7 +25,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
               className="text-18 uppercase leading-[1] tracking-[-0.025em]  text-muted"
             >
               {data.tag}
-            </motion.h3>
+            </motion.p>
             <div className="h-4 w-4 bg-primary"></div>
           </div>
           <motion.h2
@@ -33,7 +33,11 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
             whileInView="show"
             variants={moveUp(0.1)}
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)] max-w-[25ch]"> {data.title}</motion.h2>
+            className="title-60 max-w-[25ch] text-[length:var(--text-60-sm)]"
+          >
+            {" "}
+            {data.title}
+          </motion.h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {data.items.map((item, index) => (
@@ -43,7 +47,7 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
               variants={moveUp(index * 0.1)}
               viewport={{ once: true }}
               key={item.id}
-              className="rounded-[10px] border border-black/20 p-2 p-6 md:p-3 xl:p-5 xxl:p-10 -mr-px"
+              className="-mr-px rounded-[10px] border border-black/20 p-2 p-6 md:p-3 xl:p-5 xxl:p-10"
             >
               <div className="mb-3 flex items-center gap-2 md:mb-4 xl:mb-5 xl:gap-4 xxl:mb-[30px] 3xl:gap-[26px]">
                 <div className="border-primary/12 w-50 h-50 flex shrink-0 items-center justify-center rounded-[7px] border bg-primary/5 p-3 xl:h-[100px] xl:w-[100px] xl:p-5">
@@ -66,9 +70,8 @@ const RelatedCapabili = ({ data }: RelatedCapabiliProps) => {
                     {item.title}
                   </h3>
                 )}
-
               </div>
-              <p className="text-[length:var(--text-18-sm)] xxl:text-20 fnt-lexend leading-[1.444444444444444] text-[#77787B]">
+              <p className="xxl:text-20 fnt-lexend text-[length:var(--text-18-sm)] leading-[1.444444444444444] text-[#77787B]">
                 {toSentenceCase(item.description)}
               </p>
             </motion.div>

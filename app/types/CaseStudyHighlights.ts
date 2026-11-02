@@ -1,6 +1,6 @@
 export type CaseStudyHighlights = {
-    number: string;
-    text: string;
-    customId: string;
-    companyId: number;
-} 
+  number: string;
+  text: string;
+  customId: string;
+  companyId: number;
+};

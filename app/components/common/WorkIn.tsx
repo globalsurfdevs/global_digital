@@ -1,31 +1,38 @@
-"use client"
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import WorkSwiper from './WorkSwiper'
+import React from "react";
+import { motion } from "framer-motion";
+import WorkSwiper from "./WorkSwiper";
 
-const WorkIn = ({ workSvgsData,page }:any) => {
-
+const WorkIn = ({ workSvgsData, page }: any) => {
   return (
-    <div className=' overflow-hidden'>
-       <motion.div
-          initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                  variants={{
-                    hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
-                  }}
-        >
-      <div className='container mx-auto px-4 py-4 !overflow-visible'>
-        <div className='  flex flex-col gap-12 xl:gap-[90px] home-slide'>
-          <motion.h2  className={`${page === "service" ? "text-[length:var(--text-60-sm)]" : " text-font65"} leading-lh1p07`}>Web development technology stack </motion.h2>
-          <WorkSwiper workSvgsData={workSvgsData} />
+    <div className=" overflow-hidden">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+        variants={{
+          hidden: { opacity: 0, y: 50 }, // Start below and invisible
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 1, ease: "easeOut" },
+          }, // Slide up and fade in
+        }}
+      >
+        <div className="container mx-auto !overflow-visible px-4 py-4">
+          <div className="  home-slide flex flex-col gap-12 xl:gap-[90px]">
+            <motion.h2
+              className={`${page === "service" ? "text-[length:var(--text-60-sm)]" : " text-font65"} leading-lh1p07`}
+            >
+              Web development technology stack 
+            </motion.h2>
+            <WorkSwiper workSvgsData={workSvgsData} />
+          </div>
         </div>
-        </div>
-        </motion.div>
+      </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default WorkIn
+export default WorkIn;

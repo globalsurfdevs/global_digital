@@ -1,64 +1,19 @@
-import CaseStudyDetails from '@/app/components/CaseStudy-details'
+import CaseStudyDetails from "@/app/components/CaseStudy-details";
 import { Metadata } from "next";
 type Data = {
   caseStudy: {
     metaTitle: string;
     metaDescription: string;
-  }
-}
-
-// export async function generateMetadata(
-//   props: {
-//     params: Promise<{
-//       companyName: string
-//     }>
-//   }
-// ): Promise<Metadata> {
-//   const params = await props.params;
-//   const slug = formatLinkForCaseStudy(params.companyName)
-
-//   const data: Data = await apiService.get(`/api/case-study?slug=${slug}`)
-
-//   const metadataTitle = data.caseStudy.metaTitle == "null" || !data.caseStudy.metaTitle ? "Global Surf Digital" : data.caseStudy.metaTitle;
-//   const metadataDescription = data.caseStudy.metaDescription == "null" || !data.caseStudy.metaDescription ? "Global Surf Digital" : data.caseStudy.metaDescription;
-//   const canonicalUrl = `https://www.globalsurf.ae/case-study/${slug}`
-
-//   return {
-//     title: metadataTitle,
-//     description: metadataDescription,
-//     alternates: {
-//       canonical: canonicalUrl,
-//     },
-//   };
-// }
-
-// const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
-//   // const companyName = (await params).companyName;
-
-//   // const response = await fetch(
-//   //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/case-study?slug=${companyName}`,
-//   //   { next: { revalidate: 60 } }
-//   // );
-
-//   // if (!response.ok) {
-//   //   console.error("API Error:", response.status);
-//   //   return <div>Failed to load case study</div>;
-//   // }
-
-//   // const data = await response.json();
-
-//   return <CaseStudyDetails />;
-// };
-
-// export default page;
-
-
+  };
+};
 import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
-export async function generateMetadata(
-  props: {
-    params: Promise<{ companyName: string }>
-  }
-): Promise<Metadata> {
+
+
+
+
+export async function generateMetadata(props: {
+  params: Promise<{ companyName: string }>;
+}): Promise<Metadata> {
   const { companyName } = await props.params;
 
   const data = await getCaseStudyOrPortfolio(companyName, "case study");
@@ -69,7 +24,8 @@ export async function generateMetadata(
       : data.caseStudy.metaTitle;
 
   const metadataDescription =
-    !data?.caseStudy?.metaDescription || data.caseStudy.metaDescription === "null"
+    !data?.caseStudy?.metaDescription ||
+    data.caseStudy.metaDescription === "null"
       ? "Global Surf Digital"
       : data.caseStudy.metaDescription;
 
@@ -84,9 +40,15 @@ export async function generateMetadata(
   };
 }
 
-
-const page = async ({ params }: { params: Promise<{ companyName: string }> }) => {
-  const data = await getCaseStudyOrPortfolio((await params).companyName, "case study");
+const page = async ({
+  params,
+}: {
+  params: Promise<{ companyName: string }>;
+}) => {
+  const data = await getCaseStudyOrPortfolio(
+    (await params).companyName,
+    "case study",
+  );
 
   if (!data) {
     return <div>Case study not found</div>;

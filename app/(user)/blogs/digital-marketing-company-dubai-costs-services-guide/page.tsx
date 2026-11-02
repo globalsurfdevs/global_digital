@@ -59,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const page = async () => {
   const author = await getAuthorById("6a4ca154c0f7cb5455693c77");

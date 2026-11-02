@@ -11,14 +11,22 @@ import BlogFaq from "../../../components/common/BlogFaq";
 import LeftSideScrollBar from "@/app/components/BlogSocialMedia/LeftSideFixedTabs";
 import NewRules from "../../../components/BlogSocialMedia/NewRules";
 
-
-
 import {
-  BannerSection, videoProductionData, Faq, videoGuideSteps,
+  BannerSection,
+  videoProductionData,
+  Faq,
+  videoGuideSteps,
   contentSectionsData,
-  videoProductionsocialData, videocountData, scrollSectionsData, authors, llmColumnTitles,
-  llmTableData, visibilitysec, rulesData, takeaway, tableOfContents
-
+  videoProductionsocialData,
+  videocountData,
+  scrollSectionsData,
+  authors,
+  llmColumnTitles,
+  llmTableData,
+  visibilitysec,
+  rulesData,
+  takeaway,
+  tableOfContents,
 } from "../../../data/blogdatas/llmdata";
 
 import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
@@ -44,18 +52,20 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     robots: "index, follow",
   };
-  
 }
 
 const page = async () => {
   const author = await getAuthorById("6a4ca398c0f7cb5455693c8a");
-  const videoProductionTitles = ['Feature ', 'Search Engine ', 'LLM (ChatGPT/ Claude/ Gemini) '];
-  
+  const videoProductionTitles = [
+    "Feature ",
+    "Search Engine ",
+    "LLM (ChatGPT/ Claude/ Gemini) ",
+  ];
 
   return (
     <div className="relative">
       {/* FAQ SCHEMA */}
-     
+
       <div id="hero-section">
         <HeroSection
           Bannerdata={BannerSection}
@@ -66,25 +76,33 @@ const page = async () => {
       {/* <LeftSideScrollBar /> */}
       <Contentone sections={tableOfContents} />
       <div id="silent-shift">
-        <Contentone sections={contentSectionsData} /></div>
+        <Contentone sections={contentSectionsData} />
+      </div>
       <Contentone sections={videoProductionsocialData} />
-      <div id="how-llms-work"><LlmWorks
+      <div id="how-llms-work">
+        <LlmWorks
+          title="How LLMs Work (In Simple Terms)"
 
-        title="How LLMs Work (In Simple Terms)"
-
-        columnTitles={llmColumnTitles}
-        data={llmTableData}
-      /></div>
+          columnTitles={llmColumnTitles}
+          data={llmTableData}
+        />
+      </div>
       <Contentone sections={visibilitysec} />
-      <div id="invisible-llms"> <Contenttwo /></div>
-      <div id="ai-visibility-framework"><ThreeColumnTable
-        title="The 5-Step AI Visibility Framework by GS Digital"
-paddingBottom="pb-0"
-        data={videoProductionData}
-        columnTitles={videoProductionTitles} // Corrected: passing the array of strings
-      /></div>
+      <div id="invisible-llms">
+        {" "}
+        <Contenttwo />
+      </div>
+      <div id="ai-visibility-framework">
+        <ThreeColumnTable
+          title="The 5-Step AI Visibility Framework by GS Digital"
+          paddingBottom="pb-0"
+          data={videoProductionData}
+          columnTitles={videoProductionTitles} // Corrected: passing the array of strings
+        />
+      </div>
       <div id="content-llms-read">
-        <Contentone sections={videocountData} /></div>
+        <Contentone sections={videocountData} />
+      </div>
       <div id="rules-visibility">
         <NewRules rules={rulesData} />
       </div>
@@ -97,7 +115,7 @@ paddingBottom="pb-0"
       <div id="takeaway">
         <Contentone sections={takeaway} />
       </div>
-      <div id="brand-visibility" >
+      <div id="brand-visibility">
         {scrollSectionsData.map((section, idx) => (
           <ScrollSection
             key={idx}
@@ -114,7 +132,7 @@ paddingBottom="pb-0"
       <div id="faq-section" className="mt-[50px] lg:mt-[100px]">
         {/* <Detailsauthor data={authors} /> */}
 
-        <BlogFaq data={Faq}  />
+        <BlogFaq data={Faq} />
       </div>
       {author && <AuthorBioCard data={author} />}
     </div>

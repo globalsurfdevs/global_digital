@@ -18,6 +18,7 @@ export interface BlogFormInputs {
   thumbnail: string;
   thumbnailAlt: string;
   content?: string;
+  articleContent?: string;
   featuredImage: string;
   featuredImageAlt: string;
   items: BlogItem[];
@@ -28,7 +29,7 @@ export interface BlogFormInputs {
   ctaButtonText: string;
   ctaButtonLink: string;
   schemaScript?: string;
-  author:string;
+  author: string;
 }
 
 export interface BlogListItem {

@@ -17,9 +17,9 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
             viewport={{ once: true }}
             className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12"
           >
-            <h3 className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
+            <p className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
               {data.title}
-            </h3>
+            </p>
             <div className="h-4 w-4 bg-primary"></div>
           </motion.div>
           <motion.h2
@@ -27,7 +27,7 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)] mb-4 max-w-[30ch] md:mb-6 xl:mb-8 xxl:mb-12"
+            className="title-60 mb-4 max-w-[30ch] text-[length:var(--text-60-sm)] md:mb-6 xl:mb-8 xxl:mb-12"
           >
             {data.subTitle}
           </motion.h2>
@@ -38,7 +38,7 @@ const GrayParaSec = ({ data }: { data: ServiceItem["fourthSection"] }) => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="text-[length:var(--text-18-sm)] fnt-lexend mb-4 xxl:mb-6 text-muted last:mb-0"
+              className="fnt-lexend mb-4 text-[length:var(--text-18-sm)] text-muted last:mb-0 xxl:mb-6"
               dangerouslySetInnerHTML={{ __html: toSentenceCase(item) }}
             >
               {/* {toSentenceCase(item)} */}

@@ -59,7 +59,10 @@ const FeaturedProjectsSlider: React.FC<FeaturedProjectsSectionProps> = ({
       <div className="container" ref={nextContainerRef}>
         <h2 className="title-65 mb-6 lg:mb-16">{mainTitle}</h2>
       </div>
-      <div style={{ width: isSmallScreen ? "" : divWidth }} className={`${isSmallScreen ? "container mx-auto py-10" : ""} custom-class ml-auto`} >
+      <div
+        style={{ width: isSmallScreen ? "" : divWidth }}
+        className={`${isSmallScreen ? "container mx-auto py-10" : ""} custom-class ml-auto`}
+      >
         <div className="flex w-full flex-col lg:flex-row">
           <Swiper
             className="w-full"
@@ -70,7 +73,7 @@ const FeaturedProjectsSlider: React.FC<FeaturedProjectsSectionProps> = ({
             speed={5000}
             grabCursor={true}
             modules={[Autoplay]}
-             autoplay={{
+            autoplay={{
               delay: 2000,
               disableOnInteraction: false,
             }}
@@ -83,39 +86,54 @@ const FeaturedProjectsSlider: React.FC<FeaturedProjectsSectionProps> = ({
           >
             {FeaturedProjectsdata.map((item) => (
               <SwiperSlide key={item.id}>
-                <div className="flex flex-col lg:flex-row group" >
+                <div className="group flex flex-col lg:flex-row">
                   {/* Image Section */}
-                  <div className="w-full lg:w-1/2 lg:order2 ">
-                    <div className="h-full relative">
+                  <div className="lg:order2 w-full lg:w-1/2 ">
+                    <div className="relative h-full">
                       <Link href={item.slug || ""}>
-                        <Image src={item.image} alt={item.projectName} className="h-full w-full max-h-[200px] lg:max-h-[460px] object-cover lg:w-[450px]" />
+                        <Image
+                          src={item.image}
+                          alt={item.projectName}
+                          className="h-full max-h-[200px] w-full object-cover lg:max-h-[460px] lg:w-[450px]"
+                        />
                       </Link>
-                      <a href={item.slug || ""} className="absolute bottom-6 lg:bottom-10 right-6 lg:right-10">
+                      <a
+                        href={item.slug || ""}
+                        className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10"
+                      >
                         <div className="group relative z-10 flex w-fit items-center   border-b-0 border-transparent decoration-0 before:h-[1px]    ">
-                          <Image src={item.logo} alt={item.projectName} className="h-full w-full object-contain bg-black/50 p-2 lg:p-0 lg:bg-transparent" width={450} height={450} />
+                          <Image
+                            src={item.logo}
+                            alt={item.projectName}
+                            className="h-full w-full bg-black/50 object-contain p-2 lg:bg-transparent lg:p-0"
+                            width={450}
+                            height={450}
+                          />
                         </div>
                       </a>
                     </div>
                   </div>
 
                   {/* Text + Button Section */}
-                  <div className="flex w-full lg:w-1/2 flex-col justify-between bg-[#F2F2F2] p-[20px] lg:py-[40px] lg:pl-[40px] lg:pr-[40px] lg:order1">
+                  <div className="lg:order1 flex w-full flex-col justify-between bg-[#F2F2F2] p-[20px] lg:w-1/2 lg:py-[40px] lg:pl-[40px] lg:pr-[40px]">
                     <Link href={item.slug || ""}>
-                    <h2 className="mb-2 text-[25px] leading-[28px] lg:max-w-[330px] lg:leading-[38px] xxl:text-[30px] uppercase">
-                      {item.projectName}
-                    </h2>
+                      <h2 className="mb-2 text-[25px] uppercase leading-[28px] lg:max-w-[330px] lg:leading-[38px] xxl:text-[30px]">
+                        {item.projectName}
+                      </h2>
                     </Link>
                     <div>
                       <div className="flex flex-col gap-6 ">
                         <Link href={item.slug || ""}>
-                        <h3 className="text-font30 font-normal leading-[1.266666666666667]">{item.title}</h3>
+                          <h3 className="text-font30 font-normal leading-[1.266666666666667]">
+                            {item.title}
+                          </h3>
                         </Link>
-                        <p className="text-font19 text-gray1 fnt-lexend font-medium leading-[1.473684210526316]">{item.desc}</p>
+                        <p className="fnt-lexend text-font19 font-medium leading-[1.473684210526316] text-gray1">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                   </div>
-
-                 
                 </div>
               </SwiperSlide>
             ))}

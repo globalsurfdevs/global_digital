@@ -4,8 +4,8 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 
 type Issue = {
-image?: string | StaticImageData;
-icon?: string | StaticImageData;
+  image?: string | StaticImageData;
+  icon?: string | StaticImageData;
   title: string;
   description: string;
   title2?: string;
@@ -46,37 +46,41 @@ const Troubleshooting: React.FC<TroubleshootingProps> = ({
             ))}
 
             {/* Dynamic Grid */}
-            <div className={`grid md:grid-cols-2 lg:grid-cols-${gridCols} gap-[60px]`}>
+            <div
+              className={`grid md:grid-cols-2 lg:grid-cols-${gridCols} gap-[60px]`}
+            >
               {issues.map((issue, index) => (
                 <div key={index} className="flex flex-col">
                   <div>
                     {issue.image && (
-                    <Image
-                      src={issue.image}
-                      className="w-full h-full"
-                      alt={issue.title}
-                    />
-                  )}
-                    </div>
+                      <Image
+                        src={issue.image}
+                        className="h-full w-full"
+                        alt={issue.title}
+                      />
+                    )}
+                  </div>
                   {issue.icon && (
-                    <div className="bg-primary w-[50px] h-[50px] p-5" >
-                    <Image
-                      src={issue.icon}
-                      className="w-full h-full"
-                      alt={issue.title}
-                    />
+                    <div className="h-[50px] w-[50px] bg-primary p-5">
+                      <Image
+                        src={issue.icon}
+                        className="h-full w-full"
+                        alt={issue.title}
+                      />
                     </div>
                   )}
                   <h3 className="text-30 mt-[30px]">
-  {issue.title.split("\n").map((line, i) => (
-    <React.Fragment key={i}>
-      {line}
-      {i < issue.title.split("\n").length - 1 && <br />}
-    </React.Fragment>
-  ))}
-</h3>
-                  <div className="border-b border-dark my-[20px]"></div>
-                  {issue.title2?.trim() && <h3 className="text-30">{issue.title2}</h3>}
+                    {issue.title.split("\n").map((line, i) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        {i < issue.title.split("\n").length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
+                  </h3>
+                  <div className="border-dark my-[20px] border-b"></div>
+                  {issue.title2?.trim() && (
+                    <h3 className="text-30">{issue.title2}</h3>
+                  )}
                   <p className="text-font19 text-[#77787B]">
                     {issue.description}
                   </p>
@@ -85,7 +89,7 @@ const Troubleshooting: React.FC<TroubleshootingProps> = ({
             </div>
 
             {/* Outro */}
-            <p className="text-font19 text-[#77787B] mt-6">{outro}</p>
+            <p className="mt-6 text-font19 text-[#77787B]">{outro}</p>
           </div>
         </div>
       </div>

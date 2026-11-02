@@ -1,11 +1,21 @@
 "use client";
 
+import { LoadingState } from "@/app/components/AdminUI";
 import { Input } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Label from "../Label/Label";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { Plus } from "lucide-react";
+import {
+  EmptyState,
+  SearchInput,
+  matchesQuery,
+  PageHeader,
+  SectionCard,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
 
 interface Channels {
   _id: string;
@@ -21,7 +31,7 @@ const AdminPortfolioChannel = () => {
     formState: { errors },
     reset,
     setValue,
-    getValues
+    getValues,
   } = useForm<Channels>({
     defaultValues: {
       channelName: "",
@@ -29,22 +39,25 @@ const AdminPortfolioChannel = () => {
     },
   });
 
-  const [channels, setChannels] = useState<Channels[]>([])
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [editId, setEditId] = useState<string | null>(null)
-  const [refetch, setRefetch] = useState(false)
+  const [channels, setChannels] = useState<Channels[]>([]);
+  const [query, setQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editId, setEditId] = useState<string | null>(null);
+  const [refetch, setRefetch] = useState(false);
 
+  // True until the first load finishes, so the empty message never shows while data is loading.
+  const [listLoading, setListLoading] = useState(true);
   useEffect(() => {
     const fetchChannels = async () => {
       try {
         const response = await fetch(`/api/portfolio/channels`);
         const data = await response.json();
-        setChannels(data.data)
+        setChannels(data.data);
       } catch (error) {
         console.error("Error fetching channels:", error);
       }
     };
-    fetchChannels();
+    fetchChannels().finally(() => setListLoading(false));
   }, [refetch]);
 
   const handleAddChannel = async (id?: string) => {
@@ -53,24 +66,24 @@ const AdminPortfolioChannel = () => {
         method: "POST",
         body: JSON.stringify({
           channelName: getValues("channelName"),
-          channelLink: getValues("channelLink")
-        })
+          channelLink: getValues("channelLink"),
+        }),
       });
       if (response.ok) {
         const data = await response.json();
-        toast.success(data.message)
-        setIsModalOpen(false)
-        reset()
-        setEditId("")
-        setRefetch(!refetch)
+        toast.success(data.message);
+        setIsModalOpen(false);
+        reset();
+        setEditId("");
+        setRefetch(!refetch);
       } else {
         toast.error("Failed to add channel data");
       }
     } catch (error) {
-      console.error("Error adding channel:", error)
-      toast.error("Something went wrong")
+      console.error("Error adding channel:", error);
+      toast.error("Something went wrong");
     }
-  }
+  };
 
   const handleDeleteChannel = async (id: string) => {
     try {
@@ -79,50 +92,66 @@ const AdminPortfolioChannel = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        toast.success(data.message)
-        setRefetch(!refetch)
+        toast.success(data.message);
+        setRefetch(!refetch);
       } else {
         toast.error("Failed to delete channel data");
       }
     } catch (error) {
-      console.error("Error deleting channel:", error)
-      toast.error("Something went wrong")
+      console.error("Error deleting channel:", error);
+      toast.error("Something went wrong");
     }
-  }
+  };
 
   const openAddModal = () => {
-    reset({ channelName: "", channelLink: "" })
-    setEditId(null)
-    setIsModalOpen(true)
-  }
+    reset({ channelName: "", channelLink: "" });
+    setEditId(null);
+    setIsModalOpen(true);
+  };
 
   const openEditModal = (channel: Channels) => {
-    setValue("channelName", channel.channelName)
-    setValue("channelLink", channel.channelLink)
-    setEditId(channel._id || "")
-    setIsModalOpen(true)
-  }
+    setValue("channelName", channel.channelName);
+    setValue("channelLink", channel.channelLink);
+    setEditId(channel._id || "");
+    setIsModalOpen(true);
+  };
 
+  const visibleChannels = channels.filter((channel) =>
+    matchesQuery(query, channel.channelName, channel.channelLink),
+  );
   return (
-    <div>
-      <div className="flex justify-end mt-5">
-        <button
-          type="button"
-          className="bg-blue-950 text-white px-5 py-2 rounded-xl"
-          onClick={openAddModal}
-        >
-          Add Channel
-        </button>
-      </div>
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="Portfolio Channels"
+        count={channels.length}
+        description="Marketing channels that can be linked from portfolio items."
+        actions={
+          <button
+            type="button"
+            className={adminButtonClass("dark")}
+            onClick={openAddModal}
+          >
+            <Plus className="size-4" />
+            Add Channel
+          </button>
+        }
+      />
 
-      {isModalOpen &&
-        <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-          <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+      {isModalOpen && (
+        <div
+          className="relative z-10"
+          aria-labelledby="modal-title"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="fixed inset-0 bg-gray-500/75 transition-opacity"
+            aria-hidden="true"
+          ></div>
 
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-
-              <div className="p-5 flex flex-col gap-5 relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <div className="relative flex transform flex-col gap-5 overflow-hidden rounded-lg bg-white p-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <h3 className="text-lg font-semibold text-gray-900">
                   {editId ? "Edit Channel" : "Add Channel"}
                 </h3>
@@ -136,7 +165,9 @@ const AdminPortfolioChannel = () => {
                     className="w-full"
                   />
                   {errors.channelName && (
-                    <span className="text-sm text-red-600">{errors.channelName.message}</span>
+                    <span className="text-sm text-red-600">
+                      {errors.channelName.message}
+                    </span>
                   )}
                 </div>
                 <div className="flex flex-col gap-2">
@@ -149,20 +180,22 @@ const AdminPortfolioChannel = () => {
                     className="w-full"
                   />
                   {errors.channelLink && (
-                    <span className="text-sm text-red-600">{errors.channelLink.message}</span>
+                    <span className="text-sm text-red-600">
+                      {errors.channelLink.message}
+                    </span>
                   )}
                 </div>
-                <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <div className="flex flex-col-reverse gap-2 border-t border-slate-200 pt-4 sm:flex-row sm:justify-end">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-blue-950 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-blue-900 sm:ml-3 sm:w-auto"
+                    className={adminButtonClass("dark", "md", "sm:order-last")}
                     onClick={() => handleAddChannel(editId || "")}
                   >
                     Save
                   </button>
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className={adminButtonClass("secondary")}
                     onClick={() => setIsModalOpen(false)}
                   >
                     Cancel
@@ -172,52 +205,77 @@ const AdminPortfolioChannel = () => {
             </div>
           </div>
         </div>
-      }
-
-      {channels.length > 0 ? (
-        <div className="mt-6 overflow-x-auto rounded-lg border border-gray-200 shadow dark:border-gray-700">
-          <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
-            <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-800 dark:text-gray-300">
-              <tr>
-                <th scope="col" className="px-4 py-3">Channel Name</th>
-                <th scope="col" className="px-4 py-3">Channel Link</th>
-                <th scope="col" className="px-4 py-3 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {channels.map((channel) => (
-                <tr
-                  key={channel._id}
-                  className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                >
-                  <td className="px-4 py-3 font-medium text-gray-900 dark:text-white">
-                    {channel.channelName}
-                  </td>
-                  <td className="px-4 py-3 break-all">
-                    {channel.channelLink}
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center justify-end gap-4">
-                      <MdEdit
-                        className="cursor-pointer text-lg text-gray-600 hover:text-black"
-                        onClick={() => openEditModal(channel)}
-                      />
-                      <MdDelete
-                        className="cursor-pointer text-lg text-red-500 hover:text-red-700"
-                        onClick={() => handleDeleteChannel(channel._id || "")}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className="mt-6 rounded-lg border border-dashed border-gray-300 py-12 text-center text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400">
-          No channels added yet.
-        </div>
       )}
+
+      <SectionCard
+        title="List of channels"
+        actions={
+          <SearchInput
+            value={query}
+            onChange={setQuery}
+            placeholder="Search channels"
+          />
+        }
+        bodyClassName={visibleChannels.length > 0 ? "p-0" : undefined}
+      >
+        {visibleChannels.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm text-slate-700 dark:text-slate-300">
+              <thead className="bg-slate-50 text-xs uppercase text-slate-500 dark:bg-slate-900/40 dark:text-slate-400">
+                <tr>
+                  <th scope="col" className="px-4 py-3">
+                    Channel Name
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    Channel Link
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleChannels.map((channel) => (
+                  <tr
+                    key={channel._id}
+                    className="border-b border-slate-100 bg-white last:border-b-0 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700/50"
+                  >
+                    <td className="px-4 py-3 font-medium text-slate-900 dark:text-white">
+                      {channel.channelName}
+                    </td>
+                    <td className="break-all px-4 py-3">
+                      {channel.channelLink}
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-1">
+                        <MdEdit
+                          title="Edit"
+                          className="size-8 cursor-pointer rounded-lg p-1.5 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700"
+                          onClick={() => openEditModal(channel)}
+                        />
+                        <MdDelete
+                          title="Delete"
+                          className="size-8 cursor-pointer rounded-lg p-1.5 text-red-500 transition-colors hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-500/10"
+                          onClick={() => handleDeleteChannel(channel._id || "")}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : listLoading ? (
+          <LoadingState />
+        ) : channels.length > 0 ? (
+          <EmptyState
+            title={`No results for "${query}"`}
+            description="Try a different name, or clear the search."
+          />
+        ) : (
+          <EmptyState title="No channels added yet." />
+        )}
+      </SectionCard>
     </div>
   );
 };

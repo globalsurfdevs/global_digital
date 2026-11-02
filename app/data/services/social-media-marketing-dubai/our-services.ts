@@ -1,5 +1,3 @@
-
-
 export const OurServices = {
   title: "Our Social Media Marketing Services Include  ",
   data: [
@@ -34,6 +32,6 @@ export const OurServices = {
     {
       id: 8,
       title: "Creative Advertising Content Design and Curation",
-    }
+    },
   ],
 };

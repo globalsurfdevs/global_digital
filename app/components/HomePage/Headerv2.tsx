@@ -8,9 +8,9 @@ import ServicesMegaMenu from "./ServiceDropdown";
 import Link from "next/link";
 import LetsTalk from "@/app/components/common/LetsConnect";
 import { usePathname } from "next/navigation";
-import { serviceData } from "./ServiceDropdown";
+import type { HeaderNavigationPillar } from "@/app/lib/helper/get-nav-services";
 
-const Header = () => {
+const Header = ({ navigation }: { navigation: HeaderNavigationPillar[] }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -105,15 +105,10 @@ const Header = () => {
   );
 
   // derive all service links from serviceData
-  const allServiceLinks = Object.values(serviceData).flatMap((category) => {
-    const { titleurl, categoryText, ...services } = category;
-    const categoryLink = titleurl ? [{ url: titleurl, label: "" }] : [];
-    const serviceLinks = Object.values(services).map((s) => ({
-      url: (s as { url?: string }).url ?? "#",
-      label: "",
-    }));
-    return [...categoryLink, ...serviceLinks];
-  });
+  const allServiceLinks = navigation.flatMap((category) => [
+    { url: category.url },
+    ...category.services.map((service) => ({ url: service.url })),
+  ]);
 
   // ─── Mobile layout ────────────────────────────────────────────────────────
   if (mobileMenu) {
@@ -146,7 +141,7 @@ const Header = () => {
               height={23}
             />
           </a>
-          <Example />
+          <Example navigation={navigation} />
         </div>
       </div>
     );
@@ -215,8 +210,9 @@ const Header = () => {
 
             {/* ── Nav ── */}
             <nav
-              className={`${isMenuOpen ? "block" : "hidden"
-                } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
+              className={`${
+                isMenuOpen ? "block" : "hidden"
+              } absolute left-0 top-16 z-10 w-full bg-white text-sm font-medium
               lg:static lg:flex lg:w-auto lg:space-x-5 lg:bg-transparent xl:space-x-8`}
             >
               {/* ABOUT — plain div, hover handled by Tailwind CSS */}
@@ -251,7 +247,7 @@ const Header = () => {
               {/* INDUSTRIES */}
               <div className="flex flex-col justify-center">
                 <Link
-                  href="/industry"
+                  href="/industries"
                   className="large-screen-menu-item relative block px-4 text-black after:absolute after:bottom-0
                     after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all
                     after:duration-300 hover:text-primary hover:after:w-full lg:px-0"
@@ -367,8 +363,7 @@ const Header = () => {
                 </div>
               </Link>
 
-              {/* GET AUDIT — only on audit landing page */}
-              {pathname === "free-digital-marketing-audit" && (
+              {pathname === "/free-digital-marketing-audit" && (
                 <Link
                   href="#requestst"
                   scroll={true}
@@ -395,12 +390,11 @@ const Header = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                <ServicesMegaMenu />
+                <ServicesMegaMenu navigation={navigation} />
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-
 
         {/* SEO: static service links for crawlers */}
         <nav aria-label="Services sitemap" className="sr-only">
@@ -408,9 +402,9 @@ const Header = () => {
             .filter(({ url }) => url && url !== "#")
             .map(({ url }) => {
               const label = url
-                .replace(/^\//, "")           // strip leading slash
-                .replace(/-/g, " ")           // hyphens to spaces
-                .replace(/[<>]/g, "")         // ← strip any stray angle brackets
+                .replace(/^\//, "") // strip leading slash
+                .replace(/-/g, " ") // hyphens to spaces
+                .replace(/[<>]/g, "") // ← strip any stray angle brackets
                 .trim();
               return label ? (
                 <Link key={url} href={url}>

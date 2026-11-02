@@ -1,15 +1,14 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import HeroSection from '../../components/CaseStudy/HeroSection'
-import Goals from '../../components/CaseStudy/Goals'
-import Percentages from '../../components/CaseStudy/Percentages'
-import Ready from '../../components/CaseStudy/Ready'
-import { SuccessStories } from '@/app/components/SuccessStories/SuccessStories'
-import { useParams } from 'next/navigation'
-import { CaseStudy } from '@/app/types/CaseStudy'
-import { CaseStudyHighlights } from '@/app/types/CaseStudyHighlights'
-import PortfolioDetails from '@/app/components/Portfolio-details'
-
+"use client";
+import React, { useEffect, useState } from "react";
+import HeroSection from "../../components/CaseStudy/HeroSection";
+import Goals from "../../components/CaseStudy/Goals";
+import Percentages from "../../components/CaseStudy/Percentages";
+import Ready from "../../components/CaseStudy/Ready";
+import { SuccessStories } from "@/app/components/SuccessStories/SuccessStories";
+import { useParams } from "next/navigation";
+import { CaseStudy } from "@/app/types/CaseStudy";
+import { CaseStudyHighlights } from "@/app/types/CaseStudyHighlights";
+import PortfolioDetails from "@/app/components/Portfolio-details";
 
 const CaseStudyPage = ({ data }: any) => {
   // const [data, setData] = useState<{ caseStudy: CaseStudy, caseStudyHighlights: CaseStudyHighlights[] } | null>(null)
@@ -45,13 +44,12 @@ const CaseStudyPage = ({ data }: any) => {
   //   return null
   // }
 
-
   if (data.portfolio?.slug == "quad-dream") {
     return (
       <>
         <PortfolioDetails data={data} />
       </>
-    )
+    );
   } else {
     return (
       <>
@@ -59,12 +57,12 @@ const CaseStudyPage = ({ data }: any) => {
         <Goals data={data} />
         <Percentages data={data} />
         <Ready data={data} />
-        <div className='container mx-auto py-4'>
+        <div className="container mx-auto py-4">
           <SuccessStories companyId={data?.caseStudy._id} />
         </div>
       </>
-    )
+    );
   }
-}
+};
 
-export default CaseStudyPage
+export default CaseStudyPage;

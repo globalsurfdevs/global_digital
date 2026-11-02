@@ -8,9 +8,15 @@ import Cta from "../../../components/BlogSocialMedia/SecCta";
 import FaqSchema from "../../../components/Schema/FaqSchemad";
 
 import {
-  BannerSection, Faq, contentSectionsData,
-  builtEnvironmentData, rulesData, biggestkeywors, webrank, uaeresults, fivepoint
-
+  BannerSection,
+  Faq,
+  contentSectionsData,
+  builtEnvironmentData,
+  rulesData,
+  biggestkeywors,
+  webrank,
+  uaeresults,
+  fivepoint,
 } from "../../../data/blogdatas//highIntentB2BKeywords";
 
 import Blogfaq from "../../../components/common/BlogFaq";
@@ -42,7 +48,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Which searches actually win construction work in the UAE? The specific, high-intent ones. Here is how to rank for them, step by step. Read the guide.",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/how-construction-brands-uae-rank-high-intent-b2b-keywords",
+      canonical:
+        "https://www.globalsurf.ae/blogs/how-construction-brands-uae-rank-high-intent-b2b-keywords",
     },
     robots: "index, follow",
     openGraph: {
@@ -56,24 +63,24 @@ export async function generateMetadata(): Promise<Metadata> {
     images: [
       {
         url: "https://www.globalsurf.ae/_next/static/media/blogimg4.79e0cfaf.png",
-        alt: 'How UAE Construction Brands Rank for High-Intent Keywords',
+        alt: "How UAE Construction Brands Rank for High-Intent Keywords",
       },
     ],
-
   };
 }
 
-
-
 const page = async () => {
-  const videoProductionTitles = ['Authority', 'Scope'];
+  const videoProductionTitles = ["Authority", "Scope"];
   const author = await getAuthorById("6a4ca398c0f7cb5455693c8a");
 
   return (
     <div className="relative">
-
       <FaqSchema faq={Faq} />
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={27}
+      />
       <Contentone sections={contentSectionsData} />
       <div id="section1">
         <Contentone sections={builtEnvironmentData} />
@@ -103,10 +110,9 @@ const page = async () => {
           <Blogfaq data={Faq} />
         </section>
       </div>
-      <div id="section9" >
-
+      <div id="section9">
         <Cta />
-{author && <AuthorBioCard data={author} />}
+        {author && <AuthorBioCard data={author} />}
       </div>
     </div>
   );

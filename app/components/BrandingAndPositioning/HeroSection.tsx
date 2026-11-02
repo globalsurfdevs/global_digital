@@ -4,7 +4,10 @@ import Image from "next/image";
 import Button from "../common/buttons/PrimaryButton";
 import { useEffect, useRef, useState } from "react";
 import LetsTalk from "../../components/common/LetsConnect";
-import { toSentenceCase, toTitleCase } from "@/app/helpers/maintainProperWordings";
+import {
+  toSentenceCase,
+  toTitleCase,
+} from "@/app/helpers/maintainProperWordings";
 
 interface HeroSectionProps {
   data: {
@@ -18,7 +21,6 @@ interface HeroSectionProps {
     }[];
   };
 }
-
 
 const HeroSection = ({ data }: HeroSectionProps) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,44 +53,50 @@ const HeroSection = ({ data }: HeroSectionProps) => {
   }, [modalOpen]);
 
   return (
-    <section className="relative py-[110px] overflow-hidden md:h-[70vh] 2xl:h-[90vh] mt-[20px]">
+    // 2xl:h-[90vh]
+    <section className="relative mt-[20px] overflow-hidden py-[110px] md:h-[90vh] ">
       {/* Modal section */}
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
+
       <div className="absolute inset-0 z-0 h-full w-full">
-        <Image
-          src={data.image}
-          alt={data.imageAlt}
-          width={1920}
-          height={1080}
-          className="hidden h-full w-full object-cover md:block"
-        />
-        <Image
-          src={"/images/service-hero-bg-mobile.jpg"}
-          alt={data.imageAlt}
-          width={1920}
-          height={1080}
-          className="h-full w-full object-cover md:hidden"
-        />
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/service-hero-bg-mobile.jpg"
+          />
+
+          <img
+            src={data.image}
+            alt={data.imageAlt}
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+            className="h-full w-full object-cover"
+          />
+        </picture>
       </div>
       <div className="container" ref={containerRef}></div>
-      <div className="relative z-10 flex h-full flex-col justify-center md:w-[60%] 2xl:w-[50%] 3xl:w-[40%]" style={{ marginLeft: `${containerLeft}px` }}>
+      <div
+        className="relative z-10 flex h-full flex-col justify-center md:w-[50%] 2xl:w-[50%] 3xl:w-[40%]"
+        style={{ marginLeft: `${containerLeft}px` }}
+      >
         <div>
-          <h1 className="title-70 text-[length:var(--text-70-sm)] mb-3 tracking-[-0.025em] xl:mb-5">
+          <h1 className="title-70 mb-3 text-[length:var(--text-70-sm)] tracking-[-0.025em] xl:mb-5">
             {toTitleCase(data.title)}
           </h1>
-          <p className="text-[length:var(--text-23)] text-77787B max-w-[40ch] leading-[1.4] 3xl:max-w-[55ch]">
+          <p className="text-77787B max-w-[40ch] text-[length:var(--text-23)] leading-[1.4] 3xl:max-w-[55ch]">
             {toSentenceCase(data.description)}
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-[14px] xl:mt-8 xxl:mt-[40px]">
             <Button
               className="max-h-[50px]"
               variant="primary"
-              // href={data.items[0].link}
-              onClick={() => setModalOpen(true)}
+              href={data.items[0].link}
+              // onClick={() => setModalOpen(true)}
             >
               {data.items[0].title}
             </Button>

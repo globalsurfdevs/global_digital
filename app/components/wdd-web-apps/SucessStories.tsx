@@ -20,7 +20,6 @@ interface ClientsformsSectionProps {
 const Slider: React.FC<ClientsformsSectionProps> = ({
   Clientsformsdata,
   subdesc,
-
 }) => {
   return (
     <div className=" pb-[50px] lg:pb-[140px]">
@@ -40,10 +39,7 @@ const Slider: React.FC<ClientsformsSectionProps> = ({
             }}
           >
             <div className="mb-4 mt-6 grid lg:mb-[60px] lg:mt-0">
-              <h2 className="title-65 ">
-              {subdesc}
-              </h2>
-
+              <h2 className="title-65 ">{subdesc}</h2>
             </div>
           </motion.div>
         </div>

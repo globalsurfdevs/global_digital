@@ -1,21 +1,27 @@
 import React from "react";
 import HeroSection from "../../../components/BlogSocialMedia/HeroSectionDynamic";
 import Contentone from "../../../components/BlogSocialMedia/ContentSectionOne";
-import ContentSectionStaic from "../../../components/BlogSocialMedia/ContentSectionStatic"
+import ContentSectionStaic from "../../../components/BlogSocialMedia/ContentSectionStatic";
 import SocialShare from "../../../components/BlogSocialMedia/SocialShare";
 import { OneBillionFollowersSchema } from "../../../components/Schema/OfferCatalog";
 
-
-
 import {
-  BannerSection, videoProductionData, platformCheatSheetData, Faq, videoGuideSteps, videoTips,
-  troubleshootingData, listingSectionData, contentSectionsData,
-  videoProductionsocialData, videocountData, scrollSectionsData, authors
-
+  BannerSection,
+  videoProductionData,
+  platformCheatSheetData,
+  Faq,
+  videoGuideSteps,
+  videoTips,
+  troubleshootingData,
+  listingSectionData,
+  contentSectionsData,
+  videoProductionsocialData,
+  videocountData,
+  scrollSectionsData,
+  authors,
 } from "../../../data/blogdatas/globalsurfBlogData";
 import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
 import { getAuthorById } from "@/lib/authors";
-
 
 interface Canonicals {
   canonical: string;
@@ -26,22 +32,22 @@ type Metadata = {
   description: string;
   alternates: Canonicals;
   robots: string;
-
 };
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Rethinking Influence | Global Surf at the 1 Billion Followers Summit",
+    title:
+      "Rethinking Influence | Global Surf at the 1 Billion Followers Summit",
     description:
       "GS Digital reflects on key insights from the 1 Billion Followers Summit, exploring how influence is shifting from scale to strategic impact. ",
     alternates: {
-      canonical: "https://www.globalsurf.ae/blogs/global-surf-at-1billion-followers-summit",
+      canonical:
+        "https://www.globalsurf.ae/blogs/global-surf-at-1billion-followers-summit",
     },
     robots: "index, follow",
-
   };
 }
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 // async function getAuthor(authorId: string) {
 //   const baseUrl = "https://www.globalsurf.ae";
@@ -63,17 +69,18 @@ export const dynamic = 'force-dynamic';
 //   }
 // }
 
-
-
 const page = async () => {
   const author = await getAuthorById("6a4b912e480d65685cc374f5");
   console.log("Author data:", author);
 
-
   return (
     <div className="relative">
       <OneBillionFollowersSchema />
-      <HeroSection Bannerdata={BannerSection} hideslider={true} maxchwidth={27} />
+      <HeroSection
+        Bannerdata={BannerSection}
+        hideslider={true}
+        maxchwidth={27}
+      />
       <Contentone sections={contentSectionsData} />
       <Contentone sections={videoProductionsocialData} />
       <ContentSectionStaic />

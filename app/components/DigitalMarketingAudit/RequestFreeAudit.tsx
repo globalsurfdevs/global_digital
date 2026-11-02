@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from "react-google-recaptcha";
 import { Images } from "lucide-react";
-
-
 
 const RequestFreeAudit: React.FC = () => {
   const [formData, setFormData] = useState<{
@@ -22,11 +20,9 @@ const RequestFreeAudit: React.FC = () => {
   // const [isBudgetOpen, setIsBudgetOpen] = useState(false);
   // const [isServiceOpen, setIsServiceOpen] = useState(false);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const recaptcha = useRef<ReCAPTCHA>(null)
-  const [error, setError] = useState("")
+  const recaptcha = useRef<ReCAPTCHA>(null);
+  const [error, setError] = useState("");
   console.log("Entered email:", formData.Email);
-
-
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -86,9 +82,9 @@ const RequestFreeAudit: React.FC = () => {
     const form = document.getElementById("form") as HTMLFormElement;
     if (form) {
       if (recaptcha) {
-        const captchaValue = recaptcha?.current?.getValue()
+        const captchaValue = recaptcha?.current?.getValue();
         if (!captchaValue) {
-          setError("Please verify yourself to continue")
+          setError("Please verify yourself to continue");
           return;
         } else {
           form.submit();
@@ -98,7 +94,7 @@ const RequestFreeAudit: React.FC = () => {
     } else {
       console.error("Form element not found");
     }
-  }; 
+  };
   useEffect(() => {
     if (typeof window !== "undefined") {
       setFormData((prev) => ({
@@ -114,12 +110,12 @@ const RequestFreeAudit: React.FC = () => {
 
   return (
     <div id="requestst" className="scroll-mt-10">
-
-      <div className="psty bg-dgray    py-10   md:py-[140px]  px-[20px] xl:px-[80px]  xxl:px-[150px]">
-
+      <div className="psty bg-dgray    px-[20px]   py-10  md:py-[140px] xl:px-[80px]  xxl:px-[150px]">
         <div className="container ">
           <h2 className="title-65 text-black">Request Your Free Audit </h2>
-          <p className="text-19 fnt-lexend font-400 text-[#77787B] my-5 lg:mt-10 lg:mb-[75px]">Use the form below, or send us an email</p>
+          <p className="text-19 fnt-lexend font-400 my-5 text-[#77787B] lg:mb-[75px] lg:mt-10">
+            Use the form below, or send us an email
+          </p>
 
           <div className="contctform ">
             <form
@@ -274,11 +270,10 @@ const RequestFreeAudit: React.FC = () => {
                           : "#000",
                     }}
                   >
-
                     <select
                       name="Dropdown1"
                       onChange={handleChange}
-                      className="bg-transparent w-full  border-t-0 border-x-0 border-b border-gray-300  pl-0 pr-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
+                      className="w-full border-x-0  border-b border-t-0 border-gray-300 bg-transparent  pl-0 pr-3 focus:border-dgray focus:outline-none focus:ring-1 focus:ring-dgray"
                     >
                       <option value="-Select-">Service Looking for</option>
                       <option value="Performance Marketing">
@@ -317,35 +312,54 @@ const RequestFreeAudit: React.FC = () => {
                 </div>
               </div>
 
+              <div>
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                  ref={recaptcha}
+                />
 
-              <div >
-            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} />
-
-            
-              {error !== "" && <div className='text-red-500'>{error}</div>}
+                {error !== "" && <div className="text-red-500">{error}</div>}
               </div>
-              <div className="flex flex-wrap md:flex-nowrap items-center justify-between">
-               
+              <div className="flex flex-wrap items-center justify-between md:flex-nowrap">
                 <button
-                  className="h-fit lg:w-[540px] md:my-0 mt-4  hover:bg-prtext-primary group mt-5 md:mt-10  flex items-center space-x-2 rounded-full border border-primary px-6 lg:px-8 py-4 lg:py-5 text-black transition duration-300 ease-in  hover:shadow-lg md:mb-0"
+                  className="hover:bg-prtext-primary group mt-4 mt-5  flex h-fit items-center space-x-2  rounded-full border border-primary px-6 py-4 text-black transition duration-300 ease-in hover:shadow-lg md:my-0 md:mb-0 md:mt-10 lg:w-[540px]  lg:px-8 lg:py-5"
                   type="submit"
                 >
                   <span className="fnt-lexend m-auto text-font30 font-[500] uppercase duration-300 ease-in group-hover:text-black">
                     Submit enquiry
                   </span>
-
                 </button>
-
               </div>
             </form>
-            <div className="flex items-center gap-3 mt-5"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
-              <path d="M13.9869 3.36189L7.33354 5.84593C5.80021 6.41409 4.54688 8.21106 4.54688 9.82304V19.6403C4.54688 21.1994 5.58687 23.2474 6.85354 24.1856L12.5869 28.4269C14.4669 29.8275 17.5602 29.8275 19.4402 28.4269L25.1735 24.1856C26.4402 23.2474 27.4802 21.1994 27.4802 19.6403V9.82304C27.4802 8.19785 26.2269 6.40088 24.6935 5.83272L18.0402 3.36189C16.9069 2.95229 15.0935 2.95229 13.9869 3.36189Z" stroke="#77787B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M12.0669 16.1002L14.2136 18.2274L19.9469 12.5459" stroke="#77787B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-              <p className="text-19 fnt-lexend font-400 text-[#77787B] ]">100% Privacy. No spam ever.</p></div>
+            <div className="mt-5 flex items-center gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="33"
+                viewBox="0 0 32 33"
+                fill="none"
+              >
+                <path
+                  d="M13.9869 3.36189L7.33354 5.84593C5.80021 6.41409 4.54688 8.21106 4.54688 9.82304V19.6403C4.54688 21.1994 5.58687 23.2474 6.85354 24.1856L12.5869 28.4269C14.4669 29.8275 17.5602 29.8275 19.4402 28.4269L25.1735 24.1856C26.4402 23.2474 27.4802 21.1994 27.4802 19.6403V9.82304C27.4802 8.19785 26.2269 6.40088 24.6935 5.83272L18.0402 3.36189C16.9069 2.95229 15.0935 2.95229 13.9869 3.36189Z"
+                  stroke="#77787B"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12.0669 16.1002L14.2136 18.2274L19.9469 12.5459"
+                  stroke="#77787B"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p className="text-19 fnt-lexend font-400 ] text-[#77787B]">
+                100% Privacy. No spam ever.
+              </p>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   );

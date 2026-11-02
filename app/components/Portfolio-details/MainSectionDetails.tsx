@@ -33,7 +33,7 @@ const MainSectionDetails = ({
           <div className=" ptcs0   pb-10  pt-[20px] sm:pt-[50px]  lg:pb-[80px]  lg:pt-[100px] xl:pb-[100px] 2xl:pb-[140px] ">
             <div className="mb-5 items-end justify-between border-b border-black/20  pb-5 md:flex lg:mb-[50px] lg:pb-[60px]">
               <div className=" xxl:max-w-[120ch]">
-                <h1 className="title-80">
+                <h1 className="text-[32px] lg:title-80">
                   {data.portfolio.bannerTitle == "null" ||
                   data.portfolio.bannerTitle == "undefined"
                     ? ""
@@ -92,6 +92,23 @@ const MainSectionDetails = ({
                   </div>
                 </div>
               </div>
+              {data.portfolio.channelsUsed?.length ? (
+                <div>
+                  <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
+                    Channels used
+                  </p>
+                  <div className="flex max-w-md flex-wrap gap-2">
+                    {data.portfolio.channelsUsed.map((channel, index) => (
+                      <span
+                        key={`${channel}-${index}`}
+                        className="btn-outline-primary-text-black"
+                      >
+                        {channel}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

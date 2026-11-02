@@ -1,5 +1,5 @@
 "use client";
-import React,  { useState }  from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 interface FrameworkItem {
@@ -49,66 +49,64 @@ const ExpertServices: React.FC<FrameworkSectionProps> = ({
               </h2>
             </div>
           </motion.div>
-           <div className="serv-mn col-span-5 w-full text-font30">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1.2, ease: "easeOut" },
-          },
-        }}
-      >
-        {data.map((framework) => {
-          const isActive = activeId === framework.id;
-
-          return (
-            <div
-              key={framework.id}
-              onMouseEnter={() => setActiveId(framework.id as any)}
-              onMouseLeave={() => setActiveId(null)}
-              className={`sevsr group gap-4 border-b border-t border-[#dadada] p-5 transition-all duration-300 ease-in-out md:gap-7 lg:gap-10 lg:p-10 ${
-                isActive ? "bg-red-500 hovered-item" : ""
-              }`}
+          <div className="serv-mn col-span-5 w-full text-font30">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1.2, ease: "easeOut" },
+                },
+              }}
             >
-              <div className="block md:flex">
-                <div className="justify-left mb-4 flex w-full items-center gap-[15px] md:mb-0 md:w-1/2 md:gap-[40px] xxl:gap-[180px]">
-                  <Image
-                    src={framework.icon}
-                    width={40}
-                    height={30}
-                    alt="Boost Image"
-                    className="wsd2 "
-                  />
-                </div>
+              {data.map((framework) => {
+                const isActive = activeId === framework.id;
 
-                <div className="md:w-1/2">
-                  <p
-                    className={`text-small-30  `}
-                  >{framework.title}</p>
-
+                return (
                   <div
-                    className={`flex w-full items-center justify-between gap-[15px] pt-3 md:gap-[40px] xxl:gap-[130px] overflow-hidden transition-all duration-500 ease-in-out ${
-                      isActive
-                        ? "max-h-[200px] opacity-100 translate-y-0"
-                        : "max-h-0 opacity-0 translate-y-4"
+                    key={framework.id}
+                    onMouseEnter={() => setActiveId(framework.id as any)}
+                    onMouseLeave={() => setActiveId(null)}
+                    className={`sevsr group gap-4 border-b border-t border-[#dadada] p-5 transition-all duration-300 ease-in-out md:gap-7 lg:gap-10 lg:p-10 ${
+                      isActive ? "hovered-item bg-red-500" : ""
                     }`}
                   >
-                    <p className="text-19 fnt-lexend text-gray1 transition-all duration-500">
-                      {framework.dec}
-                    </p>
+                    <div className="block md:flex">
+                      <div className="justify-left mb-4 flex w-full items-center gap-[15px] md:mb-0 md:w-1/2 md:gap-[40px] xxl:gap-[180px]">
+                        <Image
+                          src={framework.icon}
+                          width={40}
+                          height={30}
+                          alt="Boost Image"
+                          className="wsd2 "
+                        />
+                      </div>
+
+                      <div className="md:w-1/2">
+                        <p className={`text-small-30  `}>{framework.title}</p>
+
+                        <div
+                          className={`flex w-full items-center justify-between gap-[15px] overflow-hidden pt-3 transition-all duration-500 ease-in-out md:gap-[40px] xxl:gap-[130px] ${
+                            isActive
+                              ? "max-h-[200px] translate-y-0 opacity-100"
+                              : "max-h-0 translate-y-4 opacity-0"
+                          }`}
+                        >
+                          <p className="text-19 fnt-lexend text-gray1 transition-all duration-500">
+                            {framework.dec}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </motion.div>
-    </div>
+                );
+              })}
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>

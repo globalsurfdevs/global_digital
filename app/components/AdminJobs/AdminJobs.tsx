@@ -1,107 +1,197 @@
-"use client"
+"use client";
 
-import { JobInputType } from '@/app/types/JobInputType'
-import { JobType } from '@/app/types/JobType'
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import { BiTrash } from 'react-icons/bi'
-import { IoIosClose } from 'react-icons/io'
-import { toast } from 'sonner'
+import { JobInputType } from "@/app/types/JobInputType";
+import { JobType } from "@/app/types/JobType";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { BiTrash } from "react-icons/bi";
+import { toast } from "sonner";
+import {
+  AdminLinkButton,
+  ConfirmDialog,
+  EmptyState,
+  LoadingState,
+  PageHeader,
+  SearchInput,
+  SectionCard,
+  ViewLiveLink,
+  matchesQuery,
+} from "@/app/components/AdminUI";
+import { Pencil, Plus } from "lucide-react";
 
 const AdminJobs = () => {
+  const [jobs, setJobs] = useState<JobType[] | []>([]);
+  const [refetch, setRefetch] = useState(false);
+  const [pendingDelete, setPendingDelete] = useState<JobType | null>(null);
+  const [query, setQuery] = useState("");
+  // True until the first load finishes, so the empty message never shows while data is loading.
+  const [listLoading, setListLoading] = useState(true);
 
-    const [jobs, setJobs] = useState<JobType[] | []>([])
-    const [refetch, setRefetch] = useState(false)
-
-    useEffect(() => {
-        const fetchJobsData = async () => {
-            try {
-                const response = await fetch(`/api/jobs`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setJobs(data.jobs)
-                } else {
-                    console.error("Failed to fetch job data");
-                }
-            } catch (error) {
-                console.error("Error fetching job data:", error);
-            }
+  useEffect(() => {
+    const fetchJobsData = async () => {
+      try {
+        const response = await fetch(`/api/jobs`);
+        if (response.ok) {
+          const data = await response.json();
+          setJobs(data.jobs);
+        } else {
+          console.error("Failed to fetch job data");
         }
+      } catch (error) {
+        console.error("Error fetching job data:", error);
+      }
+    };
 
-        fetchJobsData()
-    }, [refetch])
+    fetchJobsData().finally(() => setListLoading(false));
+  }, [refetch]);
 
-    const handleDeleteJob = async (id: string, e: React.MouseEvent) => {
-        e.preventDefault()
-        e.stopPropagation()
-        try {
-            const response = await fetch(`/api/jobs?id=${id}`, {
-                method: "DELETE"
-            });
-            if (response.ok) {
-                const data = await response.json();
-                toast.success(data.message)
-                setRefetch((prev) => !prev)
-            } else {
-                console.error("Failed to remove job data");
-            }
-        } catch (error) {
-            console.error("Error deleting job:", error)
-        }
+  const visibleJobs = jobs.filter((item) =>
+    matchesQuery(query, item.jobTitle, item.team, item.slug),
+  );
+
+  const handleDeleteJob = async (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      const response = await fetch(`/api/jobs?id=${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        toast.success(data.message);
+        setRefetch((prev) => !prev);
+      } else {
+        console.error("Failed to remove job data");
+      }
+    } catch (error) {
+      console.error("Error deleting job:", error);
     }
+  };
 
-    return (
-        <div className='flex flex-col gap-5'>
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl'>Available jobs</h1>
-                <Link href={'/admin/jobs/add'}><button className='bg-blue-950 text-white p-2 rounded-xl'>Add a new job</button></Link>
-            </div>
+  return (
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="Jobs"
+        description="Open roles listed on the careers page."
+        actions={
+          <AdminLinkButton
+            href={"/admin/jobs/add"}
+            variant="dark"
+            icon={<Plus className="size-4" />}
+          >
+            Add a new job
+          </AdminLinkButton>
+        }
+      />
 
-            <div className='relative overflow-x-auto shadow-md rounded-lg border border-gray-200 dark:border-gray-700'>
-                <table className='w-full text-left text-sm text-gray-700 dark:text-gray-300'>
-                    <thead className='bg-gray-50 dark:bg-gray-800 text-xs uppercase text-gray-500 dark:text-gray-400'>
-                        <tr>
-                            <th scope='col' className='px-6 py-3'>Job Title</th>
-                            <th scope='col' className='px-6 py-3'>Team</th>
-                            <th scope='col' className='px-6 py-3 text-right'>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {jobs && jobs.length > 0 ? (
-                            jobs.map((item) => (
-                                <tr
-                                    key={item._id}
-                                    className='bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                                >
-                                    <td className='px-6 py-4'>
-                                        <Link href={`/admin/jobs/${item._id}`} className='font-semibold text-gray-900 dark:text-white hover:underline'>
-                                            {item.jobTitle}
-                                        </Link>
-                                    </td>
-                                    <td className='px-6 py-4'>{item.team}</td>
-                                    <td className='px-6 py-4 text-right'>
-                                        <button
-                                            onClick={(e) => handleDeleteJob(item._id, e)}
-                                            className='size-6 bg-red-600 rounded-full items-center flex justify-center text-lg text-white ml-auto hover:bg-red-700 transition-colors'
-                                            aria-label='Delete job'
-                                        >
-                                            <BiTrash />
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan={3} className='px-6 py-4 text-center text-gray-500'>
-                                    No jobs available
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    )
-}
+      <SectionCard
+        title={
+          <span className="flex items-center gap-3">
+            Available jobs
+            {!listLoading && (
+              <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600">
+                {jobs.length}
+              </span>
+            )}
+          </span>
+        }
+        actions={
+          <SearchInput
+            value={query}
+            onChange={setQuery}
+            placeholder="Search by title or team"
+          />
+        }
+        bodyClassName={visibleJobs.length > 0 ? "p-0" : undefined}
+      >
+        {visibleJobs.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm text-slate-700">
+              <thead className="border-b border-slate-200 bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
+                <tr>
+                  <th scope="col" className="px-5 py-3">
+                    Job Title
+                  </th>
+                  <th scope="col" className="px-5 py-3">
+                    Team
+                  </th>
+                  <th scope="col" className="px-5 py-3 text-right">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleJobs.map((item) => (
+                  <tr
+                    key={item._id}
+                    className="border-b border-slate-100 last:border-0 hover:bg-slate-50"
+                  >
+                    <td className="px-5 py-3.5">
+                      <Link
+                        href={`/admin/jobs/${item._id}`}
+                        className="font-medium text-slate-900 hover:underline"
+                      >
+                        {item.jobTitle}
+                      </Link>
+                    </td>
+                    <td className="px-5 py-3.5 text-slate-600">{item.team}</td>
+                    <td className="px-5 py-3.5">
+                      <div className="flex items-center justify-end gap-1">
+                        {/* Public careers page links jobs as /careers/{slug} (app/components/Careers/index.tsx). */}
+                        <ViewLiveLink
+                          href={item.slug ? `/careers/${item.slug}` : null}
+                        />
+                        <Link
+                          href={`/admin/jobs/${item._id}`}
+                          title="Edit"
+                          aria-label="Edit job"
+                          className="inline-flex size-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900"
+                        >
+                          <Pencil className="size-4" />
+                        </Link>
+                        <span className="mx-1 h-5 w-px bg-slate-200" />
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setPendingDelete(item);
+                          }}
+                          className="inline-flex size-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
+                          aria-label="Delete job"
+                          title="Delete"
+                        >
+                          <BiTrash className="size-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : listLoading ? (
+          <LoadingState />
+        ) : jobs.length > 0 ? (
+          <EmptyState
+            title={`No results for "${query}"`}
+            description="Try a different title, or clear the search."
+          />
+        ) : (
+          <EmptyState title="No jobs available" />
+        )}
+      </SectionCard>
 
-export default AdminJobs
+      <ConfirmDialog
+        open={!!pendingDelete}
+        onOpenChange={(open) => !open && setPendingDelete(null)}
+        title={`Delete "${pendingDelete?.jobTitle || "this job"}"?`}
+        description="This permanently removes the job from the CMS and the careers page on the live website. This action cannot be undone."
+        onConfirm={async (e) => {
+          if (pendingDelete) await handleDeleteJob(pendingDelete._id, e);
+        }}
+      />
+    </div>
+  );
+};
+
+export default AdminJobs;

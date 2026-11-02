@@ -3,53 +3,67 @@ import Image from "next/image";
 import Link from "next/link";
 
 export interface Author {
-    slug: string;
-    name: string;
-    designation: string;
-    imageBig: string;
-    linkedin: string;
-    description: string[];
+  slug: string;
+  name: string;
+  designation: string;
+  imageBig: string;
+  linkedin: string;
+  description: string[];
 }
 
 export default function AuthorBioCard({ data }: { data: Author }) {
-    return (
+  return (
     <div className="container w-full ">
-      <div className="flex gap-5 items-end  pt-[70px] border-t border-black/20">
+      <div className="flex items-end gap-5  border-t border-black/20 pt-[70px]">
         <div className="flex items-end gap-[31px]">
-          <div className="relative w-[150px] h-[150.35px] group ease-in-out duration-300 overflow-hidden">
-            <div className="w-full h-full relative">
-              <div className="before:content-[''] before:absolute before:h-[75%] before:bg-[#b8bbbd] before:w-full before:left-0 before:bottom-0"></div>
-              <Image src={data.imageBig} alt={data.name} fill className="absolute object-cover" />
+          <div className="group relative h-[150.35px] w-[150px] overflow-hidden duration-300 ease-in-out">
+            <div className="relative h-full w-full">
+              <div className="before:absolute before:bottom-0 before:left-0 before:h-[75%] before:w-full before:bg-[#b8bbbd] before:content-['']"></div>
+              <Image
+                src={data.imageBig}
+                alt={data.name}
+                fill
+                className="absolute object-cover"
+              />
             </div>
           </div>
 
-          <div className="flex flex-col h-full gap-[10px]">
+          <div className="flex h-full flex-col gap-[10px]">
             <div className="flex flex-col gap-[5px]">
               <Link href={`/author/${data.slug}`}>
-                <div className="text-[30px] text-gray-900 leading-[40px]">{data.name}</div>
+                <div className="text-[30px] leading-[40px] text-gray-900">
+                  {data.name}
+                </div>
               </Link>
-              <p className="text-gray-500 text-[16px] leading-[24px]">{data.designation}</p>
+              <p className="text-[16px] leading-[24px] text-gray-500">
+                {data.designation}
+              </p>
             </div>
             <a
               href={data.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${data.name} on LinkedIn`}
-              className="w-[50px] h-[50px] flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors rounded-[14px]"
+              className="flex h-[50px] w-[50px] items-center justify-center rounded-[14px] bg-gray-100 transition-colors hover:bg-gray-200"
             >
-              <Image src={"/images/blog-new/linkedin.svg"} width={18} height={18} alt="" />
+              <Image
+                src={"/images/blog-new/linkedin.svg"}
+                width={18}
+                height={18}
+                alt=""
+              />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="mt-5 pb-[140px] flex flex-col gap-4">
+      <div className="mt-5 flex flex-col gap-4 pb-[140px]">
         {data.description.map((paragraph, index) => (
           <p key={index} className="text-font19 text-[#77787B]">
             {paragraph}
           </p>
         ))}
       </div>
-    </div >
+    </div>
   );
 }

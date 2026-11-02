@@ -2,8 +2,8 @@ import React from "react";
 // import Script from "next/script";
 import HeroSection from "../../components/BrandingAndPositioning/HeroSection";
 import Testimonials from "../../components/HomePage/Testimonials";
-import FAQ from "../../components/PermormanceMarketing/FAQ";
-import GetInTouch from "../../components/PermormanceMarketing/GetInTouch";
+import FAQ from "../../components/PerformanceMarketing/FAQ";
+import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
 import { Cta } from "../../data/services/performance-marketing/cta";
 import { Faq } from "../../data/services/performance-marketing/faq";
 import TitleDesc from "../../components/BrandingAndPositioning/TitleDesc";
@@ -24,383 +24,413 @@ import ButtonSlider from "@/app/components/BrandingAndPositioning/ButtonSlider";
 import WhyChoose from "@/app/components/BrandingAndPositioning/WhyChoose";
 import { whyChooseData } from "../../data/services/branding-and-positioning-agency-in-dubai/data";
 import CaseSudiesSec from "@/app/components/BrandingAndPositioning/CaseSudiesSec";
-import { getService } from "@/app/lib/services.service";
+// import { getService } from "@/app/lib/services.service";
 import { data } from "@/app/data/llmWorksData";
-import { getTestimonials } from "@/app/lib/testimonials";
-import { ServiceItem } from "./type";
-import { Metadata } from "next";
-import WorkIn from "@/app/components/common/WorkIn";
+// import { getTestimonials } from "@/app/lib/testimonials";
+// import { ServiceItem } from "./type";
+// import { Metadata } from "next";
 import CaseStudyNew from "@/app/components/BrandingAndPositioning/CaseStudyNew";
 import { assets } from "@/public/assets/assets";
-
-
+// import { notFound } from "next/navigation";
 
 // import FaqSchema from "../../components/Schema/FaqSchemad";
 // import {
 //   PerformanceMarketingSchema,
 //   PerformanceMarketingBreadcrumb  } from "../../components/Schema/ServiceSchema";
 
-interface Canonicals {
-  canonical: string;
-}
+// interface Canonicals {
+//   canonical: string;
+// }
+
+// interface PageProps {
+//   params: Promise<{ slug: string }>;
+// }
+
+// export async function generateMetadata({
+//   params,
+// }: PageProps): Promise<Metadata> {
+//   const { slug } = await params;
+//   const service: ServiceItem | null = await getService(slug);
+
+//   if (!service) {
+//     return {
+//       title: "Not Found",
+//       description: "",
+//       alternates: { canonical: "https://www.globalsurf.ae/" },
+//     };
+//   }
+
+//   const seo = service.seo;
+//   const canonicalUrl = `https://www.globalsurf.ae/${service.slug}`;
+
+//   return {
+//     title: seo?.metaTitle ?? service.name,
+//     description: seo?.metaDescription ?? "",
+//     robots: {
+//       index: true,
+//       follow: true,
+//       nocache: true,
+//       googleBot: {
+//         index: true,
+//         follow: true,
+//       },
+//     },
+//     alternates: {
+//       canonical: canonicalUrl,
+//     },
+//     openGraph: {
+//       title: seo?.ogTitle ?? seo?.metaTitle ?? service.name,
+//       description: seo?.ogDescription ?? seo?.metaDescription ?? "",
+//       url: canonicalUrl,
+//       images: seo?.ogImage ? [{ url: seo.ogImage }] : undefined,
+//       type: "website",
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: seo?.twitterTitle ?? seo?.metaTitle ?? service.name,
+//       description: seo?.twitterDescription ?? seo?.metaDescription ?? "",
+//       images: seo?.twitterImage ? [seo.twitterImage] : undefined,
+//     },
+//   };
+// }
+
+// const page = async ({ params }: PageProps) => {
+//   const { slug } = await params;
+//   const service: ServiceItem = await getService(slug);
+
+//   if(!service) notFound();
+
+//   const testimonials = await getTestimonials();
+
+//   const servicesData = {
+//     title: service?.fifthSection?.title,
+//     subtitle: service?.fifthSection?.subTitle,
+//     items: service?.fifthSection?.items.map((item, index) => ({
+//       id: index.toString(),
+//       icon: item.image,
+//       ...item,
+//     })),
+//   };
+
+//   const whatYouGetData = {
+//     title: service?.eighthSection?.title,
+//     subTitle: service?.eighthSection?.subTitle,
+//     data: service?.eighthSection?.items.map((item, index) => ({
+//       id: index + 1,
+//       dec: item.description,
+//       ...item,
+//     })),
+//   };
+
+//   const capabilitiesData = {
+//     tag: service?.ninethSection?.title,
+//     title: service?.ninethSection?.subTitle,
+
+//     items: service?.ninethSection?.items.map((item, index) => ({
+//       id: index + 1,
+//       icon: item.image,
+//       ...item,
+//     })),
+//   };
+
+//   const whyChooseData = {
+//     tag: service?.eleventhSection?.title,
+//     title: service?.eleventhSection?.subTitle,
+//     description: service?.eleventhSection?.description,
+//     items: service?.eleventhSection?.items.map((item, index) => ({
+//       id: index + 1,
+//       value: item.number,
+//       label: item.value,
+//     })),
+//   };
+
+//   const caseStudiesData = {
+//     tag: service?.caseStudySection?.title,
+//     title: service?.caseStudySection?.subTitle,
+//     items: service?.caseStudySection?.items.map((item, index) => ({
+//       id: index + 1,
+//       client: item.project.companyName,
+//       logo: item.project.logo,
+//       href: `/case-study/${item.project.slug}`,
+//       ...item,
+//     })),
+//   };
+
+//   const Cta = [
+//     {
+//       textred: service?.ctaSection?.titleRed,
+//       text: service?.ctaSection?.title,
+//       subhead: service?.ctaSection?.description,
+//     },
+//   ];
+
+//   const Faq = [
+//     ...service?.faqSection?.items.map((item) => ({
+//       title: item.question,
+//       description: item.answer,
+//     })),
+//   ];
+
+//   const workSvgsData = [
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech1.svg",
+//       alt: "React js",
+//       text: "React js",
+//       width: "26",
+//       height: "26",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech2.svg",
+//       alt: "icNext.json",
+//       text: "Next.js",
+//       width: "21",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech3.svg",
+//       alt: "Angular.js",
+//       text: "Angular.js",
+//       width: "36",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech4.svg",
+//       alt: "vue.js",
+//       text: "vue.js",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech5.svg",
+//       alt: "Python",
+//       text: "Python",
+//       width: "27",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech6.svg",
+//       alt: "node.js",
+//       text: "node.js",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech7.svg",
+//       alt: "icon",
+//       text: "php",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech8.svg",
+//       alt: "icon",
+//       text: "Laravel",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech9.svg",
+//       alt: "icon",
+//       text: "Mongo db",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech10.svg",
+//       alt: "icon",
+//       text: "mysql",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech11.svg",
+//       alt: "icon",
+//       text: "Strapi",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech12.svg",
+//       alt: "icon",
+//       text: "WordPress",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech13.svg",
+//       alt: "icon",
+//       text: "Drupal",
+//       width: "28",
+//       height: "28",
+//     },
+//     {
+//       icon: "/assets/services/wdd-custom-web-development/tech14.svg",
+//       alt: "icon",
+//       text: "Joomla",
+//       width: "28",
+//       height: "28",
+//     },
+//   ];
+
+//   return (
+//     <div>
+//       {/* <Script
+//         id="service-schema"
+//         type="application/ld+json"
+//         dangerouslySetInnerHTML={{
+//           __html: JSON.stringify(PerformanceMarketingSchema),
+//         }}
+//       />
+
+//       <Script
+//         id="breadcrumb-schema"
+//         type="application/ld+json"
+//         dangerouslySetInnerHTML={{
+//           __html: JSON.stringify(PerformanceMarketingBreadcrumb),
+//         }}
+//       />
+//       <FaqSchema faq={Faq} /> */}
+//       {/* <section className="hidegslider">
+//         <HeroSection
+//           Bannerdata={BannerSection}
+//           bannerlogp={true}
+//           maxchwidth={60}
+//         />
+//       </section> */}
+//       {service.seo?.schema && (
+//         <script
+//           type="application/ld+json"
+//           dangerouslySetInnerHTML={{ __html: service.seo.schema }}
+//         />
+//       )}
+//       <HeroSection data={service.firstSection} />
+//       <TitleDesc data={service.secondSection} />
+//       <ImgDesc data={service.thirdSection} />
+//       <GrayParaSec data={service.fourthSection} />
+//       <ServicesSec
+//         title={servicesData.title}
+//         description={servicesData.subtitle}
+//         items={servicesData.items}
+//       />
+//       {slug === "web-design-development-agency-dubai" && (
+//         <section className="bg-black  pb-[50px]   pt-[50px] text-white lg:pb-[200px] lg:pt-[140px]">
+//           <WorkIn workSvgsData={workSvgsData} page="service" />
+//         </section>
+//       )}
+//       <ProcessSlider data={service.sixthSection} />
+//       <BECS data={service.seventhSection} />
+//       <BlackInfoGrid
+//         title={whatYouGetData.title}
+//         subTitle={whatYouGetData.subTitle}
+//         data={whatYouGetData.data}
+//         bgcolor="bg-black"
+//         maxchwidth={50}
+//         colcount={4}
+//         page="service"
+//       />
+//       {capabilitiesData.items.length > 0 && (
+//         <RelatedCapabilities data={capabilitiesData} />
+//       )}
+//       <section
+//         className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}
+//       >
+//         <ButtonSlider data={service.tenthSection} />
+//       </section>
+//       <WhyChoose data={whyChooseData} page="service" />
+//       {/* {caseStudiesData.items.length > 0 && (
+//         <CaseSudiesSec data={caseStudiesData} />
+//       )} */}
+//       {/* {Clientsformsdata.length > 0 && <CaseStudyNew Clientsformsdata={Clientsformsdata} title1={service.caseStudySection?.title} />} */}
+//       <Testimonials
+//         topTitle="Testimonials"
+//         data={testimonials.testimonialSection}
+//         bottomText={false}
+//         reviews={false}
+//         page="service"
+//       />
+//       <GetInTouch
+//         data={Cta}
+//         ctabbutton={service.ctaSection.buttonText}
+//         redlast
+//         page="service"
+//       />
+//       <FAQ
+//         data={Faq}
+//         initialCount={3}
+//         page="service"
+//         title={service.faqSection?.title}
+//       />
+//     </div>
+//   );
+// };
+
+// export default page;
+
+// Redirection centre
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { resolveSlug } from "@/app/lib/routing/resolveSlug";
+import { getTestimonials } from "@/app/lib/services/testimonials.service";
+import { buildMetadata } from "@/app/lib/metadata/buildServiceMetadata";
+import ServiceDetail from "@/app/components/ServicePages/ServiceDetails/ServiceDetail";
+import ServicePillarDetail from "@/app/components/ServicePages/ServicePillar/ServicePillar";
+import { SubServiceData } from "./type";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const noIndexSlugs = [
+  // "b2b-seo-agency-dubai",
+  // "ecommerce-seo-services-dubai",
+  "programmatic-advertising-agency-dubai",
+  "social-media-strategy-agency-dubai",
+  "social-media-marketing-dubai",
+  // "influencer-marketing-agency-dubai",
+  // "local-seo-services-dubai",
+  // "ppc-advertising-agency-dubai",
+  "social-media-management-agency",
+];
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service: ServiceItem | null = await getService(slug);
+  const resolved = await resolveSlug(slug);
 
-  if (!service) {
+  if (!resolved) {
     return {
       title: "Not Found",
       description: "",
-      alternates: { canonical: "https://www.globalsurf.ae/" },
-    };
-  }
-
-  const seo = service.seo;
-  const canonicalUrl = `https://www.globalsurf.ae/${service.slug}`;
-
-  return {
-    title: seo?.metaTitle ?? service.name,
-    description: seo?.metaDescription ?? "",
-    robots: {
-      index: false,
-      follow: false,
-      nocache: true,
-      googleBot: {
+      robots: {
         index: false,
         follow: false,
       },
-    },
-    alternates: {
-      canonical: canonicalUrl,
-    },
-    openGraph: {
-      title: seo?.ogTitle ?? seo?.metaTitle ?? service.name,
-      description: seo?.ogDescription ?? seo?.metaDescription ?? "",
-      url: canonicalUrl,
-      images: seo?.ogImage ? [{ url: seo.ogImage }] : undefined,
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: seo?.twitterTitle ?? seo?.metaTitle ?? service.name,
-      description: seo?.twitterDescription ?? seo?.metaDescription ?? "",
-      images: seo?.twitterImage ? [seo.twitterImage] : undefined,
-    },
-  };
+      alternates: {
+        canonical: "https://www.globalsurf.ae/",
+      },
+    };
+  }
+
+  return buildMetadata(resolved.data);
 }
 
-const page = async ({ params }: PageProps) => {
+const Page = async ({ params }: PageProps) => {
   const { slug } = await params;
-  const service: ServiceItem = await getService(slug);
+  const resolved = await resolveSlug(slug);
 
-  const testimonials = await getTestimonials();
+  if (!resolved) notFound();
 
-  const servicesData = {
-    title: service?.fifthSection?.title,
-    subtitle: service?.fifthSection?.subTitle,
-    items: service?.fifthSection?.items.map((item, index) => ({
-      id: index.toString(),
-      icon: item.image,
-      ...item,
-    })),
-  };
-
-  const whatYouGetData = {
-    title: service?.eighthSection?.title,
-    subTitle: service?.eighthSection?.subTitle,
-    data: service?.eighthSection?.items.map((item, index) => ({
-      id: index + 1,
-      dec: item.description,
-      ...item,
-    })),
-  };
-
-  const capabilitiesData = {
-    tag: service?.ninethSection?.title,
-    title: service?.ninethSection?.subTitle,
-
-    items: service?.ninethSection?.items.map((item, index) => ({
-      id: index + 1,
-      icon: item.image,
-      ...item,
-    })),
-  };
-
-  const whyChooseData = {
-    tag: service?.eleventhSection?.title,
-    title: service?.eleventhSection?.subTitle,
-    description: service?.eleventhSection?.description,
-    items: service?.eleventhSection?.items.map((item, index) => ({
-      id: index + 1,
-      value: item.number,
-      label: item.value,
-    })),
-  };
-
-  const caseStudiesData = {
-    tag: service?.caseStudySection?.title,
-    title: service?.caseStudySection?.subTitle,
-    items: service?.caseStudySection?.items.map((item, index) => ({
-      id: index + 1,
-      client: item.project.companyName,
-      logo: item.project.logo,
-      href: `/case-study/${item.project.slug}`,
-      ...item,
-    })),
-  };
-
-  // const Clientsformsdata = [
-  //   {
-  //     id: 1,
-  //     image: assets.slider1,
-  //     title: "How Assent steel achieved 2X traffic growth ",
-  //     btntext: "Read the Full Case Study",
-  //     btnurl: "https://www.globalsurf.ae/case-study/assent-steel",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: assets.slider2,
-  //     title: "Strategic Website Revamp for Innovo group",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/innovo-group",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: assets.slider3,
-  //     title: "Digital Launchpad: New Website for Shoba Construction",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/sobha-constructions",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: assets.slider4,
-  //     title: "Full-Funnel Growth: Digital Marketing for ASGC Group",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/asgc",
-  //   },
-  //   {
-  //     id: 5,
-  //     image: assets.slider5,
-  //     title: "SEO-Driven Growth: 90% Organic Traffic Boost for BEC Arabia",
-  //     btntext: "Check portfolio page",
-  //     btnurl: "https://www.globalsurf.ae/portfolio/bec-arabia",
-  //   },
-  // ];
-
-  const Clientsformsdata = service.caseStudySection?.items.map((item, index) => (
-    {
-      id: index + 1,
-      image: item.image,
-      title: item.title,
-      btntext: item.project.section == "case study" || item.project.section == "case study new" ? "Read the Full Case Study" : "Check portfolio page",
-      btnurl: item.project.section == "case study" || item.project.section == "case study new" ? `https://www.globalsurf.ae/case-study/${item.project.slug}` : `https://www.globalsurf.ae/portfolio/${item.project.slug}`,
-    }
-  ))
-
-  const Cta = [
-    {
-      textred: service?.ctaSection?.titleRed,
-      text: service?.ctaSection?.title,
-      subhead: service?.ctaSection?.description,
-    },
-  ];
-
-  const Faq = [
-    ...service?.faqSection?.items.map((item) => ({
-      title: item.question,
-      description: item.answer,
-    })),
-  ];
-
-  const workSvgsData = [
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech1.svg",
-      alt: "React js",
-      text: "React js",
-      width: "26",
-      height: "26"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech2.svg",
-      alt: "icNext.json",
-      text: "Next.js",
-      width: "21",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech3.svg",
-      alt: "Angular.js",
-      text: "Angular.js",
-      width: "36",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech4.svg",
-      alt: "vue.js",
-      text: "vue.js",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech5.svg",
-      alt: "Python",
-      text: "Python",
-      width: "27",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech6.svg",
-      alt: "node.js",
-      text: "node.js",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech7.svg",
-      alt: "icon",
-      text: "php",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech8.svg",
-      alt: "icon",
-      text: "Laravel",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech9.svg",
-      alt: "icon",
-      text: "Mongo db",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech10.svg",
-      alt: "icon",
-      text: "mysql",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech11.svg",
-      alt: "icon",
-      text: "Strapi",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech12.svg",
-      alt: "icon",
-      text: "WordPress",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech13.svg",
-      alt: "icon",
-      text: "Drupal",
-      width: "28",
-      height: "28"
-    },
-    {
-      icon: "../assets/services/wdd-custom-web-development/tech14.svg",
-      alt: "icon",
-      text: "Joomla",
-      width: "28",
-      height: "28"
-    }
-  ]
-
-  return (
-    <div>
-      {/* <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(PerformanceMarketingSchema),
-        }}
-      />
-
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(PerformanceMarketingBreadcrumb),
-        }}
-      />
-      <FaqSchema faq={Faq} /> */}
-      {/* <section className="hidegslider">
-        <HeroSection
-          Bannerdata={BannerSection}
-          bannerlogp={true}
-          maxchwidth={60}
-        />
-      </section> */}
-      {service.seo?.schema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: service.seo.schema }}
-        />
-      )}
-      <HeroSection data={service.firstSection} />
-      <TitleDesc data={service.secondSection} />
-      <ImgDesc data={service.thirdSection} />
-      <GrayParaSec data={service.fourthSection} />
-      <ServicesSec
-        title={servicesData.title}
-        description={servicesData.subtitle}
-        items={servicesData.items}
-      />
-      {slug === "web-design-and-development-v2" && (
-        <section className="bg-black  pb-[50px]   pt-[50px] text-white lg:pb-[200px] lg:pt-[140px]">
-          <WorkIn workSvgsData={workSvgsData} page="service"/>
-        </section>
-      )}
-      <ProcessSlider data={service.sixthSection} />
-      <BECS data={service.seventhSection} />
-      <BlackInfoGrid
-        title={whatYouGetData.title}
-        subTitle={whatYouGetData.subTitle}
-        data={whatYouGetData.data}
-        bgcolor="bg-black"
-        maxchwidth={50}
-        colcount={4}
-        page="service"
-      />
-      {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
-      <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
-        <ButtonSlider data={service.tenthSection} />
-      </section>
-      <WhyChoose data={whyChooseData} page="service" />
-      {/* {caseStudiesData.items.length > 0 && (
-        <CaseSudiesSec data={caseStudiesData} />
-      )} */}
-      {/* {Clientsformsdata.length > 0 && <CaseStudyNew Clientsformsdata={Clientsformsdata} title1={service.caseStudySection?.title} />} */}
-      <Testimonials
-        topTitle="Testimonials"
-        data={testimonials.testimonialSection}
-        bottomText={false}
-        reviews={false}
-        page="service"
-      />
-      <GetInTouch
-        data={Cta}
-        ctabbutton={service.ctaSection.buttonText}
-        redlast
-        page="service"
-      />
-      <FAQ data={Faq} initialCount={3} page="service" />
-    </div>
-  );
+  switch (resolved.type) {
+    case "service":
+      return <ServiceDetail service={resolved.data} slug={slug} />;
+    case "service-pillar":
+      return <ServicePillarDetail data={resolved.data} />;
+    case "sub-service":
+      return (
+        <ServiceDetail service={resolved.data as SubServiceData} slug={slug} />
+      );
+  }
 };
 
-export default page;
+export default Page;

@@ -1,4 +1,3 @@
-
 import { assets } from "@/public/assets/assets";
 
 export const Wecanhelp = {
@@ -7,25 +6,25 @@ export const Wecanhelp = {
     {
       id: 1,
       icon: assets.frb1,
-      title:"",
+      title: "",
       dec: "Increase Brand Awareness",
     },
     {
       id: 2,
       icon: assets.frb2,
-      title:"",
+      title: "",
       dec: "Drive Traffic & Conversions",
     },
     {
       id: 3,
       icon: assets.frb3,
-      title:"",
+      title: "",
       dec: "Boost Engagement ",
     },
     {
       id: 4,
       icon: assets.help4,
-      title:"",
+      title: "",
       dec: "Maximize Ad Spend",
     },
   ],

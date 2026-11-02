@@ -60,7 +60,7 @@ const HeroSection = ({
                   </div>
                 </div>
                 <div>
-                  <div className="text-30 fnt-lexend text-black lastptag">
+                  <div className="text-30 fnt-lexend lastptag text-black">
                     {parse(data.portfolio.story)}
                   </div>
 
@@ -119,7 +119,7 @@ const HeroSection = ({
           </div>
           <div>
             {data.portfolioHighlights.length !== 0 ? (
-              <div  >
+              <div>
                 <div className="container mx-auto">
                   <motion.div
                     initial="hidden"
@@ -146,7 +146,7 @@ const HeroSection = ({
                           <p className="title-65 font-400 text-black duration-500 group-hover:-translate-y-1">
                             {item.number}
                           </p>
-                          <p className="text-[25px] pt-[10px] text-77787B duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
+                          <p className="text-77787B pt-[10px] text-[25px] duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
                             {item.text}
                           </p>
                         </div>
@@ -158,8 +158,6 @@ const HeroSection = ({
             ) : null}
           </div>
         </div>
-
-
       </div>
     </div>
   );

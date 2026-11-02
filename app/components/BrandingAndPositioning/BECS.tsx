@@ -6,11 +6,27 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
-import { toSentenceCase } from "@/app/helpers/maintainProperWordings";
+import {
+  toSentenceCase,
+  totitleSentenceCase,
+} from "@/app/helpers/maintainProperWordings";
 
-const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
+export type BECSData = {
+  title: string;
+  items: {
+    image: string;
+    imageAlt: string;
+    title: string;
+    description: string;
+  }[];
+  showSection?: boolean;
+};
+
+const BECS = ({ data, page }: { data: BECSData; page?: string }) => {
   return (
-    <section className="pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px]">
+    <section
+      className={`pb-8 pt-8 xl:pb-12 xl:pt-12 xxl:pb-20 xxl:pt-20 3xl:pb-[146px] 3xl:pt-[142px] ${page == "service-pillar" ? "bg-[#F6F6F6]" : ""}`}
+    >
       <div className="container">
         <div className="row">
           <motion.h2
@@ -18,9 +34,9 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
             whileInView="show"
             variants={moveUp(0)}
             viewport={{ once: true }}
-            className="title-60 text-[length:var(--text-60-sm)] mb-6 xl:mb-8 xxl:mb-[50px]"
+            className="title-60 mb-6 text-[length:var(--text-60-sm)] xl:mb-8 xxl:mb-[50px]"
           >
-            {data.title}
+            {totitleSentenceCase(data.title)}
           </motion.h2>
 
           {/* Mobile: stacked cards, no connecting line */}
@@ -42,9 +58,9 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
                     height={42}
                     className="h-7 w-7"
                   />
-                  <h3 className="text-28 font-normal leading-[1.214285714285714] tracking-[-0.025em]">
+                  <p className="text-28 font-normal leading-[1.214285714285714] tracking-[-0.025em]">
                     {item.title}
-                  </h3>
+                  </p>
                 </div>
                 <p className="fnt-lexend text-[length:var(--text-18-sm)] font-normal leading-[1.444444444444444] text-muted">
                   {toSentenceCase(item.description)}
@@ -85,7 +101,7 @@ const BECS = ({ data }: { data: ServiceItem["seventhSection"] }) => {
                   variants={moveUp(idx * 0.1)}
                   viewport={{ once: true }}
                   key={idx}
-                  className="fnt-lexend text-[length:var(--text-18-sm)] max-w-[35ch] text-left font-normal leading-[1.444444444444444] text-muted"
+                  className="fnt-lexend max-w-[35ch] text-left text-[length:var(--text-18-sm)] font-normal leading-[1.444444444444444] text-muted"
                 >
                   {item.description}
                 </motion.p>

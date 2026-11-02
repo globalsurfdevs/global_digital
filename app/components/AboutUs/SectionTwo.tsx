@@ -1,7 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
 
-const SectionTwo = ({video,title,description}:{video:string;title:string;description:string}) => {
+const SectionTwo = ({
+  video,
+  title,
+  description,
+}: {
+  video: string;
+  title: string;
+  description: string;
+}) => {
   return (
     <>
       <motion.div

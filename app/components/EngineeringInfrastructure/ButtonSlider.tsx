@@ -56,7 +56,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
           whileInView="show"
           variants={moveUp(0.1)}
           viewport={{ once: true }}
-          className="flex-1 overflow-hidden cursor-grab"
+          className="flex-1 cursor-grab overflow-hidden"
         >
           <Swiper
             modules={[Autoplay]}
@@ -78,7 +78,7 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
           >
             {data.serviceIndustries.map((item, index) => (
               <SwiperSlide key={index} className="!w-auto">
-                <button className="cursor-grab flex items-center gap-[14px] whitespace-nowrap rounded-full border  border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px]">
+                <button className="flex cursor-grab items-center gap-[14px] whitespace-nowrap rounded-full border  border-black/10 px-4 py-2 lg:px-6 lg:py-4 xl:px-10 xl:py-[31px]">
                   <Image
                     src={item.image}
                     alt={item.imageAlt}

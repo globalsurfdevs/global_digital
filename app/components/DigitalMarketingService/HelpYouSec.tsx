@@ -36,9 +36,9 @@ const HelpYouSec: React.FC<HelpYouSectionProps> = ({
   colcount,
 }) => {
   return (
-   <section className={ `py-140 ${bgblack ? "bg-black" : "bg-dgray"}`}>
+    <section className={`py-140 ${bgblack ? "bg-black" : "bg-dgray"}`}>
       <div className="container">
-        <div className={`secps flex flex-col gap-7 `} >
+        <div className={`secps flex flex-col gap-7 `}>
           <div>
             <motion.div
               initial="hidden"
@@ -79,37 +79,56 @@ const HelpYouSec: React.FC<HelpYouSectionProps> = ({
               }, // Slide up and fade in
             }}
           >
-            <div className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-3"}`} >
+            <div
+              className={`grid grid-cols-1 gap-x-8 gap-y-[45px] md:grid-cols-2 lg:gap-y-[95px]  ${colcount ? `xl:grid-cols-${colcount}` : "xl:grid-cols-3"}`}
+            >
               {data.map((helpyou) => (
-                <div key={helpyou.id} className="group flex flex-col transition-all duration-300  " >
-                  <div className={`flex items-center gap-7 ${icontitle ? "flex-col items-baseline " : ""}`} >
-                    <Image src={helpyou.icon} alt={helpyou.title || helpyou.dec} className="w-[25px] lg:w-auto" />
+                <div
+                  key={helpyou.id}
+                  className="group flex flex-col transition-all duration-300  "
+                >
+                  <div
+                    className={`flex items-center gap-7 ${icontitle ? "flex-col items-baseline " : ""}`}
+                  >
+                    <Image
+                      src={helpyou.icon}
+                      alt={helpyou.title || helpyou.dec}
+                      className="w-[25px] lg:w-auto"
+                    />
                     {!hiddentitle && (
                       <h3
-                        className={`text-30 transition-colors duration-300 group-hover:text-primary ${bgblack ? "text-white" : ""
-                          }`}
-                        dangerouslySetInnerHTML={{ __html: helpyou.title ?? "" }}
+                        className={`text-30 transition-colors duration-300 group-hover:text-primary ${
+                          bgblack ? "text-white" : ""
+                        }`}
+                        dangerouslySetInnerHTML={{
+                          __html: helpyou.title ?? "",
+                        }}
                       />
                     )}
                   </div>
 
-                  <div className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? "bg-white" : ""}`} >
+                  <div
+                    className={`relative mb-5 mt-5 h-[1px] overflow-hidden rounded-xl bg-black lg:mb-[30px] lg:mt-[30px] ${bgblack ? "bg-white" : ""}`}
+                  >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
 
                   <div>
                     {!hiddentitle && helpyou.title2 && (
                       <h3
-                        className={`text-30 transition-colors duration-300 group-hover:text-primary lg:mt-[20px] ${bgblack ? "text-white" : ""
-                          }`}
+                        className={`text-30 transition-colors duration-300 group-hover:text-primary lg:mt-[20px] ${
+                          bgblack ? "text-white" : ""
+                        }`}
                         dangerouslySetInnerHTML={{
                           __html: helpyou.title2,
                         }}
                       />
                     )}
-                    <p className={` ${bgblack ? "group-hover:text-gray-300" : ""}  
+                    <p
+                      className={` ${bgblack ? "group-hover:text-gray-300" : ""}  
                     ${hiddentitle ? "text-30 transition-colors " : "text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700"}`}
-                      dangerouslySetInnerHTML={{ __html: helpyou.dec }} ></p>
+                      dangerouslySetInnerHTML={{ __html: helpyou.dec }}
+                    ></p>
                   </div>
                 </div>
               ))}
@@ -117,7 +136,7 @@ const HelpYouSec: React.FC<HelpYouSectionProps> = ({
           </motion.div>
         </div>
       </div>
-   </section>
+    </section>
   );
 };
 

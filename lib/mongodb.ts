@@ -12,7 +12,6 @@ declare global {
 
 const MONGODB_URI = process.env.MONGODB_URI || "";
 
-
 if (!MONGODB_URI) {
   throw new Error("Please add your MONGODB_URI to .env.local");
 }
@@ -37,7 +36,9 @@ async function connectDB(): Promise<mongoose.Connection> {
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => mongoose.connection);
+    cached.promise = mongoose
+      .connect(MONGODB_URI)
+      .then((mongoose) => mongoose.connection);
   }
 
   try {

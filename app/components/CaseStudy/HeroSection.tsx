@@ -3,17 +3,18 @@ import { motion } from "framer-motion";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import { CaseStudy } from "@/app/types/CaseStudy";
-import parse from 'html-react-parser'
+import parse from "html-react-parser";
 
-const HeroSection = ({ data }: {
+const HeroSection = ({
+  data,
+}: {
   data: {
-    caseStudy: CaseStudy,
-  } | null
+    caseStudy: CaseStudy;
+  } | null;
 }) => {
-
-  console.log(data)
+  console.log(data);
   if (!data) {
-    return null
+    return null;
   }
 
   return (
@@ -141,9 +142,16 @@ const HeroSection = ({ data }: {
                     </p>
                     {/* <h4 className="text-30">Website - Google Ads - META Ads</h4> */}
                     {/* <h3 className="text-30">{data.caseStudy.channelsUsed}</h3> */}
-                    <h3 className="text-30">{data.caseStudy.categories.map((item, index) => (
-                      <span key={index}>{item.name}{index !== data.caseStudy.categories.length - 1 ? "," : ""} </span>
-                    ))}</h3>
+                    <h3 className="text-30">
+                      {data.caseStudy.categories.map((item, index) => (
+                        <span key={index}>
+                          {item.name}
+                          {index !== data.caseStudy.categories.length - 1
+                            ? ","
+                            : ""}{" "}
+                        </span>
+                      ))}
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -175,8 +183,6 @@ const HeroSection = ({ data }: {
       </motion.div>
     </>
   );
-}
-
-
+};
 
 export default HeroSection;

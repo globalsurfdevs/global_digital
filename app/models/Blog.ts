@@ -22,12 +22,14 @@ export interface IBlog extends Document {
   thumbnail: string;
   thumbnailAlt: string;
   content: string;
+  articleContent: string;
   featuredImage: string;
   featuredImageAlt: string;
   items: IBlogItem[];
   faqTitle: string;
   faqItems: IBlogFaqItem[];
   isHidden: boolean;
+  isPreview: boolean;
   createdAt: Date;
   updatedAt: Date;
   schemaScript: string;
@@ -35,7 +37,7 @@ export interface IBlog extends Document {
   ctaDescription: string;
   ctaButtonText: string;
   ctaButtonLink: string;
-  author:mongoose.Types.ObjectId;
+  author: mongoose.Types.ObjectId;
 }
 
 const BlogItemSchema = new Schema<IBlogItem>({
@@ -61,10 +63,12 @@ const BlogSchema = new Schema<IBlog>(
     featuredImage: { type: String, default: "" },
     featuredImageAlt: { type: String, default: "" },
     content: { type: String, default: "" },
+    articleContent: { type: String, default: "" },
     items: { type: [BlogItemSchema], default: [] },
     faqTitle: { type: String, default: "" },
     faqItems: { type: [BlogFaqItemSchema], default: [] },
     isHidden: { type: Boolean, default: false },
+    isPreview: { type: Boolean, default: false },
     schemaScript: { type: String, default: "" },
     ctaTitle: { type: String, default: "" },
     ctaDescription: { type: String, default: "" },
@@ -72,7 +76,7 @@ const BlogSchema = new Schema<IBlog>(
     ctaButtonLink: { type: String, default: "" },
     author: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Blog: Model<IBlog> =

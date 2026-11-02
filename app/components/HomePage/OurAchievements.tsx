@@ -59,7 +59,7 @@ const OurAchievements = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
       variants={{
-        hidden: {  y: 50 }, // Start below and invisible
+        hidden: { y: 50 }, // Start below and invisible
         visible: {
           y: 0,
           transition: { duration: 1, ease: "easeOut" },
@@ -207,10 +207,10 @@ const OurAchievements = () => {
                 <div className="ttlbx">
                   <div className="letter-wrapper">
                     <div className="letter-default  text-font30 leading-lh2p3 text-gray1">
-                     and Evolving
+                      and Evolving
                     </div>
                     <div className="letter-hover  text-font30 leading-lh2p3 text-gray1">
-                     and Evolving
+                      and Evolving
                     </div>
                   </div>
                 </div>

@@ -11,12 +11,16 @@ const Portfolio = ({
   industries: { _id: string; name: string; subCategories: string[] }[];
   categories: { _id: string; name: string; link: string; sortOrder: number }[];
 }) => {
-  const filtered = data.filter((p: any) => p.slug !== "the-garden-concept");
+  const filtered = data.filter((p: any) => p.slug !== "the-garden-concept"&&!p.slug.includes("v2"));
 
   return (
     <>
       <HeroSection />
-      <PortfolioList data={filtered} industries={industries} categories={categories} />
+      <PortfolioList
+        data={filtered}
+        industries={industries}
+        categories={categories}
+      />
     </>
   );
 };

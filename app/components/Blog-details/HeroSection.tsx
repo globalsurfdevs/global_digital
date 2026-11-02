@@ -17,11 +17,10 @@ const HeroSection = ({
 }) => {
   if (!data) return null;
 
-
   return (
     <div>
       <div className="relative">
-        <div className="relative z-1 h-[350px] lg:h-[500px] xl:h-[800px] w-full">
+        <div className="z-1 relative h-[350px] w-full lg:h-[500px] xl:h-[800px]">
           <Image
             src={data.portfolio[0].bannerImage}
             alt="heroImage"
@@ -29,31 +28,30 @@ const HeroSection = ({
             fill
           />
           <div className="bg-bl-gradient absolute top-0 h-full w-full ">
-          <motion.div
-            className="container relative h-full w-full invic"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 20 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
-          >
-            <Image
-              src={data.portfolio[0].logo}
-              alt="image"
-              className="absolute  bottom-[20px] right-[15px] z-1 md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
-              width={50}
-              height={50}
-            />
-          </motion.div>
+            <motion.div
+              className="invic container relative h-full w-full"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+              variants={{
+                hidden: { opacity: 0, y: 20 }, // Start below and invisible
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 1, ease: "easeOut" },
+                }, // Slide up and fade in
+              }}
+            >
+              <Image
+                src={data.portfolio[0].logo}
+                alt="image"
+                className="z-1  absolute bottom-[20px] right-[15px] md:bottom-[30px] lg:bottom-[50px]  3xl:bottom-[100px]"
+                width={50}
+                height={50}
+              />
+            </motion.div>
+          </div>
         </div>
-        </div>
-
       </div>
 
       <div className="relative">
@@ -124,7 +122,7 @@ const HeroSection = ({
                 <h3 className="text-30 leading-lh1p33">STORY</h3>
                 <div className="h-4 w-4 bg-primary lg:h-5 lg:w-5 "></div>
               </div>
-              <div className='text-19 text-gray1 fnt-lexend'>
+              <div className="text-19 fnt-lexend text-gray1">
                 {/* <p className='text-19 text-gray1 fnt-lexend'>Innovo Group is a global leader in the construction industry,
                         specializing in delivering innovative solutions for a wide range of projects.
                         With a commitment to quality and sustainability, they have built a reputation
@@ -137,28 +135,37 @@ const HeroSection = ({
             </motion.div>
           </div>
         </div>
+      </div>
 
-    </div>
-
-    <div className='bg-black'>
-            <div className='container mx-auto'>
-            <motion.div
-                                   initial="hidden"
-                                   whileInView="visible"
-                                   viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-                                   variants={{
-                                     hidden: { opacity: 0, y: 50 }, // Start below and invisible
-                                     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }, // Slide up and fade in
-                                     }}>
-                            <div className='lg:grid lg:grid-cols-3 lg:py-[120px] py-[20px] flex flex-col gap-5 lg:gap-5'>
-                                {data.portfolioHighlights.map((item)=>(
-                                    <div className='border-b last:border-b-0 lg:border-b-0   lg:border-r last:border-r-0 border-gray1 py-[20px] lg:py-[44px] group ' key={item.customId}>
-                                    <p className='title-65 text-primary duration-500 group-hover:-translate-y-1'>{item.number}</p>
-                                    <h3 className='text-30 text-white lg:pt-[30px] pt-[10px] duration-500 group-hover:-translate-y-2'>{item.text}</h3>
-                                    </div>
-                                ))}
-
-
+      <div className="bg-black">
+        <div className="container mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+            variants={{
+              hidden: { opacity: 0, y: 50 }, // Start below and invisible
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 1, ease: "easeOut" },
+              }, // Slide up and fade in
+            }}
+          >
+            <div className="flex flex-col gap-5 py-[20px] lg:grid lg:grid-cols-3 lg:gap-5 lg:py-[120px]">
+              {data.portfolioHighlights.map((item) => (
+                <div
+                  className="group border-b border-gray1   py-[20px] last:border-b-0 last:border-r-0 lg:border-b-0 lg:border-r lg:py-[44px] "
+                  key={item.customId}
+                >
+                  <p className="title-65 text-primary duration-500 group-hover:-translate-y-1">
+                    {item.number}
+                  </p>
+                  <h3 className="text-30 pt-[10px] text-white duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
+                    {item.text}
+                  </h3>
+                </div>
+              ))}
 
               {/* <div className='border-b lg:border-r border-gray1 lg:border-b-0 py-[20px] lg:py-[44px] group '>
                                     <div className='mx-auto lg:w-[85%]'>

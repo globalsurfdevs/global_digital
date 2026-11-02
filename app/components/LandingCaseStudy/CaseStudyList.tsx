@@ -329,11 +329,6 @@
 
 // export default CaseStudyList;
 
-
-
-
-
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -365,8 +360,7 @@ const CaseStudyList = ({
               transition={{ duration: 1.5, delay: 0.2 }}
               viewport={{ once: true }}
               className="border-b pb-[20px] md:mb-[50px]"
-            >
-            </motion.div>
+            ></motion.div>
 
             {/* Case Study Items */}
             <div className="flex flex-col items-center gap-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:gap-y-12">

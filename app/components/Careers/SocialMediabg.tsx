@@ -35,8 +35,8 @@ const SocialMediabg = () => {
       if (result?.success) {
         alert("Thank you, we will get back to you soon!");
         form.reset();
-        setLinkedinUrl("");   // reset controlled state too
-        setIsChecked(false);  // form.reset() alone won't update React state
+        setLinkedinUrl(""); // reset controlled state too
+        setIsChecked(false); // form.reset() alone won't update React state
       } else {
         alert("Something went wrong. Please try again.");
       }
@@ -65,13 +65,15 @@ const SocialMediabg = () => {
                       Get on the GS Digital talent radar.
                     </h2>
                     <p className="text-19 my-10 leading-relaxed text-white">
-                      You think you might be a good fit for GS Digital?
-                      Send us your LinkedIn profile with just one click. If we
-                      have a position that we think you're perfect for, we'll
-                      reach out to you.
+                      You think you might be a good fit for GS Digital? Send us
+                      your LinkedIn profile with just one click. If we have a
+                      position that we think you're perfect for, we'll reach out
+                      to you.
                     </p>
                     <ButtonIcon
-                      icon={<img src="/images/linkedinicon.svg" alt="LinkedIn" />}
+                      icon={
+                        <img src="/images/linkedinicon.svg" alt="LinkedIn" />
+                      }
                       text="LinkedIn"
                       onClick={handleButtonClick}
                       className="sm:text-30 text-[15px]"
@@ -118,10 +120,14 @@ const SocialMediabg = () => {
                           Yeah, go screen my skills!
                         </label>
                       </div>
-                      <p className="text-19 mb-4 mt-3 sm:my-8 text-gray1">
+                      <p className="text-19 mb-4 mt-3 text-gray1 sm:my-8">
                         We're keeping your personal details secure and don't
                         share it with 3rd parties of course. Find out more in
-                        our <Link href="/privacy-policy" className="text-slate-400">privacy policy</Link>.
+                        our{" "}
+                        <Link href="/privacy-policy" className="text-slate-400">
+                          privacy policy
+                        </Link>
+                        .
                       </p>
                       <Button text="Send now" disabled={isSubmitting} />
                     </form>

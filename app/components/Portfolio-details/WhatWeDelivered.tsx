@@ -3,11 +3,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import { LucideIcon } from "lucide-react";
 interface FrameworkItem {
-  id: number;
+  _id: number;
   title: string;
-  title1?: string;
-  icn?: string | StaticImageData;
+  icn?: string | StaticImageData | LucideIcon;
   dec: string;
   urllink?: string;
 }
@@ -20,6 +20,7 @@ interface FrameworkSectionProps {
   colcount?: number;
   maxchwidth?: number;
   data: FrameworkItem[];
+  endpoint?: string;
 }
 
 const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
@@ -30,12 +31,16 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
   bgcolor,
   colcount,
   maxchwidth,
-
+  endpoint,
 }) => {
+  const gridColumnsClass = `xl:grid-cols-${colcount} `
+
   return (
     <div className="">
-      <div className="container mx-auto py-4">
-        <div className="pd-cus flex flex-col pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]">
+      <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]">
+        <div
+          className={`pd-cus flex flex-col ${endpoint === "sobha-constructions" ? "pt-5  lg:pt-[60px] xl:pt-[70px]  2xl:pt-[100px] border-t border-gray-400" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
+        >
           <div className="text-4xl">
             <motion.div
               initial="hidden"
@@ -50,11 +55,10 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-
               {title1 && (
                 <Link href="">
-                <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
-                  {title1}
+                  <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                    {title1}
                   </p>
                 </Link>
               )}
@@ -63,15 +67,13 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
-                  </div>
+                </div>
               )}
               {!description && (
                 <>
-                   <div
-                    style={{ maxWidth: `${maxchwidth}ch` }}
-                  >
-                    <h2 className="title-65 pb-6 lg:pb-[40px]">{title}</h2>
-                    </div>
+                  <div style={{ maxWidth: `${maxchwidth}ch` }}>
+                    <h2 className="title-65 pb-8 lg:pb-[60px]">{title}</h2>
+                  </div>
                 </>
               )}
             </motion.div>
@@ -90,32 +92,49 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
             }}
           >
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 gap-4  lg:flex justify-between  xl:grid-cols-${colcount ? `${colcount}` : "4"}`}
+              className={`grid grid-cols-1 justify-between gap-6 md:grid-cols-2 ${gridColumnsClass}`}
             >
               {data.map((framework) => (
                 <div
-                  key={framework.id}
-                  className="group relative  gap-3 md:gap-0  flex flex-row md:flex-col overflow-hidden"
+                  key={framework._id}
+                  className="group relative  flex flex-row  gap-3 overflow-hidden md:flex-col md:gap-0"
                 >
                   {/* Animated Red Border */}
-                
-                  <div className="align-center flex h-[30px] w-[30px] mb-3 lg:mb-[30px] justify-center bg-primary p-2 transition-colors duration-500   md:h-[50px] md:w-[50px]">
-                    <Image
-                                             src={framework.icn || ""}
-                                             alt={"Default alt text"}
-                                             className="fltrcls h-auto w-auto max-w-[50px] object-contain transition duration-500   "
-                                           />   </div>
- 
-                  <div className="text-2xl relative w-fit">
 
+                  <div className="mb-3 flex h-[36px] w-[36px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
+                    {framework.icn &&
+                      (typeof framework.icn === "string" ||
+                      "src" in framework.icn ? (
+                        <Image
+                          src={framework.icn}
+                          alt=""
+                          width={28}
+                          height={28}
+                          className="fltrcls h-auto w-[28px] lg:w-[50px] max-w-[50px] object-contain transition duration-500"
+                        />
+                      ) : (
+                        React.createElement(framework.icn, {
+                          size: 32,
+                          color: "#FFFFFF",
+                          strokeWidth: 1.5,
+                        })
+                      ))}
+                  </div>
+
+                  <div className="relative w-fit text-2xl">
                     <h3
-                      className="text-30 text-black "
+                      className="text-[20px]  lg:text-[26px] xl:text-30 text-black w-full lg:max-w-[85%]"
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
-                        { framework.urllink && (   <Link href={framework.urllink} className="absolute top-0 w-full h-full"> </Link>
-                        )}
+                    {framework.urllink && (
+                      <Link
+                        href={framework.urllink}
+                        className="absolute top-0 h-full w-full"
+                      >
+                        {" "}
+                      </Link>
+                    )}
                   </div>
-                    
                 </div>
               ))}
             </div>

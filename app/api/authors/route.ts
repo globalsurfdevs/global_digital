@@ -40,7 +40,8 @@ export async function PATCH(req: NextRequest) {
 
   const body = await req.json();
   const author = await Author.findByIdAndUpdate(id, body, { new: true });
-  if (!author) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (!author)
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   revalidateTag("authors");
   revalidateTag(`author-${author._id}`);

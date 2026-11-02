@@ -5,22 +5,21 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.cprbanner,
-      navigation: [
-        { label: "Home", url: "/" },
-        { label: "Creative Services",url: "/creative-agency-dubai" },
-        { label: "Content Production", url: "" },
-      ],
-    title:
-      "Creative Content Production Services in Dubai",
-    subtitle:"Producing Engaging Video, Photography, and Multimedia Content to Improve Brand Communication",
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "Creative Services", url: "/creative-agency-dubai" },
+      { label: "Content Production", url: "" },
+    ],
+    title: "Creative Content Production Services in Dubai",
+    subtitle:
+      "Producing Engaging Video, Photography, and Multimedia Content to Improve Brand Communication",
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "Content is more than just what people see, it’s how your brand is experienced. At GS Digital, a leading content production agency in Dubai, we bring your story to life through powerful visuals and purposeful storytelling. From brand video production to dynamic content production for social media, our work is crafted to captivate, connect, and convert. Every frame, photo, and edit are designed to reflect your brand’s identity and amplify its presence across every platform.",
       },
     ],
-  
   },
 ];
 
@@ -193,7 +192,8 @@ export const Faq = [
       "Absolutely! We create tailored photo and video content for all major platforms including Instagram, LinkedIn, Facebook, and TikTok. ",
   },
   {
-    title: "What’s the difference between brand video production and social media video production? ",
+    title:
+      "What’s the difference between brand video production and social media video production? ",
     description:
       "Brand videos focus on your company’s story and identity, while social media videos are short, engaging, and designed for platform-specific performance. ",
   },
@@ -202,7 +202,6 @@ export const Faq = [
     description:
       "Yes! We offer custom content production services to match your unique goals, budget, and visual style. ",
   },
-
 ];
 export const relatedservices = {
   title: "Related Services",
@@ -211,45 +210,44 @@ export const relatedservices = {
       id: 1,
       title: " Content Marketing",
       dec: "With a mix of strategy, storytelling, and SEO, we help your brand stay relevant, valuable, and always one step ahead.",
-      icon:assets.cpric1,
-      url:'/content-marketing-agency-dubai'
-    
-    } ,
+      icon: assets.cpric1,
+      url: "/content-marketing-agency-dubai",
+    },
     {
       id: 2,
       title: "Branding ",
       dec: "Build a cohesive brand identity that carries across every visual touchpoint.",
-      icon:assets.cpric2,
-      url:"/branding-agency-dubai "
-    } ,
+      icon: assets.cpric2,
+      url: "/branding-agency-dubai ",
+    },
     {
       id: 3,
       title: "Logo Design",
       dec: "Create a visual mark that communicates your values and stands out effortlessly.",
-      icon:assets.cpric3,
-      url:"/logo-design-agency-dubai"
-    } ,
+      icon: assets.cpric3,
+      url: "/logo-design-agency-dubai",
+    },
     {
       id: 4,
       title: "Copywriting",
       dec: "Words that complement visuals and tell your story with clarity and intent.",
-      icon:assets.cpric4,
-      url:'/creative-copywriting-agency-dubai'
-    } ,
+      icon: assets.cpric4,
+      url: "/creative-copywriting-agency-dubai",
+    },
     {
       id: 5,
       title: "Website Development",
       dec: "Beautifully designed, content-rich websites built for engagement and results.",
-      icon:assets.cpric5,
-      url:"/web-development-agency-dubai"
-    } ,
+      icon: assets.cpric5,
+      url: "/web-development-agency-dubai",
+    },
     {
       id: 6,
       title: "Graphic Design",
       dec: " Stunning layouts and creative designs that amplify your content.",
-      icon:assets.cpric6,
-      url:"/graphic-design-agency-dubai"
-    }
+      icon: assets.cpric6,
+      url: "/graphic-design-agency-dubai",
+    },
   ],
 };
 

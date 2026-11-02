@@ -8,7 +8,7 @@ export interface SeoFormValues {
   twitterTitle: string;
   twitterDescription: string;
   twitterImage: string;
-  schema:string;
+  schema: string;
 }
 
 // Any page form that wants SEO fields just extends/includes this

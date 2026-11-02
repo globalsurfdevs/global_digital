@@ -1,13 +1,13 @@
-'use client'
-import React from 'react';
-import Image, { StaticImageData } from 'next/image';
+"use client";
+import React from "react";
+import Image, { StaticImageData } from "next/image";
 
 interface PlatformDetail {
-    platform: string;
-    duration: string;
-    icon: StaticImageData;
-    title?: string;
-    description?: string;
+  platform: string;
+  duration: string;
+  icon: StaticImageData;
+  title?: string;
+  description?: string;
 }
 
 interface Tip {
@@ -27,7 +27,12 @@ interface VideoTipsSectionProps {
   data: Array<Record<string, string>>;
 }
 
-const LlmWorks: React.FC<VideoTipsSectionProps> = ({ title, description, columnTitles, data }) => {
+const LlmWorks: React.FC<VideoTipsSectionProps> = ({
+  title,
+  description,
+  columnTitles,
+  data,
+}) => {
   return (
     <section>
       <div className="container mx-auto">
@@ -38,12 +43,16 @@ const LlmWorks: React.FC<VideoTipsSectionProps> = ({ title, description, columnT
           {/* Content Area */}
           <div className="col-span-5 w-full space-y-10">
             <h2 className="title-65 ">{title}</h2>
-            <p className="text-font19 text-[#77787B]">Think of a search engine as a map - it shows roads, routes, and destinations. <br></br>But an LLM works more like a brain - it reads, learns, and communicates in human language. </p>
+            <p className="text-font19 text-[#77787B]">
+              Think of a search engine as a map - it shows roads, routes, and
+              destinations. <br></br>But an LLM works more like a brain - it
+              reads, learns, and communicates in human language. 
+            </p>
 
             {/* SEARCH ENGINE SECTION */}
             <div className="mt-[40px]">
               <h3 className="text-30">Search Engine:</h3>
-              <ul className="list-disc list-inside space-y-2 mt-3">
+              <ul className="mt-3 list-inside list-disc space-y-2">
                 <li className="text-font19 text-[#77787B]">
                   Crawls the web → Finds your site → Lists it on a page.
                 </li>
@@ -56,7 +65,7 @@ const LlmWorks: React.FC<VideoTipsSectionProps> = ({ title, description, columnT
             {/* LLM SECTION */}
             <div className="mt-[40px]">
               <h3 className="text-30">LLM (Like ChatGPT)</h3>
-              <ul className="list-disc list-inside space-y-2 mt-3">
+              <ul className="mt-3 list-inside list-disc space-y-2">
                 <li className="text-font19 text-[#77787B]">
                   Reads your entire digital footprint.
                 </li>
@@ -64,23 +73,31 @@ const LlmWorks: React.FC<VideoTipsSectionProps> = ({ title, description, columnT
                   Learns how others describe your brand.
                 </li>
                 <li className="text-font19 text-[#77787B]">
-                  It doesn’t list links — it summarizes what it believes is true.
+                  It doesn’t list links — it summarizes what it believes is
+                  true.
                 </li>
               </ul>
-              <p className="text-font19 text-[#000000] mt-4"><strong>That means: </strong></p>
-              <p className="text-font19 text-[#77787B]">If your brand isn’t part of the data these models trust, you simply don’t exist in their world. </p>
+              <p className="mt-4 text-font19 text-[#000000]">
+                <strong>That means: </strong>
+              </p>
+              <p className="text-font19 text-[#77787B]">
+                If your brand isn’t part of the data these models trust, you
+                simply don’t exist in their world. 
+              </p>
             </div>
 
             {/* TABLE SECTION */}
-            <div className="border border-gray-200 overflow-x-auto">
+            <div className="overflow-x-auto border border-gray-200">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-[#F2F2F2]">
                   <tr>
                     {columnTitles.map((colTitle: string, i: number) => (
                       <th
                         key={i}
-                        className={`px-6 py-3 text-left text-font19 font-medium text-dark capitalize tracking-wider ${
-                          i < columnTitles.length - 1 ? "border-r border-gray-200" : ""
+                        className={`text-dark px-6 py-3 text-left text-font19 font-medium capitalize tracking-wider ${
+                          i < columnTitles.length - 1
+                            ? "border-r border-gray-200"
+                            : ""
                         }`}
                       >
                         {colTitle.replace(/_/g, " ")}
@@ -89,17 +106,19 @@ const LlmWorks: React.FC<VideoTipsSectionProps> = ({ title, description, columnT
                   </tr>
                 </thead>
 
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-200 bg-white">
                   {data.map((row: Record<string, string>, rowIndex: number) => (
                     <tr key={rowIndex}>
                       {columnTitles.map((col: string, colIndex: number) => (
                         <td
                           key={colIndex}
                           className={`px-6 py-4 ${
-                            colIndex < columnTitles.length - 1 ? "border-r border-gray-200" : ""
+                            colIndex < columnTitles.length - 1
+                              ? "border-r border-gray-200"
+                              : ""
                           }`}
                         >
-                          <div className="text-font19 text-[#77787B] capitalize">
+                          <div className="text-font19 capitalize text-[#77787B]">
                             {row[col]}
                           </div>
                         </td>
@@ -110,8 +129,11 @@ const LlmWorks: React.FC<VideoTipsSectionProps> = ({ title, description, columnT
               </table>
             </div>
             {/* END TABLE */}
-            <p className="text-font19 text-[#77787B]">Think of Google as a map that shows you routes. 
-            <br></br>Think of LLMs as guides that interpret the map and tell you what’s best. </p>
+            <p className="text-font19 text-[#77787B]">
+              Think of Google as a map that shows you routes. 
+              <br></br>Think of LLMs as guides that interpret the map and tell
+              you what’s best. 
+            </p>
           </div>
         </div>
       </div>

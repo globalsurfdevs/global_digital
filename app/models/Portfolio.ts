@@ -1,111 +1,175 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-const PortfolioSchema = new mongoose.Schema({
+import { MODEL_NAMES } from "../const/model-name/modelName";
+import seoSchema from "./Seo";
+
+const WhatWeDeliveredDataSchema = new Schema({
+  _id: {
+    type: Number,
+  },
+  title: {
+    type: String,
+  },
+  icn: {
+    type: String,
+  },
+  dec: {
+    type: String,
+  },
+  urllink: {
+    type: [String],
+    default: [],
+  },
+});
+const PortfolioSchema = new mongoose.Schema(
+  {
     companyName: {
-        type: String
+      type: String,
     },
     industry: {
-        type: String
+      type: String,
     },
     country: {
-        type: String
+      type: String,
     },
-    channelsUsed: [{
-        type: String
-    }],
+    channelsUsed: [
+      {
+        type: String,
+      },
+    ],
     bannerImage: {
-        type: String
+      type: String,
     },
     story: {
-        type: String
+      type: String,
     },
     section2Image1: {
-        type: String
+      type: String,
     },
     section2Image2: {
-        type: String
+      type: String,
     },
     goals: {
-        type: String
+      type: String,
     },
     objectives: {
-        type: String
+      type: String,
     },
     section2BannerImage: {
-        type: String
+      type: String,
     },
     challenge: {
-        type: String
+      type: String,
     },
     solutions: {
-        type: String
+      type: String,
     },
     result: {
-        type: String
+      type: String,
     },
     resultImage1: {
-        type: String
+      type: String,
     },
     resultImage2: {
-        type: String
+      type: String,
     },
-    categories: [{
+    categories: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "category",
-    },],
+      },
+    ],
     tag: {
-        type: String
+      type: String,
     },
     description: {
-        type: String
+      type: String,
     },
     logo: {
-        type: String
+      type: String,
     },
     slug: {
-        type: String
+      type: String,
     },
-    metaTitle: {
-        type: String
+    seo: {
+      type: seoSchema,
     },
-    metaDescription: {
-        type: String
+    portfolioType: {
+      type: String,
+      enum: ["legacy", "modern"],
+    },
+    previewImage: {
+      images: {
+        type: [String],
+        default: [],
+      },
+    },
+    whatWeDeliveredSec: {
+      title: String,
+      data: {
+        type: [WhatWeDeliveredDataSchema],
+        default: [],
+      },
+    },
+    detailsCtaOne: {
+      title: String,
+      ctaText: String,
+      ctaLink: String,
+    },
+    detailsCtaTwo: {
+      title: String,
+      ctaText: String,
+      ctaLink: String,
+    },
+    relatedPortfolios: {
+      title: String,
+      portfolio: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: MODEL_NAMES.PORTFOLIO,
+        },
+      ],
     },
     section: {
-        type: String
+      type: String,
     },
     customId: {
-        type: String
+      type: String,
     },
     index: {
-        type: Number
+      type: Number,
     },
     websiteLink: {
-        type: String
+      type: String,
     },
     bannerTitle: {
-        type: String
+      type: String,
     },
-    channels: [{
+    channels: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "channel",
-    }],
+      },
+    ],
     video: {
-        type: String
+      type: String,
     },
     videoTitle: {
-        type: String
+      type: String,
     },
     strategyApproach: {
-        type: String
+      type: String,
     },
     socialMediaImages: [],
     featured: {
-        type: Boolean,
-        default: false
-    }
-});
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true },
+);
 
-export default mongoose.models.portfolio || mongoose.model("portfolio", PortfolioSchema);
+export default mongoose.models[MODEL_NAMES.PORTFOLIO] ||
+  mongoose.model(MODEL_NAMES.PORTFOLIO, PortfolioSchema);

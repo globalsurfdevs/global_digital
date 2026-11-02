@@ -34,8 +34,7 @@ const Result = ({
           <div>
             <h2 className="title-65 mb-3 lg:mb-5">Result</h2>
           </div>
-          <div className="text-19 fnt-lexend text-gray1 ollist pl-5">
-
+          <div className="text-19 fnt-lexend ollist pl-5 text-gray1">
             {parse(data?.portfolio.result || "")}
           </div>
         </motion.div>
@@ -96,7 +95,7 @@ const Result = ({
             triumphs for our clients. Your brand could be next.{" "}
           </p>
           <div className="innerfnont mt-[20px] lg:mt-[64px]">
-            <Button text="LET'S COLLABORATE" textcolor={'black'} />
+            <Button text="LET'S COLLABORATE" textcolor={"black"} />
           </div>
         </div>
       </motion.div>

@@ -1,11 +1,9 @@
-import React from 'react'
-import DefaultLayout from '@/app/components/Layouts/DefaultLayout'
-import AdminPortfolioChannel from '@/app/components/AdminPortfolioChannel/AdminPortfolioChannel'
+import React from "react";
+import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
+import AdminPortfolioChannel from "@/app/components/AdminPortfolioChannel/AdminPortfolioChannel";
 
 const page = () => {
-  return (
-        <AdminPortfolioChannel />
-  )
-}
+  return <AdminPortfolioChannel />;
+};
 
-export default page
+export default page;

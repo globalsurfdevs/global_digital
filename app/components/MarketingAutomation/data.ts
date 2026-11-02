@@ -4,18 +4,21 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.massbanner,
-    title:
-      "Advanced Marketing Automation Agency in Dubai",
-      subtitle:"Enhancing Customer Engagement With Advanced AI-Powered Marketing Automation Solutions",
+    title: "Advanced Marketing Automation Agency in Dubai",
+    subtitle:
+      "Enhancing Customer Engagement With Advanced AI-Powered Marketing Automation Solutions",
     navigation: [
-      { label: "Home", url: "/" },   
-      { label: "Marketing Intelligence",url: "/marketing-intelligence-agency-dubai" },
-      { label: "Marketing Automation",url: "" },
-    ],  
+      { label: "Home", url: "/" },
+      {
+        label: "Marketing Intelligence",
+        url: "/marketing-intelligence-agency-dubai",
+      },
+      { label: "Marketing Automation", url: "" },
+    ],
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "As a leading marketing automation agency in Dubai, we implement AI-driven solutions to streamline customer interactions and enhance campaign efficiency. Making use of data analytics, machine learning, and predictive modeling, we optimize workflows, automate lead nurturing, and refine engagement strategies, so you can focus on scaling your business with precision and impact.",
       },
     ],
@@ -142,7 +145,7 @@ export const Matslogo = [
         src: assets.mats3,
         alt: "Logo",
       },
-  {
+      {
         id: 4,
         src: assets.brevo,
         alt: "Logo",
@@ -262,8 +265,8 @@ export const Matslogo = [
         src: assets.mats25,
         alt: "Logo",
       },
-    ]
-  }
+    ],
+  },
 ];
 export const Platformsecomdata = {
   title: "Why Choose GS Digital as Your Marketing Automation Partner? ",
@@ -353,43 +356,42 @@ export const relatedservices = {
       id: 1,
       title: "SEO",
       dec: "We use data-driven strategies to boost your online presence and attract the right audience. ",
-      icon:assets.rsd1,
+      icon: assets.rsd1,
       url: "/seo-agency-dubai",
-    } ,
+    },
     {
       id: 2,
       title: "Email Marketing ",
       dec: "Our personalized campaigns help nurture leads and keep your customers engaged. ",
-      icon:assets.rsd2
-    } ,
+      icon: assets.rsd2,
+    },
     {
       id: 3,
       title: "Social Media Marketing",
       dec: "Save time while effortlessly managing and optimizing your social media presence. ",
-      icon:assets.rsd3,
+      icon: assets.rsd3,
       url: "/social-media-agency-dubai",
-    } ,
+    },
     {
       id: 4,
       title: "Strategy Consulting ",
       dec: "We work with you to refine your digital strategy and drive long-term success. ",
-      icon:assets.rsd4,
-      url:'/marketing-strategy-consulting'
-    } ,
+      icon: assets.rsd4,
+      url: "/marketing-strategy-consulting",
+    },
     {
       id: 5,
       title: "Data Analytics ",
       dec: "We turn complex data into clear insights to improve your marketing decisions. ",
-      icon:assets.rsd5,
-      url:'/data-analytics-services-dubai'
-    } ,
+      icon: assets.rsd5,
+      url: "/data-analytics-services-dubai",
+    },
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO) ",
       dec: " We fine-tune your website to turn visitors into loyal customers.",
-      icon:assets.rsd6,
-      url:'/conversion-rate-optimization-agency-dubai'
-    }
+      icon: assets.rsd6,
+      url: "/conversion-rate-optimization-agency-dubai",
+    },
   ],
 };
-

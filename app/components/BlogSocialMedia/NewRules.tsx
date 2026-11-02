@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 
@@ -14,7 +14,7 @@ export interface RuleItem {
   image?: string | StaticImageData;
   kicker?: string;
   description?: string; // supports HTML now
-  bullets?: string[];   // supports HTML optionally
+  bullets?: string[]; // supports HTML optionally
   calloutBlock?: CalloutBlock;
 }
 
@@ -49,24 +49,20 @@ const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
     <section>
       <div className={`container mx-auto `}>
         <div className={`grid grid-cols-1 gap-4 ${paddingClass}`}>
-          
-
           <div className="w-full">
-            <h2 className="title-65 mb-[40px]">
-              {rules.title}
-            </h2>
+            <h2 className="title-65 mb-[40px]">{rules.title}</h2>
             {rules.image && (
               <div className="mb-8">
                 <Image
                   src={rules.image}
                   alt={rules.title}
-                  className="w-full h-auto object-cover"
+                  className="h-auto w-full object-cover"
                 />
               </div>
             )}
             {rules.intro && (
               <p
-                className="text-font19 text-[#77787B]  mb-8"
+                className="mb-8 text-font19  text-[#77787B]"
                 dangerouslySetInnerHTML={{ __html: rules.intro }}
               />
             )}
@@ -74,29 +70,29 @@ const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
             <div className="space-y-8">
               {rules.sections.map((s, i) => (
                 <div key={i}>
-                  <div className="flex gap-6 items-start">
+                  <div className="flex items-start gap-6">
                     {/* red square */}
-                    <div className="bg-primary w-[14px] h-[14px] mt-4"></div>
+                    <div className="mt-4 h-[14px] w-[14px] bg-primary"></div>
 
                     {/* content */}
                     <div className="flex-1">
-                      <h3 className="text-[30px] mb-2">{s.heading}</h3>
+                      <h3 className="mb-2 text-[30px]">{s.heading}</h3>
 
                       {/* DESCRIPTION with HTML SUPPORT */}
                       {s.description && (
                         <p
-                          className="text-font19 text-[#77787B] mb-3 "
+                          className="mb-3 text-font19 text-[#77787B] "
                           dangerouslySetInnerHTML={{ __html: s.description }}
                         />
                       )}
 
                       {s.kicker && (
-                        <p className="text-sm font-medium mb-2">{s.kicker}</p>
+                        <p className="mb-2 text-sm font-medium">{s.kicker}</p>
                       )}
 
                       {/* BULLETS with HTML support */}
                       {s.bullets && s.bullets.length > 0 && (
-                        <ul className="list-disc pl-6 text-font19 text-[#77787B] space-y-2">
+                        <ul className="list-disc space-y-2 pl-6 text-font19 text-[#77787B]">
                           {s.bullets.map((b, idx) => (
                             <li
                               key={idx}
@@ -110,7 +106,7 @@ const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
 
                   {/* separator except last */}
                   {i !== rules.sections.length - 1 && (
-                    <div className="mt-[40px] mb-[40px]">
+                    <div className="mb-[40px] mt-[40px]">
                       <hr className="border-t border-gray-200" />
                     </div>
                   )}
@@ -119,18 +115,21 @@ const NewRules: React.FC<NewRulesProps> = ({ rules, pt, pb }) => {
             </div>
             {rules.calloutBlock && (
               <div className="mt-[40px] bg-[#000000] p-[30px]">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="bg-primary 
-                w-[14px] h-[14px] 
-                ">
-                  </div>
+                <div className="mb-4 flex items-center gap-2">
+                  <div
+                    className="h-[14px] 
+                w-[14px] bg-primary 
+                "
+                  ></div>
                   <p
-                    className="text-[#77787B] text-font19"
-                    dangerouslySetInnerHTML={{ __html: rules.calloutBlock.label }}
+                    className="text-font19 text-[#77787B]"
+                    dangerouslySetInnerHTML={{
+                      __html: rules.calloutBlock.label,
+                    }}
                   />
                 </div>
                 <p
-                  className="text-white text-30 leading-[40px] mt-3 lg:mt-[37px]"
+                  className="text-30 mt-3 leading-[40px] text-white lg:mt-[37px]"
                   dangerouslySetInnerHTML={{ __html: rules.calloutBlock.text }}
                 />
               </div>

@@ -44,11 +44,7 @@ export default function YtVideo({
   const [playing, setPlaying] = useState(false);
 
   // 🎯 Pick data from API or direct props
-  const videoUrl =
-    video ??
-    videoId ??
-    data?.portfolio?.video ??
-    "";
+  const videoUrl = video ?? videoId ?? data?.portfolio?.video ?? "";
   const heading = title ?? data?.portfolio?.videoTitle ?? "Testimonials";
   const thumb =
     thumbnail ??
@@ -64,43 +60,42 @@ export default function YtVideo({
         <h2 className="title-65 mb-3 lg:mb-[30px]">{heading}</h2>
 
         <div className="">
-          <div className="relative w-full aspect-video h-[220px] md:h-[350px] lg:h-[450px] xl:h-[800px] overflow-hidden mb-12 lg:mb-0">
+          <div className="relative mb-12 aspect-video h-[220px] w-full overflow-hidden md:h-[350px] lg:mb-0 lg:h-[450px] xl:h-[800px]">
             {/* <div className="relative w-full aspect-video bg-gray-100"> */}
             {!playing ? (
               <button
                 type="button"
                 onClick={() => setPlaying(true)}
                 aria-label="Play video"
-                className="absolute inset-0 flex items-center justify-center group"
+                className="group absolute inset-0 flex items-center justify-center"
               >
                 <img
                   src={thumb}
                   alt={heading}
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                   loading="lazy"
                 />
 
                 {/* <span className="absolute inset-0 bg-black/40 transition-opacity group-hover:bg-black/30" /> */}
 
                 <span className="absolute z-10 flex items-center justify-center">
-                  <span className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="w-10 h-10 text-white"
+                      className="h-10 w-10 text-white"
                     >
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </span>
                 </span>
-
               </button>
             ) : (
               <iframe
                 src={embedUrl}
                 allow="autoplay; fullscreen"
-                className="absolute inset-0 w-full h-full "
+                className="absolute inset-0 h-full w-full "
                 frameBorder={0}
                 allowFullScreen
               />

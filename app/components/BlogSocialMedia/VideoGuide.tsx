@@ -1,5 +1,5 @@
-import React from 'react';
-import Image, { type StaticImageData } from 'next/image';
+import React from "react";
+import Image, { type StaticImageData } from "next/image";
 
 // Define the shape of a single step
 interface Step {
@@ -16,7 +16,7 @@ interface StepCardProps {
 // Sub-component for a single step card
 const StepCard: React.FC<StepCardProps> = ({ step }) => {
   return (
-    <div className="step-card flex flex-col h-full">
+    <div className="step-card flex h-full flex-col">
       <Image
         src={step.image}
         alt={step.title}
@@ -24,22 +24,22 @@ const StepCard: React.FC<StepCardProps> = ({ step }) => {
         width={800}
         height={450}
       />
-      <div className="step-content flex flex-col flex-grow">
-        <h3 className="text-30 mt-[30px] mb-3">
+      <div className="step-content flex flex-grow flex-col">
+        <h3 className="text-30 mb-3 mt-[30px]">
           {step.stepNumber && `${step.stepNumber}. `}
           {step.title}
         </h3>
-        <ul className="lg:max-w-[460px] list-inside flex-grow">
+        <ul className="flex-grow list-inside lg:max-w-[460px]">
           {step.tasks.map((task, index) => (
             <li
-              className="text-font19 text-[#77787B] mb-3 font-regular leading-[1.6]"
+              className="font-regular mb-3 text-font19 leading-[1.6] text-[#77787B]"
               key={index}
             >
               {task}
             </li>
           ))}
         </ul>
-        <div className="border-b border-dark mt-[37px]"></div>
+        <div className="border-dark mt-[37px] border-b"></div>
       </div>
     </div>
   );
@@ -65,7 +65,7 @@ const VideoGuide: React.FC<VideoGuideProps> = ({
           <div className="col-span-5 w-full">
             <h2 className="title-65">{maintitle}</h2>
             <p className="text-30 my-[40px] text-[#77787B]">{subtitle}</p>
-            <div className="steps-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[37px] items-stretch">
+            <div className="steps-grid grid grid-cols-1 items-stretch gap-[37px] md:grid-cols-2 lg:grid-cols-3">
               {videoGuideSteps.map((step) => (
                 <StepCard key={step.stepNumber} step={step} />
               ))}

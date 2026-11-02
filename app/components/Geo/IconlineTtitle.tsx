@@ -10,7 +10,6 @@ interface FrameworkItem {
   icn?: string | StaticImageData;
   dec?: string;
   urllink?: string;
-
 }
 
 interface FrameworkSectionProps {
@@ -31,7 +30,6 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
   bgcolor,
   colcount,
   maxchwidth,
-
 }) => {
   return (
     <div className={` ${bgcolor ? `${bgcolor}` : "bg-dgray"}`}>
@@ -51,11 +49,10 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-
               {title1 && (
                 <Link href="">
-                <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
-                  {title1}
+                  <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                    {title1}
                   </p>
                 </Link>
               )}
@@ -64,16 +61,16 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
                   <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
                     {description}
                   </p>
-                  </div>
+                </div>
               )}
               {!description && (
                 <>
-                   <div
-                    style={{ maxWidth: `${maxchwidth}ch` }}
-                  >
-                    <h2 className="title-65 pb-6 lg:pb-[58px] text-white">{title}</h2>
+                  <div style={{ maxWidth: `${maxchwidth}ch` }}>
+                    <h2 className="title-65 pb-6 text-white lg:pb-[58px]">
+                      {title}
+                    </h2>
                     <p>{description}</p>
-                    </div>
+                  </div>
                 </>
               )}
             </motion.div>
@@ -99,7 +96,7 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
                   key={framework.id}
                   className="group relative flex flex-col overflow-hidden"
                 >
-                     {!framework.icn && (
+                  {!framework.icn && (
                     <div className="mb-4 mt-6 flex h-[50px]  w-[50px] items-center justify-center bg-primary   transition-transform duration-500  lg:mb-8 lg:mt-10">
                       <p className="text-30  text-white transition-transform duration-500">
                         {String(framework.id).padStart(2, "0")}
@@ -107,7 +104,7 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
                     </div>
                   )}
                   {framework.icn && (
-                    <div className="mb-4 md:mt-6 flex h-[50px] w-[50px] lg:mt-10">
+                    <div className="mb-4 flex h-[50px] w-[50px] md:mt-6 lg:mt-10">
                       <Image
                         src={framework.icn}
                         alt="icon"
@@ -117,20 +114,24 @@ const IconlineTitle: React.FC<FrameworkSectionProps> = ({
                   )}
                   {/* Animated Red Border */}
                   <div
-                    className={`relative h-[1px] overflow-hidden rounded-xl mb-4 lg:my-8 ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
+                    className={`relative mb-4 h-[1px] overflow-hidden rounded-xl lg:my-8 ${bgcolor === "bg-black" ? "bg-white" : "bg-black"}`}
                   >
                     <div className="absolute inset-0 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100"></div>
                   </div>
-                 
 
-                  <div className="text-2xl relative w-fit">
-
+                  <div className="relative w-fit text-2xl">
                     <h3
                       className="text-30 pb-3 text-white lg:pb-6  "
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
-                        { framework.urllink && (   <Link href={framework.urllink} className="absolute top-0 w-full h-full"> </Link>
-                        )}
+                    {framework.urllink && (
+                      <Link
+                        href={framework.urllink}
+                        className="absolute top-0 h-full w-full"
+                      >
+                        {" "}
+                      </Link>
+                    )}
                   </div>
                   <div>
                     <p className="fnt-lexend text-19 font-medium text-gray1">

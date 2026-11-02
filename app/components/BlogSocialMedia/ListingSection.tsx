@@ -1,5 +1,5 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 
 export interface ListingSectionData {
   title: string;
@@ -27,33 +27,38 @@ const ListingSection: React.FC<ListingSectionProps> = ({ data }) => {
 
             {/* Subtitle (optional) */}
             {data.subtitle && (
-              <h3 className="text-30 mb-[40px] text-[#77787B]">{data.subtitle}</h3>
+              <h3 className="text-30 mb-[40px] text-[#77787B]">
+                {data.subtitle}
+              </h3>
             )}
 
             {/* Bullet Points (optional) */}
             {data.bulletPoints && data.bulletPoints.length > 0 && (
-  <div className="space-y-3">
-    {data.bulletPoints.map((point, index) => (
-      <div key={index} className="flex gap-3 items-center">
-        <div className="h-[14px] w-[14px] bg-primary"></div>
-        <p className="text-font19 text-[#77787B]">{point}</p>
-      </div>
-    ))}
-  </div>
-)}
-{/* List Items (optional) */}
-{data.listItems && data.listItems.length > 0 && (
-  <ul className="list-disc list-inside space-y-2 mt-3">
-    {data.listItems.map((item, index) => (
-      <li key={index} className="text-font19 text-[#77787B]">{item}</li>
-    ))}
-  </ul>
-)}
-
+              <div className="space-y-3">
+                {data.bulletPoints.map((point, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="h-[14px] w-[14px] bg-primary"></div>
+                    <p className="text-font19 text-[#77787B]">{point}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {/* List Items (optional) */}
+            {data.listItems && data.listItems.length > 0 && (
+              <ul className="mt-3 list-inside list-disc space-y-2">
+                {data.listItems.map((item, index) => (
+                  <li key={index} className="text-font19 text-[#77787B]">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
 
             {/* Description (optional) */}
             {data.description && (
-              <p className="text-font19 text-[#77787B] mt-[30px]">{data.description}</p>
+              <p className="mt-[30px] text-font19 text-[#77787B]">
+                {data.description}
+              </p>
             )}
           </div>
         </div>

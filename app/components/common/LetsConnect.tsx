@@ -176,7 +176,14 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
           </div>
         </div>
         <div className="mb-3 mt-[30px] lg:mb-0 lg:mt-[70px]">
-          <Image src="/images/location.svg" alt="location" className="" loading="lazy" width={26} height={40} />
+          <Image
+            src="/images/location.svg"
+            alt="location"
+            className=""
+            loading="lazy"
+            width={26}
+            height={40}
+          />
           <p className="text-19 mt-2 md:mt-[30px]">
             P.O.Box 13653, 901 - SIT Tower, Dubai Silion Oasis, Dubai, UAE
           </p>

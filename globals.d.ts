@@ -1,7 +1,7 @@
 declare global {
-    interface Window {
-      jQuery: any;
-    }
+  interface Window {
+    jQuery: any;
   }
-  
-  export {};
+}
+
+export {};

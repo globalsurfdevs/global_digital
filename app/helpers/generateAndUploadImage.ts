@@ -1,20 +1,19 @@
-import { uploadToDropbox } from "../lib/uploadToDropbox";
+import { uploadToDropbox } from "../lib/integrations/dropbox/uploadToDropbox";
 
-export const generateAndUploadImage = async(image: File) => {
-    try {
-        const filename = `${Date.now()}-${image.name || "image"}`;
-        const dropboxPath = `/portfolio/${filename}`;
+export const generateAndUploadImage = async (image: File) => {
+  try {
+    const filename = `${Date.now()}-${image.name || "image"}`;
+    const dropboxPath = `/portfolio/${filename}`;
 
-        let imagePath = await uploadToDropbox(image, dropboxPath);
-        console.log("New image uploaded to Dropbox:", imagePath);
-        if(imagePath){
-            return imagePath
-        }else{
-            return false
-        }
-
-    } catch (error) {
-        console.error("Error uploading new image to Dropbox:", error);
-        return false
+    let imagePath = await uploadToDropbox(image, dropboxPath);
+    console.log("New image uploaded to Dropbox:", imagePath);
+    if (imagePath) {
+      return imagePath;
+    } else {
+      return false;
     }
-}
+  } catch (error) {
+    console.error("Error uploading new image to Dropbox:", error);
+    return false;
+  }
+};

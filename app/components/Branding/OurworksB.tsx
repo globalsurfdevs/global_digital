@@ -7,82 +7,82 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 const images = [
   {
-    src: "../../assets/Branding-Creatives/p-1.jpg",
+    src: "/assets/Branding-Creatives/p-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/p-2.jpg",
+    src: "/assets/Branding-Creatives/p-2.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/p-3.jpg",
+    src: "/assets/Branding-Creatives/p-3.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/p-4.jpg",
+    src: "/assets/Branding-Creatives/p-4.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/p-5.jpg",
+    src: "/assets/Branding-Creatives/p-5.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/ASSENT.jpg",
+    src: "/assets/Branding-Creatives/ASSENT.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Cloud-dynamics-1.jpg",
+    src: "/assets/Branding-Creatives/Cloud-dynamics-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Cloud-dynamics-2.jpg",
+    src: "/assets/Branding-Creatives/Cloud-dynamics-2.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Gamayun-1.jpg",
+    src: "/assets/Branding-Creatives/Gamayun-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/oceal-wealth-1.jpg",
+    src: "/assets/Branding-Creatives/oceal-wealth-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Perleen-1.jpg",
+    src: "/assets/Branding-Creatives/Perleen-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Qieco-1.jpg",
+    src: "/assets/Branding-Creatives/Qieco-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Safe-tech.jpg",
+    src: "/assets/Branding-Creatives/Safe-tech.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Safe-tech-1.jpg",
+    src: "/assets/Branding-Creatives/Safe-tech-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/the-corporate-1.jpg",
+    src: "/assets/Branding-Creatives/the-corporate-1.jpg",
 
     subTxt: "Social Media Post",
   },
   {
-    src: "../../assets/Branding-Creatives/Whats-arty-1.jpg",
+    src: "/assets/Branding-Creatives/Whats-arty-1.jpg",
 
     subTxt: "Social Media Post",
   },

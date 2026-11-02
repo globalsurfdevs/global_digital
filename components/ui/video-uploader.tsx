@@ -14,7 +14,12 @@ interface VideoUploaderProps {
   deleteAfterUpload?: boolean;
 }
 
-export function VideoUploader({ value, onChange, className, deleteAfterUpload = false }: VideoUploaderProps) {
+export function VideoUploader({
+  value,
+  onChange,
+  className,
+  deleteAfterUpload = false,
+}: VideoUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [localVideoUrl, setLocalVideoUrl] = useState<string | null>(null);
@@ -65,7 +70,7 @@ export function VideoUploader({ value, onChange, className, deleteAfterUpload = 
         setIsUploading(false);
       }
     },
-    [onChange]
+    [onChange],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -86,15 +91,19 @@ export function VideoUploader({ value, onChange, className, deleteAfterUpload = 
   const displayUrl = localVideoUrl || value;
 
   return (
-    <div className={cn("space-y-4 w-full", className)}>
+    <div className={cn("w-full space-y-4", className)}>
       {displayUrl && isUploadComplete ? (
         <div className="relative w-full max-w-[400px] overflow-hidden rounded-lg border border-black/20">
-          <video src={value ? value : displayUrl} controls className="object-cover w-full h-full" />
+          <video
+            src={value ? value : displayUrl}
+            controls
+            className="h-full w-full object-cover"
+          />
           <Button
             type="button"
             variant="destructive"
             size="icon"
-            className="absolute right-2 top-2 bg-red"
+            className="bg-red absolute right-2 top-2"
             onClick={removeVideo}
           >
             <X className="h-4 w-4" />
@@ -104,10 +113,10 @@ export function VideoUploader({ value, onChange, className, deleteAfterUpload = 
         <div
           {...getRootProps()}
           className={cn(
-            "border-2 border-dashed rounded-lg p-8 transition-colors hover:border-gray-400",
-            "flex flex-col items-center justify-center gap-2 cursor-pointer",
+            "rounded-lg border-2 border-dashed p-8 transition-colors hover:border-gray-400",
+            "flex cursor-pointer flex-col items-center justify-center gap-2",
             isDragActive && "border-blue-500 bg-blue-50",
-            isUploading && "pointer-events-none opacity-60"
+            isUploading && "pointer-events-none opacity-60",
           )}
         >
           <input {...getInputProps()} />
@@ -120,7 +129,9 @@ export function VideoUploader({ value, onChange, className, deleteAfterUpload = 
             <>
               <Upload className="h-10 w-10 text-gray-400" />
               <p className="text-sm text-gray-600">
-                {isDragActive ? "Drop the video here" : "Drag & drop a video here, or click to select"}
+                {isDragActive
+                  ? "Drop the video here"
+                  : "Drag & drop a video here, or click to select"}
               </p>
             </>
           )}

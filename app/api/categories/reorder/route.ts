@@ -18,27 +18,32 @@ export async function POST(req: NextRequest) {
 
     try {
       await Promise.all(
-        categories.map(({ _id, sortOrder }: { _id: string; sortOrder: number }) =>
-          Category.findByIdAndUpdate(
-            _id,
-            { $set: { sortOrder } },
-            { session }
-          )
-        )
+        categories.map(
+          ({ _id, sortOrder }: { _id: string; sortOrder: number }) =>
+            Category.findByIdAndUpdate(
+              _id,
+              { $set: { sortOrder } },
+              { session },
+            ),
+        ),
       );
 
       await session.commitTransaction();
-      return NextResponse.json({ message: "Reordered successfully" }, { status: 200 });
-
+      return NextResponse.json(
+        { message: "Reordered successfully" },
+        { status: 200 },
+      );
     } catch (err) {
       await session.abortTransaction();
       throw err; // bubble to outer catch
     } finally {
       session.endSession();
     }
-
   } catch (error) {
     console.log("error reordering categories:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }

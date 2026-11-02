@@ -1,29 +1,35 @@
 import mongoose from "mongoose";
 
-const testimonialsPageSchema = new mongoose.Schema({
+const testimonialsPageSchema = new mongoose.Schema(
+  {
     testimonialSection: {
-        title: {
-            type: String
+      title: {
+        type: String,
+      },
+      starText: {
+        type: String,
+      },
+      bottomText: {
+        type: String,
+      },
+      items: [
+        {
+          image: { type: String, required: true },
+          imageAlt: { type: String, required: true },
+          name: { type: String, required: true },
+          designation: { type: String, required: true },
+          message: { type: String, required: true },
+          companyLogo: { type: String, required: true },
+          companyLogoAlt: { type: String, required: true },
+          companyName: { type: String, required: true },
         },
-        starText: {
-            type: String
-        },
-        bottomText: {
-            type: String
-        },
-        items: [
-            {
-                image: { type: String, required: true },
-                imageAlt: { type: String, required: true },
-                name: { type: String, required: true },
-                designation: { type: String, required: true },
-                message: { type: String, required: true },
-                companyLogo: { type: String, required: true },
-                companyLogoAlt: { type: String, required: true },
-                companyName: { type: String, required: true },
-            }
-        ]
-    }
-})
+      ],
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
 
-export default mongoose.models.Testimonials || mongoose.model("Testimonials", testimonialsPageSchema);
+export default mongoose.models.Testimonials ||
+  mongoose.model("Testimonials", testimonialsPageSchema);

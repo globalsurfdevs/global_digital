@@ -1,11 +1,12 @@
 import connectDB from "@/lib/mongodb";
 import Email from "@/app/models/Emails";
 
-
 export async function getToEmail(type: string) {
   await connectDB();
 
   const emails = await Email.findOne({});
+
+  // console.log("emails:", emails);
   if (!emails) {
     throw new Error("Email configuration not found");
   }
@@ -16,7 +17,8 @@ export async function getToEmail(type: string) {
 
     case "career":
       return emails.toEmailCareer;
-
+    case "booking":
+      return emails.toEmailBooking;
 
     default:
       return null;

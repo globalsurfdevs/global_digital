@@ -47,7 +47,6 @@ const Expertise: React.FC<ExpertiseSectionProps> = ({
                 {subtitle && (
                   <h3 className="text-[19px] text-[#77787B]">{subtitle}</h3>
                 )}
-
               </div>
             </motion.div>
           </div>

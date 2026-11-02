@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { About } from "@/app/types/about";
-const SectionFour = ({data}:{data:About['fourthSection']}) => {
+const SectionFour = ({ data }: { data: About["fourthSection"] }) => {
   return (
     <div className="bg-dgray">
       <div className="container mx-auto py-4">
@@ -19,14 +19,14 @@ const SectionFour = ({data}:{data:About['fourthSection']}) => {
             }, // Slide up and fade in
           }}
         >
-          <div className=" pt-[50px] lg:pt-[140px] pb-[60px] lg:pb-[150px] grid grid-cols-1 xl:grid-cols-7 gap-5 lg:gap-10 gap-xl-0">
+          <div className=" gap-xl-0 grid grid-cols-1 gap-5 pb-[60px] pt-[50px] lg:gap-10 lg:pb-[150px] lg:pt-[140px] xl:grid-cols-7">
             <div className="col-span-2 text-5xl">
               <h2 className="title-65 pb-2">{data.title}</h2>
             </div>
 
-            <div className="w-full col-span-5 ps-0 xl:ps-12 text-font30 serv-mn">
+            <div className="serv-mn col-span-5 w-full ps-0 text-font30 xl:ps-12">
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-0 "
+                className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-0 "
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
@@ -60,16 +60,14 @@ const SectionFour = ({data}:{data:About['fourthSection']}) => {
                   //   content:
                   //     "We are motivated by the opportunity to create meaningful change. By empowering purpose-driven brands to share their messages and achieve their goals, we focus on driving positive outcomes for our clients, their audiences, and the communities they impact.",
                   // },
-                  ...data.items.map((item)=>(
-                    {
-                      content:item.description,
-                      ...item
-                    }
-                  ))
+                  ...data.items.map((item) => ({
+                    content: item.description,
+                    ...item,
+                  })),
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="bdrsm flex flex-col  p-5 lg:py-[80px] lg:px-[60px]  border border-gray1 group transition-all duration-500"
+                    className="bdrsm group flex  flex-col border border-gray1  p-5 transition-all duration-500 lg:px-[60px] lg:py-[80px]"
                     style={{
                       borderBottom: index < 2 ? "none" : "1px solid #77787B", // Add bottom border only for first two rows
                       borderRight:
@@ -77,11 +75,11 @@ const SectionFour = ({data}:{data:About['fourthSection']}) => {
                     }}
                   >
                     <div className="flex gap-3 ">
-                      <div className="min-w-[29px] h-[29px] bg-primary relative top-1"></div>
+                      <div className="relative top-1 h-[29px] min-w-[29px] bg-primary"></div>
                       <p className="text-30 text-black">{item.title}</p>
                     </div>
                     <div>
-                      <p className="text-19 pt-5 fnt-lexend text-gray1">
+                      <p className="text-19 fnt-lexend pt-5 text-gray1">
                         {item.content}
                       </p>
                     </div>

@@ -14,7 +14,7 @@ interface PlatformsItem {
   title?: string;
   rttitel?: string;
   btntitle?: string;
-  btnicon?:string;
+  btnicon?: string;
   btnurl?: string;
   dec: string;
 }
@@ -185,7 +185,9 @@ const DigitalServ: React.FC<DigitalServSectionProps> = ({
                       >
                         {platform.title}{" "}
                         {platform.btnicon && (
-                          <span className="relative right-2">{platform.btnicon}</span>
+                          <span className="relative right-2">
+                            {platform.btnicon}
+                          </span>
                         )}
                       </p>
                     )}

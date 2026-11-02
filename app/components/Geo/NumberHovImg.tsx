@@ -48,7 +48,7 @@ const NumberHovImg: React.FC<ExpertiseSectionProps> = ({
   return (
     <section className="bg-[#F2F2F2]">
       <div className="container mx-auto py-4 ">
-        <div className="padding0 flex flex-col pt-8 pb-8 md:pb-[50px] md:pt-[50px] lg:pb-[150px] lg:pt-[136px]">
+        <div className="padding0 flex flex-col pb-8 pt-8 md:pb-[50px] md:pt-[50px] lg:pb-[150px] lg:pt-[136px]">
           {/* Heading */}
           <div className="mb-5 lg:mb-[56px]">
             <motion.div
@@ -81,8 +81,9 @@ const NumberHovImg: React.FC<ExpertiseSectionProps> = ({
           {/* Grid */}
           <div>
             <motion.div
-              className={`grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-0 ${colnum ? `xxl:grid-cols-${colnum}` : "xxl:grid-cols-4"
-                }`}
+              className={`grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-0 ${
+                colnum ? `xxl:grid-cols-${colnum}` : "xxl:grid-cols-4"
+              }`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -101,8 +102,9 @@ const NumberHovImg: React.FC<ExpertiseSectionProps> = ({
 
                 const CardContent = (
                   <div
-                    className={`group relative flex flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 h-[300px] md:h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px] ${expertise.url ? "cursor-pointer" : ""
-                      }`}
+                    className={`group relative flex h-[300px] flex-col justify-between gap-3 overflow-hidden border p-5 transition-all duration-500 md:h-[300px] lg:h-[340px] lg:gap-0 lg:p-10 xl:h-[414px] ${
+                      expertise.url ? "cursor-pointer" : ""
+                    }`}
                   >
                     {/* Hover background image */}
                     {expertise.hoverImg && (
@@ -110,19 +112,19 @@ const NumberHovImg: React.FC<ExpertiseSectionProps> = ({
                         src={expertise.hoverImg}
                         alt="Hover Background"
                         fill
-                        className="absolute left-0 top-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-0"
+                        className="absolute left-0 top-0 z-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                       />
                     )}
 
                     {/* Default background */}
-                    <div className="absolute left-0 top-0 h-full w-full bg-[#F2F2F2] transition-colors duration-500 group-hover:bg-transparent z-0" />
+                    <div className="absolute left-0 top-0 z-0 h-full w-full bg-[#F2F2F2] transition-colors duration-500 group-hover:bg-transparent" />
 
                     {/* Content wrapper – always on top */}
                     <div className="relative z-10 flex h-full flex-col justify-between gap-3 lg:gap-0">
                       {/* Icon / Number */}
-                      <div className="items-center flex h-[40px] w-[40px] md:h-[50px] md:w-[50px] justify-center bg-primary transition-colors duration-500 group-hover:bg-white">
+                      <div className="flex h-[40px] w-[40px] items-center justify-center bg-primary transition-colors duration-500 group-hover:bg-white md:h-[50px] md:w-[50px]">
                         {shouldShowNumber ? (
-                          <p className="text-30 text-white group-hover:text-primary transition-transform duration-500 p-0 m-0 ">
+                          <p className="text-30 m-0 p-0 text-white transition-transform duration-500 group-hover:text-primary ">
                             {index + 1 < 9 ? `0${index + 1}` : index + 1}
                           </p>
                         ) : (
@@ -152,7 +154,6 @@ const NumberHovImg: React.FC<ExpertiseSectionProps> = ({
                     </div>
                   </div>
                 );
-
 
                 return (
                   <div key={expertise.id}>

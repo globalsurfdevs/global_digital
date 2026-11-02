@@ -461,5 +461,5 @@ export const Faq = [
       "Is digital marketing relevant for companies that mostly win work through relationships and tenders?",
     description:
       "Yes. Digital visibility strengthens relationship-driven and tender-based business development - it does not replace it. Procurement teams reviewing a tender submission now routinely check the submitting company's website, LinkedIn, and Google presence before progressing. A weak or absent digital presence can undermine an otherwise strong tender submission. In the UAE's increasingly transparent procurement environment, digital credibility has become part of the pre-qualification standard.",
-  }
+  },
 ];

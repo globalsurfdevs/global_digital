@@ -23,7 +23,7 @@ type Data = {
   }[];
 };
 
-const SuccessStories = ({clientTitle}:{clientTitle:string}) => {
+const SuccessStories = ({ clientTitle }: { clientTitle: string }) => {
   const ref = useRef(null);
 
   const [data, setData] = useState<Data | null>(null);
@@ -47,7 +47,7 @@ const SuccessStories = ({clientTitle}:{clientTitle:string}) => {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex flex-col gap-6 lg:gap-0 pb-[65px] pt-[50px] lg:pt-[70px]">
+      <div className="flex flex-col gap-6 pb-[65px] pt-[50px] lg:gap-0 lg:pt-[70px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -79,24 +79,30 @@ const SuccessStories = ({clientTitle}:{clientTitle:string}) => {
               data.caseStudyHighlights.length > 0 &&
               data.caseStudyHighlights.map((item, index) => (
                 <div
-                  className="group   relative bg-black hover:bg-primary text-white duration-300 ease-linear hover:cursor-pointer"
+                  className="group   relative bg-black text-white duration-300 ease-linear hover:cursor-pointer hover:bg-primary"
                   key={index}
                   ref={ref}
                 >
-                  <div className="relative flex flex-col justify-center h-[273px] gap-5   px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]"
+                  <div
+                    className="relative flex h-[273px] flex-col justify-center gap-5   px-8 py-6 duration-300 ease-in-out group-hover:bg-primary lg:py-12 xl:px-[3.5rem]"
                     style={{
                       backgroundImage: `url(${item.portfolios.homeImage})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
-                    }}>
-                    <Image src={item.portfolios.logo} alt={item.portfolios.companyName} width={100} height={100} loading="lazy" className="absolute bottom-4 right-4 brightness-0 invert-[1]" />
-
+                    }}
+                  >
+                    <Image
+                      src={item.portfolios.logo}
+                      alt={item.portfolios.companyName}
+                      width={100}
+                      height={100}
+                      loading="lazy"
+                      className="absolute bottom-4 right-4 brightness-0 invert-[1]"
+                    />
                   </div>
                   <div className="flex flex-col justify-center gap-8 px-8 py-10  text-white xl:px-[3.5rem]">
                     <div className="  relative flex h-full flex-col justify-between">
-
-
-                      <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:opacity-100 group-hover:-translate-y-2 group-hover:translate-x-3">
+                      <div className="absolute right-0 top-0 opacity-0 duration-500 ease-in-out group-hover:-translate-y-2 group-hover:translate-x-3 group-hover:opacity-100">
                         <svg
                           width="36"
                           height="35"

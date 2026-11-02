@@ -10,11 +10,12 @@ export async function PATCH(
     await connectDB();
     const { id } = await params;
     const body = await req.json();
-
+    console.log("Request body:", body);
     const updated = await ServiceIndustry.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
-    });
+    });   
+    console.log("Updated document:", updated);
 
     if (!updated) {
       return NextResponse.json(

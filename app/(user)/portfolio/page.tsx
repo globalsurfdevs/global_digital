@@ -1,8 +1,8 @@
 import React from "react";
 import Portfolio from "@/app/components/Portfolio";
-import { getPortfolio } from "@/app/lib/portfolio.service";
-import { getIndustries } from "@/app/lib/industries.service";
-import { getCategories } from "@/app/lib/categories.service";
+import { getPortfolio } from "@/app/lib/services/portfolio.service";
+import { getIndustries } from "@/app/lib/services/industries.service";
+import { getCategories } from "@/app/lib/services/categories.service";
 interface Canonicals {
   canonical: string;
 }
@@ -30,7 +30,11 @@ const page = async () => {
 
   return (
     <>
-      <Portfolio data={portfolio} industries={industries ?? []} categories={categories ?? []} />
+      <Portfolio
+        data={portfolio}
+        industries={industries ?? []}
+        categories={categories ?? []}
+      />
     </>
   );
 };

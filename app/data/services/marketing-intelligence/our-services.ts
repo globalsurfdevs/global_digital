@@ -1,5 +1,3 @@
-
-
 export const OurServices = {
   title: "Our Services Include",
   data: [
@@ -22,6 +20,6 @@ export const OurServices = {
     {
       id: 5,
       title: "Churn Prevention",
-    }
+    },
   ],
 };

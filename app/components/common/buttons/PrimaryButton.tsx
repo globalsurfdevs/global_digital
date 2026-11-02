@@ -21,7 +21,7 @@ function cn(...classes: Array<string | false | null | undefined>) {
 
 const baseStyles =
   "group inline-flex items-center justify-center gap-3 fnt-lexend h-full" +
-  "px-[25px] px-5 xl:px-[25px] py-[15px] xl:py-[16px]  text-base uppercase leading-[1] whitespace-nowrap select-none " +
+  "px-[25px] px-5 xl:px-[25px] py-[15px] xl:py-[16px]  text-[14px] xl:text-base uppercase leading-[1] whitespace-nowrap select-none " +
   "rounded-full transition-all duration-300 ease-out " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 " +
   "disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
@@ -57,7 +57,7 @@ function ArrowIcon() {
       strokeWidth={2.5}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="w-4 h-4"
+      className="h-4 w-4"
       aria-hidden="true"
     >
       <line x1="7" y1="17" x2="17" y2="7" />
@@ -77,36 +77,60 @@ interface BaseButtonProps {
 }
 
 type ButtonAsButton = BaseButtonProps &
-  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "className"> & {
+  Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    "children" | "className"
+  > & {
     href?: undefined;
   };
 
 type ButtonAsLink = BaseButtonProps &
-  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "children" | "className"> & {
+  Omit<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    "children" | "className"
+  > & {
     href: string;
   };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  ({ variant = "primary", children, className, showIcon = true, isLoading = false, ...rest }, ref) => {
+export const Button = forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>(
+  (
+    {
+      variant = "primary",
+      children,
+      className,
+      showIcon = true,
+      isLoading = false,
+      ...rest
+    },
+    ref,
+  ) => {
     const classes = cn(baseStyles, variantStyles[variant], className);
 
     const icon = (
       <span
         className={
           variant === "whatsapp"
-            ? "flex items-center justify-center shrink-0"
+            ? "flex shrink-0 items-center justify-center"
             : cn(
-              "flex items-center justify-center shrink-0",
-              iconChipStyles[variant]
-            )
+                "flex shrink-0 items-center justify-center",
+                iconChipStyles[variant],
+              )
         }
       >
         {isLoading ? (
-          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+          <Loader2 className="h-3.5 w-3.5 animate-spin" />
         ) : variant === "whatsapp" ? (
-          <Image src="/assets/images/branding-positioning/whatsapp-icon.svg" alt="WhatsApp" width={26} height={26} />
+          <Image
+            src="/assets/images/branding-positioning/whatsapp-icon.svg"
+            alt="WhatsApp"
+            width={26}
+            height={26}
+          />
         ) : (
           <div className="transition-transform duration-300 ease-out group-hover:rotate-45">
             <ArrowIcon />
@@ -164,7 +188,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         {content}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

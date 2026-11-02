@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 
@@ -33,25 +33,30 @@ type ContentSectionProps = {
 const renderSubSection = (data: SubSection, idx: number) => (
   <div key={idx}>
     {data.sectionSubtitle && (
-      <h3 className="text-30 mt-[30px] mb-3">{data.sectionSubtitle}</h3>
+      <h3 className="text-30 mb-3 mt-[30px]">{data.sectionSubtitle}</h3>
     )}
     {data.imagesecond && (
-      <Image src={data.imagesecond} alt={data.imagealt || data.sectionSubtitle || 'Subsection image'} className="my-[20px]" />
+      <Image
+        src={data.imagesecond}
+        alt={data.imagealt || data.sectionSubtitle || "Subsection image"}
+        className="my-[20px]"
+      />
     )}
 
     {data.paragraphs?.map((p, index) => (
       <p
         key={index}
-        className={`text-font19 text-[#77787B] ${index !== data.paragraphs!.length - 1 ? 'mb-[16px]' : ''
-          }`}
+        className={`text-font19 text-[#77787B] ${
+          index !== data.paragraphs!.length - 1 ? "mb-[16px]" : ""
+        }`}
         dangerouslySetInnerHTML={{ __html: p }}
       />
     ))}
 
     {data.listItems?.length ? (
-      <ul className="list-disc pl-10 mt-3">
+      <ul className="mt-3 list-disc pl-10">
         {data.listItems.map((item, index) => (
-          <li key={index} className="text-font19 mb-2">
+          <li key={index} className="mb-2 text-font19">
             <span dangerouslySetInnerHTML={{ __html: item.label }} />
             {item.description && (
               <span
@@ -67,7 +72,7 @@ const renderSubSection = (data: SubSection, idx: number) => (
     {data.paragraphs2?.map((p, index) => (
       <p
         key={index}
-        className={`text-font19 text-[#77787B] ${p?.includes('<br') ? '' : 'mt-4'}`}
+        className={`text-font19 text-[#77787B] ${p?.includes("<br") ? "" : "mt-4"}`}
         dangerouslySetInnerHTML={{ __html: p }}
       />
     ))}
@@ -86,29 +91,40 @@ const ContentSection: React.FC<ContentSectionProps> = ({ sections }) => {
                 <h2 className="title-65 mb-[40px]">{data.title}</h2>
 
                 {data.image && (
-                  <Image src={data.image} alt={data.title} className="my-[40px]" />
+                  <Image
+                    src={data.image}
+                    alt={data.title}
+                    className="my-[40px]"
+                  />
                 )}
 
                 {data.paragraphs3?.map((p, index) => (
                   <p
                     key={index}
-                    className={`text-font19 text-[#77787B] mb-0 ${p?.includes('<br') ? '' : 'mt-4'}`}
+                    className={`mb-0 text-font19 text-[#77787B] ${p?.includes("<br") ? "" : "mt-4"}`}
                     dangerouslySetInnerHTML={{ __html: p }}
                   />
                 ))}
 
                 {/* Backward compatible: render top-level single sub-section */}
-                {(data.sectionSubtitle || data.paragraphs || data.listItems || data.paragraphs2) &&
-                  renderSubSection({
-                    sectionSubtitle: data.sectionSubtitle,
-                    paragraphs: data.paragraphs,
-                    listItems: data.listItems,
-                    paragraphs2: data.paragraphs2,
-                  }, -1)
-                }
+                {(data.sectionSubtitle ||
+                  data.paragraphs ||
+                  data.listItems ||
+                  data.paragraphs2) &&
+                  renderSubSection(
+                    {
+                      sectionSubtitle: data.sectionSubtitle,
+                      paragraphs: data.paragraphs,
+                      listItems: data.listItems,
+                      paragraphs2: data.paragraphs2,
+                    },
+                    -1,
+                  )}
 
                 {/* Repeatable sub-sections */}
-                {data.subSections?.map((sub, subIdx) => renderSubSection(sub, subIdx))}
+                {data.subSections?.map((sub, subIdx) =>
+                  renderSubSection(sub, subIdx),
+                )}
               </div>
             </div>
           </div>

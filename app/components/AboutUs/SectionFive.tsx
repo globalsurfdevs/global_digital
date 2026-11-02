@@ -7,7 +7,13 @@ import React, { useEffect, useState } from "react";
 import LetsTalk from "@/app/components/common/LetsConnect";
 import { About } from "@/app/types/about";
 
-const SectionFive = ({data,lastSection}:{data:About['teamSection'],lastSection:About['lastSection']}) => {
+const SectionFive = ({
+  data,
+  lastSection,
+}: {
+  data: About["teamSection"];
+  lastSection: About["lastSection"];
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -65,7 +71,7 @@ const SectionFive = ({data,lastSection}:{data:About['teamSection'],lastSection:A
           }, // Slide up and fade in
         }}
       >
-        <EmployeesSwiper data={data.items}/>
+        <EmployeesSwiper data={data.items} />
       </motion.div>
       <motion.div
         initial="hidden"

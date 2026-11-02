@@ -14,14 +14,14 @@ export default function SeoCounter({
 }: SeoCounterProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
- 
+
   const [count, setCount] = useState(value);
 
   const spring = useSpring(0, {
     bounce: 0,
     duration,
   });
- 
+
   useEffect(() => {
     const unsub = spring.on("change", (v) => {
       setCount(Math.round(v));
@@ -29,22 +29,24 @@ export default function SeoCounter({
 
     return () => unsub();
   }, []);
- 
+
   useEffect(() => {
     if (isInView) {
-      setCount(0);        
+      setCount(0);
       spring.set(value);
     }
   }, [isInView, value]);
 
   return (
-    
     <>
-    <p className="sr-only">{value}</p>
-    <h3 ref={ref} aria-hidden="true"
-    className="text-font65 hover:text-[#E63E31] min-w-[2ch]">
-                  {count} {label}
-                </h3>
-                </>
+      <p className="sr-only">{value}</p>
+      <h3
+        ref={ref}
+        aria-hidden="true"
+        className="min-w-[2ch] text-font65 hover:text-[#E63E31]"
+      >
+        {count} {label}
+      </h3>
+    </>
   );
 }

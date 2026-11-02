@@ -4,18 +4,18 @@ export const BannerSection = [
   {
     id: 1,
     image: assets.designbanner,
-    title:
-      "Creative Web Design Agency in Dubai",
-      subtitle:"Delivering Visually Stunning and Optimized Website Designs to Improve Online Presence",
+    title: "Creative Web Design Agency in Dubai",
+    subtitle:
+      "Delivering Visually Stunning and Optimized Website Designs to Improve Online Presence",
     navigation: [
-      { label: "Home", url: "/" },  
-      { label: "Web Solutions",url: "/web-design-and-development" }, 
-      { label: "Web Design Service",url: "" },
+      { label: "Home", url: "/" },
+      { label: "Web Solutions", url: "/web-design-and-development" },
+      { label: "Web Design Service", url: "" },
     ],
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "At GS Digital, we understand that your website is more than just a digital presence; it's the face of your brand online. Our team collaborates closely with you to grasp your brand's vision and target audience, ensuring that every design element aligns with your business objectives. From setting clear goals to selecting the appropriate platforms, we craft websites that not only look impressive but also function seamlessly to drive growth.",
       },
     ],
@@ -53,33 +53,32 @@ export const ExpertServicesdata = {
       id: 1,
       title: "E-commerce Website Design",
       dec: "We build e-commerce websites that do more than just look good—they’re optimized for seamless shopping experiences and higher conversions. ",
-      icon:assets.oex4
-    } ,
+      icon: assets.oex4,
+    },
     {
       id: 2,
       title: "Corporate Website Design",
       dec: "Your website should reflect your brand’s vision and values. As a trusted web design agency, we craft corporate websites that align with your business goals and enhance your online presence. ",
-      icon:assets.oex3
-    } ,
+      icon: assets.oex3,
+    },
     {
       id: 3,
       title: "Web Applications & Dashboards",
       dec: "Our web app design services focus on creating intuitive, functional, and user-friendly solutions that help businesses streamline operations and solve real-world challenges. ",
-      icon:assets.sese1
-    } ,
+      icon: assets.sese1,
+    },
     {
       id: 4,
       title: "Custom Website Design",
       dec: "A website should be more than just a digital presence—it should tell your brand’s story. We create tailored, high-performance websites that stand out and deliver results. ",
-      icon:assets.oex2
-    } ,
+      icon: assets.oex2,
+    },
     {
       id: 5,
       title: "Website Redesign & Revamp ",
       dec: "A redesign isn’t just about aesthetics—it’s about performance. We transform outdated websites into modern, responsive platforms that drive more traffic, engagement, and revenue. ",
-      icon:assets.oex1
-    } ,
-
+      icon: assets.oex1,
+    },
   ],
 };
 export const OurServices = {
@@ -87,64 +86,64 @@ export const OurServices = {
   data: [
     {
       id: 1,
-        title: "User Research",
-        desc:"We dig deep into your audience—how they think, what they need, and how they navigate. Smart insights lead to smarter design. "
+      title: "User Research",
+      desc: "We dig deep into your audience—how they think, what they need, and how they navigate. Smart insights lead to smarter design. ",
     },
     {
       id: 2,
       title: "Wireframes ",
-      desc:"No fluff, just structure. We map out your site’s flow to ensure a seamless user journey before design kicks in. "
+      desc: "No fluff, just structure. We map out your site’s flow to ensure a seamless user journey before design kicks in. ",
     },
     {
       id: 3,
       title: "High-Fidelity Prototyping ",
-      desc:"See it. Click it. Experience it. Interactive prototypes bring ideas to life before a single line of code is written."
+      desc: "See it. Click it. Experience it. Interactive prototypes bring ideas to life before a single line of code is written.",
     },
     {
       id: 4,
       title: "User Flows",
-      desc:"Every click should feel natural. We craft smooth, intuitive paths that guide users straight to action. "
+      desc: "Every click should feel natural. We craft smooth, intuitive paths that guide users straight to action. ",
     },
     {
       id: 5,
       title: "Visual Design",
-      desc:"Clean. Striking. On-brand. We design with purpose—balancing aesthetics and conversions for maximum impact. "
+      desc: "Clean. Striking. On-brand. We design with purpose—balancing aesthetics and conversions for maximum impact. ",
     },
     {
       id: 6,
       title: "Development Handover",
-      desc:"Pixel-perfect execution. We hand off designs with all specs, assets, and guidelines to ensure flawless development. "
+      desc: "Pixel-perfect execution. We hand off designs with all specs, assets, and guidelines to ensure flawless development. ",
     },
     {
       id: 7,
       title: "QA & Validation",
-      desc:"We test. We tweak. We perfect. Before launch, every element is optimized for speed, function, and a seamless user experience. "
-    }
+      desc: "We test. We tweak. We perfect. Before launch, every element is optimized for speed, function, and a seamless user experience. ",
+    },
   ],
 };
 export const Platformsecomdata = {
   title: "Why Choose GS Digital?",
-  desc:"Every innovation here stems from a drive to do better. We create ideas that make an impact, experiences that inspire, and digital solutions that push businesses forward.",
+  desc: "Every innovation here stems from a drive to do better. We create ideas that make an impact, experiences that inspire, and digital solutions that push businesses forward.",
   data: [
     {
       id: 1,
       icon: assets.google,
       title: "100+",
-      rttitel:"Projects Launched",
+      rttitel: "Projects Launched",
       dec: "We’ve designed and developed high-performing websites across industries, delivering results that matter. ",
     },
     {
       id: 2,
       icon: assets.linkedin,
       title: "25+",
-      rttitel:"Design Experts",
+      rttitel: "Design Experts",
       dec: "A team of creative minds and technical pros, ensuring every project meets the highest standards. ",
     },
     {
       id: 3,
       icon: assets.twitterx,
       title: "12+",
-      rttitel:"Years of Excellence  ",
+      rttitel: "Years of Excellence  ",
       dec: "Over a decade of expertise in designing websites that combine innovation, performance, and long-term success.  ",
     },
   ],
@@ -152,55 +151,47 @@ export const Platformsecomdata = {
 export const Cta = [
   {
     textred: "Differently. ",
-    text: "Contact GS Digital To Discuss How We Do It  "
-  }
+    text: "Contact GS Digital To Discuss How We Do It  ",
+  },
 ];
 export const Faq = [
   {
-    title:
-      "Why should I invest in professional web design?",
+    title: "Why should I invest in professional web design?",
     description:
       "A professionally designed website builds credibility, enhances user experience, and drives conversions. Whether you're a startup or an established brand, working with the best web design company in Dubai ensures your website is visually appealing, functional, and optimized for performance. ",
   },
   {
-    title:
-      "What’s included in your website design services?",
+    title: "What’s included in your website design services?",
     description:
       "As a leading website design company in Dubai, we offer a full range of web design services, including UX/UI design, responsive development, SEO-friendly structures, e-commerce integration, and ongoing maintenance to keep your site running smoothly. ",
   },
   {
-    title:
-      "How much does website design cost in Dubai?",
+    title: "How much does website design cost in Dubai?",
     description:
       "The website design price in Dubai varies based on the scope, features, and complexity of your project. Whether you need a basic website or a custom-built platform, we offer tailored solutions that fit your needs and budget. ",
   },
   {
-    title:
-      "How long does it take to design and develop a website? ",
+    title: "How long does it take to design and develop a website? ",
     description:
       "Timelines depend on the project size and requirements. A standard business website typically takes 4–6 weeks, while more complex projects may take longer. As a trusted web design agency in Dubai, we ensure a streamlined process for timely delivery. ",
   },
   {
-    title:
-      "Do you offer e-commerce website design?",
+    title: "Do you offer e-commerce website design?",
     description:
       "Yes! As a top web design company in Dubai, we specialize in building secure and scalable e-commerce websites, whether you need a Shopify store, WooCommerce site, or a fully custom e-commerce platform. ",
   },
   {
-    title:
-      "Can I update my website on my own? ",
+    title: "Can I update my website on my own? ",
     description:
       "Absolutely! We provide user-friendly content management systems (CMS) that allow you to edit content, upload images, and make updates with ease. If you need assistance, our website design agency also offers ongoing support. ",
   },
   {
-    title:
-      "Will my website be mobile-friendly? ",
+    title: "Will my website be mobile-friendly? ",
     description:
       "Yes! Mobile responsiveness is a priority. As a top website design company, we ensure your site works flawlessly on all devices, offering a seamless user experience across desktops, tablets, and smartphones. ",
   },
   {
-    title:
-      "Do you provide SEO services along with web design?",
+    title: "Do you provide SEO services along with web design?",
     description:
       "Yes, we integrate SEO best practices into every project. Our web design agency ensures your site is optimized for search engines, helping improve visibility and rankings right from launch. ",
   },
@@ -211,45 +202,44 @@ export const Faq = [
       "Website design focuses on aesthetics, layout, and user experience, while website development involves coding and functionality. As a full-service website design company in Dubai, we handle both, ensuring a perfect balance between form and function. ",
   },
   {
-    title:
-      " How do I get started with your web design services? ",
+    title: " How do I get started with your web design services? ",
     description:
       "Getting started is simple! Contact our web design company in Dubai, and we’ll discuss your goals, requirements, and website design price in Dubai to create a custom plan that fits your business. ",
   },
 ];
 export const relatedservices = {
   title: "Related Services",
-  description: "Customized plans that resonate with your audience and drive brand growth.",
+  description:
+    "Customized plans that resonate with your audience and drive brand growth.",
   data: [
     {
       id: 1,
       title: "Digital Marketing ",
       dec: "Promote your website through various online channels to reach a broader audience.",
-      icon:assets.sese2,
-      url:"/digital-marketing-services",
-    } ,
+      icon: assets.sese2,
+      url: "/digital-marketing-services",
+    },
     {
       id: 2,
       title: "Branding ",
       dec: "Develop a cohesive brand identity that resonates with your target market. ",
-      icon:assets.rst2,
-      url:"/branding-agency-dubai",
-    } ,
+      icon: assets.rst2,
+      url: "/branding-agency-dubai",
+    },
     {
       id: 3,
       title: "Mobile App Development",
       dec: "Extend your reach by creating mobile applications that complement your website.",
-      icon:assets.rst3,
-      url:'/mobile-app-development-company-dubai'
-    } ,
+      icon: assets.rst3,
+      url: "/mobile-app-development-company-dubai",
+    },
     {
       id: 4,
       title: "Graphic Design ",
       dec: "Enhance your visual content with professional graphic design services.",
-      icon:assets.rst4,
-      url:'/graphic-design-agency-dubai'
-    } ,
-
+      icon: assets.rst4,
+      url: "/graphic-design-agency-dubai",
+    },
   ],
 };
 export const AreaExpertise = {
@@ -291,21 +281,21 @@ export const AreaExpertise = {
       url: "",
     },
     {
-      id:6,
+      id: 6,
       icon: assets.ke6,
       title: "Wireframing & Prototyping",
       desc: "We map out user journeys before development begins, providing interactive wireframes and prototypes. This lets you visualize the experience, refine key elements, and ensure everything flows perfectly before it goes live. ",
       url: "",
     },
     {
-      id:7,
+      id: 7,
       icon: assets.ke7,
       title: "Conversion-Driven Layouts ",
       desc: "A great website isn’t just about design—it’s about results. We structure layouts to naturally guide users toward key actions, whether it’s filling out a form, making a purchase, or exploring your content. ",
       url: "",
     },
     {
-      id:8,
+      id: 8,
       icon: assets.ke8,
       title: "Performance-Optimized Design ",
       desc: "Speed matters. We optimize every visual and functional element to ensure fast load times and smooth interactions, keeping users engaged and reducing drop-offs. ",
@@ -316,29 +306,29 @@ export const AreaExpertise = {
 
 export const ResultsData = {
   title: "Results",
-  description: "Take a look at our case study to see how our social media marketing services have helped businesses like yours grow and connect with their audience in meaningful ways.",
+  description:
+    "Take a look at our case study to see how our social media marketing services have helped businesses like yours grow and connect with their audience in meaningful ways.",
   data: [
     {
       id: 1,
       growth: "$200K",
       traffic: "Budget Spent  ",
-      title:"Based on our case in Q4 2024 ",
-       url: "",
+      title: "Based on our case in Q4 2024 ",
+      url: "",
     },
     {
       id: 2,
       growth: "$0.5",
       traffic: "Per Active Follower ",
-      title:"Based on our case in Q4 2024 ",
+      title: "Based on our case in Q4 2024 ",
       url: "",
     },
     {
       id: 3,
       growth: "10% ",
       traffic: "ERR ",
-      title:"Based on our case in Q4 2024 ",
+      title: "Based on our case in Q4 2024 ",
       url: "",
     },
-
   ],
 };

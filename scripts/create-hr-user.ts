@@ -15,10 +15,11 @@ async function createHrUser() {
 
     const existing = await User.findOne({ username });
     if (existing) {
-      console.log(`User "${username}" already exists. Aborting to avoid overwrite.`);
+      console.log(
+        `User "${username}" already exists. Aborting to avoid overwrite.`,
+      );
       process.exit(0);
     }
-
 
     const hrUser = await User.create({
       username,

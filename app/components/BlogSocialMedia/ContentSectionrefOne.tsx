@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 
@@ -8,9 +8,9 @@ import Image, { StaticImageData } from "next/image";
 export interface ContentSectionData {
   title: string;
   image?: StaticImageData;
-  paragraphs?: string[];        // supports HTML including <br /> and <strong>
+  paragraphs?: string[]; // supports HTML including <br /> and <strong>
   listItems?: { label: string; description?: string }[]; // label & description support HTML
-  paragraphs2?: string[];       // supports HTML
+  paragraphs2?: string[]; // supports HTML
 }
 
 type ContentSectionProps = {
@@ -29,14 +29,18 @@ const ContentSectionrefOne: React.FC<ContentSectionProps> = ({ sections }) => {
                 <h2 className="title-65 mb-5 lg:mb-[40px]">{data.title}</h2>
 
                 {data.image && (
-                  <Image src={data.image} alt={data.title} className="my-[40px]" />
+                  <Image
+                    src={data.image}
+                    alt={data.title}
+                    className="my-[40px]"
+                  />
                 )}
 
                 {/* Render paragraphs with HTML support */}
                 {data.paragraphs?.map((p, index) => (
                   <p
                     key={index}
-                    className="text-font19 text-[#77787B] mb-[16px] cursor-pointer hover:text-primary"
+                    className="mb-[16px] cursor-pointer text-font19 text-[#77787B] hover:text-primary"
                     dangerouslySetInnerHTML={{ __html: p }}
                     onClick={() => {
                       document
@@ -48,19 +52,18 @@ const ContentSectionrefOne: React.FC<ContentSectionProps> = ({ sections }) => {
 
                 {/* List items with HTML support */}
                 {data.listItems?.length ? (
-                  <ul className="list-disc pl-10 mt-3">
+                  <ul className="mt-3 list-disc pl-10">
                     {data.listItems.map((item, index) => (
-                      <li
-                        key={index}
-                        className="text-font19 mb-2"
-                      >
+                      <li key={index} className="mb-2 text-font19">
                         <span
                           dangerouslySetInnerHTML={{ __html: item.label }}
                         />
                         {item.description && (
                           <span
                             className="text-[#77787B]"
-                            dangerouslySetInnerHTML={{ __html: item.description }}
+                            dangerouslySetInnerHTML={{
+                              __html: item.description,
+                            }}
                           />
                         )}
                       </li>
@@ -72,7 +75,7 @@ const ContentSectionrefOne: React.FC<ContentSectionProps> = ({ sections }) => {
                 {data.paragraphs2?.map((p, index) => (
                   <p
                     key={index}
-                    className={`text-font19 text-[#77787B] ${p && p.includes('<br') ? '' : 'mt-4'}`}
+                    className={`text-font19 text-[#77787B] ${p && p.includes("<br") ? "" : "mt-4"}`}
                     dangerouslySetInnerHTML={{ __html: p }}
                   />
                 ))}

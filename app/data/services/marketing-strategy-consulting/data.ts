@@ -1,20 +1,19 @@
-import { assets } from "@/public/assets/assets"; 
+import { assets } from "@/public/assets/assets";
 export const BannerSection = [
   {
     id: 1,
     image: assets.strsbanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Marketing Strategy Consulting",url: "" },
+      { label: "Marketing Strategy Consulting", url: "" },
     ],
-    title:
-      "Marketing Strategy Consulting in Dubai ",
-      subtitle:"Actionable Insights, Real Results. ",
+    title: "Marketing Strategy Consulting in Dubai ",
+    subtitle: "Actionable Insights, Real Results. ",
     sub: [
       {
         stitle: "OUR APPROACH",
         desc: "We help businesses develop clear, effective marketing strategies backed by market insights and digital expertise. From shaping your digital roadmap to improving B2B performance, our consultants provide practical support tailored to your goals. With a focus on research and measurable results, we help you understand your audience, navigate competition, and move forward with confidence.  ",
-      buttonTitle: "Start Your Project",
+        buttonTitle: "Start Your Project",
       },
     ],
   },
@@ -41,7 +40,7 @@ export const Wecanhelp = {
       id: 4,
       icon: assets.mschelp4,
       dec: "Cut costs and accelerate delivery by addressing issues early and getting them right from the start. ",
-    }, 
+    },
   ],
 };
 export const DigitalServdata = {
@@ -55,14 +54,14 @@ export const DigitalServdata = {
       id: 1,
       icon: assets.google,
       title: "30",
-      btnicon:"+",
+      btnicon: "+",
       rttitel: "Ongoing Campaigns ",
       dec: "Across industries, delivering custom web solutions tailored to unique business needs. ",
     },
     {
       id: 2,
       icon: assets.linkedin,
-       btnicon:"+",
+      btnicon: "+",
       title: "40",
       rttitel: "Specialists Across Channels",
       dec: "In leading technologies, ensuring secure, scalable, and future-ready web applications. ",
@@ -70,7 +69,7 @@ export const DigitalServdata = {
     {
       id: 3,
       icon: assets.twitterx,
-       btnicon:"x",
+      btnicon: "x",
       title: "10",
       rttitel: "ROAS Achieved on 80% of Projects ",
       dec: "Committed to building, optimizing, and supporting web applications that empower your business. ",
@@ -110,42 +109,42 @@ export const Frameworkdata = {
       title: "Market Research & Competitor Analysis",
       dec: "Understand your landscape better with in-depth research that reveals trends, opportunities, and strategic gaps. ",
       icn: assets.omst1,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 2,
       title: "Marketing Strategy Development ",
       dec: "Lay a strong foundation with a comprehensive go-to-market strategy backed by industry insights, customer personas, and competitive positioning. ",
       icn: assets.omst2,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 3,
       title: "Digital Marketing Strategy Consulting",
       dec: "Align your digital presence with performance goals using data-driven, channel-specific strategies that maximize online visibility and conversion. ",
       icn: assets.omst3,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 4,
       title: "B2B Marketing Strategy Consulting",
       dec: "Develop precise and persuasive strategies tailored to the unique challenges of B2B markets from lead generation to account-based marketing. ",
       icn: assets.omst4,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 5,
       title: "Brand Positioning & Messaging  ",
       dec: "Create a compelling brand narrative that resonates with your target market and differentiates you from the competition. ",
       icn: assets.omst5,
-      urllink: '',
+      urllink: "",
     },
     {
       id: 6,
       title: "Marketing Performance Optimization",
       dec: "Measure what matters. Use KPIs and analytics to assess, refine, and elevate marketing performance across channels. ",
       icn: assets.omst6,
-      urllink: '',
+      urllink: "",
     },
   ],
 };
@@ -177,13 +176,13 @@ export const OurServices = {
       id: 5,
       title: "Performance Review & Optimization",
       desc: "Marketing is never static. We track results and continuously optimize strategies for better engagement and outcomes.",
-    }, 
+    },
   ],
 };
 
 export const Platformsecomdata = {
   title: "Why Choose GS Digital as Your Marketing Strategy Partner?  ",
-  desc:"As a leading marketing strategy consultancy in Dubai, we help businesses of all sizes craft agile, insight-led strategies that move the needle. With deep expertise in B2B marketing strategy consulting and digital growth solutions, our team delivers clarity and results you can measure. ",
+  desc: "As a leading marketing strategy consultancy in Dubai, we help businesses of all sizes craft agile, insight-led strategies that move the needle. With deep expertise in B2B marketing strategy consulting and digital growth solutions, our team delivers clarity and results you can measure. ",
   data: [
     {
       id: 1,
@@ -251,28 +250,34 @@ export const Faq = [
   },
   {
     title: "How can your firm support my B2B marketing goals? ",
-    description: "Our B2B marketing strategy services focus on lead generation, account-based marketing, and optimizing the buyer journey to drive higher engagement and conversions.",
-  }, 
+    description:
+      "Our B2B marketing strategy services focus on lead generation, account-based marketing, and optimizing the buyer journey to drive higher engagement and conversions.",
+  },
   {
     title: "Do you offer digital marketing strategy consulting? ",
-    description: " Yes, we help businesses develop performance-driven digital strategies tailored to SEO, paid media, social, email, and more.",
-  }, 
+    description:
+      " Yes, we help businesses develop performance-driven digital strategies tailored to SEO, paid media, social, email, and more.",
+  },
   {
     title: "How long does it take to create a marketing strategy? ",
-    description: "Depending on scope, it typically takes 4–8 weeks to develop a comprehensive marketing strategy, including research and roadmap creation. ",
-  }, 
+    description:
+      "Depending on scope, it typically takes 4–8 weeks to develop a comprehensive marketing strategy, including research and roadmap creation. ",
+  },
   {
     title: "What industries do you work with?",
-    description: "We serve diverse industries, including technology, real estate, finance, healthcare, education, retail, and more. ",
-  }, 
+    description:
+      "We serve diverse industries, including technology, real estate, finance, healthcare, education, retail, and more. ",
+  },
   {
     title: "Can you help with strategy implementation?",
-    description: "Yes! We provide support during implementation to ensure your strategy is executed effectively.",
-  }, 
+    description:
+      "Yes! We provide support during implementation to ensure your strategy is executed effectively.",
+  },
   {
     title: "Do you offer marketing consulting services beyond strategy?",
-    description: "Absolutely. From campaign planning to CRO and content development, our marketing consulting services cover the full marketing lifecycle. ",
-  },  
+    description:
+      "Absolutely. From campaign planning to CRO and content development, our marketing consulting services cover the full marketing lifecycle. ",
+  },
 ];
 
 export const Clientsformsdata = [
@@ -338,43 +343,43 @@ export const relatedservices = {
       id: 1,
       title: " Performance Marketing",
       dec: "Drive results across paid search, social, and programmatic advertising with conversion-focused campaigns. ",
-      icon:assets.cmrst1,
-      url:'/performance-marketing-agency-dubai'
-    } ,
+      icon: assets.cmrst1,
+      url: "/performance-marketing-agency-dubai",
+    },
     {
       id: 2,
       title: "Search Engine Optimization (SEO) ",
       dec: "Increase organic visibility and grow traffic with on-page, off-page, and technical SEO services.",
-      icon:assets.cmrst2,
-      url:"/seo-agency-dubai"
-    } ,
+      icon: assets.cmrst2,
+      url: "/seo-agency-dubai",
+    },
     {
       id: 3,
       title: "Brand Strategy & Identity",
       dec: "Create a strong, consistent brand that resonates across every touchpoint. ",
-      icon:assets.cmrst3,
-      url:"/branding-agency-dubai"
-    } ,
+      icon: assets.cmrst3,
+      url: "/branding-agency-dubai",
+    },
     {
       id: 4,
       title: "CRM & Marketing Automation",
       dec: "Streamline lead nurturing and retention through email marketing, automation flows, and CRM integration. ",
-      icon:assets.cmrst4,
-      url:"/marketing-automation-agency-dubai"
-    } ,
+      icon: assets.cmrst4,
+      url: "/marketing-automation-agency-dubai",
+    },
     {
       id: 5,
       title: "Content Strategy & Creation",
       dec: "Engage your audience with compelling content aligned with your brand and strategy. ",
-      icon:assets.cmrst5,
-      url:"/content-marketing-agency-dubai"
-    } ,
+      icon: assets.cmrst5,
+      url: "/content-marketing-agency-dubai",
+    },
     {
       id: 6,
       title: "Conversion Rate Optimization (CRO)",
       dec: " Optimize your website experience to turn more visitors into customers. ",
-      icon:assets.cmrst6,
-      url:"/conversion-rate-optimization-agency-dubai"
-    }
+      icon: assets.cmrst6,
+      url: "/conversion-rate-optimization-agency-dubai",
+    },
   ],
 };

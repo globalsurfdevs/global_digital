@@ -6,12 +6,11 @@ export const BannerSection = [
     image: assets.bannersocial,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Social Media",url: "/social-media-agency-dubai" },
-      { label: "Social Media Marketing",url: "" },
+      { label: "Social Media", url: "/social-media-agency-dubai" },
+      { label: "Social Media Marketing", url: "" },
     ],
-    title:
-      "Creative Social Media Marketing in Dubai", 
-    subtitle:"Boosting Brand Visibility with Creative & Data-Driven Campaigns",
+    title: "Creative Social Media Marketing in Dubai",
+    subtitle: "Boosting Brand Visibility with Creative & Data-Driven Campaigns",
     sub: [
       {
         stitle: "OUR APPROACH",

@@ -5,6 +5,7 @@ console.log(process.env.NODE_ENV);
 const nextConfig: NextConfig = {
   // htmlLimitedBots: /.*/,
   /* config options here */
+  allowedDevOrigins: ["172.16.16.132:3000"],
   images: {
     remotePatterns: [
       {
@@ -21,7 +22,7 @@ const nextConfig: NextConfig = {
       },
     ],
     dangerouslyAllowSVG: true,
-    unoptimized: true,
+    // unoptimized: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
@@ -43,138 +44,302 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/performance-marketing", // The old URL path
-        destination: "/performance-marketing-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/seo", // The old URL path
-        destination: "/seo-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/social-media", // The old URL path
-        destination: "/social-media-marketing-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/branding-creative", // The old URL path
-        destination: "/creative-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/marketing-intelligence", // The old URL path
-        destination: "/marketing-intelligence-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/portfolio/telal", // The old URL path
-        destination: "/portfolio/telal-engineering-&-contracting", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/portfolio/icatch", // The old URL path
-        destination: "/portfolio/icatch-graphics", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/portfolio/qieco", // The old URL path
-        destination: "/portfolio/qiecosmart", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      // {
-      //   source: "/social-media-marketing-agency-dubai", // The old URL path
-      //   destination: "/social-media-agency-dubai", // The new URL path
-      //   permanent: true, // Set to true for 301 (permanent) redirect
-      // },
-      // {
-      //   source: "/contact-us", // The old URL path
-      //   destination: "/lets-talk", // The new URL path
-      //   permanent: true, // Set to true for 301 (permanent) redirect
-      // },
-      // {
-      //   source: "/web-design-development", // The old URL path
-      //   destination: "/web-design-and-development", // The new URL path
-      //   permanent: true, // Set to true for 301 (permanent) redirect
-      // },
-      {
-        source: "/portfolio/ayka-property-&-facility-management", // The old URL path
-        destination: "/portfolio/ayka-property-and-facility-management", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/portfolio/telal-engineering-&-contracting", // The old URL path
-        destination: "/portfolio/telal-engineering-and-contracting", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/lets-talk", // The old URL path
-        destination: "https://www.globalsurf.ae", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/branding", // The old URL path
-        destination: "/branding-agency-dubai", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/industry/ecommerce", // The old URL path
-        destination: "/industry/ecommerce-digital-marketing", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/industry/b2b", // The old URL path
-        destination: "/industry/b2b-digital-marketing-services", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/industry/digital-marketing-services", // The old URL path
-        destination: "/digital-marketing-services", // The new URL path
-        permanent: true, // Set to true for 301 (permanent) redirect
-      },
-      {
-        source: "/blogs/poor-sales-try-our-website-redesign-services-for-results",
-        destination: "/web-development-agency-dubai",
+        source: "/performance-marketing", 
+        destination: "/performance-marketing-agency-dubai", 
         permanent: true,
       },
       {
-        source: "/blogs/the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
+        source: "/seo", 
+        destination: "/seo-agency-dubai", 
+        permanent: true, 
+      },
+      {
+        source: "/social-media", 
+        destination: "/social-media-marketing-agency-dubai", 
+        permanent: true, 
+      },
+      {
+        source: "/branding-creative", 
+        destination: "/branding-content-production-agency-dubai", 
+        permanent: true, 
+      },
+      {
+        source: "/marketing-intelligence", 
+        destination: "/ai-data-intelligence-agency-dubai", 
+        permanent: true, 
+      },
+      {
+        source: "/portfolio/telal", 
+        destination: "/portfolio", 
+        permanent: true, 
+      },
+      {
+        source: "/portfolio/icatch", 
+        destination: "/portfolio/icatch-graphics", 
+        permanent: true, 
+      },
+      {
+        source: "/portfolio/qieco", 
+        destination: "/portfolio/qiecosmart", 
+        permanent: true, 
+      },
+      // {
+      //   source: "/social-media-marketing-agency-dubai", 
+      //   destination: "/social-media-agency-dubai", 
+      //   permanent: true, 
+      // },
+      // {
+      //   source: "/contact-us", 
+      //   destination: "/lets-talk", 
+      //   permanent: true, 
+      // },
+      // {
+      //   source: "/web-design-development", 
+      //   destination: "/web-design-and-development", 
+      //   permanent: true, 
+      // },
+      {
+        source: "/portfolio/ayka-property-&-facility-management", 
+        destination: "/portfolio/ayka-property-and-facility-management", 
+        permanent: true, 
+      },
+      {
+        source: "/portfolio/telal-engineering-&-contracting", 
+        destination: "/portfolio", 
+        permanent: true, 
+      },
+      {
+        source: "/lets-talk", 
+        destination: "/contact-us", 
+        permanent: true, 
+      },
+      {
+        source: "/branding", 
+        destination: "/branding-agency-dubai", 
+        permanent: true, 
+      },
+
+      // ================================== Industries ==============================================
+      {
+        source: "/industry",
+        destination: "/industries", 
+        permanent: true,
+      },
+      {
+        source: "/industry/ecommerce",
+        destination: "/industries/lifestyle-retail-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/industry/ecommerce-digital-marketing",
+        destination: "/industries/lifestyle-retail-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/industry/construction",
+        destination: "/industries/construction-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/industry/b2b",
+        destination: "/industries", 
+        permanent: true,
+      },
+      {
+        source: "/industry/digital-marketing-services",
+        destination: "/digital-marketing-services-dubai",
+        permanent: true,
+      },
+      {
+        source: "/industry/b2b-digital-marketing-services",
+        destination: "/industries", 
+        permanent: true,
+      },
+      {
+        source: "/industry/digital-marketing-agency-for-hospitality",
+        destination: "/industries", 
+        permanent: true,
+      },
+      // ===============================================================================================
+      {
+        source:
+          "/blogs/poor-sales-try-our-website-redesign-services-for-results",
         destination: "/blogs",
         permanent: true,
       },
       {
-        source: "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
+        source:
+          "/blogs/the-b2b-marketing-trends-to-follow-in-2024-to-overcome-your-b2b-challenges",
+        destination: "/blogs",
+        permanent: true,
+      },
+      {
+        source:
+          "/blogs/social-media-showdown-instagram-threads-vs-twitters-identity-crisis",
         destination: "/blogs",
         permanent: true,
       },
       {
         source: "/digital-marketing",
-        destination: "/digital-marketing-services",
+        destination: "/digital-marketing-services-dubai", 
         permanent: true,
       },
       {
         source: "/digital-development",
-        destination: "/web-development-agency-dubai",
+        destination: "/web-design-development-agency-dubai", 
         permanent: true,
       },
       {
         source: "/content-and-branding",
-        destination: "/creative-agency-dubai",
+        destination: "/branding-content-production-agency-dubai", 
         permanent: true,
       },
       {
         source: "/blogs/digital-marketing-services",
-        destination: "/digital-marketing-services",
+        destination: "/digital-marketing-services-dubai", 
         permanent: true,
       },
       {
         source: "/instagram-marketing-dubai",
-        destination: "/social-media-marketing-dubai",
+        destination: "/social-media-marketing-dubai", 
         permanent: true,
       },
       {
         source: "/google-business-profile-dubai",
-        destination: "/local-seo-agency-dubai",
+        destination: "/local-seo-services-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/generative-engine-optimization",
+        destination: "/generative-engine-optimization-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/marketing-strategy-consulting",
+        destination: "/marketing-automation-agency-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/web-development-agency-dubai",
+        destination: "/web-design-development-agency-dubai",
+        permanent: true,
+      },
+      {
+        source: "/web-app-dev-agency",
+        destination: "/web-app-development-agency-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/e-commerce-web-development-company",
+        destination: "/e-commerce-web-development-company-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/web-design-agency-dubai",
+        destination: "/web-design-development-agency-dubai",
+        permanent: true,
+      },
+      // =================================== Service Pillar =============================================================================
+
+      {
+        source: "/digital-marketing-services",
+        destination: "/digital-marketing-services-dubai",
+        permanent: true,
+      },
+      {
+        source: "/web-design-and-development",
+        destination: "/web-design-development-agency-dubai",//updated
+        permanent: true,
+      },
+      {
+        source: "/web-design-and-development-agency",
+        destination: "/web-design-development-agency-dubai",//updated
+        permanent: true,
+      },
+      {
+        source: "/creative-agency-dubai",
+        destination: "/branding-content-production-agency-dubai", //updated
+        permanent: true,
+      },
+      {
+        source: "/marketing-intelligence-agency-dubai",
+        destination: "/ai-data-intelligence-agency-dubai", 
+        permanent: true,
+      },
+      // =================================== Sub Services =============================================================================
+      {
+        source: "/ecommerce-seo-dubai",
+        destination: "/ecommerce-seo-services-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/influencer-marketing-agency",
+        destination: "/influencer-marketing-agency-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/local-seo-agency-dubai",
+        destination: "/local-seo-services-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/social-media-management-services",
+        destination: "/social-media-management-agency",
+        permanent: true,
+      },
+      {
+        source: "/branding-agency-dubai",
+        destination: "/branding-and-positioning-agency-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/graphic-design-agency-dubai",
+        destination: "/branding-content-production-agency-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/digital-marketing-service-kuwait",
+        destination: "/digital-marketing-services-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/engineering-and-infrastructure",
+        destination: "/industries/engineering-infrastructure-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/free-digital-marketing-audit",
+        destination: "/", 
+        permanent: true,
+      },
+      {
+        source: "/logo-design-agency-dubai",
+        destination: "/branding-and-positioning-agency-dubai", 
+        permanent: true,
+      },
+      {
+        source: "/industries/b2b-digital-marketing-services",
+        destination: "/industries", 
+        permanent: true,
+      },
+      {
+        source: "/industries/construction",
+        destination: "/industries/construction-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/industries/digital-marketing-agency-for-hospitality",
+        destination: "/industries/", 
+        permanent: true,
+      },
+      {
+        source: "/industries/ecommerce-digital-marketing",
+        destination: "/industries/lifestyle-retail-digital-marketing", 
+        permanent: true,
+      },
+      {
+        source: "/industries/education",
+        destination: "/industries/education-digital-marketing", 
         permanent: true,
       },
     ];

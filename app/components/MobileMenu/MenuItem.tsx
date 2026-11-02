@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { assets } from '@/public/assets/assets'
+import { assets } from "@/public/assets/assets";
 
 const navmenuSection = {
   open: {
@@ -26,12 +26,12 @@ export const MenuItem = ({
   item,
   Links,
   children,
-  toggle
+  toggle,
 }: {
   item: string;
   Links: string;
   children?: React.ReactNode;
-  toggle:()=>void
+  toggle: () => void;
 }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
@@ -41,39 +41,39 @@ export const MenuItem = ({
 
   return (
     <motion.li
-      className="items-center  relative cursor-pointer w-full flex-col"
-      
+      className="relative  w-full cursor-pointer flex-col items-center"
+
       onClick={children ? toggleSubmenu : toggle}
     >
-      <div className="flex justify-between items-center  border-b font-bold w-full">
-       <Link href={Links} className="py-3 w-full"> {item}</Link>
+      <div className="flex w-full items-center  justify-between border-b font-bold">
+        <Link href={Links} className="w-full py-3">
+          {" "}
+          {item}
+        </Link>
         {children && (
           <span className="ml-2">
-          {isSubmenuOpen ? (
-            <Image
-              className=" dark:block"
-              src={assets.up_arrow}
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-          ) : (
-            <Image
-              className=" dark:block"
-              src={assets.down_arrow}
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-          )}
-        </span>
-
+            {isSubmenuOpen ? (
+              <Image
+                className=" dark:block"
+                src={assets.up_arrow}
+                alt="Logo"
+                width={32}
+                height={32}
+              />
+            ) : (
+              <Image
+                className=" dark:block"
+                src={assets.down_arrow}
+                alt="Logo"
+                width={32}
+                height={32}
+              />
+            )}
+          </span>
         )}
       </div>
       {children && isSubmenuOpen && (
-        <motion.ul
-          className="left-0 top-full mt-2 w-full "
-        >
+        <motion.ul className="left-0 top-full mt-2 w-full ">
           {children}
         </motion.ul>
       )}

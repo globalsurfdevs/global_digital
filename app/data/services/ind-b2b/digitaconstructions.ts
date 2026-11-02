@@ -1,8 +1,7 @@
 import { assets } from "@/public/assets/assets";
 
 export const AreaExpertise = {
-  title:
-    "Our B2B Digital Marketing Services.",
+  title: "Our B2B Digital Marketing Services.",
   data: [
     {
       id: 1,

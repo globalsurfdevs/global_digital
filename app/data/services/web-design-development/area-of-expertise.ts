@@ -1,4 +1,3 @@
-
 import { assets } from "@/public/assets/assets";
 import { url } from "inspector";
 
@@ -39,6 +38,6 @@ export const AreaExpertise = {
       title: "Web Apps",
       desc: "Dynamic web applications that are as engaging as they are efficient—built to scale with your business.",
       url: "/web-app-dev-agency",
-    }
+    },
   ],
 };

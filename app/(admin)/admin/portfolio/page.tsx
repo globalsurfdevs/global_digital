@@ -2,12 +2,8 @@ import { Metadata } from "next";
 import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
 import AdminPortfolio from "@/app/components/AdminPortfolio/AdminPortfolio";
 
-
-
 const PortfolioPage = () => {
-  return (
-        <AdminPortfolio/>
-  );
+  return <AdminPortfolio />;
 };
 
 export default PortfolioPage;

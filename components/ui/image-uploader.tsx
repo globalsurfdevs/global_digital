@@ -15,7 +15,14 @@ interface ImageUploaderProps {
   multiple?: boolean;
 }
 
-export function ImageUploader({ value, onChange, className, deleteAfterUpload = false, isLogo = false, multiple = false }: ImageUploaderProps) {
+export function ImageUploader({
+  value,
+  onChange,
+  className,
+  deleteAfterUpload = false,
+  isLogo = false,
+  multiple = false,
+}: ImageUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [localImageUrl, setLocalImageUrl] = useState<string | null>(null);
@@ -58,7 +65,6 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
               onChange(url, acceptedFiles[index]); // optional second arg
             });
           }
-
         } else {
           const formData = new FormData();
           formData.append("file", file);
@@ -80,7 +86,6 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
           setIsUploadComplete(true);
         }
 
-
         if (deleteAfterUpload) {
           setLocalImageUrl(null);
           setIsUploadComplete(false);
@@ -92,7 +97,7 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
         setIsUploading(false);
       }
     },
-    [onChange]
+    [onChange],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -113,13 +118,21 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
   const displayUrl = localImageUrl || value;
 
   return (
-    <div className={cn("space-y-4 w-full", className)}>
+    <div className={cn("w-full space-y-4", className)}>
       {displayUrl && isUploadComplete ? (
-        <div className={`relative w-full max-w-[300px] overflow-hidden rounded-lg border ${isLogo ? "max-w-[100px] h-[100px] bg-black" : "max-w-[300px]"}`} style={{ aspectRatio: "4 / 3" }}>
-          <Image src={value ? value : displayUrl} alt="Uploaded image" className={isLogo ? "object-contain p-2" : "object-cover"} fill />
+        <div
+          className={`relative w-full max-w-[300px] overflow-hidden rounded-lg border ${isLogo ? "h-[100px] max-w-[100px] bg-black" : "max-w-[300px]"}`}
+          style={{ aspectRatio: "4 / 3" }}
+        >
+          <Image
+            src={value ? value : displayUrl}
+            alt="Uploaded image"
+            className={isLogo ? "object-contain p-2" : "object-cover"}
+            fill
+          />
           <button
             type="button"
-            className="absolute right-2 top-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
             onClick={removeImage}
           >
             <X className="h-4 w-4" />
@@ -129,10 +142,10 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
         <div
           {...getRootProps()}
           className={cn(
-            "border-2 border-dashed rounded-lg p-8 transition-colors hover:border-gray-400",
-            "flex flex-col items-center justify-center gap-2 cursor-pointer",
+            "rounded-lg border-2 border-dashed p-8 transition-colors hover:border-gray-400",
+            "flex cursor-pointer flex-col items-center justify-center gap-2",
             isDragActive && "border-blue-500 bg-blue-50",
-            isUploading && "pointer-events-none opacity-60"
+            isUploading && "pointer-events-none opacity-60",
           )}
         >
           <input {...getInputProps()} />
@@ -145,7 +158,9 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
             <>
               <Upload className="h-10 w-10 text-gray-400" />
               <p className="text-sm text-gray-600">
-                {isDragActive ? "Drop the image here" : "Drag & drop an image here, or click to select"}
+                {isDragActive
+                  ? "Drop the image here"
+                  : "Drag & drop an image here, or click to select"}
               </p>
             </>
           )}

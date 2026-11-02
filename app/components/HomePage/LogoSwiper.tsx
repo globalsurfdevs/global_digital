@@ -7,13 +7,12 @@ import { logos } from "@/public/assets/assets";
 import "swiper/css";
 import Image from "next/image";
 
-
 const LogoSwiper = () => {
   return (
-      <div className="bg-white py-5 overflow-hidden">
+    <div className="overflow-hidden bg-white py-5">
       <div className="container !overflow-visible">
         <Swiper
-          className="!overflow-visible logo-swiper"
+          className="logo-swiper !overflow-visible"
           loop={true}
           // freeMode={true}
           autoplay={{
@@ -42,12 +41,20 @@ const LogoSwiper = () => {
             },
             1366: {
               spaceBetween: 80,
-            }
-          }}>
+            },
+          }}
+        >
           {logos.map((logo, index) => (
             <SwiperSlide key={index}>
               <div className="">
-                <Image width={100} height={100} src={logo.src} loading="lazy" alt={logo.alt} className="object-contain h-[40px] w-auto" />
+                <Image
+                  width={100}
+                  height={100}
+                  src={logo.src}
+                  loading="lazy"
+                  alt={logo.alt}
+                  className="h-[40px] w-auto object-contain"
+                />
               </div>
             </SwiperSlide>
           ))}

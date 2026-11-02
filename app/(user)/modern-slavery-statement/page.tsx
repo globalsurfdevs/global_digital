@@ -173,8 +173,8 @@ const page = () => {
             </p>
             <div>
               <p>
-                This statement has been approved by the Board of Directors of
-                GS Digital Media and is reviewed annually.
+                This statement has been approved by the Board of Directors of GS
+                Digital Media and is reviewed annually.
               </p>
             </div>
           </div>

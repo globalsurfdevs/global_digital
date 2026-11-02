@@ -13,6 +13,15 @@ import { generateAndUploadImage } from "@/app/helpers/generateAndUploadImage";
 import { handleImageChange } from "@/app/helpers/handleImageChange";
 import { uploadImagesFromEditor } from "@/app/helpers/uploadImagesFromEditor";
 import { FiPlus, FiTrash2 } from "react-icons/fi";
+import { ArrowLeft } from "lucide-react";
+import {
+  AdminLinkButton,
+  PageHeader,
+  SectionCard,
+  ViewLiveLink,
+  adminButtonClass,
+} from "@/app/components/AdminUI";
+import { formatLinkForBlog } from "@/app/helpers/formatLink";
 
 interface AuthorOption {
   _id: string;
@@ -26,6 +35,9 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   const { blogId } = useParams();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [autoSlug, setAutoSlug] = useState(!editMode);
+  // Slug as last loaded from the database, so "View live" never points at an unsaved slug.
+  const [savedSlug, setSavedSlug] = useState("");
 
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null);
@@ -43,6 +55,8 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   const [itemContents, setItemContents] = useState<string[]>([]);
   const [faqAnswers, setFaqAnswers] = useState<string[]>([]);
   const [content, setContent] = useState("");
+  const [articleContent, setArticleContent] = useState("");
+  const [legacyMode, setLegacyMode] = useState(false);
   const [schemaError, setSchemaError] = useState<string | null>(null);
 
   // authors list + selection
@@ -105,16 +119,6 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
     setPendingAuthorId(null);
   }, [authorsLoading, pendingAuthorId, setValue]);
 
-  // auto-slug from heading
-  useEffect(() => {
-    const subscription = watch((value, { name }) => {
-      if (name === "heading") {
-        setValue("slug", generateSlugForBlog(value.heading ?? ""));
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [watch, setValue]);
-
   // fetch existing blog in edit mode
   useEffect(() => {
     if (!editMode || !blogId) return;
@@ -130,6 +134,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         setValue("category", b.category ?? "");
         setValue("heading", b.heading ?? "");
         setValue("slug", b.slug ?? "");
+        setSavedSlug(b.slug ?? "");
         setValue("thumbnailAlt", b.thumbnailAlt ?? "");
         setValue("featuredImageAlt", b.featuredImageAlt ?? "");
         setValue("faqTitle", b.faqTitle ?? "");
@@ -138,6 +143,7 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         setValue("ctaButtonText", b.ctaButtonText ?? "");
         setValue("ctaButtonLink", b.ctaButtonLink ?? "");
         setValue("content", b.content ?? "");
+        setValue("articleContent", b.articleContent ?? "");
         setValue("schemaScript", b.schemaScript ?? "");
 
         // author may be a populated object ({ _id, ... }) or a raw id string
@@ -155,6 +161,10 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
         }
 
         setContent(b.content ?? "");
+        setArticleContent(
+          b.articleContent ?? (!b.items?.length ? (b.content ?? "") : ""),
+        );
+        setLegacyMode(!b.articleContent && Boolean(b.items?.length));
 
         if (b.thumbnail) setThumbnailPreview(b.thumbnail);
         if (b.featuredImage) setFeaturedImagePreview(b.featuredImage);
@@ -179,14 +189,14 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   }, [editMode, blogId]);
 
   useEffect(() => {
-    if (editMode) return; // don't override slug in edit mode
+    if (!autoSlug) return;
     const subscription = watch((value, { name }) => {
       if (name === "heading") {
         setValue("slug", generateSlugForBlog(value.heading ?? ""));
       }
     });
     return () => subscription.unsubscribe();
-  }, [watch, setValue, editMode]);
+  }, [watch, setValue, autoSlug]);
 
   const onSubmit: SubmitHandler<BlogFormInputs> = async (data) => {
     if (data.schemaScript?.trim()) {
@@ -208,6 +218,8 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
           content: (await uploadImagesFromEditor(content)) ?? content,
         })),
       );
+      const processedArticleContent =
+        await uploadImagesFromEditor(articleContent);
 
       const processedFaqItems = data.faqItems.map((faq) => ({
         question: faq.question ?? "",
@@ -228,7 +240,12 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
 
       const payload = {
         ...data,
-        content: await uploadImagesFromEditor(content),
+        // Keep the unified article in the established content field as well
+        // as the explicit field, so older readers/API consumers retain it.
+        content: legacyMode
+          ? await uploadImagesFromEditor(content)
+          : processedArticleContent,
+        articleContent: processedArticleContent,
         thumbnail: thumbnailUrl,
         featuredImage: featuredImageUrl,
         items: processedItems,
@@ -324,349 +341,427 @@ const AdminBlogForm = ({ editMode }: { editMode?: boolean }) => {
   );
 
   return (
-    <form
-      className="flex flex-col gap-6 pb-20"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
-        {editMode ? "Edit Blog" : "Add Blog"}
-      </h1>
-
-      {/* META */}
-      <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <h2 className="font-semibold text-gray-700 dark:text-gray-300">
-          SEO / Meta
-        </h2>
-        <div className="flex flex-col gap-2">
-          <Label content="Meta Title" />
-          <input {...register("metaTitle")} className={inputClass} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="Meta Description" />
-          <input {...register("metaDescription")} className={inputClass} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="Schema Script (JSON)" />
-          <textarea
-            {...register("schemaScript")}
-            rows={8}
-            placeholder={`{\n  "@context": "https://schema.org",\n  "@type": "Article",\n  ...\n}`}
-            className={`${textareaClass} font-mono text-sm`}
-            onChange={() => setSchemaError(null)} // clear error on edit
-          />
-          {schemaError && <p className="text-sm text-red-500">{schemaError}</p>}
-          <p className="text-xs text-gray-400">
-            Paste the raw JSON object provided by the SEO team. Do not wrap it
-            in{" "}
-            <code className="bg-gray-100 px-1 dark:bg-gray-800">
-              &lt;script&gt;
-            </code>{" "}
-            tags.
-          </p>
-        </div>
-      </section>
-
-      {/* MAIN */}
-      <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <h2 className="font-semibold text-gray-700 dark:text-gray-300">
-          Post Details
-        </h2>
-        <div className="flex flex-col gap-2">
-          <Label content="Heading" />
-          <input
-            {...register("heading", { required: "Required" })}
-            className={inputClass}
-          />
-          {errors.heading && (
-            <p className="text-sm text-red-500">{errors.heading.message}</p>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="Slug" />
-          <input
-            {...register("slug")}
-            className={`${inputClass} cursor-not-allowed bg-gray-50`}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="Category" />
-          <input
-            {...register("category")}
-            className={inputClass}
-          />
-        </div>
-      </section>
-
-      {/* IMAGES */}
-      <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <h2 className="font-semibold text-gray-700 dark:text-gray-300">
-          Images
-        </h2>
-        <div className="grid grid-cols-2 gap-6">
-          <div className="flex flex-col gap-2">
-            <Label content="Thumbnail" />
-            <ImageUploadZone
-              preview={thumbnailPreview}
-              onClear={() => {
-                setThumbnailPreview(null);
-                setThumbnail(null);
-              }}
-              inputId="thumbnail"
-              onChange={(e) =>
-                handleImageChange({
-                  e,
-                  setImageError: setThumbnailError,
-                  setImageFile: setThumbnail,
-                  setPreviewImage: setThumbnailPreview,
-                })
-              }
-              error={thumbnailError}
-            />
-            <input
-              {...register("thumbnailAlt")}
-              placeholder="Thumbnail alt text"
-              className={inputClass}
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <Label content="Featured Image" />
-            <ImageUploadZone
-              preview={featuredImagePreview}
-              onClear={() => {
-                setFeaturedImagePreview(null);
-                setFeaturedImage(null);
-              }}
-              inputId="featuredImage"
-              onChange={(e) =>
-                handleImageChange({
-                  e,
-                  setImageError: setFeaturedImageError,
-                  setImageFile: setFeaturedImage,
-                  setPreviewImage: setFeaturedImagePreview,
-                })
-              }
-              error={featuredImageError}
-            />
-            <input
-              {...register("featuredImageAlt")}
-              placeholder="Featured image alt text"
-              className={inputClass}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ITEMS */}
-      <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <div className="flex flex-col gap-2">
-          <Label content="Content under Table of Contents" />
-          <TinyEditor setBlogContent={setContent} blogContent={content} />
-        </div>
-        <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-gray-700 dark:text-gray-300">
-            Content Items
-          </h2>
-          <button
-            type="button"
-            onClick={() => {
-              appendItem({ title: "", content: "" });
-              setItemContents((prev) => [...prev, ""]);
-            }}
-            className="flex items-center gap-1 rounded-md bg-blue-950 px-3 py-1.5 text-sm text-white hover:bg-blue-900"
-          >
-            <FiPlus size={14} /> Add Item
-          </button>
-        </div>
-
-        {itemFields.map((field, i) => (
-          <div
-            key={field.id}
-            className="flex flex-col gap-3 rounded-md border border-gray-200 p-4 dark:border-gray-700"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                Item {i + 1}
-              </span>
-              <button
-                type="button"
-                onClick={() => {
-                  removeItem(i);
-                  setItemContents((prev) => prev.filter((_, idx) => idx !== i));
-                }}
-                className="text-red-500 hover:text-red-700"
-              >
-                <FiTrash2 size={16} />
-              </button>
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label content="Title" />
-              <input {...register(`items.${i}.title`)} className={inputClass} />
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label content="Content" />
-              <TinyEditor
-                setBlogContent={(val) => {
-                  setItemContents((prev) => {
-                    const next = [...prev];
-                    next[i] =
-                      typeof val === "function" ? val(prev[i] ?? "") : val;
-                    return next;
-                  });
-                }}
-                blogContent={editMode ? itemContents[i] : undefined}
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title={editMode ? "Edit Blog" : "Add Blog"}
+        description={
+          editMode
+            ? watch("heading")
+            : "Fill in the sections below, then click Save."
+        }
+        actions={
+          <>
+            <AdminLinkButton
+              href="/admin/blogs"
+              variant="secondary"
+              icon={<ArrowLeft className="size-4" />}
+            >
+              Back to list
+            </AdminLinkButton>
+            {/* Public blog list links posts as /blogs/${formatLinkForBlog(item.slug)} (app/components/Blogs/BlogList.tsx:86) */}
+            {editMode && savedSlug && (
+              <ViewLiveLink
+                showLabel
+                href={`/blogs/${formatLinkForBlog(savedSlug)}`}
+                className="h-10 border border-slate-300 px-4 text-sm"
               />
-            </div>
-          </div>
-        ))}
-      </section>
-
-      {/* FAQ */}
-      <section className="flex flex-col gap-4 rounded-lg border border-gray-200 p-5 dark:border-gray-700">
-        <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-gray-700 dark:text-gray-300">
-            FAQ
-          </h2>
-          <button
-            type="button"
-            onClick={() => {
-              appendFaq({ question: "", answer: "" });
-              setFaqAnswers((prev) => [...prev, ""]);
-            }}
-            className="flex items-center gap-1 rounded-md bg-blue-950 px-3 py-1.5 text-sm text-white hover:bg-blue-900"
-          >
-            <FiPlus size={14} /> Add FAQ
-          </button>
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label content="FAQ Section Title" />
-          <input {...register("faqTitle")} className={inputClass} />
-        </div>
-
-        {faqFields.map((field, i) => (
-          <div
-            key={field.id}
-            className="flex flex-col gap-3 rounded-md border border-gray-200 p-4 dark:border-gray-700"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                FAQ {i + 1}
-              </span>
-              <button
-                type="button"
-                onClick={() => {
-                  removeFaq(i);
-                  setFaqAnswers((prev) => prev.filter((_, idx) => idx !== i));
-                }}
-                className="text-red-500 hover:text-red-700"
-              >
-                <FiTrash2 size={16} />
-              </button>
+            )}
+          </>
+        }
+      />
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+        {/* META */}
+        <SectionCard title="SEO / Meta">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <Label content="Meta Title" />
+              <input {...register("metaTitle")} className={inputClass} />
             </div>
             <div className="flex flex-col gap-2">
-              <Label content="Question" />
+              <Label content="Meta Description" />
+              <input {...register("metaDescription")} className={inputClass} />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label content="Schema Script (JSON)" />
+              <textarea
+                {...register("schemaScript")}
+                rows={8}
+                placeholder={`{\n  "@context": "https://schema.org",\n  "@type": "Article",\n  ...\n}`}
+                className={`${textareaClass} font-mono text-sm`}
+                onChange={() => setSchemaError(null)} // clear error on edit
+              />
+              {schemaError && (
+                <p className="text-sm text-red-500">{schemaError}</p>
+              )}
+              <p className="text-xs text-gray-400">
+                Paste the raw JSON object provided by the SEO team. Do not wrap
+                it in{" "}
+                <code className="bg-gray-100 px-1 dark:bg-gray-800">
+                  &lt;script&gt;
+                </code>{" "}
+                tags.
+              </p>
+            </div>
+          </div>
+        </SectionCard>
+
+        {/* MAIN */}
+        <SectionCard title="Post Details">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <Label content="Heading" />
               <input
-                {...register(`faqItems.${i}.question`)}
+                {...register("heading", { required: "Required" })}
                 className={inputClass}
               />
+              {errors.heading && (
+                <p className="text-sm text-red-500">{errors.heading.message}</p>
+              )}
             </div>
             <div className="flex flex-col gap-2">
-              <Label content="Answer" />
+              <div className="flex items-center justify-between gap-4">
+                <Label content="Slug" />
+                <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <input
+                    type="checkbox"
+                    role="switch"
+                    checked={autoSlug}
+                    onChange={(event) => {
+                      const enabled = event.target.checked;
+                      setAutoSlug(enabled);
+                      if (enabled) {
+                        setValue(
+                          "slug",
+                          generateSlugForBlog(watch("heading") ?? ""),
+                        );
+                      }
+                    }}
+                    className="accent-blue-600"
+                  />
+                  Auto-generate
+                </label>
+              </div>
               <input
-                {...register(`faqItems.${i}.answer`)}
-                className={inputClass}
+                {...register("slug")}
+                readOnly={autoSlug}
+                className={`${inputClass} ${autoSlug ? "cursor-not-allowed bg-gray-50" : ""}`}
               />
             </div>
+            <div className="flex flex-col gap-2">
+              <Label content="Category" />
+              <input {...register("category")} className={inputClass} />
+            </div>
           </div>
-        ))}
-      </section>
+        </SectionCard>
 
-      <section className="mt-10 flex flex-col gap-6 rounded-md border border-gray-200 p-6 dark:border-gray-700">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-          CTA Section
-        </h2>
-
-        <div className="flex flex-col gap-2">
-          <Label content="CTA Title" />
-          <input {...register("ctaTitle")} className={inputClass} />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <Label content="CTA Description" />
-          <input {...register("ctaDescription")} className={inputClass} />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <Label content="CTA Button Text" />
-          <input {...register("ctaButtonText")} className={inputClass} />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <Label content="CTA Button Link" />
-          <input {...register("ctaButtonLink")} className={inputClass} />
-        </div>
-      </section>
-
-      {/* AUTHOR */}
-      <section className="mt-10 flex flex-col gap-4 rounded-md border border-gray-200 p-6 dark:border-gray-700">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-          Author
-        </h2>
-
-        <div className="flex flex-col gap-2">
-          <Label content="Select Author" />
-          <select
-            {...register("author")}
-            className={`${inputClass} py-2`}
-            disabled={authorsLoading}
-          >
-            <option value="">
-              {authorsLoading ? "Loading authors..." : "-- Select an author --"}
-            </option>
-            {authors.map((a) => (
-              <option key={a._id} value={a._id}>
-                {a.name} — {a.designation}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {selectedAuthor && (
-          <div className="flex items-center gap-3 rounded-md border border-gray-200 p-3 dark:border-gray-700">
-            {selectedAuthor.imageSmall ? (
-              <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
-                <Image
-                  src={selectedAuthor.imageSmall}
-                  alt={selectedAuthor.name}
-                  fill
-                  className="object-cover"
+        {/* IMAGES */}
+        <SectionCard title="Images">
+          <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <Label content="Thumbnail" />
+                <ImageUploadZone
+                  preview={thumbnailPreview}
+                  onClear={() => {
+                    setThumbnailPreview(null);
+                    setThumbnail(null);
+                  }}
+                  inputId="thumbnail"
+                  onChange={(e) =>
+                    handleImageChange({
+                      e,
+                      setImageError: setThumbnailError,
+                      setImageFile: setThumbnail,
+                      setPreviewImage: setThumbnailPreview,
+                    })
+                  }
+                  error={thumbnailError}
+                />
+                <input
+                  {...register("thumbnailAlt")}
+                  placeholder="Thumbnail alt text"
+                  className={inputClass}
                 />
               </div>
-            ) : (
-              <div className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-200" />
-            )}
-            <div className="flex flex-col">
-              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                {selectedAuthor.name}
-              </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                {selectedAuthor.designation}
-              </span>
+              <div className="flex flex-col gap-2">
+                <Label content="Featured Image" />
+                <ImageUploadZone
+                  preview={featuredImagePreview}
+                  onClear={() => {
+                    setFeaturedImagePreview(null);
+                    setFeaturedImage(null);
+                  }}
+                  inputId="featuredImage"
+                  onChange={(e) =>
+                    handleImageChange({
+                      e,
+                      setImageError: setFeaturedImageError,
+                      setImageFile: setFeaturedImage,
+                      setPreviewImage: setFeaturedImagePreview,
+                    })
+                  }
+                  error={featuredImageError}
+                />
+                <input
+                  {...register("featuredImageAlt")}
+                  placeholder="Featured image alt text"
+                  className={inputClass}
+                />
+              </div>
             </div>
           </div>
-        )}
-      </section>
+        </SectionCard>
 
-      {/* SUBMIT */}
-      <div className="z-9999 fixed bottom-5 right-20">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="rounded-full bg-black px-10 py-2 text-sm text-white hover:bg-opacity-80 disabled:opacity-60"
+        {/* ARTICLE BODY */}
+        <SectionCard title="Article Content">
+          <div className="flex flex-col gap-4">
+            {!legacyMode && (
+              <div className="flex flex-col gap-2">
+                <Label content="Article content (Heading 2 creates TOC entries; Heading 3 is a subheading)" />
+                <TinyEditor
+                  setBlogContent={setArticleContent}
+                  blogContent={articleContent}
+                  variant="blogArticle"
+                />
+              </div>
+            )}
+            {legacyMode && (
+              <>
+                <div className="flex flex-col gap-2">
+                  <Label content="Introduction (shown under Table of Contents)" />
+                  <TinyEditor
+                    setBlogContent={setContent}
+                    blogContent={content}
+                  />
+                </div>
+                <p className="text-sm text-gray-500">
+                  This blog uses the existing section format. Its sections
+                  remain editable and will continue to render with the current
+                  table of contents.
+                </p>
+              </>
+            )}
+            {legacyMode && (
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  Content Items
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => {
+                    appendItem({ title: "", content: "" });
+                    setItemContents((prev) => [...prev, ""]);
+                  }}
+                  className={adminButtonClass("dark", "sm")}
+                >
+                  <FiPlus size={14} /> Add Item
+                </button>
+              </div>
+            )}
+
+            {legacyMode &&
+              itemFields.map((field, i) => (
+                <div
+                  key={field.id}
+                  className="flex flex-col gap-3 rounded-md border border-gray-200 p-4 dark:border-gray-700"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                      Item {i + 1}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        removeItem(i);
+                        setItemContents((prev) =>
+                          prev.filter((_, idx) => idx !== i),
+                        );
+                      }}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <FiTrash2 size={16} />
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label content="Title" />
+                    <input
+                      {...register(`items.${i}.title`)}
+                      className={inputClass}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label content="Content" />
+                    <TinyEditor
+                      setBlogContent={(val) => {
+                        setItemContents((prev) => {
+                          const next = [...prev];
+                          next[i] =
+                            typeof val === "function"
+                              ? val(prev[i] ?? "")
+                              : val;
+                          return next;
+                        });
+                      }}
+                      blogContent={editMode ? itemContents[i] : undefined}
+                    />
+                  </div>
+                </div>
+              ))}
+          </div>
+        </SectionCard>
+
+        {/* FAQ */}
+        <SectionCard
+          title="FAQ"
+          actions={
+            <button
+              type="button"
+              onClick={() => {
+                appendFaq({ question: "", answer: "" });
+                setFaqAnswers((prev) => [...prev, ""]);
+              }}
+              className={adminButtonClass("dark", "sm")}
+            >
+              <FiPlus size={14} /> Add FAQ
+            </button>
+          }
         >
-          {isSubmitting ? "Saving..." : "Save"}
-        </button>
-      </div>
-    </form>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <Label content="FAQ Section Title" />
+              <input {...register("faqTitle")} className={inputClass} />
+            </div>
+
+            {faqFields.map((field, i) => (
+              <div
+                key={field.id}
+                className="flex flex-col gap-3 rounded-md border border-gray-200 p-4 dark:border-gray-700"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                    FAQ {i + 1}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      removeFaq(i);
+                      setFaqAnswers((prev) =>
+                        prev.filter((_, idx) => idx !== i),
+                      );
+                    }}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <FiTrash2 size={16} />
+                  </button>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="Question" />
+                  <input
+                    {...register(`faqItems.${i}.question`)}
+                    className={inputClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label content="Answer" />
+                  <input
+                    {...register(`faqItems.${i}.answer`)}
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionCard>
+
+        <SectionCard title="CTA Section">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <Label content="CTA Title" />
+              <input {...register("ctaTitle")} className={inputClass} />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label content="CTA Description" />
+              <input {...register("ctaDescription")} className={inputClass} />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label content="CTA Button Text" />
+              <input {...register("ctaButtonText")} className={inputClass} />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label content="CTA Button Link" />
+              <input {...register("ctaButtonLink")} className={inputClass} />
+            </div>
+          </div>
+        </SectionCard>
+
+        {/* AUTHOR */}
+        <SectionCard title="Author">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <Label content="Select Author" />
+              <select
+                {...register("author")}
+                className={`${inputClass} py-2`}
+                disabled={authorsLoading}
+              >
+                <option value="">
+                  {authorsLoading
+                    ? "Loading authors..."
+                    : "-- Select an author --"}
+                </option>
+                {authors.map((a) => (
+                  <option key={a._id} value={a._id}>
+                    {a.name} — {a.designation}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {selectedAuthor && (
+              <div className="flex items-center gap-3 rounded-md border border-gray-200 p-3 dark:border-gray-700">
+                {selectedAuthor.imageSmall ? (
+                  <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      src={selectedAuthor.imageSmall}
+                      alt={selectedAuthor.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-200" />
+                )}
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                    {selectedAuthor.name}
+                  </span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    {selectedAuthor.designation}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        </SectionCard>
+
+        {/* SUBMIT */}
+        <div className="sticky bottom-4 z-10 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Changes are saved only when you click Save.
+          </p>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={adminButtonClass("dark", "md", "min-w-28")}
+          >
+            {isSubmitting ? "Saving..." : "Save"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

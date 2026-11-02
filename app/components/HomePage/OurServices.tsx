@@ -65,7 +65,7 @@ const OurServices = () => {
   return (
     <>
       {/* Section Heading */}
-      <div className="container mx-auto md:pt-20 xl:pt-120">
+      <div className="xl:pt-120 container mx-auto md:pt-20">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -83,7 +83,9 @@ const OurServices = () => {
             <div className="size-3 bg-primary md:size-4 lg:size-5"></div>
           </div>
           <p className="mb-5 max-w-[60ch] text-font25 lg:mb-[45px]">
-            Our digital marketing services in Dubai are strategy-first, built to generate qualified demand and accountable business performance for brands across the UAE.
+            Our digital marketing services in Dubai are strategy-first, built to
+            generate qualified demand and accountable business performance for
+            brands across the UAE.
           </p>
         </motion.div>
       </div>

@@ -18,6 +18,7 @@ const ImgDesc = ({ data }: any) => {
             <Image
               src={data.image}
               alt={data.imageAlt}
+              priority
               width={1500}
               height={1500}
               className="h-full max-h-[600px] w-full object-cover"
@@ -30,15 +31,15 @@ const ImgDesc = ({ data }: any) => {
             viewport={{ once: true }}
           >
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
-              <h2 className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
+              <p className="text-18 uppercase leading-[1] tracking-[-0.025em] text-muted">
                 {data.title}
-              </h2>
+              </p>
               <div className="h-4 w-4 bg-primary"></div>
             </div>
-            <h2 className="title-60 text-[length:var(--text-60-sm)] mb-4 tracking-[-0.025em] md:mb-5 xl:mb-[40px]">
+            <h2 className="title-60 mb-4 text-[length:var(--text-60-sm)] tracking-[-0.025em] md:mb-5 xl:mb-[40px]">
               {data.subTitle}
             </h2>
-            <p className="text-[length:var(--text-18-sm)] text-77787B fnt-lexend leading-[1.444444444444444]">
+            <p className="text-77787B fnt-lexend text-[length:var(--text-18-sm)] leading-[1.444444444444444]">
               {toSentenceCase(data.description)}
             </p>
           </motion.div>

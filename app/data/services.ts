@@ -2,7 +2,7 @@ export const services = [
   {
     id: "1",
     image: "/assets/services/performance-marketing.jpg",
-    title: "Performance Marketing",
+    title: "Performance marketing",
     url: "/performance-marketing-agency-dubai",
     description:
       "We plan and run paid media across search, social, programmatic, and video, aligned to one ROI and ROAS model so every channel is accountable to pipeline. Every dirham of media spend is tied to an agreed cost-per-acquisition target before a campaign goes live. ",
@@ -39,11 +39,11 @@ export const services = [
       },
       {
         title: "E-commerce SEO",
-        url: "/ecommerce-seo-dubai",
+        url: "/ecommerce-seo-services-dubai",
       },
       {
         title: "Local SEO",
-        url: "/local-seo-agency-dubai",
+        url: "/local-seo-services-dubai",
       },
       {
         title: "AI Search Visibility (GEO)",
@@ -54,7 +54,7 @@ export const services = [
   {
     id: "3",
     image: "/assets/services/Social-media.jpg",
-    title: "Social Media",
+    title: "Social media",
     url: "/social-media-agency-dubai",
     description:
       "We manage social media as a performance and brand growth channel, building audience relationships that improve conversion rates over time. Organic and paid social are managed as two separate functions with two separate commercial objectives. ",
@@ -65,7 +65,7 @@ export const services = [
       },
       {
         title: "Social Media Management",
-        url: "/social-media-management-services",
+        url: "/social-media-management-agency",
       },
       {
         title: "Social Media Marketing",
@@ -73,7 +73,7 @@ export const services = [
       },
       {
         title: "Influencer Marketing",
-        url: "/influencer-marketing-agency",
+        url: "/influencer-marketing-agency-dubai",
       },
     ],
   },
@@ -81,8 +81,8 @@ export const services = [
     id: "4",
     image: "/assets/services/Web-development.jpg",
     // title: "Web Design & Development",
-    title:"Web & App Development",
-    url: "/web-design-and-development",
+    title: "Web and app development",
+    url: "/web-design-and-development-agency",
     description:
       "We design and develop conversion-focused websites, e-commerce platforms, and mobile apps engineered to support acquisition and long B2B decision cycles. Every build is senior-led and delivered against an agreed scope and timeline.",
     buttonTexts: [
@@ -105,21 +105,20 @@ export const services = [
       {
         title: "Web App Development",
         url: "/web-app-dev-agency",
-
       },
     ],
   },
   {
     id: "5",
     image: "/assets/services/Branding-creatives.jpg",
-    title: "Branding & Content Production",
-    url: "/creative-agency-dubai",
+    title: "Branding and content production",
+    url: "/branding-content-production-agency-dubai",
     description:
       "Our branding work centres on positioning and differentiation before design. Every creative asset is built to support a commercial objective, not just to look good at launch.",
     buttonTexts: [
       {
         title: "Branding & Positioning",
-        url: "/branding-agency-dubai",
+        url: "/branding-and-positioning-agency-dubai",
       },
       // {
       //   title: "Logo Design",
@@ -136,7 +135,7 @@ export const services = [
       // {
       //   title: "Content Production",
       //   url: "/content-production-agency-dubai",
-      // }, 
+      // },
       {
         title: "Photo & Video Production",
         url: "/content-production-agency-dubai",
@@ -147,8 +146,8 @@ export const services = [
     id: "6",
     image: "/assets/services/Marketing.jpg",
     // title: "Marketing Intelligence",
-    title: "AI, Data & Intelligence",
-    url: "/marketing-intelligence-agency-dubai",
+    title: "AI, Data and intelligence",
+    url: "/ai-data-intelligence-agency-dubai",
     description:
       "We build marketing performance dashboards and cross-channel reporting for UAE brands using GA4 and Looker Studio. Clear data connects every channel to the business outcomes your leadership team needs to see. ",
     buttonTexts: [

@@ -15,8 +15,6 @@ const CtaDetailsTwo = ({
     portfolio: Portfolio;
   } | null;
 }) => {
-  console.log("ResultData", data)
-
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -41,7 +39,6 @@ const CtaDetailsTwo = ({
           <LetsTalk onClose={() => setModalOpen(false)} />
         </div>
       )}
- 
 
       <div className="bg-dgray">
         <motion.div
@@ -57,23 +54,44 @@ const CtaDetailsTwo = ({
               transition: { duration: 1.3, ease: "easeOut" },
             }, // Slide up and fade in
           }}
-
         >
           <div className="flex flex-col  py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]  ">
-            <h2 className="title-65   text-black max-w-[32ch]">Like what you see? Let's build something for your brand.</h2>
-             
-            <div className="innerfnont mt-[20px] lg:mt-[60px] relative w-fit">
-              <Button text="Book a free consultation" textcolor={'black'}     className="uppercase text-30 w-fit rounded-full border border-primary px-6 py-3 leading-lh1p66 transition-all duration-300 ease-in hover:bg-primary hover:text-white  hover:shadow-lg lg:px-[34px] "
-          onClick={() => {
-                setModalOpen(true);
-                document.body.style.overflow = "hidden";
-              }} />   
+            <h2 className="title-65   max-w-[32ch] text-black">
+              {data?.portfolio.detailsCtaTwoTitle ||
+                "Like what you see? Let's build something for your brand."}
+            </h2>
+
+            <div className="innerfnont relative mt-5 w-fit lg:mt-[60px]">
+              {data?.portfolio.detailsCtaTwo?.ctaLink ? (
+                <a
+                  href={data.portfolio.detailsCtaTwo.ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit max-w-full items-center justify-center rounded-full border border-primary px-4 py-2 text-[16px] font-medium uppercase leading-[1.4] transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:text-[30px]"
+                >
+                  {data.portfolio.detailsCtaTwo.ctaText ||
+                    data.portfolio.detailsCtaTwoButtonText ||
+                    "Book a free consultation"}
+                </a>
+              ) : (
+                <Button
+                  text={
+                    data?.portfolio.detailsCtaTwo?.ctaText ||
+                    data?.portfolio.detailsCtaTwoButtonText ||
+                    "Book a free consultation"
+                  }
+                  textcolor={"black"}
+                  className="w-fit max-w-full rounded-full border border-primary px-4 py-2 text-[16px] font-medium uppercase leading-[1.4] sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:text-[30px]"
+                  onClick={() => {
+                    setModalOpen(true);
+                    document.body.style.overflow = "hidden";
+                  }}
+                />
+              )}
             </div>
           </div>
         </motion.div>
       </div>
-
-       
     </>
   );
 };

@@ -22,8 +22,10 @@ interface LogoSwiperSectionProps {
 
 const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
   logosdata,
-  slidesPerView = "auto",subcontent,
-  title1,reverseDirection = false,
+  slidesPerView = "auto",
+  subcontent,
+  title1,
+  reverseDirection = false,
 }) => {
   return (
     <div className="overflow-hidden bg-white ">
@@ -50,52 +52,62 @@ const LogoSwiper: React.FC<LogoSwiperSectionProps> = ({
               ></h2>
             )}
             {subcontent && (
-              <p className="  text-30  leading-[1.2] text-black  pt-6 lg:pt-[40px]">{subcontent}</p>
+              <p className="  text-30  pt-6 leading-[1.2]  text-black lg:pt-[40px]">
+                {subcontent}
+              </p>
             )}
           </div>
         </motion.div>
-        <div >
-        <Swiper
-          className="logo-swiper !overflow-visible"
-          loop={true}
-          freeMode={true}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-            reverseDirection,
-          }}
-          cssMode={false}
-          slidesPerView={slidesPerView}
-          speed={5000}
-          grabCursor={true}
-          // loopAdditionalSlides={2}
-          modules={[Autoplay]}
-          simulateTouch={false}
-          allowTouchMove={false}
-          breakpoints={{
-            320: {
-              spaceBetween: 30,
-              slidesPerView: 3,
-            },
-            768: {
-              spaceBetween: 40,
-            },
-            1024: {
-              spaceBetween: 80,
-            },
-            1366: {
-              spaceBetween: 100,
-            },
-          }}
-        >
-          {logosdata.map((logo, index) => (
-            <SwiperSlide key={index}>
-              <div className="rounded-[5px] bg-[#F2F2F2] w-fit mx-2">
-                <img src={typeof logo.src === "string" ? logo.src : (logo.src?.src ?? "")} alt={logo.alt} className="object-contain" />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div>
+          <Swiper
+            className="logo-swiper !overflow-visible"
+            loop={true}
+            freeMode={true}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              reverseDirection,
+            }}
+            cssMode={false}
+            slidesPerView={slidesPerView}
+            speed={5000}
+            grabCursor={true}
+            // loopAdditionalSlides={2}
+            modules={[Autoplay]}
+            simulateTouch={false}
+            allowTouchMove={false}
+            breakpoints={{
+              320: {
+                spaceBetween: 30,
+                slidesPerView: 3,
+              },
+              768: {
+                spaceBetween: 40,
+              },
+              1024: {
+                spaceBetween: 80,
+              },
+              1366: {
+                spaceBetween: 100,
+              },
+            }}
+          >
+            {logosdata.map((logo, index) => (
+              <SwiperSlide key={index}>
+                <div className="mx-2 w-fit rounded-[5px] bg-[#F2F2F2]">
+                  <img
+                    src={
+                      typeof logo.src === "string"
+                        ? logo.src
+                        : (logo.src?.src ?? "")
+                    }
+                    alt={logo.alt}
+                    className="object-contain"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </div>

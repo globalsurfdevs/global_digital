@@ -19,11 +19,11 @@ interface ResultsSectionProps {
   data: ResultsItem[];
 }
 
-const Results: React.FC<ResultsSectionProps> = ({ title, data ,desc}) => {
+const Results: React.FC<ResultsSectionProps> = ({ title, data, desc }) => {
   return (
     <div className="py-[50px] lg:py-[147px]">
       <div className="container mx-auto py-4">
-        <div className=" flex-col items-center   grid grid-cols-2 ">
+        <div className=" grid grid-cols-2   flex-col items-center ">
           <div className="mb-6 text-4xl lg:mb-[32px] ">
             <motion.div
               initial="hidden"
@@ -39,7 +39,9 @@ const Results: React.FC<ResultsSectionProps> = ({ title, data ,desc}) => {
               }}
             >
               <h2 className="title-65">{title}</h2>
-              <p className="text-19 fnt-lexend text-gray1 transition-colors duration-300 group-hover:text-gray-700 pt-5 max-w-[47ch]">{desc}</p>
+              <p className="text-19 fnt-lexend max-w-[47ch] pt-5 text-gray1 transition-colors duration-300 group-hover:text-gray-700">
+                {desc}
+              </p>
             </motion.div>
           </div>
           <motion.div

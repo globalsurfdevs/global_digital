@@ -7,7 +7,7 @@ export const BannerSection = [
     image: assets.inbanner,
     navigation: [
       { label: "Home", url: "/" },
-      { label: "Industry",url: "/industry" },
+      { label: "Industry", url: "/industry" },
     ],
     heroAlt: "Industry-Focused Digital Solutions ",
 
@@ -18,7 +18,7 @@ export const BannerSection = [
     sub: [
       {
         stitle: "OUR APPROACH",
-        buttonTitle :"Start Your Project",
+        buttonTitle: "Start Your Project",
         desc: "Every industry follows a different buying journey. At GS Digital, we analyse how buyers in each sector search for solutions, evaluate suppliers and move toward final decisions.<br>From procurement led industries with long evaluation cycles to consumer markets with faster decision paths, our industry specific digital marketing approach aligns digital execution with real buying behaviour. This helps organisations generate qualified demand and convert digital engagement into revenue-generating leads, enquiries, and contracts. ",
       },
     ],
@@ -32,7 +32,6 @@ export const services = [
     url: "",
     description:
       "From streamlined project management to integrated design workflows, our solutions keep your teams precise, connected, and always on track.",
-
   },
   {
     id: "2",
@@ -41,7 +40,6 @@ export const services = [
     url: "",
     description:
       "We partner with institutions to create intuitive digital tools from learning platforms to student portals that enhance access and engagement across every level.",
-
   },
   {
     id: "3",
@@ -50,7 +48,6 @@ export const services = [
     url: "",
     description:
       "Deliver seamless guest experiences with smarter booking systems, personalized journeys, and backend tools that elevate efficiency behind the scenes.",
-
   },
   {
     id: "4",
@@ -59,7 +56,6 @@ export const services = [
     url: "",
     description:
       "Built for collaboration and control, our digital tools align teams, manage resources, and ensure on-time, on-budget project delivery.",
-
   },
   {
     id: "5",
@@ -68,7 +64,6 @@ export const services = [
     url: "",
     description:
       "We craft high-performance platforms that make shopping effortless from discovery to checkout, while optimizing every step of the sales journey.",
-
   },
   {
     id: "6",
@@ -77,7 +72,6 @@ export const services = [
     url: "",
     description:
       "We help fashion brands go digital with sleek storefronts, customer insight tools, and marketing that keeps them ahead of the curve. ",
-
   },
   {
     id: "7",
@@ -86,7 +80,6 @@ export const services = [
     url: "",
     description:
       "Our scalable, secure solutions from cloud to cybersecurity empower IT teams to move fast, innovate, and stay focused on what’s next.",
-
   },
   {
     id: "8",
@@ -95,7 +88,6 @@ export const services = [
     url: "",
     description:
       "Digitize production and simplify operations with smart systems that boost efficiency, reduce waste, and maintain momentum.",
-
   },
   {
     id: "9",
@@ -104,7 +96,6 @@ export const services = [
     url: "",
     description:
       "Create seamless cross-channel experiences with integrated POS, inventory, and customer engagement tools online and in-store.",
-
   },
   {
     id: "10",
@@ -113,20 +104,19 @@ export const services = [
     url: "",
     description:
       "We design tailored digital solutions that streamline complex workflows, support long sales cycles, and help you close with confidence.",
-
   },
 ];
 export const Cta = [
   {
-      textred: "Tell us about your business ",
-      text:"and we'll show you how we'd approach it."
-  }
-]
+    textred: "Tell us about your business ",
+    text: "and we'll show you how we'd approach it.",
+  },
+];
 export const IndustriesWeServe = {
   title: "Industries We Serve",
-  subttle: "Our work spans multiple industries, each with distinct market dynamics and decision processes.",
+  subttle:
+    "Our work spans multiple industries, each with distinct market dynamics and decision processes.",
   data: [
-   
     {
       id: 1,
       icon: assets.ini4,
@@ -151,7 +141,7 @@ export const IndustriesWeServe = {
       desc: "We craft high-performance platforms that make shopping effortless from discovery to checkout, while optimizing every step of the sales journey.  ",
       url: "/industry/ecommerce-digital-marketing",
     },
-    
+
     {
       id: 4,
       icon: assets.ini10,
@@ -160,7 +150,7 @@ export const IndustriesWeServe = {
       desc: "Generate pipeline from decision-makers navigating complex procurement cycles and position your brand before the shortlist is made.",
       url: "/industry/b2b-digital-marketing-services",
     },
-     {
+    {
       id: 5,
       icon: assets.ini1,
       title: "Engineering  ",
@@ -175,7 +165,7 @@ export const IndustriesWeServe = {
       hoverImg: assets.inds2,
       desc: " We partner with institutions to create intuitive digital tools from learning platforms to student portals that enhance access and engagement across every level. ",
       url: "",
-    }, 
+    },
     {
       id: 7,
       icon: assets.ini6,

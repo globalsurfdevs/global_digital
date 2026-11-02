@@ -11,10 +11,7 @@ interface MenuToggleProps {
   toggle: () => void; // Explicitly typing 'toggle' as a function returning void+
 }
 
-
-  export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
-
-
+export const Navigation: React.FC<MenuToggleProps> = ({ toggle, onHide }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -36,7 +33,12 @@ interface MenuToggleProps {
     <div className="">
       {modalOpen && (
         <div className="fixed left-0 top-0 z-[1000] w-screen overflow-y-auto bg-white">
-          <LetsTalk onClose={() => { setModalOpen(false);onHide() }} />
+          <LetsTalk
+            onClose={() => {
+              setModalOpen(false);
+              onHide();
+            }}
+          />
         </div>
       )}
 
@@ -48,9 +50,9 @@ interface MenuToggleProps {
                 menuItem.children.map((child, childIndex) => (
                   <li
                     key={childIndex}
-                    className="flex items-center gap-2 hover:bg-gray-100 border-b last:border-none"
+                    className="flex items-center gap-2 border-b last:border-none hover:bg-gray-100"
                   >
-                    <Link href={child.url} className="py-2 px-4 w-full">
+                    <Link href={child.url} className="w-full px-4 py-2">
                       <Image
                         src={child.svg}
                         alt={child.item}
@@ -67,15 +69,17 @@ interface MenuToggleProps {
         ))}
       </motion.ul>
 
-      <div className="w-fit px-6 mb-5">
+      <div className="mb-5 w-fit px-6">
         <button
           onClick={() => {
             setModalOpen(true);
-            onHide()
+            onHide();
           }}
           className="hover:bg-prtext-primary group flex items-center space-x-2 rounded-full border border-primary px-6 py-2 text-primary transition duration-300 ease-in hover:text-black hover:shadow-lg lg:flex"
         >
-          <span className="duration-300 ease-in group-hover:text-black">LET’S TALK</span>
+          <span className="duration-300 ease-in group-hover:text-black">
+            LET’S TALK
+          </span>
           <div className="bg-primary p-1">
             <svg
               width="10"

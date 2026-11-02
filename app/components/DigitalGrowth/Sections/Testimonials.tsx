@@ -21,22 +21,23 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
   topTitle,
   bottomText = false,
   reviews = true,
-  page
+  page,
 }) => {
   return (
     <div className={` ${bgcolor === "white" ? "bg-white" : "bg-bglight"}`}>
       <div
         className={`container mx-auto px-4  ${bordertop ? " border-t" : ""}`}
       >
-        <div className="ptwhite py-16 md:py-20 xl:py-[120px]">
+        <div className="ptwhite py-16 md:py-20 xl:py-[90px]">
           {topTitle && (
             <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-[60px]">
               <div className="h-4 w-4 bg-primary"></div>
-              <h3 className="text-28
-               uppercase leading-[1] tracking-[-0.025em]  text-muted">
+              <h3
+                className="text-18
+               uppercase leading-[1] tracking-[-0.025em]  text-muted"
+              >
                 {topTitle}
               </h3>
-
             </div>
           )}
           <motion.div
@@ -49,13 +50,12 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
             }}
             className="items-center justify-between gap-3  xl:flex"
           >
-            <h2 className="title-60">
+            <h2 className="title-60 text-[length:var(--text-60-sm)]">
               {data?.title ? data.title : "Hear From Our Partners"}
             </h2>
             {reviews && (
               <div className="lg-mt-0 mt-3 flex items-center gap-3">
-
-                <p className="text-19 fnt-lexend font-400 text-[#77787B] lg:w-[700px]">
+                <p className="text-[length:var(--text-18-sm)] fnt-lexend font-400 text-[#77787B] lg:w-[700px]">
                   {" "}
                   {data?.starText ? data.starText : "4.9 on Google Reviews"}
                 </p>
@@ -76,7 +76,7 @@ const Testimonials: React.FC<TestimonialsSectionProps> = ({
                 }, // Slide up and fade in
               }}
             >
-              <TestimonialsSwiper data={data?.items} />
+              <TestimonialsSwiper data={data?.items} page="service"/>
               {bottomText && (
                 <div>
                   {!data?.bottomText ? (

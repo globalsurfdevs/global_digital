@@ -7,7 +7,7 @@ const ECommerce: React.FC = () => {
       <h1 className="text-3xl font-bold text-black dark:text-white">
         Welcome to Global Surf Backend Console
       </h1>
-      <p className="mt-3 max-w-md text-base text-body dark:text-bodydark">
+      <p className="text-body dark:text-bodydark mt-3 max-w-md text-base">
         Use this dashboard to manage and update the content across the website.
       </p>
     </div>

@@ -1,11 +1,9 @@
-import AdminIndiPortfolio from '@/app/components/AdminIndiPortfolio/AdminIndiPortfolio'
-import DefaultLayout from '@/app/components/Layouts/DefaultLayout'
-import React from 'react'
+import AdminIndiPortfolio from "@/app/components/AdminIndiPortfolio/AdminIndiPortfolio";
+import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
+import React from "react";
 
 const page = () => {
-  return (
-        <AdminIndiPortfolio editMode/>
-  )
-}
+  return <AdminIndiPortfolio editMode />;
+};
 
-export default page
+export default page;

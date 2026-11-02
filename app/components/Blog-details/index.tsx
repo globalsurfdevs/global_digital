@@ -164,10 +164,12 @@ import React, { useEffect } from "react";
 import BlogDetailHero from "./BlogDetailHero";
 import TableOfContents, { FAQ_ANCHOR } from "./TableOfContents";
 import BlogContentSection from "./BlogContentSection";
+import { prepareBlogArticle } from "@/app/helpers/blogArticle";
 import Cta from "../BlogSocialMedia/DynamicBlogCta";
 import { ctaData } from "@/app/data/blogdatas/DigitalMarketingData";
 import BlogFAQ from "./BlogFAQ";
 import AuthorBioCard from "./AuthorBioCard";
+import HeroSection from "../BlogSocialMedia/HeroSectionDynamic";
 
 type DbBlogPost = {
   _id: string;
@@ -180,6 +182,7 @@ type DbBlogPost = {
   publishedAt: string;
   updatedAt: string;
   content: string;
+  articleContent?: string;
   ctaTitle: string;
   ctaDescription: string;
   ctaButtonText: string;
@@ -195,7 +198,7 @@ type DbBlogPost = {
     content: string;
     _id: string;
   }[];
-  author:string;
+  author: string;
 };
 
 type Props = {
@@ -219,39 +222,97 @@ const BlogDetails = ({ dbBlog }: Props) => {
       timeZone: "UTC",
     });
 
+  const formatMonthYear = (date: string) =>
+    new Date(date).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+
   const faqData =
     dbBlog?.faqItems?.map((f) => ({
       title: f.question,
       description: f.answer,
     })) ?? [];
+  const unifiedArticle =
+    dbBlog?.articleContent || (!dbBlog?.items?.length ? dbBlog?.content : "");
+  const preparedArticle = unifiedArticle
+    ? prepareBlogArticle(unifiedArticle)
+    : null;
+  const tocItems = preparedArticle?.headings ?? dbBlog?.items ?? [];
+  const estimatedReadMinutes = preparedArticle
+    ? Math.max(
+        1,
+        Math.ceil(
+          preparedArticle.html
+            .replace(/<[^>]*>/g, " ")
+            .trim()
+            .split(/\s+/).length / 200,
+        ),
+      )
+    : 1;
 
-    console.log(dbBlog)
+  const articleHeroData = dbBlog?.articleContent
+    ? [
+        {
+          id: 1,
+          title: dbBlog.heading,
+          image: dbBlog.featuredImage,
+          heroAlt: dbBlog.featuredImageAlt,
+          publishedon: formatMonthYear(dbBlog.publishedAt),
+          updatedon: formatMonthYear(dbBlog.updatedAt),
+          navigation: [
+            { label: "Blog", url: "/blogs" },
+            {
+              label: `${estimatedReadMinutes} Minutes Read`,
+              url: "",
+            },
+          ],
+          sub: [],
+        },
+      ]
+    : null;
 
   return (
     <>
       <div>
-        {dbBlog && (
+        {dbBlog?.articleContent && articleHeroData ? (
+          <HeroSection Bannerdata={articleHeroData} hideslider />
+        ) : dbBlog ? (
           <BlogDetailHero
             title={dbBlog.heading}
             image={dbBlog.featuredImage}
             heroAlt={dbBlog.featuredImageAlt}
             publishedon={formatDate(dbBlog.publishedAt)}
             updatedon={formatDate(dbBlog.updatedAt)}
-            readtime={dbBlog.items?.length}
+            readtime={dbBlog.items?.length || undefined}
             category={dbBlog.category}
           />
-        )}
+        ) : null}
       </div>
 
-      {dbBlog?.items && (
+      {(preparedArticle || dbBlog?.items) && (
         <TableOfContents
-          content={dbBlog?.content}
-          items={dbBlog?.items}
+          content={preparedArticle ? "" : (dbBlog?.content ?? "")}
+          items={tocItems}
           hasFaq={faqData.length > 0}
+          isArticleContent={Boolean(preparedArticle)}
         />
       )}
 
-      {dbBlog?.items && <BlogContentSection items={dbBlog.items} />}
+      {preparedArticle ? (
+        <BlogContentSection
+          items={[]}
+          articleHtml={preparedArticle.html}
+          hasShortDescription={preparedArticle.hasShortDescription}
+        />
+      ) : dbBlog?.items ? (
+        <BlogContentSection
+          items={dbBlog.items}
+          hasShortDescription={Boolean(dbBlog.content)}
+        />
+      ) : null}
 
       {faqData.length > 0 && (
         <div id={FAQ_ANCHOR}>
@@ -259,7 +320,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
         </div>
       )}
 
-      {dbBlog?.ctaTitle && (
+      {(dbBlog?.ctaTitle || dbBlog?.ctaDescription) && (
         <Cta
           title={dbBlog?.ctaTitle}
           description={dbBlog?.ctaDescription}
@@ -268,7 +329,7 @@ const BlogDetails = ({ dbBlog }: Props) => {
         />
       )}
 
-      {dbBlog?.author && <AuthorBioCard data={dbBlog.author}/>}
+      {dbBlog?.author && <AuthorBioCard data={dbBlog.author} />}
     </>
   );
 };

@@ -14,14 +14,14 @@ export default function SeoCounter({
 }: SeoCounterProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
- 
+
   const [count, setCount] = useState(value);
 
   const spring = useSpring(0, {
     bounce: 0,
     duration,
   });
- 
+
   useEffect(() => {
     const unsub = spring.on("change", (v) => {
       setCount(Math.round(v));
@@ -29,26 +29,20 @@ export default function SeoCounter({
 
     return () => unsub();
   }, []);
- 
+
   useEffect(() => {
     if (isInView) {
-      setCount(0);        
+      setCount(0);
       spring.set(value);
     }
   }, [isInView, value]);
 
   return (
-    <p
-      ref={ref}
-      className="mt-4 text-font65 font-[400] leading-lh1p07"
-    >
+    <p ref={ref} className="mt-4 text-font65 font-[400] leading-lh1p07">
       {/* SEO + screen reader value */}
       <span className="sr-only">{value}</span>
-
       {/* Animated visual value */}
-      <span aria-hidden="true">{count}</span>+{" "}
-
-      {label}
+      <span aria-hidden="true">{count}</span>+ {label}
     </p>
   );
 }
