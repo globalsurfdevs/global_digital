@@ -23,87 +23,7 @@ import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 import { assets } from "@/public/assets/assets";
 import { Gauge, ShieldCheck } from "lucide-react";
 import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
-const Frameworkdata = {
-  title: "What We Delivered",
-  data: [
-    {
-      id: 1,
-      title: "Website redesign",
-      dec: "",
-      icn: assets.icss1,
-      urllink: "",
-    },
-    {
-      id: 2,
-      title: "Performance optimisation",
-      dec: "",
-      icn: assets.icss2,
-      urllink: "",
-    },
-    {
-      id: 3,
-      title: "Brand identity system",
-      dec: "",
-      icn: assets.icss3,
-      urllink: "",
-    },
-    {
-      id: 4,
-      title: "Mobile UX overhaul",
-      dec: "",
-      icn: assets.icss4,
-      urllink: "",
-    },
-  ],
-};
 
-export const FrameworkdataShoba = {
-  title: "What We Delivered",
-  data: [
-    {
-      id: 1,
-      title: "Website design & development from ground up",
-      dec: "Custom end-to-end design and engineering built specifically to align with business objectives and scale seamless user experiences.",
-      icn: assets.icss1,
-      urllink: "",
-    },
-    {
-      id: 2,
-      title: "Information architecture & content structuring",
-      dec: "Logical page hierarchy and structured content layouts ensuring users find essential service details effortlessly.",
-      icn: assets.icss2,
-      urllink: "",
-    },
-    {
-      id: 3,
-      title: "User experience & navigation planning",
-      dec: "Intuitive user journeys and seamless navigation flows designed to reduce bounce rates and boost user engagement.",
-      icn: assets.icss3,
-      urllink: "",
-    },
-    {
-      id: 4,
-      title: "Mobile & cross-device compatibility",
-      dec: "Fully responsive designs tailored across all viewports to guarantee visual and functional consistency on every screen.",
-      icn: assets.icss4,
-      urllink: "",
-    },
-    {
-      id: 5,
-      title: "Site speed & performance optimisation",
-      dec: "Optimized asset delivery, light DOM structure, and clean code implementation for ultra-fast page load speeds.",
-      icn: Gauge,
-      urllink: "",
-    },
-    {
-      id: 6,
-      title: "Secure & scalable platform setup",
-      dec: "Future-proof infrastructure and security standards ready to scale alongside growing business demands.",
-      icn: ShieldCheck,
-      urllink: "",
-    },
-  ],
-};
 const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
   // const { companyName } = useParams()
 
@@ -177,9 +97,7 @@ const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
 
   if (isModernPortfolio) {
     const previewImages =
-      data.portfolio.previewImage?.images.filter(Boolean) ?? [];
-    const defaultDelivered =
-      data.portfolio.slug === "innovo-group" ? Frameworkdata : [];
+      data.portfolio.previewImage?.images.filter(Boolean) ?? []
     const savedDeliveredItems =
       data.portfolio.whatWeDeliveredSec?.data?.length > 0
         ? data.portfolio.whatWeDeliveredSec.data
@@ -195,10 +113,8 @@ const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
               ? item.urllink.find((link: string) => Boolean(link))
               : item.urllink,
           }))
-        : defaultDelivered.data.map((item, index) => ({
-            ...item,
-            _id: index + 1,
-          }));
+        : [];
+        
     const modernData = {
       ...data,
       portfolio: {
@@ -242,8 +158,7 @@ const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
         <WhatWeDelivered
           title={
             data.portfolio.whatWeDeliveredSec?.title ||
-            data.portfolio.whatWeDeliveredTitle ||
-            defaultDelivered.title
+            data.portfolio.whatWeDeliveredTitle 
           }
           data={deliveredData}
           endpoint={endpoint}
