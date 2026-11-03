@@ -179,10 +179,7 @@ const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
     const previewImages =
       data.portfolio.previewImage?.images.filter(Boolean) ?? [];
     const defaultDelivered =
-      endpoint === "sobha-constructions" ||
-      data.portfolio.slug === "sobha-constructions"
-        ? FrameworkdataShoba
-        : Frameworkdata;
+      data.portfolio.slug === "innovo-group" ? Frameworkdata : [];
     const savedDeliveredItems =
       data.portfolio.whatWeDeliveredSec?.data?.length > 0
         ? data.portfolio.whatWeDeliveredSec.data
