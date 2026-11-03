@@ -10,6 +10,7 @@ import mongoose from "mongoose";
 import "@/app/models/Category";
 import "@/app/models/Channel";
 import { revalidateTag } from "next/cache";
+import { auth } from "@/auth";
 
 export async function GET(req: NextRequest) {
   try {
@@ -17,28 +18,46 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     const slug = searchParams.get("slug");
-    const userType = req.headers.get("x-auth-type");
+    const session = await auth();
+    const isAdmin = session?.user?.role === "admin";
 
     if (id) {
-    
-      const portfolio = await Portfolio.findById(id)
+      const portfolio = await Portfolio.findOne({
+        _id: id,
+        ...(isAdmin ? {} : { isListed: { $ne: false } }),
+      })
         .populate("categories")
         .populate("channels")
         .lean();
 
-      const portfolioHighlights = await PortfolioHighlight.find({
-        companyId: new mongoose.Types.ObjectId(id),
-      });
+      if (!portfolio && !isAdmin) {
+        return NextResponse.json(
+          { error: "Portfolio not found" },
+          { status: 404 },
+        );
+      }
+
+      const portfolioHighlights = portfolio
+        ? await PortfolioHighlight.find({
+            companyId: new mongoose.Types.ObjectId(id),
+          })
+        : [];
 
       return NextResponse.json({ portfolio, portfolioHighlights });
     } else if (slug) {
       
-      const portfolio = await Portfolio.findOne({ slug })
+      const portfolio = await Portfolio.findOne({
+        slug,
+        ...(isAdmin ? {} : { isListed: { $ne: false } }),
+      })
         .populate("categories")
         .populate("channels");
 
       if (!portfolio || !portfolio._id) {
-        throw new Error("Portfolio not found");
+        return NextResponse.json(
+          { error: "Portfolio not found" },
+          { status: 404 },
+        );
       }
 
       const portfolioHighlights = await PortfolioHighlight.find({
@@ -47,7 +66,7 @@ export async function GET(req: NextRequest) {
 
       return NextResponse.json({ portfolio, portfolioHighlights });
     } else {
-      if (userType !== "admin") {
+      if (!isAdmin) {
         // const cashedData: [] = await redisClient.get('portfolios') || []
 
         // if (cashedData.length > 0) {
@@ -58,7 +77,7 @@ export async function GET(req: NextRequest) {
 
        
 
-        const portfolio = await Portfolio.find({})
+        const portfolio = await Portfolio.find({ isListed: { $ne: false } })
           .sort({ index: "ascending" })
           .populate("categories")
           .populate("channels")

@@ -4,7 +4,13 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { toast } from "sonner";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { MdDragIndicator, MdDelete, MdEdit } from "react-icons/md";
+import {
+  MdDragIndicator,
+  MdDelete,
+  MdEdit,
+  MdVisibility,
+  MdVisibilityOff,
+} from "react-icons/md";
 import { ConfirmDialog, ViewLiveLink, portfolioLiveUrl } from "../AdminUI";
 
 const PortfolioCard = ({
@@ -17,6 +23,7 @@ const PortfolioCard = ({
   setRefetch: Dispatch<SetStateAction<boolean>>;
   id: number;
   reorderMode?: boolean;
+  isListView?: boolean;
 }) => {
   const {
     attributes,
@@ -27,6 +34,7 @@ const PortfolioCard = ({
     isDragging,
   } = useSortable({ id });
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [visibilityUpdating, setVisibilityUpdating] = useState(false);
 
   const style = {
     transition,
@@ -51,6 +59,36 @@ const PortfolioCard = ({
     } catch (error) {
       console.error("Error deleting portfolio:", error);
       toast.error("Something went wrong");
+    }
+  };
+
+  const handleToggleListing = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (visibilityUpdating) return;
+
+    setVisibilityUpdating(true);
+    try {
+      const response = await fetch(
+        `/api/portfolio/toggle-visibility?id=${item._id}`,
+        { method: "PATCH" },
+      );
+
+      const data = await response.json();
+
+      console.log("Toggle visibility response:", data);
+      if (!response.ok) {
+        toast.error(data.error ?? "Failed to update listing status");
+        return;
+      }
+
+      toast.success(data.isListed ? "Portfolio listed" : "Portfolio unlisted");
+      setRefetch((prev) => !prev);
+    } catch (error) {
+      console.error("Error updating portfolio listing status:", error);
+      toast.error("Failed to update listing status");
+    } finally {
+      setVisibilityUpdating(false);
     }
   };
 
@@ -114,7 +152,12 @@ const PortfolioCard = ({
               <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium capitalize text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
                 {item.section}
               </span>
-              {liveUrl && (
+              {item.isListed === false && (
+                <span className="inline-flex w-fit items-center rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">
+                  Unlisted
+                </span>
+              )}
+              {item.isListed !== false && liveUrl && (
                 <span className="truncate text-xs text-slate-400">
                   {liveUrl}
                 </span>
@@ -125,7 +168,29 @@ const PortfolioCard = ({
 
         {!reorderMode && (
           <div className="flex shrink-0 items-center gap-1 border-l border-slate-200 px-3 dark:border-slate-700">
-            <ViewLiveLink href={liveUrl} />
+            {item.isListed !== false && <ViewLiveLink href={liveUrl} />}
+            <button
+              type="button"
+              title={
+                item.isListed === false
+                  ? "List on website"
+                  : "Unlist from website"
+              }
+              aria-label={
+                item.isListed === false
+                  ? "List on website"
+                  : "Unlist from website"
+              }
+              onClick={handleToggleListing}
+              disabled={visibilityUpdating}
+              className="inline-flex size-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 disabled:cursor-wait disabled:opacity-50 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+            >
+              {item.isListed === false ? (
+                <MdVisibilityOff className="text-base" />
+              ) : (
+                <MdVisibility className="text-base" />
+              )}
+            </button>
             {href !== "#" && (
               <Link
                 href={href}

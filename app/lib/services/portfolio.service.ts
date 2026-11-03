@@ -9,7 +9,7 @@ export const getPortfolio = unstable_cache(
   async () => {
     await connectDB();
 
-    const portfolio = await Portfolio.find({})
+    const portfolio = await Portfolio.find({ isListed: { $ne: false } })
       .sort({ index: "ascending" })
       .populate("categories")
       .populate("channels")
@@ -28,7 +28,10 @@ export const getFeaturedPortfolios = unstable_cache(
   async () => {
     await connectDB();
 
-    const portfolio = await Portfolio.find({ featured: true })
+    const portfolio = await Portfolio.find({
+      featured: true,
+      isListed: { $ne: false },
+    })
       .sort({ index: "ascending" })
       .populate("categories")
       .lean();

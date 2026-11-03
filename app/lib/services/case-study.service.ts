@@ -15,6 +15,7 @@ export const getCaseStudies = unstable_cache(
 
     const caseStudy = await Portfolio.find({
       section: { $in: ["case study", "case study new"] },
+      isListed: { $ne: false },
     })
       .populate("categories")
       .populate("channels")

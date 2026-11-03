@@ -61,7 +61,7 @@ const BlogFAQ: React.FC<PartnerListProps> = ({
               </p>
               {data?.map((item, index) => (
                 <div
-                  className="flex w-full items-center justify-between gap-3 border-t py-6 last:border-b lg:pb-[50px] lg:pt-[50px]"
+                  className="flex w-full items-center justify-between gap-3 border-t py-6 lg:pb-[50px] lg:pt-[50px]"
                   key={index}
                   onClick={() => toggle(index)}
                 >

@@ -9,7 +9,10 @@ import type { Portfolio as PortfolioData } from "@/app/types/Portfolio";
 export async function getCaseStudyOrPortfolio(slug: string, type: string) {
   await connectDb();
 
-  const caseStudy = (await Portfolio.findOne({ slug })
+  const caseStudy = (await Portfolio.findOne({
+    slug,
+    isListed: { $ne: false },
+  })
     .populate("categories")
     .populate("channels")
     .lean()) as any;
@@ -41,7 +44,7 @@ export async function getSuccessStoriesPortfolios({
 }): Promise<PortfolioData[]> {
   await connectDb();
 
-  const portfolios = await Portfolio.find({})
+  const portfolios = await Portfolio.find({ isListed: { $ne: false } })
     .sort({ index: "ascending" })
     .populate("categories")
     .populate("channels")

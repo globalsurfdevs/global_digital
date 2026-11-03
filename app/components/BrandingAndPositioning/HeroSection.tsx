@@ -25,18 +25,18 @@ interface HeroSectionProps {
 const HeroSection = ({ data }: HeroSectionProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [containerLeft, setContainerLeft] = useState(0);
+  // const [containerLeft, setContainerLeft] = useState(0);
 
-  useEffect(() => {
-    const updateContainerLeft = () => {
-      if (!containerRef.current) return;
-      setContainerLeft(containerRef.current.getBoundingClientRect().left + 15);
-    };
+  // useEffect(() => {
+  //   const updateContainerLeft = () => {
+  //     if (!containerRef.current) return;
+  //     setContainerLeft(containerRef.current.getBoundingClientRect().left + 15);
+  //   };
 
-    updateContainerLeft();
-    window.addEventListener("resize", updateContainerLeft);
-    return () => window.removeEventListener("resize", updateContainerLeft);
-  }, []);
+  //   updateContainerLeft();
+  //   window.addEventListener("resize", updateContainerLeft);
+  //   return () => window.removeEventListener("resize", updateContainerLeft);
+  // }, []);
 
   useEffect(() => {
     if (modalOpen) {
@@ -69,7 +69,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
             srcSet="/images/service-hero-bg-mobile.jpg"
           />
 
-          <img
+          <Image
             src={data.image}
             alt={data.imageAlt}
             width={1920}
@@ -81,10 +81,15 @@ const HeroSection = ({ data }: HeroSectionProps) => {
       </div>
       <div className="container" ref={containerRef}></div>
       <div
+        className="container relative z-10 h-full"
+       
+      >
+      {/* <div
         className="relative z-10 flex h-full flex-col justify-center md:w-[50%] 2xl:w-[50%] 3xl:w-[40%]"
         style={{ marginLeft: `${containerLeft}px` }}
-      >
-        <div>
+      > */}
+        <div className="flex h-full flex-col justify-center md:w-[55%] 2xl:w-[55%] 3xl:w-[60%]">
+        {/* <div> */}
           <h1 className="title-70 mb-3 text-[length:var(--text-70-sm)] tracking-[-0.025em] xl:mb-5">
             {toTitleCase(data.title)}
           </h1>

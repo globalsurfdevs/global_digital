@@ -52,7 +52,7 @@ export const SuccessStoriesPortfolio = ({
         <div
           className={`${colCount ? `grid lg:grid-cols-${colCount}` : "grid lg:grid-cols-3"} gap-8`}
         >
-          {data.length > 0
+          {data?.length > 0
             ? (colCount === 2 ? data.slice(0, 2) : data).map((item, index) => (
                 <div className="group relative flex flex-col" key={index}>
                   <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">

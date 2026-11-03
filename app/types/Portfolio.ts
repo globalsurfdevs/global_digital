@@ -94,4 +94,5 @@ export type Portfolio = {
   bannerTitle: string;
   websiteLink: string;
   video?: string;
+  isListed?: boolean;
 };
