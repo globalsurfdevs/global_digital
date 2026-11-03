@@ -17,10 +17,8 @@ const Result = ({
   } | null;
   successStories: Portfolio[];
 }) => {
-
-
   const [modalOpen, setModalOpen] = useState(false);
-
+  console.log("successStories", successStories);
   useEffect(() => {
     if (modalOpen) {
       document.body.style.overflow = "hidden";
@@ -149,12 +147,13 @@ const Result = ({
           </div>
         </motion.div>
       </div>
-
-      <div className="container mx-auto py-4">
-        <div>
-          <SuccessStoriesPortfolio data={successStories} />
+      {successStories?.length > 0 && (
+        <div className="container mx-auto py-4">
+          <div>
+            <SuccessStoriesPortfolio data={successStories} />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

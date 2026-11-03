@@ -77,7 +77,10 @@ export async function GET() {
       Industries.find({ "items.slug": { $type: "string", $ne: "" } })
         .select("items.slug items.updatedAt")
         .lean(),
-      Portfolio.find({ slug: { $type: "string", $ne: "" } })
+      Portfolio.find({
+        isListed: { $ne: false },
+        slug: { $type: "string", $ne: "" },
+      })
         .select("slug section updatedAt")
         .lean(),
       ServicePillar.find({ slug: { $type: "string", $ne: "" } })

@@ -373,6 +373,7 @@ import { resolveSlug } from "@/app/lib/routing/resolveSlug";
 import { getTestimonials } from "@/app/lib/services/testimonials.service";
 import { buildMetadata } from "@/app/lib/metadata/buildServiceMetadata";
 import ServiceDetail from "@/app/components/ServicePages/ServiceDetails/ServiceDetail";
+import SubService from "@/app/components/ServicePages/ServiceDetails/ServiceDetail";
 import ServicePillarDetail from "@/app/components/ServicePages/ServicePillar/ServicePillar";
 import { SubServiceData } from "./type";
 
@@ -428,7 +429,7 @@ const Page = async ({ params }: PageProps) => {
       return <ServicePillarDetail data={resolved.data} />;
     case "sub-service":
       return (
-        <ServiceDetail service={resolved.data as SubServiceData} slug={slug} />
+        <SubService service={resolved.data as SubServiceData} slug={slug} />
       );
   }
 };

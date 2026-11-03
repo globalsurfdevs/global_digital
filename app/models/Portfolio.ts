@@ -167,6 +167,10 @@ const PortfolioSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isListed: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true },
 );

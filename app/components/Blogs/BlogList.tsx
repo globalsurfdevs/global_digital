@@ -43,49 +43,55 @@ const PortfolioList = ({
         //   },
         // }}
         >
-          <div className="portfolio pb-[50px] pt-[60px] ">
-            <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
-              {allBlogs.map((item) => (
+          <div className="portfolio pb-[50px] pt-[60px]">
+            <div className="flex flex-col items-center gap-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:gap-y-12">
+              {allBlogs.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  className="w-full"
+                  className="h-full w-full"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.1 }}
                   variants={{
-                    hidden: { opacity: 0, y: 50 },
+                    hidden: { opacity: 0, y: 30 },
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { duration: 1.3, ease: "easeOut" },
+                      transition: {
+                        duration: 0.6,
+                        ease: "easeOut",
+                        // stagger by column so a row animates together, not randomly
+                        delay: (index % 2) * 0.1,
+                      },
                     },
                   }}
                 >
-                  <div className="portfolio-card group relative col-span-1">
-                    <div className="card-img relative h-[300px] overflow-hidden rounded-md md:h-[500px]">
+                  <div className="portfolio-card group relative flex h-full flex-col">
+                    <div className="card-img relative aspect-[16/10] w-full overflow-hidden rounded-md">
                       <Image
                         src={item.feature_thumb}
-                        alt="image"
+                        alt={item.list_heading}
                         className="h-full w-full object-cover"
                         fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
                       />
-                      <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 duration-300 ease-in-out ease-in-out   group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary  group-hover:shadow-lg  md:left-5 md:top-5">
-                        <div className="uppercase text-white">
-                          <p className="text-font14 text-white">
-                            {item.category}
-                          </p>
-                        </div>
+                      <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-300 ease-in-out group-hover:z-[1] group-hover:translate-x-[3px] group-hover:bg-primary group-hover:shadow-lg md:left-5 md:top-5">
+                        <p className="text-font14 uppercase text-white">
+                          {item.category}
+                        </p>
                       </div>
                     </div>
+
                     <div className="mt-3 md:mt-4">
-                      <h3 className="text-30 mb-1 duration-200 ease-in-out group-hover:text-primary md:mb-2">
+                      <h3 className="text-30 mb-1 line-clamp-3 duration-200 ease-in-out group-hover:text-primary md:mb-2">
                         {item.list_heading}
                       </h3>
                     </div>
+
                     <Link
                       href={`/blogs/${formatLinkForBlog(item.slug)}`}
-                      className="absolute top-0 z-[1] h-full w-full"
-                    ></Link>
+                      className="absolute inset-0 z-[1]"
+                    />
                   </div>
                 </motion.div>
               ))}
