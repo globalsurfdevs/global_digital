@@ -89,7 +89,7 @@ const page = async ({
 
   const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
 
-  console.log("Endpoint:", companyName);
+ 
   if (!data) {
     return <div>Portfolio not found</div>;
   }

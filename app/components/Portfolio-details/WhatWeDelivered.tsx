@@ -7,7 +7,7 @@ import { LucideIcon } from "lucide-react";
 interface FrameworkItem {
   _id: number;
   title: string;
-  icn?: string | StaticImageData | LucideIcon;
+  icn?: string;
   dec: string;
   urllink?: string;
 }
@@ -33,13 +33,13 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
   maxchwidth,
   endpoint,
 }) => {
-  const gridColumnsClass = `xl:grid-cols-${colcount} `
+  const gridColumnsClass = `xl:grid-cols-${colcount} `;
 
   return (
     <div className="">
       <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]">
         <div
-          className={`pd-cus flex flex-col ${endpoint === "sobha-constructions" ? "pt-5  lg:pt-[60px] xl:pt-[70px]  2xl:pt-[100px] border-t border-gray-400" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
+          className={`pd-cus flex flex-col ${endpoint === "sobha-constructions" ? "border-t  border-gray-400 pt-5  lg:pt-[60px] xl:pt-[70px] 2xl:pt-[100px]" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
         >
           <div className="text-4xl">
             <motion.div
@@ -102,28 +102,20 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                   {/* Animated Red Border */}
 
                   <div className="mb-3 flex h-[36px] w-[36px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
-                    {framework.icn &&
-                      (typeof framework.icn === "string" ||
-                      "src" in framework.icn ? (
-                        <Image
-                          src={framework.icn}
-                          alt=""
-                          width={28}
-                          height={28}
-                          className="fltrcls h-auto w-[28px] lg:w-[50px] max-w-[50px] object-contain transition duration-500"
-                        />
-                      ) : (
-                        React.createElement(framework.icn, {
-                          size: 32,
-                          color: "#FFFFFF",
-                          strokeWidth: 1.5,
-                        })
-                      ))}
+                    {framework.icn && (
+                      <Image
+                        src={framework.icn}
+                        alt=""
+                        width={28}
+                        height={28}
+                        className="fltrcls h-auto max-h-[34px] w-[28px] max-w-[34px] object-contain transition duration-500 lg:w-[34px]"
+                      />
+                    )}
                   </div>
 
-                  <div className="relative w-fit text-2xl">
+                  <div className="relative w-full text-2xl lg:max-w-[85%]">
                     <h3
-                      className="text-[20px]  lg:text-[26px] xl:text-30 text-black w-full lg:max-w-[85%]"
+                      className="xl:text-30  w-full text-[20px] text-black lg:text-[26px] "
                       dangerouslySetInnerHTML={{ __html: framework.title }}
                     ></h3>
                     {framework.urllink && (
