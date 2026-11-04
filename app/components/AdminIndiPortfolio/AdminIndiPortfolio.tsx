@@ -22,6 +22,7 @@ import RichEditor from "../RichEditor/RichEditor";
 import { RxCross2 } from "react-icons/rx";
 import { generateSlugForPortfolio } from "@/app/helpers/generateSlug";
 import AdminIndiCaseStudy from "../AdminIndiCaseStudy/AdminIndiCaseStudy";
+import InstagramConnectPanel from "./InstagramConnectPanel";
 import { ImageUploader } from "@/components/ui/image-uploader";
 import SeoFields from "@/app/components/common/SeoFields";
 import { SeoFormValues } from "@/app/types/seo";
@@ -1938,6 +1939,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
           {selectedSection === "case study new" && (
             <SectionCard title="Social media">
+              {editMode && typeof companyId === "string" && (
+                <InstagramConnectPanel portfolioId={companyId} />
+              )}
               <div>
                 <div className="flex items-center justify-between">
                   <Label content="Social Media" />

@@ -104,7 +104,12 @@ export const FrameworkdataShoba = {
     },
   ],
 };
-const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
+const PortfolioDetails = ({
+  data,
+  endpoint,
+  successStories,
+  instagramPosts,
+}: any) => {
   // const { companyName } = useParams()
 
   // const parseJSON = (value: any) => {
@@ -270,7 +275,7 @@ const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
         <Goals data={data} companyName={data.companyName?.toString() ?? null} />
         <YtVideo data={data} />
         {data?.portfolio.section == "case study new" && (
-          <SocialMedia data={data} />
+          <SocialMedia data={data} instagramPosts={instagramPosts} />
         )}
         <Result data={data} successStories={successStories} />
       </>
