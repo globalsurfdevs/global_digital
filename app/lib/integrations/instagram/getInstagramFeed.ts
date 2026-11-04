@@ -3,28 +3,57 @@ import { unstable_cache } from "next/cache";
 import connectDB from "@/lib/mongodb";
 import InstagramConnection from "@/app/models/InstagramConnection";
 import {
+  fetchBusinessDiscoveryPosts,
   fetchInstagramPosts,
+  getAgencyCredentials,
   instagramCacheTag,
   type InstagramPost,
 } from "./instagram";
 
 const DEFAULT_POST_COUNT = 12;
 
+export type StoredConnection = {
+  accessToken?: string;
+  igUserId?: string;
+  /** Set when the client's public posts are read with the agency account. */
+  discoveryUsername?: string;
+  selectedPostIds?: string[];
+};
+
+/** All recent posts for a connection, whichever way it was set up. */
+export async function fetchConnectionPosts(
+  connection: StoredConnection,
+  portfolioId: string,
+): Promise<InstagramPost[]> {
+  const cacheTag = instagramCacheTag(portfolioId);
+
+  if (connection.discoveryUsername) {
+    const agency = getAgencyCredentials();
+    if (!agency) {
+      throw new Error("Agency Instagram credentials are not configured");
+    }
+    return fetchBusinessDiscoveryPosts(agency, connection.discoveryUsername, {
+      cacheTag,
+    });
+  }
+
+  if (!connection.accessToken) {
+    throw new Error("Connection has no access token");
+  }
+  return fetchInstagramPosts(
+    { accessToken: connection.accessToken, igUserId: connection.igUserId },
+    { cacheTag },
+  );
+}
+
 async function loadFeed(portfolioId: string): Promise<InstagramPost[]> {
   await connectDB();
   const connection = await InstagramConnection.findOne({
     portfolio: portfolioId,
-  }).lean<{
-    accessToken: string;
-    igUserId?: string;
-    selectedPostIds?: string[];
-  }>();
+  }).lean<StoredConnection>();
   if (!connection) return [];
 
-  const allPosts = await fetchInstagramPosts(
-    { accessToken: connection.accessToken, igUserId: connection.igUserId },
-    { cacheTag: instagramCacheTag(portfolioId) },
-  );
+  const allPosts = await fetchConnectionPosts(connection, portfolioId);
 
   // Hand-picked posts keep the admin's order. Picks that were deleted from
   // Instagram, or that fell out of the newest MAX_POSTS, are skipped.
@@ -41,8 +70,8 @@ async function loadFeed(portfolioId: string): Promise<InstagramPost[]> {
  *
  * Cached for an hour under the portfolio's Instagram tag. Saving a selection,
  * connecting, disconnecting and "Refresh from Instagram" all revalidate that
- * tag, which also refreshes any rendered page that used this feed. The token
- * stays on the server; only post data is returned.
+ * tag, which also refreshes any rendered page that used this feed. Tokens
+ * stay on the server; only post data is returned.
  */
 export async function getInstagramFeed(
   portfolioId: string,

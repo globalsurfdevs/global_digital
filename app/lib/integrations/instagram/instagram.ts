@@ -78,18 +78,83 @@ export async function fetchInstagramPosts(
   }
 
   const json: { data?: RawMedia[] } = await res.json();
-  return (json.data ?? [])
-    .map((item) => ({
-      id: item.id,
-      // Videos expose a still frame as thumbnail_url; media_url is the video file.
-      image:
-        (item.media_type === "VIDEO" ? item.thumbnail_url : item.media_url) ??
-        "",
-      permalink: item.permalink,
-      caption: item.caption,
-      mediaType: item.media_type,
-      timestamp: item.timestamp,
-    }))
+  return (json.data ?? []).map(toPost).filter((post) => post.image);
+}
+
+const toPost = (item: RawMedia): InstagramPost => ({
+  id: item.id,
+  // Videos expose a still frame as thumbnail_url; media_url is the video file.
+  image:
+    (item.media_type === "VIDEO" ? item.thumbnail_url : item.media_url) ?? "",
+  permalink: item.permalink,
+  caption: item.caption,
+  mediaType: item.media_type,
+  timestamp: item.timestamp,
+});
+
+/** Instagram handles: letters, numbers, dots and underscores, up to 30. */
+export const isValidInstagramUsername = (username: string) =>
+  /^[A-Za-z0-9._]{1,30}$/.test(username);
+
+/**
+ * Your own Instagram account, used to read OTHER accounts' public posts through
+ * Business Discovery. The clients never log in or approve anything.
+ */
+export function getAgencyCredentials():
+  | (InstagramCredentials & { igUserId: string })
+  | null {
+  const accessToken = process.env.INSTAGRAM_AGENCY_ACCESS_TOKEN;
+  const igUserId = process.env.INSTAGRAM_AGENCY_IG_USER_ID;
+  return accessToken && igUserId ? { accessToken, igUserId } : null;
+}
+
+/**
+ * A client's public posts, read with the agency account. Works only for
+ * public Instagram Business or Creator accounts.
+ */
+export async function fetchBusinessDiscoveryPosts(
+  agency: InstagramCredentials & { igUserId: string },
+  username: string,
+  { limit = MAX_POSTS, cacheTag }: { limit?: number; cacheTag?: string } = {},
+): Promise<InstagramPost[]> {
+  // The username goes into the field list, so it must be strictly validated.
+  if (!isValidInstagramUsername(username)) {
+    throw new Error("Invalid Instagram username");
+  }
+
+  const request = (withThumbnail: boolean) => {
+    const mediaFields = [
+      "id",
+      "caption",
+      "media_type",
+      "media_url",
+      "permalink",
+      "timestamp",
+      ...(withThumbnail ? ["thumbnail_url"] : []),
+    ].join(",");
+    const params = new URLSearchParams({
+      fields: `business_discovery.username(${username}){media.limit(${limit}){${mediaFields}}}`,
+      access_token: agency.accessToken,
+    });
+    return fetch(`${FACEBOOK_GRAPH_URL}/${agency.igUserId}?${params}`, {
+      next: { revalidate: 3600, tags: cacheTag ? [cacheTag] : [] },
+    });
+  };
+
+  // thumbnail_url may not be offered here; if Meta rejects the field list,
+  // retry without it. Videos without a still frame are then left out.
+  let res = await request(true);
+  if (res.status === 400) res = await request(false);
+  if (!res.ok) {
+    throw new Error(
+      `Business Discovery request failed (${res.status}): ${await graphErrorMessage(res)}`,
+    );
+  }
+
+  const json: { business_discovery?: { media?: { data?: RawMedia[] } } } =
+    await res.json();
+  return (json.business_discovery?.media?.data ?? [])
+    .map(toPost)
     .filter((post) => post.image);
 }
 
@@ -108,29 +173,4 @@ export async function fetchInstagramUsername(
   }
   const json: { username?: string } = await res.json();
   return json.username ?? "";
-}
-
-/**
- * Instagram Login tokens only. Facebook Page tokens derived from a long-lived
- * user token do not expire and have no refresh endpoint.
- */
-export async function refreshInstagramToken(
-  accessToken: string,
-): Promise<{ accessToken: string; expiresAt: Date }> {
-  const params = new URLSearchParams({
-    grant_type: "ig_refresh_token",
-    access_token: accessToken,
-  });
-  const res = await fetch(
-    `${INSTAGRAM_GRAPH_URL}/refresh_access_token?${params}`,
-    { cache: "no-store" },
-  );
-  if (!res.ok) {
-    throw new Error(`Instagram token refresh failed (${res.status})`);
-  }
-  const json: { access_token: string; expires_in: number } = await res.json();
-  return {
-    accessToken: json.access_token,
-    expiresAt: new Date(Date.now() + json.expires_in * 1000),
-  };
 }

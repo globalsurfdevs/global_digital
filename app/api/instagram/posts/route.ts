@@ -4,9 +4,9 @@ import connectDB from "@/lib/mongodb";
 import { verifyAdmin } from "@/lib/verifyAdmin";
 import InstagramConnection from "@/app/models/InstagramConnection";
 import {
-  fetchInstagramPosts,
-  instagramCacheTag,
-} from "@/app/lib/integrations/instagram/instagram";
+  fetchConnectionPosts,
+  type StoredConnection,
+} from "@/app/lib/integrations/instagram/getInstagramFeed";
 
 // Admin-only: the newest posts for the post picker (cached for an hour).
 export async function GET(req: NextRequest) {
@@ -21,16 +21,13 @@ export async function GET(req: NextRequest) {
   await connectDB();
   const connection = await InstagramConnection.findOne({
     portfolio: portfolioId,
-  }).lean<{ accessToken: string; igUserId?: string }>();
+  }).lean<StoredConnection>();
   if (!connection) {
     return NextResponse.json({ error: "Not connected" }, { status: 404 });
   }
 
   try {
-    const posts = await fetchInstagramPosts(
-      { accessToken: connection.accessToken, igUserId: connection.igUserId },
-      { cacheTag: instagramCacheTag(portfolioId) },
-    );
+    const posts = await fetchConnectionPosts(connection, portfolioId);
     return NextResponse.json({ posts });
   } catch (error) {
     console.error("Instagram post list failed:", error);

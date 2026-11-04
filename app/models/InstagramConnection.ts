@@ -12,7 +12,16 @@ const InstagramConnectionSchema = new Schema(
       required: true,
       unique: true,
     },
-    accessToken: { type: String, required: true },
+    // Not needed in "public posts by username" mode, which uses the agency
+    // account's credentials from the environment instead.
+    accessToken: {
+      type: String,
+      required: function (this: { discoveryUsername?: string }) {
+        return !this.discoveryUsername;
+      },
+    },
+    // Set when the client's public posts are read via Business Discovery.
+    discoveryUsername: { type: String },
     // Set for Facebook Login tokens (graph.facebook.com); empty for Instagram Login.
     igUserId: { type: String },
     // Ordered Instagram media IDs to display. Empty means "latest posts".
