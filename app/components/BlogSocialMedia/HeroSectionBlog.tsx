@@ -203,7 +203,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                             </div> */}
                   </div>
                   <div className="col-span-5 w-full ">
-                    <h1 className="title-80 mb-[40px]">
+                    <h1 className="title-80 ">
                       Mastering Social Media Video Production: Tips to Boost
                       Engagement
                     </h1>
