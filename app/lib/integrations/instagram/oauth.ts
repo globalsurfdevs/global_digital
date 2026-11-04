@@ -188,6 +188,8 @@ export async function exchangeCodeForInstagramConnection(
   // Preferred: an Instagram account linked to an approved Facebook Page. The
   // Page token it yields doesn't expire. A failure here (e.g. no Page access
   // granted) isn't fatal, since the fallback below may still succeed.
+  // Short, token-free notes on what Meta returned, shown if nothing is found.
+  const diagnostics: string[] = [];
   let pages: PageWithInstagram[] = [];
   try {
     const accounts = await graphGet<{ data?: PageWithInstagram[] }>(
@@ -199,8 +201,10 @@ export async function exchangeCodeForInstagramConnection(
       },
     );
     pages = accounts.data ?? [];
+    diagnostics.push(`pages ${pages.length}`);
   } catch (error) {
     console.warn("Listing Pages failed:", error);
+    diagnostics.push(`pages error: ${briefError(error)}`);
   }
 
   const linked = pages.filter(
@@ -221,9 +225,10 @@ export async function exchangeCodeForInstagramConnection(
   // business portfolio alone, with no Facebook Page. The token then records
   // which accounts were granted, and the user token itself reads the feed.
   const granted = await grantedInstagramIds(config, userToken);
-  if (granted.length > 1) throw tooMany();
-  if (granted.length === 1) {
-    const igUserId = granted[0];
+  diagnostics.push(granted.note);
+  if (granted.ids.length > 1) throw tooMany();
+  if (granted.ids.length === 1) {
+    const igUserId = granted.ids[0];
     let username: string;
     try {
       username = await fetchInstagramUsername({
@@ -246,29 +251,44 @@ export async function exchangeCodeForInstagramConnection(
 
   throw new OAuthUserError(
     "No Instagram account found",
-    `We couldn't find an Instagram Business or Creator account in what was approved. Please check the account is added to the business portfolio you chose and try the link again. (Reference: pages ${pages.length}, accounts 0)`,
+    `We couldn't find an Instagram Business or Creator account in what was approved. Please check the account is added to the business portfolio you chose and try the link again. (Reference: ${diagnostics.join("; ")})`,
   );
 }
+
+const briefError = (error: unknown) =>
+  (error instanceof Error ? error.message : String(error)).slice(0, 140);
 
 /** Instagram account IDs the login approval granted to this token. */
 async function grantedInstagramIds(
   config: MetaOAuthConfig,
   token: string,
-): Promise<string[]> {
+): Promise<{ ids: string[]; note: string }> {
   try {
     const debug = await graphGet<{
-      data?: { granular_scopes?: { scope: string; target_ids?: string[] }[] };
+      data?: {
+        type?: string;
+        is_valid?: boolean;
+        granular_scopes?: { scope: string; target_ids?: string[] }[];
+      };
     }>("/debug_token", {
       input_token: token,
       access_token: `${config.appId}|${config.appSecret}`,
     });
-    const ids = (debug.data?.granular_scopes ?? [])
+    const scopes = debug.data?.granular_scopes ?? [];
+    const ids = scopes
       .filter((entry) => entry.scope.startsWith("instagram"))
       .flatMap((entry) => entry.target_ids ?? []);
-    return [...new Set(ids)];
+    // Scope names and counts only; no IDs or tokens.
+    const summary = scopes
+      .map((entry) => `${entry.scope}:${entry.target_ids?.length ?? 0}`)
+      .join(",");
+    return {
+      ids: [...new Set(ids)],
+      note: `token ${debug.data?.type ?? "?"} valid=${debug.data?.is_valid} scopes=[${summary}]`,
+    };
   } catch (error) {
     console.warn("Reading granted accounts failed:", error);
-    return [];
+    return { ids: [], note: `debug error: ${briefError(error)}` };
   }
 }
 
