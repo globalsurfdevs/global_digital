@@ -42,7 +42,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const { accessToken, igUserId, username } =
+    const { accessToken, igUserId, username, expiresAt } =
       await exchangeCodeForInstagramConnection(config, code);
 
     await connectDB();
@@ -53,8 +53,11 @@ export async function GET(req: NextRequest) {
         igUserId,
         username,
         lastRefreshedAt: new Date(),
-        // A Page token from a long-lived user token doesn't expire.
-        $unset: { tokenExpiresAt: "" },
+        // A Page token doesn't expire. A user token does, and its date is shown
+        // in the admin panel so it can be reconnected before the feed stops.
+        ...(expiresAt
+          ? { tokenExpiresAt: expiresAt }
+          : { $unset: { tokenExpiresAt: "" } }),
       },
       { upsert: true, new: true },
     );
