@@ -16,7 +16,7 @@ import {
   relatedservices,
   ResultsData,
   Specializedin,
-} from "../../../data/services/social-media-strategy/data";
+} from "@/backup/service-data/social-media-strategy/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Results from "../../../components/SocialMediaMarketingDubai/Results";

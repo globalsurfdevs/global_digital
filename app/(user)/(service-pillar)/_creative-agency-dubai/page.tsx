@@ -12,14 +12,14 @@ import OurWorks from "../../../components/Branding/OurworksB";
 import Expertise from "../../../components/PerformanceMarketing/Expertise";
 import { CreativeOfferSchema } from "../../../components/Schema/OfferCatalog";
 
-import { BannerSection } from "../../../data/services/branding-creative/herosection";
-import { AreaExpertise } from "../../../data/services/branding-creative/area-of-expertise";
-import { boostEngage } from "../../../data/services/branding-creative/boost-engage";
-import { OurServices } from "../../../data/services/branding-creative/our-services";
-import { Frameworkdata } from "../../../data/services/branding-creative/framework";
+import { BannerSection } from "@/backup/service-data/branding-creative/herosection";
+import { AreaExpertise } from "@/backup/service-data/branding-creative/area-of-expertise";
+import { boostEngage } from "@/backup/service-data/branding-creative/boost-engage";
+import { OurServices } from "@/backup/service-data/branding-creative/our-services";
+import { Frameworkdata } from "@/backup/service-data/branding-creative/framework";
 import { partnerData } from "../../../data/partnerData";
-import { Cta } from "../../../data/services/branding-creative/cta";
-import { Faq } from "../../../data/services/branding-creative/faq";
+import { Cta } from "@/backup/service-data/branding-creative/cta";
+import { Faq } from "@/backup/service-data/branding-creative/faq";
 interface Canonicals {
   canonical: string;
 }

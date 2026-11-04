@@ -14,7 +14,7 @@ import {
   Cta,
   Faq,
   relatedservices,
-} from "../../../data/services/wdd-mobile-apps/data";
+} from "@/backup/service-data/wdd-mobile-apps/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";

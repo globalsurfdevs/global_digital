@@ -25,7 +25,7 @@ import {
   Wehelp,
   IndustriesWeServe,
   WhyBrands,
-} from "../../../data/services/generative-engine-optimization/data";
+} from "@/backup/service-data/generative-engine-optimization/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
 import Framework from "@/app/components/Geo/IconsTopContentBelow";

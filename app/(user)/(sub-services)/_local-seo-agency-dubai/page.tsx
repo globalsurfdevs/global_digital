@@ -15,18 +15,18 @@
 // import SeoService from "@/app/components/LocalSeo/SeoServices";
 // import SuccessStories from "../../components/IndConstruction/SucessStories";
 
-// import { BannerSection } from "../../data/services/local-seo-agency/herosection";
-// import { AreaExpertise } from "../../data/services/local-seo-agency/area-of-expertise";
-// import { Clientsformsdata } from "../../data/services/local-seo-agency/clientsdetails";
-// import { OurServices } from "../../data/services/local-seo-agency/our-servies";
-// import { Whychoosedata } from "../../data/services/local-seo-agency/whychoose";
-// import { Frameworkdata } from "../../data/services/local-seo-agency/framework";
+// import { BannerSection } from "@/backup/service-data/local-seo-agency/herosection";
+// import { AreaExpertise } from "@/backup/service-data/local-seo-agency/area-of-expertise";
+// import { Clientsformsdata } from "@/backup/service-data/local-seo-agency/clientsdetails";
+// import { OurServices } from "@/backup/service-data/local-seo-agency/our-servies";
+// import { Whychoosedata } from "@/backup/service-data/local-seo-agency/whychoose";
+// import { Frameworkdata } from "@/backup/service-data/local-seo-agency/framework";
 // import { Typelogodata } from "../../data/services/bc-logo-design/typesdesign";
-// import { relatedservices } from "../../data/services/local-seo-agency/relatedservices";
-// import { Wecanhelp } from "../../data/services/local-seo-agency/wecanhelp";
+// import { relatedservices } from "@/backup/service-data/local-seo-agency/relatedservices";
+// import { Wecanhelp } from "@/backup/service-data/local-seo-agency/wecanhelp";
 // import { Platformsecomdata } from "../../data/services/b2b-seo/platformsecom";
-// import { Cta } from "../../data/services/local-seo-agency/cta";
-// import { Faq } from "../../data/services/local-seo-agency/faq";
+// import { Cta } from "@/backup/service-data/local-seo-agency/cta";
+// import { Faq } from "@/backup/service-data/local-seo-agency/faq";
 // import { Platformsdata } from "../../data/services/b2b-seo/platforms";
 // import Testimonials from "@/app/components/HomePage/Testimonials";
 // import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";

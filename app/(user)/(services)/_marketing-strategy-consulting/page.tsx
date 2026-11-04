@@ -18,7 +18,7 @@ import {
   relatedservices,
   logosdata,
   logosdatas,
-} from "../../../data/services/marketing-strategy-consulting/data";
+} from "@/backup/service-data/marketing-strategy-consulting/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
 import Framework from "@/app/components/PerformanceMarketing/Framework";

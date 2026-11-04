@@ -10,20 +10,20 @@ import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 import Paidsearch from "../../../components/PpcAdvertisingAgencyDubai/Paidsearch";
 
-import { ResultsData } from "../../../data/services/ppc-advertising/results";
-import { BannerSection } from "../../../data/services/ppc-advertising/herosection";
-import { OurServices } from "../../../data/services/ppc-advertising/our-services";
-import { Frameworkdata } from "../../../data/services/ppc-advertising/framework";
-import { relatedservices } from "../../../data/services/ppc-advertising/relatedservices";
-import { Paidsearchdata } from "../../../data/services/ppc-advertising/Paidsearchdata";
-import { Wecanhelp } from "../../../data/services/ppc-advertising/wecanhelp";
-import { Platformsecomdata } from "../../../data/services/ppc-advertising/platformsecom";
-import { Cta } from "../../../data/services/ppc-advertising/cta";
-import { Faq } from "../../../data/services/ppc-advertising/faq";
+import { ResultsData } from "../../../../backup/service-data/ppc-advertising/results";
+import { BannerSection } from "../../../../backup/service-data/ppc-advertising/herosection";
+import { OurServices } from "../../../../backup/service-data/ppc-advertising/our-services";
+import { Frameworkdata } from "../../../../backup/service-data/ppc-advertising/framework";
+import { relatedservices } from "../../../../backup/service-data/ppc-advertising/relatedservices";
+import { Paidsearchdata } from "../../../../backup/service-data/ppc-advertising/Paidsearchdata";
+import { Wecanhelp } from "../../../../backup/service-data/ppc-advertising/wecanhelp";
+import { Platformsecomdata } from "../../../../backup/service-data/ppc-advertising/platformsecom";
+import { Cta } from "../../../../backup/service-data/ppc-advertising/cta";
+import { Faq } from "../../../../backup/service-data/ppc-advertising/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
-import { Platformsdata } from "../../../data/services/ppc-advertising/platforms";
+import { Platformsdata } from "../../../../backup/service-data/ppc-advertising/platforms";
 
 import FaqSchema from "../../../components/Schema/FaqSchemad";
 

@@ -7,7 +7,7 @@ import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
 import LogoSwiper from "./LogoSwiper";
-import { logoSwipper } from "@/app/data/services/digital-marketing-audit/herosection";
+import { logoSwipper } from "@/backup/service-data/digital-marketing-audit/herosection";
 const lexend = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],

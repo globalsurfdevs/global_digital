@@ -10,17 +10,17 @@ import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platfor
 import ProfileCard from "@/app/components/B2bSeo/ProfileCard";
 import SuccessStories from "../../../components/IndConstruction/SucessStories";
 
-import { ResultsData } from "../../../data/services/b2b-seo/results";
-import { BannerSection } from "../../../data/services/b2b-seo/herosection";
-import { Clientsformsdata } from "../../../data/services/b2b-seo/clientsstories";
-import { OurServices } from "../../../data/services/b2b-seo/our-services";
-import { Frameworkdata } from "../../../data/services/b2b-seo/framework";
-import { relatedservices } from "../../../data/services/b2b-seo/relatedservices";
-import { Wecanhelp } from "../../../data/services/b2b-seo/wecanhelp";
-import { Platformsecomdata } from "../../../data/services/b2b-seo/platformsecom";
-import { Cta } from "../../../data/services/b2b-seo/cta";
-import { Faq } from "../../../data/services/b2b-seo/faq";
-import { Platformsdata } from "../../../data/services/b2b-seo/platforms";
+import { ResultsData } from "../../../../backup/b2b-seo/results";
+import { BannerSection } from "../../../../backup/b2b-seo/herosection";
+import { Clientsformsdata } from "../../../../backup/b2b-seo/clientsstories";
+import { OurServices } from "../../../../backup/b2b-seo/our-services";
+import { Frameworkdata } from "../../../../backup/b2b-seo/framework";
+import { relatedservices } from "../../../../backup/b2b-seo/relatedservices";
+import { Wecanhelp } from "../../../../backup/b2b-seo/wecanhelp";
+import { Platformsecomdata } from "../../../../backup/b2b-seo/platformsecom";
+import { Cta } from "../../../../backup/b2b-seo/cta";
+import { Faq } from "../../../../backup/b2b-seo/faq";
+import { Platformsdata } from "../../../../backup/b2b-seo/platforms";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";

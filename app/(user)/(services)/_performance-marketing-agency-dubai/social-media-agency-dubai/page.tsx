@@ -11,14 +11,14 @@ import Testimonials from "../../../../components/HomePage/Testimonials";
 import FAQ from "../../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../../components/PerformanceMarketing/GetInTouch";
 
-import { BannerSection } from "../../../../data/services/social-media/herosection";
-import { AreaExpertise } from "../../../../data/services/social-media/area-of-expertise";
-import { boostEngage } from "../../../../data/services/social-media/boost-engage";
-import { OurServices } from "../../../../data/services/social-media/our-services";
-import { Frameworkdata } from "../../../../data/services/social-media/framework";
+import { BannerSection } from "@/backup/service-data/social-media/herosection";
+import { AreaExpertise } from "@/backup/service-data/social-media/area-of-expertise";
+import { boostEngage } from "@/backup/service-data/social-media/boost-engage";
+import { OurServices } from "@/backup/service-data/social-media/our-services";
+import { Frameworkdata } from "@/backup/service-data/social-media/framework";
 import { partnerData } from "../../../../data/partnerData";
-import { Cta } from "../../../../data/services/social-media/cta";
-import { Faq } from "../../../../data/services/social-media/faq";
+import { Cta } from "@/backup/service-data/social-media/cta";
+import { Faq } from "@/backup/service-data/social-media/faq";
 
 interface Canonicals {
   canonical: string;

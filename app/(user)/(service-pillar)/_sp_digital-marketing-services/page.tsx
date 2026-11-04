@@ -24,7 +24,7 @@ import {
   logosdata,
   logosdatas,
   Clientsformsdata,
-} from "../../../data/services/digital-marketing-services/data";
+} from "@/backup/service-data/digital-marketing-services/data";
 
 import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
 import Framework from "../../../components/PerformanceMarketing/Framework";
