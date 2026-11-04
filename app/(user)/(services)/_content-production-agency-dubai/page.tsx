@@ -16,7 +16,7 @@ import {
 } from "../../../components/ContentProduction/data";
 
 import Expertise from "../../../components/EcomIndustry/Expertise";
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
+import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import OurWorks from "@/app/components/Bc-logo/OurWorks";
 

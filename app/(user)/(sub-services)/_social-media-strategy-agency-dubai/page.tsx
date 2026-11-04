@@ -20,7 +20,7 @@ import {
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Results from "../../../components/SocialMediaMarketingDubai/Results";
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
+import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import Specialize from "@/app/components/common/Specialize";

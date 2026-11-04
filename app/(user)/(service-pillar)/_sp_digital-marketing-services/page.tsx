@@ -26,7 +26,7 @@ import {
   Clientsformsdata,
 } from "@/backup/service-data/digital-marketing-services/data";
 
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
+import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import Framework from "../../../components/PerformanceMarketing/Framework";
 
 interface Canonicals {

@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
-import Services from "../../../components/conversion-rate-optimization/ServicesWithHoverbg";
+import Services from "../../../../backup/components/conversion-rate-optimization/ServicesWithHoverbg";
 import Platforms from "../../../components/PerformanceMarketing/Platforms";
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
@@ -14,11 +14,11 @@ import {
   Faq,
   relatedservices,
   Frameworkdata,
-} from "../../../components/conversion-rate-optimization/data";
+} from "../../../../backup/components/conversion-rate-optimization/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
-import Platformimg from "@/app/components/conversion-rate-optimization/WhychooseWithoutSpace";
+import Platformimg from "@/backup/components/conversion-rate-optimization/WhychooseWithoutSpace";
 
 interface Canonicals {
   canonical: string;

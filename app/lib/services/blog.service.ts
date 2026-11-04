@@ -10,10 +10,21 @@ export const getAllBlogs = unstable_cache(
       .sort({ createdAt: -1 })
       .populate("author")
       .lean();
+
+
+      // const blog=blogs.map((blog) => {
+      //   return {
+      //    sluf: blog.slug,
+      //     title: blog.heading,
+      //     thumbnail: blog.thumbnail,
+      //   }})
+      //   console.log('blogs : ',blog);
+      //   console.log('blogs : ',blogs.length);
     return JSON.parse(JSON.stringify(blogs));
   },
   ["all-blogs"],
   { tags: ["blogs"] },
+
 );
 
 export const getBlogBySlug = (slug: string) =>

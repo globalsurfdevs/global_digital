@@ -16,14 +16,14 @@ import {
   Cta,
   Faq,
   relatedservices,
-} from "../../../components/e-commerce-wdd/data";
+} from "../../../../backup/components/e-commerce-wdd/data";
 
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import ExpertServices from "@/app/components/wdd-web-design/ExpertServices";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Expertise from "@/app/components/PerformanceMarketing/Expertise";
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
+import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 
 interface Canonicals {
   canonical: string;

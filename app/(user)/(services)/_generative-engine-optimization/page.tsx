@@ -1,15 +1,15 @@
 import React from "react";
 import HeroSectionType2 from "../../../components/PerformanceMarketing/HeroSectionType2";
-import Services from "../../../components/Geo/RightSideBulletsPoints";
+import Services from "../../../../backup/components/Geo/RightSideBulletsPoints";
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
-import GeoLogoSwiper from "@/app/components/Geo/GeoLogoSwiper";
-import NumberCardGrid from "@/app/components/Geo/NumberCardGrid";
+import GeoLogoSwiper from "@/backup/components/Geo/GeoLogoSwiper";
+import NumberCardGrid from "@/backup/components/Geo/NumberCardGrid";
 import Expertise from "../../../components/PerformanceMarketing/Expertise";
-import IconlineTitle from "@/app/components/Geo/IconlineTtitle";
-import Expertises from "../../../components/Geo/NumberHovImg";
+import IconlineTitle from "@/backup/components/Geo/IconlineTtitle";
+import Expertises from "../../../../backup/components/Geo/NumberHovImg";
 import GeoProcess from "../../../components/PerformanceMarketing/Services";
-import BottomLine from "@/app/components/Geo/BottomLine";
+import BottomLine from "@/backup/components/Geo/BottomLine";
 import Head from "next/head";
 
 import {
@@ -28,7 +28,7 @@ import {
 } from "@/backup/service-data/generative-engine-optimization/data";
 
 import PlatformMarketing from "@/app/components/marketing-strategy-consulting/Platform-marketing";
-import Framework from "@/app/components/Geo/IconsTopContentBelow";
+import Framework from "@/backup/components/Geo/IconsTopContentBelow";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 
 interface Canonicals {

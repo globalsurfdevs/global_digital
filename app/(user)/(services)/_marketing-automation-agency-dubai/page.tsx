@@ -17,7 +17,7 @@ import {
   relatedservices,
 } from "../../../components/MarketingAutomation/data";
 
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
+import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Platforms from "@/app/components/PerformanceMarketing/Platforms";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";

@@ -3,7 +3,7 @@ import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
 import Services from "../../../components/PerformanceMarketing/Services";
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
-import LogoSwiper from "../../../components/CopyWriting/LogoSwiper";
+import LogoSwiper from "../../../../backup/components/CopyWriting/LogoSwiper";
 
 import {
   Matslogo,
@@ -14,9 +14,9 @@ import {
   Faq,
   relatedservices,
   Frameworkdata,
-} from "../../../components/CopyWriting/data";
+} from "../../../../backup/components/CopyWriting/data";
 
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
+import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
 

@@ -13,12 +13,12 @@ import {
   Platformsecomdata,
   Cta,
   Faq,
-} from "../../../components/ContentMarketing/data";
+} from "../../../../backup/components/ContentMarketing/data";
 
-import Platformserver from "@/app/components/e-commerce-wdd/Platformserver";
+import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Platforms from "@/app/components/PerformanceMarketing/Platforms";
-import BecomePartner from "@/app/components/ContentMarketing/BecomePartner";
+import BecomePartner from "@/backup/components/ContentMarketing/BecomePartner";
 
 interface Canonicals {
   canonical: string;
