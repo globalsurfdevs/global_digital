@@ -137,7 +137,13 @@ type PageWithInstagram = {
 export async function exchangeCodeForInstagramConnection(
   config: MetaOAuthConfig,
   code: string,
-): Promise<{ accessToken: string; igUserId: string; username: string }> {
+): Promise<{
+  accessToken: string;
+  igUserId: string;
+  username: string;
+  /** Set when the saved token is a user token, which lasts about 60 days. */
+  expiresAt?: Date;
+}> {
   const first = await graphGet<{ access_token: string }>("/oauth/access_token", {
     client_id: config.appId,
     redirect_uri: config.redirectUri,
@@ -150,8 +156,12 @@ export async function exchangeCodeForInstagramConnection(
   // types (system user) issue a token that needs no exchange, so if Meta
   // refuses, carry on with the token we have.
   let userToken = first.access_token;
+  let userTokenExpiresAt: Date | undefined;
   try {
-    const longLived = await graphGet<{ access_token: string }>(
+    const longLived = await graphGet<{
+      access_token: string;
+      expires_in?: number;
+    }>(
       "/oauth/access_token",
       {
         grant_type: "fb_exchange_token",
@@ -161,44 +171,105 @@ export async function exchangeCodeForInstagramConnection(
       },
     );
     userToken = longLived.access_token;
+    if (longLived.expires_in) {
+      userTokenExpiresAt = new Date(Date.now() + longLived.expires_in * 1000);
+    }
   } catch (error) {
     console.warn("Long-lived token exchange skipped:", error);
   }
 
-  const accounts = await graphGet<{ data?: PageWithInstagram[] }>(
-    "/me/accounts",
-    {
-      fields: "id,name,access_token,instagram_business_account{id,username}",
-      limit: "100",
-      access_token: userToken,
-    },
-  );
-
-  const linked = (accounts.data ?? []).filter(
-    (page) => page.access_token && page.instagram_business_account?.id,
-  );
-  if (linked.length === 0) {
-    throw new OAuthUserError(
-      "No Instagram account found",
-      "We couldn't find an Instagram Business or Creator account linked to a Facebook Page you approved. Please check the account is linked to a Page and try the link again.",
-    );
-  }
   // Guessing between accounts could publish the wrong client's feed.
-  if (linked.length > 1) {
-    throw new OAuthUserError(
+  const tooMany = () =>
+    new OAuthUserError(
       "More than one account found",
       "Several Instagram accounts were approved. Please contact Global Surf so the right one can be connected.",
     );
+
+  // Preferred: an Instagram account linked to an approved Facebook Page. The
+  // Page token it yields doesn't expire. A failure here (e.g. no Page access
+  // granted) isn't fatal, since the fallback below may still succeed.
+  let pages: PageWithInstagram[] = [];
+  try {
+    const accounts = await graphGet<{ data?: PageWithInstagram[] }>(
+      "/me/accounts",
+      {
+        fields: "id,name,access_token,instagram_business_account{id,username}",
+        limit: "100",
+        access_token: userToken,
+      },
+    );
+    pages = accounts.data ?? [];
+  } catch (error) {
+    console.warn("Listing Pages failed:", error);
   }
 
-  const page = linked[0];
-  const igUserId = page.instagram_business_account!.id;
-  const accessToken = page.access_token!;
-  const username =
-    page.instagram_business_account!.username ??
-    (await fetchInstagramUsername({ accessToken, igUserId }));
+  const linked = pages.filter(
+    (page) => page.access_token && page.instagram_business_account?.id,
+  );
+  if (linked.length > 1) throw tooMany();
+  if (linked.length === 1) {
+    const page = linked[0];
+    const igUserId = page.instagram_business_account!.id;
+    const accessToken = page.access_token!;
+    const username =
+      page.instagram_business_account!.username ??
+      (await fetchInstagramUsername({ accessToken, igUserId }));
+    return { accessToken, igUserId, username };
+  }
 
-  return { accessToken, igUserId, username };
+  // Fallback: the approval screen can share an Instagram account through the
+  // business portfolio alone, with no Facebook Page. The token then records
+  // which accounts were granted, and the user token itself reads the feed.
+  const granted = await grantedInstagramIds(config, userToken);
+  if (granted.length > 1) throw tooMany();
+  if (granted.length === 1) {
+    const igUserId = granted[0];
+    let username: string;
+    try {
+      username = await fetchInstagramUsername({
+        accessToken: userToken,
+        igUserId,
+      });
+    } catch {
+      throw new OAuthUserError(
+        "Couldn't read the Instagram account",
+        "The account was approved, but Instagram wouldn't let us read it. Please contact Global Surf.",
+      );
+    }
+    return {
+      accessToken: userToken,
+      igUserId,
+      username,
+      expiresAt: userTokenExpiresAt,
+    };
+  }
+
+  throw new OAuthUserError(
+    "No Instagram account found",
+    `We couldn't find an Instagram Business or Creator account in what was approved. Please check the account is added to the business portfolio you chose and try the link again. (Reference: pages ${pages.length}, accounts 0)`,
+  );
+}
+
+/** Instagram account IDs the login approval granted to this token. */
+async function grantedInstagramIds(
+  config: MetaOAuthConfig,
+  token: string,
+): Promise<string[]> {
+  try {
+    const debug = await graphGet<{
+      data?: { granular_scopes?: { scope: string; target_ids?: string[] }[] };
+    }>("/debug_token", {
+      input_token: token,
+      access_token: `${config.appId}|${config.appSecret}`,
+    });
+    const ids = (debug.data?.granular_scopes ?? [])
+      .filter((entry) => entry.scope.startsWith("instagram"))
+      .flatMap((entry) => entry.target_ids ?? []);
+    return [...new Set(ids)];
+  } catch (error) {
+    console.warn("Reading granted accounts failed:", error);
+    return [];
+  }
 }
 
 const escapeHtml = (text: string) =>
