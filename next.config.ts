@@ -20,6 +20,18 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/scl/**",
       },
+      {
+        protocol: "https",
+        hostname: "**.cdninstagram.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.fbcdn.net",
+        port: "",
+        pathname: "/**",
+      },
     ],
     dangerouslyAllowSVG: true,
     // unoptimized: true,
