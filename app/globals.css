@@ -1526,7 +1526,7 @@ input[type="number"] {
 
 .blog-content h2 {
   color: #0a0a0a;
-  scroll-margin-top: 24px;
+  /* scroll-margin-top: 24px; */
   font-size: clamp(30px, calc(30px + (100vw - 768px) * 0.0781), 65px);
   line-height: 32.7385px;
   font-weight: 400;

@@ -206,6 +206,7 @@ type Props = {
 };
 
 const BlogDetails = ({ dbBlog }: Props) => {
+  
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
 
