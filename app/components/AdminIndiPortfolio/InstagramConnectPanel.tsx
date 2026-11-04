@@ -8,99 +8,17 @@ import type { InstagramPost } from "@/app/lib/integrations/instagram/instagram";
 
 type Connection = {
   username?: string;
+  /** Set when posts are read from the client's public account by username. */
+  discoveryUsername?: string;
   tokenExpiresAt?: string;
   selectedPostIds?: string[];
 } | null;
-
-// Lets a client approve access on their own device: the admin sends them this
-// link, and no token is ever copied or pasted.
-const ClientConnectLink = ({
-  portfolioId,
-  label,
-}: {
-  portfolioId: string;
-  label: string;
-}) => {
-  const [link, setLink] = useState("");
-  const [busy, setBusy] = useState(false);
-
-  const generate = async () => {
-    setBusy(true);
-    try {
-      const res = await fetch("/api/instagram/oauth/link", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ portfolioId }),
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error || "Could not create the link");
-      setLink(json.url);
-    } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : "Could not create the link",
-      );
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(link);
-      toast.success("Link copied");
-    } catch {
-      toast.error("Could not copy. Select the link and copy it manually.");
-    }
-  };
-
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center justify-between gap-4">
-        <p className="text-sm text-gray-600">
-          Or send the client a link so they connect from their own device. They
-          sign in on Instagram; you never see their password.
-        </p>
-        <button
-          type="button"
-          onClick={generate}
-          disabled={busy}
-          className="shrink-0 rounded-md border border-gray-400 px-3 py-1 text-sm text-black disabled:opacity-50"
-        >
-          {label}
-        </button>
-      </div>
-      {link && (
-        <div className="flex gap-2">
-          <input
-            type="text"
-            readOnly
-            value={link}
-            onFocus={(e) => e.currentTarget.select()}
-            className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-sm text-black focus:outline-none"
-          />
-          <button
-            type="button"
-            onClick={copy}
-            className="shrink-0 rounded-md bg-primary px-4 py-1 text-sm text-white"
-          >
-            Copy
-          </button>
-        </div>
-      )}
-      {link && (
-        <p className="text-xs text-gray-500">
-          The link works for 7 days. Anyone who opens it can connect their
-          Instagram account to this portfolio, so send it only to the client.
-        </p>
-      )}
-    </div>
-  );
-};
 
 const InstagramConnectPanel = ({ portfolioId }: { portfolioId: string }) => {
   const [connection, setConnection] = useState<Connection>(null);
   const [token, setToken] = useState("");
   const [igUserId, setIgUserId] = useState("");
+  const [clientUsername, setClientUsername] = useState("");
   const [busy, setBusy] = useState(false);
 
   // Post picker state. `selected` keeps click order, which is display order.
@@ -132,6 +50,28 @@ const InstagramConnectPanel = ({ portfolioId }: { portfolioId: string }) => {
       toast.success(`Connected @${json.username}`);
       setToken("");
       setIgUserId("");
+      await loadStatus();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Connection failed");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  // Reads the client's public posts with the agency account; the client does
+  // nothing. Needs a public Business or Creator account.
+  const connectByUsername = async () => {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/instagram/connection", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ portfolioId, username: clientUsername }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "Connection failed");
+      toast.success(`Showing public posts of @${json.username}`);
+      setClientUsername("");
       await loadStatus();
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Connection failed");
@@ -234,7 +174,10 @@ const InstagramConnectPanel = ({ portfolioId }: { portfolioId: string }) => {
         <div className="mt-2 flex flex-col gap-4">
           <div className="flex items-center justify-between gap-4">
             <p className="text-sm text-black">
-              Connected to <strong>@{connection.username}</strong>.{" "}
+              {connection.discoveryUsername
+                ? "Showing the public posts of "
+                : "Connected to "}
+              <strong>@{connection.username}</strong>.{" "}
               {pickedCount > 0
                 ? `Showing ${pickedCount} hand-picked post${pickedCount === 1 ? "" : "s"}`
                 : "Showing the latest posts"}
@@ -269,11 +212,6 @@ const InstagramConnectPanel = ({ portfolioId }: { portfolioId: string }) => {
               </button>
             </div>
           </div>
-
-          <ClientConnectLink
-            portfolioId={portfolioId}
-            label="Get reconnect link"
-          />
 
           {picking && (
             <div className="flex flex-col gap-3">
@@ -345,8 +283,31 @@ const InstagramConnectPanel = ({ portfolioId }: { portfolioId: string }) => {
       ) : (
         <div className="mt-2 flex flex-col gap-2">
           <p className="text-sm text-gray-600">
-            Paste the client&apos;s Instagram access token. Until connected, the
-            uploaded images below are shown.
+            Enter the client&apos;s Instagram username to show their public
+            posts. The client doesn&apos;t log in or share anything. It must be
+            a public Business or Creator account. Until connected, the uploaded
+            images below are shown.
+          </p>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={clientUsername}
+              onChange={(e) => setClientUsername(e.target.value)}
+              placeholder="Instagram username, e.g. fayizz.ch"
+              className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
+            />
+            <button
+              type="button"
+              onClick={connectByUsername}
+              disabled={busy || !clientUsername.trim()}
+              className="shrink-0 rounded-md bg-primary px-4 py-1 text-sm text-white disabled:opacity-50"
+            >
+              Connect
+            </button>
+          </div>
+          <p className="mt-2 text-sm text-gray-600">
+            Or, for an account that can't be read publicly (such as a private
+            one), paste an access token its owner generated:
           </p>
           <input
             type="text"
@@ -372,10 +333,6 @@ const InstagramConnectPanel = ({ portfolioId }: { portfolioId: string }) => {
               Connect
             </button>
           </div>
-          <ClientConnectLink
-            portfolioId={portfolioId}
-            label="Get client link"
-          />
         </div>
       )}
     </div>
