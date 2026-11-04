@@ -226,9 +226,19 @@ export async function exchangeCodeForInstagramConnection(
   // which accounts were granted, and the user token itself reads the feed.
   const granted = await grantedInstagramIds(config, userToken);
   diagnostics.push(granted.note);
-  if (granted.ids.length > 1) throw tooMany();
-  if (granted.ids.length === 1) {
-    const igUserId = granted.ids[0];
+  let accountIds = granted.ids;
+
+  // System-user tokens list no target accounts on the token itself. Try the
+  // business that was approved instead.
+  if (accountIds.length === 0) {
+    const viaBusiness = await businessInstagramIds(userToken);
+    diagnostics.push(viaBusiness.note);
+    accountIds = viaBusiness.ids;
+  }
+
+  if (accountIds.length > 1) throw tooMany();
+  if (accountIds.length === 1) {
+    const igUserId = accountIds[0];
     let username: string;
     try {
       username = await fetchInstagramUsername({
@@ -257,6 +267,34 @@ export async function exchangeCodeForInstagramConnection(
 
 const briefError = (error: unknown) =>
   (error instanceof Error ? error.message : String(error)).slice(0, 140);
+
+/**
+ * For a system-user token: find the business the client approved, then list the
+ * Instagram accounts that business owns. Meta's docs describe both calls but
+ * don't confirm that accounts shared through login appear in the second.
+ */
+async function businessInstagramIds(
+  token: string,
+): Promise<{ ids: string[]; note: string }> {
+  try {
+    const me = await graphGet<{ client_business_id?: string }>("/me", {
+      fields: "client_business_id",
+      access_token: token,
+    });
+    if (!me.client_business_id) {
+      return { ids: [], note: "business: none on token" };
+    }
+    const owned = await graphGet<{ data?: { id: string }[] }>(
+      `/${me.client_business_id}/owned_instagram_accounts`,
+      { fields: "id", access_token: token },
+    );
+    const ids = (owned.data ?? []).map((account) => account.id);
+    return { ids, note: `business accounts ${ids.length}` };
+  } catch (error) {
+    console.warn("Listing business Instagram accounts failed:", error);
+    return { ids: [], note: `business error: ${briefError(error)}` };
+  }
+}
 
 /** Instagram account IDs the login approval granted to this token. */
 async function grantedInstagramIds(
