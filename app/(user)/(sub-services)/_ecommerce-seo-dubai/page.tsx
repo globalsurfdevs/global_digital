@@ -2,25 +2,25 @@ import React from "react";
 import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
 import Services from "../../../components/PerformanceMarketing/Services";
 import Framework from "../../../components/PerformanceMarketing/Framework";
-import Results from "../../../components/eCommerceSeoDubai/Result";
+import Results from "@/backup/components/sub-services/ecommerce-seo/eCommerceSeoDubai/Result";
 import Platforms from "../../../components/PerformanceMarketing/Platforms";
-import Platformsecom from "../../../components/eCommerceSeoDubai/Platformsecom";
+import Platformsecom from "@/backup/components/sub-services/ecommerce-seo/eCommerceSeoDubai/Platformsecom";
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 
-import { BannerSection } from "@/backup/service-data/seo-ecommerce/herosection";
-import { OurServices } from "@/backup/service-data/seo-ecommerce/our-services";
-import { Frameworkdata } from "@/backup/service-data/seo-ecommerce/framework";
-import { relatedservices } from "@/backup/service-data/seo-ecommerce/relatedservices";
-import { ResultsData } from "@/backup/service-data/seo-ecommerce/results";
-import { Platformsdata } from "@/backup/service-data/seo-ecommerce/platforms";
-import { Platformsecomdata } from "@/backup/service-data/seo-ecommerce/platformsecom";
-import { Wecanhelp } from "@/backup/service-data/seo-ecommerce/wecanhelp";
-import { Cta } from "@/backup/service-data/seo-ecommerce/cta";
-import { Faq } from "@/backup/service-data/seo-ecommerce/faq";
+import { BannerSection } from "@/backup/data/seo-ecommerce/herosection";
+import { OurServices } from "@/backup/data/seo-ecommerce/our-services";
+import { Frameworkdata } from "@/backup/data/seo-ecommerce/framework";
+import { relatedservices } from "@/backup/data/seo-ecommerce/relatedservices";
+import { ResultsData } from "@/backup/data/seo-ecommerce/results";
+import { Platformsdata } from "@/backup/data/seo-ecommerce/platforms";
+import { Platformsecomdata } from "@/backup/data/seo-ecommerce/platformsecom";
+import { Wecanhelp } from "@/backup/data/seo-ecommerce/wecanhelp";
+import { Cta } from "@/backup/data/seo-ecommerce/cta";
+import { Faq } from "@/backup/data/seo-ecommerce/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import { faqSchema, serviceSchema } from "./data";
+import { faqSchema, serviceSchema } from "@/backup/data/sub-services/ecommerce-seo/data";
 
 interface Canonicals {
   canonical: string;

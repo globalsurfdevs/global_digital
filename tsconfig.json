@@ -29,5 +29,5 @@
     ".next/types/**/*.ts",
     "app/components/TinyMce/TinyEditor.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "backup"]
 }

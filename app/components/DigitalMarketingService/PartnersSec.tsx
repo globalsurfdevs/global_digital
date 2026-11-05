@@ -1,8 +1,8 @@
 import React from "react";
 import LogoSwipera from "../MarketingAutomation/AutomationSwiper";
 import LogoSwiper from "./LogoSwiper";
-import { partnersLogoOne } from "@/backup/service-data/digital-marketing-service-kuwait/data";
-import { partnersLogosTwo } from "@/backup/service-data/digital-marketing-service-kuwait/data";
+import { partnersLogoOne } from "@/backup/data/digital-marketing-service-kuwait/data";
+import { partnersLogosTwo } from "@/backup/data/digital-marketing-service-kuwait/data";
 
 export default function PartnersSec() {
   return (

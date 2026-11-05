@@ -3,9 +3,9 @@ import HeroSection from "../../../components/PerformanceMarketing/HeroSection";
 import Services from "../../../components/PerformanceMarketing/Services";
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
-import DigitalServ from "@/app/components/DigitalMarketingService/DigitalSer";
+import DigitalServ from "@/backup/components/service-pillars/digital-marketing-services/DigitalMarketingService/DigitalSer";
 import Boost from "../../../components/PerformanceMarketing/Boost";
-import SuccessStories from "../../../components/DigitalMarketingService/SuccessStories";
+import SuccessStories from "@/backup/components/service-pillars/digital-marketing-services/DigitalMarketingService/SuccessStories";
 import Expertises from "../../../components/EcomIndustry/Expertise";
 import LogoSwiper from "../../../components/DigitalMarketingService/LogoSwiper";
 import { DigitalMarketingServicesSchema } from "../../../components/Schema/OfferCatalog";
@@ -24,7 +24,7 @@ import {
   logosdata,
   logosdatas,
   Clientsformsdata,
-} from "@/backup/service-data/digital-marketing-services/data";
+} from "@/backup/data/service-pillars/digital-marketing-services/data";
 
 import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import Framework from "../../../components/PerformanceMarketing/Framework";

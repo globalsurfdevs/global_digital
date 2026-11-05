@@ -12,7 +12,7 @@ import {
   BannerSection,
   AreaExpertise,
 } from "../../../data/services/bc-graphic-design/herosection";
-import { Clientsformsdata } from "../../../../backup/service-data/bc-logo-design/ourworks";
+import { Clientsformsdata } from "../../../../backup/data/bc-logo-design/ourworks";
 import {
   Whychoosedata,
   Platformimgmdata,

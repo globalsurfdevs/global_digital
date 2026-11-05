@@ -48,8 +48,14 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  const columns = width >= 1220 ? colcount || 4 : width >= 768 ? 2 : 1;
-
+  const columns =
+    width >= 1536
+      ? colcount || 4
+      : width >= 992
+        ? 3
+        : width >= 768
+          ? 2
+          : 1;
   const rows = [];
 
   for (let i = 0; i < data.length; i += columns) {
@@ -153,7 +159,7 @@ const BlackInfoGrid: React.FC<FrameworkSectionProps> = ({
                   }`}
                 >
                   <div
-                    className={`grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-${
+                    className={`grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-${
                       colcount || 4
                     }`}
                   >

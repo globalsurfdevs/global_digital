@@ -15,11 +15,11 @@ import {
   Faq,
   relatedservices,
   Frameworkdata,
-} from "../../../components/programmatic-advertising/data";
+} from "@/backup/data/sub-services/programmatic-advertising/data";
 
 import Expertise from "@/app/components/PerformanceMarketing/Expertise";
 import Testimonials from "@/app/components/HomePage/Testimonials";
-import ExpertServices from "@/app/components/wdd-web-design/ExpertServices";
+import ExpertServices from "@/backup/components/sub-services/programmatic-advertising/wdd-web-design/ExpertServices";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Platformimg from "@/app/components/common/Platformimg";

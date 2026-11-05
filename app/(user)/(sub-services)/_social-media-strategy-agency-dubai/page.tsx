@@ -16,14 +16,14 @@ import {
   relatedservices,
   ResultsData,
   Specializedin,
-} from "@/backup/service-data/social-media-strategy/data";
+} from "@/backup/data/social-media-strategy/data";
 
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 import Results from "../../../components/SocialMediaMarketingDubai/Results";
 import Platformserver from "@/backup/components/e-commerce-wdd/Platformserver";
 import Framework from "@/app/components/PerformanceMarketing/Framework";
 import Testimonials from "@/app/components/HomePage/Testimonials";
-import Specialize from "@/app/components/common/Specialize";
+import Specialize from "@/backup/components/sub-services/social-media-strategy/common/Specialize";
 
 interface Canonicals {
   canonical: string;

@@ -1765,16 +1765,4 @@ input[type="number"] {
 }
 
 
-.custom-list {
- 
-  background-color: rgb(142, 142, 142);
-
-}
-
-.bullet-spacing li::before {
-  content: "•";
-  display: inline-block;
-  margin-right: 19px;
-  color: #77787b;
-}
 

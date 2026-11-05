@@ -7,15 +7,15 @@ import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platfor
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import CtaBox from "../../../components/PerformanceMarketing/CtaBox";
 
-import { BannerSection } from "@/backup/service-data/social-media-management/herosection";
-import { OurServices } from "@/backup/service-data/social-media-management/our-services";
-import { Frameworkdata } from "@/backup/service-data/social-media-management/framework";
-import { relatedservices } from "@/backup/service-data/social-media-management/relatedservices";
-import { Wecanhelp } from "@/backup/service-data/social-media-management/wecanhelp";
-import { Platformsdata } from "@/backup/service-data/social-media-management/platforms";
-import { Platformsecomdata } from "@/backup/service-data/social-media-management/platformsecom";
-import { Cta } from "@/backup/service-data/social-media-management/cta";
-import { Faq } from "@/backup/service-data/social-media-management/faq";
+import { BannerSection } from "@/backup/data/social-media-management/herosection";
+import { OurServices } from "@/backup/data/social-media-management/our-services";
+import { Frameworkdata } from "@/backup/data/social-media-management/framework";
+import { relatedservices } from "@/backup/data/social-media-management/relatedservices";
+import { Wecanhelp } from "@/backup/data/social-media-management/wecanhelp";
+import { Platformsdata } from "@/backup/data/social-media-management/platforms";
+import { Platformsecomdata } from "@/backup/data/social-media-management/platformsecom";
+import { Cta } from "@/backup/data/social-media-management/cta";
+import { Faq } from "@/backup/data/social-media-management/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 

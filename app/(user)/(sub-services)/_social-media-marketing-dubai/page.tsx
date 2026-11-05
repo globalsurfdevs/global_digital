@@ -8,16 +8,16 @@ import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platfor
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 
-import { ResultsData } from "../../../data/services/social-media-marketing-dubai/results";
-import { BannerSection } from "../../../data/services/social-media-marketing-dubai/herosection";
-import { OurServices } from "../../../data/services/social-media-marketing-dubai/our-services";
-import { Frameworkdata } from "../../../data/services/social-media-marketing-dubai/framework";
-import { relatedservices } from "../../../data/services/social-media-marketing-dubai/relatedservices";
+import { ResultsData } from "@/backup/data/sub-services/social-media-marketing/results";
+import { BannerSection } from "@/backup/data/sub-services/social-media-marketing/herosection";
+import { OurServices } from "@/backup/data/sub-services/social-media-marketing/our-services";
+import { Frameworkdata } from "@/backup/data/sub-services/social-media-marketing/framework";
+import { relatedservices } from "@/backup/data/sub-services/social-media-marketing/relatedservices";
 import { Wecanhelp } from "../../../data/services/social-media-marketing-dubai/wecanhelp";
-import { Platformsecomdata } from "../../../data/services/social-media-marketing-dubai/platformsecom";
-import { Platformsdata } from "../../../data/services/social-media-marketing-dubai/platforms";
-import { Cta } from "../../../data/services/social-media-marketing-dubai/cta";
-import { Faq } from "../../../data/services/social-media-marketing-dubai/faq";
+import { Platformsecomdata } from "@/backup/data/sub-services/social-media-marketing/platformsecom";
+import { Platformsdata } from "@/backup/data/sub-services/social-media-marketing/platforms";
+import { Cta } from "@/backup/data/sub-services/social-media-marketing/cta";
+import { Faq } from "@/backup/data/sub-services/social-media-marketing/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
 

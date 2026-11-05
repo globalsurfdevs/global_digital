@@ -8,22 +8,22 @@ import Platforms from "../../../components/PerformanceMarketing/Platforms";
 import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platformsecom";
 import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
-import Paidsearch from "../../../components/PpcAdvertisingAgencyDubai/Paidsearch";
+import Paidsearch from "@/backup/components/sub-services/ppc-advertising/PpcAdvertisingAgencyDubai/Paidsearch";
 
-import { ResultsData } from "../../../../backup/service-data/ppc-advertising/results";
-import { BannerSection } from "../../../../backup/service-data/ppc-advertising/herosection";
-import { OurServices } from "../../../../backup/service-data/ppc-advertising/our-services";
-import { Frameworkdata } from "../../../../backup/service-data/ppc-advertising/framework";
-import { relatedservices } from "../../../../backup/service-data/ppc-advertising/relatedservices";
-import { Paidsearchdata } from "../../../../backup/service-data/ppc-advertising/Paidsearchdata";
-import { Wecanhelp } from "../../../../backup/service-data/ppc-advertising/wecanhelp";
-import { Platformsecomdata } from "../../../../backup/service-data/ppc-advertising/platformsecom";
-import { Cta } from "../../../../backup/service-data/ppc-advertising/cta";
-import { Faq } from "../../../../backup/service-data/ppc-advertising/faq";
+import { ResultsData } from "../../../../backup/data/ppc-advertising/results";
+import { BannerSection } from "../../../../backup/data/ppc-advertising/herosection";
+import { OurServices } from "../../../../backup/data/ppc-advertising/our-services";
+import { Frameworkdata } from "../../../../backup/data/ppc-advertising/framework";
+import { relatedservices } from "../../../../backup/data/ppc-advertising/relatedservices";
+import { Paidsearchdata } from "../../../../backup/data/ppc-advertising/Paidsearchdata";
+import { Wecanhelp } from "../../../../backup/data/ppc-advertising/wecanhelp";
+import { Platformsecomdata } from "../../../../backup/data/ppc-advertising/platformsecom";
+import { Cta } from "../../../../backup/data/ppc-advertising/cta";
+import { Faq } from "../../../../backup/data/ppc-advertising/faq";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
-import { Platformsdata } from "../../../../backup/service-data/ppc-advertising/platforms";
+import Slider from "@/backup/components/shared/PpcAdvertisingAgencyDubai/Slider";
+import { Platformsdata } from "../../../../backup/data/ppc-advertising/platforms";
 
 import FaqSchema from "../../../components/Schema/FaqSchemad";
 

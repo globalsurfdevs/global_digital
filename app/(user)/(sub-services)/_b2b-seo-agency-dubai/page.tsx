@@ -7,23 +7,23 @@ import FAQ from "../../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../../components/PerformanceMarketing/GetInTouch";
 import Results from "../../../components/PerformanceMarketing/Results";
 import Platformsecom from "../../../components/PpcAdvertisingAgencyDubai/Platformsecom";
-import ProfileCard from "@/app/components/B2bSeo/ProfileCard";
-import SuccessStories from "../../../components/IndConstruction/SucessStories";
+import ProfileCard from "@/backup/components/sub-services/b2b-seo/B2bSeo/ProfileCard";
+import SuccessStories from "@/backup/components/sub-services/b2b-seo/IndConstruction/SucessStories";
 
-import { ResultsData } from "../../../../backup/b2b-seo/results";
-import { BannerSection } from "../../../../backup/b2b-seo/herosection";
-import { Clientsformsdata } from "../../../../backup/b2b-seo/clientsstories";
-import { OurServices } from "../../../../backup/b2b-seo/our-services";
-import { Frameworkdata } from "../../../../backup/b2b-seo/framework";
-import { relatedservices } from "../../../../backup/b2b-seo/relatedservices";
-import { Wecanhelp } from "../../../../backup/b2b-seo/wecanhelp";
-import { Platformsecomdata } from "../../../../backup/b2b-seo/platformsecom";
-import { Cta } from "../../../../backup/b2b-seo/cta";
-import { Faq } from "../../../../backup/b2b-seo/faq";
-import { Platformsdata } from "../../../../backup/b2b-seo/platforms";
+import { ResultsData } from "../../../../backup/data/sub-services/b2b-seo/results";
+import { BannerSection } from "../../../../backup/data/sub-services/b2b-seo/herosection";
+import { Clientsformsdata } from "../../../../backup/data/sub-services/b2b-seo/clientsstories";
+import { OurServices } from "../../../../backup/data/sub-services/b2b-seo/our-services";
+import { Frameworkdata } from "../../../../backup/data/sub-services/b2b-seo/framework";
+import { relatedservices } from "../../../../backup/data/sub-services/b2b-seo/relatedservices";
+import { Wecanhelp } from "../../../../backup/data/sub-services/b2b-seo/wecanhelp";
+import { Platformsecomdata } from "../../../../backup/data/sub-services/b2b-seo/platformsecom";
+import { Cta } from "../../../../backup/data/sub-services/b2b-seo/cta";
+import { Faq } from "../../../../backup/data/sub-services/b2b-seo/faq";
+import { Platformsdata } from "../../../../backup/data/sub-services/b2b-seo/platforms";
 import Testimonials from "@/app/components/HomePage/Testimonials";
 import RelatedServices from "@/app/components/eCommerceSeoDubai/RelatedServices";
-import Slider from "@/app/components/PpcAdvertisingAgencyDubai/Slider";
+import Slider from "@/backup/components/shared/PpcAdvertisingAgencyDubai/Slider";
 import { getHome } from "@/app/lib/services/home.service";
 
 interface Canonicals {
