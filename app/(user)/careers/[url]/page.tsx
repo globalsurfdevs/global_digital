@@ -1,7 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import { career } from "../../../data/career";
 import Link from "next/link";
 import Button from "@/app/components/Button/Button";
 import { notFound } from "next/navigation";

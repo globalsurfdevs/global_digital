@@ -4,8 +4,7 @@ import HeroSection from "../../components/BrandingAndPositioning/HeroSection";
 import Testimonials from "../../components/HomePage/Testimonials";
 import FAQ from "../../components/PerformanceMarketing/FAQ";
 import GetInTouch from "../../components/PerformanceMarketing/GetInTouch";
-import { Cta } from "../../data/services/performance-marketing/cta";
-import { Faq } from "../../data/services/performance-marketing/faq";
+
 import TitleDesc from "../../components/BrandingAndPositioning/TitleDesc";
 import ImgDesc from "../../components/BrandingAndPositioning/ImgDesc";
 import GrayParaSec from "../../components/BrandingAndPositioning/GrayParaSec";
@@ -25,7 +24,7 @@ import WhyChoose from "@/app/components/BrandingAndPositioning/WhyChoose";
 import { whyChooseData } from "../../data/services/branding-and-positioning-agency-in-dubai/data";
 import CaseSudiesSec from "@/app/components/BrandingAndPositioning/CaseSudiesSec";
 // import { getService } from "@/app/lib/services.service";
-import { data } from "@/app/data/llmWorksData";
+// import { data } from "@/app/data/llmWorksData";
 // import { getTestimonials } from "@/app/lib/testimonials";
 // import { ServiceItem } from "./type";
 // import { Metadata } from "next";
@@ -384,13 +383,6 @@ interface PageProps {
 const noIndexSlugs = [
   // "b2b-seo-agency-dubai",
   // "ecommerce-seo-services-dubai",
-  "programmatic-advertising-agency-dubai",
-  "social-media-strategy-agency-dubai",
-  "social-media-marketing-dubai",
-  // "influencer-marketing-agency-dubai",
-  // "local-seo-services-dubai",
-  // "ppc-advertising-agency-dubai",
-  "social-media-management-agency",
 ];
 
 export async function generateMetadata({

@@ -1,5 +1,4 @@
 import { assets } from "@/public/assets/assets";
-import { url } from "inspector";
 
 export const BannerSection = [
   {
