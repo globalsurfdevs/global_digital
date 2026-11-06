@@ -19,7 +19,6 @@ const SocialMedia = ({ data }: { data: { portfolio: Portfolio } }) => {
     const updateOffset = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        console.log(containerRef.current.getBoundingClientRect());
         setLeftOffset(rect.left + 15);
       }
     };

@@ -17,10 +17,10 @@ export default function CareerDetailsPage() {
   }
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState("");
-  const [fileName, setFileName] = useState(""); // This will hold the file name if you're using a file input.
+  const [fileName, setFileName] = useState(""); 
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files ? e.target.files[0] : null; // Safely access files
+    const selectedFile = e.target.files ? e.target.files[0] : null; 
 
     if (selectedFile) {
       setFile(selectedFile);
