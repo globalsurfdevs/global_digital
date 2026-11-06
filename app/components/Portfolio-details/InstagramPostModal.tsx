@@ -121,7 +121,30 @@ const InstagramPostModal = ({
 
   const current = items?.[index];
   const alt = post.caption?.slice(0, 100) || "Instagram post";
-  const mediaClass = "max-h-[90vh] w-full object-contain";
+
+  // Which piece of media is on screen, so the spinner starts afresh each time
+  // the picture, video or post changes.
+  const mediaKey = current
+    ? `${index}:${current.videoUrl ?? current.image}`
+    : `embed:${embed ?? post.image}`;
+  const [loadedKey, setLoadedKey] = useState<string | null>(null);
+  const [failedKey, setFailedKey] = useState<string | null>(null);
+  const loaded = loadedKey === mediaKey;
+  const failed = failedKey === mediaKey;
+  const markLoaded = () => setLoadedKey(mediaKey);
+  const markFailed = () => setFailedKey(mediaKey);
+
+  // The media fills the fixed-size box, so the modal never changes size between
+  // pictures of different shapes or while something loads.
+  const mediaClass = "h-full w-full object-contain";
+  const fadeIn = `transition-opacity duration-200 ${
+    loaded ? "opacity-100" : "opacity-0"
+  }`;
+
+  // A cached image can finish loading before React attaches onLoad.
+  const imageRef = (img: HTMLImageElement | null) => {
+    if (img?.complete && img.naturalWidth > 0) setLoadedKey(mediaKey);
+  };
 
   return createPortal(
     <div
@@ -136,7 +159,7 @@ const InstagramPostModal = ({
         aria-modal="true"
         aria-label="Instagram post"
         tabIndex={-1}
-        className="relative flex max-h-[94vh] w-full max-w-3xl items-center justify-center overflow-hidden bg-black outline-none"
+        className="relative flex h-[85vh] max-h-[820px] w-full max-w-3xl items-center justify-center overflow-hidden bg-black outline-none"
       >
         <button
           type="button"
@@ -147,42 +170,71 @@ const InstagramPostModal = ({
           ×
         </button>
 
-        <div className="relative flex min-h-[240px] w-full items-center justify-center bg-black">
+        <div className="relative flex h-full w-full items-center justify-center bg-black">
           {current ? (
             current.videoUrl ? (
               <video
-                key={current.videoUrl}
+                key={mediaKey}
                 src={current.videoUrl}
                 poster={current.image || undefined}
                 controls
                 playsInline
                 preload="metadata"
+                onLoadedData={markLoaded}
+                onError={markFailed}
                 className={mediaClass}
               />
             ) : (
               // A plain img keeps each picture's own proportions at any size.
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                key={current.image}
+                key={mediaKey}
+                ref={imageRef}
                 src={current.image}
                 alt={alt}
-                className={mediaClass}
+                onLoad={markLoaded}
+                onError={markFailed}
+                className={`${mediaClass} ${fadeIn}`}
               />
             )
           ) : embed ? (
-            <div className="flex h-[85vh] w-full justify-center">
+            <div className="flex h-full w-full justify-center">
               <iframe
+                key={mediaKey}
                 src={embed}
                 title="Instagram video"
                 allow="encrypted-media; fullscreen; picture-in-picture"
                 allowFullScreen
-                loading="lazy"
-                className="h-full w-full max-w-[540px] border-0 bg-white"
+                onLoad={markLoaded}
+                className="h-full w-full max-w-[540px] border-0"
               />
             </div>
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={post.image} alt={alt} className={mediaClass} />
+            <img
+              key={mediaKey}
+              ref={imageRef}
+              src={post.image}
+              alt={alt}
+              onLoad={markLoaded}
+              onError={markFailed}
+              className={`${mediaClass} ${fadeIn}`}
+            />
+          )}
+
+          {!loaded && !failed && (
+            <div
+              role="status"
+              aria-label="Loading"
+              className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
+            >
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-white" />
+            </div>
+          )}
+          {failed && (
+            <p className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center text-sm text-white/80">
+              This couldn&apos;t be loaded.
+            </p>
           )}
 
           {count > 1 && (

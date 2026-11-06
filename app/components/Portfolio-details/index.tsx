@@ -25,7 +25,13 @@ import { assets } from "@/public/assets/assets";
 import { Gauge, ShieldCheck } from "lucide-react";
 import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
 
-const PortfolioDetails = ({ data, endpoint, successStories,instagramPosts }: any) => {
+const PortfolioDetails = ({
+  data,
+  endpoint,
+  successStories,
+  instagramPosts,
+  instagramFlush,
+}: any) => {
   // const { companyName } = useParams()
 
   // const parseJSON = (value: any) => {
@@ -183,10 +189,14 @@ const PortfolioDetails = ({ data, endpoint, successStories,instagramPosts }: any
         <Goals data={data} companyName={data.companyName?.toString() ?? null} />
         <YtVideo data={data} />
         {data?.portfolio.section == "case study new" &&
-          // Only the /v2 pages pass `instagramPosts`; every other page keeps the
-          // original section with the uploaded images.
+          // Only the /v2 and /v3 pages pass `instagramPosts`; every other page
+          // keeps the original section with the uploaded images.
           (instagramPosts !== undefined ? (
-            <SocialMediaInstagram data={data} instagramPosts={instagramPosts} />
+            <SocialMediaInstagram
+              data={data}
+              instagramPosts={instagramPosts}
+              flush={instagramFlush === true}
+            />
           ) : (
             <SocialMedia data={data} />
           ))}
