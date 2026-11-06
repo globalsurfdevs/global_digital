@@ -17,6 +17,7 @@ import CtaDetailsTwo from "./CtaDetailsTwo";
 import WhatWeDelivered from "./WhatWeDelivered";
 import YtVideo from "./YtVideo";
 import SocialMedia from "./SocialMedia";
+import SocialMediaInstagram from "./SocialMediaInstagram";
 import portfolioListRaw from "@/portfolios_rows_converted.json";
 import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 
@@ -24,7 +25,13 @@ import { assets } from "@/public/assets/assets";
 import { Gauge, ShieldCheck } from "lucide-react";
 import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
 
-const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
+const PortfolioDetails = ({
+  data,
+  endpoint,
+  successStories,
+  instagramPosts,
+  instagramFlush,
+}: any) => {
   // const { companyName } = useParams()
 
   // const parseJSON = (value: any) => {
@@ -181,9 +188,18 @@ const PortfolioDetails = ({ data, endpoint, successStories }: any) => {
         <HeroSection data={data} />
         <Goals data={data} companyName={data.companyName?.toString() ?? null} />
         <YtVideo data={data} />
-        {data?.portfolio.section == "case study new" && (
-          <SocialMedia data={data} />
-        )}
+        {data?.portfolio.section == "case study new" &&
+          // Only the /v2 and /v3 pages pass `instagramPosts`; every other page
+          // keeps the original section with the uploaded images.
+          (instagramPosts !== undefined ? (
+            <SocialMediaInstagram
+              data={data}
+              instagramPosts={instagramPosts}
+              flush={instagramFlush === true}
+            />
+          ) : (
+            <SocialMedia data={data} />
+          ))}
         <Result data={data} successStories={successStories} />
       </>
     );
