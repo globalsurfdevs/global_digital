@@ -11,23 +11,49 @@ export type InstagramCredentials = {
   igUserId?: string;
 };
 
+/** One picture or video inside a post. */
+export type InstagramMediaItem = {
+  /** The picture, or a still frame for a video. May be empty for a video. */
+  image: string;
+  /** Present only when Instagram supplied a playable file for the video. */
+  videoUrl?: string;
+};
+
 export type InstagramPost = {
   id: string;
+  /** Cover picture; for a video, its still frame. */
   image: string;
   permalink: string;
   caption?: string;
   mediaType: string;
   timestamp: string;
+  /**
+   * The video file for a single-video post. Instagram withholds it for other
+   * accounts' videos and reels, so this is often missing.
+   */
+  videoUrl?: string;
+  /** Every picture and video of a multi-image post, in order. */
+  children?: InstagramMediaItem[];
+};
+
+type RawMediaType = "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+
+type RawChild = {
+  id: string;
+  media_type: RawMediaType;
+  media_url?: string;
+  thumbnail_url?: string;
 };
 
 type RawMedia = {
   id: string;
   caption?: string;
-  media_type: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+  media_type: RawMediaType;
   media_url?: string;
   thumbnail_url?: string;
   permalink: string;
   timestamp: string;
+  children?: { data?: RawChild[] };
 };
 
 function endpointFor({ igUserId }: InstagramCredentials) {
@@ -59,7 +85,7 @@ export async function fetchInstagramPosts(
 ): Promise<InstagramPost[]> {
   const params = new URLSearchParams({
     fields:
-      "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp",
+      "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,children{id,media_type,media_url,thumbnail_url}",
     limit: String(limit),
     access_token: credentials.accessToken,
   });
@@ -81,15 +107,28 @@ export async function fetchInstagramPosts(
   return (json.data ?? []).map(toPost).filter((post) => post.image);
 }
 
+// Videos expose a still frame as thumbnail_url; media_url is the video file.
+const toMediaItem = (item: RawChild): InstagramMediaItem => ({
+  image:
+    (item.media_type === "VIDEO" ? item.thumbnail_url : item.media_url) ?? "",
+  videoUrl: item.media_type === "VIDEO" ? item.media_url : undefined,
+});
+
 const toPost = (item: RawMedia): InstagramPost => ({
   id: item.id,
-  // Videos expose a still frame as thumbnail_url; media_url is the video file.
   image:
     (item.media_type === "VIDEO" ? item.thumbnail_url : item.media_url) ?? "",
   permalink: item.permalink,
   caption: item.caption,
   mediaType: item.media_type,
   timestamp: item.timestamp,
+  videoUrl: item.media_type === "VIDEO" ? item.media_url : undefined,
+  children:
+    item.media_type === "CAROUSEL_ALBUM"
+      ? (item.children?.data ?? [])
+          .map(toMediaItem)
+          .filter((child) => child.image || child.videoUrl)
+      : undefined,
 });
 
 /** Instagram handles: letters, numbers, dots and underscores, up to 30. */
@@ -122,7 +161,7 @@ export async function fetchBusinessDiscoveryPosts(
     throw new Error("Invalid Instagram username");
   }
 
-  const request = (withThumbnail: boolean) => {
+  const request = (extended: boolean) => {
     const mediaFields = [
       "id",
       "caption",
@@ -130,7 +169,10 @@ export async function fetchBusinessDiscoveryPosts(
       "media_url",
       "permalink",
       "timestamp",
-      ...(withThumbnail ? ["thumbnail_url"] : []),
+      // Video still frames, and every picture or video of a multi-image post.
+      ...(extended
+        ? ["thumbnail_url", "children{id,media_type,media_url,thumbnail_url}"]
+        : []),
     ].join(",");
     const params = new URLSearchParams({
       fields: `business_discovery.username(${username}){media.limit(${limit}){${mediaFields}}}`,
@@ -141,8 +183,9 @@ export async function fetchBusinessDiscoveryPosts(
     });
   };
 
-  // thumbnail_url may not be offered here; if Meta rejects the field list,
-  // retry without it. Videos without a still frame are then left out.
+  // If Meta ever rejects the extended field list, retry with the basic one.
+  // Videos then have no still frame and are left out, and multi-image posts
+  // show only their first picture.
   let res = await request(true);
   if (res.status === 400) res = await request(false);
   if (!res.ok) {
