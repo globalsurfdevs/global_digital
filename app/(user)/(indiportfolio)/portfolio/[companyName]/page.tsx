@@ -2,7 +2,6 @@ import React from "react";
 import PortfolioDetails from "@/app/components/Portfolio-details";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
 import { Metadata } from "next";
-import { getInstagramFeed } from "@/app/lib/integrations/instagram/getInstagramFeed";
 import {
   getCaseStudyOrPortfolio,
   getSuccessStoriesPortfolios,
@@ -100,17 +99,12 @@ const page = async ({
     relatedPortfolioIds: data.portfolio.relatedPortfolios?.portfolio,
   });
 
-  // Fetched on the server so the feed is in the first HTML (no flash of the
-  // uploaded images, and crawlers see it). Empty when Instagram isn't connected.
-  const instagramPosts = await getInstagramFeed(String(data.portfolio._id));
-
   return (
     <>
       <PortfolioDetails
         data={data}
         endpoint={companyName}
         successStories={successStories}
-        instagramPosts={instagramPosts}
       />
     </>
   );
