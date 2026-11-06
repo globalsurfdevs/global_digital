@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import PortfolioDetails from "@/app/components/Portfolio-details";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
 import {
@@ -8,26 +9,32 @@ import {
 } from "@/app/actions/getCaseStudy";
 import { getInstagramFeed } from "@/app/lib/integrations/instagram/getInstagramFeed";
 
-// /portfolio/<slug>/v2: the same page as /portfolio/<slug>, with the Social
-// Media section reading the client's live Instagram posts. The address without
-// /v2 is untouched and keeps showing the uploaded images.
+// /portfolio/<slug>/<variant>: the same page as /portfolio/<slug>, with the
+// Social Media section reading the client's live Instagram posts. The address
+// without a suffix is untouched and keeps showing the uploaded images.
+//
+//   v2: posts inside the usual padded grey frame
+//   v3: posts edge to edge, without the padding
+const VARIANTS = ["v2", "v3"];
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ companyName: string }>;
+  params: Promise<{ companyName: string; variant: string }>;
 }): Promise<Metadata> {
-  const { companyName } = await params;
+  const { companyName, variant } = await params;
+  // A second copy of the page must not compete with the original in search.
+  const robots = { index: false, follow: false };
+  if (!VARIANTS.includes(variant)) return { robots };
+
   const slug = formatLinkForPortfolio(companyName);
   const data = await getCaseStudyOrPortfolio(companyName, "portfolio");
   const portfolio = data?.portfolio;
-  const title =
-    portfolio?.seo?.metaTitle || portfolio?.metaTitle;
+  const title = portfolio?.seo?.metaTitle || portfolio?.metaTitle;
 
   return {
     title: title && title !== "null" ? title : "Global Surf Digital",
-    // A second copy of the page must not compete with the original in search.
-    robots: { index: false, follow: false },
+    robots,
     alternates: { canonical: `https://www.globalsurf.ae/portfolio/${slug}` },
   };
 }
@@ -35,9 +42,11 @@ export async function generateMetadata({
 const page = async ({
   params,
 }: {
-  params: Promise<{ companyName: string }>;
+  params: Promise<{ companyName: string; variant: string }>;
 }) => {
-  const { companyName } = await params;
+  const { companyName, variant } = await params;
+  if (!VARIANTS.includes(variant)) notFound();
+
   const endpoint =
     companyName === "sobha-constructions-v2"
       ? "sobha-constructions"
@@ -64,6 +73,7 @@ const page = async ({
       endpoint={companyName}
       successStories={successStories}
       instagramPosts={instagramPosts}
+      instagramFlush={variant === "v3"}
     />
   );
 };

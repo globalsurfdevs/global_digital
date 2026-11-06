@@ -88,9 +88,12 @@ const badgeFor = (post: InstagramPost): Badge | undefined => {
 const SocialMediaInstagram = ({
   data,
   instagramPosts,
+  flush = false,
 }: {
   data: { portfolio: Portfolio };
   instagramPosts: InstagramPost[];
+  /** Show each post edge to edge, without the padded grey frame around it. */
+  flush?: boolean;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [leftOffset, setLeftOffset] = useState(0);
@@ -183,7 +186,11 @@ const SocialMediaInstagram = ({
                   const post = item.post;
                   return (
                     <SwiperSlide key={post?.id ?? index}>
-                      <div className="flex min-h-[30px] min-w-[30px] bg-[#F2F2F2] p-5 duration-200 ease-linear lg:min-h-[50px] lg:min-w-[50px] xl:p-[40px]">
+                      <div
+                        className={`flex min-h-[30px] min-w-[30px] duration-200 ease-linear lg:min-h-[50px] lg:min-w-[50px] ${
+                          flush ? "" : "bg-[#F2F2F2] p-5 xl:p-[40px]"
+                        }`}
+                      >
                         <div className="h-full w-full">
                           {post ? (
                             // Opens the post in a modal instead of leaving the site.

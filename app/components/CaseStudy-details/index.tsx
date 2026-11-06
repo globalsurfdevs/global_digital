@@ -10,7 +10,7 @@ import { CaseStudy } from "@/app/types/CaseStudy";
 import { CaseStudyHighlights } from "@/app/types/CaseStudyHighlights";
 import PortfolioDetails from "@/app/components/Portfolio-details";
 
-const CaseStudyPage = ({ data, instagramPosts }: any) => {
+const CaseStudyPage = ({ data, instagramPosts, instagramFlush }: any) => {
   // const [data, setData] = useState<{ caseStudy: CaseStudy, caseStudyHighlights: CaseStudyHighlights[] } | null>(null)
 
   // const { companyName } = useParams()
@@ -47,7 +47,11 @@ const CaseStudyPage = ({ data, instagramPosts }: any) => {
   if (data.portfolio?.slug == "quad-dream") {
     return (
       <>
-        <PortfolioDetails data={data} instagramPosts={instagramPosts} />
+        <PortfolioDetails
+          data={data}
+          instagramPosts={instagramPosts}
+          instagramFlush={instagramFlush}
+        />
       </>
     );
   } else {
