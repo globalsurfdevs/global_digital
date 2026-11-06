@@ -17,7 +17,7 @@ const LetsTalk: React.FC<LetsTalkProps> = ({ onClose }) => {
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  console.log("Entered email:", formData.Email);
+
 
   const handleChange = (
     e: React.ChangeEvent<

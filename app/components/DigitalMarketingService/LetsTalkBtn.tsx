@@ -9,7 +9,6 @@ const lexend = Lexend({
 export default function LetsTalkBtn() {
   const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
-    console.log("modalOpen", modalOpen);
     if (modalOpen) {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";

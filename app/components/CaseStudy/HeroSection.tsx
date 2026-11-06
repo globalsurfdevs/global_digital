@@ -12,7 +12,6 @@ const HeroSection = ({
     caseStudy: CaseStudy;
   } | null;
 }) => {
-  console.log(data);
   if (!data) {
     return null;
   }

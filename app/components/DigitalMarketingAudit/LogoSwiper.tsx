@@ -14,7 +14,7 @@ interface LogoSwiperProps {
   }[];
 }
 const LogoSwiper = ({ logoSwiper }: LogoSwiperProps) => {
-  console.log(logoSwiper);
+
   return (
     <div className="perf-slide">
       <Swiper

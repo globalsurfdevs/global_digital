@@ -14,9 +14,7 @@ const Goals = ({
   } | null;
   companyName: string | null;
 }) => {
-  console.log("CompanyName", companyName !== "bec-arabia");
 
-  console.log("section", data);
 
   return (
     <>

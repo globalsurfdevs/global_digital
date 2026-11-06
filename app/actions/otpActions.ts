@@ -54,7 +54,8 @@ export async function updateHrPassword(
 ) {
   try {
     const session = await auth();
-    if ((session?.user as any)?.role !== "admin" || !session.user.id) {
+    const sessionUser = session?.user as { id?: string; role?: string } | null;
+    if (sessionUser?.role !== "admin" || !sessionUser?.id) {
       return { success: false, message: "Not authorized." };
     }
     if (!isStrongEnough(newPassword)) {
@@ -65,7 +66,7 @@ export async function updateHrPassword(
     }
 
     await connectDB();
-    const adminUser: any = await User.findById(session.user.id).select(
+    const adminUser: any = await User.findById(sessionUser.id).select(
       "+password",
     );
     if (!adminUser || adminUser.isActive === false) {
