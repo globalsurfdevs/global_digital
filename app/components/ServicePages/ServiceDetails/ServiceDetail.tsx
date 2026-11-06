@@ -14,7 +14,7 @@ import ButtonSlider from "../../BrandingAndPositioning/ButtonSlider";
 import WhyChoose from "../../BrandingAndPositioning/WhyChoose";
 import type { ServiceItem } from "./serviceDetails.type";
 import WorkIn from "../../common/WorkIn";
-import { SubServiceData } from "@/app/(user)/[slug]/type";
+import { SubServiceData } from "@/app/(user)/(services)/[slug]/type";
 
 interface Props {
   service: ServiceItem | SubServiceData;

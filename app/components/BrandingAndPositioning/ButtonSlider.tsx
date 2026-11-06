@@ -124,7 +124,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { ServiceItem } from "@/app/(user)/[slug]/type";
+import { ServiceItem } from "@/app/(user)/(services)/[slug]/type";
 import { moveUp } from "../animations/motionVariants";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -179,7 +179,6 @@ const ButtonSlider = ({ data }: { data: ServiceItem["tenthSection"] }) => {
           className="flex-1 cursor-grab overflow-hidden"
         >
           <Swiper
-          
             modules={[Autoplay]}
             slidesPerView="auto"
             slidesPerGroup={1}
