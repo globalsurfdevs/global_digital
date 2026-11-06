@@ -25,10 +25,10 @@ const SectionTwo = () => {
             <div className="col-span-2 mb-5 xl:mb-0"></div>
             <div className="col-span-5 w-full">
               <h2 className="title-65 mb-[40px]">
-                What "strong digital presence" actually means for contractors
+                What &quot;strong digital presence&quot; actually means for contractors
               </h2>
               <p className="mt-4 text-font19 text-[#77787B]">
-                "Digital presence" sounds vague. Here is exactly what it means
+                &quot;Digital presence&quot; sounds vague. Here is exactly what it means
                 for UAE construction contractors, broken down into the
                 components that actually move the needle with tender committees.
               </p>

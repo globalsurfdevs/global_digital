@@ -55,7 +55,7 @@ const SectionFive = () => {
                           activity
                         </li>
                         <li>
-                          Review the top three competitors' digital presence for
+                          Review the top three competitors&apos; digital presence for
                           comparison
                         </li>
                       </ul>

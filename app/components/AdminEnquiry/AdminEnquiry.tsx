@@ -12,6 +12,8 @@ import {
   SectionCard,
   adminButtonClass,
 } from "@/app/components/AdminUI";
+import AdminTabs from "@/app/components/AdminUI/AdminTabs";
+import EnquiryDashboard from "./EnquiryDashboard";
 
 type Enquiry = {
   _id: string;
@@ -38,6 +40,7 @@ const AdminEnquiry = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
+  const [activeTab, setActiveTab] = useState("dashboard");
   const [isLoading, setIsLoading] = useState(true);
   const [fromDate, setFromDate] = useState<string>("");
   const [toDate, setToDate] = useState<string>("");
@@ -54,6 +57,8 @@ const AdminEnquiry = () => {
   };
 
   useEffect(() => {
+    if (activeTab !== "list") return;
+
     const fetchEnquiriesData = async () => {
       setIsLoading(true);
       try {
@@ -79,7 +84,7 @@ const AdminEnquiry = () => {
     };
 
     fetchEnquiriesData();
-  }, [page, refetch]);
+  }, [page, refetch, activeTab]);
 
   const toggleSelectAll = () => {
     if (selectedIds.length === enquiries.length) {
@@ -121,8 +126,8 @@ const AdminEnquiry = () => {
       <div className="flex flex-col gap-6">
         <PageHeader
           title="Enquiries"
-          description="Contact form submissions from the website. Filter by date or select rows to delete."
-          actions={
+          description="Review contact enquiries, activity trends and follow-up reminders."
+          actions={activeTab === "list" ? (
             <>
               <div>
                 {selectedIds.length > 0 && (
@@ -174,9 +179,18 @@ const AdminEnquiry = () => {
                 </button>
               </div>
             </>
-          }
+          ) : undefined}
         />
-        <SectionCard title="All enquiries" bodyClassName="p-0">
+        <AdminTabs
+          active={activeTab}
+          onChange={setActiveTab}
+          tabs={[
+            { key: "dashboard", label: "Dashboard" },
+            { key: "list", label: "Enquiries" },
+          ]}
+        />
+        {activeTab === "dashboard" && <EnquiryDashboard />}
+        {activeTab === "list" && <SectionCard title="All enquiries" bodyClassName="p-0">
           {isLoading ? (
             <div className="flex min-h-[200px] items-center justify-center p-5">
               <div className="loader text-sm text-slate-500 dark:text-slate-400">
@@ -264,9 +278,9 @@ const AdminEnquiry = () => {
               <EmptyState title="No enquiries available" />
             </div>
           )}
-        </SectionCard>
+        </SectionCard>}
 
-        {selectedEnquiry && (
+        {activeTab === "list" && selectedEnquiry && (
           <div
             className="relative z-10"
             aria-labelledby="modal-title"
@@ -366,7 +380,7 @@ const AdminEnquiry = () => {
         )}
       </div>
 
-      {enquiries && enquiries.length > 0 && (
+      {activeTab === "list" && enquiries && enquiries.length > 0 && (
         <div className="flex justify-center pb-4">
           <SmartPagination
             page={page}

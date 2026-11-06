@@ -71,7 +71,7 @@ export const dynamic = "force-dynamic";
 
 const page = async () => {
   const author = await getAuthorById("6a4b912e480d65685cc374f5");
-  console.log("Author data:", author);
+
 
   return (
     <div className="relative">

@@ -36,9 +36,9 @@ const page = () => {
               <strong>www.globalsurf.ae</strong> (Website){" "}
             </p>
             <p>
-              These Terms and Conditions ("Terms") govern your use of our
-              website, globalsurf.ae (the "Website"), and the services provided
-              by Global Surf Digital Media ("GS digital," "we," "us," or "our").
+              These Terms and Conditions (&quot;Terms&quot;) govern your use of our
+              website, globalsurf.ae (the &quot;Website&quot;), and the services provided
+              by Global Surf Digital Media (&quot;GS digital,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
               By accessing or using our Website and services, you agree to
               comply with these Terms. If you do not agree, you must discontinue
               use immediately.

@@ -26,7 +26,7 @@ const Twosecblog: React.FC = ({}) => {
 
             <p className="mb-4 text-font19 text-[#77787B]">
               Create content clusters around every core topic your UAE buyers
-              search for. A single page on 'company formation in Dubai' is not
+              search for. A single page on &apos;company formation in Dubai&apos; is not
               enough. Build a hub with supporting pages on free zone vs
               mainland, visa eligibility, cost comparisons, and timelines. AI
               systems favour sources that demonstrate comprehensive authority on
@@ -40,8 +40,8 @@ const Twosecblog: React.FC = ({}) => {
             <p className="mb-[30px] text-font19 text-[#77787B]">
               Open every article and service page with a standalone 40 to
               60-word direct answer to the primary question. A Dubai property
-              management company, for example, should open their 'what does
-              property management cost in Dubai' page with a precise answer
+              management company, for example, should open their &apos;what does
+              property management cost in Dubai&apos; page with a precise answer
               before providing context. This format is designed for both
               featured snippet capture and AI Overview citation.
             </p>
@@ -53,7 +53,7 @@ const Twosecblog: React.FC = ({}) => {
             <p className="text-font19 text-[#77787B]">
               FAQ schema, HowTo schema, Article schema, and LocalBusiness schema
               are all critical for AI citation eligibility. A UAE law firm that
-              marks up its FAQ pages with FAQPage schema gives Google's AI
+              marks up its FAQ pages with FAQPage schema gives Google&apos;s AI
               system structured, extractable data rather than requiring it to
               interpret unformatted prose. Start with your highest-traffic pages
               and work outward.
@@ -291,11 +291,11 @@ const Twosecblog: React.FC = ({}) => {
 
           <p className="mb-[30px] text-font19 text-[#77787B]">
             Location-specific and navigational queries are not typically
-            answered by AI Overviews. A search for 'digital marketing agency
-            near JLT' still returns a local pack result, not an AI-generated
-            summary. A search for 'dentist open Saturday Dubai Marina' delivers
+            answered by AI Overviews. A search for &apos;digital marketing agency
+            near JLT&apos; still returns a local pack result, not an AI-generated
+            summary. A search for &apos;dentist open Saturday Dubai Marina&apos; delivers
             maps result with business listings. These query types - representing
-            a business's most commercially direct traffic - remain in the local
+            a business&apos;s most commercially direct traffic - remain in the local
             pack and are unaffected by AI Overview displacement.
           </p>
 
@@ -311,8 +311,8 @@ const Twosecblog: React.FC = ({}) => {
             </li>
             <li>
               Local content pages targeting emirate and district-specific terms:
-              'SEO services Dubai,' 'accountancy firm Abu Dhabi,' 'fit-out
-              contractor Sharjah'
+              &apos;SEO services Dubai,&apos; &apos;accountancy firm Abu Dhabi,&apos; &apos;fit-out
+              contractor Sharjah&apos;
             </li>
             <li>
               Review generation strategy - Google reviews remain a strong local

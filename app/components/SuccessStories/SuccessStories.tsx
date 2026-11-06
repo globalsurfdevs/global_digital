@@ -22,7 +22,7 @@ export const SuccessStories = ({
       const response = await fetch(`/api/portfolio`);
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+  
         setData(
           data?.portfolio
             .filter((item: Portfolio) => item._id !== companyId)

@@ -69,13 +69,13 @@ const SectionThree = () => {
                 How to Rank for High-Intent B2B Keywords: A Practical Approach
               </h2>
               <p className="mt-4 text-font19 text-[#77787B]">
-                Ranking for these terms follows a clear sequence. It is the{" "}
+                Ranking for these terms follows a clear sequence. It is the
                 <a
                   href="https://www.globalsurf.ae/industry/construction"
                   className="text-primary hover:underline"
                 >
                   construction SEO strategy
-                </a>{" "}
+                </a>
                 we have refined across years of SEO work for built environment
                 brands in the UAE, and the order matters as much as the steps.
               </p>

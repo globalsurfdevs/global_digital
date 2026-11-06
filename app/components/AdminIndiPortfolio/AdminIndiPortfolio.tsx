@@ -2383,7 +2383,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                         ),
                     )
                     .map((item) => (
-                      <div className="group relative flex h-fit w-fit min-w-20 cursor-pointer justify-center rounded-full border bg-blue-950 px-2 py-1 text-white">
+                      <div key={item._id} className="group relative flex h-fit w-fit min-w-20 cursor-pointer justify-center rounded-full border bg-blue-950 px-2 py-1 text-white">
                         <span className="group-hover:opacity-50">
                           {item.name}
                         </span>

@@ -11,7 +11,6 @@ export const signInWithCredentials = async ({
   username,
   password,
 }: SignInType) => {
-  console.log("Here", username, password);
   try {
     const user = await signIn("credentials", {
       username,
@@ -24,8 +23,7 @@ export const signInWithCredentials = async ({
     }
 
     return { success: true, message: "Successfully signed in" };
-  } catch (err) {
-    console.log("Error in sign action:", err);
+  } catch {
     return { success: false, message: "Invalid Credentials" };
   }
 };

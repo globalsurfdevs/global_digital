@@ -18,7 +18,7 @@ const Result = ({
   successStories: Portfolio[];
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  console.log("successStories", successStories);
+
   useEffect(() => {
     if (modalOpen) {
       document.body.style.overflow = "hidden";

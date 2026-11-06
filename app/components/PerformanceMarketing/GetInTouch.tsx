@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Button from "../Button/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import LetsTalk from "../common/LetsConnect";
-import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
+
 type PartnerDataType = {
   text: string;
   textred: string;

@@ -56,7 +56,7 @@ export const Example = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
-    console.log(isOpen);
+
     if (isOpen == true) {
       document.body.style.overflow = "hidden";
       document.body.style.height = "100vh";

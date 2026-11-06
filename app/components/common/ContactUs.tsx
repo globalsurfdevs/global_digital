@@ -117,7 +117,7 @@ const ContactUs = () => {
   useEffect(() => {
     const url = window.location.href;
 
-    console.log(url);
+
 
     setFormData((prev) => ({
       ...prev,

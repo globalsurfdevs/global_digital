@@ -1,10 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { moveUp } from "../../animations/motionVariants";
-
-import { ServiceItem } from "@/app/(user)/_engineering-and-infrastructure/type";
 import Image from "next/image";
-import { IndustryItem } from "@/app/(user)/industries/[slug]/type";
 
 type Props = {
   title: string;

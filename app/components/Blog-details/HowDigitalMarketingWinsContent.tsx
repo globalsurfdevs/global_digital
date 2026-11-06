@@ -129,9 +129,9 @@ const   HowDigitalMarketingWinsContent = () => {
                     A procurement officer at a government entity in Abu Dhabi
                     searching for a structural contractor does not browse a
                     trade directory. They search Google. They look for companies
-                    that rank for queries like 'structural contractor Abu Dhabi'
-                    or 'general contractor Dubai.' They cross-reference LinkedIn
-                    to check the company's project history, team credibility,
+                    that rank for queries like &apos;structural contractor Abu Dhabi&apos;
+                    or &apos;general contractor Dubai.&apos; They cross-reference LinkedIn
+                    to check the company&apos;s project history, team credibility,
                     and industry activity. Platforms like Zawya and ProQuo
                     contribute to the picture. By the time they make contact,
                     the shortlist is already formed.
@@ -188,9 +188,9 @@ const   HowDigitalMarketingWinsContent = () => {
                   </p>
                   <p className="text-font19 text-[#77787B] ">
                     <strong>The procurement reality in 2026:</strong> Companies
-                    that rank on page one of Google for 'construction contractor
-                    Dubai' or 'MEP contractor Abu Dhabi' are already in the
-                    client's consideration set. Companies that do not rank are
+                    that rank on page one of Google for &apos;construction contractor
+                    Dubai&apos; or &apos;MEP contractor Abu Dhabi&apos; are already in the
+                    client&apos;s consideration set. Companies that do not rank are
                     not.
                   </p>
                 </div>
@@ -212,7 +212,7 @@ const   HowDigitalMarketingWinsContent = () => {
                       Digital visibility for a built environment company{" "}
                     </Link>{" "}
                     refers to the ability to be found, assessed, and shortlisted
-                    through online channels at every stage of a client's
+                    through online channels at every stage of a client&apos;s
                     procurement process. It is not about social media followers
                     or website aesthetics. It is about ensuring that when a
                     developer or government entity searches for your specific
@@ -232,9 +232,9 @@ const   HowDigitalMarketingWinsContent = () => {
                     >
                       Ranking on Google for the service and location
                     </Link>{" "}
-                    combinations your target clients actually use. 'Fit-out
-                    contractor Dubai,' 'MEP consultancy Abu Dhabi,' 'general
-                    contractor DIFC' - these are active procurement queries.
+                    combinations your target clients actually use. &apos;Fit-out
+                    contractor Dubai,&apos; &apos;MEP consultancy Abu Dhabi,&apos; &apos;general
+                    contractor DIFC&apos; - these are active procurement queries.
                     Appearing on page one places you at the point of decision.
                   </p>
                 </div>
@@ -325,8 +325,8 @@ const   HowDigitalMarketingWinsContent = () => {
                   <p className="mb-[16px] text-font19 text-[#77787B] ">
                     Organic search delivers the highest quality of inbound
                     intent for built environment companies. When a developer
-                    searches for 'general contractor Business Bay Dubai' or 'MEP
-                    fit-out specialist Abu Dhabi,' they are actively
+                    searches for &apos;general contractor Business Bay Dubai&apos; or &apos;MEP
+                    fit-out specialist Abu Dhabi,&apos; they are actively
                     shortlisting. Ranking on page one for these terms means your
                     company is present at precisely the moment procurement
                     decisions begin.{" "}
@@ -353,7 +353,7 @@ const   HowDigitalMarketingWinsContent = () => {
                       href="/social-media-marketing-dubai"
                       className="text-primary"
                     >
-                      LinkedIn's Account-Based Marketing
+                      LinkedIn&apos;s Account-Based Marketing
                     </Link>{" "}
                     tools allow precise targeting by company, job title, and
                     geography - reaching the specific procurement managers and
@@ -395,8 +395,8 @@ const   HowDigitalMarketingWinsContent = () => {
                     >
                       Content that answers specific procurement queries
                     </Link>{" "}
-                    - 'what to look for in a fit-out contractor UAE' or 'LEED
-                    certification contractors Dubai' - captures intent-rich
+                    - &apos;what to look for in a fit-out contractor UAE&apos; or &apos;LEED
+                    certification contractors Dubai&apos; - captures intent-rich
                     traffic and builds trust over time. It also supports SEO by
                     creating indexed pages that rank for long-tail searches.
                   </p>
@@ -424,7 +424,7 @@ const   HowDigitalMarketingWinsContent = () => {
                     If you are unsure which of these channels to prioritise
                     first, the answer depends on your current digital baseline,
                     your target client type, and your project pipeline goals.
-                    That is exactly what GS.Digital's strategy consultation is
+                    That is exactly what GS.Digital&apos;s strategy consultation is
                     designed to work through.
                   </p>
                 </div>
@@ -461,8 +461,8 @@ const   HowDigitalMarketingWinsContent = () => {
                       {" "}
                       <strong>Generic homepage copy</strong> that does not state
                       specific services, locations served, or sector
-                      specialisations. 'We deliver quality construction
-                      solutions' describes every competitor identically.
+                      specialisations. &apos;We deliver quality construction
+                      solutions&apos; describes every competitor identically.
                     </li>
                     <li className="mb-2 text-font19">
                       {" "}
@@ -487,8 +487,8 @@ const   HowDigitalMarketingWinsContent = () => {
                     <li className="mb-2 text-font19">
                       {" "}
                       <strong>No service and location landing pages</strong>
-                      targeting combinations like 'MEP contractor Dubai' or
-                      'fit-out specialist Abu Dhabi,' which is where procurement
+                      targeting combinations like &apos;MEP contractor Dubai&apos; or
+                      &apos;fit-out specialist Abu Dhabi,&apos; which is where procurement
                       searches actually land.
                     </li>
                   </ul>
@@ -522,7 +522,7 @@ const   HowDigitalMarketingWinsContent = () => {
                   />
                   {/* Paragraphs */}
                   <p className="mb-[16px] text-font19 text-[#77787B]">
-                    ASGC Group - one of the UAE's leading general contracting
+                    ASGC Group - one of the UAE&apos;s leading general contracting
                     and construction conglomerates, achieved immediate and
                     sustained growth following their website redevelopment and
                     SEO programme with GS Digital:
@@ -584,8 +584,8 @@ const   HowDigitalMarketingWinsContent = () => {
                   <li className="mb-2 text-font19">
                     <strong>Search visibility:</strong> Can your company be
                     found on page one of Google when you search for your core
-                    service and location, for example 'general contractor Dubai'
-                    or 'MEP contractor Abu Dhabi'? If not, every potential
+                    service and location, for example &apos;general contractor Dubai&apos;
+                    or &apos;MEP contractor Abu Dhabi&apos;? If not, every potential
                     client running that search is being directed to a
                     competitor.
                   </li>

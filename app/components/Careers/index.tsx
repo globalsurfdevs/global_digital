@@ -27,10 +27,10 @@ const Index = () => {
 
     fetchJobsData();
   }, []);
-  useEffect(() => {
-    console.log(jobs && jobs);
-    console.log("sssss");
-  }, [jobs]); // Runs when 'item' changes
+  // useEffect(() => {
+  //   console.log(jobs && jobs);
+  //   console.log("sssss");
+  // }, [jobs]); // Runs when 'item' changes
   return (
     <div>
       {/* component1 section1*/}
