@@ -1,143 +1,91 @@
 "use server";
 
-import { generateOtp } from "../helpers/generateOtp";
-import dbConnect from "@/lib/mongodb";
-import User from "../models/User";
-import { EmailTemplate } from "../components/EmailTemplate/EmailTemplate";
-import { Resend } from "resend";
 import { auth } from "@/auth";
 import connectDB from "@/lib/mongodb";
+import User from "@/app/models/User";
+import { hashPassword, verifyAndUpgradePassword } from "@/lib/password";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function isStrongEnough(password: string): boolean {
+  return password.length >= 12 && Buffer.byteLength(password, "utf8") <= 72;
+}
 
-export const checkCurrentPass = async (currentPass: string) => {
+/** Change the signed-in user's password after confirming their current one. */
+export async function changeOwnPassword(
+  currentPassword: string,
+  newPassword: string,
+) {
   try {
-    await dbConnect();
-
-    const adminUser = await User.findOne({ _id: 1 });
-
-    console.log(adminUser);
-
-    if (adminUser && adminUser.otp == null) {
-      const user = await User.findOne({ password: currentPass });
-
-      if (user) {
-        const generatedOtp = await generateOtp();
-
-        console.log(generatedOtp, user._id);
-
-        const { data: sendMail, error: emailError } = await resend.emails.send({
-          from: "Acme <onboarding@resend.dev>",
-          to: ["geeproa@gmail.com"],
-          subject: "Hello world",
-          react: EmailTemplate({ otp: generatedOtp }),
-        });
-
-        if (emailError) {
-          console.log(emailError);
-          return { success: false, message: "Sending email failed" };
-        }
-
-        const updatedUser = await User.findByIdAndUpdate(
-          user._id,
-          { otp: generatedOtp.toString() },
-          { new: true },
-        );
-
-        console.log(updatedUser);
-
-        if (updatedUser)
-          return { success: true, message: "Enter the otp below" };
-        else return { success: false, message: "Something went wrong" };
-      } else {
-        return { success: false, message: "Incorrect password, try again" };
-      }
-    } else {
-      return {
-        success: false,
-        message:
-          "A recent activity to change the password was performed, please try again later",
-      };
-    }
-  } catch (error) {
-    console.log("Failed in checkCurrentPass", error);
-    return { success: false, message: "Something went wrong" };
-  }
-};
-
-export const checkOtp = async (enteredOtp: string) => {
-  try {
-    await dbConnect();
-
-    const user = await User.findOne({ otp: enteredOtp });
-
-    if (user) {
-      return {
-        success: true,
-        message: "OTP was perfect, proceed to the next steps",
-      };
-    } else {
-      return { success: false, message: "OTP was incorrect, Try again" };
-    }
-  } catch (error) {
-    console.log("Failed in checkOtp", error);
-    return { success: false, message: "Something went wrong" };
-  }
-};
-
-export const changePass = async (newPass: string, id: string) => {
-  try {
-    await dbConnect();
-
-    const updatedUser = await User.findByIdAndUpdate(
-      id,
-      { password: newPass },
-      { new: true },
-    );
-
-    if (updatedUser) {
-      return { success: true, message: "Password was reset, logging off" };
-    } else {
-      return { success: false, message: "Reseting password failed, try again" };
-    }
-  } catch (error) {
-    console.log("Failed in changePass", error);
-    return { success: false, message: "Something went wrong" };
-  }
-};
-
-export async function updateHrPassword(newPassword: string) {
-  try {
-    // Only an authenticated admin can call this — server-side enforcement,
-    // not just a hidden UI section.
     const session = await auth();
-    const callerRole = (session?.user as any)?.role;
-
-    if (callerRole !== "admin") {
-      return { success: false, message: "Not authorized." };
-    }
-
-    if (!newPassword || newPassword.length < 6) {
+    const userId = session?.user?.id;
+    if (!userId) return { success: false, message: "Please sign in again." };
+    if (!isStrongEnough(newPassword)) {
       return {
         success: false,
-        message: "Password must be at least 6 characters.",
+        message: "Use at least 12 characters and no more than 72 UTF-8 bytes.",
       };
     }
 
     await connectDB();
-
-    const hrUser = await User.findOne({ role: "hr" });
-
-    if (!hrUser) {
-      return { success: false, message: "No HR user found." };
+    const user: any = await User.findById(userId).select("+password");
+    if (!user || user.isActive === false) {
+      return { success: false, message: "Please sign in again." };
     }
 
-    hrUser.password = newPassword;
-    await hrUser.save();
+    const verification = await verifyAndUpgradePassword(
+      currentPassword,
+      user.password,
+    );
+    if (!verification.valid) {
+      return { success: false, message: "Current password is incorrect." };
+    }
 
+    user.password = await hashPassword(newPassword);
+    await user.save();
+    return { success: true, message: "Password updated. Please sign in again." };
+  } catch {
+    return { success: false, message: "Password update failed." };
+  }
+}
+
+/** An admin may reset the HR account; the new password is still hashed. */
+export async function updateHrPassword(
+  currentPassword: string,
+  newPassword: string,
+) {
+  try {
+    const session = await auth();
+    if ((session?.user as any)?.role !== "admin" || !session.user.id) {
+      return { success: false, message: "Not authorized." };
+    }
+    if (!isStrongEnough(newPassword)) {
+      return {
+        success: false,
+        message: "Use at least 12 characters and no more than 72 UTF-8 bytes.",
+      };
+    }
+
+    await connectDB();
+    const adminUser: any = await User.findById(session.user.id).select(
+      "+password",
+    );
+    if (!adminUser || adminUser.isActive === false) {
+      return { success: false, message: "Not authorized." };
+    }
+    const verification = await verifyAndUpgradePassword(
+      currentPassword,
+      adminUser.password,
+    );
+    if (!verification.valid) {
+      return { success: false, message: "Current password is incorrect." };
+    }
+
+    const hrUser = await User.findOne({ role: "hr" });
+    if (!hrUser) return { success: false, message: "No HR user found." };
+
+    hrUser.password = await hashPassword(newPassword);
+    await hrUser.save();
     return { success: true, message: "HR password updated successfully." };
-  } catch (err) {
-    console.error("Error updating HR password:", err);
-    return { success: false, message: "Something went wrong." };
+  } catch {
+    return { success: false, message: "Password update failed." };
   }
 }

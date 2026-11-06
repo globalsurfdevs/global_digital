@@ -14,3 +14,20 @@ export async function verifyAdmin(request: NextRequest) {
 
   return token.role === "admin";
 }
+
+export async function verifyRole(
+  request: NextRequest,
+  allowedRoles: string[],
+): Promise<boolean> {
+  const token = await getToken({
+    req: request,
+    secret: process.env.AUTH_SECRET,
+    secureCookie: process.env.NODE_ENV === "production",
+  });
+
+  return (
+    !!token &&
+    typeof token.role === "string" &&
+    allowedRoles.includes(token.role)
+  );
+}

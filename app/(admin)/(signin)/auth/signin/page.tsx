@@ -14,7 +14,7 @@ type Inputs = {
 };
 
 const ROLE_HOME: Record<string, string> = {
-  hr: "/admin",
+  hr: "/admin/career",
   admin: "/admin",
 };
 

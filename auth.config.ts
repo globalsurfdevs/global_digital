@@ -19,7 +19,7 @@ export const authConfig: NextAuthConfig = {
   ],
 
   pages: {
-    signIn: "/admin/auth/signin",
+    signIn: "/auth/signin",
   },
 
   session: {

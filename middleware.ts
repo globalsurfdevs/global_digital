@@ -14,14 +14,10 @@ const ROLE_ALLOWED_PREFIXES: Record<string, string[]> = {
   hr: ["/admin/career", "/admin/career/linkedin", "/admin/jobs"],
 };
 
-// Paths every logged-in role can land on exactly, regardless of their
-// scoped prefixes — the shared dashboard landing page.
-const ROLE_ALLOWED_EXACT: Record<string, string[]> = {
-  hr: ["/admin"],
-};
+const ROLE_ALLOWED_EXACT: Record<string, string[]> = {};
 
 const ROLE_HOME: Record<string, string> = {
-  hr: "/admin",
+  hr: "/admin/career",
   admin: "/admin",
 };
 
@@ -32,7 +28,31 @@ function isAllowedForRole(role: string, path: string): boolean {
   if (exact.includes(path)) return true;
 
   const allowed = ROLE_ALLOWED_PREFIXES[role] || [];
-  return allowed.some((prefix) => path.startsWith(prefix));
+  return allowed.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
+}
+
+const HR_API_PATHS = [
+  "/api/career",
+  "/api/career/bulk-delete",
+  "/api/jobs",
+  "/api/linkedin",
+  "/api/linkedin/bulk-delete",
+];
+
+const PRIVATE_API_READ_PATHS = [
+  "/api/career",
+  "/api/linkedin",
+  "/api/lead",
+  "/api/enquiry",
+  "/api/emails",
+];
+
+function pathMatches(path: string, prefix: string): boolean {
+  return path === prefix || path.startsWith(`${prefix}/`);
+}
+
+function isPrivateApiRead(path: string): boolean {
+  return PRIVATE_API_READ_PATHS.some((prefix) => pathMatches(path, prefix));
 }
 
 function isBlocked(request: NextRequest): boolean {
@@ -69,6 +89,40 @@ export default auth(async (request: NextRequest) => {
   const isAdminRoute = nextUrl.pathname.startsWith("/admin");
   const session = (request as any).auth;
   const isLoggedIn = !!session?.user;
+  const role = (session?.user as any)?.role || "user";
+
+  // All API writes are private by default. Reads that expose staff or
+  // applicant records are private too; public content GET routes stay public.
+  const isApi = nextUrl.pathname.startsWith("/api/");
+  const isApiWrite = !["GET", "HEAD", "OPTIONS"].includes(request.method);
+  const isPrivateRead =
+    ["GET", "HEAD"].includes(request.method) &&
+    isPrivateApiRead(nextUrl.pathname);
+
+  if (isApi && (isApiWrite || isPrivateRead)) {
+    if (!isLoggedIn) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+
+    const isHrApi = HR_API_PATHS.some((prefix) =>
+      pathMatches(nextUrl.pathname, prefix),
+    );
+    if (role !== "admin" && !(role === "hr" && isHrApi)) {
+      return NextResponse.json({ message: "Forbidden" }, { status: 403 });
+    }
+
+    const apiIp =
+      request.headers.get("x-vercel-ip") ||
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      "127.0.0.1";
+    const apiLimit = await ratelimit.limit(apiIp);
+    if (!apiLimit.success) {
+      return NextResponse.json(
+        { message: "Too many requests. Please try again later." },
+        { status: 429 },
+      );
+    }
+  }
 
   if (isAdminRoute && !isLoggedIn) {
     const loginUrl = new URL("/auth/signin", request.url);
@@ -89,8 +143,6 @@ export default auth(async (request: NextRequest) => {
         { status: 429 },
       );
     }
-
-    const role = (session.user as any).role || "user";
 
     if (!isAllowedForRole(role, nextUrl.pathname)) {
       return NextResponse.redirect(

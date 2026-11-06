@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "create-hr": "ts-node --project tsconfig.json scripts/create-hr-user.ts"
+    "create-hr": "tsx --tsconfig tsconfig.json scripts/create-hr-user.ts",
+    "create-admin": "tsx --tsconfig tsconfig.json scripts/create-admin-user.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
