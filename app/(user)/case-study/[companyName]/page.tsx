@@ -7,7 +7,6 @@ type Data = {
   };
 };
 import { getCaseStudyOrPortfolio } from "@/app/actions/getCaseStudy";
-import { getInstagramFeed } from "@/app/lib/integrations/instagram/getInstagramFeed";
 
 
 
@@ -55,13 +54,7 @@ const page = async ({
     return <div>Case study not found</div>;
   }
 
-  // Fetched on the server so the Instagram feed is in the first HTML (no flash
-  // of the uploaded images). Empty when Instagram isn't connected.
-  const instagramPosts = data.portfolio?._id
-    ? await getInstagramFeed(String(data.portfolio._id))
-    : [];
-
-  return <CaseStudyDetails data={data} instagramPosts={instagramPosts} />;
+  return <CaseStudyDetails data={data} />;
 };
 
 export default page;

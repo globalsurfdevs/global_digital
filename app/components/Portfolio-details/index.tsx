@@ -17,6 +17,7 @@ import CtaDetailsTwo from "./CtaDetailsTwo";
 import WhatWeDelivered from "./WhatWeDelivered";
 import YtVideo from "./YtVideo";
 import SocialMedia from "./SocialMedia";
+import SocialMediaInstagram from "./SocialMediaInstagram";
 import portfolioListRaw from "@/portfolios_rows_converted.json";
 import portfolioHighlightsRaw from "@/portfolioHighlights_rows.json";
 
@@ -181,9 +182,14 @@ const PortfolioDetails = ({ data, endpoint, successStories,instagramPosts }: any
         <HeroSection data={data} />
         <Goals data={data} companyName={data.companyName?.toString() ?? null} />
         <YtVideo data={data} />
-        {data?.portfolio.section == "case study new" && (
-          <SocialMedia data={data} instagramPosts={instagramPosts} />
-        )}
+        {data?.portfolio.section == "case study new" &&
+          // Only the /v2 pages pass `instagramPosts`; every other page keeps the
+          // original section with the uploaded images.
+          (instagramPosts !== undefined ? (
+            <SocialMediaInstagram data={data} instagramPosts={instagramPosts} />
+          ) : (
+            <SocialMedia data={data} />
+          ))}
         <Result data={data} successStories={successStories} />
       </>
     );
