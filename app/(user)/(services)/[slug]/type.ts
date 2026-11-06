@@ -161,4 +161,4 @@ export interface Service {
 
 
 
-export interface SubServiceData extends ServiceItem {}
+export type SubServiceData = ServiceItem;

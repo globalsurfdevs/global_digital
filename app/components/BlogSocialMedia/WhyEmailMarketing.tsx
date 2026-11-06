@@ -90,7 +90,7 @@ const WhyEmailMarketing = () => {
               </li>
               <li className="mb-2 text-font19">
                 {" "}
-                It feels "professional" by default, which is critical when the
+                It feels &quot;professional&quot; by default, which is critical when the
                 conversation involves budgets, risk, and accountability.
               </li>
             </ul>
@@ -141,7 +141,7 @@ const WhyEmailMarketing = () => {
             </p>
             <p className="mt-4 text-font19 text-[#77787B]">
               When your B2B email marketing outreach is designed with this
-              reality in mind, it stops feeling like a "campaign" and starts
+              reality in mind, it stops feeling like a &quot;campaign&quot; and starts
               feeling like a relevant, work-related conversation.
             </p>
             <Image
@@ -223,12 +223,12 @@ const WhyEmailMarketing = () => {
 
             <ul className="mb-[24px] mt-3 list-disc pl-10">
               <li className="mb-2 text-font19">
-                A director forwards your email to finance with "Can we evaluate
-                this?"
+                A director forwards your email to finance with &quot;Can we evaluate
+                this?&quot;
               </li>
               <li className="mb-2 text-font19">
-                Finance sends it to procurement with "Can you check options and
-                process?"
+                Finance sends it to procurement with &quot;Can you check options and
+                process?&quot;
               </li>
               <li className="mb-2 text-font19">
                 Procurement adds legal or IT if contracts or integration are
@@ -253,7 +253,7 @@ const WhyEmailMarketing = () => {
               className="title-65 mb-5 pt-7 lg:mb-[40px] lg:pt-[50px] 2xl:pt-[110px]"
               id="content5"
             >
-              What Makes Email Feel "Serious" Enough for High-Value Deals
+              What Makes Email Feel &quot;Serious&quot; Enough for High-Value Deals
             </h2>
 
             <p className="mb-[16px] text-font19 text-[#77787B]">
@@ -264,7 +264,7 @@ const WhyEmailMarketing = () => {
             </p>
 
             <h3 className="text-30 mb-3 mt-[30px]">
-              Why email has the right "weight"
+              Why email has the right &quot;weight&quot;
             </h3>
 
             <p className="mb-[16px] text-font19 text-[#77787B]">
@@ -301,7 +301,7 @@ const WhyEmailMarketing = () => {
               >
                 email marketing services
               </a>{" "}
-              give you the space to provide "serious" material when the moment
+              give you the space to provide &quot;serious&quot; material when the moment
               is right, without changing platforms or losing context.
             </p>
             <h2
@@ -317,7 +317,7 @@ const WhyEmailMarketing = () => {
               className="mb-5 lg:mb-[40px] "
             />
             <p className="mb-[16px] text-font19 text-[#77787B]">
-              One of email marketing's biggest advantages in B2B demand
+              One of email marketing&apos;s biggest advantages in B2B demand
               generation is the clarity of its engagement signals. Unlike many
               other channels, you can see not just that someone interacted, but
               how and when.
@@ -341,8 +341,8 @@ const WhyEmailMarketing = () => {
               </li>
               <li className="mb-2 text-font19">
                 {" "}
-                Who forwards or replies with "Can you share more details?" or
-                "Please send this to my colleague"
+                Who forwards or replies with &quot;Can you share more details?&quot; or
+                &quot;Please send this to my colleague&quot;
               </li>
             </ul>
 
@@ -400,7 +400,7 @@ const WhyEmailMarketing = () => {
             <ul className="mb-[24px] mt-3 list-disc pl-10">
               <li className="mb-2 text-font19">
                 Start with a clear market insight that is relevant to your
-                prospect's role and sector.
+                prospect&apos;s role and sector.
               </li>
               <li className="mb-2 text-font19">
                 Follow with proof in the form of a case, example, or anonymised
@@ -548,7 +548,7 @@ const WhyEmailMarketing = () => {
             </ul>
 
             <p className="mb-[16px] text-font19 text-[#77787B]">
-              In 2026, email is no longer just a "newsletter" tool. For many B2B
+              In 2026, email is no longer just a &quot;newsletter&quot; tool. For many B2B
               brands in the UAE, it is basic commercial hygiene: the connective
               tissue between discovery, internal discussion, and signed work.
             </p>

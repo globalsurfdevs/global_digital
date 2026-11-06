@@ -244,8 +244,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
           )}
-          {Bannerdata.map((herosection) => (
-            <div className=" w-full bg-black ">
+          {Bannerdata.map((herosection, index) => (
+            <div key={`${herosection.image}-${index}`} className=" w-full bg-black ">
               <Image
                 src={herosection.image}
                 className="w-full"

@@ -8,6 +8,9 @@ import Button from "@/app/components/Button/Button";
 export default function CareerDetailsPage() {
   const params = useParams(); // Use the custom useParams hook
   const { url } = params; // Extract the 'url' parameter
+  const [file, setFile] = useState<File | null>(null);
+  const [error, setError] = useState("");
+  const [fileName, setFileName] = useState("");
 
   // Find the item based on the 'url' parameter
   const item = career.find((b) => b.url === url);
@@ -15,10 +18,6 @@ export default function CareerDetailsPage() {
   if (!item) {
     return <p>Item not found!</p>;
   }
-  const [file, setFile] = useState<File | null>(null);
-  const [error, setError] = useState("");
-  const [fileName, setFileName] = useState(""); 
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files ? e.target.files[0] : null; 
 

@@ -227,7 +227,7 @@ const SectionSeven = () => {
                 because we understand how the industry actually works. We know
                 what tender committees look for. We know what pre-qualification
                 documents need to be supported by. And we know that for a
-                construction company, a "like" on Instagram is meaningless but a
+                construction company, a &quot;like&quot; on Instagram is meaningless but a
                 qualified inbound inquiry from a developer worth AED 20 million
                 is everything.
               </p>
