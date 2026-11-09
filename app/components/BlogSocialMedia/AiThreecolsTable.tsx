@@ -12,7 +12,7 @@ const ThreeColumnTable: React.FC = ({}) => {
 
           <div className="col-span-5 w-full" id="section2">
             <h2 className="title-65 mb-[40px]">
-              How Google's AI Overviews Are Changing Search Behaviour and What
+              How Google&apos;s AI Overviews Are Changing Search Behaviour and What
               It Means for UAE Markets
             </h2>
 
@@ -30,7 +30,7 @@ const ThreeColumnTable: React.FC = ({}) => {
             <p className="mb-4 text-font19 text-[#77787B]">
               A Dubai property investor searching for mortgage comparison
               options no longer has to click through to five different lender
-              websites. Google's AI Overview synthesises the comparison and
+              websites. Google&apos;s AI Overview synthesises the comparison and
               displays it directly on the results page. An Abu Dhabi business
               owner searching for VAT filing advice gets a step-by-step overview
               before a single organic result appears. In both cases, the user

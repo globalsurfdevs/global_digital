@@ -18,20 +18,20 @@ const HowDigitalMarketingWinsContent = () => {
               <p className="mb-[16px] text-font19 text-[#77787B]">
                 UAE marketing budgets are shifting. Businesses that spent years
                 paying for activity impressions,{" "}
-                <a
+                <Link
                   className="text-primary hover:underline"
                   href="/social-media-management-services"
                 >
                   social media management
-                </a>
+                </Link>
                 , brand awareness campaigns with no direct line to revenue are
                 demanding something different: accountability.{" "}
-                <a
+                <Link
                   className="text-primary hover:underline"
                   href="/performance-marketing-agency-dubai"
                 >
                   Performance marketing
-                </a>{" "}
+                </Link>{" "}
                 is the model that provides it.
               </p>
 
@@ -255,14 +255,14 @@ const HowDigitalMarketingWinsContent = () => {
 
                 <p className="mb-[16px] text-font19 text-[#77787B]">
                   The highest-intent performance channel available. When someone
-                  searches "digital marketing agency Dubai" or "office furniture
-                  Abu Dhabi," they are actively looking for what you offer.{" "}
-                  <a
+                  searches &quot;digital marketing agency Dubai&quot; or &quot;office furniture
+                  Abu Dhabi,&quot; they are actively looking for what you offer.{" "}
+                  <Link
                     className="text-primary hover:underline"
                     href="/ppc-advertising-agency-dubai"
                   >
                     Google Search Ads
-                  </a>{" "}
+                  </Link>{" "}
                   places your business at that exact moment of intent. Payment
                   is per click. Performance is measured by cost per click, cost
                   per lead, and cost per acquisition. Best suited to businesses
@@ -277,7 +277,7 @@ const HowDigitalMarketingWinsContent = () => {
                 </h3>
 
                 <p className="mb-[16px] text-font19 text-[#77787B]">
-                  Reaches audiences across Google's network and YouTube with
+                  Reaches audiences across Google&apos;s network and YouTube with
                   visual and video formats. Less high intent than Search, but
                   highly effective for retargeting visitors who have already
                   shown interest and for building awareness in defined audience
@@ -296,7 +296,7 @@ const HowDigitalMarketingWinsContent = () => {
 
                 <p className="mb-[16px] text-font19 text-[#77787B]">
                   The primary social performance channel for UAE consumer and
-                  B2C businesses. Meta's audience targeting by interest,
+                  B2C businesses. Meta&apos;s audience targeting by interest,
                   behaviour, location, and lookalike audiences makes it highly
                   effective for reaching specific consumer segments in Dubai,
                   Abu Dhabi, and across the UAE. It is also used for B2B
@@ -312,7 +312,7 @@ const HowDigitalMarketingWinsContent = () => {
 
                 <p className="mb-[16px] text-font19 text-[#77787B]">
                   The primary performance channel for B2B businesses in the UAE.
-                  LinkedIn's targeting by job title, company size, industry, and
+                  LinkedIn&apos;s targeting by job title, company size, industry, and
                   seniority makes it the most precise tool available for
                   reaching procurement directors, C-suite decision-makers, and
                   senior managers at UAE companies. Cost per click is higher

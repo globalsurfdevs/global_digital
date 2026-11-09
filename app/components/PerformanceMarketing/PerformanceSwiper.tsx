@@ -8,7 +8,6 @@ import { logos } from "@/public/assets/assets";
 import { performance } from "../../data/performance";
 
 const PerformanceSwiper = () => {
-  console.log(logos);
   return (
     <div className="perf-slide">
       <Swiper

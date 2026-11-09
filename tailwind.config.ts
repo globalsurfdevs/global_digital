@@ -45,7 +45,7 @@ const config = {
     },
     {
       pattern: /grid-cols-\d{1,2}/, // Matches all grid-cols-1, grid-cols-2, ..., grid-cols-12
-      variants: ["lg", "xl", "md", "sm"], // Includes responsive variants
+      variants: ["2xl", "lg", "xl", "md", "sm"], // Includes responsive variants
     },
   ],
   theme: {

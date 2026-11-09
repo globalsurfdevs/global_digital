@@ -110,7 +110,7 @@ const IndustriesweWork: React.FC<IndustriesWeWorkProps> = ({ industry }) => {
           <p className="mb-5 max-w-[70ch] text-font25 leading-[1.4] lg:mb-[58px]">
             We partner with businesses across Dubai and the wider UAE to deliver
             digital solutions that align with real-world commercial challenges
-            and growth goals. Our strategies are built around each sector's
+            and growth goals. Our strategies are built around each sector&apos;s
             audience behaviour, competitive context, and market dynamics.
           </p>
         </motion.div>

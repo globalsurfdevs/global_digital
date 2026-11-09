@@ -39,7 +39,7 @@ const TableOfContents = ({ content, items, hasFaq, isArticleContent = false }: T
           viewport={{ once: true }}
           className="title-65 mb-[40px] mt-4"
         >
-          Table of Contents
+          Table Of Contents
         </motion.h2>
 
         <div className="flex flex-col gap-[16px]">

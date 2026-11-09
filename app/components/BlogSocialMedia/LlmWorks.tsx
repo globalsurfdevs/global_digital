@@ -52,7 +52,7 @@ const LlmWorks: React.FC<VideoTipsSectionProps> = ({
             {/* SEARCH ENGINE SECTION */}
             <div className="mt-[40px]">
               <h3 className="text-30">Search Engine:</h3>
-              <ul className="mt-3 list-inside list-disc space-y-2">
+              <ul className="list-disc list-outside pl-5 [&>li]:pl-2 space-y-2">
                 <li className="text-font19 text-[#77787B]">
                   Crawls the web → Finds your site → Lists it on a page.
                 </li>

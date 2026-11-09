@@ -2,24 +2,19 @@ import HeroSection from "../../BrandingAndPositioning/HeroSection";
 import Testimonials from "../../HomePage/Testimonials";
 import FAQ from "../../PerformanceMarketing/FAQ";
 import GetInTouch from "../../PerformanceMarketing/GetInTouch";
-import { getService } from "@/app/lib/services/services.service";
 import { getTestimonials } from "@/app/lib/services/testimonials.service";
-import { notFound } from "next/navigation";
-// import type { Service,  } from "./serviceDetails.type";
 import TitleDesc from "../../BrandingAndPositioning/TitleDesc";
 import ImgDesc from "../../BrandingAndPositioning/ImgDesc";
 import GrayParaSec from "../../BrandingAndPositioning/GrayParaSec";
 import ProcessSlider from "../../BrandingAndPositioning/ProcessSlider";
 import BlackInfoGrid from "../../BrandingAndPositioning/BlackInfoGrid";
 import BECS from "../../BrandingAndPositioning/BECS";
-// import WorkIn from "../../HomePage/WorkIn";
 import ServicesSec from "../../BrandingAndPositioning/ServicesSec";
 import ButtonSlider from "../../BrandingAndPositioning/ButtonSlider";
 import WhyChoose from "../../BrandingAndPositioning/WhyChoose";
-
 import type { ServiceItem } from "./serviceDetails.type";
 import WorkIn from "../../common/WorkIn";
-import { SubServiceData } from "@/app/(user)/[slug]/type";
+import { SubServiceData } from "@/app/(user)/(services)/[slug]/type";
 
 interface Props {
   service: ServiceItem | SubServiceData;

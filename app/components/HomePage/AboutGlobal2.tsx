@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-type ExpertiseSectionProps = {};
+type ExpertiseSectionProps = object;
 
 const Expertise: React.FC<ExpertiseSectionProps> = () => {
   return (

@@ -174,7 +174,7 @@ const ContentStaticSection = () => {
             </ul>
             <p className="mb-[25px] text-font19 text-[#77787B]">
               In this landscape, the role of a Social Media{" "}
-              <a href="/social-media-agency-dubai">Marketing Agency</a> in UAE
+              <Link href="/social-media-agency-dubai">Marketing Agency</Link> in UAE
               extends beyond execution. Brands need partners who can connect
               creativity, performance, and purpose into a cohesive growth
               strategy.{" "}

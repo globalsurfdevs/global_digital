@@ -22,7 +22,7 @@ const Header = () => {
         event.target instanceof Node &&
         !dropdownRef.current.contains(event.target)
       ) {
-        console.log("Not contains");
+        
         setIsDropdownOpen(false);
         setIsMenuOpen(false);
       }

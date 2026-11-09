@@ -229,7 +229,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { ServiceItem } from "@/app/(user)/[slug]/type";
+import { ServiceItem } from "@/app/(user)/(services)/[slug]/type";
 
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";

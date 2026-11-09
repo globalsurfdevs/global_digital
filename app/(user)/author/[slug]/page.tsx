@@ -11,7 +11,7 @@ export default async function Page({ params }: Props) {
   const dbBlogs = await getAllBlogs();
   const author = await getAuthorBySlug(slug);
 
-  console.log(author);
+
 
   return (
     <>

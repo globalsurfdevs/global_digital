@@ -211,12 +211,7 @@ const PortfolioList = ({
     if (industry) {
       const selectedCat = industries.find((i) => i.name === industry);
       const subNames = selectedCat?.subCategories ?? [];
-      console.log("selected main:", industry);
-      console.log("subNames:", subNames);
-      console.log(
-        "portfolio industries:",
-        data.map((p) => p.industry),
-      );
+    
       filtered = filtered.filter((p: Portfolio) =>
         subNames.includes(p.industry),
       );

@@ -5,7 +5,7 @@ export const generateAndUploadImage = async (image: File) => {
     const filename = `${Date.now()}-${image.name || "image"}`;
     const dropboxPath = `/portfolio/${filename}`;
 
-    let imagePath = await uploadToDropbox(image, dropboxPath);
+    const imagePath = await uploadToDropbox(image, dropboxPath);
     console.log("New image uploaded to Dropbox:", imagePath);
     if (imagePath) {
       return imagePath;

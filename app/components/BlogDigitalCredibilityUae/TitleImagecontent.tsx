@@ -70,7 +70,7 @@ const TitleImagecontent = () => {
           <h3 className="mb-2 mt-4 text-[30px]">During technical evaluation</h3>
           <p className="mt-4 text-font19 text-[#77787B]">
             In the UAE context, where large government tenders often involve
-            ADNOC, RTA, DEWA, or Abu Dhabi's GPG procurement teams, evaluators
+            ADNOC, RTA, DEWA, or Abu Dhabi&apos;s GPG procurement teams, evaluators
             are experienced professionals who conduct structured background
             research. A contractor with no digital footprint creates an
             information vacuum and procurement professionals fill information

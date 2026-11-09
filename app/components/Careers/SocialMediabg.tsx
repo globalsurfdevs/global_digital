@@ -67,7 +67,7 @@ const SocialMediabg = () => {
                     <p className="text-19 my-10 leading-relaxed text-white">
                       You think you might be a good fit for GS Digital? Send us
                       your LinkedIn profile with just one click. If we have a
-                      position that we think you're perfect for, we'll reach out
+                      position that we think you&apos;re perfect for, we&apos;ll reach out
                       to you.
                     </p>
                     <ButtonIcon
@@ -121,7 +121,7 @@ const SocialMediabg = () => {
                         </label>
                       </div>
                       <p className="text-19 mb-4 mt-3 text-gray1 sm:my-8">
-                        We're keeping your personal details secure and don't
+                        We&apos;re keeping your personal details secure and don&apos;t
                         share it with 3rd parties of course. Find out more in
                         our{" "}
                         <Link href="/privacy-policy" className="text-slate-400">

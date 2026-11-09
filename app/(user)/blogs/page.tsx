@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const page = async () => {
   const dbBlogs = await getAllBlogs();
+
   return (
     <>
       <Blogs dbBlogs={dbBlogs} />

@@ -1,6 +1,6 @@
 "use client";
 
-import { ServiceItem } from "@/app/(user)/[slug]/type";
+import { ServiceItem } from "@/app/(user)/(services)/[slug]/type";
 import { motion } from "framer-motion";
 import { moveUp } from "../animations/motionVariants";
 import { toSentenceCase } from "@/app/helpers/maintainProperWordings";

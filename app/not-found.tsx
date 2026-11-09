@@ -41,10 +41,10 @@ export default function NotFound() {
             </h2>
 
             <p className="fnt-lexend fnt404 mb-3 pe-2 ps-2 text-font16 text-[#909496] md:text-[20px] lg:mb-[57px]">
-              Looks like this page missed the mark. But don't worry—every
+              Looks like this page missed the mark. But don&apos;t worry—every
               other pixel is right where it should be.
               <br />
-              Let's get you back to a flawless experience.
+              Let&apos;s get you back to a flawless experience.
             </p>
             <div className="mt-4 flex justify-center">
               <Link

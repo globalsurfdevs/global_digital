@@ -31,4 +31,14 @@ export const stories = [
       "Explore Inside Assent Steel’s 2x Traffic Success and uncover how smart strategies and data-driven tactics doubled their website traffic. ",
     url: "case-study/assent-steel",
   },
+  // {
+  //   title1: "Assent Steel ",
+  //   svg: assets.ninetyOne,
+  //   count: "2X",
+  //   description1: "Increase in Overall Traffic ",
+  //   title2: "How Assent Steel Doubled Its Website Traffic ",
+  //   description2:
+  //     "Explore Inside Assent Steel’s 2x Traffic Success and uncover how smart strategies and data-driven tactics doubled their website traffic. ",
+  //   url: "case-study/assent-steel",
+  // },
 ];

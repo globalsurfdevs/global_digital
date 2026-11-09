@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+    select: false,
   },
   createdAt: {
     type: Date,
@@ -25,6 +26,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ["admin", "hr", "user"],
     default: "user",
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
   },
 });
 
