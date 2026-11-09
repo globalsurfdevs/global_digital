@@ -17,7 +17,7 @@ import {
   webrank,
   uaeresults,
   fivepoint,
-} from "../../../data/blogdatas//highIntentB2BKeywords";
+} from "../../../data/blogdatas/highIntentB2BKeywords";
 
 import Blogfaq from "../../../components/common/BlogFaq";
 import AuthorBioCard from "../../../components/Blog-details/AuthorBioCard";
