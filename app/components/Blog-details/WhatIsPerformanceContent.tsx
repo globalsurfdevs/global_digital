@@ -18,20 +18,20 @@ const HowDigitalMarketingWinsContent = () => {
               <p className="mb-[16px] text-font19 text-[#77787B]">
                 UAE marketing budgets are shifting. Businesses that spent years
                 paying for activity impressions,{" "}
-                <a
+                <Link
                   className="text-primary hover:underline"
                   href="/social-media-management-services"
                 >
                   social media management
-                </a>
+                </Link>
                 , brand awareness campaigns with no direct line to revenue are
                 demanding something different: accountability.{" "}
-                <a
+                <Link
                   className="text-primary hover:underline"
                   href="/performance-marketing-agency-dubai"
                 >
                   Performance marketing
-                </a>{" "}
+                </Link>{" "}
                 is the model that provides it.
               </p>
 
@@ -257,12 +257,12 @@ const HowDigitalMarketingWinsContent = () => {
                   The highest-intent performance channel available. When someone
                   searches &quot;digital marketing agency Dubai&quot; or &quot;office furniture
                   Abu Dhabi,&quot; they are actively looking for what you offer.{" "}
-                  <a
+                  <Link
                     className="text-primary hover:underline"
                     href="/ppc-advertising-agency-dubai"
                   >
                     Google Search Ads
-                  </a>{" "}
+                  </Link>{" "}
                   places your business at that exact moment of intent. Payment
                   is per click. Performance is measured by cost per click, cost
                   per lead, and cost per acquisition. Best suited to businesses

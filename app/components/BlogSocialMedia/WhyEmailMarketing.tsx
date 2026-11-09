@@ -6,6 +6,7 @@ import { assets } from "@/public/assets/assets";
 import { Collapse } from "react-collapse";
 import arrowactive from "@/public/assets/logos/arr-active.svg";
 import arrowdown from "@/public/assets/logos/arr-down.svg";
+import Link from "next/link";
 
 const WhyEmailMarketing = () => {
   const [open, setOpen] = useState<number | null>(null);
@@ -56,12 +57,12 @@ const WhyEmailMarketing = () => {
             {/* Paragraphs */}
             <p className="mb-[16px] text-font19 text-[#77787B]">
               As a{" "}
-              <a
+              <Link
                 href="/performance-marketing-agency-dubai"
                 className="text-primary hover:underline"
               >
                 performance marketing agency in the UAE
-              </a>
+              </Link>
               , <b>Global Surf</b> has been working with B2B brands across the
               region for years. Most of these brands have at least experimented
               with email campaigns at some point. Many moved away when social
@@ -295,12 +296,12 @@ const WhyEmailMarketing = () => {
 
             <p className="mt-4 text-font19 text-[#77787B]">
               This does not mean every email should be long. It means{" "}
-              <a
+              <Link
                 href="/performance-marketing-agency-dubai"
                 className="text-primary hover:underline"
               >
                 email marketing services
-              </a>{" "}
+              </Link>{" "}
               give you the space to provide &quot;serious&quot; material when the moment
               is right, without changing platforms or losing context.
             </p>
@@ -474,9 +475,9 @@ const WhyEmailMarketing = () => {
               Running an effective email demand generation programme requires
               the right set of tools at each stage of the journey. Three
               platforms have consistently stood out in our work as a{" "}
-              <a href="/" className="text-primary hover:underline">
+              <Link href="/" className="text-primary hover:underline">
                 digital marketing agency in Dubai
-              </a>
+              </Link>
               .
             </p>
 
@@ -513,12 +514,12 @@ const WhyEmailMarketing = () => {
 
             <p className="mb-[16px] text-font19 text-[#77787B]">
               As a{" "}
-              <a
+              <Link
                 href="/performance-marketing-agency-dubai"
                 className="text-primary hover:underline"
               >
                 performance marketing company in Dubai
-              </a>
+              </Link>
               , <b>Global Surf</b> has solid experience handling businesses
               across multiple industries for many years. From our work in B2B
               email marketing in the UAE, we have noticed that many brands have

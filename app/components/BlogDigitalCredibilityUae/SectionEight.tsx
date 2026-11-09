@@ -124,7 +124,7 @@ const SectionEight = () => {
                     could mean for your project pipeline.
                   </p>
 
-                  <a
+                  <Link
                     href="/contact-us"
                     className="mt-4 inline-flex items-center gap-2 bg-black px-[30px] py-[16px] text-font19 text-white transition-colors duration-300 hover:bg-primary"
                   >
@@ -144,7 +144,7 @@ const SectionEight = () => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
