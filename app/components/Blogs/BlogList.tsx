@@ -12,6 +12,20 @@ const PortfolioList = ({
   BlogData: any[];
   dbBlogs: any[];
 }) => {
+  const stripHtml = (html: string = ""): string => {
+    return html
+      .replace(/<br\s*\/?>/gi, " ")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&amp;/gi, "&")
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;|&apos;/gi, "'")
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
+
   const allBlogs = [
     ...dbBlogs
       .filter((b: any) => !b.isHidden)
@@ -19,12 +33,12 @@ const PortfolioList = ({
         id: b._id,
         feature_thumb: b.thumbnail,
         category: b.category ?? "",
-        list_heading: b.heading,
+        list_heading: stripHtml(b.heading),
         slug: b.slug,
       })),
 
     // ...[...BlogData].sort((a, b) => b.id - a.id).map((b: any) => ({ ...b })),
-    ...BlogData,
+    // ...BlogData,
   ];
 
   return (
