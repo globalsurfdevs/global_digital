@@ -1,7 +1,6 @@
 import React from "react";
-import { Linkedin } from "lucide-react";
 import Image from "next/image";
-import { assets } from "@/public/assets/assets";
+
 import Link from "next/link";
 
 export default function AuthorBioCard({ data }: { data: any }) {

@@ -6,10 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const PortfolioList = ({
-  BlogData,
   dbBlogs,
 }: {
-  BlogData: any[];
   dbBlogs: any[];
 }) => {
   const stripHtml = (html: string = ""): string => {

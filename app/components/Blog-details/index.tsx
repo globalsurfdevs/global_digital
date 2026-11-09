@@ -166,7 +166,6 @@ import TableOfContents, { FAQ_ANCHOR } from "./TableOfContents";
 import BlogContentSection from "./BlogContentSection";
 import { prepareBlogArticle } from "@/app/helpers/blogArticle";
 import Cta from "../BlogSocialMedia/DynamicBlogCta";
-import { ctaData } from "@/app/data/blogdatas/DigitalMarketingData";
 import BlogFAQ from "./BlogFAQ";
 import AuthorBioCard from "./AuthorBioCard";
 import HeroSection from "../BlogSocialMedia/HeroSectionDynamic";

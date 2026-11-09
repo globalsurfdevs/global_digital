@@ -2,7 +2,6 @@ import React from "react";
 import AuthorBanner from "./sections/Banner";
 import AboutSection from "./sections/About";
 import BlogList from "./sections/BlogList";
-import { BlogData } from "../../data/BlogData";
 
 const Index = ({ dbBlogs, author }: { dbBlogs: any[]; author: any }) => {
   return (
@@ -14,11 +13,7 @@ const Index = ({ dbBlogs, author }: { dbBlogs: any[]; author: any }) => {
         image={author.imageBig}
       />
       <AboutSection data={author.about} />
-      <BlogList
-        BlogData={BlogData}
-        dbBlogs={dbBlogs}
-        authorName={author.name}
-      />
+      <BlogList dbBlogs={dbBlogs} authorName={author.name} />
     </>
   );
 };
