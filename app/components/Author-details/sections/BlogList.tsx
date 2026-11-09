@@ -6,11 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const BlogList = ({
-  BlogData,
   dbBlogs,
   authorName,
 }: {
-  BlogData: any[];
   dbBlogs: any[];
   authorName: string;
 }) => {
@@ -27,7 +25,7 @@ const BlogList = ({
       })),
 
     // ...[...BlogData].sort((a, b) => b.id - a.id).map((b: any) => ({ ...b })),
-    ...BlogData,
+    // ...BlogData,
   ];
 
   const blogsByAuthor = allBlogs.filter(

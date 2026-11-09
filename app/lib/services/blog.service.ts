@@ -20,6 +20,8 @@ export const getAllBlogs = unstable_cache(
       //   }})
       //   console.log('blogs : ',blog);
       //   console.log('blogs : ',blogs.length);
+
+      console.log("blogs : ", blogs.length);
     return JSON.parse(JSON.stringify(blogs));
   },
   ["all-blogs"],
