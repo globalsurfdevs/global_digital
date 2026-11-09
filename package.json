@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "eslint app components lib --quiet && next build --no-lint",
     "start": "next start",
     "lint": "next lint",
     "create-hr": "tsx --tsconfig tsconfig.json scripts/create-hr-user.ts",

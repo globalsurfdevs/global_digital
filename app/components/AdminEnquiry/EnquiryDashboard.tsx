@@ -203,8 +203,8 @@ export default function EnquiryDashboard() {
   };
 
   return (
-    <section className="grid gap-5 xl:grid-cols-[minmax(0,1.6fr)_minmax(300px,1fr)]">
-      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+    <section className="flex flex-col xl:flex-row gap-5">
+      <div className="rounded-xl lg:min-w-[60%] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
         <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
           <div>
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">Enquiry activity</h2>
@@ -257,7 +257,7 @@ export default function EnquiryDashboard() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+      {/* <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
         <div className="mb-4 flex items-start justify-between">
           <div>
             <h2 className="text-base font-semibold text-slate-900 dark:text-white">Follow-up reminders</h2>
@@ -291,9 +291,9 @@ export default function EnquiryDashboard() {
             </div>;
           }) : <div className="flex items-center gap-2 py-3 text-sm text-slate-400"><Clock3 className="size-4" /> No reminders yet.</div>}
         </div>
-      </div>
+      </div> */}
 
-      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800 xl:col-span-2">
+      <div className="rounded-xl w-full border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800 ">
         <div className="mb-4">
           <h2 className="text-base font-semibold text-slate-900 dark:text-white">Enquiries by service</h2>
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Breakdown from the service selected on each contact enquiry.</p>

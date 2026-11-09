@@ -306,7 +306,7 @@ const InstagramConnectPanel = ({ portfolioId }: { portfolioId: string }) => {
             </button>
           </div>
           <p className="mt-2 text-sm text-gray-600">
-            Or, for an account that can't be read publicly (such as a private
+            Or, for an account that can&apos;t be read publicly (such as a private
             one), paste an access token its owner generated:
           </p>
           <input
