@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRef, useState } from "react";
 import { motion, useCycle } from "framer-motion";
-import { useDimensions } from "./use-dimentions";
+// import { useDimensions } from "./use-dimentions";
 import { MenuToggle } from "./MenuToggle";
 import { Navigation } from "./NavigationV2-opt";
 import Image from "next/image";
@@ -57,7 +57,7 @@ export const Example = ({
 }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
-  const { height } = useDimensions(containerRef);
+  // const { height } = useDimensions(containerRef);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
@@ -108,8 +108,8 @@ export const Example = ({
     <motion.nav
       initial={false}
       animate={isOpen ? "open" : "closed"}
-      custom={height}
-      ref={containerRef}
+      // custom={height}
+      // ref={containerRef}
     >
       <div className={isOpen ? "overlay-nav" : ""}></div>
       {

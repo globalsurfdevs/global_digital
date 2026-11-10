@@ -388,17 +388,12 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema).replace(
-            /</g,
-            "\\u003c",
-          ),
+          __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c"),
         }}
       />
 
-
       <HeroSection />
 
-      
       <LogoSwiper />
       <AboutGlobal />
       <OurServices />
