@@ -1,13 +1,11 @@
 "use client";
 
-import React, { useRef } from "react";
-import { Clientsdata } from "../../data/Clientsdata";
-import { Lexend } from "next/font/google";
+import React from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
-import { motion } from "framer-motion";
 import { HomeType } from "@/app/types/home";
 
 const Clients = ({ data }: { data: HomeType["clientSection"] }) => {

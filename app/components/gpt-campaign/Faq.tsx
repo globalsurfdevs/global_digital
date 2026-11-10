@@ -59,7 +59,7 @@ export default function Faq() {
         <Reveal
           as="h2"
           delay={1}
-          className="max-w-[20ch] text-[clamp(28px,4vw,44px)] font-medium leading-[1.08] tracking-[-0.025em] mb-10"
+          className="mb-10 max-w-[20ch] text-[clamp(28px,4vw,44px)] font-medium leading-[1.08] tracking-[-0.025em]"
         >
           Questions you might <span className="text-[#E63E31]">be asking.</span>
         </Reveal>
@@ -92,7 +92,7 @@ export default function Faq() {
                     </span>
                   </button>
                 </h3>
-                <div
+                {/* <div
                   id={`faq-answer-${i}`}
                   role="region"
                   aria-labelledby={`faq-question-${i}`}
@@ -110,6 +110,17 @@ export default function Faq() {
                   <p className="max-w-[60ch] px-[4px] py-[24px] text-[15.5px] leading-[1.6] text-[#77787B]">
                     {item.answer}
                   </p>
+                </div> */}
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <p className="max-w-[60ch] px-[4px] py-[24px] text-[15.5px] leading-[1.6] text-[#77787B]">
+                      {item.answer}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
