@@ -61,8 +61,7 @@ export interface ServiceItem {
     }[];
   };
 
-  seventhSection: BECSData
-  
+  seventhSection: BECSData;
 
   eighthSection: {
     title: string;

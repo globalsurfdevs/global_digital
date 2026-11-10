@@ -3,7 +3,7 @@ import Image from "next/image";
 // import { heroData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import Button from "../common/buttons/PrimaryButton";
 import { useEffect, useRef, useState } from "react";
-import LetsTalk from "../../components/common/LetsConnect";
+import LetsTalk from "../common/LetsConnect";
 import {
   toSentenceCase,
   toTitleCase,
@@ -74,22 +74,21 @@ const HeroSection = ({ data }: HeroSectionProps) => {
             alt={data.imageAlt}
             width={1920}
             height={1080}
+            loading="eager"
             fetchPriority="high"
+            sizes="100vw"
             className="h-full w-full object-cover"
           />
         </picture>
       </div>
       <div className="container" ref={containerRef}></div>
-      <div
-        className="container relative z-10 h-full"
-       
-      >
-      {/* <div
+      <div className="container relative z-10 h-full">
+        {/* <div
         className="relative z-10 flex h-full flex-col justify-center md:w-[50%] 2xl:w-[50%] 3xl:w-[40%]"
         style={{ marginLeft: `${containerLeft}px` }}
       > */}
         <div className="flex h-full flex-col justify-center md:w-[55%] 2xl:w-[55%] 3xl:w-[60%]">
-        {/* <div> */}
+          {/* <div> */}
           <h1 className="title-70 mb-3 text-[length:var(--text-70-sm)] tracking-[-0.025em] xl:mb-5">
             {toTitleCase(data.title)}
           </h1>

@@ -65,8 +65,7 @@ export interface ServiceItem {
     }[];
   };
 
-  seventhSection: BECSData
-  
+  seventhSection: BECSData;
 
   eighthSection: {
     title: string;
@@ -158,7 +157,5 @@ export interface Service {
   _id: string;
   items: ServiceItem[];
 }
-
-
 
 export type SubServiceData = ServiceItem;

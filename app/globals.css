@@ -1484,7 +1484,7 @@ input[type="number"] {
 
 @keyframes heroReveal {
   from {
-    opacity: 0.85;
+    opacity: 0.75;
     transform: translateY(18px);
   }
 
