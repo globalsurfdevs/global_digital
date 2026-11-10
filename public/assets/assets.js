@@ -59,7 +59,7 @@ import pjt from "../assets/icons/pjt.svg";
 import pjt1 from "../assets/icons/pjt-1.svg";
 import yr from "../assets/icons/yr.svg";
 import yr1 from "../assets/icons/yr-1.svg";
-import emp1 from "../assets/aboutus/emp-1.png";
+// import emp1 from "../assets/aboutus/emp-1.png";
 
 import boost1 from "../assets/logos/boost.svg";
 import boost2 from "../assets/logos/engage.svg";
@@ -116,62 +116,62 @@ import video_ads from "../assets/icons/video_ads.svg";
 import app_store_adv from "../assets/icons/app_store_adv.svg";
 import programmatic_adv from "../assets/icons/programmatic_adv.svg";
 
-import Anagha from "../assets/employee/Anagha.png";
-import Aashika from "../assets/employee/Aashika.png";
-import Anjana from "../assets/employee/Anjana.png";
-import Aravind from "../assets/employee/Aravind.png";
-import Arjun from "../assets/employee/Arjun.png";
-import Avani from "../assets/employee/Avani.png";
-import Dennis from "../assets/employee/Dennis.png";
-import Ganesh from "../assets/employee/Ganesh.png";
-import Jishnu from "../assets/employee/Jishnu.png";
-import Nived from "../assets/employee/Nived.png";
-import Rahees from "../assets/employee/Rahees.png";
-import Sanjay from "../assets/employee/Sanjay.png";
-import Sreemayi from "../assets/employee/Sreemayi.png";
-import Swetha from "../assets/employee/Swetha.png";
-import Vipin from "../assets/employee/Vipin.png";
-import Yasir from "../assets/employee/Yasir.png";
+// import Anagha from "../assets/employee/Anagha.png";
+// import Aashika from "../assets/employee/Aashika.png";
+// import Anjana from "../assets/employee/Anjana.png";
+// import Aravind from "../assets/employee/Aravind.png";
+// import Arjun from "../assets/employee/Arjun.png";
+// import Avani from "../assets/employee/Avani.png";
+// import Dennis from "../assets/employee/Dennis.png";
+// import Ganesh from "../assets/employee/Ganesh.png";
+// import Jishnu from "../assets/employee/Jishnu.png";
+// import Nived from "../assets/employee/Nived.png";
+// import Rahees from "../assets/employee/Rahees.png";
+// import Sanjay from "../assets/employee/Sanjay.png";
+// import Sreemayi from "../assets/employee/Sreemayi.png";
+// import Swetha from "../assets/employee/Swetha.png";
+// import Vipin from "../assets/employee/Vipin.png";
+// import Yasir from "../assets/employee/Yasir.png";
 
-import Anandhu from "../assets/employee/Anandhu.png";
-import Ashna from "../assets/employee/Ashna.png";
-import Faizal from "../assets/employee/Faizal.png";
-import Harsha from "../assets/employee/Harsha.png";
-import Levin from "../assets/employee/Levin.png";
-import Mobin from "../assets/employee/Mobinqq.png";
-import Preethika from "../assets/employee/Preethika.png";
-import Subijith from "../assets/employee/Subijith.png";
-import Afsal from "../assets/employee/Afsal.png";
-import Dilna from "../assets/employee/Dilna.png";
-import Thanisha from "../assets/employee/Thanisha.png";
-import Afeefa from "../assets/employee/Afeefa.png";
-import Ajay from "../assets/employee/Ajay.png";
-import Arjun_VP from "../assets/employee/Arjun_VP.png";
-import Devika from "../assets/employee/Devika.png";
-import Divya from "../assets/employee/Divya.png";
-import Hisham from "../assets/employee/Hisham.png";
-import Krishnapriya from "../assets/employee/Krishnapriya.png";
-import Mariyambi from "../assets/employee/Mariyambi.png";
-import Renisha from "../assets/employee/Renisha.png";
-import Shilpa from "../assets/employee/Shilpa.png";
-import Vishnu_v from "../assets/employee/Vishnu_v.png";
+// import Anandhu from "../assets/employee/Anandhu.png";
+// import Ashna from "../assets/employee/Ashna.png";
+// import Faizal from "../assets/employee/Faizal.png";
+// import Harsha from "../assets/employee/Harsha.png";
+// import Levin from "../assets/employee/Levin.png";
+// import Mobin from "../assets/employee/Mobinqq.png";
+// import Preethika from "../assets/employee/Preethika.png";
+// import Subijith from "../assets/employee/Subijith.png";
+// import Afsal from "../assets/employee/Afsal.png";
+// import Dilna from "../assets/employee/Dilna.png";
+// import Thanisha from "../assets/employee/Thanisha.png";
+// import Afeefa from "../assets/employee/Afeefa.png";
+// import Ajay from "../assets/employee/Ajay.png";
+// import Arjun_VP from "../assets/employee/Arjun_VP.png";
+// import Devika from "../assets/employee/Devika.png";
+// import Divya from "../assets/employee/Divya.png";
+// import Hisham from "../assets/employee/Hisham.png";
+// import Krishnapriya from "../assets/employee/Krishnapriya.png";
+// import Mariyambi from "../assets/employee/Mariyambi.png";
+// import Renisha from "../assets/employee/Renisha.png";
+// import Shilpa from "../assets/employee/Shilpa.png";
+// import Vishnu_v from "../assets/employee/Vishnu_v.png";
 
-import Vidhu from "../assets/employee/Vidhukrishna.png";
-import Anjanaseo from "../assets/employee/Anjanaseo.png";
-import Diya from "../assets/employee/Diya.png";
-import Gayathri from "../assets/employee/Gayathri.png";
-import Sneha from "../assets/employee/Sneha.png";
+// import Vidhu from "../assets/employee/Vidhukrishna.png";
+// import Anjanaseo from "../assets/employee/Anjanaseo.png";
+// import Diya from "../assets/employee/Diya.png";
+// import Gayathri from "../assets/employee/Gayathri.png";
+// import Sneha from "../assets/employee/Sneha.png";
 
-import Ashik from "../assets/employee/Ashik.png";
-import Hamna from "../assets/employee/Hamna.png";
+// import Ashik from "../assets/employee/Ashik.png";
+// import Hamna from "../assets/employee/Hamna.png";
 
-import seo_banner from "../assets/banner/SEO.jpg";
-import branding_bnr from "../assets/banner/Branding-&-Creatives-01.jpg";
-import marketing_bnr from "../assets/banner/Marketing.jpg";
-import performance_bnr from "../assets/banner/Performance.jpg";
-import social_bnr from "../assets/banner/Social_media.jpg";
-import web_bnr from "../assets/banner/Web_development.jpg";
-import ind_construction from "../images/Ind-construction/image1.png";
+// import seo_banner from "../assets/banner/SEO.jpg";
+// import branding_bnr from "../assets/banner/Branding-&-Creatives-01.jpg";
+// import marketing_bnr from "../assets/banner/Marketing.jpg";
+// import performance_bnr from "../assets/banner/Performance.jpg";
+// import social_bnr from "../assets/banner/Social_media.jpg";
+// import web_bnr from "../assets/banner/Web_development.jpg";
+// import ind_construction from "../images/Ind-construction/image1.png";
 
 import boostseo1 from "../assets/icons/boostseo1.svg";
 import boostseo2 from "../assets/icons/boostseo2.svg";
@@ -681,144 +681,144 @@ import hels5 from "../assets/services/marketing-automation/hel5.svg";
 import hospbanner from "../assets/services/hosp-banner.png";
 import hospSeoicon from "../assets/services/hospitality-seo.svg";
 import inbanner from "../assets/industry/inbanner.jpg";
-import dabanner from "../assets/data-analytics/dabanner.jpg";
-import dahel1 from "../assets/data-analytics/dahep1.svg";
-import dahel2 from "../assets/data-analytics/dahep2.svg";
-import dahel3 from "../assets/data-analytics/dahep3.svg";
-import dahel4 from "../assets/data-analytics/dahep4.svg";
-import dahel5 from "../assets/data-analytics/dahep5.svg";
-import dalogo1 from "../assets/data-analytics/dalogo1.png";
-import dalogo2 from "../assets/data-analytics/dalogo2.png";
-import dalogo3 from "../assets/data-analytics/dalogo3.png";
-import dalogo4 from "../assets/data-analytics/dalogo4.png";
-import dalogo5 from "../assets/data-analytics/dalogo5.png";
-import dalogo6 from "../assets/data-analytics/dalogo6.png";
-import dalogo7 from "../assets/data-analytics/dalogo7.png";
-import dalogo8 from "../assets/data-analytics/dalogo8.png";
-import dalogo9 from "../assets/data-analytics/dalogo9.png";
-import dalogo10 from "../assets/data-analytics/dalogo10.png";
-import dalogo11 from "../assets/data-analytics/dalogo11.png";
-import dalogo12 from "../assets/data-analytics/dalogo12.png";
-import dalogo13 from "../assets/data-analytics/dalogo13.png";
-import dalogo14 from "../assets/data-analytics/dalogo14.png";
-import dalogo15 from "../assets/data-analytics/dalogo15.png";
-import dalogo16 from "../assets/data-analytics/dalogo16.png";
-import dalogo17 from "../assets/data-analytics/dalogo17.png";
-import dalogo18 from "../assets/data-analytics/dalogo18.png";
-import dalogo19 from "../assets/data-analytics/dalogo19.png";
-import dare1 from "../assets/data-analytics/dars1.svg";
-import dare2 from "../assets/data-analytics/dars2.svg";
-import dare3 from "../assets/data-analytics/dars3.svg";
-import dare4 from "../assets/data-analytics/dars4.svg";
-import dare5 from "../assets/data-analytics/dars5.svg";
-import dare6 from "../assets/data-analytics/dars6.svg";
-import cmbanner from "../assets/content-marketing/cmbanner.jpg";
-import become from "../assets/content-marketing/become.jpg";
-import cmic1 from "../assets/content-marketing/cmic1.svg";
-import cmic2 from "../assets/content-marketing/cmic2.svg";
-import cmic3 from "../assets/content-marketing/cmic3.svg";
-import cmic4 from "../assets/content-marketing/cmic4.svg";
-import cybanner from "../assets/copy-writing/cwbanner.jpg";
-import cytp1 from "../assets/copy-writing/cytp1.svg";
-import cytp2 from "../assets/copy-writing/cytp2.svg";
-import cytp3 from "../assets/copy-writing/cytp3.svg";
-import cytp4 from "../assets/copy-writing/cytp4.svg";
-import cytp5 from "../assets/copy-writing/cytp5.svg";
-import cytp6 from "../assets/copy-writing/cytp6.svg";
-import cytp7 from "../assets/copy-writing/cytp7.svg";
-import cytp8 from "../assets/copy-writing/cytp8.svg";
-import cylogo1 from "../assets/copy-writing/cylogo1.png";
-import cylogo2 from "../assets/copy-writing/cylogo2.png";
-import cylogo3 from "../assets/copy-writing/cylogo3.png";
-import cylogo4 from "../assets/copy-writing/cylogo4.png";
-import cylogo5 from "../assets/copy-writing/cylogo5.png";
-import cylogo6 from "../assets/copy-writing/cylogo6.png";
-import cylogo7 from "../assets/copy-writing/cylogo7.png";
-import cylogo8 from "../assets/copy-writing/cylogo8.png";
-import cylogo9 from "../assets/copy-writing/cylogo9.png";
-import cylogo10 from "../assets/copy-writing/cylogo10.png";
-import cylogo11 from "../assets/copy-writing/cylogo11.png";
-import cylogo12 from "../assets/copy-writing/cylogo12.png";
-import cylogo13 from "../assets/copy-writing/cylogo13.png";
-import cyrs1 from "../assets/copy-writing/cyrs1.svg";
-import cyrs2 from "../assets/copy-writing/cyrs2.svg";
-import cyrs3 from "../assets/copy-writing/cyrs3.svg";
-import cyrs4 from "../assets/copy-writing/cyrs4.svg";
-import cyrs5 from "../assets/copy-writing/cyrs5.svg";
-import cyrs6 from "../assets/copy-writing/cyrs6.svg";
-import cprbanner from "../assets/content-production/cprbanner.jpg";
-import cprhr1 from "../assets/content-production/cprhr1.jpg";
-import cprhr2 from "../assets/content-production/cprhr2.jpg";
-import cprhr3 from "../assets/content-production/cprhr3.jpg";
-import cprhr4 from "../assets/content-production/cprhr4.jpg";
-import cprhr5 from "../assets/content-production/cprhr5.jpg";
-import cprhr6 from "../assets/content-production/cprhr6.jpg";
-import cprhr7 from "../assets/content-production/cprhr7.jpg";
-import cpric1 from "../assets/content-production/cpric1.svg";
-import cpric2 from "../assets/content-production/cpric2.svg";
-import cpric3 from "../assets/content-production/cpric3.svg";
-import cpric4 from "../assets/content-production/cpric4.svg";
-import cpric5 from "../assets/content-production/cpric5.svg";
-import cpric6 from "../assets/content-production/cpric6.svg";
-import tofic1 from "../assets/content-production/tofic1.svg";
-import tofic2 from "../assets/content-production/tofic2.svg";
-import tofic3 from "../assets/content-production/tofic3.svg";
-import tofic4 from "../assets/content-production/tofic4.svg";
-import tofic5 from "../assets/content-production/tofic5.svg";
-import tofic6 from "../assets/content-production/tofic6.svg";
-import tofic7 from "../assets/content-production/tofic7.svg";
-import brnd1 from "../assets/content-production/brnd1.jpg";
-import brnd2 from "../assets/content-production/brnd2.jpg";
-import brnd3 from "../assets/content-production/brnd3.jpg";
-import brnd4 from "../assets/content-production/brnd4.jpg";
-import brnd5 from "../assets/content-production/brnd5.jpg";
-import brnd6 from "../assets/content-production/brnd6.jpg";
-import brnd7 from "../assets/content-production/brnd7.jpg";
-import brnd8 from "../assets/content-production/brnd8.jpg";
-import inds1 from "../assets/industry/inds1.jpg";
-import inds2 from "../assets/industry/inds2.jpg";
-import inds3 from "../assets/industry/inds3.jpg";
-import inds4 from "../assets/industry/inds4.jpg";
-import inds5 from "../assets/industry/inds5.jpg";
-import inds6 from "../assets/industry/inds6.jpg";
-import inds7 from "../assets/industry/inds7.jpg";
-import inds8 from "../assets/industry/inds8.jpg";
-import inds9 from "../assets/industry/inds9.jpg";
-import inds10 from "../assets/industry/inds10.jpg";
-import ini1 from "../assets/industry/ini1.svg";
-import ini2 from "../assets/industry/ini2.svg";
-import ini3 from "../assets/industry/ini3.svg";
-import ini4 from "../assets/industry/ini4.svg";
-import ini5 from "../assets/industry/ini5.svg";
-import ini6 from "../assets/industry/ini6.svg";
-import ini7 from "../assets/industry/ini7.svg";
-import ini8 from "../assets/industry/ini8.svg";
-import ini9 from "../assets/industry/ini9.svg";
-import ini12 from "../assets/industry/ini12.svg";
-import ini13 from "../assets/industry/ini13.svg";
+// import dabanner from "../assets/data-analytics/dabanner.jpg";
+// import dahel1 from "../assets/data-analytics/dahep1.svg";
+// import dahel2 from "../assets/data-analytics/dahep2.svg";
+// import dahel3 from "../assets/data-analytics/dahep3.svg";
+// import dahel4 from "../assets/data-analytics/dahep4.svg";
+// import dahel5 from "../assets/data-analytics/dahep5.svg";
+// import dalogo1 from "../assets/data-analytics/dalogo1.png";
+// import dalogo2 from "../assets/data-analytics/dalogo2.png";
+// import dalogo3 from "../assets/data-analytics/dalogo3.png";
+// import dalogo4 from "../assets/data-analytics/dalogo4.png";
+// import dalogo5 from "../assets/data-analytics/dalogo5.png";
+// import dalogo6 from "../assets/data-analytics/dalogo6.png";
+// import dalogo7 from "../assets/data-analytics/dalogo7.png";
+// import dalogo8 from "../assets/data-analytics/dalogo8.png";
+// import dalogo9 from "../assets/data-analytics/dalogo9.png";
+// import dalogo10 from "../assets/data-analytics/dalogo10.png";
+// import dalogo11 from "../assets/data-analytics/dalogo11.png";
+// import dalogo12 from "../assets/data-analytics/dalogo12.png";
+// import dalogo13 from "../assets/data-analytics/dalogo13.png";
+// import dalogo14 from "../assets/data-analytics/dalogo14.png";
+// import dalogo15 from "../assets/data-analytics/dalogo15.png";
+// import dalogo16 from "../assets/data-analytics/dalogo16.png";
+// import dalogo17 from "../assets/data-analytics/dalogo17.png";
+// import dalogo18 from "../assets/data-analytics/dalogo18.png";
+// import dalogo19 from "../assets/data-analytics/dalogo19.png";
+// import dare1 from "../assets/data-analytics/dars1.svg";
+// import dare2 from "../assets/data-analytics/dars2.svg";
+// import dare3 from "../assets/data-analytics/dars3.svg";
+// import dare4 from "../assets/data-analytics/dars4.svg";
+// import dare5 from "../assets/data-analytics/dars5.svg";
+// import dare6 from "../assets/data-analytics/dars6.svg";
+// import cmbanner from "../assets/content-marketing/cmbanner.jpg";
+// import become from "../assets/content-marketing/become.jpg";
+// import cmic1 from "../assets/content-marketing/cmic1.svg";
+// import cmic2 from "../assets/content-marketing/cmic2.svg";
+// import cmic3 from "../assets/content-marketing/cmic3.svg";
+// import cmic4 from "../assets/content-marketing/cmic4.svg";
+// import cybanner from "../assets/copy-writing/cwbanner.jpg";
+// import cytp1 from "../assets/copy-writing/cytp1.svg";
+// import cytp2 from "../assets/copy-writing/cytp2.svg";
+// import cytp3 from "../assets/copy-writing/cytp3.svg";
+// import cytp4 from "../assets/copy-writing/cytp4.svg";
+// import cytp5 from "../assets/copy-writing/cytp5.svg";
+// import cytp6 from "../assets/copy-writing/cytp6.svg";
+// import cytp7 from "../assets/copy-writing/cytp7.svg";
+// import cytp8 from "../assets/copy-writing/cytp8.svg";
+// import cylogo1 from "../assets/copy-writing/cylogo1.png";
+// import cylogo2 from "../assets/copy-writing/cylogo2.png";
+// import cylogo3 from "../assets/copy-writing/cylogo3.png";
+// import cylogo4 from "../assets/copy-writing/cylogo4.png";
+// import cylogo5 from "../assets/copy-writing/cylogo5.png";
+// import cylogo6 from "../assets/copy-writing/cylogo6.png";
+// import cylogo7 from "../assets/copy-writing/cylogo7.png";
+// import cylogo8 from "../assets/copy-writing/cylogo8.png";
+// import cylogo9 from "../assets/copy-writing/cylogo9.png";
+// import cylogo10 from "../assets/copy-writing/cylogo10.png";
+// import cylogo11 from "../assets/copy-writing/cylogo11.png";
+// import cylogo12 from "../assets/copy-writing/cylogo12.png";
+// import cylogo13 from "../assets/copy-writing/cylogo13.png";
+// import cyrs1 from "../assets/copy-writing/cyrs1.svg";
+// import cyrs2 from "../assets/copy-writing/cyrs2.svg";
+// import cyrs3 from "../assets/copy-writing/cyrs3.svg";
+// import cyrs4 from "../assets/copy-writing/cyrs4.svg";
+// import cyrs5 from "../assets/copy-writing/cyrs5.svg";
+// import cyrs6 from "../assets/copy-writing/cyrs6.svg";
+// import cprbanner from "../assets/content-production/cprbanner.jpg";
+// import cprhr1 from "../assets/content-production/cprhr1.jpg";
+// import cprhr2 from "../assets/content-production/cprhr2.jpg";
+// import cprhr3 from "../assets/content-production/cprhr3.jpg";
+// import cprhr4 from "../assets/content-production/cprhr4.jpg";
+// import cprhr5 from "../assets/content-production/cprhr5.jpg";
+// import cprhr6 from "../assets/content-production/cprhr6.jpg";
+// import cprhr7 from "../assets/content-production/cprhr7.jpg";
+// import cpric1 from "../assets/content-production/cpric1.svg";
+// import cpric2 from "../assets/content-production/cpric2.svg";
+// import cpric3 from "../assets/content-production/cpric3.svg";
+// import cpric4 from "../assets/content-production/cpric4.svg";
+// import cpric5 from "../assets/content-production/cpric5.svg";
+// import cpric6 from "../assets/content-production/cpric6.svg";
+// import tofic1 from "../assets/content-production/tofic1.svg";
+// import tofic2 from "../assets/content-production/tofic2.svg";
+// import tofic3 from "../assets/content-production/tofic3.svg";
+// import tofic4 from "../assets/content-production/tofic4.svg";
+// import tofic5 from "../assets/content-production/tofic5.svg";
+// import tofic6 from "../assets/content-production/tofic6.svg";
+// import tofic7 from "../assets/content-production/tofic7.svg";
+// import brnd1 from "../assets/content-production/brnd1.jpg";
+// import brnd2 from "../assets/content-production/brnd2.jpg";
+// import brnd3 from "../assets/content-production/brnd3.jpg";
+// import brnd4 from "../assets/content-production/brnd4.jpg";
+// import brnd5 from "../assets/content-production/brnd5.jpg";
+// import brnd6 from "../assets/content-production/brnd6.jpg";
+// import brnd7 from "../assets/content-production/brnd7.jpg";
+// import brnd8 from "../assets/content-production/brnd8.jpg";
+// import inds1 from "../assets/industry/inds1.jpg";
+// import inds2 from "../assets/industry/inds2.jpg";
+// import inds3 from "../assets/industry/inds3.jpg";
+// import inds4 from "../assets/industry/inds4.jpg";
+// import inds5 from "../assets/industry/inds5.jpg";
+// import inds6 from "../assets/industry/inds6.jpg";
+// import inds7 from "../assets/industry/inds7.jpg";
+// import inds8 from "../assets/industry/inds8.jpg";
+// import inds9 from "../assets/industry/inds9.jpg";
+// import inds10 from "../assets/industry/inds10.jpg";
+// import ini1 from "../assets/industry/ini1.svg";
+// import ini2 from "../assets/industry/ini2.svg";
+// import ini3 from "../assets/industry/ini3.svg";
+// import ini4 from "../assets/industry/ini4.svg";
+// import ini5 from "../assets/industry/ini5.svg";
+// import ini6 from "../assets/industry/ini6.svg";
+// import ini7 from "../assets/industry/ini7.svg";
+// import ini8 from "../assets/industry/ini8.svg";
+// import ini9 from "../assets/industry/ini9.svg";
+// import ini12 from "../assets/industry/ini12.svg";
+// import ini13 from "../assets/industry/ini13.svg";
 import realestate from "../assets/industry/realestate.jpg";
 import corporateservices from "../assets/industry/corporate-services.jpg";
 
 import ini10 from "../assets/industry/ini10.svg";
 import brnd_ini3 from "../assets/industry/brnd_ini3.svg";
 import data_an_ini2 from "../assets/industry/data_an_ini2.svg";
-import edbanner from "../assets/education/edubanner.jpg";
-import edic1 from "../assets/education/eduser1.svg";
-import edic2 from "../assets/education/eduser2.svg";
-import edic3 from "../assets/education/eduser3.svg";
-import edic4 from "../assets/education/eduser4.svg";
-import edic5 from "../assets/education/eduser5.svg";
-import edic6 from "../assets/education/eduser6.svg";
-import edic7 from "../assets/education/eduser7.svg";
-import edic8 from "../assets/education/eduser8.svg";
-import edind1 from "../assets/education/edind1.svg";
-import edind2 from "../assets/education/edind2.svg";
-import edind3 from "../assets/education/edind3.svg";
-import edind4 from "../assets/education/edind4.svg";
-import edcover1 from "../assets/education/edcover1.jpg";
-import edcover2 from "../assets/education/edcover2.jpg";
-import edcover3 from "../assets/education/edcover3.jpg";
-import edcover4 from "../assets/education/edcover4.jpg";
+// import edbanner from "../assets/education/edubanner.jpg";
+// import edic1 from "../assets/education/eduser1.svg";
+// import edic2 from "../assets/education/eduser2.svg";
+// import edic3 from "../assets/education/eduser3.svg";
+// import edic4 from "../assets/education/eduser4.svg";
+// import edic5 from "../assets/education/eduser5.svg";
+// import edic6 from "../assets/education/eduser6.svg";
+// import edic7 from "../assets/education/eduser7.svg";
+// import edic8 from "../assets/education/eduser8.svg";
+// import edind1 from "../assets/education/edind1.svg";
+// import edind2 from "../assets/education/edind2.svg";
+// import edind3 from "../assets/education/edind3.svg";
+// import edind4 from "../assets/education/edind4.svg";
+// import edcover1 from "../assets/education/edcover1.jpg";
+// import edcover2 from "../assets/education/edcover2.jpg";
+// import edcover3 from "../assets/education/edcover3.jpg";
+// import edcover4 from "../assets/education/edcover4.jpg";
 import mailhos from "../assets/services/mail-hos.svg";
 import menurightarrow from "../assets/menurightarrow.svg";
 import menuphoneicon from "../images/menu-phone-icon.png";
@@ -866,31 +866,31 @@ import seRanking from "../assets/services/digital-marketing-service-kuwait/partn
 import screMingfrog from "../assets/services/digital-marketing-service-kuwait/partners/scre-mingfrog.svg";
 import relatedImg2 from "../assets/services/digital-marketing-service-kuwait/related_Img2.png";
 import relatedImg3 from "../assets/services/digital-marketing-service-kuwait/related_Img3.png";
-import photicn from "../assets/content-production/pht-icn.svg";
-import vidicon from "../assets/content-production/video-icn.svg";
-import contpro from "../assets/content-production/cont-pro.svg";
-import chlg1 from "../assets/digital-marketing-audit/chlg1.png";
-import chlg2 from "../assets/digital-marketing-audit/chlg2.png";
-import chlg3 from "../assets/digital-marketing-audit/chlg3.png";
-import chlg4 from "../assets/digital-marketing-audit/chlg4.png";
-import chlg5 from "../assets/digital-marketing-audit/chlg5.png";
-import bannerse from "../assets/digital-marketing-audit/bannerse.jpg";
-import free_digital_audit from "../assets/digital-marketing-audit/free_digital_audit.jpg";
-import insic1 from "../assets/digital-marketing-audit/insic1.svg";
-import insic2 from "../assets/digital-marketing-audit/insic2.svg";
-import insic3 from "../assets/digital-marketing-audit/insic3.svg";
-import insic4 from "../assets/digital-marketing-audit/insic4.svg";
-import insic5 from "../assets/digital-marketing-audit/insic5.svg";
-import sts1 from "../assets/digital-marketing-audit/sts1.jpg";
-import sts2 from "../assets/digital-marketing-audit/sts2.jpg";
-import sts3 from "../assets/digital-marketing-audit/sts3.jpg";
-import sts4 from "../assets/digital-marketing-audit/adt4.jpg";
-import gfsv1 from "../assets/digital-marketing-audit/gfsv1.svg";
-import gfsv2 from "../assets/digital-marketing-audit/gfsv2.svg";
-import gfsv3 from "../assets/digital-marketing-audit/gfsv3.svg";
-import gfsv4 from "../assets/digital-marketing-audit/gfsv4.svg";
-import gfsv5 from "../assets/digital-marketing-audit/gfsv5.svg";
-import gfsv6 from "../assets/digital-marketing-audit/gfsv6.svg";
+// import photicn from "../assets/content-production/pht-icn.svg";
+// import vidicon from "../assets/content-production/video-icn.svg";
+// import contpro from "../assets/content-production/cont-pro.svg";
+// import chlg1 from "../assets/digital-marketing-audit/chlg1.png";
+// import chlg2 from "../assets/digital-marketing-audit/chlg2.png";
+// import chlg3 from "../assets/digital-marketing-audit/chlg3.png";
+// import chlg4 from "../assets/digital-marketing-audit/chlg4.png";
+// import chlg5 from "../assets/digital-marketing-audit/chlg5.png";
+// import bannerse from "../assets/digital-marketing-audit/bannerse.jpg";
+// import free_digital_audit from "../assets/digital-marketing-audit/free_digital_audit.jpg";
+// import insic1 from "../assets/digital-marketing-audit/insic1.svg";
+// import insic2 from "../assets/digital-marketing-audit/insic2.svg";
+// import insic3 from "../assets/digital-marketing-audit/insic3.svg";
+// import insic4 from "../assets/digital-marketing-audit/insic4.svg";
+// import insic5 from "../assets/digital-marketing-audit/insic5.svg";
+// import sts1 from "../assets/digital-marketing-audit/sts1.jpg";
+// import sts2 from "../assets/digital-marketing-audit/sts2.jpg";
+// import sts3 from "../assets/digital-marketing-audit/sts3.jpg";
+// import sts4 from "../assets/digital-marketing-audit/adt4.jpg";
+// import gfsv1 from "../assets/digital-marketing-audit/gfsv1.svg";
+// import gfsv2 from "../assets/digital-marketing-audit/gfsv2.svg";
+// import gfsv3 from "../assets/digital-marketing-audit/gfsv3.svg";
+// import gfsv4 from "../assets/digital-marketing-audit/gfsv4.svg";
+// import gfsv5 from "../assets/digital-marketing-audit/gfsv5.svg";
+// import gfsv6 from "../assets/digital-marketing-audit/gfsv6.svg";
 import strsbanner from "../images/marketing-strategy-consulting/banner.jpg";
 import mschelp1 from "../images/marketing-strategy-consulting/help1.svg";
 import mschelp2 from "../images/marketing-strategy-consulting/help2.svg";
@@ -910,49 +910,50 @@ import omst4 from "../images/marketing-strategy-consulting/omst4.svg";
 import omst5 from "../images/marketing-strategy-consulting/omst5.svg";
 import omst6 from "../images/marketing-strategy-consulting/omst6.svg";
 
-import shareicon from "../images/blog-new/shareicon.svg";
-import linkedinicon from "../images/blog-new/linkedinicon.svg";
-import facebbokicon from "../images/blog-new/facebookicon.svg";
-import twittericon from "../images/blog-new/xicon.svg";
-import youtubeicon from "../images/blog-new/ytube.svg";
-import tiktokicon from "../images/blog-new/tiktok.svg";
-import instagramicon from "../images/blog-new/instablog.svg";
-import fbook from "../images/blog-new/fbook.svg";
-import algo from "../images/blog-new/algo.svg";
-import brand from "../images/blog-new/brand.svg";
-import budget from "../images/blog-new/budget.svg";
-import legal from "../images/blog-new/legal.svg";
-import mcontent from "../images/blog-new/mcontent.svg";
-import message from "../images/blog-new/message.svg";
-import platform from "../images/blog-new/platforms.svg";
-import videoblg from "../images/blog-new/video.svg";
-import blogbnr from "../images/blog-new/blog_2.png";
-import ashnablog from "../images/blog-new/ashna.png";
-import blogimg2 from "../images/blog-new/img2.png";
-import makevideo from "../images/blog-new/makevideo.png";
-import measurelearn from "../images/blog-new/measurelearn.png";
-import prepro1 from "../images/blog-new/prepro1.png";
-import prepro2 from "../images/blog-new/prepro2.png";
-import prepro3 from "../images/blog-new/prepro3.png";
-import prepro4 from "../images/blog-new/prepro4.png";
-import prepro5 from "../images/blog-new/prepro5.png";
-import scroll from "../images/blog-new/scroll.png";
-import tcom1 from "../images/blog-new/tcom1.png";
-import tcom2 from "../images/blog-new/tcom2.png";
-import tcom3 from "../images/blog-new/tcom3.png";
-import tcom4 from "../images/blog-new/tcom4.png";
-import tcom5 from "../images/blog-new/tcom5.png";
-import tcom6 from "../images/blog-new/tcom6.png";
-import bgimg1 from "../images/blogs2/bgimg1.png";
-import bgimg2 from "../images/blogs2/bgimg2.png";
-import bgimg3 from "../images/blogs2/bgimg3.png";
-import blogbnrnew from "../images/blogs2/blogbnr.png";
-import blogimgnew2 from "../images/blogs2/blogimg2.png";
-import llm from "../images/blogs2/llm.png";
-import content from "../images/blogs2/content.svg";
-import ecosys from "../images/blogs2/ecosys.svg";
-import seonew from "../images/blogs2/seo.svg";
-import structure from "../images/blogs2/structure.svg";
+import shareicon from "./blog-icons/shareicon.svg";
+import linkedinicon from "./blog-icons/linkedinicon.svg";
+import facebbokicon from "./blog-icons/facebookicon.svg";
+import twittericon from "./blog-icons/xicon.svg";
+// import youtubeicon from "../images/blog-new/ytube.svg";
+// import tiktokicon from "../images/blog-new/tiktok.svg";
+// import instagramicon from "../images/blog-new/instablog.svg";
+// import fbook from "../images/blog-new/fbook.svg";
+// import algo from "../images/blog-new/algo.svg";
+// import brand from "../images/blog-new/brand.svg";
+// import budget from "../images/blog-new/budget.svg";
+// import legal from "../images/blog-new/legal.svg";
+// import mcontent from "../images/blog-new/mcontent.svg";
+// import message from "../images/blog-new/message.svg";
+// import platform from "../images/blog-new/platforms.svg";
+// import videoblg from "../images/blog-new/video.svg";
+// import blogbnr from "../images/blog-new/blog_2.png";
+// import ashnablog from "../images/blog-new/ashna.png";
+// import blogimg2 from "../images/blog-new/img2.png";
+// import makevideo from "../images/blog-new/makevideo.png";
+// import measurelearn from "../images/blog-new/measurelearn.png";
+// import prepro1 from "../images/blog-new/prepro1.png";
+// import prepro2 from "../images/blog-new/prepro2.png";
+// import prepro3 from "../images/blog-new/prepro3.png";
+// import prepro4 from "../images/blog-new/prepro4.png";
+// import prepro5 from "../images/blog-new/prepro5.png";
+// import scroll from "../images/blog-new/scroll.png";
+// import tcom1 from "../images/blog-new/tcom1.png";
+// import tcom2 from "../images/blog-new/tcom2.png";
+// import tcom3 from "../images/blog-new/tcom3.png";
+// import tcom4 from "../images/blog-new/tcom4.png";
+// import tcom5 from "../images/blog-new/tcom5.png";
+// import tcom6 from "../images/blog-new/tcom6.png";
+// import bgimg1 from "../images/blogs2/bgimg1.png";
+// import bgimg2 from "../images/blogs2/bgimg2.png";
+// import bgimg3 from "../images/blogs2/bgimg3.png";
+// import blogbnrnew from "../images/blogs2/blogbnr.png";
+// import blogimgnew2 from "../images/blogs2/blogimg2.png";
+// import llm from "../images/blogs2/llm.png";
+// import content from "../images/blogs2/content.svg";
+// import ecosys from "../images/blogs2/ecosys.svg";
+// import seonew from "../images/blogs2/seo.svg";
+// import structure from "../images/blogs2/structure.svg";
+
 import geobanner from "../images/geo-imgs/geo-banner.jpg";
 import geolg1 from "../images/geo-imgs/geo-lg1.png";
 import geolg2 from "../images/geo-imgs/geo-lg2.png";
@@ -992,35 +993,35 @@ import wecanhelp3 from "../images/geo-imgs/wh3.svg";
 import wecanhelp4 from "../images/geo-imgs/wh4.svg";
 import wecanhelp5 from "../images/geo-imgs/wh5.svg";
 import wecanhelp6 from "../images/geo-imgs/wh6.svg";
-import newblog23bnr from "../images/blog-new/new-blog-bnr-23.jpg";
-import bloggs2 from "../images/blog-new/blog-gs2.jpg";
-import bloggs3 from "../images/blog-new/blog-gs3.jpg";
-import bloggs4 from "../images/blog-new/blog-gs4.jpg";
-import bloggs5 from "../images/blog-new/blog-gs5.png";
-import blogg6 from "../images/blog-new/blog-gs6.jpg";
-import newblog01bnr from "../images/blog-new/blog6/ai-powered.png";
-import morg from "../images/blog-new/blog6/monthly-organic-comparison.png";
-import zeroclick from "../images/blog-new/blog6/zero-click.png";
-import eeatseo from "../images/blog-new/blog6/eeat-seo.png";
-import meassuringav from "../images/blog-new/blog6/meassuring-av.jpg";
-import blog_3 from "../images/blog-new/blog6/blog_3.jpg";
-import blog_4 from "../images/blog-new/blog8/banner.png";
+// import newblog23bnr from "../images/blog-new/new-blog-bnr-23.jpg";
+// import bloggs2 from "../images/blog-new/blog-gs2.jpg";
+// import bloggs3 from "../images/blog-new/blog-gs3.jpg";
+// import bloggs4 from "../images/blog-new/blog-gs4.jpg";
+// import bloggs5 from "../images/blog-new/blog-gs5.png";
+// import blogg6 from "../images/blog-new/blog-gs6.jpg";
+// import newblog01bnr from "../images/blog-new/blog6/ai-powered.png";
+// import morg from "../images/blog-new/blog6/monthly-organic-comparison.png";
+// import zeroclick from "../images/blog-new/blog6/zero-click.png";
+// import eeatseo from "../images/blog-new/blog6/eeat-seo.png";
+// import meassuringav from "../images/blog-new/blog6/meassuring-av.jpg";
+// import blog_3 from "../images/blog-new/blog6/blog_3.jpg";
+// import blog_4 from "../images/blog-new/blog8/banner.png";
 
-import blog_801 from "../images/blog-new/blog8/section1.jpg";
-import blog_802 from "../images/blog-new/blog8/section2.png";
-import blog_803 from "../images/blog-new/blog8/section3.png";
-import blog_804 from "../images/blog-new/blog8/section4.png";
+// import blog_801 from "../images/blog-new/blog8/section1.jpg";
+// import blog_802 from "../images/blog-new/blog8/section2.png";
+// import blog_803 from "../images/blog-new/blog8/section3.png";
+// import blog_804 from "../images/blog-new/blog8/section4.png";
 
-import blog_71 from "../images/blog-new/blog7/71.png";
-import blog_72 from "../images/blog-new/blog7/72.png";
-import blog_73 from "../images/blog-new/blog7/techseo1.png";
-import blog_74 from "../images/blog-new/blog7/techseo2.png";
-import blog_75 from "../images/blog-new/blog7/techseo3.png";
-import blog_76 from "../images/blog-new/blog7/mn.jpg";
-import blog_77 from "../images/blog-new/blog7/sec.png";
-import blog_78 from "../images/blog-new/blog7/third.png";
-import blog_81 from "../images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png";
-import blog_82 from "../images/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/main.jpg";
+// import blog_71 from "../images/blog-new/blog7/71.png";
+// import blog_72 from "../images/blog-new/blog7/72.png";
+// import blog_73 from "../images/blog-new/blog7/techseo1.png";
+// import blog_74 from "../images/blog-new/blog7/techseo2.png";
+// import blog_75 from "../images/blog-new/blog7/techseo3.png";
+// import blog_76 from "../images/blog-new/blog7/mn.jpg";
+// import blog_77 from "../images/blog-new/blog7/sec.png";
+// import blog_78 from "../images/blog-new/blog7/third.png";
+// import blog_81 from "../images/blogs/google-ads-vs-meta-ads-for-uae-lead-generation/main.png";
+// import blog_82 from "../images/blogs/how-digital-marketing-wins-projects-for-construction-companies-in-uae/main.jpg";
 
 import icss1 from "../images/icon/ics1.svg";
 import icss2 from "../images/icon/ics2.svg";
@@ -1036,47 +1037,47 @@ import education1 from "../images/works/education.svg";
 import hospitality1 from "../images/works/hospitality.svg";
 import healthcare1 from "../images/works/healthcare.svg";
 
-import envblog1 from "../images/blogs/environment/envblog1.jpg";
-import envblog2 from "../images/blogs/environment/envblog2.jpg";
-import envblog3 from "../images/blogs/environment/envblog3.jpg";
-import envblog4 from "../images/blogs/environment/envblog4.jpg";
-import envblog5 from "../images/blogs/environment/envblog5.jpg";
-import envblog6 from "../images/blogs/environment/envblog6.jpg";
-import envblog7 from "../images/blogs/environment/envblog7.jpg";
+// import envblog1 from "../images/blogs/environment/envblog1.jpg";
+// import envblog2 from "../images/blogs/environment/envblog2.jpg";
+// import envblog3 from "../images/blogs/environment/envblog3.jpg";
+// import envblog4 from "../images/blogs/environment/envblog4.jpg";
+// import envblog5 from "../images/blogs/environment/envblog5.jpg";
+// import envblog6 from "../images/blogs/environment/envblog6.jpg";
+// import envblog7 from "../images/blogs/environment/envblog7.jpg";
 
-import llmblog1 from "../images/blogs/llm/llmblog1.jpg";
-import llmblog2 from "../images/blogs/llm/llmblog2.jpg";
-import llmblog3 from "../images/blogs/llm/llmblog3.jpg";
-import llmicon1 from "../images/blogs/llm/llmicon1.svg";
-import llmicon2 from "../images/blogs/llm/llmicon2.svg";
-import llmicon3 from "../images/blogs/llm/llmicon3.svg";
-import llicon4 from "../images/blogs/llm/llmicon4.svg";
-import llicon5 from "../images/blogs/llm/llmicon5.svg";
-import llmthumb from "../images/blogs/llm/blog-nw-thumb.jpg";
-import blgbanner from "../assets/blogs/uae-construction-contractor-digital-credibility-hero.webp";
+// import llmblog1 from "../images/blogs/llm/llmblog1.jpg";
+// import llmblog2 from "../images/blogs/llm/llmblog2.jpg";
+// import llmblog3 from "../images/blogs/llm/llmblog3.jpg";
+// import llmicon1 from "../images/blogs/llm/llmicon1.svg";
+// import llmicon2 from "../images/blogs/llm/llmicon2.svg";
+// import llmicon3 from "../images/blogs/llm/llmicon3.svg";
+// import llicon4 from "../images/blogs/llm/llmicon4.svg";
+// import llicon5 from "../images/blogs/llm/llmicon5.svg";
+// import llmthumb from "../images/blogs/llm/blog-nw-thumb.jpg";
+// import blgbanner from "../assets/blogs/uae-construction-contractor-digital-credibility-hero.webp";
 
-import aibanner from "../images/blogs/ai/ai1.png";
-import ai5 from "../images/blogs/ai/ai5.webp";
-import ai3 from "../images/blogs/ai/ai3.webp";
-import ai4 from "../images/blogs/ai/ai4.webp";
-import ai6 from "../images/blogs/ai/ai6.png";
-import ai2 from "../images/blogs/ai/ai2.jpg";
+// import aibanner from "../images/blogs/ai/ai1.png";
+// import ai5 from "../images/blogs/ai/ai5.webp";
+// import ai3 from "../images/blogs/ai/ai3.webp";
+// import ai4 from "../images/blogs/ai/ai4.webp";
+// import ai6 from "../images/blogs/ai/ai6.png";
+// import ai2 from "../images/blogs/ai/ai2.jpg";
 
-import keyw1 from "../images/blogs/keywords/blogimg1.png";
-import keyw2 from "../images/blogs/keywords/blogimg2.png";
-import keyw3 from "../images/blogs/keywords/blogimg3.png";
-import keyw4 from "../images/blogs/keywords/blogimg4.png";
+// import keyw1 from "../images/blogs/keywords/blogimg1.png";
+// import keyw2 from "../images/blogs/keywords/blogimg2.png";
+// import keyw3 from "../images/blogs/keywords/blogimg3.png";
+// import keyw4 from "../images/blogs/keywords/blogimg4.png";
 
-import p1 from "../images/blogs/performance/blog-p1.jpg";
-import p2 from "../images/blogs/performance/blog-p2.png";
-import p3 from "../images/blogs/performance/blog-p3.png";
-import p4 from "../images/blogs/performance/blog-p4.png";
-import p5 from "../images/blogs/performance/blog-p5.png";
+// import p1 from "../images/blogs/performance/blog-p1.jpg";
+// import p2 from "../images/blogs/performance/blog-p2.png";
+// import p3 from "../images/blogs/performance/blog-p3.png";
+// import p4 from "../images/blogs/performance/blog-p4.png";
+// import p5 from "../images/blogs/performance/blog-p5.png";
 
-import dblog1 from "../images/blogs/digital/dblog1.webp";
-import dblog2 from "../images/blogs/digital/dblog2.webp";
-import dblog3 from "../images/blogs/digital/dblog3.webp";
-import dblog4 from "../images/blogs/digital/dblog4.webp";
+// import dblog1 from "../images/blogs/digital/dblog1.webp";
+// import dblog2 from "../images/blogs/digital/dblog2.webp";
+// import dblog3 from "../images/blogs/digital/dblog3.webp";
+// import dblog4 from "../images/blogs/digital/dblog4.webp";
 
 import futureproofwebsites from "../images/end-to-end-digitalmarketing/future-proof-websites.svg";
 import googleaisearch from "../images/end-to-end-digitalmarketing/google-ai-search.svg";
@@ -1155,26 +1156,26 @@ export const assets = {
   chatgpt,
   lockerStudio,
   digitalbanner,
-  blgbanner,
-  aibanner,
-  p1,
-  p2,
-  p3,
-  p4,
-  p5,
-  dblog1,
-  dblog2,
-  dblog3,
-  dblog4,
-  keyw1,
-  keyw2,
-  keyw3,
-  keyw4,
-  ai5,
-  ai2,
-  ai3,
-  ai6,
-  ai4,
+  // blgbanner,
+  // aibanner,
+  // p1,
+  // p2,
+  // p3,
+  // p4,
+  // p5,
+  // dblog1,
+  // dblog2,
+  // dblog3,
+  // dblog4,
+  // keyw1,
+  // keyw2,
+  // keyw3,
+  // keyw4,
+  // ai5,
+  // ai2,
+  // ai3,
+  // ai6,
+  // ai4,
   realestate1,
   real1,
   b2b1,
@@ -1185,58 +1186,58 @@ export const assets = {
   healthcare1,
   realestate,
   corporateservices,
-  llmblog1,
-  llmblog2,
-  llmblog3,
-  llmicon1,
-  llmicon2,
-  llmicon3,
-  llicon5,
-  llicon4,
-  llmthumb,
+  // llmblog1,
+  // llmblog2,
+  // llmblog3,
+  // llmicon1,
+  // llmicon2,
+  // llmicon3,
+  // llicon5,
+  // llicon4,
+  // llmthumb,
   icss1,
   icss2,
   icss3,
   icss4,
-  envblog1,
-  envblog2,
-  envblog3,
-  envblog4,
-  envblog5,
-  envblog6,
-  envblog7,
-  blog_71,
-  blog_76,
-  blog_77,
-  blog_78,
-  blog_72,
-  blog_73,
-  blog_74,
-  blog_75,
-  blog_82,
-  blog_3,
-  blog_4,
-  blog_81,
-  blog_801,
-  blog_802,
-  blog_803,
-  blog_804,
-  meassuringav,
-  eeatseo,
-  zeroclick,
-  morg,
-  newblog01bnr,
-  Vidhu,
-  newblog23bnr,
-  bloggs2,
-  bloggs3,
-  bloggs4,
-  bloggs5,
-  blogg6,
-  Anjanaseo,
-  Diya,
-  Gayathri,
-  Sneha,
+  // envblog1,
+  // envblog2,
+  // envblog3,
+  // envblog4,
+  // envblog5,
+  // envblog6,
+  // envblog7,
+  // blog_71,
+  // blog_76,
+  // blog_77,
+  // blog_78,
+  // blog_72,
+  // blog_73,
+  // blog_74,
+  // blog_75,
+  // blog_82,
+  // blog_3,
+  // blog_4,
+  // blog_81,
+  // blog_801,
+  // blog_802,
+  // blog_803,
+  // blog_804,
+  // meassuringav,
+  // eeatseo,
+  // zeroclick,
+  // morg,
+  // newblog01bnr,
+  // Vidhu,
+  // newblog23bnr,
+  // bloggs2,
+  // bloggs3,
+  // bloggs4,
+  // bloggs5,
+  // blogg6,
+  // Anjanaseo,
+  // Diya,
+  // Gayathri,
+  // Sneha,
   geolg1,
   geolg2,
   geolg3,
@@ -1276,55 +1277,55 @@ export const assets = {
   expg5,
   expg6,
   geobanner,
-  bgimg1,
-  bgimg2,
-  bgimg3,
-  blogbnrnew,
-  blogimgnew2,
-  llm,
-  content,
-  ecosys,
-  seonew,
-  structure,
+  // bgimg1,
+  // bgimg2,
+  // bgimg3,
+  // blogbnrnew,
+  // blogimgnew2,
+  // llm,
+  // content,
+  // ecosys,
+  // seonew,
+  // structure,
   omst1,
   omst2,
   omst3,
   omst4,
   omst5,
   omst6,
-  tcom1,
-  tcom2,
-  tcom3,
-  tcom4,
-  tcom5,
-  tcom6,
-  scroll,
-  prepro1,
-  prepro2,
-  prepro3,
-  prepro4,
-  prepro5,
-  measurelearn,
-  blogbnr,
-  blogimg2,
-  makevideo,
+  // tcom1,
+  // tcom2,
+  // tcom3,
+  // tcom4,
+  // tcom5,
+  // tcom6,
+  // scroll,
+  // prepro1,
+  // prepro2,
+  // prepro3,
+  // prepro4,
+  // prepro5,
+  // measurelearn,
+  // blogbnr,
+  // blogimg2,
+  // makevideo,
   shareicon,
   linkedinicon,
   facebbokicon,
   twittericon,
-  youtubeicon,
-  tiktokicon,
-  instagramicon,
-  fbook,
-  algo,
-  brand,
-  budget,
-  legal,
-  mcontent,
-  message,
-  platform,
-  videoblg,
-  ashnablog,
+  // youtubeicon,
+  // tiktokicon,
+  // instagramicon,
+  // fbook,
+  // algo,
+  // brand,
+  // budget,
+  // legal,
+  // mcontent,
+  // message,
+  // platform,
+  // videoblg,
+  // ashnablog,
   strsbanner,
   mschelp1,
   mschelp2,
@@ -1336,29 +1337,29 @@ export const assets = {
   cmrst4,
   cmrst5,
   cmrst6,
-  gfsv1,
-  free_digital_audit,
-  gfsv2,
-  gfsv3,
-  gfsv4,
-  gfsv5,
-  gfsv6,
-  sts1,
-  sts2,
-  sts3,
-  sts4,
-  insic1,
-  insic2,
-  insic3,
-  insic4,
-  insic5,
-  bannerse,
-  chlg1,
-  chlg2,
-  chlg3,
-  chlg4,
-  chlg5,
-  edcover1,
+  // gfsv1,
+  // free_digital_audit,
+  // gfsv2,
+  // gfsv3,
+  // gfsv4,
+  // gfsv5,
+  // gfsv6,
+  // sts1,
+  // sts2,
+  // sts3,
+  // sts4,
+  // insic1,
+  // insic2,
+  // insic3,
+  // insic4,
+  // insic5,
+  // bannerse,
+  // chlg1,
+  // chlg2,
+  // chlg3,
+  // chlg4,
+  // chlg5,
+  // edcover1,
   relatedImg2,
   microicon1,
   microicon2,
@@ -1369,149 +1370,149 @@ export const assets = {
   microicon7,
   microicon8,
   microicon9,
-  photicn,
-  vidicon,
-  contpro,
+  // photicn,
+  // vidicon,
+  // contpro,
   brnd_ini3,
   data_an_ini2,
   relatedImg3,
   menuphoneicon,
-  edcover2,
-  edcover3,
-  edcover4,
-  edind1,
-  edind2,
-  edind3,
-  edind4,
-  edic1,
-  edic2,
-  edic3,
-  edic4,
-  edic5,
-  edic6,
-  edic7,
-  edic8,
+  // edcover2,
+  // edcover3,
+  // edcover4,
+  // edind1,
+  // edind2,
+  // edind3,
+  // edind4,
+  // edic1,
+  // edic2,
+  // edic3,
+  // edic4,
+  // edic5,
+  // edic6,
+  // edic7,
+  // edic8,
   mailhos,
   hospSeoicon,
   hospbanner,
-  edbanner,
+  // edbanner,
   menurightarrow,
-  ini1,
-  ini2,
-  ini3,
-  ini4,
-  ini5,
-  ini6,
-  ini7,
-  ini8,
-  ini9,
-  ini12,
-  ini13,
+  // ini1,
+  // ini2,
+  // ini3,
+  // ini4,
+  // ini5,
+  // ini6,
+  // ini7,
+  // ini8,
+  // ini9,
+  // ini12,
+  // ini13,
   ini10,
-  inds1,
-  inds2,
-  inds3,
-  inds4,
-  inds5,
-  inds6,
-  inds7,
-  inds8,
-  inds9,
-  inds10,
-  brnd1,
-  brnd2,
-  brnd3,
-  brnd4,
-  brnd5,
-  brnd6,
-  brnd7,
-  brnd8,
-  tofic1,
-  tofic2,
-  tofic3,
-  tofic4,
-  tofic5,
-  tofic6,
-  tofic7,
-  cprbanner,
-  cprhr1,
-  cprhr2,
-  cprhr3,
-  cprhr4,
-  cprhr5,
-  cprhr6,
-  cprhr7,
-  cpric1,
-  cpric2,
-  cpric3,
-  cpric4,
-  cpric5,
-  cpric6,
-  cyrs1,
-  cyrs2,
-  cyrs3,
-  cyrs4,
-  cyrs5,
-  cyrs6,
-  cylogo1,
-  cylogo2,
-  cylogo3,
-  cylogo4,
-  cylogo5,
-  cylogo6,
-  cylogo7,
-  cylogo8,
-  cylogo9,
-  cylogo10,
-  cylogo11,
-  cylogo12,
-  cylogo13,
-  cytp1,
-  cytp2,
-  cytp3,
-  cytp4,
-  cytp5,
-  cytp6,
-  cytp7,
-  cytp8,
-  cybanner,
-  cmbanner,
-  become,
-  cmic1,
-  cmic2,
-  cmic3,
-  cmic4,
-  dare1,
-  dare2,
-  dare3,
-  dare4,
-  dare5,
-  dare6,
-  dalogo1,
-  dalogo2,
-  dalogo3,
-  dalogo4,
-  dalogo5,
-  dalogo6,
-  dalogo7,
-  dalogo8,
-  dalogo9,
-  dalogo10,
-  dalogo11,
-  dalogo12,
-  dalogo13,
-  dalogo14,
-  dalogo15,
-  dalogo16,
-  dalogo17,
-  dalogo18,
-  dalogo19,
-  dahel1,
-  dahel2,
-  dahel3,
-  dahel4,
-  dahel5,
-  dabanner,
+  // inds1,
+  // inds2,
+  // inds3,
+  // inds4,
+  // inds5,
+  // inds6,
+  // inds7,
+  // inds8,
+  // inds9,
+  // inds10,
+  // brnd1,
+  // brnd2,
+  // brnd3,
+  // brnd4,
+  // brnd5,
+  // brnd6,
+  // brnd7,
+  // brnd8,
+  // tofic1,
+  // tofic2,
+  // tofic3,
+  // tofic4,
+  // tofic5,
+  // tofic6,
+  // tofic7,
+  // cprbanner,
+  // cprhr1,
+  // cprhr2,
+  // cprhr3,
+  // cprhr4,
+  // cprhr5,
+  // cprhr6,
+  // cprhr7,
+  // cpric1,
+  // cpric2,
+  // cpric3,
+  // cpric4,
+  // cpric5,
+  // cpric6,
+  // cyrs1,
+  // cyrs2,
+  // cyrs3,
+  // cyrs4,
+  // cyrs5,
+  // cyrs6,
+  // cylogo1,
+  // cylogo2,
+  // cylogo3,
+  // cylogo4,
+  // cylogo5,
+  // cylogo6,
+  // cylogo7,
+  // cylogo8,
+  // cylogo9,
+  // cylogo10,
+  // cylogo11,
+  // cylogo12,
+  // cylogo13,
+  // cytp1,
+  // cytp2,
+  // cytp3,
+  // cytp4,
+  // cytp5,
+  // cytp6,
+  // cytp7,
+  // cytp8,
+  // cybanner,
+  // cmbanner,
+  // become,
+  // cmic1,
+  // cmic2,
+  // cmic3,
+  // cmic4,
+  // dare1,
+  // dare2,
+  // dare3,
+  // dare4,
+  // dare5,
+  // dare6,
+  // dalogo1,
+  // dalogo2,
+  // dalogo3,
+  // dalogo4,
+  // dalogo5,
+  // dalogo6,
+  // dalogo7,
+  // dalogo8,
+  // dalogo9,
+  // dalogo10,
+  // dalogo11,
+  // dalogo12,
+  // dalogo13,
+  // dalogo14,
+  // dalogo15,
+  // dalogo16,
+  // dalogo17,
+  // dalogo18,
+  // dalogo19,
+  // dahel1,
+  // dahel2,
+  // dahel3,
+  // dahel4,
+  // dahel5,
+  // dabanner,
   inbanner,
   massbanner,
   hels1,
@@ -1867,8 +1868,8 @@ export const assets = {
   platform3,
   platform4,
   platform5,
-  Dilna,
-  Thanisha,
+  // Dilna,
+  // Thanisha,
   exp1,
   exp2,
   exp3,
@@ -1894,42 +1895,42 @@ export const assets = {
   boostseo21,
   boostseo3,
   boostseo4,
-  Levin,
-  Subijith,
-  Preethika,
-  Mobin,
-  Harsha,
-  Faizal,
-  Ashna,
-  Anandhu,
-  Arjun,
-  Avani,
-  Dennis,
-  Ganesh,
-  Jishnu,
-  Nived,
-  Rahees,
-  Sanjay,
-  Sreemayi,
-  Swetha,
-  Vipin,
-  Yasir,
-  Afsal,
-  Anagha,
-  Aashika,
-  Anjana,
-  Aravind,
-  Arjun_VP,
-  Ajay,
-  Afeefa,
-  Devika,
-  Divya,
-  Hisham,
-  Krishnapriya,
-  Mariyambi,
-  Renisha,
-  Shilpa,
-  Vishnu_v,
+  // Levin,
+  // Subijith,
+  // Preethika,
+  // Mobin,
+  // Harsha,
+  // Faizal,
+  // Ashna,
+  // Anandhu,
+  // Arjun,
+  // Avani,
+  // Dennis,
+  // Ganesh,
+  // Jishnu,
+  // Nived,
+  // Rahees,
+  // Sanjay,
+  // Sreemayi,
+  // Swetha,
+  // Vipin,
+  // Yasir,
+  // Afsal,
+  // Anagha,
+  // Aashika,
+  // Anjana,
+  // Aravind,
+  // Arjun_VP,
+  // Ajay,
+  // Afeefa,
+  // Devika,
+  // Divya,
+  // Hisham,
+  // Krishnapriya,
+  // Mariyambi,
+  // Renisha,
+  // Shilpa,
+  // Vishnu_v,
   up_arrow,
   down_arrow,
   seopr1,
@@ -1946,7 +1947,7 @@ export const assets = {
   boost2,
   boost3,
   boost4,
-  emp1,
+  // emp1,
   cl,
   cl1,
   pjt,
@@ -2026,13 +2027,13 @@ export const assets = {
   local_seo,
   technical_seo,
   inter_seo,
-  seo_banner,
-  marketing_bnr,
-  performance_bnr,
-  ind_construction,
-  social_bnr,
-  web_bnr,
-  branding_bnr,
+  // seo_banner,
+  // marketing_bnr,
+  // performance_bnr,
+  // ind_construction,
+  // social_bnr,
+  // web_bnr,
+  // branding_bnr,
   search_engine_advertising,
   social_media_marketing,
   influencer_marketing,
@@ -2191,8 +2192,8 @@ export const assets = {
   screMingfrog,
   microsoftAdvertising,
   adobCreativeCloud,
-  Ashik,
-  Hamna,
+  // Ashik,
+  // Hamna,
 };
 
 export const logos = [

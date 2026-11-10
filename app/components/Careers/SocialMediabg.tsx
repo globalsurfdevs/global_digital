@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import aboutbnnr from "@/public/assets/aboutus/banner-aboutus.jpg";
 import Button from "../Button/Button";
 import Link from "next/link";
 import ButtonIcon from "../Button/ButtonIcon";
@@ -51,7 +50,7 @@ const SocialMediabg = () => {
   return (
     <section
       className="bg-center-left relative bg-cover bg-no-repeat py-24"
-      style={{ backgroundImage: `url(${aboutbnnr.src})` }}
+      style={{ backgroundImage: "url('/assets/career/banner-aboutus.jpg')" }}
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">

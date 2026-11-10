@@ -126,7 +126,7 @@ export const Button = forwardRef<
           <Loader2 className="h-3.5 w-3.5 animate-spin" />
         ) : variant === "whatsapp" ? (
           <Image
-            src="/assets/images/branding-positioning/whatsapp-icon.svg"
+            src="/assets/icons-essential/whatsapp-icon.svg"
             alt="WhatsApp"
             width={26}
             height={26}

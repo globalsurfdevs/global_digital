@@ -2,7 +2,7 @@
 import Image from "next/image";
 // import { heroData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import Button from "../../common/buttons/PrimaryButton";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import LetsTalk from "../../../components/common/LetsConnect";
 import { toSentenceCase, toTitleCase } from "@/app/helpers/maintainProperWordings";
 
@@ -18,19 +18,6 @@ interface HeroSectionProps {
 
 const HeroSection = ({ data }: HeroSectionProps) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [containerLeft, setContainerLeft] = useState(0);
-
-  useEffect(() => {
-    const updateContainerLeft = () => {
-      if (!containerRef.current) return;
-      setContainerLeft(containerRef.current.getBoundingClientRect().left + 15);
-    };
-
-    updateContainerLeft();
-    window.addEventListener("resize", updateContainerLeft);
-    return () => window.removeEventListener("resize", updateContainerLeft);
-  }, []);
 
   useEffect(() => {
     if (modalOpen) {
@@ -64,9 +51,8 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           className="h-full w-full object-cover md:hidden"
         />
       </div>
-      <div className="container" ref={containerRef}></div>
-      <div className="relative z-10 flex h-full flex-col justify-center md:w-[50%] 2xl:w-[50%] 3xl:w-[40%]" style={{ marginLeft: `${containerLeft}px` }}>
-        <div>
+      <div className="container relative z-10 flex h-full flex-col justify-center">
+        <div className="md:w-[50vw] 2xl:w-[50vw] 3xl:w-[40vw]">
           <h1 className="title-70 text-[length:var(--text-70-sm)] mb-3 tracking-[-0.025em] xl:mb-5">
             {toTitleCase(data.title)}
           </h1>
