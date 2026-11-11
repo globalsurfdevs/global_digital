@@ -97,7 +97,7 @@ const PortfolioSchema = new mongoose.Schema(
     },
     portfolioType: {
       type: String,
-      enum: ["legacy", "modern"],
+      enum: ["old", "new"],
     },
     previewImage: {
       images: {

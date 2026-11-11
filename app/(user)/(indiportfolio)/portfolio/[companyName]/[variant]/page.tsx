@@ -9,12 +9,7 @@ import {
 } from "@/app/actions/getCaseStudy";
 import { getInstagramFeed } from "@/app/lib/integrations/instagram/getInstagramFeed";
 
-// /portfolio/<slug>/<variant>: the same page as /portfolio/<slug>, with the
-// Social Media section reading the client's live Instagram posts. The address
-// without a suffix is untouched and keeps showing the uploaded images.
-//
-//   v2: posts inside the usual padded grey frame
-//   v3: posts edge to edge, without the padding
+
 const VARIANTS = ["v2", "v3"];
 
 export async function generateMetadata({
