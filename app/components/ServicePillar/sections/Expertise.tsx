@@ -201,7 +201,7 @@ const InfoGrid: React.FC<InfoGridProps> = ({
                   </p>
 
                   <Image
-                    src="/images/service-pillar/arrow.svg"
+                    src="/assets/icons-essential/arrow.svg"
                     alt=""
                     width={20}
                     height={20}

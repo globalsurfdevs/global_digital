@@ -38,20 +38,20 @@ import seleo1 from "./seleo1.jpg";
 import seleo2 from "./seleo2.jpg";
 import innovo from "./Innovo.png";
 import bafco from "./Bafco.png";
-import ascs from "../assets/success-stories/logo-ascs.svg";
+// import ascs from "../assets/success-stories/logo-ascs.svg";
 import bec from "./BEC.png";
-import imgs1 from "./tours/bafco.jpg";
-import imgs2 from "./tours/seleo.jpg";
+// import imgs1 from "./tours/bafco.jpg";
+// import imgs2 from "./tours/seleo.jpg";
 import heroInnovo from "../assets/portfolio/heroInnovo.jpg";
 import goalspic1 from "../assets/portfolio/goalspic1.jpg";
 import goalspic2 from "../assets/portfolio/goalspic2.jpg";
 import webmock from "../assets/portfolio/web-mock.jpg";
 import suscom from "../assets/portfolio/Sus-com.jpg";
 import tablemockup from "../assets/portfolio/tablet-mockup.jpg";
-import success1 from "../assets/success-stories/1.jpg";
-import success2 from "../assets/success-stories/2.jpg";
-import success3 from "../assets/success-stories/3.jpg";
-import gulfcryo from "../assets/success-stories/gulf-cryo-svg.svg";
+// import success1 from "../assets/success-stories/1.jpg";
+// import success2 from "../assets/success-stories/2.jpg";
+// import success3 from "../assets/success-stories/3.jpg";
+// import gulfcryo from "../assets/success-stories/gulf-cryo-svg.svg";
 import innvosvg from "../assets/portfolio/innovo_logo.svg";
 import cl from "../assets/icons/cl.svg";
 import cl1 from "../assets/icons/cl-1.svg";
@@ -323,7 +323,7 @@ import clientlogo6 from "../images/Ind-construction/c6.svg";
 import clientlogo7 from "../images/Ind-construction/c7.svg";
 import clientlogo8 from "../images/Ind-construction/c8.svg";
 
-import faisalimage from "../images/profilecard/faisal_profilecard.png";
+// import faisalimage from "../images/profilecard/faisal_profilecard.png";
 
 import bc_image from "../images/bc-logo-design/bc_image1.jpg";
 import bc1 from "../images/bc-logo-design/bc1.svg";
@@ -377,30 +377,29 @@ import gdhlp2 from "../images/GraphicDesign/gdhlp2.svg";
 import gdhlp3 from "../images/GraphicDesign/gdhlp3.svg";
 import gdhlp4 from "../images/GraphicDesign/gdhlp4.svg";
 import gdtick from "../images/GraphicDesign/gdtick.svg";
-
-import localimage1 from "../images/localSeo/local-image1.png";
-import lsl1 from "../images/localSeo/ls1.svg";
-import lsl2 from "../images/localSeo/ls2.svg";
-import lsl3 from "../images/localSeo/ls3.svg";
-import lsl4 from "../images/localSeo/ls4.svg";
-import lsl5 from "../images/localSeo/ls5.svg";
-import lsl6 from "../images/localSeo/ls6.svg";
-import lsl7 from "../images/localSeo/ls7.svg";
-import rls1 from "../images/localSeo/rs1.svg";
-import rls2 from "../images/localSeo/rs2.svg";
-import rls3 from "../images/localSeo/rs3.svg";
-import rls4 from "../images/localSeo/rs4.svg";
-import rls5 from "../images/localSeo/rs5.svg";
-import rls6 from "../images/localSeo/rs6.svg";
-import wcs1 from "../images/localSeo/wcs1.svg";
-import wcs2 from "../images/localSeo/wcs2.svg";
-import wcs3 from "../images/localSeo/wcs3.svg";
-import wcs4 from "../images/localSeo/wcs4.svg";
-import wh1 from "../images/localSeo/wh1.svg";
-import wh2 from "../images/localSeo/wh2.svg";
-import wh3 from "../images/localSeo/wh3.svg";
-import wh4 from "../images/localSeo/wh4.svg";
-import wh5 from "../images/localSeo/wh5.svg";
+// import localimage1 from "../images/localSeo/local-image1.png";
+// import lsl1 from "../images/localSeo/ls1.svg";
+// import lsl2 from "../images/localSeo/ls2.svg";
+// import lsl3 from "../images/localSeo/ls3.svg";
+// import lsl4 from "../images/localSeo/ls4.svg";
+// import lsl5 from "../images/localSeo/ls5.svg";
+// import lsl6 from "../images/localSeo/ls6.svg";
+// import lsl7 from "../images/localSeo/ls7.svg";
+// import rls1 from "../images/localSeo/rs1.svg";
+// import rls2 from "../images/localSeo/rs2.svg";
+// import rls3 from "../images/localSeo/rs3.svg";
+// import rls4 from "../images/localSeo/rs4.svg";
+// import rls5 from "../images/localSeo/rs5.svg";
+// import rls6 from "../images/localSeo/rs6.svg";
+// import wcs1 from "../images/localSeo/wcs1.svg";
+// import wcs2 from "../images/localSeo/wcs2.svg";
+// import wcs3 from "../images/localSeo/wcs3.svg";
+// import wcs4 from "../images/localSeo/wcs4.svg";
+// import wh1 from "../images/localSeo/wh1.svg";
+// import wh2 from "../images/localSeo/wh2.svg";
+// import wh3 from "../images/localSeo/wh3.svg";
+// import wh4 from "../images/localSeo/wh4.svg";
+// import wh5 from "../images/localSeo/wh5.svg";
 import wddbanner from "../assets/services/wdd-custom-web-development/banner.jpg";
 import designbanner from "../assets/services/wdd-web-design/wddbanner.jpg";
 import hwc1 from "../assets/services/wdd-web-design/hwc1.svg";
@@ -680,7 +679,7 @@ import hels4 from "../assets/services/marketing-automation/hel4.svg";
 import hels5 from "../assets/services/marketing-automation/hel5.svg";
 import hospbanner from "../assets/services/hosp-banner.png";
 import hospSeoicon from "../assets/services/hospitality-seo.svg";
-import inbanner from "../assets/industry/inbanner.jpg";
+// import inbanner from "../assets/industry/inbanner.jpg";
 // import dabanner from "../assets/data-analytics/dabanner.jpg";
 // import dahel1 from "../assets/data-analytics/dahep1.svg";
 // import dahel2 from "../assets/data-analytics/dahep2.svg";
@@ -796,12 +795,12 @@ import inbanner from "../assets/industry/inbanner.jpg";
 // import ini9 from "../assets/industry/ini9.svg";
 // import ini12 from "../assets/industry/ini12.svg";
 // import ini13 from "../assets/industry/ini13.svg";
-import realestate from "../assets/industry/realestate.jpg";
-import corporateservices from "../assets/industry/corporate-services.jpg";
+// import realestate from "../assets/industry/realestate.jpg";
+// import corporateservices from "../assets/industry/corporate-services.jpg";
 
-import ini10 from "../assets/industry/ini10.svg";
-import brnd_ini3 from "../assets/industry/brnd_ini3.svg";
-import data_an_ini2 from "../assets/industry/data_an_ini2.svg";
+// import ini10 from "../assets/industry/ini10.svg";
+// import brnd_ini3 from "../assets/industry/brnd_ini3.svg";
+// import data_an_ini2 from "../assets/industry/data_an_ini2.svg";
 // import edbanner from "../assets/education/edubanner.jpg";
 // import edic1 from "../assets/education/eduser1.svg";
 // import edic2 from "../assets/education/eduser2.svg";
@@ -891,24 +890,24 @@ import relatedImg3 from "../assets/services/digital-marketing-service-kuwait/rel
 // import gfsv4 from "../assets/digital-marketing-audit/gfsv4.svg";
 // import gfsv5 from "../assets/digital-marketing-audit/gfsv5.svg";
 // import gfsv6 from "../assets/digital-marketing-audit/gfsv6.svg";
-import strsbanner from "../images/marketing-strategy-consulting/banner.jpg";
-import mschelp1 from "../images/marketing-strategy-consulting/help1.svg";
-import mschelp2 from "../images/marketing-strategy-consulting/help2.svg";
-import mschelp3 from "../images/marketing-strategy-consulting/help3.svg";
-import mschelp4 from "../images/marketing-strategy-consulting/help4.svg";
-import cmrst1 from "../images/marketing-strategy-consulting/cmrst1.svg";
-import cmrst2 from "../images/marketing-strategy-consulting/cmrst2.svg";
-import cmrst3 from "../images/marketing-strategy-consulting/cmrst3.svg";
-import cmrst4 from "../images/marketing-strategy-consulting/cmrst4.svg";
-import cmrst5 from "../images/marketing-strategy-consulting/cmrst5.svg";
-import cmrst6 from "../images/marketing-strategy-consulting/cmrst6.svg";
+// import strsbanner from "../images/marketing-strategy-consulting/banner.jpg";
+// import mschelp1 from "../images/marketing-strategy-consulting/help1.svg";
+// import mschelp2 from "../images/marketing-strategy-consulting/help2.svg";
+// import mschelp3 from "../images/marketing-strategy-consulting/help3.svg";
+// import mschelp4 from "../images/marketing-strategy-consulting/help4.svg";
+// import cmrst1 from "../images/marketing-strategy-consulting/cmrst1.svg";
+// import cmrst2 from "../images/marketing-strategy-consulting/cmrst2.svg";
+// import cmrst3 from "../images/marketing-strategy-consulting/cmrst3.svg";
+// import cmrst4 from "../images/marketing-strategy-consulting/cmrst4.svg";
+// import cmrst5 from "../images/marketing-strategy-consulting/cmrst5.svg";
+// import cmrst6 from "../images/marketing-strategy-consulting/cmrst6.svg";
 
-import omst1 from "../images/marketing-strategy-consulting/omst1.svg";
-import omst2 from "../images/marketing-strategy-consulting/omst2.svg";
-import omst3 from "../images/marketing-strategy-consulting/omst3.svg";
-import omst4 from "../images/marketing-strategy-consulting/omst4.svg";
-import omst5 from "../images/marketing-strategy-consulting/omst5.svg";
-import omst6 from "../images/marketing-strategy-consulting/omst6.svg";
+// import omst1 from "../images/marketing-strategy-consulting/omst1.svg";
+// import omst2 from "../images/marketing-strategy-consulting/omst2.svg";
+// import omst3 from "../images/marketing-strategy-consulting/omst3.svg";
+// import omst4 from "../images/marketing-strategy-consulting/omst4.svg";
+// import omst5 from "../images/marketing-strategy-consulting/omst5.svg";
+// import omst6 from "../images/marketing-strategy-consulting/omst6.svg";
 
 import shareicon from "./blog-icons/shareicon.svg";
 import linkedinicon from "./blog-icons/linkedinicon.svg";
@@ -1184,8 +1183,8 @@ export const assets = {
   education1,
   hospitality1,
   healthcare1,
-  realestate,
-  corporateservices,
+  // realestate,
+  // corporateservices,
   // llmblog1,
   // llmblog2,
   // llmblog3,
@@ -1287,12 +1286,12 @@ export const assets = {
   // ecosys,
   // seonew,
   // structure,
-  omst1,
-  omst2,
-  omst3,
-  omst4,
-  omst5,
-  omst6,
+  // omst1,
+  // omst2,
+  // omst3,
+  // omst4,
+  // omst5,
+  // omst6,
   // tcom1,
   // tcom2,
   // tcom3,
@@ -1326,17 +1325,17 @@ export const assets = {
   // platform,
   // videoblg,
   // ashnablog,
-  strsbanner,
-  mschelp1,
-  mschelp2,
-  mschelp3,
-  mschelp4,
-  cmrst1,
-  cmrst2,
-  cmrst3,
-  cmrst4,
-  cmrst5,
-  cmrst6,
+  // strsbanner,
+  // mschelp1,
+  // mschelp2,
+  // mschelp3,
+  // mschelp4,
+  // cmrst1,
+  // cmrst2,
+  // cmrst3,
+  // cmrst4,
+  // cmrst5,
+  // cmrst6,
   // gfsv1,
   // free_digital_audit,
   // gfsv2,
@@ -1373,8 +1372,8 @@ export const assets = {
   // photicn,
   // vidicon,
   // contpro,
-  brnd_ini3,
-  data_an_ini2,
+  // brnd_ini3,
+  // data_an_ini2,
   relatedImg3,
   menuphoneicon,
   // edcover2,
@@ -1408,7 +1407,7 @@ export const assets = {
   // ini9,
   // ini12,
   // ini13,
-  ini10,
+  // ini10,
   // inds1,
   // inds2,
   // inds3,
@@ -1513,7 +1512,7 @@ export const assets = {
   // dahel4,
   // dahel5,
   // dabanner,
-  inbanner,
+  // inbanner,
   massbanner,
   hels1,
   hels2,
@@ -1554,7 +1553,7 @@ export const assets = {
   mats23,
   mats24,
   mats25,
-  b2bbanner,
+  // b2bbanner,
   slogo1,
   slogo2,
   slogo3,
@@ -1597,7 +1596,7 @@ export const assets = {
   sseleo,
   sassent,
   gardenconcp,
-  datab2b,
+  // datab2b,
   bggra,
   crmbanner,
   crmwe1,
@@ -1994,9 +1993,9 @@ export const assets = {
   seleo2,
   innovo,
   bafco,
-  ascs,
-  imgs1,
-  imgs2,
+  // ascs,
+  // imgs1,
+  // imgs2,
   bec,
   heroInnovo,
   goalspic1,
@@ -2004,10 +2003,10 @@ export const assets = {
   webmock,
   suscom,
   tablemockup,
-  success1,
-  success2,
-  success3,
-  gulfcryo,
+  // success1,
+  // success2,
+  // success3,
+  // gulfcryo,
   innvosvg,
   lightlogo,
   strategy_consulting,
@@ -2067,7 +2066,7 @@ export const assets = {
   clientlogo6,
   clientlogo7,
   clientlogo8,
-  faisalimage,
+  // faisalimage,
   bc_image,
   bc1,
   bc2,
@@ -2118,29 +2117,29 @@ export const assets = {
   gdhlp3,
   gdhlp4,
   gdtick,
-  localimage1,
-  lsl1,
-  lsl2,
-  lsl3,
-  lsl4,
-  lsl5,
-  lsl6,
-  lsl7,
-  rls1,
-  rls2,
-  rls3,
-  rls4,
-  rls5,
-  rls6,
-  wcs1,
-  wcs2,
-  wcs3,
-  wcs4,
-  wh1,
-  wh2,
-  wh3,
-  wh4,
-  wh5,
+  // localimage1,
+  // lsl1,
+  // lsl2,
+  // lsl3,
+  // lsl4,
+  // lsl5,
+  // lsl6,
+  // lsl7,
+  // rls1,
+  // rls2,
+  // rls3,
+  // rls4,
+  // rls5,
+  // rls6,
+  // wcs1,
+  // wcs2,
+  // wcs3,
+  // wcs4,
+  // wh1,
+  // wh2,
+  // wh3,
+  // wh4,
+  // wh5,
   constructionicn,
   emailicon,
   shoppingtrolly,
@@ -2153,7 +2152,7 @@ export const assets = {
   ecomengg,
   ecomconstr,
   ecomhc,
-  ecomind,
+  // ecomind,
   webdesigndev,
   helpi1,
   helpi2,

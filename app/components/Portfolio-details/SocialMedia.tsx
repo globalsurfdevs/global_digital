@@ -4,8 +4,6 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { workSvgs } from "../../data/works";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Portfolio } from "@/app/types/Portfolio";
 import Image from "next/image";
