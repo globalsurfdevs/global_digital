@@ -123,7 +123,7 @@ const page = async ({ params }: PageProps) => {
         className="fixed bottom-7 right-7 z-[9999] flex  items-center justify-center rounded-full  bg-white shadow-lg transition-transform duration-300 hover:scale-110"
       >
         <img
-          src="/assets/images/branding-positioning/whatsapp-icon.svg"
+          src="/assets/icons-essential/whatsapp-icon.svg"
           alt="WhatsApp"
           className="relative z-10 h-8 w-8"
         />

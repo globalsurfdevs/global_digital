@@ -1,6 +1,6 @@
 import Link from "next/link";
 import DarkModeSwitcher from "./DarkModeSwitcher";
-import DropdownMessage from "./DropdownMessage";
+// import DropdownMessage from "./DropdownMessage";
 import DropdownNotification from "./DropdownNotification";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";

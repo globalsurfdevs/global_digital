@@ -12,7 +12,7 @@ import alissar from "@/public/assets/testimonials/alissar.jpeg";
 import { Clientsdata } from "@/app/data/Clientsdata";
 
 export const firstSection = {
-  image: "images/end-to-end-digitalmarketing/banner.jpg",
+  image: "/images/end-to-end-digitalmarketing/banner.jpg",
   imageAlt: "Engineering and Infrastructure",
   title:
     "End-to-end digital marketing built specifically for the built industry",

@@ -1,7 +1,6 @@
 "use client";
 
 import { ServiceItem } from "@/app/(user)/(services)/[slug]/type";
-import { becsData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import Image from "next/image";
 import { Fragment } from "react";
 import { motion } from "framer-motion";

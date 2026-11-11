@@ -16,7 +16,7 @@ type Sector = {
 
 const ArrowIcon = ({ active }: { active: boolean }) => (
     <Image
-        src="/images/industry_new/arrow.svg"
+        src="/assets/icons-essential/arrow.svg"
         alt=""
         width={20}
         height={20}

@@ -133,7 +133,7 @@ const ServicesListSec = ({ title, description, items }: ServicesSecProps) => {
                   </h3>
                 </div>
                 <div className="flex justify-between gap-x-10">
-                  <p className="text-14 fnt md:text-16 xxl:text-20 fnt-lexend max-w-[45ch] leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
+                  <p className="text-14 fnt md:text-16 xxl:text-20 fnt-lexend max-w-[58ch] leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
                     {service.description}
                   </p>
                   {/* <div>

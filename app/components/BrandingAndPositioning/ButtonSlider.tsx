@@ -119,7 +119,6 @@
 
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { industriesData } from "@/app/data/services/branding-and-positioning-agency-in-dubai/data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay } from "swiper/modules";

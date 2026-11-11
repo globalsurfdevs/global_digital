@@ -16,38 +16,6 @@ interface WhoWeWorkData {
   }[];
 }
 
-// export const data: WhoWeWorkData = {
-//     tag: "Who we work",
-//     title: "Who we work with in manufacturing",
-//     items: [
-//         {
-//             id: 1,
-//             label: "UAE residential and commercial property developers",
-//             icon: "/images/industry/who_we_work_1.svg",
-//         },
-//         {
-//             id: 2,
-//             label: "Off-plan developers launching new projects",
-//             icon: "/images/industry/who_we_work_2.svg",
-//         },
-//         {
-//             id: 3,
-//             label: "Master developers managing phased developments",
-//             icon: "/images/industry/who_we_work_3.svg",
-//         },
-//         {
-//             id: 4,
-//             label: "Real estate groups attracting global investors",
-//             icon: "/images/industry/who_we_work_4.svg",
-//         },
-//         {
-//             id: 5,
-//             label: "Mixed-use developers promoting integrated projects",
-//             icon: "/images/industry/who_we_work_5.svg",
-//         },
-//     ],
-// };
-
 const WhoWeWork = ({ data }: { data: WhoWeWorkData }) => {
   return (
     <section className="py-120">
