@@ -174,13 +174,13 @@ export async function POST(req: NextRequest) {
     "detailsCtaTwoButtonText",
   ) as string;
   const portfolioTypeRaw = formData.get("portfolioType")?.toString();
-  if (portfolioTypeRaw && !["legacy", "modern"].includes(portfolioTypeRaw)) {
+  if (portfolioTypeRaw && !["old", "new"].includes(portfolioTypeRaw)) {
     return NextResponse.json(
-      { error: "Portfolio type must be legacy or modern." },
+      { error: "Portfolio type must be old or new." },
       { status: 400 },
     );
   }
-  const portfolioType = portfolioTypeRaw === "modern" ? "modern" : "legacy";
+  const portfolioType = portfolioTypeRaw === "new" ? "new" : "old";
   const seoRaw = formData.get("seo")?.toString();
   const previewImagesRaw = formData.get("previewImages")?.toString();
   const deliveredItemsRaw = formData.get("whatWeDeliveredItems")?.toString();
@@ -197,7 +197,7 @@ export async function POST(req: NextRequest) {
   const section = formData.get("section") as string;
   let seo: Record<string, string> = {};
   let previewImages: string[] = [];
-  let modernDeliveredItems: {
+  let newDeliveredItems: {
     _id: number;
     title: string;
     icn: string;
@@ -237,7 +237,7 @@ export async function POST(req: NextRequest) {
       if (!Array.isArray(parsedItems)) {
         throw new Error("What We Delivered items must be an array.");
       }
-      modernDeliveredItems = parsedItems.map((item, index) => {
+      newDeliveredItems = parsedItems.map((item, index) => {
         if (!item || typeof item !== "object" || Array.isArray(item)) {
           throw new Error("Each delivery item must be an object.");
         }
@@ -294,7 +294,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error:
-          error instanceof Error ? error.message : "Invalid modern portfolio data.",
+          error instanceof Error ? error.message : "Invalid new portfolio data.",
       },
       { status: 400 },
     );
@@ -347,8 +347,8 @@ export async function POST(req: NextRequest) {
     twitterTitle: seo.twitterTitle || twitterTitle || "",
     twitterDescription: seo.twitterDescription || twitterDescription || "",
   };
-  let deliveredItemsForPortfolio = modernDeliveredItems;
-  if (portfolioType !== "modern") {
+  let deliveredItemsForPortfolio = newDeliveredItems;
+  if (portfolioType !== "new") {
     try {
       deliveredItemsForPortfolio = whatWeDeliveredData.map((item, index) => {
         if (!item || typeof item !== "object" || Array.isArray(item)) {

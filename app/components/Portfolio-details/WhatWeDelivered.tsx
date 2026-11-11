@@ -39,7 +39,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
     <div className="">
       <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]">
         <div
-          className={`pd-cus flex flex-col ${endpoint === "sobha-constructions" ? "border-t  border-gray-400 pt-5  lg:pt-[60px] xl:pt-[70px] 2xl:pt-[100px]" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
+          className={`pd-cus flex flex-col ${endpoint !== "innovo-group" ? "border-t  border-gray-400 pt-5  lg:pt-[60px] xl:pt-[70px] 2xl:pt-[100px]" : "pt-10  lg:pt-[80px] xl:pt-[100px]  2xl:pt-[140px]"}`}
         >
           <div className="text-4xl">
             <motion.div

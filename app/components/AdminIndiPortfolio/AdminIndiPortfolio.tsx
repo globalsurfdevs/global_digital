@@ -37,7 +37,7 @@ import {
 } from "@/app/components/AdminUI";
 
 type Inputs = {
-  portfolioType: "legacy" | "modern";
+  portfolioType: "old" | "new";
   seo: SeoFormValues;
   companyName: string;
   industry: string;
@@ -66,8 +66,8 @@ type Inputs = {
   detailsCtaOneLinkText: string;
   detailsCtaTwoTitle: string;
   detailsCtaTwoButtonText: string;
-  modernDetailsCtaOneLink: string;
-  modernDetailsCtaTwoLink: string;
+  newDetailsCtaOneLink: string;
+  newDetailsCtaTwoLink: string;
   relatedPortfoliosTitle: string;
   websiteLink: string;
   bannerTitle: string;
@@ -80,7 +80,7 @@ type Inputs = {
   [key: `highlightText${string}`]: string;
 };
 
-type ModernDeliveredItem = {
+type NewDeliveredItem = {
   _id: number;
   title: string;
   icn: string;
@@ -188,8 +188,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     { _id: string; name: string }[]
   >([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
-  const [modernDeliveredItems, setModernDeliveredItems] = useState<
-    ModernDeliveredItem[]
+  const [newDeliveredItems, setNewDeliveredItems] = useState<
+    NewDeliveredItem[]
   >([]);
   const [relatedPortfolioIds, setRelatedPortfolioIds] = useState<string[]>([]);
   const [relatedPortfolioSearch, setRelatedPortfolioSearch] = useState("");
@@ -226,7 +226,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   } = useForm<Inputs>({
     defaultValues: {
       channelsUsed: [{ channelName: "" }],
-      portfolioType: "legacy",
+      portfolioType: "old",
       seo: {
         metaTitle: "",
         metaDescription: "",
@@ -244,7 +244,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     // console.log("data:",data)
     let whatWeDeliveredData: unknown[] = [];
-    if (data.portfolioType !== "modern" && data.whatWeDeliveredData?.trim()) {
+    if (data.portfolioType !== "new" && data.whatWeDeliveredData?.trim()) {
       try {
         const parsedData: unknown = JSON.parse(data.whatWeDeliveredData);
         if (!Array.isArray(parsedData)) {
@@ -264,20 +264,17 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     setIsSubmitting(true);
     const formData = new FormData();
     formData.append("companyName", data.companyName);
-    formData.append("portfolioType", data.portfolioType || "legacy");
+    formData.append("portfolioType", data.portfolioType || "old");
     formData.append("seo", JSON.stringify(data.seo || {}));
     formData.append(
       "previewImages",
       JSON.stringify(previewImages.filter(Boolean)),
     );
-    formData.append(
-      "whatWeDeliveredItems",
-      JSON.stringify(modernDeliveredItems),
-    );
+    formData.append("whatWeDeliveredItems", JSON.stringify(newDeliveredItems));
     formData.append("detailsCtaOneText", data.detailsCtaOneLinkText || "");
-    formData.append("detailsCtaOneLink", data.modernDetailsCtaOneLink || "");
+    formData.append("detailsCtaOneLink", data.newDetailsCtaOneLink || "");
     formData.append("detailsCtaTwoText", data.detailsCtaTwoButtonText || "");
-    formData.append("detailsCtaTwoLink", data.modernDetailsCtaTwoLink || "");
+    formData.append("detailsCtaTwoLink", data.newDetailsCtaTwoLink || "");
     formData.append("relatedPortfolioIds", JSON.stringify(relatedPortfolioIds));
     formData.append(
       "relatedPortfoliosTitle",
@@ -287,7 +284,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("industry", data.industry);
     formData.append(
       "channels",
-      JSON.stringify(data.portfolioType === "modern" ? [] : data.channelsUsed),
+      JSON.stringify(data.portfolioType === "new" ? [] : data.channelsUsed),
     );
     formData.append("country", data.country);
     formData.append("story", data.story);
@@ -491,13 +488,18 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
 
           if (data.portfolio) {
             setValue("companyName", data.portfolio.companyName);
+            const storedPortfolioType = data.portfolio.portfolioType;
             const inferredPortfolioType =
-              data.portfolio.portfolioType ||
-              (["innovo-group", "sobha-constructions-v2"].includes(
-                data.portfolio.slug,
-              )
-                ? "modern"
-                : "legacy");
+              storedPortfolioType === "new" || storedPortfolioType === "modern"
+                ? "new"
+                : storedPortfolioType === "old" ||
+                    storedPortfolioType === "legacy"
+                  ? "old"
+                  : ["innovo-group", "sobha-constructions-v2"].includes(
+                        data.portfolio.slug,
+                      )
+                    ? "new"
+                    : "old";
             setValue("portfolioType", inferredPortfolioType);
             const seo = data.portfolio.seo || {};
             setValue(
@@ -532,7 +534,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
               data.portfolio.whatWeDeliveredSec?.data?.length > 0
                 ? data.portfolio.whatWeDeliveredSec.data
                 : data.portfolio.whatWeDeliveredData || [];
-            setModernDeliveredItems(
+            setNewDeliveredItems(
               Array.isArray(deliveredItems)
                 ? deliveredItems.map((item, index) => ({
                     _id: Number(item._id ?? item.id ?? index + 1),
@@ -615,7 +617,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 "",
             );
             setValue(
-              "modernDetailsCtaOneLink",
+              "newDetailsCtaOneLink",
               data.portfolio.detailsCtaOne?.ctaLink || "",
             );
             setValue(
@@ -631,7 +633,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 "",
             );
             setValue(
-              "modernDetailsCtaTwoLink",
+              "newDetailsCtaTwoLink",
               data.portfolio.detailsCtaTwo?.ctaLink || "",
             );
             setValue("bannerTitle", data.portfolio.bannerTitle);
@@ -1019,8 +1021,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                       {...register("portfolioType")}
                       className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-2 pl-3 text-black focus:outline-none"
                     >
-                      <option value="legacy">Legacy portfolio page</option>
-                      <option value="modern">Modern portfolio page</option>
+                      <option value="old">Old portfolio page</option>
+                      <option value="new">New portfolio page</option>
                     </select>
                   </div>
                 )}
@@ -1037,7 +1039,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                   onClick={() => document?.getElementById("image")?.click()}
                 >
                   {previewImage ? (
-                    <div className="relative h-full w-full">
+                    <div className="relative h-full min-h-[300px] w-full">
                       <Image
                         src={previewImage}
                         alt="Preview"
@@ -1152,7 +1154,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                       type="text"
                       {...register("companyName", {
                         required:
-                          watch("portfolioType") === "modern"
+                          watch("portfolioType") === "new"
                             ? false
                             : "Company name is required",
                       })}
@@ -1172,7 +1174,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                     <select
                       {...register("industry", {
                         required:
-                          watch("portfolioType") === "modern"
+                          watch("portfolioType") === "new"
                             ? false
                             : "Industry is required",
                       })}
@@ -1198,7 +1200,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                       type="text"
                       {...register("country", {
                         required:
-                          watch("portfolioType") === "modern"
+                          watch("portfolioType") === "new"
                             ? false
                             : "Country is required",
                       })}
@@ -1219,7 +1221,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                                     {errors.channelsUsed && <p className='mt-1 text-sm text-red'>{errors.channelsUsed.message}</p>}
                                 </div> */}
 
-                  {watch("portfolioType") !== "modern" && (
+                  {watch("portfolioType") !== "new" && (
                     <div className="mt-1 flex w-full flex-col gap-1">
                       <Label content="Channels Used" />
                       <div className="flex h-[300px] flex-wrap gap-2 overflow-y-auto border p-5">
@@ -1259,7 +1261,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                     <RichEditor
                       control={control}
                       name="story"
-                      required={watch("portfolioType") !== "modern"}
+                      required={watch("portfolioType") !== "new"}
                     />
                   </div>
                   {errors.story && (
@@ -2289,7 +2291,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                     type="text"
                     {...register("description", {
                       required:
-                        watch("portfolioType") === "modern"
+                        watch("portfolioType") === "new"
                           ? false
                           : "Description is required",
                     })}
@@ -2311,7 +2313,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                   type="text"
                   {...register("tag", {
                     required:
-                      watch("portfolioType") === "modern"
+                      watch("portfolioType") === "new"
                         ? false
                         : "Tag is required",
                   })}
@@ -2383,7 +2385,10 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                         ),
                     )
                     .map((item) => (
-                      <div key={item._id} className="group relative flex h-fit w-fit min-w-20 cursor-pointer justify-center rounded-full border bg-blue-950 px-2 py-1 text-white">
+                      <div
+                        key={item._id}
+                        className="group relative flex h-fit w-fit min-w-20 cursor-pointer justify-center rounded-full border bg-blue-950 px-2 py-1 text-white"
+                      >
                         <span className="group-hover:opacity-50">
                           {item.name}
                         </span>
@@ -2533,7 +2538,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
           </SectionCard>
 
           {selectedSection !== "portfolio" ||
-          watch("portfolioType") !== "modern" ? (
+          watch("portfolioType") !== "new" ? (
             <>
               <SectionCard
                 title="SEO metadata"
@@ -2601,7 +2606,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
           ) : null}
 
           {selectedSection === "portfolio" &&
-            watch("portfolioType") === "modern" && (
+            watch("portfolioType") === "new" && (
               <section className="space-y-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
                 <h2 className="text-base font-semibold text-slate-900 dark:text-white">
                   Modern portfolio content
@@ -2628,7 +2633,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                     {previewImages.map((imageUrl, index) => (
                       <div
                         key={`preview-${index}`}
-                        className="w-full max-w-[220px] rounded-md border border-gray-200 p-2"
+                        className="w-full max-w-[40%] rounded-md border border-gray-200 p-2"
                       >
                         <ImageUploader
                           value={imageUrl}
@@ -2658,33 +2663,33 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                   </div>
                 </div>
 
-                <div className="space-y-4 border-t border-gray-200 pt-5">
-                  <div className="flex items-center justify-between">
+                <div className="relative space-y-4 border-t border-gray-200 pt-5">
+                  <div>
                     <h3 className="text-lg font-medium">What We Delivered</h3>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setModernDeliveredItems((items) => [
-                          ...items,
-                          {
-                            _id:
-                              items.reduce(
-                                (highestId, item) =>
-                                  Math.max(highestId, item._id),
-                                0,
-                              ) + 1,
-                            title: "",
-                            icn: "",
-                            dec: "",
-                            urllink: [],
-                          },
-                        ])
-                      }
-                      className="rounded bg-black px-3 py-2 text-sm text-white"
-                    >
-                      Add delivery item
-                    </button>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setNewDeliveredItems((items) => [
+                        ...items,
+                        {
+                          _id:
+                            items.reduce(
+                              (highestId, item) =>
+                                Math.max(highestId, item._id),
+                              0,
+                            ) + 1,
+                          title: "",
+                          icn: "",
+                          dec: "",
+                          urllink: [],
+                        },
+                      ])
+                    }
+                    className="sticky top-[80px] bottom-[80px] z-[100] ml-auto block rounded bg-black px-3 py-2 text-sm text-white"
+                  >
+                    Add delivery item
+                  </button>
                   <div className="flex flex-col gap-2">
                     <Label content="Section title" />
                     <input
@@ -2693,7 +2698,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                       className="w-full rounded-md border border-gray-300 bg-transparent py-2 pl-3 text-black focus:outline-none"
                     />
                   </div>
-                  {modernDeliveredItems.map((item, itemIndex) => (
+                  {newDeliveredItems.map((item, itemIndex) => (
                     <div
                       key={item._id}
                       className="space-y-3 rounded-md border border-gray-200 p-4"
@@ -2705,7 +2710,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                         <button
                           type="button"
                           onClick={() =>
-                            setModernDeliveredItems((items) =>
+                            setNewDeliveredItems((items) =>
                               items.filter((_, index) => index !== itemIndex),
                             )
                           }
@@ -2720,7 +2725,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                           <input
                             value={item.title}
                             onChange={(event) =>
-                              setModernDeliveredItems((items) =>
+                              setNewDeliveredItems((items) =>
                                 items.map((entry, index) =>
                                   index === itemIndex
                                     ? { ...entry, title: event.target.value }
@@ -2736,7 +2741,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                           <textarea
                             value={item.dec}
                             onChange={(event) =>
-                              setModernDeliveredItems((items) =>
+                              setNewDeliveredItems((items) =>
                                 items.map((entry, index) =>
                                   index === itemIndex
                                     ? { ...entry, dec: event.target.value }
@@ -2752,9 +2757,9 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                         <Label content="Icon image" />
                         <ImageUploader
                           value={item.icn}
-                          className="max-w-[120px]"
+                          className="max-w-[30%]"
                           onChange={(url) =>
-                            setModernDeliveredItems((items) =>
+                            setNewDeliveredItems((items) =>
                               items.map((entry, index) =>
                                 index === itemIndex
                                   ? { ...entry, icn: url }
@@ -2770,7 +2775,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                           <button
                             type="button"
                             onClick={() =>
-                              setModernDeliveredItems((items) =>
+                              setNewDeliveredItems((items) =>
                                 items.map((entry, index) =>
                                   index === itemIndex
                                     ? {
@@ -2792,7 +2797,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                               type="text"
                               value={url}
                               onChange={(event) =>
-                                setModernDeliveredItems((items) =>
+                                setNewDeliveredItems((items) =>
                                   items.map((entry, index) =>
                                     index === itemIndex
                                       ? {
@@ -2814,7 +2819,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                             <button
                               type="button"
                               onClick={() =>
-                                setModernDeliveredItems((items) =>
+                                setNewDeliveredItems((items) =>
                                   items.map((entry, index) =>
                                     index === itemIndex
                                       ? {
@@ -2862,7 +2867,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                         <span>Link</span>
                         <input
                           type="text"
-                          {...register("modernDetailsCtaOneLink")}
+                          {...register("newDetailsCtaOneLink")}
                           className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
                           placeholder="https://"
                         />
@@ -2888,7 +2893,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                         <span>Link</span>
                         <input
                           type="text"
-                          {...register("modernDetailsCtaTwoLink")}
+                          {...register("newDetailsCtaTwoLink")}
                           className="rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black"
                           placeholder="https://"
                         />
@@ -2973,7 +2978,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
             )}
 
           {selectedSection !== "portfolio" ||
-          watch("portfolioType") !== "modern" ? (
+          watch("portfolioType") !== "new" ? (
             <section className="space-y-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
               <h2 className="text-base font-semibold text-slate-900 dark:text-white">
                 Portfolio detail sections
@@ -2984,25 +2989,6 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                 icn (image URL), and urllink fields.
               </p>
               <div className="grid grid-cols-2 gap-5">
-                <div className="flex flex-col gap-2">
-                  <Label content="What We Delivered title" />
-                  <input
-                    type="text"
-                    {...register("whatWeDeliveredTitle")}
-                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 text-black focus:outline-none"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <Label content="What We Delivered items (JSON)" />
-                  <textarea
-                    rows={8}
-                    placeholder={
-                      '[{"id":1,"title":"Example","dec":"","icn":"","urllink":""}]'
-                    }
-                    {...register("whatWeDeliveredData")}
-                    className="w-full rounded-md border-[1px] border-gray-300 bg-transparent py-1 pl-4 font-mono text-sm text-black focus:outline-none"
-                  />
-                </div>
                 <div className="flex flex-col gap-2">
                   <Label content="First CTA heading" />
                   <input

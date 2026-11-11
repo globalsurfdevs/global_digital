@@ -28,7 +28,7 @@ export type Portfolio = {
   tag: string;
   description: string;
   logo: string;
-  portfolioType?: "legacy" | "modern";
+  portfolioType?: "old" | "new";
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
