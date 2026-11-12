@@ -45,7 +45,6 @@ const page = async ({
   if (!data) {
     return <div>Case study not found</div>;
   }
-
   // Fetched on the server, so the feed is in the first HTML. Empty when
   // Instagram isn't connected, in which case the uploaded images are shown.
   const instagramPosts = data.portfolio?._id
