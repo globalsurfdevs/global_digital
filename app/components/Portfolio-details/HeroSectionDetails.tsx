@@ -48,11 +48,13 @@ const HeroSectionDetails = ({
                 </div>
                 <div>
                   <div>
-                    <Link
-                      href={data.portfolio.websiteLink}
-                      target="_blank"
-                      className="z-2 z-1 group relative  mt-8   "
-                    >
+                    {data.portfolio.websiteLink ? (
+                      <Link
+                        href={data.portfolio.websiteLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="z-2 z-1 group relative mt-8"
+                      >
                       <button className="btn-outline-primary-text-black flex items-center gap-3 xl:rounded-[100px] xl:px-[43px] xl:py-[22px]">
                         Visit live website
                         <svg
@@ -91,7 +93,8 @@ const HeroSectionDetails = ({
                           </defs>
                         </svg>
                       </button>
-                    </Link>
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
               </div>

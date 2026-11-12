@@ -15,6 +15,10 @@ const MainSectionDetails = ({
 }) => {
   if (!data) return null;
 
+  const channelsUsed = Array.isArray(data.portfolio.channelsUsed)
+    ? data.portfolio.channelsUsed
+    : [];
+
   return (
     <section>
       <div className="relative">
@@ -98,13 +102,13 @@ const MainSectionDetails = ({
                   </div>
                 </div>
               </div>
-              {data.portfolio.channelsUsed?.length ? (
+              {channelsUsed.length ? (
                 <div>
                   <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
                     Channels used
                   </p>
                   <div className="flex max-w-md flex-wrap gap-2">
-                    {data.portfolio.channelsUsed.map((channel, index) => (
+                    {channelsUsed.map((channel, index) => (
                       <span
                         key={`${channel}-${index}`}
                         className="btn-outline-primary-text-black"

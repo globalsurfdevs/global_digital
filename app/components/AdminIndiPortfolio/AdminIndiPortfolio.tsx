@@ -289,6 +289,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.append("video", data.video);
     formData.append("videoTitle", data.videoTitle);
     formData.append("featured", data.featured);
+    formData.set("logo", previewLogo || "");
 
     const hightLightIds: string[] = [];
 
@@ -331,11 +332,6 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
         setIsSubmitting(false);
         return;
       }
-      if (!previewLogo) {
-        setLogoError("Logo is required");
-        setIsSubmitting(false);
-        return;
-      }
     } else if (!previewImage || !previewLogo) {
       const check = checkLogoAndBanner(
         imageFile,
@@ -352,7 +348,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     if (logoFile) {
       const image = await generateAndUploadImage(logoFile);
       if (image) {
-        formData.append("logo", image);
+        formData.set("logo", image);
       }
     }
 
