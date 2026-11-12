@@ -644,6 +644,7 @@ export async function POST(req: NextRequest) {
                 videoThumbnail: videoThumbnailPath,
                 videoTitle,
               }),
+          ...(section === "portfolio" ? portfolioFields : {}),
         });
 
         const highlights: { customId: string; number: string; text: string }[] =

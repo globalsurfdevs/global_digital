@@ -208,7 +208,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
   const isNewPortfolio = watch("portfolioType") === "new";
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    // console.log("data:",data)
+    console.log("submitting......data:",data)
     let whatWeDeliveredData: unknown[] = [];
     if (data.portfolioType !== "new" && data.whatWeDeliveredData?.trim()) {
       try {
@@ -405,7 +405,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
     formData.forEach((value, key) => {
       // console.log(`${key}:`, value);
     });
-
+console.log("formData:", formData);
     try {
       const url = editMode
         ? `/api/portfolio?id=${companyId}`
@@ -417,7 +417,7 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
         body: formData,
       });
       const data = await response.json();
-
+      console.log("response data:", data);
       if (!data.error) {
         toast.success(data.message);
         router.push("/admin/portfolio");
