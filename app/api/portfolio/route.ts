@@ -131,6 +131,13 @@ export async function POST(req: NextRequest) {
   }
 
   const story = formData.get("story") as string;
+  const newBannerImage = formData.get("newBannerImage")?.toString() || "";
+  const newBannerTitle = formData.get("newBannerTitle")?.toString() || "";
+  const oneLineBrandContext =
+    formData.get("oneLineBrandContext")?.toString() || "";
+  const newPortfolioHighlightsRaw = formData
+    .get("newPortfolioHighlights")
+    ?.toString();
   const goals = formData.get("goals") as string;
   const objectives = formData.get("objectives") as string;
   const challenge = formData.get("challenge") as string;
@@ -181,6 +188,9 @@ export async function POST(req: NextRequest) {
     );
   }
   const portfolioType = portfolioTypeRaw === "new" ? "new" : "old";
+  const isNewPortfolioPublished =
+    portfolioType === "new" &&
+    formData.get("isNewPortfolioPublished")?.toString() === "true";
   const seoRaw = formData.get("seo")?.toString();
   const previewImagesRaw = formData.get("previewImages")?.toString();
   const deliveredItemsRaw = formData.get("whatWeDeliveredItems")?.toString();
@@ -197,11 +207,11 @@ export async function POST(req: NextRequest) {
   const section = formData.get("section") as string;
   let seo: Record<string, string> = {};
   let previewImages: string[] = [];
+  let newPortfolioHighlights: { number: string; text: string }[] = [];
   let newDeliveredItems: {
     _id: number;
     title: string;
     icn: string;
-    dec: string;
     urllink: string[];
   }[] = [];
   let relatedPortfolioIds: string[] = [];
@@ -232,6 +242,30 @@ export async function POST(req: NextRequest) {
       previewImages = parsedImages;
     }
 
+    if (newPortfolioHighlightsRaw) {
+      const parsedHighlights: unknown = JSON.parse(
+        newPortfolioHighlightsRaw,
+      );
+      if (!Array.isArray(parsedHighlights)) {
+        throw new Error("New highlights must be an array.");
+      }
+      newPortfolioHighlights = parsedHighlights.map((highlight) => {
+        if (
+          !highlight ||
+          typeof highlight !== "object" ||
+          Array.isArray(highlight) ||
+          typeof highlight.number !== "string" ||
+          typeof highlight.text !== "string"
+        ) {
+          throw new Error("Each new highlight must include number and text.");
+        }
+        return {
+          number: highlight.number,
+          text: highlight.text,
+        };
+      });
+    }
+
     if (deliveredItemsRaw) {
       const parsedItems: unknown = JSON.parse(deliveredItemsRaw);
       if (!Array.isArray(parsedItems)) {
@@ -244,7 +278,6 @@ export async function POST(req: NextRequest) {
         const itemData = item as Record<string, unknown>;
         if (
           (itemData.title !== undefined && typeof itemData.title !== "string") ||
-          (itemData.dec !== undefined && typeof itemData.dec !== "string") ||
           (itemData._id !== undefined && !Number.isFinite(Number(itemData._id))) ||
           !Array.isArray(itemData.urllink) ||
           !itemData.urllink.every((url: unknown) => typeof url === "string")
@@ -255,7 +288,6 @@ export async function POST(req: NextRequest) {
           _id: Number(itemData._id ?? index + 1),
           title: typeof itemData.title === "string" ? itemData.title : "",
           icn: typeof itemData.icn === "string" ? itemData.icn : "",
-          dec: typeof itemData.dec === "string" ? itemData.dec : "",
           urllink: itemData.urllink as string[],
         };
       });
@@ -395,6 +427,15 @@ export async function POST(req: NextRequest) {
   }
   const portfolioFields = {
     portfolioType,
+    isNewPortfolioPublished,
+    ...(portfolioType === "new"
+      ? {
+          newBannerImage,
+          newBannerTitle,
+          oneLineBrandContext,
+          newPortfolioHighlights,
+        }
+      : {}),
     seo: portfolioSeo,
     previewImage: { images: previewImages },
     whatWeDeliveredSec: {
@@ -564,89 +605,90 @@ export async function POST(req: NextRequest) {
           companyName,
           industry,
           country,
-          channels: channelIds,
-          bannerImage: image == null ? imagePath : image,
-          story,
-          section2Image1:
-            section2Image1 == null ? section2Image1Path : section2Image1,
-          section2Image2:
-            section2Image2 == null ? section2Image2Path : section2Image2,
-          goals,
-          objectives,
-          challenge,
-          solutions,
-          strategyApproach,
-          socialMediaImages:
-            !socialMediaImages || socialMediaImages === "undefined"
-              ? []
-              : JSON.parse(socialMediaImages),
-          result,
-          section2BannerImage:
-            section2BannerImage == null
-              ? section2BannerImagePath
-              : section2BannerImage,
-          resultImage1: resultImage1PAth,
-          resultImage2: resultImage2Path,
-          video,
-          tag,
-          description,
-          categories: addedCategoriesIds,
           logo: logo == null ? logoPath : logo,
           slug,
           websiteLink,
-          bannerTitle,
-          videoThumbnail: videoThumbnailPath,
-          videoTitle,
           section,
           featured,
+          ...(portfolioType === "new"
+            ? {}
+            : {
+                channels: channelIds,
+                bannerImage: image == null ? imagePath : image,
+                story,
+                section2Image1:
+                  section2Image1 == null ? section2Image1Path : section2Image1,
+                section2Image2:
+                  section2Image2 == null ? section2Image2Path : section2Image2,
+                goals,
+                objectives,
+                challenge,
+                solutions,
+                strategyApproach,
+                socialMediaImages:
+                  !socialMediaImages || socialMediaImages === "undefined"
+                    ? []
+                    : JSON.parse(socialMediaImages),
+                result,
+                section2BannerImage:
+                  section2BannerImage == null
+                    ? section2BannerImagePath
+                    : section2BannerImage,
+                resultImage1: resultImage1PAth,
+                resultImage2: resultImage2Path,
+                video,
+                tag,
+                description,
+                categories: addedCategoriesIds,
+                bannerTitle,
+                videoThumbnail: videoThumbnailPath,
+                videoTitle,
+              }),
           ...(section === "portfolio" ? portfolioFields : {}),
         });
 
         const highlights: { customId: string; number: string; text: string }[] =
           [];
 
-        hightLightIds.forEach((item: number) => {
-          const customId = formData.get(`highlightId${item}`) as string;
-          const number = formData.get(`highlightNumber${item}`) as string;
-          const text = formData.get(`highlightText${item}`) as string;
+        if (portfolioType !== "new") {
+          hightLightIds.forEach((item: number) => {
+            const customId = formData.get(`highlightId${item}`) as string;
+            const number = formData.get(`highlightNumber${item}`) as string;
+            const text = formData.get(`highlightText${item}`) as string;
 
-          highlights.push({ customId, number, text });
-        });
-
-        for (let i = 0; i < highlights.length; i++) {
-          if (highlights[i].customId.length > 36) {
-            const deleteId = highlights[i].customId.slice(0, 36);
-          
-            await PortfolioHighlight.deleteOne({ customId: deleteId });
-
-            continue;
-          }
-
-         
-          const portfolioHighlight = await PortfolioHighlight.findOne({
-            customId: highlights[i].customId,
+            highlights.push({ customId, number, text });
           });
 
-          if (portfolioHighlight) {
-           
+          for (let i = 0; i < highlights.length; i++) {
+            if (highlights[i].customId.length > 36) {
+              const deleteId = highlights[i].customId.slice(0, 36);
 
-            await PortfolioHighlight.updateOne(
-              { customId: highlights[i].customId },
-              {
+              await PortfolioHighlight.deleteOne({ customId: deleteId });
+
+              continue;
+            }
+
+            const portfolioHighlight = await PortfolioHighlight.findOne({
+              customId: highlights[i].customId,
+            });
+
+            if (portfolioHighlight) {
+              await PortfolioHighlight.updateOne(
+                { customId: highlights[i].customId },
+                {
+                  number: highlights[i].number,
+                  text: highlights[i].text,
+                  customId: highlights[i].customId,
+                },
+              );
+            } else {
+              await PortfolioHighlight.create({
                 number: highlights[i].number,
                 text: highlights[i].text,
                 customId: highlights[i].customId,
-              },
-            );
-          } else {
-         
-
-            await PortfolioHighlight.create({
-              number: highlights[i].number,
-              text: highlights[i].text,
-              customId: highlights[i].customId,
-              companyId: id,
-            });
+                companyId: id,
+              });
+            }
           }
         }
 

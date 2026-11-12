@@ -19,13 +19,17 @@ const MainSectionDetails = ({
     <section>
       <div className="relative">
         <div className="z-1 relative h-[350px] w-full lg:h-[450px] xl:h-screen">
-          <Image
-            src={data.portfolio.bannerImage}
-            alt="heroImage"
-            className="absolute h-full w-full object-cover object-center"
-            fill
-          />
-          <div className="bg-bl-gradient absolute top-0 h-full w-full "></div>
+          {data.portfolio.bannerImage && (
+            <>
+              <Image
+                src={data.portfolio.bannerImage}
+                alt="heroImage"
+                className="absolute h-full w-full object-cover object-center"
+                fill
+              />
+              <div className="bg-bl-gradient absolute top-0 h-full w-full "></div>
+            </>
+          )}
         </div>
       </div>
       <div className="bg-dgray">
@@ -40,7 +44,8 @@ const MainSectionDetails = ({
                     : data.portfolio.bannerTitle}
                 </h1>
               </div>
-              <div className="ml-auto mt-3 w-fit md:mt-0">
+              {data.portfolio.logo && (
+                <div className="ml-auto mt-3 w-fit md:mt-0">
                 <Image
                   src={data.portfolio.logo}
                   alt={data.portfolio.companyName}
@@ -48,7 +53,8 @@ const MainSectionDetails = ({
                   height={100}
                   className="max-w-[100px] md:max-w-[150px]"
                 />
-              </div>
+                </div>
+              )}
             </div>
             <div className="flex flex-col justify-between  gap-4   lg:flex-row">
               <div className="flex justify-between gap-5 lg:gap-10  xl:gap-[120px]">
@@ -81,7 +87,7 @@ const MainSectionDetails = ({
                     Services
                   </p>
                   <div className="flex max-w-md flex-wrap gap-2">
-                    {data.portfolio.categories.map((item, index) => (
+                    {(data.portfolio.categories || []).map((item, index) => (
                       <button
                         key={index}
                         className="btn-outline-primary-text-black"

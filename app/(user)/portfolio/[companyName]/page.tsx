@@ -13,8 +13,12 @@ export async function generateMetadata({
   params: Promise<{ companyName: string }>;
 }): Promise<Metadata> {
   const { companyName } = await params;
-  const slug = formatLinkForPortfolio(companyName);
-  const data = await getCaseStudyOrPortfolio(companyName, "portfolio");
+  const isV2Preview = companyName.toLowerCase().endsWith("-v2");
+  const portfolioSlug = isV2Preview
+    ? companyName.slice(0, -3)
+    : companyName;
+  const slug = formatLinkForPortfolio(portfolioSlug);
+  const data = await getCaseStudyOrPortfolio(portfolioSlug, "portfolio");
   const portfolio = data?.portfolio;
   const seo = portfolio?.seo;
   const defaultTitle = "Global Surf Digital";
@@ -35,21 +39,23 @@ export async function generateMetadata({
   const twitterDescription =
     seo?.twitterDescription || portfolio?.twitterDescription || ogDescription;
   const url = `https://www.globalsurf.ae/portfolio/${slug}`;
+  const bannerImage = isV2Preview || portfolio?.isNewPortfolioPublished
+    ? portfolio?.newBannerImage || portfolio?.bannerImage
+    : portfolio?.bannerImage;
   const openGraphImages = seo?.ogImage
     ? [seo.ogImage]
-    : portfolio?.bannerImage
-      ? [portfolio.bannerImage]
+    : bannerImage
+      ? [bannerImage]
       : undefined;
   const twitterImages = seo?.twitterImage
     ? [seo.twitterImage]
     : openGraphImages;
-  const isV2Page = slug.toLowerCase().includes("v2");
   return {
     title,
     description,
     alternates: { canonical: url },
 
-    robots: isV2Page
+    robots: isV2Preview
       ? {
           index: false,
           follow: false,
@@ -82,10 +88,11 @@ const page = async ({
   params: Promise<{ companyName: string }>;
 }) => {
   const { companyName } = await params;
-  const endpoint =
-    companyName === "sobha-constructions-v2"
-      ? "sobha-constructions"
-      : companyName;
+  const isV2Preview = companyName.toLowerCase().endsWith("-v2");
+  const portfolioSlug = isV2Preview
+    ? companyName.slice(0, -3)
+    : companyName;
+  const endpoint = portfolioSlug;
 
   const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
 
@@ -95,7 +102,10 @@ const page = async ({
   }
   const successStories = await getSuccessStoriesPortfolios({
     companyId: data.portfolio._id,
-    slug: companyName,
+    slug:
+      companyName === "sobha-constructions-v2"
+        ? companyName
+        : portfolioSlug,
     relatedPortfolioIds: data.portfolio.relatedPortfolios?.portfolio,
   });
 
@@ -103,7 +113,8 @@ const page = async ({
     <>
       <PortfolioDetails
         data={data}
-        endpoint={companyName}
+        endpoint={endpoint}
+        isV2Preview={isV2Preview}
         successStories={successStories}
       />
     </>

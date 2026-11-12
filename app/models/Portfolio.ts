@@ -21,6 +21,13 @@ const WhatWeDeliveredDataSchema = new Schema({
     default: [],
   },
 });
+const NewPortfolioHighlightSchema = new Schema(
+  {
+    number: String,
+    text: String,
+  },
+  { _id: false },
+);
 const PortfolioSchema = new mongoose.Schema(
   {
     companyName: {
@@ -39,6 +46,19 @@ const PortfolioSchema = new mongoose.Schema(
     ],
     bannerImage: {
       type: String,
+    },
+    newBannerImage: {
+      type: String,
+    },
+    newBannerTitle: {
+      type: String,
+    },
+    oneLineBrandContext: {
+      type: String,
+    },
+    newPortfolioHighlights: {
+      type: [NewPortfolioHighlightSchema],
+      default: [],
     },
     story: {
       type: String,
@@ -98,6 +118,10 @@ const PortfolioSchema = new mongoose.Schema(
     portfolioType: {
       type: String,
       enum: ["old", "new"],
+    },
+    isNewPortfolioPublished: {
+      type: Boolean,
+      default: false,
     },
     previewImage: {
       images: {

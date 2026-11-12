@@ -8,7 +8,7 @@ interface FrameworkItem {
   _id: number;
   title: string;
   icn?: string;
-  dec: string;
+  dec?: string;
   urllink?: string;
 }
 

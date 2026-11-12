@@ -9,6 +9,7 @@ export type PortfolioDetailsProps = {
     companyName?: string | number | null;
   };
   endpoint?: string;
+  isV2Preview?: boolean;
   successStories?: Portfolio[];
   instagramPosts?: InstagramPost[];
   instagramFlush?: boolean;

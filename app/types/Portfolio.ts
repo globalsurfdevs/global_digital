@@ -10,6 +10,13 @@ export type Portfolio = {
   channelsUsed: string[];
   channels: { channelName: string; channelLink: string }[];
   bannerImage: string;
+  newBannerImage?: string;
+  newBannerTitle?: string;
+  oneLineBrandContext?: string;
+  newPortfolioHighlights?: {
+    number: string;
+    text: string;
+  }[];
   story: string;
   goals: string;
   objectives: string;
@@ -29,6 +36,7 @@ export type Portfolio = {
   description: string;
   logo: string;
   portfolioType?: "old" | "new";
+  isNewPortfolioPublished?: boolean;
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
@@ -48,7 +56,7 @@ export type Portfolio = {
     data?: {
       _id: number;
       title: string;
-      dec: string;
+      dec?: string;
       icn?: string;
       urllink?: string[];
     }[];

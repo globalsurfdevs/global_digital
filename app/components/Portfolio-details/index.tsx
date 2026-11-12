@@ -7,15 +7,12 @@ import type { PortfolioDetailsProps } from "./PortfolioDetails.types";
 const PortfolioDetails = ({
   data,
   endpoint,
+  isV2Preview = false,
   successStories,
   instagramPosts,
   instagramFlush,
 }: PortfolioDetailsProps) => {
-  const storedPortfolioType: unknown = data.portfolio.portfolioType;
-  const isNewPortfolio =
-    storedPortfolioType === "new" || storedPortfolioType === "modern";
-
-  if (isNewPortfolio) {
+  if (isV2Preview || data.portfolio.isNewPortfolioPublished) {
     return (
       <NewPortfolioDetails
         data={data}
