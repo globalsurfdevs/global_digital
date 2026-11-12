@@ -2943,7 +2943,8 @@ const AdminIndiPortfolio = ({ editMode }: { editMode?: boolean }) => {
                           <Label content="Icon image" />
                           <ImageUploader
                             value={item.icn}
-                            className="max-w-[30%]"
+                            isLogo
+                            className="max-w-[100px]"
                             onChange={(url) =>
                               setNewDeliveredItems((items) =>
                                 items.map((entry, index) =>

@@ -88,12 +88,15 @@ const page = async ({
   params: Promise<{ companyName: string }>;
 }) => {
   const { companyName } = await params;
+  console.log("companyName : ", companyName);
+
   const isV2Preview = companyName.toLowerCase().endsWith("-v2");
+  console.log("isV2Preview : ", isV2Preview);
   const portfolioSlug = isV2Preview
     ? companyName.slice(0, -3)
     : companyName;
   const endpoint = portfolioSlug;
-
+console.log("portfolioSlug : ", portfolioSlug);
   const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
 
  
