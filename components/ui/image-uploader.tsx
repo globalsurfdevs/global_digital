@@ -129,6 +129,7 @@ export function ImageUploader({
             alt="Uploaded image"
             className={isLogo ? "object-contain p-2" : "object-cover"}
             fill
+            unoptimized
           />
           <button
             type="button"
