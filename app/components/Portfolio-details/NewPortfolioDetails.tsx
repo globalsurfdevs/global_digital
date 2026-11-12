@@ -29,7 +29,6 @@ const NewPortfolioDetails = ({
             ("id" in item ? item.id : undefined) ??
             index + 1,
           title: item.title,
-          dec: item.dec || "",
           icn: item.icn || "",
           urllink: Array.isArray(item.urllink)
             ? item.urllink.find((link: string) => Boolean(link))
@@ -41,6 +40,9 @@ const NewPortfolioDetails = ({
     ...data,
     portfolio: {
       ...data.portfolio,
+      bannerImage: data.portfolio.newBannerImage || "",
+      bannerTitle: data.portfolio.newBannerTitle || "",
+      story: data.portfolio.oneLineBrandContext || "",
       detailsCtaOneTitle:
         data.portfolio.detailsCtaOne?.title ||
         data.portfolio.detailsCtaOneTitle,
@@ -54,6 +56,13 @@ const NewPortfolioDetails = ({
         data.portfolio.detailsCtaTwo?.ctaText ||
         data.portfolio.detailsCtaTwoButtonText,
     },
+    portfolioHighlights: (data.portfolio.newPortfolioHighlights || []).map(
+      (highlight, index) => ({
+        ...highlight,
+        customId: `new-highlight-${index}`,
+        companyId: Number(data.portfolio.id) || 0,
+      }),
+    ),
   };
 
   return (
