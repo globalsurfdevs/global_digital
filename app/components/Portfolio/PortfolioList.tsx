@@ -516,7 +516,7 @@ const PortfolioList = ({
                           item.section == "case study" ||
                           item.section == "case study new"
                             ? `/case-study/${formatLinkForCaseStudy(item.companyName)}`
-                            : `/portfolio/${formatLinkForPortfolio(item.companyName)}`
+                            : `/portfolio/${formatLinkForPortfolio(item.slug || item.companyName)}`
                         }
                         className="absolute top-0 z-[1] h-full w-full"
                       ></Link>
