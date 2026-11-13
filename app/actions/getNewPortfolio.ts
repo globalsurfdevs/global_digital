@@ -9,7 +9,10 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
     ...record,
     _id: String(record._id),
     companyName: record.company?.name || "",
-    industry: record.company?.industry || "",
+    industry:
+      typeof record.company?.industry === "object"
+        ? record.company.industry?.name || ""
+        : record.company?.industry || "",
     country: record.company?.country || "",
     slug: record.slug || "",
     newBannerImage: record.brand?.banner?.image || "",
@@ -22,7 +25,7 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
     whatWeDeliveredSec: {
       title: record.whatWeDelivered?.title || "",
       data: delivered.map((item: Record<string, unknown>) => ({
-        _id: item._id,
+        _id: item._id ? String(item._id) : undefined,
         title: item.title || "",
         icn: item.icon || "",
         urllink: [],
@@ -48,8 +51,9 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
     },
     portfolioType: "new",
     isNewPortfolioPublished: record.isPublished === true,
+    sectionVisibility: record.sectionVisibility || {},
     channelsUsed: [],
-    categories: [],
+    categories: record.categories || [],
     story: record.brand?.oneLineContext || "",
     bannerImage: record.brand?.banner?.image || "",
   } as unknown as Portfolio;
@@ -57,9 +61,15 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
 
 export async function getNewPortfolioPageData(slug: string) {
   await connectDB();
-  const record = (await NewPortfolio.findOne({ slug, isListed: { $ne: false } })
+
+  // console.log("slug:", slug);
+  // , isListed: { $ne: false }
+  const record = (await NewPortfolio.findOne({ slug })
     .populate("relatedPortfolios.items")
+    .populate("categories")
     .lean()) as unknown as NewPortfolioData & Record<string, any>;
+
+    // console.log("record:", record);
   if (!record) return null;
 
   const related = (record.relatedPortfolios?.items || []) as Record<string, any>[];
@@ -74,11 +84,15 @@ export async function getNewPortfolioPageData(slug: string) {
     companyId: 0,
   }));
 
-  return {
+  const pageData = {
     portfolio,
     portfolioHighlights,
     successStories,
     seo: record.seo,
     isPublished: record.isPublished === true,
   };
+
+  // Mongoose ObjectIds and subdocuments are not serializable across the
+  // Server Component boundary. Convert the complete renderer payload to JSON.
+  return JSON.parse(JSON.stringify(pageData));
 }

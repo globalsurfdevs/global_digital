@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import NewPortfolio from "@/app/models/NewPortfolio";
 import Category from "@/app/models/Category";
+import PortfolioIndustry from "@/app/models/PortfolioIndustry";
 import connectDB from "@/lib/mongodb";
 import mongoose from "mongoose";
 import { revalidatePath, revalidateTag } from "next/cache";
@@ -16,6 +17,7 @@ const editableFields = [
   "callsToAction",
   "relatedPortfolios",
   "categories",
+  "sectionVisibility",
   "seo",
   "isPublished",
   "featured",
@@ -84,6 +86,20 @@ async function validateCategories(categories: unknown) {
   return count === ids.length ? null : "One or more categories were not found.";
 }
 
+async function validateIndustry(company: unknown) {
+  if (!company || typeof company !== "object") return null;
+  const industry = (company as { industry?: unknown }).industry;
+  if (industry === undefined || industry === "") return null;
+  if (typeof industry !== "string") return "Select a valid industry.";
+  const portfolioIndustries = await PortfolioIndustry.find({})
+    .select("subCategories.name")
+    .lean();
+  const validNames = portfolioIndustries.flatMap((item) =>
+    (item.subCategories || []).map((subCategory: { name: string }) => subCategory.name),
+  );
+  return validNames.includes(industry) ? null : "Selected industry was not found.";
+}
+
 async function revalidateNewPortfolioPages(slug?: string) {
   revalidateTag("new-portfolios");
   revalidatePath("/sitemap.xml");
@@ -140,6 +156,8 @@ export async function POST(request: NextRequest) {
     }
     const categoryError = await validateCategories(fields.categories);
     if (categoryError) return NextResponse.json({ error: categoryError }, { status: 400 });
+    const industryError = await validateIndustry(fields.company);
+    if (industryError) return NextResponse.json({ error: industryError }, { status: 400 });
     const slug = typeof fields.slug === "string" ? fields.slug.trim() : "";
     if (slug && (await NewPortfolio.exists({ slug }))) {
       return NextResponse.json({ error: "That new portfolio slug is already in use." }, { status: 409 });
@@ -181,6 +199,8 @@ export async function PUT(request: NextRequest) {
     }
     const categoryError = await validateCategories(fields.categories);
     if (categoryError) return NextResponse.json({ error: categoryError }, { status: 400 });
+    const industryError = await validateIndustry(fields.company);
+    if (industryError) return NextResponse.json({ error: industryError }, { status: 400 });
     const slug = typeof fields.slug === "string" ? fields.slug.trim() : undefined;
     if (slug && (await NewPortfolio.exists({ slug, _id: { $ne: id } }))) {
       return NextResponse.json({ error: "That new portfolio slug is already in use." }, { status: 409 });

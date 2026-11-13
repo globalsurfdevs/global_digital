@@ -9,14 +9,19 @@ import {
 import { getNewPortfolioPageData } from "@/app/actions/getNewPortfolio";
 
 async function getPreviewData(slug: string) {
-  const newData = await getNewPortfolioPageData(slug);
+  const portfolioSlug = slug.toLowerCase().endsWith("-v2")
+    ? slug.slice(0, -3)
+    : slug;
+
+  const newData = await getNewPortfolioPageData(portfolioSlug);
+  // console.log("newData:", newData);
   if (newData) return newData;
 
-  const legacyData = await getCaseStudyOrPortfolio(slug, "portfolio");
+  const legacyData = await getCaseStudyOrPortfolio(portfolioSlug, "portfolio");
   if (!legacyData) return null;
   const successStories = await getSuccessStoriesPortfolios({
     companyId: legacyData.portfolio._id,
-    slug,
+    slug: portfolioSlug,
     relatedPortfolioIds: legacyData.portfolio.relatedPortfolios?.portfolio,
   });
   return { ...legacyData, successStories };
@@ -28,8 +33,11 @@ export async function generateMetadata({
   params: Promise<{ companyName: string }>;
 }): Promise<Metadata> {
   const { companyName } = await params;
-  const slug = formatLinkForPortfolio(companyName);
-  const data = await getPreviewData(companyName);
+  const portfolioSlug = companyName.toLowerCase().endsWith("-v2")
+    ? companyName.slice(0, -3)
+    : companyName;
+  const slug = formatLinkForPortfolio(portfolioSlug);
+  const data = await getPreviewData(portfolioSlug);
   const portfolio = data?.portfolio;
   const seo = "seo" in (data || {}) ? data?.seo : portfolio?.seo;
   const title = seo?.metaTitle || portfolio?.metaTitle || "Global Surf Digital";
@@ -65,13 +73,18 @@ export default async function PortfolioV2PreviewPage({
   params: Promise<{ companyName: string }>;
 }) {
   const { companyName } = await params;
-  const data = await getPreviewData(companyName);
+
+  const portfolioSlug = companyName.toLowerCase().endsWith("-v2")
+    ? companyName.slice(0, -3)
+    : companyName;
+
+  const data = await getPreviewData(portfolioSlug);
   if (!data) notFound();
 
   return (
     <PortfolioDetails
       data={data}
-      endpoint={companyName}
+      endpoint={portfolioSlug}
       isV2Preview
       successStories={"successStories" in data ? data.successStories : []}
     />

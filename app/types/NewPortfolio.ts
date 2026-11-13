@@ -49,6 +49,14 @@ export type NewPortfolio = {
     items?: string[];
   };
   categories?: (string | { _id: string; name?: string; link?: string })[];
+  sectionVisibility?: {
+    highlights?: boolean;
+    previewImages?: boolean;
+    whatWeDelivered?: boolean;
+    primaryCta?: boolean;
+    secondaryCta?: boolean;
+    relatedPortfolios?: boolean;
+  };
   seo?: Partial<SeoFormValues>;
   isPublished?: boolean;
   featured?: boolean;

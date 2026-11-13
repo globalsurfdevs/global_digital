@@ -37,6 +37,14 @@ export type Portfolio = {
   logo: string;
   portfolioType?: "old" | "new";
   isNewPortfolioPublished?: boolean;
+  sectionVisibility?: {
+    highlights?: boolean;
+    previewImages?: boolean;
+    whatWeDelivered?: boolean;
+    primaryCta?: boolean;
+    secondaryCta?: boolean;
+    relatedPortfolios?: boolean;
+  };
   seo?: {
     metaTitle?: string;
     metaDescription?: string;

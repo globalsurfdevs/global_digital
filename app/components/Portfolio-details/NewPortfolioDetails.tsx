@@ -5,6 +5,7 @@ import MainSectionDetails from "./MainSectionDetails";
 import HeroSectionDetails from "./HeroSectionDetails";
 import ResultDetails from "./ResultDetails";
 import CtaDetailsTwo from "./CtaDetailsTwo";
+import CtaDetailsone from "./CtaDetailsone";
 import WhatWeDelivered from "./WhatWeDelivered";
 import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
 import type { PortfolioDetailsProps } from "./PortfolioDetails.types";
@@ -35,6 +36,20 @@ const NewPortfolioDetails = ({
             : item.urllink,
         }))
       : [];
+  const hasConfiguredPrimaryCta = Boolean(
+    data.portfolio.detailsCtaOne?.title ||
+      data.portfolio.detailsCtaOne?.ctaText ||
+      data.portfolio.detailsCtaOne?.ctaLink ||
+      data.portfolio.detailsCtaOneTitle ||
+      data.portfolio.detailsCtaOneLinkText,
+  );
+  const hasConfiguredSecondaryCta = Boolean(
+    data.portfolio.detailsCtaTwo?.title ||
+      data.portfolio.detailsCtaTwo?.ctaText ||
+      data.portfolio.detailsCtaTwo?.ctaLink ||
+      data.portfolio.detailsCtaTwoTitle ||
+      data.portfolio.detailsCtaTwoButtonText,
+  );
 
   const newData = {
     ...data,
@@ -56,7 +71,9 @@ const NewPortfolioDetails = ({
         data.portfolio.detailsCtaTwo?.ctaText ||
         data.portfolio.detailsCtaTwoButtonText,
     },
-    portfolioHighlights: (data.portfolio.newPortfolioHighlights || []).map(
+    portfolioHighlights: (data.portfolio.sectionVisibility?.highlights === false
+      ? []
+      : data.portfolio.newPortfolioHighlights || []).map(
       (highlight, index) => ({
         ...highlight,
         customId: `new-highlight-${index}`,
@@ -72,7 +89,7 @@ const NewPortfolioDetails = ({
       {endpoint == "innovo-group" && (
         <ResultDetails data={newData} />
       )}
-      {previewImages && previewImages.length > 0 && (
+      {data.portfolio.sectionVisibility?.previewImages !== false && previewImages.length > 0 && (
         <section className="container mx-auto grid grid-cols-1 gap-5 py-8 md:grid-cols-2">
           {previewImages.map((imageUrl: string, index: number) => (
             <Image
@@ -86,7 +103,7 @@ const NewPortfolioDetails = ({
           ))}
         </section>
       )}
-      <WhatWeDelivered
+      {data.portfolio.sectionVisibility?.whatWeDelivered !== false && <WhatWeDelivered
         title={
           data.portfolio.whatWeDeliveredSec?.title ||
           data.portfolio.whatWeDeliveredTitle ||
@@ -95,16 +112,21 @@ const NewPortfolioDetails = ({
         data={deliveredData}
         endpoint={endpoint}
         colcount={3}
-      />
-      <div className="container mx-auto border-t border-gray-400 py-4">
+      />}
+      {data.portfolio.sectionVisibility?.relatedPortfolios !== false &&
+        (data.portfolio.sectionVisibility === undefined || successStories?.length) && <div className="container mx-auto border-t border-gray-400 py-4">
         <div>
           <SuccessStoriesPortfolio
             data={successStories ?? []}
             colCount={3}
           />
         </div>
-      </div>
-      <CtaDetailsTwo data={newData} />
+      </div>}
+      {data.portfolio.sectionVisibility?.primaryCta !== false &&
+        hasConfiguredPrimaryCta && <CtaDetailsone data={newData} />}
+      {data.portfolio.sectionVisibility?.secondaryCta !== false &&
+        (data.portfolio.sectionVisibility === undefined || hasConfiguredSecondaryCta) &&
+        <CtaDetailsTwo data={newData} />}
     </>
   );
 };

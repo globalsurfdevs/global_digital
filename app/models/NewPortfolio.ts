@@ -78,6 +78,14 @@ const NewPortfolioSchema = new Schema(
         ref: "category",
       },
     ],
+    sectionVisibility: {
+      highlights: { type: Boolean, default: true },
+      previewImages: { type: Boolean, default: true },
+      whatWeDelivered: { type: Boolean, default: true },
+      primaryCta: { type: Boolean, default: true },
+      secondaryCta: { type: Boolean, default: true },
+      relatedPortfolios: { type: Boolean, default: true },
+    },
     seo: seoSchema,
     isPublished: {
       type: Boolean,
