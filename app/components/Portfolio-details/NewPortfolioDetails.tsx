@@ -13,7 +13,8 @@ const NewPortfolioDetails = ({
   data,
   endpoint,
   successStories,
-}: Pick<PortfolioDetailsProps, "data" | "endpoint" | "successStories">) => {
+  hidePrimaryCta,
+}: Pick<PortfolioDetailsProps, "data" | "endpoint" | "successStories" | "hidePrimaryCta">) => {
   const previewImages =
     data.portfolio.previewImage?.images.filter(Boolean) ?? [];
   const deliveredSectionItems = data.portfolio.whatWeDeliveredSec?.data;
@@ -107,7 +108,7 @@ const NewPortfolioDetails = ({
           />
         </div>
       </div>}
-      {data.portfolio.sectionVisibility?.primaryCta !== false &&
+      {!hidePrimaryCta && data.portfolio.sectionVisibility?.primaryCta !== false &&
         hasConfiguredPrimaryCta && <CtaDetailsone data={newData} />}
       {data.portfolio.sectionVisibility?.secondaryCta !== false &&
         (data.portfolio.sectionVisibility === undefined || hasConfiguredSecondaryCta) &&

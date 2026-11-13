@@ -10,6 +10,7 @@ export type PortfolioDetailsProps = {
   };
   endpoint?: string;
   isV2Preview?: boolean;
+  hidePrimaryCta?: boolean;
   successStories?: Portfolio[];
   instagramPosts?: InstagramPost[];
   instagramFlush?: boolean;

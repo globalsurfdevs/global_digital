@@ -8,6 +8,7 @@ const PortfolioDetails = ({
   data,
   endpoint,
   isV2Preview = false,
+  hidePrimaryCta = false,
   successStories,
   instagramPosts,
   instagramFlush,
@@ -18,6 +19,7 @@ const PortfolioDetails = ({
         data={data}
         endpoint={endpoint}
         successStories={successStories}
+        hidePrimaryCta={hidePrimaryCta}
       />
     );
   }
