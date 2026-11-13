@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Lexend } from "next/font/google";
@@ -121,9 +122,9 @@ const CtaDetailsone = ({
 
             <div className="innerfnont relative mt-[20px] w-fit lg:mt-[60px]">
               {ctaLink ? (
-                <a href={ctaLink} target="_blank" rel="noreferrer">
+                <Link href={ctaLink} target="_blank" rel="noreferrer">
                   {ctaAction}
-                </a>
+                </Link>
               ) : (
                 ctaAction
               )}

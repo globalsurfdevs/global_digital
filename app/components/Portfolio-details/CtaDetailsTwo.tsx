@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
@@ -63,7 +64,7 @@ const CtaDetailsTwo = ({
 
             <div className="innerfnont relative mt-5 w-fit lg:mt-[60px]">
               {data?.portfolio.detailsCtaTwo?.ctaLink ? (
-                <a
+                <Link
                   href={data.portfolio.detailsCtaTwo.ctaLink}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -72,7 +73,7 @@ const CtaDetailsTwo = ({
                   {data.portfolio.detailsCtaTwo.ctaText ||
                     data.portfolio.detailsCtaTwoButtonText ||
                     "Book a free consultation"}
-                </a>
+                </Link>
               ) : (
                 <Button
                   text={

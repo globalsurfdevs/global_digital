@@ -54,8 +54,8 @@ export default function AdminNewPortfolioList() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <a href={`/portfolio/${portfolio.slug}`} target="_blank" rel="noopener noreferrer" title="View live page" aria-label="View live page" className="inline-flex size-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:bg-slate-100"><ExternalLink className="size-4" /></a>
-                  <a href={`/portfolio/v2/${portfolio.slug}`} target="_blank" rel="noopener noreferrer" title="Preview V2 page" aria-label="Preview V2 page" className="inline-flex size-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:bg-slate-100"><Eye className="size-4" /></a>
+                  <Link href={`/portfolio/${portfolio.slug}`} target="_blank" rel="noopener noreferrer" title="View live page" aria-label="View live page" className="inline-flex size-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:bg-slate-100"><ExternalLink className="size-4" /></Link>
+                  <Link href={`/portfolio/v2/${portfolio.slug}`} target="_blank" rel="noopener noreferrer" title="Preview V2 page" aria-label="Preview V2 page" className="inline-flex size-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:bg-slate-100"><Eye className="size-4" /></Link>
                   <AdminLinkButton variant="secondary" size="sm" href={`/admin/new-portfolios/${portfolio._id}`}><Pencil className="size-4" /><span className="sr-only">Edit</span></AdminLinkButton>
                   {portfolio.isListed !== false && <AdminButton variant="secondary" onClick={() => void archive(portfolio._id)}>Archive</AdminButton>}
                 </div>
