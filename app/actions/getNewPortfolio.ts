@@ -23,6 +23,7 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
     websiteLink: record.brand?.websiteLink || "",
     newPortfolioHighlights: record.highlights || [],
     previewImage: { images: record.previewImages || [] },
+    standalonePreviewImage: record.standalonePreviewImage || "",
     whatWeDeliveredSec: {
       title: record.whatWeDelivered?.title || "",
       data: delivered.map((item: Record<string, unknown>) => ({

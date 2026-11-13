@@ -52,6 +52,7 @@ const NewPortfolioSchema = new Schema(
       type: [String],
       default: undefined,
     },
+    standalonePreviewImage: String,
     whatWeDelivered: {
       title: String,
       items: {

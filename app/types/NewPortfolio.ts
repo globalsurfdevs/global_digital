@@ -36,6 +36,7 @@ export type NewPortfolio = {
   };
   highlights?: NewPortfolioHighlight[];
   previewImages?: string[];
+  standalonePreviewImage?: string;
   whatWeDelivered?: {
     title?: string;
     items?: NewPortfolioDeliveredItem[];

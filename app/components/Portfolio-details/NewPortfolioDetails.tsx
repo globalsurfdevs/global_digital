@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import MainSectionDetails from "./MainSectionDetails";
 import HeroSectionDetails from "./HeroSectionDetails";
 import ResultDetails from "./ResultDetails";
@@ -81,27 +80,13 @@ const NewPortfolioDetails = ({
       }),
     ),
   };
-
+// 
   return (
     <>
       <MainSectionDetails data={newData} />
       <HeroSectionDetails data={newData} />
-      {endpoint == "innovo-group" && (
+      {data.portfolio.sectionVisibility?.previewImages !== false && (
         <ResultDetails data={newData} />
-      )}
-      {data.portfolio.sectionVisibility?.previewImages !== false && previewImages.length > 0 && (
-        <section className="container mx-auto grid grid-cols-1 gap-5 py-8 md:grid-cols-2">
-          {previewImages.map((imageUrl: string, index: number) => (
-            <Image
-              key={`preview-${index}`}
-              src={imageUrl}
-              alt={`Portfolio work preview ${index + 1}`}
-              width={900}
-              height={746}
-              className="h-auto w-full"
-            />
-          ))}
-        </section>
       )}
       {data.portfolio.sectionVisibility?.whatWeDelivered !== false && <WhatWeDelivered
         title={

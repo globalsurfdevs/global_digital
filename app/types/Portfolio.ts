@@ -59,6 +59,7 @@ export type Portfolio = {
   previewImage?: {
     images: string[];
   };
+  standalonePreviewImage?: string;
   whatWeDeliveredSec?: {
     title?: string;
     data?: {
