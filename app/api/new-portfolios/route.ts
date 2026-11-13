@@ -13,6 +13,7 @@ const editableFields = [
   "brand",
   "highlights",
   "previewImages",
+  "standalonePreviewImage",
   "whatWeDelivered",
   "callsToAction",
   "relatedPortfolios",

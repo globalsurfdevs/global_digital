@@ -21,11 +21,15 @@ const ResultDetails = ({
 }) => {
   const previewImages =
     data?.portfolio.previewImage?.images.filter(Boolean) ?? [];
+  const standalonePreviewImage = data?.portfolio.standalonePreviewImage;
+  const sliderPreviewImages = standalonePreviewImage
+    ? previewImages.filter((imageUrl) => imageUrl !== standalonePreviewImage)
+    : previewImages;
 
   return (
     <>
       <div className="container mx-auto py-4">
-        {previewImages.length > 0 ||
+        {sliderPreviewImages.length > 0 ||
         data?.portfolio.resultImage1 ||
         data?.portfolio.resultImage2 ? (
           <motion.div
@@ -59,8 +63,8 @@ const ResultDetails = ({
               }}
               className="portfolio-swiper"
             >
-              {previewImages.length > 0 ? (
-                previewImages.map((imageUrl, index) => (
+              {sliderPreviewImages.length > 0 ? (
+                sliderPreviewImages.map((imageUrl, index) => (
                   <SwiperSlide key={`preview-${index}`}>
                     <Image
                       src={imageUrl}
@@ -143,6 +147,17 @@ const ResultDetails = ({
             </button>
           </motion.div>
         ) : null}
+        {standalonePreviewImage && (
+          <section className="mt-5 grid grid-cols-1 gap-5">
+            <Image
+              src={standalonePreviewImage}
+              alt="Selected portfolio work preview"
+              width={900}
+              height={746}
+              className="h-auto w-full"
+            />
+          </section>
+        )}
       </div>
       {data?.portfolio.section2BannerImage ? (
         <div className="">
