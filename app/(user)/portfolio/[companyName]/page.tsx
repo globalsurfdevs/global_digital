@@ -6,6 +6,7 @@ import {
   getCaseStudyOrPortfolio,
   getSuccessStoriesPortfolios,
 } from "@/app/actions/getCaseStudy";
+import { getNewPortfolioPageData } from "@/app/actions/getNewPortfolio";
 
 export async function generateMetadata({
   params,
@@ -18,9 +19,14 @@ export async function generateMetadata({
     ? companyName.slice(0, -3)
     : companyName;
   const slug = formatLinkForPortfolio(portfolioSlug);
-  const data = await getCaseStudyOrPortfolio(portfolioSlug, "portfolio");
+  const newData = await getNewPortfolioPageData(portfolioSlug);
+  const data = newData && (isV2Preview || newData.isPublished)
+    ? newData
+    : await getCaseStudyOrPortfolio(portfolioSlug, "portfolio");
   const portfolio = data?.portfolio;
-  const seo = portfolio?.seo;
+  const seo = newData && (isV2Preview || newData.isPublished)
+    ? newData.seo
+    : portfolio?.seo;
   const defaultTitle = "Global Surf Digital";
   const title =
     (seo?.metaTitle || portfolio?.metaTitle) &&
@@ -39,8 +45,8 @@ export async function generateMetadata({
   const twitterDescription =
     seo?.twitterDescription || portfolio?.twitterDescription || ogDescription;
   const url = `https://www.globalsurf.ae/portfolio/${slug}`;
-  const bannerImage = isV2Preview || portfolio?.isNewPortfolioPublished
-    ? portfolio?.newBannerImage || portfolio?.bannerImage
+  const bannerImage = newData && (isV2Preview || newData.isPublished)
+    ? newData.portfolio.newBannerImage || newData.portfolio.bannerImage
     : portfolio?.bannerImage;
   const openGraphImages = seo?.ogImage
     ? [seo.ogImage]
@@ -88,17 +94,53 @@ const page = async ({
   params: Promise<{ companyName: string }>;
 }) => {
   const { companyName } = await params;
-  console.log("companyName : ", companyName);
 
   const isV2Preview = companyName.toLowerCase().endsWith("-v2");
-  console.log("isV2Preview : ", isV2Preview);
+ 
   const portfolioSlug = isV2Preview
     ? companyName.slice(0, -3)
     : companyName;
   const endpoint = portfolioSlug;
-console.log("portfolioSlug : ", portfolioSlug);
-  const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
 
+  const newData = await getNewPortfolioPageData(endpoint);
+  if (isV2Preview) {
+    if (newData) {
+      return (
+        <PortfolioDetails
+          data={newData}
+          endpoint={endpoint}
+          isV2Preview
+          successStories={newData.successStories}
+        />
+      );
+    }
+    const legacyData = await getCaseStudyOrPortfolio(endpoint, "portfolio");
+    if (!legacyData) return <div>Portfolio not found</div>;
+    const legacySuccessStories = await getSuccessStoriesPortfolios({
+      companyId: legacyData.portfolio._id,
+      slug: endpoint,
+      relatedPortfolioIds: legacyData.portfolio.relatedPortfolios?.portfolio,
+    });
+    return (
+      <PortfolioDetails
+        data={legacyData}
+        endpoint={endpoint}
+        isV2Preview
+        successStories={legacySuccessStories}
+      />
+    );
+  }
+  if (newData?.isPublished) {
+    return (
+      <PortfolioDetails
+        data={newData}
+        endpoint={endpoint}
+        successStories={newData.successStories}
+      />
+    );
+  }
+
+  const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
  
   if (!data) {
     return <div>Portfolio not found</div>;
