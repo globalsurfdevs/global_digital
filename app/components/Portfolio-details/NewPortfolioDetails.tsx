@@ -80,7 +80,7 @@ const NewPortfolioDetails = ({
       }),
     ),
   };
-
+// 
   return (
     <>
       <MainSectionDetails data={newData} />
