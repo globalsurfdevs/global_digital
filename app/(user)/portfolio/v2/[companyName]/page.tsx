@@ -2,10 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PortfolioDetails from "@/app/components/Portfolio-details";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
-import {
-  getCaseStudyOrPortfolio,
-  getSuccessStoriesPortfolios,
-} from "@/app/actions/getCaseStudy";
 import { getNewPortfolioPageData } from "@/app/actions/getNewPortfolio";
 
 async function getPreviewData(slug: string) {
@@ -15,16 +11,7 @@ async function getPreviewData(slug: string) {
 
   const newData = await getNewPortfolioPageData(portfolioSlug);
 
-  if (newData) return newData;
-
-  const legacyData = await getCaseStudyOrPortfolio(portfolioSlug, "portfolio");
-  if (!legacyData) return null;
-  const successStories = await getSuccessStoriesPortfolios({
-    companyId: legacyData.portfolio._id,
-    slug: portfolioSlug,
-    relatedPortfolioIds: legacyData.portfolio.relatedPortfolios?.portfolio,
-  });
-  return { ...legacyData, successStories };
+  return newData;
 }
 
 export async function generateMetadata({
@@ -80,7 +67,6 @@ export default async function PortfolioV2PreviewPage({
 
   const data = await getPreviewData(portfolioSlug);
   if (!data) notFound();
-
   return (
     <PortfolioDetails
       data={data}

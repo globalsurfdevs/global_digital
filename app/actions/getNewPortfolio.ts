@@ -1,5 +1,6 @@
 import connectDB from "@/lib/mongodb";
 import NewPortfolio from "@/app/models/NewPortfolio";
+import "@/app/models/Category";
 import type { NewPortfolio as NewPortfolioData } from "@/app/types/NewPortfolio";
 import type { Portfolio } from "@/app/types/Portfolio";
 
@@ -83,6 +84,8 @@ export async function getNewPortfolioPageData(slug: string) {
   const successStories = related
     .filter((item) => item && item.isListed !== false)
     .map(toRendererPortfolio);
+
+    // console.log("successStories:", successStories);
   const portfolioHighlights = (record.highlights || []).map((item, index) => ({
     customId: `new-highlight-${index}`,
     number: item.number || "",
