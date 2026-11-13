@@ -135,6 +135,52 @@ export async function POST(req: NextRequest) {
   }
 }
 
+export async function PATCH(req: NextRequest) {
+  try {
+    await connectDB();
+    const formData = await req.formData();
+    const action = formData.get("action");
+    const categoryId = formData.get("categoryId") as string;
+    const name = (formData.get("name") as string)?.trim();
+    if (!categoryId || !name) {
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+    }
+
+    const category = await PortfolioIndustry.findById(categoryId);
+    if (!category) {
+      return NextResponse.json({ error: "Industry not found" }, { status: 404 });
+    }
+
+    if (action === "update_category") {
+      const duplicate = await PortfolioIndustry.findOne({
+        _id: { $ne: categoryId },
+        name: new RegExp(`^${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i"),
+      });
+      if (duplicate) return NextResponse.json({ error: "Industry already exists" }, { status: 400 });
+      category.name = name;
+    } else if (action === "update_sub") {
+      const subId = formData.get("subId") as string;
+      const subCategory = category.subCategories.find(
+        (sub: { _id: { toString: () => string }; name: string }) => sub._id.toString() === subId,
+      );
+      if (!subCategory) return NextResponse.json({ error: "Sub-category not found" }, { status: 404 });
+      const duplicate = category.subCategories.some(
+        (sub: { _id: { toString: () => string }; name: string }) => sub._id.toString() !== subId && sub.name.toLowerCase() === name.toLowerCase(),
+      );
+      if (duplicate) return NextResponse.json({ error: "Sub-category already exists" }, { status: 400 });
+      subCategory.name = name;
+    } else {
+      return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+    }
+
+    await category.save();
+    return NextResponse.json({ message: "Industry updated" });
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: "Failed to update industry" }, { status: 500 });
+  }
+}
+
 export async function DELETE(req: NextRequest) {
   try {
     await connectDB();

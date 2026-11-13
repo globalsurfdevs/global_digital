@@ -3,14 +3,17 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Eye, Pencil } from "lucide-react";
+import { ExternalLink, Eye, Pencil, Search } from "lucide-react";
 import { toast } from "sonner";
 import type { NewPortfolio } from "@/app/types/NewPortfolio";
 import { AdminButton, AdminLinkButton, PageHeader, SectionCard } from "@/app/components/AdminUI";
+import NewPortfolioCategoryManager from "@/app/components/AdminNewPortfolio/NewPortfolioCategoryManager";
+import IndustryManager from "@/app/components/AdminIndsutries/IndustriesManager";
 
 export default function AdminNewPortfolioList() {
   const [portfolios, setPortfolios] = useState<NewPortfolio[]>([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   const loadPortfolios = useCallback(async () => {
     try {
@@ -27,6 +30,22 @@ export default function AdminNewPortfolioList() {
 
   useEffect(() => { void loadPortfolios(); }, [loadPortfolios]);
 
+  const normalizedSearch = search.trim().toLowerCase();
+  const filteredPortfolios = portfolios.filter((portfolio) => {
+    const searchableValues = [
+      portfolio.company?.name,
+      portfolio.slug,
+      portfolio.company?.industry,
+      portfolio.company?.country,
+      ...(portfolio.categories ?? []).map((category) =>
+        typeof category === "string" ? category : category.name,
+      ),
+    ];
+    return searchableValues.some((value) =>
+      value?.toLowerCase().includes(normalizedSearch),
+    );
+  });
+
   const archive = async (id?: string) => {
     if (!id) return;
     const response = await fetch(`/api/new-portfolios?id=${id}`, { method: "PATCH" });
@@ -39,10 +58,15 @@ export default function AdminNewPortfolioList() {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader title="New portfolios" description="Manage portfolios stored in the new portfolio collection." actions={<AdminLinkButton href="/admin/new-portfolios/add">Add new portfolio</AdminLinkButton>} />
-      <SectionCard title="All new portfolios">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+        <NewPortfolioCategoryManager />
+        <IndustryManager />
+      </div>
+      <SectionCard title="All new portfolios" actions={<label className="relative block w-full sm:w-72"><Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search portfolios" aria-label="Search portfolios" className="h-10 w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 outline-none focus:border-slate-500" /></label>}>
         {loading ? <p className="text-sm text-slate-500">Loading…</p> : portfolios.length === 0 ? <p className="text-sm text-slate-500">No new portfolios yet.</p> : (
           <div className="divide-y divide-slate-200">
-            {portfolios.map((portfolio) => (
+            {filteredPortfolios.length === 0 && <p className="py-4 text-sm text-slate-500">No portfolios match “{search}”.</p>}
+            {filteredPortfolios.map((portfolio) => (
               <div key={portfolio._id} className="flex flex-wrap items-center justify-between gap-3 py-4">
                 <div className="flex min-w-0 items-center gap-4">
                   <div className="relative size-20 shrink-0 overflow-hidden rounded-md border border-slate-200 bg-slate-100">
