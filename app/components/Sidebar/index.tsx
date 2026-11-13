@@ -172,6 +172,11 @@ const menuGroups = [
         route: "/admin/portfolio",
       },
       {
+        icon: <BsPersonVcard />,
+        label: "new portfolio",
+        route: "/admin/new-portfolios",
+      },
+      {
         icon: <GiNotebook />,
         label: "Blogs",
         route: "/admin/blogs",
