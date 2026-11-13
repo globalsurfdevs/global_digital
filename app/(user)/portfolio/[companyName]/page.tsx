@@ -109,6 +109,7 @@ const page = async ({
         <PortfolioDetails
           data={newData}
           endpoint={endpoint}
+          hidePrimaryCta
           isV2Preview
           successStories={newData.successStories}
         />
@@ -125,6 +126,7 @@ const page = async ({
       <PortfolioDetails
         data={legacyData}
         endpoint={endpoint}
+        hidePrimaryCta
         isV2Preview
         successStories={legacySuccessStories}
       />
@@ -135,6 +137,7 @@ const page = async ({
       <PortfolioDetails
         data={newData}
         endpoint={endpoint}
+        hidePrimaryCta
         successStories={newData.successStories}
       />
     );
@@ -159,6 +162,7 @@ const page = async ({
       <PortfolioDetails
         data={data}
         endpoint={endpoint}
+        hidePrimaryCta
         isV2Preview={isV2Preview}
         successStories={successStories}
       />
