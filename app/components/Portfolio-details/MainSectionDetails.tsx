@@ -92,12 +92,13 @@ const MainSectionDetails = ({
                   </p>
                   <div className="flex max-w-md flex-wrap gap-2">
                     {(data.portfolio.categories || []).map((item, index) => (
-                      <button
-                        key={index}
+                      <Link
+                        key={item.link || `${item.name}-${index}`}
+                        href={item.link || "#"}
                         className="btn-outline-primary-text-black"
                       >
                         {item.name}
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
