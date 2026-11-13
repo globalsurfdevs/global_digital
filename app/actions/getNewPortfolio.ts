@@ -66,7 +66,10 @@ export async function getNewPortfolioPageData(slug: string) {
   // console.log("slug:", slug);
   // , isListed: { $ne: false }
   const record = (await NewPortfolio.findOne({ slug })
-    .populate("relatedPortfolios.items")
+    .populate({
+      path: "relatedPortfolios.items",
+      populate: { path: "categories" },
+    })
     .populate("categories")
     .lean()) as unknown as NewPortfolioData & Record<string, any>;
 

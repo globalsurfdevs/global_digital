@@ -50,18 +50,19 @@ export const SuccessStoriesPortfolio = ({
         }}
       >
         <div
-          className={`${colCount ? `grid lg:grid-cols-${colCount}` : "grid lg:grid-cols-3"} gap-8`}
+          className={`${colCount === 2 ? "grid lg:grid-cols-2" : "grid lg:grid-cols-3"} gap-8`}
         >
           {data?.length > 0
             ? (colCount === 2 ? data.slice(0, 2) : data).map((item, index) => (
-                <div className="group relative flex flex-col" key={index}>
-                  <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">
-                    <Image
-                      src={item.bannerImage ?? item.coverImage}
-                      alt="image"
-                      className="absolute h-full w-full object-cover"
-                      fill
-                    />
+                <div className="group relative flex flex-col" key={item._id || index}>
+                  {(item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0]) && (
+                    <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">
+                      <Image
+                        src={item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || ""}
+                        alt={item.companyName || "Success story"}
+                        className="absolute h-full w-full object-cover"
+                        fill
+                      />
 
                     <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 ease-in-out group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary group-hover:shadow-lg lg:left-7 lg:top-7 ">
                       <div className="uppercase text-white">
@@ -78,7 +79,8 @@ export const SuccessStoriesPortfolio = ({
                         className="h-[33px] w-auto brightness-0 invert-[1]"
                       />
                     </div>
-                  </div>
+                    </div>
+                  )}
 
                   <div className="flex items-center justify-between">
                     <div className="pl-2">
@@ -87,15 +89,20 @@ export const SuccessStoriesPortfolio = ({
                       <div className="flex flex-wrap gap-2">
                         {item.categories && item.categories.length > 0 ? (
                           <div className="flex flex-wrap gap-2">
-                            {item.categories.map((ch, i) => (
-                              <p
-                                key={i}
-                                className="text-font16 text-gray1 transition duration-300 ease-in-out group-hover:text-primary"
-                              >
-                                {ch.name}
-                                {i !== item.categories.length - 1 && ","}
-                              </p>
-                            ))}
+                            {item.categories
+                              .map((category) =>
+                                typeof category === "string" ? category : category?.name,
+                              )
+                              .filter((name): name is string => Boolean(name?.trim()))
+                              .map((name, i, categories) => (
+                                <p
+                                  key={`${name}-${i}`}
+                                  className="text-font16 text-gray1 transition duration-300 ease-in-out group-hover:text-primary"
+                                >
+                                  {name}
+                                  {i !== categories.length - 1 && ","}
+                                </p>
+                              ))}
                           </div>
                         ) : (
                           <p className="text-font16 text-gray1 transition duration-300 ease-in-out group-hover:text-primary">
