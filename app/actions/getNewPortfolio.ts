@@ -72,7 +72,13 @@ export async function getNewPortfolioPageData(slug: string) {
     // console.log("record:", record);
   if (!record) return null;
 
-  const related = (record.relatedPortfolios?.items || []) as Record<string, any>[];
+  const relatedItems: unknown = record.relatedPortfolios?.items;
+  const related = Array.isArray(relatedItems)
+    ? relatedItems.filter(
+        (item): item is Record<string, any> =>
+          typeof item === "object" && item !== null && !Array.isArray(item),
+      )
+    : [];
   const portfolio = toRendererPortfolio(record);
   const successStories = related
     .filter((item) => item && item.isListed !== false)
