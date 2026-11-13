@@ -14,7 +14,7 @@ async function getPreviewData(slug: string) {
     : slug;
 
   const newData = await getNewPortfolioPageData(portfolioSlug);
-  // console.log("newData:", newData);
+
   if (newData) return newData;
 
   const legacyData = await getCaseStudyOrPortfolio(portfolioSlug, "portfolio");
