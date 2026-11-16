@@ -68,7 +68,7 @@ export default function NewPortfolioEditor({ id }: { id?: string }) {
   const updateGroup = (group: "company" | "brand", key: string, value: string) => {
     setPortfolio((current) => ({ ...current, [group]: { ...current[group], [key]: value } }));
   };
-  const updateBanner = (key: "image" | "title", value: string) => {
+  const updateBanner = (key: "image" | "title" | "imageAlt", value: string) => {
     setPortfolio((current) => ({ ...current, brand: { ...current.brand, banner: { ...current.brand?.banner, [key]: value } } }));
   };
   const updateSeo = (key: keyof NonNullable<NewPortfolio["seo"]>, value: string) => {
