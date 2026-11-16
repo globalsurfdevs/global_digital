@@ -82,7 +82,7 @@ export const SuccessStoriesPortfolio = ({
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-start justify-between">
                     <div className="pl-2">
                       <h4 className="text-font30">{item.companyName}</h4>
 
@@ -119,7 +119,7 @@ export const SuccessStoriesPortfolio = ({
                         viewBox="0 0 36 35"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="transition-all duration-300 group-hover:text-red-500"
+                        className="mt-2 transition-all duration-300 group-hover:text-red-500"
                       >
                         <path
                           d="M33.8105 1.7998L1.25781 33.7227"
