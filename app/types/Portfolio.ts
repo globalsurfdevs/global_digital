@@ -12,6 +12,8 @@ export type Portfolio = {
   bannerImage: string;
   newBannerImage?: string;
   newBannerTitle?: string;
+  newBannerAlt?: string;
+  logoAlt?: string;
   oneLineBrandContext?: string;
   newPortfolioHighlights?: {
     number: string;

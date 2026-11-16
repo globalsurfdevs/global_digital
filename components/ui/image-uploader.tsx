@@ -121,7 +121,7 @@ export function ImageUploader({
     <div className={cn("w-full space-y-4", className)}>
       {displayUrl && isUploadComplete ? (
         <div
-          className={`relative w-full max-w-[300px] overflow-hidden rounded-lg border ${isLogo ? "h-[100px] max-w-[100px] bg-black" : "max-w-[300px]"}`}
+          className={`relative w-full max-w-[300px] overflow-hidden rounded-lg border ${isLogo ? "h-[100px] max-w-[100px] bg-gray-100" : "max-w-[300px]"}`}
           style={{ aspectRatio: "4 / 3" }}
         >
           <Image

@@ -68,7 +68,7 @@ export default function NewPortfolioEditor({ id }: { id?: string }) {
   const updateGroup = (group: "company" | "brand", key: string, value: string) => {
     setPortfolio((current) => ({ ...current, [group]: { ...current[group], [key]: value } }));
   };
-  const updateBanner = (key: "image" | "title", value: string) => {
+  const updateBanner = (key: "image" | "title" | "imageAlt", value: string) => {
     setPortfolio((current) => ({ ...current, brand: { ...current.brand, banner: { ...current.brand?.banner, [key]: value } } }));
   };
   const updateSeo = (key: keyof NonNullable<NewPortfolio["seo"]>, value: string) => {
@@ -106,8 +106,8 @@ export default function NewPortfolioEditor({ id }: { id?: string }) {
       </div></SectionCard>
       <SectionCard title="Section visibility"><div className="flex flex-wrap gap-4">{([ ["highlights", "Highlights"], ["previewImages", "Preview images"], ["whatWeDelivered", "What we delivered"], ["primaryCta", "First call to action"], ["secondaryCta", "Second call to action"], ["relatedPortfolios", "Related portfolios"] ] as const).map(([key, label]) => <label key={key} className="flex items-center gap-2 text-sm"><input type="checkbox" role="switch" className="peer sr-only" checked={portfolio.sectionVisibility?.[key] !== false} onChange={(event) => setSectionVisibility(key, event.target.checked)} /><span aria-hidden="true" className="relative h-5 w-9 rounded-full bg-slate-300 transition-colors peer-checked:bg-blue-600 after:absolute after:left-0.5 after:top-0.5 after:size-4 after:rounded-full after:bg-white after:transition-transform peer-checked:after:translate-x-4" />{label}</label>)}</div></SectionCard>
       <SectionCard title="Brand and banner"><div className="grid gap-5 md:grid-cols-2">
-        <div><p className="mb-2 text-sm">Optional logo</p><ImageUploader isLogo value={portfolio.brand?.logo} onChange={(logo) => updateGroup("brand", "logo", logo)} /></div>
-        <div><p className="mb-2 text-sm">Optional banner image</p><ImageUploader value={portfolio.brand?.banner?.image} onChange={(image) => updateBanner("image", image)} /></div>
+        <div className="space-y-3"><div><p className="mb-2 text-sm">Optional client logo</p><ImageUploader isLogo value={portfolio.brand?.logo} onChange={(logo) => updateGroup("brand", "logo", logo)} /></div><Field label="Client logo alt text" value={portfolio.brand?.logoAlt} onChange={(logoAlt) => updateGroup("brand", "logoAlt", logoAlt)} /></div>
+        <div className="space-y-3"><div><p className="mb-2 text-sm">Optional banner image</p><ImageUploader value={portfolio.brand?.banner?.image} onChange={(image) => updateBanner("image", image)} /></div><Field label="Banner alt text" value={portfolio.brand?.banner?.imageAlt} onChange={(imageAlt) => updateBanner("imageAlt", imageAlt)} /></div>
         <Field label="Banner title" value={portfolio.brand?.banner?.title} onChange={(v) => updateBanner("title", v)} />
         <Field label="One-line brand context" value={portfolio.brand?.oneLineContext} onChange={(v) => updateGroup("brand", "oneLineContext", v)} multiline />
       </div></SectionCard>

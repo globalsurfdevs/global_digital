@@ -37,9 +37,11 @@ const NewPortfolioSchema = new Schema(
     },
     brand: {
       logo: String,
+      logoAlt: String,
       websiteLink: String,
       banner: {
         image: String,
+        imageAlt: String,
         title: String,
       },
       oneLineContext: String,

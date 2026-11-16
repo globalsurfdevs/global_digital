@@ -27,9 +27,11 @@ export type NewPortfolio = {
   slug?: string;
   brand?: {
     logo?: string;
+    logoAlt?: string;
     websiteLink?: string;
     banner?: {
       image?: string;
+      imageAlt?: string;
       title?: string;
     };
     oneLineContext?: string;
