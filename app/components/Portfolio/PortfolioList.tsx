@@ -17,10 +17,12 @@ const PortfolioList = ({
   data,
   industries,
   categories,
+  isV2 = false,
 }: {
   data: Portfolio[];
   industries: { _id: string; name: string; subCategories: string[] }[];
   categories: { _id: string; name: string; link: string; sortOrder: number }[];
+  isV2?: boolean;
 }) => {
   // const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const [portfolios, setPortfolios] = useState<Portfolio[]>(data);
@@ -221,7 +223,7 @@ const PortfolioList = ({
   };
 
   const handleFiltering = (filterValue: string, link: string) => {
-    if (link) window.history.replaceState(null, "", `/portfolio${link}`);
+    if (link) window.history.replaceState(null, "", `${isV2 ? "/portfolio/v2" : "/portfolio"}${link}`);
     setFilter(filterValue);
     applyFilters(filterValue, selectedIndustry); // selectedIndustry is fine here, it's not being set simultaneously
   };
@@ -270,7 +272,7 @@ const PortfolioList = ({
   useEffect(() => {
     if (!pathname || newFilterTags.length === 0) return;
 
-    const currentPath = pathname.replace("/portfolio", "");
+    const currentPath = pathname.replace(isV2 ? "/portfolio/v2" : "/portfolio", "");
 
     if (currentPath === "") {
       setFilter("all");
@@ -516,7 +518,7 @@ const PortfolioList = ({
                           item.section == "case study" ||
                           item.section == "case study new"
                             ? `/case-study/${formatLinkForCaseStudy(item.companyName)}`
-                            : `/portfolio/${formatLinkForPortfolio(item.slug || item.companyName)}`
+                          : `${isV2 ? "/portfolio/v2" : "/portfolio"}/${formatLinkForPortfolio(item.slug || item.companyName)}`
                         }
                         className="absolute top-0 z-[1] h-full w-full"
                       ></Link>

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Eye, Pencil, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Eye, Pencil, Search } from "lucide-react";
 import { toast } from "sonner";
 import type { NewPortfolio } from "@/app/types/NewPortfolio";
 import { AdminButton, AdminLinkButton, PageHeader, SectionCard } from "@/app/components/AdminUI";
@@ -14,6 +14,8 @@ export default function AdminNewPortfolioList() {
   const [portfolios, setPortfolios] = useState<NewPortfolio[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const pageSize = 12;
 
   const loadPortfolios = useCallback(async () => {
     try {
@@ -45,6 +47,11 @@ export default function AdminNewPortfolioList() {
       value?.toLowerCase().includes(normalizedSearch),
     );
   });
+  const pageCount = Math.ceil(filteredPortfolios.length / pageSize);
+  const paginatedPortfolios = filteredPortfolios.slice(
+    (page - 1) * pageSize,
+    page * pageSize,
+  );
 
   const archive = async (id?: string) => {
     if (!id) return;
@@ -62,11 +69,11 @@ export default function AdminNewPortfolioList() {
         <NewPortfolioCategoryManager />
         <IndustryManager />
       </div>
-      <SectionCard title="All new portfolios" actions={<label className="relative block w-full sm:w-72"><Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search portfolios" aria-label="Search portfolios" className="h-10 w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 outline-none focus:border-slate-500" /></label>}>
+      <SectionCard title={`All new portfolios (${portfolios.length})`} actions={<label className="relative block w-full sm:w-72"><Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" /><input value={search} onChange={(event) => { setSearch(event.target.value); setPage(1); }} placeholder="Search portfolios" aria-label="Search portfolios" className="h-10 w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 outline-none focus:border-slate-500" /></label>}>
         {loading ? <p className="text-sm text-slate-500">Loading…</p> : portfolios.length === 0 ? <p className="text-sm text-slate-500">No new portfolios yet.</p> : (
           <div className="divide-y divide-slate-200">
             {filteredPortfolios.length === 0 && <p className="py-4 text-sm text-slate-500">No portfolios match “{search}”.</p>}
-            {filteredPortfolios.map((portfolio) => (
+            {paginatedPortfolios.map((portfolio) => (
               <div key={portfolio._id} className="flex flex-wrap items-center justify-between gap-3 py-4">
                 <div className="flex min-w-0 items-center gap-4">
                   <div className="relative size-20 shrink-0 overflow-hidden rounded-md border border-slate-200 bg-slate-100">
@@ -85,6 +92,25 @@ export default function AdminNewPortfolioList() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+        {!loading && filteredPortfolios.length > 0 && (
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-4">
+            <p className="text-sm text-slate-500">
+              Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, filteredPortfolios.length)} of {filteredPortfolios.length} matching portfolios
+              {normalizedSearch && ` (${portfolios.length} total)`}
+            </p>
+            {pageCount > 1 && (
+              <nav aria-label="Portfolio list pagination" className="flex items-center gap-2">
+                <AdminButton variant="secondary" size="sm" disabled={page === 1} onClick={() => setPage((current) => Math.max(1, current - 1))}>
+                  <ChevronLeft className="size-4" /> Previous
+                </AdminButton>
+                <span className="text-sm text-slate-600">Page {page} of {pageCount}</span>
+                <AdminButton variant="secondary" size="sm" disabled={page === pageCount} onClick={() => setPage((current) => Math.min(pageCount, current + 1))}>
+                  Next <ChevronRight className="size-4" />
+                </AdminButton>
+              </nav>
+            )}
           </div>
         )}
       </SectionCard>

@@ -99,7 +99,7 @@ const CtaDetailsone = ({
         </div>
       )}
 
-      <div className="mt-10 bg-black  lg:mt-[80px] xl:mt-[100px]  2xl:mt-[140px]">
+      <div className=" bg-black">
         <motion.div
           className="container mx-auto py-4"
           initial="hidden"
