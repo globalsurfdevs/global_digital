@@ -27,7 +27,11 @@ const MainSectionDetails = ({
             <>
               <Image
                 src={data.portfolio.bannerImage}
-                alt={data.portfolio.newBannerAlt || data.portfolio.bannerTitle || "Portfolio banner"}
+                alt={
+                  data.portfolio.newBannerAlt ||
+                  data.portfolio.bannerTitle ||
+                  "Portfolio banner"
+                }
                 className="absolute h-full w-full object-cover object-center"
                 fill
               />
@@ -41,7 +45,7 @@ const MainSectionDetails = ({
           <div className=" ptcs0   pb-10  pt-[20px] sm:pt-[50px]  lg:pb-[80px]  lg:pt-[100px] xl:pb-[100px] 2xl:pb-[140px] ">
             <div className="mb-5 items-end justify-between border-b border-black/20  pb-5 md:flex lg:mb-[50px] lg:pb-[60px]">
               <div className=" xxl:max-w-[120ch]">
-                <h1 className="text-[32px] lg:title-80">
+                <h1 className="lg:title-80 text-[32px]">
                   {data.portfolio.bannerTitle == "null" ||
                   data.portfolio.bannerTitle == "undefined"
                     ? ""
@@ -49,14 +53,17 @@ const MainSectionDetails = ({
                 </h1>
               </div>
               {data.portfolio.logo && (
-                <div className="ml-auto mt-3 w-fit md:mt-0">
-                <Image
-                  src={data.portfolio.logo}
-                  alt={data.portfolio.logoAlt || `${data.portfolio.companyName} logo`}
-                  width={150}
-                  height={100}
-                  className="max-w-[100px] md:max-w-[150px]"
-                />
+                <div className="ml-auto mt-4 flex h-[90px] w-[140px] shrink-0 items-end justify-end sm:h-[100px] sm:w-[180px] md:mt-0 md:h-[110px] md:w-[220px] lg:h-[120px] lg:w-[260px]">
+                  <Image
+                    src={data.portfolio.logo}
+                    alt={
+                      data.portfolio.logoAlt ||
+                      `${data.portfolio.companyName} logo`
+                    }
+                    width={300}
+                    height={150}
+                    className="object-bottom-right max-h-full max-w-full object-contain"
+                  />
                 </div>
               )}
             </div>
