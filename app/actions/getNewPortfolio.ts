@@ -4,6 +4,29 @@ import "@/app/models/Category";
 import type { NewPortfolio as NewPortfolioData } from "@/app/types/NewPortfolio";
 import type { Portfolio } from "@/app/types/Portfolio";
 
+export async function getNewPortfolioListing() {
+  await connectDB();
+  const records = await NewPortfolio.find({ isListed: { $ne: false } })
+    .sort({ index: 1, updatedAt: -1 })
+    .populate("categories")
+    .lean();
+
+  return records.map((record) => ({
+    _id: String(record._id),
+    companyName: record.company?.name || "",
+    industry: record.company?.industry || "",
+    slug: record.slug || "",
+    bannerImage: record.brand?.banner?.image || "",
+    coverImage: record.brand?.banner?.image || "",
+    categories: (record.categories || []).map((category: any) => ({
+      _id: String(category._id),
+      name: category.name || "",
+      link: category.link || "",
+    })),
+    section: "portfolio new",
+  }));
+}
+
 function toRendererPortfolio(record: Record<string, any>): Portfolio {
   const delivered = record.whatWeDelivered?.items || [];
   return {

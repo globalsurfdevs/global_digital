@@ -6,12 +6,16 @@ const Portfolio = ({
   data,
   industries,
   categories,
+  isV2 = false,
 }: {
   data: any;
   industries: { _id: string; name: string; subCategories: string[] }[];
   categories: { _id: string; name: string; link: string; sortOrder: number }[];
+  isV2?: boolean;
 }) => {
-  const filtered = data.filter((p: any) => p.slug !== "the-garden-concept"&&!p.slug.includes("v2"));
+  const filtered = isV2
+    ? data
+    : data.filter((p: any) => p.slug !== "the-garden-concept" && !p.slug.includes("v2"));
 
   return (
     <>
@@ -20,6 +24,7 @@ const Portfolio = ({
         data={filtered}
         industries={industries}
         categories={categories}
+        isV2={isV2}
       />
     </>
   );
