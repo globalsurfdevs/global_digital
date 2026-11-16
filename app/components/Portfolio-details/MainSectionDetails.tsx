@@ -27,7 +27,7 @@ const MainSectionDetails = ({
             <>
               <Image
                 src={data.portfolio.bannerImage}
-                alt="heroImage"
+                alt={data.portfolio.newBannerAlt || data.portfolio.bannerTitle || "Portfolio banner"}
                 className="absolute h-full w-full object-cover object-center"
                 fill
               />
@@ -52,7 +52,7 @@ const MainSectionDetails = ({
                 <div className="ml-auto mt-3 w-fit md:mt-0">
                 <Image
                   src={data.portfolio.logo}
-                  alt={data.portfolio.companyName}
+                  alt={data.portfolio.logoAlt || `${data.portfolio.companyName} logo`}
                   width={150}
                   height={100}
                   className="max-w-[100px] md:max-w-[150px]"
