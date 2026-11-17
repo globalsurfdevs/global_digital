@@ -463,7 +463,11 @@ const PortfolioList = ({
                     <div className="portfolio-card group relative col-span-1">
                       <div className="card-img group relative h-[300px] overflow-hidden rounded-md md:h-[500px]">
                         <Image
-                          src={item.bannerImage || item.coverImage}
+                          src={
+                            isV2
+                              ? item.bannerImage || item.coverImage || "/images/placeholder.png"
+                              : item.bannerImage || item.coverImage
+                          }
                           alt="image"
                           className="h-full w-full object-cover"
                           fill
