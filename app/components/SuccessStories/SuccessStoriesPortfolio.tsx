@@ -55,10 +55,10 @@ export const SuccessStoriesPortfolio = ({
           {data?.length > 0
             ? (colCount === 2 ? data.slice(0, 2) : data).map((item, index) => (
                 <div className="group relative flex flex-col" key={item._id || index}>
-                  {(item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0]) && (
+                  {(item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || item.portfolioType === "new" || item.section === "portfolio new") && (
                     <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">
                       <Image
-                        src={item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || ""}
+                        src={item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || (item.portfolioType === "new" || item.section === "portfolio new" ? "/images/placeholder.png" : "")}
                         alt={item.companyName || "Success story"}
                         className="absolute h-full w-full object-cover"
                         fill
