@@ -130,9 +130,10 @@ export async function getOldPortfolioSuccessStories({
       )
       .filter((id) => id !== currentId);
     const byId = new Map(serialized.map((portfolio) => [portfolio._id, portfolio]));
-    return relatedIds
-      .map((id) => byId.get(id))
-      .filter((portfolio): portfolio is PortfolioData => portfolio !== undefined);
+    return relatedIds.flatMap((id) => {
+      const portfolio = byId.get(id);
+      return portfolio ? [portfolio] : [];
+    });
   }
 
   const otherPortfolios = serialized.filter(
