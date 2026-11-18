@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-// import { Lexend } from "next/font/google";
+import { lexend } from "@/app/fonts/lexend";
 import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
 import { Portfolio } from "@/app/types/Portfolio";
 import LetsTalk from "@/app/components/common/LetsConnect";

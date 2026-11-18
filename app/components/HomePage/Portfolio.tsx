@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
-import { Lexend } from "next/font/google";
+import { lexend } from "@/app/fonts/lexend";
 import { motion } from "framer-motion";
 import type { Portfolio } from "@/app/types/Portfolio";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
 import {
   formatLinkForCaseStudy,
   formatLinkForPortfolio,

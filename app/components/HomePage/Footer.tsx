@@ -3,17 +3,17 @@ import React from "react";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
 import Image from "next/image";
-import { Lexend } from "next/font/google";
+import { lexend } from "@/app/fonts/lexend";
 
 // ✅ FIX 1: Removed "use client" — footer has no interactivity,
 // making it a Server Component saves JS bundle sent to browser
 
-const lexend = Lexend({
-  subsets: ["latin"],
+// const lexend = Lexend({
+//   subsets: ["latin"],
   // ✅ FIX 2: Only load weights you actually USE in this component
   // Check your CSS — if only 400 is used here, only load 400
-  weight: ["400", "500"],
-});
+//   weight: ["400", "500"],
+// });
 
 // ✅ FIX 3: Moved variants outside component — not recreated on every render
 const fadeUpVariants = {
