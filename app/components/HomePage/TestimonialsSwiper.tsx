@@ -7,12 +7,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { testimonials } from "../../data/testimonials";
 import Image from "next/image";
-import { Lexend } from "next/font/google";
+import { lexend } from "@/app/fonts/lexend";
 import { TestimonialItemType } from "@/app/types/home";
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
 
 const TestimonialsSwiper = ({
   data,

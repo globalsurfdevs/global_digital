@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Eye, EyeOff } from "lucide-react";
 import { adminButtonClass } from "@/app/components/AdminUI";
 
-type Category = { _id: string; name: string; link?: string };
+type Category = { _id: string; name: string; link?: string; isHidden?: boolean };
 
 export default function NewPortfolioCategoryManager() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -86,6 +86,27 @@ export default function NewPortfolioCategoryManager() {
     await load();
   };
 
+  const toggleCategoryVisibility = async (category: Category) => {
+    setSaving(true);
+    try {
+      const form = new FormData();
+      form.set("id", category._id);
+      form.set("isHidden", String(!category.isHidden));
+      const response = await fetch("/api/categories", {
+        method: "PATCH",
+        body: form,
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Could not change category visibility.");
+      toast.success(category.isHidden ? "Category shown in user listing." : "Category hidden from user listing.");
+      await load();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not change category visibility.");
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const inputClass = "h-10 min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900";
 
   return (
@@ -105,7 +126,7 @@ export default function NewPortfolioCategoryManager() {
         {loading ? <p className="text-sm text-slate-500">Loading categories…</p> : categories.length === 0 ? <p className="text-sm text-slate-500">No categories yet.</p> : categories.map((category) => (
           <details key={category._id} className="group rounded-lg border border-slate-200 bg-white">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-medium text-slate-800">
-              <span className="truncate">{category.name}</span><span className="text-xs text-slate-500">Edit / manage</span>
+              <span className="flex min-w-0 items-center gap-2"><span className="truncate">{category.name}</span>{category.isHidden && <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Hidden on user side</span>}</span><span className="text-xs text-slate-500">Edit / manage</span>
             </summary>
             <div className="flex flex-col gap-3 border-t border-slate-200 p-4">
               {editingId === category._id ? (
@@ -122,6 +143,10 @@ export default function NewPortfolioCategoryManager() {
                   {category.link && <p className="break-all text-xs text-slate-500">Link: {category.link}</p>}
                   <div className="flex gap-2">
                     <button type="button" className={adminButtonClass("secondary", "sm")} onClick={() => { setEditingId(category._id); setEditName(category.name); setEditLink(category.link ?? ""); }}>Edit</button>
+                    <button type="button" className={adminButtonClass("secondary", "sm")} disabled={saving} onClick={() => void toggleCategoryVisibility(category)}>
+                      {category.isHidden ? <Eye className="mr-1 size-4" /> : <EyeOff className="mr-1 size-4" />}
+                      {category.isHidden ? "Show on user side" : "Hide on user side"}
+                    </button>
                     <button type="button" className={adminButtonClass("danger", "sm")} onClick={() => void deleteCategory(category._id)}>Delete</button>
                   </div>
                 </>

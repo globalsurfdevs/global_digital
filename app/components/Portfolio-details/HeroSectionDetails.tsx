@@ -3,11 +3,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import { Portfolio } from "@/app/types/Portfolio";
-import { Lexend } from "next/font/google";
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
 import parse from "html-react-parser";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
 import Link from "next/link";

@@ -2,14 +2,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { services } from "../../data/services";
-import { Lexend } from "next/font/google";
+import { lexend } from "@/app/fonts/lexend";
 import Link from "next/link";
 import Image from "next/image";
 
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
 
 const MotionImage = motion(Image);
 

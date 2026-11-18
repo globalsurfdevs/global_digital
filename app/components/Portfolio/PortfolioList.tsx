@@ -464,7 +464,9 @@ const PortfolioList = ({
                       <div className="card-img group relative h-[300px] overflow-hidden rounded-md md:h-[500px]">
                         <Image
                           src={
-                            isV2
+                            isV2 ||
+                            item.portfolioSource === "new" ||
+                            item.section === "portfolio new"
                               ? item.bannerImage || item.coverImage || "/images/placeholder.png"
                               : item.bannerImage || item.coverImage
                           }

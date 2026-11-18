@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import PortfolioDetails from "@/app/components/Portfolio-details";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
 import {
-  getCaseStudyOrPortfolio,
-  getSuccessStoriesPortfolios,
-} from "@/app/actions/getCaseStudy";
+  getOldPortfolioBySlug,
+  getOldPortfolioSuccessStories,
+} from "@/app/lib/services/portfolio.service";
 import { getInstagramFeed } from "@/app/lib/integrations/instagram/getInstagramFeed";
 
 
@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!VARIANTS.includes(variant)) return { robots };
 
   const slug = formatLinkForPortfolio(companyName);
-  const data = await getCaseStudyOrPortfolio(companyName, "portfolio");
+  const data = await getOldPortfolioBySlug(companyName);
   const portfolio = data?.portfolio;
   const title = portfolio?.seo?.metaTitle || portfolio?.metaTitle;
 
@@ -47,12 +47,12 @@ const page = async ({
       ? "sobha-constructions"
       : companyName;
 
-  const data = await getCaseStudyOrPortfolio(endpoint, "portfolio");
+  const data = await getOldPortfolioBySlug(endpoint);
 
   if (!data) {
     return <div>Portfolio not found</div>;
   }
-  const successStories = await getSuccessStoriesPortfolios({
+  const successStories = await getOldPortfolioSuccessStories({
     companyId: data.portfolio._id,
     slug: companyName,
     relatedPortfolioIds: data.portfolio.relatedPortfolios?.portfolio,

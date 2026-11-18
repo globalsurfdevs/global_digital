@@ -101,17 +101,6 @@ const page = async ({ params }: PageProps) => {
     })),
   };
 
-  // const capabilitiesData = {
-  //   tag: industryData.ninethSection.title,
-  //   title: industryData.ninethSection.subTitle,
-
-  //   items: industryData.ninethSection.items.map((item, index) => ({
-  //     id: index + 1,
-  //     icon: item.image,
-  //     ...item,
-  //   })),
-  // };
-
   const howWeDo = {
     subTitle: industryData?.fifthSection?.subTitle,
     title: industryData?.fifthSection?.title,
@@ -120,40 +109,7 @@ const page = async ({ params }: PageProps) => {
       ...item,
     })),
   };
-  // items: [
-  //     {
-  //         _id: "1",
-  //         title: "Search visibility for supplier discovery",
-  //         description:
-  //             "Most B2B buying journeys begin with a capability-specific search. Procurement teams look for manufacturers based on products, certifications, production expertise, and location. Ranking for these searches requires technical SEO built around the terminology and buying signals that manufacturing buyers actually use.",
-  //         image: "assets/icons/how-we-do/i-1.svg",
-  //         imageAlt: "Search visibility icon",
-  //     },
-  //     {
-  //         _id: "2",
-  //         title: "Technical content that builds supplier credibility",
-  //         description:
-  //             "Being found is only the first step. Buyers also need evidence that you can meet their requirements. Technical content covering certifications, manufacturing processes, production capacity, quality standards, export experience, and project case studies helps establish credibility before the first enquiry.",
-  //         image: "assets/icons/how-we-do/i-2.svg",
-  //         imageAlt: "Technical content icon",
-  //     },
-  //     {
-  //         _id: "3",
-  //         title: "Digital engagement with decision makers",
-  //         description:
-  //             "Procurement managers and distribution partners continue their research across professional channels such as LinkedIn. Consistent visibility through industry content, targeted campaigns, and thought leadership keeps your business in front of decision makers throughout lengthy B2B buying cycles.",
-  //         image: "assets/icons/how-we-do/i-3.svg",
-  //         imageAlt: "Digital engagement icon",
-  //     },
-  //     {
-  //         _id: "4",
-  //         title: "Export market visibility",
-  //         description:
-  //             "For manufacturers serving regional and international markets, digital visibility must extend beyond the UAE. Multilingual content, country specific search optimisation, and information addressing logistics, compliance, and export capability help attract qualified buyers from target markets across the GCC and beyond.",
-  //         image: "assets/icons/how-we-do/i-4.svg",
-  //         imageAlt: "Export market visibility icon",
-  //     },
-  // ],
+ 
 
   const whyChooseData = {
     tag: industryData?.sixthSection?.title,
@@ -204,17 +160,6 @@ const page = async ({ params }: PageProps) => {
       })),
   };
 
-  // const caseStudiesData = {
-  //   tag: industryData.caseStudySection.title,
-  //   title: industryData.caseStudySection.subTitle,
-  //   items: industryData.caseStudySection.items.map((item, index) => ({
-  //     id: index + 1,
-  //     client: item.project.companyName,
-  //     logo: item.project.logo,
-  //     href: `/case-study/${item.project.slug}`,
-  //     ...item,
-  //   })),
-  // };
 
   const Cta = [
     {
@@ -233,29 +178,6 @@ const page = async ({ params }: PageProps) => {
 
   return (
     <div>
-      {/* <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(PerformanceMarketingSchema),
-        }}
-      />
-
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(PerformanceMarketingBreadcrumb),
-        }}
-      />
-      <FaqSchema faq={Faq} /> */}
-      {/* <section className="hidegslider">
-        <HeroSection
-          Bannerdata={BannerSection}
-          bannerlogp={true}
-          maxchwidth={60}
-        />
-      </section> */}
       {industryData.seo?.schema && (
         <script
           type="application/ld+json"
@@ -270,8 +192,7 @@ const page = async ({ params }: PageProps) => {
         industryData.secondSection.showSection !== false && (
           <TitleDesc data={industryData.secondSection} />
         )}
-      {/* <ImgDesc data={industryData.thirdSection} /> */}
-      {/* <GrayParaSec data={industryData.fourthSection} /> */}
+      
       {industryData?.thirdSection?.showSection !== false &&
         servicesData.items.length > 0 && (
           <ServicesListSec
@@ -280,8 +201,7 @@ const page = async ({ params }: PageProps) => {
             items={servicesData.items}
           />
         )}
-      {/* <ProcessSlider data={industryData.sixthSection} />
-      <BECS data={industryData.seventhSection} /> */}
+   
       {industryData?.fourthSection?.showSection !== false &&
         whatYouGetData.data.length > 0 && (
           <BlackInfoGrid
@@ -294,10 +214,6 @@ const page = async ({ params }: PageProps) => {
             colcount={3}
           />
         )}
-      {/* {capabilitiesData.items.length > 0 && <RelatedCapabilities data={capabilitiesData} />}
-      <section className={`mb-8 xl:mb-12 2xl:mb-16 3xl:mb-[120px] ${capabilitiesData.items.length < 1 ? "mt-8 xl:mt-12 2xl:mt-16 3xl:mt-[120px]" : ""} `}>
-        <ButtonSlider data={industryData.tenthSection} />
-      </section> */}
       {industryData?.fifthSection?.showSection !== false &&
         howWeDo.items.length > 0 && <HowWeDo data={howWeDo} />}
       {industryData?.sixthSection?.showSection !== false &&
@@ -311,15 +227,6 @@ const page = async ({ params }: PageProps) => {
         industriesData.items.length > 0 && (
           <IndustriesSec data={industriesData} />
         )}
-      {/* {caseStudiesData.items.length > 0 && (
-        <CaseSudiesSec data={caseStudiesData} />
-      )} */}
-      {/* <Testimonials
-        topTitle="Testimonials"
-        data={testimonials.testimonialSection}
-        bottomText={false}
-        reviews={false}
-      /> */}
       {industryData?.ctaSection &&
         industryData.ctaSection.showSection !== false && (
           <GetInTouch

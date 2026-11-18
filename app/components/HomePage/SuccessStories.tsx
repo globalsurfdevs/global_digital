@@ -2,17 +2,17 @@
 
 import React, { useEffect, useRef, useState } from "react";
 // import { stories } from "../../data/stories";
-import { Lexend } from "next/font/google";
+import { lexend } from "@/app/fonts/lexend";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Portfolio } from "@/app/types/Portfolio";
 
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
 
 type Data = {
   caseStudyHighlights: {

@@ -15,6 +15,10 @@ const CategoriesSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  isHidden: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export default mongoose.models?.category ||

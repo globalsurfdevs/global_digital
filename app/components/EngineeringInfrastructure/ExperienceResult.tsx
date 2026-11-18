@@ -1,13 +1,13 @@
 "use client";
 
-import { Lexend } from "next/font/google";
+import { lexend } from "@/app/fonts/lexend";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
 
 interface SuccessStoriesProps {
   data: {

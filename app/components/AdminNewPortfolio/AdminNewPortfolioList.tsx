@@ -74,7 +74,12 @@ export default function AdminNewPortfolioList() {
           <div className="divide-y divide-slate-200">
             {filteredPortfolios.length === 0 && <p className="py-4 text-sm text-slate-500">No portfolios match “{search}”.</p>}
             {paginatedPortfolios.map((portfolio) => (
-              <div key={portfolio._id} className="flex flex-wrap items-center justify-between gap-3 py-4">
+              <div
+                key={portfolio._id}
+                className={`flex flex-wrap items-center justify-between gap-3 rounded-md px-3 py-4 ${
+                  portfolio.isPublished ? "bg-green-50" : ""
+                }`}
+              >
                 <div className="flex min-w-0 items-center gap-4">
                   <div className="relative size-20 shrink-0 overflow-hidden rounded-md border border-slate-200 bg-slate-100">
                     {portfolio.brand?.banner?.image ? <Image src={portfolio.brand.banner.image} alt={`${portfolio.company?.name || "Portfolio"} banner`} fill unoptimized className="object-cover" /> : <span className="flex h-full items-center justify-center text-xs text-slate-500">No banner</span>}

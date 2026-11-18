@@ -15,8 +15,12 @@ const Portfolio = ({
 }) => {
   const filtered = isV2
     ? data
-    : data.filter((p: any) => p.slug !== "the-garden-concept" && !p.slug.includes("v2"));
-
+    : data.filter(
+        (p: any) =>
+          p.portfolioSource === "new" ||
+          (p.slug !== "the-garden-concept" && !p.slug.includes("v2")),
+      );
+// test
   return (
     <>
       <HeroSection />
