@@ -84,7 +84,7 @@ async function validateCategories(categories: unknown) {
   }
   const ids = [...new Set(categories as string[])];
   const count = await Category.countDocuments({ _id: { $in: ids } });
-  return count === ids.length ? null : "One or more categories were not found.";
+  // return count === ids.length ? null : "One or more categories were not found.";
 }
 
 async function validateIndustry(company: unknown) {
