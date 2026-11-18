@@ -4,14 +4,10 @@ import React, { useEffect, useRef, useState } from "react";
 import LetsTalk from "../../components/common/LetsConnect";
 import SocialShare from "../../components/BlogSocialMedia/SocialShare";
 import PerformanceSwiper from "../PerformanceMarketing/PerformanceSwiper";
-import { Lexend } from "next/font/google";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+
 interface su {
   stitle?: string;
   buttonTitle?: string;

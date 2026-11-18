@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Lexend } from "next/font/google";
+// import { Lexend } from "next/font/google";
 import { SuccessStoriesPortfolio } from "../SuccessStories/SuccessStoriesPortfolio";
 import { Portfolio } from "@/app/types/Portfolio";
 import LetsTalk from "@/app/components/common/LetsConnect";
 
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
 const CtaDetailsone = ({
   data,
  

@@ -5,11 +5,11 @@ import Image from "next/image";
 import arrowactive from "@/public/assets/logos/arr-active.svg";
 import arrowdown from "@/public/assets/logos/arr-down.svg";
 import { Collapse } from "react-collapse";
-import { Lexend } from "next/font/google";
-const lexend = Lexend({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+// import { Lexend } from "next/font/google";
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
 import { motion, AnimatePresence } from "framer-motion";
 type PartnerDataType = {
   title: string;
@@ -221,7 +221,7 @@ const FAQ: React.FC<PartnerListProps> = ({
                 >
                   <div className="relative">
                     <p
-                      className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] ${lexend.className}`}
+                      className={`text-sm font-medium uppercase duration-200 ease-in-out group-hover:text-primary md:text-[16px] font-lexend`}
                     >
                       LOAD MORE
                     </p>
