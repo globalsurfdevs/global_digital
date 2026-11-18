@@ -10,7 +10,7 @@ export async function getCaseStudyOrPortfolio(slug: string, type: string) {
 
   const caseStudy = (await Portfolio.findOne({
     slug,
-    isListed: { $ne: false },
+    // isListed: { $ne: false },
   })
     .populate("categories")
     .populate("channels")

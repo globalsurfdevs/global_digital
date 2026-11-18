@@ -416,7 +416,7 @@ const CaseStudyList = ({
                       </div>
 
                       <Link
-                        href={`/case-study/${formatLinkForCaseStudy(item.companyName)}`}
+                        href={`/case-study/${formatLinkForCaseStudy(item.slug)}`}
                         className="absolute top-0 z-[1] h-full w-full"
                       ></Link>
                     </div>
