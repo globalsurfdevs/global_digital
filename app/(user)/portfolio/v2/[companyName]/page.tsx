@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PortfolioDetails from "@/app/components/Portfolio-details";
 import { formatLinkForPortfolio } from "@/app/helpers/formatLink";
-import { getNewPortfolioPageData } from "@/app/actions/getNewPortfolio";
+import { getNewPortfolioPageData } from "@/app/lib/services/newPortfolio.service";
 
 async function getPreviewData(slug: string) {
   const portfolioSlug = slug.toLowerCase().endsWith("-v2")

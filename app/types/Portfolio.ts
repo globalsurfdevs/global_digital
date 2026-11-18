@@ -38,6 +38,8 @@ export type Portfolio = {
   description: string;
   logo: string;
   portfolioType?: "old" | "new";
+  /** Collection that supplied this record; controls the public detail renderer. */
+  portfolioSource?: "old" | "new";
   isNewPortfolioPublished?: boolean;
   sectionVisibility?: {
     highlights?: boolean;

@@ -3,15 +3,10 @@ import NewPortfolio from "@/app/models/NewPortfolio";
 import "@/app/models/Category";
 import type { NewPortfolio as NewPortfolioData } from "@/app/types/NewPortfolio";
 import type { Portfolio } from "@/app/types/Portfolio";
+import { unstable_cache } from "next/cache";
 
-export async function getNewPortfolioListing() {
-  await connectDB();
-  const records = await NewPortfolio.find({ isListed: { $ne: false } })
-    .sort({ index: 1, updatedAt: -1 })
-    .populate("categories")
-    .lean();
-
-  return records.map((record) => ({
+function toPortfolioListingItem(record: any) {
+  return {
     _id: String(record._id),
     companyName: record.company?.name || "",
     industry: record.company?.industry || "",
@@ -24,8 +19,36 @@ export async function getNewPortfolioListing() {
       link: category.link || "",
     })),
     section: "portfolio new",
-  }));
+    portfolioType: "new" as const,
+    portfolioSource: "new" as const,
+    isPublished: record.isPublished === true,
+    isNewPortfolioPublished: record.isPublished === true,
+  };
 }
+
+export async function getNewPortfolioListing() {
+  await connectDB();
+  const records = await NewPortfolio.find({ isListed: { $ne: false } })
+    .sort({ index: 1, updatedAt: -1 })
+    .populate("categories")
+    .lean();
+
+  return records.map(toPortfolioListingItem);
+}
+
+export const getPublishedNewPortfolioListing = unstable_cache(
+  async () => {
+    await connectDB();
+    const records = await NewPortfolio.find({ isPublished: true })
+      .sort({ index: 1, updatedAt: -1 })
+      .populate("categories")
+      .lean();
+
+    return records.map(toPortfolioListingItem);
+  },
+  ["published-new-portfolio-listing"],
+  { tags: ["new-portfolios"], revalidate: 60 },
+);
 
 function toRendererPortfolio(record: Record<string, any>): Portfolio {
   const delivered = record.whatWeDelivered?.items || [];
@@ -77,6 +100,7 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
       portfolio: record.relatedPortfolios?.items || [],
     },
     portfolioType: "new",
+    portfolioSource: "new",
     isNewPortfolioPublished: record.isPublished === true,
     sectionVisibility: record.sectionVisibility || {},
     channelsUsed: [],
@@ -89,8 +113,6 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
 export async function getNewPortfolioPageData(slug: string) {
   await connectDB();
 
-  // console.log("slug:", slug);
-  // , isListed: { $ne: false }
   const record = (await NewPortfolio.findOne({ slug })
     .populate({
       path: "relatedPortfolios.items",
@@ -99,7 +121,6 @@ export async function getNewPortfolioPageData(slug: string) {
     .populate("categories")
     .lean()) as unknown as NewPortfolioData & Record<string, any>;
 
-    // console.log("record:", record);
   if (!record) return null;
 
   const relatedItems: unknown = record.relatedPortfolios?.items;
@@ -111,10 +132,9 @@ export async function getNewPortfolioPageData(slug: string) {
     : [];
   const portfolio = toRendererPortfolio(record);
   const successStories = related
-    .filter((item) => item && item.isListed !== false)
+    .filter((item) => item && item.isPublished === true)
     .map(toRendererPortfolio);
 
-    // console.log("successStories:", successStories);
   const portfolioHighlights = (record.highlights || []).map((item, index) => ({
     customId: `new-highlight-${index}`,
     number: item.number || "",

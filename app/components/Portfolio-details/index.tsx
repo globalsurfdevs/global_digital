@@ -13,7 +13,7 @@ const PortfolioDetails = ({
   instagramPosts,
   instagramFlush,
 }: PortfolioDetailsProps) => {
-  if (isV2Preview || data.portfolio.isNewPortfolioPublished) {
+  if (isV2Preview || data.portfolio.portfolioSource === "new") {
     return (
       <NewPortfolioDetails
         data={data}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Portfolio from "@/app/components/Portfolio";
-import { getNewPortfolioListing } from "@/app/actions/getNewPortfolio";
+import { getNewPortfolioListing } from "@/app/lib/services/newPortfolio.service";
 import { getIndustries } from "@/app/lib/services/industries.service";
 import { getCategories } from "@/app/lib/services/categories.service";
 

@@ -139,8 +139,10 @@ export const SuccessStoriesPortfolio = ({
 
                   <Link
                     href={
-                      item.section == "portfolio"
-                        ? `/portfolio/${formatLinkForPortfolio(item.companyName)}`
+                      item.portfolioSource === "new" ||
+                      item.section === "portfolio new" ||
+                      item.section === "portfolio"
+                        ? `/portfolio/${formatLinkForPortfolio(item.slug || item.companyName)}`
                         : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
                     }
                     className="absolute left-0 top-0 h-full w-full"

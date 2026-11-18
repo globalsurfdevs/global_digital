@@ -1,6 +1,6 @@
 import React from "react";
 import Portfolio from "@/app/components/Portfolio";
-import { getPortfolio } from "@/app/lib/services/portfolio.service";
+import { getPublicPortfolioListing } from "@/app/lib/services/portfolio.service";
 import { getIndustries } from "@/app/lib/services/industries.service";
 import { getCategories } from "@/app/lib/services/categories.service";
 interface Canonicals {
@@ -24,9 +24,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 const page = async () => {
-  const portfolio = await getPortfolio();
-  const industries = await getIndustries();
-  const categories = await getCategories();
+  const [portfolio, industries, categories] = await Promise.all([
+    getPublicPortfolioListing(),
+    getIndustries(),
+    getCategories(),
+  ]);
 
   return (
     <>
