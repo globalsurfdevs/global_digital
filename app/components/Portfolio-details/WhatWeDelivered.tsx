@@ -37,12 +37,47 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
 
   return (
     <div className="">
-      <div className="container border-t border-black/20 py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]">
-      {/* <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]"> */}
-        <div
-          className={`pd-cus flex flex-col `}
-        >
-          <div className="text-4xl">
+      <div className="container border-t border-black/20 ">
+        {/* <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]"> */}
+        <div className="py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]">
+          <div className={`pd-cus flex flex-col `}>
+            <div className="text-4xl">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
+                variants={{
+                  hidden: { opacity: 0, y: 50 }, // Start below and invisible
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1, ease: "easeOut" },
+                  }, // Slide up and fade in
+                }}
+              >
+                {title1 && (
+                  <Link href="">
+                    <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
+                      {title1}
+                    </p>
+                  </Link>
+                )}
+                {description && (
+                  <div>
+                    <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
+                      {description}
+                    </p>
+                  </div>
+                )}
+                {!description && (
+                  <>
+                    <div style={{ maxWidth: `${maxchwidth}ch` }}>
+                      <h2 className="title-65 pb-8 lg:pb-[60px]">{title}</h2>
+                    </div>
+                  </>
+                )}
+              </motion.div>
+            </div>
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -52,86 +87,51 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 1, ease: "easeOut" },
+                  transition: { duration: 1.2, ease: "easeOut" },
                 }, // Slide up and fade in
               }}
             >
-              {title1 && (
-                <Link href="">
-                  <p className="mb-6 border-l-2 border-[#DC0000] pl-5 text-[20px] uppercase text-[#77787B] lg:mb-[79px]">
-                    {title1}
-                  </p>
-                </Link>
-              )}
-              {description && (
-                <div>
-                  <p className="fnt-lexend pb-6 text-font19 font-[500] leading-[1.2] text-gray1 lg:pb-[58px]">
-                    {description}
-                  </p>
-                </div>
-              )}
-              {!description && (
-                <>
-                  <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                    <h2 className="title-65 pb-8 lg:pb-[60px]">{title}</h2>
+              <div
+                className={`grid grid-cols-1 justify-between gap-6 md:grid-cols-2 ${gridColumnsClass}`}
+              >
+                {data.map((framework) => (
+                  <div
+                    key={framework._id}
+                    className="group relative  flex flex-row  gap-3 overflow-hidden md:flex-col md:gap-0"
+                  >
+                    {/* Animated Red Border */}
+
+                    <div className="mb-3 flex h-[36px] w-[36px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
+                      {framework.icn && (
+                        <Image
+                          src={framework.icn}
+                          alt=""
+                          width={28}
+                          height={28}
+                          className="fltrcls h-auto max-h-[34px] w-[28px] max-w-[34px] object-contain transition duration-500 lg:w-[34px]"
+                        />
+                      )}
+                    </div>
+
+                    <div className="relative w-full text-2xl lg:max-w-[85%]">
+                      <h3
+                        className="xl:text-30  w-full text-[20px] text-black lg:text-[26px] "
+                        dangerouslySetInnerHTML={{ __html: framework.title }}
+                      ></h3>
+                      {framework.urllink && (
+                        <Link
+                          href={framework.urllink}
+                          className="absolute top-0 h-full w-full"
+                        >
+                          {" "}
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                </>
-              )}
+                ))}
+              </div>
             </motion.div>
           </div>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }} // Trigger animation once when 50% visible
-            variants={{
-              hidden: { opacity: 0, y: 50 }, // Start below and invisible
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 1.2, ease: "easeOut" },
-              }, // Slide up and fade in
-            }}
-          >
-            <div
-              className={`grid grid-cols-1 justify-between gap-6 md:grid-cols-2 ${gridColumnsClass}`}
-            >
-              {data.map((framework) => (
-                <div
-                  key={framework._id}
-                  className="group relative  flex flex-row  gap-3 overflow-hidden md:flex-col md:gap-0"
-                >
-                  {/* Animated Red Border */}
-
-                  <div className="mb-3 flex h-[36px] w-[36px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
-                    {framework.icn && (
-                      <Image
-                        src={framework.icn}
-                        alt=""
-                        width={28}
-                        height={28}
-                        className="fltrcls h-auto max-h-[34px] w-[28px] max-w-[34px] object-contain transition duration-500 lg:w-[34px]"
-                      />
-                    )}
-                  </div>
-
-                  <div className="relative w-full text-2xl lg:max-w-[85%]">
-                    <h3
-                      className="xl:text-30  w-full text-[20px] text-black lg:text-[26px] "
-                      dangerouslySetInnerHTML={{ __html: framework.title }}
-                    ></h3>
-                    {framework.urllink && (
-                      <Link
-                        href={framework.urllink}
-                        className="absolute top-0 h-full w-full"
-                      >
-                        {" "}
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </div>
