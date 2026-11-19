@@ -9,7 +9,7 @@ async function getPreviewData(slug: string) {
     ? slug.slice(0, -3)
     : slug;
 
-  const newData = await getNewPortfolioPageData(portfolioSlug);
+  const newData = await getNewPortfolioPageData(portfolioSlug, "listed");
 
   return newData;
 }
