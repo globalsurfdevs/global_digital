@@ -125,7 +125,7 @@ export default function CategoryManager() {
 
       setOriginal(categories);
       setReorderMode(false);
-      toast.success("Category order saved");
+      toast.success("Digital Services order saved");
     } catch {
       toast.error("Failed to save order — no changes were made");
       setCategories(original); // restore on failure
@@ -143,7 +143,7 @@ export default function CategoryManager() {
     <SectionCard
       title={
         <span className="flex items-center gap-3">
-          Categories
+          Digital Services
           <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-700 dark:text-slate-300">
             {categories.length}
           </span>
@@ -152,7 +152,7 @@ export default function CategoryManager() {
       description={
         reorderMode
           ? "Drag items using the handle, then click Confirm Order to save."
-          : "Portfolio categories, in display order."
+          : "Portfolio digital services, in display order."
       }
       actions={
         reorderMode ? (
@@ -187,7 +187,7 @@ export default function CategoryManager() {
         listLoading ? (
           <LoadingState />
         ) : (
-          <EmptyState title="No categories found." />
+          <EmptyState title="No digital services found." />
         )
       ) : reorderMode ? (
         <DndContext

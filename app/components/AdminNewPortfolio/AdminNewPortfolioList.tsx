@@ -77,7 +77,7 @@ export default function AdminNewPortfolioList() {
               <div
                 key={portfolio._id}
                 className={`flex flex-wrap items-center justify-between gap-3 rounded-md px-3 py-4 ${
-                  portfolio.isPublished ? "bg-green-50" : ""
+                  portfolio.isPublished ? "bg-green-50" : portfolio.isListed === false ? "bg-red-50" : ""
                 }`}
               >
                 <div className="flex min-w-0 items-center gap-4">

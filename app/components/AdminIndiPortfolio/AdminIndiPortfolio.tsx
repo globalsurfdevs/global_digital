@@ -762,7 +762,7 @@ console.log("formData:", formData);
         // Redirect to news list page
       } catch (error) {
         console.error("Error fetching categories:", error);
-        toast.error("Failed to fetch categories. Please try again.");
+        toast.error("Failed to fetch digital services. Please try again.");
       }
     };
 
@@ -847,7 +847,7 @@ console.log("formData:", formData);
   const handleAddCategory = async () => {
     try {
       if (category.trim() == "" || !category || category == undefined) {
-        toast.error("Please provide a category");
+        toast.error("Please provide a digital service");
         return;
       }
 
@@ -865,10 +865,10 @@ console.log("formData:", formData);
         setCategoryLink("");
         setCategoryModal(false);
       } else {
-        toast.error("Adding category failed");
+        toast.error("Adding digital service failed");
       }
     } catch (error) {
-      console.log("Adding category failed:", error);
+      console.log("Adding digital service failed:", error);
     }
   };
 
@@ -888,10 +888,10 @@ console.log("formData:", formData);
       });
       if (response.ok) {
         const data = await response.json();
-        toast.success(data.message);
+        toast.success("Digital service removed successfully");
         setRefetchCategorySection((prev) => !prev);
       } else {
-        toast.error("Removing category failed");
+        toast.error("Removing digital service failed");
       }
     } catch (error) {
       console.log("Removing category failed:", error);
@@ -903,7 +903,7 @@ console.log("formData:", formData);
   const handleEditCategory = async () => {
     try {
       if (!editingCategory || editingCategory.name.trim() === "") {
-        toast.error("Please provide a category name");
+        toast.error("Please provide a digital service name");
         return;
       }
 
@@ -918,15 +918,15 @@ console.log("formData:", formData);
       });
 
       if (response.ok) {
-        toast.success("Category updated successfully");
+        toast.success("Digital service updated successfully");
         setRefetchCategorySection((prev) => !prev);
         setEditModal(false);
         setEditingCategory(null);
       } else {
-        toast.error("Updating category failed");
+        toast.error("Updating digital service failed");
       }
     } catch (error) {
-      console.log("Updating category failed:", error);
+      console.log("Updating digital service failed:", error);
     }
   };
 
@@ -1642,7 +1642,7 @@ console.log("formData:", formData);
                       <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                         <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                           <div className="w-full">
-                            <label>Category Name</label>
+                            <label>Digital Service Name</label>
                             <input
                               type="text"
                               value={category}
@@ -1654,7 +1654,7 @@ console.log("formData:", formData);
                           </div>
 
                           <div className="w-full">
-                            <label>Category Link</label>
+                            <label>Digital Service Link</label>
                             <input
                               type="text"
                               value={categoryLink}
@@ -1703,7 +1703,7 @@ console.log("formData:", formData);
                       <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                         <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                           <div className="w-full">
-                            <label>Category Name</label>
+                            <label>Digital Service Name</label>
                             <input
                               type="text"
                               value={editingCategory.name}
@@ -1717,7 +1717,7 @@ console.log("formData:", formData);
                             />
                           </div>
                           <div className="mt-3 w-full">
-                            <label>Category Link</label>
+                            <label>Digital Service Link</label>
                             <input
                               type="text"
                               value={editingCategory.link}
@@ -1767,10 +1767,10 @@ console.log("formData:", formData);
                       <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-sm">
                         <div className="bg-white px-6 py-5">
                           <h3 className="text-base font-semibold text-gray-900">
-                            Delete Category
+                            Delete Digital Service
                           </h3>
                           <p className="mt-2 text-sm text-gray-500">
-                            Are you sure you want to delete this category? This
+                            Are you sure you want to delete this digital service? This
                             action cannot be undone.
                           </p>
                         </div>
@@ -2564,10 +2564,10 @@ console.log("formData:", formData);
                                 <Droppable categories={categories}/>
                     </DndContext> */}
 
-          <SectionCard title="Categories & logo">
+          <SectionCard title="Digital Services & logo">
             <div className="grid grid-cols-2 gap-5">
               <div className="flex flex-col gap-2">
-                <Label content="Added Categories" className="" />
+                <Label content="Added Digital Services" className="" />
                 <div className="flex h-full w-full flex-wrap items-start gap-1 rounded-md border p-4">
                   {addedCategories.map((item) => (
                     <>
@@ -2600,7 +2600,7 @@ console.log("formData:", formData);
 
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-1">
-                  <Label content="Available Categories" className="" />
+                  <Label content="Available Digital Services" className="" />
                   <div className="flex size-5 items-center justify-center rounded-full bg-green-500">
                     <FaPlus
                       className="text-sm"

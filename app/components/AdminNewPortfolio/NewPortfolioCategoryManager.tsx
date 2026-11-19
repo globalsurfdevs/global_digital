@@ -22,10 +22,10 @@ export default function NewPortfolioCategoryManager() {
     try {
       const response = await fetch("/api/categories", { cache: "no-store" });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Could not load categories.");
+      if (!response.ok) throw new Error(data.error || "Could not load digital services.");
       setCategories(data.categories ?? []);
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Could not load categories.");
+      toast.error(error instanceof Error ? error.message : "Could not load digital services.");
     } finally {
       setLoading(false);
     }
@@ -34,7 +34,7 @@ export default function NewPortfolioCategoryManager() {
   useEffect(() => { if (open) void load(); }, [load, open]);
 
   const addCategory = async () => {
-    if (!name.trim()) return toast.error("Enter a category name.");
+    if (!name.trim()) return toast.error("Enter a digital service name.");
     setSaving(true);
     try {
       const form = new FormData();
@@ -42,20 +42,20 @@ export default function NewPortfolioCategoryManager() {
       form.set("categoryLink", link.trim());
       const response = await fetch("/api/categories", { method: "POST", body: form });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Could not add category.");
-      toast.success(data.message || "Category added.");
+      if (!response.ok) throw new Error(data.error || "Could not add digital service.");
+      toast.success("Digital service added.");
       setName("");
       setLink("");
       await load();
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Could not add category.");
+      toast.error(error instanceof Error ? error.message : "Could not add digital service.");
     } finally {
       setSaving(false);
     }
   };
 
   const saveCategory = async (id: string) => {
-    if (!editName.trim()) return toast.error("Enter a category name.");
+    if (!editName.trim()) return toast.error("Enter a digital service name.");
     setSaving(true);
     try {
       const form = new FormData();
@@ -64,25 +64,25 @@ export default function NewPortfolioCategoryManager() {
       form.set("link", editLink.trim());
       const response = await fetch("/api/categories", { method: "PATCH", body: form });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Could not update category.");
-      toast.success(data.message || "Category updated.");
+      if (!response.ok) throw new Error(data.error || "Could not update digital service.");
+      toast.success("Digital service updated.");
       setEditingId(null);
       await load();
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Could not update category.");
+      toast.error(error instanceof Error ? error.message : "Could not update digital service.");
     } finally {
       setSaving(false);
     }
   };
 
   const deleteCategory = async (id: string) => {
-    if (!window.confirm("Delete this category? Existing portfolio records will not be changed.")) return;
+    if (!window.confirm("Delete this digital service? Existing portfolio records will not be changed.")) return;
     const form = new FormData();
     form.set("id", id);
     const response = await fetch("/api/categories", { method: "DELETE", body: form });
     const data = await response.json();
-    if (!response.ok) return toast.error(data.error || "Could not delete category.");
-    toast.success(data.message || "Category deleted.");
+    if (!response.ok) return toast.error(data.error || "Could not delete digital service.");
+    toast.success("Digital service deleted.");
     await load();
   };
 
@@ -97,11 +97,11 @@ export default function NewPortfolioCategoryManager() {
         body: form,
       });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Could not change category visibility.");
-      toast.success(category.isHidden ? "Category shown in user listing." : "Category hidden from user listing.");
+      if (!response.ok) throw new Error(data.error || "Could not change digital service visibility.");
+      toast.success(category.isHidden ? "Digital service shown in user listing." : "Digital service hidden from user listing.");
       await load();
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Could not change category visibility.");
+      toast.error(error instanceof Error ? error.message : "Could not change digital service visibility.");
     } finally {
       setSaving(false);
     }
@@ -112,18 +112,18 @@ export default function NewPortfolioCategoryManager() {
   return (
     <section className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
       <button type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)} className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left">
-        <span><span className="block text-base font-semibold text-slate-900 dark:text-white">Categories</span><span className="mt-0.5 block text-sm text-slate-500 dark:text-slate-400">Create and manage portfolio categories.</span></span>
+        <span><span className="block text-base font-semibold text-slate-900 dark:text-white">Digital Services</span><span className="mt-0.5 block text-sm text-slate-500 dark:text-slate-400">Create and manage portfolio digital services.</span></span>
         <span className="flex items-center gap-2 text-sm text-slate-500">{open ? categories.length : ""}<ChevronDown className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} /></span>
       </button>
       {open && <div className="flex flex-col gap-4 border-t border-slate-200 p-5 dark:border-slate-700">
       <div className="flex flex-col gap-2 sm:flex-row">
-        <input className={inputClass} value={name} onChange={(event) => setName(event.target.value)} placeholder="Category name" aria-label="New category name" />
-        <input className={inputClass} value={link} onChange={(event) => setLink(event.target.value)} placeholder="Category link (optional)" aria-label="New category link" />
-        <button type="button" className={adminButtonClass("dark")} disabled={saving} onClick={() => void addCategory()}>{saving ? "Saving…" : "Add category"}</button>
+        <input className={inputClass} value={name} onChange={(event) => setName(event.target.value)} placeholder="Digital service name" aria-label="New digital service name" />
+        <input className={inputClass} value={link} onChange={(event) => setLink(event.target.value)} placeholder="Digital service link (optional)" aria-label="New digital service link" />
+        <button type="button" className={adminButtonClass("dark")} disabled={saving} onClick={() => void addCategory()}>{saving ? "Saving…" : "Add digital service"}</button>
       </div>
 
       <div className="flex flex-col gap-2">
-        {loading ? <p className="text-sm text-slate-500">Loading categories…</p> : categories.length === 0 ? <p className="text-sm text-slate-500">No categories yet.</p> : categories.map((category) => (
+        {loading ? <p className="text-sm text-slate-500">Loading digital services…</p> : categories.length === 0 ? <p className="text-sm text-slate-500">No digital services yet.</p> : categories.map((category) => (
           <details key={category._id} className="group rounded-lg border border-slate-200 bg-white">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-medium text-slate-800">
               <span className="flex min-w-0 items-center gap-2"><span className="truncate">{category.name}</span>{category.isHidden && <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Hidden on user side</span>}</span><span className="text-xs text-slate-500">Edit / manage</span>
@@ -131,8 +131,8 @@ export default function NewPortfolioCategoryManager() {
             <div className="flex flex-col gap-3 border-t border-slate-200 p-4">
               {editingId === category._id ? (
                 <>
-                  <input className={inputClass} value={editName} onChange={(event) => setEditName(event.target.value)} aria-label="Category name" />
-                  <input className={inputClass} value={editLink} onChange={(event) => setEditLink(event.target.value)} placeholder="Category link (optional)" aria-label="Category link" />
+                  <input className={inputClass} value={editName} onChange={(event) => setEditName(event.target.value)} aria-label="Digital service name" />
+                  <input className={inputClass} value={editLink} onChange={(event) => setEditLink(event.target.value)} placeholder="Digital service link (optional)" aria-label="Digital service link" />
                   <div className="flex gap-2">
                     <button type="button" className={adminButtonClass("dark", "sm")} disabled={saving} onClick={() => void saveCategory(category._id)}>Save changes</button>
                     <button type="button" className={adminButtonClass("secondary", "sm")} onClick={() => setEditingId(null)}>Cancel</button>

@@ -144,7 +144,7 @@ const AdminPortfolio = () => {
             count: listLoading ? undefined : portfolios.length,
           },
           { key: "industries", label: "Industries" },
-          { key: "categories", label: "Categories" },
+          { key: "categories", label: "Digital Services" },
         ]}
         active={activeTab}
         onChange={setActiveTab}

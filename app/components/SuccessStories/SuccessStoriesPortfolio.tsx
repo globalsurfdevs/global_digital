@@ -50,7 +50,7 @@ export const SuccessStoriesPortfolio = ({
         }}
       >
         <div
-          className={`${colCount === 2 ? "grid lg:grid-cols-2" : "grid lg:grid-cols-3"} gap-8`}
+          className={`${data?.length >= 3 ? "grid lg:grid-cols-3" : "grid lg:grid-cols-2"} gap-8`}
         >
           {data?.length > 0
             ? (colCount === 2 ? data.slice(0, 2) : data).map((item, index) => (
