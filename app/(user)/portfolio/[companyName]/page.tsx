@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   const resolved = isV2Preview ? null : await resolvePortfolioBySlug(slug);
   const previewNewData = isV2Preview
-    ? await getNewPortfolioPageData(slug)
+    ? await getNewPortfolioPageData(slug, "listed")
     : null;
   const portfolio =
     resolved?.data.portfolio ||
@@ -87,7 +87,7 @@ export default async function PortfolioPage({
   const slug = isV2Preview ? companyName.slice(0, -3) : companyName;
 
   if (isV2Preview) {
-    const newData = await getNewPortfolioPageData(slug);
+    const newData = await getNewPortfolioPageData(slug, "listed");
     if (!newData) return <div>Portfolio not found</div>;
     return (
       <PortfolioDetails

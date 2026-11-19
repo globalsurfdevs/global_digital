@@ -110,7 +110,10 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
   } as unknown as Portfolio;
 }
 
-export async function getNewPortfolioPageData(slug: string) {
+export async function getNewPortfolioPageData(
+  slug: string,
+  relatedPortfolioStatus: "published" | "listed" = "published",
+) {
   await connectDB();
 
   const record = (await NewPortfolio.findOne({ slug })
@@ -132,7 +135,11 @@ export async function getNewPortfolioPageData(slug: string) {
     : [];
   const portfolio = toRendererPortfolio(record);
   const successStories = related
-    .filter((item) => item && item.isPublished === true)
+    .filter((item) =>
+      relatedPortfolioStatus === "listed"
+        ? item.isListed === true
+        : item.isPublished === true,
+    )
     .map(toRendererPortfolio);
 
   const portfolioHighlights = (record.highlights || []).map((item, index) => ({
