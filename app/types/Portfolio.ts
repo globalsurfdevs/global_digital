@@ -114,7 +114,6 @@ export type Portfolio = {
   detailsCtaTwoButtonText?: string;
   coverImage: string;
   type?: string;
-  index?: number;
   homeTitle: string;
   homeSubTitle: string;
   slug: string;

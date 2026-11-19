@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
 
       const industry = await PortfolioIndustry.findById(body.industryId)
         .select("subCategories.name")
-        .lean();
+        .lean<{ subCategories?: { name: string }[] }>();
       if (!industry) {
         return NextResponse.json(
           { error: "Industry not found." },

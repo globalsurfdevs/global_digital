@@ -94,12 +94,12 @@ export async function POST(req: NextRequest) {
           { error: "Category already exists" },
           { status: 400 },
         );
-      const highestSortOrder = await PortfolioIndustry.findOne({
+      const highestSortOrder = (await PortfolioIndustry.findOne({
         sortOrder: { $type: "number" },
       })
         .sort({ sortOrder: -1 })
         .select("sortOrder")
-        .lean();
+        .lean()) as unknown as { sortOrder?: number } | null;
       const sortOrder =
         typeof highestSortOrder?.sortOrder === "number"
           ? highestSortOrder.sortOrder + 1

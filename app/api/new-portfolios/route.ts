@@ -169,7 +169,7 @@ export async function POST(request: NextRequest) {
     })
       .sort({ index: -1 })
       .select("index")
-      .lean();
+      .lean<{ index?: number }>();
     const nextIndex =
       typeof lastOrderedPortfolio?.index === "number"
         ? lastOrderedPortfolio.index + 1
