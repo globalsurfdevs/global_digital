@@ -59,7 +59,7 @@ export async function GET() {
   try {
     await connectDB();
     const categories = await PortfolioIndustry.find({})
-      .sort({ name: "asc" })
+      .sort({ sortOrder: 1, name: "asc" })
       .lean();
     const normalized = (categories as any[]).map((cat) => ({
       ...cat,
@@ -94,8 +94,19 @@ export async function POST(req: NextRequest) {
           { error: "Category already exists" },
           { status: 400 },
         );
+      const highestSortOrder = await PortfolioIndustry.findOne({
+        sortOrder: { $type: "number" },
+      })
+        .sort({ sortOrder: -1 })
+        .select("sortOrder")
+        .lean();
+      const sortOrder =
+        typeof highestSortOrder?.sortOrder === "number"
+          ? highestSortOrder.sortOrder + 1
+          : (await PortfolioIndustry.countDocuments()) + 1;
       const category = await PortfolioIndustry.create({
         name,
+        sortOrder,
         subCategories: [],
       });
       return NextResponse.json({ message: "Category added", category });

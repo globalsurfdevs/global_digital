@@ -100,6 +100,15 @@ const NewPortfolioSchema = new Schema(
       default: true,
     },
     index: Number,
+    industryOrders: [
+      {
+        industryId: {
+          type: Schema.Types.ObjectId,
+          ref: "portfolioIndustry",
+        },
+        index: Number,
+      },
+    ],
   },
   {
     timestamps: true,

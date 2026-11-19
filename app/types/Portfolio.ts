@@ -41,6 +41,12 @@ export type Portfolio = {
   /** Collection that supplied this record; controls the public detail renderer. */
   portfolioSource?: "old" | "new";
   isNewPortfolioPublished?: boolean;
+  /** Order within a selected portfolio industry, separate from the View All index. */
+  index?: number;
+  industryOrders?: {
+    industryId?: string;
+    index?: number;
+  }[];
   sectionVisibility?: {
     highlights?: boolean;
     previewImages?: boolean;
