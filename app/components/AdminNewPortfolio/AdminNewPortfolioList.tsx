@@ -10,20 +10,11 @@ import {
   ChevronRight,
   ExternalLink,
   Eye,
-  GripVertical,
   Pencil,
   Search,
   X,
 } from "lucide-react";
 import { toast } from "sonner";
-import { DndContext, closestCorners, type DragEndEvent } from "@dnd-kit/core";
-import {
-  SortableContext,
-  arrayMove,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import type { NewPortfolio } from "@/app/types/NewPortfolio";
 import {
   AdminButton,
@@ -49,11 +40,11 @@ function portfolioTimestamp(portfolio: NewPortfolio) {
 
 function PortfolioRow({
   portfolio,
-  dragHandle,
+  moveAction,
   onArchive,
 }: {
   portfolio: NewPortfolio;
-  dragHandle?: ReactNode;
+  moveAction?: ReactNode;
   onArchive?: (id?: string) => void;
 }) {
   return (
@@ -67,7 +58,6 @@ function PortfolioRow({
       }`}
     >
       <div className="flex min-w-0 items-center gap-4">
-        {dragHandle}
         <div className="relative size-20 shrink-0 overflow-hidden rounded-md border border-slate-200 bg-slate-100">
           {portfolio.brand?.banner?.image ? (
             <Image
@@ -96,7 +86,9 @@ function PortfolioRow({
           </p>
         </div>
       </div>
-      {!dragHandle && (
+      {moveAction ? (
+        <div className="flex gap-2">{moveAction}</div>
+      ) : (
         <div className="flex gap-2">
           <Link
             href={`/portfolio/${portfolio.slug}`}
@@ -140,35 +132,6 @@ function PortfolioRow({
   );
 }
 
-function SortablePortfolioRow({ portfolio }: { portfolio: NewPortfolio }) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({ id: portfolio._id! });
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    zIndex: isDragging ? 1 : undefined,
-  };
-
-  return (
-    <div ref={setNodeRef} style={style} className={isDragging ? "opacity-70" : ""}>
-      <PortfolioRow
-        portfolio={portfolio}
-        dragHandle={
-          <button
-            type="button"
-            {...attributes}
-            {...listeners}
-            aria-label={`Drag ${portfolio.company?.name || "portfolio"} to reorder`}
-            className="flex size-9 shrink-0 cursor-grab items-center justify-center rounded-md border border-slate-300 text-slate-500 hover:bg-slate-100 active:cursor-grabbing"
-          >
-            <GripVertical className="size-4" />
-          </button>
-        }
-      />
-    </div>
-  );
-}
-
 export default function AdminNewPortfolioList() {
   const [portfolios, setPortfolios] = useState<NewPortfolio[]>([]);
   const [industries, setIndustries] = useState<Industry[]>([]);
@@ -179,6 +142,8 @@ export default function AdminNewPortfolioList() {
   const [orderScope, setOrderScope] = useState("all");
   const [reorderMode, setReorderMode] = useState(false);
   const [orderDraft, setOrderDraft] = useState<string[]>([]);
+  const [moveSourceId, setMoveSourceId] = useState<string | null>(null);
+  const [targetSearch, setTargetSearch] = useState("");
   const pageSize = 12;
 
   const loadPortfolios = useCallback(async () => {
@@ -271,7 +236,8 @@ export default function AdminNewPortfolioList() {
   }, [orderDraft, portfolios]);
 
   const normalizedSearch = search.trim().toLowerCase();
-  const filteredPortfolios = scopePortfolios.filter((portfolio) => {
+  const visiblePortfolios = reorderMode ? draftPortfolios : scopePortfolios;
+  const filteredPortfolios = visiblePortfolios.filter((portfolio) => {
     const searchableValues = [
       portfolio.company?.name,
       portfolio.slug,
@@ -295,24 +261,46 @@ export default function AdminNewPortfolioList() {
     setSearch("");
     setPage(1);
     setOrderDraft(scopePortfolios.map((portfolio) => portfolio._id!));
+    setMoveSourceId(null);
+    setTargetSearch("");
     setReorderMode(true);
   };
 
   const cancelReordering = () => {
     setOrderDraft([]);
+    setMoveSourceId(null);
+    setTargetSearch("");
     setReorderMode(false);
   };
 
-  const handleDragEnd = ({ active, over }: DragEndEvent) => {
-    if (!over || active.id === over.id) return;
+  const movePortfolio = (targetId: string, placement: "before" | "after") => {
+    if (!moveSourceId || moveSourceId === targetId) return;
     setOrderDraft((current) => {
-      const oldIndex = current.indexOf(String(active.id));
-      const newIndex = current.indexOf(String(over.id));
-      return oldIndex < 0 || newIndex < 0
-        ? current
-        : arrayMove(current, oldIndex, newIndex);
+      const next = current.filter((id) => id !== moveSourceId);
+      const targetIndex = next.indexOf(targetId);
+      if (targetIndex < 0) return current;
+      next.splice(targetIndex + (placement === "after" ? 1 : 0), 0, moveSourceId);
+      return next;
     });
+    setMoveSourceId(null);
+    setTargetSearch("");
+    setSearch("");
+    setPage(1);
   };
+
+  const selectedMoveSource = draftPortfolios.find(
+    (portfolio) => portfolio._id === moveSourceId,
+  );
+  const normalizedTargetSearch = targetSearch.trim().toLowerCase();
+  const targetPortfolios = draftPortfolios.filter((portfolio) => {
+    if (portfolio._id === moveSourceId) return false;
+    if (!normalizedTargetSearch) return true;
+    return [
+      portfolio.company?.name,
+      portfolio.slug,
+      portfolio.company?.industry,
+    ].some((value) => value?.toLowerCase().includes(normalizedTargetSearch));
+  });
 
   const saveOrder = async () => {
     setSavingOrder(true);
@@ -351,6 +339,7 @@ export default function AdminNewPortfolioList() {
       });
       toast.success(data.message || "Portfolio order saved.");
       setOrderDraft([]);
+      setMoveSourceId(null);
       setReorderMode(false);
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Could not save the order.");
@@ -387,21 +376,23 @@ export default function AdminNewPortfolioList() {
         title={`${selectedIndustry?.name || "All new portfolios"} (${scopePortfolios.length})`}
         actions={
           <div className="flex flex-wrap items-center gap-2">
-            {!reorderMode && (
-              <label className="relative block w-full sm:w-72">
-                <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
-                <input
-                  value={search}
-                  onChange={(event) => {
-                    setSearch(event.target.value);
-                    setPage(1);
-                  }}
-                  placeholder="Search portfolios"
-                  aria-label="Search portfolios"
-                  className="h-10 w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 outline-none focus:border-slate-500"
-                />
-              </label>
-            )}
+            <label className="relative block w-full sm:w-72">
+              <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+              <input
+                value={search}
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                  setPage(1);
+                }}
+                placeholder={
+                  reorderMode ? "Search for a portfolio to move" : "Search portfolios"
+                }
+                aria-label={
+                  reorderMode ? "Search for a portfolio to move" : "Search portfolios"
+                }
+                className="h-10 w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 outline-none focus:border-slate-500"
+              />
+            </label>
             {reorderMode ? (
               <>
                 <AdminButton
@@ -426,7 +417,7 @@ export default function AdminNewPortfolioList() {
                 onClick={startReordering}
                 disabled={loading || scopePortfolios.length < 2}
               >
-                <ArrowUpDown className="size-4" /> Reorder
+                <ArrowUpDown className="size-4" /> Move portfolios
               </AdminButton>
             )}
           </div>
@@ -454,42 +445,89 @@ export default function AdminNewPortfolioList() {
           </label>
           <p className="text-sm text-slate-500">
             {reorderMode
-              ? `Drag to set the ${selectedIndustry ? selectedIndustry.name : "View All"} order, then save.`
+              ? `Search for a portfolio, choose Move, then place it before or after another portfolio.`
               : selectedIndustry
                 ? `This order controls the ${selectedIndustry.name} industry filter.`
                 : "This order controls View All and provides the starting order for industry lists."}
           </p>
         </div>
 
+        {reorderMode && (
+          <div className="mb-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+            {selectedMoveSource ? (
+              <>
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                  <p className="text-sm font-medium text-slate-800">
+                    Choose where to place <strong>{selectedMoveSource.company?.name}</strong>
+                  </p>
+                  <AdminButton
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => {
+                      setMoveSourceId(null);
+                      setTargetSearch("");
+                    }}
+                  >
+                    Cancel move
+                  </AdminButton>
+                </div>
+                <label className="relative mb-3 block max-w-lg">
+                  <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+                  <input
+                    value={targetSearch}
+                    onChange={(event) => setTargetSearch(event.target.value)}
+                    placeholder="Search for the portfolio to move it next to"
+                    aria-label="Search for a portfolio position"
+                    className="h-10 w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 outline-none focus:border-slate-500"
+                  />
+                </label>
+                <div className="flex max-h-72 flex-col gap-2 overflow-y-auto">
+                  {targetPortfolios.length > 0 ? (
+                    targetPortfolios.map((portfolio) => (
+                      <div
+                        key={portfolio._id}
+                        className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-slate-200 bg-white px-3 py-2"
+                      >
+                        <span className="text-sm text-slate-800">
+                          {portfolio.company?.name || "Untitled portfolio"}
+                        </span>
+                        <div className="flex gap-2">
+                          <AdminButton
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => movePortfolio(portfolio._id!, "before")}
+                          >
+                            Before
+                          </AdminButton>
+                          <AdminButton
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => movePortfolio(portfolio._id!, "after")}
+                          >
+                            After
+                          </AdminButton>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="py-2 text-sm text-slate-500">
+                      No matching destination portfolios.
+                    </p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <p className="text-sm text-slate-600">
+                Search for the portfolio you want to move, then click its Move button.
+              </p>
+            )}
+          </div>
+        )}
+
         {loading ? (
           <p className="text-sm text-slate-500">Loading…</p>
         ) : portfolios.length === 0 ? (
           <p className="text-sm text-slate-500">No new portfolios yet.</p>
-        ) : reorderMode ? (
-          draftPortfolios.length === 0 ? (
-            <p className="text-sm text-slate-500">
-              No portfolios assigned to this industry.
-            </p>
-          ) : (
-            <DndContext
-              collisionDetection={closestCorners}
-              onDragEnd={handleDragEnd}
-            >
-              <SortableContext
-                items={orderDraft}
-                strategy={verticalListSortingStrategy}
-              >
-                <div className="flex flex-col gap-2">
-                  {draftPortfolios.map((portfolio) => (
-                    <SortablePortfolioRow
-                      key={portfolio._id}
-                      portfolio={portfolio}
-                    />
-                  ))}
-                </div>
-              </SortableContext>
-            </DndContext>
-          )
         ) : (
           <>
             <div className="divide-y divide-slate-200">
@@ -498,6 +536,21 @@ export default function AdminNewPortfolioList() {
                   key={portfolio._id}
                   portfolio={portfolio}
                   onArchive={(id) => void archive(id)}
+                  moveAction={
+                    reorderMode ? (
+                      <AdminButton
+                        variant={portfolio._id === moveSourceId ? "primary" : "secondary"}
+                        size="sm"
+                        onClick={() => {
+                          setMoveSourceId(portfolio._id || null);
+                          setTargetSearch("");
+                        }}
+                        disabled={portfolio._id === moveSourceId}
+                      >
+                        {portfolio._id === moveSourceId ? "Selected" : "Move"}
+                      </AdminButton>
+                    ) : undefined
+                  }
                 />
               ))}
               {filteredPortfolios.length === 0 && (
