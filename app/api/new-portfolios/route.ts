@@ -164,10 +164,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "That new portfolio slug is already in use." }, { status: 409 });
     }
 
+    const lastOrderedPortfolio = await NewPortfolio.findOne({
+      index: { $type: "number" },
+    })
+      .sort({ index: -1 })
+      .select("index")
+      .lean<{ index?: number }>();
+    const nextIndex =
+      typeof lastOrderedPortfolio?.index === "number"
+        ? lastOrderedPortfolio.index + 1
+        : (await NewPortfolio.countDocuments()) + 1;
+
     const portfolio = await NewPortfolio.create({
       ...fields,
       ...(slug ? { slug } : {}),
       isPublished: fields.isPublished === true,
+      ...(typeof fields.index === "number" ? {} : { index: nextIndex }),
     });
     await revalidateNewPortfolioPages(portfolio.slug);
     return NextResponse.json({ message: "New portfolio created.", portfolio }, { status: 201 });

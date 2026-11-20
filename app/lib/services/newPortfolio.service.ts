@@ -23,6 +23,11 @@ function toPortfolioListingItem(record: any) {
     portfolioSource: "new" as const,
     isPublished: record.isPublished === true,
     isNewPortfolioPublished: record.isPublished === true,
+    index: typeof record.index === "number" ? record.index : undefined,
+    industryOrders: (record.industryOrders || []).map((order: any) => ({
+      industryId: String(order.industryId || ""),
+      index: typeof order.index === "number" ? order.index : undefined,
+    })),
   };
 }
 
@@ -39,7 +44,10 @@ export async function getNewPortfolioListing() {
 export const getPublishedNewPortfolioListing = unstable_cache(
   async () => {
     await connectDB();
-    const records = await NewPortfolio.find({ isPublished: true })
+    const records = await NewPortfolio.find({
+      isPublished: true,
+      isListed: { $ne: false },
+    })
       .sort({ index: 1, updatedAt: -1 })
       .populate("categories")
       .lean();

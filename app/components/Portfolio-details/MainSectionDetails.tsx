@@ -43,7 +43,7 @@ const MainSectionDetails = ({
       <div className="bg-dgray">
         <div className="container mx-auto py-2">
           <div className=" ptcs0   pb-10  pt-[20px] sm:pt-[50px]  lg:pb-[80px]  lg:pt-[100px] xl:pb-[100px] 2xl:pb-[140px] ">
-            <div className="mb-5 items-end justify-between border-b border-black/20  pb-5 md:flex lg:mb-[50px] lg:pb-[60px]">
+            {/* <div className="mb-5 items-end justify-between border-b border-black/20  pb-5 md:flex lg:mb-[50px] lg:pb-[60px]">
               <div className=" xxl:max-w-[120ch]">
                 <h1 className=" text-[32px] md:text-[50px] max-lg:leading-[1.2] 2xl:text-font80 xl:leading-lh1p22 ">
                   {data.portfolio.bannerTitle == "null" ||
@@ -54,7 +54,7 @@ const MainSectionDetails = ({
               </div>
               {data.portfolio.logo && (
                 // <div className="max-sm:mr-auto max-sm:mt-2 max-sm:overflow-hidden flex h-[60px] w-[110px] shrink-0 items-end justify-end sm:h-[100px] sm:w-[140px] md:mt-0 md:h-[110px] md:w-[180px] lg:h-[40px] lg:w-[180px]">
-                <div className="flex shrink-0 items-end justify-end  max-sm:mr-auto max-md:mt-3 max-sm:overflow-hidden h-[30px] w-[150px] lg:h-[40px] lg:w-[180px]">
+                <div className="flex self-end shrink-0 items-end justify-end  max-sm:mr-auto max-md:mt-3 max-sm:overflow-hidden h-[30px] w-[150px] lg:h-[40px] lg:w-[180px]">
                   <Image
                     src={data.portfolio.logo}
                     alt={
@@ -64,6 +64,31 @@ const MainSectionDetails = ({
                     width={180}
                     height={40}
                     className="md:object-bottom-right max-h-full max-w-full object-contain max-sm:h-full max-sm:w-full"
+                  />
+                </div>
+              )}
+            </div> */}
+            <div className="mb-5 items-end justify-between border-b border-black/20 pb-5 md:flex lg:mb-[50px] lg:pb-[60px]">
+              <div className="xxl:max-w-[120ch]">
+                <h1 className="text-[32px] max-lg:leading-[1.2] md:text-[50px] xl:leading-lh1p22 2xl:text-font80">
+                  {data.portfolio.bannerTitle == "null" ||
+                  data.portfolio.bannerTitle == "undefined"
+                    ? ""
+                    : data.portfolio.bannerTitle}
+                </h1>
+              </div>
+
+              {data.portfolio.logo && (
+                <div className="mr-auto mt-3 flex h-[30px] w-[150px] shrink-0 items-end justify-start md:mr-0 md:mt-0 md:h-[110px] md:w-[180px] md:justify-end lg:h-[40px] lg:w-[180px]">
+                  <Image
+                    src={data.portfolio.logo}
+                    alt={
+                      data.portfolio.logoAlt ||
+                      `${data.portfolio.companyName} logo`
+                    }
+                    width={180}
+                    height={40}
+                    className="max-h-full max-w-full object-contain"
                   />
                 </div>
               )}

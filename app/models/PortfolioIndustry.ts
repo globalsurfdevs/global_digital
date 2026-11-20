@@ -10,6 +10,7 @@ const SubCategorySchema = new mongoose.Schema(
 const PortfolioIndustrySchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true },
+    sortOrder: { type: Number },
     subCategories: [SubCategorySchema],
   },
   { timestamps: true },

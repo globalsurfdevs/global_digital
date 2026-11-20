@@ -65,6 +65,10 @@ export type NewPortfolio = {
   featured?: boolean;
   isListed?: boolean;
   index?: number;
+  industryOrders?: {
+    industryId?: string;
+    index?: number;
+  }[];
   createdAt?: Date;
   updatedAt?: Date;
 };

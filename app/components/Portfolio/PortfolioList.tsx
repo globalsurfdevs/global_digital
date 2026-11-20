@@ -213,10 +213,39 @@ const PortfolioList = ({
     if (industry) {
       const selectedCat = industries.find((i) => i.name === industry);
       const subNames = selectedCat?.subCategories ?? [];
-    
+
       filtered = filtered.filter((p: Portfolio) =>
         subNames.includes(p.industry),
       );
+
+      if (selectedCat) {
+        const newPortfolios = filtered
+          .filter((portfolio) => portfolio.portfolioSource === "new")
+          .sort((left, right) => {
+            const leftIndustryOrder = left.industryOrders?.find(
+              (order) => order.industryId === selectedCat._id,
+            )?.index;
+            const rightIndustryOrder = right.industryOrders?.find(
+              (order) => order.industryId === selectedCat._id,
+            )?.index;
+            const leftHasIndustryOrder = typeof leftIndustryOrder === "number";
+            const rightHasIndustryOrder = typeof rightIndustryOrder === "number";
+            if (leftHasIndustryOrder !== rightHasIndustryOrder) {
+              return leftHasIndustryOrder ? -1 : 1;
+            }
+            const leftOrder = leftHasIndustryOrder
+              ? leftIndustryOrder!
+              : left.index ?? Number.MAX_SAFE_INTEGER;
+            const rightOrder = rightHasIndustryOrder
+              ? rightIndustryOrder!
+              : right.index ?? Number.MAX_SAFE_INTEGER;
+            return leftOrder - rightOrder;
+          });
+        const oldPortfolios = filtered.filter(
+          (portfolio) => portfolio.portfolioSource !== "new",
+        );
+        filtered = [...newPortfolios, ...oldPortfolios];
+      }
     }
 
     setPortfolios(filtered);
