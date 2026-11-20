@@ -18,7 +18,7 @@ export const SuccessStoriesPortfolio = ({
 }) => {
 
   return (
-    <div className="  flex flex-col py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]">
+    <div className="  flex flex-col py-10  lg:py-[80px] xl:py-[110px]  2xl:py-[150px]">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -50,11 +50,21 @@ export const SuccessStoriesPortfolio = ({
         }}
       >
         <div
-          className={`${data?.length >= 3 ? "grid lg:grid-cols-3" : "grid lg:grid-cols-2"} gap-8`}
+          className={`${data?.length >= 3 ? "grid lg:grid-cols-3" : "grid lg:grid-cols-2"} gap-[30px]`}
         >
           {data?.length > 0
             ? (colCount === 2 ? data.slice(0, 2) : data).map((item, index) => (
-                <div className="group relative flex flex-col" key={item._id || index}>
+                  <Link
+                    key={item._id || index}
+                    href={
+                      item.portfolioSource === "new" ||
+                      item.section === "portfolio new" ||
+                      item.section === "portfolio"
+                        ? `/portfolio/${formatLinkForPortfolio(item.slug || item.companyName)}`
+                        : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
+                    }
+                    className="group relative flex flex-col"
+                  >
                   {(item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || item.portfolioType === "new" || item.section === "portfolio new") && (
                     <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">
                       <Image
@@ -63,22 +73,21 @@ export const SuccessStoriesPortfolio = ({
                         className="absolute h-full w-full object-cover"
                         fill
                       />
-
-                    <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 ease-in-out group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary group-hover:shadow-lg lg:left-7 lg:top-7 ">
-                      <div className="uppercase text-white">
-                        <p className="text-font14 text-white">
-                          {item.industry}
-                        </p>
+                      <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 ease-in-out group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary group-hover:shadow-lg lg:left-7 lg:top-7 ">
+                        <div className="uppercase text-white">
+                          <p className="text-font14 text-white">
+                            {item.industry}
+                          </p>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="absolute bottom-8 right-8 z-10">
-                      <img
-                        src={item.logo}
-                        alt="logo"
-                        className="h-[33px] w-auto brightness-0 invert-[1]"
-                      />
-                    </div>
+                      <div className="absolute bottom-8 right-8 z-10">
+                        <img
+                          src={item.logo}
+                          alt="logo"
+                          className="h-[33px] w-auto brightness-0 invert-[1]"
+                        />
+                      </div>
                     </div>
                   )}
 
@@ -88,7 +97,7 @@ export const SuccessStoriesPortfolio = ({
 
                       <div className="flex flex-wrap gap-2">
                         {item.categories && item.categories.length > 0 ? (
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2 gap-y-0">
                             {item.categories
                               .map((category) =>
                                 typeof category === "string" ? category : category?.name,
@@ -136,18 +145,7 @@ export const SuccessStoriesPortfolio = ({
                   </div>
 
                   <div className="mt-2 h-[2px] w-full bg-[#E6E6E6] transition-colors duration-300 group-hover:bg-primary lg:mt-5"></div>
-
-                  <Link
-                    href={
-                      item.portfolioSource === "new" ||
-                      item.section === "portfolio new" ||
-                      item.section === "portfolio"
-                        ? `/portfolio/${formatLinkForPortfolio(item.slug || item.companyName)}`
-                        : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
-                    }
-                    className="absolute left-0 top-0 h-full w-full"
-                  />
-                </div>
+                </Link>
               ))
             : null}
         </div>

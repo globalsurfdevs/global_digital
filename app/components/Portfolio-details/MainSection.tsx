@@ -14,6 +14,9 @@ const MainSection = ({
   } | null;
 }) => {
   if (!data) return null;
+  const visibleCategories = (data.portfolio.categories ?? []).filter(
+    (category) => category.isHidden !== true,
+  );
 
   return (
     <section>
@@ -57,22 +60,24 @@ const MainSection = ({
                 </p>
               </div>
             </div>
-            <div>
+            {visibleCategories.length > 0 && (
               <div>
-                <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
-                  Services
-                </p>
-                <div className="flex max-w-md flex-wrap gap-2">
-                  {data.portfolio.categories.map((item, index) => (
-                    <Link href={item.link} key={index}>
-                      <button className="btn-outline-primary-text-black">
-                        {item.name}
-                      </button>
-                    </Link>
-                  ))}
+                <div>
+                  <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
+                    Services
+                  </p>
+                  <div className="flex max-w-md flex-wrap gap-2">
+                    {visibleCategories.map((item, index) => (
+                      <Link href={item.link} key={index}>
+                        <button className="btn-outline-primary-text-black">
+                          {item.name}
+                        </button>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

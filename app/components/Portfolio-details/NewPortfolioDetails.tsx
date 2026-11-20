@@ -108,8 +108,8 @@ const NewPortfolioDetails = ({
       {data.portfolio.sectionVisibility?.relatedPortfolios !== false &&
         (data.portfolio.sectionVisibility === undefined ||
           successStories?.length) && (
-          <div className="container mx-auto border-t border-gray-400 py-4">
-            <div>
+          <div className="container ">
+            <div className="mx-auto border-t border-black/20">
               <SuccessStoriesPortfolio
                 data={successStories ?? []}
                 colCount={3}
