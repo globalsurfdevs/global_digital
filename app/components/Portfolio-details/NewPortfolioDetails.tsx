@@ -90,6 +90,7 @@ const NewPortfolioDetails = ({
       {data.portfolio.sectionVisibility?.previewImages !== false && (
         <ResultDetails data={newData} />
       )}
+
       {data.portfolio.sectionVisibility?.whatWeDelivered !== false && (
         <WhatWeDelivered
           title={
@@ -102,9 +103,9 @@ const NewPortfolioDetails = ({
           colcount={3}
         />
       )}
-      {!hidePrimaryCta &&
+      {/* {!hidePrimaryCta &&
         data.portfolio.sectionVisibility?.primaryCta !== false &&
-        hasConfiguredPrimaryCta && <CtaDetailsone data={newData} />}
+        hasConfiguredPrimaryCta && <CtaDetailsone data={newData} />} */}
       {data.portfolio.sectionVisibility?.relatedPortfolios !== false &&
         (data.portfolio.sectionVisibility === undefined ||
           successStories?.length) && (
