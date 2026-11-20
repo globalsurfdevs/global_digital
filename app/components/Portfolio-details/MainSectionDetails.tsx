@@ -18,6 +18,9 @@ const MainSectionDetails = ({
   const channelsUsed = Array.isArray(data.portfolio.channelsUsed)
     ? data.portfolio.channelsUsed
     : [];
+  const visibleCategories = (data.portfolio.categories ?? []).filter(
+    (category) => category.isHidden !== true,
+  );
 
   return (
     <section>
@@ -68,8 +71,8 @@ const MainSectionDetails = ({
                 </div>
               )}
             </div> */}
-            <div className="mb-5 items-end justify-between border-b border-black/20 pb-5 md:flex lg:mb-[50px] lg:pb-[60px]">
-              <div className="xxl:max-w-[120ch]">
+            <div className="mb-5 flex w-full flex-col items-start justify-between border-b border-black/20 pb-5 md:flex-row md:items-end lg:mb-[60px] lg:pb-[60px]">
+              <div className="w-full xxl:max-w-[120ch] md:flex-1">
                 <h1 className="text-[32px] max-lg:leading-[1.2] md:text-[50px] xl:leading-lh1p22 2xl:text-font80">
                   {data.portfolio.bannerTitle == "null" ||
                   data.portfolio.bannerTitle == "undefined"
@@ -79,7 +82,7 @@ const MainSectionDetails = ({
               </div>
 
               {data.portfolio.logo && (
-                <div className="mr-auto mt-3 flex h-[30px] w-[150px] shrink-0 items-end justify-start md:mr-0 md:mt-0 md:h-[110px] md:w-[180px] md:justify-end lg:h-[40px] lg:w-[180px]">
+                <div className="mt-6 flex h-[30px] w-[150px] shrink-0 self-start items-end justify-start md:ml-auto md:mt-0 md:self-auto md:h-[110px] md:w-[180px] md:justify-end lg:h-[40px] lg:w-[180px]">
                   <Image
                     src={data.portfolio.logo}
                     alt={
@@ -88,7 +91,7 @@ const MainSectionDetails = ({
                     }
                     width={180}
                     height={40}
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain object-left md:object-right"
                   />
                 </div>
               )}
@@ -118,24 +121,26 @@ const MainSectionDetails = ({
                   <p className="text-30 font-normal leading-lh1p33">2025</p>
                 </div> */}
               </div>
-              <div>
+              {visibleCategories.length > 0 && (
                 <div>
-                  <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
-                    Services
-                  </p>
-                  <div className="flex max-w-md flex-wrap gap-2">
-                    {(data.portfolio.categories || []).map((item, index) => (
-                      <Link
-                        key={item.link || `${item.name}-${index}`}
-                        href={item.link || "#"}
-                        className="btn-outline-primary-text-black"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                  <div>
+                    <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
+                      Services
+                    </p>
+                    <div className="flex max-w-md flex-wrap gap-2">
+                      {visibleCategories.map((item, index) => (
+                        <Link
+                          key={item.link || `${item.name}-${index}`}
+                          href={item.link || "#"}
+                          className="btn-outline-primary-text-black"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
               {channelsUsed.length ? (
                 <div>
                   <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">

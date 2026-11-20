@@ -33,7 +33,7 @@ export type Portfolio = {
   challenge: string;
   strategyApproach: string;
   socialMediaImages: string[];
-  categories: { name: string; link: string }[];
+  categories: { name: string; link: string; isHidden?: boolean }[];
   tag: string;
   description: string;
   logo: string;

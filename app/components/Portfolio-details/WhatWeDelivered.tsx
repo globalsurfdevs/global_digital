@@ -37,9 +37,9 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
 
   return (
     <div className="">
-      <div className="container border-t border-black/20 ">
+      <div className="container  ">
         {/* <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]"> */}
-        <div className="py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px]">
+        <div className="border-t border-black/20 py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[150px]">
           <div className={`pd-cus flex flex-col `}>
             <div className="text-4xl">
               <motion.div
@@ -92,16 +92,14 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
               }}
             >
               <div
-                className={`grid grid-cols-1 justify-between gap-6 md:grid-cols-2 ${gridColumnsClass}`}
+                className={`grid grid-cols-1 justify-between gap-6 md:grid-cols-2  ${gridColumnsClass}`}
               >
                 {data.map((framework) => (
                   <div
                     key={framework._id}
-                    className="group relative  flex flex-row  gap-3 overflow-hidden md:flex-col md:gap-0"
+                    className="group relative flex flex-row items-start gap-3 overflow-hidden md:flex-col md:gap-0"
                   >
-                    {/* Animated Red Border */}
-
-                    <div className="mb-3 flex h-[36px] w-[36px] items-center justify-center bg-primary p-2 transition-colors duration-500 md:h-[50px] md:w-[50px] lg:mb-[30px]">
+                    <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center bg-primary p-2 md:mb-3 md:h-[50px] md:w-[50px] lg:mb-[30px]">
                       {framework.icn && (
                         <Image
                           src={framework.icn}
@@ -113,18 +111,17 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                       )}
                     </div>
 
-                    <div className="relative w-full text-2xl lg:max-w-[85%]">
+                    <div className="relative w-full self-start text-2xl lg:max-w-[85%]">
                       <h3
-                        className="xl:text-30  w-full text-[20px] text-black lg:text-[26px] "
+                        className="xl:text-30 m-0 w-full self-start text-[20px] leading-[1.3] text-black lg:text-[26px]"
                         dangerouslySetInnerHTML={{ __html: framework.title }}
-                      ></h3>
+                      />
+
                       {framework.urllink && (
                         <Link
                           href={framework.urllink}
                           className="absolute top-0 h-full w-full"
-                        >
-                          {" "}
-                        </Link>
+                        />
                       )}
                     </div>
                   </div>

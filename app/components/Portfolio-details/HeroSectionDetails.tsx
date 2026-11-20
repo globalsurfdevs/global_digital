@@ -20,8 +20,8 @@ const HeroSectionDetails = ({
   return (
     <div>
       <div className="">
-        <div className="      py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[140px] ">
-          <div className="container  flex w-full flex-col gap-5   lg:p-0">
+        <div className="py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[150px] ">
+          <div className="container mx-auto flex w-full flex-col gap-5   lg:p-0">
             <motion.div
               initial="hidden"
               whileInView="visible"
