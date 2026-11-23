@@ -374,14 +374,14 @@ const PortfolioList = ({
               {/* Left: Tab Filters */}
               <div
                 ref={tabsRef}
-                className="filter-tabs flex min-w-0 cursor-grab gap-[20px] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="filter-tabs flex min-w-0 cursor-grab gap-[10px] md:gap-3 lg:gap-[20px] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
                 <button
                   onClick={(e) => {
                     if ((tabsRef.current as any)?._hasDragged) return;
                     handleFiltering("all", "#");
                   }}
-                  className={`whitespace-nowrap rounded-[57px] px-[20px] py-[11.5px] text-[16px] leading-[1.5] transition-colors ${
+                  className={`whitespace-nowrap rounded-[57px] px-[14px] lg:px-[20px] py-2 lg:py-[11.5px] text-[16px] leading-[1.5] transition-colors ${
                     filter === "all"
                       ? "bg-[#1A1A1A] text-white"
                       : "bg-[#F2F2F2] text-[#77787B]"
@@ -394,7 +394,7 @@ const PortfolioList = ({
                   <button
                     key={index}
                     onClick={() => handleFiltering(item.name, item.link)}
-                    className={`whitespace-nowrap rounded-[57px] px-[20px] py-[11.5px] text-[16px] leading-[1.5] transition-colors ${
+                    className={`whitespace-nowrap rounded-[57px] px-[14px] lg:px-[20px] py-2 lg:py-[11.5px] text-[16px] leading-[1.5] transition-colors ${
                       filter === item.name
                         ? "bg-[#1A1A1A] text-white"
                         : "bg-[#F2F2F2] text-[#77787B]"
