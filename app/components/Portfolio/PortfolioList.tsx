@@ -144,6 +144,9 @@ const PortfolioList = ({
   // }, [data]);
 
   const [filter, setFilter] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 6;
+  const pageCount = Math.ceil(portfolios.length / pageSize);
 
   // useEffect(() => {
   //   if (originalPortfolio.length === 0 && portfolios.length > 0) {
@@ -249,6 +252,7 @@ const PortfolioList = ({
     }
 
     setPortfolios(filtered);
+    setCurrentPage(1);
   };
 
   const handleFiltering = (filterValue: string, link: string) => {
@@ -476,7 +480,7 @@ const PortfolioList = ({
                 portfolios.map((item, index) => (
                   <motion.div
                     key={index}
-                    className="w-full"
+                    className={`w-full ${isV2 && Math.floor(index / pageSize) + 1 !== currentPage ? "hidden" : ""}`}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.1 }}
@@ -561,6 +565,51 @@ const PortfolioList = ({
                   </motion.div>
                 ))}
             </div>
+            {isV2 && pageCount > 1 && (
+              <nav
+                aria-label="Portfolio pages"
+                className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray1/20 pt-6 sm:flex-row"
+              >
+                <p className="text-sm text-gray1" aria-live="polite">
+                  Showing {(currentPage - 1) * pageSize + 1}–
+                  {Math.min(currentPage * pageSize, portfolios.length)} of {portfolios.length} portfolios
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                    disabled={currentPage === 1}
+                    className="rounded-full border border-gray1/30 px-4 py-2 text-sm transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Previous
+                  </button>
+                  {Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => (
+                    <button
+                      key={page}
+                      type="button"
+                      onClick={() => setCurrentPage(page)}
+                      aria-current={currentPage === page ? "page" : undefined}
+                      aria-label={`Go to portfolio page ${page}`}
+                      className={`h-10 min-w-10 rounded-full border px-3 text-sm transition-colors ${
+                        currentPage === page
+                          ? "border-primary bg-primary text-white"
+                          : "border-gray1/30 hover:border-primary hover:text-primary"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage((page) => Math.min(pageCount, page + 1))}
+                    disabled={currentPage === pageCount}
+                    className="rounded-full border border-gray1/30 px-4 py-2 text-sm transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Next
+                  </button>
+                </div>
+              </nav>
+            )}
           </div>
         </div>
       </div>

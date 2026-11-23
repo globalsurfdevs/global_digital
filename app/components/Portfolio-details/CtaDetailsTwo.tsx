@@ -68,7 +68,7 @@ const CtaDetailsTwo = ({
                   href={data.portfolio.detailsCtaTwo.ctaLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-fit max-w-full items-center justify-center rounded-full border border-primary px-4 py-2 text-[16px] font-medium uppercase leading-[1.4] transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:text-[30px]"
+                  className="inline-flex w-fit max-w-full items-center justify-center rounded-full border border-primary px-4 py-2 text-[16px] font-medium uppercase leading-[1.66] transition-all duration-300 ease-in hover:bg-primary hover:text-white hover:shadow-lg sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:py-[20px] lg:text-[30px]"
                 >
                   {data.portfolio.detailsCtaTwo.ctaText ||
                     data.portfolio.detailsCtaTwoButtonText ||

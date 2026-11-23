@@ -7,7 +7,7 @@ import { getCategories } from "@/app/lib/services/categories.service";
 export const metadata: Metadata = {
   title: "Portfolio Preview | GS Digital Dubai",
   description: "Preview the latest GS Digital portfolio pages.",
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 
 export default async function PortfolioV2ListingPage() {

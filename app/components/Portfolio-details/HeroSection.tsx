@@ -134,7 +134,7 @@ const HeroSection = ({
                       }, // Slide up and fade in
                     }}
                   >
-                    <div className="py-10 lg:py-[75px]">
+                    <div className="py-10 lg:py-[60px]">
                       <hr />
                     </div>
                     <div className="flex flex-col gap-5  lg:grid lg:grid-cols-3 lg:gap-5 lg:gap-x-[50px] ">
@@ -146,7 +146,7 @@ const HeroSection = ({
                           <p className="title-65 font-400 text-black duration-500 group-hover:-translate-y-1">
                             {item.number}
                           </p>
-                          <p className="text-77787B pt-[10px] text-[25px] duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
+                          <p className="text-77787B pt-[10px] text-[25px] duration-500 group-hover:-translate-y-2 leading-[1.3] lg:pt-[30px]">
                             {item.text}
                           </p>
                         </div>
