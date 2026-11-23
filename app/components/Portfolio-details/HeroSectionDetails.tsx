@@ -124,7 +124,7 @@ const HeroSectionDetails = ({
                           <p className="title-65 font-400 text-primary duration-500 group-hover:-translate-y-1">
                             {item.number}
                           </p>
-                          <p className="text-77787B pt-[10px] text-[25px] duration-500 group-hover:-translate-y-2 lg:pt-[30px]">
+                          <p className="text-77787B pt-[10px] text-[25px] duration-500 group-hover:-translate-y-2 leading-[1.3] lg:pt-[30px]">
                             {item.text}
                           </p>
                         </div>
