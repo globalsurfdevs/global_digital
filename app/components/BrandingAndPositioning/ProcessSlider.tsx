@@ -311,84 +311,89 @@ const ProcessSlider = ({
 
       {/* No aria-hidden here: the real <h3>s live inside the slider.
           Only the clone shells are aria-hidden (set per slide below). */}
-      <div
-        className="overflow-hidden"
-        style={{ marginLeft: `${containerLeft}px` }}
-      >
-        <Swiper
-          key={ready ? "loop" : "static"}
-          modules={[Autoplay, Pagination]}
-          spaceBetween={32}
-          slidesPerView={1.15}
-          loop={ready}
-          speed={1000}
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          breakpoints={{
-            640: { slidesPerView: 1.8, spaceBetween: 32 },
-            1024: { slidesPerView: 2.1, spaceBetween: 40 },
-            1280: { slidesPerView: 3.4, spaceBetween: 48 },
-          }}
-          pagination={{
-            el: ".process-pagination",
-            clickable: true,
-          }}
-          className="!overflow-visible [&_.swiper-slide]:!h-auto [&_.swiper-wrapper]:!items-stretch"
+      {/* <div className="container"> */}
+        <div
+          className=" overflow-hidden"
+          // className="process-slider-bleed overflow-hidden"
+          style={{ marginLeft: `${containerLeft}px` }}
         >
-          {slides.map(({ key, title: stepTitle, description, num, clone }) => (
-            <SwiperSlide key={key}>
-              {() => {
-                const shell = clone;
+          <Swiper
+            key={ready ? "loop" : "static"}
+            modules={[Autoplay, Pagination]}
+            spaceBetween={32}
+            slidesPerView={1.15}
+            loop={ready}
+            speed={1000}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              640: { slidesPerView: 1.8, spaceBetween: 32 },
+              1024: { slidesPerView: 2.1, spaceBetween: 40 },
+              1280: { slidesPerView: 3.4, spaceBetween: 48 },
+            }}
+            pagination={{
+              el: ".process-pagination",
+              clickable: true,
+            }}
+            className="!overflow-visible [&_.swiper-slide]:!h-auto [&_.swiper-wrapper]:!items-stretch"
+          >
+            {slides.map(
+              ({ key, title: stepTitle, description, num, clone }) => (
+                <SwiperSlide key={key}>
+                  {() => {
+                    const shell = clone;
 
-                return (
-                  <div
-                    className="h-full border-l border-black/20 pb-6 pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]"
-                    aria-hidden={shell || undefined}
-                  >
-                    <div className="flex gap-3 xl:gap-[20px]">
-                      <div className="mb-6 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
-                        <span
-                          className="text-28 font-normal text-primary"
-                          {...(shell ? { "data-text": num } : {})}
-                        >
-                          {shell ? null : num}
-                        </span>
+                    return (
+                      <div
+                        className="h-full border-l border-black/20 pb-6 pl-6 md:pb-8 md:pl-8 xl:pb-10 xl:pl-10 xxl:pb-[70px]"
+                        aria-hidden={shell || undefined}
+                      >
+                        <div className="flex gap-3 xl:gap-[20px]">
+                          <div className="mb-6 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[7px] border border-[#E63E311F] bg-[#E63E310D] xl:h-20 xl:w-20">
+                            <span
+                              className="text-28 font-normal text-primary"
+                              {...(shell ? { "data-text": num } : {})}
+                            >
+                              {shell ? null : num}
+                            </span>
+                          </div>
+
+                          {shell ? (
+                            <p
+                              className={`clone-text text-28 mb-4 flex max-w-[14ch] items-center leading-[1.2142] tracking-[-0.025em] ${isDark ? "text-white" : ""}`}
+                              data-text={stepTitle}
+                            />
+                          ) : (
+                            <h3
+                              className={`text-28 mb-4 flex max-w-[14ch] items-center leading-[1.2142] tracking-[-0.025em] ${isDark ? "text-white" : ""}`}
+                            >
+                              {stepTitle}
+                            </h3>
+                          )}
+                        </div>
+
+                        {shell ? (
+                          <p
+                            className="clone-text text-14 md:text-16 xxl:text-20 font-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]"
+                            data-text={description}
+                          />
+                        ) : (
+                          <p className="text-14 md:text-16 xxl:text-20 font-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
+                            {description}
+                          </p>
+                        )}
                       </div>
-
-                      {shell ? (
-                        <p
-                          className={`clone-text text-28 mb-4 flex max-w-[14ch] items-center leading-[1.2142] tracking-[-0.025em] ${isDark ? "text-white" : ""}`}
-                          data-text={stepTitle}
-                        />
-                      ) : (
-                        <h3
-                          className={`text-28 mb-4 flex max-w-[14ch] items-center leading-[1.2142] tracking-[-0.025em] ${isDark ? "text-white" : ""}`}
-                        >
-                          {stepTitle}
-                        </h3>
-                      )}
-                    </div>
-
-                    {shell ? (
-                      <p
-                        className="clone-text text-14 md:text-16 xxl:text-20 font-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]"
-                        data-text={description}
-                      />
-                    ) : (
-                      <p className="text-14 md:text-16 xxl:text-20 font-lexend leading-[1.444444444444444] text-[#77787B] xl:text-[length:var(--text-18-sm)]">
-                        {description}
-                      </p>
-                    )}
-                  </div>
-                );
-              }}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+                    );
+                  }}
+                </SwiperSlide>
+              ),
+            )}
+          </Swiper>
+        </div>
+      {/* </div> */}
 
       {/* Pagination */}
       <div className="container">

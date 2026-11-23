@@ -25,7 +25,7 @@ const MainSectionDetails = ({
   return (
     <section>
       <div className="relative">
-        <div className="z-1 relative h-[350px] w-full lg:h-[450px] xl:h-screen">
+        <div className="z-1 relative aspect-[4/3] w-full xl:aspect-auto xl:h-screen">
           {data.portfolio.bannerImage && (
             <>
               <Image
@@ -37,8 +37,9 @@ const MainSectionDetails = ({
                 }
                 className="absolute h-full w-full object-cover object-center"
                 fill
+                priority
               />
-              <div className="bg-bl-gradient absolute top-0 h-full w-full "></div>
+              <div className="bg-bl-gradient absolute top-0 h-full w-full"></div>
             </>
           )}
         </div>
@@ -71,8 +72,8 @@ const MainSectionDetails = ({
                 </div>
               )}
             </div> */}
-            <div className="mb-5 flex w-full flex-col items-start justify-between border-b border-black/20 pb-5 md:flex-row md:items-end lg:mb-[60px] lg:pb-[60px]">
-              <div className="w-full xxl:max-w-[120ch] md:flex-1">
+            <div className="mb-5 flex w-full flex-col items-start justify-between border-b border-black/20 pb-5 lg:flex-row md:items-end lg:mb-[60px] lg:pb-[60px]">
+              <div className="w-full md:flex-1 xxl:max-w-[120ch]">
                 <h1 className="text-[32px] max-lg:leading-[1.2] md:text-[50px] xl:leading-lh1p22 2xl:text-font80">
                   {data.portfolio.bannerTitle == "null" ||
                   data.portfolio.bannerTitle == "undefined"
@@ -82,7 +83,7 @@ const MainSectionDetails = ({
               </div>
 
               {data.portfolio.logo && (
-                <div className="mt-6 flex h-[30px] w-[150px] shrink-0 self-start items-end justify-start md:ml-auto md:mt-0 md:self-auto md:h-[110px] md:w-[180px] md:justify-end lg:h-[40px] lg:w-[180px]">
+                <div className="mt-6 flex h-[30px] w-[150px] shrink-0 items-end justify-start self-start md:ml-auto md:mt-0 md:h-[110px] md:w-[180px] md:justify-end md:self-auto lg:h-[40px] lg:w-[180px]">
                   <Image
                     src={data.portfolio.logo}
                     alt={

@@ -1780,3 +1780,7 @@ input[type="number"] {
     margin: 0 19px 0 0;
   }
 }
+
+.process-slider-bleed {
+  width: calc(50vw + 50%);
+}

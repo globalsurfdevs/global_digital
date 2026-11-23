@@ -36,7 +36,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
   const gridColumnsClass = `xl:grid-cols-${colcount} `;
 
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <div className="container  ">
         {/* <div className="container mx-auto py-4 !pb-[40px] lg:!pb-[100px]"> */}
         <div className="border-t border-black/20 py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[150px]">
@@ -92,7 +92,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
               }}
             >
               <div
-                className={`grid grid-cols-1 justify-between gap-6 md:grid-cols-2  ${gridColumnsClass}`}
+                className={`grid grid-cols-1 justify-between gap-6 sm:grid-cols-2  ${gridColumnsClass}`}
               >
                 {data.map((framework) => (
                   <div
@@ -113,7 +113,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
 
                     <div className="relative w-full self-start text-2xl lg:max-w-[85%]">
                       <h3
-                        className="xl:text-30 m-0 w-full self-start text-[20px] leading-[1.3] text-black lg:text-[26px]"
+                        className="xl:text-30 m-0 w-full self-start text-[16px] md:text-[20px] leading-[1.3] text-black lg:text-[26px]"
                         dangerouslySetInnerHTML={{ __html: framework.title }}
                       />
 
