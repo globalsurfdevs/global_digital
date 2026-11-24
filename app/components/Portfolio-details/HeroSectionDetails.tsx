@@ -6,6 +6,7 @@ import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
 import Link from "next/link";
+import { normalizeWebsiteLink } from "@/app/lib/normalizeWebsiteLink";
 
 const HeroSectionDetails = ({
   data,
@@ -16,7 +17,7 @@ const HeroSectionDetails = ({
   } | null;
 }) => {
   if (!data) return null;
-
+  const websiteLink = normalizeWebsiteLink(data.portfolio.websiteLink);
   return (
     <div>
       <div className="">
@@ -43,9 +44,9 @@ const HeroSectionDetails = ({
                 </div>
                 <div>
                   <div>
-                    {data.portfolio.websiteLink ? (
+                    {websiteLink ? (
                       <Link
-                        href={data.portfolio.websiteLink}
+                        href={websiteLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="z-2 z-1 group relative mt-8"

@@ -11,6 +11,7 @@ import { Portfolio } from "@/app/types/Portfolio";
 import parse from "html-react-parser";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
 import Link from "next/link";
+import { normalizeWebsiteLink } from "@/app/lib/normalizeWebsiteLink";
 
 const HeroSection = ({
   data,
@@ -22,6 +23,7 @@ const HeroSection = ({
 }) => {
   if (!data) return null;
 
+  const websiteLink = normalizeWebsiteLink(data.portfolio.websiteLink);
   return (
     <div>
       <div className="relative">
@@ -65,7 +67,7 @@ const HeroSection = ({
                   </div>
 
                   <Link
-                    href={data.portfolio.websiteLink}
+                    href={websiteLink}
                     className="z-2 z-1 group relative  mt-8 flex w-fit items-center gap-3 border border-l-0 border-r-0 border-t-0 border-transparent p-0
                                    pb-3 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:bg-black before:transition-all before:duration-300 before:ease-in-out
                                         after:absolute after:bottom-0 after:right-0 after:h-[1px] after:w-full after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:border-b-white hover:after:w-0 lg:mt-10"
