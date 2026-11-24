@@ -28,17 +28,25 @@ const MainSectionDetails = ({
         <div className="z-1 relative aspect-[4/3] w-full xl:aspect-auto xl:h-screen">
           {data.portfolio.bannerImage && (
             <>
-              <Image
-                src={data.portfolio.bannerImage}
-                alt={
-                  data.portfolio.newBannerAlt ||
-                  data.portfolio.bannerTitle ||
-                  "Portfolio banner"
-                }
-                className="absolute h-full w-full object-cover object-center"
-                fill
-                priority
-              />
+              <picture className="contents">
+                {data.portfolio.mobileBannerImage && (
+                  <source
+                    media="(max-width: 992px)"
+                    srcSet={data.portfolio.mobileBannerImage}
+                  />
+                )}
+                <Image
+                  src={data.portfolio.bannerImage}
+                  alt={
+                    data.portfolio.newBannerAlt ||
+                    data.portfolio.bannerTitle ||
+                    "Portfolio banner"
+                  }
+                  className="absolute h-full w-full object-cover object-center"
+                  fill
+                  priority
+                />
+              </picture>
               <div className="bg-bl-gradient absolute top-0 h-full w-full"></div>
             </>
           )}

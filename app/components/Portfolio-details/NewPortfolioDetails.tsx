@@ -58,6 +58,7 @@ const NewPortfolioDetails = ({
     portfolio: {
       ...data.portfolio,
       bannerImage: data.portfolio.newBannerImage || "/images/placeholder.png",
+      mobileBannerImage: data.portfolio.newBannerMobileImage || "",
       bannerTitle: data.portfolio.newBannerTitle || "",
       story: data.portfolio.oneLineBrandContext || "",
       detailsCtaOneTitle:

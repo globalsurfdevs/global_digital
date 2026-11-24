@@ -11,6 +11,8 @@ export type Portfolio = {
   channels: { channelName: string; channelLink: string }[];
   bannerImage: string;
   newBannerImage?: string;
+  newBannerMobileImage?: string;
+  mobileBannerImage?: string;
   newBannerTitle?: string;
   newBannerAlt?: string;
   logoAlt?: string;
