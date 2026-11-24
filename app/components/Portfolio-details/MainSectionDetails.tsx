@@ -44,6 +44,7 @@ const MainSectionDetails = ({
                   }
                   className="absolute h-full w-full object-cover object-center"
                   fill
+                  sizes="100vw"
                   priority
                 />
               </picture>
@@ -91,7 +92,7 @@ const MainSectionDetails = ({
               </div>
 
               {data.portfolio.logo && (
-                <div className="mt-6 flex h-[30px] w-[150px] shrink-0 items-end justify-start self-start md:ml-auto md:mt-0 md:h-[110px] md:w-[180px] md:justify-end md:self-auto lg:h-[40px] lg:w-[180px]">
+                <div className="mt-6 flex h-[40px] w-[150px] shrink-0 items-end justify-start self-start md:ml-auto md:mt-0 md:h-[110px] md:w-[180px] md:justify-end md:self-auto lg:max-h-[80px] lg:w-[180px]">
                   <Image
                     src={data.portfolio.logo}
                     alt={

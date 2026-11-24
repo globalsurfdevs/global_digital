@@ -50,7 +50,7 @@ export const SuccessStoriesPortfolio = ({
         }}
       >
         <div
-          className={`${data?.length >= 3 ? "grid lg:grid-cols-3" : "grid lg:grid-cols-2"} gap-[30px]`}
+          className={`${data?.length >= 3 ? "grid lg:grid-cols-3" : "grid lg:grid-cols-2"} items-stretch gap-[30px]`}
         >
           {data?.length > 0
             ? (colCount === 2 ? data.slice(0, 2) : data).map((item, index) => (
@@ -63,7 +63,7 @@ export const SuccessStoriesPortfolio = ({
                         ? `/portfolio/${formatLinkForPortfolio(item.slug || item.companyName)}`
                         : `/case-study/${formatLinkForCaseStudy(item.companyName)}`
                     }
-                    className="group relative flex flex-col"
+                    className="group relative flex h-full flex-col"
                   >
                   {(item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || item.portfolioType === "new" || item.section === "portfolio new") && (
                     <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">
@@ -144,7 +144,9 @@ export const SuccessStoriesPortfolio = ({
                     </div>
                   </div>
 
-                  <div className="mt-2 h-[2px] w-full bg-[#E6E6E6] transition-colors duration-300 group-hover:bg-primary lg:mt-5"></div>
+                  <div className="mt-auto pt-2 lg:pt-5">
+                    <div className="h-[2px] w-full bg-[#E6E6E6] transition-colors duration-300 group-hover:bg-primary"></div>
+                  </div>
                 </Link>
               ))
             : null}
