@@ -92,12 +92,12 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
               }}
             >
               <div
-                className={`grid grid-cols-1 justify-between gap-6 sm:grid-cols-2  ${gridColumnsClass}`}
+                className={`grid grid-cols-1 justify-between gap-6 sm:grid-cols-2  lg:gap-12 ${gridColumnsClass}`}
               >
                 {data.map((framework) => (
                   <div
                     key={framework._id}
-                    className="group relative flex flex-row items-start gap-3 overflow-hidden md:flex-col md:gap-0"
+                    className="group relative flex flex-row items-start gap-3 overflow-hidden sm:flex-col md:gap-0"
                   >
                     <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center bg-primary p-2 md:mb-3 md:h-[50px] md:w-[50px] lg:mb-[30px]">
                       {framework.icn && (
@@ -111,9 +111,9 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                       )}
                     </div>
 
-                    <div className="relative w-full self-start text-2xl lg:max-w-[85%]">
+                    <div className="relative w-full self-start text-2xl ">
                       <h3
-                        className="xl:text-30 m-0 w-full self-start text-[16px] md:text-[20px] leading-[1.3] text-black lg:text-[26px]"
+                        className="xl:text-30 m-0 w-full self-start text-[19px] md:text-[26px] leading-[1.3] text-black lg:text-[30px]"
                         dangerouslySetInnerHTML={{ __html: framework.title }}
                       />
 

@@ -145,8 +145,28 @@ const PortfolioList = ({
 
   const [filter, setFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 6;
+  const pageSize = 10;
   const pageCount = Math.ceil(portfolios.length / pageSize);
+  const firstVisiblePage = Math.min(
+    Math.max(currentPage - 1, 1),
+    Math.max(pageCount - 2, 1),
+  );
+  const visiblePages = Array.from(
+    { length: Math.min(pageCount, 3) },
+    (_, index) => firstVisiblePage + index,
+  );
+
+  const goToPage = (page: number) => {
+    if (page === currentPage) return;
+    setCurrentPage(page);
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  };
 
   // useEffect(() => {
   //   if (originalPortfolio.length === 0 && portfolios.length > 0) {
@@ -475,7 +495,7 @@ const PortfolioList = ({
             </motion.div>
 
             {/* Portfolio Items */}
-            <div className="flex flex-col items-center gap-8  lg:grid  lg:grid-cols-2 lg:gap-8 lg:gap-y-12 ">
+            <div className="flex flex-col items-center gap-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:gap-y-12">
               {portfolios.length > 0 &&
                 portfolios.map((item, index) => (
                   <motion.div
@@ -568,29 +588,29 @@ const PortfolioList = ({
             {isV2 && pageCount > 1 && (
               <nav
                 aria-label="Portfolio pages"
-                className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray1/20 pt-6 sm:flex-row"
+                className="mt-10 flex justify-center items-center gap-4 border-t border-gray1/20 pt-6 sm:flex-row"
               >
-                <p className="text-sm text-gray1" aria-live="polite">
-                  Showing {(currentPage - 1) * pageSize + 1}–
-                  {Math.min(currentPage * pageSize, portfolios.length)} of {portfolios.length} portfolios
-                </p>
+                
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                    onClick={() => goToPage(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
-                    className="rounded-full border border-gray1/30 px-4 py-2 text-sm transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
+                    aria-label="Previous portfolio page"
+                    className="flex h-10 w-10 items-center justify-center rounded-md border border-gray1/30 transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
                   >
-                    Previous
+                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">
+                      <path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </button>
-                  {Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => (
+                  {visiblePages.map((page) => (
                     <button
                       key={page}
                       type="button"
-                      onClick={() => setCurrentPage(page)}
+                      onClick={() => goToPage(page)}
                       aria-current={currentPage === page ? "page" : undefined}
                       aria-label={`Go to portfolio page ${page}`}
-                      className={`h-10 min-w-10 rounded-full border px-3 text-sm transition-colors ${
+                      className={`h-10 min-w-10 rounded-md border px-3 text-sm transition-colors ${
                         currentPage === page
                           ? "border-primary bg-primary text-white"
                           : "border-gray1/30 hover:border-primary hover:text-primary"
@@ -601,11 +621,14 @@ const PortfolioList = ({
                   ))}
                   <button
                     type="button"
-                    onClick={() => setCurrentPage((page) => Math.min(pageCount, page + 1))}
+                    onClick={() => goToPage(Math.min(pageCount, currentPage + 1))}
                     disabled={currentPage === pageCount}
-                    className="rounded-full border border-gray1/30 px-4 py-2 text-sm transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
+                    aria-label="Next portfolio page"
+                    className="flex h-10 w-10 items-center justify-center rounded-md border border-gray1/30 transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40"
                   >
-                    Next
+                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">
+                      <path d="m7.5 4.5 5.5 5.5-5.5 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </button>
                 </div>
               </nav>
