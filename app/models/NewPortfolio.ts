@@ -41,6 +41,7 @@ const NewPortfolioSchema = new Schema(
       websiteLink: String,
       banner: {
         image: String,
+        mobileImage: String,
         imageAlt: String,
         title: String,
       },

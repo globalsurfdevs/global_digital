@@ -31,6 +31,7 @@ export type NewPortfolio = {
     websiteLink?: string;
     banner?: {
       image?: string;
+      mobileImage?: string;
       imageAlt?: string;
       title?: string;
     };

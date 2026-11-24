@@ -71,6 +71,7 @@ function toRendererPortfolio(record: Record<string, any>): Portfolio {
     country: record.company?.country || "",
     slug: record.slug || "",
     newBannerImage: record.brand?.banner?.image || "",
+    newBannerMobileImage: record.brand?.banner?.mobileImage || "",
     newBannerTitle: record.brand?.banner?.title || "",
     newBannerAlt: record.brand?.banner?.imageAlt || "",
     oneLineBrandContext: record.brand?.oneLineContext || "",
