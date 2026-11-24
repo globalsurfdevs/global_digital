@@ -45,6 +45,7 @@ const MainSectionDetails = ({
                   className="absolute h-full w-full object-cover object-center"
                   fill
                   sizes="100vw"
+                  quality={90}
                   priority
                 />
               </picture>
