@@ -35,7 +35,7 @@ const MainSectionDetails = ({
                     srcSet={data.portfolio.mobileBannerImage}
                   />
                 )}
-                <img
+                <Image
                   src={data.portfolio.bannerImage}
                   alt={
                     data.portfolio.newBannerAlt ||
@@ -43,10 +43,10 @@ const MainSectionDetails = ({
                     "Portfolio banner"
                   }
                   className="absolute h-full w-full object-cover object-center"
-                  // fill
+                  fill
                   sizes="100vw"
-                  // quality={90}
-                  // priority
+                  quality={90}
+                  priority
                 />
               </picture>
               <div className="bg-bl-gradient absolute top-0 h-full w-full"></div>
