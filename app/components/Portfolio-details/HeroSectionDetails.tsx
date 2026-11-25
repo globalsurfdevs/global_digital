@@ -20,9 +20,9 @@ const HeroSectionDetails = ({
   const websiteLink = normalizeWebsiteLink(data.portfolio.websiteLink);
   return (
     <div>
-      <div className="">
+      <div className="container mx-auto">
         <div className="py-10  lg:py-[80px] xl:py-[100px]  2xl:py-[150px] ">
-          <div className="container mx-auto flex w-full flex-col gap-5   lg:p-0">
+          <div className=" flex w-full flex-col gap-5   lg:p-0">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -36,11 +36,11 @@ const HeroSectionDetails = ({
                 }, // Slide up and fade in
               }}
             >
-              <div className="grid grid-cols-1 justify-between gap-5 lg:grid-cols-[auto_270px] lg:items-center">
-                <div>
-                  <div className="text-30 fnt-lexend lastptag max-w-[60ch] text-black">
+              <div className="grid grid-cols-1 justify-between gap-5 lg:grid-cols-[auto_270px] lg:items-end">
+                <div >
+                  <p className="text-30 fnt-lexend lastptag  text-black leading-[1.5] max-w-[63ch]">
                     {data.portfolio.story ? parse(data.portfolio.story) : null}
-                  </div>
+                  </p>
                 </div>
                 <div>
                   <div>
@@ -51,7 +51,7 @@ const HeroSectionDetails = ({
                         rel="noopener noreferrer"
                         className="z-2 z-1 group relative mt-8"
                       >
-                      <button className="btn-outline-primary-text-black flex items-center gap-3 xl:rounded-[100px] xl:px-[43px] xl:py-[22px]">
+                      <button className="btn-outline-primary-text-black flex items-center gap-[18px] xl:rounded-[100px] xl:px-[25px] xl:py-[22px] fnt-lexend !font-medium text-[16px]  shrink-0">
                         Visit live website
                         <svg
                           width="20"
@@ -99,7 +99,7 @@ const HeroSectionDetails = ({
           <div>
             {data.portfolioHighlights.length !== 0 ? (
               <div>
-                <div className="container mx-auto">
+                <div>
                   <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -113,10 +113,10 @@ const HeroSectionDetails = ({
                       }, // Slide up and fade in
                     }}
                   >
-                    <div className="py-10 lg:py-[75px]">
+                    <div className="py-10 lg:py-[60px]">
                       <hr />
                     </div>
-                    <div className="flex flex-col gap-5  lg:grid lg:grid-cols-3 lg:gap-5 lg:gap-x-[50px] ">
+                    <div className="flex flex-col gap-5  lg:grid lg:grid-cols-3 lg:gap-5 lg:gap-x-[40px] ">
                       {data.portfolioHighlights.map((item) => (
                         <div
                           className="group border-b border-black/10   pb-3 last:border-b-0 last:border-r-0 lg:border-b-0 lg:border-r lg:pb-0 "

@@ -131,7 +131,8 @@ const ResultDetails = ({
           z-10 flex h-[50px] 
           w-[50px] -translate-x-1/2 
           -translate-y-1/2 items-center justify-center rounded-full 
-          bg-primary text-[13px] 
+          bg-primary text-[14px] lg:text-[16px] 
+          leading-[1]
           text-white 
           shadow-lg transition-all duration-500 
           ease-out

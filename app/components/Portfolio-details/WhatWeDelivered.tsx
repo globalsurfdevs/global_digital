@@ -72,7 +72,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                 {!description && (
                   <>
                     <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                      <h2 className="title-65 pb-8 lg:pb-[60px]">{title}</h2>
+                      <h2 className="title-65 pb-8 lg:pb-[40px] leading-[1.507692]">{title}</h2>
                     </div>
                   </>
                 )}
@@ -92,7 +92,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
               }}
             >
               <div
-                className={`grid grid-cols-1 justify-between gap-6 sm:grid-cols-2  lg:gap-12 ${gridColumnsClass}`}
+                className={`grid grid-cols-1 justify-between gap-6 sm:grid-cols-2  lg:gap-[60px] ${gridColumnsClass}`}
               >
                 {data.map((framework) => (
                   <div

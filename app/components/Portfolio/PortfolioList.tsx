@@ -97,51 +97,6 @@ const PortfolioList = ({
     setIndustryOpen((prev) => !prev);
   };
 
-  // const CACHE_DURATION = 10 * 60 * 1000;
-  // useEffect(() => {
-  //   const cachedData = localStorage.getItem('portfolios')
-  //   const fetchPortfolios = async () => {
-  //     try {
-  //       const response = await fetch(`/api/portfolio`);
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         console.log(data.portfolio);
-  //         setPortfolios(data.portfolio);
-  //         localStorage.setItem(
-  //           'portfolios',
-  //           JSON.stringify({
-  //             timestamp: Date.now(),
-  //             data: data.portfolio,
-  //           })
-  //         )
-  //       } else {
-  //         console.error("Failed to fetch portfolio data");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching portfolio data:", error);
-  //     }
-  //   };
-
-  //   if (cachedData) {
-  //     const { timestamp, data } = JSON.parse(cachedData);
-  //     if (Date.now() - timestamp < CACHE_DURATION) {
-  //       setPortfolios(data)
-  //     } else {
-  //       localStorage.removeItem('portfolios')
-  //       fetchPortfolios();
-  //     }
-  //   } else {
-  //     localStorage.removeItem('portfolios')
-  //     fetchPortfolios();
-  //   }
-
-  // }, []);
-
-  // useEffect(() => {
-  //   if (data && data.length > 0) {
-  //     setPortfolios(data);
-  //   }
-  // }, [data]);
 
   const [filter, setFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -520,7 +475,7 @@ const PortfolioList = ({
                             isV2 ||
                             item.portfolioSource === "new" ||
                             item.section === "portfolio new"
-                              ? item.bannerImage || item.coverImage || "/images/placeholder.png"
+                              ? item.newBannerMobileImage || item.bannerImage || item.coverImage || "/images/placeholder.png"
                               : item.bannerImage || item.coverImage
                           }
                           alt="image"

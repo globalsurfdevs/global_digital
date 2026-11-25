@@ -65,14 +65,22 @@ export const SuccessStoriesPortfolio = ({
                     }
                     className="group relative flex h-full flex-col"
                   >
-                  {(item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || item.portfolioType === "new" || item.section === "portfolio new") && (
-                    <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[580px]">
+                  {(item.newBannerImage || item.newBannerMobileImage || item.mobileBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || item.portfolioType === "new" || item.section === "portfolio new") && (
+                    <div className="card-img relative mb-4 h-[250px] lg:mb-[31px] lg:h-[300px] xl:h-[450px] 2xl:h-[529px]">
                       <Image
-                        src={item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || (item.portfolioType === "new" || item.section === "portfolio new" ? "/images/placeholder.png" : "")}
+                        src={item.newBannerImage || item.bannerImage || item.coverImage || item.previewImage?.images?.[0] || item.newBannerMobileImage || item.mobileBannerImage || (item.portfolioType === "new" || item.section === "portfolio new" ? "/images/placeholder.png" : "")}
                         alt={item.companyName || "Success story"}
-                        className="absolute h-full w-full object-cover"
+                        className={`absolute h-full w-full object-cover ${data.length >= 3 && (item.newBannerMobileImage || item.mobileBannerImage) ? "lg:hidden" : ""}`}
                         fill
                       />
+                      {data.length >= 3 && (item.newBannerMobileImage || item.mobileBannerImage) && (
+                        <Image
+                          src={item.newBannerMobileImage || item.mobileBannerImage || ""}
+                          alt={item.companyName || "Success story"}
+                          className="absolute hidden h-full w-full object-cover lg:block"
+                          fill
+                        />
+                      )}
                       <div className="absolute left-3 top-3 cursor-pointer rounded-3xl bg-gray1 px-4 py-2 duration-200 ease-in-out group-hover:z-[1] group-hover:-translate-x-[-3px] group-hover:bg-primary group-hover:shadow-lg lg:left-7 lg:top-7 ">
                         <div className="uppercase text-white">
                           <p className="text-font14 text-white">
@@ -93,11 +101,11 @@ export const SuccessStoriesPortfolio = ({
 
                   <div className="flex items-start justify-between">
                     <div className="pl-2">
-                      <h4 className="text-font30">{item.companyName}</h4>
+                      <h4 className="text-font30 !leading-[1.33333]">{item.companyName}</h4>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="mt-1 flex flex-wrap gap-2">
                         {item.categories && item.categories.length > 0 ? (
-                          <div className="flex flex-wrap gap-2 gap-y-0">
+                          <div className="flex flex-wrap gap-2 gap-y-1">
                             {item.categories
                               .map((category) =>
                                 typeof category === "string" ? category : category?.name,
@@ -106,7 +114,7 @@ export const SuccessStoriesPortfolio = ({
                               .map((name, i, categories) => (
                                 <p
                                   key={`${name}-${i}`}
-                                  className="text-font16 text-gray1 transition duration-300 ease-in-out group-hover:text-primary"
+                                  className="text-font16 leading-[1] text-gray1 transition duration-300 ease-in-out group-hover:text-primary"
                                 >
                                   {name}
                                   {i !== categories.length - 1 && ","}
@@ -144,7 +152,7 @@ export const SuccessStoriesPortfolio = ({
                     </div>
                   </div>
 
-                  <div className="mt-auto pt-2 lg:pt-5">
+                  <div className="mt-auto pt-2 lg:pt-[30px]">
                     <div className="h-[2px] w-full bg-[#E6E6E6] transition-colors duration-300 group-hover:bg-primary"></div>
                   </div>
                 </Link>
