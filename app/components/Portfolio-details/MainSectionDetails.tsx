@@ -35,7 +35,7 @@ const MainSectionDetails = ({
                     srcSet={data.portfolio.mobileBannerImage}
                   />
                 )}
-                <Image
+                <img
                   src={data.portfolio.bannerImage}
                   alt={
                     data.portfolio.newBannerAlt ||
@@ -43,10 +43,10 @@ const MainSectionDetails = ({
                     "Portfolio banner"
                   }
                   className="absolute h-full w-full object-cover object-center"
-                  fill
+                  // fill
                   sizes="100vw"
-                  quality={90}
-                  priority
+                  // quality={90}
+                  // priority
                 />
               </picture>
               <div className="bg-bl-gradient absolute top-0 h-full w-full"></div>
@@ -82,8 +82,8 @@ const MainSectionDetails = ({
                 </div>
               )}
             </div> */}
-            <div className="mb-5 flex w-full flex-col items-start justify-between border-b border-black/20 pb-5 lg:flex-row md:items-end lg:mb-[60px] lg:pb-[60px]">
-              <div className="w-full md:flex-1 xxl:max-w-[120ch]">
+            <div className="mb-5 flex w-full flex-col gap-6 items-start justify-between border-b border-black/20 pb-5 md:items-end lg:mb-[60px] lg:flex-row lg:gap-[60px] lg:pb-[60px]">
+              <div className="w-full  xxl:max-w-[120ch]">
                 <h1 className="text-[32px] max-lg:leading-[1.2] md:text-[50px] xl:leading-lh1p22 2xl:text-font80">
                   {data.portfolio.bannerTitle == "null" ||
                   data.portfolio.bannerTitle == "undefined"
@@ -93,7 +93,7 @@ const MainSectionDetails = ({
               </div>
 
               {data.portfolio.logo && (
-                <div className="mt-6 flex h-[40px] w-[150px] shrink-0 items-end justify-start self-start md:ml-auto md:mt-0 md:h-[110px] md:w-[180px] md:justify-end md:self-auto lg:max-h-[80px] lg:w-[180px]">
+                <div className=" h-[40px] w-[150px] shrink-0 items-end justify-start self-start md:ml-auto md:mt-0 md:h-[60px] md:w-auto md:justify-end md:self-auto lg:max-h-[80px] lg:w-auto">
                   <Image
                     src={data.portfolio.logo}
                     alt={
@@ -143,7 +143,7 @@ const MainSectionDetails = ({
                         <Link
                           key={item.link || `${item.name}-${index}`}
                           href={item.link || "#"}
-                          className="btn-outline-primary-text-black"
+                          className="btn-outline-primary-text-black !px-[17px] !normal-case text-[19px] !py-[9px] leading-[1.5] !font-medium"
                         >
                           {item.name}
                         </Link>

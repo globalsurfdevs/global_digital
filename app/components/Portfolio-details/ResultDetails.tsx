@@ -66,7 +66,7 @@ const ResultDetails = ({
               {sliderPreviewImages.length > 0 ? (
                 sliderPreviewImages.map((imageUrl, index) => (
                   <SwiperSlide key={`preview-${index}`}>
-                    <Image
+                    <img
                       src={imageUrl}
                       alt={`Portfolio work preview ${index + 1}`}
                       width={900}
@@ -79,7 +79,7 @@ const ResultDetails = ({
                 <>
                   {data?.portfolio?.resultImage1 && (
                     <SwiperSlide>
-                      <Image
+                      <img
                         src={data.portfolio.resultImage1}
                         alt="image"
                         width={900}
@@ -90,7 +90,7 @@ const ResultDetails = ({
                   )}
                   {data?.portfolio?.resultImage2 && (
                     <SwiperSlide>
-                      <Image
+                      <img
                         src={data.portfolio.resultImage2}
                         alt="image"
                         width={900}
@@ -101,7 +101,7 @@ const ResultDetails = ({
                   )}
                   {data?.portfolio?.resultImage1 && (
                     <SwiperSlide>
-                      <Image
+                      <img
                         src="/assets/portfolio/slide3.jpg"
                         alt="image"
                         width={900}
@@ -112,7 +112,7 @@ const ResultDetails = ({
                   )}
                   {data?.portfolio?.resultImage2 && (
                     <SwiperSlide>
-                      <Image
+                      <img
                         src="/assets/portfolio/slide4.jpg"
                         alt="image"
                         width={900}
@@ -131,7 +131,8 @@ const ResultDetails = ({
           z-10 flex h-[50px] 
           w-[50px] -translate-x-1/2 
           -translate-y-1/2 items-center justify-center rounded-full 
-          bg-primary text-[13px] 
+          bg-primary text-[14px] lg:text-[16px] 
+          leading-[1]
           text-white 
           shadow-lg transition-all duration-500 
           ease-out
@@ -149,7 +150,7 @@ const ResultDetails = ({
         ) : null}
         {standalonePreviewImage && (
           <section className="mt-5 grid grid-cols-1 gap-5">
-            <Image
+            <img
               src={standalonePreviewImage}
               alt="Selected portfolio work preview"
               width={900}
@@ -176,7 +177,7 @@ const ResultDetails = ({
             className="container mx-auto "
           >
             <div className="mt-[20px] h-[300px] lg:h-[70vh] lg:h-max">
-              <Image
+              <img
                 src={data?.portfolio.section2BannerImage || ""}
                 alt="web-mockup"
                 width={1500}

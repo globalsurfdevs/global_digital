@@ -139,7 +139,7 @@ const HeroSection = ({
                     <div className="py-10 lg:py-[60px]">
                       <hr />
                     </div>
-                    <div className="flex flex-col gap-5  lg:grid lg:grid-cols-3 lg:gap-5 lg:gap-x-[50px] ">
+                    <div className="flex flex-col gap-5  lg:grid lg:grid-cols-3 lg:gap-5 lg:gap-x-[40px] ">
                       {data.portfolioHighlights.map((item) => (
                         <div
                           className="group border-b border-black/10   last:border-b-0 last:border-r-0 lg:border-b-0 lg:border-r "

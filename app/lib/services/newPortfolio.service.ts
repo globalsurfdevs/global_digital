@@ -12,6 +12,7 @@ function toPortfolioListingItem(record: any) {
     industry: record.company?.industry || "",
     slug: record.slug || "",
     bannerImage: record.brand?.banner?.image || "",
+    newBannerMobileImage: record.brand?.banner?.mobileImage || "",
     coverImage: record.brand?.banner?.image || "",
     categories: (record.categories || []).filter((cat: any) =>!cat.isHidden).map((category: any) => ({
       _id: String(category._id),
