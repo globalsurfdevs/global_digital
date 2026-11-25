@@ -93,7 +93,7 @@ const MainSectionDetails = ({
               </div>
 
               {data.portfolio.logo && (
-                <div className=" h-[40px] w-[150px] shrink-0 items-end justify-start self-start md:ml-auto md:mt-0 md:h-[80px] md:w-auto md:justify-end md:self-auto lg:max-h-[80px] lg:w-auto">
+                <div  className="flex h-[40px] w-[150px] shrink-0 items-end justify-start self-start md:mt-0 md:h-[80px] md:w-auto lg:ml-auto lg:self-end lg:justify-end lg:max-h-[80px]">
                   <Image
                     src={data.portfolio.logo}
                     alt={
