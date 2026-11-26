@@ -24,20 +24,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ data }: HeroSectionProps) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  // const [containerLeft, setContainerLeft] = useState(0);
-
-  // useEffect(() => {
-  //   const updateContainerLeft = () => {
-  //     if (!containerRef.current) return;
-  //     setContainerLeft(containerRef.current.getBoundingClientRect().left + 15);
-  //   };
-
-  //   updateContainerLeft();
-  //   window.addEventListener("resize", updateContainerLeft);
-  //   return () => window.removeEventListener("resize", updateContainerLeft);
-  // }, []);
-
+  
   useEffect(() => {
     if (modalOpen) {
       document.body.style.overflow = "hidden";
@@ -81,7 +68,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           />
         </picture>
       </div>
-      <div className="container" ref={containerRef}></div>
+      <div className="container"></div>
       <div className="container relative z-10 h-full">
         {/* <div
         className="relative z-10 flex h-full flex-col justify-center md:w-[50%] 2xl:w-[50%] 3xl:w-[40%]"
