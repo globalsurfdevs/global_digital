@@ -73,7 +73,7 @@ const IndustriesSec = ({ data }: { data: Props }) => {
                   dangerouslySetInnerHTML={{ __html: item.title }}
                 ></h3>
                 {/* <Image
-                  src="/assets/icons/engineering-and-infrastructure/top-right-arrow-thick-primary.svg"
+                  src="/icons/right-top-arrow.svg"
                   alt="arrow-right"
                   width={22}
                   height={22}

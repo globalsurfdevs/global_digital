@@ -1,6 +1,5 @@
 import connectDB from "@/lib/mongodb";
 import { unstable_cache } from "next/cache";
-import Industry from "@/app/models/Industries";
 import Industries from  "@/app/models/Industries";
 
 export const getIndustry = unstable_cache(
@@ -14,7 +13,7 @@ export const getIndustry = unstable_cache(
 
     const item = doc?.items?.[0];
 
-    console.log(item);
+
 
     if (!item) {
       return null;
