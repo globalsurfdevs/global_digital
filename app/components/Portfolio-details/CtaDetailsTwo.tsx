@@ -72,17 +72,17 @@ const CtaDetailsTwo = ({
                 >
                   {data.portfolio.detailsCtaTwo.ctaText ||
                     data.portfolio.detailsCtaTwoButtonText ||
-                    "Book a free consultation"}
+                    "Book a Strategy Call"}
                 </Link>
               ) : (
                 <Button
                   text={
                     data?.portfolio.detailsCtaTwo?.ctaText ||
                     data?.portfolio.detailsCtaTwoButtonText ||
-                    "Book a free consultation"
+                    "Book a Strategy Call"
                   }
                   textcolor={"black"}
-                  className="w-fit max-w-full rounded-full border border-primary px-4 py-2 text-[16px] font-medium uppercase leading-[1.4] sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:text-[30px]"
+                  className="w-fit max-w-full rounded-full border border-primary px-4 py-2 text-[16px] font-medium !normal-case leading-[1.4] sm:px-6 sm:py-3 sm:text-[20px] lg:px-[34px] lg:text-[30px]"
                   onClick={() => {
                     setModalOpen(true);
                     document.body.style.overflow = "hidden";

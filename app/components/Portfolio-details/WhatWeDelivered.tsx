@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 interface FrameworkItem {
   _id: number;
   title: string;
@@ -72,7 +73,9 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                 {!description && (
                   <>
                     <div style={{ maxWidth: `${maxchwidth}ch` }}>
-                      <h2 className="title-65 pb-8 lg:pb-[40px] leading-[1.507692]">{title}</h2>
+                      <h2 className="title-65 pb-8 leading-[1.507692] lg:pb-[40px]">
+                        {totitleSentenceCase(title)}
+                      </h2>
                     </div>
                   </>
                 )}
@@ -92,7 +95,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
               }}
             >
               <div
-                className={`grid grid-cols-1 justify-between gap-6 sm:grid-cols-2  lg:gap-[60px] ${gridColumnsClass}`}
+                className={`grid grid-cols-1 justify-between gap-8 sm:grid-cols-2  lg:gap-[60px] ${gridColumnsClass}`}
               >
                 {data.map((framework) => (
                   <div
@@ -113,8 +116,10 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
 
                     <div className="relative w-full self-start text-2xl ">
                       <h3
-                        className="xl:text-30 m-0 w-full self-start text-[19px] md:text-[26px] leading-[1.3] text-black lg:text-[30px]"
-                        dangerouslySetInnerHTML={{ __html: framework.title }}
+                        className="xl:text-30 m-0 w-full self-start text-[19px] leading-[1.3] text-black md:text-[26px] lg:text-[30px]"
+                        dangerouslySetInnerHTML={{
+                          __html: totitleSentenceCase(framework.title),
+                        }}
                       />
 
                       {framework.urllink && (

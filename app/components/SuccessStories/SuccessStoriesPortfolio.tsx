@@ -8,6 +8,7 @@ import {
   formatLinkForPortfolio,
   formatLinkForCaseStudy,
 } from "@/app/helpers/formatLink";
+import { totitleSentenceCase } from "@/app/helpers/maintainProperWordings";
 
 export const SuccessStoriesPortfolio = ({
   data,
@@ -33,7 +34,7 @@ export const SuccessStoriesPortfolio = ({
         }}
       >
         <div>
-          <h2 className="title-65 pb-5 lg:pb-[48px]">Success Stories</h2>
+          <h2 className="title-65 pb-5 lg:pb-[48px]">{totitleSentenceCase("Success Stories")}</h2>
         </div>
       </motion.div>
       <motion.div

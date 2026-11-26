@@ -72,6 +72,7 @@ const ACRONYMS = new Set([
   "ui",
   "uae",
   "crm",
+  "cms",
 ]);
 
 const PROPER_NOUNS: Record<string, string> = {
@@ -84,8 +85,9 @@ const PROPER_NOUNS: Record<string, string> = {
   "app store": "App Store",
   "google play": "Google Play",
   woocommerce: "WooCommerce",
-  arabic : "Arabic",
-  english : "English",
+  arabic: "Arabic",
+  english: "English",
+  shopify:"Shopify"
 };
 
 // Splits text into segments, alternating between non-anchor text and
@@ -158,8 +160,6 @@ export const toSentenceCase = (text: string) => {
     .join("");
 };
 
-
-
 export const totitleSentenceCase = (text: string) => {
   if (!text) return text;
 
@@ -170,9 +170,8 @@ export const totitleSentenceCase = (text: string) => {
       let result = segment.toLowerCase();
 
       // Sentence case
-      result = result.replace(
-        /(^\s*\w|[.!?]\s+\w)/g,
-        (match) => match.toUpperCase(),
+      result = result.replace(/(^\s*\w|[.!?]\s+\w)/g, (match) =>
+        match.toUpperCase(),
       );
 
       // Proper nouns
