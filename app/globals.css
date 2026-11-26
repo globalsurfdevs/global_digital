@@ -1782,5 +1782,5 @@ input[type="number"] {
 }
 
 .process-slider-bleed {
-  width: calc(50vw + 50%);
+  width: calc((100vw + 100%) / 2);
 }

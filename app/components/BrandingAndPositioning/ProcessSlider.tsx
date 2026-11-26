@@ -266,25 +266,12 @@ const ProcessSlider = ({
     ).flat();
   }, [items, ready]);
 
-  const [containerLeft, setContainerLeft] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const updateContainerLeft = () => {
-      if (!containerRef.current) return;
-      setContainerLeft(containerRef.current.getBoundingClientRect().left + 15);
-    };
-
-    updateContainerLeft();
-    window.addEventListener("resize", updateContainerLeft);
-    return () => window.removeEventListener("resize", updateContainerLeft);
-  }, []);
 
   if (slides.length === 0) return null;
 
   return (
     <section className={`py-120 ${isDark ? "bg-black" : "bg-[#F6F6F6]"}`}>
-      <div className="container" ref={containerRef}>
+      <div className="container">
         <div className="mb-4 xl:mb-8 xxl:mb-[50px]">
           <div className="mb-4 flex items-center gap-3 md:mb-6 xl:mb-8 xxl:mb-12">
             <motion.p
@@ -307,15 +294,14 @@ const ProcessSlider = ({
             dangerouslySetInnerHTML={{ __html: subTitle }}
           ></motion.h2>
         </div>
-      </div>
 
-      {/* No aria-hidden here: the real <h3>s live inside the slider.
+        {/* No aria-hidden here: the real <h3>s live inside the slider.
           Only the clone shells are aria-hidden (set per slide below). */}
-      {/* <div className="container"> */}
+
         <div
-          className=" overflow-hidden"
-          // className="process-slider-bleed overflow-hidden"
-          style={{ marginLeft: `${containerLeft}px` }}
+      
+          className=" process-slider-bleed overflow-hidden"
+        
         >
           <Swiper
             key={ready ? "loop" : "static"}
@@ -393,10 +379,9 @@ const ProcessSlider = ({
             )}
           </Swiper>
         </div>
-      {/* </div> */}
 
-      {/* Pagination */}
-      <div className="container">
+        {/* Pagination */}
+
         <div className="process-pagination mt-10 flex gap-2 md:hidden [&_.swiper-pagination-bullet-active]:bg-primary [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-black/15" />
       </div>
     </section>
