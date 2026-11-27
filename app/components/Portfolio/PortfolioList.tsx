@@ -100,7 +100,7 @@ const PortfolioList = ({
 
   const [filter, setFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 10;
+  const pageSize = 6;
   const pageCount = Math.ceil(portfolios.length / pageSize);
   const firstVisiblePage = Math.min(
     Math.max(currentPage - 1, 1),
