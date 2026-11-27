@@ -5,6 +5,7 @@ export interface SeoFormValues {
   ogTitle: string;
   ogDescription: string;
   ogImage: string;
+  ogImageAlt?: string;
   twitterTitle: string;
   twitterDescription: string;
   twitterImage: string;

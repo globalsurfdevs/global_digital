@@ -9,6 +9,7 @@ const seoSchema = new mongoose.Schema(
     ogTitle: { type: String },
     ogDescription: { type: String },
     ogImage: { type: String },
+    ogImageAlt: { type: String },
 
     twitterTitle: { type: String },
     twitterDescription: { type: String },

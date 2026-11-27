@@ -2,8 +2,12 @@
 import { motion } from "motion/react";
 import { Portfolio } from "@/app/types/Portfolio";
 import { PortfolioHighlight } from "@/app/types/PortfolioHighlights";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
+import {
+  toTitleCase,
+  totitleSentenceCase,
+} from "@/app/helpers/maintainProperWordings";
 
 const MainSectionDetails = ({
   data,
@@ -21,6 +25,32 @@ const MainSectionDetails = ({
   const visibleCategories = (data.portfolio.categories ?? []).filter(
     (category) => category.isHidden !== true,
   );
+  const bannerAlt =
+    data.portfolio.newBannerAlt ||
+    data.portfolio.bannerTitle ||
+    "Portfolio banner";
+  const bannerImageProps = data.portfolio.bannerImage
+    ? getImageProps({
+        src: data.portfolio.bannerImage,
+        alt: bannerAlt,
+        width: 1920,
+        height: 1080,
+        sizes: "100vw",
+        quality: 100,
+        fetchPriority: "high",
+      }).props
+    : undefined;
+  const mobileBannerSrcSet = data.portfolio.mobileBannerImage
+    ? getImageProps({
+        src: data.portfolio.mobileBannerImage,
+        alt: bannerAlt,
+        width: 1200,
+        height: 900,
+        sizes: "100vw",
+        quality: 100,
+        fetchPriority: "high",
+      }).props.srcSet
+    : undefined;
 
   return (
     <section>
@@ -29,24 +59,15 @@ const MainSectionDetails = ({
           {data.portfolio.bannerImage && (
             <>
               <picture className="contents">
-                {data.portfolio.mobileBannerImage && (
+                {mobileBannerSrcSet && (
                   <source
                     media="(max-width: 992px)"
-                    srcSet={data.portfolio.mobileBannerImage}
+                    srcSet={mobileBannerSrcSet}
                   />
                 )}
-                <Image
-                  src={data.portfolio.bannerImage}
-                  alt={
-                    data.portfolio.newBannerAlt ||
-                    data.portfolio.bannerTitle ||
-                    "Portfolio banner"
-                  }
+                <img
+                  {...(bannerImageProps ?? {})}
                   className="absolute h-full w-full object-cover object-center"
-                  fill
-                  sizes="100vw"
-                  quality={90}
-                  priority
                 />
               </picture>
               <div className="bg-bl-gradient absolute top-0 h-full w-full"></div>
@@ -82,18 +103,18 @@ const MainSectionDetails = ({
                 </div>
               )}
             </div> */}
-            <div className="mb-5 flex w-full flex-col gap-6 items-start justify-between border-b border-black/20 pb-5 md:items-end lg:mb-[60px] lg:flex-row lg:gap-[60px] lg:pb-[60px]">
+            <div className="mb-5 flex w-full flex-col items-start justify-between gap-6 border-b border-black/20 pb-5 md:items-end lg:mb-[60px] lg:flex-row lg:gap-[60px] lg:pb-[60px]">
               <div className="w-full  xxl:max-w-[120ch]">
                 <h1 className="text-[32px] max-lg:leading-[1.2] md:text-[50px] xl:leading-lh1p22 2xl:text-font80">
                   {data.portfolio.bannerTitle == "null" ||
                   data.portfolio.bannerTitle == "undefined"
                     ? ""
-                    : data.portfolio.bannerTitle}
+                    : toTitleCase(data.portfolio.bannerTitle)}
                 </h1>
               </div>
 
               {data.portfolio.logo && (
-                <div  className="flex h-[40px] w-[150px] shrink-0 items-end justify-start self-start md:mt-0 md:h-[80px] md:w-auto lg:ml-auto lg:self-end lg:justify-end lg:max-h-[80px]">
+                <div className="flex h-[40px] w-[150px] shrink-0 items-end justify-start self-start md:mt-0 md:h-[80px] md:w-auto lg:ml-auto lg:max-h-[80px] lg:justify-end lg:self-end">
                   <Image
                     src={data.portfolio.logo}
                     alt={
@@ -114,7 +135,7 @@ const MainSectionDetails = ({
                     Industry
                   </p>
                   <p className="text-30 font-normal leading-lh1p33">
-                    {data.portfolio.industry}
+                    {toTitleCase(data.portfolio.industry)}
                   </p>
                 </div>
                 {/* <div>
@@ -138,16 +159,18 @@ const MainSectionDetails = ({
                     <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
                       Services
                     </p>
-                    <div className="flex max-w-md flex-wrap gap-2">
-                      {visibleCategories.map((item, index) => (
-                        <Link
-                          key={item.link || `${item.name}-${index}`}
-                          href={item.link || "#"}
-                          className="btn-outline-primary-text-black !px-[17px] !normal-case text-[19px] !py-[9px] leading-[1.5] !font-medium"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
+                    <div className="max-w-md">
+                      <div className="flex  flex-wrap gap-2 md:ml-auto">
+                        {visibleCategories.map((item, index) => (
+                          <Link
+                            key={item.link || `${item.name}-${index}`}
+                            href={item.link || "#"}
+                            className="btn-outline-primary-text-black items-start !px-[17px] !py-[9px] text-[16px] !font-medium !normal-case leading-[1.5] md:text-[19px]"
+                          >
+                            {toTitleCase(item.name)}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -157,11 +180,11 @@ const MainSectionDetails = ({
                   <p className="text-19 fnt-lexend leadeing-[2.105263157894737] pb-[5px] text-gray1">
                     Channels used
                   </p>
-                  <div className="flex max-w-md flex-wrap gap-2">
+                  <div className="flex max-w-md flex-wrap justify-end gap-2">
                     {channelsUsed.map((channel, index) => (
                       <span
                         key={`${channel}-${index}`}
-                        className="btn-outline-primary-text-black"
+                        className="btn-outline-primary-text-black items-start"
                       >
                         {channel}
                       </span>

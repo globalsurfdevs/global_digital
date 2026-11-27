@@ -51,7 +51,7 @@ const HeroSectionDetails = ({
                         rel="noopener noreferrer"
                         className="z-2 z-1 group relative mt-8"
                       >
-                      <button className="btn-outline-primary-text-black flex items-center gap-[18px] xl:rounded-[100px] xl:px-[25px] xl:py-[22px] fnt-lexend !font-medium text-[16px]  shrink-0">
+                      <button className="btn-outline-primary-text-black flex items-center gap-[18px] xl:rounded-[100px] px-[17px] py-[9px] xl:px-[25px] xl:py-[22px] !uppercase fnt-lexend !leading-[1.3] !font-medium text-[16px]  shrink-0">
                         Visit live website
                         <svg
                           width="20"
