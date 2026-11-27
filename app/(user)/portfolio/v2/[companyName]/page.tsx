@@ -42,14 +42,24 @@ export async function generateMetadata({
       title: seo?.ogTitle || title,
       description: seo?.ogDescription || description,
       url: `https://www.globalsurf.ae/portfolio/${slug}`,
+      siteName: "GS Digital",
+      locale: "en_AE",
       type: "website",
-      images: seo?.ogImage ? [seo.ogImage] : bannerImage ? [bannerImage] : undefined,
+      images: seo?.ogImage || bannerImage
+        ? [{ url: seo?.ogImage || bannerImage!, alt: seo?.ogImageAlt }]
+        : undefined,
     },
     twitter: {
       card: seo?.twitterImage || bannerImage ? "summary_large_image" : "summary",
+      site: "@GlobalSurf_D",
       title: seo?.twitterTitle || title,
       description: seo?.twitterDescription || description,
-      images: seo?.twitterImage ? [seo.twitterImage] : bannerImage ? [bannerImage] : undefined,
+      images: seo?.twitterImage || bannerImage
+        ? [{
+            url: seo?.twitterImage || bannerImage!,
+            alt: seo?.ogImageAlt,
+          }]
+        : undefined,
     },
   };
 }

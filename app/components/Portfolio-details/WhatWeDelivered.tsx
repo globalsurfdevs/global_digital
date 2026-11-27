@@ -95,7 +95,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
               }}
             >
               <div
-                className={`grid grid-cols-1 justify-between gap-8 sm:grid-cols-2  lg:gap-[60px] ${gridColumnsClass}`}
+                className={`grid grid-cols-1 justify-between gap-8 sm:grid-cols-2  lg:gap-[80px] ${gridColumnsClass}`}
               >
                 {data.map((framework) => (
                   <div

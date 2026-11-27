@@ -65,14 +65,20 @@ export async function generateMetadata({
       title: ogTitle,
       description: ogDescription,
       url: `https://www.globalsurf.ae/portfolio/${formatLinkForPortfolio(slug)}`,
+      siteName: "GS Digital",
+      locale: "en_AE",
       type: "website",
-      images: openGraphImages,
+      images: openGraphImages?.map((url) => ({ url, alt: seo?.ogImageAlt })),
     },
     twitter: {
       card: twitterImages ? "summary_large_image" : "summary",
+      site: "@GlobalSurf_D",
       title: twitterTitle,
       description: twitterDescription,
-      images: twitterImages,
+      images: twitterImages?.map((url) => ({
+        url,
+        alt: seo?.ogImageAlt,
+      })),
     },
   };
 }
