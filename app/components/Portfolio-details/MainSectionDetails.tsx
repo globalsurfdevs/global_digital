@@ -104,7 +104,7 @@ const MainSectionDetails = ({
               )}
             </div> */}
             <div className="mb-5 flex w-full flex-col items-start justify-between gap-6 border-b border-black/20 pb-5 md:items-end lg:mb-[60px] lg:flex-row lg:gap-[60px] lg:pb-[60px]">
-              <div className="w-full  xxl:max-w-[120ch]">
+              <div className="w-full  xxl:max-w-[130ch]">
                 <h1 className="text-[32px] max-lg:leading-[1.2] md:text-[50px] xl:leading-lh1p22 2xl:text-font80">
                   {data.portfolio.bannerTitle == "null" ||
                   data.portfolio.bannerTitle == "undefined"
