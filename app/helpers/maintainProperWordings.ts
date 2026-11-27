@@ -73,6 +73,15 @@ const ACRONYMS = new Set([
   "uae",
   "crm",
   "cms",
+  "asgc",
+  "bec",
+  "ascs",
+  "epc",
+  "iscs",
+  "icatch",
+  "qieco",
+  "beam",
+  "ayka"
 ]);
 
 const PROPER_NOUNS: Record<string, string> = {
@@ -117,10 +126,14 @@ export const toTitleCase = (text: string) => {
           const cased = core
             .split("-")
             .map((part) => {
-              const lower = part.toLowerCase();
+              const possessiveMatch = part.match(/^(.+?)(['’]s)$/i);
+              const lower = (
+                possessiveMatch ? possessiveMatch[1] : part
+              ).toLowerCase();
+              const possessiveSuffix = possessiveMatch?.[2] ?? "";
 
               if (ACRONYMS.has(lower)) {
-                return lower.toUpperCase();
+                return lower.toUpperCase() + possessiveSuffix;
               }
 
               // Handle plural acronyms, e.g. "kpis" -> "KPIs", "ctas" -> "CTAs"
@@ -128,7 +141,11 @@ export const toTitleCase = (text: string) => {
                 return lower.slice(0, -1).toUpperCase() + "s";
               }
 
-              return lower.charAt(0).toUpperCase() + lower.slice(1);
+              return (
+                lower.charAt(0).toUpperCase() +
+                lower.slice(1) +
+                possessiveSuffix
+              );
             })
             .join("-");
 
