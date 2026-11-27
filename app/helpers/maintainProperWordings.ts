@@ -81,7 +81,8 @@ const ACRONYMS = new Set([
   "icatch",
   "qieco",
   "beam",
-  "ayka"
+  "ayka",
+  "bafco"
 ]);
 
 const PROPER_NOUNS: Record<string, string> = {
