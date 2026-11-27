@@ -153,7 +153,7 @@ export const SuccessStoriesPortfolio = ({
                     </div>
                   </div>
 
-                  <div className="mt-auto pt-2 lg:pt-[30px]">
+                  <div className="mt-auto pt-3 lg:pt-[30px]">
                     <div className="h-[2px] w-full bg-[#E6E6E6] transition-colors duration-300 group-hover:bg-primary"></div>
                   </div>
                 </Link>

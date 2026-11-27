@@ -102,7 +102,7 @@ const WhatWeDelivered: React.FC<FrameworkSectionProps> = ({
                     key={framework._id}
                     className="group relative flex flex-row items-start gap-3 overflow-hidden sm:flex-col md:gap-0"
                   >
-                    <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center bg-primary p-2 md:mb-3 md:h-[50px] md:w-[50px] lg:mb-[30px]">
+                    <div className="flex h-[36px] w-[36px] max-sm:mt-1 shrink-0 items-center justify-center bg-primary md:mb-3 md:h-[50px] md:w-[50px] lg:mb-[30px]">
                       {framework.icn && (
                         <Image
                           src={framework.icn}
